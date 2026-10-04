@@ -7,7 +7,7 @@ static class NativeRecoveryTests {
   directory=Path.GetFullPath(directory);string actualRoot=Settings.Root;
   string seedPak=File.ReadAllText(Path.Combine(directory,"native-seed-path.txt")),session=File.ReadAllText(Path.Combine(directory,"native-session-path.txt"));
   string fixture=Path.Combine(directory,"library-fixture-v2");
-  if(!Path.GetFullPath(session).StartsWith(Path.GetFullPath(Path.Combine(fixture,"UserData","Seeds"))+Path.DirectorySeparatorChar,StringComparison.OrdinalIgnoreCase))throw new InvalidDataException("Native recovery tests require the isolated version 2 seed fixture.");
+  if(!Path.GetFullPath(session).StartsWith(Path.GetFullPath(Path.Combine(fixture,"UserData","Seeds"))+Path.DirectorySeparatorChar,StringComparison.OrdinalIgnoreCase))throw new InvalidDataException("Native recovery tests require the isolated content-profile seed fixture.");
   var before=new Dictionary<string,string>();foreach(string f in Directory.EnumerateFiles(Path.Combine(actualRoot,"Game","saves")))before[f]=StoryShuffle.HashFile(f);
   Settings.OverrideRoot=fixture;
   try {

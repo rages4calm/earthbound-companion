@@ -2,10 +2,15 @@
 
 **A ROM-free native Windows PC edition of EarthBound with a guided launcher, modern display options, quality-of-life controls, native MSU music, and a progression-conscious randomizer.**
 
+> [!WARNING]
+> **The current v0.4.0 build uses the original EarthBound (USA) story and does not contain MaternalBound Redux.** Its MSU player understands Redux's soundtrack loop data, but Redux's rewritten script, graphics, data, and 65816 code have not yet been converted to native C. The active port is tracked in [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+
+The main source now contains Story Shuffle v3's content-profile foundation. Seeds bind to the exact selected game version, asset hash, progression policy and save namespace. MaternalBound randomization remains locked until the converted Redux pack and its separate progression audit pass; this prevents a partially ported profile from generating softlocked seeds.
+
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio, saves, or screenshots from the game. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Download the latest private test build](https://github.com/rages4calm/earthbound-companion/releases/latest) · [Read the randomizer rules](RANDOMIZER.md) · [See research and compatibility](RESEARCH.md) · [Credits](CREDITS.md)
+[Download the latest private test build](https://github.com/rages4calm/earthbound-companion/releases/latest) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Read the randomizer rules](RANDOMIZER.md) · [See research and compatibility](RESEARCH.md) · [Credits](CREDITS.md)
 
 ## Companion at a glance
 

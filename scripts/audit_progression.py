@@ -82,7 +82,7 @@ def item_name(i): return ''.join(chr(b-0x30) for b in items[i*39:i*39+25] if 0x5
 state_source = (root / 'native-source/src/core/state_dump.c').read_text()
 state_version = int(re.search(r'#define STATE_DUMP_VERSION (\d+)', state_source).group(1))
 state_polynomial = int(re.search(r'crc = \(crc >> 1\) \^ \((0x[0-9A-F]+)u', state_source).group(1), 16)
-policy = dict(BaseHash=hashlib.sha256(pack).hexdigest(), ProtectedItems=sorted(item_reasons), ProtectedEnemies=sorted(enemy_reasons), SaveStateVersion=state_version, SaveStateCrcPolynomial=state_polynomial)
+policy = dict(ContentId='earthbound-usa', DisplayName='EarthBound (USA)', BaseHash=hashlib.sha256(pack).hexdigest(), ProtectedItems=sorted(item_reasons), ProtectedEnemies=sorted(enemy_reasons), SaveStateVersion=state_version, SaveStateCrcPolynomial=state_polynomial)
 (root / 'Companion/progression-policy.json').write_text(json.dumps(policy, indent=2)+'\n', encoding='utf-8')
 report = dict(**policy, ScriptBlocks=len(blocks), DecodedEntries=operations, UnknownCodes=dict(unknown),
               Items=[dict(Id=i, Name=item_name(i), Reasons=sorted(v)) for i,v in sorted(item_reasons.items())],

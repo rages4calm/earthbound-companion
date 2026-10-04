@@ -3,38 +3,52 @@ using System.Text.Json;
 
 namespace EarthBoundCompanion;
 
-internal sealed record ProgressionPolicy(string BaseHash, int[] ProtectedItems, int[] ProtectedEnemies,int SaveStateVersion,uint SaveStateCrcPolynomial);
+internal sealed record ProgressionPolicy(string ContentId,string DisplayName,string BaseHash,int[] ProtectedItems,int[] ProtectedEnemies,int SaveStateVersion,uint SaveStateCrcPolynomial) {
+ internal HashSet<int> Items=>ProtectedItems.ToHashSet();
+ internal HashSet<int> Enemies=>ProtectedEnemies.ToHashSet();
+}
 
 // A conservative invariant check for the unchanged original story. Independent
 // of the generator's Pick function; invoked at generation AND before launch.
 static class ProgressionGuard {
- static readonly ProgressionPolicy Policy = Load();
- internal static readonly HashSet<int> Items = Policy.ProtectedItems.ToHashSet();
- internal static readonly HashSet<int> Enemies = Policy.ProtectedEnemies.ToHashSet();
- internal static int SaveStateVersion=>Policy.SaveStateVersion;
- internal static uint SaveStateCrcPolynomial=>Policy.SaveStateCrcPolynomial;
- static ProgressionPolicy Load() {
-  using var stream=typeof(ProgressionGuard).Assembly.GetManifestResourceStream("EarthBoundCompanion.progression-policy.json")
-   ?? typeof(ProgressionGuard).Assembly.GetManifestResourceNames().Where(n=>n.EndsWith("progression-policy.json")).Select(n=>typeof(ProgressionGuard).Assembly.GetManifestResourceStream(n)).FirstOrDefault()
-   ?? throw new InvalidDataException("Progression protection registry is missing.");
-  return JsonSerializer.Deserialize<ProgressionPolicy>(stream)??throw new InvalidDataException("Empty progression protection registry.");
+ static readonly ProgressionPolicy[] Policies = Load();
+ static ProgressionPolicy Default=>Policies.Single(p=>p.ContentId=="earthbound-usa");
+ // Kept for the original-profile audit suite. Generation and validation use
+ // the policy selected by the active asset hash below.
+ internal static HashSet<int> Items=>Default.Items;
+ internal static HashSet<int> Enemies=>Default.Enemies;
+ internal static int SaveStateVersion=>Default.SaveStateVersion;
+ internal static uint SaveStateCrcPolynomial=>Default.SaveStateCrcPolynomial;
+ static ProgressionPolicy[] Load() {
+  var names=typeof(ProgressionGuard).Assembly.GetManifestResourceNames().Where(n=>n.Contains("progression-policy",StringComparison.OrdinalIgnoreCase)&&n.EndsWith(".json",StringComparison.OrdinalIgnoreCase)).ToArray();
+  if(names.Length==0)throw new InvalidDataException("Progression protection registry is missing.");
+  var policies=new List<ProgressionPolicy>();
+  foreach(string name in names) {
+   using var stream=typeof(ProgressionGuard).Assembly.GetManifestResourceStream(name)??throw new InvalidDataException("Cannot read progression policy: "+name);
+   var policy=JsonSerializer.Deserialize<ProgressionPolicy>(stream)??throw new InvalidDataException("Empty progression protection registry: "+name);
+   if(string.IsNullOrWhiteSpace(policy.ContentId)||string.IsNullOrWhiteSpace(policy.DisplayName)||policy.BaseHash.Length!=64||!policy.BaseHash.All(Uri.IsHexDigit))throw new InvalidDataException("Invalid progression profile: "+name);
+   policies.Add(policy);
+  }
+  if(policies.Select(p=>p.ContentId).Distinct(StringComparer.Ordinal).Count()!=policies.Count||policies.Select(p=>p.BaseHash).Distinct(StringComparer.OrdinalIgnoreCase).Count()!=policies.Count)throw new InvalidDataException("Duplicate progression profile identity or asset hash.");
+  return policies.ToArray();
  }
- internal static void CheckBase(byte[] original) {
+ internal static ProgressionPolicy CheckBase(byte[] original) {
   StoryShuffle.ValidatePack(original);
-  if(StoryShuffle.Hash(original)!=Policy.BaseHash)throw new InvalidDataException("Story Shuffle needs the original asset pack used by this edition's progression audit. Restore Game/assets.pak before generating or playing a seed.");
+  string hash=StoryShuffle.Hash(original);var policy=Policies.SingleOrDefault(p=>p.BaseHash.Equals(hash,StringComparison.OrdinalIgnoreCase));
+  return policy??throw new InvalidDataException("Story Shuffle does not yet have a progression audit for this content pack. The pack remains playable, but randomization stays locked until its protected items, scripted battles and table layout pass the content-specific audit.");
  }
- internal static object Report()=>new {
-  Status="Passed original-story preservation checks", Policy="Original story dependencies, not shuffled-world logic", ProtectedItemCount=Items.Count,
-  ProtectedScriptedEnemyCount=Enemies.Count, ProtectedItems=Items.Order().ToArray(), ProtectedEnemies=Enemies.Order().ToArray(),
-  Checks=new[]{"Original maps, doors, scripts, flags, prices, rewards, starting items and item behavior unchanged", "Every original source of a protected item retained", "Scripted battles and bosses unchanged", "Replacement equipment compatible with original users", "Stat ranges and native bounds checked"},
+ internal static object Report(byte[] original) {var policy=CheckBase(original);return new {
+  Status="Passed content-specific story preservation checks", policy.ContentId,policy.DisplayName,Policy="Selected content dependencies, not shuffled-world logic", ProtectedItemCount=policy.Items.Count,
+  ProtectedScriptedEnemyCount=policy.Enemies.Count, ProtectedItems=policy.Items.Order().ToArray(), ProtectedEnemies=policy.Enemies.Order().ToArray(),
+  Checks=new[]{"Maps, doors, scripts, flags, prices, rewards, starting items and item behavior unchanged", "Every source of a protected item retained", "Scripted battles and bosses unchanged", "Replacement equipment compatible with intended users", "Stat ranges and native bounds checked"},
   FullPlaythroughVerified=false
- };
+ };}
  internal static void Validate(byte[] original,byte[] candidate,ShuffleOptions options) {
-  CheckBase(original);StoryShuffle.ValidatePack(candidate);
+  var policy=CheckBase(original);var protectedItems=policy.Items;var protectedEnemies=policy.Enemies;StoryShuffle.ValidatePack(candidate);
   void Require(bool value,string reason) {if(!value)throw new InvalidDataException("Progression safety check failed: "+reason+". Keep this seed's saves for recovery; generate a new version 2 seed to play.");}
   Require(original.Length==candidate.Length,"asset pack size changed");
   var allowed=new bool[original.Length];var items=StoryShuffle.Table(original,StoryShuffle.Items).ToArray();
-  bool Eligible(int id)=>id>0&&id<254&&!Items.Contains(id)&&BinaryPrimitives.ReadUInt16LittleEndian(items.AsSpan(id*39+26))>0&&items[id*39+25] is 0x10 or 0x11 or 0x14 or 0x18 or 0x1C or 0x20 or 0x24 or 0x28 or 0x2C or 0x30;
+  bool Eligible(int id)=>id>0&&id<254&&!protectedItems.Contains(id)&&BinaryPrimitives.ReadUInt16LittleEndian(items.AsSpan(id*39+26))>0&&items[id*39+25] is 0x10 or 0x11 or 0x14 or 0x18 or 0x1C or 0x20 or 0x24 or 0x28 or 0x2C or 0x30;
   void Replacement(int before,int after) {
    Require(Eligible(after),"replacement uses a protected or ineligible item");
    Require(items[before*39+25]==items[after*39+25],"replacement changed the item category");
@@ -58,7 +72,7 @@ static class ProgressionGuard {
   }
   var (enemyStart,enemyLength)=StoryShuffle.Range(original,StoryShuffle.Enemies);
   for(int i=1;i<enemyLength/94;i++) {
-   int p=enemyStart+i*94;if(Enemies.Contains(i)||original[p+86]!=0||original[p+54]==0)continue;
+   int p=enemyStart+i*94;if(protectedEnemies.Contains(i)||original[p+86]!=0||original[p+54]==0)continue;
    if(options.EnemyStats) {
     int range=options.Mode=="Balanced"?15:30;
     foreach(int offset in new[]{33,56,58}) {

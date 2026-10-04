@@ -1,4 +1,4 @@
-# Native Story Shuffle v2
+# Native Story Shuffle v3
 
 Open **EarthBound Companion → Solo Play → Randomized adventure**. The starter seed **Tonight in Onett** is ready in the library. Choose it and press **Play selected seed**, or enter a number/phrase and **Generate & play**. Generation is local and needs no additional downloads, browser, emulator or ROM setup.
 
@@ -17,7 +17,9 @@ The story, door routing, NPC dialogue/scripts, quest flags, enemy actions, encou
 
 ## Progression protection
 
-Protection is mandatory in both styles and every option combination. It cannot be disabled. `tools/audit_progression.py` decodes all 61 original text/script blocks (61,972 entries; no unknown opcodes), preserves literal item dependencies outside debug/item-help menus, and adds the complete Monkey Cave trade list and item transformations. The resulting policy protects **78 items** and **52 enemies used in literal scripted battles**. Quest item categories and all boss/level-zero records receive further category protections. Casey bat is excluded from replacements because of its unusual miss rate.
+Protection is mandatory in both styles and every option combination. It cannot be disabled. Story Shuffle v3 selects its policy by the exact active asset-pack hash. Each supported content profile has its own name, protected items, protected scripted enemies, seed identity and save directory. An unknown or unfinished profile is playable normally but cannot be randomized until its content-specific audit passes.
+
+For the original EarthBound (USA) profile, `tools/audit_progression.py` decodes all 61 original text/script blocks (61,972 entries; no unknown opcodes), preserves literal item dependencies outside debug/item-help menus, and adds the complete Monkey Cave trade list and item transformations. That policy protects **78 items** and **52 enemies used in literal scripted battles**. Quest item categories and all boss/level-zero records receive further category protections. Casey bat is excluded from replacements because of its unusual miss rate. MaternalBound Redux will receive a separate policy derived from its rewritten CCScript and converted native tables before its randomizer profile is enabled.
 
 This includes ordinary-looking foods: **Hamburger, Pizza, Picnic Lunch, Skip Sandwich, Wet Towel**, plus the Ruler, King Banana and related trades. Their original shops, gift boxes and drops remain unchanged wherever they occur. The unchanged scripts still supply their scripted rewards. The original starting equipment, prices and money/experience rewards also remain fixed.
 
@@ -27,15 +29,15 @@ These checks prevent this generator from removing the protected original progres
 
 ### Older seeds
 
-Version 2 deliberately changes seed output and identity. Version 1 folders and saves remain on disk. They appear as legacy entries and must pass the current protection checks before play; the original v1 **Tonight in Onett** fails those checks and is blocked. The new v2 starter has the same name and a separate save folder. **Create v2 from seed** generates a new adventure from an older seed's text/options, without overwriting its saves. It does not migrate an old playthrough or reproduce version 1 output. New recipe imports require version 2.
+Version 3 adds the content-profile identity to every seed and recipe. Version 1 and 2 folders and saves remain on disk. They appear as legacy entries and must pass the current protection checks before play; the original v1 **Tonight in Onett** fails those checks and is blocked. **Create v3 for selected version** generates a new adventure from an older seed's text/options and the currently selected audited content profile, without overwriting its saves. It does not migrate an old playthrough or reproduce older output. New recipe imports require version 3.
 
 ## Seeds, saves and sharing
 
-The same generator version, seed, options and original asset pack produce the same native data. Seeds accept 1–80 characters and are case-sensitive. Option changes produce separate adventures. Generation always starts from this installation's original `Game/assets.pak`, rather than a selected replacement mod pack. Normal visual/audio/gameplay settings still apply.
+The same generator version, seed, options and exact content profile produce the same native data. Seeds accept 1–80 characters and are case-sensitive. Option or content-profile changes produce separate adventures. Generation starts from the active native asset pack selected in Companion. Only asset hashes with an embedded, content-specific progression policy are accepted. Normal visual/audio/gameplay settings still apply.
 
 Each adventure lives at `UserData/Seeds/<identity>/`:
 
-- `seed.json`: version, options, original/generated checksums and change counts.
+- `seed.json`: version, content profile, options, original/generated checksums and change counts.
 - `safety.json`: protection counts, fixed item/enemy IDs, validation scope and the full-playthrough limit.
 - `assets.pak`: generated native game data, approximately 3 MB; the soundtrack is shared.
 - `recipe.ebseed.json`: portable seed/options recipe without game assets or saves.
@@ -45,7 +47,7 @@ Each adventure lives at `UserData/Seeds/<identity>/`:
 
 **Generate only** saves an adventure without launching. **Play selected seed** opens its normal title/file-selection flow; select its phone save to continue. **Resume quick save** loads the selected quick-save bank. Generating an existing seed reuses it and preserves its saves. The launcher checks the generated pack's checksum before play. Quick saves remain specific to the engine build.
 
-Use **Export seed recipe** to share settings. The recipient needs the same original native asset pack and generator version. **Import seed recipe** loads its seed/options; generate it to recreate the adventure. Changing the loaded seed/options discards the imported original-pack constraint. Recipes do not include copyrighted game assets, soundtrack or your saves.
+Use **Export seed recipe** to share settings. The recipient needs the same content profile, exact native asset pack and generator version. **Import seed recipe** loads its profile, seed and options; generate it to recreate the adventure. Changing the loaded seed/options discards the imported pack constraint. Recipes do not include copyrighted game assets, soundtrack or your saves.
 
 Backups use `UserData/Backups`. Close the game, select the adventure, and use **Back up seed saves** or **Restore seed backup**. New backups include `save-manifest.json` with the adventure ID, asset/engine hashes and save checksums. Guided restore refuses another adventure, mismatched assets, damaged files, duplicate/traversing ZIP paths or oversized archives. It backs up the current saves before applying the restored files and rolls back applied writes if an I/O error interrupts restoration.
 
@@ -61,7 +63,7 @@ The upstream randomizer's [README](https://github.com/stochaztic/eb-randomizer/b
 
 ## Developer verification
 
-`Verify.ps1` includes **1,000 seeds**, all **30 valid option/style combinations**, deterministic output, option isolation, exact protected-byte checks, native stat bounds, recipe roundtrip, save preservation/isolation, backup/restore checks, original-pack mismatch and tamper rejection. Negative cases deliberately remove trade foods, alter scripted battles, change other assets, rewrite an unsafe legacy manifest with a matching checksum, damage a backup and inject ZIP traversal; all are refused. `tools/validate_randomizer.py` exercises the native gift lookup and actual battle-stat initialization, fresh opening, seed quick-save/resume, 1080p output, real shared MSU tracks and invalid-session refusal. These use isolated validation folders.
+`Verify.ps1` includes **1,000 seeds**, all **30 valid option/style combinations**, deterministic output, option isolation, exact protected-byte checks, native stat bounds, content identity and recipe roundtrip, save preservation/isolation, backup/restore checks, content-pack mismatch and tamper rejection. Negative cases deliberately remove trade foods, alter scripted battles, change other assets, submit an unaudited content pack, rewrite an unsafe legacy manifest with a matching checksum, damage a backup and inject ZIP traversal; all are refused. `tools/validate_randomizer.py` exercises the native gift lookup and actual battle-stat initialization, fresh opening, seed quick-save/resume, 1080p output, real shared MSU tracks and invalid-session refusal. These use isolated validation folders.
 
 Native `--session-dir DIRECTORY` is resolved before any save migration/read/write and refuses an invalid directory. The launcher writes absolute soundtrack paths into each session. The generator version must change when algorithms or seed identity semantics change.
 

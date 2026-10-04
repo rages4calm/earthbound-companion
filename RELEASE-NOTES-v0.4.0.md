@@ -2,6 +2,8 @@
 
 This is the first friend-ready Windows x64 test package.
 
+> **Scope correction:** v0.4.0 is the original-story native edition. It does **not** include MaternalBound Redux. Redux-compatible MSU loop handling is included, but the hack's rewritten script, graphics, data, and 65816 routines are not. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md) for the port work and evidence.
+
 ## Setup
 
 1. Download and extract `EarthBound-Companion-Tester-v0.4.0.zip`.

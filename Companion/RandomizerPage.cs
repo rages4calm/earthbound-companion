@@ -6,12 +6,12 @@ sealed partial class MainForm {
  ShuffleOptions draftOptions=new();string? importedBaseHash,selectedSeedId;
  bool generating;SeedRecord? activeSeed;
  void RandomizerPage() {
-  Header("Another kind of EarthBound.","Story Shuffle · Generate a native adventure with its own saves.");
-  page.Controls.Add(Theme.Text("Keep the original story and routes. Shuffle optional rewards and ordinary enemy stats. Quest and trade items, their original sources, scripted battles and bosses stay fixed.",11,Theme.Muted));
-  page.Controls.Add(Theme.Text("Progression protection is always on · checked when generating and before play.",10,Theme.Green));
+  Header("Another kind of EarthBound.","Story Shuffle · Generate a native adventure for the selected game-data profile.");
+  page.Controls.Add(Theme.Text("Story Shuffle uses the active asset pack. Each supported EarthBound or MaternalBound Redux version has its own audited quest items, scripted battles, seed identity and isolated saves.",11,Theme.Muted));
+  page.Controls.Add(Theme.Text("Content-specific progression protection is always on · checked when generating and before play.",10,Theme.Green));
   var input=new TextBox {Text=draftSeed,MaxLength=80,BackColor=Theme.Surface,ForeColor=Theme.Ink,Font=Theme.Font(12),BorderStyle=BorderStyle.FixedSingle,AccessibleName="Randomizer seed",Enabled=!generating};
   input.TextChanged+=(_,_)=>{draftSeed=input.Text;importedBaseHash=null;};
-  Row("Seed","Enter a number or phrase. The same seed, options and original assets produce the same game.",input);
+  Row("Seed","Enter a number or phrase. The same seed, options and exact game-data profile produce the same game.",input);
   void Update(ShuffleOptions options){draftOptions=options;importedBaseHash=null;}
   Choice("Shuffle style","Balanced keeps replacements near their original price. Surprise allows a much wider range.",["Balanced","Surprise"],draftOptions.Mode=="Balanced"?0:1,i=>Update(draftOptions with {Mode=i==0?"Balanced":"Surprise"}));
   var toggles=new TableLayoutPanel {ColumnCount=2,RowCount=2,Height=236,Margin=new Padding(0,8,0,4)};
@@ -45,12 +45,12 @@ sealed partial class MainForm {
    void SetResume()=>resume.Enabled=!Running&&!generating&&Enumerable.Range(0,2).Any(n=>File.Exists(Path.Combine(Selected().Session,"saves",$"quicksave_{settings.QuickSlot+1}.bin.{n}")));
    list.SelectedIndexChanged+=(_,_)=>SetResume();SetResume();play.Enabled=!Running&&!generating;Actions(play,resume);
    Actions(Theme.Button("Open seed saves",()=>Open(Path.Combine(Selected().Session,"saves"))),Theme.Button("Open spoiler log",()=>Open(Path.Combine(Selected().Folder,"spoiler.json"))),Theme.Button("Export seed recipe",()=>ExportSeedRecipe(Selected())));
-   Actions(Theme.Button("Check seed safety",()=>Try(()=>{StoryShuffle.Verify(Selected());Notify("Passed: original story dependencies, protected sources and battle rules are intact. Full playthrough is unverified.");})),Theme.Button("Open safety report",()=>Try(()=>{string report=Path.Combine(Selected().Folder,"safety.json");if(!File.Exists(report))throw new InvalidDataException("This older seed has no generation safety report. Check seed safety before playing.");Open(report);})));
+   Actions(Theme.Button("Check seed safety",()=>Try(()=>{StoryShuffle.Verify(Selected());Notify("Passed: "+Selected().ContentName+" dependencies, protected sources and battle rules are intact. Full playthrough is unverified.");})),Theme.Button("Open safety report",()=>Try(()=>{string report=Path.Combine(Selected().Folder,"safety.json");if(!File.Exists(report))throw new InvalidDataException("This older seed has no generation safety report. Check seed safety before playing.");Open(report);})));
    Actions(Theme.Button("Back up seed saves",()=>BackupSession(Selected().Session)),Theme.Button("Restore seed backup",()=>RestoreSession(Selected().Session)));
-   var upgrade=Theme.Button("Create v2 from seed",()=>{draftSeed=Selected().Seed;draftOptions=Selected().Options;importedBaseHash=Selected().BaseHash;GenerateDraft(false);});upgrade.Enabled=!Running&&!generating;Actions(upgrade);
+   var upgrade=Theme.Button("Create v3 for selected version",()=>{draftSeed=Selected().Seed;draftOptions=Selected().Options;importedBaseHash=Selected().BaseHash;GenerateDraft(false);});upgrade.Enabled=!Running&&!generating;Actions(upgrade);
   }else page.Controls.Add(Theme.Text("Your generated adventures will appear here. Normal-story saves stay separate.",11,Theme.Muted));
   var import=Theme.Button("Import seed recipe",ImportSeedRecipe);import.Enabled=!generating&&!Running;Actions(import,Theme.Button("Open seed library",()=>{Directory.CreateDirectory(StoryShuffle.Library);Open(StoryShuffle.Library);}));
-  page.Controls.Add(Theme.Text("Story Shuffle v2 retains original progression; a complete playthrough is unverified. Ancient Cave, Open mode, Keysanity and earthbound.app seed compatibility remain unavailable until their native logic is implemented and verified.",10,Theme.Muted));
+  page.Controls.Add(Theme.Text("Story Shuffle v3 binds every seed to its exact content profile. A profile is enabled only after its protected items, scripted battles and table layout pass the native audit. Ancient Cave, Open mode, Keysanity and earthbound.app seed compatibility remain unavailable.",10,Theme.Muted));
   if(generating)foreach(Control control in page.Controls)control.Enabled=false;
  }
  async void GenerateDraft(bool play) {

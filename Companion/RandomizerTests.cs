@@ -76,15 +76,15 @@ static class RandomizerTests {
   foreach(byte[] broken in new[]{original[..40],original[..(original.Length/2)]}) {
    bool rejected=false;try{StoryShuffle.Build(broken,"bad",all);}catch(InvalidDataException){rejected=true;}Require(rejected,"Malformed pack accepted");
   }
-  string actualRoot=Settings.Root;Settings.OverrideRoot=Path.Combine(directory,"library-fixture-v2");
+  string actualRoot=Settings.Root;Settings.OverrideRoot=Path.Combine(directory,"library-fixture-v3");
   try {
    Directory.CreateDirectory(Settings.BaseGame);File.WriteAllBytes(Path.Combine(Settings.BaseGame,"assets.pak"),original);
-   var seed=StoryShuffle.Generate("Ness-2026",all);StoryShuffle.Verify(seed);
+   var seed=StoryShuffle.Generate("Ness-2026",all);StoryShuffle.Verify(seed);Require(seed.ContentId=="earthbound-usa"&&seed.ContentName=="EarthBound (USA)","Seed lost its content profile");
    var alt=StoryShuffle.Generate("Paula-2026",all);Require(seed.Session!=alt.Session,"Seeds share a save directory");
    File.WriteAllText(Path.Combine(seed.Session,"saves","sentinel.txt"),"preserve seed save");
    var repeat=StoryShuffle.Generate("Ness-2026",all);Require(File.ReadAllText(Path.Combine(repeat.Session,"saves","sentinel.txt"))=="preserve seed save","Regeneration overwrote saves");
    Require(StoryShuffle.List().Count(s=>s.Version==StoryShuffle.Version)==2,"Seed library failed");
-   var recipe=StoryShuffle.ImportRecipe(Path.Combine(seed.Folder,"recipe.ebseed.json"));Require(recipe.Seed==seed.Seed&&recipe.Options==all,"Seed recipe roundtrip failed");
+   var recipe=StoryShuffle.ImportRecipe(Path.Combine(seed.Folder,"recipe.ebseed.json"));Require(recipe.Seed==seed.Seed&&recipe.Options==all&&recipe.ContentId==seed.ContentId&&recipe.ContentName==seed.ContentName,"Seed recipe/content-profile roundtrip failed");
    var wrongRecipe=Path.Combine(directory,"bad.ebseed.json");File.WriteAllText(wrongRecipe,"{\"Generator\":\"earthbound.app\",\"Version\":1,\"Seed\":\"10\",\"Options\":{},\"BaseHash\":\"bad\"}");
    bool rejected=false;try{StoryShuffle.ImportRecipe(wrongRecipe);}catch(InvalidDataException){rejected=true;}Require(rejected,"Website file accepted as native recipe");
    rejected=false;try{StoryShuffle.Generate("wrong-base",all,new string('0',64));}catch(InvalidDataException){rejected=true;}Require(rejected,"Different base accepted");
@@ -124,7 +124,7 @@ static class RandomizerTests {
    Require(rejected&&File.ReadAllText(Path.Combine(legacy.Session,"saves","sentinel.txt"))=="legacy save","Unsafe version 1 seed played or its saves were lost");
    report.Add("PASS: unsafe version 1 seed remains recoverable but cannot launch even with a valid manifest checksum");
   }finally{Settings.OverrideRoot=null;Settings.SessionDirectory=null;}
-  report.Add("PASS: atomic library records, recipe roundtrip, separate save directories, preserved saves on regeneration, seed backups, base mismatch and tamper rejection");
+  report.Add("PASS: atomic library records, content-profile recipe roundtrip, separate save directories, preserved saves on regeneration, seed backups, base mismatch and tamper rejection");
   Require(StoryShuffle.HashFile(Path.Combine(actualRoot,"Game","assets.pak"))==baseHash,"Installed base pack changed");
   report.Add("Base SHA256: "+baseHash);report.Add("Seed Ness-2026 SHA256: "+StoryShuffle.Hash(one.Pack));
   File.WriteAllLines(Path.Combine(directory,"tests.txt"),report);

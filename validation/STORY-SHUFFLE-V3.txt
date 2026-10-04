@@ -1,0 +1,10 @@
+PASS: deterministic output, distinct seeds and presets, base data unchanged
+PASS: 1000 seeds across both modes; all original sources of 78 protected items, 52 scripted-battle enemies, quests, bosses, scripts, maps, prices and rewards unchanged
+PASS: all 30 valid option/preset combinations pass progression preservation checks
+PASS: guard independently rejects missing trade sources, altered scripts/assets, altered scripted battles and unaudited base data
+PASS: independent options leave disabled tables untouched
+PASS: phone-only/full restore, backup before restore, cross-seed refusal, engine-build protection, portable phone saves, damaged backup and path traversal rejection
+PASS: unsafe version 1 seed remains recoverable but cannot launch even with a valid manifest checksum
+PASS: atomic library records, content-profile recipe roundtrip, separate save directories, preserved saves on regeneration, seed backups, base mismatch and tamper rejection
+Base SHA256: 4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b
+Seed Ness-2026 SHA256: 9516c201d0fe6da11a1d88316e48508d2c877eea2ba9651a7f245cf80ef2bf4e

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0 — in development
+
+- Began the explicit native MaternalBound Redux conversion path with a locally repaired CoilSnake/CCScript toolchain and a generated module/label bridge manifest.
+- Added Story Shuffle v3 content profiles. Seeds now bind to the exact game version, asset hash, progression policy and save namespace; unaudited packs remain locked from randomization.
+- Preserved version 1 and 2 seed folders and saves for recovery.
+
 ## 0.4.0 — private preview
 
 - Added a ROM-free first-run setup flow with clean-USA-ROM validation.
