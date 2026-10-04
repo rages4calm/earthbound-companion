@@ -1,11 +1,11 @@
 # EarthBound Companion
 
-**A ROM-free native Windows PC edition of EarthBound with a guided launcher, modern display options, quality-of-life controls, native MSU music, and a progression-conscious randomizer.**
+**A native Windows adaptation of EarthBound that is now evolving into a MaternalBound Redux PC edition with HD and ultrawide output, native MSU music, PC settings, quality-of-life options, mod profiles, and a progression-conscious randomizer.**
 
 > [!WARNING]
-> **The current v0.4.0 build uses the original EarthBound (USA) story and does not contain MaternalBound Redux.** Its MSU player understands Redux's soundtrack loop data, but Redux's rewritten script, graphics, data, and 65816 code have not yet been converted to native C. The active port is tracked in [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **The downloadable v0.4.0 preview uses the original EarthBound (USA) story and does not contain MaternalBound Redux.** The main v0.5 development branch has the native Redux compiler bridge, a dedicated launcher status page, and Story Shuffle v3's content profiles. Redux gameplay is still being converted and is not yet shipped. Progress is tracked in [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
-The main source now contains Story Shuffle v3's content-profile foundation. Seeds bind to the exact selected game version, asset hash, progression policy and save namespace. MaternalBound randomization remains locked until the converted Redux pack and its separate progression audit pass; this prevents a partially ported profile from generating softlocked seeds.
+The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. MaternalBound randomization remains locked until the converted Redux pack and its separate progression audit pass, preventing a partially ported profile from generating unsafe seeds.
 
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio, saves, or screenshots from the game. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
@@ -14,16 +14,16 @@ The main source now contains Story Shuffle v3's content-profile foundation. Seed
 
 ## Companion at a glance
 
-These captures come from the ROM-free package before game-data setup. They contain no extracted game artwork or screenshots.
+These are real captures from the ROM-free v0.5 development launcher before game-data setup. They contain no extracted game artwork or gameplay screenshots.
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/images/solo-play.png" alt="Solo Play and first-run ROM setup"></td>
-    <td width="50%"><img src="docs/images/story-shuffle.png" alt="Story Shuffle randomizer options"></td>
+    <td width="50%"><img src="docs/images/redux-port.png" alt="MaternalBound Redux native port status"></td>
+    <td width="50%"><img src="docs/images/story-shuffle-v3.png" alt="Story Shuffle v3 randomizer options"></td>
   </tr>
   <tr>
-    <td align="center"><strong>Guided ROM setup and Solo Play</strong></td>
-    <td align="center"><strong>Story Shuffle v2</strong></td>
+    <td align="center"><strong>MaternalBound Redux native-port status</strong></td>
+    <td align="center"><strong>Story Shuffle v3 content-safe randomizer</strong></td>
   </tr>
   <tr>
     <td width="50%"><img src="docs/images/display-settings.png" alt="Resolution, widescreen and rendering settings"></td>
@@ -32,6 +32,14 @@ These captures come from the ROM-free package before game-data setup. They conta
   <tr>
     <td align="center"><strong>HD, widescreen and rendering controls</strong></td>
     <td align="center"><strong>Native MSU audio setup</strong></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/solo-play.png" alt="Solo Play and first-run ROM setup"></td>
+    <td width="50%"><img src="docs/images/mods-saves.png" alt="Native mod profiles, asset packs, saves and recovery"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Guided ROM setup and Solo Play</strong></td>
+    <td align="center"><strong>Native profiles, asset packs and save recovery</strong></td>
   </tr>
 </table>
 
@@ -70,9 +78,9 @@ First-run setup can download all 164 PCM tracks from [ShadowOne333’s EarthBoun
 
 The PCM files are not stored in this repository or the release ZIP. See [CREDITS.md](CREDITS.md) for provenance.
 
-## Story Shuffle v2
+## Story Shuffle v3
 
-Companion includes its own native randomizer for replayable original-story runs:
+Companion includes its own native randomizer for replayable adventures:
 
 - eligible optional NPC gifts;
 - shop inventory;
@@ -81,14 +89,16 @@ Companion includes its own native randomizer for replayable original-story runs:
 - deterministic seed recipes;
 - isolated saves, screenshots and recovery backups for every seed.
 
-The generator keeps 78 identified quest/trade items and their original sources fixed, preserves 52 scripted-battle records, and leaves maps, doors, routes, scripts, bosses, prices and starting items unchanged. Independent guards run at generation and before launch. This protects the audited original-story dependencies; it is not proof of every possible full playthrough.
+The generator keeps 78 identified quest/trade items and their original sources fixed, preserves 52 scripted-battle records, and leaves maps, doors, routes, scripts, bosses, prices and starting items unchanged. Independent guards run at generation and before launch. Version 3 also isolates game editions: content ID, exact asset hash, safety policy, seed identity, and save folder must agree. This protects the audited original-story dependencies; it is not proof of every possible full playthrough.
+
+MaternalBound Redux will receive its own progression policy after its scripts and tables are converted. Until that audit passes, Story Shuffle refuses to generate a Redux seed rather than guessing about progression.
 
 This generator is inspired by the EarthBound randomizer community but does not claim seed parity with [earthbound.app](https://earthbound.app/) or [stochaztic/eb-randomizer](https://github.com/stochaztic/eb-randomizer). Ancient Cave, Open mode and Keysanity are not implemented. See [RANDOMIZER.md](RANDOMIZER.md).
 
 ## Current boundaries
 
 - A complete start-to-ending playthrough of this specific build has not yet been verified.
-- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is researched and credited, but its ROM-side assembly and script changes have not been ported into the native C game.
+- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is now an active native conversion target. The official source builds locally and the bridge inventory is generated, but the rewritten scripts, data, graphics, and 65816 behavior are not yet playable in the native game.
 - Arbitrary IPS, BPS and EBP patches cannot be loaded as native mods; their game-code changes require explicit ports.
 - The release is a Windows x64 private test build. Bug reports should include `UserData/game.log` and a normal phone save when possible.
 
@@ -124,6 +134,6 @@ The upstream EarthBound repositories used for the native foundation are public b
 
 ## Verification
 
-The v0.4.0 package passed clean-ZIP first-run extraction, exact asset-pack comparison, Companion self-tests, seed safety validation, and all 164 installed MSU checks. The archive was scanned and contained zero ROM, `.pak`, PCM, save, state or screenshot files. Exact hashes and coverage limits are in [validation/TESTER-PACKAGE-REPORT.md](validation/TESTER-PACKAGE-REPORT.md).
+The v0.4.0 package passed clean-ZIP first-run extraction, exact asset-pack comparison, Companion self-tests, seed safety validation, and all 164 installed MSU checks. The archive was scanned and contained zero ROM, `.pak`, PCM, save, state or screenshot files. The v0.5 development source additionally passed Story Shuffle v3's content-profile and save-isolation tests across 1,000 seeds and all 30 option combinations. Exact hashes and coverage limits are in [validation/](validation/).
 
 Issues and contributions should never attach ROMs, extracted assets, copyrighted screenshots, saves containing embedded game data, or soundtrack files.

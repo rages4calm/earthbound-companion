@@ -56,7 +56,7 @@ sealed partial class MainForm : Form {
  Settings settings=Settings.Load();readonly FlowLayoutPanel nav=new(),page=new();readonly Label status=new();
  readonly System.Windows.Forms.Timer timer=new(){Interval=350};readonly Dictionary<string,Button> navigation=[];
  Process? game;string current="Solo Play";bool settingsRequested;bool captureMode;int captureIndex;string captureDir="";bool capturePrepared;bool captureScrolled;
- readonly string[] pages=["Solo Play","Randomizer","Display","Audio","Gameplay","Controls","Mods & saves"];
+ readonly string[] pages=["Solo Play","Randomizer","Redux Port","Display","Audio","Gameplay","Controls","Mods & saves"];
  public MainForm(string[] args){
   Text="EarthBound Companion";Font=Theme.Font();BackColor=Theme.Canvas;ForeColor=Theme.Ink;ClientSize=new Size(1120,800);MinimumSize=new Size(990,760);StartPosition=FormStartPosition.CenterScreen;
   if(args.Contains("--compact"))ClientSize=new Size(990,760);
@@ -89,7 +89,7 @@ sealed partial class MainForm : Form {
  void ShowPage(string name){
   current=name;page.SuspendLayout();foreach(Control c in page.Controls.Cast<Control>().ToArray())c.Dispose();page.Controls.Clear();page.AutoScrollPosition=Point.Empty;
   foreach(var (n,b) in navigation){b.BackColor=n==name?Theme.Surface:Theme.Rail;b.ForeColor=n==name?Theme.Gold:Theme.Muted;b.FlatAppearance.BorderColor=n==name?Theme.Line:Theme.Rail;}
-  switch(name){case "Solo Play":PlayPage();break;case "Randomizer":RandomizerPage();break;case "Display":DisplayPage();break;case "Audio":AudioPage();break;case "Gameplay":GameplayPage();break;case "Controls":ControlsPage();break;default:ModsPage();break;}
+  switch(name){case "Solo Play":PlayPage();break;case "Randomizer":RandomizerPage();break;case "Redux Port":MaternalBoundPage();break;case "Display":DisplayPage();break;case "Audio":AudioPage();break;case "Gameplay":GameplayPage();break;case "Controls":ControlsPage();break;default:ModsPage();break;}
   page.Controls.Add(new Panel {Height=32,Margin=Padding.Empty});
   ResizePage();page.ResumeLayout();
  }

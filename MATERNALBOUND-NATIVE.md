@@ -1,8 +1,12 @@
 # MaternalBound Redux native port
 
+![EarthBound Companion's MaternalBound Redux native-port status screen](docs/images/redux-port.png)
+
+The project direction is now explicit: combine MaternalBound Redux's restored writing, art, fixes, and presentation with Companion's native x64 engine, HD and ultrawide display, MSU music, PC settings, QoL profiles, save recovery, and content-safe randomizer. It is a direct native adaptation effort, not a plan to run the patched ROM through an embedded emulator.
+
 ## Current player-facing status
 
-EarthBound Companion v0.4.0 does **not** contain MaternalBound Redux. It launches the original EarthBound (USA) story data with Companion's native display, input, MSU, quality-of-life, save, and Story Shuffle features.
+EarthBound Companion v0.4.0 does **not** contain MaternalBound Redux. It launches the original EarthBound (USA) story data with Companion's native display, input, MSU, quality-of-life, save, and Story Shuffle features. The main v0.5 development source adds the conversion bridge, visible port-status page, and content-aware randomizer foundation; it still does not claim playable Redux content.
 
 The current MSU player includes Redux-compatible track loop behavior. That compatibility does not import Redux's rewritten script, uncensored graphics, enemy and character art, tables, controls, bug fixes, or 65816 routines.
 

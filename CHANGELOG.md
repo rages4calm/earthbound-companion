@@ -3,6 +3,8 @@
 ## 0.5.0 — in development
 
 - Began the explicit native MaternalBound Redux conversion path with a locally repaired CoilSnake/CCScript toolchain and a generated module/label bridge manifest.
+- Added a player-facing Redux Port page that shows the final edition target, completed bridge work, remaining conversion areas, and randomizer safety gate.
+- Replaced the repository's launcher gallery with current v0.5 captures, including the Redux conversion and Story Shuffle v3 screens.
 - Added Story Shuffle v3 content profiles. Seeds now bind to the exact game version, asset hash, progression policy and save namespace; unaudited packs remain locked from randomization.
 - Preserved version 1 and 2 seed folders and saves for recovery.
 
