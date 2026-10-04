@@ -79,7 +79,7 @@ This generator is inspired by the EarthBound randomizer community but does not c
 
 ## Building from source
 
-The public source tree intentionally does not vendor the unlicensed upstream EarthBound source. Bootstrap pins the exact revision used by the release:
+The repository source tree intentionally does not vendor the unlicensed upstream EarthBound source. Bootstrap pins the exact revision used by the release:
 
 ```powershell
 git clone https://github.com/rages4calm/earthbound-companion.git
