@@ -85,17 +85,72 @@ def parse_summary(text: str) -> tuple[list[tuple[str, int, int]], dict[str, list
     return modules, labels
 
 
-def index_sources(project: Path) -> dict[str, str]:
+def index_sources(project: Path) -> tuple[dict[str, str], dict[str, object]]:
     ccscript = project / "ccscript"
     main = ccscript / "main.ccs"
     if not main.is_file():
-        return {}
+        return {}, {"files": [], "imports": [], "unresolvedImports": [], "duplicateModuleNames": {}}
 
     sources: dict[str, str] = {}
-    for match in IMPORT_ROW.finditer(main.read_text(encoding="utf-8", errors="replace")):
-        relative = Path(match.group("path"))
-        sources.setdefault(relative.stem, (Path("ccscript") / relative).as_posix())
-    return sources
+    duplicates: dict[str, list[str]] = {}
+    imports: list[dict[str, str]] = []
+    unresolved: list[dict[str, str]] = []
+    files: list[dict[str, object]] = []
+    root = ccscript.resolve()
+    pending = [main.resolve()]
+    visited: set[Path] = set()
+
+    while pending:
+        source = pending.pop()
+        if source in visited:
+            continue
+        visited.add(source)
+        try:
+            relative = source.relative_to(project.resolve()).as_posix()
+        except ValueError:
+            continue
+        data = source.read_bytes()
+        category_parts = Path(relative).parts
+        category = category_parts[1] if len(category_parts) > 2 else "root"
+        files.append({"path": relative, "sha256": sha256(data), "size": len(data), "category": category})
+        stem = source.stem
+        if stem in sources and sources[stem] != relative:
+            duplicates.setdefault(stem, [sources[stem]]).append(relative)
+        else:
+            sources[stem] = relative
+
+        text = data.decode("utf-8", errors="replace")
+        for match in IMPORT_ROW.finditer(text):
+            requested = match.group("path")
+            target = (source.parent / requested).resolve()
+            try:
+                target_relative = target.relative_to(root)
+            except ValueError:
+                unresolved.append({"source": relative, "requested": requested, "reason": "outside-ccscript-root"})
+                continue
+            if not target.is_file():
+                unresolved.append({"source": relative, "requested": requested, "reason": "missing"})
+                continue
+            target_project_path = (Path("ccscript") / target_relative).as_posix()
+            imports.append({"source": relative, "target": target_project_path})
+            if target not in visited:
+                pending.append(target)
+
+    files.sort(key=lambda row: str(row["path"]).lower())
+    imports.sort(key=lambda row: (row["source"].lower(), row["target"].lower()))
+    unresolved.sort(key=lambda row: (row["source"].lower(), row["requested"].lower()))
+    category_counts: dict[str, int] = {}
+    for row in files:
+        category = str(row["category"])
+        category_counts[category] = category_counts.get(category, 0) + 1
+    return sources, {
+        "entrypoint": "ccscript/main.ccs",
+        "files": files,
+        "imports": imports,
+        "unresolvedImports": unresolved,
+        "duplicateModuleNames": dict(sorted(duplicates.items())),
+        "categoryCounts": dict(sorted(category_counts.items())),
+    }
 
 
 def git_revision(path: Path) -> str | None:
@@ -129,7 +184,7 @@ def build_manifest(summary: Path, project: Path, base_rom: Path, output_rom: Pat
     base = base_rom.read_bytes()
     output = output_rom.read_bytes()
     parsed_modules, labels = parse_summary(summary.read_text(encoding="utf-8", errors="replace"))
-    sources = index_sources(project)
+    sources, source_graph = index_sources(project)
 
     modules: list[Module] = []
     for name, address, size in parsed_modules:
@@ -178,7 +233,11 @@ def build_manifest(summary: Path, project: Path, base_rom: Path, output_rom: Pat
             "nonemptyModules": sum(module.size > 0 for module in modules),
             "labels": len(label_rows),
             "modulesWithMappedSource": sum(module.source is not None for module in modules),
+            "reachableSourceFiles": len(source_graph["files"]),
+            "sourceImports": len(source_graph["imports"]),
+            "unresolvedSourceImports": len(source_graph["unresolvedImports"]),
         },
+        "sourceGraph": source_graph,
         "modules": [asdict(module) for module in modules],
         "labels": label_rows,
     }

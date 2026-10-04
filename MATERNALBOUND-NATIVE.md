@@ -23,7 +23,7 @@ The first direct extraction test used the verified official v1.1 BPS patch. Extr
 - CoilSnake's legacy CCScript dependency was updated locally for C++17 so it builds with current Visual Studio.
 - The current source produced a verified 6 MiB development ROM and a deterministic CCScript summary.
 - `tools/maternalbound_bridge.py` converts that summary into a machine-readable native-port manifest.
-- The first manifest inventories 190 compiled modules, 166 nonempty modules, 7,840 labels, and 113 modules mapped directly to CCS source files.
+- The bridge now follows the complete recursive CCScript import graph: 191 reachable source files and 1,018 import edges with zero unresolved imports. It maps 188 of 190 compiled modules directly to source; the remaining two are compiler-provided standard modules. The compiled inventory contains 166 nonempty modules and 7,840 labels.
 - Byte comparison found 3,001,565 changed bytes across 94,305 contiguous regions versus the 6 MiB compile base.
 
 The generated manifest is evidence and a porting map. Its status is deliberately `inventory-only-native-port-incomplete`; generating it does not make the native game Redux-compatible.

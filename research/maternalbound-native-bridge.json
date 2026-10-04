@@ -22,7 +22,5249 @@
     "modules": 190,
     "nonemptyModules": 166,
     "labels": 7840,
-    "modulesWithMappedSource": 113
+    "modulesWithMappedSource": 188,
+    "reachableSourceFiles": 191,
+    "sourceImports": 1018,
+    "unresolvedSourceImports": 0
+  },
+  "sourceGraph": {
+    "entrypoint": "ccscript/main.ccs",
+    "files": [
+      {
+        "path": "ccscript/bugfixes/brainstone_fix.ccs",
+        "sha256": "363E84AB8D41201C1238B9FFBF2BE619FD51689AB1EE3E62E06B109A420C6BA7",
+        "size": 1691,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/chunked_dma_race_condition_fix.ccs",
+        "sha256": "7417A172464CF5BBD8997AED8D3AE5D325CED1EE18D6B5EE395EDF9BDB4DFB73",
+        "size": 456,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/crying_fix.ccs",
+        "sha256": "465AD6D17FC5B1CBBBBB4272882DCEE28AF9D2877B330B02B122E5A4375C5059",
+        "size": 975,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/dad_bike_phone_fix.ccs",
+        "sha256": "64A7926D5EB7C2F5A66DC84EC5ACABA9D494E910BC039F73E1217C05772C41C3",
+        "size": 522,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/enemy_in_walls_fix.ccs",
+        "sha256": "766420C06D38413BED36D773B6860F28170FE28002F19985B2EA278A3125F9A0",
+        "size": 384,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/equip_anything_fix.ccs",
+        "sha256": "79EBD5A4719FA9696601391E22B325ED66D6474EAF30E9B7206D4E15F51BEFD2",
+        "size": 5128,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/exp_overflow_fix.ccs",
+        "sha256": "50C813E9BA8063386B746B06EAC127DDFC0D5853B743AB6CB544FFF2542068E7",
+        "size": 1736,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/gameover_oss_fix.ccs",
+        "sha256": "43BCA9C511DD709586E9531D6ACBAD3BCAF8300302436FCBFC33AB12933BC1E5",
+        "size": 1517,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/guts_fix.ccs",
+        "sha256": "E1C8C943CFF6E9EEE55F59811B3CB4BFC9871C31E95F7B98EC7B42B13688A0DD",
+        "size": 932,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/heal_poison_fix.ccs",
+        "sha256": "A2F42095B1D79F99C39345FEC73087DF22EB70B0A225EF8FF0186377FAD82CF0",
+        "size": 1354,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/hppp_limit_fix.ccs",
+        "sha256": "2B1598DBEFB0719506923E2DBF32FFE362E6E39CD7B2A80B10CD365AFD3397AF",
+        "size": 3266,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/item_transformations_fix.ccs",
+        "sha256": "14263B2ED893DD2035B6156E7D896BB030BEEF0413E346FDE2F6D4809B46A4B3",
+        "size": 761,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/moldyman_initial_frame_fix.ccs",
+        "sha256": "B42A2609A9390F98F3E84F3A710B7CB36F525FD164D0BC00202ECEA13E80A9E8",
+        "size": 326,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/mushroom_pos_fix.ccs",
+        "sha256": "468C3CADD59FF4BF6AD656D9830E06D6C83950994EB350DD99196CA89566112B",
+        "size": 2585,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/objfx_controller_fix.ccs",
+        "sha256": "0329C9D76FFA55260F25B38BCC86F97B49106EB774CE366B260F2315428CBD07",
+        "size": 2231,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/palette_tint_fix.ccs",
+        "sha256": "AB9CD37772EE1981EE28EE86E67C2EE1F4D6706453196034169AF243C6379FF2",
+        "size": 1226,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/party_member_diagonal_fix.ccs",
+        "sha256": "C304F5832EE9D93D82FDCB6A8F413F555B4BCB4272DFD42263E50518D4828387",
+        "size": 5301,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/psi_teleport_disable_enemies.ccs",
+        "sha256": "2D83D520E30C678D5298EB0079743102E8F8CD0C50057298F4FE6F36C773EBD7",
+        "size": 1035,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/region_crack.ccs",
+        "sha256": "F9D821A6839B453C3295422A4E371E7C83B5CFEE9B9D9769D2476409088E7BAA",
+        "size": 728,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/return_item_fix.ccs",
+        "sha256": "9304946F208CBE7814F92AB6E20A39922692B2B9925D358E275BC70EFA043B11",
+        "size": 499,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/rock_candy_fix.ccs",
+        "sha256": "170B325BF3BA5665806F22B402157AF9299D40AB672DADE901BDBF87B06C61E2",
+        "size": 402,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/show_removed_battle_item_window.ccs",
+        "sha256": "9908823AA60E3B37E310320BC4B2B05A1A7AB963BAF3577BB269ECC8BE743629",
+        "size": 1534,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/single_2bpp_battle_bg_fix.ccs",
+        "sha256": "E72F329A5BC0957219F51BF72929647FC5D2D3EBFEE4CE9B5A3F74F11DC90366",
+        "size": 2848,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/stairs_message_fix.ccs",
+        "sha256": "199727BEF8BF46E11AAF70FE48FDCF329D8B06221DF37706B0524979CC9F7677",
+        "size": 1383,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/stats_limit_fix.ccs",
+        "sha256": "8BA7437A6F82BA631E6FEB09C0EDBE85F8355BFA2ADA0FC55C99F11FCBAD7632",
+        "size": 5211,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/status_window_clear.ccs",
+        "sha256": "F2D0722D2FCC33F567444BF797703B8BFE9EAAD3EF184E84C6CECC82F0C1A847",
+        "size": 628,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/swirls_without_ness_fix.ccs",
+        "sha256": "FFDD735595CC39EF422066C7389D5C98A7EC11EA2AA1EC3B4BE6E884589D1882",
+        "size": 1435,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/teleport_char_snap_fix.ccs",
+        "sha256": "70CC2359297A34EBF64FE75F8EEB9C970899FAC4FC139B7E5CDCE6E676F428CC",
+        "size": 1330,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/teleport_diamondization_fix.ccs",
+        "sha256": "72733C320B7A3DCDBFF33FAC200E54AD2D281AB3E957D386C01A5B20E883D081",
+        "size": 1459,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/teleport_hardlock_fix.ccs",
+        "sha256": "07A34AB3AED47EFD976BA43042E05FC395D1D146F7785F8AAFE4598B42CAFAB0",
+        "size": 2048,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/tent_check_fix.ccs",
+        "sha256": "A02C3B0B9AD9BD52D2AAC8605DF61174DD374B664E5D22EF9C3C6D9E606EFAC4",
+        "size": 916,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/text_highlights_fix.ccs",
+        "sha256": "F15E26969ADA128DEE09444393082E4A011AD3C10F3A7F3DC931CFCE9266C3CA",
+        "size": 2148,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/thunder_reflect_fix.ccs",
+        "sha256": "8D286A16C5AF178ED42129C44C9E3958C7B583C36B06F49D6D2300022B7B9C10",
+        "size": 2930,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/tie_zerodiv_fix.ccs",
+        "sha256": "16DDA672F57D3B869A9FBF00DA871207C5348BFA775D2F7F69F0F9A8A4B08AA0",
+        "size": 744,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/try_deposit_money.ccs",
+        "sha256": "81A9D43E7C63C2567A66B7329E849F6E47EB882AD4BB310A84ADB5F7721022F3",
+        "size": 1479,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/bugfixes/try_give_money.ccs",
+        "sha256": "6F7EE985D929E21CDE0CF0695D69CC77FEA2A882518D9B21D8D1282448521CD5",
+        "size": 3005,
+        "category": "bugfixes"
+      },
+      {
+        "path": "ccscript/data/data_05.ccs",
+        "sha256": "59F02A4F2C2F10C54EBDE8780CE52630D67565BE25751548F11577DF1ADB5C01",
+        "size": 4747,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_06.ccs",
+        "sha256": "17D38D304369C32D5BE37D27F70485FCC6E1C4A030A9CE5259B69A8DE147B001",
+        "size": 15125,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_07.ccs",
+        "sha256": "6F1F3CA9771759C906CF99B53C498449F087B3D29FD988228757B4DA0BD04F73",
+        "size": 11216,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_08.ccs",
+        "sha256": "13A81E09D7FFEB0F51DE227B6F22DE997002E90348B89D68C01F3D7307A0A7E0",
+        "size": 9325,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_09.ccs",
+        "sha256": "E27D314F0A49F5DE51E92E7446CF3DAD911CD27657673C469DAAEE16C6551D23",
+        "size": 28499,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_14.ccs",
+        "sha256": "2CAE315662F18049751D63BB2EFE556D15A1E42571AB8A515B421C776C35E7D8",
+        "size": 8512,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_15.ccs",
+        "sha256": "475284396F845F0F1B86BD24D3EF818B9D64BD799260D4C845CC9D7C7DFE683D",
+        "size": 15235,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_16.ccs",
+        "sha256": "D6469D2D2D92AAB508E4312DBE65C2F72D33F747D488CD043B81230E58AAD0D1",
+        "size": 33341,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_17.ccs",
+        "sha256": "31DC2D63322DD52D52B750BB072D2701E9AF7975AFDB6AB08FB3FAEA65C20B38",
+        "size": 24252,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_18.ccs",
+        "sha256": "EAA93DD91FA647A6464575109B53609E422152957857FFF717DB82B64C1C720E",
+        "size": 18935,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_19.ccs",
+        "sha256": "E0F1D64DE4A29C1B64411D5424730AC25DC9AAEE37E08CDD84A297E9F36EE27A",
+        "size": 19846,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_20.ccs",
+        "sha256": "1B82B8CD584B6AF510A061291A69D1083464B2829A27744DA821205616213C67",
+        "size": 14110,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_21.ccs",
+        "sha256": "6D1654DFB8A648850C29129379AF39EDD315A5BDDB57FB36855EEA55572977A4",
+        "size": 21555,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_22.ccs",
+        "sha256": "23426B68D740D643652FBE8DB5F0983BBAEEB1C841F579ED0B9BB7C8EC79E653",
+        "size": 18393,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_23.ccs",
+        "sha256": "D04DF38F7F2F19875B0C0D2E7B1A86E28AC8003DBE9776AF19B4BE2BE62B5F14",
+        "size": 13972,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_24.ccs",
+        "sha256": "DFC05AD8490C21583B230A54332376BDADED38A6492EB5D8B487529806D59A44",
+        "size": 25938,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_25.ccs",
+        "sha256": "DD665C17ED767EA80DEDDDF44C489AAE08C7A4377603E8B92BEAA296C3CC28CD",
+        "size": 22143,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_26.ccs",
+        "sha256": "335FF657DC00E21C4564E88460BAC8C9F59C1E2820651E307E13B13619E5DFC9",
+        "size": 22091,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_27.ccs",
+        "sha256": "8B41218FEB9FFC555B14F943C5E3F025B643FBEA9C39CAB29DA6CA45A73C771F",
+        "size": 25163,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_28.ccs",
+        "sha256": "DE514E263407817B6E4BDD7270FA27534A05FF6A8AC7701B3474AB514548EB34",
+        "size": 30487,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_29.ccs",
+        "sha256": "4ECDCD3C356873AE148B497ACDF1D4E3E0208CBE5E5567EFFAB17C9C11A07FA1",
+        "size": 18537,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_30.ccs",
+        "sha256": "5A7099B29921C216E83B79D7EF219D3285783D34ED1787D9F278E17B24A1F420",
+        "size": 18052,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_31.ccs",
+        "sha256": "067FDA3D873BD8C21F4DE6C2FDC422E321871677E72DD21603CE38045D818296",
+        "size": 21278,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_32.ccs",
+        "sha256": "C1B75AFEED8988AE9E23E47756E16A6442515FFEA99FBAF28AD4976FD4D18BC9",
+        "size": 17731,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_33.ccs",
+        "sha256": "CCA46FB88DB397AB500572BD8D2E3C7B04C69626514E2C0B03BA48616CF91DFC",
+        "size": 29289,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_34.ccs",
+        "sha256": "3D35064ADB59D0664472B0107B465C6C6444C4F2A6FCDB685C3CA5B233B5C2B0",
+        "size": 49016,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_35.ccs",
+        "sha256": "AF2AF4AF39967D2E8BEFB447BCFC6B899549DF9E7C5DD89FD1718A0BE1901183",
+        "size": 23647,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_36.ccs",
+        "sha256": "A37750FB9C775C5954B11D8E8A616505BDADAB2176CD00792A757DC6B276DFC4",
+        "size": 16428,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_37.ccs",
+        "sha256": "8CAB7EB5648B0D0350A840291AC20CD9774892B171D9CA7ABDCA3914E9538BAA",
+        "size": 16566,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_38.ccs",
+        "sha256": "165D98C19594B9B90655F6183FA8E3D22B7063956BBBDD52F8C486B9BBD1FA8E",
+        "size": 24260,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_39.ccs",
+        "sha256": "1A537AA3CFF16BB605E4C7F05B3A0AE39560E036C412D3613733AFB3B2392A55",
+        "size": 19672,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_40.ccs",
+        "sha256": "A5B8A05ED4285F15D44E27877E72E8B5EF535577E6B7F5DCAEE6A8C19747E129",
+        "size": 20520,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_41.ccs",
+        "sha256": "0FFADC820876693F479163D8B8E2CDFBB0B0130263347F8C435F269826758BA1",
+        "size": 15604,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_42.ccs",
+        "sha256": "A647E307038C2005D066570DEE9629975AA99202AA622B20D897D8F2F2157381",
+        "size": 15520,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_43.ccs",
+        "sha256": "4ACEF7F049FA22B9A5A81CE446FB8E2D71EE7717E3F19185A4A33F68E14771B5",
+        "size": 24069,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_44.ccs",
+        "sha256": "93E8F86CC64C7C9600318F8C8BDBB5BEB12A25A1137279E0BC0D70D04C847E2A",
+        "size": 37473,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_45.ccs",
+        "sha256": "50F25178536194782B77D2E136A49AFC1BD041D9390296A74B2F9F4B774CCDC2",
+        "size": 17403,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_46.ccs",
+        "sha256": "0D79EBB67611727BDDFDF96524FEA8AE0EFB6BBAAC0434B91CBF7751ABA9E28D",
+        "size": 17733,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_47.ccs",
+        "sha256": "641B596E229811E02ACC2954525D73788F069941F810A34BCAD910E5DE9A88BF",
+        "size": 7414,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_48.ccs",
+        "sha256": "E458C2B3024C48EEEDB2E651E64B3847FD3E61EC75153CE51EF0FCCEEA32DB7A",
+        "size": 16468,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_49.ccs",
+        "sha256": "C7A2AABAA3B2E5676786FAF30C69B02EA575E5A4C3B19D331816B6972704F43F",
+        "size": 13047,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_50.ccs",
+        "sha256": "FCA7C47F45A91E98181FF10DDF36C365B32FC7F965EBCD2D2F3798B4C719E06E",
+        "size": 33830,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_51.ccs",
+        "sha256": "ED54F642637495D4CF040CE662E0F5FC21102CEA5B7A8071E973093F654BD191",
+        "size": 16687,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_52.ccs",
+        "sha256": "BA6F33A4CDBF2FA6C0E54AA08224CEDA63AC314D1898699C7F8214CDB13C5360",
+        "size": 22831,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_53.ccs",
+        "sha256": "9A76134BBAF244A1C5CD1F8E7CA52EAE9813A1537BABAEE83EA7A1B77E711783",
+        "size": 13639,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_54.ccs",
+        "sha256": "7F65DD6CA6659BF437B2AB9B0711839B84F6896FB10AB079317B5B68026E2A19",
+        "size": 15865,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_55.ccs",
+        "sha256": "A409EB1717B45A59725E9585E756EAE77E222890127E16E6283E75F00C944AD5",
+        "size": 16040,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_56.ccs",
+        "sha256": "1731E3B910B1EA1B09981E8C78E93A9A3AACB6B9205E7FB97D183EBB6355DA73",
+        "size": 18019,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_57.ccs",
+        "sha256": "3FED008D2AAF82C20B41BDD9562B7E7A57FEFA6C23E0063C52BF2074A26EA6F5",
+        "size": 27315,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_58.ccs",
+        "sha256": "A44BA93EC5E2F52E69253D8E79D8C3FD0104FF8F5C7317C98B87696AF01A7664",
+        "size": 30951,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_59.ccs",
+        "sha256": "4C1A6B8AD889BB4D1FABEE319177BB2BD872E4347422D4AC2B753FF417104226",
+        "size": 23996,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_60.ccs",
+        "sha256": "00DEEFFCF4A963B5EAB12704760A1523D7582A76ADF36A960CDFB1F2654C8920",
+        "size": 7949,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_61.ccs",
+        "sha256": "A306AF6834C281CD5557D4BAB1B9F8D77A9B6AA9EBFB6545B3585183614CA7F5",
+        "size": 17988,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_65.ccs",
+        "sha256": "329E5F634C93A878E3C5A93C6D29876FD3B4087977B395D6161363323A54AE2E",
+        "size": 23034,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data/data_66.ccs",
+        "sha256": "6A91290BB0AFADAE8EDD2720440A62BA339058D384CB2941BA40C9EC78F20940",
+        "size": 4754,
+        "category": "data"
+      },
+      {
+        "path": "ccscript/data_mem_overwrite.ccs",
+        "sha256": "AAD36B4A7F8BA0AC2E8AC9BA7E660255DC5B01270327EFC4C11784E9D8C7E59E",
+        "size": 251254,
+        "category": "root"
+      },
+      {
+        "path": "ccscript/debug/debug_menu_enabler.ccs",
+        "sha256": "4D2D2875C97967CEF913BA48CA89BECB0C94AAB942758B3CA6BB93812494B4B2",
+        "size": 5725,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/diamond.ccs",
+        "sha256": "DE22C784BF465512CA25391B46D80652AC65E3793E316F5670DB63CAADD3FBAE",
+        "size": 2269,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/new_debug_menu.ccs",
+        "sha256": "BD06AB00F8E3F4300BF412156759010CFDD6F6883AA03CFD0DF7227367756FCF",
+        "size": 3321,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/banana.ccs",
+        "sha256": "0D1DCAFFA91D32D098E36F800F6BAD7432ADF9E25F0AB1694100DBC99B762ACA",
+        "size": 26805,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/enemy.ccs",
+        "sha256": "8EC07ED7F6E8C835FB0FFCCA4DF93B93C673BA9639D0E0C2F9DAB2D7E1EBEA15",
+        "size": 1014,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/events.ccs",
+        "sha256": "26B399E5C6C2FFBD0A2F48E93E64ED4AC23C0799F63ACEB2D06ABEDB5F39DB17",
+        "size": 26910,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/flag_tester.ccs",
+        "sha256": "9B36D4222DCC4F83958AA6DF81D288DC302C0CDD622430E88572324084104E3D",
+        "size": 581,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/goods.ccs",
+        "sha256": "ABC49D29052F071C5E4DEF5CFF3C3608E997AA2967C28CF04FB1D75AE844B00A",
+        "size": 9438,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/hints.ccs",
+        "sha256": "73AB310DB49F510C41972EFAAA033E5DF46F8EED03E2F7C83004652BFF472448",
+        "size": 1025,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/item_desc.ccs",
+        "sha256": "4711D81638006ECC4A40030D28259AC0D625DEB35A119D187876EE45D6150F4B",
+        "size": 21680,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/level.ccs",
+        "sha256": "C8AAFBD38C6A6D8E20ED08B231D9562DFC465D462705C45FE1F6779B2F6FEEA1",
+        "size": 1370,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/money.ccs",
+        "sha256": "C2F7B202A2A33F5627B00796E3F2D3CC465F280B45840ACB32F615CC1BD50894",
+        "size": 2743,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/move.ccs",
+        "sha256": "AF0059E91D4E597B214E1CC42068332F669658A663AC2529F779B01AEABD9AEB",
+        "size": 2826,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/party.ccs",
+        "sha256": "DF6024E96A2780C5087797DD416E109A12EBF975F27480673DBED395AA7F5DD6",
+        "size": 2370,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/psi_anims.ccs",
+        "sha256": "2DB476D85EDD08ED35CEFF4F81944E6B781890A1A0DF632DA51A56CACA87D5D5",
+        "size": 22797,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/sound.ccs",
+        "sha256": "EFC512B0ACC8CD16CD934B5ACC2F40783319B5850DE459EAACB69CC8CC056FAA",
+        "size": 2558,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/status.ccs",
+        "sha256": "CCFD36B2A891FACF90A6F1CD85858B434F5F5B93A507D4BE9758C895C85D1F78",
+        "size": 3166,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/teleport.ccs",
+        "sha256": "C460874D4092FC5B26B5F8B34D8674255BACC6583910C9960E32D3D4A77B5867",
+        "size": 946,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/debug/options/unused_scripts.ccs",
+        "sha256": "5A576CCB079EA61156B87EB7B801481D16281BB22B39D1432B0A033D5A4FEFB0",
+        "size": 1024,
+        "category": "debug"
+      },
+      {
+        "path": "ccscript/definitions/flags.ccs",
+        "sha256": "B47E0DADC6E23C5FB4DAF91F4EB94E99F40D0E660E28ACF352E5E4E71B51BB4C",
+        "size": 37893,
+        "category": "definitions"
+      },
+      {
+        "path": "ccscript/definitions/items.ccs",
+        "sha256": "A0C81F83B356164A00BEB36DA6D7D6DD0FF4E6446C8AB0E279F4E86D40F47C9D",
+        "size": 8825,
+        "category": "definitions"
+      },
+      {
+        "path": "ccscript/definitions/sounds.ccs",
+        "sha256": "7AC782D110C919C8C764B322AC0F7E0403BA226E69D75DF7F1C77C263A567291",
+        "size": 3348,
+        "category": "definitions"
+      },
+      {
+        "path": "ccscript/dialogue/battle_text.ccs",
+        "sha256": "20F6A75B24CC4DD9EABCBA936BD973300B187F3C90BF5BBDAEA9C526E05C16C0",
+        "size": 64503,
+        "category": "dialogue"
+      },
+      {
+        "path": "ccscript/dialogue/coffee_tea_sequences.ccs",
+        "sha256": "064C7DE520989E7FA74584E64119FE4DB06D36BF6087C99A8F187FD5E399C268",
+        "size": 8618,
+        "category": "dialogue"
+      },
+      {
+        "path": "ccscript/dialogue/flyover_texts.ccs",
+        "sha256": "D95892B6EBFF2EB04DDA1983D794BD54516E96930424C0940F8F3784B2061C8C",
+        "size": 1311,
+        "category": "dialogue"
+      },
+      {
+        "path": "ccscript/dialogue/item_descriptions.ccs",
+        "sha256": "118B6718AC152F6C2B77842CF191BA4D638F03AA175DCE6CA89933C476244236",
+        "size": 41391,
+        "category": "dialogue"
+      },
+      {
+        "path": "ccscript/dialogue/psi_battle_anims.ccs",
+        "sha256": "536819B8484E3F6BAD468C1B734E231E4905790680FE022D85CF734D63BA742E",
+        "size": 12408,
+        "category": "dialogue"
+      },
+      {
+        "path": "ccscript/dialogue/psi_descriptions.ccs",
+        "sha256": "2E704FA8A3BA05CEA4EAF873D66C6536D1B9FED9251460CC9E844C598AC46061",
+        "size": 8260,
+        "category": "dialogue"
+      },
+      {
+        "path": "ccscript/dialogue/staff_text.ccs",
+        "sha256": "BA37D805F3E9C869A2C8AD15C64E5E07C7C398A6E63692D50A495CC78D2DFB92",
+        "size": 12836,
+        "category": "dialogue"
+      },
+      {
+        "path": "ccscript/essential/asm65816.ccs",
+        "sha256": "681B4723441ECFAA857D8B4CA913337EA877232F9BBB29C27CA89733486C9C91",
+        "size": 11296,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/essential/ASMRef.ccs",
+        "sha256": "B2BC141EDEF2FDDB51B7275292068D23BE60AB5762A929124A6427987204DA53",
+        "size": 5220,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/essential/cc_asmcall.ccs",
+        "sha256": "3EE9EF4E98791E8D2C0587E6F1C5352AA96A2579051B2CA223BA041BE4467949",
+        "size": 2917,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/essential/cc_char_in_party.ccs",
+        "sha256": "D5122E7345FFAFFFC7A80D9144CA528851AC820651CF3741AF36925E43D552B5",
+        "size": 2224,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/essential/cc_effects.ccs",
+        "sha256": "313A2147FC6B3D46FDEEFA217CC7F666AC5A0160FE46886A78B34E38B06979C2",
+        "size": 9135,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/essential/cc_load_two_str.ccs",
+        "sha256": "CA5AFC5E004FE5477958052D00040F7A3EAFA353D91AA25DB2329897F59B82EF",
+        "size": 14908,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/essential/commands.ccs",
+        "sha256": "FEC565242C424A4234C0C37934F32EA811350DED8A2895748496982133FB9C2C",
+        "size": 17488,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/essential/fade_tools.ccs",
+        "sha256": "5C3DAE96E91A76697701ABC97CB8C6E084A728429AFEC90B59F65D3EA2602133",
+        "size": 7733,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/essential/jsl_rts.ccs",
+        "sha256": "3B104E93F19257B03C8A96311397AB5DD6432DE9639AD4C9ED8BD2796CE60BE5",
+        "size": 2544,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/essential/stdext.ccs",
+        "sha256": "A3C4F321C3275D3503046E21AD1737CC8308D61E712D1884ED962D3A33C5E93C",
+        "size": 25319,
+        "category": "essential"
+      },
+      {
+        "path": "ccscript/expansion/ccexpand.ccs",
+        "sha256": "3DD1437879C59A621AEE14624E49E35F5A99A88B997EAF3EBAB048A7197C7DDC",
+        "size": 22411,
+        "category": "expansion"
+      },
+      {
+        "path": "ccscript/expansion/dont_care_names.ccs",
+        "sha256": "784064A97738A406F653AF03CEA2ECA6126CEC3381C17371D6D506B44AD6A0BF",
+        "size": 3231,
+        "category": "expansion"
+      },
+      {
+        "path": "ccscript/expansion/expand_shops.ccs",
+        "sha256": "E99E3C75D789D3C9D074D39A079108CE5F02C7A3F91625FA47DA1CC15CDBAD78",
+        "size": 8912,
+        "category": "expansion"
+      },
+      {
+        "path": "ccscript/expansion/expand_text_windows.ccs",
+        "sha256": "31C9F68D4E11E978554A3339333695CAE049F939C2114E3BFCF9340329983FBC",
+        "size": 11705,
+        "category": "expansion"
+      },
+      {
+        "path": "ccscript/expansion/expanded_spy_action.ccs",
+        "sha256": "F47BF6419D53A0566BB467DE25519E7F2CBAF8583B6C41DBBAD8C6B3B65C3FA6",
+        "size": 1417,
+        "category": "expansion"
+      },
+      {
+        "path": "ccscript/expansion/Extended_Battle_Action_Table.ccs",
+        "sha256": "DAC3D27706E02FE205F8E7962E7FC0DA87AEB64B468A6AB2C12547CC6AB2AF46",
+        "size": 37409,
+        "category": "expansion"
+      },
+      {
+        "path": "ccscript/expansion/Extended_PSI_Animations.ccs",
+        "sha256": "D7E21EC9F75803A542B033CD74B6A13996FAEEE3F0837B748F68BD1C2B46A46F",
+        "size": 23747,
+        "category": "expansion"
+      },
+      {
+        "path": "ccscript/expansion/favorite_food.ccs",
+        "sha256": "5B5AC684F64D7E66B26C98C772EEB6440384E1DF865B3DAEC2D05328B90B99FB",
+        "size": 1371,
+        "category": "expansion"
+      },
+      {
+        "path": "ccscript/main.ccs",
+        "sha256": "EED62CEC9D49B138534418F39C9929A4C4AD6E573171B45708180DC3E63A97A3",
+        "size": 5929,
+        "category": "root"
+      },
+      {
+        "path": "ccscript/redux/better_condiment_search.ccs",
+        "sha256": "8BD0577B3F54C1B3E3C8942D84BAEE20CC6C86A28335A87483876C086F119855",
+        "size": 6737,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/Bowspr.ccs",
+        "sha256": "26A8AA0C035B69716B77C87384EB6F2A5E6E981390DE9D9BBBBCAF43B5B11DEB",
+        "size": 29111,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/cast_coloured_text.ccs",
+        "sha256": "29F495E5122A6D256853103ADABCE39467F81EEC741E505CB0F0CE65CCBA06E9",
+        "size": 670,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/cutscenes.ccs",
+        "sha256": "735BB25BBA616AB40917E2021A64F010E4DC499C1EBDDC262A96858EB171A175",
+        "size": 3791,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/debug_fixes.ccs",
+        "sha256": "E560D47FAB400F6E390FD5EF4D62AED65DE3E90E70E0737384624D0BA43C2E38",
+        "size": 2632,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/enemy_ai.ccs",
+        "sha256": "C83FFB22BC49AB2FD30575A00659CEFA30DF4B20A4550666E0FF0BE03397C867",
+        "size": 19412,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/enemy_ai_actions.ccs",
+        "sha256": "BBD0FEAD08676A3964DD10E2D319F2B3D8105A7F5A1504863095E6512422A64B",
+        "size": 82525,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/fast_terrain.ccs",
+        "sha256": "9F311B4370AC9EE7BF3C1A7CF17A1C699649CCDFA4228443D5ECBABFF90DEA85",
+        "size": 552,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/four_frames_run.ccs",
+        "sha256": "75F67B8A21413D794D38D4FC7FC1A852DBF6028AF6FDA01D2273638DC5B1AA66",
+        "size": 9437,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/goods_menu_equip.ccs",
+        "sha256": "03A81ABCE08A4B2B6FE4D1B4D7781489D280A4F3B049579ED8B5031D2C40504E",
+        "size": 6455,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/item_determiners.ccs",
+        "sha256": "29F6FBADA1492BD0BA934D67E33784F5634460ECD25E1571472569884123DF6F",
+        "size": 8338,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/item_quantity.ccs",
+        "sha256": "5F3C6C9FA5241EE4D25A2915A955CFB2ACF62C87D5C4D2EEF028C6CFE9306606",
+        "size": 2871,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/keyitems.ccs",
+        "sha256": "83D8F27A2F9C139D65A369E2F97D30E13EAB6D989520E9B763CE5E16C3401FC8",
+        "size": 16396,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/lucky_sandwich_revamp.ccs",
+        "sha256": "1AFA492F5594356A500FCCAF748A08703597B5ECA9CBA0590DBA1312C056CC8E",
+        "size": 3560,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/m2_title_screen_movements.ccs",
+        "sha256": "D48F4766E69EFA29FBD0A70DEB311502C626AAA8085FDC9683804FAA43CD8F81",
+        "size": 16529,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/m3_defend_roller.ccs",
+        "sha256": "FE00DFF2A8EC0605CC5F02CD8EA2B87BE7CBD4A477C03F638E0131D9EE976ECC",
+        "size": 8709,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/m3sprites.ccs",
+        "sha256": "8381DEFC737DD7F89D7A83FA3D30FF9A92E54479956D20A147CE06817E80A99B",
+        "size": 16845,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/menu_macros.ccs",
+        "sha256": "05B726B31CE25CAEF2A3431E85092E2EC75A033BFEA23489531BDC2E2E4D3232",
+        "size": 10052,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/movement_reloc.ccs",
+        "sha256": "A6AE3C95A1B9764C68C0E923EA90491C5D9FFE3B5B8F87703EF79FDBE530025F",
+        "size": 24294,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/movscr_codes.ccs",
+        "sha256": "6A659169DF89354C54AD0BCE2A8BD09ED375AEDE3C0558F6319620CB9D1E35AB",
+        "size": 60936,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/msu1.ccs",
+        "sha256": "6CCD47C216AE1AC91A4ECD28A4D66923C4E8D31DC37B80DEF095813A01DAC016",
+        "size": 5499,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/multichar_bike.ccs",
+        "sha256": "0E26FE3AC2A99CC931AFE23874EFD467C5C0999125F4135D9013CAAB34769BFA",
+        "size": 17685,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/naming_screen_table.ccs",
+        "sha256": "11DEEEE3900D5C6E10BFA8E151121155D53BFD40989960369898856C7B565028",
+        "size": 5275,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/new_controls.ccs",
+        "sha256": "F879C7B664FC481300C92DFAD4B901102BF54A6FD5837EC5680E9B68A2BA14F0",
+        "size": 7676,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/new_stats_equipment.ccs",
+        "sha256": "C9B73C879DF634182F83AD9ADD97DC25C6F42DC70416EC28FF84A6A5A27D1794",
+        "size": 58854,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/offense_defense_psi_buff.ccs",
+        "sha256": "9356B1CF026A9E0D6103B8783C261503E100C16FF3338EFF57A0E3B21AA35A9D",
+        "size": 2971,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/optimize_text_rendering.ccs",
+        "sha256": "69A4ABE136B10D82DB51DAFCBA77CA122451F05717F71CED62FD93BC55C4EB72",
+        "size": 12103,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/redux_changes.ccs",
+        "sha256": "F9D0054F61E456369160DFC74D414EE1381EBB98904F6F2F893304A9DF87E5F5",
+        "size": 4007,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/refill_stamina_on_heal.ccs",
+        "sha256": "21F14BD027E740B1EFFC220AD9DFD19AAAC2852F4C17C51C65A75D1F405B71E9",
+        "size": 2849,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/reset_routine.ccs",
+        "sha256": "F83E5EF1CA34C86AA6E5D8F5E9A01B1243D448EF663BB576348102CBF2F8940E",
+        "size": 420,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/run_patch.ccs",
+        "sha256": "B59247F8CAEAF946A6FF22CCD6DA8CE7FF2AFD610A03D36AF6DDDF63EBF662FB",
+        "size": 2933,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/run_stamina_mechanic.ccs",
+        "sha256": "B0FBFA9BB247521A31C6E7D9930BB6290B81F02D1E4AC70265F38FFEFE94BDBE",
+        "size": 6052,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/select_changes_letters_in_naming_screen.ccs",
+        "sha256": "B852915FE919672936E63B2E997F890571A16B01DFDD7801755D539BC7931E1A",
+        "size": 1138,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/six_letters.ccs",
+        "sha256": "AB4B6CBD51C639391428E3E3B2C77310FD07BDB689182DFDBB4E269591E0B20A",
+        "size": 12561,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/tools.ccs",
+        "sha256": "ADC7EDBB4C7F0D9E36CA5903D67635527768A8D825D52BC4D143F0EE08178314",
+        "size": 16956,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/redux/window_titles.ccs",
+        "sha256": "E04D69FBF357DAB88A8DC1552388FD8492076811B9A7D087A0A7510F77A618D0",
+        "size": 19524,
+        "category": "redux"
+      },
+      {
+        "path": "ccscript/shops/ShopMain.ccs",
+        "sha256": "E0DA0A89621BEDD8A63757093BC79E141057E8096CF405BCA8B73935B92B0F45",
+        "size": 140530,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_dalaam.ccs",
+        "sha256": "9FD14B5D190C1849B84AC9112EB2C0DED78F85284B2371E8B816A4BE8CF14460",
+        "size": 3494,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_desert.ccs",
+        "sha256": "5311595FD074EFE7C746B3B3E80163C0E5C39C5740D905A38E665A467ACB781B",
+        "size": 3258,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_fourside.ccs",
+        "sha256": "C2E0F1AEF07483104D05D4D8A0914DDAD5B8AADC1C4C0B51734EFC97FE55FDC5",
+        "size": 13095,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_general.ccs",
+        "sha256": "1145F6CD43C00DB665F01BEAEFDD095A163B246148B58A1CF3615581BD77C91F",
+        "size": 20820,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_magicant.ccs",
+        "sha256": "879B9D2BFD8E61CC66FB7843A509BC8A4C5F04597C16D0C27617E8BFC4604C4A",
+        "size": 3608,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_onett.ccs",
+        "sha256": "E55D8B0AF1A5F0AF1D3B5B6DCDD8F0AE2D509C628BA6C05013E7B3241011083B",
+        "size": 3936,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_saturn.ccs",
+        "sha256": "EFD11CABB4D10008EBE8D828AA02F6FA8053113CCBB8CB2E052F90C0CD1B62A9",
+        "size": 5392,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_scarabia.ccs",
+        "sha256": "45644EB78CA4EA7A2333F766BBC5E45B2FAE39CC73E419680B49F87293852D33",
+        "size": 22074,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_summers.ccs",
+        "sha256": "EC1F9889F22AE9FEE8312B8D41B3CE267107BCB3BF75C5246B28E0C3498B4E68",
+        "size": 17009,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_threek.ccs",
+        "sha256": "1C739A3A7F7A3047DDCDA1ACB890C3DA128D7A9151BC86E7241C6C17835E495A",
+        "size": 4364,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_twoson.ccs",
+        "sha256": "280ADE84221EE9BF551FCC78F22031F6F82A4CFAF11F6DD16A35C1B6A6023EC3",
+        "size": 10143,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_underworld.ccs",
+        "sha256": "72B6F39CB25A314A79CA643A6021E96A6F0FC04205532FC213D33E32B81D00F0",
+        "size": 4519,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/shops_winters.ccs",
+        "sha256": "8CAFB7C7E222271B330C08CD7277173E6E18314BAC6B5375AFED6985C1A3A9FA",
+        "size": 3579,
+        "category": "shops"
+      },
+      {
+        "path": "ccscript/shops/ShopSys.ccs",
+        "sha256": "743CE4F6CD1BB175B7F649D1B10DDF8EF22EF9BF55537EB4E3D41D1AFF18B664",
+        "size": 20993,
+        "category": "shops"
+      }
+    ],
+    "imports": [
+      {
+        "source": "ccscript/bugfixes/brainstone_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/brainstone_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/chunked_dma_race_condition_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/crying_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/crying_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/dad_bike_phone_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/enemy_in_walls_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/equip_anything_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/equip_anything_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/exp_overflow_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/gameover_oss_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/gameover_oss_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/guts_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/heal_poison_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/heal_poison_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/hppp_limit_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/item_transformations_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/moldyman_initial_frame_fix.ccs",
+        "target": "ccscript/redux/movscr_codes.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/mushroom_pos_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/objfx_controller_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/palette_tint_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/party_member_diagonal_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/party_member_diagonal_fix.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/psi_teleport_disable_enemies.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/region_crack.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/return_item_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/return_item_fix.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/rock_candy_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/show_removed_battle_item_window.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/show_removed_battle_item_window.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/show_removed_battle_item_window.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/single_2bpp_battle_bg_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/single_2bpp_battle_bg_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/stairs_message_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/stats_limit_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/status_window_clear.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/status_window_clear.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/swirls_without_ness_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/teleport_char_snap_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/teleport_diamondization_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/teleport_hardlock_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/teleport_hardlock_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/tent_check_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/tent_check_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/text_highlights_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/text_highlights_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/thunder_reflect_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/thunder_reflect_fix.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/thunder_reflect_fix.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/tie_zerodiv_fix.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/try_deposit_money.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/try_deposit_money.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/try_deposit_money.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/try_give_money.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/try_give_money.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/bugfixes/try_give_money.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/data/data_05.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_05.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_05.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_05.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_05.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_05.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_05.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_06.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/data/data_06.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_06.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_06.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_06.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_06.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_06.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_06.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_06.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_07.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/data/data_07.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_07.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_07.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_07.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_07.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_07.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_07.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_08.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/data/data_08.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_08.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_08.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_08.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_08.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_08.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_08.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_09.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/data/data_09.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_09.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_09.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_09.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_09.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_09.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_14.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_14.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_14.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_15.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_15.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_15.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_15.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_16.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_17.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_17.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_17.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_17.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_17.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_17.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_17.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_17.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/bugfixes/try_deposit_money.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/bugfixes/try_give_money.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_18.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_19.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_19.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_19.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_19.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/data/data_19.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_19.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_19.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_19.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_19.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_20.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_20.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_20.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_20.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_20.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_20.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_20.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/bugfixes/try_deposit_money.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/bugfixes/try_give_money.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_21.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_22.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_22.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_22.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_22.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_22.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_22.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_22.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_22.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_22.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_23.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_23.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_23.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_23.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_23.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_23.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_23.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_23.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_23.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_24.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_24.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_24.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_24.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_24.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/data/data_24.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_24.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/data/data_24.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_24.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_25.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_25.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_25.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_25.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_25.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_25.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_25.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_25.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_25.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_26.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_26.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_26.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_26.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_26.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_26.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_26.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_26.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_27.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_27.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_27.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_27.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_27.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_27.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_27.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_27.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_28.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_28.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_28.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_28.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_28.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_28.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_28.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_29.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_29.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_29.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_29.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_29.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_29.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_29.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_29.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_29.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_30.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_30.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_30.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_30.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_30.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_30.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_30.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_30.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_30.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_31.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_31.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_31.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_31.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_31.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_31.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_31.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_31.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_31.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_32.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_32.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_32.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_32.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_32.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_32.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_32.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_32.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_33.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_33.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_33.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_33.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_33.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_33.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_33.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_33.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_33.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_34.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_34.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_34.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_34.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_34.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_34.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_34.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_34.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_34.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_35.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_35.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_35.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_35.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/data/data_35.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_35.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_35.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_35.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_35.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_36.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_36.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_36.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_36.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_36.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_36.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_36.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_36.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_37.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_37.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_37.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_37.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_37.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_37.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_37.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_38.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_38.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_38.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_38.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_38.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_38.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_38.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_38.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_38.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_39.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_39.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_39.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_39.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_39.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_39.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_39.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_39.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_39.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_40.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_40.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_40.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_40.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_40.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_40.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_40.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_40.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_41.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_41.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_41.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_42.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_42.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_42.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_42.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_42.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_43.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_43.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_43.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_43.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_43.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_43.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_43.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_43.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_43.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_44.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_44.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_44.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_44.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_44.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_44.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_44.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_44.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_44.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_45.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_45.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_45.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_45.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_45.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_45.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_45.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_45.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_46.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_46.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_46.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_46.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_47.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_47.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_47.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_47.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_47.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_47.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_47.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_48.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_48.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_48.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_48.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_48.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_48.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_49.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_49.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_49.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_49.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_50.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_50.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_50.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_50.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_50.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_50.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_50.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_50.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_50.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_51.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_51.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_51.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_51.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_51.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_51.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_51.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_51.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_51.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_52.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_52.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_52.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_52.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_52.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_52.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_52.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_52.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_52.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_53.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_53.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_53.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_54.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_54.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_54.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_54.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_54.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_54.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_54.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_54.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_54.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_55.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_55.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_55.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_55.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_55.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_55.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_55.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_55.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_55.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_56.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_56.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_56.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_56.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_56.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_56.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_56.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_56.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_56.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_57.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_57.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_57.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_57.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_57.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_57.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_57.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_57.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_57.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_58.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_58.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_58.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_58.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_58.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_58.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_58.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_58.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_58.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_59.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_59.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_59.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_59.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_59.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_59.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_59.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_59.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/redux/multichar_bike.ccs"
+      },
+      {
+        "source": "ccscript/data/data_60.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_61.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_61.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_61.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_61.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_61.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_61.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_61.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_61.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_61.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_65.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_65.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_65.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_65.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_65.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/data/data_65.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_65.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_65.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data/data_66.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/data/data_66.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/data/data_66.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/data/data_66.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/data/data_66.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/data/data_66.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/data/data_66.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/data/data_66.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_05.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_06.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_07.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_08.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_09.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_14.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_15.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_16.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_17.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_18.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_19.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_20.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_21.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_22.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_23.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_24.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_25.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_26.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_27.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_28.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_29.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_30.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_31.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_32.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_33.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_34.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_35.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_36.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_37.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_38.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_39.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_40.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_41.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_42.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_43.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_44.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_45.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_46.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_47.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_48.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_49.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_50.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_51.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_52.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_53.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_54.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_55.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_56.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_57.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_58.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_59.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_60.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_61.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_65.ccs"
+      },
+      {
+        "source": "ccscript/data_mem_overwrite.ccs",
+        "target": "ccscript/data/data_66.ccs"
+      },
+      {
+        "source": "ccscript/debug/debug_menu_enabler.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/debug_menu_enabler.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/debug_menu_enabler.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/debug_menu_enabler.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/debug_menu_enabler.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/diamond.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/diamond.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/debug/diamond.ccs",
+        "target": "ccscript/expansion/expand_text_windows.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/banana.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/enemy.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/events.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/flag_tester.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/goods.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/hints.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/item_desc.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/level.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/money.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/move.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/party.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/psi_anims.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/sound.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/status.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/teleport.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/debug/options/unused_scripts.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/new_debug_menu.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/banana.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/banana.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/banana.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/banana.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/banana.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/enemy.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/enemy.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/enemy.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/enemy.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/enemy.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/events.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/events.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/events.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/events.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/events.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/events.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/events.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/events.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/flag_tester.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/flag_tester.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/flag_tester.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/flag_tester.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/flag_tester.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/flag_tester.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/goods.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/goods.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/goods.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/goods.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/goods.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/goods.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/goods.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/hints.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/hints.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/hints.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/hints.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/hints.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/item_desc.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/item_desc.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/item_desc.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/item_desc.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/item_desc.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/level.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/level.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/level.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/level.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/level.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/money.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/money.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/money.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/money.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/money.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/move.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/move.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/move.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/move.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/move.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/party.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/party.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/party.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/party.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/party.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/psi_anims.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/psi_anims.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/psi_anims.ccs",
+        "target": "ccscript/dialogue/battle_text.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/psi_anims.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/psi_anims.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/psi_anims.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/psi_anims.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/sound.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/sound.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/sound.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/sound.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/sound.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/status.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/status.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/status.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/status.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/status.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/teleport.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/teleport.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/teleport.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/teleport.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/teleport.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/unused_scripts.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/unused_scripts.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/unused_scripts.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/unused_scripts.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/debug/options/unused_scripts.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/battle_text.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/battle_text.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/battle_text.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/battle_text.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/battle_text.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/coffee_tea_sequences.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/coffee_tea_sequences.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/flyover_texts.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/flyover_texts.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/item_descriptions.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/item_descriptions.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/item_descriptions.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/item_descriptions.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/psi_battle_anims.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/psi_battle_anims.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/psi_battle_anims.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/psi_battle_anims.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/psi_battle_anims.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/psi_descriptions.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/psi_descriptions.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/staff_text.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/dialogue/staff_text.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/essential/ASMRef.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_asmcall.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_asmcall.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_char_in_party.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_char_in_party.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_effects.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_effects.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_effects.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_load_two_str.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_load_two_str.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/essential/cc_load_two_str.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/essential/commands.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/essential/commands.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/essential/commands.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/essential/commands.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/essential/commands.ccs",
+        "target": "ccscript/redux/run_stamina_mechanic.ccs"
+      },
+      {
+        "source": "ccscript/essential/fade_tools.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/essential/fade_tools.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/essential/fade_tools.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/essential/jsl_rts.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/essential/stdext.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/bugfixes/try_deposit_money.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/bugfixes/try_give_money.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/essential/cc_char_in_party.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/essential/cc_load_two_str.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/essential/fade_tools.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/redux/enemy_ai.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/redux/goods_menu_equip.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/redux/item_determiners.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/redux/item_quantity.ccs"
+      },
+      {
+        "source": "ccscript/expansion/ccexpand.ccs",
+        "target": "ccscript/redux/movscr_codes.ccs"
+      },
+      {
+        "source": "ccscript/expansion/dont_care_names.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/expansion/expand_shops.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/expansion/expand_shops.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/expansion/expand_text_windows.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/expansion/expanded_spy_action.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/expansion/Extended_Battle_Action_Table.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/expansion/Extended_PSI_Animations.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/expansion/favorite_food.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/brainstone_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/chunked_dma_race_condition_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/crying_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/dad_bike_phone_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/enemy_in_walls_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/equip_anything_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/exp_overflow_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/gameover_oss_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/guts_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/heal_poison_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/hppp_limit_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/item_transformations_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/moldyman_initial_frame_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/mushroom_pos_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/objfx_controller_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/palette_tint_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/party_member_diagonal_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/psi_teleport_disable_enemies.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/region_crack.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/return_item_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/rock_candy_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/show_removed_battle_item_window.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/single_2bpp_battle_bg_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/stairs_message_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/stats_limit_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/status_window_clear.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/swirls_without_ness_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/teleport_char_snap_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/teleport_diamondization_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/teleport_hardlock_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/tent_check_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/text_highlights_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/thunder_reflect_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/tie_zerodiv_fix.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/try_deposit_money.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/bugfixes/try_give_money.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/data_mem_overwrite.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/debug/debug_menu_enabler.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/debug/diamond.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/debug/new_debug_menu.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/definitions/sounds.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/dialogue/battle_text.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/dialogue/coffee_tea_sequences.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/dialogue/flyover_texts.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/dialogue/item_descriptions.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/dialogue/psi_battle_anims.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/dialogue/psi_descriptions.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/dialogue/staff_text.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/essential/cc_char_in_party.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/essential/fade_tools.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/expansion/dont_care_names.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/expansion/expand_shops.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/expansion/expand_text_windows.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/expansion/expanded_spy_action.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/expansion/Extended_Battle_Action_Table.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/expansion/Extended_PSI_Animations.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/expansion/favorite_food.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/better_condiment_search.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/Bowspr.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/cast_coloured_text.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/debug_fixes.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/enemy_ai.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/fast_terrain.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/four_frames_run.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/goods_menu_equip.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/item_determiners.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/item_quantity.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/keyitems.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/lucky_sandwich_revamp.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/m2_title_screen_movements.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/m3_defend_roller.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/m3sprites.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/menu_macros.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/movement_reloc.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/movscr_codes.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/msu1.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/multichar_bike.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/naming_screen_table.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/new_controls.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/new_stats_equipment.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/offense_defense_psi_buff.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/optimize_text_rendering.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/redux_changes.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/refill_stamina_on_heal.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/reset_routine.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/run_patch.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/run_stamina_mechanic.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/select_changes_letters_in_naming_screen.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/six_letters.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/tools.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/ShopMain.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_dalaam.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_desert.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_fourside.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_general.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_magicant.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_onett.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_saturn.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_scarabia.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_summers.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_threek.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_twoson.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_underworld.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/shops_winters.ccs"
+      },
+      {
+        "source": "ccscript/main.ccs",
+        "target": "ccscript/shops/ShopSys.ccs"
+      },
+      {
+        "source": "ccscript/redux/better_condiment_search.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/Bowspr.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/Bowspr.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/redux/Bowspr.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/redux/Bowspr.ccs",
+        "target": "ccscript/redux/movscr_codes.ccs"
+      },
+      {
+        "source": "ccscript/redux/cast_coloured_text.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/cast_coloured_text.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/redux/cutscenes.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/redux/cutscenes.ccs",
+        "target": "ccscript/essential/cc_effects.ccs"
+      },
+      {
+        "source": "ccscript/redux/cutscenes.ccs",
+        "target": "ccscript/redux/movscr_codes.ccs"
+      },
+      {
+        "source": "ccscript/redux/debug_fixes.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/enemy_ai.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/enemy_ai.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/redux/enemy_ai.ccs",
+        "target": "ccscript/redux/enemy_ai_actions.ccs"
+      },
+      {
+        "source": "ccscript/redux/enemy_ai_actions.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/redux/enemy_ai_actions.ccs",
+        "target": "ccscript/redux/enemy_ai.ccs"
+      },
+      {
+        "source": "ccscript/redux/fast_terrain.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/fast_terrain.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/redux/four_frames_run.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/goods_menu_equip.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/redux/goods_menu_equip.ccs",
+        "target": "ccscript/definitions/sounds.ccs"
+      },
+      {
+        "source": "ccscript/redux/goods_menu_equip.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/goods_menu_equip.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/redux/goods_menu_equip.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/redux/goods_menu_equip.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/redux/goods_menu_equip.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/redux/goods_menu_equip.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/redux/goods_menu_equip.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/redux/item_determiners.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/item_determiners.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/redux/item_quantity.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/item_quantity.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/redux/keyitems.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/redux/keyitems.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/redux/keyitems.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/keyitems.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/redux/keyitems.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/redux/keyitems.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/redux/keyitems.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/redux/keyitems.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/redux/lucky_sandwich_revamp.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/lucky_sandwich_revamp.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/redux/m2_title_screen_movements.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/m2_title_screen_movements.ccs",
+        "target": "ccscript/redux/movscr_codes.ccs"
+      },
+      {
+        "source": "ccscript/redux/m3_defend_roller.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/m3_defend_roller.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/redux/m3sprites.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/m3sprites.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/redux/m3sprites.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/redux/m3sprites.ccs",
+        "target": "ccscript/redux/Bowspr.ccs"
+      },
+      {
+        "source": "ccscript/redux/m3sprites.ccs",
+        "target": "ccscript/redux/movscr_codes.ccs"
+      },
+      {
+        "source": "ccscript/redux/menu_macros.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/menu_macros.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/redux/movement_reloc.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/movement_reloc.ccs",
+        "target": "ccscript/redux/cutscenes.ccs"
+      },
+      {
+        "source": "ccscript/redux/movement_reloc.ccs",
+        "target": "ccscript/redux/m2_title_screen_movements.ccs"
+      },
+      {
+        "source": "ccscript/redux/movscr_codes.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/msu1.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/multichar_bike.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/naming_screen_table.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/new_controls.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/redux/new_controls.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/new_stats_equipment.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/new_stats_equipment.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/redux/new_stats_equipment.ccs",
+        "target": "ccscript/expansion/expand_text_windows.ccs"
+      },
+      {
+        "source": "ccscript/redux/offense_defense_psi_buff.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/offense_defense_psi_buff.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/redux/optimize_text_rendering.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/redux_changes.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/redux_changes.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/redux/refill_stamina_on_heal.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/redux/refill_stamina_on_heal.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/redux/refill_stamina_on_heal.ccs",
+        "target": "ccscript/redux/run_stamina_mechanic.ccs"
+      },
+      {
+        "source": "ccscript/redux/reset_routine.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/reset_routine.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/redux/run_patch.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/run_patch.ccs",
+        "target": "ccscript/redux/run_stamina_mechanic.ccs"
+      },
+      {
+        "source": "ccscript/redux/run_stamina_mechanic.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/select_changes_letters_in_naming_screen.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/six_letters.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/essential/cc_asmcall.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/essential/jsl_rts.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/redux/menu_macros.ccs"
+      },
+      {
+        "source": "ccscript/redux/tools.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/redux/window_titles.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/redux/window_titles.ccs",
+        "target": "ccscript/essential/ASMRef.ccs"
+      },
+      {
+        "source": "ccscript/shops/ShopMain.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/ShopMain.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_dalaam.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_dalaam.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_dalaam.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_dalaam.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_dalaam.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_desert.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_desert.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_desert.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_desert.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_desert.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_fourside.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_fourside.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_fourside.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_fourside.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_fourside.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_fourside.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_general.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_general.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_general.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_general.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_general.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_general.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_magicant.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_magicant.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_magicant.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_magicant.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_magicant.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_onett.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_onett.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_onett.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_onett.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_onett.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_saturn.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_saturn.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_saturn.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_saturn.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_saturn.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_scarabia.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_scarabia.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_scarabia.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_scarabia.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_scarabia.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_scarabia.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_scarabia.ccs",
+        "target": "ccscript/redux/tools.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_scarabia.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_summers.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_summers.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_summers.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_summers.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_summers.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_summers.ccs",
+        "target": "ccscript/redux/window_titles.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_threek.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_threek.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_threek.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_threek.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_threek.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_twoson.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_twoson.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_twoson.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_twoson.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_twoson.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_twoson.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_underworld.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_underworld.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_underworld.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_underworld.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_underworld.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_winters.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_winters.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_winters.ccs",
+        "target": "ccscript/essential/commands.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_winters.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/shops_winters.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      },
+      {
+        "source": "ccscript/shops/ShopSys.ccs",
+        "target": "ccscript/definitions/flags.ccs"
+      },
+      {
+        "source": "ccscript/shops/ShopSys.ccs",
+        "target": "ccscript/definitions/items.ccs"
+      },
+      {
+        "source": "ccscript/shops/ShopSys.ccs",
+        "target": "ccscript/essential/asm65816.ccs"
+      },
+      {
+        "source": "ccscript/shops/ShopSys.ccs",
+        "target": "ccscript/essential/stdext.ccs"
+      },
+      {
+        "source": "ccscript/shops/ShopSys.ccs",
+        "target": "ccscript/expansion/ccexpand.ccs"
+      }
+    ],
+    "unresolvedImports": [],
+    "duplicateModuleNames": {},
+    "categoryCounts": {
+      "bugfixes": 36,
+      "data": 55,
+      "debug": 19,
+      "definitions": 3,
+      "dialogue": 7,
+      "essential": 10,
+      "expansion": 8,
+      "redux": 36,
+      "root": 2,
+      "shops": 15
+    }
   },
   "modules": [
     {
@@ -39,7 +5281,7 @@
       "snes_address": 15990783,
       "rom_offset": 3407871,
       "size": 0,
-      "source": null,
+      "source": "ccscript/main.ccs",
       "changed_bytes": 0,
       "compiled_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
     },
@@ -1074,7 +6316,7 @@
       "snes_address": 16535519,
       "rom_offset": 3952607,
       "size": 203,
-      "source": null,
+      "source": "ccscript/redux/cutscenes.ccs",
       "changed_bytes": 181,
       "compiled_sha256": "E914E4857D4C766C6589AC05B2082BF9EDA5404B9262E61BE23CA5502CDFEDC2"
     },
@@ -1083,7 +6325,7 @@
       "snes_address": 15929344,
       "rom_offset": 3346432,
       "size": 20902,
-      "source": null,
+      "source": "ccscript/redux/enemy_ai_actions.ccs",
       "changed_bytes": 15960,
       "compiled_sha256": "80E8767A6EDCCDD11BF092044E1FB09E15745D389EF3F9906B1B1C70CE752FDD"
     },
@@ -1092,7 +6334,7 @@
       "snes_address": 16525319,
       "rom_offset": 3942407,
       "size": 793,
-      "source": null,
+      "source": "ccscript/essential/cc_load_two_str.ccs",
       "changed_bytes": 721,
       "compiled_sha256": "037A5E83A9E87EEDD1DD2368C10D23DAB8F1E440B046CDE2EB3A627364C5661D"
     },
@@ -1101,7 +6343,7 @@
       "snes_address": 15987505,
       "rom_offset": 3404593,
       "size": 3278,
-      "source": null,
+      "source": "ccscript/debug/options/banana.ccs",
       "changed_bytes": 2867,
       "compiled_sha256": "9D1EF500AF9F4D51D2CF7E61D17CBAB7DED9F8C6FD94F099346FB040CE6E8E00"
     },
@@ -1110,7 +6352,7 @@
       "snes_address": 16422635,
       "rom_offset": 3839723,
       "size": 4808,
-      "source": null,
+      "source": "ccscript/debug/options/events.ccs",
       "changed_bytes": 4411,
       "compiled_sha256": "88C595D58082CEC6939FF982ED19839F89DA9D9F6E0D3660446A93F6B971866B"
     },
@@ -1119,7 +6361,7 @@
       "snes_address": 16537340,
       "rom_offset": 3954428,
       "size": 110,
-      "source": null,
+      "source": "ccscript/debug/options/enemy.ccs",
       "changed_bytes": 101,
       "compiled_sha256": "788C232A93D6B839ABC4D7A835C7EFEFE5BA6DA75773FD702BFE32F1ED53DE3B"
     },
@@ -1128,7 +6370,7 @@
       "snes_address": 16538275,
       "rom_offset": 3955363,
       "size": 44,
-      "source": null,
+      "source": "ccscript/debug/options/flag_tester.ccs",
       "changed_bytes": 41,
       "compiled_sha256": "DF99AEB36434BA04FCCB6DDAD54DC61BDE202F0A7A8BA000996FB2205771369D"
     },
@@ -1137,7 +6379,7 @@
       "snes_address": 16493181,
       "rom_offset": 3910269,
       "size": 1915,
-      "source": null,
+      "source": "ccscript/debug/options/goods.ccs",
       "changed_bytes": 1694,
       "compiled_sha256": "25A3A29151DAE8BC426D207A9D389BC73BAE481EDA6EAD4C9D54821EF2A30BE3"
     },
@@ -1146,7 +6388,7 @@
       "snes_address": 16121696,
       "rom_offset": 3538784,
       "size": 159,
-      "source": null,
+      "source": "ccscript/debug/options/hints.ccs",
       "changed_bytes": 141,
       "compiled_sha256": "D0C70EFB4164CA195F77C384E6696848F9B3538B4CEB27688B11F9BF9C643895"
     },
@@ -1155,7 +6397,7 @@
       "snes_address": 16449536,
       "rom_offset": 3866624,
       "size": 3706,
-      "source": null,
+      "source": "ccscript/debug/options/item_desc.ccs",
       "changed_bytes": 2669,
       "compiled_sha256": "82C05D0F3E78380ED520824E8B643D54D9BC45DA5EFAE5216B81473847386CFD"
     },
@@ -1164,7 +6406,7 @@
       "snes_address": 16534540,
       "rom_offset": 3951628,
       "size": 296,
-      "source": null,
+      "source": "ccscript/debug/options/level.ccs",
       "changed_bytes": 255,
       "compiled_sha256": "91349C688D2D421E6563AE3435383A35CD118CEA924E1F4DECDBAE5A2B23799E"
     },
@@ -1173,7 +6415,7 @@
       "snes_address": 16528624,
       "rom_offset": 3945712,
       "size": 573,
-      "source": null,
+      "source": "ccscript/debug/options/money.ccs",
       "changed_bytes": 512,
       "compiled_sha256": "039CACE1F85C63EA27E59B9C0BAD99318FC0BBD28EC01685AFB379717CFE1809"
     },
@@ -1182,7 +6424,7 @@
       "snes_address": 16503720,
       "rom_offset": 3920808,
       "size": 1656,
-      "source": null,
+      "source": "ccscript/debug/options/move.ccs",
       "changed_bytes": 1545,
       "compiled_sha256": "B34745797141267316FA47192AD54682462C9A43CDC156127DC9E770FC982226"
     },
@@ -1191,7 +6433,7 @@
       "snes_address": 16186669,
       "rom_offset": 3603757,
       "size": 715,
-      "source": null,
+      "source": "ccscript/debug/options/party.ccs",
       "changed_bytes": 643,
       "compiled_sha256": "6197155CC462EAF0D0A3FF608B5F40D318BDC19D922EAE4C512374523B5DB101"
     },
@@ -1200,7 +6442,7 @@
       "snes_address": 16427443,
       "rom_offset": 3844531,
       "size": 4755,
-      "source": null,
+      "source": "ccscript/debug/options/psi_anims.ccs",
       "changed_bytes": 4240,
       "compiled_sha256": "FE6C41C4B814BA3530192A46AD6F2A82B2BBF79E65AABED4C50E15C3480CB90C"
     },
@@ -1209,7 +6451,7 @@
       "snes_address": 16517336,
       "rom_offset": 3934424,
       "size": 980,
-      "source": null,
+      "source": "ccscript/debug/options/sound.ccs",
       "changed_bytes": 904,
       "compiled_sha256": "A1137321D6742C0E45B0C620E1EBF5D410F419862EB9FD5AF48F923C7B19F57A"
     },
@@ -1218,7 +6460,7 @@
       "snes_address": 16526112,
       "rom_offset": 3943200,
       "size": 661,
-      "source": null,
+      "source": "ccscript/debug/options/status.ccs",
       "changed_bytes": 563,
       "compiled_sha256": "2237B136DC38F754B1D90836266573C3D8C35B3C71F830B967AA9A54AEE0F1E0"
     },
@@ -1227,7 +6469,7 @@
       "snes_address": 16536476,
       "rom_offset": 3953564,
       "size": 177,
-      "source": null,
+      "source": "ccscript/debug/options/teleport.ccs",
       "changed_bytes": 166,
       "compiled_sha256": "39353441E6D75CA06693DC6D312C116CF0CE63928552D599FFD06611A4BF06A2"
     },
@@ -1236,7 +6478,7 @@
       "snes_address": 16536653,
       "rom_offset": 3953741,
       "size": 176,
-      "source": null,
+      "source": "ccscript/debug/options/unused_scripts.ccs",
       "changed_bytes": 169,
       "compiled_sha256": "9BD836E33FEBA7D671B59ABEDF00E3E73427E94ABFFB58CE1CC7491C702542E4"
     },
@@ -1245,7 +6487,7 @@
       "snes_address": 16486644,
       "rom_offset": 3903732,
       "size": 2327,
-      "source": null,
+      "source": "ccscript/data/data_05.ccs",
       "changed_bytes": 2269,
       "compiled_sha256": "2D48D776738BB3A63BF404C79675193E0263B7BF821E0FEB64F8F95286BB9211"
     },
@@ -1254,7 +6496,7 @@
       "snes_address": 16375594,
       "rom_offset": 3792682,
       "size": 6334,
-      "source": null,
+      "source": "ccscript/data/data_06.ccs",
       "changed_bytes": 6097,
       "compiled_sha256": "D5E3E8292F00A089152C13655E2C8A342A347619C0E887B15DB590A99DD91588"
     },
@@ -1263,7 +6505,7 @@
       "snes_address": 16502051,
       "rom_offset": 3919139,
       "size": 1669,
-      "source": null,
+      "source": "ccscript/data/data_07.ccs",
       "changed_bytes": 1471,
       "compiled_sha256": "0EAF46670AA5F27E7B83192096618A9272B8F85822B62C617F68D0F902146E17"
     },
@@ -1272,7 +6514,7 @@
       "snes_address": 16491199,
       "rom_offset": 3908287,
       "size": 1982,
-      "source": null,
+      "source": "ccscript/data/data_08.ccs",
       "changed_bytes": 1811,
       "compiled_sha256": "4017AFB5FFD0FB53C1730357FFB7E106C0A73EEE25B0C06425EFA15CA789172E"
     },
@@ -1281,7 +6523,7 @@
       "snes_address": 16453242,
       "rom_offset": 3870330,
       "size": 3463,
-      "source": null,
+      "source": "ccscript/data/data_09.ccs",
       "changed_bytes": 2995,
       "compiled_sha256": "CC6ECB59751A3BA09FC8BB67297A7B7FC75E487A178A75A5DF44D4AA00DDEEDF"
     },
@@ -1290,7 +6532,7 @@
       "snes_address": 16475999,
       "rom_offset": 3893087,
       "size": 2747,
-      "source": null,
+      "source": "ccscript/data/data_14.ccs",
       "changed_bytes": 2559,
       "compiled_sha256": "A9916CD63DEAC5C9E9E4F9CCA5DD486BC0BFD2D27D621B7BDBD9D6FDD8939B9B"
     },
@@ -1299,7 +6541,7 @@
       "snes_address": 16495096,
       "rom_offset": 3912184,
       "size": 1824,
-      "source": null,
+      "source": "ccscript/data/data_15.ccs",
       "changed_bytes": 1523,
       "compiled_sha256": "DA2BB4A824C2BDBBDFD84CCFFC178088C8F684D6B4D7E8B5F212ECDEF088520C"
     },
@@ -1308,7 +6550,7 @@
       "snes_address": 16035365,
       "rom_offset": 3452453,
       "size": 12159,
-      "source": null,
+      "source": "ccscript/data/data_16.ccs",
       "changed_bytes": 11555,
       "compiled_sha256": "EAD567BF68DB19281B3F58227F829B4760B5A380D0D635A49628DF96AB52463A"
     },
@@ -1317,7 +6559,7 @@
       "snes_address": 16280200,
       "rom_offset": 3697288,
       "size": 8876,
-      "source": null,
+      "source": "ccscript/data/data_17.ccs",
       "changed_bytes": 8463,
       "compiled_sha256": "85E02EE8664BC99AE62CF851E3E98285AAC4CAD920D6AC8F724F31DDDD99B39E"
     },
@@ -1326,7 +6568,7 @@
       "snes_address": 16318464,
       "rom_offset": 3735552,
       "size": 7568,
-      "source": null,
+      "source": "ccscript/data/data_18.ccs",
       "changed_bytes": 7171,
       "compiled_sha256": "ABCD2A538B39C6A591E28E56C043BE5B48BF2122FFA3649B30AFEDF5077A9924"
     },
@@ -1335,7 +6577,7 @@
       "snes_address": 16297308,
       "rom_offset": 3714396,
       "size": 7623,
-      "source": null,
+      "source": "ccscript/data/data_19.ccs",
       "changed_bytes": 7140,
       "compiled_sha256": "33F5DCF9CDA75960A776A6A0E6129CA4EA8E49703BC333288D55DA02DDDFB8BE"
     },
@@ -1344,7 +6586,7 @@
       "snes_address": 16432198,
       "rom_offset": 3849286,
       "size": 4402,
-      "source": null,
+      "source": "ccscript/data/data_20.ccs",
       "changed_bytes": 4097,
       "compiled_sha256": "B8D3959BC92CC6BF040FB180AF6E19D3A440C03D7C07332CBD30D818FA3B4F5C"
     },
@@ -1353,7 +6595,7 @@
       "snes_address": 16197835,
       "rom_offset": 3614923,
       "size": 10400,
-      "source": null,
+      "source": "ccscript/data/data_21.ccs",
       "changed_bytes": 9890,
       "compiled_sha256": "2BBC0FC47D92A261723E09AE62D4463C2E5D1D0CA9CEE10556B3B35A429F785E"
     },
@@ -1362,7 +6604,7 @@
       "snes_address": 16113355,
       "rom_offset": 3530443,
       "size": 8341,
-      "source": null,
+      "source": "ccscript/data/data_22.ccs",
       "changed_bytes": 8070,
       "compiled_sha256": "1ADF4BFAB37A68F3DD6A81DFC3CDACE63F3701C949682FDC7925712A9F2B7C56"
     },
@@ -1371,7 +6613,7 @@
       "snes_address": 16488971,
       "rom_offset": 3906059,
       "size": 2228,
-      "source": null,
+      "source": "ccscript/data/data_23.ccs",
       "changed_bytes": 2146,
       "compiled_sha256": "D6AB332FB5167B20F2097CB320CFE6FAABFE10C59FCCC270A67F53F0AFEE4082"
     },
@@ -1380,7 +6622,7 @@
       "snes_address": 16022530,
       "rom_offset": 3439618,
       "size": 12835,
-      "source": null,
+      "source": "ccscript/data/data_24.ccs",
       "changed_bytes": 12431,
       "compiled_sha256": "A4F46D99F8BA9BFE2406938E9D0A60E48393D5A0D675D08DB90BF51DCD74C751"
     },
@@ -1389,7 +6631,7 @@
       "snes_address": 16121856,
       "rom_offset": 3538944,
       "size": 11170,
-      "source": null,
+      "source": "ccscript/data/data_25.ccs",
       "changed_bytes": 10734,
       "compiled_sha256": "6F1251665C536E4458340CA2A3A5A97358939195FBD4491DF7A890095DBFE762"
     },
@@ -1398,7 +6640,7 @@
       "snes_address": 16090934,
       "rom_offset": 3508022,
       "size": 11219,
-      "source": null,
+      "source": "ccscript/data/data_26.ccs",
       "changed_bytes": 10836,
       "compiled_sha256": "AC0CCC0C4E53143D8CBA9DA65CDE3CA7B6667F1064170ED260E38C774E619E69"
     },
@@ -1407,7 +6649,7 @@
       "snes_address": 16079435,
       "rom_offset": 3496523,
       "size": 11499,
-      "source": null,
+      "source": "ccscript/data/data_27.ccs",
       "changed_bytes": 11047,
       "compiled_sha256": "6647EB275A13C2E1268001393DDE6FB6FA0D7C50DC1236F5C2A05CB44BF2D9FF"
     },
@@ -1416,7 +6658,7 @@
       "snes_address": 15990784,
       "rom_offset": 3407872,
       "size": 16248,
-      "source": null,
+      "source": "ccscript/data/data_28.ccs",
       "changed_bytes": 15664,
       "compiled_sha256": "AF6FF080E0C30F496562F7A20A9C7F3D911957FE1FBF51396EEEBC59C1404BA1"
     },
@@ -1425,7 +6667,7 @@
       "snes_address": 16144156,
       "rom_offset": 3561244,
       "size": 10751,
-      "source": null,
+      "source": "ccscript/data/data_29.ccs",
       "changed_bytes": 10439,
       "compiled_sha256": "21BF0F50E35E751DC2F00EAFC8D85CEEE1FB9331E6040948AD98A67FA43CA20C"
     },
@@ -1434,7 +6676,7 @@
       "snes_address": 16271316,
       "rom_offset": 3688404,
       "size": 8884,
-      "source": null,
+      "source": "ccscript/data/data_30.ccs",
       "changed_bytes": 8596,
       "compiled_sha256": "F50F05FB1D8E574655BB19948D802A4B52B146CB6C2439C738A7602618B29698"
     },
@@ -1443,7 +6685,7 @@
       "snes_address": 16154907,
       "rom_offset": 3571995,
       "size": 10691,
-      "source": null,
+      "source": "ccscript/data/data_31.ccs",
       "changed_bytes": 10359,
       "compiled_sha256": "6E6A335AA62F13B6B377ED05B121DF2FD8E9C71D83955034B5CD948588FA960B"
     },
@@ -1452,7 +6694,7 @@
       "snes_address": 16333559,
       "rom_offset": 3750647,
       "size": 7473,
-      "source": null,
+      "source": "ccscript/data/data_32.ccs",
       "changed_bytes": 7175,
       "compiled_sha256": "EE07AC490E7F862BB2AC583B780DF87CF7CDAC0FAEF633823B3A7F210A02341E"
     },
@@ -1461,7 +6703,7 @@
       "snes_address": 16341032,
       "rom_offset": 3758120,
       "size": 7392,
-      "source": null,
+      "source": "ccscript/data/data_33.ccs",
       "changed_bytes": 6883,
       "compiled_sha256": "DC7DE9BB8006C7F7ECF0BB56E8DA68C654A171FF441A7BEFCDFBEFAB7A593909"
     },
@@ -1470,7 +6712,7 @@
       "snes_address": 16007032,
       "rom_offset": 3424120,
       "size": 15498,
-      "source": null,
+      "source": "ccscript/data/data_34.ccs",
       "changed_bytes": 14676,
       "compiled_sha256": "44C6033704068A89EC897F5F109B72D06B44982CAA6C112A4751D7373E282BEC"
     },
@@ -1479,7 +6721,7 @@
       "snes_address": 16227871,
       "rom_offset": 3644959,
       "size": 9788,
-      "source": null,
+      "source": "ccscript/data/data_35.ccs",
       "changed_bytes": 9311,
       "compiled_sha256": "FFF34DF921D5FB9F842FE55F183FD909633BF5EBE88F5F61E37E87A68B99B39E"
     },
@@ -1488,7 +6730,7 @@
       "snes_address": 16436600,
       "rom_offset": 3853688,
       "size": 4116,
-      "source": null,
+      "source": "ccscript/data/data_36.ccs",
       "changed_bytes": 3838,
       "compiled_sha256": "18D10225F318F15D80FF53986404480D03CBB5B89C19F6AA821C929DDE7B55CC"
     },
@@ -1497,7 +6739,7 @@
       "snes_address": 16396368,
       "rom_offset": 3813456,
       "size": 5951,
-      "source": null,
+      "source": "ccscript/data/data_37.ccs",
       "changed_bytes": 5592,
       "compiled_sha256": "870AEA129AF513EE68E368F8C092CB1BD21C404047C317C6EE11B96A26674DA7"
     },
@@ -1506,7 +6748,7 @@
       "snes_address": 16067921,
       "rom_offset": 3485009,
       "size": 11514,
-      "source": null,
+      "source": "ccscript/data/data_38.ccs",
       "changed_bytes": 11090,
       "compiled_sha256": "5161942B5FF91D1512A548573BCAE93A8F9A93986C44146ACDB06C139C605E64"
     },
@@ -1515,7 +6757,7 @@
       "snes_address": 16237659,
       "rom_offset": 3654747,
       "size": 9436,
-      "source": null,
+      "source": "ccscript/data/data_39.ccs",
       "changed_bytes": 9069,
       "compiled_sha256": "C2F698DD2A1D3C08F125E65CCD155CB7E0EBCD15FC0EEE9FF25AAE794592274D"
     },
@@ -1524,7 +6766,7 @@
       "snes_address": 16165598,
       "rom_offset": 3582686,
       "size": 10555,
-      "source": null,
+      "source": "ccscript/data/data_40.ccs",
       "changed_bytes": 10183,
       "compiled_sha256": "D142683FA6C99C5C20EF7CA57977EFB36732DFB811A5FFC3DE50E5919015B4E9"
     },
@@ -1533,7 +6775,7 @@
       "snes_address": 16348424,
       "rom_offset": 3765512,
       "size": 7330,
-      "source": null,
+      "source": "ccscript/data/data_41.ccs",
       "changed_bytes": 7034,
       "compiled_sha256": "786215F4817001C524584061CC041045965298A45BEA3CA8DD2622CB64687C23"
     },
@@ -1542,7 +6784,7 @@
       "snes_address": 16047524,
       "rom_offset": 3464612,
       "size": 8652,
-      "source": null,
+      "source": "ccscript/data/data_42.ccs",
       "changed_bytes": 8392,
       "compiled_sha256": "82108007C1116C6F97034B20E89C16DB42ACCAF2601A5D8530ACCA80107408AC"
     },
@@ -1551,7 +6793,7 @@
       "snes_address": 16208235,
       "rom_offset": 3625323,
       "size": 9826,
-      "source": null,
+      "source": "ccscript/data/data_43.ccs",
       "changed_bytes": 9509,
       "compiled_sha256": "8AF887B61D13720EB9521C44545D962295FDA92AAB2C78F16E5478F779C7E007"
     },
@@ -1560,7 +6802,7 @@
       "snes_address": 16133026,
       "rom_offset": 3550114,
       "size": 11130,
-      "source": null,
+      "source": "ccscript/data/data_44.ccs",
       "changed_bytes": 10621,
       "compiled_sha256": "797FD14711090A6D04859B81F5F9783A4FEC78E47758CED218E4720B4E4C309E"
     },
@@ -1569,7 +6811,7 @@
       "snes_address": 16252928,
       "rom_offset": 3670016,
       "size": 9418,
-      "source": null,
+      "source": "ccscript/data/data_45.ccs",
       "changed_bytes": 9130,
       "compiled_sha256": "1F9C38E5943B7F3240882E99BF12DF2662D177D671652E0997D3F166EA28B15D"
     },
@@ -1578,7 +6820,7 @@
       "snes_address": 16218061,
       "rom_offset": 3635149,
       "size": 9810,
-      "source": null,
+      "source": "ccscript/data/data_46.ccs",
       "changed_bytes": 9596,
       "compiled_sha256": "188ADD8EE0D2B79ED3EB82257BB4979C1AE3EA8C7EF2BE274000D3698EFE8279"
     },
@@ -1587,7 +6829,7 @@
       "snes_address": 16463536,
       "rom_offset": 3880624,
       "size": 3319,
-      "source": null,
+      "source": "ccscript/data/data_47.ccs",
       "changed_bytes": 3205,
       "compiled_sha256": "B802F32FBB58BFF8FD474A6C3BF80AB2508D41B2769F3FD8370B1E04C139848C"
     },
@@ -1596,7 +6838,7 @@
       "snes_address": 16369225,
       "rom_offset": 3786313,
       "size": 6369,
-      "source": null,
+      "source": "ccscript/data/data_48.ccs",
       "changed_bytes": 5960,
       "compiled_sha256": "C2608FC8FF8E2CB818DC11E1557C35F7CE3F80B2087BB61C95BD8FA7298EB18F"
     },
@@ -1605,7 +6847,7 @@
       "snes_address": 16481443,
       "rom_offset": 3898531,
       "size": 2689,
-      "source": null,
+      "source": "ccscript/data/data_49.ccs",
       "changed_bytes": 2417,
       "compiled_sha256": "6A892FC76DFA2304586781A42A07A0625B2CA7A019FCB2F0BCEBA88C0843886A"
     },
@@ -1614,7 +6856,7 @@
       "snes_address": 16262346,
       "rom_offset": 3679434,
       "size": 8970,
-      "source": null,
+      "source": "ccscript/data/data_50.ccs",
       "changed_bytes": 8411,
       "compiled_sha256": "E40E8AE9132B10F5A2779424236997BE96A8F498BFC043936927443AE102038A"
     },
@@ -1623,7 +6865,7 @@
       "snes_address": 16289076,
       "rom_offset": 3706164,
       "size": 8232,
-      "source": null,
+      "source": "ccscript/data/data_51.ccs",
       "changed_bytes": 7975,
       "compiled_sha256": "4E1656B3AAFDAE4AC93CA7666C4001BE4266EB692F1C2FB1AC0E227A750A59EE"
     },
@@ -1632,7 +6874,7 @@
       "snes_address": 16056320,
       "rom_offset": 3473408,
       "size": 11601,
-      "source": null,
+      "source": "ccscript/data/data_52.ccs",
       "changed_bytes": 11247,
       "compiled_sha256": "82AF3BE70AADE7A570A38A6324DDA9B91593E1EE1589E051C8D32306817E36BE"
     },
@@ -1641,7 +6883,7 @@
       "snes_address": 16355754,
       "rom_offset": 3772842,
       "size": 6849,
-      "source": null,
+      "source": "ccscript/data/data_53.ccs",
       "changed_bytes": 6661,
       "compiled_sha256": "841EACAE49482185E9AC9CEC6427C14B72F233E39336FC96EA63F77F23FCA887"
     },
@@ -1650,7 +6892,7 @@
       "snes_address": 16362603,
       "rom_offset": 3779691,
       "size": 6622,
-      "source": null,
+      "source": "ccscript/data/data_54.ccs",
       "changed_bytes": 6370,
       "compiled_sha256": "B89D4AEA268B6B3D478606CB4BF8C02C804356D00880159AC954B6474C139634"
     },
@@ -1659,7 +6901,7 @@
       "snes_address": 16312551,
       "rom_offset": 3729639,
       "size": 5899,
-      "source": null,
+      "source": "ccscript/data/data_55.ccs",
       "changed_bytes": 5666,
       "compiled_sha256": "06A24C7D2C9FC460CFC2D3E1878AD915EA60A0D32FCDE4661C40387C8BC97EBE"
     },
@@ -1668,7 +6910,7 @@
       "snes_address": 16247095,
       "rom_offset": 3664183,
       "size": 5727,
-      "source": null,
+      "source": "ccscript/data/data_56.ccs",
       "changed_bytes": 5487,
       "compiled_sha256": "40985D7F8D911EE96E7D1F97BC1C894A41ADF9934A168D1BF2978F89B9E24777"
     },
@@ -1677,7 +6919,7 @@
       "snes_address": 16390207,
       "rom_offset": 3807295,
       "size": 6161,
-      "source": null,
+      "source": "ccscript/data/data_57.ccs",
       "changed_bytes": 5862,
       "compiled_sha256": "2A97FE8F42E5A5E4940F56C0F00EB273DEF1BE2C63EFF8561A3D06D1D03F6C11"
     },
@@ -1686,7 +6928,7 @@
       "snes_address": 16176153,
       "rom_offset": 3593241,
       "size": 10516,
-      "source": null,
+      "source": "ccscript/data/data_58.ccs",
       "changed_bytes": 10049,
       "compiled_sha256": "ECDE1D0076ED420FB968347E6B4E7083CDEE2FE815D2CBFA93D1B37038A9302C"
     },
@@ -1695,7 +6937,7 @@
       "snes_address": 16187392,
       "rom_offset": 3604480,
       "size": 10443,
-      "source": null,
+      "source": "ccscript/data/data_59.ccs",
       "changed_bytes": 10095,
       "compiled_sha256": "42499424711783614D7A848B4DCE5B7D2A6F23E55A20D0BFFEC3B11833B6F8C3"
     },
@@ -1704,7 +6946,7 @@
       "snes_address": 16484132,
       "rom_offset": 3901220,
       "size": 2512,
-      "source": null,
+      "source": "ccscript/data/data_60.ccs",
       "changed_bytes": 2422,
       "compiled_sha256": "485F45C6F766C273A8A97245A3EF52AC6FC31B95873B9279AF614023AED539FE"
     },
@@ -1713,7 +6955,7 @@
       "snes_address": 16304931,
       "rom_offset": 3722019,
       "size": 7620,
-      "source": null,
+      "source": "ccscript/data/data_61.ccs",
       "changed_bytes": 7388,
       "compiled_sha256": "C6EE3276BDA81056487DFFA6EFFE414869078DF475F7AA28C39E1F9F84CE4E23"
     },
@@ -1722,7 +6964,7 @@
       "snes_address": 16417671,
       "rom_offset": 3834759,
       "size": 4964,
-      "source": null,
+      "source": "ccscript/data/data_65.ccs",
       "changed_bytes": 4734,
       "compiled_sha256": "7F5C741BC97A73A76A436FC2E28D2ACE6BD95BFE6E6BABD0182609238836516C"
     },
@@ -1731,7 +6973,7 @@
       "snes_address": 16500367,
       "rom_offset": 3917455,
       "size": 1684,
-      "source": null,
+      "source": "ccscript/data/data_66.ccs",
       "changed_bytes": 1607,
       "compiled_sha256": "4D35A6277E98A9FDD63D802CC092D04617D245244AE21E6F07D27777AE4FC307"
     }
