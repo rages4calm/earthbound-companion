@@ -1,0 +1,49 @@
+{
+  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+  "conversionCounts": {
+    "convertedLabelSpans": 7133,
+    "convertedBytes": 545615,
+    "relocatedPointerFields": 10054,
+    "unresolvedPointerFields": 0,
+    "failedLabelSpans": 7,
+    "excludedAssemblyOrUnclassifiedSpans": 27,
+    "nativeRoutineCalls": 352,
+    "nativeRoutineVariants": 16,
+    "ambiguousOriginalAliases": 40
+  },
+  "nativeExeSha256": "088ED5C78C25F620F4661297F8B7F946FB01A67C3C8E3B71CCCA19C82EA79A10",
+  "status": "development-only-not-playable",
+  "convertedDialogueSha256": "849A3D7DA2EEA8FE405CE7040D7C2F0008FEB3E90A6BFA5FD97D6488F88F22B1",
+  "limitations": [
+    "No playable Redux pack",
+    "Seven rejected jump-table spans",
+    "Forty ambiguous original-address aliases",
+    "Sixteen unported SNES routine variants",
+    "Graphics and tables not integrated",
+    "Full Redux progression and randomizer audit not run"
+  ],
+  "tests": [
+    {
+      "checks": 19,
+      "test": "native-redux-commands",
+      "exitCode": 0
+    },
+    {
+      "exitCode": 0,
+      "test": "native-converted-title-KeyItems_Title"
+    },
+    {
+      "exitCode": 0,
+      "test": "native-converted-title-Tools_Title"
+    },
+    {
+      "exitCode": 0,
+      "test": "native-converted-title-Warrior"
+    },
+    {
+      "exitCode": 0,
+      "test": "native-converted-title-Return"
+    }
+  ],
+  "format": "maternalbound-native-dev-validation-v1"
+}

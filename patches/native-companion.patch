@@ -1,5 +1,5 @@
 diff --git a/port/unix/main.c b/port/unix/main.c
-index f625aff..b044b57 100644
+index f625aff..05227e7 100644
 --- a/port/unix/main.c
 +++ b/port/unix/main.c
 @@ -32,9 +32,13 @@
@@ -16,7 +16,7 @@ index f625aff..b044b57 100644
  #include "game/settings.h"
  #include "core/log.h"
  #include "core/state_dump.h"
-@@ -368,10 +372,25 @@ static void migrate_legacy_saves_to_saves_folder(void) {
+@@ -368,12 +372,30 @@ static void migrate_legacy_saves_to_saves_folder(void) {
  
  int main(int argc, char *argv[]) {
      chdir_to_executable_dir(); /* before anything below touches a relative path */
@@ -41,8 +41,13 @@ index f625aff..b044b57 100644
 +    int pc_capture_frame=-1;
      bool keyitems_selftest = false;
      bool joinlevel_selftest = false;
++    bool redux_vm_selftest = false;
++    const char *redux_title_test_path = NULL, *redux_title_expected = NULL;
++    uint32_t redux_title_address = 0;
      bool threed_zombie_flag_check = false;
-@@ -396,7 +415,22 @@ int main(int argc, char *argv[]) {
+     bool threed_zombie_flag_fix = false;
+     bool jeff_flag_fix = false;
+@@ -396,7 +418,22 @@ int main(int argc, char *argv[]) {
  #endif
  
      for (int i = 1; i < argc; i++) {
@@ -66,7 +71,22 @@ index f625aff..b044b57 100644
              verify_rom_path = argv[++i];
  #ifdef EB_RUNTIME_ASSETS
          } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
-@@ -536,7 +570,7 @@ int main(int argc, char *argv[]) {
+@@ -420,6 +457,14 @@ int main(int argc, char *argv[]) {
+              * --save FILE. Implies headless. */
+             keyitems_selftest = true;
+             platform_headless = true;
++        } else if (strcmp(argv[i], "--selftest-redux-title") == 0 && i+3 < argc) {
++            redux_title_test_path = argv[++i];
++            redux_title_address = (uint32_t)strtoul(argv[++i], NULL, 0);
++            redux_title_expected = argv[++i];
++            platform_headless = true;
++        } else if (strcmp(argv[i], "--selftest-redux-vm") == 0) {
++            redux_vm_selftest = true;
++            platform_headless = true;
+         } else if (strcmp(argv[i], "--selftest-joinlevel") == 0) {
+             /* Join-level scaling (Paula/Jeff/Poo scaled to Ness's current
+              * level, see add_char_to_party()'s doc comment, inventory.c).
+@@ -536,7 +581,7 @@ int main(int argc, char *argv[]) {
  #else
                              " [--export-pak FILE]"
  #endif
@@ -75,7 +95,7 @@ index f625aff..b044b57 100644
                      argv[0]);
              return 1;
          }
-@@ -630,6 +664,10 @@ int main(int argc, char *argv[]) {
+@@ -630,6 +675,10 @@ int main(int argc, char *argv[]) {
       * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
       * platform-conventional data dir (see eb_runtime_assets_default_path). */
      char default_assets_path[1024];
@@ -86,7 +106,7 @@ index f625aff..b044b57 100644
      if (assets_path == NULL) {
          assets_path = getenv("EB_ASSETS_PAK");
      }
-@@ -916,6 +954,8 @@ int main(int argc, char *argv[]) {
+@@ -916,6 +965,8 @@ int main(int argc, char *argv[]) {
       * itself (sdl2_video.c is platform-agnostic and already correct). */
      SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
@@ -95,7 +115,7 @@ index f625aff..b044b57 100644
      /* Initialize SDL */
      uint32_t sdl_flags = SDL_INIT_TIMER;
      if (!platform_headless) {
-@@ -938,6 +978,7 @@ int main(int argc, char *argv[]) {
+@@ -938,6 +989,7 @@ int main(int argc, char *argv[]) {
      platform_input_init();
      platform_save_init();
      settings_load();
@@ -103,7 +123,7 @@ index f625aff..b044b57 100644
      /* Resume logging automatically if a previous session left the Config
       * menu's "Logging" row on -- a tester shouldn't have to re-enable it
       * after every relaunch (including the updater's own self-relaunch) to
-@@ -966,6 +1007,24 @@ int main(int argc, char *argv[]) {
+@@ -966,6 +1018,24 @@ int main(int argc, char *argv[]) {
      /* Initialize game systems */
      game_init();
  
@@ -128,7 +148,20 @@ index f625aff..b044b57 100644
      /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
       * fresh boot. Just requests it here -- the normal per-frame
       * host_process_frame()/host_root_boundary() pump below does the actual
-@@ -1208,7 +1267,7 @@ int main(int argc, char *argv[]) {
+@@ -994,6 +1064,12 @@ int main(int argc, char *argv[]) {
+         exit(ok_ki ? 0 : 1);
+     }
+ 
++    if (redux_vm_selftest) {
++        exit(maternalbound_vm_selftest() ? 0 : 1);
++    }
++    if (redux_title_test_path) {
++        exit(maternalbound_title_content_selftest(redux_title_test_path, redux_title_address, redux_title_expected) ? 0 : 1);
++    }
+     if (joinlevel_selftest) {
+         bool ok_jl = join_level_scaling_selftest();
+         fprintf(stderr, "join-level scaling self-test: %s\n", ok_jl ? "PASS" : "FAIL");
+@@ -1208,7 +1284,7 @@ int main(int argc, char *argv[]) {
           * --msu-dir/--msu-name flags, and nothing to add to a Steam
           * shortcut's Launch Options (editing those is real friction, and
           * has to be redone every time the pack changes). */
@@ -137,7 +170,7 @@ index f625aff..b044b57 100644
          char detected_name[128];
          const char *name = msu_name;
  
-@@ -1278,8 +1337,16 @@ int main(int argc, char *argv[]) {
+@@ -1278,8 +1354,16 @@ int main(int argc, char *argv[]) {
      platform_timer_frame_start();
  
      for (int frame_num = 0; !platform_input_quit_requested(); frame_num++) {
@@ -1163,8 +1196,175 @@ index ef6571c..ec7e8b0 100644
          bt.battle_exp_scratch = (bt.battle_exp_scratch + (uint32_t)(alive_count - 1)) / (uint32_t)alive_count;
      }
  }
+diff --git a/src/game/display_text.c b/src/game/display_text.c
+index 9b2cb3d..85406be 100644
+--- a/src/game/display_text.c
++++ b/src/game/display_text.c
+@@ -185,6 +185,83 @@ void restore_window_text_attributes(void) {
+  * get_working_memory() always returns 0, causing JUMP_IF_FALSE to always jump. */
+ static WindowInfo dummy_window;
+ 
++bool maternalbound_vm_selftest(void) {
++    const uint8_t *saved_blob = dialogue_blob;
++    size_t saved_size = dialogue_blob_size;
++    WindowInfo saved_dummy = dummy_window;
++    uint16_t saved_focus = win.current_focus_window;
++    uint32_t saved_cash = game_state.money_carried;
++    uint32_t saved_bank = game_state.bank_balance;
++    uint8_t saved_order[sizeof(game_state.party_order)];
++    memcpy(saved_order, game_state.party_order, sizeof(saved_order));
++    win.current_focus_window = WINDOW_ID_NONE;
++    bool ok = true;
++    unsigned checks = 0;
++    const struct {
++        uint8_t sub;
++        uint32_t operand, argument, balance, expected_balance, expected_result;
++    } cases[] = {
++        {0x18, 25, 0, 100, 125, 0},
++        {0x18, 25, 0, 99974, 99999, 0},
++        {0x18, 25, 0, 99975, 99975, 1},
++        {0x18, 0, 500, 100, 600, 0},
++        {0x18, 0, 0, 100, 100, 0},
++        {0x19, 25, 0, 100, 100, 0},
++        {0x19, 25, 0, 99999, 99999, 25},
++        {0x1A, 100, 0, 9999899, 9999899, 0},
++        {0x1A, 100, 0, 9999900, 9999900, 1},
++        {0x1A, 0, 100, 9999999, 9999999, 100},
++        {0x18, UINT32_MAX, 0, 99999, 99999, UINT32_MAX},
++    };
++    for (size_t i = 0; i < sizeof(cases)/sizeof(cases[0]); ++i) {
++        const uint32_t amount = cases[i].operand;
++        uint8_t script[] = {cases[i].sub, amount & 255, (amount >> 8) & 255,
++                            (amount >> 16) & 255, (amount >> 24) & 255};
++        dialogue_blob = script;
++        dialogue_blob_size = sizeof(script);
++        ScriptReader reader = {TEXT_SRC_DIALOGUE, 0, sizeof(script), -1};
++        ModeState child = {0}; GameMode mode = 0;
++        uint8_t resume = 0; uint16_t window = 0; uint32_t arg = 0;
++        game_state.money_carried = game_state.bank_balance = cases[i].balance;
++        set_argument_memory(cases[i].argument);
++        bool pushed = cc_1a_dispatch(&reader, &child, &mode, &resume, &window, &arg);
++        uint32_t balance = cases[i].sub == 0x1A ? game_state.bank_balance : game_state.money_carried;
++        bool passed = !pushed && reader.ptr_off == sizeof(script) &&
++            balance == cases[i].expected_balance && get_working_memory() == cases[i].expected_result;
++        ok &= passed; ++checks;
++        if (!passed) fprintf(stderr, "Redux VM money case %zu failed\n", i);
++    }
++    const uint8_t order[] = {3, 1, 16, 2, 0, 0};
++    memcpy(game_state.party_order, order, sizeof(order));
++    const struct {uint8_t sub, operand; uint32_t argument, working, expected;} register_cases[] = {
++        {0x11, 1, 0, 0, 2}, {0x11, 16, 0, 0, 3}, {0x11, 4, 0, 0, 0},
++        {0x11, 0, 3, 0, 1}, {0x11, 0, 0, 0, 0},
++        {0x21, 0, 0x12345678, 0x12345678, 1},
++        {0x21, 0, 0x12345678, 0x22345678, 0},
++        {0x21, 0, 0x12345678, 0x12345679, 0},
++    };
++    for (size_t i = 0; i < sizeof(register_cases)/sizeof(register_cases[0]); ++i) {
++        uint8_t script[] = {register_cases[i].sub, register_cases[i].operand};
++        size_t size = register_cases[i].sub == 0x11 ? 2 : 1;
++        dialogue_blob = script; dialogue_blob_size = size;
++        ScriptReader reader = {TEXT_SRC_DIALOGUE, 0, (uint32_t)size, -1};
++        ModeState child = {0}; GameMode mode = 0;
++        uint8_t resume = 0; uint16_t window = 0; uint32_t arg = 0;
++        set_argument_memory(register_cases[i].argument);
++        set_working_memory(register_cases[i].working);
++        bool pushed = cc_1a_dispatch(&reader, &child, &mode, &resume, &window, &arg);
++        bool passed = !pushed && reader.ptr_off == size && get_working_memory() == register_cases[i].expected;
++        ok &= passed; ++checks;
++        if (!passed) fprintf(stderr, "Redux VM register case %zu failed\n", i);
++    }
++    dialogue_blob = saved_blob; dialogue_blob_size = saved_size;
++    dummy_window = saved_dummy; win.current_focus_window = saved_focus;
++    game_state.money_carried = saved_cash; game_state.bank_balance = saved_bank;
++    memcpy(game_state.party_order, saved_order, sizeof(saved_order));
++    fprintf(stderr, "Redux VM native command checks: %u, %s\n", checks, ok ? "PASS" : "FAIL");
++    return ok;
++}
++
+ WindowInfo *get_focus_window_info(void) {
+     if (win.current_focus_window == WINDOW_ID_NONE) return &dummy_window;
+     return get_window(win.current_focus_window);
+@@ -543,6 +620,62 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+     return NULL;
+ }
+ 
++bool dt_copy_plain_string(uint32_t addr, char *out, size_t capacity) {
++    if (!out || !capacity) return false;
++    out[0] = 0;
++    TextBlock *block = NULL;
++    const uint8_t *text = resolve_text_addr(addr, &block);
++    if (!text || !block) return false;
++    size_t remaining = block->size - (size_t)(text - block->data);
++    size_t copied = 0;
++    for (size_t i = 0; i < remaining; ++i) {
++        if (!text[i]) {out[copied] = 0; return true;}
++        /* Titles are plain strings; script opcodes must never become glyphs. */
++        if (text[i] < 0x20) {out[0] = 0; return false;}
++        if (copied + 1 < capacity) out[copied++] = eb_char_to_ascii(text[i]);
++    }
++    out[0] = 0;
++    return false;
++}
++
++bool maternalbound_title_content_selftest(const char *path, uint32_t address, const char *expected) {
++    FILE *file = fopen(path, "rb");
++    if (!file) return false;
++    if (fseek(file, 0, SEEK_END)) {fclose(file); return false;}
++    long length = ftell(file);
++    if (length <= 0 || length > 0xAFFFFF || fseek(file, 0, SEEK_SET)) {fclose(file); return false;}
++    uint8_t *blob = malloc((size_t)length + 6);
++    if (!blob) {fclose(file); return false;}
++    bool read_ok = fread(blob, 1, length, file) == (size_t)length;
++    fclose(file);
++    if (!read_ok) {free(blob); return false;}
++    const uint8_t *saved_blob = dialogue_blob;
++    size_t saved_size = dialogue_blob_size;
++    WindowInfo saved_window = win.windows[0];
++    uint8_t saved_focus = win.current_focus_window;
++    uint8_t saved_titles[sizeof(win.titled_windows)];
++    memcpy(saved_titles, win.titled_windows, sizeof(saved_titles));
++    memset(&win.windows[0], 0, sizeof(WindowInfo));
++    win.windows[0].active = 1; win.windows[0].id = 1;
++    win.current_focus_window = 1;
++    memset(win.titled_windows, WINDOW_ID_NONE, sizeof(win.titled_windows));
++    /* Run CC180C against the converted content using its relocated pointer. */
++    uint8_t *command = blob + length;
++    command[0] = 0x0C; command[1] = 0;
++    for (int i = 0; i < 4; ++i) command[2+i] = (uint8_t)(address >> (i*8));
++    dialogue_blob = blob; dialogue_blob_size = (size_t)length + 6;
++    ScriptReader reader = {TEXT_SRC_DIALOGUE, (uint32_t)length, (uint32_t)length+6, -1};
++    ModeState child = {0}; GameMode mode = 0; uint8_t resume = 0; uint32_t cancel = 0;
++    bool pushed = cc_18_dispatch(&reader, &child, &mode, &resume, &cancel);
++    bool ok = !pushed && reader.ptr_off == (uint32_t)length+6 && !strcmp(win.windows[0].title, expected);
++    fprintf(stderr, "Redux converted title / native CC180C: %s\n", ok ? "PASS" : "FAIL");
++    dialogue_blob = saved_blob; dialogue_blob_size = saved_size;
++    win.windows[0] = saved_window; win.current_focus_window = saved_focus;
++    memcpy(win.titled_windows, saved_titles, sizeof(saved_titles));
++    free(blob);
++    return ok;
++}
++
+ /* Print a PSI name given a PSI name ID.
+  * Port of GET_PSI_NAME (asm/text/get_psi_name.asm).
+  * psi_name_id==1 (ROCKIN) → uses favourite_thing from game_state.
+diff --git a/src/game/display_text.h b/src/game/display_text.h
+index 1289939..5d6dcd1 100644
+--- a/src/game/display_text.h
++++ b/src/game/display_text.h
+@@ -44,6 +44,11 @@ typedef struct {
+  * Returns true on success. */
+ bool display_text_init(void);
+ 
++/* Developer check: Redux commands through the real script reader/dispatcher.
++ * Runs in memory, restores state, and never writes a save. */
++bool maternalbound_vm_selftest(void);
++bool maternalbound_title_content_selftest(const char *path, uint32_t address, const char *expected);
++
+ /* No-ops kept for API compatibility (all text lives in the dialogue blob). */
+ bool display_text_load_battle_text(void);
+ void display_text_free_battle_text(void);
 diff --git a/src/game/display_text_cc.c b/src/game/display_text_cc.c
-index 950d47b..58c2aa6 100644
+index 950d47b..e43ac5c 100644
 --- a/src/game/display_text_cc.c
 +++ b/src/game/display_text_cc.c
 @@ -1,3 +1,4 @@
@@ -1172,7 +1372,15 @@ index 950d47b..58c2aa6 100644
  /*
   * Display text control code handlers.
   *
-@@ -463,7 +464,7 @@ StepResult mode_step_text_delay(ModeState *ms) {
+@@ -6,6 +7,7 @@
+  */
+ #include "game/display_text.h"
+ #include "game/display_text_internal.h"
++#include "game/maternalbound.h"
+ #include "game/game_state.h"
+ #include "game/battle.h"
+ #include "game/inventory.h"
+@@ -463,7 +465,7 @@ StepResult mode_step_text_delay(ModeState *ms) {
      }
      if (st->primed && st->cancelable && (core.pad1_pressed & PAD_TEXT_ADVANCE))
          return STEP_RESULT_POP(0);
@@ -1181,6 +1389,129 @@ index 950d47b..58c2aa6 100644
          return STEP_RESULT_POP(0);
  
      if (update_hppp_meter_work_step()) {
+@@ -1750,6 +1752,15 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+          * Saves/restores text attributes, creates money window, prints "$N". */
+         display_money_window();
+         break;
++    case 0x0C: {
++        uint8_t window_id = script_read_byte(r);
++        uint32_t address = script_read_dword(r);
++        char title[WINDOW_TITLE_SIZE];
++        if (!dt_copy_plain_string(address, title, sizeof(title)))
++            FATAL("display_text: invalid Redux title string 0x%06X\n", address);
++        set_window_title(window_id ? window_id : win.current_focus_window, title, -1);
++        break;
++    }
+     case 0x0D: {
+         /* DISPLAY_STATUS: 2 args (char_id, mode).
+          * Port of CC_18_0D (asm/text/ccs/display_status.asm).
+@@ -2381,6 +2392,27 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+         *out_mode   = GAME_MODE_TELEPORT_MENU;
+         *out_resume = DT_RESUME_CC1A_TELEPORT;
+         return true;
++    case 0x11: {
++        uint8_t character = script_read_byte(r);
++        set_working_memory(maternalbound_party_position(game_state.party_order,
++            sizeof(game_state.party_order), character, get_argument_memory()));
++        break;
++    }
++    case 0x18:
++    case 0x19:
++    case 0x1A: {
++        uint32_t amount = script_read_dword(r);
++        uint32_t balance = sub == 0x1A ? game_state.bank_balance : game_state.money_carried;
++        uint32_t updated, result;
++        if (!maternalbound_money(sub, amount, get_argument_memory(), balance, &updated, &result))
++            FATAL("display_text: invalid Redux money command\n");
++        if (sub == 0x18) game_state.money_carried = updated;
++        set_working_memory(result);
++        break;
++    }
++    case 0x21:
++        set_working_memory(maternalbound_registers_equal(get_working_memory(), get_argument_memory()));
++        break;
+     default:
+         FATAL("display_text: unknown CC 1A %02X\n", sub);
+         break;
+diff --git a/src/game/display_text_internal.h b/src/game/display_text_internal.h
+index 7a668e8..03fdc52 100644
+--- a/src/game/display_text_internal.h
++++ b/src/game/display_text_internal.h
+@@ -21,6 +21,7 @@ uint16_t script_read_word(ScriptReader *r);
+ uint32_t script_read_dword(ScriptReader *r);
+ void script_skip(ScriptReader *r, int n);
+ void resolve_text_jump(ScriptReader *r, uint32_t addr);
++bool dt_copy_plain_string(uint32_t addr, char *out, size_t capacity);
+ 
+ /* Data helpers (display_text.c) */
+ void toggle_hppp_flipout_mode(uint16_t enable);
+diff --git a/src/game/maternalbound.c b/src/game/maternalbound.c
+new file mode 100644
+index 0000000..3ba90a5
+--- /dev/null
++++ b/src/game/maternalbound.c
+@@ -0,0 +1,38 @@
++/* SPDX-License-Identifier: GPL-3.0-only
++ * Native adaptation of MaternalBound Redux's documented CCExpand behavior.
++ * Credit: ShadowOne333 and upstream contributors; see CREDITS.md and source
++ * references below. This module is licensed separately from the foundation. */
++#include "game/maternalbound.h"
++#include <limits.h>
++
++/* Source: Redux bugfixes/try_give_money.ccs and try_deposit_money.ccs.
++ * 1A18 commits only if the complete gift fits; 1A19 and 1A1A query without
++ * changing either balance. Zero operands use the argument register. */
++bool maternalbound_money(uint8_t command, uint32_t operand, uint32_t argument,
++                        uint32_t balance, uint32_t *new_balance, uint32_t *result) {
++    if (!new_balance || !result || (command != 0x18 && command != 0x19 && command != 0x1A))
++        return false;
++    uint32_t amount = operand ? operand : argument;
++    uint32_t limit = command == 0x1A ? 9999999u : 99999u;
++    uint64_t total = (uint64_t)balance + amount;
++    uint64_t excess = total > limit ? total - limit : 0;
++    /* Never let a wrapped result report success for an oversized gift. */
++    *result = excess > UINT32_MAX ? UINT32_MAX : (uint32_t)excess;
++    *new_balance = command == 0x18 && !excess ? (uint32_t)total : balance;
++    return true;
++}
++
++/* Source: essential/cc_char_in_party.ccs. Includes NPCs and current ordering. */
++uint32_t maternalbound_party_position(const uint8_t *order, size_t count,
++                                     uint32_t character, uint32_t argument) {
++    uint32_t wanted = character ? character : argument;
++    if (!order || !wanted || wanted > UINT8_MAX) return 0;
++    for (size_t i = 0; i < count; ++i)
++        if (order[i] == wanted) return (uint32_t)i + 1;
++    return 0;
++}
++
++/* Source: redux/goods_menu_equip.ccs CompareResToArg, both 16-bit words. */
++uint32_t maternalbound_registers_equal(uint32_t result, uint32_t argument) {
++    return result == argument ? 1u : 0u;
++}
+diff --git a/src/game/maternalbound.h b/src/game/maternalbound.h
+new file mode 100644
+index 0000000..d6bd9f7
+--- /dev/null
++++ b/src/game/maternalbound.h
+@@ -0,0 +1,17 @@
++/* SPDX-License-Identifier: GPL-3.0-only */
++#ifndef GAME_MATERNALBOUND_H
++#define GAME_MATERNALBOUND_H
++
++#include <stdbool.h>
++#include <stddef.h>
++#include <stdint.h>
++
++/* Native implementations of Redux CCExpand commands. These do not execute
++ * 65816 code. Unsupported commands remain errors in the text dispatcher. */
++bool maternalbound_money(uint8_t command, uint32_t operand, uint32_t argument,
++                        uint32_t balance, uint32_t *new_balance, uint32_t *result);
++uint32_t maternalbound_party_position(const uint8_t *order, size_t count,
++                                     uint32_t character, uint32_t argument);
++uint32_t maternalbound_registers_equal(uint32_t result, uint32_t argument);
++
++#endif
 diff --git a/src/game/overworld.c b/src/game/overworld.c
 index 723f690..3dcfa17 100644
 --- a/src/game/overworld.c

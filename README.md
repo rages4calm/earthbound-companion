@@ -3,7 +3,7 @@
 **A native Windows adaptation of EarthBound that is now evolving into a MaternalBound Redux PC edition with HD and ultrawide output, native MSU music, PC settings, quality-of-life options, mod profiles, and a progression-conscious randomizer.**
 
 > [!WARNING]
-> **The downloadable v0.4.0 preview uses the original EarthBound (USA) story and does not contain MaternalBound Redux.** The main v0.5 development branch has the native Redux compiler bridge, a dedicated launcher status page, and Story Shuffle v3's content profiles. Redux gameplay is still being converted and is not yet shipped. Progress is tracked in [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **The downloadable v0.4.0 preview uses the original EarthBound (USA) story and does not contain MaternalBound Redux.** The main v0.5 development branch now includes a Redux dialogue converter and initial native command handlers, alongside the launcher status page and Story Shuffle v3's content profiles. Redux gameplay is still incomplete and is not yet shipped. Progress is tracked in [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
 The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. MaternalBound randomization remains locked until the converted Redux pack and its separate progression audit pass, preventing a partially ported profile from generating unsafe seeds.
 
@@ -98,7 +98,7 @@ This generator is inspired by the EarthBound randomizer community but does not c
 ## Current boundaries
 
 - A complete start-to-ending playthrough of this specific build has not yet been verified.
-- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is now an active native conversion target. The official source builds locally and the bridge inventory is generated, but the rewritten scripts, data, graphics, and 65816 behavior are not yet playable in the native game.
+- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is being adapted to native C. The current development checkpoint converts 7,133 dialogue spans and has six custom native handlers, with 19 command checks and four converted-title checks passing. Rejected script spans, original entry-point aliases, remaining routines, graphics, tables and progression validation still prevent a playable Redux edition.
 - Arbitrary IPS, BPS and EBP patches cannot be loaded as native mods; their game-code changes require explicit ports.
 - The release is a Windows x64 private test build. Bug reports should include `UserData/game.log` and a normal phone save when possible.
 

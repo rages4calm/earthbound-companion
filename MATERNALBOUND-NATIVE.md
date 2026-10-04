@@ -28,6 +28,35 @@ The first direct extraction test used the verified official v1.1 BPS patch. Extr
 
 The generated manifest is evidence and a porting map. Its status is deliberately `inventory-only-native-port-incomplete`; generating it does not make the native game Redux-compatible.
 
+### Dialogue conversion and native handlers
+
+The October 4 development checkpoint goes beyond that inventory. [`scripts/maternalbound_dialogue.py`](scripts/maternalbound_dialogue.py) reads the locally compiled Redux ROM, checks its exact checksum and all 191 source-file checksums against the bridge, parses the script instructions, expands compressed text, and rewrites script pointers for the native text VM.
+
+- 7,133 accepted label spans produced 545,615 bytes of converted dialogue.
+- 10,054 pointer fields were relocated, with zero unresolved targets within those accepted spans.
+- Seven spans were rejected because their jump-table operands are truncated. They are recorded as errors rather than repaired silently.
+- Forty original-address aliases remain ambiguous. The converter does not choose between duplicate definitions; those must be resolved before replacing the native engine's original entry points.
+- Sixteen distinct SNES routine/return-type combinations are still unported, with 352 call sites in the accepted scripts.
+- Six custom native handlers now exist: safe money gifts, wallet-capacity checks, bank-capacity checks, current party position, full-width register equality, and string-based window titles.
+
+The native build passed 19 command checks through its real script reader and dispatchers. Four title strings from the actual converted Redux blob passed through native CC180C and the existing font-rendering path. Eleven synthetic converter tests cover compressed-text boundaries, pointer widths, malformed tables, dual-column menu callbacks, unknown commands, and source classification. The original build's input/MSU, save-state, key-items and join-level checks also passed after these changes.
+
+These are bounded development tests. They do **not** establish playable Redux gameplay, six-letter-name compatibility, complete native routine coverage, converted graphics/tables, or safe Redux randomizer progression. The converted blob is private local game content and is deliberately excluded from this repository and releases. The metadata-only [conversion report](research/maternalbound-dialogue-report.json) and [native test record](validation/native-redux-results.json) identify the precise checkpoint.
+
+To reproduce the compiler stage after building the pinned Redux source locally:
+
+```powershell
+python scripts/maternalbound_dialogue.py `
+  --bridge research/maternalbound-native-bridge.json `
+  --project "PATH\TO\MaternalBound-Redux\Project" `
+  --compiled-rom "PATH\TO\MaternalBound-Redux\Mother 2.sfc" `
+  --native-source native-source `
+  --output-dir "LOCAL\redux-dialogue"
+python scripts/test_maternalbound_dialogue.py
+```
+
+Use the native source's Python environment so `ebtools` dependencies are available. [`scripts/Verify-MaternalBound-Dev.ps1`](scripts/Verify-MaternalBound-Dev.ps1) runs the native command and converted-title checks using explicit executable, base-asset, converted-directory, bridge and scratch-directory paths. It records `development-only-not-playable` even when all of those tests pass. This compiler checkpoint targets the pinned current upstream source; official v1.1 remains a separate compatibility target.
+
 ## Port order
 
 1. Generate versioned Redux label and relocation maps during local setup.

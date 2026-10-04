@@ -20,6 +20,7 @@ All contributors to those repositories retain credit for their work. Companion�
 
 - **Conn** — EarthBound MSU-1 implementation work.
 - **ShadowOne333** — [EarthBound MSU-1 pack](https://archive.org/details/earthbound-msu-1-pack), track loop rules, and [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux).
+- **MaternalBound Redux contributors** — the native command adaptation follows their documented CCScript semantics. The [safe money commands](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/bugfixes/try_give_money.ccs), [SupremeKirb's party-position command](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/essential/cc_char_in_party.ccs), and [the window-title extension](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/window_titles.ccs) inform the initial native handlers. **jtolmar**, **cooprocks123e**, **Catador**, **SupremeKirb**, and the other authors credited in those source files retain credit for their extensions. These handlers do not establish support for the complete hack.
 - [stochaztic/eb-randomizer](https://github.com/stochaztic/eb-randomizer) and [earthbound.app](https://earthbound.app/) — randomizer behavior and softlock-risk research. Companion’s Story Shuffle is an independent native implementation and does not reproduce their seed format.
 - [Raid-rgb/Earthbound-Widescreen-patch-for-BSNES-HD](https://github.com/Raid-rgb/Earthbound-Widescreen-patch-for-BSNES-HD) — compared during widescreen research; not bundled or applied.
 - [ShrineFox/EarthBound-Mod-Menu](https://github.com/ShrineFox/EarthBound-Mod-Menu) — ROM-side QoL reference; not bundled or applied.
@@ -34,6 +35,8 @@ All contributors to those repositories retain credit for their work. Companion�
 - [LakeSnes](https://github.com/elzo-d/LakeSnes) contributors — software SNES graphics/audio implementation lineage. Notice included.
 - Brad Conte’s [crypto-algorithms](https://github.com/B-Con/crypto-algorithms) — SHA-256 implementation lineage. Notice included.
 - [PyInstaller](https://github.com/pyinstaller/pyinstaller) — standalone first-run ROM extraction helper.
+- [pk-hack/CoilSnake](https://github.com/pk-hack/CoilSnake) — builds the upstream MaternalBound development source for the local native-conversion work.
+- [charasyn/ccscript_legacy](https://github.com/charasyn/ccscript_legacy) — legacy CCScript compiler dependency, locally updated to build under C++17.
 
 ## Companion work
 

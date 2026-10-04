@@ -1,0 +1,1193 @@
+{
+  "format": "maternalbound-native-dialogue-report-v1",
+  "status": "development-only-not-playable",
+  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+  "counts": {
+    "convertedLabelSpans": 7133,
+    "convertedBytes": 545615,
+    "relocatedPointerFields": 10054,
+    "unresolvedPointerFields": 0,
+    "failedLabelSpans": 7,
+    "excludedAssemblyOrUnclassifiedSpans": 27,
+    "nativeRoutineCalls": 352,
+    "nativeRoutineVariants": 16,
+    "ambiguousOriginalAliases": 40
+  },
+  "nativeCustomHandlers": [
+    "redux_try_give_money",
+    "redux_can_give_money",
+    "redux_can_deposit_money",
+    "redux_character_in_party",
+    "redux_compare_result_argument",
+    "redux_title_string"
+  ],
+  "remainingCustomCommands": [
+    "redux_item_determiner",
+    "redux_native_routine",
+    "redux_title_character",
+    "redux_wait_input_timeout",
+    "redux_zero_width_space"
+  ],
+  "blobSha256": "849A3D7DA2EEA8FE405CE7040D7C2F0008FEB3E90A6BFA5FD97D6488F88F22B1",
+  "opcodes": {
+    "activate_hotspot": 58,
+    "add_item_id_to_work_memory": 84,
+    "add_party_member": 122,
+    "add_to_atm": 17,
+    "add_to_wallet": 19,
+    "apply_music_effect": 112,
+    "boost_guts": 3,
+    "boost_iq": 3,
+    "boost_luck": 4,
+    "boost_speed": 4,
+    "boost_vitality": 2,
+    "call_text": 2333,
+    "change_character_direction": 108,
+    "change_generated_sprite_direction": 26,
+    "change_map_palette": 33,
+    "change_party_direction": 4,
+    "change_tpt_entry_direction": 63,
+    "character_has_ailment": 49,
+    "check_event_flag": 323,
+    "check_for_inequality": 354,
+    "check_if_character_doesnt_have_item": 1,
+    "check_if_character_has_item": 24,
+    "check_item_usable_by_slot": 2,
+    "clear_event_flag": 853,
+    "clear_loaded_strings": 3,
+    "clear_text_line": 853,
+    "clear_window": 84,
+    "close_all_windows": 887,
+    "close_window": 336,
+    "copy_active_memory_to_storage": 134,
+    "copy_active_memory_to_working_memory": 101,
+    "copy_storage_memory_to_active": 227,
+    "copy_to_argmem": 222,
+    "copy_working_memory_to_active_memory": 100,
+    "create_entity": 50,
+    "create_floating_sprite_near_character": 53,
+    "create_floating_sprite_near_entity": 11,
+    "create_floating_sprite_near_tpt_entry": 36,
+    "create_number_selector": 23,
+    "create_selection_menu": 319,
+    "deactivate_hotspot": 23,
+    "delay_tpt_appearance": 82,
+    "delete_all_npcs": 2,
+    "delete_first_npc": 2,
+    "delete_floating_sprite_near_character": 73,
+    "delete_floating_sprite_near_entity": 11,
+    "delete_floating_sprite_near_tpt_entry": 36,
+    "delete_generated_sprite": 130,
+    "delete_tpt_instance": 125,
+    "deliver_escargo_express_item": 1,
+    "deplete_hp_percent": 6,
+    "deplete_pp_percent": 4,
+    "disable_controller_input": 44,
+    "disable_sector_music_change": 1,
+    "disable_sprite_movement": 75,
+    "display_psi_animation": 210,
+    "display_shop_menu": 63,
+    "enable_blinking_triangle": 6,
+    "enable_controller_input": 42,
+    "enable_npc_movement": 85,
+    "enable_sprite_movement": 76,
+    "end_block": 6009,
+    "equip_item_to_character": 34,
+    "escargo_express_item_status": 11,
+    "escargo_express_move": 1,
+    "escargo_express_store": 8,
+    "force_text_alignment": 12,
+    "generate_active_sprite": 544,
+    "generate_random_number": 23,
+    "get_buy_price_of_item": 7,
+    "get_character_name_letter": 2,
+    "get_character_number": 326,
+    "get_character_status": 2,
+    "get_current_inventory_item": 102,
+    "get_current_number": 3,
+    "get_direction_of_object_from_character": 64,
+    "get_direction_of_object_from_npc": 27,
+    "get_direction_of_object_from_sprite": 4,
+    "get_escargo_express_item": 4,
+    "get_escargo_express_item_by_slot": 5,
+    "get_exp_for_next_level": 1,
+    "get_game_state_c4": 2,
+    "get_interacting_event_flag": 1,
+    "get_item_category": 1,
+    "get_letter_from_stat": 5,
+    "get_player_controlled_party_count": 1,
+    "get_player_has_inventory_full": 4,
+    "get_player_has_inventory_room": 101,
+    "get_queued_item_data": 33,
+    "get_sell_price_of_item": 10,
+    "get_window_menu_option_count": 4,
+    "give_experience": 2,
+    "give_item_to_character": 24,
+    "give_item_to_character_b": 194,
+    "halt_with_prompt": 6749,
+    "halt_with_prompt_always": 94,
+    "halt_without_prompt": 2624,
+    "have_enough_money": 71,
+    "have_enough_money_in_atm": 11,
+    "have_x_party_members": 30,
+    "increment_workmem": 44,
+    "inflict_status": 60,
+    "is_item_condiment": 2,
+    "is_item_drink": 1,
+    "jump": 1348,
+    "jump_if_false": 890,
+    "jump_if_flag_set": 2592,
+    "jump_if_true": 535,
+    "jump_multi": 375,
+    "jump_multi2": 282,
+    "line_break": 8059,
+    "load_special": 7,
+    "load_special_for_jump_multi": 7,
+    "load_string_to_memory": 1025,
+    "make_invisible": 85,
+    "make_visible": 83,
+    "open_hp_pp_windows": 46,
+    "open_phone_menu": 2,
+    "open_window": 621,
+    "party_member_selection_menu_uncancellable": 16,
+    "pause": 4299,
+    "play_music": 168,
+    "play_sound": 1228,
+    "print_action_amount": 45,
+    "print_action_target_name": 115,
+    "print_action_user_name": 264,
+    "print_char": 9,
+    "print_char_name": 548,
+    "print_horizontal_text_string": 261,
+    "print_item_name": 582,
+    "print_number": 95,
+    "print_psi_name": 7,
+    "print_special_gfx": 195,
+    "print_stat": 234,
+    "print_vertical_text_string": 71,
+    "put_val_in_argmem": 29,
+    "realize_psi": 6,
+    "recover_hp_percent": 14,
+    "recover_pp_percent": 11,
+    "redux_can_deposit_money": 3,
+    "redux_compare_result_argument": 4,
+    "redux_item_determiner": 3,
+    "redux_menu_keep_options": 1,
+    "redux_native_routine": 352,
+    "redux_title_character": 56,
+    "redux_title_string": 500,
+    "redux_try_give_money": 3,
+    "redux_wait_input_timeout": 1,
+    "redux_zero_width_space": 5,
+    "remove_party_member": 40,
+    "resolve_cc_table_data": 1,
+    "restore_default_music": 122,
+    "restore_movement": 104,
+    "restrict_player_movement_when_camera_repositioned": 113,
+    "ride_bicycle": 2,
+    "save_game": 6,
+    "save_window_text_attributes": 49,
+    "screen_reload_ptr": 39,
+    "select_escargo_express_item": 4,
+    "selection_menu_allow_cancel": 8,
+    "set_camera_focus_by_sprite_id": 122,
+    "set_character_level": 15,
+    "set_event_flag": 2205,
+    "set_player_lock": 101,
+    "set_respawn_point": 31,
+    "set_sprite_movement_code": 89,
+    "set_text_printing_sound": 68,
+    "set_tpt_direction_down": 1,
+    "set_tpt_direction_up": 1,
+    "set_tpt_movement_code": 334,
+    "show_character_inventory": 24,
+    "show_wallet_window": 120,
+    "start_new_line": 995,
+    "stop_music": 26,
+    "store_coordinates_to_memory": 1,
+    "store_to_argmem": 482,
+    "summon_wandering_photographer": 32,
+    "swap_working_and_arg_memory": 577,
+    "switch_to_window": 314,
+    "take_from_atm": 5,
+    "take_from_wallet": 60,
+    "take_item_from_character": 34,
+    "take_item_from_character_2": 37,
+    "teleport_to": 316,
+    "teleport_to_stored_coordinates": 1,
+    "test_if_exit_mouse_usable": 1,
+    "test_if_workmem_false": 1,
+    "test_if_workmem_true": 402,
+    "test_is_user_targetting_self": 6,
+    "transfer_item_to_queue": 8,
+    "trigger_battle": 96,
+    "trigger_event": 103,
+    "trigger_movement_code": 535,
+    "trigger_psi_teleport": 9,
+    "trigger_timed_event": 11,
+    "try_fix_item": 2,
+    "use_mr_saturn_font": 66,
+    "use_normal_font": 84,
+    "warp_party_to_tpt_entry": 3
+  },
+  "failures": [
+    {
+      "module": "data_41",
+      "labels": [
+        "l_0xc842f9"
+      ],
+      "address": 16348502,
+      "error": "truncated operand at +0x7C, need 4 bytes"
+    },
+    {
+      "module": "data_41",
+      "labels": [
+        "l_0xc849ed"
+      ],
+      "address": 16350924,
+      "error": "truncated operand at +0x7C, need 4 bytes"
+    },
+    {
+      "module": "data_41",
+      "labels": [
+        "l_0xc84fd8"
+      ],
+      "address": 16353160,
+      "error": "truncated operand at +0x7C, need 4 bytes"
+    },
+    {
+      "module": "data_41",
+      "labels": [
+        "l_0xc8567b"
+      ],
+      "address": 16355629,
+      "error": "truncated operand at +0x7C, need 4 bytes"
+    },
+    {
+      "module": "data_42",
+      "labels": [
+        "l_0xc85bd4"
+      ],
+      "address": 16049389,
+      "error": "truncated operand at +0x7C, need 4 bytes"
+    },
+    {
+      "module": "data_42",
+      "labels": [
+        "l_0xc85f76"
+      ],
+      "address": 16050667,
+      "error": "truncated operand at +0x7C, need 4 bytes"
+    },
+    {
+      "module": "data_60",
+      "labels": [
+        "l_0xc9f897"
+      ],
+      "address": 16484132,
+      "error": "truncated operand at +0xB4, need 4 bytes"
+    }
+  ],
+  "unresolvedTargets": [],
+  "nativeRoutines": [
+    {
+      "address": 12648448,
+      "names": [],
+      "returnType": 0,
+      "calls": 2,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 12664067,
+      "names": [],
+      "returnType": 0,
+      "calls": 1,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 12664551,
+      "names": [],
+      "returnType": 0,
+      "calls": 1,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 12838090,
+      "names": [],
+      "returnType": 0,
+      "calls": 1,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 12838100,
+      "names": [],
+      "returnType": 0,
+      "calls": 1,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16029647,
+      "names": [
+        "data_24.HP_Box_Control"
+      ],
+      "returnType": 0,
+      "calls": 1,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16029653,
+      "names": [],
+      "returnType": 0,
+      "calls": 2,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16029659,
+      "names": [],
+      "returnType": 0,
+      "calls": 1,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16513283,
+      "names": [
+        "psi_battle_anims.In_Battle_Check"
+      ],
+      "returnType": 1,
+      "calls": 2,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16529402,
+      "names": [
+        "cc_effects.doFadeOut"
+      ],
+      "returnType": 0,
+      "calls": 3,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16529504,
+      "names": [
+        "cc_effects.doLetterbox"
+      ],
+      "returnType": 0,
+      "calls": 122,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16529562,
+      "names": [
+        "cc_effects.instantLetterbox"
+      ],
+      "returnType": 0,
+      "calls": 17,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16529602,
+      "names": [
+        "cc_effects.closeLetterbox"
+      ],
+      "returnType": 0,
+      "calls": 162,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16531263,
+      "names": [
+        "ccexpand.CCUseItem",
+        "ccexpand.SwirlDisplayRGB"
+      ],
+      "returnType": 0,
+      "calls": 29,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16534190,
+      "names": [
+        "run_stamina_mechanic.stamina_reset"
+      ],
+      "returnType": 0,
+      "calls": 5,
+      "nativeStatus": "unported"
+    },
+    {
+      "address": 16538430,
+      "names": [
+        "reset_routine.Reset"
+      ],
+      "returnType": 0,
+      "calls": 2,
+      "nativeStatus": "unported"
+    }
+  ],
+  "unresolvedOriginalAliases": [
+    {
+      "originalAddress": 12947253,
+      "candidates": [
+        {
+          "compiledAddress": 15987835,
+          "nativeAddress": 1062107
+        },
+        {
+          "compiledAddress": 16453760,
+          "nativeAddress": 1096331
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947481,
+      "candidates": [
+        {
+          "compiledAddress": 15988601,
+          "nativeAddress": 1062873
+        },
+        {
+          "compiledAddress": 16454526,
+          "nativeAddress": 1097097
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947484,
+      "candidates": [
+        {
+          "compiledAddress": 15988604,
+          "nativeAddress": 1062876
+        },
+        {
+          "compiledAddress": 16454529,
+          "nativeAddress": 1097100
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947487,
+      "candidates": [
+        {
+          "compiledAddress": 15988607,
+          "nativeAddress": 1062879
+        },
+        {
+          "compiledAddress": 16454532,
+          "nativeAddress": 1097103
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947490,
+      "candidates": [
+        {
+          "compiledAddress": 15988610,
+          "nativeAddress": 1062882
+        },
+        {
+          "compiledAddress": 16454535,
+          "nativeAddress": 1097106
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947493,
+      "candidates": [
+        {
+          "compiledAddress": 15988613,
+          "nativeAddress": 1062885
+        },
+        {
+          "compiledAddress": 16454538,
+          "nativeAddress": 1097109
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947496,
+      "candidates": [
+        {
+          "compiledAddress": 15988616,
+          "nativeAddress": 1062888
+        },
+        {
+          "compiledAddress": 16454541,
+          "nativeAddress": 1097112
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947499,
+      "candidates": [
+        {
+          "compiledAddress": 15988619,
+          "nativeAddress": 1062891
+        },
+        {
+          "compiledAddress": 16454544,
+          "nativeAddress": 1097115
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947502,
+      "candidates": [
+        {
+          "compiledAddress": 15988622,
+          "nativeAddress": 1062894
+        },
+        {
+          "compiledAddress": 16454547,
+          "nativeAddress": 1097118
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947505,
+      "candidates": [
+        {
+          "compiledAddress": 15988625,
+          "nativeAddress": 1062897
+        },
+        {
+          "compiledAddress": 16454550,
+          "nativeAddress": 1097121
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947508,
+      "candidates": [
+        {
+          "compiledAddress": 15988628,
+          "nativeAddress": 1062900
+        },
+        {
+          "compiledAddress": 16454553,
+          "nativeAddress": 1097124
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947511,
+      "candidates": [
+        {
+          "compiledAddress": 15988631,
+          "nativeAddress": 1062903
+        },
+        {
+          "compiledAddress": 16454556,
+          "nativeAddress": 1097127
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947514,
+      "candidates": [
+        {
+          "compiledAddress": 15988634,
+          "nativeAddress": 1062906
+        },
+        {
+          "compiledAddress": 16454559,
+          "nativeAddress": 1097130
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947517,
+      "candidates": [
+        {
+          "compiledAddress": 15988637,
+          "nativeAddress": 1062909
+        },
+        {
+          "compiledAddress": 16454562,
+          "nativeAddress": 1097133
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947520,
+      "candidates": [
+        {
+          "compiledAddress": 15988640,
+          "nativeAddress": 1062912
+        },
+        {
+          "compiledAddress": 16454565,
+          "nativeAddress": 1097136
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947523,
+      "candidates": [
+        {
+          "compiledAddress": 15988643,
+          "nativeAddress": 1062915
+        },
+        {
+          "compiledAddress": 16454568,
+          "nativeAddress": 1097139
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947526,
+      "candidates": [
+        {
+          "compiledAddress": 15988646,
+          "nativeAddress": 1062918
+        },
+        {
+          "compiledAddress": 16454571,
+          "nativeAddress": 1097142
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947529,
+      "candidates": [
+        {
+          "compiledAddress": 15988649,
+          "nativeAddress": 1062921
+        },
+        {
+          "compiledAddress": 16454574,
+          "nativeAddress": 1097145
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947532,
+      "candidates": [
+        {
+          "compiledAddress": 15988652,
+          "nativeAddress": 1062924
+        },
+        {
+          "compiledAddress": 16454577,
+          "nativeAddress": 1097148
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947535,
+      "candidates": [
+        {
+          "compiledAddress": 15988655,
+          "nativeAddress": 1062927
+        },
+        {
+          "compiledAddress": 16454580,
+          "nativeAddress": 1097151
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947538,
+      "candidates": [
+        {
+          "compiledAddress": 15988658,
+          "nativeAddress": 1062930
+        },
+        {
+          "compiledAddress": 16454583,
+          "nativeAddress": 1097154
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947541,
+      "candidates": [
+        {
+          "compiledAddress": 15988661,
+          "nativeAddress": 1062933
+        },
+        {
+          "compiledAddress": 16454586,
+          "nativeAddress": 1097157
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947544,
+      "candidates": [
+        {
+          "compiledAddress": 15988664,
+          "nativeAddress": 1062936
+        },
+        {
+          "compiledAddress": 16454589,
+          "nativeAddress": 1097160
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947547,
+      "candidates": [
+        {
+          "compiledAddress": 15988667,
+          "nativeAddress": 1062939
+        },
+        {
+          "compiledAddress": 16454592,
+          "nativeAddress": 1097163
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947550,
+      "candidates": [
+        {
+          "compiledAddress": 15988670,
+          "nativeAddress": 1062942
+        },
+        {
+          "compiledAddress": 16454595,
+          "nativeAddress": 1097166
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947553,
+      "candidates": [
+        {
+          "compiledAddress": 15988673,
+          "nativeAddress": 1062945
+        },
+        {
+          "compiledAddress": 16454598,
+          "nativeAddress": 1097169
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947556,
+      "candidates": [
+        {
+          "compiledAddress": 15988676,
+          "nativeAddress": 1062948
+        },
+        {
+          "compiledAddress": 16454601,
+          "nativeAddress": 1097172
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947559,
+      "candidates": [
+        {
+          "compiledAddress": 15988679,
+          "nativeAddress": 1062951
+        },
+        {
+          "compiledAddress": 16454604,
+          "nativeAddress": 1097175
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947562,
+      "candidates": [
+        {
+          "compiledAddress": 15988682,
+          "nativeAddress": 1062954
+        },
+        {
+          "compiledAddress": 16454607,
+          "nativeAddress": 1097178
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12947565,
+      "candidates": [
+        {
+          "compiledAddress": 15988685,
+          "nativeAddress": 1062957
+        },
+        {
+          "compiledAddress": 16454610,
+          "nativeAddress": 1097181
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12949652,
+      "candidates": [
+        {
+          "compiledAddress": 15990782,
+          "nativeAddress": 1065054
+        },
+        {
+          "compiledAddress": 16456704,
+          "nativeAddress": 1099275
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 12969154,
+      "candidates": [
+        {
+          "compiledAddress": 16494796,
+          "nativeAddress": 1512558
+        },
+        {
+          "compiledAddress": 16496553,
+          "nativeAddress": 1103480
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 13178412,
+      "candidates": [
+        {
+          "compiledAddress": 16427251,
+          "nativeAddress": 1510707
+        },
+        {
+          "compiledAddress": 16482278,
+          "nativeAddress": 1406346
+        }
+      ],
+      "patchedEntryTarget": 16535218
+    },
+    {
+      "originalAddress": 13178414,
+      "candidates": [
+        {
+          "compiledAddress": 16427258,
+          "nativeAddress": 1510714
+        },
+        {
+          "compiledAddress": 16482280,
+          "nativeAddress": 1406348
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 13178484,
+      "candidates": [
+        {
+          "compiledAddress": 16427333,
+          "nativeAddress": 1510789
+        },
+        {
+          "compiledAddress": 16482355,
+          "nativeAddress": 1406423
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 15690613,
+      "candidates": [
+        {
+          "compiledAddress": 15975407,
+          "nativeAddress": 1071403
+        },
+        {
+          "compiledAddress": 16312393,
+          "nativeAddress": 1499012
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 15690617,
+      "candidates": [
+        {
+          "compiledAddress": 15975411,
+          "nativeAddress": 1071407
+        },
+        {
+          "compiledAddress": 16312397,
+          "nativeAddress": 1499016
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 15690621,
+      "candidates": [
+        {
+          "compiledAddress": 15975415,
+          "nativeAddress": 1071411
+        },
+        {
+          "compiledAddress": 16312401,
+          "nativeAddress": 1499020
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 15697939,
+      "candidates": [
+        {
+          "compiledAddress": 16430522,
+          "nativeAddress": 1548165
+        },
+        {
+          "compiledAddress": 16513066,
+          "nativeAddress": 1550565
+        }
+      ],
+      "patchedEntryTarget": null
+    },
+    {
+      "originalAddress": 15699913,
+      "candidates": [
+        {
+          "compiledAddress": 15985980,
+          "nativeAddress": 1081976
+        },
+        {
+          "compiledAddress": 16419099,
+          "nativeAddress": 1500598
+        }
+      ],
+      "patchedEntryTarget": 2300381756
+    }
+  ],
+  "excluded": [
+    {
+      "module": "ShopSys",
+      "labels": [
+        "CompareResToArg"
+      ],
+      "address": 16381928,
+      "kind": "assembly"
+    },
+    {
+      "module": "coffee_tea_sequences",
+      "kind": "separate-text-format"
+    },
+    {
+      "module": "data_19",
+      "labels": [
+        "Escargo_Letterbox"
+      ],
+      "address": 16301629,
+      "kind": "assembly"
+    },
+    {
+      "module": "data_24",
+      "labels": [
+        "HP_Box_Control"
+      ],
+      "address": 16029647,
+      "kind": "assembly"
+    },
+    {
+      "module": "debug_menu_enabler",
+      "labels": [
+        "DebugCheck"
+      ],
+      "address": 16534207,
+      "kind": "assembly"
+    },
+    {
+      "module": "debug_menu_enabler",
+      "labels": [
+        "debug_text"
+      ],
+      "address": 16534235,
+      "kind": "raw-data"
+    },
+    {
+      "module": "debug_menu_enabler",
+      "labels": [
+        "DEBUG_EntryPoint"
+      ],
+      "address": 16534415,
+      "kind": "assembly"
+    },
+    {
+      "module": "debug_menu_enabler",
+      "labels": [
+        "DEBUG_StartGame"
+      ],
+      "address": 16534469,
+      "kind": "assembly"
+    },
+    {
+      "module": "debug_menu_enabler",
+      "labels": [
+        "DEBUG_FixOtherOptions"
+      ],
+      "address": 16534488,
+      "kind": "assembly"
+    },
+    {
+      "module": "diamond",
+      "labels": [
+        "Display_Window_Graphics"
+      ],
+      "address": 16535306,
+      "kind": "assembly"
+    },
+    {
+      "module": "diamond",
+      "labels": [
+        "Display_Diamond"
+      ],
+      "address": 16535357,
+      "kind": "assembly"
+    },
+    {
+      "module": "diamond",
+      "labels": [
+        "l_0xC10D60"
+      ],
+      "address": 16535435,
+      "kind": "assembly"
+    },
+    {
+      "module": "diamond",
+      "labels": [
+        "l_0xC10FEA"
+      ],
+      "address": 16535467,
+      "kind": "assembly"
+    },
+    {
+      "module": "flyover_texts",
+      "kind": "separate-text-format"
+    },
+    {
+      "module": "item_determiners",
+      "labels": [
+        "CC_ItemDeterminer"
+      ],
+      "address": 16531972,
+      "kind": "assembly"
+    },
+    {
+      "module": "item_determiners",
+      "labels": [
+        "asm_GetDeterminer"
+      ],
+      "address": 16532019,
+      "kind": "assembly"
+    },
+    {
+      "module": "item_determiners",
+      "labels": [
+        "determiner_table"
+      ],
+      "address": 16532039,
+      "kind": "raw-data"
+    },
+    {
+      "module": "keyitems",
+      "labels": [
+        "CC_Close_Custom_Windows"
+      ],
+      "address": 16412652,
+      "kind": "assembly"
+    },
+    {
+      "module": "psi_anims",
+      "labels": [
+        "debug_battle_check"
+      ],
+      "address": 16427443,
+      "kind": "assembly"
+    },
+    {
+      "module": "psi_battle_anims",
+      "labels": [
+        "In_Battle_Check"
+      ],
+      "address": 16513283,
+      "kind": "assembly"
+    },
+    {
+      "module": "staff_text",
+      "kind": "separate-text-format"
+    },
+    {
+      "module": "window_titles",
+      "labels": [
+        "Win_Title"
+      ],
+      "address": 16496920,
+      "kind": "assembly"
+    },
+    {
+      "module": "window_titles",
+      "labels": [
+        "r_0xC1866D"
+      ],
+      "address": 16496996,
+      "kind": "assembly"
+    },
+    {
+      "module": "window_titles",
+      "labels": [
+        "Title_Char_Name"
+      ],
+      "address": 16497048,
+      "kind": "assembly"
+    },
+    {
+      "module": "window_titles",
+      "labels": [
+        "Title_Str_Name"
+      ],
+      "address": 16497172,
+      "kind": "assembly"
+    },
+    {
+      "module": "window_titles",
+      "labels": [
+        "Title_Char_And_Str"
+      ],
+      "address": 16497270,
+      "kind": "assembly"
+    },
+    {
+      "module": "window_titles",
+      "labels": [
+        "Title_Str_And_Char"
+      ],
+      "address": 16497493,
+      "kind": "assembly"
+    }
+  ]
+}
