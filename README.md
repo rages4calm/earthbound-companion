@@ -7,6 +7,29 @@
 
 [Download the latest private test build](https://github.com/rages4calm/earthbound-companion/releases/latest) · [Read the randomizer rules](RANDOMIZER.md) · [See research and compatibility](RESEARCH.md) · [Credits](CREDITS.md)
 
+## Companion at a glance
+
+These captures come from the ROM-free package before game-data setup. They contain no extracted game artwork or screenshots.
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/solo-play.png" alt="Solo Play and first-run ROM setup"></td>
+    <td width="50%"><img src="docs/images/story-shuffle.png" alt="Story Shuffle randomizer options"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Guided ROM setup and Solo Play</strong></td>
+    <td align="center"><strong>Story Shuffle v2</strong></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/display-settings.png" alt="Resolution, widescreen and rendering settings"></td>
+    <td width="50%"><img src="docs/images/msu-audio.png" alt="Native MSU soundtrack controls"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>HD, widescreen and rendering controls</strong></td>
+    <td align="center"><strong>Native MSU audio setup</strong></td>
+  </tr>
+</table>
+
 ## What this is
 
 EarthBound Companion packages a native x64 C/SDL2 game build with a self-contained Windows settings application. Gameplay executes as compiled native code. The project still uses software implementations of the original graphics and audio subsystems where required for accuracy; “native” does not mean the original game has been replaced with a new engine or remade art.
