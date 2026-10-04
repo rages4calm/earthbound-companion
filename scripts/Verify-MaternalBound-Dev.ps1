@@ -26,7 +26,20 @@ function Invoke-NativeCheck([string]$Name,[string]$Arguments){
  if($process.ExitCode -ne 0){throw "Native check failed: $Name, exit $($process.ExitCode)"}
 }
 Invoke-NativeCheck 'redux-vm' '--selftest-redux-vm'
-$results+=@{test='native-redux-commands';checks=19;exitCode=0}
+$vmLog=Get-Content -LiteralPath (Join-Path $ScratchDirectory 'redux-vm.log') -Raw
+if($vmLog -notmatch 'Redux VM native command checks: (\d+), PASS'){throw 'Native command check did not report a passing count.'}
+$results+=@{test='native-redux-commands';checks=[int]$Matches[1];exitCode=0}
+if($vmLog -match 'Redux stamina depletion/recovery checks: PASS'){
+ $results+=@{test='native-redux-stamina';exitCode=0}
+}
+Invoke-NativeCheck 'redux-ai' '--selftest-redux-ai'
+$aiLog=Get-Content -LiteralPath (Join-Path $ScratchDirectory 'redux-ai.log') -Raw
+if($aiLog -notmatch 'Redux enemy AI checks: (\d+) scripts, (\d+) turns, PASS'){throw 'Native enemy AI check did not pass.'}
+$results+=@{test='native-redux-enemy-ai';scripts=[int]$Matches[1];turns=[int]$Matches[2];exitCode=0}
+Invoke-NativeCheck 'redux-names' '--selftest-redux-names'
+$results+=@{test='native-redux-names-food-phone-save-migration';exitCode=0}
+Invoke-NativeCheck 'redux-motion' '--selftest-redux-motion'
+$results+=@{test='native-redux-animation-run-exhaustion-stationary-stamina';exitCode=0}
 foreach($case in @(@{label='KeyItems_Title';expected='Key items'},@{label='Tools_Title';expected='Tools'},@{label='Warrior';expected='Noble Warrior'},@{label='Return';expected='Return of Flying Man'})){
  $labels=@($inventory.labels | Where-Object {$_.module -eq 'window_titles' -and $_.name -eq $case.label})
  if($labels.Count -ne 1){throw "Missing or ambiguous compiled label: $($case.label)"}
@@ -41,7 +54,7 @@ $record=@{
  nativeExeSha256=(Get-FileHash -LiteralPath $NativeExe -Algorithm SHA256).Hash
  compiledRomSha256=$report.compiledRomSha256;convertedDialogueSha256=$report.blobSha256
  conversionCounts=$report.counts;tests=$results
- limitations=@('No playable Redux pack','Seven rejected jump-table spans','Forty ambiguous original-address aliases','Sixteen unported SNES routine variants','Graphics and tables not integrated','Full Redux progression and randomizer audit not run')
+ limitations=@('Isolated development pack only; installed game remains original-profile', 'Remaining title, battle effects, specialized text, music and assembly-only fixes', 'Full Redux progression and randomizer audit not run')
 }
 $record | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $ScratchDirectory 'native-redux-results.json') -Encoding utf8
-Write-Output 'Development checks passed; full MaternalBound gameplay remains unsupported.'
+Write-Output 'Development checks passed; full MaternalBound parity remains unverified.'

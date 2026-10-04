@@ -21,10 +21,14 @@ Date: 2026-10-04
 
 ## Native boundary
 
-The current native extractor recognizes the official v1.1 ROM but fails when modified `E01ONET0` data points to Redux's relocated script region. This is the first confirmed converter boundary. The manifest now resolves the entire reachable CCS source graph plus nearly every compiled module and label location, but it does not execute the project's SNES 65816 routines in the native engine.
+The initial native extractor recognized the official v1.1 ROM but fails when modified `E01ONET0` data points to Redux's relocated script region. This is the first confirmed converter boundary. The manifest now resolves the entire reachable CCS source graph plus nearly every compiled module and label location, but it does not execute the project's SNES 65816 routines in the native engine.
 
 The manifest carries `inventory-only-native-port-incomplete`. No Redux ROM, native asset pack, extracted Nintendo asset, save, screenshot, or PCM file is stored in this repository.
 
 ## Randomizer integration
 
 Story Shuffle v3 now binds each seed to an explicit content ID, display name, exact base-pack hash, progression policy, and isolated save directory. The original EarthBound (USA) profile passed 1,000 deterministic seed runs and all 30 valid option/style combinations. An unknown or unaudited pack is rejected for seed generation. The Redux profile will remain locked until the converted native pack and its rewritten-script progression audit pass.
+
+## Current native checkpoint
+
+The active-source development pack now converts 7,367 dialogue spans, world/tables/graphics, 190 scripted enemy AI entries, expanded names and native controls. The current native checks pass 62 VM cases, 48,640 AI turns, tagged phone-save migration and animation/stamina cases. Opening and six 1080p menu replays pass. These are bounded development checks; title/battle effects/special text/custom music, assembly fixes and full gameplay/progression remain incomplete. See [MATERNALBOUND-NATIVE.md](../MATERNALBOUND-NATIVE.md) for the current coverage boundary. The official v1.1 release remains a separate unimplemented target.

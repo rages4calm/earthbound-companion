@@ -1,32 +1,48 @@
 {
-  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
-  "conversionCounts": {
-    "convertedLabelSpans": 7133,
-    "convertedBytes": 545615,
-    "relocatedPointerFields": 10054,
-    "unresolvedPointerFields": 0,
-    "failedLabelSpans": 7,
-    "excludedAssemblyOrUnclassifiedSpans": 27,
-    "nativeRoutineCalls": 352,
-    "nativeRoutineVariants": 16,
-    "ambiguousOriginalAliases": 40
-  },
-  "nativeExeSha256": "088ED5C78C25F620F4661297F8B7F946FB01A67C3C8E3B71CCCA19C82EA79A10",
+  "convertedDialogueSha256": "CB5CD5BAE88699972F43083D1A6EE6FDB3EAC3E7DC2D0F0785AC016380066119",
   "status": "development-only-not-playable",
-  "convertedDialogueSha256": "849A3D7DA2EEA8FE405CE7040D7C2F0008FEB3E90A6BFA5FD97D6488F88F22B1",
+  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
   "limitations": [
-    "No playable Redux pack",
-    "Seven rejected jump-table spans",
-    "Forty ambiguous original-address aliases",
-    "Sixteen unported SNES routine variants",
-    "Graphics and tables not integrated",
+    "Isolated development pack only; installed game remains original-profile",
+    "Remaining title, battle effects, specialized text, music and assembly-only fixes",
     "Full Redux progression and randomizer audit not run"
   ],
+  "conversionCounts": {
+    "convertedLabelSpans": 7367,
+    "convertedBytes": 568504,
+    "relocatedPointerFields": 12835,
+    "unresolvedPointerFields": 0,
+    "failedLabelSpans": 0,
+    "excludedAssemblyOrUnclassifiedSpans": 30,
+    "nativeRoutineCalls": 354,
+    "nativeRoutineVariants": 16,
+    "ambiguousOriginalAliases": 0
+  },
+  "format": "maternalbound-native-dev-validation-v1",
+  "nativeExeSha256": "D8F2861765D502610E98A81096B472B2056578E270522EADA4EEEF96634295E8",
   "tests": [
     {
-      "checks": 19,
-      "test": "native-redux-commands",
-      "exitCode": 0
+      "exitCode": 0,
+      "checks": 62,
+      "test": "native-redux-commands"
+    },
+    {
+      "exitCode": 0,
+      "test": "native-redux-stamina"
+    },
+    {
+      "turns": 48640,
+      "scripts": 190,
+      "exitCode": 0,
+      "test": "native-redux-enemy-ai"
+    },
+    {
+      "exitCode": 0,
+      "test": "native-redux-names-food-phone-save-migration"
+    },
+    {
+      "exitCode": 0,
+      "test": "native-redux-animation-run-exhaustion-stationary-stamina"
     },
     {
       "exitCode": 0,
@@ -44,6 +60,5 @@
       "exitCode": 0,
       "test": "native-converted-title-Return"
     }
-  ],
-  "format": "maternalbound-native-dev-validation-v1"
+  ]
 }

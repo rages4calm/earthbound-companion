@@ -1,22 +1,30 @@
 diff --git a/port/unix/main.c b/port/unix/main.c
-index f625aff..05227e7 100644
+index f625aff..d9cb7d4 100644
 --- a/port/unix/main.c
 +++ b/port/unix/main.c
-@@ -32,9 +32,13 @@
+@@ -32,12 +32,21 @@
  #include "embedded_helper.h"
  #include "game_main.h"
  #include "game/audio.h"
 +#include "platform/pc_options.h"
  #include "game/game_state.h"
  #include "game/display_text.h"
++#include "game/maternalbound.h"
  #include "game/inventory.h"
 +#include "game/map_loader.h"
 +#include "game/overworld.h"
 +#include "game/battle.h"
++#include "game/position_buffer.h"
++#include "game/text.h"
  #include "game/settings.h"
  #include "core/log.h"
  #include "core/state_dump.h"
-@@ -368,12 +372,30 @@ static void migrate_legacy_saves_to_saves_folder(void) {
++#include "core/mode_stack.h"
++#include "game/window.h"
+ #include "version.h"    /* EB_VERSION_STRING -- generated, see CMakeLists.txt.
+                           * Unconditionally generated (not gated behind
+                           * EB_UPDATER_ENABLED the way sdl2_updater.c's own
+@@ -368,12 +377,34 @@ static void migrate_legacy_saves_to_saves_folder(void) {
  
  int main(int argc, char *argv[]) {
      chdir_to_executable_dir(); /* before anything below touches a relative path */
@@ -42,12 +50,16 @@ index f625aff..05227e7 100644
      bool keyitems_selftest = false;
      bool joinlevel_selftest = false;
 +    bool redux_vm_selftest = false;
++    bool redux_ai_selftest = false;
++    bool redux_names_selftest = false;
++    bool redux_motion_selftest = false;
++    bool redux_development = false;
 +    const char *redux_title_test_path = NULL, *redux_title_expected = NULL;
 +    uint32_t redux_title_address = 0;
      bool threed_zombie_flag_check = false;
      bool threed_zombie_flag_fix = false;
      bool jeff_flag_fix = false;
-@@ -396,7 +418,22 @@ int main(int argc, char *argv[]) {
+@@ -396,7 +427,22 @@ int main(int argc, char *argv[]) {
  #endif
  
      for (int i = 1; i < argc; i++) {
@@ -71,7 +83,7 @@ index f625aff..05227e7 100644
              verify_rom_path = argv[++i];
  #ifdef EB_RUNTIME_ASSETS
          } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
-@@ -420,6 +457,14 @@ int main(int argc, char *argv[]) {
+@@ -420,6 +466,22 @@ int main(int argc, char *argv[]) {
               * --save FILE. Implies headless. */
              keyitems_selftest = true;
              platform_headless = true;
@@ -82,11 +94,19 @@ index f625aff..05227e7 100644
 +            platform_headless = true;
 +        } else if (strcmp(argv[i], "--selftest-redux-vm") == 0) {
 +            redux_vm_selftest = true;
++        } else if (strcmp(argv[i], "--selftest-redux-ai") == 0) {
++            redux_ai_selftest = true;
++        } else if (strcmp(argv[i], "--selftest-redux-names") == 0) {
++            redux_names_selftest = true;
++        } else if (strcmp(argv[i], "--selftest-redux-motion") == 0) {
++            redux_motion_selftest = true;
 +            platform_headless = true;
++        } else if (strcmp(argv[i], "--allow-redux-development") == 0) {
++            redux_development = true;
          } else if (strcmp(argv[i], "--selftest-joinlevel") == 0) {
              /* Join-level scaling (Paula/Jeff/Poo scaled to Ness's current
               * level, see add_char_to_party()'s doc comment, inventory.c).
-@@ -536,7 +581,7 @@ int main(int argc, char *argv[]) {
+@@ -536,7 +598,7 @@ int main(int argc, char *argv[]) {
  #else
                              " [--export-pak FILE]"
  #endif
@@ -95,7 +115,7 @@ index f625aff..05227e7 100644
                      argv[0]);
              return 1;
          }
-@@ -630,6 +675,10 @@ int main(int argc, char *argv[]) {
+@@ -630,6 +692,10 @@ int main(int argc, char *argv[]) {
       * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
       * platform-conventional data dir (see eb_runtime_assets_default_path). */
      char default_assets_path[1024];
@@ -106,7 +126,7 @@ index f625aff..05227e7 100644
      if (assets_path == NULL) {
          assets_path = getenv("EB_ASSETS_PAK");
      }
-@@ -916,6 +965,8 @@ int main(int argc, char *argv[]) {
+@@ -916,6 +982,8 @@ int main(int argc, char *argv[]) {
       * itself (sdl2_video.c is platform-agnostic and already correct). */
      SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
@@ -115,7 +135,7 @@ index f625aff..05227e7 100644
      /* Initialize SDL */
      uint32_t sdl_flags = SDL_INIT_TIMER;
      if (!platform_headless) {
-@@ -938,6 +989,7 @@ int main(int argc, char *argv[]) {
+@@ -938,6 +1006,7 @@ int main(int argc, char *argv[]) {
      platform_input_init();
      platform_save_init();
      settings_load();
@@ -123,10 +143,15 @@ index f625aff..05227e7 100644
      /* Resume logging automatically if a previous session left the Config
       * menu's "Logging" row on -- a tester shouldn't have to re-enable it
       * after every relaunch (including the updater's own self-relaunch) to
-@@ -966,6 +1018,24 @@ int main(int argc, char *argv[]) {
+@@ -965,6 +1034,28 @@ int main(int argc, char *argv[]) {
+ 
      /* Initialize game systems */
      game_init();
- 
++    if (maternalbound_enabled() && !redux_development && !redux_vm_selftest && !redux_ai_selftest && !redux_names_selftest && !redux_motion_selftest && !redux_title_test_path) {
++        fprintf(stderr, "This Redux pack is a development integration fixture. Use --allow-redux-development only in an isolated test session.\n");
++        return 1;
++    }
++
 +    /* Cross-language integration diagnostic: use the SAME gift getter and
 +     * battler initialization as gameplay, not a second parser of the pak. */
 +    if (inspect_shuffle) {
@@ -144,24 +169,26 @@ index f625aff..05227e7 100644
 +        }
 +        return 0;
 +    }
-+
+ 
      /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
       * fresh boot. Just requests it here -- the normal per-frame
-      * host_process_frame()/host_root_boundary() pump below does the actual
-@@ -994,6 +1064,12 @@ int main(int argc, char *argv[]) {
+@@ -994,6 +1085,15 @@ int main(int argc, char *argv[]) {
          exit(ok_ki ? 0 : 1);
      }
  
 +    if (redux_vm_selftest) {
 +        exit(maternalbound_vm_selftest() ? 0 : 1);
 +    }
++    if (redux_ai_selftest) exit(maternalbound_enemy_ai_selftest() ? 0 : 1);
++    if (redux_names_selftest) exit(maternalbound_names_selftest() ? 0 : 1);
++    if (redux_motion_selftest) exit(maternalbound_motion_selftest() ? 0 : 1);
 +    if (redux_title_test_path) {
 +        exit(maternalbound_title_content_selftest(redux_title_test_path, redux_title_address, redux_title_expected) ? 0 : 1);
 +    }
      if (joinlevel_selftest) {
          bool ok_jl = join_level_scaling_selftest();
          fprintf(stderr, "join-level scaling self-test: %s\n", ok_jl ? "PASS" : "FAIL");
-@@ -1208,7 +1284,7 @@ int main(int argc, char *argv[]) {
+@@ -1208,7 +1308,7 @@ int main(int argc, char *argv[]) {
           * --msu-dir/--msu-name flags, and nothing to add to a Steam
           * shortcut's Launch Options (editing those is real friction, and
           * has to be redone every time the pack changes). */
@@ -170,7 +197,7 @@ index f625aff..05227e7 100644
          char detected_name[128];
          const char *name = msu_name;
  
-@@ -1278,8 +1354,16 @@ int main(int argc, char *argv[]) {
+@@ -1278,8 +1378,37 @@ int main(int argc, char *argv[]) {
      platform_timer_frame_start();
  
      for (int frame_num = 0; !platform_input_quit_requested(); frame_num++) {
@@ -179,6 +206,27 @@ index f625aff..05227e7 100644
 +            fprintf(stderr,"PC replay inventory:");
 +            for(int slot=0;slot<ITEM_INVENTORY_SIZE;slot++)fprintf(stderr," %u",party_characters[0].items[slot]);
 +            fprintf(stderr,"\n");
++            for(unsigned c=0;c<4;c++) {
++                char name[7]={0}; const uint8_t *encoded=maternalbound_character_name(c);
++                for(unsigned i=0;i<maternalbound_name_capacity() && encoded[i];i++) name[i]=eb_char_to_ascii(encoded[i]);
++                fprintf(stderr,"\nPC replay name %u: %s",c+1,name);
++            }
++            fprintf(stderr,"\nPC replay modes:");
++            for(unsigned level=0;level<g_mode_stack.depth;level++) fprintf(stderr," %u",g_mode_stack.mode[level]);
++            fprintf(stderr,"\n");
++            for(unsigned level=0;level<g_mode_stack.depth;level++)
++                if(g_mode_stack.mode[level]==GAME_MODE_TEXT_INPUT) {
++                    TextInputState *k=&g_mode_stack.state[level].text_input;
++                    fprintf(stderr,"PC keyboard target=%u cursor=%d,%d length=%u limit=%u\n",
++                        k->name_target,k->cur_x,k->cur_y,k->name_pos,k->max_len);
++                }
++            for(unsigned index=0;index<MAX_WINDOWS;index++) {
++                WindowInfo *w=&win.windows[index];
++                if (!w->active) continue;
++                fprintf(stderr,"PC replay window %u option=%u title=%s menu:",w->id,w->current_option,w->title);
++                for(unsigned row=0;row<w->menu_count;row++) fprintf(stderr," [%u:%s]",w->menu_items[row].userdata,w->menu_items[row].label);
++                fprintf(stderr,"\n");
++            }
 +            host_request_capture();
 +        }
          if (dump_frame >= 0 && frame_num == dump_frame)
@@ -1129,6 +1177,320 @@ index a74f32b..eeded15 100644
 +    if (texture) SDL_SetTextureScaleMode(texture, mode);
 +    if (aa_texture) SDL_SetTextureScaleMode(aa_texture, mode);
 +}
+diff --git a/src/core/mode_stack.h b/src/core/mode_stack.h
+index 63a1186..f7e999b 100644
+--- a/src/core/mode_stack.h
++++ b/src/core/mode_stack.h
+@@ -961,6 +961,9 @@ typedef struct {
+     uint16_t retargeted;        /* mushroomized/strange retarget flag */
+     uint16_t status_damage;     /* per-turn status damage carried across its text */
+     uint16_t exp_i;             /* BTL_VICTORY_EXP loop index */
++    uint16_t enemy_ai_i;
++    uint16_t enemy_ai_saved_attacker;
++    uint8_t  enemy_ai_pending;
+ } BattleRoutineState;
+ 
+ /* GAME_MODE_INSTANT_WIN: run-to-completion port of instant_win_handler()
+@@ -1812,6 +1815,7 @@ typedef enum {
+     PF_MAP_CHANGE,
+     PF_TO_WHITE,
+     PF_WITH_RENDERING,
++    PF_CUSTOM_COLOUR, /* Redux fade_tools: palette-only, no actionscript tick. */
+ } PaletteFadeKind;
+ 
+ typedef struct {
+diff --git a/src/core/state_dump.c b/src/core/state_dump.c
+index 11f97f5..bed4b75 100644
+--- a/src/core/state_dump.c
++++ b/src/core/state_dump.c
+@@ -55,7 +55,7 @@
+  * docs/plans/savestate-unified-loop.md. */
+ #define STATE_DUMP_MAGIC       0x44534245u  /* "EBSD" little-endian */
+ #define STATE_DUMP_HEADER_SIZE 20           /* magic+version+frame+seq+crc32+payload_len */
+-#define STATE_DUMP_VERSION 12 /* v6: raw-pointer purge (item #3A) changed PSI/oval/
++#define STATE_DUMP_VERSION 14 /* v6: raw-pointer purge (item #3A) changed PSI/oval/
+                                * overworld-deferred layouts. v7: ABI hardening (item
+                                * #3B), PPUState.bg_viewport_fill enum→uint8_t shrank
+                                * the PPU section; the format is now 32/64-bit identical.
+@@ -72,7 +72,9 @@
+                                * describe the COMPRESSED bytes. Header stays uncompressed.
+                                * v12: added SECTION_KEY_ITEMS_POOL (Key Items pool feature,
+                                * not part of the original ROM/assembly), a new top-level
+-                               * global, key_items_pool[KEY_ITEMS_POOL_SIZE]. */
++                               * global, key_items_pool[KEY_ITEMS_POOL_SIZE].
++                               * v13: Redux's per-row second menu labels.
++                               * v14: native Redux enemy AI continuations. */
+ 
+ /* Section IDs */
+ enum {
+@@ -140,6 +142,8 @@ enum {
+      * early -- reintroducing the exact bug this mask exists to prevent,
+      * just via a save-anywhere round-trip instead of new-game setup. */
+     SECTION_PARTY_EVER_JOINED    = 0x002C,
++    SECTION_REDUX_NAME_EXTRA     = 0x002D,
++    SECTION_REDUX_FOOD_EXTRA     = 0x002E,
+     SECTION_TERMINATOR       = 0xFFFF,
+ };
+ 
+@@ -170,11 +174,11 @@ _Static_assert(sizeof(party_characters)     == 570,   "ABI: party_characters");
+ _Static_assert(sizeof(event_flags)          == 128,   "ABI: event_flags");
+ _Static_assert(sizeof(key_items_pool)       == KEY_ITEMS_POOL_SIZE, "ABI: key_items_pool");
+ _Static_assert(sizeof(ow)                   == 392,   "ABI: ow");
+-_Static_assert(sizeof(bt)                   == 3780,  "ABI: bt");
++_Static_assert(sizeof(bt)                   == 3864,  "ABI: bt");
+ _Static_assert(sizeof(dt)                   == 152,   "ABI: dt");
+-_Static_assert(sizeof(win)                  == 32072, "ABI: win"); /* was 14152 before
++_Static_assert(sizeof(win)                  == 52552, "ABI: win"); /* Redux dual labels;
+     MAX_MENU_ITEMS (window.h) grew 24->80 for the scrollable Key Items browser */
+-_Static_assert(sizeof(ml)                   == 16970, "ABI: ml");
++_Static_assert(sizeof(ml)                   == 17098, "ABI: ml");
+ /* SECTION_PPU serializes only the fixed PREFIX of PPUState, everything before the
+  * per-scanline HDMA tables (wh0/wh1/wh2/wh3_table, tm/ts_per_scanline), which are
+  * EB_VIEWPORT_HEIGHT-sized derived render scratch deliberately excluded so the format
+@@ -220,7 +224,7 @@ typedef struct {
+     void (*unpack)(const void *scratch); /* NULL for direct sections */
+ } StateSection;
+ 
+-#define MAX_SECTIONS 45
++#define MAX_SECTIONS 48
+ 
+ /* Populate `t` with every serialized section in write order; return the count.
+  * AUDIO is conditional, so the count is computed here rather than fixed. */
+@@ -262,6 +266,8 @@ static int build_section_table(StateSection *t) {
+     ADD(SECTION_EVENT_FLAGS,      event_flags,          sizeof(event_flags));
+     ADD(SECTION_KEY_ITEMS_POOL,   key_items_pool,       sizeof(key_items_pool));
+     ADD(SECTION_PARTY_EVER_JOINED, &party_ever_joined_mask, sizeof(party_ever_joined_mask));
++    ADD(SECTION_REDUX_NAME_EXTRA, maternalbound_name_extra, sizeof(maternalbound_name_extra));
++    ADD(SECTION_REDUX_FOOD_EXTRA, maternalbound_food_extra, sizeof(maternalbound_food_extra));
+     ADD(SECTION_OVERWORLD,        &ow,                  sizeof(ow));
+     ADD(SECTION_BATTLE,           &bt,                  sizeof(bt));
+     ADD(SECTION_DISPLAY_TEXT,     &dt,                  sizeof(dt));
+diff --git a/src/data/event_script_data.c b/src/data/event_script_data.c
+index 61e71a4..a2fae20 100644
+--- a/src/data/event_script_data.c
++++ b/src/data/event_script_data.c
+@@ -14,6 +14,7 @@
+ #include "data/assets.h"
+ #include "include/binary.h"
+ #include "core/log.h"
++#include "game/maternalbound.h"
+ #include <stdio.h>
+ #include <string.h>
+ 
+@@ -127,7 +128,7 @@ bool resolve_script_id(uint16_t script_id, int *out_bank_idx, uint16_t *out_offs
+     for (int i = 0; i < script_bank_count; i++) {
+         if (script_banks[i].rom_bank == rom_bank) {
+             uint16_t base = script_banks[i].rom_base_addr;
+-            uint16_t end = base + (uint16_t)script_banks[i].size;
++            uint32_t end = base + script_banks[i].size;
+             if (within_bank >= base && within_bank < end) {
+                 *out_bank_idx = i;
+                 *out_offset = within_bank - base;
+@@ -219,20 +220,45 @@ void load_event_script_data(void) {
+     event_ptr_table_buf = ASSET_DATA(ASSET_EVENTS_EVENT_SCRIPT_POINTERS_BIN);
+     if (event_ptr_table_buf && size >= EVENT_SCRIPT_POINTER_COUNT * 3) {
+         event_script_pointer_table = event_ptr_table_buf;
+-        event_script_pointer_count = EVENT_SCRIPT_POINTER_COUNT;
++        if (size % 3 || size/3 > 4096) FATAL("Invalid movement pointer table\n");
++        event_script_pointer_count = (uint16_t)(size/3);
+     } else {
+         LOG_WARN("ERROR: failed to load event_script_pointers.bin\n");
+         event_script_pointer_table = NULL;
+         event_script_pointer_count = 0;
+     }
+ 
++    const uint8_t *container = ASSET_DATA(ASSET_EVENTS_BANK_C3_SCRIPTS_COMBINED_BIN);
++    size_t container_size = ASSET_SIZE(ASSET_EVENTS_BANK_C3_SCRIPTS_COMBINED_BIN);
++    bool redux_banks = container_size >= 12 && !memcmp(container,"MRMVBN01",8);
++    if (redux_banks) {
++        if (!maternalbound_enabled()) FATAL("Redux movement banks require a Redux content profile\n");
++        uint32_t count = read_u32_le(container+8);
++        size_t offset = 12;
++        if (!count || count > MAX_SCRIPT_BANKS-(unsigned)script_bank_count)
++            FATAL("Invalid Redux movement bank count\n");
++        for (uint32_t i=0;i<count;i++) {
++            if (offset+8 > container_size) FATAL("Truncated movement bank header\n");
++            uint8_t bank = container[offset];
++            uint16_t base = read_u16_le(container+offset+2);
++            uint32_t length = read_u32_le(container+offset+4);
++            offset += 8;
++            if (container[offset-7] || !length || length > 65536u-base || length > container_size-offset)
++                FATAL("Invalid movement bank bounds\n");
++            if (register_script_bank(container+offset,length,base,bank)<0)
++                FATAL("Movement bank registry exhausted\n");
++            offset += length;
++        }
++        if (offset != container_size) FATAL("Trailing movement bank data\n");
++    }
++
+     /* Load bank C4 naming scripts (C40F18 onward) */
+     size = ASSET_SIZE(ASSET_EVENTS_BANK_C4_SCRIPTS_BIN);
+     bank_c4_scripts_buf = ASSET_DATA(ASSET_EVENTS_BANK_C4_SCRIPTS_BIN);
+-    if (bank_c4_scripts_buf) {
++    if (bank_c4_scripts_buf && !redux_banks) {
+         register_script_bank(bank_c4_scripts_buf, (uint32_t)size,
+                              C4_NAMING_SCRIPT_ROM_BASE, 0xC4);
+-    } else {
++    } else if (!bank_c4_scripts_buf) {
+         LOG_WARN("WARN: failed to load bank_c4_scripts.bin\n");
+     }
+ 
+@@ -244,9 +270,9 @@ void load_event_script_data(void) {
+     {
+         size_t c3_size = ASSET_SIZE(ASSET_EVENTS_BANK_C3_SCRIPTS_COMBINED_BIN);
+         const uint8_t *c3 = ASSET_DATA(ASSET_EVENTS_BANK_C3_SCRIPTS_COMBINED_BIN);
+-        if (c3) {
++        if (c3 && !redux_banks) {
+             register_script_bank(c3, (uint32_t)c3_size, 0x0000, 0xC3);
+-        } else {
++        } else if (!c3) {
+             LOG_WARN("WARN: failed to load bank_c3_scripts_combined.bin\n");
+         }
+     }
+diff --git a/src/data/event_script_data.h b/src/data/event_script_data.h
+index 9fbd2ba..1b39621 100644
+--- a/src/data/event_script_data.h
++++ b/src/data/event_script_data.h
+@@ -391,7 +391,7 @@
+ /* Script Bank System */
+ 
+ /* Maximum number of loaded script bank regions */
+-#define MAX_SCRIPT_BANKS 5
++#define MAX_SCRIPT_BANKS 20
+ 
+ /*
+  * A loaded script bank region, a contiguous chunk of bytecode from ROM.
+diff --git a/src/entity/callroutine.c b/src/entity/callroutine.c
+index 61c4f93..5d1410f 100644
+--- a/src/entity/callroutine.c
++++ b/src/entity/callroutine.c
+@@ -51,6 +51,10 @@
+ #include <math.h>
+ 
+ #include "game_main.h"
++#include "game/maternalbound.h"
++
++void build_letterbox_hdma_table(void);
++void apply_letterbox_to_ppu(void);
+ 
+ /* ---- GAME_MODE_MOSAIC_FADE step ----
+  * Run-to-completion port of the brightness-ramp mosaic fades (FADE_OUT_WITH_MOSAIC
+@@ -295,11 +299,11 @@ static uint16_t render_character_name_display(void) {
+ 
+     /* Phase 2: render character name (up to 5 chars, clamped to 5 in US) */
+     int name_len = 0;
+-    while (name_len < 5 && party_characters[0].name[name_len])
++    while (name_len < maternalbound_name_capacity() && maternalbound_character_name(0)[name_len])
+         name_len++;
+-    if (name_len > 5) name_len = 5;
++    if (name_len > maternalbound_name_capacity()) name_len = maternalbound_name_capacity();
+     for (int i = 0; i < name_len; i++) {
+-        rcnd_render_glyph(party_characters[0].name[i]);
++        rcnd_render_glyph(maternalbound_character_name(0)[i]);
+     }
+ 
+     /* Phase 3: render 6-char suffix from lumine_hall_text[4..9] */
+@@ -708,6 +712,17 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+     }
+ 
+     switch (rom_addr) {
++    case 0xBF000C: /* Typed Redux instant-letterbox adapter. */
++        if (!maternalbound_enabled()) FATAL("Redux movement adapter outside Redux profile\n");
++        maternalbound_letterbox_start(12);
++        maternalbound_effects_tick();
++        *out_pc = pc;
++        return 0;
++    case 0xC2D0AC: /* UPDATE_LETTERBOX_HDMA_TABLE */
++        build_letterbox_hdma_table();
++        apply_letterbox_to_ppu();
++        *out_pc = pc;
++        return 0;
+     case ROM_ADDR_UPDATE_MINI_GHOST_POSITION:
+         return cr_update_mini_ghost_position(entity_offset, script_offset,
+                                              pc, out_pc);
+@@ -3130,9 +3145,9 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+ 
+         /* Compute name length for portrait header decode count */
+         int lcps_name_len = 0;
+-        while (lcps_name_len < 5 && party_characters[0].name[lcps_name_len])
++        while (lcps_name_len < maternalbound_name_capacity() && maternalbound_character_name(0)[lcps_name_len])
+             lcps_name_len++;
+-        if (lcps_name_len > 5) lcps_name_len = 5;
++        if (lcps_name_len > maternalbound_name_capacity()) lcps_name_len = maternalbound_name_capacity();
+ 
+         /* Step 2: Clear 29×8 words at ert.buffer+$4000 (matches assembly clear loop).
+          * Assembly loops VIRTUAL06 through BUFFER+$4000, advancing past the 29-row region.
+diff --git a/src/entity/callroutine_movement.c b/src/entity/callroutine_movement.c
+index 971c3d6..bcc5533 100644
+--- a/src/entity/callroutine_movement.c
++++ b/src/entity/callroutine_movement.c
+@@ -17,6 +17,7 @@
+ #include "game/overworld.h"
+ #include "game/overworld_internal.h"
+ #include "game/position_buffer.h"
++#include "game/maternalbound.h"
+ #include "game/window.h"
+ #include "entity/buffer_layout.h"
+ #include "game/fade.h"
+@@ -241,6 +242,7 @@ int16_t cr_update_entity_animation(int16_t ent, int16_t scr,
+     /* Check var7 bit 13 (FORCE_STATIC): reset frame to 0 if needed.
+      * Assembly lines 19-25. */
+     if (entities.var[7][ent] & 0x2000) {
++        if (maternalbound_enabled()) entities.var[4][ent]=0;
+         if (entities.animation_frame[ent] != 0) {
+             entities.animation_frame[ent] = 0;
+             render_entity_sprite(ent);
+@@ -258,6 +260,11 @@ int16_t cr_update_entity_animation(int16_t ent, int16_t scr,
+     if (entities.var[2][ent] <= 0) {
+         entities.var[2][ent] = entities.var[3][ent];  /* reload period */
+         entities.animation_frame[ent] ^= 2;           /* toggle frame 0↔2 */
++        if (maternalbound_enabled() && !entities.animation_frame[ent]) {
++            entities.var[4][ent] ^= 1;
++            if (entities.move_callback[ent] == CB_MOVE_PARTY_SPRITE)
++                update_party_entity_graphics(entities.var[0][ent],entities.walking_styles[ent],ent,entities.var[1][ent]);
++        }
+ 
+         /* Render unconditionally after frame toggle (assembly calls RENDER_ENTITY_SPRITE_8DIR
+          * regardless of whether new frame is 0 or 2; BNE only skips the footstep sound). */
+diff --git a/src/entity/sprite.c b/src/entity/sprite.c
+index 96edc88..83baa9b 100644
+--- a/src/entity/sprite.c
++++ b/src/entity/sprite.c
+@@ -67,7 +67,20 @@ void load_sprite_data(void) {
+     /* Sprite graphics banks 11-15 ($D1-$D5).
+      * Bank files are named by their hex SNES bank number: 11.bin-15.bin.
+      * These are decimal 11-15 in the asset family index. */
+-    for (int i = 0; i < SPRITE_BANK_COUNT; i++) {
++    const uint8_t *container = ASSET_DATA(ASSET_OVERWORLD_SPRITES_BANKS(11));
++    size_t container_size = ASSET_SIZE(ASSET_OVERWORLD_SPRITES_BANKS(11));
++    bool native_container = container_size >= 16 && !memcmp(container,"MRSPBN01",8);
++    if (native_container) {
++        uint32_t count = read_u32_le(container+8), stride = read_u32_le(container+12);
++        if (!count || count > SPRITE_BANK_COUNT || stride != 65536 || container_size != 16+(size_t)count*stride)
++            FATAL("Invalid Redux sprite bank container\n");
++        for (int i = 0; i < SPRITE_BANK_COUNT; ++i) {
++            sprite_banks[i] = i < (int)count ? container+16+(size_t)i*stride : NULL;
++            sprite_bank_sizes[i] = i < (int)count ? stride : 0;
++            spr_bank_bufs[i] = sprite_banks[i];
++        }
++    } else for (int i = 0; i < SPRITE_BANK_COUNT; i++) {
++        if (i >= 5) { sprite_banks[i] = spr_bank_bufs[i] = NULL; sprite_bank_sizes[i] = 0; continue; }
+         int bank_file = 11 + i;  /* decimal file number, not SPRITE_BANK_FIRST (0x11) */
+         size = ASSET_SIZE(ASSET_OVERWORLD_SPRITES_BANKS(bank_file));
+         spr_bank_bufs[i] = ASSET_DATA(ASSET_OVERWORLD_SPRITES_BANKS(bank_file));
+diff --git a/src/entity/sprite.h b/src/entity/sprite.h
+index fd7a66f..7915f67 100644
+--- a/src/entity/sprite.h
++++ b/src/entity/sprite.h
+@@ -67,7 +67,7 @@ extern uint8_t overworld_spritemaps[OVERWORLD_SPRITEMAPS_SIZE];
+ 
+ /* Sprite graphics banks */
+ 
+-#define SPRITE_BANK_COUNT 5
++#define SPRITE_BANK_COUNT 20 /* original five or Redux's expanded native container */
+ #define SPRITE_BANK_FIRST 0x11   /* SNES banks $11-$15 ($D1-$D5 HiROM) */
+ 
+ extern const uint8_t *sprite_banks[SPRITE_BANK_COUNT];
 diff --git a/src/game/audio.c b/src/game/audio.c
 index b249f00..fb35dc3 100644
 --- a/src/game/audio.c
@@ -1150,7 +1512,7 @@ index b249f00..fb35dc3 100644
       * ORs value with the bit-flip state, writes to APU port 1,
       * then toggles bit 7 of the flipper. The SPC700 engine detects
 diff --git a/src/game/battle.c b/src/game/battle.c
-index ef6571c..ec7e8b0 100644
+index ef6571c..c6643e0 100644
 --- a/src/game/battle.c
 +++ b/src/game/battle.c
 @@ -1,3 +1,4 @@
@@ -1158,7 +1520,241 @@ index ef6571c..ec7e8b0 100644
  /*
   * Battle system core, utility functions for combat.
   *
-@@ -4250,7 +4251,7 @@ static void btl_exec_setup_targets(BattleRoutineState *st, Battler *attacker) {
+@@ -14,6 +15,7 @@
+  */
+ #include "game/battle.h"
+ #include "game/battle_internal.h"
++#include "game/maternalbound.h"
+ #include "game/game_state.h"
+ #include "game/display_text.h"
+ #include "game/inventory.h"
+@@ -139,6 +141,8 @@ void battle_init_enemy_stats(Battler *battler, uint16_t enemy_id) {
+ 
+     /* Zero-fill the entire battler struct */
+     memset(battler, 0, sizeof(Battler));
++    for (unsigned i=0;i<BATTLER_COUNT;i++)
++        if (battler == &bt.battlers_table[i]) bt.redux_enemy_ai_cursor[i] = 0;
+ 
+     /* Track highest enemy level for this battle */
+     uint8_t level = edata->level;
+@@ -538,9 +542,9 @@ uint16_t char_select_overworld_prepare(void (*on_change)(uint16_t)) {
+         uint8_t member_id = game_state.party_members[i];
+         char name_buf[8];
+         if (member_id >= 1 && member_id <= 4) {
+-            for (int j = 0; j < 5; j++)
+-                name_buf[j] = eb_char_to_ascii(party_characters[member_id - 1].name[j]);
+-            name_buf[5] = '\0';
++            for (int j = 0; j < maternalbound_name_capacity(); j++)
++                name_buf[j] = eb_char_to_ascii(maternalbound_character_name(member_id - 1)[j]);
++            name_buf[maternalbound_name_capacity()] = '\0';
+         } else {
+             name_buf[0] = '\0';
+         }
+@@ -625,9 +629,9 @@ void inventory_get_item_name(uint16_t char_id, uint16_t window_type) {
+ 
+     /* Assembly lines 32-43: SET_WINDOW_TITLE with character name (X=5 max chars). */
+     {
+-        char name_buf[6];
+-        eb_to_ascii_buf(party_characters[char_idx].name, 5, name_buf);
+-        set_window_title(window_type, name_buf, 5);
++        char name_buf[7];
++        eb_to_ascii_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf);
++        set_window_title(window_type, name_buf, maternalbound_name_capacity());
+     }
+ 
+     /* Assembly lines 44-148: loop over ITEM_INVENTORY_SIZE (14) slots.
+@@ -903,8 +907,8 @@ uint16_t copy_enemy_name(const uint8_t *src, uint8_t *dest, uint16_t length, uin
+         uint8_t ch = src[i];
+         if (ch == 0) break;
+         if (ch == 0xAC) { /* CHAR::NESS_PLACEHOLDER (US) */
+-            for (uint16_t j = 0; j < sizeof(party_characters[0].name); j++) {
+-                uint8_t nc = party_characters[0].name[j];
++            for (uint16_t j = 0; j < maternalbound_name_capacity(); j++) {
++                uint8_t nc = maternalbound_character_name(0)[j];
+                 if (nc == 0) break;
+                 if (pos >= dest_size - 1) break;
+                 dest[pos++] = nc;
+@@ -963,13 +967,13 @@ void fix_attacker_name(uint16_t param) {
+         }
+ 
+         set_battle_attacker_name((const char *)scratch,
+-                                 ENEMY_NAME_SIZE + sizeof(((CharStruct *)0)->name) - 3);
++                                 ENEMY_NAME_SIZE + maternalbound_name_capacity() - 3);
+         set_attacker_enemy_id((int16_t)atk->id);
+     } else {
+         /* Party member path */
+         if (atk->id <= 4) {
+             CharStruct *ch = &party_characters[atk->row];
+-            set_battle_attacker_name((const char *)ch->name, sizeof(ch->name));
++            set_battle_attacker_name((const char *)maternalbound_character_name_of(ch), maternalbound_name_capacity());
+         }
+     }
+ }
+@@ -1020,7 +1024,7 @@ void fix_target_name(void) {
+         /* Party member path */
+         if (tgt->id <= 4) {
+             CharStruct *ch = &party_characters[tgt->row];
+-            set_battle_target_name((const char *)ch->name, sizeof(ch->name));
++            set_battle_target_name((const char *)maternalbound_character_name_of(ch), maternalbound_name_capacity());
+         }
+     }
+ }
+@@ -2636,10 +2640,10 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+             {
+                 char name_buf[8];
+                 int j;
+-                for (j = 0; j < 5 && ch->name[j]; j++)
+-                    name_buf[j] = eb_char_to_ascii(ch->name[j]);
++                for (j = 0; j < maternalbound_name_capacity() && maternalbound_character_name_of(ch)[j]; j++)
++                    name_buf[j] = eb_char_to_ascii(maternalbound_character_name_of(ch)[j]);
+                 name_buf[j] = '\0';
+-                set_window_title(window_id, name_buf, 5);
++                set_window_title(window_id, name_buf, maternalbound_name_capacity());
+             }
+ 
+             /* Add attack option (Bash/Shoot/Do Nothing) */
+@@ -3476,6 +3480,9 @@ static void btl_begin(BattleRoutineState *st) {
+  * matching door.c's sequential-frame helpers). */
+ static void btl_reinit_scene(BattleRoutineState *st) {
+     bt.mirror_enemy = 0;
++    memset(bt.redux_enemy_ai_cursor,0,sizeof(bt.redux_enemy_ai_cursor));
++    bt.redux_enemy_ai_active = 0;
++    st->enemy_ai_i = st->enemy_ai_pending = 0;
+     st->run_attempt = 0;
+     bt.battle_item_used = 0;
+     st->turn_counter = 0;
+@@ -3875,10 +3882,16 @@ static void btl_store_action(uint16_t member_id, uint16_t selected_action) {
+ /* ================================================================
+  * Phase 6: Enemy AI, select actions (lines 1497-1921)
+  * ================================================================ */
+-static void btl_enemy_ai(BattleRoutineState *st) {
++static bool btl_enemy_ai(BattleRoutineState *st, ModeState *child) {
+     {
+-        for (uint16_t bi = 0; bi < BATTLER_COUNT; bi++) {
++        for (uint16_t bi = st->enemy_ai_i; bi < BATTLER_COUNT; bi++, st->enemy_ai_i=bi) {
+             Battler *b = &bt.battlers_table[bi];
++            if (st->enemy_ai_pending) {
++                st->enemy_ai_pending = 0;
++                bt.redux_enemy_ai_active = 0;
++                bt.current_attacker = st->enemy_ai_saved_attacker;
++                goto action_selected;
++            }
+ 
+             /* Skip dead battlers that aren't Poo-with-mirror */
+             if (b->consciousness == 0) {
+@@ -3919,7 +3932,24 @@ static void btl_enemy_ai(BattleRoutineState *st) {
+ 
+             /* Select action based on action_order pattern */
+             uint8_t action_index = 0;
+-            switch (econfig->action_order) {
++            uint8_t action_order = econfig->action_order;
++            if (maternalbound_enabled() && action_order >= 4) {
++                /* Redux retains ordinary patterns for a mirrored party member. */
++                if (!b->npc_id && !b->ally_or_enemy) action_order -= 4;
++                else {
++                    uint32_t *cursor = &bt.redux_enemy_ai_cursor[bi];
++                    if (!*cursor) *cursor = maternalbound_enemy_ai_entry(b->id);
++                    if (!*cursor || !dt_make_child_init(child,*cursor))
++                        FATAL("Redux: invalid AI cursor for enemy %u\n",b->id);
++                    st->enemy_ai_saved_attacker = bt.current_attacker;
++                    bt.current_attacker = bi*sizeof(Battler);
++                    bt.redux_enemy_ai_active = bi+1;
++                    st->enemy_ai_pending = 1;
++                    st->enemy_ai_i = bi;
++                    return true;
++                }
++            }
++            switch (action_order) {
+             case 0: /* Random uniform: pick 0-3 */
+                 action_index = rand_byte() & 3;
+                 break;
+@@ -3955,6 +3985,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
+             b->current_action = econfig->actions[action_index];
+             b->current_action_argument = econfig->action_args[action_index];
+ 
++action_selected:
+             /* Handle ENEMY_EXTENDER action */
+             if (b->current_action == BACT_ENEMY_EXTENDER) {
+                 if (b->ally_or_enemy == 0 && b->id == PARTY_MEMBER_POO) {
+@@ -3966,6 +3997,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
+                 } else {
+                     /* Regular enemy: extender changes enemy ID */
+                     b->id = b->current_action_argument;
++                    bt.redux_enemy_ai_cursor[bi] = 0;
+                     bi--;  /* Retry with new ID */
+                     continue;
+                 }
+@@ -3992,10 +4024,69 @@ next_battler_action:
+             (void)0;
+         }
+     }
++    return false;
+ }
+ 
+ /* The Phase 8 run-away computation (assembly lines 1932-2078, minus the
+  * result texts): speed comparison + the escape roll. */
++/* Exercise the production selector and text-mode scheduler with every exported
++ * Redux AI script, across HP/PP/status conditions and repeated turns. */
++bool maternalbound_enemy_ai_selftest(void) {
++    if (!maternalbound_enabled()) return false;
++    if (!map_loader_init()) return false;
++    get_map_enemy_placement(0,0); /* bind the same table used by normal spawns */
++    if (!enemy_config_table || !battle_action_table) return false;
++    unsigned scripts = 0, turns = 0;
++    dt.instant_printing = 1;
++    win.current_focus_window = WINDOW_ID_NONE;
++    for (uint16_t enemy=0;enemy<231;enemy++) {
++        if (!maternalbound_enemy_ai_entry(enemy)) continue;
++        ++scripts;
++        for (unsigned condition=0;condition<4;condition++) {
++            memset(&bt,0,sizeof(bt));
++            bt.battlers_table[0].id = 1;
++            bt.battlers_table[0].consciousness = 1;
++            bt.battlers_table[0].hp = bt.battlers_table[0].hp_max = 300;
++            battle_init_enemy_stats(&bt.battlers_table[FIRST_ENEMY_INDEX],enemy);
++            Battler *actor=&bt.battlers_table[FIRST_ENEMY_INDEX];
++            actor->hp = condition == 0 ? actor->hp_max : condition == 1 ? 1 : 20;
++            actor->pp = condition == 0 ? actor->pp_max : condition == 1 ? 0 : 8;
++            if (condition == 3) actor->afflictions[STATUS_GROUP_TEMPORARY] = STATUS_2_ASLEEP;
++            for (unsigned turn=0;turn<64;turn++) {
++                ModeState parent={0}, child={0};
++                parent.battle.phase=BTL_ENEMY_AI;
++                memset(&g_mode_stack,0,sizeof(g_mode_stack));
++                mode_push(GAME_MODE_BATTLE,&parent);
++                actor->current_action = UINT16_MAX;
++                unsigned pending=0;
++                while (btl_enemy_ai(&g_mode_stack.state[0].battle,&child)) {
++                    mode_push(GAME_MODE_DISPLAY_TEXT,&child);
++                    while (g_mode_stack.depth > 1) {
++                        unsigned top=g_mode_stack.depth-1;
++                        StepResult step=mode_dispatch_step(g_mode_stack.mode[top],&g_mode_stack.state[top]);
++                        if (step.kind == STEP_PUSH) mode_push(step.push_mode,step.push_init);
++                        else if (step.kind == STEP_POP) mode_pop(step.pop_result);
++                        if (++pending > 10000) {
++                            fprintf(stderr,"Redux AI did not finish: enemy=%u condition=%u turn=%u\n",enemy,condition,turn);
++                            return false;
++                        }
++                    }
++                }
++                if (actor->current_action >= 319 || bt.redux_enemy_ai_active ||
++                    actor->money != enemy_config_table[enemy].money ||
++                    (enemy_config_table[enemy].action_order >= 4 && !bt.redux_enemy_ai_cursor[FIRST_ENEMY_INDEX])) {
++                    fprintf(stderr,"Redux AI invalid result: enemy=%u action=%u condition=%u turn=%u\n",
++                        enemy,actor->current_action,condition,turn);
++                    return false;
++                }
++                ++turns;
++            }
++        }
++    }
++    fprintf(stderr,"Redux enemy AI checks: %u scripts, %u turns, PASS\n",scripts,turns);
++    return scripts == 190 && turns == scripts*256;
++}
++
+ static bool btl_run_success(BattleRoutineState *st) {
+     uint16_t max_enemy_speed = 0;
+     uint16_t max_player_speed = 0;
+@@ -4250,7 +4341,7 @@ static void btl_exec_setup_targets(BattleRoutineState *st, Battler *attacker) {
   * the per-member EXP split. */
  static void btl_victory_money_exp(void) {
      /* Deposit battle money */
@@ -1167,7 +1763,7 @@ index ef6571c..ec7e8b0 100644
  
      /* Add money to game total (assembly adds deposited amount, not original) */
      {
-@@ -4265,7 +4266,8 @@ static void btl_victory_money_exp(void) {
+@@ -4265,7 +4356,8 @@ static void btl_victory_money_exp(void) {
      /* Calculate EXP per surviving party member */
      {
          uint16_t alive_count = battle_count_chars(0);
@@ -1177,7 +1773,26 @@ index ef6571c..ec7e8b0 100644
              /* Add (alive_count - 1) bonus EXP to base, then divide */
              bt.battle_exp_scratch += (alive_count - 1);
              bt.battle_exp_scratch /= alive_count;
-@@ -5702,7 +5704,7 @@ static void iw_victory_setup(void) {
+@@ -4411,6 +4503,8 @@ StepResult mode_step_battle(ModeState *ms) {
+         case BTL_TURN:
+             /* start_turn (lines 1110-1176) */
+             btl_start_turn(st);
++            st->enemy_ai_i = 0;
++            st->enemy_ai_pending = 0;
+             st->phase = BTL_MENU;
+             break;
+ 
+@@ -4548,7 +4642,8 @@ StepResult mode_step_battle(ModeState *ms) {
+ 
+         case BTL_ENEMY_AI:
+             /* Phase 6: enemy AI (lines 1497-1921) */
+-            btl_enemy_ai(st);
++            if (btl_enemy_ai(st,&child_init))
++                return STEP_RESULT_PUSH_INIT(GAME_MODE_DISPLAY_TEXT,&child_init);
+ 
+             /* Phase 7: announce enemy-first initiative (lines 1922-1931) */
+             create_window(0x0E);
+@@ -5702,7 +5797,7 @@ static void iw_victory_setup(void) {
      }
  
      /* Deposit money into ATM and add to running total (game_state.unknownC4) */
@@ -1186,7 +1801,7 @@ index ef6571c..ec7e8b0 100644
      uint32_t deposited = deposit_into_atm(money32);
  
      /* Add deposited amount to game_state.unknownC4 (32-bit running battle money) */
-@@ -5734,7 +5736,8 @@ static void iw_victory_setup(void) {
+@@ -5734,7 +5829,8 @@ static void iw_victory_setup(void) {
  
      /* Divide EXP evenly among alive party members (ceiling division) */
      uint16_t alive_count = battle_count_chars(0);
@@ -1196,11 +1811,60 @@ index ef6571c..ec7e8b0 100644
          bt.battle_exp_scratch = (bt.battle_exp_scratch + (uint32_t)(alive_count - 1)) / (uint32_t)alive_count;
      }
  }
+diff --git a/src/game/battle.h b/src/game/battle.h
+index 379bc0e..c5d940a 100644
+--- a/src/game/battle.h
++++ b/src/game/battle.h
+@@ -512,6 +512,9 @@ typedef struct {
+     uint16_t battle_menu_selected_action;
+     uint8_t  battle_menu_targetting;
+     uint8_t  battle_menu_selected_target;
++    /* Native Redux script cursors. Keep enemy money available for drops. */
++    uint32_t redux_enemy_ai_cursor[BATTLER_COUNT];
++    uint8_t  redux_enemy_ai_active; /* slot + 1; zero outside AI dispatch */
+ } BattleState;
+ 
+ extern BattleState bt;
+@@ -859,6 +862,7 @@ uint8_t find_next_enemy_letter(uint16_t enemy_id);
+  * Initialize a battler from the enemy configuration table. Sets all stats,
+  * PSI resistances, initial status effects, money, and experience. */
+ void battle_init_enemy_stats(Battler *battler, uint16_t enemy_id);
++bool maternalbound_enemy_ai_selftest(void);
+ 
+ /* BATTLE_INIT_PLAYER_STATS (asm/battle/init_player_stats.asm)
+  * Initialize a battler from a party character's stats. Copies HP, PP, stats,
+diff --git a/src/game/battle_psi.c b/src/game/battle_psi.c
+index ce9f34f..c1c5ff9 100644
+--- a/src/game/battle_psi.c
++++ b/src/game/battle_psi.c
+@@ -378,10 +378,10 @@ void display_character_psi_list(uint16_t char_id) {
+      * Name is 5 bytes at char_struct::name (EB-encoded). */
+     uint16_t char_idx = char_id - 1;
+     char name_buf[8];
+-    for (int j = 0; j < 5; j++)
+-        name_buf[j] = eb_char_to_ascii(party_characters[char_idx].name[j]);
+-    name_buf[5] = '\0';
+-    set_window_title(WINDOW_TEXT_STANDARD, name_buf, 5);
++    for (int j = 0; j < maternalbound_name_capacity(); j++)
++        name_buf[j] = eb_char_to_ascii(maternalbound_character_name(char_idx)[j]);
++    name_buf[maternalbound_name_capacity()] = '\0';
++    set_window_title(WINDOW_TEXT_STANDARD, name_buf, maternalbound_name_capacity());
+ 
+     /* Assembly lines 36-43: generate PSI list.
+      * @LOCAL00 = [usability=1 (overworld), category=15 (all)].
 diff --git a/src/game/display_text.c b/src/game/display_text.c
-index 9b2cb3d..85406be 100644
+index 9b2cb3d..33f296b 100644
 --- a/src/game/display_text.c
 +++ b/src/game/display_text.c
-@@ -185,6 +185,83 @@ void restore_window_text_attributes(void) {
+@@ -12,6 +12,7 @@
+ 
+ #include "game/display_text.h"
+ #include "game/display_text_internal.h"
++#include "game/maternalbound.h"
+ #include "game/game_state.h"
+ #include "game/inventory.h"
+ #include "game/text.h"
+@@ -185,6 +186,242 @@ void restore_window_text_attributes(void) {
   * get_working_memory() always returns 0, causing JUMP_IF_FALSE to always jump. */
  static WindowInfo dummy_window;
  
@@ -1214,7 +1878,7 @@ index 9b2cb3d..85406be 100644
 +    uint8_t saved_order[sizeof(game_state.party_order)];
 +    memcpy(saved_order, game_state.party_order, sizeof(saved_order));
 +    win.current_focus_window = WINDOW_ID_NONE;
-+    bool ok = true;
++    bool ok = maternalbound_asset_selftest(saved_blob, saved_size);
 +    unsigned checks = 0;
 +    const struct {
 +        uint8_t sub;
@@ -1273,6 +1937,165 @@ index 9b2cb3d..85406be 100644
 +        ok &= passed; ++checks;
 +        if (!passed) fprintf(stderr, "Redux VM register case %zu failed\n", i);
 +    }
++    /* Exercise the actual routine dispatcher and its child-mode contracts. */
++    OverworldState saved_ow = ow;
++    uint16_t saved_battle_flag = bt.battle_mode_flag;
++    FadeState saved_fade = fade_state;
++    uint8_t saved_brightness = ppu.inidisp;
++    uint16_t saved_hp_options[4];
++    for (unsigned n = 0; n < 4; ++n) saved_hp_options[n] = party_characters[n].hp_pp_window_options;
++    const struct {uint8_t id; bool push; GameMode mode;} routines[] = {
++        {1,false,0},{2,true,GAME_MODE_DEBUG_YMENU},{3,true,GAME_MODE_DEBUG_GOODS},
++        {4,false,0},{5,false,0},{6,false,0},{7,false,0},{8,false,0},{9,false,0},
++        {10,true,GAME_MODE_FADE_WAIT},{11,true,GAME_MODE_TEXT_DELAY},
++        {12,true,GAME_MODE_TEXT_DELAY},{13,true,GAME_MODE_TEXT_DELAY},
++        {14,true,GAME_MODE_USE_ITEM},{15,false,0}
++    };
++    for (size_t n = 0; n < sizeof(routines)/sizeof(routines[0]); ++n) {
++        uint8_t script[] = {0x0C,routines[n].id,0,0,routines[n].id == 9 ? 1 : 0,7};
++        size_t size = routines[n].id == 10 ? 6 : 5;
++        dialogue_blob = script; dialogue_blob_size = size;
++        ScriptReader reader = {TEXT_SRC_DIALOGUE,0,(uint32_t)size,-1};
++        ModeState child = {0}; GameMode mode = 0;
++        uint8_t resume = 0; uint16_t window = 0; uint32_t arg = 0;
++        bt.battle_mode_flag = 1;
++        if (routines[n].id == 10) ppu.inidisp = 15;
++        set_argument_memory(42);
++        bool push = cc_1a_dispatch(&reader,&child,&mode,&resume,&window,&arg);
++        bool passed = push == routines[n].push && reader.ptr_off == size && (!push || mode == routines[n].mode);
++        if (routines[n].id == 9) passed &= get_working_memory() == 1;
++        if (routines[n].id == 10) passed &= fade_state.delay == 7;
++        if (routines[n].id == 14) passed &= child.use_item.item_id == 42 && child.use_item.from_key_items_pool;
++        if (routines[n].id == 15) passed &= ow.redux_primary_timer == 191 && ow.redux_secondary_timer == 143;
++        if (routines[n].id >= 6 && routines[n].id <= 8)
++            for (unsigned c = 0; c < 4; ++c) passed &= party_characters[c].hp_pp_window_options ==
++                (routines[n].id == 6 ? 0x1400 : routines[n].id == 7 ? 0x0400 : 0x0C00);
++        ok &= passed; ++checks;
++        if (!passed) fprintf(stderr,"Redux native routine %u failed\n",routines[n].id);
++    }
++    ow = saved_ow; bt.battle_mode_flag = saved_battle_flag;
++    fade_state = saved_fade; ppu.inidisp = saved_brightness;
++    for (unsigned n = 0; n < 4; ++n) party_characters[n].hp_pp_window_options = saved_hp_options[n];
++    WindowInfo saved_window = win.windows[0];
++    memset(&win.windows[0],0,sizeof(win.windows[0]));
++    win.windows[0].active = true; win.windows[0].id = 1; win.current_focus_window = 1;
++    const struct {uint8_t term; const char *right; uint32_t callback;} menus[] = {
++        {2,"",0},{1,"",0x300080},{4,"42",0},{3,"7",0x300090}
++    };
++    for (size_t n = 0; n < sizeof(menus)/sizeof(menus[0]); ++n) {
++        uint8_t script[64] = {0x02}; size_t size = 1;
++        const char *left = "Choice";
++        for (size_t p = 0; p < strlen(left); ++p) script[size++] = ascii_to_eb_char(left[p]);
++        script[size++] = menus[n].term;
++        if (menus[n].term >= 3) {
++            for (size_t p = 0; p < strlen(menus[n].right); ++p) script[size++] = ascii_to_eb_char(menus[n].right[p]);
++            script[size++] = 0;
++        }
++        if (menus[n].term == 1 || menus[n].term == 3)
++            for (unsigned p = 0; p < 4; ++p) script[size++] = (uint8_t)(menus[n].callback >> (p*8));
++        dialogue_blob = script; dialogue_blob_size = size;
++        ScriptReader reader = {TEXT_SRC_DIALOGUE,0,(uint32_t)size,-1};
++        win.windows[0].menu_count = 0;
++        cc_19_dispatch(&reader);
++        MenuItem *item = &win.windows[0].menu_items[0];
++        bool passed = reader.ptr_off == size && win.windows[0].menu_count == 1 &&
++            !strcmp(item->label,left) && !strcmp(item->right_label,menus[n].right) && item->script == menus[n].callback;
++        ok &= passed; ++checks;
++        if (!passed) fprintf(stderr,"Redux menu variant %u failed\n",menus[n].term);
++    }
++    if (maternalbound_enabled()) {
++        ok &= maternalbound_stamina_selftest();
++        uint8_t saved_name[sizeof(party_characters[0].name)];
++        memcpy(saved_name,party_characters[0].name,sizeof(saved_name));
++        memset(party_characters[0].name,0,sizeof(saved_name));
++        const char *name = "Ness";
++        for (unsigned i=0;i<4;i++) party_characters[0].name[i]=ascii_to_eb_char(name[i]);
++        size_t fixture_size = MATERNALBOUND_DIALOGUE_BASE-0x100000u+64;
++        uint8_t *fixture = calloc(1,fixture_size);
++        if (!fixture) return false;
++        const struct {uint8_t sub; const char *affix, *expected;} titles[] = {
++            {0x0B,"","Ness"},{0x0E," Jr","Ness Jr"},{0x0F,"Hero ","Hero Ness"}
++        };
++        for (size_t n=0;n<sizeof(titles)/sizeof(titles[0]);n++) {
++            uint8_t script[] = {titles[n].sub,1,1,6,0x10,0,0x30,0};
++            memcpy(fixture,script,sizeof(script));
++            size_t at = MATERNALBOUND_DIALOGUE_BASE-0x100000u+16;
++            memset(fixture+at,0,32);
++            for (size_t i=0;i<strlen(titles[n].affix);i++) fixture[at+i]=ascii_to_eb_char(titles[n].affix[i]);
++            dialogue_blob=fixture; dialogue_blob_size=fixture_size;
++            size_t size=titles[n].sub==0x0B ? 4 : 8;
++            ScriptReader reader={TEXT_SRC_DIALOGUE,0,(uint32_t)size,-1};
++            ModeState child={0};GameMode mode=0;uint8_t resume=0;uint32_t target=0;
++            bool pushed=cc_18_dispatch(&reader,&child,&mode,&resume,&target);
++            bool passed=!pushed && reader.ptr_off==size && !strcmp(win.windows[0].title,titles[n].expected);
++            ok &= passed; ++checks;
++            if (!passed) fprintf(stderr,"Redux character title %02X failed\n",titles[n].sub);
++        }
++        free(fixture);
++        memcpy(party_characters[0].name,saved_name,sizeof(saved_name));
++        uint8_t saved_buffer[4096]; uint16_t saved_palettes[256];
++        memcpy(saved_buffer,ert.buffer,sizeof(saved_buffer));
++        memcpy(saved_palettes,ert.palettes,sizeof(saved_palettes));
++        for (unsigned inward=0;inward<2;inward++) for (unsigned actions=0;actions<2;actions++) {
++            for (unsigned i=0;i<256;i++) ert.palettes[i]=0x7FFF;
++            uint8_t script[]={inward ? 0x0E : 0x0D,0,0,1,0,2,0,(uint8_t)actions};
++            dialogue_blob=script;dialogue_blob_size=sizeof(script);
++            ScriptReader reader={TEXT_SRC_DIALOGUE,0,sizeof(script),-1};
++            ModeState child={0};GameMode mode=0;uint8_t resume=0;uint16_t window=0;uint32_t arg=0;
++            bool pushed=cc_1a_dispatch(&reader,&child,&mode,&resume,&window,&arg);
++            bool passed=pushed && reader.ptr_off==sizeof(script) && mode==GAME_MODE_PALETTE_FADE &&
++                child.palette_fade.kind==(actions ? PF_WITH_RENDERING : PF_CUSTOM_COLOUR) && child.palette_fade.remaining==2;
++            if (!actions) {
++                mode_step_palette_fade(&child);
++                passed &= ert.palettes[0] > 0 && ert.palettes[0] < 0x7FFF;
++                passed &= ert.palettes[16] == (inward ? 0 : 0x7FFF);
++                mode_step_palette_fade(&child);mode_step_palette_fade(&child);
++                for (unsigned i=0;i<256;i++) passed &= ert.palettes[i]==(inward ? 0x7FFF : 0);
++            }
++            ok &= passed; ++checks;
++            if (!passed) fprintf(stderr,"Redux palette fade %u/%u failed\n",inward,actions);
++        }
++        memcpy(ert.buffer,saved_buffer,sizeof(saved_buffer));
++        memcpy(ert.palettes,saved_palettes,sizeof(saved_palettes));
++    }
++    {
++        Battler saved_battler=bt.battlers_table[FIRST_ENEMY_INDEX];
++        uint16_t saved_attacker=bt.current_attacker;
++        uint8_t saved_active=bt.redux_enemy_ai_active;
++        bt.current_attacker=FIRST_ENEMY_INDEX*sizeof(Battler);
++        bt.redux_enemy_ai_active=FIRST_ENEMY_INDEX+1;
++        win.current_focus_window=WINDOW_ID_NONE;
++        Battler *actor=&bt.battlers_table[FIRST_ENEMY_INDEX];
++        memset(actor,0,sizeof(*actor));actor->hp=50;actor->pp=10;
++        actor->afflictions[2]=1;
++        const struct {uint8_t sub;uint16_t value;uint8_t byte;uint32_t arg;uint32_t result;} ai[] = {
++            {0x1B,4,0,0,4},{0x1B,0,0,7,7},{0x1B,314,255,0,314},
++            {0x1C,49,0,0,0},{0x1C,50,0,0,1},{0x1C,51,0,0,1},{0x1C,0,0,50,1},
++            {0x1D,9,0,0,0},{0x1D,10,0,0,1},{0x1D,11,0,0,1},{0x1D,0,0,10,1},
++            {0x1E,2,1,0,1},{0x1E,2,2,0,0},{0x1E,255,1,0,0},{0x1E,0,0,0,1},
++            {0x1E,0,1,2,1},{0x1E,2,0,1,1}
++        };
++        for (unsigned i=0;i<sizeof(ai)/sizeof(ai[0]);i++) {
++            uint8_t script[]={ai[i].sub,(uint8_t)ai[i].value,(uint8_t)(ai[i].value>>8),ai[i].byte};
++            size_t size=ai[i].sub==0x1B ? 4 : 3;
++            if (ai[i].sub==0x1E) script[2]=ai[i].byte;
++            dialogue_blob=script;dialogue_blob_size=size;
++            ScriptReader reader={TEXT_SRC_DIALOGUE,0,size,-1};
++            ModeState child={0};GameMode mode=0;uint8_t resume=0;uint16_t window=0;uint32_t arg=0;
++            set_argument_memory(ai[i].arg);
++            bool pushed=cc_1a_dispatch(&reader,&child,&mode,&resume,&window,&arg);
++            bool passed=!pushed && reader.ptr_off==size;
++            if (ai[i].sub==0x1B)
++                passed &= actor->current_action==ai[i].result &&
++                    actor->current_action_argument==(ai[i].byte ? ai[i].byte : (uint8_t)ai[i].arg);
++            else passed &= get_working_memory()==ai[i].result;
++            ok &= passed;++checks;
++            if (!passed) fprintf(stderr,"Redux AI command check %u failed\n",i);
++        }
++        bt.battlers_table[FIRST_ENEMY_INDEX]=saved_battler;
++        bt.current_attacker=saved_attacker;bt.redux_enemy_ai_active=saved_active;
++    }
++    win.windows[0] = saved_window;
 +    dialogue_blob = saved_blob; dialogue_blob_size = saved_size;
 +    dummy_window = saved_dummy; win.current_focus_window = saved_focus;
 +    game_state.money_carried = saved_cash; game_state.bank_balance = saved_bank;
@@ -1284,7 +2107,20 @@ index 9b2cb3d..85406be 100644
  WindowInfo *get_focus_window_info(void) {
      if (win.current_focus_window == WINDOW_ID_NONE) return &dummy_window;
      return get_window(win.current_focus_window);
-@@ -543,6 +620,62 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+@@ -520,6 +757,12 @@ typedef struct {
+ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+     static TextBlock dialogue_block = {0};
+     static TextBlock string_table_block = {0};
++    uint32_t resolved = maternalbound_resolve_entry(addr);
++    if (addr && !resolved) {
++        LOG_WARN("Redux has no native entry mapping for 0x%06X\n", addr);
++        return NULL;
++    }
++    addr = resolved;
+ 
+     /* Dialogue blob */
+     if (addr >= DIALOGUE_BLOB_BASE && dialogue_blob != NULL) {
+@@ -543,6 +786,63 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
      return NULL;
  }
  
@@ -1312,9 +2148,10 @@ index 9b2cb3d..85406be 100644
 +    if (fseek(file, 0, SEEK_END)) {fclose(file); return false;}
 +    long length = ftell(file);
 +    if (length <= 0 || length > 0xAFFFFF || fseek(file, 0, SEEK_SET)) {fclose(file); return false;}
-+    uint8_t *blob = malloc((size_t)length + 6);
++    size_t pad = MATERNALBOUND_DIALOGUE_BASE-DIALOGUE_BLOB_BASE;
++    uint8_t *blob = calloc((size_t)length + pad + 6, 1);
 +    if (!blob) {fclose(file); return false;}
-+    bool read_ok = fread(blob, 1, length, file) == (size_t)length;
++    bool read_ok = fread(blob + pad, 1, length, file) == (size_t)length;
 +    fclose(file);
 +    if (!read_ok) {free(blob); return false;}
 +    const uint8_t *saved_blob = dialogue_blob;
@@ -1328,14 +2165,14 @@ index 9b2cb3d..85406be 100644
 +    win.current_focus_window = 1;
 +    memset(win.titled_windows, WINDOW_ID_NONE, sizeof(win.titled_windows));
 +    /* Run CC180C against the converted content using its relocated pointer. */
-+    uint8_t *command = blob + length;
++    uint8_t *command = blob + pad + length;
 +    command[0] = 0x0C; command[1] = 0;
 +    for (int i = 0; i < 4; ++i) command[2+i] = (uint8_t)(address >> (i*8));
-+    dialogue_blob = blob; dialogue_blob_size = (size_t)length + 6;
-+    ScriptReader reader = {TEXT_SRC_DIALOGUE, (uint32_t)length, (uint32_t)length+6, -1};
++    dialogue_blob = blob; dialogue_blob_size = (size_t)length + pad + 6;
++    ScriptReader reader = {TEXT_SRC_DIALOGUE, (uint32_t)(length+pad), (uint32_t)(length+pad+6), -1};
 +    ModeState child = {0}; GameMode mode = 0; uint8_t resume = 0; uint32_t cancel = 0;
 +    bool pushed = cc_18_dispatch(&reader, &child, &mode, &resume, &cancel);
-+    bool ok = !pushed && reader.ptr_off == (uint32_t)length+6 && !strcmp(win.windows[0].title, expected);
++    bool ok = !pushed && reader.ptr_off == (uint32_t)(length+pad+6) && !strcmp(win.windows[0].title, expected);
 +    fprintf(stderr, "Redux converted title / native CC180C: %s\n", ok ? "PASS" : "FAIL");
 +    dialogue_blob = saved_blob; dialogue_blob_size = saved_size;
 +    win.windows[0] = saved_window; win.current_focus_window = saved_focus;
@@ -1347,6 +2184,103 @@ index 9b2cb3d..85406be 100644
  /* Print a PSI name given a PSI name ID.
   * Port of GET_PSI_NAME (asm/text/get_psi_name.asm).
   * psi_name_id==1 (ROCKIN) → uses favourite_thing from game_state.
+@@ -628,7 +928,9 @@ static bool display_text_load_dialogue_blob(void) {
+     dialogue_blob = ASSET_DIALOGUE_DIALOGUE_BIN_DATA;
+     dialogue_blob_size = ASSET_DIALOGUE_DIALOGUE_BIN_SIZE;
+ #endif
+-    return dialogue_blob != NULL;
++    if (!dialogue_blob || !maternalbound_bind_dialogue(dialogue_blob, dialogue_blob_size))
++        FATAL("Invalid native dialogue pack metadata\n");
++    return true;
+ }
+ 
+ bool display_text_init(void) {
+@@ -857,12 +1159,12 @@ void display_status_window(uint16_t char_id) {
+ 
+     /* Assembly lines 27-40: set window title to character name */
+     {
+-        char name_buf[6];
++        char name_buf[7];
+         int i;
+-        for (i = 0; i < 5 && c->name[i] != 0x00; i++)
+-            name_buf[i] = eb_char_to_ascii(c->name[i]);
++        for (i = 0; i < maternalbound_name_capacity() && maternalbound_character_name_of(c)[i] != 0x00; i++)
++            name_buf[i] = eb_char_to_ascii(maternalbound_character_name_of(c)[i]);
+         name_buf[i] = '\0';
+-        set_window_title(WINDOW_STATUS_MENU, name_buf, 5);
++        set_window_title(WINDOW_STATUS_MENU, name_buf, maternalbound_name_capacity());
+     }
+ 
+     dt.force_left_text_alignment = 1;
+@@ -1036,10 +1338,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
+ 
+         char name_buf[7];
+         if (member_id >= 1 && member_id <= 4) {
+-            eb_to_ascii_buf(party_characters[member_id - 1].name, 5, name_buf);
++            eb_to_ascii_buf(maternalbound_character_name(member_id - 1), maternalbound_name_capacity(), name_buf);
+         } else if (member_id == PARTY_MEMBER_KING) {
+             eb_to_ascii_buf(game_state.pet_name, 6, name_buf);
+-            name_buf[5] = '\0';
++            name_buf[maternalbound_name_capacity()] = '\0';
+         } else {
+             name_buf[0] = '\0';
+         }
+@@ -1191,8 +1493,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+             return (uintptr_t)game_state.pet_name;
+         case 4:
+             *out_type = CC_TABLE_TYPE_STRING;
+-            *out_str_len = (int)sizeof(game_state.favourite_food);
+-            return (uintptr_t)game_state.favourite_food;
++            *out_str_len = maternalbound_food_capacity();
++            return (uintptr_t)maternalbound_food_name();
+         case 5:
+             *out_type = CC_TABLE_TYPE_STRING;
+             *out_str_len = (int)sizeof(game_state.favourite_thing);
+@@ -1216,8 +1518,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+         switch ((CcCharField)field) {
+         case CC_CHAR_NAME:
+             *out_type = CC_TABLE_TYPE_STRING;
+-            *out_str_len = (int)sizeof(c->name);
+-            return (uintptr_t)c->name;
++            *out_str_len = maternalbound_name_capacity();
++            return (uintptr_t)maternalbound_character_name(char_index);
+         case CC_CHAR_LEVEL:       return c->level;
+         case CC_CHAR_EXP:         return c->exp;
+         case CC_CHAR_CURRENT_HP:  return c->current_hp;
+@@ -1259,7 +1561,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+         case 1: return (uint8_t)sizeof(game_state.mother2_playername);
+         case 2: return (uint8_t)sizeof(game_state.earthbound_playername);
+         case 3: return (uint8_t)sizeof(game_state.pet_name);
+-        case 4: return (uint8_t)sizeof(game_state.favourite_food);
++        case 4: return maternalbound_food_capacity();
+         case 5: return (uint8_t)sizeof(game_state.favourite_thing);
+         case 6: return (uint8_t)sizeof(game_state.money_carried);
+         case 7: return (uint8_t)sizeof(game_state.bank_balance);
+@@ -1270,7 +1572,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+     if (index >= CC_GLOBAL_COUNT && index < CC_TABLE_TOTAL) {
+         uint16_t field = (index - CC_GLOBAL_COUNT) % CC_CHAR_FIELD_COUNT;
+         switch ((CcCharField)field) {
+-        case CC_CHAR_NAME:        return (uint8_t)sizeof(((CharStruct *)0)->name);
++        case CC_CHAR_NAME:        return (uint8_t)maternalbound_name_capacity();
+         case CC_CHAR_LEVEL:       return 1;
+         case CC_CHAR_EXP:         return 4;
+         case CC_CHAR_CURRENT_HP:  return 2;
+@@ -1779,6 +2081,15 @@ StepResult mode_step_display_text(ModeState *ms) {
+          * unknown4 starts as 0 (cleared by INIT_TEXT_STATE), set to 1 by CC_18_02.
+          * In C: dt.g_cc18_attrs_saved tracks this per display_text call level. */
+         if (byte == 0x02) {
++            /* Only the root enemy script saves its continuation. A nested
++             * text function returns to its caller before the turn ends. */
++            if (bt.redux_enemy_ai_active && g_mode_stack.depth >= 2 &&
++                g_mode_stack.mode[g_mode_stack.depth-2] == GAME_MODE_BATTLE) {
++                unsigned slot = bt.redux_enemy_ai_active-1;
++                if (slot >= BATTLER_COUNT || r->source != TEXT_SRC_DIALOGUE || r->ptr_off >= r->end_off)
++                    FATAL("Redux: enemy AI ended without a valid continuation\n");
++                bt.redux_enemy_ai_cursor[slot] = DIALOGUE_BLOB_BASE+r->ptr_off;
++            }
+             if (dt.g_cc18_attrs_saved) {
+                 restore_window_text_attributes();
+             }
 diff --git a/src/game/display_text.h b/src/game/display_text.h
 index 1289939..5d6dcd1 100644
 --- a/src/game/display_text.h
@@ -1364,7 +2298,7 @@ index 1289939..5d6dcd1 100644
  bool display_text_load_battle_text(void);
  void display_text_free_battle_text(void);
 diff --git a/src/game/display_text_cc.c b/src/game/display_text_cc.c
-index 950d47b..e43ac5c 100644
+index 950d47b..09149b3 100644
 --- a/src/game/display_text_cc.c
 +++ b/src/game/display_text_cc.c
 @@ -1,3 +1,4 @@
@@ -1389,10 +2323,77 @@ index 950d47b..e43ac5c 100644
          return STEP_RESULT_POP(0);
  
      if (update_hppp_meter_work_step()) {
-@@ -1750,6 +1752,15 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1082,6 +1084,13 @@ bool cc_1f_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+ 
+     /* Map/movement commands */
+     case 0x60: {
++        if (maternalbound_enabled()) {
++            out_init->text_delay.remaining = script_read_byte(r);
++            out_init->text_delay.cancelable = 1;
++            out_init->text_delay.primed = 0;
++            *out_mode = GAME_MODE_TEXT_DELAY;
++            return true;
++        }
+         /* TEXT_SPEED_DELAY: 0 args.
+          * Port of CC_1F_60 (asm/text/ccs/unknown_1F_60.asm) → TEXT_SPEED_DELAY
+          * (asm/text/text_speed_delay.asm).
+@@ -1700,13 +1709,19 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+          * The dword arg per textmacro EBTEXT_SELECTION_MENU_NO_CANCEL; handler only uses 1 byte
+          * via gather mechanism but textmacro declares DWORD (4 bytes in stream).
+          * Stores result in working_memory. */
+-        uint32_t cancel_target = script_read_dword(r);
++        uint32_t cancel_target = 0;
++        if (maternalbound_enabled()) {
++            uint8_t id = script_read_byte(r);
++            save_window_text_attributes();
++            set_window_focus(id ? id : win.current_focus_window);
++        } else cancel_target = script_read_dword(r);
+         /* selection_menu(0) → STEP_PUSH GAME_MODE_SELECTION_MENU; the result store
+          * + conditional cancel-jump run in DT_RESUME_CC18_SEL on POP. An empty/null
+          * menu returns 0 inline (and still takes the cancel jump). */
+         WindowInfo *w = get_window(win.current_focus_window);
+         if (!w || w->menu_count == 0) {
+             set_working_memory(0);
++            if (maternalbound_enabled()) restore_window_text_attributes();
+             if (cancel_target != 0) {
+                 resolve_text_jump(r, cancel_target);
+             }
+@@ -1716,7 +1731,7 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+         out_init->selection_menu.allow_cancel = 0;
+         *out_cancel_target = cancel_target;
+         *out_mode   = GAME_MODE_SELECTION_MENU;
+-        *out_resume = DT_RESUME_CC18_SEL;
++        *out_resume = maternalbound_enabled() ? DT_RESUME_CC18_SEL_RESTORE : DT_RESUME_CC18_SEL;
+         return true;
+     }
+     case 0x09: {
+@@ -1750,6 +1765,38 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
           * Saves/restores text attributes, creates money window, prints "$N". */
          display_money_window();
          break;
++    case 0x0B: case 0x0E: case 0x0F: {
++        if (!maternalbound_enabled()) FATAL("Redux title command outside Redux profile\n");
++        uint8_t window_id = script_read_byte(r);
++        uint8_t character = script_read_byte(r);
++        uint8_t length = script_read_byte(r);
++        uint32_t address = sub == 0x0B ? 0 : script_read_dword(r);
++        const uint8_t *name = NULL; size_t capacity = 0;
++        if (character >= 1 && character <= 4) {
++            name = maternalbound_character_name(character-1);
++            capacity = maternalbound_name_capacity();
++        } else if (character == 5) {
++            name = game_state.pet_name; capacity = sizeof(game_state.pet_name);
++        } else FATAL("Invalid Redux title character %u\n",character);
++        char decoded[WINDOW_TITLE_SIZE] = {0}, affix[WINDOW_TITLE_SIZE] = {0};
++        for (size_t i=0; i<length && i<capacity && i<sizeof(decoded)-1 && name[i]; ++i)
++            decoded[i] = eb_char_to_ascii(name[i]);
++        if (address && !dt_copy_plain_string(address,affix,sizeof(affix)))
++            FATAL("Invalid Redux title affix 0x%06X\n",address);
++        char title[WINDOW_TITLE_SIZE];
++        snprintf(title,sizeof(title),"%s%s",sub == 0x0F ? affix : decoded,sub == 0x0F ? decoded : affix);
++        set_window_title(window_id ? window_id : win.current_focus_window,title,-1);
++        break;
++    }
 +    case 0x0C: {
 +        uint8_t window_id = script_read_byte(r);
 +        uint32_t address = script_read_dword(r);
@@ -1405,10 +2406,202 @@ index 950d47b..e43ac5c 100644
      case 0x0D: {
          /* DISPLAY_STATUS: 2 args (char_id, mode).
           * Port of CC_18_0D (asm/text/ccs/display_status.asm).
-@@ -2381,6 +2392,27 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1812,38 +1859,35 @@ void cc_19_dispatch(ScriptReader *r) {
+          * 0x01 = add menu option with 4-byte callback address following.
+          * Assembly ADD_MENU_OPTION sets type=1 (counted), page=1, sound_effect=1.
+          * selection_menu returns 1-based index for type=1 items. */
+-        char label_buf[MENU_LABEL_SIZE];
+-        int pos = 0;
+-        uint8_t b;
+-        while (r->ptr_off < r->end_off && pos < MENU_LABEL_SIZE - 1) {
+-            b = script_read_byte(r);
+-            if (b == 0x01) {
+-                /* Terminator with 4-byte callback address.
+-                 * The callback is a text address invoked by selection_menu
+-                 * when the cursor lands on this option (hover preview text). */
+-                uint32_t callback = script_read_dword(r);
+-                label_buf[pos] = '\0';
+-                WindowInfo *w = get_focus_window_info();
+-                if (w) {
+-                    add_menu_item(label_buf, (uint16_t)(w->menu_count + 1),
+-                                  w->text_x, w->text_y);
+-                    /* Store callback on the just-added item (asm: menu_option::script) */
+-                    w->menu_items[w->menu_count - 1].script = callback;
+-                }
+-                break;
+-            } else if (b == 0x02) {
+-                /* Terminator without callback, ADD_MENU_OPTION(text, NULL) */
+-                label_buf[pos] = '\0';
+-                WindowInfo *w = get_focus_window_info();
+-                if (w) {
+-                    add_menu_item(label_buf, (uint16_t)(w->menu_count + 1),
+-                                  w->text_x, w->text_y);
+-                }
+-                break;
+-            } else {
+-                /* EB-encoded text byte, convert to ASCII for display */
+-                label_buf[pos++] = eb_char_to_ascii(b);
++        char label_buf[MENU_LABEL_SIZE] = {0};
++        char right_buf[32] = {0};
++        size_t pos = 0;
++        uint8_t terminator = 0;
++        while (r->ptr_off < r->end_off) {
++            uint8_t b = script_read_byte(r);
++            if (b < 0x20) { terminator = b; break; }
++            if (pos < sizeof(label_buf)-1) label_buf[pos++] = eb_char_to_ascii(b);
++        }
++        if (terminator == 3 || terminator == 4) {
++            pos = 0;
++            bool ended = false;
++            while (r->ptr_off < r->end_off) {
++                uint8_t b = script_read_byte(r);
++                if (!b) { ended = true; break; }
++                if (b < 0x20) FATAL("Redux: control code in second menu label\n");
++                if (pos < sizeof(right_buf)-1) right_buf[pos++] = eb_char_to_ascii(b);
+             }
++            if (!ended) FATAL("Redux: unterminated second menu label\n");
++        } else if (terminator != 1 && terminator != 2) {
++            FATAL("display_text: invalid menu label terminator %02X\n", terminator);
++        }
++        uint32_t callback = terminator == 1 || terminator == 3 ? script_read_dword(r) : 0;
++        WindowInfo *w = get_window(win.current_focus_window);
++        if (w && w->menu_count < MAX_MENU_ITEMS) {
++            add_menu_item(label_buf, (uint16_t)(w->menu_count + 1), w->text_x, w->text_y);
++            MenuItem *item = &w->menu_items[w->menu_count-1];
++            item->script = callback;
++            memcpy(item->right_label, right_buf, sizeof(right_buf));
+         }
+         break;
+     }
+@@ -1913,9 +1957,9 @@ void cc_19_dispatch(ScriptReader *r) {
+         }
+         uint8_t letter = 0;
+         if (char_id >= 1 && char_id <= TOTAL_PARTY_COUNT) {
+-            const uint8_t *name = party_characters[char_id - 1].name;
++            const uint8_t *name = maternalbound_character_name(char_id - 1);
+             uint16_t pos = get_secondary_memory();
+-            if (pos >= 1 && pos <= 5) {
++            if (pos >= 1 && pos <= maternalbound_name_capacity()) {
+                 letter = name[pos - 1];
+             }
+         }
+@@ -2221,6 +2265,21 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+     uint8_t sub = script_read_byte(r);
+ 
+     switch (sub) {
++    case 0x0D: case 0x0E: {
++        if (!maternalbound_enabled()) FATAL("Redux palette fade outside Redux profile\n");
++        uint16_t colour = script_read_word(r);
++        uint16_t mask = script_read_word(r);
++        uint16_t duration = script_read_word(r);
++        uint8_t actions = script_read_byte(r);
++        if (colour > 0x7FFF || duration > 0x7FFF) FATAL("Invalid Redux palette fade parameters\n");
++        maternalbound_palette_fade_start(sub == 0x0E,colour,mask,duration);
++        if (!duration) break;
++        out_init->palette_fade.kind = actions ? PF_WITH_RENDERING : PF_CUSTOM_COLOUR;
++        out_init->palette_fade.remaining = duration;
++        *out_mode = GAME_MODE_PALETTE_FADE;
++        *out_resume = DT_RESUME_NONE;
++        return true;
++    }
+     case 0x00: /* fall through */
+     case 0x01: {
+         /* PARTY_MEMBER_SELECTION_MENU: 17 args (4 dword script_ptrs + 1 byte mode).
+@@ -2381,6 +2440,141 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
          *out_mode   = GAME_MODE_TELEPORT_MENU;
          *out_resume = DT_RESUME_CC1A_TELEPORT;
          return true;
++    case 0x0C: {
++        /* The converter replaces SNES addresses with stable native adapter IDs.
++         * No 65816 instructions are executed by this dispatcher. */
++        uint32_t routine = script_read_byte(r);
++        routine |= (uint32_t)script_read_byte(r) << 8;
++        routine |= (uint32_t)script_read_byte(r) << 16;
++        uint8_t ret_type = script_read_byte(r);
++        uint32_t result = 0;
++        if (ret_type & 0x7C) FATAL("Redux: invalid routine return type %02X\n", ret_type);
++        switch (routine) {
++        case 1: hide_hppp_windows(); break;
++        case 2:
++            out_init->debug_ymenu.phase = DY_DRAW;
++            out_init->debug_ymenu.kind = DBG_YMENU_FLAG;
++            out_init->debug_ymenu.index = 1;
++            *out_mode = GAME_MODE_DEBUG_YMENU;
++            *out_resume = DT_RESUME_NONE;
++            return true;
++        case 3:
++            out_init->debug_goods.phase = DG_DRAW;
++            out_init->debug_goods.item_id = 0;
++            *out_mode = GAME_MODE_DEBUG_GOODS;
++            *out_resume = DT_RESUME_NONE;
++            return true;
++        case 4: clear_instant_printing(); break;
++        case 5: set_instant_printing(); break;
++        case 6: case 7: case 8:
++            if (routine == 8) initialize_window_flavour_palette();
++            for (unsigned i = 0; i < 4; ++i)
++                party_characters[i].hp_pp_window_options = routine == 6 ? 0x1400 : routine == 7 ? 0x0400 : 0x0C00;
++            ow.redraw_all_windows = 1;
++            break;
++        case 9: result = bt.battle_mode_flag; break;
++        case 10:
++            fade_out(1, script_read_byte(r));
++            out_init->fade_wait.tick_kind = FADE_TICK_WINDOW;
++            *out_mode = GAME_MODE_FADE_WAIT;
++            *out_resume = DT_RESUME_NONE;
++            return true;
++        case 11: case 12: case 13:
++            maternalbound_letterbox_start((uint8_t)routine);
++            out_init->text_delay.remaining = routine == 11 ? 14 : routine == 13 ? 13 : 1;
++            out_init->text_delay.cancelable = 0;
++            out_init->text_delay.primed = 0;
++            *out_mode = GAME_MODE_TEXT_DELAY;
++            *out_resume = DT_RESUME_NONE;
++            return true;
++        case 14:
++            out_init->use_item.phase = UI_ENTER;
++            out_init->use_item.char_id = game_state.party_members[0];
++            out_init->use_item.item_id = (uint16_t)get_argument_memory();
++            out_init->use_item.from_key_items_pool = 1;
++            *out_mode = GAME_MODE_USE_ITEM;
++            *out_resume = DT_RESUME_NONE;
++            return true;
++        case 15:
++            maternalbound_stamina_reset();
++            break;
++        case 16: host_request_reset(); break;
++        default: FATAL("Redux: unknown native routine ID %u\n", (unsigned)routine);
++        }
++        if (!(ret_type & 0x80)) result &= 0xFFFF;
++        switch (ret_type & 3) {
++        case 1: set_working_memory(result); break;
++        case 2: set_argument_memory(result); break;
++        case 3: set_secondary_memory((uint16_t)result); break;
++        }
++        break;
++    }
++    case 0x0F: {
++        uint8_t item = script_read_byte(r);
++        set_working_memory(maternalbound_item_determiner(item, get_argument_memory()));
++        break;
++    }
++    case 0x10: {
++        uint8_t item = script_read_byte(r);
++        uint32_t wanted = item ? item : get_argument_memory();
++        uint32_t quantity = 0;
++        if (wanted && wanted <= UINT8_MAX) {
++            for (size_t p = 0; p < sizeof(game_state.party_order); ++p) {
++                uint8_t character = game_state.party_order[p];
++                if (!character || character > 4) break;
++                for (size_t i = 0; i < sizeof(party_characters[character-1].items); ++i)
++                    if (party_characters[character-1].items[i] == wanted) ++quantity;
++            }
++            /* Native key-item storage represents one possession per pool entry. */
++            if (key_items_find((uint16_t)wanted)) ++quantity;
++        }
++        set_working_memory(quantity);
++        break;
++    }
 +    case 0x11: {
 +        uint8_t character = script_read_byte(r);
 +        set_working_memory(maternalbound_party_position(game_state.party_order,
@@ -1427,12 +2620,46 @@ index 950d47b..e43ac5c 100644
 +        set_working_memory(result);
 +        break;
 +    }
++    case 0x1B: case 0x1C: case 0x1D: case 0x1E: {
++        if (!maternalbound_enabled() || !bt.redux_enemy_ai_active ||
++            bt.current_attacker >= sizeof(bt.battlers_table) || bt.current_attacker % sizeof(Battler))
++            FATAL("Redux enemy command outside AI dispatch\n");
++        Battler *b = battler_from_offset(bt.current_attacker);
++        if (sub == 0x1E) {
++            uint8_t group = script_read_byte(r), status = script_read_byte(r);
++            if (!group) group = (uint8_t)get_argument_memory();
++            if (!status) status = (uint8_t)get_argument_memory();
++            /* Native correction: upstream compares its two operands rather
++             * than reading afflictions. Implement the documented status check. */
++            set_working_memory(group < AFFLICTION_GROUP_COUNT && b->afflictions[group] == status);
++        } else {
++            uint16_t value = script_read_word(r);
++            if (!value) value = (uint16_t)get_argument_memory();
++            if (sub == 0x1B) {
++                uint8_t argument = script_read_byte(r);
++                b->current_action = value;
++                b->current_action_argument = argument ? argument : (uint8_t)get_argument_memory();
++            } else set_working_memory((sub == 0x1C ? b->hp : b->pp) <= value);
++        }
++        break;
++    }
 +    case 0x21:
 +        set_working_memory(maternalbound_registers_equal(get_working_memory(), get_argument_memory()));
 +        break;
      default:
          FATAL("display_text: unknown CC 1A %02X\n", sub);
          break;
+@@ -2526,8 +2720,8 @@ bool cc_1c_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode) {
+         const uint8_t *name_data = NULL;
+         int name_max = 0;
+         if (char_id >= 1 && char_id <= 4) {
+-            name_data = party_characters[char_id - 1].name;
+-            name_max = 5;
++            name_data = maternalbound_character_name(char_id - 1);
++            name_max = maternalbound_name_capacity();
+         } else if (char_id == PARTY_MEMBER_POKEY) {
+             name_data = game_state.pet_name;
+             name_max = 6;
 diff --git a/src/game/display_text_internal.h b/src/game/display_text_internal.h
 index 7a668e8..03fdc52 100644
 --- a/src/game/display_text_internal.h
@@ -1445,18 +2672,647 @@ index 7a668e8..03fdc52 100644
  
  /* Data helpers (display_text.c) */
  void toggle_hppp_flipout_mode(uint16_t enable);
+diff --git a/src/game/display_text_menus.c b/src/game/display_text_menus.c
+index dd7f86b..15d3fa3 100644
+--- a/src/game/display_text_menus.c
++++ b/src/game/display_text_menus.c
+@@ -743,9 +743,9 @@ void show_character_inventory(uint16_t window_id, uint16_t char_source) {
+     /* Assembly lines 32-43: set window title to character name (max 5 chars).
+      * SET_WINDOW_TITLE(window_id, char_name_ptr, sizeof(char_struct::name)=5). */
+     {
+-        char name_buf[6];
+-        eb_to_ascii_buf(party_characters[char_idx].name, 5, name_buf);
+-        set_window_title(window_id, name_buf, 5);
++        char name_buf[7];
++        eb_to_ascii_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf);
++        set_window_title(window_id, name_buf, maternalbound_name_capacity());
+     }
+ 
+     /* Assembly lines 47-148: loop over ITEM_INVENTORY_SIZE (14) slots.
+diff --git a/src/game/ending.c b/src/game/ending.c
+index f5b72dc..a1e1179 100644
+--- a/src/game/ending.c
++++ b/src/game/ending.c
+@@ -331,7 +331,7 @@ static void prepare_dynamic_cast_name_text(void) {
+     for (int i = 0; i < 4; i++) {
+         memset(name_buf, 0, 16);
+         /* Copy 5-byte name from party characters */
+-        memcpy(name_buf, party_characters[i].name, 5);
++        memcpy(name_buf, maternalbound_character_name(i), maternalbound_name_capacity());
+ 
+         uint16_t tile_id = read_u16_le(&party_cast_tile_ids_data[i * 2]);
+         render_cast_name_text(name_buf, 6, tile_id);
+@@ -352,10 +352,10 @@ static void prepare_dynamic_cast_name_text(void) {
+     {
+         memset(name_buf, 0, 16);
+         /* Copy Paula's name (party member 1, offset 0 = name) */
+-        memcpy(name_buf, party_characters[1].name, 5);
++        memcpy(name_buf, maternalbound_character_name(1), maternalbound_name_capacity());
+         /* Append "'s dad" from guardian_text_data[0..6] */
+         int len = 0;
+-        while (name_buf[len] != 0 && len < 5) len++;
++        while (len < maternalbound_name_capacity() && name_buf[len] != 0) len++;
+         const uint8_t *gt1 = &guardian_text_data[0]; /* CHARACTER_GUARDIAN_TEXT_1 */
+         for (int j = 0; gt1[j] != 0 && len + j < 15; j++) {
+             name_buf[len + j] = gt1[j];
+@@ -369,9 +369,9 @@ static void prepare_dynamic_cast_name_text(void) {
+     /* Paula's mom: CAST_SEQUENCE_FORMATTING[12] (offset 36) */
+     {
+         memset(name_buf, 0, 16);
+-        memcpy(name_buf, party_characters[1].name, 5);
++        memcpy(name_buf, maternalbound_character_name(1), maternalbound_name_capacity());
+         int len = 0;
+-        while (name_buf[len] != 0 && len < 5) len++;
++        while (len < maternalbound_name_capacity() && name_buf[len] != 0) len++;
+         const uint8_t *gt2 = &guardian_text_data[7]; /* CHARACTER_GUARDIAN_TEXT_2 */
+         for (int j = 0; gt2[j] != 0 && len + j < 15; j++) {
+             name_buf[len + j] = gt2[j];
+@@ -386,9 +386,9 @@ static void prepare_dynamic_cast_name_text(void) {
+     {
+         memset(name_buf, 0, 16);
+         /* Copy Poo's name (party member 3) */
+-        memcpy(name_buf, party_characters[3].name, 5);
++        memcpy(name_buf, maternalbound_character_name(3), maternalbound_name_capacity());
+         int len = 0;
+-        while (name_buf[len] != 0 && len < 5) len++;
++        while (len < maternalbound_name_capacity() && name_buf[len] != 0) len++;
+         const uint8_t *gt3 = &guardian_text_data[14]; /* CHARACTER_GUARDIAN_TEXT_3 */
+         for (int j = 0; gt3[j] != 0 && len + j < 15; j++) {
+             name_buf[len + j] = gt3[j];
+diff --git a/src/game/flyover.c b/src/game/flyover.c
+index 67108fa..0aea09c 100644
+--- a/src/game/flyover.c
++++ b/src/game/flyover.c
+@@ -221,8 +221,8 @@ static void flyover_render_party_name(uint16_t char_id) {
+     if (char_id < 1 || char_id > 4) return;
+     CharStruct *ch = &party_characters[char_id - 1];
+ 
+-    for (int i = 0; i < 5; i++) {
+-        uint8_t c = ch->name[i];
++    for (int i = 0; i < maternalbound_name_capacity(); i++) {
++        uint8_t c = maternalbound_character_name_of(ch)[i];
+         /* Assembly: CLC; SBC #79; BRANCHGTS → branches when c >= 0x50 */
+         if (c < 0x50) break;  /* characters below 0x50 are not valid EB text */
+         flyover_render_large_char((uint16_t)c);
+diff --git a/src/game/game_state.c b/src/game/game_state.c
+index c0cc30f..13c8957 100644
+--- a/src/game/game_state.c
++++ b/src/game/game_state.c
+@@ -2,6 +2,9 @@
+ #include "game/battle.h"
+ #include "game/inventory.h"
+ #include "game/settings.h"
++#include "game/maternalbound.h"
++#include "game/text.h"
++#include "game/display_text_internal.h"
+ #include "core/memory.h"
+ #include "data/assets.h"
+ #include "entity/entity.h"
+@@ -14,6 +17,8 @@ CharStruct party_characters[TOTAL_PARTY_COUNT];
+ uint8_t event_flags[EVENT_FLAG_COUNT / 8];
+ uint8_t key_items_pool[KEY_ITEMS_POOL_SIZE];
+ uint8_t party_ever_joined_mask;
++uint8_t maternalbound_name_extra[4];
++uint8_t maternalbound_food_extra[4];
+ uint8_t fastest_hppp_meter_speed;
+ uint8_t current_save_slot;
+ 
+@@ -23,6 +28,8 @@ void game_state_init(void) {
+     memset(event_flags, 0, sizeof(event_flags));
+     memset(key_items_pool, 0, sizeof(key_items_pool));
+     party_ever_joined_mask = 0;
++    memset(maternalbound_name_extra,0,sizeof(maternalbound_name_extra));
++    memset(maternalbound_food_extra,0,sizeof(maternalbound_food_extra));
+ 
+     /* Defaults */
+     game_state.text_speed = 2; /* medium */
+@@ -434,6 +441,11 @@ bool save_game(int slot) {
+     memcpy(block->event_flags, event_flags, sizeof(block->event_flags));
+     memcpy(block->key_items_pool, key_items_pool, sizeof(key_items_pool));
+     block->party_ever_joined_mask = party_ever_joined_mask;
++    if (maternalbound_enabled()) {
++        memcpy(block->redux_name_magic,"MRN1",4);
++        memcpy(block->redux_name_extra,maternalbound_name_extra,4);
++        memcpy(block->redux_food_extra,maternalbound_food_extra,4);
++    }
+ 
+     /* Stamp the on-cartridge block signature so real EarthBound's
+      * CHECK_BLOCK_SIGNATURE accepts the slot instead of erasing it. The checksums
+@@ -487,6 +499,12 @@ bool load_game(int slot) {
+     memcpy(event_flags, block->event_flags, sizeof(event_flags));
+     memcpy(key_items_pool, block->key_items_pool, sizeof(key_items_pool));
+     party_ever_joined_mask = block->party_ever_joined_mask;
++    memset(maternalbound_name_extra,0,sizeof(maternalbound_name_extra));
++    memset(maternalbound_food_extra,0,sizeof(maternalbound_food_extra));
++    if (maternalbound_enabled() && !memcmp(block->redux_name_magic,"MRN1",4)) {
++        memcpy(maternalbound_name_extra,block->redux_name_extra,4);
++        memcpy(maternalbound_food_extra,block->redux_food_extra,4);
++    }
+ 
+     /* Sanitize key_items_pool[]: any entry that isn't a real key item
+      * (is_key_item_type() false) can never have been placed there by any
+@@ -680,6 +698,51 @@ bool load_game(int slot) {
+     return true;
+ }
+ 
++/* Runs only through the isolated native diagnostic session. Checks the actual
++ * checksum-protected phone-save format and migration from untagged saves. */
++bool maternalbound_names_selftest(void) {
++    if (!maternalbound_enabled()) return false;
++    const char *words[]={"ABCDEF","PaulaZ","Jeff12","Poo678"};
++    uint8_t expected[4][7]={{0}},food[11]={0};
++    const char *meal="Hamburgers";
++    for (unsigned c=0;c<4;c++) {
++        for (unsigned j=0;j<6;j++) expected[c][j]=ascii_to_eb_char(words[c][j]);
++        party_characters[c].level=33;
++        maternalbound_set_character_name(c,expected[c],6);
++        if (party_characters[c].level!=33 || memcmp(maternalbound_character_name(c),expected[c],7)) return false;
++    }
++    for (unsigned j=0;j<10;j++) food[j]=ascii_to_eb_char(meal[j]);
++    maternalbound_set_food_name(food,10);
++    bool ok=!memcmp(maternalbound_food_name(),food,11) && save_game(2);
++    for (unsigned c=0;c<4;c++) {
++        int type=0,length=0;
++        const uint8_t *resolved=(const uint8_t *)resolve_cc_table_data(8+c*22,&type,&length);
++        ok &= type==CC_TABLE_TYPE_STRING && length==6 && !memcmp(resolved,expected[c],6);
++    }
++    memset(maternalbound_name_extra,0,4);memset(maternalbound_food_extra,0,4);
++    for (unsigned c=0;c<4;c++) memset(party_characters[c].name,0,5);
++    ok &= load_game(2);
++    for (unsigned c=0;c<4;c++)
++        ok &= !memcmp(maternalbound_character_name(c),expected[c],7) && party_characters[c].level==33;
++    ok &= !memcmp(maternalbound_food_name(),food,11);
++
++    SaveBlock *legacy=&ert.save_scratch;
++    memset(legacy->redux_name_magic,0,4);
++    memset(legacy->redux_name_extra,0xA5,4);memset(legacy->redux_food_extra,0xA5,4);
++    legacy->header.checksum=compute_add_checksum(legacy);
++    legacy->header.checksum_complement=compute_xor_checksum(legacy);
++    for (unsigned copy=0;copy<2;copy++)
++        ok &= platform_save_write(legacy,(4+copy)*sizeof(SaveBlock),sizeof(SaveBlock));
++    ok &= load_game(2);
++    for (unsigned c=0;c<4;c++) ok &= !memcmp(party_characters[c].name,expected[c],5) && !maternalbound_name_extra[c];
++    for (unsigned j=0;j<4;j++) ok &= !maternalbound_food_extra[j];
++    for (unsigned c=0;c<4;c++) maternalbound_set_character_name(c,expected[c],6);
++    maternalbound_set_food_name(food,10);
++    ok &= save_game(2);
++    fprintf(stderr,"Redux six-letter names / ten-letter food / phone-save migration: %s\n",ok?"PASS":"FAIL");
++    return ok;
++}
++
+ /* Port of ERASE_SAVE (erase_save_slot.asm) + ERASE_SAVE_BLOCK (erase_save_block.asm):
+  * Zeroes both copies of a save slot (primary + backup). The assembly leaves the
+  * block's signature in place; an empty (all-zero) block is fine here because the
+diff --git a/src/game/game_state.h b/src/game/game_state.h
+index 30256db..bb0113e 100644
+--- a/src/game/game_state.h
++++ b/src/game/game_state.h
+@@ -209,7 +209,9 @@ typedef struct {
+      * all-zero mask. load_game() uses "mask == 0" as the legacy-save
+      * discriminator: see its migration sweep for the full logic. */
+     uint8_t    party_ever_joined_mask; /* 1267: 1 byte */
+-    uint8_t    padding[1280 - 32 - 473 - 95*6 - 128 - KEY_ITEMS_POOL_SIZE - 1]; /* remaining padding */
++    uint8_t    redux_name_magic[4];
++    uint8_t    redux_name_extra[4]; /* sixth letters; first five retain retail offsets */
++    uint8_t    redux_food_extra[4]; /* ten-letter favorite food */
+ } SaveBlock;
+ END_PACKED_STRUCT
+ ASSERT_STRUCT_SIZE(SaveBlock, 1280);
+@@ -225,6 +227,16 @@ extern uint8_t key_items_pool[KEY_ITEMS_POOL_SIZE];
+ /* See SaveBlock::party_ever_joined_mask's doc comment above. Bit (1 <<
+  * (char_id-1)) set the first time char_id ever joins the party. */
+ extern uint8_t party_ever_joined_mask;
++extern uint8_t maternalbound_name_extra[4];
++extern uint8_t maternalbound_food_extra[4];
++uint8_t *maternalbound_character_name(unsigned index);
++const uint8_t *maternalbound_character_name_of(const CharStruct *character);
++unsigned maternalbound_name_capacity(void);
++void maternalbound_set_character_name(unsigned index,const uint8_t *name,size_t length);
++uint8_t *maternalbound_food_name(void);
++unsigned maternalbound_food_capacity(void);
++void maternalbound_set_food_name(const uint8_t *name,size_t length);
++bool maternalbound_names_selftest(void);
+ 
+ /* Initialize game state to defaults */
+ void game_state_init(void);
+diff --git a/src/game/inventory.c b/src/game/inventory.c
+index 8978181..2f842f6 100644
+--- a/src/game/inventory.c
++++ b/src/game/inventory.c
+@@ -2181,7 +2181,7 @@ StepResult mode_step_level_up(ModeState *state) {
+ 
+             /* Lines 42-59: display "reached level XX". */
+             dt.blinking_triangle_flag = 1;
+-            set_battle_target_name((const char *)ch->name, 5);
++            set_battle_target_name((const char *)maternalbound_character_name_of(ch), maternalbound_name_capacity());
+             set_cnum((uint32_t)ch->level);
+             st->phase = LU_STAT;
+             st->stage = 0;
+diff --git a/src/game/map_loader.c b/src/game/map_loader.c
+index 620656b..7b80151 100644
+--- a/src/game/map_loader.c
++++ b/src/game/map_loader.c
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include "game/map_loader.h"
++#include "game/maternalbound.h"
+ #include "game/door.h"
+ #include "game/overworld.h"
+ #include "game/game_state.h"
+@@ -413,9 +414,17 @@ static void load_tile_collision(uint16_t tileset_id) {
+     if (!collision_pointers_blob || tileset_id >= 20) return;
+ 
+     uint32_t blob_offset = tileset_collision_offsets[tileset_id];
++    bool redux_collision = collision_pointers_blob_size >= 8 &&
++                           !memcmp(collision_pointers_blob,"MRCOLL01",8);
++    if (redux_collision) {
++        if (!maternalbound_enabled() || collision_pointers_blob_size != 8+20*2048)
++            FATAL("Invalid Redux collision table\n");
++        blob_offset = 8+(uint32_t)tileset_id*2048;
++    }
+     /* Copy up to 960 entries (1920 bytes) from the blob.
+      * Assembly copies exactly 960 entries regardless of actual table size. */
+-    int count = 960;
++    int count = redux_collision ? 1024 : 960;
++    memset(ml.tile_collision_buffer,0,sizeof(ml.tile_collision_buffer));
+     for (int i = 0; i < count; i++) {
+         uint32_t src = blob_offset + (uint32_t)i * 2;
+         if (src + 2 > collision_pointers_blob_size) {
+@@ -447,7 +456,7 @@ static void replace_block(uint16_t dest_block, uint16_t src_block) {
+     if (dest_off + 32 > arrangement_size || src_off + 32 > arrangement_size)
+         return;
+     memcpy(arrangement_buffer + dest_off, arrangement_buffer + src_off, 32);
+-    if (dest_block < 960 && src_block < 960) {
++    if (dest_block < 1024 && src_block < 1024) {
+         ml.tile_collision_buffer[dest_block] = ml.tile_collision_buffer[src_block];
+     }
+ }
+@@ -588,7 +597,7 @@ static uint8_t compute_collision_tile_flags(int16_t world_tx, int16_t world_ty)
+     uint8_t sub_row = (uint16_t)world_ty & 3;
+ 
+     uint16_t block_id = get_block_id(bx, by);
+-    if (block_id >= 960) return 0;
++    if (block_id >= 1024) return 0;
+     uint16_t coll_ptr = ml.tile_collision_buffer[block_id];
+     uint32_t arr_off = (uint32_t)coll_ptr + sub_row * 4 + sub_col;
+     if (arr_off >= collision_arrangement_table_size) return 0;
+@@ -641,7 +650,7 @@ static void fill_collision_tiles(int16_t view_x_tile, int16_t view_y_tile) {
+ 
+             uint16_t block_id = get_block_id(bx, by);
+             uint8_t flags = 0;
+-            if (block_id < 960) {
++            if (block_id < 1024) {
+                 uint16_t coll_ptr = ml.tile_collision_buffer[block_id];
+                 uint32_t arr_off = (uint32_t)coll_ptr + sub_row * 4 + sub_col;
+                 if (arr_off < collision_arrangement_table_size) {
+@@ -888,6 +897,11 @@ static const uint16_t palette_file_rom_low[32] = {
+  * Returns false if the address doesn't fall within any known palette file. */
+ static bool resolve_palette_rom_address(uint16_t rom_low, int *file_num,
+                                          size_t *byte_offset) {
++    if (maternalbound_enabled()) {
++        *file_num = rom_low >> 11;
++        *byte_offset = (size_t)(rom_low & 0x7FFu)*192;
++        return *byte_offset+192 <= ASSET_SIZE(ASSET_MAPS_PALETTES(*file_num));
++    }
+     for (int i = 31; i >= 0; i--) {
+         if (palette_file_rom_low[i] <= rom_low) {
+             *file_num = i;
+diff --git a/src/game/map_loader.h b/src/game/map_loader.h
+index cf14f47..effe83c 100644
+--- a/src/game/map_loader.h
++++ b/src/game/map_loader.h
+@@ -202,9 +202,9 @@ typedef struct {
+     int16_t screen_left_x;
+     int16_t screen_top_y;
+ 
+-    /* Tile collision pointer buffer: 960 entries for the current tileset.
++    /* Tile collision pointer buffer: 1024 entries for the current tileset.
+      * tile_collision_buffer[block_id] = byte offset into collision_arrangement_table. */
+-    uint16_t tile_collision_buffer[960];
++    uint16_t tile_collision_buffer[1024];
+     bool tile_collision_loaded;
+ 
+     /* Offset into event_music_table for the last matched music entry. */
 diff --git a/src/game/maternalbound.c b/src/game/maternalbound.c
 new file mode 100644
-index 0000000..3ba90a5
+index 0000000..a6b2281
 --- /dev/null
 +++ b/src/game/maternalbound.c
-@@ -0,0 +1,38 @@
+@@ -0,0 +1,345 @@
 +/* SPDX-License-Identifier: GPL-3.0-only
 + * Native adaptation of MaternalBound Redux's documented CCExpand behavior.
 + * Credit: ShadowOne333 and upstream contributors; see CREDITS.md and source
 + * references below. This module is licensed separately from the foundation. */
 +#include "game/maternalbound.h"
 +#include <limits.h>
++#include <string.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include "game/overworld.h"
++#include "game/battle.h"
++#include "snes/ppu.h"
++#include "entity/entity.h"
++#include "entity/buffer_layout.h"
++#include "game/game_state.h"
++#include "core/memory.h"
++#include "include/pad.h"
++#include "data/assets.h"
++#include "include/binary.h"
++#include "core/log.h"
++
++void build_letterbox_hdma_table(void);
++void apply_letterbox_to_ppu(void);
++void prepare_palette_fade_slopes(int16_t frames, uint16_t mask);
++void finalize_palette_fade(void);
++
++/* Adaptation of redux/six_letters.ccs (Vittorio, Chaz, D-Man). The retail
++ * character and save-block offsets stay intact; only the sixth letters use
++ * explicitly tagged spare save bytes. */
++unsigned maternalbound_name_capacity(void) { return maternalbound_enabled() ? 6 : 5; }
++
++uint8_t *maternalbound_character_name(unsigned index) {
++    static uint8_t names[TOTAL_PARTY_COUNT][7];
++    if (index >= TOTAL_PARTY_COUNT) FATAL("Invalid native character name index\n");
++    if (!maternalbound_enabled()) return party_characters[index].name;
++    memcpy(names[index],party_characters[index].name,5);
++    names[index][5]=index < 4 ? maternalbound_name_extra[index] : 0;
++    names[index][6]=0;
++    return names[index];
++}
++
++const uint8_t *maternalbound_character_name_of(const CharStruct *character) {
++    for (unsigned i=0;i<TOTAL_PARTY_COUNT;i++)
++        if (character == &party_characters[i]) return maternalbound_character_name(i);
++    FATAL("Character name is outside the native party table\n");
++    return NULL;
++}
++
++void maternalbound_set_character_name(unsigned index,const uint8_t *name,size_t length) {
++    uint8_t copy[7]={0};
++    if (index >= TOTAL_PARTY_COUNT || !name) FATAL("Invalid native character name target\n");
++    size_t capacity= index < 4 ? maternalbound_name_capacity() : 5;
++    if (length > capacity) length=capacity;
++    memcpy(copy,name,length);
++    memcpy(party_characters[index].name,copy,5);
++    if (index < 4) maternalbound_name_extra[index]=maternalbound_enabled() ? copy[5] : 0;
++}
++
++unsigned maternalbound_food_capacity(void) { return maternalbound_enabled() ? 10 : 6; }
++uint8_t *maternalbound_food_name(void) {
++    static uint8_t food[11];
++    if (!maternalbound_enabled()) return game_state.favourite_food;
++    memcpy(food,game_state.favourite_food,6);
++    memcpy(food+6,maternalbound_food_extra,4);food[10]=0;
++    return food;
++}
++void maternalbound_set_food_name(const uint8_t *name,size_t length) {
++    uint8_t copy[11]={0};
++    if (length > maternalbound_food_capacity()) length=maternalbound_food_capacity();
++    memcpy(copy,name,length);memcpy(game_state.favourite_food,copy,6);
++    if (maternalbound_enabled()) memcpy(maternalbound_food_extra,copy+6,4);
++    else memset(maternalbound_food_extra,0,4);
++}
++
++/* Native adaptation of redux/run_stamina_mechanic.ccs (Vittorio,
++ * SupremeKirb). Preserve its 8-bit wrapping and recovery latch timing. */
++void maternalbound_stamina_reset(void) {
++    ow.redux_primary_timer = 191;
++    ow.redux_secondary_timer = 143;
++}
++
++void maternalbound_stamina_update(uint8_t *primary, uint8_t *secondary,
++                                 uint8_t frame, bool moving, bool held) {
++    bool running = (*secondary & 0x80) && moving && held;
++    if (running) {
++        *primary = (uint8_t)((*primary & 0x7F)-1);
++        if (!*primary) *primary = 63;
++    } else if ((*secondary & 0x7F) != 15) {
++        if ((uint8_t)(frame << 1) == 0) *primary |= 0x80;
++        if (*primary & 0x80) {
++            ++*primary;
++            if ((*primary & 63) == 63) *primary &= 0x80;
++        }
++    }
++    if (running) {
++        if (!(*secondary & 0x7F)) *secondary = 120;
++        else if ((*primary & 63) == 1) --*secondary;
++    } else if ((*secondary & 0x7F) != 15 && !(*primary & 63)) {
++        ++*secondary;
++        if (*secondary == 128) *secondary = 143;
++    }
++}
++
++bool maternalbound_running(void) {
++    return (ow.redux_secondary_timer & 0x80) &&
++        (((core.pad1_held & PAD_Y) != 0) != event_flag_get(56));
++}
++
++void maternalbound_stamina_tick(void) {
++    if (!maternalbound_enabled()) return;
++    int16_t entity=ow.moving_party_member_entity_id;
++    /* Source reads the high byte of ENTITY_SCRIPT_VAR7_TABLE (7E1003).
++     * Static/hidden/intangible party sprites must not spend stamina. */
++    bool moving=entity>=0 && entity<MAX_ENTITIES && !(entities.var[7][entity] & 0xFF00);
++    maternalbound_stamina_update(&ow.redux_primary_timer, &ow.redux_secondary_timer,
++                                (uint8_t)core.frame_counter, moving,
++                                (core.pad1_held & PAD_Y) != 0);
++    if (maternalbound_running()) event_flag_set(65);
++    else event_flag_clear(65);
++}
++
++bool maternalbound_stamina_selftest(void) {
++    uint8_t primary=191, secondary=143;
++    unsigned spent=0;
++    while ((secondary & 0x80) && spent < 1100) {
++        maternalbound_stamina_update(&primary,&secondary,(uint8_t)spent,true,true);
++        ++spent;
++    }
++    bool ok = spent == 945 && secondary == 120;
++    unsigned recovered=0;
++    while (secondary != 143 && recovered < 1000) {
++        maternalbound_stamina_update(&primary,&secondary,(uint8_t)(spent+recovered),true,true);
++        ++recovered;
++    }
++    ok &= recovered > 440 && recovered < 640;
++    primary=191;secondary=143;
++    for (unsigned i=0;i<2000;i++) maternalbound_stamina_update(&primary,&secondary,(uint8_t)i,false,true);
++    ok &= primary==191 && secondary==143;
++    primary=20;secondary=140;
++    maternalbound_stamina_update(&primary,&secondary,1,true,false);
++    ok &= primary==20 && secondary==140;
++    maternalbound_stamina_update(&primary,&secondary,128,true,false);
++    ok &= primary==149 && secondary==140;
++    fprintf(stderr,"Redux stamina depletion/recovery checks: %s (%u/%u frames)\n",ok?"PASS":"FAIL",spent,recovered);
++    return ok;
++}
++
++/* Source: essential/fade_tools.ccs. Preserve the full final palette copy,
++ * including the source's treatment of groups outside the interpolation mask. */
++void maternalbound_palette_fade_start(bool inward, uint16_t colour, uint16_t mask, uint16_t duration) {
++    PaletteFadeBuffer *fade = buf_palette_fade(ert.buffer);
++    for (unsigned i=0;i<256;i++) {
++        fade->target[i] = inward ? ert.palettes[i] : colour;
++        if (inward) ert.palettes[i] = colour;
++    }
++    prepare_palette_fade_slopes((int16_t)duration,mask);
++    ert.palette_upload_mode = PALETTE_UPLOAD_FULL;
++    if (!duration) finalize_palette_fade();
++}
++
++/* Source: essential/cc_effects.ccs. The opening loop renders 0,3,...,39;
++ * the closing loop renders 39,36,...,3 and then disables HDMA. */
++void maternalbound_letterbox_start(uint8_t routine) {
++    ow.redux_letterbox_active = 1;
++    ow.redux_letterbox_direction = routine == 11 ? 1 : routine == 13 ? 2 : 0;
++    ow.redux_letterbox_top = routine == 11 ? 0 : routine == 13 ? 39 : 40;
++}
++
++void maternalbound_effects_tick(void) {
++    if (!maternalbound_enabled() || !ow.redux_letterbox_active) return;
++    if (ow.redux_letterbox_direction == 2 && !ow.redux_letterbox_top) {
++        ow.redux_letterbox_active = 0; ow.redux_letterbox_direction = 0;
++        ppu.tm_hdma_active = false;
++        return;
++    }
++    bt.letterbox_top_end = ow.redux_letterbox_top;
++    bt.letterbox_bottom_start = 224-ow.redux_letterbox_top;
++    bt.letterbox_nonvisible_screen_value = 4; /* BG3, the black bars */
++    bt.letterbox_visible_screen_value = 23; /* BG1/BG2/BG3/objects */
++    build_letterbox_hdma_table();
++    apply_letterbox_to_ppu();
++    if (ow.redux_letterbox_direction == 1) {
++        if (ow.redux_letterbox_top < 39) ow.redux_letterbox_top += 3;
++        else ow.redux_letterbox_direction = 0;
++    } else if (ow.redux_letterbox_direction == 2) {
++        if (ow.redux_letterbox_top > 3) ow.redux_letterbox_top -= 3;
++        else ow.redux_letterbox_top = 0; /* Disable only after the frame at 3 was rendered. */
++    }
++}
++
++static const uint8_t *redux_blob;
++static uint32_t redux_map_offset, redux_map_count, redux_determiner_offset, redux_determiner_size;
++
++static uint32_t redux_u32(const uint8_t *p) {
++    return (uint32_t)p[0] | ((uint32_t)p[1] << 8) | ((uint32_t)p[2] << 16) | ((uint32_t)p[3] << 24);
++}
++
++uint32_t maternalbound_enemy_ai_entry(uint16_t enemy) {
++    if (!maternalbound_enabled()) return 0;
++    const uint8_t *table = ASSET_DATA(ASSET_DATA_ENEMY_CONFIGURATION_TABLE_BIN);
++    size_t size = ASSET_SIZE(ASSET_DATA_ENEMY_CONFIGURATION_TABLE_BIN);
++    const size_t records = 231, offset = records*sizeof(EnemyData);
++    if (!table || size != offset+12+records*4 ||
++        memcmp(table+offset,"MRDXAI01",8) || read_u32_le(table+offset+8) != records)
++        FATAL("Redux: invalid native enemy AI table\n");
++    return enemy < records ? read_u32_le(table+offset+12+enemy*4) : 0;
++}
++
++uint16_t maternalbound_sprite_variant(unsigned character,unsigned mode,bool running,bool alternate) {
++    const uint8_t *data=ASSET_DATA(ASSET_DATA_PLAYABLE_CHARACTER_GRAPHICS_TABLE_BIN);
++    size_t size=ASSET_SIZE(ASSET_DATA_PLAYABLE_CHARACTER_GRAPHICS_TABLE_BIN);
++    if (character>=17 || mode>=8 || !maternalbound_enabled()) return 0xFFFF;
++    if (!data || size!=272+8+3*272 || memcmp(data+272,"MRWALK01",8))
++        FATAL("Redux: invalid native walking animation tables\n");
++    unsigned variant=running ? (alternate ? 3 : 2) : (alternate ? 1 : 0);
++    size_t base=variant ? 280+(variant-1)*272 : 0;
++    return read_u16_le(data+base+(character*8+mode)*2);
++}
++
++bool maternalbound_bind_dialogue(const uint8_t *blob, size_t size) {
++    redux_blob = NULL;
++    if (!blob) return false;
++    if (size < 32 || memcmp(blob + size - 32, "MRDXNV01", 8))
++        return size < MATERNALBOUND_DIALOGUE_BASE-0x100000u;
++    const uint8_t *footer = blob + size - 32;
++    uint32_t version = redux_u32(footer + 8);
++    uint32_t map = redux_u32(footer + 12), count = redux_u32(footer + 16);
++    uint32_t determiners = redux_u32(footer + 20), determiner_size = redux_u32(footer + 24);
++    uint32_t dialogue_end = redux_u32(footer + 28);
++    if (version != 1 || !count || count > 10000 || map > size-32 || (uint64_t)map + count*8u > size-32 ||
++        determiners > size-32 || (uint64_t)determiners + determiner_size > size-32 ||
++        dialogue_end < MATERNALBOUND_DIALOGUE_BASE-0x100000u || dialogue_end != map || determiner_size != 254 ||
++        (uint64_t)map + count*8u != determiners || (uint64_t)determiners + determiner_size != size-32)
++        return false;
++    uint32_t previous = 0;
++    for (uint32_t i = 0; i < count; ++i) {
++        uint32_t source = redux_u32(blob + map + i*8u);
++        uint32_t target = redux_u32(blob + map + i*8u + 4);
++        if (source < 0x100000u || source >= MATERNALBOUND_DIALOGUE_BASE || source <= previous ||
++            target < MATERNALBOUND_DIALOGUE_BASE || target-0x100000u >= dialogue_end) return false;
++        previous = source;
++    }
++    for (uint32_t i = 0; i < determiner_size; ++i)
++        if (blob[determiners+i] < 1 || blob[determiners+i] > 5) return false;
++    redux_blob = blob; redux_map_offset = map; redux_map_count = count;
++    redux_determiner_offset = determiners; redux_determiner_size = determiner_size;
++    return true;
++}
++
++static void redux_put_u32(uint8_t *p, uint32_t value) {
++    for (unsigned i = 0; i < 4; ++i) p[i] = (uint8_t)(value >> (i*8));
++}
++
++bool maternalbound_asset_selftest(const uint8_t *restore, size_t restore_size) {
++    size_t map = MATERNALBOUND_DIALOGUE_BASE-0x100000u+16;
++    size_t determiners = map+16, size = determiners+254+32;
++    uint8_t *blob = calloc(size, 1);
++    if (!blob) return false;
++    uint8_t *footer = blob+size-32;
++    memcpy(footer, "MRDXNV01", 8);
++    redux_put_u32(footer+8,1); redux_put_u32(footer+12,(uint32_t)map);
++    redux_put_u32(footer+16,2); redux_put_u32(footer+20,(uint32_t)determiners);
++    redux_put_u32(footer+24,254); redux_put_u32(footer+28,(uint32_t)map);
++    redux_put_u32(blob+map,0x100040); redux_put_u32(blob+map+4,0x300000);
++    redux_put_u32(blob+map+8,0x100080); redux_put_u32(blob+map+12,0x300008);
++    memset(blob+determiners,5,254); blob[determiners+42] = 2;
++    bool ok = maternalbound_bind_dialogue(blob,size) && maternalbound_enabled() &&
++        maternalbound_resolve_entry(0x100040) == 0x300000 && maternalbound_resolve_entry(0x100080) == 0x300008 &&
++        maternalbound_resolve_entry(0x100041) == 0 && maternalbound_resolve_entry(0x300007) == 0x300007 &&
++        maternalbound_item_determiner(42,0) == 2 && maternalbound_item_determiner(0,42) == 2 &&
++        maternalbound_item_determiner(UINT32_MAX,0) == 5;
++    const struct {size_t offset; uint32_t value;} bad[] = {
++        {size-24,2}, {size-20,UINT32_MAX}, {size-16,10001}, {size-16,0},
++        {size-12,(uint32_t)map}, {size-8,255}, {size-4,(uint32_t)map+1},
++        {map+8,0x100040}, {map+4,0x100000}, {map+4,0x300010}
++    };
++    for (unsigned i = 0; i < sizeof(bad)/sizeof(bad[0]); ++i) {
++        uint32_t saved = redux_u32(blob+bad[i].offset);
++        redux_put_u32(blob+bad[i].offset,bad[i].value);
++        ok &= !maternalbound_bind_dialogue(blob,size) && !maternalbound_enabled();
++        redux_put_u32(blob+bad[i].offset,saved);
++    }
++    blob[determiners+42] = 0;
++    ok &= !maternalbound_bind_dialogue(blob,size);
++    blob[determiners+42] = 2;
++    footer[0] = 'X'; ok &= !maternalbound_bind_dialogue(blob,size);
++    ok &= maternalbound_bind_dialogue(restore,restore_size);
++    free(blob);
++    fprintf(stderr,"Redux asset entry mapping / malformed metadata checks: %s\n",ok?"PASS":"FAIL");
++    return ok;
++}
++
++bool maternalbound_enabled(void) { return redux_blob != NULL; }
++
++uint32_t maternalbound_resolve_entry(uint32_t address) {
++    if (!redux_blob || address < 0x100000u || address >= MATERNALBOUND_DIALOGUE_BASE) return address;
++    uint32_t lo = 0, hi = redux_map_count;
++    while (lo < hi) {
++        uint32_t middle = lo + (hi-lo)/2;
++        uint32_t key = redux_u32(redux_blob + redux_map_offset + middle*8u);
++        if (key < address) lo = middle+1;
++        else hi = middle;
++    }
++    if (lo < redux_map_count && redux_u32(redux_blob + redux_map_offset + lo*8u) == address)
++        return redux_u32(redux_blob + redux_map_offset + lo*8u + 4);
++    return 0; /* never silently mix an unmapped original-story script into Redux */
++}
++
++uint32_t maternalbound_item_determiner(uint32_t item, uint32_t argument) {
++    uint32_t wanted = item ? item : argument;
++    if (!redux_blob || wanted >= redux_determiner_size) return 5; /* no determiner */
++    return redux_blob[redux_determiner_offset+wanted];
++}
 +
 +/* Source: Redux bugfixes/try_give_money.ccs and try_deposit_money.ccs.
 + * 1A18 commits only if the complete gift fits; 1A19 and 1A1A query without
@@ -1491,10 +3347,10 @@ index 0000000..3ba90a5
 +}
 diff --git a/src/game/maternalbound.h b/src/game/maternalbound.h
 new file mode 100644
-index 0000000..d6bd9f7
+index 0000000..a9c4273
 --- /dev/null
 +++ b/src/game/maternalbound.h
-@@ -0,0 +1,17 @@
+@@ -0,0 +1,39 @@
 +/* SPDX-License-Identifier: GPL-3.0-only */
 +#ifndef GAME_MATERNALBOUND_H
 +#define GAME_MATERNALBOUND_H
@@ -1510,6 +3366,28 @@ index 0000000..d6bd9f7
 +uint32_t maternalbound_party_position(const uint8_t *order, size_t count,
 +                                     uint32_t character, uint32_t argument);
 +uint32_t maternalbound_registers_equal(uint32_t result, uint32_t argument);
++bool maternalbound_bind_dialogue(const uint8_t *blob, size_t size);
++bool maternalbound_asset_selftest(const uint8_t *restore, size_t restore_size);
++bool maternalbound_enabled(void);
++uint32_t maternalbound_resolve_entry(uint32_t address);
++uint32_t maternalbound_item_determiner(uint32_t item, uint32_t argument);
++uint32_t maternalbound_enemy_ai_entry(uint16_t enemy);
++uint16_t maternalbound_sprite_variant(unsigned character,unsigned mode,bool running,bool alternate);
++void maternalbound_letterbox_start(uint8_t routine);
++void maternalbound_effects_tick(void);
++void maternalbound_palette_fade_start(bool inward, uint16_t colour, uint16_t mask, uint16_t duration);
++void maternalbound_stamina_reset(void);
++void maternalbound_stamina_update(uint8_t *primary, uint8_t *secondary, uint8_t frame,
++                                 bool moving, bool held);
++void maternalbound_stamina_tick(void);
++bool maternalbound_running(void);
++bool maternalbound_stamina_selftest(void);
++
++#define MATERNALBOUND_DIALOGUE_BASE 0x300000u
++#define MATERNALBOUND_ENTRY_KEY_ITEMS 0x2FFF00u
++#define MATERNALBOUND_ENTRY_TOOLS 0x2FFF08u
++#define MATERNALBOUND_FLAG_TOWN_MAP 511u
++#define MATERNALBOUND_FLAG_USED_ITEM 783u
 +
 +#endif
 diff --git a/src/game/overworld.c b/src/game/overworld.c
@@ -1537,11 +3415,554 @@ index 723f690..3dcfa17 100644
      /* Assembly line 8-11: check if Ness is alive */
      uint8_t status = party_characters[0].afflictions[0];  /* STATUS_GROUP::PERSISTENT_EASYHEAL */
      if (status == 1)  /* UNCONSCIOUS */
+diff --git a/src/game/overworld.h b/src/game/overworld.h
+index 16288ab..10aa499 100644
+--- a/src/game/overworld.h
++++ b/src/game/overworld.h
+@@ -298,6 +298,13 @@ typedef struct {
+     ABI_PTR_PAD(post_teleport_callback)
+     uint8_t post_teleport_callback_id; /* PostTeleportCallbackId, serializable form
+                                           of the ptr above (savestate hardening, D0). */
++    /* Redux effects/timers. Serialized with the overworld state, so quick-save
++     * restoration preserves an in-progress native cutscene and sprint timer. */
++    uint8_t redux_letterbox_active;
++    uint8_t redux_letterbox_direction;
++    uint8_t redux_letterbox_top;
++    uint8_t redux_primary_timer;
++    uint8_t redux_secondary_timer;
+ } OverworldState;
+ 
+ extern OverworldState ow;
+diff --git a/src/game/overworld_palette.c b/src/game/overworld_palette.c
+index 4eeb8d3..142ff51 100644
+--- a/src/game/overworld_palette.c
++++ b/src/game/overworld_palette.c
+@@ -150,7 +150,7 @@ StepResult mode_step_hp_alert(ModeState *st) {
+         CharStruct *cs = &party_characters[char_id];
+         disable_all_entities();
+         create_window(0x01);  /* WINDOW::TEXT_STANDARD */
+-        set_battle_attacker_name((const char *)cs->name, sizeof(cs->name));
++        set_battle_attacker_name((const char *)maternalbound_character_name_of(cs), maternalbound_name_capacity());
+         hs->phase = HA_CLOSE;
+         static ModeState dt_init;  /* outlives this dispatch (pump copies it) */
+         if (dt_make_child_init(&dt_init, MSG_SYS_HP_CRITICAL_WARNING))
+@@ -454,6 +454,15 @@ StepResult mode_step_palette_fade(ModeState *st) {
+         s->remaining--;
+         return STEP_RESULT_CONTINUE();
+ 
++    case PF_CUSTOM_COLOUR:
++        if (s->remaining == 0) {
++            finalize_palette_fade();
++            return STEP_RESULT_POP(0);
++        }
++        update_map_palette_animation();
++        s->remaining--;
++        return STEP_RESULT_CONTINUE();
++
+     case PF_WITH_RENDERING:
+         if (s->remaining == 0) {
+             finalize_palette_fade();
+diff --git a/src/game/position_buffer.c b/src/game/position_buffer.c
+index c7b8ca4..566e454 100644
+--- a/src/game/position_buffer.c
++++ b/src/game/position_buffer.c
+@@ -22,6 +22,7 @@
+ #include "game/game_state.h"
+ #include "game/overworld.h"
+ #include "game/settings.h"
++#include "game/maternalbound.h"
+ #include "game/map_loader.h"
+ #include "entity/entity.h"
+ #include "entity/sprite.h"
+@@ -31,10 +32,51 @@
+ #include "include/pad.h"
+ #include "game/audio.h"
+ #include "data/assets.h"
++#include "entity/callroutine_internal.h"
++#include "data/event_script_data.h"
+ #include <string.h>
++#include <stdio.h>
+ 
+ PositionBufferState pb;
+ 
++bool maternalbound_motion_selftest(void) {
++    if (!maternalbound_enabled()) return false;
++    const int16_t ent=23;
++    entity_system_init();
++    game_state.party_status=0;game_state.character_mode=0;game_state.leader_moved=1;
++    memset(party_characters[0].afflictions,0,sizeof(party_characters[0].afflictions));
++    ow.pajama_flag=0;ow.disabled_transitions=0;ow.moving_party_member_entity_id=ent;
++    maternalbound_stamina_reset();core.pad1_held=0;
++    entities.var[0][ent]=0;entities.var[1][ent]=0;
++    entities.var[3][ent]=1;entities.move_callback[ent]=CB_MOVE_PARTY_SPRITE;
++    const int frames[]={2,0,2,0},halves[]={0,1,1,0};
++    bool ok=get_party_member_sprite_id(0,WALKING_STYLE_NORMAL,ent,0)==1;
++    for (unsigned i=0;i<4;i++) {
++        entities.var[2][ent]=1;uint16_t pc=0;
++        cr_update_entity_animation(ent,0,0,&pc);
++        ok &= entities.animation_frame[ent]==frames[i] && entities.var[4][ent]==halves[i];
++    }
++    entities.var[7][ent]=0x2000;uint16_t pc=0;
++    cr_update_entity_animation(ent,0,0,&pc);
++    ok &= !entities.animation_frame[ent] && !entities.var[4][ent];
++    core.pad1_held=PAD_Y;
++    for (unsigned character=0;character<4;character++)
++        ok &= get_party_member_sprite_id(character,WALKING_STYLE_NORMAL,ent,character)==466+character;
++    ow.pajama_flag=1;
++    ok &= get_party_member_sprite_id(0,WALKING_STYLE_NORMAL,ent,0)==470;
++    ow.redux_secondary_timer=120;entities.var[4][ent]=1;
++    ok &= get_party_member_sprite_id(0,WALKING_STYLE_NORMAL,ent,0)==437 && entities.overlay_flags[ent]==2;
++    ow.pajama_flag=0;
++    ok &= get_party_member_sprite_id(0,WALKING_STYLE_NORMAL,ent,0)==1 && entities.overlay_flags[ent]==2;
++    maternalbound_stamina_reset();entities.var[7][ent]=0x2000;
++    maternalbound_stamina_tick();
++    ok &= ow.redux_primary_timer==191 && ow.redux_secondary_timer==143;
++    entities.var[7][ent]=0;maternalbound_stamina_tick();
++    ok &= ow.redux_primary_timer==62;
++    fprintf(stderr,"Redux movement animation / run sprites / exhaustion / static stamina: %s\n",ok?"PASS":"FAIL");
++    return ok;
++}
++
+ /* pb.camera_mode_backup now in PositionBufferState pb. */
+ 
+ /* Forward declarations (defined later in file) */
+@@ -80,12 +122,22 @@ int16_t get_party_member_sprite_id(
+     /* Pajamas check (assembly lines 16-26).
+      * If char_id == 0 (Ness), DISABLED_TRANSITIONS == 0, PAJAMA_FLAG != 0:
+      * return NESS_IN_PJS (437). */
++    if (maternalbound_enabled() && char_id == CHARACTER_NESS && ow.disabled_transitions == 0 && ow.pajama_flag != 0) {
++        bool alternate=entity_offset>=0 && entities.var[4][entity_offset]!=0;
++        if (entity_offset>=0) {
++            entities.overlay_flags[entity_offset]=alternate && !(ow.redux_secondary_timer & 0x80) ? 2 : 0;
++            entities.var[3][entity_offset]=maternalbound_running() ? 5 : 8;
++        }
++        return maternalbound_running() ? 470 : 437;
++    }
+     if (char_id == CHARACTER_NESS && ow.disabled_transitions == 0 && ow.pajama_flag != 0)
+         return 437;  /* OVERWORLD_SPRITE::NESS_IN_PJS */
+ 
+     /* Clear overlay flags (assembly lines 28-34). */
+     if (entity_offset >= 0) {
+         entities.overlay_flags[entity_offset] = 0;
++        if (maternalbound_enabled() && char_id>=0 && char_id<4 && !(ow.redux_secondary_timer & 0x80))
++            entities.overlay_flags[entity_offset] |= 2;
+     }
+ 
+     /* Party status: charred/burned (assembly @UNKNOWN1-2) */
+@@ -123,7 +175,7 @@ int16_t get_party_member_sprite_id(
+         /* Ghost mode: if char_struct.unknown53 == 0, return special sprite */
+         if (party_idx >= 0 && party_idx < TOTAL_PARTY_COUNT &&
+             party_characters[party_idx].unknown53 == 0) {
+-            return 6;  /* Assembly returns OVERWORLD_SPRITE::NESS_PAJAMAS for this mode */
++            return maternalbound_enabled() && maternalbound_running() ? 471 : 6;
+         }
+     }
+ 
+@@ -162,7 +214,7 @@ int16_t get_party_member_sprite_id(
+     if (entity_offset >= 0) {
+         uint16_t anim_speed;
+ 
+-        if ((game_state.party_status & 0xFF) == 3) {
++        if ((game_state.party_status & 0xFF) == 3 || (maternalbound_enabled() && maternalbound_running())) {
+             anim_speed = 5;    /* Special party status → fast */
+         } else if (party_idx >= 0 && party_idx < TOTAL_PARTY_COUNT &&
+                    party_characters[party_idx].afflictions[STATUS_GROUP_PERSISTENT_EASYHEAL]
+@@ -195,6 +247,9 @@ int16_t get_party_member_sprite_id(
+         return (int16_t)0xFFFF;
+     if (mode >= PLAYABLE_CHAR_COL_COUNT)
+         return (int16_t)0xFFFF;
++    if (maternalbound_enabled())
++        return (int16_t)maternalbound_sprite_variant(char_id,mode,maternalbound_running(),
++            entity_offset>=0 && entities.var[4][entity_offset]!=0);
+     return (int16_t)lookup_playable_char_sprite((uint16_t)char_id, mode);
+ }
+ 
+@@ -1057,7 +1112,7 @@ static int32_t adjust_position(int16_t direction, uint16_t surface_flags,
+      * than a 1.0x no-op multiply. */
+     if (ws == WALKING_STYLE_NORMAL && !water && !ow.demo_frames_left &&
+         engine_sprint_speed != SPRINT_SPEED_OFF &&
+-        (core.pad1_held & PAD_Y)) {
++        (maternalbound_enabled() ? maternalbound_running() : (core.pad1_held & PAD_Y) != 0)) {
+         delta = (int32_t)(((int64_t)delta * sprint_speed_multipliers[engine_sprint_speed]) >> 16);
+     }
+ 
+diff --git a/src/game/position_buffer.h b/src/game/position_buffer.h
+index 3fae9b2..2fee7e8 100644
+--- a/src/game/position_buffer.h
++++ b/src/game/position_buffer.h
+@@ -17,6 +17,7 @@
+ #include "core/types.h"
+ 
+ #define POSITION_BUFFER_SIZE 256
++bool maternalbound_motion_selftest(void);
+ 
+ /* Packed version of assembly player_position_buffer_entry (include/structs.asm).
+  * Assembly uses 12 bytes (6 words) per entry, but tile_flags, walking_style,
+diff --git a/src/game/text.c b/src/game/text.c
+index 236c04f..08fb6d7 100644
+--- a/src/game/text.c
++++ b/src/game/text.c
+@@ -4,6 +4,7 @@
+ #include "game/display_text_internal.h"  /* dt_make_child_init */
+ #include "game/game_state.h"
+ #include "game/settings.h"
++#include "game/maternalbound.h"
+ #include "game/inventory.h"
+ #include "game/overworld.h"
+ #include "game/audio.h"
+@@ -35,6 +36,7 @@ typedef struct {
+     size_t   glyph_size;  /* total glyph data size */
+     uint8_t  height;      /* pixel rows per glyph */
+     uint8_t  bytes_per_glyph; /* bytes per glyph in data */
++    uint16_t character_count;
+     bool     loaded;
+ } FontData;
+ 
+@@ -92,20 +94,24 @@ static bool load_font(uint8_t font_id, AssetId gfx_id, AssetId width_id,
+     }
+ 
+     f->height = height;
+-    f->bytes_per_glyph = (uint8_t)(f->glyph_size / FONT_CHAR_COUNT);
++    f->character_count=(uint16_t)ASSET_SIZE(width_id);
++    if ((f->character_count != 96 && f->character_count != 128) ||
++        f->glyph_size % f->character_count || f->glyph_size/f->character_count > 32)
++        FATAL("Invalid font asset dimensions\n");
++    f->bytes_per_glyph = (uint8_t)(f->glyph_size / f->character_count);
+     f->loaded = true;
+     return true;
+ }
+ 
+ const uint8_t *font_get_glyph(uint8_t font_id, uint8_t char_index) {
+     if (font_id >= 5 || !fonts[font_id].loaded) return NULL;
+-    if (char_index >= FONT_CHAR_COUNT) return NULL;
++    if (char_index >= fonts[font_id].character_count) return NULL;
+     return fonts[font_id].glyph_data + (size_t)char_index * fonts[font_id].bytes_per_glyph;
+ }
+ 
+ uint8_t font_get_width(uint8_t font_id, uint8_t char_index) {
+     if (font_id >= 5 || !fonts[font_id].loaded) return 8;
+-    if (char_index >= FONT_CHAR_COUNT) return 8;
++    if (char_index >= fonts[font_id].character_count) return 8;
+     return fonts[font_id].width_data[char_index];
+ }
+ 
+@@ -285,14 +291,15 @@ void text_load_window_gfx(void) {
+             /* Render each character of the name (asm lines 82-105).
+              * Assembly calls BLIT_VWF_GLYPH directly with fixed 6px advance (@LOCAL06),
+              * bypassing RENDER_VWF_CHARACTER. */
+-            for (int i = 0; i < 5 && party_characters[char_idx].name[i]; i++) {
+-                uint8_t eb_char = party_characters[char_idx].name[i];
++            for (int i = 0; i < maternalbound_name_capacity() && maternalbound_character_name(char_idx)[i]; i++) {
++                uint8_t eb_char = maternalbound_character_name(char_idx)[i];
+                 if (eb_char < 0x50) continue;
+                 uint8_t char_index = (eb_char - 0x50) & 0x7F;
+                 if (char_index >= FONT_CHAR_COUNT) continue;
+                 const uint8_t *glyph = font_get_glyph(FONT_ID_BATTLE, char_index);
+                 if (!glyph) continue;
+-                blit_vwf_glyph(glyph, font_height, 6);
++                blit_vwf_glyph(glyph, font_height,
++                    maternalbound_name_capacity()==6 && maternalbound_character_name(char_idx)[5] ? 5 : 6);
+             }
+ 
+             /* Copy 4 tiles from VWF ert.buffer into ert.buffer+$2A00 (asm lines 109-183).
+@@ -713,6 +720,27 @@ static void build_command_menu(void) {
+         return;
+     }
+ 
++    if (maternalbound_enabled()) {
++        /* Redux ordering; stable native userdata keeps Goods/Equip machinery.
++         * Full Key items/Tools titles are supplied by their converted scripts. */
++        add_menu_item("Goods",2,0,0);
++        add_menu_item("Equip",4,6,0);
++        if (find_first_character_with_psi()) add_menu_item("PSI",3,0,1);
++        add_menu_item("Status",6,6,1);
++        add_menu_item("Keys",10,0,2);
++        for (unsigned i=0;i<game_state.player_controlled_party_count;i++)
++            if (game_state.party_members[i]==PARTY_MEMBER_JEFF) {
++                add_menu_item("Tools",11,6,2); break;
++            }
++        add_menu_item("Save",7,0,3);
++        add_menu_item("Set Up",8,6,3);
++        add_menu_item("Quit",9,0,4);
++        WindowInfo *w=get_window(win.current_focus_window);
++        if (w) for (unsigned i=0;i<w->menu_count;i++) w->menu_items[i].sound_effect=27;
++        print_menu_items();
++        return;
++    }
++
+     /* Command labels loaded from ROM (CMD_WINDOW_TEXT, 6 × 10 bytes EB-encoded padded) */
+     const uint8_t *cmd_data = ASSET_DATA(ASSET_US_DATA_COMMAND_WINDOW_TEXT_BIN);
+     /* Grid positions, a deliberate deviation from DEBUG_MENU_ELEMENT_SPACING_DATA
+@@ -898,8 +926,8 @@ static void display_equipment_menu(uint16_t char_id) {
+     {
+         char name_buf[WINDOW_TITLE_SIZE];
+         int j;
+-        for (j = 0; j < 5 && party_characters[char_idx].name[j]; j++)
+-            name_buf[j] = eb_char_to_ascii(party_characters[char_idx].name[j]);
++        for (j = 0; j < maternalbound_name_capacity() && maternalbound_character_name(char_idx)[j]; j++)
++            name_buf[j] = eb_char_to_ascii(maternalbound_character_name(char_idx)[j]);
+         name_buf[j] = '\0';
+         set_window_title(WINDOW_EQUIP_MENU, name_buf, 6);
+     }
+@@ -2141,15 +2169,15 @@ StepResult mode_step_psi_menu(ModeState *ms) {
+ 
+             /* Set attacker name (assembly lines 297-304) */
+             set_battle_attacker_name(
+-                (const char *)party_characters[st->char_id - 1].name,
+-                sizeof(party_characters[0].name));
++                (const char *)maternalbound_character_name(st->char_id - 1),
++                maternalbound_name_capacity());
+ 
+             /* Set target name if targeting a specific ally (lines 305-318) */
+             uint8_t target_id = st->action_result & 0xFF;
+             if (target_id != 0xFF && target_id > 0) {
+                 set_battle_target_name(
+-                    (const char *)party_characters[target_id - 1].name,
+-                    sizeof(party_characters[0].name));
++                    (const char *)maternalbound_character_name(target_id - 1),
++                    maternalbound_name_capacity());
+             }
+ 
+             /* Set current item to the PSI ability (lines 320-321) */
+@@ -2225,8 +2253,8 @@ StepResult mode_step_psi_menu(ModeState *ms) {
+ 
+             /* Set target name (assembly lines 404-421) */
+             set_battle_target_name(
+-                (const char *)party_characters[member_id - 1].name,
+-                sizeof(party_characters[0].name));
++                (const char *)maternalbound_character_name(member_id - 1),
++                maternalbound_name_capacity());
+ 
+             /* Init target battler (assembly lines 422-428) */
+             battle_init_player_stats(member_id, &bt.battlers_table[1]);
+@@ -2517,8 +2545,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+ 
+             /* Set attacker name from character (assembly lines 280-287) */
+             set_battle_attacker_name(
+-                (const char *)party_characters[st->char_id - 1].name,
+-                sizeof(party_characters[0].name));
++                (const char *)maternalbound_character_name(st->char_id - 1),
++                maternalbound_name_capacity());
+ 
+             /* Set current item (assembly lines 288-291) */
+             set_current_item((uint8_t)st->item_id);
+@@ -2535,8 +2563,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+              * target_id 0xFF = all targets, skip target name. */
+             if (st->target_id != 0xFF) {
+                 set_battle_target_name(
+-                    (const char *)party_characters[st->target_id - 1].name,
+-                    sizeof(party_characters[0].name));
++                    (const char *)maternalbound_character_name(st->target_id - 1),
++                    maternalbound_name_capacity());
+             }
+ 
+             /* Assembly lines 323-334: if description text is NULL, use fallback */
+@@ -2621,8 +2649,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+ 
+             /* Set target name (assembly lines 392-414) */
+             set_battle_target_name(
+-                (const char *)party_characters[member_id - 1].name,
+-                sizeof(party_characters[0].name));
++                (const char *)maternalbound_character_name(member_id - 1),
++                maternalbound_name_capacity());
+ 
+             /* Init target battler (assembly lines 415-421) */
+             battle_init_player_stats(member_id, &bt.battlers_table[1]);
+@@ -3045,6 +3073,12 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+             /* Key Items (this port's own addition, Key Items pool
+              * feature, not part of the original ROM/assembly) */
+             case 10:
++                if (maternalbound_enabled()) {
++                    bool pushed;
++                    StepResult r=pm_push_text(st,PM_KEY_ITEMS_RESUME,MATERNALBOUND_ENTRY_KEY_ITEMS,&pushed);
++                    if (!pushed) FATAL("Redux Key Items native export could not be resolved\n");
++                    return r;
++                }
+                 /* Key Items menu pops 1 if an item was actually used
+                  * (KIM_USE_RESUME), 0 otherwise (cancelled, or closed
+                  * after just Help/browsing) -- resume in
+@@ -3058,6 +3092,14 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+                 st->phase = PM_KEY_ITEMS_RESUME;
+                 return STEP_RESULT_PUSH_INIT(GAME_MODE_KEY_ITEMS_MENU, &pm_child_init);
+ 
++            case 11: {
++                if (!maternalbound_enabled()) FATAL("Tools requires Redux game data\n");
++                bool pushed;
++                StepResult r=pm_push_text(st,PM_KEY_ITEMS_RESUME,MATERNALBOUND_ENTRY_TOOLS,&pushed);
++                if (!pushed) FATAL("Redux Tools native export could not be resolved\n");
++                return r;
++            }
++
+             /* Cancel (B/Select) or unknown → cleanup */
+             default:
+                 st->phase = PM_CLEANUP;
+@@ -3306,6 +3348,13 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+             continue;
+ 
+         case PM_KEY_ITEMS_RESUME:
++            if (maternalbound_enabled()) {
++                bool used=event_flag_get(MATERNALBOUND_FLAG_USED_ITEM);
++                close_window(WINDOW_INVENTORY);
++                close_menu_header_window();
++                st->phase=used ? PM_CLEANUP : PM_MAIN;
++                continue;
++            }
+             /* KEY_ITEMS_MENU popped 1 (an item was actually used,
+              * KIM_USE_RESUME) or 0 (cancelled, or closed after just
+              * Help/browsing) -- same branch shape as PM_USE_RESUME
+@@ -3918,6 +3967,10 @@ StepResult mode_step_quick_checktalk(ModeState *ms) {
+         uint32_t text_ptr = talk_to();
+         if (text_ptr == 0)
+             text_ptr = check_action();
++        if (text_ptr == 0 && maternalbound_enabled()) {
++            enable_all_entities();
++            return STEP_RESULT_POP(0);
++        }
+         if (text_ptr == 0)
+             text_ptr = MSG_SYS_NOTHING_WRONG_HERE;
+ 
+@@ -3990,14 +4043,14 @@ StepResult mode_step_hppp_display(ModeState *ms) {
+             return STEP_RESULT_POP(0);  /* blocking `break` had no cleanup */
+ 
+         /* A or L → open the full menu */
+-        if (core.pad1_pressed & PAD_CONFIRM) {
++        if (core.pad1_pressed & (maternalbound_enabled() ? PAD_X : PAD_CONFIRM)) {
+             hd_child_init = (ModeState){ .pause_menu = { .phase = PM_ENTER } };
+             st->phase = HD_MENU_DONE;
+             return STEP_RESULT_PUSH_INIT(GAME_MODE_PAUSE_MENU, &hd_child_init);
+         }
+ 
+         /* B or Select → dismiss (assembly lines 17-26) */
+-        if (core.pad1_pressed & PAD_CANCEL) {
++        if (core.pad1_pressed & (maternalbound_enabled() ? (PAD_B | PAD_START) : PAD_CANCEL)) {
+             play_sfx(2);  /* SFX::CURSOR2 */
+             clear_instant_printing();
+             hide_hppp_windows();
+diff --git a/src/game/text.h b/src/game/text.h
+index b9339de..9e1a5b6 100644
+--- a/src/game/text.h
++++ b/src/game/text.h
+@@ -16,7 +16,7 @@
+ #define FONT_ID_LARGE     4
+ 
+ /* Number of characters in a font table */
+-#define FONT_CHAR_COUNT   96
++#define FONT_CHAR_COUNT   128 /* Maximum; original packs contain 96. */
+ 
+ /* Special EB text character codes (from CHAR enum in include/macros.asm) */
+ #define EB_CHAR_EQUIPPED  0x22  /* CHAR::EQUIPPED, purple oval with "E" */
+diff --git a/src/game/town_map.c b/src/game/town_map.c
+index a0a8b75..21010fc 100644
+--- a/src/game/town_map.c
++++ b/src/game/town_map.c
+@@ -12,6 +12,7 @@
+  *   CYCLE_MAP_ICON_PALETTE (asm/system/palette/cycle_map_icon_palette.asm)
+  */
+ #include "game/town_map.h"
++#include "game/maternalbound.h"
+ #include "game/map_loader.h"
+ #include "game/overworld.h"
+ #include "game/game_state.h"
+@@ -497,7 +498,8 @@ uint16_t display_town_map_prepare(ModeState *init) {
+  * false if there is no Town Map item or no map at this location (the disable/enable
+  * bracket is balanced here for the no-map case, matching show_town_map()). */
+ bool show_town_map_prepare(ModeState *init) {
+-    if (find_item_in_inventory2(CHAR_ID_ANY, ITEM_TOWN_MAP) == 0)
++    if (maternalbound_enabled() ? !event_flag_get(MATERNALBOUND_FLAG_TOWN_MAP) :
++        find_item_in_inventory2(CHAR_ID_ANY, ITEM_TOWN_MAP) == 0)
+         return false;
+ 
+     disable_all_entities();
+diff --git a/src/game/window.c b/src/game/window.c
+index e516652..b96cd9b 100644
+--- a/src/game/window.c
++++ b/src/game/window.c
+@@ -594,6 +594,7 @@ void add_menu_item(const char *label, uint16_t userdata, uint16_t text_x, uint16
+     if (!w || w->menu_count >= MAX_MENU_ITEMS) return;
+ 
+     MenuItem *item = &w->menu_items[w->menu_count];
++    memset(item, 0, sizeof(*item));
+     strncpy(item->label, label, MENU_LABEL_SIZE - 1);
+     item->label[MENU_LABEL_SIZE - 1] = '\0';
+     item->userdata = userdata;
+@@ -615,6 +616,7 @@ void add_menu_item_no_position(const char *label, uint16_t userdata) {
+     if (!w || w->menu_count >= MAX_MENU_ITEMS) return;
+ 
+     MenuItem *item = &w->menu_items[w->menu_count];
++    memset(item, 0, sizeof(*item));
+     strncpy(item->label, label, MENU_LABEL_SIZE - 1);
+     item->label[MENU_LABEL_SIZE - 1] = '\0';
+     item->userdata = userdata;
+@@ -675,6 +677,16 @@ void print_menu_items(void) {
+         w = get_window(win.current_focus_window);  /* re-fetch after cursor set */
+         if (!w) return;
+         print_string(item->label);
++        if (item->right_label[0]) {
++            uint8_t eb[sizeof(item->right_label)] = {0};
++            size_t length = strlen(item->right_label);
++            for (size_t n = 0; n < length; ++n) eb[n] = ascii_to_eb_char(item->right_label[n]);
++            uint16_t width = get_string_pixel_width(eb, -1);
++            uint16_t edge = (uint16_t)(w->width-2)*8-1;
++            set_focus_text_cursor(0, item->text_y);
++            vwf_set_position(width <= edge ? edge-width : 0);
++            print_string(item->right_label);
++        }
+     }
+ }
+ 
+@@ -2574,8 +2586,9 @@ void draw_hp_pp_window(uint16_t char_id) {
+      * US: STRLEN computes name width = (strlen*6+9)/8 tiles. */
+     uint16_t name_base1 = 0x22A0 + (uint16_t)(member_id - 1) * 4;
+     int name_len = 0;
+-    for (int i = 0; i < 5 && ch->name[i] != 0; i++) name_len++;
+-    int name_tile_count = (name_len * 6 + 9) / 8;  /* assembly: STRLEN*6+9 >> 3 */
++    for (int i = 0; i < maternalbound_name_capacity() && maternalbound_character_name_of(ch)[i] != 0; i++) name_len++;
++    int name_tile_count = (name_len * (name_len==6 ? 5 : 6) + 9) / 8;
++    if (name_tile_count > 4) name_tile_count=4;
+     int ntc = name_tile_count;
+ 
+     for (int i = 0; i < HPPP_WINDOW_WIDTH - 3; i++) {
+diff --git a/src/game/window.h b/src/game/window.h
+index 4210ac5..4c38449 100644
+--- a/src/game/window.h
++++ b/src/game/window.h
+@@ -121,6 +121,7 @@
+ #define MENU_LABEL_SIZE 26  /* asm: 25-byte label at offset 19, +1 for null */
+ typedef struct {
+     char     label[MENU_LABEL_SIZE]; /* display text (copied inline, asm: 25-byte at offset 19) */
++    char     right_label[32]; /* Redux's second string, right aligned per row */
+     uint16_t userdata;     /* value returned on selection (asm offset 12) */
+     uint8_t  text_x;       /* x position in window tiles (asm offset 8) */
+     uint8_t  text_y;       /* y position in window tiles (asm offset 10) */
 diff --git a/src/game_main.c b/src/game_main.c
-index 8ddaa2a..6e28df1 100644
+index 8ddaa2a..2602cc5 100644
 --- a/src/game_main.c
 +++ b/src/game_main.c
-@@ -863,7 +863,11 @@ void host_process_frame(void) {
+@@ -26,6 +26,7 @@
+ #include "entity/entity.h"
+ #include "entity/sprite.h"
+ #include "game/display_text.h"
++#include "game/maternalbound.h"
+ #include "game/text.h"
+ #include "data/event_script_data.h"
+ #include "game/door.h"
+@@ -63,6 +64,7 @@ typedef enum {
+     ROOT_ACTION_NONE = 0,
+     ROOT_ACTION_SAVE,   /* F6 / power-off: write a savestate */
+     ROOT_ACTION_LOAD,   /* F7: restore the last savestate */
++    ROOT_ACTION_RESET,  /* Redux soft reset, without writing player saves */
+ } RootAction;
+ static RootAction g_pending_root_action = ROOT_ACTION_NONE;
+ static int g_capture_unwind_frames = 0;
+@@ -480,6 +482,7 @@ void host_process_frame(void) {
+      * Assembly updates INIDISP_MIRROR from fade parameters every vblank.
+      * Must run before ppu_render_frame so the renderer sees the new brightness. */
+     fade_update();
++    maternalbound_effects_tick();
+ 
+     /* NMI handler: sync palette mirror to CGRAM if upload pending.
+      * On the SNES, the NMI handler always checks PALETTE_UPLOAD_MODE
+@@ -863,7 +866,11 @@ void host_process_frame(void) {
      core.play_timer++;
  
      /* Check frame limit */
@@ -1554,8 +3975,106 @@ index 8ddaa2a..6e28df1 100644
          platform_request_quit();
  
      /* Frame timing: advance deadline by one frame period, clamp debt,
+@@ -920,6 +927,12 @@ void host_request_load(void) {
+     g_capture_status = HOST_CAPTURE_PENDING;
+ }
+ 
++void host_request_reset(void) {
++    if (g_pending_root_action != ROOT_ACTION_NONE) return;
++    g_pending_root_action = ROOT_ACTION_RESET;
++    g_capture_unwind_frames = 0;
++}
++
+ /* Outcome of the last save/load request (firmware rail-hold handshake). See game_main.h. */
+ HostCaptureStatus host_capture_status(void) {
+     return g_capture_status;
+@@ -948,7 +961,13 @@ void host_root_boundary(void) {
+      * callback would otherwise drain and drone for the ~0.6-1 s it takes. */
+     platform_savestate_freeze_audio(true);
+ 
+-    if (action == ROOT_ACTION_SAVE) {
++    if (action == ROOT_ACTION_RESET) {
++        memset(&g_mode_stack, 0, sizeof(g_mode_stack));
++        memset(&ow, 0, sizeof(ow));
++        memset(&bt, 0, sizeof(bt));
++        fade_state.fading = false;
++        game_init();
++    } else if (action == ROOT_ACTION_SAVE) {
+         /* Crash-safe ping-pong write through the platform_savestate_* slot backend:
+          * a power-loss mid-write leaves the prior slot intact. COMMITTED is the
+          * firmware's rail-hold release signal (the write is durably flushed). */
+@@ -1607,6 +1626,7 @@ static bool overworld_boot_step(void) {
+      * Creates init entity (slot 23) with EVENT_001 (main overworld tick),
+      * initializes party, loads the map at leader's saved position. */
+     initialize_overworld_state();
++    if (maternalbound_enabled()) maternalbound_stamina_reset();
+ 
+     /* Assembly: JSL OAM_CLEAR; JSL RUN_ACTIONSCRIPT_FRAME (main.asm lines 13-14).
+      * The first actionscript frame executes EVENT_001 (main overworld tick),
+@@ -1742,6 +1762,7 @@ StepResult mode_step_overworld(ModeState *mst) {
+         }
+ 
+         case OWP_POST_TOP:
++            maternalbound_stamina_tick();
+             /* Assembly lines 30-42: process queued interactions (read != write
+              * index) when no battle/swirl is in progress -> loop_end. */
+             if (ow.current_queued_interaction != ow.next_queued_interaction &&
+@@ -1829,18 +1850,18 @@ StepResult mode_step_overworld(ModeState *mst) {
+             if (ow.input_disable_frame_counter > 0) {
+                 ow.input_disable_frame_counter--;
+             } else if (!ow.pending_interactions) {
+-                if (core.pad1_pressed & PAD_A) {
++                if (core.pad1_pressed & (maternalbound_enabled() ? PAD_X : PAD_A)) {
+                     child = (ModeState){0};
+                     child.pause_menu.phase = PM_ENTER;
+                     st->phase = OWP_PAUSE_MENU_RESULT;
+                     return STEP_RESULT_PUSH_INIT(GAME_MODE_PAUSE_MENU, &child);
+-                } else if ((core.pad1_pressed & PAD_CANCEL) &&
++                } else if ((core.pad1_pressed & (maternalbound_enabled() ? (PAD_B | PAD_START) : PAD_CANCEL)) &&
+                            game_state.walking_style != WALKING_STYLE_BICYCLE) {
+                     child = (ModeState){0};
+                     child.hppp_display.phase = HD_ENTER;
+                     st->phase = OWP_POST_TELEPORT;
+                     return STEP_RESULT_PUSH_INIT(GAME_MODE_HPPP_DISPLAY, &child);
+-                } else if (core.pad1_pressed & PAD_X) {
++                } else if (core.pad1_pressed & (maternalbound_enabled() ? PAD_SELECT : PAD_X)) {
+                     /* show_town_map(): push the display variant if there is a map;
+                      * OWP_RESUME_TOWNMAP re-enables entities afterward. No map ->
+                      * fall through to the teleport check (no push). */
+@@ -1848,7 +1869,7 @@ StepResult mode_step_overworld(ModeState *mst) {
+                         st->phase = OWP_RESUME_TOWNMAP;
+                         return STEP_RESULT_PUSH_INIT(GAME_MODE_TOWN_MAP, &child);
+                     }
+-                } else if (core.pad1_pressed & PAD_L) {
++                } else if (core.pad1_pressed & (maternalbound_enabled() ? PAD_CONFIRM : PAD_L)) {
+                     child = (ModeState){0};
+                     child.quick_checktalk.phase = QCT_TEXT;
+                     st->phase = OWP_POST_TELEPORT;
+@@ -2032,9 +2053,9 @@ void game_init(void) {
+      * (The map tileset arrangement scratch is rebuilt separately by
+      * map_loader_savestate_rebind() in read_slot, since it must run AFTER the snapshot
+      * restores ml.loaded_tileset_combo. ensure_item_config() already self-heals lazily.) */
++    display_text_init();
+     load_sprite_data();
+     load_event_script_data();
+-    display_text_init();
+     text_system_init();
+ 
+     /* Push the permanent GAME_MODE_OVERWORLD root (g_mode_stack[0]) so the first
+diff --git a/src/game_main.h b/src/game_main.h
+index c29adc3..37d2067 100644
+--- a/src/game_main.h
++++ b/src/game_main.h
+@@ -56,6 +56,7 @@ void host_request_capture(void);
+  * replaces the mode stack wholesale, which is only coherent with no game logic
+  * suspended on the C stack. Idempotent while one is already pending. */
+ void host_request_load(void);
++void host_request_reset(void);
+ 
+ /* Perform a pending capture if one was requested, then clear the request. MUST be
+  * called ONLY from the outermost host loop (the root boundary), never while a
 diff --git a/src/intro/file_select.c b/src/intro/file_select.c
-index 632f674..8a96b2f 100644
+index 632f674..a8d4156 100644
 --- a/src/intro/file_select.c
 +++ b/src/intro/file_select.c
 @@ -15,6 +15,7 @@
@@ -1566,7 +4085,204 @@ index 632f674..8a96b2f 100644
  #include "include/pad.h"
  #include "game/overworld.h"
  #include "game/inventory.h"
-@@ -2278,7 +2279,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
+@@ -26,6 +27,7 @@
+ #include "game_main.h"
+ #include "data/text_refs.h"
+ #include "core/mode_stack.h"
++#include "core/log.h"
+ 
+ /* Whether each save slot has data */
+ static uint8_t save_files_present[SAVE_COUNT];
+@@ -74,7 +76,8 @@ static void ensure_file_select_assets(void) {
+ /* Helper: get EB-encoded don't care name at [category][index] */
+ static const uint8_t *get_dont_care_name(int category, int index) {
+     ensure_file_select_assets();
+-    return dont_care_names_data + (category * DONT_CARE_COUNT + index) * DONT_CARE_NAME_SIZE;
++    size_t stride=ASSET_SIZE(ASSET_US_DATA_DONT_CARE_NAMES_BIN)/(7*DONT_CARE_COUNT);
++    return dont_care_names_data + (category * DONT_CARE_COUNT + index) * stride;
+ }
+ 
+ /* See file_select.h. Mirrors a cold load: null the (un-sectioned) asset caches,
+@@ -215,9 +218,9 @@ static int fm_file_select_build(void) {
+     for (int slot = 0; slot < SAVE_COUNT; slot++) {
+         bool occupied = load_game(slot) && game_state.favourite_thing[1] != 0;
+         if (occupied) {
+-            char name[6] = {0};
+-            for (int i = 0; i < 5 && party_characters[0].name[i]; i++) {
+-                name[i] = eb_char_to_ascii(party_characters[0].name[i]);
++            char name[7] = {0};
++            for (int i = 0; i < maternalbound_name_capacity() && maternalbound_character_name(0)[i]; i++) {
++                name[i] = eb_char_to_ascii(maternalbound_character_name(0)[i]);
+             }
+             snprintf(slot_labels[slot], sizeof(slot_labels[slot]), "%d: %s",
+                      slot + 1, name);
+@@ -346,9 +349,9 @@ static void file_select_menu_display_only(void) {
+     for (int slot = 0; slot < SAVE_COUNT; slot++) {
+         bool occupied = load_game(slot) && game_state.favourite_thing[1] != 0;
+         if (occupied) {
+-            char name[6] = {0};
+-            for (int i = 0; i < 5 && party_characters[0].name[i]; i++) {
+-                name[i] = eb_char_to_ascii(party_characters[0].name[i]);
++            char name[7] = {0};
++            for (int i = 0; i < maternalbound_name_capacity() && maternalbound_character_name(0)[i]; i++) {
++                name[i] = eb_char_to_ascii(maternalbound_character_name(0)[i]);
+             }
+             snprintf(slot_labels[slot], sizeof(slot_labels[slot]), "%d: %s",
+                      slot + 1, name);
+@@ -887,14 +890,16 @@ static void kb_write_name_tilemap(WindowInfo *nw, int num_cols) {
+ /* Resolve a NameTargetId to the (stable global) buffer it names. The buffer is
+  * only touched on confirm, so a serializable ID rather than a raw pointer keeps
+  * the keyboard mode's ModeState plain-old-data. */
++static uint16_t get_text_pixel_width(uint8_t font_id,const uint8_t *eb_text,int len);
++
+ static uint8_t *name_target_buffer(int id) {
+     switch (id) {
+-    case NAME_TARGET_PARTY0:    return party_characters[0].name;
+-    case NAME_TARGET_PARTY1:    return party_characters[1].name;
+-    case NAME_TARGET_PARTY2:    return party_characters[2].name;
+-    case NAME_TARGET_PARTY3:    return party_characters[3].name;
++    case NAME_TARGET_PARTY0:    return maternalbound_character_name(0);
++    case NAME_TARGET_PARTY1:    return maternalbound_character_name(1);
++    case NAME_TARGET_PARTY2:    return maternalbound_character_name(2);
++    case NAME_TARGET_PARTY3:    return maternalbound_character_name(3);
+     case NAME_TARGET_PET:       return game_state.pet_name;
+-    case NAME_TARGET_FOOD:      return game_state.favourite_food;
++    case NAME_TARGET_FOOD:      return maternalbound_food_name();
+     case NAME_TARGET_THING:     return game_state.favourite_thing + 4;
+     case NAME_TARGET_M2_PLAYER: return game_state.mother2_playername;
+     case NAME_TARGET_EB_PLAYER: return game_state.earthbound_playername;
+@@ -931,6 +936,8 @@ StepResult mode_step_text_input(ModeState *st) {
+        yet, matching the blocking loop's render-before-first-read order) --- */
+     if (s->primed) {
+         uint16_t pressed = platform_input_get_pad_new();
++        if (pressed) LOG_TRACE("Naming input: frame=%u target=%u pad=%04X cursor=%d,%d length=%u\n",
++            core.frame_counter,s->name_target,pressed,s->cur_x,s->cur_y,s->name_pos);
+ 
+         /* Directional input, assembly: MOVE_CURSOR plays SFX only on
+            successful cursor movement (SFX 124 for UP/DOWN, 123 for LEFT/RIGHT) */
+@@ -986,7 +993,7 @@ StepResult mode_step_text_input(ModeState *st) {
+                     const uint8_t *eb_src = get_dont_care_name(s->naming_index, s->dont_care_row);
+                     memset(s->eb_name, 0, sizeof(s->eb_name));
+                     s->name_pos = 0;
+-                    for (int i = 0; i < DONT_CARE_NAME_SIZE && i < (int)s->max_len && eb_src[i] != 0; i++) {
++                    for (int i = 0; i < (int)s->max_len && eb_src[i] != 0; i++) {
+                         s->eb_name[i] = eb_src[i];
+                         s->name_pos++;
+                     }
+@@ -1017,6 +1024,9 @@ StepResult mode_step_text_input(ModeState *st) {
+                     if (col >= 0 && grid[4][col] != 0xFF && s->name_pos < s->max_len) {
+                         s->eb_name[s->name_pos] = grid[4][col];
+                         s->name_pos++;
++                        if (maternalbound_name_capacity()==6 && s->max_len<20 &&
++                            get_text_pixel_width(FONT_ID_NORMAL,s->eb_name,s->name_pos)>40)
++                            s->eb_name[--s->name_pos]=0;
+                     }
+                 }
+             } else if (s->cur_y >= 0 && s->cur_y <= 3) {
+@@ -1027,6 +1037,9 @@ StepResult mode_step_text_input(ModeState *st) {
+                 if (col >= 0 && grid[s->cur_y][col] != 0xFF && s->name_pos < s->max_len) {
+                     s->eb_name[s->name_pos] = grid[s->cur_y][col];
+                     s->name_pos++;
++                    if (maternalbound_name_capacity()==6 && s->max_len<20 &&
++                        get_text_pixel_width(FONT_ID_NORMAL,s->eb_name,s->name_pos)>40)
++                        s->eb_name[--s->name_pos]=0;
+                 }
+             }
+         }
+@@ -1060,6 +1073,10 @@ StepResult mode_step_text_input(ModeState *st) {
+                 memset(name_buf, 0, (size_t)s->max_len);
+                 for (int i = 0; i < (int)s->name_pos && i < (int)s->max_len; i++)
+                     name_buf[i] = s->eb_name[i];
++                if (s->name_target <= NAME_TARGET_PARTY3)
++                    maternalbound_set_character_name(s->name_target,name_buf,s->name_pos);
++                else if (s->name_target == NAME_TARGET_FOOD)
++                    maternalbound_set_food_name(name_buf,s->name_pos);
+             }
+             close_window(WINDOW_FILE_SELECT_NAMING_KB);
+             return STEP_RESULT_POP(0);
+@@ -1167,6 +1184,7 @@ void text_input_prepare(ModeState *init, int name_target, int max_len,
+     s->dont_care_row = -1;
+     s->name_pos = 0;
+     s->max_len = (uint16_t)max_len;
++    LOG_TRACE("Naming keyboard ready: frame=%u target=%u limit=%u\n",core.frame_counter,s->name_target,s->max_len);
+     s->name_display_window_id = name_display_window_id;
+     s->name_text_y = (int16_t)name_text_y;
+     s->cur_x = 0;
+@@ -1533,8 +1551,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+                 uint8_t empty_name[16];
+                 uint8_t display[16];
+                 memset(empty_name, 0, sizeof(empty_name));
+-                kb_build_name_display(display, empty_name, 0, ng_name_targets[i].max_len);
+-                name_tile_cols = kb_render_name_tiles(display, ng_name_targets[i].max_len);
++                kb_build_name_display(display, empty_name, 0, (i < 4 ? (int)maternalbound_name_capacity() : i == 5 ? (int)maternalbound_food_capacity() : ng_name_targets[i].max_len));
++                name_tile_cols = kb_render_name_tiles(display, (i < 4 ? (int)maternalbound_name_capacity() : i == 5 ? (int)maternalbound_food_capacity() : ng_name_targets[i].max_len));
+             }
+             ngn_child_init = (ModeState){0};
+             ngn_child_init.naming_prompt.name_tile_cols = (int16_t)name_tile_cols;
+@@ -1547,7 +1565,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+                goes in the name box window at text row 0. */
+             int i = st->char_i;
+             text_input_prepare(&ngn_child_init, ng_name_targets[i].target,
+-                               ng_name_targets[i].max_len, i,
++                               (i < 4 ? (int)maternalbound_name_capacity() : i == 5 ? (int)maternalbound_food_capacity() : ng_name_targets[i].max_len), i,
+                                WINDOW_FILE_SELECT_NAMING_BOX, 0, NULL);
+             st->phase = NGN_INPUT_DONE;
+             return STEP_RESULT_PUSH_INIT(GAME_MODE_TEXT_INPUT, &ngn_child_init);
+@@ -1585,10 +1603,9 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+             /* Set default names for any empty slots (first name in each group).
+              * Names are already EB-encoded in the ROM data, copy directly. */
+             for (int c = 0; c < 4; c++) {
+-                if (party_characters[c].name[0] == 0) {
++                if (maternalbound_character_name(c)[0] == 0) {
+                     const uint8_t *eb_src = get_dont_care_name(c, 0);
+-                    for (int j = 0; j < 5 && eb_src[j] != 0; j++)
+-                        party_characters[c].name[j] = eb_src[j];
++                    maternalbound_set_character_name(c,eb_src,maternalbound_name_capacity());
+                 }
+             }
+             if (game_state.pet_name[0] == 0) {
+@@ -1598,8 +1615,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+             }
+             if (game_state.favourite_food[0] == 0) {
+                 const uint8_t *eb_src = get_dont_care_name(5, 0);
+-                for (int j = 0; j < 6 && eb_src[j] != 0; j++)
+-                    game_state.favourite_food[j] = eb_src[j];
++                maternalbound_set_food_name(eb_src,maternalbound_food_capacity());
+             }
+             if (game_state.favourite_thing[4] == 0) {
+                 const uint8_t *eb_src = get_dont_care_name(6, 0);
+@@ -1625,8 +1641,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+                 if (cw) {
+                     set_focus_text_cursor(0, 0);
+                     int len = 0;
+-                    while (len < 5 && party_characters[c].name[len] != 0x00) len++;
+-                    print_eb_string(party_characters[c].name, len);
++                    while (len < maternalbound_name_capacity() && maternalbound_character_name(c)[len] != 0x00) len++;
++                    print_eb_string(maternalbound_character_name(c), len);
+                 }
+             }
+ 
+@@ -1643,7 +1659,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+             create_window(WINDOW_FILE_SELECT_CONFIRM_FOOD);
+             set_focus_text_cursor(0, 0);
+             print_string("Favorite food:");
+-            print_right_justified_name(game_state.favourite_food, 6, WINDOW_FILE_SELECT_CONFIRM_FOOD);
++            print_right_justified_name(maternalbound_food_name(), maternalbound_food_capacity(), WINDOW_FILE_SELECT_CONFIRM_FOOD);
+ 
+             /* Favorite thing, same layout as food */
+             create_window(WINDOW_FILE_SELECT_CONFIRM_THING);
+@@ -2058,8 +2074,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
+                     set_focus_text_cursor(2, 1);
+                     {
+                         int len = 0;
+-                        while (len < 5 && party_characters[0].name[len] != 0x00) len++;
+-                        print_eb_string(party_characters[0].name, len);
++                        while (len < maternalbound_name_capacity() && maternalbound_character_name(0)[len] != 0x00) len++;
++                        print_eb_string(maternalbound_character_name(0), len);
+                     }
+ 
+                     set_focus_text_cursor(8, 1);
+@@ -2278,7 +2294,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
              close_window(WINDOW_FILE_SELECT_TEXT_SPEED);
              close_window(WINDOW_FILE_SELECT_MUSIC_MODE);
              close_window(WINDOW_FILE_SELECT_FLAVOUR);
@@ -1740,3 +4456,18 @@ index 0000000..e601cfe
 +bool pc_input_selftest(void);
 +bool pc_msu_selftest(void);
 +#endif
+diff --git a/src/tools/gen_struct_info.c b/src/tools/gen_struct_info.c
+index 3564a35..30b076f 100644
+--- a/src/tools/gen_struct_info.c
++++ b/src/tools/gen_struct_info.c
+@@ -470,7 +470,9 @@ int main(void) {
+     FIELD(BattleState, battle_menu_param1, "u8"); SEP();
+     FIELD(BattleState, battle_menu_selected_action, "u16"); SEP();
+     FIELD(BattleState, battle_menu_targetting, "u8"); SEP();
+-    LAST_FIELD(BattleState, battle_menu_selected_target, "u8");
++    FIELD(BattleState, battle_menu_selected_target, "u8"); printf(",\n");
++    BLOB_FIELD(BattleState, redux_enemy_ai_cursor); printf(",\n");
++    LAST_FIELD(BattleState, redux_enemy_ai_active, "u8");
+     END_SECTION();
+ 
+     SEP();
