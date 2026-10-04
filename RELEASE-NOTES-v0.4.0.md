@@ -33,6 +33,6 @@ The package contains no ROM, extracted asset pack, save, screenshot or PCM sound
 
 ## Test boundaries
 
-A complete playthrough has not yet been verified. MaternalBound Redux, earthbound.app seed parity, Ancient Cave, Open mode, Keysanity and RetroAchievements are not included in this version. Keep normal phone saves for long-term play and attach a redacted `UserData/game.log` when reporting a reproducible defect.
+A complete playthrough has not yet been verified. MaternalBound Redux, earthbound.app seed parity, Ancient Cave, Open mode and Keysanity are not included in this version. Keep normal phone saves for long-term play and attach a redacted `UserData/game.log` when reporting a reproducible defect.
 
 This is an unofficial fan project. See [credits](https://github.com/rages4calm/earthbound-companion/blob/main/CREDITS.md) and [legal notes](https://github.com/rages4calm/earthbound-companion/blob/main/LEGAL.md) before redistributing any part of it.

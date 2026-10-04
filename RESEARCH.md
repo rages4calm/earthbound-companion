@@ -45,7 +45,7 @@ The selected source originally repeated every PCM track. This build uses game-sp
 
 [ShrineFox's EarthBound Mod Menu](https://github.com/ShrineFox/EarthBound-Mod-Menu) supplies useful ROM-side trainer/QoL ideas, but its assembly patch cannot be imported as compiled C behavior. This edition instead exposes the implemented native options through settings and safe profile files.
 
-Other worthwhile future work includes an authored HD asset pack, richer shader choices, an explicit Redux mode, per-mod save namespaces, achievements backed by verified event rules, and a complete regression playthrough. These are future work, not shipped feature claims.
+Other worthwhile future work includes an authored HD asset pack, richer shader choices, an explicit Redux mode, per-mod save namespaces, and a complete regression playthrough. These are future work, not shipped feature claims.
 
 ## Randomizer integration — October 4, 2026
 

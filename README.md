@@ -84,7 +84,6 @@ This generator is inspired by the EarthBound randomizer community but does not c
 
 - A complete start-to-ending playthrough of this specific build has not yet been verified.
 - [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is researched and credited, but its ROM-side assembly and script changes have not been ported into the native C game.
-- [RetroAchievements](https://github.com/RetroAchievements) integration is not currently implemented.
 - Arbitrary IPS, BPS and EBP patches cannot be loaded as native mods; their game-code changes require explicit ports.
 - The release is a Windows x64 private test build. Bug reports should include `UserData/game.log` and a normal phone save when possible.
 
