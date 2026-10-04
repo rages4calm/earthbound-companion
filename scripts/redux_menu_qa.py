@@ -1,5 +1,6 @@
 """Replay Redux's real flag-based Key Items menu with isolated opening saves."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -17,6 +18,7 @@ def main():
     cases={
         "down":([(10,"0040"),(12,"0000"),(30,"0400"),(31,"0000")],55,["[10:Keys]"]),
         "pause":([(10,"0040"),(12,"0000")],90,["[2:Goods]","[4:Equip]","[10:Keys]"]),
+        "equipment":([(10,"0040"),(12,"0000"),(30,"0100"),(31,"0000"),(70,"0020"),(71,"0000")],180,["title=Status","title=Resistances"]),
         "key-items":([(10,"0040"),(11,"0000"),(30,"0400"),(31,"0000"),(70,"0020"),(71,"0000")],180,["title=Key items","ATM card"]),
     }
     keys=cases["key-items"][0]
@@ -45,7 +47,9 @@ def main():
         if proc.returncode: raise RuntimeError(f"{name} render failed")
         with Image.open(directory/"screenshot.bmp") as im: im.save(directory/"menu.png")
         results.append({"test":name,"passed":True,"renderResolution":[1920,1080]})
-    (scratch/"results.json").write_text(json.dumps({"status":"development-only","tests":results},indent=2)+"\n")
+    (scratch/"results.json").write_text(json.dumps({"status":"development-only",
+        "nativeExeSha256":hashlib.sha256(exe.read_bytes()).hexdigest().upper(),
+        "assetPackSha256":hashlib.sha256(pak.read_bytes()).hexdigest().upper(),"tests":results},indent=2)+"\n")
     print(json.dumps(results,indent=2))
 
 if __name__=="__main__":main()

@@ -54,8 +54,9 @@ internal static class SetupService {
   start.ArgumentList.Add(Path.GetFullPath(romPath));start.ArgumentList.Add("--out");start.ArgumentList.Add(temp);
   try {
    using var process=Process.Start(start)??throw new IOException("The ROM setup helper did not start.");
-   var stdout=process.StandardOutput.ReadToEndAsync(cancel);var stderr=process.StandardError.ReadToEndAsync(cancel);
-   await process.WaitForExitAsync(cancel);string output=(await stdout)+Environment.NewLine+(await stderr);
+   using var stopped=cancel.Register(()=>{try{if(!process.HasExited)process.Kill(true);}catch(InvalidOperationException){}catch(System.ComponentModel.Win32Exception){}});
+   var stdout=process.StandardOutput.ReadToEndAsync();var stderr=process.StandardError.ReadToEndAsync();
+   await process.WaitForExitAsync();cancel.ThrowIfCancellationRequested();string output=(await stdout)+Environment.NewLine+(await stderr);
    if(process.ExitCode!=0)throw new InvalidDataException("Game-data setup failed. "+output.Trim().Split('\n').LastOrDefault()?.Trim());
    if(!File.Exists(temp))throw new InvalidDataException("Game-data setup finished without creating an asset pack.");
    byte[] pack=await File.ReadAllBytesAsync(temp,cancel);ProgressionGuard.CheckBase(pack);
@@ -79,10 +80,12 @@ internal static class SetupService {
    progress?.Report(new("MSU",$"Downloading track {count+1} of {entries.Length}",done,total));
    try {
     using var response=await Http.GetAsync(MsuBase+Uri.EscapeDataString(entry.Name),HttpCompletionOption.ResponseHeadersRead,cancel);response.EnsureSuccessStatusCode();
-    await using var input=await response.Content.ReadAsStreamAsync(cancel);await using var output=new FileStream(part,FileMode.CreateNew,FileAccess.Write,FileShare.None,262144,true);
-    byte[] buffer=new byte[262144];int read;long fileDone=0;
-    while((read=await input.ReadAsync(buffer,cancel))>0){await output.WriteAsync(buffer.AsMemory(0,read),cancel);fileDone+=read;progress?.Report(new("MSU",$"Downloading track {count+1} of {entries.Length}",done+fileDone,total));}
-    await output.FlushAsync(cancel);
+    await using var input=await response.Content.ReadAsStreamAsync(cancel);
+    await using(var output=new FileStream(part,FileMode.CreateNew,FileAccess.Write,FileShare.None,262144,true)){
+     byte[] buffer=new byte[262144];int read;long fileDone=0;
+     while((read=await input.ReadAsync(buffer,cancel))>0){await output.WriteAsync(buffer.AsMemory(0,read),cancel);fileDone+=read;progress?.Report(new("MSU",$"Downloading track {count+1} of {entries.Length}",done+fileDone,total));}
+     await output.FlushAsync(cancel);
+    }
     if(!await MatchesAsync(part,entry,cancel))throw new InvalidDataException("Soundtrack download failed its checksum: "+entry.Name);
     File.Move(part,target,true);done+=entry.Size;count++;
    } finally {if(File.Exists(part))File.Delete(part);}

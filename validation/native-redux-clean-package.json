@@ -1,0 +1,24 @@
+{
+  "Passed": true,
+  "PackageSha256": "04B7ED5BCB014F047F6B70C6184A3198969F14CC6DA32F10D384A2D34153CDE7",
+  "NativeExeSha256": "86021608639A0DCD0D73B23C4BAF026D019E0935ED45E9BA00B745877985F4A8",
+  "ReduxSetupSha256": "1CFAC8EDC5188F66F3024DDDAA949E8791AEAAF688B0E9AE2523E9CBB441E4D9",
+  "ReduxPackSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
+  "Tests": [
+    "ROM-free archive and exact file manifest",
+    "Self-contained first-run setup with headered owner ROM and online pinned Redux source",
+    "164 soundtrack checks; corrupt track and stale partial repaired by real download",
+    "Verified profile installed atomically; generated ROMs cleaned",
+    "Packaged native story opening, Select naming and cold restore",
+    "Packaged generator, independent seed guard and native randomized opening",
+    "Original/Redux/seed save namespaces and profile switching"
+  ],
+  "DownloadedTrack": "eb_msu1-113.pcm",
+  "MsuTracksVerified": 164,
+  "ExistingTracksReusedViaHardlinks": 163,
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Isolated setup/opening tests; no complete story or randomized playthrough.",
+    "One soundtrack track downloaded; remaining tracks reused and independently checked."
+  ]
+}

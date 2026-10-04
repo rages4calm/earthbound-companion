@@ -61,6 +61,7 @@ ROUTINE_ADAPTERS = (
     (14, "ccexpand.CCUseItem", 0, "use_key_item", 0),
     (15, "run_stamina_mechanic.stamina_reset", 0, "reset_stamina", 0),
     (16, "reset_routine.Reset", 0, "reset_game", 0),
+    (17, "goods_menu_equip.ASM_Unequip", 0, "unequip_goods", 2),
 )
 
 
@@ -119,6 +120,7 @@ class Decoded:
     boundaries: dict[int, int]
     opcodes: Counter
     routines: list[tuple[int, int]]
+    operations: list[tuple[str, list[int | None]]]
 
 
 def relocate_bytes(data: bytes, specs: dict, expansions: list[bytes], adapters: dict | None = None) -> Decoded:
@@ -128,6 +130,7 @@ def relocate_bytes(data: bytes, specs: dict, expansions: list[bytes], adapters: 
     boundaries = {}
     opcodes = Counter()
     routines = []
+    operations = []
     pos = 0
 
     def take(n: int) -> bytes:
@@ -162,15 +165,19 @@ def relocate_bytes(data: bytes, specs: dict, expansions: list[bytes], adapters: 
         name, args = spec
         opcodes[name] += 1
         out.extend(key)
+        values = []
         for kind in args:
             if kind == "LABEL":
                 pointer(name)
+                values.append(None)
             elif kind == "JUMP_TABLE":
                 count = take(1)[0]
                 out.append(count)
                 for _ in range(count):
                     pointer(name)
+                values.append(None)
             elif kind == "STRING":
+                values.append(None)
                 while True:
                     char = take(1)[0]
                     out.append(char)
@@ -193,7 +200,10 @@ def relocate_bytes(data: bytes, specs: dict, expansions: list[bytes], adapters: 
                     if char in (0, 2):
                         break
             else:
-                out.extend(take({"U8": 1, "U16": 2, "U24": 3, "U32": 4}[kind]))
+                raw = take({"U8": 1, "U16": 2, "U24": 3, "U32": 4}[kind])
+                out.extend(raw)
+                values.append(int.from_bytes(raw,"little"))
+        operations.append((name,values))
         if key == (0x1A, 0x0C):
             address = int.from_bytes(out[-4:-1], "little")
             ret_type = out[-1]
@@ -207,7 +217,7 @@ def relocate_bytes(data: bytes, specs: dict, expansions: list[bytes], adapters: 
                 out[-4:-1] = adapter["id"].to_bytes(3,"little")
                 out.extend(take(adapter["parameterBytes"]))
     boundaries[len(data)] = len(out)
-    return Decoded(out, pointers, boundaries, opcodes, routines)
+    return Decoded(out, pointers, boundaries, opcodes, routines, operations)
 
 
 def load_native(native_source: Path):
@@ -266,6 +276,9 @@ def convert(bridge: dict, project: Path, rom: bytes, native_source: Path) -> tup
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest().upper() != source["sha256"].upper():
             raise ConversionError(f"Source differs from compiled inventory: {source['path']}")
     doc, specs, expansions = load_native(native_source)
+    opcode_module=importlib.import_module("ebtools.text_dsl.opcodes")
+    item_fields={op.yaml_name:[i for i,arg in enumerate(op.args) if arg.type.name=="ITEM"] for op in opcode_module.OPCODES}
+    item_fields.update({"redux_item_determiner":[0],"redux_item_quantity":[0]})
     adapters = routine_registry(bridge)
     by_module = {}
     for label in bridge["labels"]:
@@ -286,7 +299,7 @@ def convert(bridge: dict, project: Path, rom: bytes, native_source: Path) -> tup
         if not source or not module["size"]:
             continue
         # Script-heavy areas only; hardware/engine patch modules are converted separately.
-        if Path(source).parts[1] not in ("data", "dialogue", "shops", "debug") and module["name"] not in ("window_titles", "item_determiners", "keyitems", "tools", "enemy_ai_actions"):
+        if Path(source).parts[1] not in ("data", "dialogue", "shops", "debug") and module["name"] not in ("window_titles", "item_determiners", "keyitems", "tools", "enemy_ai_actions", "goods_menu_equip", "new_stats_equipment"):
             continue
         if module["name"] in ("coffee_tea_sequences","flyover_texts","staff_text"):
             excluded.append({"module":module["name"],"kind":"separate-text-format"})
@@ -410,6 +423,19 @@ def convert(bridge: dict, project: Path, rom: bytes, native_source: Path) -> tup
     for label in bridge["labels"]:
         all_label_names.setdefault(label["snesAddress"], []).append(label["module"]+"."+label["name"])
     routines = [{"address": address, "names": all_label_names.get(address, []), "returnType": ret, "calls": count, "nativeStatus": "typed-adapter-pending-validation", **adapters[address]} for (address, ret), count in sorted(routine_calls.items())]
+    item_dependencies={}
+    battle_dependencies={}
+    operation_count=0
+    for module,start,_,decoded in decoded_rows:
+        operation_count+=len(decoded.operations)
+        if "debug" in Path(module_sources[module]).parts: continue
+        for name,values in decoded.operations:
+            dependent=not (module=="item_descriptions" and name=="print_item_name")
+            for field in item_fields.get(name,[]) if dependent else []:
+                item=values[field]
+                if item: item_dependencies.setdefault(item,set()).add(f"{module}:{name}")
+            if name=="trigger_battle" and values[0]:
+                battle_dependencies.setdefault(values[0],set()).add(module)
     report = {
         "format": "maternalbound-native-dialogue-report-v1",
         "status": "development-only-not-playable",
@@ -419,6 +445,13 @@ def convert(bridge: dict, project: Path, rom: bytes, native_source: Path) -> tup
         "remainingCustomCommands": [],
         "handlerValidationBoundary": "Typed handlers exist for the declared extensions; bounded checks and opening/menu replays do not establish complete story compatibility.",
         "blobSha256": hashlib.sha256(blob).hexdigest().upper(),
+        "progressionDependencies": {
+            "decodedOperations":operation_count,
+            "method":"Typed operands from every successfully converted dialogue span; debug menus and descriptive item-name lookups excluded.",
+            "items":[{"id":item,"reasons":sorted(reasons)} for item,reasons in sorted(item_dependencies.items())],
+            "scriptedBattleGroups":[{"id":group,"modules":sorted(modules)} for group,modules in sorted(battle_dependencies.items())],
+            "limits":["Literal dependency audit; dynamic item arguments also require conservative source protections.","Does not solve a shuffled world or validate a full playthrough."]
+        },
         "opcodes": dict(sorted(total_ops.items())),
         "failures": failures,
         "verifiedSourceRepairs": repairs,

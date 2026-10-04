@@ -3,14 +3,14 @@
 **A native Windows adaptation of EarthBound that is now evolving into a MaternalBound Redux PC edition with HD and ultrawide output, native MSU music, PC settings, quality-of-life options, mod profiles, and a progression-conscious randomizer.**
 
 > [!WARNING]
-> **The downloadable v0.4.0 preview uses the original EarthBound (USA) story and does not contain MaternalBound Redux.** The development source now converts Redux dialogue, world data, graphics, enemy AI, expanded names and native controls. Isolated opening and 1080p menu replays pass; full Redux gameplay, presentation and progression are still incomplete and are not shipped. Progress is tracked in [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **Full MaternalBound compatibility is still under development.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and uses separate story and randomizer saves. Opening, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough remains unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
-The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. MaternalBound randomization remains locked until the converted Redux pack and its separate progression audit pass, preventing a partially ported profile from generating unsafe seeds.
+The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. Both the original and the pinned Redux packs have content-specific protection policies; unknown packs cannot be randomized.
 
 > [!IMPORTANT]
-> This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio, saves, or screenshots from the game. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
+> This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio or saves. The documentation includes clearly labeled development screenshots. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Download the latest private test build](https://github.com/rages4calm/earthbound-companion/releases/latest) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Read the randomizer rules](RANDOMIZER.md) · [See research and compatibility](RESEARCH.md) · [Credits](CREDITS.md)
+[Download private test builds](https://github.com/rages4calm/earthbound-companion/releases) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Read the randomizer rules](RANDOMIZER.md) · [See research and compatibility](RESEARCH.md) · [Credits](CREDITS.md)
 
 ## Companion at a glance
 
@@ -43,6 +43,8 @@ These are real captures from the ROM-free v0.5 development launcher before game-
   </tr>
 </table>
 
+The [Redux port page](MATERNALBOUND-NATIVE.md#development-captures) also shows actual native Tools, equipment and cast renders.
+
 ## What this is
 
 EarthBound Companion packages a native x64 C/SDL2 game build with a self-contained Windows settings application. Gameplay executes as compiled native code. The project still uses software implementations of the original graphics and audio subsystems where required for accuracy; “native” does not mean the original game has been replaced with a new engine or remade art.
@@ -51,12 +53,12 @@ The player-facing setup follows the same asset separation used by established de
 
 ## Quick start
 
-1. Download `EarthBound-Companion-Tester-v0.4.0.zip` from [Releases](https://github.com/rages4calm/earthbound-companion/releases).
+1. Download the Redux development package from [Releases](https://github.com/rages4calm/earthbound-companion/releases) for experimental MaternalBound testing, or v0.4.0 for the older original-story preview.
 2. Extract the complete ZIP to a normal folder.
 3. Run **EarthBound Companion.exe**.
 4. Select your clean EarthBound (USA) `.sfc` or `.smc` ROM.
 5. Leave **Install the complete MSU soundtrack** checked for the full audio setup.
-6. When setup finishes, choose **Play EarthBound**.
+6. When setup finishes, choose **Play EarthBound**. The Redux package identifies itself as a development profile. **Redux Port → Use original EarthBound** returns to the original story without changing either edition's saves.
 
 The application accepts the clean 3 MiB USA ROM, with or without a 512-byte copier header. A different revision or modified ROM is rejected before extraction.
 
@@ -91,16 +93,16 @@ Companion includes its own native randomizer for replayable adventures:
 
 The generator keeps 78 identified quest/trade items and their original sources fixed, preserves 52 scripted-battle records, and leaves maps, doors, routes, scripts, bosses, prices and starting items unchanged. Independent guards run at generation and before launch. Version 3 also isolates game editions: content ID, exact asset hash, safety policy, seed identity, and save folder must agree. This protects the audited original-story dependencies; it is not proof of every possible full playthrough.
 
-MaternalBound Redux will receive its own progression policy after its scripts and tables are converted. Until that audit passes, Story Shuffle refuses to generate a Redux seed rather than guessing about progression.
+The pinned Redux profile separately protects 110 items and 84 enemy records. Its audit covers 64,360 decoded operations, scripted encounter groups and the expanded 69-shop table. Independent generation checks pass across 1,000 seeds and all 30 option combinations for each edition. The Redux enemy-AI footer, routes, scripts and protected sources remain intact. This is conservative story preservation, not a randomized-world logic solver or proof of every playthrough.
 
 This generator is inspired by the EarthBound randomizer community but does not claim seed parity with [earthbound.app](https://earthbound.app/) or [stochaztic/eb-randomizer](https://github.com/stochaztic/eb-randomizer). Ancient Cave, Open mode and Keysanity are not implemented. See [RANDOMIZER.md](RANDOMIZER.md).
 
 ## Current boundaries
 
 - A complete start-to-ending playthrough of this specific build has not yet been verified.
-- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is being adapted to native C from the pinned active-source snapshot. The current checkpoint converts 7,367 dialogue spans with no unresolved pointers or aliases, implements 16 routine adapters, and passes 62 command checks, 48,640 scripted enemy-AI turns, expanded-name save checks, opening replays and six 1080p menu cases. Title presentation, battle effects, special text, custom music, remaining assembly fixes, real gameplay and the Redux progression audit remain incomplete. See the [detailed port coverage](MATERNALBOUND-NATIVE.md).
+- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is being adapted from a pinned active-source snapshot, rather than the official v1.1 BPS release. The checkpoint converts 7,397 dialogue spans, implements 17 routine adapters, passes 81 VM command checks and 48,640 AI-selector turns, and resolves all 898 movement-script roots. Title scenes, 191 SPC tracks, 68 PSI effects, native shops/equipment, all 11 battle Tools and all 32 photo-credit branches have bounded checks. Full story playthroughs, later interactions, all combat-effect combinations and complete music-transition coverage remain unverified. See the [detailed coverage](MATERNALBOUND-NATIVE.md).
 - Arbitrary IPS, BPS and EBP patches cannot be loaded as native mods; their game-code changes require explicit ports.
-- The release is a Windows x64 private test build. Bug reports should include `UserData/game.log` and a normal phone save when possible.
+- The release is a Windows x64 private test build. Bug reports should include the active edition or seed session's `game.log` and a normal phone save when possible.
 
 ## Source layout
 
@@ -134,6 +136,6 @@ The upstream EarthBound repositories used for the native foundation are public b
 
 ## Verification
 
-The v0.4.0 package passed clean-ZIP first-run extraction, exact asset-pack comparison, Companion self-tests, seed safety validation, and all 164 installed MSU checks. The archive was scanned and contained zero ROM, `.pak`, PCM, save, state or screenshot files. The v0.5 development source additionally passed Story Shuffle v3's content-profile and save-isolation tests across 1,000 seeds and all 30 option combinations. Exact hashes and coverage limits are in [validation/](validation/).
+The v0.4.0 package passed clean-ZIP first-run extraction, exact asset-pack comparison, Companion self-tests, seed safety validation, and all 164 installed MSU checks. The archive was scanned and contained zero ROM, `.pak`, PCM, save, state or screenshot files. The Redux development ZIP also passed clean setup from a headered USA ROM with no Python on PATH, a real corrupt-track download/repair and verification of all 164 MSU files, exact original/Redux pack reproduction, native story and randomized openings, and profile save-isolation checks. Story Shuffle v3 passes 1,000 seeds and all 30 option combinations for each edition. Exact hashes and coverage limits are in [validation/](validation/).
 
-Issues and contributions should never attach ROMs, extracted assets, copyrighted screenshots, saves containing embedded game data, or soundtrack files.
+Issues and contributions should never attach ROMs, extracted asset packs, saves containing embedded game data, or soundtrack files. Documentation captures are labeled with their tested development scope.

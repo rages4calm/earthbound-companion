@@ -1,0 +1,32 @@
+diff --git a/setup.py b/setup.py
+index 949c74f..fc06f5a 100755
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,9 @@ extra_compile_args = []
+ extra_link_args = []
+ 
+ if platform.system() == "Linux" or platform.system() == "Darwin":
+-    extra_compile_args = ["-std=c++11"]
++    extra_compile_args = ["-std=c++17"]
++elif platform.system() == "Windows":
++    extra_compile_args = ["/std:c++17"]
+ 
+ setup(name="ccscript",
+     version="1.500",
+diff --git a/src/fs.h b/src/fs.h
+index 52f84a4..4d2aa0e 100644
+--- a/src/fs.h
++++ b/src/fs.h
+@@ -1,10 +1,7 @@
+ #pragma once
+ #ifdef _WIN32
+-	#ifndef _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+-	#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+-	#endif // !_SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+-	#include <experimental/filesystem>
+-	namespace fs = std::experimental::filesystem::v1;
++	#include <filesystem>
++	namespace fs = std::filesystem;
+ #else
+ 	#include "filesystem/filesystem_mini.h"
+ 	namespace fs = filesystem;

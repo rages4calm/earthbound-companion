@@ -57,6 +57,7 @@ class DialogueConversionTests(unittest.TestCase):
         decoded = relocate_bytes(script, SPECS, [])
         self.assertEqual(decoded.data, script)
         self.assertEqual(decoded.opcodes, {"redux_try_give_money": 1, "end": 1})
+        self.assertEqual(decoded.operations, [("redux_try_give_money",[0xFF021508]),("end",[])])
 
     def test_enemy_ai_operands_keep_instruction_boundaries(self):
         script=bytes.fromhex("1A 1B 08 02 15 1A 1C 08 15 1A 1D 02 FF 1A 1E 15 08 02")

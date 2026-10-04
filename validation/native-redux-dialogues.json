@@ -1,0 +1,112 @@
+{
+  "status": "development-only",
+  "nativeExeSha256": "04BA8D57C4B4E98485DAD8F69A2AE599AE80A55DD6C785210ECBE128F5CED46D",
+  "packSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
+  "tests": [
+    {
+      "test": "shop-buy",
+      "passed": true,
+      "checks": [
+        "PC replay inventory: 17 2 88 17 0",
+        "cash=9982",
+        "PC replay equipment: 1 0 0 0 stats=84/"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "shop-equip-purchase",
+      "passed": true,
+      "checks": [
+        "PC replay inventory: 17 2 88 17 0",
+        "cash=9982",
+        "PC replay equipment: 4 0 0 0 stats=84/"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "shop-sell-old-weapon",
+      "passed": true,
+      "checks": [
+        "PC replay inventory: 2 88 17 0",
+        "cash=9991",
+        "PC replay equipment: 3 0 0 0 stats=84/"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "shop-cancel",
+      "passed": true,
+      "checks": [
+        "Redux dialogue fixture C5D24B completed",
+        "Redux dialogue result: cash=10000 weapon=1 inventory=17,2,88,0"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "goods-populated",
+      "passed": true,
+      "checks": [
+        "[1:Use] [2:Give] [3:Drop] [4:Help!]",
+        "Cracked bat",
+        "Teddy bear",
+        "Cookie"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "goods-use-unequip",
+      "passed": true,
+      "checks": [
+        "PC replay equipment: 0 0 0 0 stats=80/"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "goods-use-finish",
+      "passed": true,
+      "checks": [
+        "PC replay equipment: 0 0 0 0 stats=80/",
+        "PC replay modes: 61"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "goods-use-reequip",
+      "passed": true,
+      "checks": [
+        "PC replay equipment: 1 0 0 0 stats=84/"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "equipment-list",
+      "passed": true,
+      "checks": [
+        "title=Weapons",
+        "[65535:None]",
+        "title=Status",
+        "title=Resistances"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "equipment-none",
+      "passed": true,
+      "checks": [
+        "PC replay equipment: 0 0 0 0 stats=80/"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "status-psi",
+      "passed": true,
+      "checks": [
+        "[1:Offense] [2:Recover] [3:Assist] [4:Other]"
+      ],
+      "coldRender1080p": true
+    }
+  ],
+  "limits": [
+    "Isolated production menu and dialogue replays, not a full story playthrough."
+  ]
+}

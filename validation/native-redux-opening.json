@@ -1,8 +1,8 @@
 {
   "format": "maternalbound-native-gameplay-fixture-v1",
   "status": "development-only",
-  "nativeExeSha256": "D8F2861765D502610E98A81096B472B2056578E270522EADA4EEEF96634295E8",
-  "assetPackSha256": "3B66E4603D4D99B77C70A2B2B0155714B58CB805DAB6B2375EEB7D0E6CF6D3F2",
+  "nativeExeSha256": "86021608639A0DCD0D73B23C4BAF026D019E0935ED45E9BA00B745877985F4A8",
+  "assetPackSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
   "openingReached": true,
   "startingParty": 1,
   "startingLevel": 1,
@@ -13,9 +13,10 @@
     720
   ],
   "sixLetterKeyboardAndQuicksave": true,
+  "selectTogglesNamingAlphabet": true,
   "limitations": [
     "Opening-only automation",
     "No full Redux playthrough",
-    "Randomizer remains locked"
+    "Content-specific randomizer checks run separately"
   ]
 }

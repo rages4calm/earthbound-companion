@@ -1,0 +1,21 @@
+{
+  "ContentId": "earthbound-usa",
+  "DisplayName": "EarthBound (USA)",
+  "BaseHash": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+  "Seeds": 1000,
+  "OptionCombinations": 30,
+  "ProtectedItems": 78,
+  "ProtectedEnemies": 52,
+  "ShopRows": 66,
+  "EnemyRecords": 231,
+  "EnemyAiBytes": 0,
+  "Passed": true,
+  "Checks": [
+    "Deterministic seeds and distinct seed output",
+    "1000 seeds across Balanced and Surprise preserve protected gift/shop sources, scripted enemies and enemy-AI data",
+    "All 30 option/preset combinations pass the content policy",
+    "Independent corruption checks reject altered AI pointers/counts, protected stock and story assets",
+    "Content-specific generation, verification, recipes and separate saves survive regeneration"
+  ],
+  "FullPlaythroughVerified": false
+}

@@ -16,10 +16,14 @@ import struct
 import sys
 
 from maternalbound_dialogue import BLOB_BASE, ConversionError, without_comments
-from maternalbound_graphics import convert_sprites, convert_fonts, convert_indexed_graphics
+from maternalbound_graphics import convert_sprites, convert_fonts, convert_windows, convert_battle_art, convert_indexed_graphics
 from maternalbound_events import convert_events
 from maternalbound_world import convert_world
 from maternalbound_encounters import convert_encounters
+from maternalbound_presentation import convert_title, convert_special_text, convert_ending
+from maternalbound_audio import convert_audio
+from maternalbound_psi import convert_psi
+from audit_redux_movement import audit as audit_movement
 
 BASE = 0x100000
 MAGIC = b"MRDXNV01"
@@ -54,7 +58,8 @@ def write_pack(path: Path, entries, header: bytes, assets: dict):
     path.write_bytes(header + index + body)
 
 
-def convert_game_tables(doc, rom: bytes, assets: dict, relocation: dict):
+def convert_game_tables(doc, rom: bytes, assets: dict, relocation: dict, bridge: dict, native: Path):
+    native_actions = {int(x,16) for x in re.findall(r"\{ 0x([0-9A-F]+),", (native/"src/game/battle_actions.c").read_text())}
     pointers = {int(key,16):value for key,value in relocation["originalAddresses"].items()}
     pointers.update({int(key,16):value for key,value in relocation["compiledAddresses"].items()})
     converted = []
@@ -73,6 +78,27 @@ def convert_game_tables(doc, rom: bytes, assets: dict, relocation: dict):
         if name not in assets:
             raise ConversionError(f"Game table missing from registry: {name}")
         source = entry.offset
+        length = entry.size
+        if entry.name == "store_table":
+            modules=[x for x in bridge["modules"] if x["name"]=="expand_shops"]
+            labels={x["name"]:x["snesAddress"] for x in bridge["labels"] if x["module"]=="expand_shops"}
+            if len(modules)!=1 or set(labels)!={"NewShopTable","CustomShops"}:
+                raise ConversionError("Missing expanded shop-table exports")
+            module=modules[0]
+            source=labels["NewShopTable"]-0xC00000;length=module["size"]
+            if source!=module["rom_offset"] or labels["CustomShops"]-labels["NewShopTable"]!=66*7 or length!=69*7:
+                raise ConversionError("Expanded shop table differs from the pinned 69-shop layout")
+            if rom[0x19DF7]!=0xBF or int.from_bytes(rom[0x19DF8:0x19DFB],"little")!=labels["NewShopTable"]:
+                raise ConversionError("Shop loader does not reference the exported expanded table")
+            if hashlib.sha256(rom[source:source+length]).hexdigest().upper()!=module["compiled_sha256"].upper():
+                raise ConversionError("Expanded shop content differs from its linked module")
+        if entry.name == "battle_action_table":
+            labels = [x for x in bridge["labels"] if x["module"] == "Extended_Battle_Action_Table" and x["name"] == "BattleAction_Table"]
+            lucky = [x for x in bridge["labels"] if x["module"] == "lucky_sandwich_revamp" and x["name"] == "Lucky_Sandwich_Action"]
+            if len(labels) != 1 or len(lucky) != 1:
+                raise ConversionError("Missing expanded battle-action exports")
+            source = labels[0]["snesAddress"] - 0xC00000
+            length = 320 * 12
         if entry.name == "npc_config_table":
             # CoilSnake ExpandedTablesModule relocates this table and updates
             # a split LDA-immediate pointer in LoadNPCs at C023E5.
@@ -81,14 +107,19 @@ def convert_game_tables(doc, rom: bytes, assets: dict, relocation: dict):
                 raise ConversionError("NPC table pointer no longer has its pinned assembly layout")
             source = (int.from_bytes(rom[at+1:at+3],"little") |
                       int.from_bytes(rom[at+6:at+8],"little") << 16)-0xC00000
-        raw = bytearray(rom[source:source+entry.size])
+        raw = bytearray(rom[source:source+length])
         stride, fields = layouts[entry.name]
-        if source < 0 or len(raw) != entry.size or entry.size % stride:
+        if source < 0 or len(raw) != length or length % stride:
             raise ConversionError(f"Invalid table bounds: {name}")
         if entry.name=="battle_action_table":
             for start in range(0,len(raw),stride):
-                if raw[start+8:start+12]!=assets[name][start+8:start+12]:
-                    raise ConversionError(f"Battle action {start//stride} needs a native routine adapter")
+                function = int.from_bytes(raw[start+8:start+12], "little")
+                if start//stride == 318 and function == lucky[0]["snesAddress"]:
+                    raw[start+8:start+12] = (0xC2FFF0).to_bytes(4,"little")
+                elif start//stride == 319 and function == 0xC2B27D:
+                    pass # Existing food handler; description refills stamina.
+                elif function not in native_actions:
+                    raise ConversionError(f"Battle action {start//stride} needs a native routine adapter: {function:06X}")
         for start in range(0,len(raw),stride):
             active_fields = fields + ((13,) if entry.name == "npc_config_table" and raw[start] == 3 else ())
             for field in active_fields:
@@ -107,6 +138,33 @@ def convert_game_tables(doc, rom: bytes, assets: dict, relocation: dict):
     if unresolved:
         raise ConversionError(f"Unmapped table script pointers ({len(unresolved)}): " + json.dumps(unresolved[:12]))
     return converted, relocated
+
+
+def convert_auxiliary_tables(rom,assets,relocation):
+    pointers={int(k,16):v for k,v in relocation["originalAddresses"].items()}
+    pointers.update({int(k,16):v for k,v in relocation["compiledAddresses"].items()})
+    specs=(("attract_mode_txt",0x3FD8D,10,4,((0,4),)),
+           ("telephone_contacts_table",0x157A8F,7,31,((27,4),)),
+           ("timed_delivery_table",0x15F645,10,20,((10,3),(13,3))),
+           ("psi_teleport_dest_table",0x157880,17,31,()),
+           ("status_equip_window_text_8_13",0x45C1C,1,107,()),
+           ("status_equip_text",0x45B4D,1,195,()))
+    converted=[];relocated=0
+    for name,offset,count,stride,fields in specs:
+        key=f"data/{name}.bin"
+        if key not in assets: raise ConversionError(f"Missing auxiliary asset {key}")
+        raw=bytearray(rom[offset:offset+count*stride])
+        if len(raw)!=count*stride: raise ConversionError(f"Truncated auxiliary table {key}")
+        for row in range(count):
+            for field,width in fields:
+                pos=row*stride+field;value=int.from_bytes(raw[pos:pos+width],"little")
+                if not value: continue
+                target=pointers.get(value)
+                if target is None: raise ConversionError(f"Unmapped {name} text {row}: {value:06X}")
+                raw[pos:pos+width]=target.to_bytes(width,"little");relocated+=1
+        assets[key]=bytes(raw);converted.append(key)
+    return {"assets":converted,"relocatedTextPointers":relocated,
+            "telephoneContacts":7,"deliveryEvents":10,"teleportDestinations":17,"attractScenes":10}
 
 
 def build(args):
@@ -159,7 +217,8 @@ def build(args):
     # Names resolve against the pinned compiler exports, never guessed addresses.
     exports = {}
     for source, module, label in ((0x2FFF00, "keyitems", "Key_Items_Prep"),
-                                  (0x2FFF08, "tools", "Tools_Prep_Overworld")):
+                                  (0x2FFF08, "tools", "Tools_Prep_Overworld"),
+                                  (0x2FFF10, "battle_text", "Spy_Speed")):
         labels = [x for x in bridge["labels"] if x["module"] == module and x["name"] == label]
         if len(labels) != 1 or source in definitions.values() or source in mapping:
             raise ConversionError(f"Missing or overlapping native export: {module}.{label}")
@@ -183,13 +242,23 @@ def build(args):
     dialogue.extend(text)
     dialogue_end = len(dialogue)
     map_offset = len(dialogue)
+    legacy_mapping_count=len(mapping)-len(exports)
+    # Movement/queued interactions retain typed SNES text-address operands.
+    # Bind every compiler-proven text boundary, including rewritten original
+    # entries, to the native text blob. These keys are data identifiers only.
+    rom_entries={int(key,16):value for key,value in relocation["originalAddresses"].items()}
+    rom_entries.update({int(key,16):value for key,value in relocation["compiledAddresses"].items()})
+    if any(source<0xC00000 or source>0xFFFFFF or target<BLOB_BASE or target-BASE>=dialogue_end
+           for source,target in rom_entries.items()):
+        raise ConversionError("ROM-address text mapping exceeds its native dialogue bounds")
+    mapping.update(rom_entries)
     for source, target in sorted(mapping.items()):
         dialogue.extend(struct.pack("<II",source,target))
     determiner_offset = len(dialogue)
     dialogue.extend(determiners)
-    dialogue.extend(struct.pack("<8s6I",MAGIC,1,map_offset,len(mapping),determiner_offset,len(determiners),dialogue_end))
+    dialogue.extend(struct.pack("<8s6I",MAGIC,2,map_offset,len(mapping),determiner_offset,len(determiners),dialogue_end))
     assets["dialogue/dialogue.bin"] = bytes(dialogue)
-    tables, table_pointers = convert_game_tables(doc,rom,assets,relocation)
+    tables, table_pointers = convert_game_tables(doc,rom,assets,relocation,bridge,native)
     ai_labels = [x for x in bridge["labels"] if x["module"] == "enemy_ai" and x["name"] == "EnemyAiTable"]
     if len(ai_labels) != 1:
         raise ConversionError("Missing enemy AI table export")
@@ -210,9 +279,21 @@ def build(args):
     assets["data/enemy_configuration_table.bin"] += ai_table
     sprites = convert_sprites(rom,args.project,assets)
     fonts = convert_fonts(rom,assets)
+    windows = convert_windows(rom,assets)
     graphics = convert_indexed_graphics(rom,args.project,assets)
+    battle_art = convert_battle_art(rom,assets)
+    title = convert_title(rom,assets)
+    special_text = convert_special_text(rom,bridge,assets)
+    ending = convert_ending(rom,args.project,assets)
+    audio = convert_audio(rom,assets)
+    psi = convert_psi(rom,assets)
     events = convert_events(rom,bridge,assets)
+    movement_audit = audit_movement(assets,args.native_source)
+    if not movement_audit["Passed"]:
+        raise ConversionError("Native movement audit failed: "+"; ".join(movement_audit["Errors"]))
+    events["reachableBytecodeAudit"] = {key:value for key,value in movement_audit.items() if key!="Calls"}
     world = convert_world(rom,assets,relocation)
+    auxiliary=convert_auxiliary_tables(rom,assets,relocation)
     animation_tables=bytearray(b"MRWALK01")
     for name in ("extra_animation_sprite_table","extra_animation_sprite_table_running1","extra_animation_sprite_table_running2"):
         labels=[x for x in bridge["labels"] if x["module"]=="four_frames_run" and x["name"]==name]
@@ -232,16 +313,16 @@ def build(args):
         raise ConversionError("Invalid expanded naming table")
     assets["US/data/dont_care_names.bin"] = names_data
     write_pack(args.output, entries, header, assets)
-    record = {"format":"maternalbound-native-pack-report-v1", "status":"development-only-not-playable",
+    record = {"format":"maternalbound-native-pack-report-v1", "status":"development-only",
         "packSha256":sha(args.output.read_bytes()),"compiledRomSha256":sha(rom),"dialogueSha256":sha(text),
-        "legacyEntryMappings":len(mapping)-len(exports),"nativeExports":exports,"requiredNativeEntries":len(used),"requiredUnmappedEntries":required_missing,
+        "legacyEntryMappings":legacy_mapping_count,"romAddressTextMappings":len(rom_entries),"nativeExports":exports,"requiredNativeEntries":len(used),"requiredUnmappedEntries":required_missing,
         "unusedUnmappedEntryCount":len(missing),"dialogueBytes":len(dialogue),
-        "convertedAssets":["dialogue/dialogue.bin", "US/data/dont_care_names.bin"]+[x["asset"] for x in tables]+sprites["assets"]+fonts["assets"]+graphics["assets"]+events["assets"]+world["assets"]+encounters["assets"],"convertedTables":tables,
-        "sprites":sprites,"fonts":fonts,"indexedGraphics":graphics,"events":events,"world":world,"encounters":encounters,
-        "enemyAi":{"records":enemy_count,"scriptedEnemies":ai_scripts,"sourceOffset":ai_source},
+        "convertedAssets":["dialogue/dialogue.bin", "US/data/dont_care_names.bin"]+[x["asset"] for x in tables]+sprites["assets"]+fonts["assets"]+windows["assets"]+graphics["assets"]+battle_art["assets"]+title["assets"]+special_text["assets"]+ending["assets"]+audio["assets"]+psi["assets"]+events["assets"]+world["assets"]+auxiliary["assets"]+encounters["assets"],"convertedTables":tables,
+        "sprites":sprites,"fonts":fonts,"windows":windows,"indexedGraphics":graphics,"battleArt":battle_art,"title":title,"specialText":special_text,"ending":ending,"audio":audio,"psiEffects":psi,"events":events,"world":world,"encounters":encounters,
+        "auxiliaryTables":auxiliary,"enemyAi":{"records":enemy_count,"scriptedEnemies":ai_scripts,"sourceOffset":ai_source},
         "spriteVariants":{"tables":4,"characters":17,"entries":544},
         "expandedNaming":{"defaultEntries":49,"stride":11,"characterLimit":6,"foodLimit":10},
-        "relocatedTablePointers":table_pointers,"remainingIntegration":["Title presentation and custom title events", "PSI effects and battle party sprites", "Specialized flyover, coffee/tea and ending text", "Custom SPC music and sample banks", "Remaining assembly-only QoL and bug fixes", "Real gameplay and cutscene validation", "Redux progression policy and randomizer audit", "Full game validation"]}
+        "relocatedTablePointers":table_pointers,"remainingIntegration":["Remaining assembly-only QoL and bug fixes", "Later gameplay and cutscene validation", "Individual tool combat effects and complete MSU transitions", "Player-ROM setup for the pinned profile", "Full story and randomized playthrough validation"]}
     args.output.with_suffix(".report.json").write_text(json.dumps(record,indent=2)+"\n")
     print(json.dumps(record,indent=2))
 

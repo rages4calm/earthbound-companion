@@ -1,24 +1,29 @@
 {
   "format": "maternalbound-native-pack-report-v1",
-  "status": "development-only-not-playable",
-  "packSha256": "3B66E4603D4D99B77C70A2B2B0155714B58CB805DAB6B2375EEB7D0E6CF6D3F2",
+  "status": "development-only",
+  "packSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
   "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
-  "dialogueSha256": "CB5CD5BAE88699972F43083D1A6EE6FDB3EAC3E7DC2D0F0785AC016380066119",
+  "dialogueSha256": "5B18885E24F78478B9A06A784981ED827012482E62F7C9DDEC761616F057E811",
   "legacyEntryMappings": 3668,
+  "romAddressTextMappings": 450895,
   "nativeExports": {
     "keyitems.Key_Items_Prep": {
       "nativeId": 3145472,
-      "target": 3654698
+      "target": 3655081
     },
     "tools.Tools_Prep_Overworld": {
       "nativeId": 3145480,
-      "target": 3712100
+      "target": 3712595
+    },
+    "battle_text.Spy_Speed": {
+      "nativeId": 3145488,
+      "target": 3168120
     }
   },
   "requiredNativeEntries": 207,
   "requiredUnmappedEntries": [],
   "unusedUnmappedEntryCount": 574,
-  "dialogueBytes": 2695302,
+  "dialogueBytes": 6302965,
   "convertedAssets": [
     "dialogue/dialogue.bin",
     "US/data/dont_care_names.bin",
@@ -54,6 +59,9 @@
     "US/fonts/tiny.gfx",
     "US/fonts/large.bin",
     "US/fonts/large.gfx",
+    "US/graphics/text_window.gfx.lzhal",
+    "graphics/flavoured_text.gfx.lzhal",
+    "US/graphics/text_window_flavour_palettes.pal",
     "battle_sprites/0.gfx.lzhal",
     "battle_sprites/1.gfx.lzhal",
     "battle_sprites/2.gfx.lzhal",
@@ -490,8 +498,213 @@
     "data/bg_scrolling_table.bin",
     "data/bg_distortion_table.bin",
     "data/btl_entry_bg_table.bin",
+    "data/battle_sprites_pointers.bin",
+    "US/intro/title_screen.gfx.lzhal",
+    "US/intro/title_screen.arr.lzhal",
+    "US/intro/title_screen.pal.lzhal",
+    "US/intro/title_screen_letters.gfx.lzhal",
+    "US/E1AE7C.bin.lzhal",
+    "US/E1AE83.bin.lzhal",
+    "US/E1AEFD.bin.lzhal",
+    "US/intro/title_screen_spritemaps.bin",
+    "US/flyover_intro1.bin",
+    "US/flyover_intro2.bin",
+    "US/flyover_intro3.bin",
+    "US/flyover_winters_intro1.bin",
+    "US/flyover_winters_intro2.bin",
+    "US/flyover_dalaam_intro1.bin",
+    "US/flyover_dalaam_intro2.bin",
+    "US/flyover_ending.bin",
+    "US/coffee.bin",
+    "US/tea.bin",
+    "US/ending/staff_text.bin",
+    "US/E1D6E1.gfx.lzhal",
+    "US/ending/cast_names.gfx.lzhal",
+    "US/ending/cast_names.pal.lzhal",
+    "US/ending/credits_font.gfx.lzhal",
+    "ending/E1E94A.bin.lzhal",
+    "US/ending/cast_sequence_formatting.bin",
+    "ending/photographer_cfg.bin",
+    "ending/party_cast_tile_ids.bin",
+    "US/ending/cast_bg_palette.pal",
+    "ending/E1E924.bin",
+    "ending/credits_font.pal",
+    "sprite_group_palettes.pal",
+    "US/ending/guardian_text.bin",
+    "audiopacks/0.ebm",
+    "audiopacks/1.ebm",
+    "audiopacks/2.ebm",
+    "audiopacks/3.ebm",
+    "audiopacks/4.ebm",
+    "audiopacks/5.ebm",
+    "audiopacks/6.ebm",
+    "audiopacks/7.ebm",
+    "audiopacks/8.ebm",
+    "audiopacks/9.ebm",
+    "audiopacks/10.ebm",
+    "audiopacks/11.ebm",
+    "audiopacks/12.ebm",
+    "audiopacks/13.ebm",
+    "audiopacks/14.ebm",
+    "audiopacks/15.ebm",
+    "audiopacks/16.ebm",
+    "audiopacks/17.ebm",
+    "audiopacks/18.ebm",
+    "audiopacks/19.ebm",
+    "audiopacks/20.ebm",
+    "audiopacks/21.ebm",
+    "audiopacks/22.ebm",
+    "audiopacks/23.ebm",
+    "audiopacks/24.ebm",
+    "audiopacks/25.ebm",
+    "audiopacks/26.ebm",
+    "audiopacks/27.ebm",
+    "audiopacks/28.ebm",
+    "audiopacks/29.ebm",
+    "audiopacks/30.ebm",
+    "audiopacks/31.ebm",
+    "audiopacks/32.ebm",
+    "audiopacks/33.ebm",
+    "audiopacks/34.ebm",
+    "audiopacks/35.ebm",
+    "audiopacks/36.ebm",
+    "audiopacks/37.ebm",
+    "audiopacks/38.ebm",
+    "audiopacks/39.ebm",
+    "audiopacks/40.ebm",
+    "audiopacks/41.ebm",
+    "audiopacks/42.ebm",
+    "audiopacks/43.ebm",
+    "audiopacks/44.ebm",
+    "audiopacks/45.ebm",
+    "audiopacks/46.ebm",
+    "audiopacks/47.ebm",
+    "audiopacks/48.ebm",
+    "audiopacks/49.ebm",
+    "audiopacks/50.ebm",
+    "audiopacks/51.ebm",
+    "audiopacks/52.ebm",
+    "audiopacks/53.ebm",
+    "audiopacks/54.ebm",
+    "audiopacks/55.ebm",
+    "audiopacks/56.ebm",
+    "audiopacks/57.ebm",
+    "audiopacks/58.ebm",
+    "audiopacks/59.ebm",
+    "audiopacks/60.ebm",
+    "audiopacks/61.ebm",
+    "audiopacks/62.ebm",
+    "audiopacks/63.ebm",
+    "audiopacks/64.ebm",
+    "audiopacks/65.ebm",
+    "audiopacks/66.ebm",
+    "audiopacks/67.ebm",
+    "audiopacks/68.ebm",
+    "audiopacks/69.ebm",
+    "audiopacks/70.ebm",
+    "audiopacks/71.ebm",
+    "audiopacks/72.ebm",
+    "audiopacks/73.ebm",
+    "audiopacks/74.ebm",
+    "audiopacks/75.ebm",
+    "audiopacks/76.ebm",
+    "audiopacks/77.ebm",
+    "audiopacks/78.ebm",
+    "audiopacks/79.ebm",
+    "audiopacks/80.ebm",
+    "audiopacks/81.ebm",
+    "audiopacks/82.ebm",
+    "audiopacks/83.ebm",
+    "audiopacks/84.ebm",
+    "audiopacks/85.ebm",
+    "audiopacks/86.ebm",
+    "audiopacks/87.ebm",
+    "audiopacks/88.ebm",
+    "audiopacks/89.ebm",
+    "audiopacks/90.ebm",
+    "audiopacks/91.ebm",
+    "audiopacks/92.ebm",
+    "audiopacks/93.ebm",
+    "audiopacks/94.ebm",
+    "audiopacks/95.ebm",
+    "audiopacks/96.ebm",
+    "audiopacks/97.ebm",
+    "audiopacks/98.ebm",
+    "audiopacks/99.ebm",
+    "audiopacks/100.ebm",
+    "audiopacks/101.ebm",
+    "audiopacks/102.ebm",
+    "audiopacks/103.ebm",
+    "audiopacks/104.ebm",
+    "audiopacks/105.ebm",
+    "audiopacks/106.ebm",
+    "audiopacks/107.ebm",
+    "audiopacks/108.ebm",
+    "audiopacks/109.ebm",
+    "audiopacks/110.ebm",
+    "audiopacks/111.ebm",
+    "audiopacks/112.ebm",
+    "audiopacks/113.ebm",
+    "audiopacks/114.ebm",
+    "audiopacks/115.ebm",
+    "audiopacks/116.ebm",
+    "audiopacks/117.ebm",
+    "audiopacks/118.ebm",
+    "audiopacks/119.ebm",
+    "audiopacks/120.ebm",
+    "audiopacks/121.ebm",
+    "audiopacks/122.ebm",
+    "audiopacks/123.ebm",
+    "audiopacks/124.ebm",
+    "audiopacks/125.ebm",
+    "audiopacks/126.ebm",
+    "audiopacks/127.ebm",
+    "audiopacks/128.ebm",
+    "audiopacks/129.ebm",
+    "audiopacks/130.ebm",
+    "audiopacks/131.ebm",
+    "audiopacks/132.ebm",
+    "audiopacks/133.ebm",
+    "audiopacks/134.ebm",
+    "audiopacks/135.ebm",
+    "audiopacks/136.ebm",
+    "audiopacks/137.ebm",
+    "audiopacks/138.ebm",
+    "audiopacks/139.ebm",
+    "audiopacks/140.ebm",
+    "audiopacks/141.ebm",
+    "audiopacks/142.ebm",
+    "audiopacks/143.ebm",
+    "audiopacks/144.ebm",
+    "audiopacks/145.ebm",
+    "audiopacks/146.ebm",
+    "audiopacks/147.ebm",
+    "audiopacks/148.ebm",
+    "audiopacks/149.ebm",
+    "audiopacks/150.ebm",
+    "audiopacks/151.ebm",
+    "audiopacks/152.ebm",
+    "audiopacks/153.ebm",
+    "audiopacks/154.ebm",
+    "audiopacks/155.ebm",
+    "audiopacks/156.ebm",
+    "audiopacks/157.ebm",
+    "audiopacks/158.ebm",
+    "audiopacks/159.ebm",
+    "audiopacks/160.ebm",
+    "audiopacks/161.ebm",
+    "audiopacks/162.ebm",
+    "audiopacks/163.ebm",
+    "audiopacks/164.ebm",
+    "audiopacks/165.ebm",
+    "audiopacks/166.ebm",
+    "audiopacks/167.ebm",
+    "audiopacks/168.ebm",
+    "music/dataset_table.bin",
+    "data/psi_anim_cfg.bin",
     "US/events/event_script_pointers.bin",
     "US/events/bank_c3_scripts_combined.bin",
+    "US/intro/title_screen_scripts.bin",
     "data/global_map_tilesetpalette_data.bin",
     "data/per_sector_attributes.bin",
     "data/tileset_table.bin",
@@ -524,6 +737,12 @@
     "maps/door_config_table.bin",
     "maps/door_data.bin",
     "maps/screen_transition_config.bin",
+    "data/attract_mode_txt.bin",
+    "data/telephone_contacts_table.bin",
+    "data/timed_delivery_table.bin",
+    "data/psi_teleport_dest_table.bin",
+    "data/status_equip_window_text_8_13.bin",
+    "data/status_equip_text.bin",
     "data/btl_entry_ptr_table.bin",
     "data/enemy_battle_groups_table.bin",
     "data/map_enemy_placement.bin",
@@ -540,8 +759,8 @@
     },
     {
       "asset": "data/store_table.bin",
-      "records": 66,
-      "sourceOffset": 1406642
+      "records": 69,
+      "sourceOffset": 3948429
     },
     {
       "asset": "data/psi_ability_table.bin",
@@ -565,8 +784,8 @@
     },
     {
       "asset": "data/battle_action_table.bin",
-      "records": 319,
-      "sourceOffset": 1407848
+      "records": 320,
+      "sourceOffset": 3861865
     },
     {
       "asset": "data/enemy_configuration_table.bin",
@@ -623,6 +842,16 @@
     ],
     "fontFamilies": 5,
     "charactersPerFont": 128
+  },
+  "windows": {
+    "assets": [
+      "US/graphics/text_window.gfx.lzhal",
+      "graphics/flavoured_text.gfx.lzhal",
+      "US/graphics/text_window_flavour_palettes.pal"
+    ],
+    "windowTiles": 423,
+    "flavours": 7,
+    "windowConfigurations": 62
   },
   "indexedGraphics": {
     "assets": [
@@ -1083,10 +1312,382 @@
     "battleBackgroundGraphics": 90,
     "battleBackgroundPalettes": 113
   },
+  "battleArt": {
+    "assets": [
+      "data/battle_sprites_pointers.bin"
+    ],
+    "battleImages": 160,
+    "battlePalettes": 46,
+    "containerBytes": 140265
+  },
+  "title": {
+    "assets": [
+      "US/intro/title_screen.gfx.lzhal",
+      "US/intro/title_screen.arr.lzhal",
+      "US/intro/title_screen.pal.lzhal",
+      "US/intro/title_screen_letters.gfx.lzhal",
+      "US/E1AE7C.bin.lzhal",
+      "US/E1AE83.bin.lzhal",
+      "US/E1AEFD.bin.lzhal",
+      "US/intro/title_screen_spritemaps.bin"
+    ],
+    "decompressedBytes": {
+      "US/intro/title_screen.gfx.lzhal": 45056,
+      "US/intro/title_screen.arr.lzhal": 2048,
+      "US/intro/title_screen.pal.lzhal": 512,
+      "US/intro/title_screen_letters.gfx.lzhal": 32768,
+      "US/E1AE7C.bin.lzhal": 32,
+      "US/E1AE83.bin.lzhal": 448,
+      "US/E1AEFD.bin.lzhal": 640
+    },
+    "letterLayouts": 9,
+    "layoutEntryCounts": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9
+    ],
+    "relocatedLayoutBank": 238
+  },
+  "specialText": {
+    "assets": [
+      "US/flyover_intro1.bin",
+      "US/flyover_intro2.bin",
+      "US/flyover_intro3.bin",
+      "US/flyover_winters_intro1.bin",
+      "US/flyover_winters_intro2.bin",
+      "US/flyover_dalaam_intro1.bin",
+      "US/flyover_dalaam_intro2.bin",
+      "US/flyover_ending.bin",
+      "US/coffee.bin",
+      "US/tea.bin",
+      "US/ending/staff_text.bin"
+    ],
+    "scriptBytes": {
+      "US/flyover_intro1.bin": 22,
+      "US/flyover_intro2.bin": 38,
+      "US/flyover_intro3.bin": 16,
+      "US/flyover_winters_intro1.bin": 43,
+      "US/flyover_winters_intro2.bin": 30,
+      "US/flyover_dalaam_intro1.bin": 29,
+      "US/flyover_dalaam_intro2.bin": 41,
+      "US/flyover_ending.bin": 25,
+      "US/coffee.bin": 1678,
+      "US/tea.bin": 1387,
+      "US/ending/staff_text.bin": 3241
+    },
+    "flyoverControls": 295,
+    "staffRows": 190,
+    "validationBoundary": "Specialized binary formats validated; cutscene and ending runtime still required"
+  },
+  "ending": {
+    "assets": [
+      "US/E1D6E1.gfx.lzhal",
+      "US/ending/cast_names.gfx.lzhal",
+      "US/ending/cast_names.pal.lzhal",
+      "US/ending/credits_font.gfx.lzhal",
+      "ending/E1E94A.bin.lzhal",
+      "US/ending/cast_sequence_formatting.bin",
+      "ending/photographer_cfg.bin",
+      "ending/party_cast_tile_ids.bin",
+      "US/ending/cast_bg_palette.pal",
+      "ending/E1E924.bin",
+      "ending/credits_font.pal",
+      "sprite_group_palettes.pal",
+      "US/ending/guardian_text.bin"
+    ],
+    "decompressedBytes": {
+      "US/E1D6E1.gfx.lzhal": 1024,
+      "US/ending/cast_names.gfx.lzhal": 10752,
+      "US/ending/cast_names.pal.lzhal": 256,
+      "US/ending/credits_font.gfx.lzhal": 3072,
+      "ending/E1E94A.bin.lzhal": 2304
+    },
+    "dynamicNames": 3,
+    "validationBoundary": "Native cast and credits playback still require verification"
+  },
+  "audio": {
+    "assets": [
+      "audiopacks/0.ebm",
+      "audiopacks/1.ebm",
+      "audiopacks/2.ebm",
+      "audiopacks/3.ebm",
+      "audiopacks/4.ebm",
+      "audiopacks/5.ebm",
+      "audiopacks/6.ebm",
+      "audiopacks/7.ebm",
+      "audiopacks/8.ebm",
+      "audiopacks/9.ebm",
+      "audiopacks/10.ebm",
+      "audiopacks/11.ebm",
+      "audiopacks/12.ebm",
+      "audiopacks/13.ebm",
+      "audiopacks/14.ebm",
+      "audiopacks/15.ebm",
+      "audiopacks/16.ebm",
+      "audiopacks/17.ebm",
+      "audiopacks/18.ebm",
+      "audiopacks/19.ebm",
+      "audiopacks/20.ebm",
+      "audiopacks/21.ebm",
+      "audiopacks/22.ebm",
+      "audiopacks/23.ebm",
+      "audiopacks/24.ebm",
+      "audiopacks/25.ebm",
+      "audiopacks/26.ebm",
+      "audiopacks/27.ebm",
+      "audiopacks/28.ebm",
+      "audiopacks/29.ebm",
+      "audiopacks/30.ebm",
+      "audiopacks/31.ebm",
+      "audiopacks/32.ebm",
+      "audiopacks/33.ebm",
+      "audiopacks/34.ebm",
+      "audiopacks/35.ebm",
+      "audiopacks/36.ebm",
+      "audiopacks/37.ebm",
+      "audiopacks/38.ebm",
+      "audiopacks/39.ebm",
+      "audiopacks/40.ebm",
+      "audiopacks/41.ebm",
+      "audiopacks/42.ebm",
+      "audiopacks/43.ebm",
+      "audiopacks/44.ebm",
+      "audiopacks/45.ebm",
+      "audiopacks/46.ebm",
+      "audiopacks/47.ebm",
+      "audiopacks/48.ebm",
+      "audiopacks/49.ebm",
+      "audiopacks/50.ebm",
+      "audiopacks/51.ebm",
+      "audiopacks/52.ebm",
+      "audiopacks/53.ebm",
+      "audiopacks/54.ebm",
+      "audiopacks/55.ebm",
+      "audiopacks/56.ebm",
+      "audiopacks/57.ebm",
+      "audiopacks/58.ebm",
+      "audiopacks/59.ebm",
+      "audiopacks/60.ebm",
+      "audiopacks/61.ebm",
+      "audiopacks/62.ebm",
+      "audiopacks/63.ebm",
+      "audiopacks/64.ebm",
+      "audiopacks/65.ebm",
+      "audiopacks/66.ebm",
+      "audiopacks/67.ebm",
+      "audiopacks/68.ebm",
+      "audiopacks/69.ebm",
+      "audiopacks/70.ebm",
+      "audiopacks/71.ebm",
+      "audiopacks/72.ebm",
+      "audiopacks/73.ebm",
+      "audiopacks/74.ebm",
+      "audiopacks/75.ebm",
+      "audiopacks/76.ebm",
+      "audiopacks/77.ebm",
+      "audiopacks/78.ebm",
+      "audiopacks/79.ebm",
+      "audiopacks/80.ebm",
+      "audiopacks/81.ebm",
+      "audiopacks/82.ebm",
+      "audiopacks/83.ebm",
+      "audiopacks/84.ebm",
+      "audiopacks/85.ebm",
+      "audiopacks/86.ebm",
+      "audiopacks/87.ebm",
+      "audiopacks/88.ebm",
+      "audiopacks/89.ebm",
+      "audiopacks/90.ebm",
+      "audiopacks/91.ebm",
+      "audiopacks/92.ebm",
+      "audiopacks/93.ebm",
+      "audiopacks/94.ebm",
+      "audiopacks/95.ebm",
+      "audiopacks/96.ebm",
+      "audiopacks/97.ebm",
+      "audiopacks/98.ebm",
+      "audiopacks/99.ebm",
+      "audiopacks/100.ebm",
+      "audiopacks/101.ebm",
+      "audiopacks/102.ebm",
+      "audiopacks/103.ebm",
+      "audiopacks/104.ebm",
+      "audiopacks/105.ebm",
+      "audiopacks/106.ebm",
+      "audiopacks/107.ebm",
+      "audiopacks/108.ebm",
+      "audiopacks/109.ebm",
+      "audiopacks/110.ebm",
+      "audiopacks/111.ebm",
+      "audiopacks/112.ebm",
+      "audiopacks/113.ebm",
+      "audiopacks/114.ebm",
+      "audiopacks/115.ebm",
+      "audiopacks/116.ebm",
+      "audiopacks/117.ebm",
+      "audiopacks/118.ebm",
+      "audiopacks/119.ebm",
+      "audiopacks/120.ebm",
+      "audiopacks/121.ebm",
+      "audiopacks/122.ebm",
+      "audiopacks/123.ebm",
+      "audiopacks/124.ebm",
+      "audiopacks/125.ebm",
+      "audiopacks/126.ebm",
+      "audiopacks/127.ebm",
+      "audiopacks/128.ebm",
+      "audiopacks/129.ebm",
+      "audiopacks/130.ebm",
+      "audiopacks/131.ebm",
+      "audiopacks/132.ebm",
+      "audiopacks/133.ebm",
+      "audiopacks/134.ebm",
+      "audiopacks/135.ebm",
+      "audiopacks/136.ebm",
+      "audiopacks/137.ebm",
+      "audiopacks/138.ebm",
+      "audiopacks/139.ebm",
+      "audiopacks/140.ebm",
+      "audiopacks/141.ebm",
+      "audiopacks/142.ebm",
+      "audiopacks/143.ebm",
+      "audiopacks/144.ebm",
+      "audiopacks/145.ebm",
+      "audiopacks/146.ebm",
+      "audiopacks/147.ebm",
+      "audiopacks/148.ebm",
+      "audiopacks/149.ebm",
+      "audiopacks/150.ebm",
+      "audiopacks/151.ebm",
+      "audiopacks/152.ebm",
+      "audiopacks/153.ebm",
+      "audiopacks/154.ebm",
+      "audiopacks/155.ebm",
+      "audiopacks/156.ebm",
+      "audiopacks/157.ebm",
+      "audiopacks/158.ebm",
+      "audiopacks/159.ebm",
+      "audiopacks/160.ebm",
+      "audiopacks/161.ebm",
+      "audiopacks/162.ebm",
+      "audiopacks/163.ebm",
+      "audiopacks/164.ebm",
+      "audiopacks/165.ebm",
+      "audiopacks/166.ebm",
+      "audiopacks/167.ebm",
+      "audiopacks/168.ebm",
+      "music/dataset_table.bin"
+    ],
+    "audioPacks": 169,
+    "transferBlocks": 339,
+    "packsReplaced": 127,
+    "songRecords": 191,
+    "validationBoundary": "Structural conversion; SPC playback and MSU transitions require runtime checks"
+  },
+  "psiEffects": {
+    "assets": [
+      "data/psi_anim_cfg.bin"
+    ],
+    "animations": 68,
+    "tilesets": 10,
+    "frames": 1686,
+    "format": "MRPSIX01",
+    "bytes": 92784,
+    "sourcePointers": [
+      13381145,
+      13387161,
+      13383850,
+      13393841,
+      13381953,
+      13388863,
+      13385694,
+      13390988,
+      13392541,
+      13394593,
+      13395627,
+      13396124,
+      13396703,
+      13397181,
+      13397520,
+      13397786,
+      13398346,
+      13399229,
+      13400260,
+      13402125,
+      13403378,
+      13403630,
+      13404076,
+      13404668,
+      13406600,
+      13406894,
+      13407192,
+      13407613,
+      13408299,
+      13409828,
+      13412244,
+      13415895,
+      13417923,
+      13418508,
+      13419897,
+      13420474,
+      13421055,
+      13421930,
+      13422365,
+      13423821,
+      13424573,
+      13426266,
+      13428989,
+      13429213,
+      13429880,
+      15863808,
+      15864615,
+      15865543,
+      15868373,
+      13431269,
+      15870012,
+      15871651,
+      15872434,
+      15873316,
+      15873786,
+      13430495,
+      13430594,
+      13430696,
+      13431667,
+      13431775,
+      15874368,
+      15874489,
+      15874618,
+      13430801,
+      15874751,
+      15875633,
+      15877272,
+      15877649,
+      15878208,
+      15878793,
+      15879378,
+      15880253,
+      15880688,
+      15882144,
+      15882896,
+      15884589,
+      15887312,
+      15887536
+    ],
+    "limits": [
+      "Native playback and battle integration require separate verification."
+    ]
+  },
   "events": {
     "assets": [
       "US/events/event_script_pointers.bin",
-      "US/events/bank_c3_scripts_combined.bin"
+      "US/events/bank_c3_scripts_combined.bin",
+      "US/intro/title_screen_scripts.bin"
     ],
     "movementScriptPointers": 899,
     "customScriptIds": [
@@ -1095,6 +1696,7 @@
       897,
       898
     ],
+    "resolvedNonzeroMovementPointers": 898,
     "regions": [
       {
         "bank": 195,
@@ -1107,15 +1709,1023 @@
         "bytes": 3194
       },
       {
+        "bank": 196,
+        "base": 8562,
+        "bytes": 2048
+      },
+      {
+        "bank": 192,
+        "base": 44426,
+        "bytes": 21
+      },
+      {
         "bank": 252,
         "base": 20447,
         "bytes": 203
+      },
+      {
+        "bank": 252,
+        "base": 7798,
+        "bytes": 835
+      },
+      {
+        "bank": 252,
+        "base": 15252,
+        "bytes": 524
+      },
+      {
+        "bank": 249,
+        "base": 65519,
+        "bytes": 17
+      }
+    ],
+    "titleMovementIds": [
+      788,
+      789,
+      790,
+      791,
+      792,
+      793,
+      794,
+      795,
+      796,
+      797,
+      798
+    ],
+    "nativeMovementAdapters": [
+      "instant-letterbox",
+      "title-glow-palette"
+    ],
+    "verifiedMovementModules": [
+      {
+        "name": "movscr_codes",
+        "snesAddress": 16530324,
+        "bytes": 524,
+        "sha256": "787C189E12B42287AA41BE062DB75EC46DDE8833966CA04F00AD9BA53F21A417"
+      },
+      {
+        "name": "moldyman_initial_frame_fix",
+        "snesAddress": 16383983,
+        "bytes": 17,
+        "sha256": "2F24BE739B6C934C0A66F3DF40D3C6D747503A83BEC9F9E11BE50D20FE0CAB14"
+      }
+    ],
+    "privateMovementAdapters": [
+      {
+        "name": "distance-from-player",
+        "sourceAddress": 16530526,
+        "nativeId": 12517632,
+        "extraBytes": 0,
+        "calls": 0
+      },
+      {
+        "name": "result-greater",
+        "sourceAddress": 16530560,
+        "nativeId": 12517633,
+        "extraBytes": 2,
+        "calls": 0
+      },
+      {
+        "name": "ceil-movement-speed",
+        "sourceAddress": 16530576,
+        "nativeId": 12517634,
+        "extraBytes": 0,
+        "calls": 1
+      },
+      {
+        "name": "maximum-result",
+        "sourceAddress": 16530591,
+        "nativeId": 12517635,
+        "extraBytes": 2,
+        "calls": 0
+      },
+      {
+        "name": "mosaic-fade-in",
+        "sourceAddress": 16530606,
+        "nativeId": 12517636,
+        "extraBytes": 6,
+        "calls": 0
+      },
+      {
+        "name": "refresh-current-frame",
+        "sourceAddress": 16530628,
+        "nativeId": 12517637,
+        "extraBytes": 0,
+        "calls": 3
       }
     ],
     "deferred": [
-      "Redux title movement assembly",
-      "Remaining custom movement routines and relocated dialogue operands"
-    ]
+      "Full story and cutscene playthrough validation"
+    ],
+    "reachableBytecodeAudit": {
+      "Roots": 898,
+      "Instructions": 17688,
+      "FlowEdges": 19845,
+      "RoutineCalls": 4471,
+      "DistinctRoutines": 220,
+      "Opcodes": {
+        "00": 17,
+        "01": 181,
+        "02": 195,
+        "03": 16,
+        "04": 8,
+        "05": 1,
+        "06": 2372,
+        "07": 196,
+        "08": 108,
+        "09": 352,
+        "0A": 187,
+        "0B": 165,
+        "0C": 18,
+        "0E": 2850,
+        "0F": 30,
+        "10": 8,
+        "11": 1,
+        "12": 2,
+        "13": 87,
+        "14": 107,
+        "15": 30,
+        "16": 4,
+        "19": 675,
+        "1A": 1984,
+        "1B": 93,
+        "1C": 1,
+        "1D": 673,
+        "1E": 22,
+        "1F": 20,
+        "20": 74,
+        "21": 17,
+        "22": 2,
+        "23": 102,
+        "24": 14,
+        "25": 246,
+        "27": 32,
+        "28": 268,
+        "29": 269,
+        "2A": 29,
+        "2B": 66,
+        "2C": 115,
+        "2D": 9,
+        "2E": 17,
+        "2F": 4,
+        "30": 2,
+        "31": 4,
+        "39": 412,
+        "3B": 601,
+        "3F": 216,
+        "40": 177,
+        "41": 74,
+        "42": 4471,
+        "43": 38,
+        "44": 26
+      },
+      "References": {
+        "callback-08": [
+          {
+            "Address": "C04D78",
+            "Sites": [
+              "C3A072"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C05200",
+            "Sites": [
+              "C3A04E"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C0D7E0",
+            "Sites": [
+              "C3A783"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C0D7F7",
+            "Sites": [
+              "C3A411"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C476A5",
+            "Sites": [
+              "C32514",
+              "C31FF9",
+              "C327B9",
+              "C33074",
+              "C335D4",
+              "C327EF"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C47705",
+            "Sites": [
+              "C32BA6",
+              "C3215A",
+              "C32E86",
+              "C32BE1"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C479E9",
+            "Sites": [
+              "C3B164"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C47A27",
+            "Sites": [
+              "C34E0F"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C48B3B",
+            "Sites": [
+              "C3B7F2",
+              "C3C610",
+              "C3C637",
+              "C3C68A",
+              "C33C6F",
+              "C33CDD",
+              "C3B7C5",
+              "C34C42",
+              "C34C8E",
+              "C34CE8",
+              "C33DDE",
+              "C37C0B",
+              "C3DBBC",
+              "C33F39",
+              "C3D370",
+              "C3D637",
+              "C34014",
+              "C33FE6"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C48BDA",
+            "Sites": [
+              "C39425",
+              "C31979"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C48BE1",
+            "Sites": [
+              "C38447",
+              "C30F26",
+              "C3AE80",
+              "C3B3AA",
+              "C3BB9C",
+              "C3D1D1",
+              "C3D3D0",
+              "C3D405",
+              "C30FA7",
+              "C3114B",
+              "C3B6A9",
+              "C3B6E1",
+              "C3B791",
+              "C3CF58",
+              "C3DA56",
+              "C30EC6",
+              "C310BD",
+              "C3118E",
+              "C312F4",
+              "C318DD",
+              "C31B58",
+              "C34036",
+              "C340A3",
+              "C34FD4",
+              "C36EE1",
+              "C36F92",
+              "C3766C",
+              "C376A5",
+              "C376E5",
+              "C3771E",
+              "C3DBED",
+              "C3AB3F",
+              "C3D13C",
+              "C3B714",
+              "C30A41",
+              "C31126",
+              "C311C5",
+              "C31438",
+              "C318B6",
+              "C3ABFB",
+              "C3AC35",
+              "C3AC6F",
+              "C34E80",
+              "C37F96",
+              "C30E67"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C48C02",
+            "Sites": [
+              "C3CDFD",
+              "C3CB45",
+              "C3CBE2",
+              "C3D05A",
+              "C3C919",
+              "C3C95B",
+              "C3C9F2",
+              "C3CAA0",
+              "C3D0D2",
+              "C3D0FB",
+              "C3D11B",
+              "C3CAFF",
+              "C3CB9C",
+              "C3C75C",
+              "C3C7C3",
+              "C3CF8B"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C48C2B",
+            "Sites": [
+              "C3ACB7",
+              "C31D93",
+              "C3245E",
+              "C32E08",
+              "C33509",
+              "C37ECB",
+              "C31DCE",
+              "C31E32"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C48C3E",
+            "Sites": [
+              "C34512"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "C4E51E",
+            "Sites": [
+              "C35246"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "EF031E",
+            "Sites": [
+              "C3A08C"
+            ],
+            "Resolved": true
+          }
+        ],
+        "callback-22": [
+          {
+            "Address": "009FF0",
+            "Sites": [
+              "FC5099"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A0FA",
+            "Sites": [
+              "FC1E7A"
+            ],
+            "Resolved": true
+          }
+        ],
+        "callback-23": [
+          {
+            "Address": "00A023",
+            "Sites": [
+              "C3B5FF",
+              "C3DA27",
+              "C3D94E",
+              "C3DCFD",
+              "C3DA80",
+              "C3D374",
+              "C3B688",
+              "C3D63B",
+              "C3110D",
+              "C3D7CE",
+              "C3DDE9",
+              "C3B5C2"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A039",
+            "Sites": [
+              "C3A05E",
+              "C3A080",
+              "C3AE78",
+              "C3B3A2",
+              "C3BB94",
+              "C3D1C9",
+              "C3D3C8",
+              "C3D3FD",
+              "C3DA49",
+              "C40E24",
+              "C0AD8A",
+              "C3DBE0",
+              "C3B6A1",
+              "C3B6D9",
+              "C3B789",
+              "C3CF50",
+              "C30A37",
+              "C30EBE",
+              "C30F23",
+              "C312EC",
+              "C318D5",
+              "C31B50",
+              "C3402E",
+              "C3409B",
+              "C34FCC",
+              "C36ED9",
+              "C36F8A",
+              "C37664",
+              "C3769D",
+              "C376DD",
+              "C37716",
+              "C387BC",
+              "C3AB37",
+              "C3D134",
+              "C3B70C",
+              "C30FA4",
+              "C3111E",
+              "C31148",
+              "C311BD",
+              "C31430",
+              "C318AE",
+              "C3ABF3",
+              "C3AC2D",
+              "C3AC67",
+              "C34E78",
+              "C37F8E",
+              "C30E5F",
+              "C310BA",
+              "C3118B",
+              "C33E94",
+              "C33F6F"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A03A",
+            "Sites": [
+              "C3DF1E",
+              "C3AB26",
+              "C306DD",
+              "C3C6E7",
+              "C3C99A",
+              "C3CA48",
+              "C3C9EA",
+              "C3CA98",
+              "C3CAF4",
+              "C3CB91",
+              "C3C751",
+              "C3C7B8",
+              "C3CF80",
+              "C33B15",
+              "C3777E",
+              "C37FD5",
+              "C39CF1",
+              "C33EA2",
+              "C33FD0"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A055",
+            "Sites": [
+              "C3639E",
+              "C363C6",
+              "C36447",
+              "C3610A",
+              "C362E1",
+              "C3675D",
+              "C3678E",
+              "C368F8",
+              "C35FB8"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A0A0",
+            "Sites": [
+              "C35FD1"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A0BB",
+            "Sites": [
+              "C3A273",
+              "C342F7",
+              "C34304",
+              "C3437B",
+              "C34388",
+              "C40F4D",
+              "C40F5C",
+              "C36A2F",
+              "FC1E7F"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A37A",
+            "Sites": [
+              "C37245"
+            ],
+            "Resolved": true
+          }
+        ],
+        "callback-25": [
+          {
+            "Address": "009FC8",
+            "Sites": [
+              "C342F4",
+              "C34301",
+              "C34378",
+              "C34385",
+              "C39FBA",
+              "C3ACB2",
+              "C3AE7B",
+              "C3B3A5",
+              "C3BB97",
+              "C3D1CC",
+              "C3D3CB",
+              "C3D400",
+              "C3DA4C",
+              "C31D8E",
+              "C32459",
+              "C32E03",
+              "C33504",
+              "C33BB9",
+              "C40F4A",
+              "C40F59",
+              "C3450D",
+              "C37248",
+              "C37EC6",
+              "C39401",
+              "C363A1",
+              "C363C9",
+              "C3644A",
+              "C3610D",
+              "C36760",
+              "C36791",
+              "C368FB",
+              "C3B147",
+              "C3DBE3",
+              "C3B6A4",
+              "C3B6DC",
+              "C3B78C",
+              "C3CED0",
+              "C3CDFA",
+              "C3CF53",
+              "C30EC1",
+              "C312EF",
+              "C318D8",
+              "C334D5",
+              "C34031",
+              "C3409E",
+              "C36EDC",
+              "C36F8D",
+              "C37667",
+              "C376A0",
+              "C376E0",
+              "C37719",
+              "C38873",
+              "C388CA",
+              "C38940",
+              "C362E6",
+              "C3CCC2",
+              "C3B70F",
+              "C31121",
+              "C311C0",
+              "C31433",
+              "C318B1",
+              "C3ABF6",
+              "C3AC30",
+              "C3AC6A",
+              "C34E7B",
+              "C3457A",
+              "C34BB3",
+              "C37F91",
+              "C30E62",
+              "C34DFB",
+              "C35FBF",
+              "C31DC9",
+              "C31E2D"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "009FF0",
+            "Sites": [
+              "C3A287",
+              "C3A2AA",
+              "C3A299",
+              "C3A2D3",
+              "C3DF72",
+              "C3AEAC",
+              "C3AE02",
+              "C3AE0F",
+              "C3B04D",
+              "C3B46F",
+              "C3BD56",
+              "C3BE57",
+              "C3D1F8",
+              "C3D423",
+              "C30832",
+              "C31D6A",
+              "C33C30",
+              "C3426E",
+              "C342B1",
+              "C36E19",
+              "C36E2D",
+              "C37276",
+              "C37287",
+              "C373C2",
+              "C3749C",
+              "C380C0",
+              "C38146",
+              "C383D2",
+              "C3840A",
+              "C38DB3",
+              "C38F1B",
+              "C39072",
+              "C39FA0",
+              "C3A2C6",
+              "C3A401",
+              "C31456",
+              "C3745B",
+              "C3747E",
+              "C37819",
+              "C386B7",
+              "C386FF",
+              "C39218",
+              "C39ADE",
+              "C39AFF",
+              "C39B8B",
+              "C39E55",
+              "C39E90",
+              "C39EBB",
+              "C39ECF",
+              "C39EE3",
+              "C39EF7",
+              "C351FF",
+              "C35216",
+              "C39AC7",
+              "C340D4",
+              "C37105",
+              "C37E54",
+              "C389C3",
+              "C38F06",
+              "C3AE28",
+              "C30723",
+              "C307A3",
+              "C30DC3",
+              "C34DD8",
+              "C36B58",
+              "C36A32",
+              "C3DBAE",
+              "C389EB",
+              "C387A5",
+              "C3A677",
+              "C3A468",
+              "C3A733",
+              "C3A892",
+              "C3D806",
+              "C3D6A0",
+              "C3A985",
+              "C3DAC2",
+              "C3DB44",
+              "C3DC21"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "009FF1",
+            "Sites": [
+              "C3DF21",
+              "C3AB29",
+              "C37781",
+              "C37FD8",
+              "C39CF4",
+              "C35FD4"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A00C",
+            "Sites": [
+              "C306E0",
+              "C3C6EA",
+              "C3C99D",
+              "C3CA4B",
+              "C3C9ED",
+              "C3CA9B",
+              "C3CAF7",
+              "C3CB94",
+              "C3C754",
+              "C3C7BB",
+              "C3CF83",
+              "C33B18"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A26B",
+            "Sites": [
+              "C3A061",
+              "C3A083",
+              "C40E27",
+              "C0AD8D"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A360",
+            "Sites": [
+              "C3A2E4",
+              "C3A381",
+              "C3ADE1",
+              "C3BD0E",
+              "C3BD80",
+              "C3C427",
+              "C3C57A",
+              "C372B0",
+              "C37AB5",
+              "C3A3A1",
+              "C34408",
+              "C3AA2B",
+              "C36DC0",
+              "C3AD83",
+              "C34424",
+              "C36D64",
+              "C36DA7",
+              "C39B2F",
+              "C36D88",
+              "C3A415",
+              "C3A73F",
+              "C3A687",
+              "C3A8A6",
+              "C3A9A3",
+              "C30211"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A37A",
+            "Sites": [
+              "C3AFAC",
+              "C3B3C8",
+              "C3C4CF",
+              "C3C540",
+              "C30776",
+              "C31831",
+              "C345CA",
+              "C374E4",
+              "C37BFE",
+              "C3804C",
+              "C38678",
+              "C3868F",
+              "C3AAB8",
+              "C3AAAA",
+              "C3AA38",
+              "C3AA5A",
+              "C31D4F",
+              "C37439",
+              "C3AAFE",
+              "C3AA6E",
+              "C3AA82",
+              "C3B44B",
+              "C3D7E8",
+              "C3DA9D",
+              "C3DB1F",
+              "C30A3A",
+              "C30DD6",
+              "C31B53",
+              "C327B0",
+              "C32BA1",
+              "C3DBF8",
+              "C34FCF",
+              "C377D8",
+              "C37A7C",
+              "C387BF",
+              "FC5065",
+              "C3AB3A",
+              "C3D0CD",
+              "C3D0F6",
+              "C3D116",
+              "C3D137",
+              "C345A6",
+              "FC5005",
+              "C37AE1",
+              "C30752"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00A384",
+            "Sites": [
+              "C36A41",
+              "C3D679"
+            ],
+            "Resolved": true
+          }
+        ],
+        "wram-12": [
+          {
+            "Address": "00001A",
+            "Sites": [
+              "C34EA1",
+              "C351B6"
+            ],
+            "Resolved": true
+          }
+        ],
+        "wram-15": [
+          {
+            "Address": "0000AD",
+            "Sites": [
+              "C3A099"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00438A",
+            "Sites": [
+              "C31173",
+              "C31046"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00438C",
+            "Sites": [
+              "C31178",
+              "C3104B"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "004A66",
+            "Sites": [
+              "C3ACA5"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "005D9A",
+            "Sites": [
+              "C30235",
+              "C39E7B",
+              "C39E83",
+              "C3BDA3",
+              "C3027D",
+              "C3BDF7"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "009641",
+            "Sites": [
+              "FC4FF0",
+              "FC503F"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "009D1B",
+            "Sites": [
+              "C31C81",
+              "C3D03E",
+              "C3CDE1"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "009D1D",
+            "Sites": [
+              "C31C86",
+              "C3D043",
+              "C3CDE6"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "009F3F",
+            "Sites": [
+              "C37CCE"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00B4A8",
+            "Sites": [
+              "C427DA"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00B4B4",
+            "Sites": [
+              "C410E1",
+              "C410EA",
+              "C4134B",
+              "C41354"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "00B4D1",
+            "Sites": [
+              "C35253",
+              "C35272",
+              "C3591B",
+              "C35930"
+            ],
+            "Resolved": true
+          }
+        ],
+        "wram-1E": [
+          {
+            "Address": "000028",
+            "Sites": [
+              "C3ABE2"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "000099",
+            "Sites": [
+              "C35226"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "002AF8",
+            "Sites": [
+              "C3A27B"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "004DBA",
+            "Sites": [
+              "C37D53",
+              "C37DB2",
+              "C37E11",
+              "C39E07"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "005D60",
+            "Sites": [
+              "C37D4D",
+              "C37DAC",
+              "C37E0B",
+              "C39E01"
+            ],
+            "Resolved": true
+          },
+          {
+            "Address": "009F75",
+            "Sites": [
+              "FC1E92",
+              "FC20F3",
+              "FC1F3F",
+              "FC1F5A",
+              "FC1F75",
+              "FC1F90",
+              "FC1FAB",
+              "FC1FC7",
+              "FC1FE4",
+              "FC2001",
+              "FC201E"
+            ],
+            "Resolved": true
+          }
+        ]
+      },
+      "Errors": [],
+      "Passed": true,
+      "Limits": [
+        "Static reachable bytecode and dispatch audit; no full story playthrough.",
+        "Routine and callback behavior, animation data and live story paths require separate validation."
+      ]
+    }
   },
   "world": {
     "assets": [
@@ -1177,6 +2787,21 @@
       "Pinned invalid music-zone-zero record replaced with its silence default"
     ]
   },
+  "auxiliaryTables": {
+    "assets": [
+      "data/attract_mode_txt.bin",
+      "data/telephone_contacts_table.bin",
+      "data/timed_delivery_table.bin",
+      "data/psi_teleport_dest_table.bin",
+      "data/status_equip_window_text_8_13.bin",
+      "data/status_equip_text.bin"
+    ],
+    "relocatedTextPointers": 35,
+    "telephoneContacts": 7,
+    "deliveryEvents": 10,
+    "teleportDestinations": 17,
+    "attractScenes": 10
+  },
   "enemyAi": {
     "records": 231,
     "scriptedEnemies": 190,
@@ -1193,15 +2818,12 @@
     "characterLimit": 6,
     "foodLimit": 10
   },
-  "relocatedTablePointers": 2441,
+  "relocatedTablePointers": 2443,
   "remainingIntegration": [
-    "Title presentation and custom title events",
-    "PSI effects and battle party sprites",
-    "Specialized flyover, coffee/tea and ending text",
-    "Custom SPC music and sample banks",
     "Remaining assembly-only QoL and bug fixes",
-    "Real gameplay and cutscene validation",
-    "Redux progression policy and randomizer audit",
-    "Full game validation"
+    "Later gameplay and cutscene validation",
+    "Individual tool combat effects and complete MSU transitions",
+    "Player-ROM setup for the pinned profile",
+    "Full story and randomized playthrough validation"
   ]
 }

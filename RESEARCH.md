@@ -26,10 +26,10 @@ Its patch formats modify a SNES ROM, including executable instructions and reloc
 | MSU music | Implemented and installed; playback flags checked against Redux's `msu1.ccs`. |
 | Running and modern controls | Native sprint and full GUI remapping available. |
 | Convenience / inventory improvements | Separate key-item pool inherited from the selected C fork; extra optional dialogue, homesickness, reminder-call and reward settings added. |
-| Uncensored script, renamed enemies/items, restored graphics | Not presented as Redux parity. Requires a compatible asset conversion and verification of changed text/event references. |
-| Redux-specific battle portraits, event patches, new shops and code fixes | Need explicit native C ports and targeted tests. Not implemented wholesale. |
+| Uncensored script, renamed enemies/items, restored graphics | Converted from the checksum-pinned active source. Native opening/dialogue, graphics and scene checks pass; full story parity remains unverified. |
+| Redux-specific battle sprites, event patches, new shops and code fixes | Explicit native implementations cover Tools, equipment, movement helpers, combat fixes and converted shops. See the source-pinned coverage and assembly ledger in [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md). Full compatibility is incomplete. |
 
-A proper Redux mode should pin its released source, map each instruction patch to a native function, convert its data under a matching asset registry, and verify text, battles, doors, ending behavior and save migration. Keep Redux and original save sets separate if data or event semantics differ. Version 2.0 changes must be assessed after they are published.
+The development edition pins active source `897d00833f4a08a0a92f106abf631629a6a6a041`, rather than labeling itself the official v1.1 release. Its standalone owner-ROM setup reproduces the checked native pack, with native implementations, data converters and development/debug exclusions recorded separately. Later gameplay and full story/randomized playthroughs remain to be verified. Keep Redux and original save sets separate if data or event semantics differ. Version 2.0 changes must be assessed after they are published.
 
 ## MSU sources and implementation
 
@@ -45,13 +45,13 @@ The selected source originally repeated every PCM track. This build uses game-sp
 
 [ShrineFox's EarthBound Mod Menu](https://github.com/ShrineFox/EarthBound-Mod-Menu) supplies useful ROM-side trainer/QoL ideas, but its assembly patch cannot be imported as compiled C behavior. This edition instead exposes the implemented native options through settings and safe profile files.
 
-Other worthwhile future work includes an authored HD asset pack, richer shader choices, an explicit Redux mode, per-mod save namespaces, and a complete regression playthrough. These are future work, not shipped feature claims.
+Other worthwhile future work includes an authored HD asset pack, richer shader choices, complete Redux compatibility, and a complete regression playthrough. These are future work, not shipped feature claims.
 
 ## Randomizer integration — October 4, 2026
 
 The requested [earthbound.app](https://earthbound.app/) is backed by [stochaztic/eb-randomizer](https://github.com/stochaztic/eb-randomizer). Its generator expands ROM data, applies save/gameplay patches, and relocates scripts; Ancient Cave also regenerates routing. Our original-layout asset extractor cannot translate those changed SNES instructions into native C behavior. Website output is therefore not claimed compatible.
 
-This update ships independent **native Story Shuffle v2**: bounded optional gift/shop/drop/stat changes, mandatory progression preservation and isolated saves. The original ROM's 61 text/script blocks were decoded to derive item dependencies and literal scripted battles. A second explicit Monkey Cave request list protects dynamic trade handlers as well. The resulting policy preserves 78 items and 52 scripted-battle enemy records; a separate whole-pack invariant checker runs at generation and before launch. All 1,000 tested seeds and 30 option/style combinations pass. Guided save restoration verifies the selected adventure, assets, engine, file hashes and native quick-save header/CRC, with a backup before applying changes. These are bounded checks, not a completed playthrough.
+The older preview shipped independent **native Story Shuffle v2**: bounded optional gift/shop/drop/stat changes, mandatory progression preservation and isolated saves. The original ROM's 61 text/script blocks were decoded to derive item dependencies and literal scripted battles. A second explicit Monkey Cave request list protects dynamic trade handlers as well. The resulting policy preserves 78 items and 52 scripted-battle enemy records; a separate whole-pack invariant checker runs at generation and before launch. All 1,000 tested seeds and 30 option/style combinations pass. Guided save restoration verifies the selected adventure, assets, engine, file hashes and native quick-save header/CRC, with a backup before applying changes. These are bounded checks, not a completed playthrough.
 
 The upstream [README](https://github.com/stochaztic/eb-randomizer/blob/master/README.md) explicitly marks dangerous options and disables Keysanity in its UI due to softlock issues. That mode should not be treated as a general safety guarantee. Full Ancient Cave/Open support requires the following together:
 
@@ -64,3 +64,10 @@ The upstream [README](https://github.com/stochaztic/eb-randomizer/blob/master/RE
 | Seed solver and native regression fixtures | Successful website ROM generation alone does not prove that the native engine preserves its progression guarantees. |
 
 These unported modes remain unavailable. Every supported Story Shuffle seed uses its own save/config/screenshot directory and shares the installed soundtrack. See [RANDOMIZER.md](RANDOMIZER.md) for exact rules, legacy recovery and verification scope.
+
+
+## Redux development checkpoint
+
+Story Shuffle v3 now has a separate policy for the exact Redux pack: 110 protected items and 84 enemy records, derived from 64,360 decoded operations and 45 scripted encounter groups. All 1,000 seeds and 30 option combinations pass independently for both original and Redux packs. A native randomized Redux opening passes; this is not full Ancient Cave/Open support or a complete randomized playthrough.
+
+The frozen Redux setup helper and clean ZIP pass without installed Python/Git. MSU setup repaired one deliberately corrupt track through a real download and verified all 164 files; 163 already-verified cache files were reused for that bounded test. No ROM, game pack, PCM or save files are in the distributable ZIP. See [validation/native-redux-clean-package.json](validation/native-redux-clean-package.json) for exact hashes and coverage.

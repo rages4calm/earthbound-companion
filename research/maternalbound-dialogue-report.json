@@ -3,14 +3,14 @@
   "status": "development-only-not-playable",
   "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
   "counts": {
-    "convertedLabelSpans": 7367,
-    "convertedBytes": 568504,
-    "relocatedPointerFields": 12835,
+    "convertedLabelSpans": 7397,
+    "convertedBytes": 568999,
+    "relocatedPointerFields": 12859,
     "unresolvedPointerFields": 0,
     "failedLabelSpans": 0,
-    "excludedAssemblyOrUnclassifiedSpans": 30,
-    "nativeRoutineCalls": 354,
-    "nativeRoutineVariants": 16,
+    "excludedAssemblyOrUnclassifiedSpans": 105,
+    "nativeRoutineCalls": 355,
+    "nativeRoutineVariants": 17,
     "ambiguousOriginalAliases": 0
   },
   "nativeCustomHandlers": [
@@ -44,10 +44,1039 @@
   ],
   "remainingCustomCommands": [],
   "handlerValidationBoundary": "Typed handlers exist for the declared extensions; bounded checks and opening/menu replays do not establish complete story compatibility.",
-  "blobSha256": "CB5CD5BAE88699972F43083D1A6EE6FDB3EAC3E7DC2D0F0785AC016380066119",
+  "blobSha256": "5B18885E24F78478B9A06A784981ED827012482E62F7C9DDEC761616F057E811",
+  "progressionDependencies": {
+    "decodedOperations": 64360,
+    "method": "Typed operands from every successfully converted dialogue span; debug menus and descriptive item-name lookups excluded.",
+    "items": [
+      {
+        "id": 1,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_23:check_if_character_has_item",
+          "data_54:check_if_character_has_item",
+          "data_65:give_item_to_character_b",
+          "data_65:print_item_name"
+        ]
+      },
+      {
+        "id": 2,
+        "reasons": [
+          "battle_text:take_item_from_character"
+        ]
+      },
+      {
+        "id": 3,
+        "reasons": [
+          "battle_text:take_item_from_character"
+        ]
+      },
+      {
+        "id": 6,
+        "reasons": [
+          "data_27:check_if_character_has_item"
+        ]
+      },
+      {
+        "id": 7,
+        "reasons": [
+          "data_27:check_if_character_has_item"
+        ]
+      },
+      {
+        "id": 17,
+        "reasons": [
+          "data_31:check_if_character_doesnt_have_item",
+          "data_31:print_item_name"
+        ]
+      },
+      {
+        "id": 26,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 34,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 35,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 36,
+        "reasons": [
+          "data_27:check_if_character_has_item",
+          "data_34:check_if_character_has_item"
+        ]
+      },
+      {
+        "id": 48,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 54,
+        "reasons": [
+          "data_30:give_item_to_character_b",
+          "data_30:print_item_name"
+        ]
+      },
+      {
+        "id": 58,
+        "reasons": [
+          "data_18:print_item_name"
+        ]
+      },
+      {
+        "id": 60,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 61,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 63,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 70,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 71,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 72,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 73,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 74,
+        "reasons": [
+          "data_32:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 75,
+        "reasons": [
+          "data_27:check_if_character_has_item"
+        ]
+      },
+      {
+        "id": 76,
+        "reasons": [
+          "data_30:give_item_to_character_b",
+          "data_30:print_item_name"
+        ]
+      },
+      {
+        "id": 85,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 86,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 87,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 88,
+        "reasons": [
+          "data_31:give_item_to_character_b",
+          "data_31:print_item_name"
+        ]
+      },
+      {
+        "id": 90,
+        "reasons": [
+          "data_17:print_item_name",
+          "data_18:print_item_name"
+        ]
+      },
+      {
+        "id": 92,
+        "reasons": [
+          "data_18:give_item_to_character_b",
+          "data_18:print_item_name",
+          "data_51:get_buy_price_of_item",
+          "data_51:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 93,
+        "reasons": [
+          "data_17:print_item_name"
+        ]
+      },
+      {
+        "id": 95,
+        "reasons": [
+          "data_16:print_item_name",
+          "data_17:print_item_name"
+        ]
+      },
+      {
+        "id": 98,
+        "reasons": [
+          "data_17:give_item_to_character_b",
+          "data_17:print_item_name"
+        ]
+      },
+      {
+        "id": 99,
+        "reasons": [
+          "data_52:give_item_to_character_b",
+          "data_52:print_item_name",
+          "data_59:give_item_to_character_b",
+          "data_59:print_item_name",
+          "data_60:print_item_name"
+        ]
+      },
+      {
+        "id": 100,
+        "reasons": [
+          "data_58:give_item_to_character",
+          "data_58:print_item_name"
+        ]
+      },
+      {
+        "id": 104,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_25:check_if_character_has_item",
+          "data_25:give_item_to_character_b",
+          "data_25:print_item_name"
+        ]
+      },
+      {
+        "id": 105,
+        "reasons": [
+          "battle_text:take_item_from_character",
+          "data_61:check_if_character_has_item",
+          "data_61:give_item_to_character"
+        ]
+      },
+      {
+        "id": 106,
+        "reasons": [
+          "data_17:give_item_to_character_b",
+          "data_17:print_item_name"
+        ]
+      },
+      {
+        "id": 108,
+        "reasons": [
+          "data_17:print_item_name"
+        ]
+      },
+      {
+        "id": 125,
+        "reasons": [
+          "data_51:give_item_to_character_b",
+          "data_51:print_item_name"
+        ]
+      },
+      {
+        "id": 127,
+        "reasons": [
+          "data_17:print_item_name"
+        ]
+      },
+      {
+        "id": 128,
+        "reasons": [
+          "data_58:give_item_to_character",
+          "data_58:print_item_name"
+        ]
+      },
+      {
+        "id": 130,
+        "reasons": [
+          "data_20:print_item_name",
+          "data_24:print_item_name",
+          "data_61:give_item_to_character_b",
+          "data_61:print_item_name"
+        ]
+      },
+      {
+        "id": 131,
+        "reasons": [
+          "data_23:take_item_from_character"
+        ]
+      },
+      {
+        "id": 132,
+        "reasons": [
+          "data_23:take_item_from_character"
+        ]
+      },
+      {
+        "id": 133,
+        "reasons": [
+          "data_23:take_item_from_character",
+          "shops_scarabia:print_item_name"
+        ]
+      },
+      {
+        "id": 134,
+        "reasons": [
+          "data_23:take_item_from_character"
+        ]
+      },
+      {
+        "id": 136,
+        "reasons": [
+          "data_23:take_item_from_character"
+        ]
+      },
+      {
+        "id": 138,
+        "reasons": [
+          "data_23:take_item_from_character"
+        ]
+      },
+      {
+        "id": 139,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_17:give_item_to_character_b",
+          "data_17:print_item_name",
+          "data_28:print_item_name",
+          "data_40:check_if_character_has_item",
+          "data_40:print_item_name",
+          "data_40:take_item_from_character"
+        ]
+      },
+      {
+        "id": 140,
+        "reasons": [
+          "data_18:print_item_name",
+          "data_51:get_buy_price_of_item",
+          "data_51:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 141,
+        "reasons": [
+          "data_05:give_item_to_character_b",
+          "data_05:print_item_name"
+        ]
+      },
+      {
+        "id": 152,
+        "reasons": [
+          "data_26:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 153,
+        "reasons": [
+          "data_37:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 157,
+        "reasons": [
+          "data_23:take_item_from_character"
+        ]
+      },
+      {
+        "id": 160,
+        "reasons": [
+          "data_58:give_item_to_character_b",
+          "data_58:print_item_name"
+        ]
+      },
+      {
+        "id": 162,
+        "reasons": [
+          "data_05:print_item_name"
+        ]
+      },
+      {
+        "id": 163,
+        "reasons": [
+          "data_51:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 164,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_29:take_item_from_character",
+          "data_43:give_item_to_character_b",
+          "data_43:print_item_name",
+          "data_58:give_item_to_character_b",
+          "data_58:print_item_name",
+          "data_58:take_item_from_character"
+        ]
+      },
+      {
+        "id": 165,
+        "reasons": [
+          "data_54:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 166,
+        "reasons": [
+          "data_18:give_item_to_character_b",
+          "data_18:print_item_name"
+        ]
+      },
+      {
+        "id": 168,
+        "reasons": [
+          "data_17:give_item_to_character_b",
+          "data_17:print_item_name"
+        ]
+      },
+      {
+        "id": 170,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_29:give_item_to_character_b",
+          "data_29:print_item_name",
+          "data_56:check_if_character_has_item",
+          "data_56:take_item_from_character"
+        ]
+      },
+      {
+        "id": 171,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_33:print_item_name",
+          "data_33:take_item_from_character",
+          "data_54:give_item_to_character_b",
+          "data_54:print_item_name"
+        ]
+      },
+      {
+        "id": 172,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_25:give_item_to_character_b",
+          "data_25:print_item_name",
+          "data_27:print_item_name"
+        ]
+      },
+      {
+        "id": 174,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_34:give_item_to_character_b",
+          "data_34:print_item_name",
+          "data_60:take_item_from_character"
+        ]
+      },
+      {
+        "id": 175,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_20:print_item_name",
+          "data_22:give_item_to_character_b",
+          "data_22:print_item_name",
+          "data_24:give_item_to_character_b",
+          "data_24:print_item_name",
+          "data_28:print_item_name",
+          "data_42:print_item_name",
+          "data_43:print_item_name",
+          "data_50:check_if_character_has_item",
+          "data_50:give_item_to_character_b",
+          "data_50:print_item_name",
+          "data_50:take_item_from_character",
+          "data_57:print_item_name",
+          "data_59:print_item_name",
+          "data_60:take_item_from_character",
+          "data_66:print_item_name"
+        ]
+      },
+      {
+        "id": 176,
+        "reasons": [
+          "data_38:check_if_character_has_item",
+          "data_38:give_item_to_character_b",
+          "data_38:print_item_name",
+          "data_38:take_item_from_character"
+        ]
+      },
+      {
+        "id": 177,
+        "reasons": [
+          "data_22:check_if_character_has_item"
+        ]
+      },
+      {
+        "id": 178,
+        "reasons": [
+          "data_26:give_item_to_character_b",
+          "data_26:print_item_name",
+          "data_26:take_item_from_character",
+          "data_40:give_item_to_character_b",
+          "data_40:print_item_name"
+        ]
+      },
+      {
+        "id": 180,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_52:give_item_to_character_b",
+          "data_52:print_item_name",
+          "data_52:take_item_from_character"
+        ]
+      },
+      {
+        "id": 181,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_39:give_item_to_character_b",
+          "data_39:print_item_name"
+        ]
+      },
+      {
+        "id": 182,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_16:give_item_to_character_b",
+          "data_16:print_item_name",
+          "data_26:print_item_name",
+          "data_26:take_item_from_character",
+          "data_44:give_item_to_character_b",
+          "data_44:print_item_name"
+        ]
+      },
+      {
+        "id": 183,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_26:give_item_to_character_b",
+          "data_26:print_item_name",
+          "data_39:take_item_from_character"
+        ]
+      },
+      {
+        "id": 184,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_20:print_item_name",
+          "data_22:give_item_to_character_b",
+          "data_22:print_item_name",
+          "data_24:give_item_to_character_b",
+          "data_33:print_item_name",
+          "data_39:give_item_to_character_b",
+          "data_39:print_item_name",
+          "data_44:check_if_character_has_item",
+          "data_44:take_item_from_character",
+          "data_52:print_item_name"
+        ]
+      },
+      {
+        "id": 185,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_45:give_item_to_character_b",
+          "data_45:print_item_name"
+        ]
+      },
+      {
+        "id": 187,
+        "reasons": [
+          "data_17:give_item_to_character_b",
+          "data_26:print_item_name",
+          "data_26:take_item_from_character"
+        ]
+      },
+      {
+        "id": 188,
+        "reasons": [
+          "data_38:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 189,
+        "reasons": [
+          "battle_text:print_item_name",
+          "data_27:give_item_to_character_b",
+          "data_27:print_item_name"
+        ]
+      },
+      {
+        "id": 192,
+        "reasons": [
+          "data_06:give_item_to_character_b",
+          "data_06:print_item_name"
+        ]
+      },
+      {
+        "id": 193,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_37:take_item_from_character",
+          "data_42:give_item_to_character_b",
+          "data_42:print_item_name"
+        ]
+      },
+      {
+        "id": 194,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 195,
+        "reasons": [
+          "data_23:take_item_from_character"
+        ]
+      },
+      {
+        "id": 196,
+        "reasons": [
+          "data_16:give_item_to_character_b",
+          "data_16:print_item_name",
+          "data_31:give_item_to_character_b",
+          "data_31:print_item_name",
+          "data_32:print_item_name",
+          "data_32:take_item_from_character"
+        ]
+      },
+      {
+        "id": 197,
+        "reasons": [
+          "data_22:check_if_character_has_item",
+          "data_22:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 202,
+        "reasons": [
+          "data_29:give_item_to_character_b",
+          "data_29:print_item_name",
+          "data_52:check_if_character_has_item"
+        ]
+      },
+      {
+        "id": 203,
+        "reasons": [
+          "ShopSys:give_item_to_character",
+          "ShopSys:take_item_from_character"
+        ]
+      },
+      {
+        "id": 204,
+        "reasons": [
+          "data_39:give_item_to_character_b",
+          "data_39:print_item_name"
+        ]
+      },
+      {
+        "id": 205,
+        "reasons": [
+          "data_25:give_item_to_character_b",
+          "data_25:print_item_name",
+          "data_25:take_item_from_character"
+        ]
+      },
+      {
+        "id": 206,
+        "reasons": [
+          "data_42:give_item_to_character_b",
+          "data_42:print_item_name",
+          "data_52:take_item_from_character"
+        ]
+      },
+      {
+        "id": 207,
+        "reasons": [
+          "data_45:give_item_to_character_b",
+          "data_45:print_item_name"
+        ]
+      },
+      {
+        "id": 208,
+        "reasons": [
+          "data_45:take_item_from_character"
+        ]
+      },
+      {
+        "id": 209,
+        "reasons": [
+          "data_59:give_item_to_character_b",
+          "data_59:print_item_name"
+        ]
+      },
+      {
+        "id": 210,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_26:give_item_to_character_b",
+          "data_26:print_item_name"
+        ]
+      },
+      {
+        "id": 211,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_58:give_item_to_character_b",
+          "data_58:print_item_name",
+          "data_58:take_item_from_character",
+          "data_61:print_item_name"
+        ]
+      },
+      {
+        "id": 220,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_25:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 224,
+        "reasons": [
+          "data_17:give_item_to_character_b",
+          "data_17:print_item_name"
+        ]
+      },
+      {
+        "id": 225,
+        "reasons": [
+          "data_07:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 249,
+        "reasons": [
+          "data_37:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 252,
+        "reasons": [
+          "data_37:give_item_to_character_b"
+        ]
+      },
+      {
+        "id": 253,
+        "reasons": [
+          "data_07:give_item_to_character_b",
+          "data_50:check_if_character_has_item"
+        ]
+      }
+    ],
+    "scriptedBattleGroups": [
+      {
+        "id": 431,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 432,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 433,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 434,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 435,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 436,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 437,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 438,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 439,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 440,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 441,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 442,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 443,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 444,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 445,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 446,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 447,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 448,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 449,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 450,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 451,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 452,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 453,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 454,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 455,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 456,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 457,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 458,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 459,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 460,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 461,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 462,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 463,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 464,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 465,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 466,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 467,
+        "modules": [
+          "data_23",
+          "data_65"
+        ]
+      },
+      {
+        "id": 468,
+        "modules": [
+          "data_65"
+        ]
+      },
+      {
+        "id": 469,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 470,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 471,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 472,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 474,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 475,
+        "modules": [
+          "data_23"
+        ]
+      },
+      {
+        "id": 482,
+        "modules": [
+          "data_65"
+        ]
+      }
+    ],
+    "limits": [
+      "Literal dependency audit; dynamic item arguments also require conservative source protections.",
+      "Does not solve a shuffled world or validate a full playthrough."
+    ]
+  },
   "opcodes": {
     "activate_hotspot": 58,
-    "add_item_id_to_work_memory": 84,
+    "add_item_id_to_work_memory": 85,
     "add_party_member": 122,
     "add_to_atm": 17,
     "add_to_wallet": 19,
@@ -57,28 +1086,29 @@
     "boost_luck": 4,
     "boost_speed": 4,
     "boost_vitality": 2,
-    "call_text": 2363,
+    "call_text": 2364,
     "change_character_direction": 108,
     "change_generated_sprite_direction": 26,
     "change_map_palette": 33,
     "change_party_direction": 4,
     "change_tpt_entry_direction": 63,
     "character_has_ailment": 49,
-    "check_event_flag": 334,
+    "check_event_flag": 336,
     "check_for_inequality": 354,
     "check_if_character_doesnt_have_item": 1,
     "check_if_character_has_item": 24,
-    "check_item_usable_by_slot": 2,
-    "clear_event_flag": 854,
+    "check_item_equipped": 1,
+    "check_item_usable_by_slot": 3,
+    "clear_event_flag": 855,
     "clear_loaded_strings": 3,
     "clear_text_line": 854,
     "clear_window": 95,
     "close_all_windows": 887,
     "close_window": 347,
-    "copy_active_memory_to_storage": 135,
+    "copy_active_memory_to_storage": 137,
     "copy_active_memory_to_working_memory": 102,
-    "copy_storage_memory_to_active": 229,
-    "copy_to_argmem": 242,
+    "copy_storage_memory_to_active": 234,
+    "copy_to_argmem": 244,
     "copy_working_memory_to_active_memory": 101,
     "create_entity": 50,
     "create_floating_sprite_near_character": 53,
@@ -107,7 +1137,7 @@
     "enable_controller_input": 42,
     "enable_npc_movement": 85,
     "enable_sprite_movement": 76,
-    "end_block": 7197,
+    "end_block": 7213,
     "equip_item_to_character": 34,
     "escargo_express_item_status": 11,
     "escargo_express_move": 1,
@@ -119,7 +1149,7 @@
     "get_character_name_letter": 2,
     "get_character_number": 326,
     "get_character_status": 2,
-    "get_current_inventory_item": 103,
+    "get_current_inventory_item": 107,
     "get_current_number": 3,
     "get_direction_of_nearby_truffle": 1,
     "get_direction_of_object_from_character": 64,
@@ -136,14 +1166,14 @@
     "get_player_has_inventory_full": 4,
     "get_player_has_inventory_room": 101,
     "get_queued_item_data": 33,
-    "get_sell_price_of_item": 10,
+    "get_sell_price_of_item": 11,
     "get_window_menu_option_count": 4,
     "give_experience": 2,
     "give_item_to_character": 24,
     "give_item_to_character_b": 194,
     "halt_with_prompt": 6750,
     "halt_with_prompt_always": 94,
-    "halt_without_prompt": 2626,
+    "halt_without_prompt": 2631,
     "have_enough_money": 72,
     "have_enough_money_in_atm": 11,
     "have_x_party_members": 30,
@@ -151,13 +1181,13 @@
     "inflict_status": 60,
     "is_item_condiment": 2,
     "is_item_drink": 1,
-    "jump": 2780,
-    "jump_if_false": 1116,
-    "jump_if_flag_set": 2592,
-    "jump_if_true": 537,
-    "jump_multi": 571,
-    "jump_multi2": 289,
-    "line_break": 8066,
+    "jump": 2782,
+    "jump_if_false": 1118,
+    "jump_if_flag_set": 2594,
+    "jump_if_true": 538,
+    "jump_multi": 573,
+    "jump_multi2": 291,
+    "line_break": 8081,
     "load_special": 7,
     "load_special_for_jump_multi": 7,
     "load_string_to_memory": 1036,
@@ -169,18 +1199,18 @@
     "party_member_selection_menu_uncancellable": 16,
     "pause": 4300,
     "play_music": 168,
-    "play_sound": 1229,
+    "play_sound": 1230,
     "print_action_amount": 45,
     "print_action_target_name": 115,
-    "print_action_user_name": 266,
+    "print_action_user_name": 269,
     "print_char": 9,
-    "print_char_name": 549,
+    "print_char_name": 550,
     "print_horizontal_text_string": 261,
-    "print_item_name": 584,
+    "print_item_name": 587,
     "print_number": 95,
     "print_psi_name": 7,
     "print_special_gfx": 195,
-    "print_stat": 234,
+    "print_stat": 242,
     "print_vertical_text_string": 72,
     "put_val_in_argmem": 29,
     "realize_psi": 6,
@@ -192,7 +1222,7 @@
     "redux_enemy_set_action": 1154,
     "redux_item_determiner": 3,
     "redux_menu_keep_options": 2,
-    "redux_native_routine": 354,
+    "redux_native_routine": 355,
     "redux_title_character": 56,
     "redux_title_string": 501,
     "redux_try_give_money": 3,
@@ -211,7 +1241,7 @@
     "selection_menu_allow_cancel": 8,
     "set_camera_focus_by_sprite_id": 122,
     "set_character_level": 15,
-    "set_event_flag": 2205,
+    "set_event_flag": 2206,
     "set_player_lock": 101,
     "set_respawn_point": 31,
     "set_sprite_movement_code": 89,
@@ -221,12 +1251,12 @@
     "set_tpt_movement_code": 334,
     "show_character_inventory": 24,
     "show_wallet_window": 121,
-    "start_new_line": 998,
+    "start_new_line": 1000,
     "stop_music": 26,
     "store_coordinates_to_memory": 1,
     "store_to_argmem": 495,
     "summon_wandering_photographer": 32,
-    "swap_working_and_arg_memory": 586,
+    "swap_working_and_arg_memory": 591,
     "switch_to_window": 347,
     "take_from_atm": 5,
     "take_from_wallet": 60,
@@ -548,7 +1578,7 @@
     },
     {
       "originalAddress": 15697939,
-      "nativeAddress": 3667179,
+      "nativeAddress": 3667674,
       "copies": 2,
       "relocatedBodySha256": "DBC1B4C900FFE48D575B5DA5C638040125F65DB0FE3E24494B76EA986457D986"
     },
@@ -575,1487 +1605,1487 @@
     {
       "originalAddress": 12924689,
       "compiledEntryTarget": 15950246,
-      "nativeAddress": 3635737
+      "nativeAddress": 3636120
     },
     {
       "originalAddress": 12924752,
       "compiledEntryTarget": 15950348,
-      "nativeAddress": 3635839
+      "nativeAddress": 3636222
     },
     {
       "originalAddress": 12924769,
       "compiledEntryTarget": 15950378,
-      "nativeAddress": 3635869
+      "nativeAddress": 3636252
     },
     {
       "originalAddress": 12924786,
       "compiledEntryTarget": 15950413,
-      "nativeAddress": 3635904
+      "nativeAddress": 3636287
     },
     {
       "originalAddress": 12924860,
       "compiledEntryTarget": 15950515,
-      "nativeAddress": 3636006
+      "nativeAddress": 3636389
     },
     {
       "originalAddress": 12924937,
       "compiledEntryTarget": 15950620,
-      "nativeAddress": 3636111
+      "nativeAddress": 3636494
     },
     {
       "originalAddress": 12924970,
       "compiledEntryTarget": 15950656,
-      "nativeAddress": 3636147
+      "nativeAddress": 3636530
     },
     {
       "originalAddress": 12925005,
       "compiledEntryTarget": 15950694,
-      "nativeAddress": 3636185
+      "nativeAddress": 3636568
     },
     {
       "originalAddress": 12925040,
       "compiledEntryTarget": 15950732,
-      "nativeAddress": 3636223
+      "nativeAddress": 3636606
     },
     {
       "originalAddress": 12925079,
       "compiledEntryTarget": 15950789,
-      "nativeAddress": 3636280
+      "nativeAddress": 3636663
     },
     {
       "originalAddress": 12925116,
       "compiledEntryTarget": 15950842,
-      "nativeAddress": 3636333
+      "nativeAddress": 3636716
     },
     {
       "originalAddress": 12925152,
       "compiledEntryTarget": 15950882,
-      "nativeAddress": 3636373
+      "nativeAddress": 3636756
     },
     {
       "originalAddress": 12925192,
       "compiledEntryTarget": 15950927,
-      "nativeAddress": 3636418
+      "nativeAddress": 3636801
     },
     {
       "originalAddress": 12925225,
       "compiledEntryTarget": 15950963,
-      "nativeAddress": 3636454
+      "nativeAddress": 3636837
     },
     {
       "originalAddress": 12925280,
       "compiledEntryTarget": 15951031,
-      "nativeAddress": 3636522
+      "nativeAddress": 3636905
     },
     {
       "originalAddress": 12925326,
       "compiledEntryTarget": 15951094,
-      "nativeAddress": 3636585
+      "nativeAddress": 3636968
     },
     {
       "originalAddress": 12925380,
       "compiledEntryTarget": 15951174,
-      "nativeAddress": 3636665
+      "nativeAddress": 3637048
     },
     {
       "originalAddress": 12925396,
       "compiledEntryTarget": 15951190,
-      "nativeAddress": 3636681
+      "nativeAddress": 3637064
     },
     {
       "originalAddress": 12925412,
       "compiledEntryTarget": 15951206,
-      "nativeAddress": 3636697
+      "nativeAddress": 3637080
     },
     {
       "originalAddress": 12925428,
       "compiledEntryTarget": 15951222,
-      "nativeAddress": 3636713
+      "nativeAddress": 3637096
     },
     {
       "originalAddress": 12925444,
       "compiledEntryTarget": 15951238,
-      "nativeAddress": 3636729
+      "nativeAddress": 3637112
     },
     {
       "originalAddress": 12925460,
       "compiledEntryTarget": 15951254,
-      "nativeAddress": 3636745
+      "nativeAddress": 3637128
     },
     {
       "originalAddress": 12925511,
       "compiledEntryTarget": 15951335,
-      "nativeAddress": 3636826
+      "nativeAddress": 3637209
     },
     {
       "originalAddress": 12925527,
       "compiledEntryTarget": 15951351,
-      "nativeAddress": 3636842
+      "nativeAddress": 3637225
     },
     {
       "originalAddress": 12925543,
       "compiledEntryTarget": 15951367,
-      "nativeAddress": 3636858
+      "nativeAddress": 3637241
     },
     {
       "originalAddress": 12925559,
       "compiledEntryTarget": 15951383,
-      "nativeAddress": 3636874
+      "nativeAddress": 3637257
     },
     {
       "originalAddress": 12925599,
       "compiledEntryTarget": 15951440,
-      "nativeAddress": 3636931
+      "nativeAddress": 3637314
     },
     {
       "originalAddress": 12925670,
       "compiledEntryTarget": 15951562,
-      "nativeAddress": 3637053
+      "nativeAddress": 3637436
     },
     {
       "originalAddress": 12925686,
       "compiledEntryTarget": 15951578,
-      "nativeAddress": 3637069
+      "nativeAddress": 3637452
     },
     {
       "originalAddress": 12925702,
       "compiledEntryTarget": 15951594,
-      "nativeAddress": 3637085
+      "nativeAddress": 3637468
     },
     {
       "originalAddress": 12925718,
       "compiledEntryTarget": 15951610,
-      "nativeAddress": 3637101
+      "nativeAddress": 3637484
     },
     {
       "originalAddress": 12925734,
       "compiledEntryTarget": 15951626,
-      "nativeAddress": 3637117
+      "nativeAddress": 3637500
     },
     {
       "originalAddress": 12925750,
       "compiledEntryTarget": 15951642,
-      "nativeAddress": 3637133
+      "nativeAddress": 3637516
     },
     {
       "originalAddress": 12925766,
       "compiledEntryTarget": 15951658,
-      "nativeAddress": 3637149
+      "nativeAddress": 3637532
     },
     {
       "originalAddress": 12925782,
       "compiledEntryTarget": 15951674,
-      "nativeAddress": 3637165
+      "nativeAddress": 3637548
     },
     {
       "originalAddress": 12925814,
       "compiledEntryTarget": 15951719,
-      "nativeAddress": 3637210
+      "nativeAddress": 3637593
     },
     {
       "originalAddress": 12925830,
       "compiledEntryTarget": 15951735,
-      "nativeAddress": 3637226
+      "nativeAddress": 3637609
     },
     {
       "originalAddress": 12925846,
       "compiledEntryTarget": 15951751,
-      "nativeAddress": 3637242
+      "nativeAddress": 3637625
     },
     {
       "originalAddress": 12925862,
       "compiledEntryTarget": 15951767,
-      "nativeAddress": 3637258
+      "nativeAddress": 3637641
     },
     {
       "originalAddress": 12925878,
       "compiledEntryTarget": 15951783,
-      "nativeAddress": 3637274
+      "nativeAddress": 3637657
     },
     {
       "originalAddress": 12925894,
       "compiledEntryTarget": 15951799,
-      "nativeAddress": 3637290
+      "nativeAddress": 3637673
     },
     {
       "originalAddress": 12925910,
       "compiledEntryTarget": 15951815,
-      "nativeAddress": 3637306
+      "nativeAddress": 3637689
     },
     {
       "originalAddress": 12925926,
       "compiledEntryTarget": 15951831,
-      "nativeAddress": 3637322
+      "nativeAddress": 3637705
     },
     {
       "originalAddress": 12925942,
       "compiledEntryTarget": 15951847,
-      "nativeAddress": 3637338
+      "nativeAddress": 3637721
     },
     {
       "originalAddress": 12925958,
       "compiledEntryTarget": 15951863,
-      "nativeAddress": 3637354
+      "nativeAddress": 3637737
     },
     {
       "originalAddress": 12925974,
       "compiledEntryTarget": 15951879,
-      "nativeAddress": 3637370
+      "nativeAddress": 3637753
     },
     {
       "originalAddress": 12925990,
       "compiledEntryTarget": 15951895,
-      "nativeAddress": 3637386
+      "nativeAddress": 3637769
     },
     {
       "originalAddress": 12926006,
       "compiledEntryTarget": 15951911,
-      "nativeAddress": 3637402
+      "nativeAddress": 3637785
     },
     {
       "originalAddress": 12926022,
       "compiledEntryTarget": 15951927,
-      "nativeAddress": 3637418
+      "nativeAddress": 3637801
     },
     {
       "originalAddress": 12926047,
       "compiledEntryTarget": 15951954,
-      "nativeAddress": 3637445
+      "nativeAddress": 3637828
     },
     {
       "originalAddress": 12926074,
       "compiledEntryTarget": 15951989,
-      "nativeAddress": 3637480
+      "nativeAddress": 3637863
     },
     {
       "originalAddress": 12926101,
       "compiledEntryTarget": 15952026,
-      "nativeAddress": 3637517
+      "nativeAddress": 3637900
     },
     {
       "originalAddress": 12926127,
       "compiledEntryTarget": 15952061,
-      "nativeAddress": 3637552
+      "nativeAddress": 3637935
     },
     {
       "originalAddress": 12926152,
       "compiledEntryTarget": 15952098,
-      "nativeAddress": 3637589
+      "nativeAddress": 3637972
     },
     {
       "originalAddress": 12926168,
       "compiledEntryTarget": 15952114,
-      "nativeAddress": 3637605
+      "nativeAddress": 3637988
     },
     {
       "originalAddress": 12926208,
       "compiledEntryTarget": 15952162,
-      "nativeAddress": 3637653
+      "nativeAddress": 3638036
     },
     {
       "originalAddress": 12926241,
       "compiledEntryTarget": 15952210,
-      "nativeAddress": 3637701
+      "nativeAddress": 3638084
     },
     {
       "originalAddress": 12926278,
       "compiledEntryTarget": 15952266,
-      "nativeAddress": 3637757
+      "nativeAddress": 3638140
     },
     {
       "originalAddress": 12926314,
       "compiledEntryTarget": 15952317,
-      "nativeAddress": 3637808
+      "nativeAddress": 3638191
     },
     {
       "originalAddress": 12926351,
       "compiledEntryTarget": 15952370,
-      "nativeAddress": 3637861
+      "nativeAddress": 3638244
     },
     {
       "originalAddress": 12926392,
       "compiledEntryTarget": 15952426,
-      "nativeAddress": 3637917
+      "nativeAddress": 3638300
     },
     {
       "originalAddress": 12926440,
       "compiledEntryTarget": 15952495,
-      "nativeAddress": 3637986
+      "nativeAddress": 3638369
     },
     {
       "originalAddress": 12926499,
       "compiledEntryTarget": 15952575,
-      "nativeAddress": 3638066
+      "nativeAddress": 3638449
     },
     {
       "originalAddress": 12926543,
       "compiledEntryTarget": 15952636,
-      "nativeAddress": 3638127
+      "nativeAddress": 3638510
     },
     {
       "originalAddress": 12926559,
       "compiledEntryTarget": 15952652,
-      "nativeAddress": 3638143
+      "nativeAddress": 3638526
     },
     {
       "originalAddress": 12926575,
       "compiledEntryTarget": 15952668,
-      "nativeAddress": 3638159
+      "nativeAddress": 3638542
     },
     {
       "originalAddress": 12926591,
       "compiledEntryTarget": 15952684,
-      "nativeAddress": 3638175
+      "nativeAddress": 3638558
     },
     {
       "originalAddress": 12926607,
       "compiledEntryTarget": 15952700,
-      "nativeAddress": 3638191
+      "nativeAddress": 3638574
     },
     {
       "originalAddress": 12926623,
       "compiledEntryTarget": 15952716,
-      "nativeAddress": 3638207
+      "nativeAddress": 3638590
     },
     {
       "originalAddress": 12926639,
       "compiledEntryTarget": 15952732,
-      "nativeAddress": 3638223
+      "nativeAddress": 3638606
     },
     {
       "originalAddress": 12926662,
       "compiledEntryTarget": 15952755,
-      "nativeAddress": 3638246
+      "nativeAddress": 3638629
     },
     {
       "originalAddress": 12926685,
       "compiledEntryTarget": 15952778,
-      "nativeAddress": 3638269
+      "nativeAddress": 3638652
     },
     {
       "originalAddress": 12926708,
       "compiledEntryTarget": 15952801,
-      "nativeAddress": 3638292
+      "nativeAddress": 3638675
     },
     {
       "originalAddress": 12926808,
       "compiledEntryTarget": 15952935,
-      "nativeAddress": 3638426
+      "nativeAddress": 3638809
     },
     {
       "originalAddress": 12926857,
       "compiledEntryTarget": 15953001,
-      "nativeAddress": 3638492
+      "nativeAddress": 3638875
     },
     {
       "originalAddress": 12926921,
       "compiledEntryTarget": 15953095,
-      "nativeAddress": 3638586
+      "nativeAddress": 3638969
     },
     {
       "originalAddress": 12926986,
       "compiledEntryTarget": 15953194,
-      "nativeAddress": 3638685
+      "nativeAddress": 3639068
     },
     {
       "originalAddress": 12927061,
       "compiledEntryTarget": 15953308,
-      "nativeAddress": 3638799
+      "nativeAddress": 3639182
     },
     {
       "originalAddress": 12927077,
       "compiledEntryTarget": 15953324,
-      "nativeAddress": 3638815
+      "nativeAddress": 3639198
     },
     {
       "originalAddress": 12927093,
       "compiledEntryTarget": 15953340,
-      "nativeAddress": 3638831
+      "nativeAddress": 3639214
     },
     {
       "originalAddress": 12927109,
       "compiledEntryTarget": 15953356,
-      "nativeAddress": 3638847
+      "nativeAddress": 3639230
     },
     {
       "originalAddress": 12927125,
       "compiledEntryTarget": 15953372,
-      "nativeAddress": 3638863
+      "nativeAddress": 3639246
     },
     {
       "originalAddress": 12927141,
       "compiledEntryTarget": 15953388,
-      "nativeAddress": 3638879
+      "nativeAddress": 3639262
     },
     {
       "originalAddress": 12927157,
       "compiledEntryTarget": 15953404,
-      "nativeAddress": 3638895
+      "nativeAddress": 3639278
     },
     {
       "originalAddress": 12927173,
       "compiledEntryTarget": 15953420,
-      "nativeAddress": 3638911
+      "nativeAddress": 3639294
     },
     {
       "originalAddress": 12927189,
       "compiledEntryTarget": 15953436,
-      "nativeAddress": 3638927
+      "nativeAddress": 3639310
     },
     {
       "originalAddress": 12927205,
       "compiledEntryTarget": 15953452,
-      "nativeAddress": 3638943
+      "nativeAddress": 3639326
     },
     {
       "originalAddress": 12927238,
       "compiledEntryTarget": 15953496,
-      "nativeAddress": 3638987
+      "nativeAddress": 3639370
     },
     {
       "originalAddress": 12927260,
       "compiledEntryTarget": 15953518,
-      "nativeAddress": 3639009
+      "nativeAddress": 3639392
     },
     {
       "originalAddress": 12927283,
       "compiledEntryTarget": 15953541,
-      "nativeAddress": 3639032
+      "nativeAddress": 3639415
     },
     {
       "originalAddress": 12927318,
       "compiledEntryTarget": 15953577,
-      "nativeAddress": 3639068
+      "nativeAddress": 3639451
     },
     {
       "originalAddress": 12927341,
       "compiledEntryTarget": 15953600,
-      "nativeAddress": 3639091
+      "nativeAddress": 3639474
     },
     {
       "originalAddress": 12927383,
       "compiledEntryTarget": 15953652,
-      "nativeAddress": 3639143
+      "nativeAddress": 3639526
     },
     {
       "originalAddress": 12927435,
       "compiledEntryTarget": 15953721,
-      "nativeAddress": 3639212
+      "nativeAddress": 3639595
     },
     {
       "originalAddress": 12927777,
       "compiledEntryTarget": 15954234,
-      "nativeAddress": 3639725
+      "nativeAddress": 3640108
     },
     {
       "originalAddress": 12927801,
       "compiledEntryTarget": 15954258,
-      "nativeAddress": 3639749
+      "nativeAddress": 3640132
     },
     {
       "originalAddress": 12927908,
       "compiledEntryTarget": 15954397,
-      "nativeAddress": 3639888
+      "nativeAddress": 3640271
     },
     {
       "originalAddress": 12927962,
       "compiledEntryTarget": 15954485,
-      "nativeAddress": 3639976
+      "nativeAddress": 3640359
     },
     {
       "originalAddress": 12927989,
       "compiledEntryTarget": 15954515,
-      "nativeAddress": 3640006
+      "nativeAddress": 3640389
     },
     {
       "originalAddress": 12928081,
       "compiledEntryTarget": 15954643,
-      "nativeAddress": 3640134
+      "nativeAddress": 3640517
     },
     {
       "originalAddress": 12928113,
       "compiledEntryTarget": 15954682,
-      "nativeAddress": 3640173
+      "nativeAddress": 3640556
     },
     {
       "originalAddress": 12928175,
       "compiledEntryTarget": 15954771,
-      "nativeAddress": 3640262
+      "nativeAddress": 3640645
     },
     {
       "originalAddress": 12928198,
       "compiledEntryTarget": 15954794,
-      "nativeAddress": 3640285
+      "nativeAddress": 3640668
     },
     {
       "originalAddress": 12928221,
       "compiledEntryTarget": 15954817,
-      "nativeAddress": 3640308
+      "nativeAddress": 3640691
     },
     {
       "originalAddress": 12928318,
       "compiledEntryTarget": 15954963,
-      "nativeAddress": 3640454
+      "nativeAddress": 3640837
     },
     {
       "originalAddress": 12928417,
       "compiledEntryTarget": 15955101,
-      "nativeAddress": 3640592
+      "nativeAddress": 3640975
     },
     {
       "originalAddress": 12928439,
       "compiledEntryTarget": 15955123,
-      "nativeAddress": 3640614
+      "nativeAddress": 3640997
     },
     {
       "originalAddress": 12928608,
       "compiledEntryTarget": 15955346,
-      "nativeAddress": 3640837
+      "nativeAddress": 3641220
     },
     {
       "originalAddress": 12928700,
       "compiledEntryTarget": 15955473,
-      "nativeAddress": 3640964
+      "nativeAddress": 3641347
     },
     {
       "originalAddress": 12928819,
       "compiledEntryTarget": 15955660,
-      "nativeAddress": 3641151
+      "nativeAddress": 3641534
     },
     {
       "originalAddress": 12928858,
       "compiledEntryTarget": 15955718,
-      "nativeAddress": 3641209
+      "nativeAddress": 3641592
     },
     {
       "originalAddress": 12928905,
       "compiledEntryTarget": 15955793,
-      "nativeAddress": 3641284
+      "nativeAddress": 3641667
     },
     {
       "originalAddress": 12928944,
       "compiledEntryTarget": 15955858,
-      "nativeAddress": 3641349
+      "nativeAddress": 3641732
     },
     {
       "originalAddress": 12928971,
       "compiledEntryTarget": 15955902,
-      "nativeAddress": 3641393
+      "nativeAddress": 3641776
     },
     {
       "originalAddress": 12929000,
       "compiledEntryTarget": 15955948,
-      "nativeAddress": 3641439
+      "nativeAddress": 3641822
     },
     {
       "originalAddress": 12929030,
       "compiledEntryTarget": 15955995,
-      "nativeAddress": 3641486
+      "nativeAddress": 3641869
     },
     {
       "originalAddress": 12929062,
       "compiledEntryTarget": 15956045,
-      "nativeAddress": 3641536
+      "nativeAddress": 3641919
     },
     {
       "originalAddress": 12929090,
       "compiledEntryTarget": 15956091,
-      "nativeAddress": 3641582
+      "nativeAddress": 3641965
     },
     {
       "originalAddress": 12929106,
       "compiledEntryTarget": 15956107,
-      "nativeAddress": 3641598
+      "nativeAddress": 3641981
     },
     {
       "originalAddress": 12929122,
       "compiledEntryTarget": 15956123,
-      "nativeAddress": 3641614
+      "nativeAddress": 3641997
     },
     {
       "originalAddress": 12929138,
       "compiledEntryTarget": 15956139,
-      "nativeAddress": 3641630
+      "nativeAddress": 3642013
     },
     {
       "originalAddress": 12929154,
       "compiledEntryTarget": 15956155,
-      "nativeAddress": 3641646
+      "nativeAddress": 3642029
     },
     {
       "originalAddress": 12929170,
       "compiledEntryTarget": 15956171,
-      "nativeAddress": 3641662
+      "nativeAddress": 3642045
     },
     {
       "originalAddress": 12929186,
       "compiledEntryTarget": 15956187,
-      "nativeAddress": 3641678
+      "nativeAddress": 3642061
     },
     {
       "originalAddress": 12929202,
       "compiledEntryTarget": 15956203,
-      "nativeAddress": 3641694
+      "nativeAddress": 3642077
     },
     {
       "originalAddress": 12929276,
       "compiledEntryTarget": 15956321,
-      "nativeAddress": 3641812
+      "nativeAddress": 3642195
     },
     {
       "originalAddress": 12929362,
       "compiledEntryTarget": 15956457,
-      "nativeAddress": 3641948
+      "nativeAddress": 3642331
     },
     {
       "originalAddress": 12929401,
       "compiledEntryTarget": 15956519,
-      "nativeAddress": 3642010
+      "nativeAddress": 3642393
     },
     {
       "originalAddress": 12929475,
       "compiledEntryTarget": 15956637,
-      "nativeAddress": 3642128
+      "nativeAddress": 3642511
     },
     {
       "originalAddress": 12929535,
       "compiledEntryTarget": 15956712,
-      "nativeAddress": 3642203
+      "nativeAddress": 3642586
     },
     {
       "originalAddress": 12929544,
       "compiledEntryTarget": 15956721,
-      "nativeAddress": 3642212
+      "nativeAddress": 3642595
     },
     {
       "originalAddress": 12929594,
       "compiledEntryTarget": 15956784,
-      "nativeAddress": 3642275
+      "nativeAddress": 3642658
     },
     {
       "originalAddress": 12929644,
       "compiledEntryTarget": 15956849,
-      "nativeAddress": 3642340
+      "nativeAddress": 3642723
     },
     {
       "originalAddress": 12929697,
       "compiledEntryTarget": 15956923,
-      "nativeAddress": 3642414
+      "nativeAddress": 3642797
     },
     {
       "originalAddress": 12929781,
       "compiledEntryTarget": 15957037,
-      "nativeAddress": 3642528
+      "nativeAddress": 3642911
     },
     {
       "originalAddress": 12929895,
       "compiledEntryTarget": 15957210,
-      "nativeAddress": 3642701
+      "nativeAddress": 3643084
     },
     {
       "originalAddress": 12929968,
       "compiledEntryTarget": 15957322,
-      "nativeAddress": 3642813
+      "nativeAddress": 3643196
     },
     {
       "originalAddress": 12930042,
       "compiledEntryTarget": 15957434,
-      "nativeAddress": 3642925
+      "nativeAddress": 3643308
     },
     {
       "originalAddress": 12930098,
       "compiledEntryTarget": 15957515,
-      "nativeAddress": 3643006
+      "nativeAddress": 3643389
     },
     {
       "originalAddress": 12930157,
       "compiledEntryTarget": 15957598,
-      "nativeAddress": 3643089
+      "nativeAddress": 3643472
     },
     {
       "originalAddress": 12930283,
       "compiledEntryTarget": 15957786,
-      "nativeAddress": 3643277
+      "nativeAddress": 3643660
     },
     {
       "originalAddress": 12930320,
       "compiledEntryTarget": 15957841,
-      "nativeAddress": 3643332
+      "nativeAddress": 3643715
     },
     {
       "originalAddress": 12930457,
       "compiledEntryTarget": 15958069,
-      "nativeAddress": 3643560
+      "nativeAddress": 3643943
     },
     {
       "originalAddress": 12930524,
       "compiledEntryTarget": 15958183,
-      "nativeAddress": 3643674
+      "nativeAddress": 3644057
     },
     {
       "originalAddress": 12930561,
       "compiledEntryTarget": 15958238,
-      "nativeAddress": 3643729
+      "nativeAddress": 3644112
     },
     {
       "originalAddress": 12930592,
       "compiledEntryTarget": 15958274,
-      "nativeAddress": 3643765
+      "nativeAddress": 3644148
     },
     {
       "originalAddress": 12930644,
       "compiledEntryTarget": 15958329,
-      "nativeAddress": 3643820
+      "nativeAddress": 3644203
     },
     {
       "originalAddress": 12930727,
       "compiledEntryTarget": 15958385,
-      "nativeAddress": 3643876
+      "nativeAddress": 3644259
     },
     {
       "originalAddress": 12930807,
       "compiledEntryTarget": 15958495,
-      "nativeAddress": 3643986
+      "nativeAddress": 3644369
     },
     {
       "originalAddress": 12930922,
       "compiledEntryTarget": 15958657,
-      "nativeAddress": 3644148
+      "nativeAddress": 3644531
     },
     {
       "originalAddress": 12930978,
       "compiledEntryTarget": 15958738,
-      "nativeAddress": 3644229
+      "nativeAddress": 3644612
     },
     {
       "originalAddress": 12931056,
       "compiledEntryTarget": 15958862,
-      "nativeAddress": 3644353
+      "nativeAddress": 3644736
     },
     {
       "originalAddress": 12931159,
       "compiledEntryTarget": 15959009,
-      "nativeAddress": 3644500
+      "nativeAddress": 3644883
     },
     {
       "originalAddress": 12931230,
       "compiledEntryTarget": 15959120,
-      "nativeAddress": 3644611
+      "nativeAddress": 3644994
     },
     {
       "originalAddress": 12931299,
       "compiledEntryTarget": 15959224,
-      "nativeAddress": 3644715
+      "nativeAddress": 3645098
     },
     {
       "originalAddress": 12931333,
       "compiledEntryTarget": 15959269,
-      "nativeAddress": 3644760
+      "nativeAddress": 3645143
     },
     {
       "originalAddress": 12931407,
       "compiledEntryTarget": 15959387,
-      "nativeAddress": 3644878
+      "nativeAddress": 3645261
     },
     {
       "originalAddress": 12931487,
       "compiledEntryTarget": 15959496,
-      "nativeAddress": 3644987
+      "nativeAddress": 3645370
     },
     {
       "originalAddress": 12931533,
       "compiledEntryTarget": 15959559,
-      "nativeAddress": 3645050
+      "nativeAddress": 3645433
     },
     {
       "originalAddress": 12931562,
       "compiledEntryTarget": 15959596,
-      "nativeAddress": 3645087
+      "nativeAddress": 3645470
     },
     {
       "originalAddress": 12931632,
       "compiledEntryTarget": 15959703,
-      "nativeAddress": 3645194
+      "nativeAddress": 3645577
     },
     {
       "originalAddress": 12931725,
       "compiledEntryTarget": 15959846,
-      "nativeAddress": 3645337
+      "nativeAddress": 3645720
     },
     {
       "originalAddress": 12931780,
       "compiledEntryTarget": 15959922,
-      "nativeAddress": 3645413
+      "nativeAddress": 3645796
     },
     {
       "originalAddress": 12932055,
       "compiledEntryTarget": 15960369,
-      "nativeAddress": 3645860
+      "nativeAddress": 3646243
     },
     {
       "originalAddress": 12932105,
       "compiledEntryTarget": 15960445,
-      "nativeAddress": 3645936
+      "nativeAddress": 3646319
     },
     {
       "originalAddress": 12932147,
       "compiledEntryTarget": 15960506,
-      "nativeAddress": 3645997
+      "nativeAddress": 3646380
     },
     {
       "originalAddress": 12932204,
       "compiledEntryTarget": 15960602,
-      "nativeAddress": 3646093
+      "nativeAddress": 3646476
     },
     {
       "originalAddress": 12932246,
       "compiledEntryTarget": 15960648,
-      "nativeAddress": 3646139
+      "nativeAddress": 3646522
     },
     {
       "originalAddress": 12932275,
       "compiledEntryTarget": 15960686,
-      "nativeAddress": 3646177
+      "nativeAddress": 3646560
     },
     {
       "originalAddress": 12932303,
       "compiledEntryTarget": 15960724,
-      "nativeAddress": 3646215
+      "nativeAddress": 3646598
     },
     {
       "originalAddress": 12932342,
       "compiledEntryTarget": 15960781,
-      "nativeAddress": 3646272
+      "nativeAddress": 3646655
     },
     {
       "originalAddress": 12932381,
       "compiledEntryTarget": 15960836,
-      "nativeAddress": 3646327
+      "nativeAddress": 3646710
     },
     {
       "originalAddress": 12932422,
       "compiledEntryTarget": 15960895,
-      "nativeAddress": 3646386
+      "nativeAddress": 3646769
     },
     {
       "originalAddress": 12932490,
       "compiledEntryTarget": 15960993,
-      "nativeAddress": 3646484
+      "nativeAddress": 3646867
     },
     {
       "originalAddress": 12932536,
       "compiledEntryTarget": 15961069,
-      "nativeAddress": 3646560
+      "nativeAddress": 3646943
     },
     {
       "originalAddress": 12932610,
       "compiledEntryTarget": 15961186,
-      "nativeAddress": 3646677
+      "nativeAddress": 3647060
     },
     {
       "originalAddress": 12932647,
       "compiledEntryTarget": 15961242,
-      "nativeAddress": 3646733
+      "nativeAddress": 3647116
     },
     {
       "originalAddress": 12932715,
       "compiledEntryTarget": 15961351,
-      "nativeAddress": 3646842
+      "nativeAddress": 3647225
     },
     {
       "originalAddress": 12932764,
       "compiledEntryTarget": 15961429,
-      "nativeAddress": 3646920
+      "nativeAddress": 3647303
     },
     {
       "originalAddress": 12932801,
       "compiledEntryTarget": 15961471,
-      "nativeAddress": 3646962
+      "nativeAddress": 3647345
     },
     {
       "originalAddress": 12932835,
       "compiledEntryTarget": 15961523,
-      "nativeAddress": 3647014
+      "nativeAddress": 3647397
     },
     {
       "originalAddress": 12932875,
       "compiledEntryTarget": 15961577,
-      "nativeAddress": 3647068
+      "nativeAddress": 3647451
     },
     {
       "originalAddress": 12932928,
       "compiledEntryTarget": 15961651,
-      "nativeAddress": 3647142
+      "nativeAddress": 3647525
     },
     {
       "originalAddress": 12932970,
       "compiledEntryTarget": 15961707,
-      "nativeAddress": 3647198
+      "nativeAddress": 3647581
     },
     {
       "originalAddress": 12933012,
       "compiledEntryTarget": 15961756,
-      "nativeAddress": 3647247
+      "nativeAddress": 3647630
     },
     {
       "originalAddress": 12933095,
       "compiledEntryTarget": 15961884,
-      "nativeAddress": 3647375
+      "nativeAddress": 3647758
     },
     {
       "originalAddress": 12933169,
       "compiledEntryTarget": 15961980,
-      "nativeAddress": 3647471
+      "nativeAddress": 3647854
     },
     {
       "originalAddress": 12933246,
       "compiledEntryTarget": 15962103,
-      "nativeAddress": 3647594
+      "nativeAddress": 3647977
     },
     {
       "originalAddress": 12933271,
       "compiledEntryTarget": 15962141,
-      "nativeAddress": 3647632
+      "nativeAddress": 3648015
     },
     {
       "originalAddress": 12933322,
       "compiledEntryTarget": 15962211,
-      "nativeAddress": 3647702
+      "nativeAddress": 3648085
     },
     {
       "originalAddress": 12933397,
       "compiledEntryTarget": 15962307,
-      "nativeAddress": 3647798
+      "nativeAddress": 3648181
     },
     {
       "originalAddress": 12933420,
       "compiledEntryTarget": 15962330,
-      "nativeAddress": 3647821
+      "nativeAddress": 3648204
     },
     {
       "originalAddress": 12933443,
       "compiledEntryTarget": 15962353,
-      "nativeAddress": 3647844
+      "nativeAddress": 3648227
     },
     {
       "originalAddress": 12933463,
       "compiledEntryTarget": 15962376,
-      "nativeAddress": 3647867
+      "nativeAddress": 3648250
     },
     {
       "originalAddress": 12933544,
       "compiledEntryTarget": 15962506,
-      "nativeAddress": 3647997
+      "nativeAddress": 3648380
     },
     {
       "originalAddress": 12933593,
       "compiledEntryTarget": 15962575,
-      "nativeAddress": 3648066
+      "nativeAddress": 3648449
     },
     {
       "originalAddress": 12933845,
       "compiledEntryTarget": 15962941,
-      "nativeAddress": 3648432
+      "nativeAddress": 3648815
     },
     {
       "originalAddress": 12933921,
       "compiledEntryTarget": 15963061,
-      "nativeAddress": 3648552
+      "nativeAddress": 3648935
     },
     {
       "originalAddress": 12934009,
       "compiledEntryTarget": 15963208,
-      "nativeAddress": 3648699
+      "nativeAddress": 3649082
     },
     {
       "originalAddress": 12934081,
       "compiledEntryTarget": 15963296,
-      "nativeAddress": 3648787
+      "nativeAddress": 3649170
     },
     {
       "originalAddress": 12934147,
       "compiledEntryTarget": 15963399,
-      "nativeAddress": 3648890
+      "nativeAddress": 3649273
     },
     {
       "originalAddress": 12934214,
       "compiledEntryTarget": 15963501,
-      "nativeAddress": 3648992
+      "nativeAddress": 3649375
     },
     {
       "originalAddress": 12934350,
       "compiledEntryTarget": 15963721,
-      "nativeAddress": 3649212
+      "nativeAddress": 3649595
     },
     {
       "originalAddress": 12934446,
       "compiledEntryTarget": 15963869,
-      "nativeAddress": 3649360
+      "nativeAddress": 3649743
     },
     {
       "originalAddress": 12934470,
       "compiledEntryTarget": 15963902,
-      "nativeAddress": 3649393
+      "nativeAddress": 3649776
     },
     {
       "originalAddress": 12934530,
       "compiledEntryTarget": 15963984,
-      "nativeAddress": 3649475
+      "nativeAddress": 3649858
     },
     {
       "originalAddress": 12934561,
       "compiledEntryTarget": 15964022,
-      "nativeAddress": 3649513
+      "nativeAddress": 3649896
     },
     {
       "originalAddress": 12934600,
       "compiledEntryTarget": 15964091,
-      "nativeAddress": 3649582
+      "nativeAddress": 3649965
     },
     {
       "originalAddress": 12934624,
       "compiledEntryTarget": 15964124,
-      "nativeAddress": 3649615
+      "nativeAddress": 3649998
     },
     {
       "originalAddress": 12934654,
       "compiledEntryTarget": 15964164,
-      "nativeAddress": 3649655
+      "nativeAddress": 3650038
     },
     {
       "originalAddress": 12934696,
       "compiledEntryTarget": 15964229,
-      "nativeAddress": 3649720
+      "nativeAddress": 3650103
     },
     {
       "originalAddress": 12934775,
       "compiledEntryTarget": 15964351,
-      "nativeAddress": 3649842
+      "nativeAddress": 3650225
     },
     {
       "originalAddress": 12934827,
       "compiledEntryTarget": 15964429,
-      "nativeAddress": 3649920
+      "nativeAddress": 3650303
     },
     {
       "originalAddress": 12934843,
       "compiledEntryTarget": 15964445,
-      "nativeAddress": 3649936
+      "nativeAddress": 3650319
     },
     {
       "originalAddress": 12934902,
       "compiledEntryTarget": 15964526,
-      "nativeAddress": 3650017
+      "nativeAddress": 3650400
     },
     {
       "originalAddress": 12934918,
       "compiledEntryTarget": 15964542,
-      "nativeAddress": 3650033
+      "nativeAddress": 3650416
     },
     {
       "originalAddress": 12934934,
       "compiledEntryTarget": 15964558,
-      "nativeAddress": 3650049
+      "nativeAddress": 3650432
     },
     {
       "originalAddress": 12934950,
       "compiledEntryTarget": 15964574,
-      "nativeAddress": 3650065
+      "nativeAddress": 3650448
     },
     {
       "originalAddress": 12934966,
       "compiledEntryTarget": 15964590,
-      "nativeAddress": 3650081
+      "nativeAddress": 3650464
     },
     {
       "originalAddress": 12935005,
       "compiledEntryTarget": 15964642,
-      "nativeAddress": 3650133
+      "nativeAddress": 3650516
     },
     {
       "originalAddress": 12935044,
       "compiledEntryTarget": 15964694,
-      "nativeAddress": 3650185
+      "nativeAddress": 3650568
     },
     {
       "originalAddress": 12935116,
       "compiledEntryTarget": 15964800,
-      "nativeAddress": 3650291
+      "nativeAddress": 3650674
     },
     {
       "originalAddress": 12935132,
       "compiledEntryTarget": 15964816,
-      "nativeAddress": 3650307
+      "nativeAddress": 3650690
     },
     {
       "originalAddress": 12935148,
       "compiledEntryTarget": 15964832,
-      "nativeAddress": 3650323
+      "nativeAddress": 3650706
     },
     {
       "originalAddress": 12935185,
       "compiledEntryTarget": 15964882,
-      "nativeAddress": 3650373
+      "nativeAddress": 3650756
     },
     {
       "originalAddress": 12935252,
       "compiledEntryTarget": 15964950,
-      "nativeAddress": 3650441
+      "nativeAddress": 3650824
     },
     {
       "originalAddress": 12935319,
       "compiledEntryTarget": 15965019,
-      "nativeAddress": 3650510
+      "nativeAddress": 3650893
     },
     {
       "originalAddress": 12935379,
       "compiledEntryTarget": 15965127,
-      "nativeAddress": 3650618
+      "nativeAddress": 3651001
     },
     {
       "originalAddress": 12935439,
       "compiledEntryTarget": 15965235,
-      "nativeAddress": 3650726
+      "nativeAddress": 3651109
     },
     {
       "originalAddress": 12935499,
       "compiledEntryTarget": 15965343,
-      "nativeAddress": 3650834
+      "nativeAddress": 3651217
     },
     {
       "originalAddress": 12935559,
       "compiledEntryTarget": 15965451,
-      "nativeAddress": 3650942
+      "nativeAddress": 3651325
     },
     {
       "originalAddress": 12935619,
       "compiledEntryTarget": 15965559,
-      "nativeAddress": 3651050
+      "nativeAddress": 3651433
     },
     {
       "originalAddress": 12935679,
       "compiledEntryTarget": 15965667,
-      "nativeAddress": 3651158
+      "nativeAddress": 3651541
     },
     {
       "originalAddress": 12935728,
       "compiledEntryTarget": 15965726,
-      "nativeAddress": 3651217
+      "nativeAddress": 3651600
     },
     {
       "originalAddress": 12935763,
       "compiledEntryTarget": 15965762,
-      "nativeAddress": 3651253
+      "nativeAddress": 3651636
     },
     {
       "originalAddress": 12935835,
       "compiledEntryTarget": 15965854,
-      "nativeAddress": 3651345
+      "nativeAddress": 3651728
     },
     {
       "originalAddress": 12935901,
       "compiledEntryTarget": 15965944,
-      "nativeAddress": 3651435
+      "nativeAddress": 3651818
     },
     {
       "originalAddress": 12935946,
       "compiledEntryTarget": 15965998,
-      "nativeAddress": 3651489
+      "nativeAddress": 3651872
     },
     {
       "originalAddress": 12936105,
       "compiledEntryTarget": 15966195,
-      "nativeAddress": 3651686
+      "nativeAddress": 3652069
     },
     {
       "originalAddress": 12936215,
       "compiledEntryTarget": 15966342,
-      "nativeAddress": 3651833
+      "nativeAddress": 3652216
     },
     {
       "originalAddress": 12936285,
       "compiledEntryTarget": 15966458,
-      "nativeAddress": 3651949
+      "nativeAddress": 3652332
     },
     {
       "originalAddress": 12936401,
       "compiledEntryTarget": 15966616,
-      "nativeAddress": 3652107
+      "nativeAddress": 3652490
     },
     {
       "originalAddress": 12936447,
       "compiledEntryTarget": 15966672,
-      "nativeAddress": 3652163
+      "nativeAddress": 3652546
     },
     {
       "originalAddress": 12936636,
       "compiledEntryTarget": 15966945,
-      "nativeAddress": 3652436
+      "nativeAddress": 3652819
     },
     {
       "originalAddress": 12936660,
       "compiledEntryTarget": 15966969,
-      "nativeAddress": 3652460
+      "nativeAddress": 3652843
     },
     {
       "originalAddress": 12936887,
       "compiledEntryTarget": 15967295,
-      "nativeAddress": 3652786
+      "nativeAddress": 3653169
     },
     {
       "originalAddress": 12937101,
       "compiledEntryTarget": 15967587,
-      "nativeAddress": 3653078
+      "nativeAddress": 3653461
     },
     {
       "originalAddress": 12937180,
       "compiledEntryTarget": 15967705,
-      "nativeAddress": 3653196
+      "nativeAddress": 3653579
     },
     {
       "originalAddress": 12937204,
       "compiledEntryTarget": 15967738,
-      "nativeAddress": 3653229
+      "nativeAddress": 3653612
     },
     {
       "originalAddress": 12937220,
       "compiledEntryTarget": 15967754,
-      "nativeAddress": 3653245
+      "nativeAddress": 3653628
     },
     {
       "originalAddress": 12937262,
       "compiledEntryTarget": 15967819,
-      "nativeAddress": 3653310
+      "nativeAddress": 3653693
     },
     {
       "originalAddress": 12937339,
       "compiledEntryTarget": 15967942,
-      "nativeAddress": 3653433
+      "nativeAddress": 3653816
     },
     {
       "originalAddress": 12937362,
       "compiledEntryTarget": 15967965,
-      "nativeAddress": 3653456
+      "nativeAddress": 3653839
     },
     {
       "originalAddress": 12937375,
       "compiledEntryTarget": 15967978,
-      "nativeAddress": 3653469
+      "nativeAddress": 3653852
     },
     {
       "originalAddress": 12937417,
       "compiledEntryTarget": 16407597,
-      "nativeAddress": 3670122
+      "nativeAddress": 3670617
     },
     {
       "originalAddress": 12937491,
       "compiledEntryTarget": 16407706,
-      "nativeAddress": 3670231
+      "nativeAddress": 3670726
     },
     {
       "originalAddress": 12937525,
       "compiledEntryTarget": 16407762,
-      "nativeAddress": 3670287
+      "nativeAddress": 3670782
     },
     {
       "originalAddress": 12937557,
       "compiledEntryTarget": 16407814,
-      "nativeAddress": 3670339
+      "nativeAddress": 3670834
     },
     {
       "originalAddress": 12937580,
       "compiledEntryTarget": 16407848,
-      "nativeAddress": 3670373
+      "nativeAddress": 3670868
     },
     {
       "originalAddress": 12937641,
       "compiledEntryTarget": 16407937,
-      "nativeAddress": 3670462
+      "nativeAddress": 3670957
     },
     {
       "originalAddress": 12937674,
       "compiledEntryTarget": 16407989,
-      "nativeAddress": 3670514
+      "nativeAddress": 3671009
     },
     {
       "originalAddress": 12937695,
       "compiledEntryTarget": 16408018,
-      "nativeAddress": 3670543
+      "nativeAddress": 3671038
     },
     {
       "originalAddress": 12937748,
       "compiledEntryTarget": 16408092,
-      "nativeAddress": 3670617
+      "nativeAddress": 3671112
     },
     {
       "originalAddress": 12937794,
       "compiledEntryTarget": 16408162,
-      "nativeAddress": 3670687
+      "nativeAddress": 3671182
     },
     {
       "originalAddress": 12937866,
       "compiledEntryTarget": 16408284,
-      "nativeAddress": 3670809
+      "nativeAddress": 3671304
     },
     {
       "originalAddress": 12937888,
       "compiledEntryTarget": 16408321,
-      "nativeAddress": 3670846
+      "nativeAddress": 3671341
     },
     {
       "originalAddress": 12937922,
       "compiledEntryTarget": 16408380,
-      "nativeAddress": 3670905
+      "nativeAddress": 3671400
     },
     {
       "originalAddress": 12937939,
       "compiledEntryTarget": 16408401,
-      "nativeAddress": 3670926
+      "nativeAddress": 3671421
     },
     {
       "originalAddress": 12937956,
       "compiledEntryTarget": 16408433,
-      "nativeAddress": 3670958
+      "nativeAddress": 3671453
     },
     {
       "originalAddress": 12937997,
       "compiledEntryTarget": 16408507,
-      "nativeAddress": 3671032
+      "nativeAddress": 3671527
     },
     {
       "originalAddress": 12938046,
       "compiledEntryTarget": 16408589,
-      "nativeAddress": 3671114
+      "nativeAddress": 3671609
     },
     {
       "originalAddress": 12938095,
       "compiledEntryTarget": 15968032,
-      "nativeAddress": 3653523
+      "nativeAddress": 3653906
     },
     {
       "originalAddress": 12938126,
       "compiledEntryTarget": 15968084,
-      "nativeAddress": 3653575
+      "nativeAddress": 3653958
     },
     {
       "originalAddress": 12938135,
       "compiledEntryTarget": 15968093,
-      "nativeAddress": 3653584
+      "nativeAddress": 3653967
     },
     {
       "originalAddress": 12938144,
       "compiledEntryTarget": 15968102,
-      "nativeAddress": 3653593
+      "nativeAddress": 3653976
     },
     {
       "originalAddress": 12938153,
       "compiledEntryTarget": 15968111,
-      "nativeAddress": 3653602
+      "nativeAddress": 3653985
     },
     {
       "originalAddress": 12938162,
       "compiledEntryTarget": 15968120,
-      "nativeAddress": 3653611
+      "nativeAddress": 3653994
     },
     {
       "originalAddress": 12938176,
       "compiledEntryTarget": 15968144,
-      "nativeAddress": 3653635
+      "nativeAddress": 3654018
     },
     {
       "originalAddress": 12938207,
       "compiledEntryTarget": 15968190,
-      "nativeAddress": 3653681
+      "nativeAddress": 3654064
     },
     {
       "originalAddress": 12938228,
       "compiledEntryTarget": 15968224,
-      "nativeAddress": 3653715
+      "nativeAddress": 3654098
     },
     {
       "originalAddress": 12938262,
       "compiledEntryTarget": 15968284,
-      "nativeAddress": 3653775
+      "nativeAddress": 3654158
     },
     {
       "originalAddress": 12938304,
       "compiledEntryTarget": 15968356,
-      "nativeAddress": 3653847
+      "nativeAddress": 3654230
     },
     {
       "originalAddress": 12938324,
       "compiledEntryTarget": 15968386,
-      "nativeAddress": 3653877
+      "nativeAddress": 3654260
     },
     {
       "originalAddress": 12938349,
       "compiledEntryTarget": 15968427,
-      "nativeAddress": 3653918
+      "nativeAddress": 3654301
     },
     {
       "originalAddress": 12938385,
       "compiledEntryTarget": 15968482,
-      "nativeAddress": 3653973
+      "nativeAddress": 3654356
     },
     {
       "originalAddress": 12938421,
       "compiledEntryTarget": 15968537,
-      "nativeAddress": 3654028
+      "nativeAddress": 3654411
     },
     {
       "originalAddress": 12938437,
       "compiledEntryTarget": 15968569,
-      "nativeAddress": 3654060
+      "nativeAddress": 3654443
     },
     {
       "originalAddress": 12938454,
       "compiledEntryTarget": 15968608,
-      "nativeAddress": 3654099
+      "nativeAddress": 3654482
     },
     {
       "originalAddress": 12938459,
       "compiledEntryTarget": 15968613,
-      "nativeAddress": 3654104
+      "nativeAddress": 3654487
     },
     {
       "originalAddress": 12938498,
       "compiledEntryTarget": 15968667,
-      "nativeAddress": 3654158
+      "nativeAddress": 3654541
     },
     {
       "originalAddress": 12938552,
       "compiledEntryTarget": 15968747,
-      "nativeAddress": 3654238
+      "nativeAddress": 3654621
     },
     {
       "originalAddress": 12938595,
       "compiledEntryTarget": 15968821,
-      "nativeAddress": 3654312
+      "nativeAddress": 3654695
     },
     {
       "originalAddress": 12938651,
       "compiledEntryTarget": 15968912,
-      "nativeAddress": 3654403
+      "nativeAddress": 3654786
     },
     {
       "originalAddress": 12938667,
       "compiledEntryTarget": 15968937,
-      "nativeAddress": 3654428
+      "nativeAddress": 3654811
     },
     {
       "originalAddress": 12938679,
       "compiledEntryTarget": 15968958,
-      "nativeAddress": 3654449
+      "nativeAddress": 3654832
     },
     {
       "originalAddress": 12938693,
       "compiledEntryTarget": 15968976,
-      "nativeAddress": 3654467
+      "nativeAddress": 3654850
     },
     {
       "originalAddress": 12938717,
       "compiledEntryTarget": 15969019,
-      "nativeAddress": 3654510
+      "nativeAddress": 3654893
     },
     {
       "originalAddress": 12938739,
@@ -2400,7 +3430,7 @@
     {
       "originalAddress": 12943360,
       "compiledEntryTarget": 16513613,
-      "nativeAddress": 3662206
+      "nativeAddress": 3662589
     },
     {
       "originalAddress": 12943395,
@@ -4643,6 +5673,11 @@
       "nativeAddress": 3200021
     },
     {
+      "originalAddress": 12968567,
+      "compiledEntryTarget": 16526962,
+      "nativeAddress": 3632061
+    },
+    {
       "originalAddress": 12968624,
       "compiledEntryTarget": 16496022,
       "nativeAddress": 3200101
@@ -4688,6 +5723,11 @@
       "nativeAddress": 3200171
     },
     {
+      "originalAddress": 12968695,
+      "compiledEntryTarget": 16527063,
+      "nativeAddress": 3632162
+    },
+    {
       "originalAddress": 12968724,
       "compiledEntryTarget": 16496127,
       "nativeAddress": 3200206
@@ -4731,6 +5771,11 @@
       "originalAddress": 12968805,
       "compiledEntryTarget": 16496194,
       "nativeAddress": 3200273
+    },
+    {
+      "originalAddress": 12968814,
+      "compiledEntryTarget": 16526816,
+      "nativeAddress": 3631915
     },
     {
       "originalAddress": 12968826,
@@ -13328,6 +14373,11 @@
       "nativeAddress": 3387782
     },
     {
+      "originalAddress": 13092674,
+      "compiledEntryTarget": 16526773,
+      "nativeAddress": 3631872
+    },
+    {
       "originalAddress": 13092705,
       "compiledEntryTarget": 16229627,
       "nativeAddress": 3387955
@@ -13590,7 +14640,7 @@
     {
       "originalAddress": 13097287,
       "compiledEntryTarget": 16531824,
-      "nativeAddress": 3654550
+      "nativeAddress": 3654933
     },
     {
       "originalAddress": 13097304,
@@ -24085,262 +25135,262 @@
     {
       "originalAddress": 15683104,
       "compiledEntryTarget": 16408639,
-      "nativeAddress": 3671164
+      "nativeAddress": 3671659
     },
     {
       "originalAddress": 15683128,
       "compiledEntryTarget": 16408683,
-      "nativeAddress": 3671208
+      "nativeAddress": 3671703
     },
     {
       "originalAddress": 15683153,
       "compiledEntryTarget": 16408728,
-      "nativeAddress": 3671253
+      "nativeAddress": 3671748
     },
     {
       "originalAddress": 15683178,
       "compiledEntryTarget": 16408773,
-      "nativeAddress": 3671298
+      "nativeAddress": 3671793
     },
     {
       "originalAddress": 15683203,
       "compiledEntryTarget": 16408818,
-      "nativeAddress": 3671343
+      "nativeAddress": 3671838
     },
     {
       "originalAddress": 15683225,
       "compiledEntryTarget": 16408856,
-      "nativeAddress": 3671381
+      "nativeAddress": 3671876
     },
     {
       "originalAddress": 15683248,
       "compiledEntryTarget": 16408895,
-      "nativeAddress": 3671420
+      "nativeAddress": 3671915
     },
     {
       "originalAddress": 15683271,
       "compiledEntryTarget": 16408934,
-      "nativeAddress": 3671459
+      "nativeAddress": 3671954
     },
     {
       "originalAddress": 15683294,
       "compiledEntryTarget": 16408973,
-      "nativeAddress": 3671498
+      "nativeAddress": 3671993
     },
     {
       "originalAddress": 15683334,
       "compiledEntryTarget": 16409030,
-      "nativeAddress": 3671555
+      "nativeAddress": 3672050
     },
     {
       "originalAddress": 15683374,
       "compiledEntryTarget": 16409087,
-      "nativeAddress": 3671612
+      "nativeAddress": 3672107
     },
     {
       "originalAddress": 15683414,
       "compiledEntryTarget": 16409144,
-      "nativeAddress": 3671669
+      "nativeAddress": 3672164
     },
     {
       "originalAddress": 15683454,
       "compiledEntryTarget": 16409201,
-      "nativeAddress": 3671726
+      "nativeAddress": 3672221
     },
     {
       "originalAddress": 15683494,
       "compiledEntryTarget": 16409268,
-      "nativeAddress": 3671793
+      "nativeAddress": 3672288
     },
     {
       "originalAddress": 15683548,
       "compiledEntryTarget": 16409354,
-      "nativeAddress": 3671879
+      "nativeAddress": 3672374
     },
     {
       "originalAddress": 15683603,
       "compiledEntryTarget": 16409442,
-      "nativeAddress": 3671967
+      "nativeAddress": 3672462
     },
     {
       "originalAddress": 15683657,
       "compiledEntryTarget": 16409529,
-      "nativeAddress": 3672054
+      "nativeAddress": 3672549
     },
     {
       "originalAddress": 15683691,
       "compiledEntryTarget": 16409582,
-      "nativeAddress": 3672107
+      "nativeAddress": 3672602
     },
     {
       "originalAddress": 15683759,
       "compiledEntryTarget": 16409689,
-      "nativeAddress": 3672214
+      "nativeAddress": 3672709
     },
     {
       "originalAddress": 15683809,
       "compiledEntryTarget": 16409754,
-      "nativeAddress": 3672279
+      "nativeAddress": 3672774
     },
     {
       "originalAddress": 15683889,
       "compiledEntryTarget": 16409874,
-      "nativeAddress": 3672399
+      "nativeAddress": 3672894
     },
     {
       "originalAddress": 15683922,
       "compiledEntryTarget": 16409932,
-      "nativeAddress": 3672457
+      "nativeAddress": 3672952
     },
     {
       "originalAddress": 15683955,
       "compiledEntryTarget": 16409990,
-      "nativeAddress": 3672515
+      "nativeAddress": 3673010
     },
     {
       "originalAddress": 15683977,
       "compiledEntryTarget": 16410022,
-      "nativeAddress": 3672547
+      "nativeAddress": 3673042
     },
     {
       "originalAddress": 15683999,
       "compiledEntryTarget": 16410054,
-      "nativeAddress": 3672579
+      "nativeAddress": 3673074
     },
     {
       "originalAddress": 15684027,
       "compiledEntryTarget": 16410097,
-      "nativeAddress": 3672622
+      "nativeAddress": 3673117
     },
     {
       "originalAddress": 15684047,
       "compiledEntryTarget": 16410127,
-      "nativeAddress": 3672652
+      "nativeAddress": 3673147
     },
     {
       "originalAddress": 15684080,
       "compiledEntryTarget": 16410173,
-      "nativeAddress": 3672698
+      "nativeAddress": 3673193
     },
     {
       "originalAddress": 15684153,
       "compiledEntryTarget": 16410289,
-      "nativeAddress": 3672814
+      "nativeAddress": 3673309
     },
     {
       "originalAddress": 15684261,
       "compiledEntryTarget": 16410457,
-      "nativeAddress": 3672982
+      "nativeAddress": 3673477
     },
     {
       "originalAddress": 15684353,
       "compiledEntryTarget": 16410608,
-      "nativeAddress": 3673133
+      "nativeAddress": 3673628
     },
     {
       "originalAddress": 15684449,
       "compiledEntryTarget": 16410766,
-      "nativeAddress": 3673291
+      "nativeAddress": 3673786
     },
     {
       "originalAddress": 15684544,
       "compiledEntryTarget": 16410922,
-      "nativeAddress": 3673447
+      "nativeAddress": 3673942
     },
     {
       "originalAddress": 15684648,
       "compiledEntryTarget": 16411097,
-      "nativeAddress": 3673622
+      "nativeAddress": 3674117
     },
     {
       "originalAddress": 15684751,
       "compiledEntryTarget": 16411270,
-      "nativeAddress": 3673795
+      "nativeAddress": 3674290
     },
     {
       "originalAddress": 15684838,
       "compiledEntryTarget": 16411401,
-      "nativeAddress": 3673926
+      "nativeAddress": 3674421
     },
     {
       "originalAddress": 15684924,
       "compiledEntryTarget": 16411530,
-      "nativeAddress": 3674055
+      "nativeAddress": 3674550
     },
     {
       "originalAddress": 15685024,
       "compiledEntryTarget": 16411690,
-      "nativeAddress": 3674215
+      "nativeAddress": 3674710
     },
     {
       "originalAddress": 15685123,
       "compiledEntryTarget": 16411848,
-      "nativeAddress": 3674373
+      "nativeAddress": 3674868
     },
     {
       "originalAddress": 15685166,
       "compiledEntryTarget": 16411925,
-      "nativeAddress": 3674450
+      "nativeAddress": 3674945
     },
     {
       "originalAddress": 15685208,
       "compiledEntryTarget": 16412000,
-      "nativeAddress": 3674525
+      "nativeAddress": 3675020
     },
     {
       "originalAddress": 15685255,
       "compiledEntryTarget": 16412082,
-      "nativeAddress": 3674607
+      "nativeAddress": 3675102
     },
     {
       "originalAddress": 15685305,
       "compiledEntryTarget": 16412166,
-      "nativeAddress": 3674691
+      "nativeAddress": 3675186
     },
     {
       "originalAddress": 15685328,
       "compiledEntryTarget": 16412198,
-      "nativeAddress": 3674723
+      "nativeAddress": 3675218
     },
     {
       "originalAddress": 15685355,
       "compiledEntryTarget": 16412239,
-      "nativeAddress": 3674764
+      "nativeAddress": 3675259
     },
     {
       "originalAddress": 15685394,
       "compiledEntryTarget": 16412303,
-      "nativeAddress": 3674828
+      "nativeAddress": 3675323
     },
     {
       "originalAddress": 15685433,
       "compiledEntryTarget": 16412368,
-      "nativeAddress": 3674893
+      "nativeAddress": 3675388
     },
     {
       "originalAddress": 15685454,
       "compiledEntryTarget": 16412396,
-      "nativeAddress": 3674921
+      "nativeAddress": 3675416
     },
     {
       "originalAddress": 15685478,
       "compiledEntryTarget": 16412426,
-      "nativeAddress": 3674951
+      "nativeAddress": 3675446
     },
     {
       "originalAddress": 15685495,
       "compiledEntryTarget": 16412457,
-      "nativeAddress": 3674982
+      "nativeAddress": 3675477
     },
     {
       "originalAddress": 15685515,
       "compiledEntryTarget": 16412497,
-      "nativeAddress": 3675022
+      "nativeAddress": 3675517
     },
     {
       "originalAddress": 15685550,
       "compiledEntryTarget": 16412555,
-      "nativeAddress": 3675080
+      "nativeAddress": 3675575
     },
     {
       "originalAddress": 15685611,
@@ -25860,212 +26910,212 @@
     {
       "originalAddress": 15697219,
       "compiledEntryTarget": 16512342,
-      "nativeAddress": 3668855
+      "nativeAddress": 3669350
     },
     {
       "originalAddress": 15697256,
       "compiledEntryTarget": 16512381,
-      "nativeAddress": 3668894
+      "nativeAddress": 3669389
     },
     {
       "originalAddress": 15697278,
       "compiledEntryTarget": 16512405,
-      "nativeAddress": 3668918
+      "nativeAddress": 3669413
     },
     {
       "originalAddress": 15697484,
       "compiledEntryTarget": 16512611,
-      "nativeAddress": 3669124
+      "nativeAddress": 3669619
     },
     {
       "originalAddress": 15697518,
       "compiledEntryTarget": 16512645,
-      "nativeAddress": 3669158
+      "nativeAddress": 3669653
     },
     {
       "originalAddress": 15697560,
       "compiledEntryTarget": 16512687,
-      "nativeAddress": 3669200
+      "nativeAddress": 3669695
     },
     {
       "originalAddress": 15697634,
       "compiledEntryTarget": 16512761,
-      "nativeAddress": 3669274
+      "nativeAddress": 3669769
     },
     {
       "originalAddress": 15697738,
       "compiledEntryTarget": 16512865,
-      "nativeAddress": 3669378
+      "nativeAddress": 3669873
     },
     {
       "originalAddress": 15697759,
       "compiledEntryTarget": 16512886,
-      "nativeAddress": 3669399
+      "nativeAddress": 3669894
     },
     {
       "originalAddress": 15697783,
       "compiledEntryTarget": 16512910,
-      "nativeAddress": 3669423
+      "nativeAddress": 3669918
     },
     {
       "originalAddress": 15697807,
       "compiledEntryTarget": 16512934,
-      "nativeAddress": 3669447
+      "nativeAddress": 3669942
     },
     {
       "originalAddress": 15697836,
       "compiledEntryTarget": 16512963,
-      "nativeAddress": 3669476
+      "nativeAddress": 3669971
     },
     {
       "originalAddress": 15697859,
       "compiledEntryTarget": 16512986,
-      "nativeAddress": 3669499
+      "nativeAddress": 3669994
     },
     {
       "originalAddress": 15697882,
       "compiledEntryTarget": 16513009,
-      "nativeAddress": 3669522
+      "nativeAddress": 3670017
     },
     {
       "originalAddress": 15697908,
       "compiledEntryTarget": 16513035,
-      "nativeAddress": 3669548
+      "nativeAddress": 3670043
     },
     {
       "originalAddress": 15697940,
       "compiledEntryTarget": 16513067,
-      "nativeAddress": 3669580
+      "nativeAddress": 3670075
     },
     {
       "originalAddress": 15697955,
       "compiledEntryTarget": 16513082,
-      "nativeAddress": 3669595
+      "nativeAddress": 3670090
     },
     {
       "originalAddress": 15697975,
       "compiledEntryTarget": 16513102,
-      "nativeAddress": 3669615
+      "nativeAddress": 3670110
     },
     {
       "originalAddress": 15697981,
       "compiledEntryTarget": 16513108,
-      "nativeAddress": 3669621
+      "nativeAddress": 3670116
     },
     {
       "originalAddress": 15697991,
       "compiledEntryTarget": 16513118,
-      "nativeAddress": 3669631
+      "nativeAddress": 3670126
     },
     {
       "originalAddress": 15698001,
       "compiledEntryTarget": 16513128,
-      "nativeAddress": 3669641
+      "nativeAddress": 3670136
     },
     {
       "originalAddress": 15698024,
       "compiledEntryTarget": 16513151,
-      "nativeAddress": 3669664
+      "nativeAddress": 3670159
     },
     {
       "originalAddress": 15698050,
       "compiledEntryTarget": 16513177,
-      "nativeAddress": 3669690
+      "nativeAddress": 3670185
     },
     {
       "originalAddress": 15698104,
       "compiledEntryTarget": 16513231,
-      "nativeAddress": 3669744
+      "nativeAddress": 3670239
     },
     {
       "originalAddress": 15698156,
       "compiledEntryTarget": 16513369,
-      "nativeAddress": 3669878
+      "nativeAddress": 3670373
     },
     {
       "originalAddress": 15698166,
       "compiledEntryTarget": 16513379,
-      "nativeAddress": 3669888
+      "nativeAddress": 3670383
     },
     {
       "originalAddress": 15698176,
       "compiledEntryTarget": 16513389,
-      "nativeAddress": 3669898
+      "nativeAddress": 3670393
     },
     {
       "originalAddress": 15698186,
       "compiledEntryTarget": 16513399,
-      "nativeAddress": 3669908
+      "nativeAddress": 3670403
     },
     {
       "originalAddress": 15698196,
       "compiledEntryTarget": 16513409,
-      "nativeAddress": 3669918
+      "nativeAddress": 3670413
     },
     {
       "originalAddress": 15698206,
       "compiledEntryTarget": 16513419,
-      "nativeAddress": 3669928
+      "nativeAddress": 3670423
     },
     {
       "originalAddress": 15698216,
       "compiledEntryTarget": 16513429,
-      "nativeAddress": 3669938
+      "nativeAddress": 3670433
     },
     {
       "originalAddress": 15698226,
       "compiledEntryTarget": 16513439,
-      "nativeAddress": 3669948
+      "nativeAddress": 3670443
     },
     {
       "originalAddress": 15698236,
       "compiledEntryTarget": 16513449,
-      "nativeAddress": 3669958
+      "nativeAddress": 3670453
     },
     {
       "originalAddress": 15698252,
       "compiledEntryTarget": 16513465,
-      "nativeAddress": 3669974
+      "nativeAddress": 3670469
     },
     {
       "originalAddress": 15698268,
       "compiledEntryTarget": 16513481,
-      "nativeAddress": 3669990
+      "nativeAddress": 3670485
     },
     {
       "originalAddress": 15698284,
       "compiledEntryTarget": 16513497,
-      "nativeAddress": 3670006
+      "nativeAddress": 3670501
     },
     {
       "originalAddress": 15698300,
       "compiledEntryTarget": 16513513,
-      "nativeAddress": 3670022
+      "nativeAddress": 3670517
     },
     {
       "originalAddress": 15698316,
       "compiledEntryTarget": 16513529,
-      "nativeAddress": 3670038
+      "nativeAddress": 3670533
     },
     {
       "originalAddress": 15698332,
       "compiledEntryTarget": 16513545,
-      "nativeAddress": 3670054
+      "nativeAddress": 3670549
     },
     {
       "originalAddress": 15698348,
       "compiledEntryTarget": 16513561,
-      "nativeAddress": 3670070
+      "nativeAddress": 3670565
     },
     {
       "originalAddress": 15698364,
       "compiledEntryTarget": 16513577,
-      "nativeAddress": 3670086
+      "nativeAddress": 3670581
     },
     {
       "originalAddress": 15698382,
       "compiledEntryTarget": 16513595,
-      "nativeAddress": 3670104
+      "nativeAddress": 3670599
     },
     {
       "originalAddress": 15698400,
@@ -26920,6 +27970,18 @@
       "parameterBytes": 0
     },
     {
+      "address": 16527212,
+      "names": [
+        "goods_menu_equip.ASM_Unequip"
+      ],
+      "returnType": 2,
+      "calls": 1,
+      "nativeStatus": "typed-adapter-pending-validation",
+      "id": 17,
+      "name": "unequip_goods",
+      "parameterBytes": 2
+    },
+    {
       "address": 16529402,
       "names": [
         "cc_effects.doFadeOut"
@@ -27112,6 +28174,22 @@
       "kind": "separate-text-format"
     },
     {
+      "module": "goods_menu_equip",
+      "labels": [
+        "CompareResToArg"
+      ],
+      "address": 16527156,
+      "kind": "assembly"
+    },
+    {
+      "module": "goods_menu_equip",
+      "labels": [
+        "ASM_Unequip"
+      ],
+      "address": 16527212,
+      "kind": "assembly"
+    },
+    {
       "module": "item_determiners",
       "labels": [
         "CC_ItemDeterminer"
@@ -27141,6 +28219,590 @@
         "CC_Close_Custom_Windows"
       ],
       "address": 16412652,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Close_Main_Equipment_List"
+      ],
+      "address": 16440716,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Close_Equipment_Window"
+      ],
+      "address": 16440739,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Equip_Routine_Edit1"
+      ],
+      "address": 16440772,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "NOROOM"
+      ],
+      "address": 16440905,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Offense"
+      ],
+      "address": 16441040,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Defense"
+      ],
+      "address": 16441205,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Speed"
+      ],
+      "address": 16441399,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Guts"
+      ],
+      "address": 16441583,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Luck"
+      ],
+      "address": 16441767,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "NOROOM_End"
+      ],
+      "address": 16441969,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "New_Resistance_Window_Display"
+      ],
+      "address": 16441981,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "NewEquipmentStats"
+      ],
+      "address": 16443265,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "NewEquipmentStats_Skip"
+      ],
+      "address": 16443313,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "NewEquipmentStats_CheckIfZero"
+      ],
+      "address": 16443317,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Check_Equipment_Type"
+      ],
+      "address": 16443406,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Arms_Resistance"
+      ],
+      "address": 16443454,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Body_Other_Resistance"
+      ],
+      "address": 16443465,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Fire_Resistance"
+      ],
+      "address": 16443494,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Freeze_Resistance"
+      ],
+      "address": 16443504,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Flash_Resistance"
+      ],
+      "address": 16443516,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Paralysis_Resistance"
+      ],
+      "address": 16443530,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Elemental_Rank_Display"
+      ],
+      "address": 16443546,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_0_Check"
+      ],
+      "address": 16443575,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Check"
+      ],
+      "address": 16443583,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Check"
+      ],
+      "address": 16443591,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_3_Check"
+      ],
+      "address": 16443599,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Elemental_Rank_Display2"
+      ],
+      "address": 16443607,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_0_Val_Display"
+      ],
+      "address": 16443636,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Val_Display"
+      ],
+      "address": 16443646,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Val_Display_30"
+      ],
+      "address": 16443685,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Val_Display_35"
+      ],
+      "address": 16443695,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Val_Display"
+      ],
+      "address": 16443705,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Val_Display_60"
+      ],
+      "address": 16443744,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Val_Display_65"
+      ],
+      "address": 16443754,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_3_Val_Display"
+      ],
+      "address": 16443764,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_3_Val_Display_95"
+      ],
+      "address": 16443803,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_0_Elemental"
+      ],
+      "address": 16443813,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Display_Normally"
+      ],
+      "address": 16443819,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Display_Max"
+      ],
+      "address": 16443825,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Display_Normally"
+      ],
+      "address": 16443831,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Display_Max"
+      ],
+      "address": 16443837,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_3_Display_Normally"
+      ],
+      "address": 16443843,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Status_Rank_Display"
+      ],
+      "address": 16443849,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_0_Status_Check"
+      ],
+      "address": 16443878,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Status_Check"
+      ],
+      "address": 16443886,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Status_Check"
+      ],
+      "address": 16443894,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_3_Status_Check"
+      ],
+      "address": 16443902,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Status_Rank_Display2"
+      ],
+      "address": 16443910,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_0_Status_Val_Display"
+      ],
+      "address": 16443939,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Status_Val_Display"
+      ],
+      "address": 16443949,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Status_Val_Display_50"
+      ],
+      "address": 16443988,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Status_Val_Display_40"
+      ],
+      "address": 16443998,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Status_Val_Display_10"
+      ],
+      "address": 16444008,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Status_Val_Display"
+      ],
+      "address": 16444018,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Status_Val_Display_90"
+      ],
+      "address": 16444057,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_3_Status_Val_Display"
+      ],
+      "address": 16444067,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_3_Status_Val_Display_100"
+      ],
+      "address": 16444106,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_0_Status"
+      ],
+      "address": 16444116,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Status_Display_Normally1"
+      ],
+      "address": 16444122,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Status_Display_Normally2"
+      ],
+      "address": 16444128,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_1_Status_Display_Max"
+      ],
+      "address": 16444134,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_2_Status_Display_Normally"
+      ],
+      "address": 16444140,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Rank_3_Status_Display_Normally"
+      ],
+      "address": 16444146,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "To_Orig_Code"
+      ],
+      "address": 16444152,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "NewEquipmentStats_End"
+      ],
+      "address": 16444167,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "NewEquipmentStatsOutput"
+      ],
+      "address": 16444168,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "NewEquipmentStatsOutput_Elemental"
+      ],
+      "address": 16444257,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Print_Number"
+      ],
+      "address": 16444358,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Calculate_Brainshock_Res"
+      ],
+      "address": 16444565,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Open_Money_Window"
+      ],
+      "address": 16444614,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "UnknownJSRSubroutine6"
+      ],
+      "address": 16444663,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Title_Stats_Window"
+      ],
+      "address": 16444710,
+      "kind": "assembly"
+    },
+    {
+      "module": "new_stats_equipment",
+      "labels": [
+        "Title_Resistance_Window"
+      ],
+      "address": 16444747,
       "kind": "assembly"
     },
     {

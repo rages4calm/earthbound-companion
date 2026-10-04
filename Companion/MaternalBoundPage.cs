@@ -2,7 +2,7 @@ namespace EarthBoundCompanion;
 
 sealed partial class MainForm {
  void MaternalBoundPage(){
-  Header("MaternalBound goes native.","The project is converting MaternalBound Redux into the PC edition—not merely running its ROM patch through an emulator.");
+  Header("MaternalBound goes native.","Build a separate development edition from your own ROM. Gameplay runs through the native PC engine.");
 
   var statusCard=new TableLayoutPanel(){Height=88,ColumnCount=2,RowCount=1,BackColor=Theme.Surface,Padding=new Padding(18,13,18,13),Margin=new Padding(0,4,0,14)};
   statusCard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,72));statusCard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,28));
@@ -14,15 +14,21 @@ sealed partial class MainForm {
   Section("The edition we are building");
   page.Controls.Add(Theme.Text("MaternalBound Redux's restored writing, presentation and fixes · Native x64 gameplay · HD and ultrawide output · MSU music · PC controls and settings · QoL profiles · Safe randomized adventures",11));
 
-  var stages=new TableLayoutPanel(){Height=180,ColumnCount=2,RowCount=1,Margin=new Padding(0,4,0,8)};
+  var stages=new TableLayoutPanel(){Height=210,ColumnCount=2,RowCount=1,Margin=new Padding(0,4,0,8)};
   stages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,50));stages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,50));
-  stages.Controls.Add(PortCard("WORKING NOW",Theme.Green,"Official Redux source builds locally\nNative conversion bridge and asset inventory\n190 script modules and 7,840 labels indexed\nVersioned asset, save and seed profiles\nRandomizer rejects unaudited content"),0,0);
-  stages.Controls.Add(PortCard("BEING CONVERTED",Theme.Gold,"Rewritten dialogue and event scripts\nRedux graphics, data and encounter changes\n65816 assembly behavior in native C\nMaternalBound progression policy\nStart-to-ending gameplay verification"),1,0);
+  stages.Controls.Add(PortCard("VERIFIED CHECKPOINT",Theme.Green,"7,397 converted dialogue spans\nNative shops, equipment and Jeff's Tools\nTitles, narration, cast and all 32 photos\n191 SPC tracks and 68 PSI effects\n1,000 seeds and 30 option combinations\nReproducible owner-ROM conversion"),0,0);
+  stages.Controls.Add(PortCard("STILL UNDER TEST",Theme.Gold,"Complete story and randomized playthroughs\nLater event and cutscene interactions\nRemaining assembly feature audit\nEvery music transition and combat effect\nOriginal and Redux saves stay separate\nThis is a development edition"),1,0);
   page.Controls.Add(stages);
 
   Section("Story Shuffle v3");
-  page.Controls.Add(Theme.Text("Every seed is tied to its exact game edition, asset hash, safety policy and save folder. MaternalBound generation stays locked until its native data and progression audit are complete, protecting adventures from mixed-version saves and known progression failures.",11,Theme.Muted));
-  page.Controls.Add(Theme.Text("Current public test build: original EarthBound story. MaternalBound Redux gameplay will be enabled only after the native conversion and its safety checks pass.",10,Theme.Muted));
+  page.Controls.Add(Theme.Text("Redux's audited profile protects 110 story or trade items and 84 enemy records. Scripts, routes, bosses and required sources stay fixed. Seeds have their own saves. These checks passed; a full randomized playthrough remains unverified.",11,Theme.Muted));
+  var build=Theme.Button(ReduxProfileService.Ready?"Use Redux test edition":"Build Redux test edition",()=>Try(()=>{
+   if(Running||generating)return;
+   if(!ReduxProfileService.Ready){OpenReduxSetup();return;}
+   ReduxProfileService.Select(settings);ShowPage("Solo Play");Notify("Redux development profile selected. Its story saves and seeds stay separate.");
+  }),true);build.Enabled=!Running&&!generating;build.Width=240;
+  var original=Theme.Button("Use original EarthBound",()=>Try(()=>{if(Running||generating)return;settings.AssetPack="";settings.ReduxDevelopmentEnabled=false;settings.Save();ShowPage("Solo Play");Notify("Original EarthBound selected. Its existing saves are preserved.");}));original.Enabled=!Running&&!generating;original.Width=240;Actions(build,original);
+  page.Controls.Add(Theme.Text("The older v0.4 preview contains original EarthBound. This source build's Redux profile is experimental and does not claim complete MaternalBound compatibility.",10,Theme.Muted));
  }
 
  static Panel PortCard(string title,Color color,string body){

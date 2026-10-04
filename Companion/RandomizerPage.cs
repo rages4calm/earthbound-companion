@@ -33,6 +33,7 @@ sealed partial class MainForm {
   if(activeSeed!=null&&Running)page.Controls.Add(Theme.Text("Playing seed "+activeSeed.Seed+" · F1 settings apply to this session.",11,Theme.Green));
   Section("Your seed library");
   var seeds=StoryShuffle.List();
+  if(File.Exists(settings.Pak)){string hash=StoryShuffle.HashFile(settings.Pak);seeds=seeds.Where(seed=>seed.BaseHash.Equals(hash,StringComparison.OrdinalIgnoreCase)).ToArray();}
   if(seeds.Count>0) {
    var list=new ComboBox {DropDownStyle=ComboBoxStyle.DropDownList,DrawMode=DrawMode.OwnerDrawFixed,ItemHeight=24,Font=Theme.Font(11),BackColor=Theme.Surface,ForeColor=Theme.Ink,AccessibleName="Saved randomizer seeds"};
    list.DrawItem+=(_,e)=>{using var brush=new SolidBrush(Theme.Surface);e.Graphics.FillRectangle(brush,e.Bounds);if(e.Index>=0)TextRenderer.DrawText(e.Graphics,list.Items[e.Index]!.ToString(),list.Font,e.Bounds,(e.State&DrawItemState.Selected)!=0?Theme.Gold:Theme.Ink,TextFormatFlags.Left|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis);e.DrawFocusRectangle();};

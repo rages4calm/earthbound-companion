@@ -1,0 +1,66 @@
+{
+  "status": "development-only",
+  "nativeExeSha256": "9DA5F8F6F38FA35D5585420BCF2AF653C3B3937D5C1D6AEEAD5D2496A4EBCD6B",
+  "assetPackSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
+  "tests": [
+    {
+      "test": "cast-complete",
+      "frames": 12531,
+      "passed": true
+    },
+    {
+      "test": "cast-cold-restore-complete",
+      "frames": 10531,
+      "passed": true
+    },
+    {
+      "test": "cast-cold-render",
+      "passed": true,
+      "resolution": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "test": "credits-complete",
+      "frames": 20113,
+      "passed": true
+    },
+    {
+      "test": "credits-cold-restore-complete",
+      "frames": 18113,
+      "passed": true
+    },
+    {
+      "test": "credits-cold-render",
+      "passed": true,
+      "resolution": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "test": "credits-all-photos-complete",
+      "frames": 20066,
+      "passed": true,
+      "photosRendered": 32
+    },
+    {
+      "test": "credits-all-photos-cold-restore-complete",
+      "frames": 18066,
+      "passed": true
+    },
+    {
+      "test": "credits-all-photos-cold-render",
+      "passed": true,
+      "resolution": [
+        1920,
+        1080
+      ]
+    }
+  ],
+  "limitations": [
+    "Photograph flags set by an isolated fixture; acquisition through gameplay unverified",
+    "No full game playthrough"
+  ]
+}

@@ -1,29 +1,10 @@
 {
-  "convertedDialogueSha256": "CB5CD5BAE88699972F43083D1A6EE6FDB3EAC3E7DC2D0F0785AC016380066119",
-  "status": "development-only-not-playable",
-  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
-  "limitations": [
-    "Isolated development pack only; installed game remains original-profile",
-    "Remaining title, battle effects, specialized text, music and assembly-only fixes",
-    "Full Redux progression and randomizer audit not run"
-  ],
-  "conversionCounts": {
-    "convertedLabelSpans": 7367,
-    "convertedBytes": 568504,
-    "relocatedPointerFields": 12835,
-    "unresolvedPointerFields": 0,
-    "failedLabelSpans": 0,
-    "excludedAssemblyOrUnclassifiedSpans": 30,
-    "nativeRoutineCalls": 354,
-    "nativeRoutineVariants": 16,
-    "ambiguousOriginalAliases": 0
-  },
   "format": "maternalbound-native-dev-validation-v1",
-  "nativeExeSha256": "D8F2861765D502610E98A81096B472B2056578E270522EADA4EEEF96634295E8",
+  "status": "development-only",
   "tests": [
     {
       "exitCode": 0,
-      "checks": 62,
+      "checks": 81,
       "test": "native-redux-commands"
     },
     {
@@ -31,9 +12,9 @@
       "test": "native-redux-stamina"
     },
     {
-      "turns": 48640,
-      "scripts": 190,
       "exitCode": 0,
+      "scripts": 190,
+      "turns": 48640,
       "test": "native-redux-enemy-ai"
     },
     {
@@ -43,6 +24,63 @@
     {
       "exitCode": 0,
       "test": "native-redux-animation-run-exhaustion-stationary-stamina"
+    },
+    {
+      "resolvedPointers": 898,
+      "teleportCycles": 128,
+      "doorBounds": 6,
+      "stairCallbacks": 8,
+      "test": "native-redux-movement-all-pointers-moldyman-far-tasks-object-effects-teleport-bicycles-doors",
+      "bicycleCases": 16,
+      "exitCode": 0
+    },
+    {
+      "exitCode": 0,
+      "frames": 14,
+      "test": "redux-delivery-letterbox-before-music"
+    },
+    {
+      "exitCode": 0,
+      "framesPerTrack": 24,
+      "tracks": 191,
+      "tracksProducingSamples": 188,
+      "test": "redux-spc-track-transitions"
+    },
+    {
+      "exitCode": 0,
+      "effects": 68,
+      "test": "redux-psi-playback-rebind-extended-ids",
+      "frames": 1686
+    },
+    {
+      "exitCode": 0,
+      "test": "redux-extended-enemy-battle-art"
+    },
+    {
+      "exitCode": 0,
+      "test": "redux-party-battle-sprites-selection-victory"
+    },
+    {
+      "exitCode": 0,
+      "condimentRecords": 42,
+      "gutsTrials": 128,
+      "test": "redux-production-combat-actions-inventory-roller",
+      "sandwichTrials": 4096
+    },
+    {
+      "exitCode": 0,
+      "test": "redux-battle-tools-availability-inventory-free-actions",
+      "devices": 11
+    },
+    {
+      "fontCases": 10,
+      "exitCode": 0,
+      "test": "redux-font-aware-menu-highlights"
+    },
+    {
+      "exitCode": 0,
+      "previews": 340,
+      "test": "redux-equipment-preview-identity-window-remapping"
     },
     {
       "exitCode": 0,
@@ -60,5 +98,25 @@
       "exitCode": 0,
       "test": "native-converted-title-Return"
     }
+  ],
+  "nativeExeSha256": "86021608639A0DCD0D73B23C4BAF026D019E0935ED45E9BA00B745877985F4A8",
+  "convertedDialogueSha256": "5B18885E24F78478B9A06A784981ED827012482E62F7C9DDEC761616F057E811",
+  "packSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
+  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+  "conversionCounts": {
+    "convertedLabelSpans": 7397,
+    "convertedBytes": 568999,
+    "relocatedPointerFields": 12859,
+    "unresolvedPointerFields": 0,
+    "failedLabelSpans": 0,
+    "excludedAssemblyOrUnclassifiedSpans": 105,
+    "nativeRoutineCalls": 355,
+    "nativeRoutineVariants": 17,
+    "ambiguousOriginalAliases": 0
+  },
+  "limitations": [
+    "Isolated development pack only; installed game remains original-profile",
+    "Remaining assembly-only fixes, later gameplay and full playthrough require verification",
+    "This command does not run the separate content-specific randomizer audit or a full randomized playthrough"
   ]
 }

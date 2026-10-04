@@ -1,13 +1,18 @@
 # Changelog
 
-## 0.5.0 — in development
+## 0.5.0-redux-dev.1 - private development tester
 
-- Began the explicit native MaternalBound Redux conversion path with a locally repaired CoilSnake/CCScript toolchain and a generated module/label bridge manifest.
-- Expanded the bridge from main-file imports to the complete recursive CCScript graph, mapping 188 of 190 compiled modules across 191 source files with no unresolved imports.
-- Added a player-facing Redux Port page that shows the final edition target, completed bridge work, remaining conversion areas, and randomizer safety gate.
-- Replaced the repository's launcher gallery with current v0.5 captures, including the Redux conversion and Story Shuffle v3 screens.
-- Added Story Shuffle v3 content profiles. Seeds now bind to the exact game version, asset hash, progression policy and save namespace; unaudited packs remain locked from randomization.
-- Preserved version 1 and 2 seed folders and saves for recovery.
+- Added guided owner-ROM setup for a separate MaternalBound Redux profile. A frozen helper downloads the pinned source, repairs compiler compatibility, compiles and converts locally; testers need neither Python nor Git.
+- Converted the complete reachable dialogue graph, maps, shops, enemies, SPC tracks, expanded PSI, enemy and party artwork, names, cast, credits and photo data for the pinned active-source target.
+- Added native typed commands and movement helpers, Redux controls/stamina, all eleven inventory-free Jeff Tools, expanded equipment/resistance previews and native combat/item/stat fixes.
+- Fixed scene completion, invisible controllers, mosaic fade, object allocation, teleport cleanup, bicycle leader/revival behavior, door bounds, interrupted stairs and cast scrolling.
+- Ported font-aware menu highlights and the delivery letterbox hook; delivery music starts after its fourteen-frame opening.
+- Added quick-save format 16 with ending continuation and pointer reconstruction. Original, Redux and randomized adventures keep separate save namespaces.
+- Added Story Shuffle v3 with separate original/Redux progression policies, exact content hashes and independent whole-pack checks. Each edition passes 1,000 seeds and all 30 option combinations; unknown packs remain locked.
+- Fixed fresh MSU downloads so output handles close before checksum verification and installation. Setup can repair invalid or interrupted tracks without discarding verified files.
+- Added actual launcher/gameplay captures, source/compiler patches, reproducible package tooling and metadata validation reports. The clean ZIP test uses a headered owner ROM, no Python on PATH, a real soundtrack repair, native story/randomized openings and save-isolation checks.
+- Accounted for all 105 dialogue-excluded spans in a source-pinned ledger. Classification is not complete assembly equivalence or full gameplay verification.
+- **Full MaternalBound compatibility remains incomplete.** Full story/randomized playthroughs, all combat combinations, listening/transition coverage, live photo collection and developer/debug parity remain unverified. The older v0.4 package remains the original-story preview.
 
 ## 0.4.0 — private preview
 

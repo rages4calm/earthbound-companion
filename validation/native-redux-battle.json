@@ -1,0 +1,595 @@
+{
+  "status": "development-only",
+  "nativeExeSha256": "DFA8EF0338D39C8D6565BCEF0DB82B543B542B43D2EA0278235FD07126DB1537",
+  "packSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
+  "tests": [
+    {
+      "test": "no-devices-intro",
+      "passed": true,
+      "checks": [
+        "PC replay battle: group=1 enemies=1"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "no-devices-ness",
+      "passed": true,
+      "checks": [
+        "selected=0",
+        "[2:Goods]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "no-devices-jeff",
+      "passed": true,
+      "checks": [
+        "selected=2",
+        "[4:Tools]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "no-devices-tools",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "[1:Spy kit]"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "all-devices-intro",
+      "passed": true,
+      "checks": [
+        "PC replay battle: group=1 enemies=1"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "all-devices-ness",
+      "passed": true,
+      "checks": [
+        "selected=0",
+        "[2:Goods]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "all-devices-jeff",
+      "passed": true,
+      "checks": [
+        "selected=2",
+        "[4:Tools]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "all-devices-tools",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "[1:Spy kit]",
+        "Slime generator",
+        "Shield killer",
+        "Counter PSI unit",
+        "Neutralizer",
+        "Defense shower",
+        "HP-sucker",
+        "Hungry HP-sucker",
+        "Bazooka",
+        "Heavy bazooka",
+        "Tofu machine"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "paralyzed-intro",
+      "passed": true,
+      "checks": [
+        "PC replay battle: group=1 enemies=1"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "paralyzed-ness",
+      "passed": true,
+      "checks": [
+        "selected=0",
+        "[2:Goods]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "paralyzed-jeff",
+      "passed": true,
+      "checks": [
+        "selected=2",
+        "[4:Tools]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "paralyzed-tools",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "[1:Spy kit]"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "immobilized-intro",
+      "passed": true,
+      "checks": [
+        "PC replay battle: group=1 enemies=1"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "immobilized-ness",
+      "passed": true,
+      "checks": [
+        "selected=0",
+        "[2:Goods]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "immobilized-jeff",
+      "passed": true,
+      "checks": [
+        "selected=2",
+        "[4:Tools]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "immobilized-tools",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "[1:Spy kit]"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "maid-handoff-intro",
+      "passed": true,
+      "checks": [
+        "PC replay battle: group=1 enemies=1"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "maid-handoff-ness",
+      "passed": true,
+      "checks": [
+        "selected=0",
+        "[2:Goods]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "maid-handoff-jeff",
+      "passed": true,
+      "checks": [
+        "selected=2",
+        "[4:Tools]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "maid-handoff-tools",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "[1:Spy kit]",
+        "Slime generator",
+        "Shield killer",
+        "Counter PSI unit",
+        "Neutralizer",
+        "Defense shower",
+        "HP-sucker",
+        "Hungry HP-sucker",
+        "Bazooka",
+        "Heavy bazooka"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "tools-cancel",
+      "passed": true,
+      "checks": [
+        "selected=2",
+        "[4:Tools]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "spy-target",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "PC replay window 49"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "spy-target-cancel",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "Slime generator"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "spy-target-confirm",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "[7:Transform]",
+        "id=3 action=6 argument=231 slot=0 targetting=17"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "spy-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=6 ",
+        "PC replay action done: actor=3 action=6 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "paralyzed-spy",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "PC replay window 49"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "immobilized-spy",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "PC replay window 49"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "neutralizer-commit",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "[7:Transform]",
+        "id=3 action=247 argument=195 slot=0 targetting=18"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "neutralizer-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=247 ",
+        "PC replay action done: actor=3 action=247 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "defense-shower-commit",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "[7:Transform]",
+        "id=3 action=184 argument=157 slot=0 targetting=4"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "defense-shower-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=184 ",
+        "PC replay action done: actor=3 action=184 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "hungry-sucker-commit",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "[7:Transform]",
+        "id=3 action=176 argument=136 slot=0 targetting=18"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "hungry-sucker-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=176 ",
+        "PC replay action done: actor=3 action=176 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "tofu-machine-commit",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "[7:Transform]",
+        "id=3 action=170 argument=139 slot=0 targetting=18"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "tofu-machine-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=170 ",
+        "PC replay action done: actor=3 action=170 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "slime-target",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "PC replay window 49"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "slime-cancel",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "Spy kit"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "slime-confirm",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "id=3 action=169 argument=138 slot=0 targetting=17"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "slime-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=169 ",
+        "PC replay action done: actor=3 action=169 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "shield-killer-target",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "PC replay window 49"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "shield-killer-cancel",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "Spy kit"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "shield-killer-confirm",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "id=3 action=160 argument=132 slot=0 targetting=17"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "shield-killer-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=160 ",
+        "PC replay action done: actor=3 action=160 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "counter-psi-target",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "PC replay window 49"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "counter-psi-cancel",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "Spy kit"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "counter-psi-confirm",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "id=3 action=159 argument=131 slot=0 targetting=17"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "counter-psi-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=159 ",
+        "PC replay action done: actor=3 action=159 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "hp-sucker-target",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "PC replay window 49"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "hp-sucker-cancel",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "Spy kit"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "hp-sucker-confirm",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "id=3 action=161 argument=135 slot=0 targetting=17"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "hp-sucker-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=161 ",
+        "PC replay action done: actor=3 action=161 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "bazooka-target",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "PC replay window 49"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "bazooka-cancel",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "Spy kit"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "bazooka-confirm",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "id=3 action=310 argument=133 slot=0 targetting=17"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "bazooka-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=310 ",
+        "PC replay action done: actor=3 action=310 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "heavy-bazooka-target",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "PC replay window 49"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "heavy-bazooka-cancel",
+      "passed": true,
+      "checks": [
+        "title=Tools",
+        "Spy kit"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "heavy-bazooka-confirm",
+      "passed": true,
+      "checks": [
+        "selected=3",
+        "id=3 action=311 argument=134 slot=0 targetting=17"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "heavy-bazooka-execute",
+      "passed": true,
+      "checks": [
+        "PC replay action start: actor=3 action=311 ",
+        "PC replay action done: actor=3 action=311 "
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "goods-list",
+      "passed": true,
+      "checks": [
+        "[1:Cookie] [2:Teddy bear]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "goods-cookie-target",
+      "passed": true,
+      "checks": [
+        "PC replay window 38",
+        "[1:Native] [2:Native] [3:Native] [4:Native]"
+      ],
+      "coldRender1080p": true
+    },
+    {
+      "test": "goods-cookie-cancel",
+      "passed": true,
+      "checks": [
+        "[1:Cookie] [2:Teddy bear]"
+      ],
+      "coldRender1080p": false
+    },
+    {
+      "test": "goods-cookie-confirm",
+      "passed": true,
+      "checks": [
+        "selected=1",
+        "PC replay inventory: 88 2"
+      ],
+      "coldRender1080p": false
+    }
+  ],
+  "limits": [
+    "Isolated real battle-menu replays and cold restores; no full story playthrough.",
+    "All 11 devices execute and return through the production battle loop; all effect/resistance combinations remain untested."
+  ]
+}

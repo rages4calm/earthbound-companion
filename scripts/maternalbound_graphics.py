@@ -112,6 +112,66 @@ def convert_fonts(rom: bytes, assets: dict):
     return {"assets":converted,"fontFamilies":5,"charactersPerFont":128}
 
 
+def convert_windows(rom: bytes, assets: dict):
+    """Follow CoilSnake WindowGraphicsModule's relocated graphics pointers."""
+    from ebtools.hallz import get_compressed_data, decompress
+    converted=[]
+    for key, at, expected in (("US/graphics/text_window.gfx.lzhal",0x47C47,416*16),
+                               ("graphics/flavoured_text.gfx.lzhal",0x47CAA,7*16)):
+        offset=snes_offset(asm_pointer(rom,at),len(rom))
+        content=bytes(get_compressed_data(memoryview(rom)[offset:offset+65536]))
+        if key not in assets or len(decompress(content))!=expected:
+            raise ConversionError(f"Invalid Redux window graphic: {key}")
+        assets[key]=content;converted.append(key)
+    key="US/graphics/text_window_flavour_palettes.pal"
+    if key not in assets: raise ConversionError("Missing native window palette asset")
+    table=slice_rom(rom,asm_pointer(rom,0x105C9),62*8)
+    configs=list(struct.iter_unpack("<4H",table))
+    for i,(x,y,w,h) in enumerate(configs):
+        if not (2<=w<=32 and 2<=h<=28 and x+w<=32 and y+h<=28):
+            raise ConversionError(f"Invalid Redux window geometry {i}: {x}/{y}/{w}/{h}")
+    # Keep the first 448 palette bytes in their existing format. The suffix
+    # carries checked geometry without changing the foundation asset registry.
+    assets[key]=slice_rom(rom,0xE01FC8,7*64)+struct.pack("<8sII",b"MRWINX01",62,0)+table
+    converted.append(key)
+    return {"assets":converted,"windowTiles":423,"flavours":7,"windowConfigurations":62}
+
+
+def convert_battle_art(rom: bytes, assets: dict):
+    """Import every battle image/palette referenced by the compiled enemies.
+
+    A typed container replaces the fixed original pointer-table asset; native
+    readers resolve its checked offsets rather than ROM pointers or registry IDs.
+    """
+    from ebtools.hallz import get_compressed_data, decompress
+    enemies=assets["data/enemy_configuration_table.bin"][:231*94]
+    count=max(struct.unpack_from("<H",enemies,i*94+28)[0] for i in range(231))
+    palettes=max(enemies[i*94+53] for i in range(231))+1
+    if not 1<=count<=255 or not 1<=palettes<=256:
+        raise ConversionError("Expanded battle art exceeds native enemy fields")
+    table=slice_rom(rom,asm_pointer(rom,0x2EE0B),count*5)
+    payloads=[]
+    for i in range(count):
+        pointer,kind=struct.unpack_from("<IB",table,i*5)
+        offset=snes_offset(pointer,len(rom))
+        content=bytes(get_compressed_data(memoryview(rom)[offset:offset+65536]))
+        expected={1:512,2:1024,3:1024,4:2048,5:4096,6:8192}.get(kind)
+        if expected is None or len(decompress(content))!=expected:
+            raise ConversionError(f"Expanded battle image {i+1} has invalid size")
+        payloads.append(content)
+    base=asm_pointer(rom,0x2EF74)
+    payloads.extend(slice_rom(rom,base+i*32,32) for i in range(palettes))
+    directory=16+len(table)
+    blob=bytearray(struct.pack("<8sHHI",b"MRBSX001",count,palettes,directory)+table)
+    blob.extend(bytes(len(payloads)*8))
+    for i,content in enumerate(payloads):
+        struct.pack_into("<II",blob,directory+i*8,len(blob),len(content))
+        blob.extend(content)
+    key="data/battle_sprites_pointers.bin"; assets[key]=bytes(blob)
+    return {"assets":[key],"battleImages":count,"battlePalettes":palettes,
+            "containerBytes":len(blob)}
+
+
 def convert_indexed_graphics(rom: bytes, project: Path, assets: dict):
     from ebtools.hallz import get_compressed_data, decompress
     converted = []

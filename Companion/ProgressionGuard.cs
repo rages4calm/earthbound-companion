@@ -71,7 +71,7 @@ static class ProgressionGuard {
    Replacement(original[p],candidate[p]);allowed[p]=true;
   }
   var (enemyStart,enemyLength)=StoryShuffle.Range(original,StoryShuffle.Enemies);
-  for(int i=1;i<enemyLength/94;i++) {
+  for(int i=1;i<StoryShuffle.EnemyRecordCount;i++) {
    int p=enemyStart+i*94;if(protectedEnemies.Contains(i)||original[p+86]!=0||original[p+54]==0)continue;
    if(options.EnemyStats) {
     int range=options.Mode=="Balanced"?15:30;

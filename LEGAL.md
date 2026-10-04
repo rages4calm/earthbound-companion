@@ -8,9 +8,11 @@ This repository and its release packaging must not contain:
 
 - EarthBound or Mother 2 ROM images, in whole or in part;
 - `assets.pak` or other data extracted from a ROM;
-- original game screenshots, sprites, maps, dialogue dumps or audio;
+- extracted sprites, maps, dialogue dumps or audio;
 - MSU PCM payloads;
 - user save files or save states.
+
+Documentation may include clearly labeled screenshots captured from isolated native development tests using locally supplied game data. Screenshots are not asset packs or permission to redistribute the game.
 
 The release tool verifies a player-supplied clean EarthBound (USA) ROM and generates the native asset pack on that player’s computer. The ROM is not modified, retained by Companion, or uploaded.
 

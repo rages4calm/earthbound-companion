@@ -42,7 +42,8 @@ internal sealed record ShuffleBuild(byte[] Pack, List<ShuffleChange> Spoiler, Di
 static class StoryShuffle {
  public const string Name = "EarthBound Companion Story Shuffle";
  public const int Version = 3;
- internal const string Npcs="data/npc_config_table.bin",Items="data/item_configuration_table.bin",Shops="data/store_table.bin",Enemies="data/enemy_configuration_table.bin";
+  internal const string Npcs="data/npc_config_table.bin",Items="data/item_configuration_table.bin",Shops="data/store_table.bin",Enemies="data/enemy_configuration_table.bin";
+  internal const int EnemyRecordCount=231;
  public static string Library => Path.Combine(Settings.User,"Seeds");
  static readonly ShuffleLayout Layout = LoadLayout();
  static ShuffleLayout LoadLayout() {
@@ -133,10 +134,18 @@ static class StoryShuffle {
    uint size=BinaryPrimitives.ReadUInt32LittleEndian(pack.AsSpan(48+i*8));
    if((ulong)offset+size>(ulong)(pack.Length-blob))throw new InvalidDataException("Invalid asset data range.");
   }
-  foreach(var (name,size) in new[]{(Npcs,26928),(Items,9906),(Shops,462),(Enemies,21714)}) {
-   var span=Range(pack,name);if(span.Length!=size)throw new InvalidDataException("Unexpected randomizer table size: "+name);
+   foreach(var (name,size) in new[]{(Npcs,26928),(Items,9906)}) {
+    var span=Range(pack,name);if(span.Length!=size)throw new InvalidDataException("Unexpected randomizer table size: "+name);
+   }
+   int shops=Range(pack,Shops).Length;
+   if(shops is not (462 or 483))throw new InvalidDataException("Unexpected randomizer shop-table size.");
+   var (enemyStart,enemyLength)=Range(pack,Enemies);
+   const int enemyBytes=EnemyRecordCount*94;
+   if(enemyLength!=enemyBytes) {
+    if(enemyLength!=enemyBytes+12+EnemyRecordCount*4||!pack.AsSpan(enemyStart+enemyBytes,8).SequenceEqual("MRDXAI01"u8)||BinaryPrimitives.ReadUInt32LittleEndian(pack.AsSpan(enemyStart+enemyBytes+8))!=EnemyRecordCount)
+     throw new InvalidDataException("Unexpected randomizer enemy-table extension.");
+   }
   }
- }
  internal static (int Start,int Length) Range(byte[] pack,string name) {
   int index=Layout.Assets[name];
   int count=checked((int)BinaryPrimitives.ReadUInt32LittleEndian(pack.AsSpan(8)));
@@ -166,9 +175,9 @@ static class StoryShuffle {
     int p=start+i*17;if(output[p]!=2)continue;
     uint old=BinaryPrimitives.ReadUInt32LittleEndian(output.AsSpan(p+13));if(old>=254)continue; // money and out-of-range entries fixed
     int next=Pick((int)old,random);if(next==(int)old)continue;
-    BinaryPrimitives.WriteUInt32LittleEndian(output.AsSpan(p+13),(uint)next);Change("Gifts",i,(int)old,next);
+     BinaryPrimitives.WriteUInt32LittleEndian(output.AsSpan(p+13),(uint)next);Change("Gifts",i,(int)old,next);
+    }
    }
-  }
   if(options.Shops) {
    var (start,length)=Range(output,Shops);var random=Rng("shops");
    for(int shop=0;shop<length/7;shop++) {
@@ -184,7 +193,7 @@ static class StoryShuffle {
   }
   if(options.EnemyStats||options.EnemyDrops) {
    var (start,length)=Range(output,Enemies);var stats=Rng("enemy stats");var drops=Rng("enemy drops");
-   for(int i=1;i<length/94;i++) {
+   for(int i=1;i<EnemyRecordCount;i++) {
     int p=start+i*94;
     if(protectedEnemies.Contains(i)||original[p+86]!=0||original[p+54]==0)continue; // scripted battles, bosses and special records fixed
     string name=Text(original.AsSpan(p+1,25));

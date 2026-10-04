@@ -13,7 +13,10 @@ def main():
     for option in ("native-exe","assets","scratch"):
         parser.add_argument("--"+option,required=True,type=Path)
     parser.add_argument("--six-letter-fixture",action="store_true")
+    parser.add_argument("--mixed-case-fixture",action="store_true")
     args = parser.parse_args()
+    if args.mixed_case_fixture:
+        args.six_letter_fixture = True
     exe = args.native_exe.resolve(); pak = args.assets.resolve(); scratch = args.scratch.resolve()
     scratch.mkdir(parents=True,exist_ok=True)
     env = dict(os.environ,SDL_VIDEODRIVER="dummy",SDL_AUDIODRIVER="dummy")
@@ -38,6 +41,8 @@ def main():
         for frame in (300,460,500,650,670,690,710,730): rows.extend(((frame,"0020"),(frame+2,"0000")))
         for frame in range(780,844,8): rows.extend(((frame,"0100"),(frame+2,"0000")))
         for frame in range(900,1020,20): rows.extend(((frame,"0020"),(frame+2,"0000")))
+        if args.mixed_case_fixture:
+            for frame in (950,990): rows.extend(((frame,"2000"),(frame+2,"0000")))
         rows.extend(((1100,"1000"),(1102,"0000")))
         for frame in range(1200,10000,650):
             # Naming's introductory prompt accepts a button, before directions
@@ -47,13 +52,15 @@ def main():
             for offset in range(350,470,20): rows.extend(((frame+offset,"0020"),(frame+offset+2,"0000")))
             rows.extend(((frame+550,"1000"),(frame+552,"0000")))
     replay = scratch/"opening.replay"
-    replay.write_text("\n".join(f"{frame} {pad}" for frame,pad in rows))
+    replay.write_text("\n".join(f"{frame} {pad}" for frame,pad in sorted(rows)),encoding="utf-8")
     log = run("opening",["--allow-redux-development","--headless","--input-script",str(replay),"--frames","12020","--capture-state","12000"])
     if "party=1" not in log or "level=1 HP=30" not in log:
         raise RuntimeError("Redux opening did not reach Ness with the expected starting party/HP: "+log[-500:])
     names=re.findall(r"PC replay name \d: ([^\r\n]*)",log)
     if args.six_letter_fixture and (not names or len(names[0])!=6):
         raise RuntimeError("Keyboard replay did not preserve six letters: "+str(names))
+    if args.mixed_case_fixture and names[0] != "IIIiiI":
+        raise RuntimeError("Select did not toggle the naming alphabet without erasing letters: "+str(names))
     visual = run("opening-render",["--allow-redux-development","--windowed","--skip-intro","--load-state","--frames","60","--dump-frame","20"])
     if args.six_letter_fixture:
         restored=run("name-restore",["--allow-redux-development","--headless","--skip-intro","--load-state","--frames","35","--capture-state","30"])
@@ -70,7 +77,8 @@ def main():
         "openingReached":True,"startingParty":1,"startingLevel":1,"startingHp":30,
         "normalLaunchBlocked":True,"renderResolution":resolution,
         "sixLetterKeyboardAndQuicksave":bool(args.six_letter_fixture),
-        "limitations":["Opening-only automation", "No full Redux playthrough", "Randomizer remains locked"]}
+        "selectTogglesNamingAlphabet":bool(args.mixed_case_fixture),
+        "limitations":["Opening-only automation", "No full Redux playthrough", "Content-specific randomizer checks run separately"]}
     (scratch/"results.json").write_text(json.dumps(record,indent=2)+"\n")
     print(json.dumps(record,indent=2))
 

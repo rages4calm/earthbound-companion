@@ -18,14 +18,23 @@ public sealed class Settings {
  public int[] Keys{get;set;}=[40,29,22,225,27,26,40,229,82,81,80,79,43,63,64,68,66,69,60,58,6];
  public int[] Buttons{get;set;}=[6,1,3,2,0,10,6,4,11,12,13,14,-1,-1,-1,-1,-1,-1,-1,-1,8];
  public string AssetPack{get;set;}="";
+ public string ContentHash{get;set;}="";
+ public bool ReduxDevelopmentEnabled{get;set;}
+ static string normalContentHash="";
  internal static string? OverrideRoot;
  public static string Root=>OverrideRoot??AppContext.BaseDirectory;
  public static string? SessionDirectory;
  public static string BaseGame=>Path.Combine(Root,"Game");
- public static string Game=>SessionDirectory??BaseGame;
+ public static string Game=>SessionDirectory??(normalContentHash.Length==64?Path.Combine(User,"ContentProfiles",normalContentHash,"Game"):BaseGame);
  public static string User=>Path.Combine(Root,"UserData");
  public static string PathTo(string file)=>Path.Combine(Game,file);
  public string Pak=>string.IsNullOrEmpty(AssetPack)?Path.Combine(BaseGame,"assets.pak"):AssetPack;
+ public void ConfigureContentSession(){
+  if(string.IsNullOrEmpty(AssetPack)||Path.GetFullPath(Pak).Equals(Path.GetFullPath(Path.Combine(BaseGame,"assets.pak")),StringComparison.OrdinalIgnoreCase))ContentHash="";
+  else if(File.Exists(Pak))ContentHash=StoryShuffle.HashFile(Pak);
+  else if(ContentHash.Length!=64||!ContentHash.All(Uri.IsHexDigit))ContentHash=StoryShuffle.Hash(System.Text.Encoding.UTF8.GetBytes(Path.GetFullPath(Pak)));
+  normalContentHash=ContentHash.ToLowerInvariant();
+ }
  public void ValidatePak(){
   using var pack=File.OpenRead(Pak);using var reader=new BinaryReader(pack);byte[] header=reader.ReadBytes(44);
   if(header.Length!=44)throw new InvalidDataException("Asset pack header is incomplete.");
@@ -38,9 +47,10 @@ public sealed class Settings {
  }
  public static readonly JsonSerializerOptions JsonOptions=new(){WriteIndented=true};
  public static Settings Load(){
-  Directory.CreateDirectory(User);Directory.CreateDirectory(PathTo("screenshots"));Directory.CreateDirectory(PathTo("saves"));
-  try {var s=JsonSerializer.Deserialize<Settings>(File.ReadAllText(Path.Combine(User,"settings.json")))??new();s.Validate();s.ReadEngine();return s;}
-  catch(IOException){return new();}catch(JsonException){return new();}
+  Directory.CreateDirectory(User);Settings s;
+  try {s=JsonSerializer.Deserialize<Settings>(File.ReadAllText(Path.Combine(User,"settings.json")))??new();}
+  catch(IOException){s=new();}catch(JsonException){s=new();}
+  s.Validate();s.ConfigureContentSession();Directory.CreateDirectory(PathTo("screenshots"));Directory.CreateDirectory(PathTo("saves"));s.ReadEngine();return s;
  }
  public void Validate(){
   Width=Math.Clamp(Width,640,7680);Height=Math.Clamp(Height,480,4320);Filter=Math.Clamp(Filter,0,2);Aspect=Math.Clamp(Aspect,0,2);
@@ -57,9 +67,9 @@ public sealed class Settings {
  }
  static void Atomic(string file,byte[] data){File.WriteAllBytes(file+".tmp",data);File.Move(file+".tmp",file,true);}
  public void Save(){
-  Validate();Directory.CreateDirectory(User);Directory.CreateDirectory(Game);Directory.CreateDirectory(PathTo("screenshots"));
+  Validate();ConfigureContentSession();Directory.CreateDirectory(User);Directory.CreateDirectory(Game);Directory.CreateDirectory(PathTo("screenshots"));
   Backup(false);Atomic(Path.Combine(User,"settings.json"),JsonSerializer.SerializeToUtf8Bytes(this,JsonOptions));
-  WriteEngine(BaseGame);if(SessionDirectory!=null)WriteEngine(SessionDirectory);
+  WriteEngine(BaseGame);if(!Game.Equals(BaseGame,StringComparison.OrdinalIgnoreCase))WriteEngine(Game);
  }
  public void WriteEngine(string directory){
   Directory.CreateDirectory(directory);Directory.CreateDirectory(Path.Combine(directory,"saves"));Directory.CreateDirectory(Path.Combine(directory,"screenshots"));
