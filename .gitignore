@@ -1,0 +1,52 @@
+# Game content — never commit
+ROM/
+*.sfc
+*.smc
+*.fig
+*.swc
+*.rom
+*.pak
+*.pcm
+*.srm
+*.sav
+*.state
+*.bmp
+
+# Generated application data
+EarthBound Companion/
+UserData/
+msu/
+saves/
+screenshots/
+*.log
+*.replay
+
+# Native upstream and local tools are fetched separately
+native-source/
+build/
+tools/mingw64/
+tools/SDL2*/
+tools/uv/
+.venv/
+
+# .NET and Python outputs
+**/bin/
+**/obj/
+__pycache__/
+*.pyc
+*.pdb
+*.exe
+*.dll
+
+# Packages belong on GitHub Releases
+release/
+*.zip
+*.7z
+*.rar
+
+# Editors and OS
+.vs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

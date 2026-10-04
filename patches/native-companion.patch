@@ -1,0 +1,1411 @@
+diff --git a/port/unix/main.c b/port/unix/main.c
+index f625aff..b044b57 100644
+--- a/port/unix/main.c
++++ b/port/unix/main.c
+@@ -32,9 +32,13 @@
+ #include "embedded_helper.h"
+ #include "game_main.h"
+ #include "game/audio.h"
++#include "platform/pc_options.h"
+ #include "game/game_state.h"
+ #include "game/display_text.h"
+ #include "game/inventory.h"
++#include "game/map_loader.h"
++#include "game/overworld.h"
++#include "game/battle.h"
+ #include "game/settings.h"
+ #include "core/log.h"
+ #include "core/state_dump.h"
+@@ -368,10 +372,25 @@ static void migrate_legacy_saves_to_saves_folder(void) {
+ 
+ int main(int argc, char *argv[]) {
+     chdir_to_executable_dir(); /* before anything below touches a relative path */
++    /* Seed sessions use one executable but separate settings, SRAM, quick saves
++     * and screenshots. Resolve this BEFORE migration or any save-file access;
++     * failing to enter the requested folder must never fall back to story saves. */
++    for (int i = 1; i < argc; i++) {
++        if (strcmp(argv[i], "--session-dir") == 0) {
++            if (++i >= argc || chdir(argv[i]) != 0) {
++                fprintf(stderr, "Cannot enter requested session directory.\n");
++                return 1;
++            }
++            break;
++        }
++    }
+     migrate_legacy_saves_to_saves_folder(); /* before any --save override or save/settings read */
++    pc_options_defaults();
+     SDL_SetMainReady(); /* pairs with SDL_MAIN_HANDLED above */
+     const char *verify_rom_path = NULL;
+     bool savestate_selftest = false;
++    bool inspect_shuffle = false;
++    int pc_capture_frame=-1;
+     bool keyitems_selftest = false;
+     bool joinlevel_selftest = false;
+     bool threed_zombie_flag_check = false;
+@@ -396,7 +415,22 @@ int main(int argc, char *argv[]) {
+ #endif
+ 
+     for (int i = 1; i < argc; i++) {
+-        if (strcmp(argv[i], "--verify") == 0 && i + 1 < argc) {
++        if (strcmp(argv[i], "--session-dir") == 0 && i + 1 < argc) {
++            ++i; /* already handled before any file access */
++        } else if (strcmp(argv[i], "--config") == 0 && i + 1 < argc) {
++            pc_config_path=argv[++i];
++        } else if (strcmp(argv[i], "--inspect-shuffle") == 0) {
++            inspect_shuffle = true;
++            platform_headless = true;
++        } else if (strcmp(argv[i], "--capture-state") == 0 && i + 1 < argc) {
++            pc_capture_frame=atoi(argv[++i]);
++        } else if (strcmp(argv[i], "--input-script") == 0 && i + 1 < argc) {
++            pc_input_script_path=argv[++i];
++        } else if (strcmp(argv[i], "--selftest-pc") == 0) {
++            SDL_Init(SDL_INIT_TIMER|SDL_INIT_EVENTS);
++            bool ok=pc_input_selftest() && pc_msu_selftest();
++            SDL_Quit();return ok?0:1;
++        } else if (strcmp(argv[i], "--verify") == 0 && i + 1 < argc) {
+             verify_rom_path = argv[++i];
+ #ifdef EB_RUNTIME_ASSETS
+         } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
+@@ -536,7 +570,7 @@ int main(int argc, char *argv[]) {
+ #else
+                             " [--export-pak FILE]"
+ #endif
+-                            " [--selftest-savestate] [--selftest-keyitems] [--selftest-joinlevel]\n",
++                            " [--session-dir DIRECTORY] [--selftest-savestate] [--selftest-keyitems] [--selftest-joinlevel]\n",
+                     argv[0]);
+             return 1;
+         }
+@@ -630,6 +664,10 @@ int main(int argc, char *argv[]) {
+      * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
+      * platform-conventional data dir (see eb_runtime_assets_default_path). */
+     char default_assets_path[1024];
++    if(assets_path==NULL) {
++        FILE *local=fopen("assets.pak","rb");
++        if(local){fclose(local);assets_path="assets.pak";}
++    }
+     if (assets_path == NULL) {
+         assets_path = getenv("EB_ASSETS_PAK");
+     }
+@@ -916,6 +954,8 @@ int main(int argc, char *argv[]) {
+      * itself (sdl2_video.c is platform-agnostic and already correct). */
+     SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
+ 
++    pc_options_load(pc_config_path);
++    if(platform_force_windowed)pc_options.fullscreen=0;
+     /* Initialize SDL */
+     uint32_t sdl_flags = SDL_INIT_TIMER;
+     if (!platform_headless) {
+@@ -938,6 +978,7 @@ int main(int argc, char *argv[]) {
+     platform_input_init();
+     platform_save_init();
+     settings_load();
++    pc_video_apply();
+     /* Resume logging automatically if a previous session left the Config
+      * menu's "Logging" row on -- a tester shouldn't have to re-enable it
+      * after every relaunch (including the updater's own self-relaunch) to
+@@ -966,6 +1007,24 @@ int main(int argc, char *argv[]) {
+     /* Initialize game systems */
+     game_init();
+ 
++    /* Cross-language integration diagnostic: use the SAME gift getter and
++     * battler initialization as gameplay, not a second parser of the pak. */
++    if (inspect_shuffle) {
++        if (!map_loader_init()) return 1;
++        for (unsigned id = 0; id < NPC_CONFIG_COUNT; id++) {
++            if (get_npc_config_type((uint16_t)id) == 2)
++                fprintf(stderr, "SHUFFLE_GIFT %u %u\n", id, get_npc_config_item((uint16_t)id));
++        }
++        get_map_enemy_placement(0, 0); /* binds the normal enemy spawn tables */
++        if (!enemy_config_table) return 1;
++        for (unsigned id = 1; id < 231; id++) {
++            Battler enemy;
++            battle_init_enemy_stats(&enemy, (uint16_t)id);
++            fprintf(stderr, "SHUFFLE_ENEMY %u %u %u %u %u\n", id, enemy.hp, enemy.offense, enemy.defense, enemy.speed);
++        }
++        return 0;
++    }
++
+     /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
+      * fresh boot. Just requests it here -- the normal per-frame
+      * host_process_frame()/host_root_boundary() pump below does the actual
+@@ -1208,7 +1267,7 @@ int main(int argc, char *argv[]) {
+          * --msu-dir/--msu-name flags, and nothing to add to a Steam
+          * shortcut's Launch Options (editing those is real friction, and
+          * has to be redone every time the pack changes). */
+-        const char *dir = msu_dir ? msu_dir : "msu";
++        const char *dir = msu_dir ? msu_dir : pc_options.msu_dir;
+         char detected_name[128];
+         const char *name = msu_name;
+ 
+@@ -1278,8 +1337,16 @@ int main(int argc, char *argv[]) {
+     platform_timer_frame_start();
+ 
+     for (int frame_num = 0; !platform_input_quit_requested(); frame_num++) {
++        if(frame_num==pc_capture_frame) {
++            fprintf(stderr,"PC replay checkpoint: party=%u position=%u,%u level=%u HP=%u\n",game_state.party_count,game_state.leader_x_coord,game_state.leader_y_coord,party_characters[0].level,party_characters[0].current_hp_target);
++            fprintf(stderr,"PC replay inventory:");
++            for(int slot=0;slot<ITEM_INVENTORY_SIZE;slot++)fprintf(stderr," %u",party_characters[0].items[slot]);
++            fprintf(stderr,"\n");
++            host_request_capture();
++        }
+         if (dump_frame >= 0 && frame_num == dump_frame)
+             platform_video_request_screenshot("screenshot.bmp");
++        if(pc_paused) {platform_input_poll();SDL_Delay(16);continue;}
+         game_loop_step();
+         host_process_frame();
+         host_root_boundary(); /* root boundary: perform any pending torn-safe capture */
+diff --git a/port/unix/platform/msu_audio.c b/port/unix/platform/msu_audio.c
+index 0526c37..185e169 100644
+--- a/port/unix/platform/msu_audio.c
++++ b/port/unix/platform/msu_audio.c
+@@ -26,7 +26,10 @@
+  * per-install files) just works with zero configuration -- important for
+  * launchers (e.g. a Steam shortcut) where editing Launch Options is real
+  * friction, especially every time the pack changes. */
++#include "platform/pc_options.h"
+ #include "platform/platform.h"
++#include <math.h>
++#include <stdlib.h>
+ 
+ #ifdef EB_ENABLE_AUDIO
+ 
+@@ -38,14 +41,14 @@
+  * 16-bit stereo @ 44.1kHz), so reading the file up front is negligible.
+  * _findfirst/_findnext (io.h) stand in for opendir/readdir for the name
+  * autodetection's directory listing. */
+-#include <stdlib.h>
+ #include <io.h>
++#include <stdlib.h>
+ #else
++#include <dirent.h>
+ #include <fcntl.h>
+ #include <sys/mman.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+-#include <dirent.h>
+ #endif
+ #include <SDL.h>
+ 
+@@ -60,11 +63,52 @@ static SDL_mutex *msu_mutex;
+ /* Currently open/mapped track (NULL when nothing is streaming) */
+ static void *msu_map;
+ static size_t msu_map_size;
+-static const int16_t *msu_pcm;     /* mapped[8:], interleaved stereo S16LE */
+-static uint32_t msu_total_frames;  /* stereo sample frames in msu_pcm */
+-static uint32_t msu_loop_frame;    /* loop target, in source frames */
+-static double msu_read_pos;        /* fractional read cursor, in source frames */
+-static bool msu_active;
++static const int16_t *msu_pcm;    /* mapped[8:], interleaved stereo S16LE */
++static uint32_t msu_total_frames; /* stereo sample frames in msu_pcm */
++static uint32_t msu_loop_frame;   /* loop target, in source frames */
++static double msu_read_pos;       /* fractional read cursor, in source frames */
++static bool msu_active, msu_repeats;
++static double msu_gain = 1.0, msu_target = 1.0, msu_fade_per_second;
++/* Track playback flags verified against MaternalBound Redux msu1.ccs.
++ * Audio pack loop points describe WHERE; the game track defines WHETHER.
++ * Attribution: ShadowOne333/MaternalBound-Redux, GPL-3.0. */
++static bool track_repeats(unsigned track) {
++    static const unsigned char one_shots[] = {
++        1,   8,   9,   11,  12,  13,  14,  15,  32,  33,  34,  35,  36,  37,  38,
++        39,  76,  78,  80,  84,  90,  91,  94,  95,  109, 110, 111, 113, 123, 124,
++        126, 127, 135, 137, 138, 139, 142, 143, 147, 157, 158, 160, 161, 162, 163,
++        164, 165, 166, 167, 168, 174, 175, 176, 177, 180, 181, 189};
++    for (size_t i = 0; i < sizeof(one_shots); i++)
++        if (track == one_shots[i])
++            return false;
++    return true;
++}
++void pc_msu_command(uint8_t command) {
++    if (command == 1) {
++        platform_audio_msu_stop();
++        return;
++    }
++    if (!msu_mutex)
++        return;
++    SDL_LockMutex(msu_mutex);
++    if (command == 2) {
++        msu_target = 0;
++        msu_fade_per_second = 240.0 / 255.0;
++    }
++    if (command == 3) {
++        msu_target = 0;
++        msu_fade_per_second = 120.0 / 255.0;
++    }
++    if (command == 7) {
++        msu_target = 64.0 / 255.0;
++        msu_fade_per_second = 180.0 / 255.0;
++    }
++    if (command == 8) {
++        msu_target = 1;
++        msu_fade_per_second = 180.0 / 255.0;
++    }
++    SDL_UnlockMutex(msu_mutex);
++}
+ 
+ static void msu_close_locked(void) {
+     if (msu_map) {
+@@ -83,7 +127,8 @@ static void msu_close_locked(void) {
+ }
+ 
+ void platform_audio_msu_load(const char *dir, const char *pack_name) {
+-    if (!msu_mutex) msu_mutex = SDL_CreateMutex();
++    if (!msu_mutex)
++        msu_mutex = SDL_CreateMutex();
+     SDL_LockMutex(msu_mutex);
+     snprintf(msu_dir, sizeof(msu_dir), "%s", dir);
+     snprintf(msu_name, sizeof(msu_name), "%s", pack_name);
+@@ -107,11 +152,14 @@ static bool msu_parse_track_filename(const char *filename, char *out_name, size_
+     size_t i = base_len;
+     while (i > 0 && filename[i - 1] >= '0' && filename[i - 1] <= '9')
+         i--;
+-    if (i == base_len)         return false; /* no track-number digits before .pcm */
+-    if (i == 0 || filename[i - 1] != '-') return false; /* digits not preceded by '-' */
++    if (i == base_len)
++        return false; /* no track-number digits before .pcm */
++    if (i == 0 || filename[i - 1] != '-')
++        return false; /* digits not preceded by '-' */
+ 
+     size_t name_len = i - 1; /* exclude the '-' itself */
+-    if (name_len == 0 || name_len >= out_size) return false;
++    if (name_len == 0 || name_len >= out_size)
++        return false;
+ 
+     memcpy(out_name, filename, name_len);
+     out_name[name_len] = '\0';
+@@ -161,30 +209,45 @@ bool platform_audio_msu_is_loaded(void) {
+ }
+ 
+ bool platform_audio_msu_play(uint16_t track_id) {
+-    if (!msu_pack_loaded) return false;
++    if (!msu_pack_loaded)
++        return false;
+ 
+     char path[1024];
+     snprintf(path, sizeof(path), "%s/%s-%u.pcm", msu_dir, msu_name, (unsigned)track_id);
+ 
+ #ifdef _WIN32
+     FILE *pf = fopen(path, "rb");
+-    if (!pf) return false; /* not covered by the pack -- normal, not an error */
+-    if (fseek(pf, 0, SEEK_END) != 0) { fclose(pf); return false; }
++    if (!pf)
++        return false; /* not covered by the pack -- normal, not an error */
++    if (fseek(pf, 0, SEEK_END) != 0) {
++        fclose(pf);
++        return false;
++    }
+     long fsize = ftell(pf);
+-    if (fsize < 8) { fclose(pf); return false; }
++    if (fsize < 12 || (fsize - 8) % 4) {
++        fclose(pf);
++        return false;
++    }
+     rewind(pf);
+     size_t size = (size_t)fsize;
+     void *map = malloc(size);
+-    if (!map) { fclose(pf); return false; }
++    if (!map) {
++        fclose(pf);
++        return false;
++    }
+     size_t got = fread(map, 1, size, pf);
+     fclose(pf);
+-    if (got != size) { free(map); return false; }
++    if (got != size) {
++        free(map);
++        return false;
++    }
+ #else
+     int fd = open(path, O_RDONLY);
+-    if (fd < 0) return false; /* not covered by the pack -- normal, not an error */
++    if (fd < 0)
++        return false; /* not covered by the pack -- normal, not an error */
+ 
+     struct stat st;
+-    if (fstat(fd, &st) != 0 || st.st_size < 8) {
++    if (fstat(fd, &st) != 0 || st.st_size < 12 || (st.st_size - 8) % 4) {
+         close(fd);
+         return false;
+     }
+@@ -192,7 +255,8 @@ bool platform_audio_msu_play(uint16_t track_id) {
+ 
+     void *map = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
+     close(fd);
+-    if (map == MAP_FAILED) return false;
++    if (map == MAP_FAILED)
++        return false;
+ #endif
+ 
+     const unsigned char *hdr = (const unsigned char *)map;
+@@ -205,11 +269,23 @@ bool platform_audio_msu_play(uint16_t track_id) {
+         fprintf(stderr, "msu: %s has no MSU1 magic, skipping\n", path);
+         return false;
+     }
+-    uint32_t loop_frame = (uint32_t)hdr[4] | ((uint32_t)hdr[5] << 8) | ((uint32_t)hdr[6] << 16) | ((uint32_t)hdr[7] << 24);
++    uint32_t loop_frame = (uint32_t)hdr[4] | ((uint32_t)hdr[5] << 8) | ((uint32_t)hdr[6] << 16) |
++                          ((uint32_t)hdr[7] << 24);
+     uint32_t total_frames = (uint32_t)((size - 8) / 4); /* 4 bytes = 1 stereo S16 frame */
+ 
++    if (loop_frame >= total_frames) {
++#ifdef _WIN32
++        free(map);
++#else
++        munmap(map, size);
++#endif
++        return false;
++    }
+     SDL_LockMutex(msu_mutex);
+     msu_close_locked();
++    msu_repeats = track_repeats(track_id);
++    msu_gain = msu_target = 1;
++    msu_fade_per_second = 0;
+     msu_map = map;
+     msu_map_size = size;
+     msu_pcm = (const int16_t *)((const unsigned char *)map + 8);
+@@ -218,11 +294,14 @@ bool platform_audio_msu_play(uint16_t track_id) {
+     msu_read_pos = 0.0;
+     msu_active = (total_frames > 0);
+     SDL_UnlockMutex(msu_mutex);
++    fprintf(stderr, "msu: native PCM track %u (%s)\n", (unsigned)track_id,
++            msu_repeats ? "loop" : "one-shot");
+     return true;
+ }
+ 
+ void platform_audio_msu_stop(void) {
+-    if (!msu_mutex) return; /* platform_audio_msu_load() never called -- nothing to stop */
++    if (!msu_mutex)
++        return; /* platform_audio_msu_load() never called -- nothing to stop */
+     SDL_LockMutex(msu_mutex);
+     msu_close_locked();
+     SDL_UnlockMutex(msu_mutex);
+@@ -235,7 +314,8 @@ void platform_audio_msu_stop(void) {
+  * No-op if nothing is actively streaming. Called from the audio callback
+  * thread (sdl2_audio.c), guarded by msu_mutex, never audio_mutex. */
+ void platform_audio_msu_mix(int16_t *out, int frames, int out_rate) {
+-    if (!msu_mutex) return;
++    if (!msu_mutex)
++        return;
+     SDL_LockMutex(msu_mutex);
+     if (!msu_active || !msu_pcm) {
+         SDL_UnlockMutex(msu_mutex);
+@@ -246,29 +326,97 @@ void platform_audio_msu_mix(int16_t *out, int frames, int out_rate) {
+     for (int i = 0; i < frames; i++) {
+         uint32_t i0 = (uint32_t)msu_read_pos;
+         if (i0 >= msu_total_frames) {
++            if (!msu_repeats) {
++                msu_active = false;
++                break;
++            }
+             /* Reached the end: loop back (a zero loop point with a very
+              * short/empty pre-loop section behaves like a plain repeat). */
+             msu_read_pos -= (double)(msu_total_frames - msu_loop_frame);
+             i0 = (uint32_t)msu_read_pos;
+-            if (i0 >= msu_total_frames) { i0 = msu_loop_frame; msu_read_pos = i0; }
++            if (i0 >= msu_total_frames) {
++                i0 = msu_loop_frame;
++                msu_read_pos = i0;
++            }
+         }
+         uint32_t i1 = i0 + 1;
+-        if (i1 >= msu_total_frames) i1 = msu_loop_frame;
++        if (i1 >= msu_total_frames)
++            i1 = msu_repeats ? msu_loop_frame : i0;
+         double frac = msu_read_pos - (double)i0;
+ 
+         for (int ch = 0; ch < 2; ch++) {
+             int32_t s0 = msu_pcm[i0 * 2 + ch];
+             int32_t s1 = msu_pcm[i1 * 2 + ch];
+-            int32_t sample = (int32_t)(s0 + (s1 - s0) * frac);
++            int32_t sample =
++                (int32_t)((s0 + (s1 - s0) * frac) * msu_gain * pc_options.music_volume / 100.0);
+             int32_t mixed = (int32_t)out[i * 2 + ch] + sample;
+-            if (mixed > 32767) mixed = 32767;
+-            if (mixed < -32768) mixed = -32768;
++            if (mixed > 32767)
++                mixed = 32767;
++            if (mixed < -32768)
++                mixed = -32768;
+             out[i * 2 + ch] = (int16_t)mixed;
+         }
+ 
++        double delta = msu_fade_per_second / out_rate;
++        if (msu_gain < msu_target)
++            msu_gain = fmin(msu_target, msu_gain + delta);
++        if (msu_gain > msu_target)
++            msu_gain = fmax(msu_target, msu_gain - delta);
+         msu_read_pos += step;
+     }
+     SDL_UnlockMutex(msu_mutex);
+ }
+ 
++bool pc_msu_selftest(void) {
++    char *dir = SDL_GetPrefPath("EarthBoundCompanion", "MsuTests");
++    if (!dir)
++        return false;
++    unsigned char data[24] = {'M', 'S', 'U', '1', 1,  0,  0,  0,  16, 39, 16, 39,
++                              16,  39,  16,  39,  16, 39, 16, 39, 16, 39, 16, 39};
++    char path[1024];
++    for (int t = 1; t <= 4; t++) {
++        snprintf(path, sizeof(path), "%stest-%d.pcm", dir, t);
++        FILE *f = fopen(path, "wb");
++        if (!f) {
++            SDL_free(dir);
++            return false;
++        }
++        if (t == 3)
++            data[4] = 90;
++        if (t == 4)
++            data[0] = 'X';
++        fwrite(data, 1, t == 4 ? 9 : sizeof(data), f);
++        fclose(f);
++    }
++    pc_options_defaults();
++    pc_options.music_volume = 100;
++    platform_audio_msu_load(dir, "test");
++    int16_t out[32] = {0};
++    bool ok = platform_audio_msu_play(1);
++    platform_audio_msu_mix(out, 16, 44100);
++    ok = ok && !msu_active && out[0] == 10000 && out[8] == 0;
++    memset(out, 0, sizeof(out));
++    ok = ok && platform_audio_msu_play(2);
++    platform_audio_msu_mix(out, 16, 32000);
++    ok = ok && msu_active && out[30] == 10000;
++    pc_msu_command(2);
++    int16_t fading[64000] = {0};
++    platform_audio_msu_mix(fading, 32000, 32000);
++    ok = ok && msu_gain < 0.1;
++    ok = ok && !platform_audio_msu_play(3) && !platform_audio_msu_play(4) &&
++         !platform_audio_msu_play(65535);
++    platform_audio_msu_stop();
++    for (int t = 1; t <= 4; t++) {
++        snprintf(path, sizeof(path), "%stest-%d.pcm", dir, t);
++        remove(path);
++    }
++    SDL_free(dir);
++    SDL_DestroyMutex(msu_mutex);
++    msu_mutex = NULL;
++    msu_pack_loaded = false;
++    fprintf(stderr,
++            "MSU one-shot / loop-point / resample / fade / invalid-header / missing-track: %s\n",
++            ok ? "PASS" : "FAIL");
++    return ok;
++}
+ #endif /* EB_ENABLE_AUDIO */
+diff --git a/port/unix/platform/sdl2_audio.c b/port/unix/platform/sdl2_audio.c
+index 1d91923..409d215 100644
+--- a/port/unix/platform/sdl2_audio.c
++++ b/port/unix/platform/sdl2_audio.c
+@@ -1,6 +1,7 @@
+ #include "platform/platform.h"
+ #include "game_main.h"
+ #include "game/audio.h"
++#include "platform/pc_options.h"
+ 
+ #ifdef EB_ENABLE_AUDIO
+ 
+@@ -28,7 +29,7 @@ void platform_audio_msu_mix(int16_t *out, int frames, int out_rate);
+ 
+ static void audio_callback(void *userdata, Uint8 *stream, int len) {
+     (void)userdata;
+-    if (game_is_fast_forward()) {
++    if (game_is_fast_forward() || pc_paused) {
+         memset(stream, 0, len);
+         return;
+     }
+@@ -77,6 +78,7 @@ static void audio_callback(void *userdata, Uint8 *stream, int len) {
+      * music track -- see the platform_audio_msu_play() call in
+      * game/audio.c's change_music()). */
+     platform_audio_msu_mix(out, total_samples, AUDIO_SAMPLE_RATE);
++    for(int i=0;i<total_samples*2;i++)out[i]=(int16_t)((int32_t)out[i]*pc_options.volume/100);
+ }
+ 
+ bool platform_audio_init(void) {
+diff --git a/port/unix/platform/sdl2_input.c b/port/unix/platform/sdl2_input.c
+index a234146..a23909c 100644
+--- a/port/unix/platform/sdl2_input.c
++++ b/port/unix/platform/sdl2_input.c
+@@ -1,284 +1,265 @@
+-#include "platform/platform.h"
+-#include "include/pad.h"
++#include "game/audio.h"
+ #include "game/settings.h"
++#include "include/pad.h"
++#include "platform/pc_options.h"
++#include "platform/platform.h"
+ #include <SDL.h>
+ #include <signal.h>
++#include <stdio.h>
+ #include <string.h>
+-
+-/* Pad/aux state is assembled each poll from independent per-source trackers
+- * (keyboard, controller buttons, controller left-stick-as-dpad) and OR'd
+- * together, rather than having each source mutate one shared bitmask
+- * directly -- that would risk one source's release event clobbering a bit
+- * another source is still holding (e.g. releasing the stick back to center
+- * while a d-pad button is physically held). */
+-static uint16_t kb_pad_state;
+-static uint16_t kb_aux_state;
+-static uint16_t ctrl_pad_state;  /* controller face/shoulder/start/select/d-pad buttons */
+-static uint16_t ctrl_stick_bits; /* left stick, converted to digital PAD_DPAD bits */
+-static uint16_t ctrl_aux_state;  /* controller-driven AUX_* bits (e.g. R3 = quick save) */
+-
+-/* Per-SDL-button held state, rebuilt into ctrl_pad_state each poll (see
+- * platform_input_poll). Needed because controller_button_to_pad() is a
+- * many-to-one mapping (e.g. both South and L-shoulder send PAD_L) -- an
+- * incrementally OR'd/cleared single accumulator would let releasing one
+- * button clobber a target bit another still-held button owns too. */
+-static bool ctrl_button_held[SDL_CONTROLLER_BUTTON_MAX];
+-
+-static uint16_t pad_state;
+-static uint16_t pad_prev;
+-static uint16_t aux_state;
++void platform_video_request_screenshot(const char *path);
++static bool keys[SDL_NUM_SCANCODES], buttons[21], last[PC_ACTIONS];
++static int axes[SDL_CONTROLLER_AXIS_MAX];
++static uint16_t pad, prev, aux;
+ static volatile sig_atomic_t quit_requested;
+-
+-/* Single active controller (first one connected). One is plenty for a
+- * single-player game; additional controllers are ignored until this one
+- * disconnects. */
+ static SDL_GameController *controller;
+ static SDL_JoystickID controller_id = -1;
+-
+-/* Left stick deflection (of 32767) beyond which a direction counts as held.
+- * ~25% -- clears dead zone/drift without requiring a hard stick push. */
+-#define STICK_THRESHOLD 8000
+-
+-/* Global mode flags */
+-bool platform_headless = false;
+-bool platform_skip_intro = false;
+-int platform_max_frames = 0;
+-bool platform_force_windowed = false;
+-
++static bool focused = true;
++bool platform_headless = false, platform_skip_intro = false, platform_force_windowed = false;
++int platform_max_frames;
++static const uint16_t bits[12] = {PAD_A,     PAD_B,      PAD_X,  PAD_Y,    PAD_L,    PAD_R,
++                                  PAD_START, PAD_SELECT, PAD_UP, PAD_DOWN, PAD_LEFT, PAD_RIGHT};
++static FILE *replay;
++static unsigned poll_frame, replay_frame = ~0u, replay_pad, replay_current;
+ static void signal_handler(int sig) {
+     (void)sig;
+     quit_requested = 1;
+ }
+-
++static void next_replay(void) {
++    if (!replay || fscanf(replay, "%u %x", &replay_frame, &replay_pad) != 2)
++        replay_frame = ~0u;
++}
+ bool platform_input_init(void) {
+-    kb_pad_state = 0;
+-    kb_aux_state = 0;
+-    ctrl_pad_state = 0;
+-    ctrl_stick_bits = 0;
+-    ctrl_aux_state = 0;
+-    pad_state = 0;
+-    pad_prev = 0;
+-    aux_state = 0;
++    memset(keys, 0, sizeof(keys));
++    memset(buttons, 0, sizeof(buttons));
++    memset(axes, 0, sizeof(axes));
++    memset(last, 0, sizeof(last));
++    pad = prev = aux = 0;
+     quit_requested = 0;
++    poll_frame = replay_current = 0;
+     signal(SIGINT, signal_handler);
+     signal(SIGTERM, signal_handler);
+     SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER);
++    for (int i = 0; i < SDL_NumJoysticks(); i++)
++        if (SDL_IsGameController(i)) {
++            controller = SDL_GameControllerOpen(i);
++            if (controller) {
++                controller_id = SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(controller));
++                break;
++            }
++        }
++    if (pc_input_script_path) {
++        replay = fopen(pc_input_script_path, "r");
++        next_replay();
++    }
+     return true;
+ }
+-
+ void platform_input_shutdown(void) {
+-    if (controller) {
++    if (controller)
+         SDL_GameControllerClose(controller);
+-        controller = NULL;
+-    }
+-}
+-
+-/* Controller button -> SNES pad bit. Deliberately NOT positional-by-XInput-
+- * layout (the previous scheme) -- remapped so the most-used overworld
+- * actions sit on the buttons a modern player reaches for first:
+- *
+- *   South (A/Cross)  -> PAD_L   "check/talk to" shortcut (PAD_CONFIRM group,
+- *                                so it also confirms menus/text, same as A)
+- *   East  (B/Circle) -> PAD_B   cancel / HP-PP display / auto-fight-cancel
+- *                                (direct PAD_B checks exist in battle.c, so
+- *                                this keeps them reachable, not just the
+- *                                PAD_CANCEL group via Select)
+- *   North (Y/Triangle) -> PAD_X town map (unique function, no equivalent)
+- *   West  (X/Square)   -> PAD_Y no function in normal gameplay (unchanged)
+- *   Start             -> PAD_START | PAD_A  opens the command menu (PAD_A)
+- *                                and keeps every existing PAD_START use
+- *                                (naming confirm, debug SELECT+START, etc.)
+- *   Back/View         -> PAD_SELECT  already part of PAD_CANCEL (B|SELECT),
+- *                                so this alone opens the HP/PP "status check"
+- *                                display without needing a raw PAD_B send
+- *   L shoulder        -> PAD_L  kept redundant with South per platform.h's
+- *                                own guidance to prefer extra PAD_L bindings
+- *   R shoulder        -> PAD_R  bicycle bell (unchanged, cosmetic)
+- */
+-static uint16_t controller_button_to_pad(SDL_GameControllerButton button) {
+-    /* "Alt Controls" (Config menu, engine_alt_controls -- settings.h) swaps
+-     * the A<->B and X<->Y *mapping outputs* below. SDL names face buttons
+-     * by Xbox-style position (A=south, B=east, X=west, Y=north) regardless
+-     * of what's printed on the button; on a Nintendo-style pad (Switch Pro,
+-     * SNES, GameCube-adapter, ...) those labels sit at different positions
+-     * (physical "A" at east, "B" at south, X/Y likewise swapped), so
+-     * without this a Nintendo player pressing what they see as "A"
+-     * (expecting the PAD_CONFIRM-group function below) gets B's cancel
+-     * function instead. Swapping which case each SDL button falls into
+-     * fixes that for either physical layout, without needing to know which
+-     * kind of pad is actually connected. */
+-    bool alt = engine_alt_controls == ALT_CONTROLS_ON;
+-    switch (button) {
+-    case SDL_CONTROLLER_BUTTON_A:            return alt ? PAD_B : PAD_L;
+-    case SDL_CONTROLLER_BUTTON_B:            return alt ? PAD_L : PAD_B;
+-    case SDL_CONTROLLER_BUTTON_Y:            return alt ? PAD_Y : PAD_X;
+-    case SDL_CONTROLLER_BUTTON_X:            return alt ? PAD_X : PAD_Y;
+-    case SDL_CONTROLLER_BUTTON_LEFTSHOULDER:  return PAD_L;
+-    case SDL_CONTROLLER_BUTTON_RIGHTSHOULDER: return PAD_R;
+-    case SDL_CONTROLLER_BUTTON_START:        return PAD_START | PAD_A;
+-    case SDL_CONTROLLER_BUTTON_BACK:         return PAD_SELECT;
+-    case SDL_CONTROLLER_BUTTON_DPAD_UP:      return PAD_UP;
+-    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:    return PAD_DOWN;
+-    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:    return PAD_LEFT;
+-    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:   return PAD_RIGHT;
+-    default: return 0;
+-    }
+-}
+-
+-/* Controller button -> AUX bit. R3 (right stick click) is otherwise unused
+- * by this game (no camera control), so it's the overworld FOV/zoom cycle
+- * for controller players (game_main.c only acts on it outside of battle, so
+- * a press during battle is a harmless no-op rather than queued input).
+- * No keyboard equivalent -- R3 only, per the feature request. L3 (left
+- * stick click) is likewise otherwise unused, mapped to the motion-dump
+- * debug burst (F8's controller equivalent) so it's reachable on a TV/
+- * Steam Machine setup with no keyboard attached -- this one IS also on a
+- * key (F8) since it's a debug tool, not a player-facing feature. */
+-static uint16_t controller_button_to_aux(SDL_GameControllerButton button) {
+-    switch (button) {
+-    case SDL_CONTROLLER_BUTTON_RIGHTSTICK: return AUX_ZOOM_TOGGLE;
+-    case SDL_CONTROLLER_BUTTON_LEFTSTICK:  return AUX_MOTION_DUMP;
+-    default: return 0;
+-    }
++    controller = NULL;
++    if (replay)
++        fclose(replay);
++    replay = NULL;
+ }
+-
+-static void handle_controller_added(int joystick_index) {
+-    if (controller != NULL) return; /* already have one; ignore the rest */
+-    if (!SDL_IsGameController(joystick_index)) return;
+-    controller = SDL_GameControllerOpen(joystick_index);
+-    if (controller) {
+-        SDL_Joystick *joy = SDL_GameControllerGetJoystick(controller);
+-        controller_id = SDL_JoystickInstanceID(joy);
++void pc_reload_if_requested(void) {
++    FILE *f = fopen("settings.applied", "rb");
++    if (!f)
++        return;
++    fclose(f);
++    remove("settings.applied");
++    pc_options_load(pc_config_path);
++    bool audio_changed;
++    uint8_t old_hq = engine_hq_audio;
++    settings_load();
++    audio_changed = old_hq != engine_hq_audio;
++    if (audio_changed) {
++        uint16_t track = get_current_music();
++        audio_invalidate_music_cache();
++        if (track > 0 && track != 0xFFFF)
++            change_music(track);
+     }
++    pc_video_apply();
++    pc_paused = false;
+ }
+-
+-static void handle_controller_removed(SDL_JoystickID which) {
+-    if (which != controller_id) return;
+-    SDL_GameControllerClose(controller);
+-    controller = NULL;
+-    controller_id = -1;
+-    /* Don't leave stuck buttons/direction behind on disconnect. */
+-    ctrl_pad_state = 0;
+-    ctrl_stick_bits = 0;
+-    ctrl_aux_state = 0;
+-    memset(ctrl_button_held, 0, sizeof(ctrl_button_held));
+-}
+-
+-static void handle_axis_motion(const SDL_ControllerAxisEvent *axis) {
+-    if (axis->which != controller_id) return;
+-    if (axis->axis == SDL_CONTROLLER_AXIS_LEFTX) {
+-        ctrl_stick_bits &= ~(PAD_LEFT | PAD_RIGHT);
+-        if (axis->value < -STICK_THRESHOLD) ctrl_stick_bits |= PAD_LEFT;
+-        else if (axis->value > STICK_THRESHOLD) ctrl_stick_bits |= PAD_RIGHT;
+-    } else if (axis->axis == SDL_CONTROLLER_AXIS_LEFTY) {
+-        ctrl_stick_bits &= ~(PAD_UP | PAD_DOWN);
+-        if (axis->value < -STICK_THRESHOLD) ctrl_stick_bits |= PAD_UP;
+-        else if (axis->value > STICK_THRESHOLD) ctrl_stick_bits |= PAD_DOWN;
++static void assemble(void) {
++    pad = aux = 0;
++    for (int i = 0; i < PC_ACTIONS; i++) {
++        int k = pc_options.keys[i], b = pc_options.buttons[i];
++        if (engine_alt_controls == ALT_CONTROLS_ON && b >= 0 && b < 4)
++            b ^= 1;
++        bool held = (k > 0 && k < SDL_NUM_SCANCODES && keys[k]) || (b >= 0 && b < 21 && buttons[b]);
++        bool pressed = held && !last[i];
++        last[i] = held;
++        if (i < 12 && held)
++            pad |= bits[i];
++        if (i == PC_FAST && held)
++            aux |= AUX_FAST_FORWARD;
++        if (i == PC_SAVE && held)
++            aux |= AUX_SAVESTATE;
++        if (i == PC_LOAD && held)
++            aux |= AUX_LOAD_STATE;
++        if (i == PC_FPS && held)
++            aux |= AUX_FPS_TOGGLE;
++        if (i == PC_ZOOM && held)
++            aux |= AUX_ZOOM_TOGGLE;
++        if (i == PC_FULLSCREEN && pressed) {
++            pc_options.fullscreen = !pc_options.fullscreen;
++            pc_video_apply();
++        }
++        if (i == PC_PAUSE && pressed)
++            pc_paused = !pc_paused;
++        if (i == PC_SCREENSHOT && pressed) {
++            char p[128];
++            snprintf(p, sizeof(p), "screenshots/earthbound-%llu.bmp",
++                     (unsigned long long)SDL_GetTicks64());
++            platform_video_request_screenshot(p);
++        }
++        if (i == PC_SETTINGS && pressed) {
++            pc_paused = true;
++            FILE *f = fopen("settings.request", "wb");
++            if (f)
++                fclose(f);
++        }
+     }
++    if (axes[0] < -pc_options.deadzone)
++        pad |= PAD_LEFT;
++    if (axes[0] > pc_options.deadzone)
++        pad |= PAD_RIGHT;
++    if (axes[1] < -pc_options.deadzone)
++        pad |= PAD_UP;
++    if (axes[1] > pc_options.deadzone)
++        pad |= PAD_DOWN;
+ }
+-
+ void platform_input_poll(void) {
+-    SDL_Event event;
+-
+-    pad_prev = pad_state;
+-
+-    while (SDL_PollEvent(&event)) {
+-        switch (event.type) {
++    prev = pad;
++    SDL_Event e;
++    while (SDL_PollEvent(&e))
++        switch (e.type) {
+         case SDL_QUIT:
+             quit_requested = 1;
+             break;
+         case SDL_KEYDOWN:
+-        case SDL_KEYUP: {
+-            uint16_t bit = 0;
+-            uint16_t aux_bit = 0;
+-            switch (event.key.keysym.scancode) {
+-            case SDL_SCANCODE_X:      bit = PAD_A;      break;
+-            case SDL_SCANCODE_Z:      bit = PAD_B;      break;
+-            case SDL_SCANCODE_S:      bit = PAD_X;      break;
+-            case SDL_SCANCODE_A:      bit = PAD_Y;      break;
+-            case SDL_SCANCODE_Q:      bit = PAD_L;      break;
+-            case SDL_SCANCODE_W:      bit = PAD_R;      break;
+-            case SDL_SCANCODE_RETURN: bit = PAD_START;  break;
+-            case SDL_SCANCODE_RSHIFT: bit = PAD_SELECT; break;
+-            case SDL_SCANCODE_UP:     bit = PAD_UP;            break;
+-            case SDL_SCANCODE_DOWN:   bit = PAD_DOWN;          break;
+-            case SDL_SCANCODE_LEFT:   bit = PAD_LEFT;          break;
+-            case SDL_SCANCODE_RIGHT:  bit = PAD_RIGHT;         break;
+-            case SDL_SCANCODE_F1:     aux_bit = AUX_DEBUG_DUMP;   break;
+-            case SDL_SCANCODE_F2:     aux_bit = AUX_VRAM_DUMP;    break;
+-            case SDL_SCANCODE_F3:     aux_bit = AUX_FPS_TOGGLE;   break;
+-            case SDL_SCANCODE_F4:     aux_bit = AUX_LOG_MARK;     break;
+-            case SDL_SCANCODE_F6:     aux_bit = AUX_SAVESTATE;    break;
+-            case SDL_SCANCODE_F7:     aux_bit = AUX_LOAD_STATE;   break;
+-            case SDL_SCANCODE_TAB:    aux_bit = AUX_FAST_FORWARD; break;
+-            case SDL_SCANCODE_F5:     aux_bit = AUX_DEBUG_TOGGLE; break;
+-            case SDL_SCANCODE_F8:     aux_bit = AUX_MOTION_DUMP;  break;
+-            default: break;
+-            }
+-            if (event.type == SDL_KEYDOWN) {
+-                kb_pad_state |= bit;
+-                kb_aux_state |= aux_bit;
+-            } else {
+-                kb_pad_state &= ~bit;
+-                kb_aux_state &= ~aux_bit;
++        case SDL_KEYUP:
++            if (e.key.keysym.scancode > 0 && e.key.keysym.scancode < SDL_NUM_SCANCODES)
++                keys[e.key.keysym.scancode] = e.type == SDL_KEYDOWN;
++            break;
++        case SDL_WINDOWEVENT:
++            if (e.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
++                focused = true;
++            if (e.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
++                focused = false;
++                memset(keys, 0, sizeof(keys));
++                memset(buttons, 0, sizeof(buttons));
++                memset(axes, 0, sizeof(axes));
+             }
+             break;
+-        }
+         case SDL_CONTROLLERDEVICEADDED:
+-            handle_controller_added(event.cdevice.which);
++            if (!controller && SDL_IsGameController(e.cdevice.which)) {
++                controller = SDL_GameControllerOpen(e.cdevice.which);
++                if (controller)
++                    controller_id =
++                        SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(controller));
++            }
+             break;
+         case SDL_CONTROLLERDEVICEREMOVED:
+-            handle_controller_removed(event.cdevice.which);
++            if (e.cdevice.which == controller_id) {
++                SDL_GameControllerClose(controller);
++                controller = NULL;
++                controller_id = -1;
++                memset(buttons, 0, sizeof(buttons));
++                memset(axes, 0, sizeof(axes));
++            }
+             break;
+         case SDL_CONTROLLERBUTTONDOWN:
+-        case SDL_CONTROLLERBUTTONUP: {
+-            if (event.cbutton.which != controller_id) break;
+-            SDL_GameControllerButton cbtn = (SDL_GameControllerButton)event.cbutton.button;
+-            uint16_t aux_bit = controller_button_to_aux(cbtn);
+-            bool down = (event.type == SDL_CONTROLLERBUTTONDOWN);
+-            if (cbtn >= 0 && cbtn < SDL_CONTROLLER_BUTTON_MAX)
+-                ctrl_button_held[cbtn] = down;
+-            if (down) {
+-                ctrl_aux_state |= aux_bit;
+-            } else {
+-                ctrl_aux_state &= ~aux_bit;
+-            }
++        case SDL_CONTROLLERBUTTONUP:
++            if (e.cbutton.which == controller_id && e.cbutton.button < 21)
++                buttons[e.cbutton.button] = e.type == SDL_CONTROLLERBUTTONDOWN;
+             break;
+-        }
+         case SDL_CONTROLLERAXISMOTION:
+-            handle_axis_motion(&event.caxis);
++            if (e.caxis.which == controller_id && e.caxis.axis < SDL_CONTROLLER_AXIS_MAX) {
++                axes[e.caxis.axis] = e.caxis.value;
++                buttons[15] = axes[4] > 16000;
++                buttons[16] = axes[5] > 16000;
++            }
+             break;
+         }
++    if (!controller)
++        for (int i = 0; i < SDL_NumJoysticks(); i++)
++            if (SDL_IsGameController(i)) {
++                controller = SDL_GameControllerOpen(i);
++                if (controller) {
++                    controller_id =
++                        SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(controller));
++                    break;
++                }
++            }
++    if (controller && focused) {
++        for (int i = 0; i < 15; i++)
++            buttons[i] = SDL_GameControllerGetButton(controller, (SDL_GameControllerButton)i) != 0;
++        for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; i++)
++            axes[i] = SDL_GameControllerGetAxis(controller, (SDL_GameControllerAxis)i);
++        buttons[15] = axes[SDL_CONTROLLER_AXIS_TRIGGERLEFT] > 16000;
++        buttons[16] = axes[SDL_CONTROLLER_AXIS_TRIGGERRIGHT] > 16000;
+     }
+-
+-    /* Rebuild from per-button held state each poll (see ctrl_button_held's
+-     * comment) rather than trusting an incrementally mutated accumulator. */
+-    ctrl_pad_state = 0;
+-    for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; i++) {
+-        if (ctrl_button_held[i])
+-            ctrl_pad_state |= controller_button_to_pad((SDL_GameControllerButton)i);
++    pc_reload_if_requested();
++    assemble();
++    if (replay) {
++        while (poll_frame >= replay_frame) {
++            replay_current = replay_pad;
++            next_replay();
++        }
++        pad = (uint16_t)replay_current;
++        poll_frame++;
+     }
+-
+-    pad_state = kb_pad_state | ctrl_pad_state | ctrl_stick_bits;
+-    aux_state = kb_aux_state | ctrl_aux_state;
+ }
+-
+ uint16_t platform_input_get_pad(void) {
+-    return pad_state;
++    return pad;
+ }
+-
+ uint16_t platform_input_get_pad_new(void) {
+-    return pad_state & ~pad_prev;
++    return pad & ~prev;
+ }
+-
+ uint16_t platform_input_get_aux(void) {
+-    return aux_state;
++    return aux;
+ }
+-
+ bool platform_input_quit_requested(void) {
+     return quit_requested != 0;
+ }
+-
+ void platform_request_quit(void) {
+     quit_requested = 1;
+ }
++bool pc_input_selftest(void) {
++    pc_options_defaults();
++    platform_input_init();
++    pc_options.keys[PC_L] = 4;
++    pc_options.keys[PC_A] = 4;
++    keys[4] = true;
++    assemble();
++    bool ok = (pad & (PAD_L | PAD_A)) == (PAD_L | PAD_A);
++    buttons[0] = true;
++    keys[4] = false;
++    assemble();
++    ok = ok && (pad & PAD_L) && !(pad & PAD_A);
++    buttons[0] = false;
++    axes[0] = 7000;
++    assemble();
++    ok = ok && !(pad & PAD_RIGHT);
++    axes[0] = 9000;
++    assemble();
++    ok = ok && (pad & PAD_RIGHT);
++    axes[0] = 0;
++    keys[pc_options.keys[PC_SAVE]] = true;
++    assemble();
++    ok = ok && (aux & AUX_SAVESTATE);
++    SDL_Event e;
++    memset(&e, 0, sizeof(e));
++    e.type = SDL_WINDOWEVENT;
++    e.window.event = SDL_WINDOWEVENT_FOCUS_LOST;
++    SDL_PushEvent(&e);
++    platform_input_poll();
++    ok = ok && pad == 0 && aux == 0;
++    platform_input_shutdown();
++    fprintf(stderr, "PC input remap / overlapping sources / deadzone / hotkey / focus-loss: %s\n",
++            ok ? "PASS" : "FAIL");
++    return ok;
++}
+diff --git a/port/unix/platform/sdl2_savestate.c b/port/unix/platform/sdl2_savestate.c
+index 66dfb81..1dab5a7 100644
+--- a/port/unix/platform/sdl2_savestate.c
++++ b/port/unix/platform/sdl2_savestate.c
+@@ -13,6 +13,7 @@
+  * src/platform/platform.h for the interface contract.
+  */
+ #include "platform/platform.h"
++#include "platform/pc_options.h"
+ #include <stdio.h>
+ #ifdef _WIN32
+ #include <io.h>        /* _commit, _fileno */
+@@ -25,7 +26,10 @@
+ #endif
+ 
+ static const char *slot_path(int slot) {
+-    return slot == 0 ? "saves/savestate.bin.0" : "saves/savestate.bin.1";
++    static char paths[2][128];
++    slot=slot==0?0:1;
++    snprintf(paths[slot],sizeof(paths[slot]),"saves/quicksave_%d.bin.%d",pc_options.quick_slot+1,slot);
++    return paths[slot];
+ }
+ 
+ /* In-progress writers, one per slot (NULL when no write is open). */
+diff --git a/port/unix/platform/sdl2_video.c b/port/unix/platform/sdl2_video.c
+index a74f32b..eeded15 100644
+--- a/port/unix/platform/sdl2_video.c
++++ b/port/unix/platform/sdl2_video.c
+@@ -1,5 +1,6 @@
+ #include "platform/platform.h"
+ #include "game/settings.h"
++#include "platform/pc_options.h"
+ #include "core/log.h"
+ #include <SDL.h>
+ #include <math.h>
+@@ -686,19 +687,20 @@ bool platform_video_init(void) {
+      * passed here are only a fallback size if the window is ever taken out
+      * of fullscreen. --windowed opts out, for development/debugging. */
+     Uint32 window_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
+-    if (!platform_force_windowed)
++    if (pc_options.fullscreen)
+         window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+ 
+     window = SDL_CreateWindow(
+         "EarthBound",
+         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+-        EB_VIEWPORT_WIDTH * EB_WINDOW_SCALE, EB_VIEWPORT_HEIGHT * EB_WINDOW_SCALE,
++        pc_options.width, pc_options.height,
+         window_flags
+     );
+     if (!window) return false;
+ 
+     renderer = SDL_CreateRenderer(window, -1,
+         SDL_RENDERER_ACCELERATED);
++    if(!renderer)renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_SOFTWARE);
+     if (!renderer) return false;
+ 
+     /* Enable VSync — use runtime call for reliable driver support.
+@@ -1167,6 +1169,7 @@ void platform_video_end_frame(void) {
+     double scale = (double)out_w / content_w;
+     double scale_h = (double)out_h / content_h;
+     if (scale_h < scale) scale = scale_h;
++    if(pc_options.integer_scale && scale>=1.0) scale=floor(scale);
+     int dst_w = (int)(content_w * scale);
+     int dst_h = (int)(content_h * scale);
+     SDL_Rect dst = { (out_w - dst_w) / 2, (out_h - dst_h) / 2, dst_w, dst_h };
+@@ -1216,3 +1219,12 @@ void platform_video_set_vsync(bool enabled) {
+     (void)enabled;
+ #endif
+ }
++
++void pc_video_apply(void) {
++    if (!window) return;
++    SDL_SetWindowFullscreen(window, pc_options.fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
++    if (!pc_options.fullscreen) SDL_SetWindowSize(window, pc_options.width, pc_options.height);
++    SDL_ScaleMode mode = pc_options.filter == 2 ? SDL_ScaleModeLinear : SDL_ScaleModeNearest;
++    if (texture) SDL_SetTextureScaleMode(texture, mode);
++    if (aa_texture) SDL_SetTextureScaleMode(aa_texture, mode);
++}
+diff --git a/src/game/audio.c b/src/game/audio.c
+index b249f00..fb35dc3 100644
+--- a/src/game/audio.c
++++ b/src/game/audio.c
+@@ -4,6 +4,7 @@
+ 
+ #include "game/overworld.h"
+ #include "game/settings.h"
++#include "platform/pc_options.h"
+ #include "platform/platform.h"
+ #include "data/assets.h"
+ #include "include/binary.h"
+@@ -316,6 +317,7 @@ void audio_resync_after_load(void) {
+ }
+ 
+ void write_apu_port1(uint8_t value) {
++    pc_msu_command(value);
+     /* Port of WRITE_APU_PORT1 (asm/overworld/write_apu_port1.asm).
+      * ORs value with the bit-flip state, writes to APU port 1,
+      * then toggles bit 7 of the flipper. The SPC700 engine detects
+diff --git a/src/game/battle.c b/src/game/battle.c
+index ef6571c..ec7e8b0 100644
+--- a/src/game/battle.c
++++ b/src/game/battle.c
+@@ -1,3 +1,4 @@
++#include "platform/pc_options.h"
+ /*
+  * Battle system core, utility functions for combat.
+  *
+@@ -4250,7 +4251,7 @@ static void btl_exec_setup_targets(BattleRoutineState *st, Battler *attacker) {
+  * the per-member EXP split. */
+ static void btl_victory_money_exp(void) {
+     /* Deposit battle money */
+-    uint32_t deposited = deposit_into_atm(bt.battle_money_scratch);
++    uint32_t deposited = deposit_into_atm((uint32_t)bt.battle_money_scratch * (uint32_t)pc_options.money_multiplier);
+ 
+     /* Add money to game total (assembly adds deposited amount, not original) */
+     {
+@@ -4265,7 +4266,8 @@ static void btl_victory_money_exp(void) {
+     /* Calculate EXP per surviving party member */
+     {
+         uint16_t alive_count = battle_count_chars(0);
+-        if (alive_count > 0) {
++        bt.battle_exp_scratch *= (uint32_t)pc_options.exp_multiplier;
++    if (alive_count > 0) {
+             /* Add (alive_count - 1) bonus EXP to base, then divide */
+             bt.battle_exp_scratch += (alive_count - 1);
+             bt.battle_exp_scratch /= alive_count;
+@@ -5702,7 +5704,7 @@ static void iw_victory_setup(void) {
+     }
+ 
+     /* Deposit money into ATM and add to running total (game_state.unknownC4) */
+-    uint32_t money32 = (uint32_t)bt.battle_money_scratch;
++    uint32_t money32 = (uint32_t)bt.battle_money_scratch * (uint32_t)pc_options.money_multiplier;
+     uint32_t deposited = deposit_into_atm(money32);
+ 
+     /* Add deposited amount to game_state.unknownC4 (32-bit running battle money) */
+@@ -5734,7 +5736,8 @@ static void iw_victory_setup(void) {
+ 
+     /* Divide EXP evenly among alive party members (ceiling division) */
+     uint16_t alive_count = battle_count_chars(0);
+-    if (alive_count > 0) {
++    bt.battle_exp_scratch *= (uint32_t)pc_options.exp_multiplier;
++        if (alive_count > 0) {
+         bt.battle_exp_scratch = (bt.battle_exp_scratch + (uint32_t)(alive_count - 1)) / (uint32_t)alive_count;
+     }
+ }
+diff --git a/src/game/display_text_cc.c b/src/game/display_text_cc.c
+index 950d47b..58c2aa6 100644
+--- a/src/game/display_text_cc.c
++++ b/src/game/display_text_cc.c
+@@ -1,3 +1,4 @@
++#include "platform/pc_options.h"
+ /*
+  * Display text control code handlers.
+  *
+@@ -463,7 +464,7 @@ StepResult mode_step_text_delay(ModeState *ms) {
+     }
+     if (st->primed && st->cancelable && (core.pad1_pressed & PAD_TEXT_ADVANCE))
+         return STEP_RESULT_POP(0);
+-    if (st->remaining == 0)
++    if (st->remaining == 0 || (pc_options.instant_text && st->cancelable))
+         return STEP_RESULT_POP(0);
+ 
+     if (update_hppp_meter_work_step()) {
+diff --git a/src/game/overworld.c b/src/game/overworld.c
+index 723f690..3dcfa17 100644
+--- a/src/game/overworld.c
++++ b/src/game/overworld.c
+@@ -1,3 +1,4 @@
++#include "platform/pc_options.h"
+ /*
+  * Overworld initialization functions needed by attract mode.
+  *
+@@ -1070,6 +1071,7 @@ void destroy_mini_ghost_entity(void) {
+  * Only triggers when: no windows open, not in battle, no swirl,
+  * no enemy touched, not already queued, and flag not disabled. */
+ void load_dad_phone(void) {
++    if(pc_options.no_dad_calls)return;
+     /* Assembly lines 7-17: Guard checks */
+     if (any_window_open())
+         return;
+@@ -2354,6 +2356,7 @@ uint16_t calculate_movement_path_steps(int16_t src_x, int16_t src_y,
+ static const uint8_t homesickness_probability[] = { 0, 100, 150, 200, 250, 0 };
+ 
+ uint16_t attempt_homesickness(void) {
++    if(pc_options.no_homesickness)return 0;
+     /* Assembly line 8-11: check if Ness is alive */
+     uint8_t status = party_characters[0].afflictions[0];  /* STATUS_GROUP::PERSISTENT_EASYHEAL */
+     if (status == 1)  /* UNCONSCIOUS */
+diff --git a/src/game_main.c b/src/game_main.c
+index 8ddaa2a..6e28df1 100644
+--- a/src/game_main.c
++++ b/src/game_main.c
+@@ -863,7 +863,11 @@ void host_process_frame(void) {
+     core.play_timer++;
+ 
+     /* Check frame limit */
+-    if (platform_max_frames > 0 && core.frame_counter >= (uint32_t)platform_max_frames)
++    /* Diagnostic frame limits count this process, including after a load whose
++     * serialized game counter may already be much larger than the limit. */
++    static uint32_t session_frame_count;
++    session_frame_count++;
++    if (platform_max_frames > 0 && session_frame_count >= (uint32_t)platform_max_frames)
+         platform_request_quit();
+ 
+     /* Frame timing: advance deadline by one frame period, clamp debt,
+diff --git a/src/intro/file_select.c b/src/intro/file_select.c
+index 632f674..8a96b2f 100644
+--- a/src/intro/file_select.c
++++ b/src/intro/file_select.c
+@@ -15,6 +15,7 @@
+ #include "core/embedded.h"
+ #include "data/assets.h"
+ #include "platform/platform.h"
++#include "platform/pc_options.h"
+ #include "include/pad.h"
+ #include "game/overworld.h"
+ #include "game/inventory.h"
+@@ -2278,7 +2279,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
+             close_window(WINDOW_FILE_SELECT_TEXT_SPEED);
+             close_window(WINDOW_FILE_SELECT_MUSIC_MODE);
+             close_window(WINDOW_FILE_SELECT_FLAVOUR);
+-            st->phase = FM_NG_ASPECT;
++            /* The Companion already owns desktop presentation settings. */
++            st->phase = pc_options.companion ? FM_NG_NAMING : FM_NG_ASPECT;
+             continue;
+         }
+         case FM_NG_ASPECT: {
+diff --git a/src/platform/pc_options.c b/src/platform/pc_options.c
+new file mode 100644
+index 0000000..2d5f45c
+--- /dev/null
++++ b/src/platform/pc_options.c
+@@ -0,0 +1,103 @@
++#include "platform/pc_options.h"
++#include <ctype.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++PcOptions pc_options;
++_Atomic bool pc_paused;
++const char *pc_config_path = "earthbound.ini";
++const char *pc_input_script_path;
++void pc_options_defaults(void) {
++    memset(&pc_options, 0, sizeof(pc_options));
++    pc_options.width = 1920;
++    pc_options.height = 1080;
++    pc_options.integer_scale = 1;
++    pc_options.volume = 80;
++    pc_options.music_volume = 75;
++    pc_options.exp_multiplier = 1;
++    pc_options.money_multiplier = 1;
++    pc_options.deadzone = 8000;
++    const int keys[PC_ACTIONS] = {40, 29, 22, 225, 27, 26, 40, 229, 82, 81, 80,
++                                  79, 43, 63, 64,  68, 66, 69, 60,  58, 6};
++    const int buttons[PC_ACTIONS] = {6,  1,  3,  2,  0,  10, 6,  4,  11, 12, 13,
++                                     14, -1, -1, -1, -1, -1, -1, -1, -1, 8};
++    memcpy(pc_options.keys, keys, sizeof(keys));
++    memcpy(pc_options.buttons, buttons, sizeof(buttons));
++    strcpy(pc_options.msu_dir, "msu");
++}
++static char *trim(char *s) {
++    while (isspace((unsigned char)*s))
++        ++s;
++    size_t n = strlen(s);
++    while (n && isspace((unsigned char)s[n - 1]))
++        s[--n] = 0;
++    return s;
++}
++static int integer(const char *s, int fallback, int lo, int hi) {
++    char *end;
++    long v = strtol(s, &end, 10);
++    if (end == s || *trim(end) || v < lo || v > hi)
++        return fallback;
++    return (int)v;
++}
++bool pc_options_load(const char *path) {
++    FILE *f = fopen(path, "rb");
++    if (!f)
++        return false;
++    char line[2048];
++    while (fgets(line, sizeof(line), f)) {
++        char *s = trim(line);
++        if (*s == '#' || *s == ';' || *s == '[' || !*s)
++            continue;
++        char *equal = strchr(s, '=');
++        if (!equal)
++            continue;
++        *equal = 0;
++        char *key = trim(s), *value = trim(equal + 1);
++        struct Number {
++            const char *name;
++            int *field;
++            int lo, hi;
++        };
++        const struct Number numbers[] = {{"companion", &pc_options.companion, 0, 1},
++                                         {"width", &pc_options.width, 640, 7680},
++                                         {"height", &pc_options.height, 480, 4320},
++                                         {"fullscreen", &pc_options.fullscreen, 0, 1},
++                                         {"integer_scale", &pc_options.integer_scale, 0, 1},
++                                         {"filter", &pc_options.filter, 0, 2},
++                                         {"instant_text", &pc_options.instant_text, 0, 1},
++                                         {"no_homesickness", &pc_options.no_homesickness, 0, 1},
++                                         {"no_dad_calls", &pc_options.no_dad_calls, 0, 1},
++                                         {"exp_multiplier", &pc_options.exp_multiplier, 1, 4},
++                                         {"money_multiplier", &pc_options.money_multiplier, 1, 4},
++                                         {"quick_slot", &pc_options.quick_slot, 0, 4},
++                                         {"deadzone", &pc_options.deadzone, 2000, 30000}};
++        bool found = false;
++        for (size_t i = 0; i < sizeof(numbers) / sizeof(numbers[0]); i++)
++            if (!strcmp(key, numbers[i].name)) {
++                *numbers[i].field = integer(value, *numbers[i].field, numbers[i].lo, numbers[i].hi);
++                found = true;
++                break;
++            }
++        if (found)
++            continue;
++        if (!strcmp(key, "volume"))
++            pc_options.volume = integer(value, pc_options.volume, 0, 100);
++        else if (!strcmp(key, "music_volume"))
++            pc_options.music_volume = integer(value, pc_options.music_volume, 0, 100);
++        else if (!strcmp(key, "msu_dir"))
++            snprintf(pc_options.msu_dir, sizeof(pc_options.msu_dir), "%s", value);
++        else if (!strncmp(key, "key.", 4)) {
++            int i = integer(key + 4, -1, 0, PC_ACTIONS - 1);
++            if (i >= 0)
++                pc_options.keys[i] = integer(value, pc_options.keys[i], 0, 511);
++        } else if (!strncmp(key, "button.", 7)) {
++            int i = integer(key + 7, -1, 0, PC_ACTIONS - 1);
++            if (i >= 0)
++                pc_options.buttons[i] = integer(value, pc_options.buttons[i], -1, 16);
++        }
++    }
++    bool ok = !ferror(f);
++    fclose(f);
++    return ok;
++}
+diff --git a/src/platform/pc_options.h b/src/platform/pc_options.h
+new file mode 100644
+index 0000000..e601cfe
+--- /dev/null
++++ b/src/platform/pc_options.h
+@@ -0,0 +1,49 @@
++#ifndef EB_PC_OPTIONS_H
++#define EB_PC_OPTIONS_H
++#include <stdatomic.h>
++#include <stdbool.h>
++#include <stdint.h>
++enum {
++    PC_A,
++    PC_B,
++    PC_X,
++    PC_Y,
++    PC_L,
++    PC_R,
++    PC_START,
++    PC_SELECT,
++    PC_UP,
++    PC_DOWN,
++    PC_LEFT,
++    PC_RIGHT,
++    PC_FAST,
++    PC_SAVE,
++    PC_LOAD,
++    PC_FULLSCREEN,
++    PC_PAUSE,
++    PC_SCREENSHOT,
++    PC_FPS,
++    PC_SETTINGS,
++    PC_ZOOM,
++    PC_ACTIONS
++};
++typedef struct {
++    int width, height, fullscreen, integer_scale, filter, companion;
++    _Atomic int volume, music_volume;
++    int instant_text, no_homesickness, no_dad_calls;
++    int exp_multiplier, money_multiplier, quick_slot, deadzone;
++    int keys[PC_ACTIONS], buttons[PC_ACTIONS];
++    char msu_dir[1024];
++} PcOptions;
++extern PcOptions pc_options;
++extern _Atomic bool pc_paused;
++extern const char *pc_config_path;
++extern const char *pc_input_script_path;
++void pc_options_defaults(void);
++bool pc_options_load(const char *path);
++void pc_video_apply(void);
++void pc_msu_command(uint8_t command);
++void pc_reload_if_requested(void);
++bool pc_input_selftest(void);
++bool pc_msu_selftest(void);
++#endif

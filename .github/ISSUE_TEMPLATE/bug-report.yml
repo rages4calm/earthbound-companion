@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible Companion or native-game defect without copyrighted assets.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach ROMs, extracted assets, soundtrack tracks, saves, screenshots from the game, or credentials.
+  - type: input
+    id: version
+    attributes:
+      label: Companion version
+      placeholder: 0.4.0
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [First-run setup, Native gameplay, Display, Audio/MSU, Input, Saves/recovery, Story Shuffle, Packaging]
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: List the smallest repeatable sequence and what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and redacted log details
+      description: Include Windows version, controller, display mode, and relevant redacted lines from UserData/game.log.

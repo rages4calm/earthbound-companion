@@ -1,0 +1,7 @@
+# EarthBound Companion
+
+Carl wants a native Windows EarthBound edition with the breadth and ease of his Zelda Companion. EarthBound, Chrono Trigger and A Link to the Past are his all-time favorites. Enhanced presentation is the default; original presentation is an optional preset. The app must make playing, changing settings, remapping inputs, choosing music and enabling optional QoL features easy. Native widescreen should show more game scenery, not stretch a 256-pixel picture. Output resolutions include 1080p, 1440p, 4K and ultrawide.
+
+Source authority: BrianPugh's C reimplementation, extended by seanstaggsQU/earthboundRecompLinux2026. No SNES main CPU interpreter in the release build. Software PPU and SPC/DSP audio remain. Do not claim a complete playthrough, full MaternalBound Redux compatibility, or replacement HD artwork without evidence. Local assets come from Carl's EarthBound USA ROM. A verified 164-track fan MSU soundtrack is installed for private use.
+
+The interface is an Operate surface on Windows: native, legible, keyboard accessible, compact settings and direct actions. It inherits Zelda Companion's familiar sidebar, action buttons, press-to-bind controls and accessible native typography, with a restrained violet and warm yellow palette that fits EarthBound's nighttime opening. Actual game captures supply imagery. It opens fully configured and keeps backups before changing settings or starting a session. No subscription, account, web service or launcher install is required.
