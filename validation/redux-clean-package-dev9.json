@@ -1,0 +1,26 @@
+{
+  "Passed": true,
+  "PackageSha256": "C52D445B1E604FC3F3878419EED59FB04D41DC3583971B136988EFC38E1F6BE9",
+  "NativeExeSha256": "1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF",
+  "ReduxSetupSha256": "2931EB12806513F836A70D7451F3AF9CCB27E603248DDA2AED372B36DCDBE8AA",
+  "ReduxPackSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+  "Tests": [
+    "ROM-free archive and exact file manifest",
+    "Self-contained first-run setup with headered owner ROM and online pinned Redux source",
+    "164 soundtrack checks; corrupt track and stale partial repaired by real download",
+    "Verified profile installed atomically; generated ROMs cleaned",
+    "Packaged native MSU: eight Sound Stone transitions, SPC effects/fallback and all 164 loop/end checks",
+    "Packaged native story opening, Select naming and cold restore",
+    "Packaged generator, independent seed guard and native randomized opening",
+    "Normal-button story and seed gameplay through house doors/stairs, Mom, clothes change and outdoor movement",
+    "Original/Redux/seed save namespaces and profile switching"
+  ],
+  "DownloadedTrack": "eb_msu1-113.pcm",
+  "MsuTracksVerified": 164,
+  "ExistingTracksReusedViaHardlinks": 163,
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Isolated setup/opening tests; no complete story or randomized playthrough.",
+    "One soundtrack track downloaded; remaining tracks reused and independently checked."
+  ]
+}

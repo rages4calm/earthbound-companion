@@ -14,7 +14,7 @@ index beecb38..43a704a 100644
  # Emit compile_commands.json so clangd/IDEs resolve include paths and types.
  # A root-level symlink (../../compile_commands.json) points at this file.
 diff --git a/port/unix/main.c b/port/unix/main.c
-index f625aff..3760dac 100644
+index f625aff..11c7596 100644
 --- a/port/unix/main.c
 +++ b/port/unix/main.c
 @@ -32,12 +32,32 @@
@@ -50,7 +50,7 @@ index f625aff..3760dac 100644
  #include "version.h"    /* EB_VERSION_STRING -- generated, see CMakeLists.txt.
                            * Unconditionally generated (not gated behind
                            * EB_UPDATER_ENABLED the way sdl2_updater.c's own
-@@ -368,12 +388,51 @@ static void migrate_legacy_saves_to_saves_folder(void) {
+@@ -368,12 +388,54 @@ static void migrate_legacy_saves_to_saves_folder(void) {
  
  int main(int argc, char *argv[]) {
      chdir_to_executable_dir(); /* before anything below touches a relative path */
@@ -86,6 +86,9 @@ index f625aff..3760dac 100644
 +    bool redux_psi_selftest = false;
 +    bool redux_movement_selftest = false;
 +    bool transition_selftest = false;
++    bool encounter_selftest = false;
++    bool bicycle_audio_selftest = false;
++    bool sfx_audio_selftest = false;
 +    bool redux_battle_sprites_selftest = false;
 +    int redux_title_fixture = -1;
 +    int redux_narration_fixture = -1;
@@ -102,7 +105,7 @@ index f625aff..3760dac 100644
      bool threed_zombie_flag_check = false;
      bool threed_zombie_flag_fix = false;
      bool jeff_flag_fix = false;
-@@ -396,7 +455,26 @@ int main(int argc, char *argv[]) {
+@@ -396,7 +458,26 @@ int main(int argc, char *argv[]) {
  #endif
  
      for (int i = 1; i < argc; i++) {
@@ -130,7 +133,7 @@ index f625aff..3760dac 100644
              verify_rom_path = argv[++i];
  #ifdef EB_RUNTIME_ASSETS
          } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
-@@ -420,6 +498,63 @@ int main(int argc, char *argv[]) {
+@@ -420,6 +501,70 @@ int main(int argc, char *argv[]) {
               * --save FILE. Implies headless. */
              keyitems_selftest = true;
              platform_headless = true;
@@ -159,6 +162,13 @@ index f625aff..3760dac 100644
 +            platform_headless = true;
 +        } else if (strcmp(argv[i], "--selftest-screen-transitions") == 0) {
 +            transition_selftest = true;
++        } else if (strcmp(argv[i], "--selftest-encounters") == 0) {
++            encounter_selftest = true;
++        } else if (strcmp(argv[i], "--selftest-sfx-audio") == 0) {
++            sfx_audio_selftest = true;
++            platform_headless = true;
++        } else if (strcmp(argv[i], "--selftest-bicycle-audio") == 0) {
++            bicycle_audio_selftest = true;
 +            platform_headless = true;
 +        } else if (strcmp(argv[i], "--selftest-redux-battle-sprites") == 0) {
 +            redux_battle_sprites_selftest = true;
@@ -194,7 +204,7 @@ index f625aff..3760dac 100644
          } else if (strcmp(argv[i], "--selftest-joinlevel") == 0) {
              /* Join-level scaling (Paula/Jeff/Poo scaled to Ness's current
               * level, see add_char_to_party()'s doc comment, inventory.c).
-@@ -536,7 +671,7 @@ int main(int argc, char *argv[]) {
+@@ -536,7 +681,7 @@ int main(int argc, char *argv[]) {
  #else
                              " [--export-pak FILE]"
  #endif
@@ -203,7 +213,7 @@ index f625aff..3760dac 100644
                      argv[0]);
              return 1;
          }
-@@ -630,6 +765,10 @@ int main(int argc, char *argv[]) {
+@@ -630,6 +775,10 @@ int main(int argc, char *argv[]) {
       * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
       * platform-conventional data dir (see eb_runtime_assets_default_path). */
      char default_assets_path[1024];
@@ -214,7 +224,7 @@ index f625aff..3760dac 100644
      if (assets_path == NULL) {
          assets_path = getenv("EB_ASSETS_PAK");
      }
-@@ -916,6 +1055,8 @@ int main(int argc, char *argv[]) {
+@@ -916,6 +1065,8 @@ int main(int argc, char *argv[]) {
       * itself (sdl2_video.c is platform-agnostic and already correct). */
      SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
@@ -223,7 +233,7 @@ index f625aff..3760dac 100644
      /* Initialize SDL */
      uint32_t sdl_flags = SDL_INIT_TIMER;
      if (!platform_headless) {
-@@ -938,6 +1079,7 @@ int main(int argc, char *argv[]) {
+@@ -938,6 +1089,7 @@ int main(int argc, char *argv[]) {
      platform_input_init();
      platform_save_init();
      settings_load();
@@ -231,7 +241,7 @@ index f625aff..3760dac 100644
      /* Resume logging automatically if a previous session left the Config
       * menu's "Logging" row on -- a tester shouldn't have to re-enable it
       * after every relaunch (including the updater's own self-relaunch) to
-@@ -965,6 +1107,29 @@ int main(int argc, char *argv[]) {
+@@ -965,6 +1117,29 @@ int main(int argc, char *argv[]) {
  
      /* Initialize game systems */
      game_init();
@@ -261,9 +271,13 @@ index f625aff..3760dac 100644
  
      /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
       * fresh boot. Just requests it here -- the normal per-frame
-@@ -994,6 +1159,25 @@ int main(int argc, char *argv[]) {
+@@ -993,7 +1168,29 @@ int main(int argc, char *argv[]) {
+         fprintf(stderr, "key items pool self-test: %s\n", ok_ki ? "PASS" : "FAIL");
          exit(ok_ki ? 0 : 1);
      }
++    if (encounter_selftest) exit(battle_encounter_selftest() ? 0 : 1);
++    if (sfx_audio_selftest) exit(audio_sfx_selftest(msu_dir,msu_name) ? 0 : 1);
++    if (bicycle_audio_selftest) exit(audio_bicycle_selftest(msu_dir,msu_name) ? 0 : 1);
  
 +    if (redux_vm_selftest) {
 +        exit(maternalbound_vm_selftest() ? 0 : 1);
@@ -287,7 +301,7 @@ index f625aff..3760dac 100644
      if (joinlevel_selftest) {
          bool ok_jl = join_level_scaling_selftest();
          fprintf(stderr, "join-level scaling self-test: %s\n", ok_jl ? "PASS" : "FAIL");
-@@ -1194,6 +1378,127 @@ int main(int argc, char *argv[]) {
+@@ -1194,6 +1391,127 @@ int main(int argc, char *argv[]) {
          exit(0);
      }
  
@@ -415,7 +429,7 @@ index f625aff..3760dac 100644
      /* Initialize audio (loads audio packs from embedded assets) */
      if (!platform_headless)
          platform_audio_init();
-@@ -1208,7 +1513,7 @@ int main(int argc, char *argv[]) {
+@@ -1208,7 +1526,7 @@ int main(int argc, char *argv[]) {
           * --msu-dir/--msu-name flags, and nothing to add to a Steam
           * shortcut's Launch Options (editing those is real friction, and
           * has to be redone every time the pack changes). */
@@ -424,7 +438,7 @@ index f625aff..3760dac 100644
          char detected_name[128];
          const char *name = msu_name;
  
-@@ -1278,11 +1583,117 @@ int main(int argc, char *argv[]) {
+@@ -1278,11 +1596,117 @@ int main(int argc, char *argv[]) {
      platform_timer_frame_start();
  
      for (int frame_num = 0; !platform_input_quit_requested(); frame_num++) {
@@ -1974,7 +1988,7 @@ index 857f81e..019e8ab 100644
      }
  }
 diff --git a/src/entity/callroutine.c b/src/entity/callroutine.c
-index 61c4f93..9977952 100644
+index 61c4f93..76d0820 100644
 --- a/src/entity/callroutine.c
 +++ b/src/entity/callroutine.c
 @@ -51,6 +51,10 @@
@@ -2100,7 +2114,22 @@ index 61c4f93..9977952 100644
          change_music(89);  /* MUSIC::DELIVERY */
          dismount_bicycle();
          return 0;
-@@ -2269,7 +2335,7 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -2224,6 +2290,14 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+         int16_t slot = ert.current_entity_slot;
+ 
+         /* Early exits */
++        /* Instant wins never enter the ordinary battle scene, so its
++         * battle_mode_flag stays zero while victory text/EXP is active.
++         * Overlapping enemies must not start another camera shake there:
++         * BE_RESET clears touched_enemy after that shake has been queued. */
++        if (ow.battle_mode != 0) return 0;
++        if (slot < 0 || slot >= MAX_ENEMY_ENCOUNTER_SLOTS ||
++            entities.script_table[slot] < 0 || entities.enemy_ids[slot] < 0 ||
++            entities.enemy_ids[slot] >= NUM_ENEMIES) return 0;
+         if (bt.battle_mode_flag != 0) return 0;
+         if (dr.using_door != 0) return 0;
+ 
+@@ -2269,7 +2343,7 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
              /* Determine pathfinding target entity.
               * ENTITY_COLLIDED_OBJECTS+46 = byte offset 46 = word index 23 */
              if (slot == entities.collided_objects[23]) {
@@ -2109,7 +2138,16 @@ index 61c4f93..9977952 100644
              } else {
                  ert.enemy_pathfinding_target_entity = entities.collided_objects[slot];
              }
-@@ -3130,9 +3196,9 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -2303,7 +2377,7 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+                 for (loop_idx = 0; loop_idx < 4; loop_idx++) {
+                     if (enemy_id == ert.pathfinding_enemy_ids[loop_idx]) {
+                         int16_t count = ert.pathfinding_enemy_counts[loop_idx];
+-                        if (count != 0) {
++                        if (count > 0 && bt.enemies_in_battle < MAX_ENEMY_ENCOUNTER_SLOTS) {
+                             ert.pathfinding_enemy_counts[loop_idx] = count - 1;
+                             result = 1;
+                             entities.tick_callback_hi[slot] |= 0xC000;
+@@ -3130,9 +3204,9 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
  
          /* Compute name length for portrait header decode count */
          int lcps_name_len = 0;
@@ -2677,19 +2715,22 @@ index fd7a66f..7915f67 100644
  
  extern const uint8_t *sprite_banks[SPRITE_BANK_COUNT];
 diff --git a/src/game/audio.c b/src/game/audio.c
-index b249f00..74673eb 100644
+index b249f00..1b2ed18 100644
 --- a/src/game/audio.c
 +++ b/src/game/audio.c
-@@ -4,6 +4,8 @@
+@@ -4,6 +4,11 @@
  
  #include "game/overworld.h"
  #include "game/settings.h"
 +#include "game/maternalbound.h"
++#include "game/map_loader.h"
++#include "game/game_state.h"
++#include "include/constants.h"
 +#include "platform/pc_options.h"
  #include "platform/platform.h"
  #include "data/assets.h"
  #include "include/binary.h"
-@@ -17,6 +19,10 @@
+@@ -17,6 +22,10 @@
  #include "spc.h"
  #include "dsp.h"
  
@@ -2700,7 +2741,20 @@ index b249f00..74673eb 100644
  /* Dataset table: 3 bytes per track (primary_sample_pack, secondary_sample_pack, sequence_pack).
     Loaded from donor ROM asset "music/dataset_table.bin". */
  #define DATASET_ENTRY_SIZE 3
-@@ -244,6 +250,17 @@ void change_music(uint16_t track_id) {
+@@ -34,8 +43,10 @@ static size_t dataset_table_count;
+ static Apu *apu;
+ AudioState audio_state;
+ 
+-/* SFX queue (8-entry circular buffer, matching assembly) */
+-static uint8_t sfx_queue[8];
++/* Host/audio callbacks are independently scheduled. A larger bounded queue
++ * absorbs their bursts; port-3 acknowledgment preserves the SPC protocol. */
++#define SFX_QUEUE_CAPACITY 64
++static uint8_t sfx_queue[SFX_QUEUE_CAPACITY];
+ static uint8_t sfx_queue_end;
+ static uint8_t sfx_queue_start;
+ static uint8_t sfx_upper_bit_flipper;
+@@ -244,6 +255,17 @@ void change_music(uint16_t track_id) {
       * having no pack configured at all) correctly falls through to the
       * normal SPC700 play command below. */
      if (engine_hq_audio == HQ_AUDIO_ON && platform_audio_msu_play(track_id)) {
@@ -2718,7 +2772,50 @@ index b249f00..74673eb 100644
          audio_unlock();
          return;
      }
-@@ -316,6 +333,7 @@ void audio_resync_after_load(void) {
+@@ -259,6 +281,7 @@ void play_sfx(uint16_t sfx_id) {
+     if (!apu) return;
+ 
+     uint8_t id = (uint8_t)sfx_id;
++    LOG_TRACE("sfx: request %u\n",id);
+     if (id == 0) {
+         /* Special case: SFX 0 writes $57 directly to port 3 */
+         audio_lock();
+@@ -267,11 +290,18 @@ void play_sfx(uint16_t sfx_id) {
+         return;
+     }
+ 
+-    /* Queue the SFX with upper bit flipper (matching PLAY_SOUND assembly).
+-       Queue is only touched by main thread, no lock needed for queue ops. */
+-    sfx_queue[sfx_queue_end] = id | sfx_upper_bit_flipper;
+-    sfx_queue_end = (sfx_queue_end + 1) & 7;
+-    sfx_upper_bit_flipper ^= 0x80;
++    /* The callback also drains the queue; all queue/APU accesses use its
++     * mutex. On a prolonged audio suspension retain recent effects rather
++     * than let a full ring become indistinguishable from an empty ring. */
++    audio_lock();
++    uint8_t next=(sfx_queue_end+1)%SFX_QUEUE_CAPACITY;
++    if (next==sfx_queue_start) {
++        LOG_TRACE("sfx: suspended playback queue full, discard oldest\n");
++        sfx_queue_start=(sfx_queue_start+1)%SFX_QUEUE_CAPACITY;
++    }
++    sfx_queue[sfx_queue_end]=id;
++    sfx_queue_end=next;
++    audio_unlock();
+ }
+ 
+ void stop_music(void) {
+@@ -300,8 +330,10 @@ void audio_resync_after_load(void) {
+      * bit-flippers (sfx_upper_bit_flipper / audio_effect_bit_flipper): they track the
+      * toggle parity the live, non-snapshotted SPC700 expects, so they must keep their
+      * current values, restoring save-time parity would desync the command protocol. */
++    audio_lock();
+     sfx_queue_start = 0;
+     sfx_queue_end   = 0;
++    audio_unlock();
+ 
+     audio_state.current_music_track          = 0xFFFF;
+     audio_state.current_primary_sample_pack   = 0xFF;
+@@ -316,6 +348,7 @@ void audio_resync_after_load(void) {
  }
  
  void write_apu_port1(uint8_t value) {
@@ -2726,7 +2823,51 @@ index b249f00..74673eb 100644
      /* Port of WRITE_APU_PORT1 (asm/overworld/write_apu_port1.asm).
       * ORs value with the bit-flip state, writes to APU port 1,
       * then toggles bit 7 of the flipper. The SPC700 engine detects
-@@ -372,6 +390,96 @@ void audio_generate_samples(int16_t *buffer, int samples) {
+@@ -344,16 +377,25 @@ void audio_invalidate_music_cache(void) {
+     audio_state.current_music_track = 0xFFFF;
+ }
+ 
++/* Called only while holding the shared audio mutex. READ_PORT in the
++ * donor SPC engine echoes each consumed command on output port 3. */
++static void audio_dispatch_sfx_locked(void) {
++    if (sfx_queue_start==sfx_queue_end || apu->outPorts[3]!=apu->inPorts[3]) return;
++    /* Assign the toggle when dispatching, after any dropped/suspended effects.
++     * A direct STOP_SOUND_EFFECT write must not duplicate the next command. */
++    uint8_t command=sfx_queue[sfx_queue_start];
++    if ((command|sfx_upper_bit_flipper)==apu->outPorts[3]) sfx_upper_bit_flipper^=0x80;
++    apu->inPorts[3]=command|sfx_upper_bit_flipper;
++    sfx_upper_bit_flipper^=0x80;
++    LOG_TRACE("sfx: dispatch %u\n",command);
++    sfx_queue_start=(sfx_queue_start+1)%SFX_QUEUE_CAPACITY;
++}
++
+ void audio_process_sfx_queue(void) {
+     if (!apu) return;
+-
+-    /* Dequeue one SFX per frame and write to port 3 (matching PROCESS_SFX_QUEUE) */
+-    if (sfx_queue_start != sfx_queue_end) {
+-        audio_lock();
+-        apu->inPorts[3] = sfx_queue[sfx_queue_start];
+-        audio_unlock();
+-        sfx_queue_start = (sfx_queue_start + 1) & 7;
+-    }
++    audio_lock();
++    audio_dispatch_sfx_locked();
++    audio_unlock();
+ }
+ 
+ void audio_generate_samples(int16_t *buffer, int samples) {
+@@ -366,13 +408,213 @@ void audio_generate_samples(int16_t *buffer, int samples) {
+ 
+     /* Run ~17066 SPC700 cycles per frame (1.024 MHz / 60 fps).
+        The DSP generates one sample every 32 SPC cycles. */
++    /* Drain at the emulated audio-frame cadence too: SDL's 1024-sample
++     * callback generates roughly two frames in a burst. Host-only dispatch
++     * would halve throughput and eventually overflow during fast dialogue. */
++    audio_dispatch_sfx_locked();
+     apu_runCycles(apu, 17066);
+     dsp_getSamples(apu->dsp, buffer, samples);
+ 
      audio_unlock();
  }
  
@@ -2820,33 +2961,151 @@ index b249f00..74673eb 100644
 +    return ok;
 +}
 +
++/* Exercise two host frames arriving between SDL audio callbacks, then
++ * check real SPC effects with shop/map banks and original/MSU music. */
++bool audio_sfx_selftest(const char *directory,const char *name) {
++    audio_init();
++    if (!apu) return false;
++    if (directory) platform_audio_msu_load(directory,name?name:"eb_msu1");
++    int16_t samples[534*2];
++    bool ok=true;
++    const uint16_t tracks[]={46,52,82,96};
++    const uint16_t effects[]={12,115,120,23,27};
++    unsigned checks=0;
++    for(unsigned hq=0;hq<2;hq++) {
++        if(hq && !directory) continue;
++        engine_hq_audio=hq?HQ_AUDIO_ON:HQ_AUDIO_OFF;
++        for(unsigned t=0;t<sizeof(tracks)/sizeof(tracks[0]);t++) {
++            change_music(tracks[t]);
++            /* Isolate effect samples from music, retaining the exact banks. */
++            apu->inPorts[0]=0;write_apu_port1(1);
++            for(unsigned frame=0;frame<60;frame++) audio_generate_samples(samples,534);
++            for(unsigned e=0;e<sizeof(effects)/sizeof(effects[0]);e++) {
++                play_sfx(effects[e]);audio_process_sfx_queue();
++                uint8_t first=apu->inPorts[3];
++                /* The next host frame can run before any SPC cycles. */
++                play_sfx(7);audio_process_sfx_queue();
++                bool held=apu->inPorts[3]==first;
++                audio_generate_samples(samples,534);
++                bool ack=apu->outPorts[3]==first;
++                uint8_t queued=sfx_queue[sfx_queue_start];
++                sfx_queue_start=sfx_queue_end;
++                unsigned peak=0;
++                for(unsigned frame=0;frame<12;frame++) {
++                    for(unsigned i=0;i<534*2;i++) {
++                        unsigned value=samples[i]<0?-samples[i]:samples[i];
++                        if(value>peak) peak=value;
++                    }
++                    audio_generate_samples(samples,534);
++                }
++                /* Requeue the follower after the isolated effect measurement. */
++                play_sfx(queued);
++                for(unsigned frame=0;frame<60;frame++) {
++                    audio_process_sfx_queue();audio_generate_samples(samples,534);
++                }
++                bool drained=sfx_queue_start==sfx_queue_end;
++                bool passed=held && ack && peak>4 && drained;
++                fprintf(stderr,"SFX %u bank %u %s: held=%u acknowledged=%u peak=%u drained=%u, %s\n",effects[e],tracks[t],hq?"MSU":"SPC",held,ack,peak,drained,passed?"PASS":"FAIL");
++                ok &= passed;checks++;
++            }
++        }
++    }
++    /* Two host frames per callback burst, with 534-sample generation steps.
++     * Run beyond the original eight-slot wrap to expose lost throughput. */
++    bool cadence=true;
++    for(unsigned frame=0;frame<256;frame+=2) {
++        play_sfx(7);audio_process_sfx_queue();
++        play_sfx(12);audio_process_sfx_queue();
++        uint8_t first=apu->inPorts[3];
++        audio_generate_samples(samples,534);
++        cadence &= (first&0x7f)==7 && apu->outPorts[3]==first;
++        audio_generate_samples(samples,534);
++        cadence &= (apu->outPorts[3]&0x7f)==12 && sfx_queue_start==sfx_queue_end;
++    }
++    fprintf(stderr,"SFX callback cadence: 256 requests delivered in order, %s\n",cadence?"PASS":"FAIL");
++    ok &= cadence;checks++;
++    for(unsigned i=0;i<SFX_QUEUE_CAPACITY*2;i++) play_sfx(7);
++    bool bounded=sfx_queue_start!=sfx_queue_end;
++    for(unsigned i=0;i<SFX_QUEUE_CAPACITY+2;i++) audio_generate_samples(samples,534);
++    bounded &= sfx_queue_start==sfx_queue_end;
++    fprintf(stderr,"SFX suspended callback overflow retains and drains recent effects, %s\n",bounded?"PASS":"FAIL");
++    ok &= bounded;checks++;
++    fprintf(stderr,"SFX delivery self-test: %u cases, %s\n",checks,ok?"PASS":"FAIL");
++    stop_music();audio_shutdown();return ok;
++}
++
  /* audio_lock/audio_unlock delegate to platform-provided mutex. */
++bool audio_bicycle_selftest(const char *directory,const char *name) {
++    audio_init();
++    if (!apu || !map_loader_init()) return false;
++    if (directory) platform_audio_msu_load(directory,name?name:"eb_msu1");
++    bool ok=true;
++    int16_t samples[735*2];
++    for (unsigned hq=0;hq<2;hq++) {
++        if (hq && !directory) continue;
++        engine_hq_audio=hq?HQ_AUDIO_ON:HQ_AUDIO_OFF;
++        for (unsigned instant=0;instant<2;instant++) {
++            game_state.walking_style=WALKING_STYLE_BICYCLE;
++            ow.enable_auto_sector_music_changes=0;ow.disable_music_changes=0;
++            ml.do_map_music_fade=0;ml.current_map_music_track=0xffff;
++            change_music(instant?183:96);change_music(5);change_music(82);
++            unsigned early=0,late=0;
++            for(unsigned frame=0;frame<180;frame++) {
++                resolve_map_sector_music(3414,7129);
++                audio_generate_samples(samples,735);
++                platform_audio_msu_mix(samples,735,44100);
++                if(frame<60 || frame>=120) for(unsigned i=0;i<735*2;i++) {
++                    unsigned peak=samples[i]<0?-samples[i]:samples[i];
++                    if(frame<60 && peak>early) early=peak;
++                    if(frame>=120 && peak>late) late=peak;
++                }
++            }
++            bool passed=get_current_music()==82 && early>4 && late>4;
++            fprintf(stderr,"Bicycle %s after %s victory: first peak=%u, later peak=%u, %s\n",hq?"MSU":"SPC",instant?"instant":"ordinary",early,late,passed?"PASS":"FAIL");
++            ok &= passed;
++        }
++    }
++    stop_music();audio_shutdown();return ok;
++}
++
  void audio_lock(void) {
      platform_audio_lock();
+ }
 diff --git a/src/game/audio.h b/src/game/audio.h
-index 2a3e5d1..88dd453 100644
+index 2a3e5d1..41169d5 100644
 --- a/src/game/audio.h
 +++ b/src/game/audio.h
-@@ -54,6 +54,9 @@ void audio_process_sfx_queue(void);
+@@ -49,11 +49,16 @@ void audio_resync_after_load(void);
+    Port of `STA CURRENT_MUSIC_TRACK` with #$FFFF in assembly. */
+ void audio_invalidate_music_cache(void);
+ 
+-/* Process queued sound effects (call once per frame from main loop) */
++/* Dispatch only acknowledged effects; also drained by audio generation. */
+ void audio_process_sfx_queue(void);
  
  /* Generate audio samples via APU emulation (called from audio thread) */
  void audio_generate_samples(int16_t *buffer, int samples);
 +/* Isolated converted-pack playback smoke check; no player-save access. */
 +bool audio_redux_selftest(void);
 +bool audio_redux_msu_selftest(const char *directory, const char *name);
++bool audio_sfx_selftest(const char *directory, const char *name);
++bool audio_bicycle_selftest(const char *directory, const char *name);
  
  /* Lock/unlock audio mutex for thread-safe APU access.
   * Implemented as thin wrappers around platform_audio_lock/unlock. */
-@@ -77,6 +80,7 @@ static inline void audio_invalidate_music_cache(void) {}
+@@ -77,6 +82,10 @@ static inline void audio_invalidate_music_cache(void) {}
  static inline void audio_resync_after_load(void) {}
  static inline void audio_process_sfx_queue(void) {}
  static inline void audio_generate_samples(int16_t *buffer, int samples) { (void)buffer; (void)samples; }
 +static inline bool audio_redux_selftest(void) { return false; }
++static inline bool audio_redux_msu_selftest(const char *directory,const char *name) { (void)directory;(void)name;return false; }
++static inline bool audio_bicycle_selftest(const char *directory,const char *name) { (void)directory;(void)name;return false; }
++static inline bool audio_sfx_selftest(const char *directory,const char *name) { (void)directory;(void)name;return false; }
  static inline void audio_lock(void) {}
  static inline void audio_unlock(void) {}
  
 diff --git a/src/game/battle.c b/src/game/battle.c
-index ef6571c..e1e54e3 100644
+index ef6571c..e8fd236 100644
 --- a/src/game/battle.c
 +++ b/src/game/battle.c
 @@ -1,3 +1,4 @@
@@ -3405,7 +3664,129 @@ index ef6571c..e1e54e3 100644
              dismount_bicycle();
          }
      } else {
-@@ -5702,7 +5931,7 @@ static void iw_victory_setup(void) {
+@@ -5663,6 +5892,121 @@ static uint16_t instant_win_check(void) {
+     return 0;  /* Ran out of party members */
+ }
+ 
++/* Isolated regression for contact while instant-win text is still active.
++ * Runs only via --selftest-encounters, before player saves are loaded. */
++bool battle_encounter_selftest(void) {
++    extern int16_t callroutine_dispatch(uint32_t,int16_t,int16_t,uint16_t,uint16_t*);
++    uint16_t pc=0;
++    unsigned passed=0;
++    if (!map_loader_init()) return false;
++    get_map_enemy_placement(0,0);
++    for (unsigned iteration=0;iteration<6;iteration++) {
++        memset(&bt,0,sizeof(bt));memset(&ow,0,sizeof(ow));
++        entity_system_init();
++        game_state.camera_mode=0;
++        game_state.walking_style=0;
++        game_state.party_count=game_state.player_controlled_party_count=1;
++        memset(game_state.party_members,0,sizeof(game_state.party_members));
++        game_state.party_members[0]=1;
++        party_characters[0].offense=200;party_characters[0].speed=100;
++        memset(party_characters[0].afflictions,0,sizeof(party_characters[0].afflictions));
++        entities.script_table[3]=24;entities.enemy_ids[3]=7;
++        entities.npc_ids[3]=0x8000+42;
++        entities.collided_objects[3]=24;
++        ert.current_entity_slot=3;
++        bt.touched_enemy=3;bt.enemies_in_battle=1;bt.enemies_in_battle_ids[0]=7;
++        bt.battle_initiative=INITIATIVE_NORMAL;ow.battle_mode=0xffff;
++        ModeState entry={0};
++        mode_step_battle_entry(&entry);
++        if (entry.battle_entry.phase!=BE_IW_DONE) {
++            LOG_EVENT("encounter self-test: instant-win setup FAIL\n");return false;
++        }
++        /* This collision is real, but an instant victory is still the active
++         * encounter. The older guard checked only battle_mode_flag (zero). */
++        int16_t contact=callroutine_dispatch(0xC0D5B0,3,0,0,&pc);
++        if (contact || game_state.camera_mode!=0 || ow.enemy_has_been_touched) {
++            LOG_EVENT("encounter self-test: nested instant-win contact FAIL (%d, camera=%u)\n",contact,game_state.camera_mode);return false;
++        }
++        passed++;
++        /* Complete the real entry cleanup, then stand on the next mushroom. */
++        entry.battle_entry.phase=BE_RESET;mode_step_battle_entry(&entry);
++        if (ow.player_intangibility_frames!=120 || bt.touched_enemy!=-1) return false;
++        ow.battle_mode=0;entities.collided_objects[3]=24;
++        for (unsigned protected=120;protected;protected--) {
++            ow.player_intangibility_frames=(uint16_t)protected;
++            if (callroutine_dispatch(0xC0D5B0,3,0,0,&pc) || game_state.camera_mode!=0) return false;
++        }
++        passed++;
++        ow.player_intangibility_frames=0;
++        if (callroutine_dispatch(0xC0D5B0,3,0,0,&pc)!=1 || game_state.camera_mode!=3 || bt.touched_enemy!=3) return false;
++        passed++;
++        ow.enemy_has_been_touched=0;ow.battle_mode=0;
++        bt.touched_enemy=-1;bt.enemies_in_battle=0;
++        initiate_enemy_encounter();
++        if (bt.enemies_in_battle || ow.battle_swirl_countdown) return false;
++        passed++;
++    }
++    /* Redux appends AI metadata after the 231 records; those bytes are not
++     * extra enemies. NUM_ENEMIES is the common engine/data contract. */
++    size_t enemies=NUM_ENEMIES;
++    for (unsigned enemy=1;enemy<enemies;enemy++) {
++        LOG_TRACE("encounter self-test enemy %u (passed=%u)\n",enemy,passed);
++        memset(&bt,0,sizeof(bt));memset(&ow,0,sizeof(ow));
++        entity_system_init();game_state.camera_mode=0;
++        entities.script_table[3]=24;entities.enemy_ids[3]=(int16_t)enemy;
++        entities.npc_ids[3]=0x8000+42;entities.collided_objects[3]=24;
++        ert.current_entity_slot=3;ow.battle_mode=0xffff;
++        if (callroutine_dispatch(0xC0D5B0,3,0,0,&pc) || game_state.camera_mode!=0) return false;
++        passed++;
++        ow.battle_mode=0;ow.player_intangibility_frames=1;
++        if (callroutine_dispatch(0xC0D5B0,3,0,0,&pc) || game_state.camera_mode!=0) return false;
++        passed++;
++        ow.player_intangibility_frames=0;
++        if (callroutine_dispatch(0xC0D5B0,3,0,0,&pc)!=1 ||
++            game_state.camera_mode!=(enemy==ENEMY_MAGIC_BUTTERFLY?0:3)) return false;
++        passed++;
++        /* Joining an existing swirl must remain available. */
++        game_state.camera_mode=0;ow.enemy_has_been_touched=0;
++        ow.battle_swirl_countdown=120;bt.touched_enemy=4;
++        ert.pathfinding_enemy_ids[0]=(int16_t)enemy;
++        ert.pathfinding_enemy_counts[0]=1;
++        for(unsigned j=1;j<4;j++) ert.pathfinding_enemy_counts[j]=0;
++        ert.entity_path_point_counts[3]=0;
++        entities.collided_objects[3]=24;
++        if (callroutine_dispatch(0xC0D5B0,3,0,0,&pc)!=1 ||
++            bt.enemies_in_battle!=1 || bt.enemies_in_battle_ids[0]!=enemy) return false;
++        passed++;
++        memset(&bt,0,sizeof(bt));
++        battle_init_enemy_stats(&bt.battlers_table[8],(uint16_t)enemy);
++        if (!layout_enemy_battle_positions() || bt.battlers_table[8].row>1) {
++            LOG_EVENT("encounter self-test layout FAIL enemy=%u sprite=%u row=%u\n",enemy,bt.battlers_table[8].sprite,bt.battlers_table[8].row);return false;
++        }
++        passed++;
++    }
++    /* Deleted and non-enemy entities, and encounter capacity, use the same
++     * guards in both editions. No phantom combat or list overflow. */
++    ow.battle_mode=0;ow.battle_swirl_countdown=0;ow.enemy_has_been_touched=0;
++    game_state.camera_mode=0;ert.current_entity_slot=3;
++    entities.script_table[3]=-1;entities.enemy_ids[3]=7;
++    if (callroutine_dispatch(0xC0D5B0,3,0,0,&pc)) return false;
++    passed++;
++    entities.script_table[3]=24;entities.enemy_ids[3]=-1;
++    if (callroutine_dispatch(0xC0D5B0,3,0,0,&pc)) return false;
++    passed++;
++    entities.enemy_ids[3]=(int16_t)enemies;
++    if (callroutine_dispatch(0xC0D5B0,3,0,0,&pc)) return false;
++    passed++;
++    entities.enemy_ids[3]=7;ow.battle_swirl_countdown=120;bt.touched_enemy=4;
++    bt.enemies_in_battle=MAX_ENEMY_ENCOUNTER_SLOTS;
++    ert.pathfinding_enemy_ids[0]=7;ert.pathfinding_enemy_counts[0]=1;
++    entities.collided_objects[3]=24;
++    callroutine_dispatch(0xC0D5B0,3,0,0,&pc);
++    if (bt.enemies_in_battle!=MAX_ENEMY_ENCOUNTER_SLOTS || ert.pathfinding_enemy_counts[0]!=1) return false;
++    passed++;
++    LOG_EVENT("encounter self-test: %u repeated contact / protection / expired protection / stale slot checks, PASS\n",passed);
++    return true;
++}
++
+ /*
+  * FILL_PALETTES_WITH_COLOR (port of C26189)
+  *
+@@ -5702,7 +6046,7 @@ static void iw_victory_setup(void) {
      }
  
      /* Deposit money into ATM and add to running total (game_state.unknownC4) */
@@ -3414,7 +3795,7 @@ index ef6571c..e1e54e3 100644
      uint32_t deposited = deposit_into_atm(money32);
  
      /* Add deposited amount to game_state.unknownC4 (32-bit running battle money) */
-@@ -5734,7 +5963,8 @@ static void iw_victory_setup(void) {
+@@ -5734,7 +6078,8 @@ static void iw_victory_setup(void) {
  
      /* Divide EXP evenly among alive party members (ceiling division) */
      uint16_t alive_count = battle_count_chars(0);
@@ -3424,7 +3805,7 @@ index ef6571c..e1e54e3 100644
          bt.battle_exp_scratch = (bt.battle_exp_scratch + (uint32_t)(alive_count - 1)) / (uint32_t)alive_count;
      }
  }
-@@ -6212,6 +6442,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6212,6 +6557,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
                  fade_in(1, 1);
              } else {
                  /* Party defeated, return immediately */
@@ -3432,7 +3813,7 @@ index ef6571c..e1e54e3 100644
                  return STEP_RESULT_POP(1);
              }
              st->phase = BS_CLEANUP;
-@@ -6221,6 +6452,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6221,6 +6567,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
          case BS_TELEPORT_DEFEATED:
              /* After a post-battle PSI teleport with the party defeated: pop 1,
               * skipping cleanup (matches the blocking `return 1` after teleport). */
@@ -3440,7 +3821,7 @@ index ef6571c..e1e54e3 100644
              return STEP_RESULT_POP(1);
  
          case BS_CLEANUP:
-@@ -6260,3 +6492,63 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6260,3 +6607,63 @@ StepResult mode_step_battle_scripted(ModeState *state) {
          }
      }
  }
@@ -3505,10 +3886,10 @@ index ef6571c..e1e54e3 100644
 +    return true;
 +}
 diff --git a/src/game/battle.h b/src/game/battle.h
-index 379bc0e..68ad9bd 100644
+index 379bc0e..14070ae 100644
 --- a/src/game/battle.h
 +++ b/src/game/battle.h
-@@ -512,6 +512,10 @@ typedef struct {
+@@ -512,9 +512,14 @@ typedef struct {
      uint16_t battle_menu_selected_action;
      uint8_t  battle_menu_targetting;
      uint8_t  battle_menu_selected_target;
@@ -3519,7 +3900,11 @@ index 379bc0e..68ad9bd 100644
  } BattleState;
  
  extern BattleState bt;
-@@ -859,6 +863,8 @@ uint8_t find_next_enemy_letter(uint16_t enemy_id);
++bool battle_encounter_selftest(void);
+ 
+ #define ENEMY_GROUP_BOSS_START 448
+ #define ENEMY_GROUP_BOSS_GIYGAS_PHASE_1_ENTRY 475
+@@ -859,6 +864,8 @@ uint8_t find_next_enemy_letter(uint16_t enemy_id);
   * Initialize a battler from the enemy configuration table. Sets all stats,
   * PSI resistances, initial status effects, money, and experience. */
  void battle_init_enemy_stats(Battler *battler, uint16_t enemy_id);
@@ -3528,7 +3913,7 @@ index 379bc0e..68ad9bd 100644
  
  /* BATTLE_INIT_PLAYER_STATS (asm/battle/init_player_stats.asm)
   * Initialize a battler from a party character's stats. Copies HP, PP, stats,
-@@ -1159,9 +1165,11 @@ void set_color_math_from_table(uint16_t index);
+@@ -1159,9 +1166,11 @@ void set_color_math_from_table(uint16_t index);
  /* LOAD_BATTLE_BG (asm/battle/load_battle_bg.asm)
   * Loads two battle BG layers with letterbox configuration. */
  void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_style);
@@ -6526,7 +6911,7 @@ index 7d7e466..2b9600f 100644
   * All take char_id (1-indexed) in A and new_item_id in X.
   * Store the new item, recalculate affected stats, return old item ID. */
 diff --git a/src/game/map_loader.c b/src/game/map_loader.c
-index 620656b..68fb1b6 100644
+index 620656b..d9de56c 100644
 --- a/src/game/map_loader.c
 +++ b/src/game/map_loader.c
 @@ -16,6 +16,7 @@
@@ -6658,6 +7043,19 @@ index 620656b..68fb1b6 100644
          } else {
              /* Scrolling UP: SCREEN_TOP_Y > target.
               * Assembly lines 191-228. */
+@@ -3554,7 +3588,11 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
+     }
+ 
+     /* If music differs and not fading, trigger fade-out */
+-    if (!ml.do_map_music_fade && ml.next_map_music_track != ml.current_map_music_track) {
++    /* Map reloads after battle invalidate the sector cache. While mounted,
++     * sector lookups must not fade the independently restored bicycle song.
++     * The bike intentionally leaves automatic sector music disabled. */
++    if (game_state.walking_style != WALKING_STYLE_BICYCLE &&
++        !ml.do_map_music_fade && ml.next_map_music_track != ml.current_map_music_track) {
+         write_apu_port1(2);
+     }
+ }
 diff --git a/src/game/map_loader.h b/src/game/map_loader.h
 index cf14f47..effe83c 100644
 --- a/src/game/map_loader.h
@@ -7780,6 +8178,32 @@ index 4eeb8d3..142ff51 100644
      case PF_WITH_RENDERING:
          if (s->remaining == 0) {
              finalize_palette_fade();
+diff --git a/src/game/overworld_spawn.c b/src/game/overworld_spawn.c
+index 3fcf3b2..448b3d3 100644
+--- a/src/game/overworld_spawn.c
++++ b/src/game/overworld_spawn.c
+@@ -712,6 +712,21 @@ void initiate_enemy_encounter(void) {
+     int16_t enemy_slot = bt.touched_enemy;  /* @LOCAL09 */
+     ow.enemy_has_been_touched = 0;          /* line 19: STZ ENEMY_HAS_BEEN_TOUCHED */
+ 
++    /* A cancelled/deleted contact (including an older quick save carrying
++     * the instant-win nested-shake bug) must never index entity slot -1. */
++    if (enemy_slot < 0 || enemy_slot >= MAX_ENEMY_ENCOUNTER_SLOTS ||
++        entities.script_table[enemy_slot] < 0 || entities.enemy_ids[enemy_slot] < 0 ||
++        entities.enemy_ids[enemy_slot] >= NUM_ENEMIES ||
++        (size_t)(entities.npc_ids[enemy_slot] & 0x7fff) >=
++            ASSET_SIZE(ASSET_DATA_BTL_ENTRY_PTR_TABLE_BIN) / 8) {
++        LOG_EVENT("encounter: cancelled stale contact slot %d\n",enemy_slot);
++        bt.touched_enemy=-1;bt.enemies_in_battle=0;
++        ow.battle_mode=0;ow.battle_swirl_countdown=0;
++        ow.overworld_status_suppression=0;
++        enable_all_entities();
++        return;
++    }
++
+     int16_t enemy_offset = enemy_slot;  /* @LOCAL08 */
+ 
+     /* ================================================================
 diff --git a/src/game/overworld_teleport.c b/src/game/overworld_teleport.c
 index e860343..5e5ef80 100644
 --- a/src/game/overworld_teleport.c
@@ -7900,7 +8324,7 @@ index e860343..5e5ef80 100644
              ow.psi_teleport_speed_int = 0;
              ow.player_intangibility_frames = 0;
 diff --git a/src/game/position_buffer.c b/src/game/position_buffer.c
-index c7b8ca4..4034355 100644
+index c7b8ca4..77ff4ce 100644
 --- a/src/game/position_buffer.c
 +++ b/src/game/position_buffer.c
 @@ -22,6 +22,7 @@
@@ -8026,7 +8450,18 @@ index c7b8ca4..4034355 100644
      return (int16_t)lookup_playable_char_sprite((uint16_t)char_id, mode);
  }
  
-@@ -952,6 +1012,7 @@ void velocity_store(void) {
+@@ -616,7 +676,9 @@ static void sync_camera_to_entity(void) {
+  * Then calls INITIATE_ENEMY_ENCOUNTER to begin the battle transition.
+  */
+ static void restore_camera_mode(void) {
+-    game_state.camera_mode = pb.camera_mode_backup;
++    /* Mode 3 cannot legitimately back up itself. Repair quick saves made
++     * while an older engine restarted a shake inside instant-win cleanup. */
++    game_state.camera_mode = pb.camera_mode_backup == 3 ? 0 : pb.camera_mode_backup;
+     initiate_enemy_encounter();
+ }
+ 
+@@ -952,6 +1014,7 @@ void velocity_store(void) {
      for (int style = 0; style < NUM_WALKING_STYLES; style++) {
          int32_t cardinal = movement_speeds_cardinal[style];
          int32_t diagonal = movement_speeds_diag[style];
@@ -8034,7 +8469,7 @@ index c7b8ca4..4034355 100644
          int base = style * NUM_DIRECTIONS;
  
          /* Horizontal speed table:
-@@ -1055,9 +1116,9 @@ static int32_t adjust_position(int16_t direction, uint16_t surface_flags,
+@@ -1055,9 +1118,9 @@ static int32_t adjust_position(int16_t direction, uint16_t surface_flags,
       * whatever delta was already computed. The Off setting skips the
       * multiply outright, so holding the button does nothing at all rather
       * than a 1.0x no-op multiply. */

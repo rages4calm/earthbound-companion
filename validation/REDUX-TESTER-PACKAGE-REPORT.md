@@ -2,7 +2,22 @@
 
 This is a private experimental conversion checkpoint, not a completed compatibility release.
 
-## Current documentation refresh
+## Dev.9 encounter and audio release
+
+- Archive: `EarthBound-Companion-Redux-Tester-v0.5.0-redux-dev.9.zip`
+- Bytes: 124,569,020
+- SHA-256: `C52D445B1E604FC3F3878419EED59FB04D41DC3583971B136988EFC38E1F6BE9`
+- Native engine: `1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF`
+- Frozen Redux setup: `2931EB12806513F836A70D7451F3AF9CCB27E603248DDA2AED372B36DCDBE8AA`
+- Corrected Redux pack remains `ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3`.
+
+The exact archive passed fresh extracted setup using a headered owner ROM with no Python/Git on PATH, native story/randomized openings and ordinary house/Mom/outdoor input replays, profile/save isolation, all 164 music checks, one corrupt-track repair through the real download path, and generated-ROM cleanup. [Clean package evidence](redux-clean-package-dev9.json).
+
+The newly rebuilt player/observer engines pass the shared encounter and audio regressions, including 230 enemy records per edition, retained bicycle music after both victory paths, acknowledged cash/equipment/menu/bell effects, and real shop sound dispatch in both audio modes. The native patch reconstructs all 71 modified/new source files on the pinned upstream checkout. [Reliability methods and limits](../docs/RELIABILITY-dev9.md).
+
+The ZIP contains no ROM, game asset pack, PCM soundtrack, saves or states. Full Redux compatibility and completed story/randomized playthroughs remain unverified.
+
+## Historical dev.2 documentation refresh
 
 - Distributed archive: `EarthBound-Companion-Redux-Tester-v0.5.0-redux-dev.2-20261004-200535-docs-9a5f7c3a.zip`
 - Bytes: 124047305

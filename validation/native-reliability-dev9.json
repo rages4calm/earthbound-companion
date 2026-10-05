@@ -1,0 +1,124 @@
+{
+  "Passed": true,
+  "tests": [
+    {
+      "engine": "production",
+      "edition": "original",
+      "test": "encounters",
+      "passed": true,
+      "nativeExeSha256": "1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF",
+      "packSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
+      "log": "encounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter self-test: 1178 repeated contact / protection / expired protection / stale slot checks, PASS\r\n"
+    },
+    {
+      "engine": "production",
+      "edition": "original",
+      "test": "bicycle",
+      "passed": true,
+      "nativeExeSha256": "1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF",
+      "packSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
+      "log": "Bicycle SPC after ordinary victory: first peak=6838, later peak=5093, PASS\r\nBicycle SPC after instant victory: first peak=6838, later peak=4945, PASS\r\nmsu: native PCM track 96 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after ordinary victory: first peak=12915, later peak=14383, PASS\r\nmsu: native PCM track 183 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after instant victory: first peak=12915, later peak=14383, PASS\r\n"
+    },
+    {
+      "engine": "production",
+      "edition": "original",
+      "test": "sfx",
+      "passed": true,
+      "nativeExeSha256": "1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF",
+      "packSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
+      "log": "SFX 12 bank 46 SPC: held=1 acknowledged=1 peak=12726 drained=1, PASS\r\nSFX 115 bank 46 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 46 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 46 SPC: held=1 acknowledged=1 peak=13266 drained=1, PASS\r\nSFX 27 bank 46 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 52 SPC: held=1 acknowledged=1 peak=8120 drained=1, PASS\r\nSFX 115 bank 52 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 52 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 52 SPC: held=1 acknowledged=1 peak=8949 drained=1, PASS\r\nSFX 27 bank 52 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 82 SPC: held=1 acknowledged=1 peak=11864 drained=1, PASS\r\nSFX 115 bank 82 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 82 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 82 SPC: held=1 acknowledged=1 peak=10024 drained=1, PASS\r\nSFX 27 bank 82 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 96 SPC: held=1 acknowledged=1 peak=12150 drained=1, PASS\r\nSFX 115 bank 96 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 96 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 96 SPC: held=1 acknowledged=1 peak=13207 drained=1, PASS\r\nSFX 27 bank 96 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 46 (loop)\r\nSFX 12 bank 46 MSU: held=1 acknowledged=1 peak=12726 drained=1, PASS\r\nSFX 115 bank 46 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 46 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 46 MSU: held=1 acknowledged=1 peak=13266 drained=1, PASS\r\nSFX 27 bank 46 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 52 (loop)\r\nSFX 12 bank 52 MSU: held=1 acknowledged=1 peak=8120 drained=1, PASS\r\nSFX 115 bank 52 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 52 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 52 MSU: held=1 acknowledged=1 peak=8983 drained=1, PASS\r\nSFX 27 bank 52 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 82 (loop)\r\nSFX 12 bank 82 MSU: held=1 acknowledged=1 peak=11911 drained=1, PASS\r\nSFX 115 bank 82 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 82 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 82 MSU: held=1 acknowledged=1 peak=10024 drained=1, PASS\r\nSFX 27 bank 82 MSU: held=1 acknowledged=1 peak=10368 drained=1, PASS\r\nmsu: native PCM track 96 (loop)\r\nSFX 12 bank 96 MSU: held=1 acknowledged=1 peak=12100 drained=1, PASS\r\nSFX 115 bank 96 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 96 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 96 MSU: held=1 acknowledged=1 peak=13207 drained=1, PASS\r\nSFX 27 bank 96 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX callback cadence: 256 requests delivered in order, PASS\r\nSFX suspended callback overflow retains and drains recent effects, PASS\r\nSFX delivery self-test: 42 cases, PASS\r\n"
+    },
+    {
+      "engine": "production",
+      "edition": "redux",
+      "test": "encounters",
+      "passed": true,
+      "nativeExeSha256": "1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF",
+      "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+      "log": "encounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter self-test: 1178 repeated contact / protection / expired protection / stale slot checks, PASS\r\n"
+    },
+    {
+      "engine": "production",
+      "edition": "redux",
+      "test": "bicycle",
+      "passed": true,
+      "nativeExeSha256": "1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF",
+      "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+      "log": "Bicycle SPC after ordinary victory: first peak=6838, later peak=5093, PASS\r\nBicycle SPC after instant victory: first peak=6838, later peak=4945, PASS\r\nmsu: native PCM track 96 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after ordinary victory: first peak=12915, later peak=14383, PASS\r\nmsu: native PCM track 183 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after instant victory: first peak=12915, later peak=14383, PASS\r\n"
+    },
+    {
+      "engine": "production",
+      "edition": "redux",
+      "test": "sfx",
+      "passed": true,
+      "nativeExeSha256": "1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF",
+      "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+      "log": "SFX 12 bank 46 SPC: held=1 acknowledged=1 peak=12726 drained=1, PASS\r\nSFX 115 bank 46 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 46 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 46 SPC: held=1 acknowledged=1 peak=13266 drained=1, PASS\r\nSFX 27 bank 46 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 52 SPC: held=1 acknowledged=1 peak=8120 drained=1, PASS\r\nSFX 115 bank 52 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 52 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 52 SPC: held=1 acknowledged=1 peak=8949 drained=1, PASS\r\nSFX 27 bank 52 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 82 SPC: held=1 acknowledged=1 peak=11864 drained=1, PASS\r\nSFX 115 bank 82 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 82 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 82 SPC: held=1 acknowledged=1 peak=10024 drained=1, PASS\r\nSFX 27 bank 82 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 96 SPC: held=1 acknowledged=1 peak=12150 drained=1, PASS\r\nSFX 115 bank 96 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 96 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 96 SPC: held=1 acknowledged=1 peak=13207 drained=1, PASS\r\nSFX 27 bank 96 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 46 (loop)\r\nSFX 12 bank 46 MSU: held=1 acknowledged=1 peak=12726 drained=1, PASS\r\nSFX 115 bank 46 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 46 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 46 MSU: held=1 acknowledged=1 peak=13266 drained=1, PASS\r\nSFX 27 bank 46 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 52 (loop)\r\nSFX 12 bank 52 MSU: held=1 acknowledged=1 peak=8120 drained=1, PASS\r\nSFX 115 bank 52 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 52 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 52 MSU: held=1 acknowledged=1 peak=8983 drained=1, PASS\r\nSFX 27 bank 52 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 82 (loop)\r\nSFX 12 bank 82 MSU: held=1 acknowledged=1 peak=11911 drained=1, PASS\r\nSFX 115 bank 82 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 82 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 82 MSU: held=1 acknowledged=1 peak=10024 drained=1, PASS\r\nSFX 27 bank 82 MSU: held=1 acknowledged=1 peak=10368 drained=1, PASS\r\nmsu: native PCM track 96 (loop)\r\nSFX 12 bank 96 MSU: held=1 acknowledged=1 peak=12100 drained=1, PASS\r\nSFX 115 bank 96 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 96 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 96 MSU: held=1 acknowledged=1 peak=13207 drained=1, PASS\r\nSFX 27 bank 96 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX callback cadence: 256 requests delivered in order, PASS\r\nSFX suspended callback overflow retains and drains recent effects, PASS\r\nSFX delivery self-test: 42 cases, PASS\r\n"
+    },
+    {
+      "engine": "observer",
+      "edition": "original",
+      "test": "encounters",
+      "passed": true,
+      "nativeExeSha256": "04A5E455216DB0326F588B1674E721A4C49ADCA734ED80757377DDC69B785610",
+      "packSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
+      "log": "encounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter self-test: 1178 repeated contact / protection / expired protection / stale slot checks, PASS\r\n"
+    },
+    {
+      "engine": "observer",
+      "edition": "original",
+      "test": "bicycle",
+      "passed": true,
+      "nativeExeSha256": "04A5E455216DB0326F588B1674E721A4C49ADCA734ED80757377DDC69B785610",
+      "packSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
+      "log": "Bicycle SPC after ordinary victory: first peak=6838, later peak=5093, PASS\r\nBicycle SPC after instant victory: first peak=6838, later peak=4945, PASS\r\nmsu: native PCM track 96 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after ordinary victory: first peak=12915, later peak=14383, PASS\r\nmsu: native PCM track 183 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after instant victory: first peak=12915, later peak=14383, PASS\r\n"
+    },
+    {
+      "engine": "observer",
+      "edition": "original",
+      "test": "sfx",
+      "passed": true,
+      "nativeExeSha256": "04A5E455216DB0326F588B1674E721A4C49ADCA734ED80757377DDC69B785610",
+      "packSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
+      "log": "SFX 12 bank 46 SPC: held=1 acknowledged=1 peak=12726 drained=1, PASS\r\nSFX 115 bank 46 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 46 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 46 SPC: held=1 acknowledged=1 peak=13266 drained=1, PASS\r\nSFX 27 bank 46 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 52 SPC: held=1 acknowledged=1 peak=8120 drained=1, PASS\r\nSFX 115 bank 52 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 52 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 52 SPC: held=1 acknowledged=1 peak=8949 drained=1, PASS\r\nSFX 27 bank 52 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 82 SPC: held=1 acknowledged=1 peak=11864 drained=1, PASS\r\nSFX 115 bank 82 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 82 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 82 SPC: held=1 acknowledged=1 peak=10024 drained=1, PASS\r\nSFX 27 bank 82 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 96 SPC: held=1 acknowledged=1 peak=12150 drained=1, PASS\r\nSFX 115 bank 96 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 96 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 96 SPC: held=1 acknowledged=1 peak=13207 drained=1, PASS\r\nSFX 27 bank 96 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 46 (loop)\r\nSFX 12 bank 46 MSU: held=1 acknowledged=1 peak=12726 drained=1, PASS\r\nSFX 115 bank 46 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 46 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 46 MSU: held=1 acknowledged=1 peak=13266 drained=1, PASS\r\nSFX 27 bank 46 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 52 (loop)\r\nSFX 12 bank 52 MSU: held=1 acknowledged=1 peak=8120 drained=1, PASS\r\nSFX 115 bank 52 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 52 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 52 MSU: held=1 acknowledged=1 peak=8983 drained=1, PASS\r\nSFX 27 bank 52 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 82 (loop)\r\nSFX 12 bank 82 MSU: held=1 acknowledged=1 peak=11911 drained=1, PASS\r\nSFX 115 bank 82 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 82 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 82 MSU: held=1 acknowledged=1 peak=10024 drained=1, PASS\r\nSFX 27 bank 82 MSU: held=1 acknowledged=1 peak=10368 drained=1, PASS\r\nmsu: native PCM track 96 (loop)\r\nSFX 12 bank 96 MSU: held=1 acknowledged=1 peak=12100 drained=1, PASS\r\nSFX 115 bank 96 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 96 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 96 MSU: held=1 acknowledged=1 peak=13207 drained=1, PASS\r\nSFX 27 bank 96 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX callback cadence: 256 requests delivered in order, PASS\r\nSFX suspended callback overflow retains and drains recent effects, PASS\r\nSFX delivery self-test: 42 cases, PASS\r\n"
+    },
+    {
+      "engine": "observer",
+      "edition": "redux",
+      "test": "encounters",
+      "passed": true,
+      "nativeExeSha256": "04A5E455216DB0326F588B1674E721A4C49ADCA734ED80757377DDC69B785610",
+      "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+      "log": "encounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter self-test: 1178 repeated contact / protection / expired protection / stale slot checks, PASS\r\n"
+    },
+    {
+      "engine": "observer",
+      "edition": "redux",
+      "test": "bicycle",
+      "passed": true,
+      "nativeExeSha256": "04A5E455216DB0326F588B1674E721A4C49ADCA734ED80757377DDC69B785610",
+      "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+      "log": "Bicycle SPC after ordinary victory: first peak=6838, later peak=5093, PASS\r\nBicycle SPC after instant victory: first peak=6838, later peak=4945, PASS\r\nmsu: native PCM track 96 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after ordinary victory: first peak=12915, later peak=14383, PASS\r\nmsu: native PCM track 183 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after instant victory: first peak=12915, later peak=14383, PASS\r\n"
+    },
+    {
+      "engine": "observer",
+      "edition": "redux",
+      "test": "sfx",
+      "passed": true,
+      "nativeExeSha256": "04A5E455216DB0326F588B1674E721A4C49ADCA734ED80757377DDC69B785610",
+      "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+      "log": "SFX 12 bank 46 SPC: held=1 acknowledged=1 peak=12726 drained=1, PASS\r\nSFX 115 bank 46 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 46 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 46 SPC: held=1 acknowledged=1 peak=13266 drained=1, PASS\r\nSFX 27 bank 46 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 52 SPC: held=1 acknowledged=1 peak=8120 drained=1, PASS\r\nSFX 115 bank 52 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 52 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 52 SPC: held=1 acknowledged=1 peak=8949 drained=1, PASS\r\nSFX 27 bank 52 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 82 SPC: held=1 acknowledged=1 peak=11864 drained=1, PASS\r\nSFX 115 bank 82 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 82 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 82 SPC: held=1 acknowledged=1 peak=10024 drained=1, PASS\r\nSFX 27 bank 82 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX 12 bank 96 SPC: held=1 acknowledged=1 peak=12150 drained=1, PASS\r\nSFX 115 bank 96 SPC: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 96 SPC: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 96 SPC: held=1 acknowledged=1 peak=13207 drained=1, PASS\r\nSFX 27 bank 96 SPC: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 46 (loop)\r\nSFX 12 bank 46 MSU: held=1 acknowledged=1 peak=12726 drained=1, PASS\r\nSFX 115 bank 46 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 46 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 46 MSU: held=1 acknowledged=1 peak=13266 drained=1, PASS\r\nSFX 27 bank 46 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 52 (loop)\r\nSFX 12 bank 52 MSU: held=1 acknowledged=1 peak=8120 drained=1, PASS\r\nSFX 115 bank 52 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 52 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 52 MSU: held=1 acknowledged=1 peak=8983 drained=1, PASS\r\nSFX 27 bank 52 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nmsu: native PCM track 82 (loop)\r\nSFX 12 bank 82 MSU: held=1 acknowledged=1 peak=11911 drained=1, PASS\r\nSFX 115 bank 82 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 82 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 82 MSU: held=1 acknowledged=1 peak=10024 drained=1, PASS\r\nSFX 27 bank 82 MSU: held=1 acknowledged=1 peak=10368 drained=1, PASS\r\nmsu: native PCM track 96 (loop)\r\nSFX 12 bank 96 MSU: held=1 acknowledged=1 peak=12100 drained=1, PASS\r\nSFX 115 bank 96 MSU: held=1 acknowledged=1 peak=5075 drained=1, PASS\r\nSFX 120 bank 96 MSU: held=1 acknowledged=1 peak=4149 drained=1, PASS\r\nSFX 23 bank 96 MSU: held=1 acknowledged=1 peak=13207 drained=1, PASS\r\nSFX 27 bank 96 MSU: held=1 acknowledged=1 peak=10409 drained=1, PASS\r\nSFX callback cadence: 256 requests delivered in order, PASS\r\nSFX suspended callback overflow retains and drains recent effects, PASS\r\nSFX delivery self-test: 42 cases, PASS\r\n"
+    }
+  ],
+  "EncounterChecksPerEditionAndBuild": 1178,
+  "EnemyRecordsPerEdition": 230,
+  "SfxCasesPerEditionAndBuild": 42,
+  "BicycleCasesPerEditionAndBuild": 4,
+  "SfxCallbackRequestsPerEditionAndBuild": 256,
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Encounter checks prepare state and call the real shared contact, battle-entry and layout routines.",
+    "Bicycle checks prepare music-return states and use real sector lookups and generated samples.",
+    "SFX checks prepare callback timing and isolate effects from background music; these are not listening tests."
+  ]
+}

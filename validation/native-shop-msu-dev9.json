@@ -1,0 +1,185 @@
+{
+  "status": "development-only",
+  "nativeExeSha256": "1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF",
+  "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+  "tests": [
+    {
+      "test": "shop-buy",
+      "passed": true,
+      "checks": [
+        "PC replay inventory: 17 2 88 17 0",
+        "cash=9982",
+        "PC replay equipment: 1 0 0 0 stats=84/"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 1,
+        "7": 116,
+        "12": 1
+      }
+    },
+    {
+      "test": "shop-equip-purchase",
+      "passed": true,
+      "checks": [
+        "PC replay inventory: 17 2 88 17 0",
+        "cash=9982",
+        "PC replay equipment: 4 0 0 0 stats=84/"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 1,
+        "7": 165,
+        "12": 1,
+        "115": 1
+      }
+    },
+    {
+      "test": "shop-sell-old-weapon",
+      "passed": true,
+      "checks": [
+        "PC replay inventory: 2 88 17 0",
+        "cash=9991",
+        "PC replay equipment: 3 0 0 0 stats=84/"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 1,
+        "7": 202,
+        "12": 2,
+        "115": 1
+      }
+    },
+    {
+      "test": "shop-cancel",
+      "passed": true,
+      "checks": [
+        "Redux dialogue fixture C5D24B completed",
+        "Redux dialogue result: cash=10000 weapon=1 inventory=17,2,88,0"
+      ],
+      "coldRender1080p": false,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "2": 1,
+        "7": 104
+      }
+    },
+    {
+      "test": "goods-populated",
+      "passed": true,
+      "checks": [
+        "[1:Use] [2:Give] [3:Drop] [4:Help!]",
+        "Cracked bat",
+        "Teddy bear",
+        "Cookie"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 2,
+        "27": 1
+      }
+    },
+    {
+      "test": "goods-use-unequip",
+      "passed": true,
+      "checks": [
+        "PC replay equipment: 0 0 0 0 stats=80/"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 2,
+        "7": 12,
+        "27": 1,
+        "117": 1
+      }
+    },
+    {
+      "test": "goods-use-finish",
+      "passed": true,
+      "checks": [
+        "PC replay equipment: 0 0 0 0 stats=80/",
+        "PC replay modes: 61"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 2,
+        "7": 15,
+        "27": 1,
+        "117": 1
+      }
+    },
+    {
+      "test": "goods-use-reequip",
+      "passed": true,
+      "checks": [
+        "PC replay equipment: 1 0 0 0 stats=84/"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 2,
+        "7": 25,
+        "27": 1,
+        "115": 1
+      }
+    },
+    {
+      "test": "equipment-list",
+      "passed": true,
+      "checks": [
+        "title=Weapons",
+        "[65535:None]",
+        "title=Status",
+        "title=Resistances"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 2,
+        "2": 1,
+        "27": 1
+      }
+    },
+    {
+      "test": "equipment-none",
+      "passed": true,
+      "checks": [
+        "PC replay equipment: 0 0 0 0 stats=80/"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 2,
+        "2": 1,
+        "3": 1,
+        "27": 1
+      }
+    },
+    {
+      "test": "status-psi",
+      "passed": true,
+      "checks": [
+        "[1:Offense] [2:Recover] [3:Assist] [4:Other]"
+      ],
+      "coldRender1080p": true,
+      "audioDispatchChecked": true,
+      "effectDispatchCounts": {
+        "1": 2,
+        "2": 1,
+        "3": 1,
+        "27": 1
+      }
+    }
+  ],
+  "msuConfigured": true,
+  "audioDispatchChecked": true,
+  "limits": [
+    "Isolated production menu and dialogue replays, not a full story playthrough."
+  ]
+}

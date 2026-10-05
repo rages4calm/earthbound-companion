@@ -1,0 +1,54 @@
+{
+  "Passed": true,
+  "Checkpoints": [
+    {
+      "case": "owner-dev9-noinput-check",
+      "step": 0,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "owner-dev9-noinput-check",
+      "step": 1,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "owner-dev9-noinput-check",
+      "step": 2,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    }
+  ],
+  "baselineEngineSha256": "1eb1d64956370aee674b603f0e6717a02d35e5c6e9cc22e3dbd2ce60a962ceaf",
+  "observedEngineSha256": "04a5e455216db0326f588b1674e721a4c49adca734ed80757377ddc69b785610",
+  "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "Exclusions": [
+    {
+      "section": 8,
+      "fields": [
+        "WindowInfo.content_tilemap",
+        "WindowInfo.cursor_move_callback"
+      ]
+    },
+    {
+      "section": 20,
+      "fields": [
+        "PsiAnimationState.arr_bundled_data",
+        "PsiAnimationState.arr_bundle_buf"
+      ],
+      "offsets": [
+        64,
+        80
+      ]
+    }
+  ],
+  "NullPointerPresenceCompared": true,
+  "PSIPointerLayoutCompilerVerified": true,
+  "PhoneSavePresenceCompared": true,
+  "ExclusionReason": "Process addresses rebuilt from saved IDs, offsets and the entity staging buffer on every load. Every other serialized byte, including animation timing, palette and bundle identity, must match.",
+  "FullPlaythroughVerified": false
+}

@@ -1,0 +1,67 @@
+{
+  "Passed": true,
+  "tests": [
+    {
+      "edition": "redux",
+      "test": "--selftest-redux-vm",
+      "passed": true,
+      "log": "Redux asset entry mapping / malformed metadata checks: PASS\r\nRedux stamina depletion/recovery checks: PASS (945/521 frames)\r\nRedux VM native command checks: 112, PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "test": "--selftest-redux-movement",
+      "passed": true,
+      "log": "Redux movement pointers: all 898 nonzero entries resolve, PASS\r\nRedux movement scene bindings: compiled completion writes, invisible controller and DMA-empty wait, PASS\r\nRedux Moldyman movement: real relocated hook, resting frame and return, PASS\r\nRedux movement tasks: range-aware far spawn, exhausted allocation and stored result, PASS\r\nRedux private movement helpers: 65536 speeds, 50 unsigned comparisons, distance/frame and original fade entry, PASS\r\nRedux movement mosaic: resumable fade-in finishes at full brightness without leftover mosaic, PASS\r\nRedux object effects: 22-slot exhaustion, reserved party slots and released-slot reuse, PASS\r\nRedux native teleport: 128 distant-NPC allocation cycles, protected entities, spawn restoration, PASS\r\nRedux native bicycle: 16 leader, revival, KO and mushroom refresh cases, PASS\r\nRedux native doors/stairs: 6 map-boundary rejects, 8 interrupted-stair callbacks, PASS\r\nRedux delivery letterbox: 14 timed frames, deferred music and serialized continuation, PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "test": "--selftest-redux-combat",
+      "passed": true,
+      "log": "Redux battle outcome: simultaneous KO stays a defeat, scripted-loss status unlocked, PASS\r\nRedux production combat: stat increments/caps/zero boundaries and target Guts (128 damage trials), PASS\r\nRedux production HP roller: reordered character ID, defending, overworld, stacked slowdown and unchanged PP, PASS\r\nRedux Clumsy Robot rescue: relocated flag 15 and destinations 15/8, PASS\r\nRedux production actions: 4096 sandwich trials/all six outcomes, badge/shield targeting, poison fallback, capsule cap, Brain Stone and Spy Speed, PASS\r\nRedux production inventory: saturated stats, 999 HP/PP, capped EXP, 42 condiment priority records, PASS\r\nRedux production equipment: 340 item/character previews preserve gear and match committed stats, Teddy-bear identity and window remapping, PASS\r\nRedux battle Tools: 11 flag devices, maid handoff, paralysis/immobilization and inventory-free action arguments, PASS\r\nRedux menu highlight: 10 narrow/wide font cases, clear and row bounds, PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "test": "--selftest-redux-motion",
+      "passed": true,
+      "log": "Redux movement animation / run sprites / exhaustion / static stamina: PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "test": "--selftest-savestate",
+      "passed": true,
+      "log": "savestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "test": "--selftest-pc",
+      "passed": true,
+      "log": "PC input remap / overlapping sources / deadzone / hotkey / focus-loss: PASS\r\nmsu: native PCM track 1 (one-shot)\r\nmsu: native PCM track 2 (loop)\r\nMSU one-shot / loop-point / resample / fast-slow-quarter-full fades / invalid-header / missing-track: PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "test": "--selftest-savestate",
+      "passed": true,
+      "log": "savestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "test": "--selftest-keyitems",
+      "passed": true,
+      "log": "key items pool self-test: PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "test": "--selftest-joinlevel",
+      "passed": true,
+      "log": "join-level scaling self-test: PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "test": "--selftest-screen-transitions",
+      "passed": true,
+      "log": "Native screen transitions: 21 exit/palette/brightness cases, timer step 1, PASS\r\n"
+    }
+  ],
+  "engineSha256": "1EB1D64956370AEE674B603F0E6717A02D35E5C6E9CC22E3DBD2CE60A962CEAF",
+  "FullPlaythroughVerified": false
+}

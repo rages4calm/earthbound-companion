@@ -14,6 +14,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ("native-exe","assets","scratch"):
         parser.add_argument("--"+name,required=True,type=Path)
+    parser.add_argument("--check-audio",action="store_true",help="Run the real SDL dummy audio device and check shop effect dispatch.")
+    parser.add_argument("--msu-dir",type=Path)
     args=parser.parse_args()
     exe,pak,scratch=(p.resolve() for p in (args.native_exe,args.assets,args.scratch))
     env=dict(os.environ,SDL_VIDEODRIVER="dummy",SDL_AUDIODRIVER="dummy")
@@ -33,15 +35,24 @@ def main():
                                     for f,pad in ((t,button),(t+1,"0000"))),encoding="utf-8")
         base=[str(exe),"--assets",str(pak),"--session-dir",str(folder),"--save",str(folder/"fixture.srm"),
               "--config",str(config),"--allow-redux-development","--skip-intro"]
+        if args.check_audio: base += ["-v","-v"]
+        if args.msu_dir: base += ["--msu-dir",str(args.msu_dir.resolve()),"--msu-name","eb_msu1"]
         fixture=["--redux-dialogue-fixture",hex(dialogue)] if dialogue else ["--redux-world-fixture"]
         if restore: fixture=["--load-state"]
-        command=base+fixture+["--headless","--input-script",str(replay),"--frames",str(frames+2),"--capture-state",str(frames)]
+        command=base+fixture+["--windowed" if args.check_audio else "--headless","--input-script",str(replay),"--frames",str(frames+2),"--capture-state",str(frames)]
         proc=subprocess.run(command,env=env,capture_output=True,timeout=30)
         log=(proc.stdout+proc.stderr).decode(errors="replace");(folder/"replay.log").write_text(log,encoding="utf-8")
         if proc.returncode or re.search(r"FATAL|unimplemented|unknown opcode|unknown bank|ERROR",log,re.I):
             raise RuntimeError(f"{name} failed: {log[-2000:]}")
         for value in expected:
             if value not in log: raise RuntimeError(f"{name} missing {value!r}: {log[-2000:]}")
+        sounds=[]
+        if args.check_audio:
+            sounds=[int(value) for value in re.findall(r"sfx: dispatch (\d+)",log)]
+            required={"shop-buy":[12],"shop-equip-purchase":[12,115],"shop-sell-old-weapon":[12,115]}.get(name,[])
+            for sound in required:
+                if sound not in sounds: raise RuntimeError(f"{name} missing dispatched effect {sound}")
+            if "suspended playback queue full" in log: raise RuntimeError(f"{name} audio queue overflow")
         if render:
             proc=subprocess.run(base+["--load-state","--windowed","--frames","20","--dump-frame","10"],
                                 env=env,capture_output=True,timeout=30)
@@ -51,7 +62,7 @@ def main():
                 if source.size!=(1920,1080) or len(source.convert("RGB").getcolors(source.width*source.height))<10:
                     raise RuntimeError(f"{name} empty or wrong-size render")
                 source.save(folder/"gameplay.png")
-        results.append({"test":name,"passed":True,"checks":list(expected),"coldRender1080p":render})
+        results.append({"test":name,"passed":True,"checks":list(expected),"coldRender1080p":render,"audioDispatchChecked":args.check_audio,"effectDispatches":sounds})
         print(json.dumps({"test":name,"passed":True}),flush=True)
         return folder
 
@@ -76,6 +87,7 @@ def main():
         expected=("[1:Offense] [2:Recover] [3:Assist] [4:Other]",))
     report={"status":"development-only","nativeExeSha256":hashlib.sha256(exe.read_bytes()).hexdigest().upper(),
             "packSha256":hashlib.sha256(pak.read_bytes()).hexdigest().upper(),"tests":results,
+            "msuConfigured":bool(args.msu_dir),"audioDispatchChecked":args.check_audio,
             "limits":["Isolated production menu and dialogue replays, not a full story playthrough."]}
     (scratch/"results.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
 

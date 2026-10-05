@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0-redux-dev.9 - encounter and audio reliability
+
+- Fix an overlapping enemy starting another encounter during instant-win victory processing. Guard the shared contact path, cancel stale encounter slots before indexing entity data, limit encounter-list appends, and repair nested camera-shake backups. This applies across maps, original/Redux editions and Story Shuffle packs.
+- Prevent sector-music lookups from fading the bicycle song after ordinary or instant-win combat. Explicit dismount still selects map music normally.
+- Wait for the SPC engine to acknowledge each sound-effect command before sending another. Drain at audio-frame cadence as well as host cadence, protect the queue with the shared audio mutex, and handle suspended-playback overflow without an empty/full ring alias. Cash-register, equipment, menu and bell effects no longer disappear from unread-command overwrites.
+- Verify 1,178 prepared encounter checks, four bicycle audio cases, 42 effect-delivery cases and a 256-request callback-cadence replay per edition/build. Real Redux shop/Goods/equipment replays check expected script effects with SPC and MSU music. Preserve upstream shop-specific sound choices.
+- Rebuild player, observer and frozen setup helper together. Keep the corrected pack, state format 16 and story/seed identities unchanged. Testing is isolated from owner saves; full story/randomized playthroughs remain unverified.
+
+
 ## 0.5.0-redux-dev.8 - application icon and clearer tab names
 
 - Add original red-cap planet artwork and a transparent, multi-resolution Windows ICO with entries from 16 to 256 pixels. Record the source artwork, generation prompt and reproducible ICO exporter.
