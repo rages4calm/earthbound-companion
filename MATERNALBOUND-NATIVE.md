@@ -8,16 +8,18 @@ Companion is adapting MaternalBound Redux into the BrianPugh-derived native x64 
 
 This checkpoint targets the active upstream source at `897d00833f4a08a0a92f106abf631629a6a6a041`, compiled locally with CoilSnake into a verified 6 MiB ROM. It is not the official v1.1 release. The v1.1 BPS was separately checksum-verified and tested during initial extraction research; supporting that release requires a separate conversion map and validation record.
 
-The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current runtime checkpoint: `v0.5.0-redux-dev.3`.**
+The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current runtime checkpoint: `v0.5.0-redux-dev.4`.**
 
 The latest fixes resolve the relocated PSI-name table, PSI-window ordering and old-menu repaint on cold restore, an empty Talk/Check window leaking into later combat, Redux cutscene letterboxes overwriting battle masks, a cold-restore level-up cache crash, an attacker-name buffer overread, and the Companion's Redux story backup/launch path. The copied Starman Junior save passes through victory, level-ups and Buzz Buzz dialogue back to roaming. Both the native B status action and the quick Talk/Check action are covered. Repeated empty checks → X leave only the command menu. An ordinary-input empty check → natural Onett battle → victory/roaming also passes; a production render shows the ghost box absent. This is targeted evidence, not a full story playthrough. See [JEV-QA.md](JEV-QA.md) and [validation/](validation/).
+
+The dev.4 audit fixes `CC 1D 15` variable-argument width and adds 25 actual dispatcher cases. The review reproduced eight high-word failures before the fix. All 106 VM checks now pass, alongside movement/combat checks and original-profile regression checks. The pack remains the same as dev.3; quick-save format 16 and existing seed identities are unchanged. A new 20-checkpoint production/observer comparison passes through natural Onett combat. Jev has also earned the Shack Key from the mayor through ordinary story inputs.
 
 ## Implemented development coverage
 
 | Area | Current native work and evidence |
 |---|---|
 | Dialogue | 7,397 converted spans, 568,999 bytes and 12,859 relocated fields; zero failed spans, unresolved targets or ambiguous original aliases. Seven pinned malformed source jump tables are repaired explicitly and reported. |
-| Script extensions | Typed menu, title, fade, money, party, item, timeout and enemy-AI commands. Seventeen stable native adapters replace routine calls. 81 native VM checks and four converted window titles pass. |
+| Script extensions | Typed menu, title, fade, money, party, item, timeout and enemy-AI commands. Seventeen stable native adapters replace routine calls. 106 native VM checks and four converted window titles pass. |
 | World | Converted maps, palettes, collision, NPC placements, doors, events, movement data, 69 shops, items, PSI configuration, encounter groups, six auxiliary tables and music-zone selection. Native and raw script entry points map to rewritten scripts. |
 | Graphics | 483 sprite groups / 4,432 frames, all five fonts, map artwork and battle backgrounds/enemy art. Redux walking/run tables and run sprites are bound to the native animation callbacks. Upstream alternate walking tables share some graphics; cycling the tables does not create missing art. |
 | Menu and delivery fixes | Highlighting uses the selected font's rendered widths; ten narrow/wide font cases and row bounds pass. Delivery opens its letterbox through fourteen native frames before music/dismount; the continuation uses scalar modal state. |
@@ -37,6 +39,8 @@ The latest fixes resolve the relocated PSI-name table, PSI-window ordering and o
 | Setup and saves | Frozen owner-ROM setup downloads the checksum-pinned source, compiles and converts it without installed Python or Git. It reproduces the verified native pack. A clean tester ZIP additionally passes headered-ROM setup, actual MSU repair and all 164 soundtrack checks. Original, Redux and seed saves are isolated; cold profile restore and switching back preserve both story-save sentinels. |
 | Original profile | Native input/MSU, save-state roundtrip/perturbation/recovery, key-items and join-level regression checks pass with the updated engine. |
 
+Current dev.4 evidence: [native build and clean patch](validation/native-redux-dev4-build.json), [active bugfix runtime checks](validation/native-redux-active-bugfix-dev4.json), [fresh observer parity](validation/native-jev-observer-natural-parity-dev4.json), [original-profile regression](validation/native-original-regression-dev4.json) and [ordinary mayor quest award](validation/native-redux-mayor-key-dev4.json). Earlier fixture evidence below retains the engine hashes on which it was run.
+
 Metadata evidence: [dialogue conversion](research/maternalbound-dialogue-report.json), [pack conversion](research/maternalbound-native-pack-report.json), [native checks](validation/native-redux-results.json), [native MSU checks](validation/native-redux-audio.json), [opening](validation/native-redux-opening.json), [actual house gameplay](validation/native-redux-story-walk.json), [seed gameplay](validation/native-redux-seed-story-walk.json), [transition timing](validation/native-screen-transition-timing.json), [menus](validation/native-redux-menus.json), [original regression](validation/native-original-regression.json), [ending and cold restores](validation/native-redux-ending.json).
 
 ## Remaining before full compatibility is claimed
@@ -44,11 +48,11 @@ Metadata evidence: [dialogue conversion](research/maternalbound-dialogue-report.
 - Validate converted title/cutscene presentation, battle sprites and PSI through later gameplay, beyond isolated scene and renderer checks.
 - Listen to the converted soundtrack and verify every SPC/MSU transition.
 - Verify gameplay-driven photo collection and every named-guardian choice in the cast.
-- Audit remaining assembly-only QoL changes and bug fixes against native functions.
+- Finish the remaining assembly/native audit beyond the 36 reviewed active bugfix imports, and exercise their outstanding branches. Literal writes and scene hooks outside these modules need separate review.
 - Validate free movement, doors, NPCs, item use, shops and cutscenes through real gameplay, including a start-to-ending playthrough.
 - Complete a full randomized playthrough beyond the content-specific protection checks and opening replay.
 
-The Redux policy has its own audit and checks; original-story results are not substituted for it. Unknown packs stay locked. Arbitrary BPS/IPS patches cannot execute automatically in the native engine. The [assembly and separate-format ledger](validation/native-redux-assembly-ledger.json) accounts for all 105 dialogue-excluded spans against pinned source identities and native references. It identified and resolved the missing font-aware highlight and delivery-letterbox hooks. Classification alone does not prove every ROM patch or branch of its native equivalent. Complete developer/debug-menu parity is not claimed.
+The Redux policy has its own audit and checks; original-story results are not substituted for it. Unknown packs stay locked. Arbitrary BPS/IPS patches cannot execute automatically in the native engine. The [assembly and separate-format ledger](validation/native-redux-assembly-ledger.json) accounts for all 105 dialogue-excluded spans against pinned source identities and native references. It identified and resolved the missing font-aware highlight and delivery-letterbox hooks. Classification alone does not prove every ROM patch or branch of its native equivalent. The [active bugfix review](research/redux-active-bugfix-review.json) separately checks all 36 direct active imports against the exact upstream commit and records source hashes, native references, targeted tests and gaps. Native DMA is immediate; SNES region/boot patches do not execute on PC. The native follower renderer updates each frame rather than reproducing the original diagonal threshold algorithm. These differences are recorded explicitly. Complete developer/debug-menu parity is not claimed.
 
 The pinned `main.ccs` also comments out `better_text_speed.ccs`. Its four-speed timing is not part of this conversion target. The native game retains the active build's text-speed choices and Companion's instant-text option. Source presence alone is not evidence that an optional patch is enabled.
 
@@ -64,7 +68,9 @@ These are real renders from locally supplied game data. They show Mom's opening 
 ![Corrected recovery PSI names in a prepared combat fixture](docs/images/native-redux-battle-psi-dev3.png)
 ![Ordinary Onett combat after an empty Talk/Check, without the ghost window](docs/images/native-redux-check-combat-dev3.png)
 
-The dev.3 PSI captures show a copied player menu and a separately prepared combat fixture. They establish corrected names and window ordering, not later-story coverage. The corrected pack differs from dev.2 only in the 425-byte PSI-name asset; its new content hash keeps seeds separate. The launcher provides a checked dev.2 story import into an empty dev.3 save folder.
+![Ordinary Mayor Pirkle Shack Key award, native dev.4](docs/images/native-redux-mayor-key-dev4.png)
+
+The dev.3 PSI captures show a copied player menu and a separately prepared combat fixture. They establish corrected names and window ordering, not later-story coverage. The corrected pack differs from dev.2 only in the 425-byte PSI-name asset; its new content hash keeps seeds separate. The launcher provides a checked dev.2 story import into an empty corrected-pack save folder. Dev.4 retains that same pack.
 
 Quick-save format 16 now saves cast/credits continuation fields and reconstructs pending drawing pointers. Older development quick-saves require their matching executable; phone saves remain the migration path. The tests use isolated save folders. Installing the tested runtime was a separate backed-up step; protected owner data, saves and preferences were hash-checked unchanged.
 

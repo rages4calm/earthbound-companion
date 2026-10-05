@@ -1,0 +1,524 @@
+{
+  "stopReason": "target_conversation_completed",
+  "goal": "Talk to Mayor Pirkle, NPC 86, behind the desk. NPC 87 blocks approach from the left, so approach the mayor from the front or right. Choose Yes to accept responsibility and receive the Shack Key, complete conversation and return to roaming.",
+  "steps": [
+    {
+      "step": 1,
+      "choice": "reposition_right",
+      "position": [
+        7829,
+        200
+      ],
+      "modes": [
+        "OVERWORLD"
+      ],
+      "action": {
+        "button": "right",
+        "frames": 4,
+        "settle": 140
+      },
+      "beforePosition": [
+        7824,
+        200
+      ],
+      "jevSeconds": 0.21893309988081455,
+      "changed": true
+    },
+    {
+      "step": 2,
+      "choice": "reposition_right",
+      "position": [
+        7835,
+        200
+      ],
+      "modes": [
+        "OVERWORLD"
+      ],
+      "action": {
+        "button": "right",
+        "frames": 4,
+        "settle": 140
+      },
+      "beforePosition": [
+        7829,
+        200
+      ],
+      "jevSeconds": 0.22441050014458597,
+      "changed": true
+    },
+    {
+      "step": 3,
+      "choice": "reposition_right",
+      "position": [
+        7840,
+        200
+      ],
+      "modes": [
+        "OVERWORLD"
+      ],
+      "action": {
+        "button": "right",
+        "frames": 4,
+        "settle": 140
+      },
+      "beforePosition": [
+        7835,
+        200
+      ],
+      "jevSeconds": 0.1866204000543803,
+      "changed": true
+    },
+    {
+      "step": 4,
+      "choice": "reposition_right",
+      "position": [
+        7846,
+        200
+      ],
+      "modes": [
+        "OVERWORLD"
+      ],
+      "action": {
+        "button": "right",
+        "frames": 4,
+        "settle": 140
+      },
+      "beforePosition": [
+        7840,
+        200
+      ],
+      "jevSeconds": 0.2229665000922978,
+      "changed": true
+    },
+    {
+      "step": 5,
+      "choice": "reposition_right",
+      "position": [
+        7851,
+        200
+      ],
+      "modes": [
+        "OVERWORLD"
+      ],
+      "action": {
+        "button": "right",
+        "frames": 4,
+        "settle": 140
+      },
+      "beforePosition": [
+        7846,
+        200
+      ],
+      "jevSeconds": 0.2209604000672698,
+      "changed": true
+    },
+    {
+      "step": 6,
+      "choice": "reposition_right",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD"
+      ],
+      "action": {
+        "button": "right",
+        "frames": 4,
+        "settle": 140
+      },
+      "beforePosition": [
+        7851,
+        200
+      ],
+      "jevSeconds": 0.2362646998371929,
+      "changed": true
+    },
+    {
+      "step": 7,
+      "choice": "talk_target",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.2473403001204133,
+      "changed": true
+    },
+    {
+      "step": 8,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.18378610000945628,
+      "changed": true
+    },
+    {
+      "step": 9,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.24251100001856685,
+      "changed": true
+    },
+    {
+      "step": 10,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.2895459998399019,
+      "changed": true
+    },
+    {
+      "step": 11,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.23282920010387897,
+      "changed": true
+    },
+    {
+      "step": 12,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.22615120001137257,
+      "changed": true
+    },
+    {
+      "step": 13,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.23249700013548136,
+      "changed": true
+    },
+    {
+      "step": 14,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.2295630001462996,
+      "changed": true
+    },
+    {
+      "step": 15,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.25853849994018674,
+      "changed": true
+    },
+    {
+      "step": 16,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.20954800001345575,
+      "changed": true
+    },
+    {
+      "step": 17,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "SELECTION_MENU"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.22362660011276603,
+      "changed": true
+    },
+    {
+      "step": 18,
+      "choice": "menu_0",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 140
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.2021004999987781,
+      "changed": true
+    },
+    {
+      "step": 19,
+      "choice": "wait_scene",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": null,
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.22366100014187396,
+      "changed": true
+    },
+    {
+      "step": 20,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD",
+        "QUICK_CHECKTALK",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.24476929986849427,
+      "changed": true
+    },
+    {
+      "step": 21,
+      "choice": "advance_dialogue",
+      "position": [
+        7856,
+        200
+      ],
+      "modes": [
+        "OVERWORLD"
+      ],
+      "action": {
+        "button": "confirm",
+        "frames": 1,
+        "settle": 400
+      },
+      "beforePosition": [
+        7856,
+        200
+      ],
+      "jevSeconds": 0.23435849999077618,
+      "changed": true
+    }
+  ],
+  "requests": 21,
+  "seconds": 9.802362399874255,
+  "position": [
+    7856,
+    200
+  ],
+  "ordinaryInputsOnly": true,
+  "seededFixture": false,
+  "fullPlaythroughVerified": false,
+  "nativeExeSha256": "788472439998ff78021d4bdc621eef7e5dbc8971e508e5d0a3e798cc585b5daf",
+  "assetsSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "Passed": true,
+  "ShackKeyFlagBefore": false,
+  "ShackKeyFlagAfter": true,
+  "ReduxKeyStorage": "Converted Redux key menu uses event flags; Companion optional shared inventory pool is separate."
+}

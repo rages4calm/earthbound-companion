@@ -30,7 +30,7 @@ sealed partial class MainForm {
   var original=Theme.Button("Use original EarthBound",()=>Try(()=>{if(Running||generating)return;settings.AssetPack="";settings.ReduxDevelopmentEnabled=false;settings.Save();ShowPage("Solo Play");Notify("Original EarthBound selected. Its existing saves are preserved.");}));original.Enabled=!Running&&!generating;original.Width=240;Actions(build,original);
   page.Controls.Add(Theme.Text("The older v0.4 preview contains original EarthBound. This source build's Redux profile is experimental and does not claim complete MaternalBound compatibility.",10,Theme.Muted));
   Section("Continue a dev.2 story");
-  page.Controls.Add(Theme.Text("After building Redux in a fresh dev.3 folder, import your dev.2 phone and quick saves here. This checked names-only upgrade preserves the old installation. It requires empty destination saves; randomized seeds keep their original edition.",10,Theme.Muted));
+  page.Controls.Add(Theme.Text("After building Redux in a fresh corrected-pack folder, import your dev.2 phone and quick saves here. This checked names-only upgrade preserves the old installation. It requires empty destination saves; randomized seeds keep their original edition.",10,Theme.Muted));
   var import=Theme.Button("Import dev.2 story saves",()=>Try(()=>{
    if(Running||generating)return;
    using var picker=new FolderBrowserDialog{Description="Select your previous dev.2 EarthBound Companion installation folder."};

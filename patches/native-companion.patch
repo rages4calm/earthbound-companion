@@ -4476,7 +4476,7 @@ index 9d558c4..9f2e674 100644
      if (bt.enable_background_darkening) {
          bt.background_brightness -= 0x0555;
 diff --git a/src/game/display_text.c b/src/game/display_text.c
-index 9b2cb3d..a57b24d 100644
+index 9b2cb3d..4625444 100644
 --- a/src/game/display_text.c
 +++ b/src/game/display_text.c
 @@ -12,6 +12,7 @@
@@ -4487,7 +4487,7 @@ index 9b2cb3d..a57b24d 100644
  #include "game/game_state.h"
  #include "game/inventory.h"
  #include "game/text.h"
-@@ -185,6 +186,297 @@ void restore_window_text_attributes(void) {
+@@ -185,6 +186,330 @@ void restore_window_text_attributes(void) {
   * get_working_memory() always returns 0, causing JUMP_IF_FALSE to always jump. */
  static WindowInfo dummy_window;
  
@@ -4559,6 +4559,39 @@ index 9b2cb3d..a57b24d 100644
 +        bool passed = !pushed && reader.ptr_off == size && get_working_memory() == register_cases[i].expected;
 +        ok &= passed; ++checks;
 +        if (!passed) fprintf(stderr, "Redux VM register case %zu failed\n", i);
++    }
++    /* return_item_fix.ccs stores the low word fetched from argument memory
++     * into LOCAL01. Exercise the real dispatcher with high argument bits,
++     * explicit operands and every possible first-unconscious slot. */
++    {
++        uint16_t saved_count = game_state.party_count;
++        uint16_t saved_controlled_count = game_state.player_controlled_party_count;
++        uint8_t saved_afflictions[4];
++        for (unsigned n=0;n<4;++n) saved_afflictions[n]=party_characters[n].afflictions[0];
++        const struct {uint16_t operand;uint32_t argument;} values[] = {
++            {25,0x12345678},{0,25},{0,0x12345678},{0,UINT32_MAX},{0,0}
++        };
++        game_state.party_count=4;
++        game_state.player_controlled_party_count=4;
++        for(unsigned n=0;n<4;++n) game_state.party_order[n]=n+1;
++        for(unsigned slot=0;slot<=4;++slot) {
++            for(unsigned n=0;n<4;++n) party_characters[n].afflictions[0]=n==slot ? 1 : 0;
++            for(unsigned n=0;n<sizeof(values)/sizeof(values[0]);++n) {
++                uint8_t script[]={0x15,(uint8_t)values[n].operand,(uint8_t)(values[n].operand>>8)};
++                dialogue_blob=script;dialogue_blob_size=sizeof(script);
++                ScriptReader reader={TEXT_SRC_DIALOGUE,0,sizeof(script),-1};
++                set_argument_memory(values[n].argument);
++                cc_1d_dispatch(&reader);
++                uint16_t amount=values[n].operand ? values[n].operand : (uint16_t)values[n].argument;
++                bool passed=reader.ptr_off==sizeof(script) && get_working_memory()==(uint32_t)amount*slot;
++                ok &= passed;++checks;
++                if(!passed) fprintf(stderr,"Redux return-item word case %u/%u failed\n",slot,n);
++            }
++        }
++        game_state.party_count=saved_count;
++        game_state.player_controlled_party_count=saved_controlled_count;
++        for(unsigned n=0;n<4;++n) party_characters[n].afflictions[0]=saved_afflictions[n];
++        memcpy(game_state.party_order,order,sizeof(order));
 +    }
 +    /* Exercise the actual routine dispatcher and its child-mode contracts. */
 +    OverworldState saved_ow = ow;
@@ -4785,7 +4818,7 @@ index 9b2cb3d..a57b24d 100644
  WindowInfo *get_focus_window_info(void) {
      if (win.current_focus_window == WINDOW_ID_NONE) return &dummy_window;
      return get_window(win.current_focus_window);
-@@ -520,6 +812,12 @@ typedef struct {
+@@ -520,6 +845,12 @@ typedef struct {
  static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
      static TextBlock dialogue_block = {0};
      static TextBlock string_table_block = {0};
@@ -4798,7 +4831,7 @@ index 9b2cb3d..a57b24d 100644
  
      /* Dialogue blob */
      if (addr >= DIALOGUE_BLOB_BASE && dialogue_blob != NULL) {
-@@ -543,6 +841,63 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+@@ -543,6 +874,63 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
      return NULL;
  }
  
@@ -4862,7 +4895,7 @@ index 9b2cb3d..a57b24d 100644
  /* Print a PSI name given a PSI name ID.
   * Port of GET_PSI_NAME (asm/text/get_psi_name.asm).
   * psi_name_id==1 (ROCKIN) → uses favourite_thing from game_state.
-@@ -550,6 +905,10 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+@@ -550,6 +938,10 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
  void print_psi_name(uint16_t psi_name_id) {
  
      if (psi_name_id == 1) {
@@ -4873,7 +4906,7 @@ index 9b2cb3d..a57b24d 100644
          /* PSI Rockin, print favourite_thing (EB-encoded in game_state, null-terminated) */
          int len = 0;
          while (len < (int)sizeof(game_state.favourite_thing) && game_state.favourite_thing[len] != 0x00) len++;
-@@ -628,7 +987,9 @@ static bool display_text_load_dialogue_blob(void) {
+@@ -628,7 +1020,9 @@ static bool display_text_load_dialogue_blob(void) {
      dialogue_blob = ASSET_DIALOGUE_DIALOGUE_BIN_DATA;
      dialogue_blob_size = ASSET_DIALOGUE_DIALOGUE_BIN_SIZE;
  #endif
@@ -4884,7 +4917,7 @@ index 9b2cb3d..a57b24d 100644
  }
  
  bool display_text_init(void) {
-@@ -857,12 +1218,12 @@ void display_status_window(uint16_t char_id) {
+@@ -857,12 +1251,12 @@ void display_status_window(uint16_t char_id) {
  
      /* Assembly lines 27-40: set window title to character name */
      {
@@ -4901,7 +4934,7 @@ index 9b2cb3d..a57b24d 100644
      }
  
      dt.force_left_text_alignment = 1;
-@@ -1036,10 +1397,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
+@@ -1036,10 +1430,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
  
          char name_buf[7];
          if (member_id >= 1 && member_id <= 4) {
@@ -4914,7 +4947,7 @@ index 9b2cb3d..a57b24d 100644
          } else {
              name_buf[0] = '\0';
          }
-@@ -1191,8 +1552,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1191,8 +1585,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
              return (uintptr_t)game_state.pet_name;
          case 4:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -4925,7 +4958,7 @@ index 9b2cb3d..a57b24d 100644
          case 5:
              *out_type = CC_TABLE_TYPE_STRING;
              *out_str_len = (int)sizeof(game_state.favourite_thing);
-@@ -1216,8 +1577,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1216,8 +1610,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
          switch ((CcCharField)field) {
          case CC_CHAR_NAME:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -4936,7 +4969,7 @@ index 9b2cb3d..a57b24d 100644
          case CC_CHAR_LEVEL:       return c->level;
          case CC_CHAR_EXP:         return c->exp;
          case CC_CHAR_CURRENT_HP:  return c->current_hp;
-@@ -1259,7 +1620,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1259,7 +1653,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
          case 1: return (uint8_t)sizeof(game_state.mother2_playername);
          case 2: return (uint8_t)sizeof(game_state.earthbound_playername);
          case 3: return (uint8_t)sizeof(game_state.pet_name);
@@ -4945,7 +4978,7 @@ index 9b2cb3d..a57b24d 100644
          case 5: return (uint8_t)sizeof(game_state.favourite_thing);
          case 6: return (uint8_t)sizeof(game_state.money_carried);
          case 7: return (uint8_t)sizeof(game_state.bank_balance);
-@@ -1270,7 +1631,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1270,7 +1664,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
      if (index >= CC_GLOBAL_COUNT && index < CC_TABLE_TOTAL) {
          uint16_t field = (index - CC_GLOBAL_COUNT) % CC_CHAR_FIELD_COUNT;
          switch ((CcCharField)field) {
@@ -4954,7 +4987,7 @@ index 9b2cb3d..a57b24d 100644
          case CC_CHAR_LEVEL:       return 1;
          case CC_CHAR_EXP:         return 4;
          case CC_CHAR_CURRENT_HP:  return 2;
-@@ -1779,6 +2140,15 @@ StepResult mode_step_display_text(ModeState *ms) {
+@@ -1779,6 +2173,15 @@ StepResult mode_step_display_text(ModeState *ms) {
           * unknown4 starts as 0 (cleared by INIT_TEXT_STATE), set to 1 by CC_18_02.
           * In C: dt.g_cc18_attrs_saved tracks this per display_text call level. */
          if (byte == 0x02) {
@@ -4987,7 +5020,7 @@ index 1289939..5d6dcd1 100644
  bool display_text_load_battle_text(void);
  void display_text_free_battle_text(void);
 diff --git a/src/game/display_text_cc.c b/src/game/display_text_cc.c
-index 950d47b..48566ca 100644
+index 950d47b..30f1679 100644
 --- a/src/game/display_text_cc.c
 +++ b/src/game/display_text_cc.c
 @@ -1,3 +1,4 @@
@@ -5429,7 +5462,27 @@ index 950d47b..48566ca 100644
          } else if (char_id == PARTY_MEMBER_POKEY) {
              name_data = game_state.pet_name;
              name_max = 6;
-@@ -3426,11 +3648,11 @@ bool cc_1e_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -3201,7 +3423,10 @@ void cc_1d_dispatch(ScriptReader *r) {
+     case 0x15: {
+         /* PUT_VAL_IN_ARGMEM: 2 data bytes (.WORD).
+          * Port of CC_1D_15 (asm/text/ccs/set_argmem.asm).
+-         * Builds 16-bit value. If zero, use argument_memory.
++         * Builds 16-bit value. If zero, use argument_memory. Redux's
++         * return_item_fix.ccs stores its low word into LOCAL01 before the
++         * unsigned 16-to-32-bit multiplication; high register bits are not
++         * part of this operand.
+          * Calls FIND_FIRST_UNCONSCIOUS_PARTY_SLOT (C226F0):
+          *   Iterates party_order[0..party_count-1], finds first member
+          *   whose afflictions == 1 (unconscious). Returns the index (0-based).
+@@ -3209,6 +3434,7 @@ void cc_1d_dispatch(ScriptReader *r) {
+          * Multiplies value * unconscious_slot, stores in working_memory. */
+         uint16_t amount = script_read_word(r);
+         uint32_t val = amount ? (uint32_t)amount : (uint32_t)get_argument_memory();
++        if (maternalbound_enabled()) val = (uint16_t)val;
+         /* FIND_FIRST_UNCONSCIOUS_PARTY_SLOT */
+         uint16_t slot = find_first_unconscious_party_slot();
+         set_working_memory(val * (uint32_t)slot);
+@@ -3426,11 +3652,11 @@ bool cc_1e_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
          if (char_id >= 1 && char_id <= TOTAL_PARTY_COUNT) {
              CharStruct *c = &party_characters[char_id - 1];
              switch (sub) {

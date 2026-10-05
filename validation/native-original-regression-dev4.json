@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "nativeExeSha256": "8584f1efb68c5616b9132c839280ac01cb5f004e47cafdca4634d0087914e56b",
+  "packSha256": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+  "tests": [
+    {
+      "test": "--selftest-pc",
+      "passed": true
+    },
+    {
+      "test": "--selftest-savestate",
+      "passed": true
+    },
+    {
+      "test": "--selftest-keyitems",
+      "passed": true
+    },
+    {
+      "test": "--selftest-joinlevel",
+      "passed": true
+    },
+    {
+      "test": "--selftest-screen-transitions",
+      "passed": true
+    }
+  ],
+  "fullPlaythroughVerified": false
+}

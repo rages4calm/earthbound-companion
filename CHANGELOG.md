@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.4 - script width fix and active bugfix review
+
+- Correct Redux `CC 1D 15` variable-argument handling to use the low word stored by the upstream assembly fix. The real dispatcher reproduces eight failures before the correction; all 25 operand/party-position cases now pass, raising the VM suite to 106 checks.
+- Record all 36 active bugfix imports against the exact source pin, with native bindings, execution differences, targeted coverage and remaining branch tests. This is source review, not full compatibility certification.
+- Rebuild the player engine, QA engine and frozen setup helper together. Fresh movement/combat/original-profile checks, a clean upstream patch check, and 20 natural-combat observer parity checkpoints pass.
+- Extend bounded Jev navigation through shop menus, City Hall, the guard and the mayor’s ordinary Shack Key award. Add expected door-destination checks and alternative NPC approaches. Full story and randomized playthroughs remain unverified.
+- Keep dev.3’s corrected pack and quick-save format 16, preserving content and seed identities. Existing dev.2 story imports remain restricted to the exact checked names-only pack change.
+
 ## 0.5.0-redux-dev.3 - PSI names, combat UI and save-restore fixes
 
 - Read the PSI-name table from CoilSnake's patched assembly pointer. The former fixed address held unrelated script bytes, producing names such as `103`. Validate the pointer and names during conversion.

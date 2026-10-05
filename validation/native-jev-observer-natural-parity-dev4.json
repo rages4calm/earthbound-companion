@@ -1,0 +1,136 @@
+{
+  "Passed": true,
+  "Checkpoints": [
+    {
+      "case": "natural-check-combat",
+      "step": 0,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 1,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 2,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 3,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 4,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 5,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 6,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 7,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 8,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 9,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 10,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 11,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 12,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 13,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 14,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 15,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 16,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 17,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 18,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "natural-check-combat",
+      "step": 19,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    }
+  ],
+  "baselineEngineSha256": "8584f1efb68c5616b9132c839280ac01cb5f004e47cafdca4634d0087914e56b",
+  "observedEngineSha256": "788472439998ff78021d4bdc621eef7e5dbc8971e508e5d0a3e798cc585b5daf",
+  "Exclusions": {
+    "section": 8,
+    "fields": [
+      "WindowInfo.content_tilemap",
+      "WindowInfo.cursor_move_callback"
+    ],
+    "reason": "Process addresses are serialized but rebuilt from saved offsets and callback IDs on every load. No other bytes are excluded."
+  },
+  "FullPlaythroughVerified": false
+}

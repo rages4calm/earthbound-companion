@@ -175,13 +175,15 @@ def path_turn(state, target):
                     return False
         return all(not (grid[((y + dy) // 8 % 64) * 64 + (x + dx) // 8 % 64] & 0xC0)
                    for dx in (-8, 0, 7) for dy in (0, 7))
-    queue = [(distance(start), 0, start)]
+    queue = [(distance(start), distance(start), 0, start)]
     best, parent = {start: 0}, {}
-    end = None
-    while queue and len(best) < 270000:
-        _, cost, point = heapq.heappop(queue)
+    end, nearest = None, start
+    while queue and len(best) < 24000:
+        _, _, cost, point = heapq.heappop(queue)
         if cost != best[point]:
             continue
+        if distance(point) < distance(nearest):
+            nearest = point
         if distance(point) <= 6:
             end = point
             break
@@ -191,13 +193,20 @@ def path_turn(state, target):
             nxt, nc = (point[0] + dx, point[1] + dy), cost + 1
             if clear(*nxt) and nc < best.get(nxt, 1e9):
                 best[nxt], parent[nxt] = nc, point
-                heapq.heappush(queue, (nc + distance(nxt), nc, nxt))
+                # Equal-cost Manhattan paths prefer progress toward the goal,
+                # rather than flooding an entire open rectangle first.
+                heapq.heappush(queue, (nc + distance(nxt), distance(nxt), nc, nxt))
+    if end is None and distance(nearest) < distance(start) - 12:
+        # A far waypoint can lie outside the currently loaded map window.
+        # Follow an ordinary, locally checked segment, then observe the next
+        # window instead of exhausting the whole grid without moving.
+        end = nearest
     if end is None:
         # Door triggers can sit on otherwise solid tiles. Probe only a nearby
         # waypoint with a short ordinary input; native collision still applies.
         if distance(start) <= 24:
             dx, dy = target[0] - start[0], target[1] - start[1]
-            button = ('right' if dx > 0 else 'left') if abs(dx) > abs(dy) else ('down' if dy > 0 else 'up')
+            button = ('right' if dx > 0 else 'left') if abs(dx) >= abs(dy) and dx else ('down' if dy > 0 else 'up')
             return {'button': button, 'frames': 4, 'target': list(target), 'settle': 140, 'doorProbe': True}
         return None
     path = [end]
@@ -226,7 +235,7 @@ def path_turn(state, target):
             'target': list(turn), 'settle': 140}
 
 
-def candidates(state, target_npc=None, target=None, heal_character=None, seek_battle=False, check_required=False):
+def candidates(state, target_npc=None, target=None, heal_character=None, seek_battle=False, check_required=False, known_door=False):
     options = {'stop': {'description': 'Stop and preserve the run if evidence is insufficient.', 'input': None}}
     top = state['modeNames'][-1] if state['modeNames'] else 'NONE'
     window = next((w for w in state['windows'] if w['id'] == state['focusWindow']), None)
@@ -234,6 +243,8 @@ def candidates(state, target_npc=None, target=None, heal_character=None, seek_ba
         options['advance_dialogue'] = {'description': 'Advance the currently waiting dialogue page.',
                                       'input': {'button': 'confirm', 'frames': 1, 'settle': 400}}
     elif top in ('SELECTION_MENU', 'BATTLE_ROW_SELECT', 'BATTLE_ENEMY_SELECT') and window and window['menu']:
+        options['cancel_menu'] = {'description': 'Cancel the current menu through the ordinary Back button, without confirming a purchase or item use.',
+                                  'input': {'button': 'cancel', 'frames': 1, 'settle': 400}}
         current = next((m for m in window['menu'] if m['index'] == window['selected']), None)
         for item in window['menu']:
             if current is None:
@@ -272,7 +283,7 @@ def candidates(state, target_npc=None, target=None, heal_character=None, seek_ba
             if npc:
                 x, y = npc['position']
                 distance = abs(x - state['position'][0]) + abs(y - state['position'][1])
-                if distance <= 28:
+                if distance <= 48:
                     dx,dy=x-state['position'][0],y-state['position'][1]
                     direction,button=((2,'right') if dx>0 else (6,'left')) if abs(dx)>abs(dy) else ((4,'down') if dy>0 else (0,'up'))
                     if state['direction']!=direction:
@@ -281,15 +292,23 @@ def candidates(state, target_npc=None, target=None, heal_character=None, seek_ba
                     else:
                         options['talk_target'] = {'description': f'Use quick Talk/Check beside target NPC {target_npc}.',
                                                  'input': {'button': 'confirm', 'frames': 1, 'settle': 400}}
-                else:
+                if distance > 20:
                     # Approach a safe adjacent point, not the NPC's collision center.
-                    for point in ((x - 18, y), (x + 18, y), (x, y + 18), (x, y - 18)):
+                    adjacent = sorted(((x - 24, y), (x + 24, y), (x, y + 32), (x, y - 24)),
+                                      key=lambda point: sum(abs(point[i] - state['position'][i]) for i in (0, 1)))
+                    for point in adjacent:
                         step = path_turn(state, point)
                         if step:
-                            options['approach_target'] = {'description': f'Follow the collision-checked path toward NPC {target_npc} at {npc["position"]}.', 'input': step}
-                            break
+                            side = 'left' if point[0] < x else 'right' if point[0] > x else 'below' if point[1] > y else 'above'
+                            options['approach_target_' + side] = {'description': f'Approach NPC {target_npc} from {side} toward {point}. Try another side if a desk or another NPC blocks this route.', 'input': step}
         elif target is not None:
             step = path_turn(state, target)
+            if step is None and known_door and sum(abs(target[i] - state['position'][i]) for i in (0, 1)) <= 64:
+                # Door tiles can intentionally be marked solid. This opt-in
+                # probe is only for a supplied doorway, never an inferred warp.
+                dx, dy = (target[i] - state['position'][i] for i in (0, 1))
+                button = ('right' if dx > 0 else 'left') if abs(dx) >= abs(dy) and dx else ('down' if dy > 0 else 'up')
+                step = {'button': button, 'frames': 4, 'target': list(target), 'settle': 140, 'doorProbe': True}
             if step:
                 options['follow_path'] = {'description': (f'Probe the nearby door waypoint {target} with a short ordinary movement input.' if step.get('doorProbe') else f'Follow the collision-checked path toward waypoint {target}.'), 'input': step}
         if target_npc is not None or target is not None or seek_battle:
@@ -297,9 +316,12 @@ def candidates(state, target_npc=None, target=None, heal_character=None, seek_ba
             # object. Offer bounded ordinary sidesteps when a planned route is
             # blocked; the game still enforces its complete collision rules.
             grid=bytes.fromhex(state['collisionHex']);x,y=state['position']
+            has_path = any(name.startswith('approach_') or name == 'follow_path' for name in options)
             for button,dx,dy in (('up',0,-6),('down',0,6),('left',-6,0),('right',6,0)):
-                if all(not (grid[((y+dy+sy)//8%64)*64+(x+dx+sx)//8%64]&0xc0) for sx in (-8,0,7) for sy in (0,7)):
-                    options['reposition_'+button]={'description':f'Take a short ordinary step {button} to get around a blocking NPC or object, then re-observe before continuing the goal.',
+                map_clear = all(not (grid[((y+dy+sy)//8%64)*64+(x+dx+sx)//8%64]&0xc0) for sx in (-8,0,7) for sy in (0,7))
+                if map_clear or not has_path:
+                    note = '' if map_clear else ' The coarse map footprint is uncertain here; the native game enforces collision during this bounded probe.'
+                    options['reposition_'+button]={'description':f'Take a short ordinary step {button} to get around a blocking NPC or object, then re-observe before continuing the goal.' + note,
                                                   'input':{'button':button,'frames':4,'settle':140}}
     else:
         options['wait_scene'] = {'description': 'Allow the current animation, script, or typewriter text to advance without input.',
@@ -307,7 +329,7 @@ def candidates(state, target_npc=None, target=None, heal_character=None, seek_ba
     return options
 
 
-def jev_decide(state, options, goal, recent):
+def jev_decide(state, options, goal, recent, navigation_target=None):
     key = os.environ.get('TYPESAFE_API_KEY')
     if not key:
         raise RuntimeError('TypeSafe API credentials are not configured.')
@@ -316,6 +338,8 @@ def jev_decide(state, options, goal, recent):
     public_state['battleActor'] = state.get('battleActor')
     public_state['interactingNpc'] = state.get('interactingNpc')
     public_state['worldEnemies'] = state.get('worldEnemies', [])
+    public_state['navigationTarget'] = navigation_target
+    public_state['coordinateDirections'] = {'right': '+x', 'left': '-x', 'down': '+y', 'up': '-y'}
     body = {'model': 'jev-latest', 'state': {'goal': goal, 'observed': public_state, 'recentActions': recent[-6:]},
             'questions': {'next_action': {'type': 'choice',
                 'instructions': 'Choose the available action that best advances `goal` from the current `observed` native game state. Use rendered dialogue and observed menu labels. Survive battles. Avoid repeating ineffective actions. Select stop only if no provided gameplay action can safely advance the goal.',
@@ -342,6 +366,17 @@ def fingerprint(state):
     return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
 
 
+def avoid_blocked_movement(options, blocked_buttons):
+    """Do not ask the model to retry movement already blocked at this position.
+
+    This applies only to navigation actions. Talking, facing an NPC and menu
+    inputs keep their ordinary game semantics even if position stays unchanged.
+    """
+    return {name: option for name, option in options.items()
+            if not (name.startswith(('approach_', 'reposition_')) or name == 'follow_path')
+            or option['input']['button'] not in blocked_buttons}
+
+
 def play(args):
     directory, run = load_run(args.directory)
     lock = directory / '.runner.lock'
@@ -351,12 +386,15 @@ def play(args):
     started, reason, dialogue_seen, repeats = time.monotonic(), 'step_limit', False, 0
     battle_seen, checked = False, False
     visited={}
+    blocked_buttons = set()
     state = None
     try:
         indexes = [int(p.name) for p in directory.iterdir() if p.is_dir() and p.name.isdigit()]
         index = max(indexes, default=-1) + 1
         previous = json.loads((directory / 'last-state.json').read_text()) if (directory / 'last-state.json').exists() else None
         state = observe_step(directory, run, {'button': None, 'frames': 1, 'settle': 140}, index, previous)
+        dialogue_seen = args.target_npc is not None and state.get('interactingNpc') == args.target_npc and 'DISPLAY_TEXT' in state['modeNames']
+        initial_position = list(state['position'])
         initial_party = {p['id']: dict(p) for p in state['party']}
         index += 1
         for _ in range(args.max_steps):
@@ -374,25 +412,41 @@ def play(args):
                     reason = 'healing_completed';break
             if args.battle_complete and battle_seen and not state['battle'] and state['modeNames'] == ['OVERWORLD']:
                 reason = 'battle_completed';break
-            if args.target and state['modeNames'] == ['OVERWORLD'] and sum(abs(state['position'][i] - args.target[i]) for i in (0, 1)) <= 8:
+            if args.target and state['modeNames'] == ['OVERWORLD'] and sum(abs(state['position'][i] - args.target[i]) for i in (0, 1)) <= 12:
                 reason = 'waypoint_reached';break
+            if args.door and state['modeNames'] == ['OVERWORLD']:
+                travelled = sum(abs(state['position'][i] - initial_position[i]) for i in (0, 1))
+                if args.door_destination:
+                    arrived = sum(abs(state['position'][i] - args.door_destination[i]) for i in (0, 1)) <= 24
+                    if arrived and travelled > 32:
+                        reason = 'door_transition_completed';break
+                    if travelled > 512 and not arrived:
+                        reason = 'unexpected_door_transition';break
+                elif travelled > 512:
+                    reason = 'door_transition_completed';break
             if args.target_npc is not None and dialogue_seen and state['modeNames'] == ['OVERWORLD']:
                 reason = 'target_conversation_completed';break
-            options = candidates(state, args.target_npc, args.target, args.heal_character,
-                                 args.seek_battle and not battle_seen, args.check_before_combat and not checked)
+            options = candidates(state, args.target_npc, args.door or args.target, args.heal_character,
+                                 args.seek_battle and not battle_seen, args.check_before_combat and not checked, args.door is not None)
+            options = avoid_blocked_movement(options, blocked_buttons)
             if len(options) == 1:
                 reason = 'no_valid_candidate';break
             old_fingerprint = fingerprint(state)
             visited[old_fingerprint]=visited.get(old_fingerprint,0)+1
             if visited[old_fingerprint]>=4:
                 reason='repeated_state_cycle';break
-            choice, decision = jev_decide(state, options, args.goal, recent)
+            choice, decision = jev_decide(state, options, args.goal, recent, args.door or args.target)
             requests += 1
             write_json(directory / f'decision-{index:04d}.json', {'goal': args.goal, 'candidates': options, **decision})
             if choice == 'stop':
                 reason = 'model_requested_stop';break
             action = options[choice]['input']
+            before_position, before_modes = list(state['position']), list(state['modeNames'])
             state = observe_step(directory, run, action, index, state)
+            if state['position'] != before_position or state['modeNames'] != before_modes:
+                blocked_buttons.clear()
+            elif choice.startswith(('approach_', 'reposition_')) or choice == 'follow_path':
+                blocked_buttons.add(action['button'])
             if choice == 'check_empty':
                 checked = True
             if choice == 'talk_target' and 'DISPLAY_TEXT' in state['modeNames'] and state.get('interactingNpc') == args.target_npc:
@@ -400,6 +454,7 @@ def play(args):
             new_fingerprint = fingerprint(state)
             repeats = repeats + 1 if new_fingerprint == old_fingerprint else 0
             row = {'step': index, 'choice': choice, 'position': state['position'], 'modes': state['modeNames'],
+                   'action': action, 'beforePosition': before_position,
                    'jevSeconds': decision['seconds'], 'changed': new_fingerprint != old_fingerprint}
             recent.append(row);steps.append(row);print(json.dumps(row), flush=True)
             index += 1
@@ -435,6 +490,8 @@ def main():
     goal = run.add_mutually_exclusive_group(required=True)
     goal.add_argument('--target-npc', type=int)
     goal.add_argument('--target', type=int, nargs=2)
+    goal.add_argument('--door', type=int, nargs=2, help='Approach a known doorway and stop after an ordinary room warp of more than 512 map pixels.')
+    run.add_argument('--door-destination', type=int, nargs=2, help='With --door, verify arrival within 24 map pixels of a known destination, including nearby interior rooms.')
     goal.add_argument('--battle-complete', action='store_true')
     goal.add_argument('--heal-character', type=int, choices=range(1,5), help='Verify an HP increase and PP use through ordinary PSI menus.')
     run.add_argument('--seek-battle', action='store_true', help='Approach observed overworld enemies before completing a natural battle.')
@@ -448,6 +505,8 @@ def main():
     else:
         if (args.seek_battle or args.check_before_combat) and not args.battle_complete:
             parser.error('Encounter options require --battle-complete.')
+        if args.door_destination and not args.door:
+            parser.error('--door-destination requires --door.')
         if not 1 <= args.max_requests <= 500 or not 1 <= args.max_steps <= 1000 or not 1 <= args.max_seconds <= 3600:
             parser.error('Choose bounded request/step/time limits.')
         play(args)

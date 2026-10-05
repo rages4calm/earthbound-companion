@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "format": "redux-current-active-bugfix-runtime-v1",
+  "nativeExeSha256": "8584f1efb68c5616b9132c839280ac01cb5f004e47cafdca4634d0087914e56b",
+  "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "tests": [
+    {
+      "check": "vm",
+      "exitCode": 0,
+      "seconds": 0.45344919990748167,
+      "log": "active-bugfix-dev4/vm/native.txt"
+    },
+    {
+      "check": "movement",
+      "exitCode": 0,
+      "seconds": 0.07029539998620749,
+      "log": "active-bugfix-dev4/movement/native.txt"
+    },
+    {
+      "check": "combat",
+      "exitCode": 0,
+      "seconds": 0.0693589998409152,
+      "log": "active-bugfix-dev4/combat/native.txt"
+    },
+    {
+      "check": "motion",
+      "exitCode": 0,
+      "seconds": 0.06631729984655976,
+      "log": "active-bugfix-dev4/motion/native.txt"
+    }
+  ],
+  "fullPlaythroughVerified": false,
+  "allBugfixBranchesVerified": false
+}

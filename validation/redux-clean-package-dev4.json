@@ -1,0 +1,67 @@
+{
+  "Passed": true,
+  "PackageSha256": "AA45A1336F202F1BFCADB277A28582DF66EE4659332C51DD2768C2D255526FA7",
+  "NativeExeSha256": "8584F1EFB68C5616B9132C839280AC01CB5F004E47CAFDCA4634D0087914E56B",
+  "ReduxSetupSha256": "7D8524E28B9C81556C10990611818913DDBE43F9851C171FC6A87BD35C865FF7",
+  "ReduxPackSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+  "Tests": [
+    "ROM-free archive and exact file manifest",
+    "Self-contained first-run setup with headered owner ROM and online pinned Redux source",
+    "164 soundtrack checks; corrupt track and stale partial repaired by real download",
+    "Verified profile installed atomically; generated ROMs cleaned",
+    "Packaged native MSU: eight Sound Stone transitions, SPC effects/fallback and all 164 loop/end checks",
+    "Packaged native story opening, Select naming and cold restore",
+    "Packaged generator, independent seed guard and native randomized opening",
+    "Normal-button story and seed gameplay through house doors/stairs, Mom, clothes change and outdoor movement",
+    "Original/Redux/seed save namespaces and profile switching"
+  ],
+  "DownloadedTrack": "eb_msu1-113.pcm",
+  "MsuTracksVerified": 164,
+  "ExistingTracksReusedViaHardlinks": 163,
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Isolated setup/opening tests; no complete story or randomized playthrough.",
+    "One soundtrack track downloaded; remaining tracks reused and independently checked."
+  ],
+  "RuntimeTestedPackageSha256": "F3FE7080688C3CD7DAD422592873E77956B15E995829D0EBDF73EF2C7873851B",
+  "DocumentationRefresh": {
+    "ChangedFiles": [
+      "EarthBound Companion/MATERNALBOUND-NATIVE.md",
+      "EarthBound Companion/PACKAGE-MANIFEST.json",
+      "EarthBound Companion/README.md"
+    ],
+    "UnchangedFiles": [
+      "EarthBound Companion/CREDITS.md",
+      "EarthBound Companion/EarthBound Companion.exe",
+      "EarthBound Companion/Game/earthbound.exe",
+      "EarthBound Companion/Game/ebtools-setup.exe",
+      "EarthBound Companion/Game/redux-setup.exe",
+      "EarthBound Companion/Game/SDL2.dll",
+      "EarthBound Companion/JEV-QA.md",
+      "EarthBound Companion/LEGAL.md",
+      "EarthBound Companion/LICENSE.md",
+      "EarthBound Companion/Licenses/cJSON-LICENSE",
+      "EarthBound Companion/Licenses/CoilSnake-LICENSE",
+      "EarthBound Companion/Licenses/DOTNET-NOTICES.txt",
+      "EarthBound Companion/Licenses/Exhal-COPYING.txt",
+      "EarthBound Companion/Licenses/LakeSnes-LICENSE.txt",
+      "EarthBound Companion/Licenses/MaternalBound-Redux-LICENSE",
+      "EarthBound Companion/Licenses/SDL2-LICENSE.txt",
+      "EarthBound Companion/Licenses/SHA256-LICENSE",
+      "EarthBound Companion/Licenses/Tamp-LICENSE",
+      "EarthBound Companion/Mods/Clean ultrawide.ebmod.json",
+      "EarthBound Companion/Mods/Comfort.ebmod.json",
+      "EarthBound Companion/Mods/Easygoing.ebmod.json",
+      "EarthBound Companion/PACKAGE-NOTES.md",
+      "EarthBound Companion/RANDOMIZER.md",
+      "EarthBound Companion/RESEARCH.md",
+      "EarthBound Companion/START HERE.txt",
+      "EarthBound Companion/UPSTREAM.md"
+    ],
+    "UnchangedFileCount": 26,
+    "AllRuntimeAndSetupFilesIdentical": true,
+    "FinalManifestVerified": true,
+    "FinalForbiddenContentScanPassed": true,
+    "Scope": "Two caption/document changes only; full runtime tests were run on the byte-identical binaries in RuntimeTestedPackageSha256."
+  }
+}
