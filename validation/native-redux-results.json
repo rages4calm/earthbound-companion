@@ -1,10 +1,16 @@
 {
-  "format": "maternalbound-native-dev-validation-v1",
-  "status": "development-only",
+  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+  "convertedDialogueSha256": "5B18885E24F78478B9A06A784981ED827012482E62F7C9DDEC761616F057E811",
+  "limitations": [
+    "Isolated test sessions; this command does not replace installed game files or player saves",
+    "Remaining assembly-only fixes, later gameplay and full playthrough require verification",
+    "This command does not run the separate content-specific randomizer audit or a full randomized playthrough"
+  ],
+  "packSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
   "tests": [
     {
-      "exitCode": 0,
       "checks": 81,
+      "exitCode": 0,
       "test": "native-redux-commands"
     },
     {
@@ -12,8 +18,8 @@
       "test": "native-redux-stamina"
     },
     {
-      "exitCode": 0,
       "scripts": 190,
+      "exitCode": 0,
       "turns": 48640,
       "test": "native-redux-enemy-ai"
     },
@@ -26,13 +32,13 @@
       "test": "native-redux-animation-run-exhaustion-stationary-stamina"
     },
     {
-      "resolvedPointers": 898,
-      "teleportCycles": 128,
-      "doorBounds": 6,
-      "stairCallbacks": 8,
-      "test": "native-redux-movement-all-pointers-moldyman-far-tasks-object-effects-teleport-bicycles-doors",
       "bicycleCases": 16,
-      "exitCode": 0
+      "resolvedPointers": 898,
+      "exitCode": 0,
+      "teleportCycles": 128,
+      "test": "native-redux-movement-all-pointers-moldyman-far-tasks-object-effects-teleport-bicycles-doors",
+      "stairCallbacks": 8,
+      "doorBounds": 6
     },
     {
       "exitCode": 0,
@@ -40,17 +46,17 @@
       "test": "redux-delivery-letterbox-before-music"
     },
     {
-      "exitCode": 0,
       "framesPerTrack": 24,
-      "tracks": 191,
       "tracksProducingSamples": 188,
+      "exitCode": 0,
+      "tracks": 191,
       "test": "redux-spc-track-transitions"
     },
     {
       "exitCode": 0,
       "effects": 68,
-      "test": "redux-psi-playback-rebind-extended-ids",
-      "frames": 1686
+      "frames": 1686,
+      "test": "redux-psi-playback-rebind-extended-ids"
     },
     {
       "exitCode": 0,
@@ -61,25 +67,25 @@
       "test": "redux-party-battle-sprites-selection-victory"
     },
     {
-      "exitCode": 0,
       "condimentRecords": 42,
       "gutsTrials": 128,
-      "test": "redux-production-combat-actions-inventory-roller",
-      "sandwichTrials": 4096
+      "exitCode": 0,
+      "sandwichTrials": 4096,
+      "test": "redux-production-combat-actions-inventory-roller"
+    },
+    {
+      "devices": 11,
+      "exitCode": 0,
+      "test": "redux-battle-tools-availability-inventory-free-actions"
     },
     {
       "exitCode": 0,
-      "test": "redux-battle-tools-availability-inventory-free-actions",
-      "devices": 11
-    },
-    {
       "fontCases": 10,
-      "exitCode": 0,
       "test": "redux-font-aware-menu-highlights"
     },
     {
-      "exitCode": 0,
       "previews": 340,
+      "exitCode": 0,
       "test": "redux-equipment-preview-identity-window-remapping"
     },
     {
@@ -99,10 +105,7 @@
       "test": "native-converted-title-Return"
     }
   ],
-  "nativeExeSha256": "86021608639A0DCD0D73B23C4BAF026D019E0935ED45E9BA00B745877985F4A8",
-  "convertedDialogueSha256": "5B18885E24F78478B9A06A784981ED827012482E62F7C9DDEC761616F057E811",
-  "packSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
-  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+  "nativeExeSha256": "EB023CD843ABD90940529E4E5CAB7D6A7C976F2A8A3CA5E95287EEFFEA5812EA",
   "conversionCounts": {
     "convertedLabelSpans": 7397,
     "convertedBytes": 568999,
@@ -114,9 +117,6 @@
     "nativeRoutineVariants": 17,
     "ambiguousOriginalAliases": 0
   },
-  "limitations": [
-    "Isolated development pack only; installed game remains original-profile",
-    "Remaining assembly-only fixes, later gameplay and full playthrough require verification",
-    "This command does not run the separate content-specific randomizer audit or a full randomized playthrough"
-  ]
+  "format": "maternalbound-native-dev-validation-v1",
+  "status": "development-only"
 }

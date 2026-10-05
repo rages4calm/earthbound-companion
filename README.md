@@ -43,7 +43,11 @@ These are real captures from the ROM-free v0.5 development launcher before game-
   </tr>
 </table>
 
-The [Redux port page](MATERNALBOUND-NATIVE.md#development-captures) also shows actual native Tools, equipment and cast renders.
+The [Redux port page](MATERNALBOUND-NATIVE.md#development-captures) also shows actual native gameplay, Tools, equipment and cast renders. The latest packaged engine passes normal-button walking through the house, doors and stairs, Mom's dialogue and the clothes-change event, with fresh-process restores between checkpoints.
+
+![Native Redux opening dialogue at 1920×1080](docs/images/native-redux-mom-1080p.png)
+
+This 1080p capture uses locally supplied game data. It documents the development build; it is not proof of complete story compatibility.
 
 ## What this is
 
@@ -76,7 +80,7 @@ The application accepts the clean 3 MiB USA ROM, with or without a 512-byte copi
 
 ## Native MSU soundtrack
 
-First-run setup can download all 164 PCM tracks from [ShadowOne333’s EarthBound MSU-1 pack](https://archive.org/details/earthbound-msu-1-pack). Each file is checked against the embedded size and checksum manifest before it is installed. Interrupted setup keeps completed tracks; **Audio → Install / repair soundtrack** resumes and verifies the collection. Missing or invalid files fall back to the original SPC soundtrack.
+First-run setup can download all 164 PCM tracks from [ShadowOne333’s EarthBound MSU-1 pack](https://archive.org/details/earthbound-msu-1-pack). Each file is checked against the embedded size and checksum manifest before it is installed. Interrupted setup keeps completed tracks; **Audio → Install / repair soundtrack** resumes and verifies the collection. Missing or invalid files fall back to the selected edition's SPC soundtrack. Native checks cover all 164 PCM loop/end boundaries, the eight Sound Stone transitions and retained SPC sound effects; complete listening and story-transition coverage remain unverified.
 
 The PCM files are not stored in this repository or the release ZIP. See [CREDITS.md](CREDITS.md) for provenance.
 

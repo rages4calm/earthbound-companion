@@ -2,18 +2,16 @@
 
 This is a private experimental conversion checkpoint, not a completed compatibility release.
 
-- Archive: `EarthBound-Companion-Redux-Tester-v0.5.0-redux-dev.2.zip`
-- Bytes: 124033557
-- SHA-256: `965E840F19EF4663AFE587D057ED974A797F52058BF94C81E9579E66FAB08ED0`
-- Native engine: `EB023CD843ABD90940529E4E5CAB7D6A7C976F2A8A3CA5E95287EEFFEA5812EA`
-- Frozen Redux setup: `78A993979082E3AD0A03C07CACCFA3F995848C0B95D283400469D47CF368FA58`
+- Archive: `EarthBound-Companion-Redux-Tester-v0.5.0-redux-dev.1-20261004-184816-be818100.zip`
+- Bytes: 124029264
+- SHA-256: `04B7ED5BCB014F047F6B70C6184A3198969F14CC6DA32F10D384A2D34153CDE7`
+- Native engine: `86021608639A0DCD0D73B23C4BAF026D019E0935ED45E9BA00B745877985F4A8`
+- Frozen Redux setup: `1CFAC8EDC5188F66F3024DDDAA949E8791AEAAF688B0E9AE2523E9CBB441E4D9`
 - Generated Redux pack: `62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2`
 
 The exact final ZIP passed a fresh extracted-directory test with a 512-byte-header USA ROM and only Windows system directories on PATH. It verified every manifest file, generated exact original and Redux packs, selected a separate development profile, removed generated ROMs, ran native story and randomized openings with mixed-case naming and cold restores, and passed profile/save isolation checks. The owner input ROM hash remained unchanged.
 
 Soundtrack testing deliberately corrupted one track and left a stale partial. Production setup downloaded and repaired that track, removed the partial and independently checked all 164 files. The other 163 already-verified tracks were hard-linked from the local cache; a full 1.25 GB download was not repeated.
-
-The packaged native engine additionally passes all eight Sound Stone SPC-to-MSU transitions without overlapping the old music, retained SPC effects, missing-PCM fallback, 125 real PCM loop boundaries and 39 one-shot ends. A separate normal-button replay starts at naming and completes house door/stair crossings, Mom's dialogue and the clothes-change warp, with cold restores between checkpoints and actual 1080p renders. See [native-redux-audio.json](native-redux-audio.json) and [native-redux-story-walk.json](native-redux-story-walk.json).
 
 The packaged launcher separately passed 1,000 seeds and all 30 option combinations for each content edition. Current native tests cover the newly ported font-width highlighting and fourteen-frame delivery letterbox/music sequence. Original-profile input, saves, key items and join-level regression checks pass.
 

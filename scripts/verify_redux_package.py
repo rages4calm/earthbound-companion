@@ -10,6 +10,7 @@ import sys
 import zipfile
 
 from redux_gameplay_qa import main as opening
+from redux_audio_qa import main as audio_checks
 
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest().upper()
@@ -75,6 +76,11 @@ def main():
             if file.is_file() and file.suffix.lower() in ('.sfc','.smc'):raise ValueError('Setup retained a generated ROM.')
         tests.append('Verified profile installed atomically; generated ROMs cleaned')
         argv=sys.argv
+        sys.argv=['audio-checks','--native-exe',str(app/'Game/earthbound.exe'),'--assets',str(pack),
+                  '--msu-dir',str(folder),'--msu-manifest',str(args.msu_manifest),'--scratch',str(scratch/'audio-checks')]
+        try:audio_checks()
+        finally:sys.argv=argv
+        tests.append('Packaged native MSU: eight Sound Stone transitions, SPC effects/fallback and all 164 loop/end checks')
         sys.argv=['opening','--native-exe',str(app/'Game/earthbound.exe'),'--assets',str(pack),'--scratch',str(scratch/'story-opening'),'--mixed-case-fixture']
         try:opening()
         finally:sys.argv=argv

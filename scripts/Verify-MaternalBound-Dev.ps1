@@ -84,7 +84,7 @@ $record=@{
  packSha256=(Get-FileHash -LiteralPath $BaseAssets -Algorithm SHA256).Hash
  compiledRomSha256=$report.compiledRomSha256;convertedDialogueSha256=$report.blobSha256
  conversionCounts=$report.counts;tests=$results
- limitations=@('Isolated development pack only; installed game remains original-profile', 'Remaining assembly-only fixes, later gameplay and full playthrough require verification', 'This command does not run the separate content-specific randomizer audit or a full randomized playthrough')
+ limitations=@('Isolated test sessions; this command does not replace installed game files or player saves', 'Remaining assembly-only fixes, later gameplay and full playthrough require verification', 'This command does not run the separate content-specific randomizer audit or a full randomized playthrough')
 }
 $record | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $ScratchDirectory 'native-redux-results.json') -Encoding utf8
 Write-Output 'Development checks passed; full MaternalBound parity remains unverified.'

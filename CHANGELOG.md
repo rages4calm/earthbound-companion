@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0-redux-dev.2 - Sound Stone audio fix
+
+- Fixed a native MSU transition bug: a previous SPC Sound Stone recording could continue underneath its PCM replacement. The native music command now stops that sequence while retaining SPC effects.
+- Added verified checks for all eight recordings, SPC effects under MSU, missing-track fallback, all 164 real PCM loop/end boundaries and fast, slow, quarter-volume and full-volume fades.
+- Added a packaged-build gameplay replay from naming through house doors/stairs, Mom's dialogue and the clothes-change warp, using normal buttons and cold restores. Added its actual 1080p capture.
+- Native development checks and original-profile regressions pass with the updated engine. Full story/randomized playthroughs, soundtrack listening and every story audio transition remain unverified.
+
 ## 0.5.0-redux-dev.1 - private development tester
 
 - Added guided owner-ROM setup for a separate MaternalBound Redux profile. A frozen helper downloads the pinned source, repairs compiler compatibility, compiles and converts locally; testers need neither Python nor Git.
