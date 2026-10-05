@@ -54,6 +54,9 @@ The reproducible Redux helper pins [CoilSnake `346cfc7`](https://github.com/pk-h
 - **PhoenixBound, Catador, JTolmar, cooprocks123e, SupremeKirb, Vittorio, D-Man, Chaz and all authors credited upstream** — the bug fixes, controls, animation, compiler formats and scene behavior on which these adaptations depend. The pinned source files retain the specific authorship of each change.
 - **JTolmar, PhoenixBound and Catador** — the optional [fast-door timer hook](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/fast_doors.ccs), adapted as an extra Companion QoL feature. It is commented out in upstream's pinned `main.ccs`; its inclusion here is a Companion choice.
 
+- **CoilSnake ExpandedTablesModule and pointer utility contributors** — [relocated PSI table references](https://github.com/pk-hack/CoilSnake/blob/346cfc753644bc3703b6fc4eaa0a5d6bdcb9bb4a/coilsnake/modules/eb/ExpandedTablesModule.py) guide the corrected PSI-name conversion.
+- [TypeSafe Jev](https://docs.typesafe.ai/primitives/choice) — optional developer gameplay decisions through the TypeSafe API. The QA runner supplies bounded ordinary inputs and native observations; TypeSafe is not needed to play the game.
+
 ## Companion work
 
 The Companion application, native PC option integration, packaging, Story Shuffle v3, recovery workflow, validation tooling and documentation were assembled for Carl Prewitt Jr.’s native PC edition with OpenAI Codex assistance. Generated work was reviewed, built and tested locally; upstream authorship remains as listed above.

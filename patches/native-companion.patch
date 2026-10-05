@@ -1,12 +1,28 @@
+diff --git a/port/unix/CMakeLists.txt b/port/unix/CMakeLists.txt
+index beecb38..43a704a 100644
+--- a/port/unix/CMakeLists.txt
++++ b/port/unix/CMakeLists.txt
+@@ -1,6 +1,10 @@
+ cmake_minimum_required(VERSION 3.16)
+ project(earthbound C)
+ set(CMAKE_C_STANDARD 11)
++option(EB_QA_OBSERVER "Build read-only structured gameplay observations for isolated QA" OFF)
++if(EB_QA_OBSERVER)
++    add_compile_definitions(EB_QA_OBSERVER=1)
++endif()
+ 
+ # Emit compile_commands.json so clangd/IDEs resolve include paths and types.
+ # A root-level symlink (../../compile_commands.json) points at this file.
 diff --git a/port/unix/main.c b/port/unix/main.c
-index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e3ac3405a 100644
+index f625aff..3760dac 100644
 --- a/port/unix/main.c
 +++ b/port/unix/main.c
-@@ -32,12 +32,31 @@
+@@ -32,12 +32,32 @@
  #include "embedded_helper.h"
  #include "game_main.h"
  #include "game/audio.h"
 +#include "platform/pc_options.h"
++#include "platform/qa_observer.h"
  #include "game/game_state.h"
  #include "game/display_text.h"
 +#include "game/maternalbound.h"
@@ -34,7 +50,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
  #include "version.h"    /* EB_VERSION_STRING -- generated, see CMakeLists.txt.
                            * Unconditionally generated (not gated behind
                            * EB_UPDATER_ENABLED the way sdl2_updater.c's own
-@@ -368,12 +387,48 @@ static void migrate_legacy_saves_to_saves_folder(void) {
+@@ -368,12 +388,51 @@ static void migrate_legacy_saves_to_saves_folder(void) {
  
  int main(int argc, char *argv[]) {
      chdir_to_executable_dir(); /* before anything below touches a relative path */
@@ -57,6 +73,9 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
      bool savestate_selftest = false;
 +    bool inspect_shuffle = false;
 +    int pc_capture_frame=-1;
++#ifdef EB_QA_OBSERVER
++    const char *pc_observation_path=NULL;
++#endif
      bool keyitems_selftest = false;
      bool joinlevel_selftest = false;
 +    bool redux_vm_selftest = false;
@@ -83,7 +102,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
      bool threed_zombie_flag_check = false;
      bool threed_zombie_flag_fix = false;
      bool jeff_flag_fix = false;
-@@ -396,7 +451,22 @@ int main(int argc, char *argv[]) {
+@@ -396,7 +455,26 @@ int main(int argc, char *argv[]) {
  #endif
  
      for (int i = 1; i < argc; i++) {
@@ -97,6 +116,10 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
 +            platform_headless = true;
 +        } else if (strcmp(argv[i], "--capture-state") == 0 && i + 1 < argc) {
 +            pc_capture_frame=atoi(argv[++i]);
++#ifdef EB_QA_OBSERVER
++        } else if (strcmp(argv[i], "--qa-observation") == 0 && i + 1 < argc) {
++            pc_observation_path=argv[++i];
++#endif
 +        } else if (strcmp(argv[i], "--input-script") == 0 && i + 1 < argc) {
 +            pc_input_script_path=argv[++i];
 +        } else if (strcmp(argv[i], "--selftest-pc") == 0) {
@@ -107,7 +130,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
              verify_rom_path = argv[++i];
  #ifdef EB_RUNTIME_ASSETS
          } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
-@@ -420,6 +490,63 @@ int main(int argc, char *argv[]) {
+@@ -420,6 +498,63 @@ int main(int argc, char *argv[]) {
               * --save FILE. Implies headless. */
              keyitems_selftest = true;
              platform_headless = true;
@@ -171,7 +194,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
          } else if (strcmp(argv[i], "--selftest-joinlevel") == 0) {
              /* Join-level scaling (Paula/Jeff/Poo scaled to Ness's current
               * level, see add_char_to_party()'s doc comment, inventory.c).
-@@ -536,7 +663,7 @@ int main(int argc, char *argv[]) {
+@@ -536,7 +671,7 @@ int main(int argc, char *argv[]) {
  #else
                              " [--export-pak FILE]"
  #endif
@@ -180,7 +203,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
                      argv[0]);
              return 1;
          }
-@@ -630,6 +757,10 @@ int main(int argc, char *argv[]) {
+@@ -630,6 +765,10 @@ int main(int argc, char *argv[]) {
       * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
       * platform-conventional data dir (see eb_runtime_assets_default_path). */
      char default_assets_path[1024];
@@ -191,7 +214,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
      if (assets_path == NULL) {
          assets_path = getenv("EB_ASSETS_PAK");
      }
-@@ -916,6 +1047,8 @@ int main(int argc, char *argv[]) {
+@@ -916,6 +1055,8 @@ int main(int argc, char *argv[]) {
       * itself (sdl2_video.c is platform-agnostic and already correct). */
      SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
@@ -200,7 +223,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
      /* Initialize SDL */
      uint32_t sdl_flags = SDL_INIT_TIMER;
      if (!platform_headless) {
-@@ -938,6 +1071,7 @@ int main(int argc, char *argv[]) {
+@@ -938,6 +1079,7 @@ int main(int argc, char *argv[]) {
      platform_input_init();
      platform_save_init();
      settings_load();
@@ -208,7 +231,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
      /* Resume logging automatically if a previous session left the Config
       * menu's "Logging" row on -- a tester shouldn't have to re-enable it
       * after every relaunch (including the updater's own self-relaunch) to
-@@ -965,6 +1099,29 @@ int main(int argc, char *argv[]) {
+@@ -965,6 +1107,29 @@ int main(int argc, char *argv[]) {
  
      /* Initialize game systems */
      game_init();
@@ -238,7 +261,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
  
      /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
       * fresh boot. Just requests it here -- the normal per-frame
-@@ -994,6 +1151,25 @@ int main(int argc, char *argv[]) {
+@@ -994,6 +1159,25 @@ int main(int argc, char *argv[]) {
          exit(ok_ki ? 0 : 1);
      }
  
@@ -264,7 +287,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
      if (joinlevel_selftest) {
          bool ok_jl = join_level_scaling_selftest();
          fprintf(stderr, "join-level scaling self-test: %s\n", ok_jl ? "PASS" : "FAIL");
-@@ -1194,6 +1370,127 @@ int main(int argc, char *argv[]) {
+@@ -1194,6 +1378,127 @@ int main(int argc, char *argv[]) {
          exit(0);
      }
  
@@ -392,7 +415,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
      /* Initialize audio (loads audio packs from embedded assets) */
      if (!platform_headless)
          platform_audio_init();
-@@ -1208,7 +1505,7 @@ int main(int argc, char *argv[]) {
+@@ -1208,7 +1513,7 @@ int main(int argc, char *argv[]) {
           * --msu-dir/--msu-name flags, and nothing to add to a Steam
           * shortcut's Launch Options (editing those is real friction, and
           * has to be redone every time the pack changes). */
@@ -401,7 +424,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
          char detected_name[128];
          const char *name = msu_name;
  
-@@ -1278,11 +1575,112 @@ int main(int argc, char *argv[]) {
+@@ -1278,11 +1583,117 @@ int main(int argc, char *argv[]) {
      platform_timer_frame_start();
  
      for (int frame_num = 0; !platform_input_quit_requested(); frame_num++) {
@@ -477,6 +500,11 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
          game_loop_step();
          host_process_frame();
          host_root_boundary(); /* root boundary: perform any pending torn-safe capture */
++#ifdef EB_QA_OBSERVER
++        if(frame_num==pc_capture_frame && pc_observation_path && !qa_observation_write(pc_observation_path,(unsigned)frame_num)) {
++            fprintf(stderr,"QA observation write failed.\n");return 1;
++        }
++#endif
 +        if(redux_narration_fixture>=0) {
 +            bool active=false;
 +            for(unsigned i=0;i<g_mode_stack.depth;i++) active|=g_mode_stack.mode[i]==GAME_MODE_FLYOVER;
@@ -515,7 +543,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e
              /* Debug: hardcoded event-flag dump, temporary investigation aid. */
              static const struct { const char *name; uint16_t id; } debug_flags[] = {
 diff --git a/port/unix/platform/msu_audio.c b/port/unix/platform/msu_audio.c
-index 0526c37374803bfbdce0cf210c8c34b432643eff..dcd2f215c0ea7db14272391867383ac5d7c8a3a1 100644
+index 0526c37..dcd2f21 100644
 --- a/port/unix/platform/msu_audio.c
 +++ b/port/unix/platform/msu_audio.c
 @@ -26,7 +26,10 @@
@@ -902,8 +930,101 @@ index 0526c37374803bfbdce0cf210c8c34b432643eff..dcd2f215c0ea7db14272391867383ac5
 +    return ok;
 +}
  #endif /* EB_ENABLE_AUDIO */
+diff --git a/port/unix/platform/qa_observer.c b/port/unix/platform/qa_observer.c
+new file mode 100644
+index 0000000..b6c1d3b
+--- /dev/null
++++ b/port/unix/platform/qa_observer.c
+@@ -0,0 +1,87 @@
++#ifdef EB_QA_OBSERVER
++#include "platform/qa_observer.h"
++#include "game/game_state.h"
++#include "game/window.h"
++#include "game/text.h"
++#include "game/display_text.h"
++#include "game/map_loader.h"
++#include "game/audio.h"
++#include "game/battle.h"
++#include "game/inventory.h"
++#include "game/maternalbound.h"
++#include "game/overworld.h"
++#include "core/mode_stack.h"
++#include "entity/entity.h"
++#include "snes/ppu.h"
++#include <stdio.h>
++#include <stddef.h>
++#include <string.h>
++
++/* Per-process observation, never serialized into a game save. A cold restore
++ * cannot recover previously rendered prose. The runner labels carried text. */
++static char observed_text[256][2048];
++static unsigned text_length[256];
++static bool text_reset[256];
++void qa_text_reset(uint16_t window) {
++    if(window>=256)return;
++    observed_text[window][0]=0;text_length[window]=0;text_reset[window]=true;
++}
++void qa_text_character(uint16_t window,char value) {
++    if(window>=256 || !value || text_length[window]>=2047)return;
++    observed_text[window][text_length[window]++]=value;
++    observed_text[window][text_length[window]]=0;
++}
++static void json_string(FILE *out,const char *text) {
++    fputc('"',out);
++    for(const unsigned char *p=(const unsigned char *)text;*p;p++) {
++        if(*p=='"' || *p=='\\'){fputc('\\',out);fputc(*p,out);}
++        else if(*p<32 || *p>=127)fprintf(out,"\\u%04x",*p);
++        else fputc(*p,out);
++    }
++    fputc('"',out);
++}
++static void bytes(FILE *out,const uint8_t *data,unsigned length) {
++    fputc('[',out);for(unsigned i=0;i<length;i++)fprintf(out,"%s%u",i?",":"",data[i]);fputc(']',out);
++}
++bool qa_observation_write(const char *path,unsigned frame) {
++    FILE *out=fopen(path,"wb");if(!out)return false;
++    fprintf(out,"{\"schema\":1,\"frame\":%u,\"redux\":%s,\"position\":[%u,%u],\"camera\":[%u,%u],\"direction\":%u,\"partyCount\":%u,\"cash\":%u,\"bank\":%u,\"music\":%u,\"focusWindow\":%u,\"battle\":%s,\"modes\":[",frame,maternalbound_enabled()?"true":"false",game_state.leader_x_coord,game_state.leader_y_coord,ppu.bg_hofs[0],ppu.bg_vofs[0],game_state.leader_direction,game_state.party_count,(unsigned)game_state.money_carried,(unsigned)game_state.bank_balance,audio_state.current_music_track,win.current_focus_window,bt.battle_mode_flag?"true":"false");
++    for(unsigned i=0;i<g_mode_stack.depth;i++)fprintf(out,"%s%u",i?",":"",g_mode_stack.mode[i]);
++    fprintf(out,"],\"display\":{\"tm\":%u,\"ts\":%u,\"tmHdma\":%s,\"letterboxTop\":%u,\"letterboxBottom\":%u,\"letterboxVisible\":%u,\"letterboxOutside\":%u,\"reduxLetterboxActive\":%u,\"reduxLetterboxDirection\":%u,\"reduxLetterboxTop\":%u,\"bgWindowY\":%d},\"interactingNpc\":%u,\"battleActor\":%d,\"party\":[",ppu.tm,ppu.ts,ppu.tm_hdma_active?"true":"false",bt.letterbox_top_end,bt.letterbox_bottom_start,bt.letterbox_visible_screen_value,bt.letterbox_nonvisible_screen_value,ow.redux_letterbox_active,ow.redux_letterbox_direction,ow.redux_letterbox_top,ppu.bg_win_y_offset,ow.interacting_npc_id,win.battle_menu_current_character_id);
++    for(unsigned i=0;i<4;i++) {
++        const CharStruct *c=&party_characters[i];char name[7]={0};const uint8_t *n=maternalbound_character_name(i);
++        for(unsigned k=0;k<maternalbound_name_capacity() && n[k];k++)name[k]=eb_char_to_ascii(n[k]);
++        fprintf(out,"%s{\"id\":%u,\"name\":",i?",":"",i+1);json_string(out,name);
++        fprintf(out,",\"level\":%u,\"hp\":%u,\"maxHp\":%u,\"pp\":%u,\"maxPp\":%u,\"exp\":%u,\"items\":",c->level,c->current_hp_target,c->max_hp,c->current_pp_target,c->max_pp,(unsigned)c->exp);bytes(out,c->items,ITEM_INVENTORY_SIZE);fprintf(out,",\"afflictions\":");bytes(out,c->afflictions,AFFLICTION_GROUP_COUNT);fputc('}',out);
++    }
++    fprintf(out,"],\"eventFlags\":");bytes(out,event_flags,EVENT_FLAG_COUNT/8);fprintf(out,",\"keyItems\":");bytes(out,key_items_pool,KEY_ITEMS_POOL_SIZE);
++    fprintf(out,",\"npcs\":[");bool comma=false;
++    for(unsigned i=0;i<MAX_ENTITIES;i++)if(entities.script_table[i]>=0 && entities.npc_ids[i] && entities.npc_ids[i]<NPC_CONFIG_COUNT) {
++        fprintf(out,"%s{\"id\":%u,\"position\":[%d,%d]}",comma?",":"",entities.npc_ids[i],entities.abs_x[i],entities.abs_y[i]);comma=true;
++    }
++    fprintf(out,"],\"worldEnemies\":[");comma=false;
++    for(unsigned i=0;i<23;i++)if(entities.script_table[i]>=0 && entities.npc_ids[i]>=0x8000 && entities.enemy_ids[i]>=0 && entities.enemy_ids[i]!=ENEMY_MAGIC_BUTTERFLY) {
++        fprintf(out,"%s{\"slot\":%u,\"id\":%d,\"position\":[%d,%d]}",comma?",":"",i,entities.enemy_ids[i],entities.abs_x[i],entities.abs_y[i]);comma=true;
++    }
++    fprintf(out,"],\"battlers\":[");comma=false;
++    if(bt.battle_mode_flag)for(unsigned i=0;i<BATTLER_COUNT;i++) {
++        const Battler *b=&bt.battlers_table[i];if(!b->consciousness)continue;
++        fprintf(out,"%s{\"slot\":%u,\"id\":%u,\"enemy\":%s,\"hp\":%u,\"pp\":%u,\"afflictions\":",comma?",":"",i,b->id,b->ally_or_enemy?"true":"false",b->hp_target,b->pp_target);bytes(out,b->afflictions,AFFLICTION_GROUP_COUNT);fputc('}',out);comma=true;
++    }
++    fprintf(out,"],\"windows\":[");comma=false;
++    for(unsigned i=0;i<MAX_WINDOWS;i++) {
++        const WindowInfo *w=&win.windows[i];if(!w->active)continue;
++        fprintf(out,"%s{\"id\":%u,\"selected\":%u,\"rect\":[%u,%u,%u,%u],\"title\":",comma?",":"",w->id,w->current_option,w->x,w->y,w->width,w->height);json_string(out,w->title);
++        fprintf(out,",\"text\":");json_string(out,observed_text[w->id]);fprintf(out,",\"textResetThisBatch\":%s,\"menu\":[",text_reset[w->id]?"true":"false");
++        for(unsigned k=0;k<w->menu_count;k++){fprintf(out,"%s{\"index\":%u,\"value\":%u,\"label\":",k?",":"",k,w->menu_items[k].userdata);json_string(out,w->menu_items[k].label);fprintf(out,",\"rightLabel\":");json_string(out,w->menu_items[k].right_label);fprintf(out,",\"position\":[%u,%u],\"page\":%u}",w->menu_items[k].text_x,w->menu_items[k].text_y,w->menu_items[k].page);}
++        fprintf(out,"]}");comma=true;
++    }
++    fprintf(out,"],\"volatileWindowPointers\":[");
++    for(unsigned i=0;i<MAX_WINDOWS;i++) {
++        size_t base=offsetof(__typeof__(win),windows)+i*sizeof(WindowInfo);
++        fprintf(out,"%s{\"offset\":%zu,\"bytes\":%zu},{\"offset\":%zu,\"bytes\":%zu}",i?",":"",base+offsetof(WindowInfo,content_tilemap),sizeof(win.windows[i].content_tilemap),base+offsetof(WindowInfo,cursor_move_callback),sizeof(win.windows[i].cursor_move_callback));
++    }
++    fprintf(out,"],\"collisionHex\":\"");for(unsigned i=0;i<4096;i++)fprintf(out,"%02x",ml.loaded_collision_tiles[i]);fprintf(out,"\"}\n");
++    bool okay=!ferror(out);return fclose(out)==0 && okay;
++}
++#endif
 diff --git a/port/unix/platform/sdl2_audio.c b/port/unix/platform/sdl2_audio.c
-index 1d919237e180bf8a5fa6d0b9496f94da3ca68ae6..409d215fd52b09dc0571e1a052f9c9a72b4ba56d 100644
+index 1d91923..409d215 100644
 --- a/port/unix/platform/sdl2_audio.c
 +++ b/port/unix/platform/sdl2_audio.c
 @@ -1,6 +1,7 @@
@@ -932,7 +1053,7 @@ index 1d919237e180bf8a5fa6d0b9496f94da3ca68ae6..409d215fd52b09dc0571e1a052f9c9a7
  
  bool platform_audio_init(void) {
 diff --git a/port/unix/platform/sdl2_input.c b/port/unix/platform/sdl2_input.c
-index a234146d4891cf36a3d1db8cc0830efb099d5fd4..a23909ce44dd1a9689e93b87dcd25b302a8a0785 100644
+index a234146..a23909c 100644
 --- a/port/unix/platform/sdl2_input.c
 +++ b/port/unix/platform/sdl2_input.c
 @@ -1,284 +1,265 @@
@@ -1430,7 +1551,7 @@ index a234146d4891cf36a3d1db8cc0830efb099d5fd4..a23909ce44dd1a9689e93b87dcd25b30
 +    return ok;
 +}
 diff --git a/port/unix/platform/sdl2_savestate.c b/port/unix/platform/sdl2_savestate.c
-index 66dfb81f96bcc8248df322150d2658d82b16ac5e..1dab5a703d80ad2030aa8e37b907101ca69d3252 100644
+index 66dfb81..1dab5a7 100644
 --- a/port/unix/platform/sdl2_savestate.c
 +++ b/port/unix/platform/sdl2_savestate.c
 @@ -13,6 +13,7 @@
@@ -1454,7 +1575,7 @@ index 66dfb81f96bcc8248df322150d2658d82b16ac5e..1dab5a703d80ad2030aa8e37b907101c
  
  /* In-progress writers, one per slot (NULL when no write is open). */
 diff --git a/port/unix/platform/sdl2_video.c b/port/unix/platform/sdl2_video.c
-index a74f32ba362fd0ca00750cb9b9c3b8d1bbb6138e..eeded1581abb8eaa70e6207c59d7f4f3d09878cb 100644
+index a74f32b..eeded15 100644
 --- a/port/unix/platform/sdl2_video.c
 +++ b/port/unix/platform/sdl2_video.c
 @@ -1,5 +1,6 @@
@@ -1509,7 +1630,7 @@ index a74f32ba362fd0ca00750cb9b9c3b8d1bbb6138e..eeded1581abb8eaa70e6207c59d7f4f3
 +    if (aa_texture) SDL_SetTextureScaleMode(aa_texture, mode);
 +}
 diff --git a/src/core/mode_stack.h b/src/core/mode_stack.h
-index 63a11860ea7e09da857cbf8377771317aaaf8f84..2dd12ff7c039339de60123c262e8117f97c7a14d 100644
+index 63a1186..2dd12ff 100644
 --- a/src/core/mode_stack.h
 +++ b/src/core/mode_stack.h
 @@ -853,6 +853,9 @@ typedef enum {
@@ -1563,7 +1684,7 @@ index 63a11860ea7e09da857cbf8377771317aaaf8f84..2dd12ff7c039339de60123c262e8117f
  } TeleportState;
  
 diff --git a/src/core/state_dump.c b/src/core/state_dump.c
-index 11f97f5342df8657c0cb00b2f5fa99422719a1a8..f80fd402a1d506c1c528541758f1d9aef6b9301e 100644
+index 11f97f5..8a85089 100644
 --- a/src/core/state_dump.c
 +++ b/src/core/state_dump.c
 @@ -19,6 +19,7 @@
@@ -1640,10 +1761,11 @@ index 11f97f5342df8657c0cb00b2f5fa99422719a1a8..f80fd402a1d506c1c528541758f1d9ae
      ADD(SECTION_OVERWORLD,        &ow,                  sizeof(ow));
      ADD(SECTION_BATTLE,           &bt,                  sizeof(bt));
      ADD(SECTION_DISPLAY_TEXT,     &dt,                  sizeof(dt));
-@@ -759,6 +770,15 @@ static bool read_slot(int slot) {
+@@ -759,10 +770,21 @@ static bool read_slot(int slot) {
      window_savestate_rebind();
      overworld_savestate_rebind();
      psi_animation_savestate_rebind();
++    battle_recover_cutscene_letterbox();
 +    /* TM/TS scanline tables are derived PPU scratch, outside SECTION_PPU.
 +     * A cold load into a stationary battle menu cannot rely on an animated
 +     * letterbox tick to rebuild them: zero masks would hide every layer. */
@@ -1656,8 +1778,13 @@ index 11f97f5342df8657c0cb00b2f5fa99422719a1a8..f80fd402a1d506c1c528541758f1d9ae
      /* Rebuild the non-serialized map scratch (tileset arrangement buffer, etc.).
       * Without this a cold-boot resume scrolls within the stale VRAM nametable
       * (map "loops") because fill_tilemaps() has no arrangement data to stream. */
+     map_loader_savestate_rebind();
++    text_menus_savestate_recover();
+     return true;
+ }
+ 
 diff --git a/src/data/event_script_data.c b/src/data/event_script_data.c
-index 61e71a469bbbeb865df9f69b2e49373ea8cd3f03..fc278731967f9279b7dd1685988e55ddb0af0bd3 100644
+index 61e71a4..fc27873 100644
 --- a/src/data/event_script_data.c
 +++ b/src/data/event_script_data.c
 @@ -14,6 +14,7 @@
@@ -1787,7 +1914,7 @@ index 61e71a469bbbeb865df9f69b2e49373ea8cd3f03..fc278731967f9279b7dd1685988e55dd
          }
      }
 diff --git a/src/data/event_script_data.h b/src/data/event_script_data.h
-index 9fbd2bad73bf1f4a8e8b3b40d0acc6ce6576f294..00ceab1b58f0dcf98356ac4e8e235a62430b4d88 100644
+index 9fbd2ba..00ceab1 100644
 --- a/src/data/event_script_data.h
 +++ b/src/data/event_script_data.h
 @@ -75,6 +75,7 @@
@@ -1823,7 +1950,7 @@ index 9fbd2bad73bf1f4a8e8b3b40d0acc6ce6576f294..00ceab1b58f0dcf98356ac4e8e235a62
  /*
   * A loaded script bank region, a contiguous chunk of bytecode from ROM.
 diff --git a/src/entity/callbacks.c b/src/entity/callbacks.c
-index 857f81efd1b35abae4ac4b1926e5901365628da7..019e8ab6dd3ddfb6e0e6139ab4dbc86f1473e490 100644
+index 857f81e..019e8ab 100644
 --- a/src/entity/callbacks.c
 +++ b/src/entity/callbacks.c
 @@ -18,6 +18,7 @@
@@ -1847,7 +1974,7 @@ index 857f81efd1b35abae4ac4b1926e5901365628da7..019e8ab6dd3ddfb6e0e6139ab4dbc86f
      }
  }
 diff --git a/src/entity/callroutine.c b/src/entity/callroutine.c
-index 61c4f93783efe5d3ecb3932b2a2464e19163b82d..997795249e3bec1ca54768ccfa2a8b9f43fa1e9a 100644
+index 61c4f93..9977952 100644
 --- a/src/entity/callroutine.c
 +++ b/src/entity/callroutine.c
 @@ -51,6 +51,10 @@
@@ -1995,7 +2122,7 @@ index 61c4f93783efe5d3ecb3932b2a2464e19163b82d..997795249e3bec1ca54768ccfa2a8b9f
          /* Step 2: Clear 29×8 words at ert.buffer+$4000 (matches assembly clear loop).
           * Assembly loops VIRTUAL06 through BUFFER+$4000, advancing past the 29-row region.
 diff --git a/src/entity/callroutine_movement.c b/src/entity/callroutine_movement.c
-index 971c3d673174c79405c171e00b77d85e230ff895..bcc5533660ea6b3d902389f90cee796278f6eeb6 100644
+index 971c3d6..bcc5533 100644
 --- a/src/entity/callroutine_movement.c
 +++ b/src/entity/callroutine_movement.c
 @@ -17,6 +17,7 @@
@@ -2027,7 +2154,7 @@ index 971c3d673174c79405c171e00b77d85e230ff895..bcc5533660ea6b3d902389f90cee7962
          /* Render unconditionally after frame toggle (assembly calls RENDER_ENTITY_SPRITE_8DIR
           * regardless of whether new frame is 0 or 2; BNE only skips the footstep sound). */
 diff --git a/src/entity/callroutine_palette.c b/src/entity/callroutine_palette.c
-index 744c6460c52026c769c56d1719efc8614e0fa4c3..349d6a3d6e0cb16ca600c23c67489549a4d11900 100644
+index 744c646..349d6a3 100644
 --- a/src/entity/callroutine_palette.c
 +++ b/src/entity/callroutine_palette.c
 @@ -10,6 +10,7 @@
@@ -2051,7 +2178,7 @@ index 744c6460c52026c769c56d1719efc8614e0fa4c3..349d6a3d6e0cb16ca600c23c67489549
  
      if (src_off + BPP4PALETTE_SIZE <= BUFFER_SIZE && dst_idx + 16 <= 256) {
 diff --git a/src/entity/entity.c b/src/entity/entity.c
-index e16864bd55299f21aa33152fde48a69811078f44..07879b13aefa850c3191eabc583927dacec9e787 100644
+index e16864b..07879b1 100644
 --- a/src/entity/entity.c
 +++ b/src/entity/entity.c
 @@ -21,6 +21,7 @@
@@ -2072,7 +2199,7 @@ index e16864bd55299f21aa33152fde48a69811078f44..07879b13aefa850c3191eabc583927da
      return entity_init(script_id, 0, 0);
  }
 diff --git a/src/entity/opcodes.c b/src/entity/opcodes.c
-index f8341a11ed34b59df907cfd5f4b57e2c3324e753..5019bf02becdfbd02224e12120e3c91abbd9628e 100644
+index f8341a1..5019bf0 100644
 --- a/src/entity/opcodes.c
 +++ b/src/entity/opcodes.c
 @@ -21,9 +21,11 @@
@@ -2351,7 +2478,7 @@ index f8341a11ed34b59df907cfd5f4b57e2c3324e753..5019bf02becdfbd02224e12120e3c91a
 +    return true;
 +}
 diff --git a/src/entity/script.c b/src/entity/script.c
-index dd00dc5a70060dcfe5dbdef16916c2b401fb01ac..1bec3781502c9b87ff9cd29d3d505b2a751f9eb1 100644
+index dd00dc5..1bec378 100644
 --- a/src/entity/script.c
 +++ b/src/entity/script.c
 @@ -14,6 +14,8 @@
@@ -2482,7 +2609,7 @@ index dd00dc5a70060dcfe5dbdef16916c2b401fb01ac..1bec3781502c9b87ff9cd29d3d505b2a
 +    return true;
 +}
 diff --git a/src/entity/script.h b/src/entity/script.h
-index 360ce2202ba9435629b120a02957ec6864a527f0..72dbf07476bb4f28239da6d38620e5968bf6d3d9 100644
+index 360ce22..72dbf07 100644
 --- a/src/entity/script.h
 +++ b/src/entity/script.h
 @@ -18,6 +18,7 @@ void event_script_init(uint16_t script_id, int16_t entity_offset,
@@ -2511,7 +2638,7 @@ index 360ce2202ba9435629b120a02957ec6864a527f0..72dbf07476bb4f28239da6d38620e596
  
  #endif /* ENTITY_SCRIPT_H */
 diff --git a/src/entity/sprite.c b/src/entity/sprite.c
-index 96edc884eee57eaa1725e141188bf29af49d8214..83baa9b6b3f2a20d5df208afba40e2bca7744a2e 100644
+index 96edc88..83baa9b 100644
 --- a/src/entity/sprite.c
 +++ b/src/entity/sprite.c
 @@ -67,7 +67,20 @@ void load_sprite_data(void) {
@@ -2537,7 +2664,7 @@ index 96edc884eee57eaa1725e141188bf29af49d8214..83baa9b6b3f2a20d5df208afba40e2bc
          size = ASSET_SIZE(ASSET_OVERWORLD_SPRITES_BANKS(bank_file));
          spr_bank_bufs[i] = ASSET_DATA(ASSET_OVERWORLD_SPRITES_BANKS(bank_file));
 diff --git a/src/entity/sprite.h b/src/entity/sprite.h
-index fd7a66f0ab231d6df498b2fc0dd22819c0c4e85f..7915f671dccde5e7ee1e8cdd1c9116f0f12d1ae4 100644
+index fd7a66f..7915f67 100644
 --- a/src/entity/sprite.h
 +++ b/src/entity/sprite.h
 @@ -67,7 +67,7 @@ extern uint8_t overworld_spritemaps[OVERWORLD_SPRITEMAPS_SIZE];
@@ -2550,7 +2677,7 @@ index fd7a66f0ab231d6df498b2fc0dd22819c0c4e85f..7915f671dccde5e7ee1e8cdd1c9116f0
  
  extern const uint8_t *sprite_banks[SPRITE_BANK_COUNT];
 diff --git a/src/game/audio.c b/src/game/audio.c
-index b249f00f2823804d2702ad6a60d784291d01830a..74673eb42f52add51e595587ec2c4d00a97dcdfa 100644
+index b249f00..74673eb 100644
 --- a/src/game/audio.c
 +++ b/src/game/audio.c
 @@ -4,6 +4,8 @@
@@ -2697,7 +2824,7 @@ index b249f00f2823804d2702ad6a60d784291d01830a..74673eb42f52add51e595587ec2c4d00
  void audio_lock(void) {
      platform_audio_lock();
 diff --git a/src/game/audio.h b/src/game/audio.h
-index 2a3e5d1f9333cc6f12b7f8ba2f05a8823d76d720..88dd453eab2fa6fdc167974df56e4f28281f2d2d 100644
+index 2a3e5d1..88dd453 100644
 --- a/src/game/audio.h
 +++ b/src/game/audio.h
 @@ -54,6 +54,9 @@ void audio_process_sfx_queue(void);
@@ -2719,7 +2846,7 @@ index 2a3e5d1f9333cc6f12b7f8ba2f05a8823d76d720..88dd453eab2fa6fdc167974df56e4f28
  static inline void audio_unlock(void) {}
  
 diff --git a/src/game/battle.c b/src/game/battle.c
-index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f2177aebbeb 100644
+index ef6571c..e1e54e3 100644
 --- a/src/game/battle.c
 +++ b/src/game/battle.c
 @@ -1,3 +1,4 @@
@@ -2816,12 +2943,22 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
                  if (nc == 0) break;
                  if (pos >= dest_size - 1) break;
                  dest[pos++] = nc;
-@@ -963,13 +976,13 @@ void fix_attacker_name(uint16_t param) {
+@@ -930,7 +943,7 @@ uint16_t copy_enemy_name(const uint8_t *src, uint8_t *dest, uint16_t length, uin
+  * param: 0 = full name, nonzero = abbreviated (skip letter if only 1 enemy in battle).
+  */
+ void fix_attacker_name(uint16_t param) {
+-    uint8_t scratch[ENEMY_NAME_SIZE + 2];
++    uint8_t scratch[BATTLE_NAME_ATTACKER_SIZE];
+     memset(scratch, 0, sizeof(scratch));
+     set_print_attacker_article(0);
+ 
+@@ -962,14 +975,13 @@ void fix_attacker_name(uint16_t param) {
+             scratch[sizeof(game_state.pet_name)] = 0;
          }
  
-         set_battle_attacker_name((const char *)scratch,
+-        set_battle_attacker_name((const char *)scratch,
 -                                 ENEMY_NAME_SIZE + sizeof(((CharStruct *)0)->name) - 3);
-+                                 ENEMY_NAME_SIZE + maternalbound_name_capacity() - 3);
++        set_battle_attacker_name((const char *)scratch, sizeof(scratch));
          set_attacker_enemy_id((int16_t)atk->id);
      } else {
          /* Party member path */
@@ -2832,7 +2969,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
          }
      }
  }
-@@ -1020,7 +1033,7 @@ void fix_target_name(void) {
+@@ -1020,7 +1032,7 @@ void fix_target_name(void) {
          /* Party member path */
          if (tgt->id <= 4) {
              CharStruct *ch = &party_characters[tgt->row];
@@ -2841,7 +2978,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
          }
      }
  }
-@@ -2395,6 +2408,48 @@ static StepResult bm_item_done(BattleMenuState *st) {
+@@ -2395,6 +2407,48 @@ static StepResult bm_item_done(BattleMenuState *st) {
      return bm_close_menu(st);
  }
  
@@ -2890,7 +3027,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
  /*
   * BATTLE_SELECTION_MENU (asm/battle/menu_handler.asm)
   *
-@@ -2636,10 +2691,10 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2636,10 +2690,10 @@ StepResult mode_step_battle_menu(ModeState *ms) {
              {
                  char name_buf[8];
                  int j;
@@ -2904,7 +3041,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              }
  
              /* Add attack option (Bash/Shoot/Do Nothing) */
-@@ -2675,7 +2730,7 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2675,7 +2729,7 @@ StepResult mode_step_battle_menu(ModeState *ms) {
  
              /* Add Jeff's Spy or PSI option */
              if (st->char_id == PARTY_MEMBER_JEFF) {
@@ -2913,7 +3050,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              } else if ((ch->afflictions[STATUS_GROUP_CONCENTRATION] & 0xFF) == 0) {
                  /* Can use PSI (not concentration-blocked) */
                  add_menu_item("PSI", 4, 0, 1);
-@@ -2688,7 +2743,7 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2688,7 +2742,7 @@ StepResult mode_step_battle_menu(ModeState *ms) {
  
              /* Add Poo's Mirror */
              if (st->char_id == PARTY_MEMBER_POO) {
@@ -2922,7 +3059,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              }
  
              st->phase = BM_MAIN;
-@@ -2804,6 +2859,11 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2804,6 +2858,11 @@ StepResult mode_step_battle_menu(ModeState *ms) {
  
              case 4:  /* PSI or Spy */
                  if (st->char_id == PARTY_MEMBER_JEFF) {
@@ -2934,7 +3071,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
                      /* Spy */
                      st->selected_action = BACT_SPY;
                      bt.battle_menu_selected_action = st->selected_action;
-@@ -2913,6 +2973,57 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2913,6 +2972,57 @@ StepResult mode_step_battle_menu(ModeState *ms) {
              st->phase = BM_ITEM_RESULT;
              return STEP_RESULT_PUSH_INIT(GAME_MODE_SELECTION_MENU, &child_init);
  
@@ -2992,7 +3129,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
          case BM_ITEM_RESULT: {
              uint16_t selection = (uint16_t)mode_child_result();
  
-@@ -2940,6 +3051,13 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2940,6 +3050,13 @@ StepResult mode_step_battle_menu(ModeState *ms) {
                  return bm_item_done(st);
              }
  
@@ -3006,7 +3143,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              /* Set defaults in battle_menu_selection:
               * selected_action = 2 (placeholder), targetting = 1, selected_target = user */
              bt.battle_menu_selected_action = 2;
-@@ -3476,6 +3594,10 @@ static void btl_begin(BattleRoutineState *st) {
+@@ -3476,6 +3593,10 @@ static void btl_begin(BattleRoutineState *st) {
   * matching door.c's sequential-frame helpers). */
  static void btl_reinit_scene(BattleRoutineState *st) {
      bt.mirror_enemy = 0;
@@ -3017,7 +3154,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
      st->run_attempt = 0;
      bt.battle_item_used = 0;
      st->turn_counter = 0;
-@@ -3808,7 +3930,8 @@ static void btl_start_turn(BattleRoutineState *st) {
+@@ -3808,7 +3929,8 @@ static void btl_start_turn(BattleRoutineState *st) {
  
          if (b->consciousness == 0) continue;
  
@@ -3027,7 +3164,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
          if (init_val == 0) init_val = 1;
          b->initiative = (uint8_t)init_val;
      }
-@@ -3875,10 +3998,16 @@ static void btl_store_action(uint16_t member_id, uint16_t selected_action) {
+@@ -3875,10 +3997,16 @@ static void btl_store_action(uint16_t member_id, uint16_t selected_action) {
  /* ================================================================
   * Phase 6: Enemy AI, select actions (lines 1497-1921)
   * ================================================================ */
@@ -3046,7 +3183,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
  
              /* Skip dead battlers that aren't Poo-with-mirror */
              if (b->consciousness == 0) {
-@@ -3919,7 +4048,24 @@ static void btl_enemy_ai(BattleRoutineState *st) {
+@@ -3919,7 +4047,24 @@ static void btl_enemy_ai(BattleRoutineState *st) {
  
              /* Select action based on action_order pattern */
              uint8_t action_index = 0;
@@ -3072,7 +3209,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              case 0: /* Random uniform: pick 0-3 */
                  action_index = rand_byte() & 3;
                  break;
-@@ -3955,6 +4101,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
+@@ -3955,6 +4100,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
              b->current_action = econfig->actions[action_index];
              b->current_action_argument = econfig->action_args[action_index];
  
@@ -3080,7 +3217,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              /* Handle ENEMY_EXTENDER action */
              if (b->current_action == BACT_ENEMY_EXTENDER) {
                  if (b->ally_or_enemy == 0 && b->id == PARTY_MEMBER_POO) {
-@@ -3966,6 +4113,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
+@@ -3966,6 +4112,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
                  } else {
                      /* Regular enemy: extender changes enemy ID */
                      b->id = b->current_action_argument;
@@ -3088,7 +3225,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
                      bi--;  /* Retry with new ID */
                      continue;
                  }
-@@ -3992,10 +4140,69 @@ next_battler_action:
+@@ -3992,10 +4139,69 @@ next_battler_action:
              (void)0;
          }
      }
@@ -3158,7 +3295,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
  static bool btl_run_success(BattleRoutineState *st) {
      uint16_t max_enemy_speed = 0;
      uint16_t max_player_speed = 0;
-@@ -4250,7 +4457,7 @@ static void btl_exec_setup_targets(BattleRoutineState *st, Battler *attacker) {
+@@ -4250,7 +4456,7 @@ static void btl_exec_setup_targets(BattleRoutineState *st, Battler *attacker) {
   * the per-member EXP split. */
  static void btl_victory_money_exp(void) {
      /* Deposit battle money */
@@ -3167,7 +3304,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
  
      /* Add money to game total (assembly adds deposited amount, not original) */
      {
-@@ -4265,7 +4472,8 @@ static void btl_victory_money_exp(void) {
+@@ -4265,7 +4471,8 @@ static void btl_victory_money_exp(void) {
      /* Calculate EXP per surviving party member */
      {
          uint16_t alive_count = battle_count_chars(0);
@@ -3177,7 +3314,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              /* Add (alive_count - 1) bonus EXP to base, then divide */
              bt.battle_exp_scratch += (alive_count - 1);
              bt.battle_exp_scratch /= alive_count;
-@@ -4411,6 +4619,8 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4411,6 +4618,8 @@ StepResult mode_step_battle(ModeState *ms) {
          case BTL_TURN:
              /* start_turn (lines 1110-1176) */
              btl_start_turn(st);
@@ -3186,7 +3323,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              st->phase = BTL_MENU;
              break;
  
-@@ -4548,7 +4758,8 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4548,7 +4757,8 @@ StepResult mode_step_battle(ModeState *ms) {
  
          case BTL_ENEMY_AI:
              /* Phase 6: enemy AI (lines 1497-1921) */
@@ -3196,7 +3333,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
  
              /* Phase 7: announce enemy-first initiative (lines 1922-1931) */
              create_window(0x0E);
-@@ -4614,6 +4825,8 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4614,6 +4824,8 @@ StepResult mode_step_battle(ModeState *ms) {
              st->attacker = best_battler;
              Battler *attacker = &bt.battlers_table[best_battler];
              attacker->has_taken_turn = 1;
@@ -3205,7 +3342,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
  
              /* Check if attacker is incapacitated */
              uint8_t status0 = attacker->afflictions[STATUS_GROUP_PERSISTENT_EASYHEAL];
-@@ -4829,6 +5042,10 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4829,6 +5041,10 @@ StepResult mode_step_battle(ModeState *ms) {
              if (battle_action_table) {
                  uint32_t func_ptr =
                      battle_action_table[attacker->current_action].battle_function_pointer;
@@ -3216,7 +3353,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
                  if (func_ptr != 0 && battle_action_dispatch(func_ptr, &child_init))
                      return STEP_RESULT_PUSH_INIT(GAME_MODE_BATTLE_ACTION, &child_init);
              }
-@@ -4837,6 +5054,15 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4837,6 +5053,15 @@ StepResult mode_step_battle(ModeState *ms) {
  
          case BTL_TARGET_POST:
              /* ---- Post-action checks for the current target ---- dead-check first. */
@@ -3232,7 +3369,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              check_dead_players_make_init(&child_init);
              st->phase = BTL_TARGET_POST_BODY;
              return STEP_RESULT_PUSH_INIT(GAME_MODE_CHECK_DEAD_PLAYERS, &child_init);
-@@ -4997,7 +5223,9 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4997,7 +5222,9 @@ StepResult mode_step_battle(ModeState *ms) {
          case BTL_DEFEAT_DONE:
              dt.blinking_triangle_flag = 0;
              st->post_battle_exit = 1;
@@ -3243,7 +3380,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              break;
  
          case BTL_END_CHECK2:
-@@ -5009,6 +5237,7 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -5009,6 +5236,7 @@ StepResult mode_step_battle(ModeState *ms) {
              break;
  
          case BTL_VICTORY: {
@@ -3251,7 +3388,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              /* enemies_are_dead (lines 3050-3158) */
              st->battle_result = 0;
              reset_hppp_rolling();
-@@ -5075,6 +5304,7 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -5075,6 +5303,7 @@ StepResult mode_step_battle(ModeState *ms) {
  
          case BTL_CLOSE_WINDOW:
              /* close_battle_window + check_new_turn */
@@ -3259,7 +3396,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              redirect_close_focus_window();
              if (st->post_battle_exit == 0) {
                  st->phase = BTL_TURN;  /* goto start_turn */
-@@ -5218,7 +5448,7 @@ static void update_mushroom_status(void) {
+@@ -5218,7 +5447,7 @@ static void update_mushroom_status(void) {
              ow.mushroomization_timer = 0x0708;
              ow.mushroomization_modifier = 0;
          }
@@ -3268,7 +3405,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              dismount_bicycle();
          }
      } else {
-@@ -5702,7 +5932,7 @@ static void iw_victory_setup(void) {
+@@ -5702,7 +5931,7 @@ static void iw_victory_setup(void) {
      }
  
      /* Deposit money into ATM and add to running total (game_state.unknownC4) */
@@ -3277,7 +3414,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
      uint32_t deposited = deposit_into_atm(money32);
  
      /* Add deposited amount to game_state.unknownC4 (32-bit running battle money) */
-@@ -5734,7 +5964,8 @@ static void iw_victory_setup(void) {
+@@ -5734,7 +5963,8 @@ static void iw_victory_setup(void) {
  
      /* Divide EXP evenly among alive party members (ceiling division) */
      uint16_t alive_count = battle_count_chars(0);
@@ -3287,7 +3424,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
          bt.battle_exp_scratch = (bt.battle_exp_scratch + (uint32_t)(alive_count - 1)) / (uint32_t)alive_count;
      }
  }
-@@ -6212,6 +6443,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6212,6 +6442,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
                  fade_in(1, 1);
              } else {
                  /* Party defeated, return immediately */
@@ -3295,7 +3432,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
                  return STEP_RESULT_POP(1);
              }
              st->phase = BS_CLEANUP;
-@@ -6221,6 +6453,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6221,6 +6452,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
          case BS_TELEPORT_DEFEATED:
              /* After a post-battle PSI teleport with the party defeated: pop 1,
               * skipping cleanup (matches the blocking `return 1` after teleport). */
@@ -3303,7 +3440,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
              return STEP_RESULT_POP(1);
  
          case BS_CLEANUP:
-@@ -6260,3 +6493,63 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6260,3 +6492,63 @@ StepResult mode_step_battle_scripted(ModeState *state) {
          }
      }
  }
@@ -3368,7 +3505,7 @@ index ef6571cfaf93d763f8feebe90f8600af6cc1b8a5..7fa5fb10f154b73abc5035025bac5f21
 +    return true;
 +}
 diff --git a/src/game/battle.h b/src/game/battle.h
-index 379bc0e2f6a8f981079619d00325183c12902623..c0c3c94dec132d307040354c8201b3195eba0c7c 100644
+index 379bc0e..68ad9bd 100644
 --- a/src/game/battle.h
 +++ b/src/game/battle.h
 @@ -512,6 +512,10 @@ typedef struct {
@@ -3391,7 +3528,12 @@ index 379bc0e2f6a8f981079619d00325183c12902623..c0c3c94dec132d307040354c8201b319
  
  /* BATTLE_INIT_PLAYER_STATS (asm/battle/init_player_stats.asm)
   * Initialize a battler from a party character's stats. Copies HP, PP, stats,
-@@ -1163,5 +1169,6 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
+@@ -1159,9 +1165,11 @@ void set_color_math_from_table(uint16_t index);
+ /* LOAD_BATTLE_BG (asm/battle/load_battle_bg.asm)
+  * Loads two battle BG layers with letterbox configuration. */
+ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_style);
++void battle_recover_cutscene_letterbox(void);
+ 
  /* RELOAD_MAP (asm/overworld/reload_map.asm)
   * Restores overworld map after battle/menu screens. */
  void reload_map(void);
@@ -3399,7 +3541,7 @@ index 379bc0e2f6a8f981079619d00325183c12902623..c0c3c94dec132d307040354c8201b319
  
  #endif /* GAME_BATTLE_H */
 diff --git a/src/game/battle_actions.c b/src/game/battle_actions.c
-index d7bc7326cd073c6676c2b5359804dfd7328604b6..876d08bf0d1be92e47cb3227cd2402c309e754d3 100644
+index d7bc732..876d08b 100644
 --- a/src/game/battle_actions.c
 +++ b/src/game/battle_actions.c
 @@ -14,6 +14,7 @@
@@ -3725,7 +3867,7 @@ index d7bc7326cd073c6676c2b5359804dfd7328604b6..876d08bf0d1be92e47cb3227cd2402c3
 +    return true;
 +}
 diff --git a/src/game/battle_calc.c b/src/game/battle_calc.c
-index 58bfb5cef2459411e6c85b62f64ea5fc1966b4fe..ea42ee8cd5a97e998b262a76a92c97820c659cd9 100644
+index 58bfb5c..ea42ee8 100644
 --- a/src/game/battle_calc.c
 +++ b/src/game/battle_calc.c
 @@ -13,10 +13,12 @@
@@ -3885,7 +4027,7 @@ index 58bfb5cef2459411e6c85b62f64ea5fc1966b4fe..ea42ee8cd5a97e998b262a76a92c9782
 +    return true;
 +}
 diff --git a/src/game/battle_psi.c b/src/game/battle_psi.c
-index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f45732d36e 100644
+index ce9f34f..d3e37de 100644
 --- a/src/game/battle_psi.c
 +++ b/src/game/battle_psi.c
 @@ -29,7 +29,9 @@
@@ -3941,7 +4083,19 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
  /* PSI target animation types */
  #define PSI_TARGET_SINGLE       0
  #define PSI_TARGET_ROW          1
-@@ -378,10 +409,10 @@ void display_character_psi_list(uint16_t char_id) {
+@@ -363,6 +394,11 @@ void generate_battle_psi_list_callback(uint16_t category) {
+ void display_character_psi_list(uint16_t char_id) {
+     if (!ensure_battle_psi_table()) return;
+ 
++    /* A legacy quick save may retain an empty Talk/Check window behind the
++     * command menu. This list owns TEXT_STANDARD; recreate it above the menu,
++     * rather than inheriting the old window's draw position. */
++    if (maternalbound_enabled()) close_window(WINDOW_TEXT_STANDARD);
++
+     /* Assembly line 11: create TEXT_STANDARD window */
+     create_window(WINDOW_TEXT_STANDARD);
+ 
+@@ -378,10 +414,10 @@ void display_character_psi_list(uint16_t char_id) {
       * Name is 5 bytes at char_struct::name (EB-encoded). */
      uint16_t char_idx = char_id - 1;
      char name_buf[8];
@@ -3956,7 +4110,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
  
      /* Assembly lines 36-43: generate PSI list.
       * @LOCAL00 = [usability=1 (overworld), category=15 (all)].
-@@ -682,7 +713,7 @@ StepResult mode_step_battle_psi_menu(ModeState *ms) {
+@@ -682,7 +718,7 @@ StepResult mode_step_battle_psi_menu(ModeState *ms) {
  
  
  void show_psi_animation(uint16_t anim_id) {
@@ -3965,7 +4119,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
  
      /* Load PSI_ANIM_CFG from ROM asset */
      size_t cfg_size = ASSET_SIZE(ASSET_DATA_PSI_ANIM_CFG_BIN);
-@@ -708,7 +739,10 @@ void show_psi_animation(uint16_t anim_id) {
+@@ -708,7 +744,10 @@ void show_psi_animation(uint16_t anim_id) {
  
      /* Determine which GFX set to load */
      int gfx_set;
@@ -3977,7 +4131,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
      case PSI_ANIM_GFX_LOWORD_SET1: gfx_set = 0; break;
      case PSI_ANIM_GFX_LOWORD_SET2: gfx_set = 1; break;
      case PSI_ANIM_GFX_LOWORD_SET3: gfx_set = 2; break;
-@@ -717,8 +751,8 @@ void show_psi_animation(uint16_t anim_id) {
+@@ -717,8 +756,8 @@ void show_psi_animation(uint16_t anim_id) {
      }
  
      /* Load and decompress GFX */
@@ -3988,7 +4142,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
      if (!gfx_compressed) return;
  
      bool is_2bpp = (loaded_bg_data_layer1.bitdepth == 2);
-@@ -764,8 +798,8 @@ void show_psi_animation(uint16_t anim_id) {
+@@ -764,8 +803,8 @@ void show_psi_animation(uint16_t anim_id) {
      (void)psi_anim_parked;  /* battle mode -> always false */
  
      /* Load PSI palette for this animation (4 colors = 8 bytes) */
@@ -3999,7 +4153,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
      if (pal_data) {
          uint16_t copy_bytes = (uint16_t)(pal_size < 8 ? pal_size : 8);
          /* Copy to psi_animation_state.palette */
-@@ -779,8 +813,9 @@ void show_psi_animation(uint16_t anim_id) {
+@@ -779,8 +818,9 @@ void show_psi_animation(uint16_t anim_id) {
       * Only one bundle (8 KB) is decompressed at a time into ert.buffer,
       * which is free during battle (verified by concurrency analysis). */
      {
@@ -4011,7 +4165,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
          psi_animation_state.arr_bundle_buf = ert.buffer;
          psi_animation_state.arr_current_bundle = -1; /* none decompressed yet */
          psi_animation_state.arr_current_anim_id = anim_id; /* serializable backing for rebind */
-@@ -901,11 +936,11 @@ void psi_animation_savestate_rebind(void) {
+@@ -901,11 +941,11 @@ void psi_animation_savestate_rebind(void) {
      if (psi_animation_state.arr_bundle_buf != NULL)
          psi_animation_state.arr_bundle_buf = ert.buffer;
      if (psi_animation_state.arr_bundled_data != NULL
@@ -4027,7 +4181,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
      }
  }
  
-@@ -961,8 +996,12 @@ void update_psi_animation(void) {
+@@ -961,8 +1001,12 @@ void update_psi_animation(void) {
                              /* Offset table starts at byte 4, bundle_count+1 entries × 2 bytes */
                              size_t offset_table = 4;
                              size_t data_start = offset_table + ((size_t)bundle_count + 1) * 2;
@@ -4040,7 +4194,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
                              size_t comp_size = comp_end - comp_off;
                              decomp(&asset[data_start + comp_off], comp_size,
                                     psi_animation_state.arr_bundle_buf,
-@@ -1087,6 +1126,12 @@ void update_psi_animation(void) {
+@@ -1087,6 +1131,12 @@ void update_psi_animation(void) {
   * = CGWSEL=$10 (fixed color sub-screen), CGADSUB=$3F (subtract all).
   */
  void apply_psi_battle_effect(uint16_t effect_id) {
@@ -4053,7 +4207,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
      if (effect_id < 35) {
          /* PSI animation */
          show_psi_animation(effect_id);
-@@ -1143,3 +1188,37 @@ void apply_psi_battle_effect(uint16_t effect_id) {
+@@ -1143,3 +1193,37 @@ void apply_psi_battle_effect(uint16_t effect_id) {
      /* effect_id >= 54: nothing */
  }
  
@@ -4092,7 +4246,7 @@ index ce9f34f1f1656065e3b76534eb52703a02898130..df3940e720a1d77d593fb4129bcdc1f4
 +}
 +
 diff --git a/src/game/battle_ui.c b/src/game/battle_ui.c
-index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d5cf8d610 100644
+index 9d558c4..9f2e674 100644
 --- a/src/game/battle_ui.c
 +++ b/src/game/battle_ui.c
 @@ -6,6 +6,8 @@
@@ -4134,7 +4288,77 @@ index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d
      uint8_t size = battle_sprites_pointers_data[(sprite_id - 1) * BATTLE_SPRITES_ENTRY_SIZE + 4];
      switch (size) {
          case 1: case 2: return 4;
-@@ -1106,6 +1113,14 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
+@@ -738,6 +745,46 @@ void apply_letterbox_to_ppu(void);
+  *   layer2_id: BG_DATA_TABLE index for background layer 2 (0 = none)
+  *   letterbox_style: 0=none, 1=large, 2=medium, 3=small; bit 2 = 4bpp layer 2
+  */
++static void set_battle_letterbox_bounds(uint16_t letterbox_style) {
++    uint16_t lb = (engine_fx_wide_fov == FX_TOGGLE_ON)
++        ? 0 : (letterbox_style & 0x0003);
++    static const uint16_t top[] = {0, 47, 57, 67};
++    static const uint16_t bottom[] = {SNES_HEIGHT, SNES_HEIGHT-48, SNES_HEIGHT-58, SNES_HEIGHT-68};
++    bt.letterbox_top_end = top[lb];
++    bt.letterbox_bottom_start = bottom[lb];
++}
++
++/* Recover only the distinctive bad masks written by pre-fix Redux builds.
++ * This repairs display state on quick-save restore, without reinitializing
++ * the fight, consuming RNG, or changing party/progression data. */
++void battle_recover_cutscene_letterbox(void) {
++    if (!maternalbound_enabled() || !bt.battle_mode_flag || !ow.redux_letterbox_active ||
++        bt.letterbox_visible_screen_value != 23 || bt.letterbox_nonvisible_screen_value != 4)
++        return;
++    const uint8_t *entries = ASSET_DATA(ASSET_DATA_BTL_ENTRY_PTR_TABLE_BIN);
++    size_t offset = (size_t)bt.current_battle_group * 8 + 7;
++    if (!entries || offset >= ASSET_SIZE(ASSET_DATA_BTL_ENTRY_PTR_TABLE_BIN)) return;
++    set_battle_letterbox_bounds(entries[offset]);
++    if (loaded_bg_data_layer1.target_layer == 3) {
++        bt.letterbox_visible_screen_value = 0x0817;
++        bt.letterbox_nonvisible_screen_value = 0x0013;
++    } else if (loaded_bg_data_layer2.target_layer == 1) {
++        bt.letterbox_visible_screen_value = 0x0215;
++        bt.letterbox_nonvisible_screen_value = 0x0014;
++    } else {
++        bt.letterbox_visible_screen_value = 0x0017;
++        bt.letterbox_nonvisible_screen_value = 0x0015;
++    }
++    if (bt.letterbox_effect_ending) {
++        uint16_t top = bt.letterbox_effect_ending_top >> 8;
++        uint16_t bottom = bt.letterbox_effect_ending_bottom >> 8;
++        if (top < bt.letterbox_top_end) bt.letterbox_top_end = top;
++        if (bottom > bt.letterbox_bottom_start) bt.letterbox_bottom_start = bottom;
++    }
++    build_letterbox_hdma_table();
++    apply_letterbox_to_ppu();
++}
++
+ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_style) {
+     /* Sprite Y offset centers SNES-coordinate sprites vertically. The
+      * per-BG viewport-fill assignment below depends on bitdepth (read a few
+@@ -766,21 +813,7 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
+      * cinematic effect once the wider FOV is already in play; with Wide
+      * FOV off, the original per-encounter behavior is unchanged regardless
+      * of any other visual toggle. */
+-    uint16_t lb = (engine_fx_wide_fov == FX_TOGGLE_ON)
+-        ? 0 : (letterbox_style & 0x0003);
+-    if (lb == 0) {
+-        bt.letterbox_top_end = 0;
+-        bt.letterbox_bottom_start = SNES_HEIGHT;
+-    } else if (lb == 1) { /* LARGE */
+-        bt.letterbox_top_end = 48 - 1;
+-        bt.letterbox_bottom_start = SNES_HEIGHT - 48;
+-    } else if (lb == 2) { /* MEDIUM */
+-        bt.letterbox_top_end = 58 - 1;
+-        bt.letterbox_bottom_start = SNES_HEIGHT - 58;
+-    } else if (lb == 3) { /* SMALL */
+-        bt.letterbox_top_end = 68 - 1;
+-        bt.letterbox_bottom_start = SNES_HEIGHT - 68;
+-    }
++    set_battle_letterbox_bounds(letterbox_style);
+ 
+     /* Initialize letterbox state (assembly lines 64-70) */
+     bt.letterbox_effect_ending = 0;
+@@ -1106,6 +1139,14 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
      } else if (bitdepth != 4) {
          /* No layer 2 in mode 1 (assembly line 699) */
          loaded_bg_data_layer2.target_layer = 0;
@@ -4149,7 +4373,7 @@ index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d
      }
  
      /* Finalize (assembly lines 706-724) */
-@@ -1137,7 +1152,10 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
+@@ -1137,7 +1178,10 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
   * sprite_id: 1-based index into BATTLE_SPRITES_POINTERS table.
   */
  void load_battle_sprite(uint16_t sprite_id) {
@@ -4161,7 +4385,7 @@ index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d
  
      /* Record spritemap allocation start for this sprite (assembly lines 26-30) */
      bt.battle_spritemap_allocation_counts[bt.current_battle_sprites_allocated] =
-@@ -1258,8 +1276,8 @@ void load_battle_sprite(uint16_t sprite_id) {
+@@ -1258,8 +1302,8 @@ void load_battle_sprite(uint16_t sprite_id) {
          0x3800, 0x3880, 0x3900, 0x3980
      };
  
@@ -4172,7 +4396,7 @@ index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d
      if (!compressed) return;
  
      /* Decompress to decomp_staging (shared_scratch.decomp) to avoid aliasing
-@@ -1300,8 +1318,8 @@ void setup_battle_enemy_sprites(void) {
+@@ -1300,8 +1344,8 @@ void setup_battle_enemy_sprites(void) {
      bt.current_battle_spritemaps_allocated = 0;
  
      /* Load BATTLE_SPRITES_POINTERS table (110 entries × 5 bytes each) */
@@ -4183,7 +4407,7 @@ index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d
  
      /* Load BTL_ENTRY_PTR_TABLE to iterate enemy group (assembly lines 13-21) */
      static const uint8_t *ptr_table = NULL;
-@@ -1331,6 +1349,7 @@ void setup_battle_enemy_sprites(void) {
+@@ -1331,6 +1375,7 @@ void setup_battle_enemy_sprites(void) {
      while (1) {
          uint8_t first_byte = *grp_ptr;
          if (first_byte == 0xFF) break;
@@ -4191,7 +4415,7 @@ index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d
  
          uint16_t enemy_id = read_u16_le(&grp_ptr[1]);
  
-@@ -1339,8 +1358,9 @@ void setup_battle_enemy_sprites(void) {
+@@ -1339,8 +1384,9 @@ void setup_battle_enemy_sprites(void) {
          uint8_t palette_id = enemy_config_table[enemy_id].battle_sprite_palette;
  
          /* Load palette (lines 48-79): 32 bytes to ert.palettes[] sub-palette 8+ */
@@ -4203,7 +4427,7 @@ index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d
          if (pal_data) {
              uint16_t pal_offset = 128 + bt.current_battle_sprites_allocated * 16;
              uint16_t colors = (uint16_t)(pal_size / 2);
-@@ -1364,6 +1384,39 @@ void setup_battle_enemy_sprites(void) {
+@@ -1364,6 +1410,39 @@ void setup_battle_enemy_sprites(void) {
      ppu_vram_dma(ert.buffer, 0x2000, vram_size);
  }
  
@@ -4243,7 +4467,7 @@ index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d
  
  /*
   * LOAD_BATTLE_SCENE (asm/battle/load_battle_scene.asm)
-@@ -2162,6 +2215,7 @@ void apply_letterbox_to_ppu(void) {
+@@ -2162,6 +2241,7 @@ void apply_letterbox_to_ppu(void) {
   * swirl effect, battle sprite palette animation, and letterbox ending.
   */
  void update_battle_screen_effects(void) {
@@ -4252,7 +4476,7 @@ index 9d558c4ea3a25218bddd635e6c12a3323d6e9081..6832692fe423f8c7460acf8e3aa9bf4d
      if (bt.enable_background_darkening) {
          bt.background_brightness -= 0x0555;
 diff --git a/src/game/display_text.c b/src/game/display_text.c
-index 9b2cb3d553abe2381c4cedb06bb0457b2ce5e2ac..a57b24d9d40a8ec0845d6c595f18dce9d96708eb 100644
+index 9b2cb3d..a57b24d 100644
 --- a/src/game/display_text.c
 +++ b/src/game/display_text.c
 @@ -12,6 +12,7 @@
@@ -4747,7 +4971,7 @@ index 9b2cb3d553abe2381c4cedb06bb0457b2ce5e2ac..a57b24d9d40a8ec0845d6c595f18dce9
                  restore_window_text_attributes();
              }
 diff --git a/src/game/display_text.h b/src/game/display_text.h
-index 12899399bf73efe4cb82dd5652ba25b08332b3e1..5d6dcd144704d50d6b45b71fd73315fe88b020e4 100644
+index 1289939..5d6dcd1 100644
 --- a/src/game/display_text.h
 +++ b/src/game/display_text.h
 @@ -44,6 +44,11 @@ typedef struct {
@@ -4763,7 +4987,7 @@ index 12899399bf73efe4cb82dd5652ba25b08332b3e1..5d6dcd144704d50d6b45b71fd73315fe
  bool display_text_load_battle_text(void);
  void display_text_free_battle_text(void);
 diff --git a/src/game/display_text_cc.c b/src/game/display_text_cc.c
-index 950d47b81eafbc3e93b91a1c7249051af6664f8f..48566ca5074491a8dd2f869dd5cbc690d5d3d5d9 100644
+index 950d47b..48566ca 100644
 --- a/src/game/display_text_cc.c
 +++ b/src/game/display_text_cc.c
 @@ -1,3 +1,4 @@
@@ -5223,7 +5447,7 @@ index 950d47b81eafbc3e93b91a1c7249051af6664f8f..48566ca5074491a8dd2f869dd5cbc690
          }
          break;
 diff --git a/src/game/display_text_internal.h b/src/game/display_text_internal.h
-index 7a668e893065028230676008a1f6e5315ac3811a..03fdc522ca5e4a694303a6d413192f5320f3e101 100644
+index 7a668e8..03fdc52 100644
 --- a/src/game/display_text_internal.h
 +++ b/src/game/display_text_internal.h
 @@ -21,6 +21,7 @@ uint16_t script_read_word(ScriptReader *r);
@@ -5235,7 +5459,7 @@ index 7a668e893065028230676008a1f6e5315ac3811a..03fdc522ca5e4a694303a6d413192f53
  /* Data helpers (display_text.c) */
  void toggle_hppp_flipout_mode(uint16_t enable);
 diff --git a/src/game/display_text_menus.c b/src/game/display_text_menus.c
-index dd7f86b6119ee1405adfc8547530f4ddabfd7dd7..15d3fa3d7105adcfd87409f3dd03ffdd3a8c2756 100644
+index dd7f86b..15d3fa3 100644
 --- a/src/game/display_text_menus.c
 +++ b/src/game/display_text_menus.c
 @@ -743,9 +743,9 @@ void show_character_inventory(uint16_t window_id, uint16_t char_source) {
@@ -5252,7 +5476,7 @@ index dd7f86b6119ee1405adfc8547530f4ddabfd7dd7..15d3fa3d7105adcfd87409f3dd03ffdd
  
      /* Assembly lines 47-148: loop over ITEM_INVENTORY_SIZE (14) slots.
 diff --git a/src/game/door.c b/src/game/door.c
-index c8d134ff1aaccacd6d0473e993f6d116a89f065a..88fb4e56df1a617f39715c67033a68f988810d9c 100644
+index c8d134f..88fb4e5 100644
 --- a/src/game/door.c
 +++ b/src/game/door.c
 @@ -39,6 +39,7 @@
@@ -5390,7 +5614,7 @@ index c8d134ff1aaccacd6d0473e993f6d116a89f065a..88fb4e56df1a617f39715c67033a68f9
   * Main screen transition effect used by door transitions.
   *
 diff --git a/src/game/door.h b/src/game/door.h
-index 784405b6ec93699de60826978ff62455ab1a5ca6..b1055479181f64f578c49dbfd49600ea31572876 100644
+index 784405b..b105547 100644
 --- a/src/game/door.h
 +++ b/src/game/door.h
 @@ -130,5 +130,7 @@ typedef struct {
@@ -5402,7 +5626,7 @@ index 784405b6ec93699de60826978ff62455ab1a5ca6..b1055479181f64f578c49dbfd49600ea
  
  #endif /* DOOR_H */
 diff --git a/src/game/ending.c b/src/game/ending.c
-index f5b72dc3a67016e450672c0397c3e885fbd43f51..711d2b21f0ab7bf9fe9840271189790d0c312442 100644
+index f5b72dc..711d2b2 100644
 --- a/src/game/ending.c
 +++ b/src/game/ending.c
 @@ -9,6 +9,7 @@
@@ -5601,7 +5825,7 @@ index f5b72dc3a67016e450672c0397c3e885fbd43f51..711d2b21f0ab7bf9fe9840271189790d
              s->fade_counter = 64;   /* fade-in counts down 64..1 */
              s->phase = EN_CR_FADEIN;
 diff --git a/src/game/ending.h b/src/game/ending.h
-index afcf5f3f5ee0cb7e8ba179159185b7e3fc19aa45..b61e9c3c2e606ced1ef91d744b61c8b57dcb39e2 100644
+index afcf5f3..b61e9c3 100644
 --- a/src/game/ending.h
 +++ b/src/game/ending.h
 @@ -58,6 +58,13 @@ typedef enum {
@@ -5619,7 +5843,7 @@ index afcf5f3f5ee0cb7e8ba179159185b7e3fc19aa45..b61e9c3c2e606ced1ef91d744b61c8b5
  void frame_callback_savestate_pack(void *out);   /* out: FrameCallbackSaveState* */
  void frame_callback_savestate_unpack(const void *in);
 diff --git a/src/game/flyover.c b/src/game/flyover.c
-index 67108fae622e317724e0e1c2fa931d1881c86cfe..0aea09c9934c3697f72f34aa90d718a7ce831745 100644
+index 67108fa..0aea09c 100644
 --- a/src/game/flyover.c
 +++ b/src/game/flyover.c
 @@ -221,8 +221,8 @@ static void flyover_render_party_name(uint16_t char_id) {
@@ -5634,7 +5858,7 @@ index 67108fae622e317724e0e1c2fa931d1881c86cfe..0aea09c9934c3697f72f34aa90d718a7
          if (c < 0x50) break;  /* characters below 0x50 are not valid EB text */
          flyover_render_large_char((uint16_t)c);
 diff --git a/src/game/game_state.c b/src/game/game_state.c
-index c0cc30f1056061be476bd125f4ab927c5d8180d3..13c895714a7021736c78188e16bcec9b2b3ff5c0 100644
+index c0cc30f..13c8957 100644
 --- a/src/game/game_state.c
 +++ b/src/game/game_state.c
 @@ -2,6 +2,9 @@
@@ -5743,7 +5967,7 @@ index c0cc30f1056061be476bd125f4ab927c5d8180d3..13c895714a7021736c78188e16bcec9b
   * Zeroes both copies of a save slot (primary + backup). The assembly leaves the
   * block's signature in place; an empty (all-zero) block is fine here because the
 diff --git a/src/game/game_state.h b/src/game/game_state.h
-index 30256db63ccf3260bcfb5a79b0ea1bcdff2a8800..bb0113e64ef18348b8d32039453c47d17e3351ba 100644
+index 30256db..bb0113e 100644
 --- a/src/game/game_state.h
 +++ b/src/game/game_state.h
 @@ -209,7 +209,9 @@ typedef struct {
@@ -5775,7 +5999,7 @@ index 30256db63ccf3260bcfb5a79b0ea1bcdff2a8800..bb0113e64ef18348b8d32039453c47d1
  /* Initialize game state to defaults */
  void game_state_init(void);
 diff --git a/src/game/inventory.c b/src/game/inventory.c
-index 8978181ca9beff3e8d5ce9b0438b1c0e198f020d..8d60dda473d54592297c4c7a95931cb4ad808dd0 100644
+index 8978181..f110c12 100644
 --- a/src/game/inventory.c
 +++ b/src/game/inventory.c
 @@ -2,8 +2,10 @@
@@ -6036,7 +6260,30 @@ index 8978181ca9beff3e8d5ce9b0438b1c0e198f020d..8d60dda473d54592297c4c7a95931cb4
              set_cnum((uint32_t)ch->level);
              st->phase = LU_STAT;
              st->stage = 0;
-@@ -2403,7 +2462,27 @@ uint16_t find_condiment(uint16_t item_id) {
+@@ -2190,16 +2249,15 @@ StepResult mode_step_level_up(ModeState *state) {
+             break;  /* unresolvable: fall through to LU_STAT inline */
+         }
+         case LU_STAT: {
++            /* The growth table is an asset cache, not saved game state. A cold
++             * quick-save restore may resume between stat messages at stage >0. */
++            if (!ensure_stats_growth()) {
++                st->phase = LU_NEXT;
++                break;
++            }
+             if (st->stage == 0) {
+                 /* The tail after the "reached level" text (line 58). */
+                 dt.blinking_triangle_flag = 2;
+-                if (!ensure_stats_growth()) {
+-                    /* The assembly returns from LEVEL_UP_CHAR here, skipping
+-                     * the growths, the PSI scan AND the flag clear; gain_exp
+-                     * still re-checks the threshold. */
+-                    st->phase = LU_NEXT;
+-                    break;
+-                }
+             }
+             while (st->stage < LU_STAGE_COUNT) {
+                 uint8_t stage = st->stage++;
+@@ -2403,7 +2461,27 @@ uint16_t find_condiment(uint16_t item_id) {
  
      /* Assembly lines 21-25: get attacker's character index (0-indexed) */
      Battler *atk = battler_from_offset(bt.current_attacker);
@@ -6064,7 +6311,7 @@ index 8978181ca9beff3e8d5ce9b0438b1c0e198f020d..8d60dda473d54592297c4c7a95931cb4
  
      /* Assembly lines 26-62: loop through character's inventory for a condiment */
      for (int slot = 0; slot < ITEM_INVENTORY_SIZE; slot++) {
-@@ -2475,3 +2554,104 @@ uint16_t find_inventory_space2(uint16_t char_id) {
+@@ -2475,3 +2553,104 @@ uint16_t find_inventory_space2(uint16_t char_id) {
      }
      return 0;
  }
@@ -6170,7 +6417,7 @@ index 8978181ca9beff3e8d5ce9b0438b1c0e198f020d..8d60dda473d54592297c4c7a95931cb4
 +    return true;
 +}
 diff --git a/src/game/inventory.h b/src/game/inventory.h
-index 7d7e46642d93cc1367a46f212a7dd2c18b2e53dc..2b9600f7bfd518c8dc583035b7c5a5c0bd20c241 100644
+index 7d7e466..2b9600f 100644
 --- a/src/game/inventory.h
 +++ b/src/game/inventory.h
 @@ -96,6 +96,11 @@ void recalc_character_miss_rate(uint16_t char_id);
@@ -6186,7 +6433,7 @@ index 7d7e46642d93cc1367a46f212a7dd2c18b2e53dc..2b9600f7bfd518c8dc583035b7c5a5c0
   * All take char_id (1-indexed) in A and new_item_id in X.
   * Store the new item, recalculate affected stats, return old item ID. */
 diff --git a/src/game/map_loader.c b/src/game/map_loader.c
-index 620656bd2fb0f57bfe53319f51d70f1d68376b61..68fb1b6bed9e4db79c83da1ad2443cfe7b805e2c 100644
+index 620656b..68fb1b6 100644
 --- a/src/game/map_loader.c
 +++ b/src/game/map_loader.c
 @@ -16,6 +16,7 @@
@@ -6319,7 +6566,7 @@ index 620656bd2fb0f57bfe53319f51d70f1d68376b61..68fb1b6bed9e4db79c83da1ad2443cfe
              /* Scrolling UP: SCREEN_TOP_Y > target.
               * Assembly lines 191-228. */
 diff --git a/src/game/map_loader.h b/src/game/map_loader.h
-index cf14f471de843019b737edf3ac97b8c1b42ac81b..effe83cffb5ace37f67515270bf3c924d20f000e 100644
+index cf14f47..effe83c 100644
 --- a/src/game/map_loader.h
 +++ b/src/game/map_loader.h
 @@ -202,9 +202,9 @@ typedef struct {
@@ -6336,10 +6583,10 @@ index cf14f471de843019b737edf3ac97b8c1b42ac81b..effe83cffb5ace37f67515270bf3c924
      /* Offset into event_music_table for the last matched music entry. */
 diff --git a/src/game/maternalbound.c b/src/game/maternalbound.c
 new file mode 100644
-index 0000000000000000000000000000000000000000..3557d8256b4f9956b95c535c5837ea24b7061d80
+index 0000000..afb5060
 --- /dev/null
 +++ b/src/game/maternalbound.c
-@@ -0,0 +1,420 @@
+@@ -0,0 +1,424 @@
 +/* SPDX-License-Identifier: GPL-3.0-only
 + * Native adaptation of MaternalBound Redux's documented CCExpand behavior.
 + * Credit: ShadowOne333 and upstream contributors; see CREDITS.md and source
@@ -6567,6 +6814,10 @@ index 0000000000000000000000000000000000000000..3557d8256b4f9956b95c535c5837ea24
 +
 +void maternalbound_effects_tick(void) {
 +    if (!maternalbound_enabled() || !ow.redux_letterbox_active) return;
++    /* A scripted fight can interrupt an open cinematic letterbox (Starman
++     * Junior). Battle owns the masks until it returns; preserve the cutscene
++     * progress for the dialogue that resumes afterward. */
++    if (bt.battle_mode_flag) return;
 +    if (ow.redux_letterbox_direction == 2 && !ow.redux_letterbox_top) {
 +        ow.redux_letterbox_active = 0; ow.redux_letterbox_direction = 0;
 +        ppu.tm_hdma_active = false;
@@ -6762,7 +7013,7 @@ index 0000000000000000000000000000000000000000..3557d8256b4f9956b95c535c5837ea24
 +}
 diff --git a/src/game/maternalbound.h b/src/game/maternalbound.h
 new file mode 100644
-index 0000000000000000000000000000000000000000..6c33e80fc0dfe45bdac9b27c972acb40a8f0bd01
+index 0000000..6c33e80
 --- /dev/null
 +++ b/src/game/maternalbound.h
 @@ -0,0 +1,51 @@
@@ -6819,7 +7070,7 @@ index 0000000000000000000000000000000000000000..6c33e80fc0dfe45bdac9b27c972acb40
 +#endif
 diff --git a/src/game/maternalbound_battle_sprites.c b/src/game/maternalbound_battle_sprites.c
 new file mode 100644
-index 0000000000000000000000000000000000000000..49ec96d17ee3e3e81a78db7515e244116155d167
+index 0000000..49ec96d
 --- /dev/null
 +++ b/src/game/maternalbound_battle_sprites.c
 @@ -0,0 +1,148 @@
@@ -6973,7 +7224,7 @@ index 0000000000000000000000000000000000000000..49ec96d17ee3e3e81a78db7515e24411
 +}
 diff --git a/src/game/maternalbound_battle_sprites.h b/src/game/maternalbound_battle_sprites.h
 new file mode 100644
-index 0000000000000000000000000000000000000000..b0dac79324449899d4f5ab4ddb5488db8c9ece74
+index 0000000..b0dac79
 --- /dev/null
 +++ b/src/game/maternalbound_battle_sprites.h
 @@ -0,0 +1,15 @@
@@ -6993,7 +7244,7 @@ index 0000000000000000000000000000000000000000..b0dac79324449899d4f5ab4ddb5488db
 +bool maternalbound_battle_sprites_selftest(void);
 +#endif
 diff --git a/src/game/overworld.c b/src/game/overworld.c
-index 723f69086bfd7784022e103ac3fd7668bc3e5f33..1b366af68863ac5b72459d6b82668cf31e2b33a9 100644
+index 723f690..1b366af 100644
 --- a/src/game/overworld.c
 +++ b/src/game/overworld.c
 @@ -1,3 +1,4 @@
@@ -7298,7 +7549,7 @@ index 723f69086bfd7784022e103ac3fd7668bc3e5f33..1b366af68863ac5b72459d6b82668cf3
      uint8_t status = party_characters[0].afflictions[0];  /* STATUS_GROUP::PERSISTENT_EASYHEAL */
      if (status == 1)  /* UNCONSCIOUS */
 diff --git a/src/game/overworld.h b/src/game/overworld.h
-index 16288abbc61044242671b02b9a33cd7ad006a876..a6ceb4dbbc419c7faec09ac7ca515e53125704bb 100644
+index 16288ab..a6ceb4d 100644
 --- a/src/game/overworld.h
 +++ b/src/game/overworld.h
 @@ -298,6 +298,13 @@ typedef struct {
@@ -7325,7 +7576,7 @@ index 16288abbc61044242671b02b9a33cd7ad006a876..a6ceb4dbbc419c7faec09ac7ca515e53
  /* CLEAR_ALL_ENEMIES: Port of asm/overworld/clear_all_enemies.asm.
   * Zeroes enemy spawn counters, removes all non-party entities, clears collision data. */
 diff --git a/src/game/overworld_interaction.c b/src/game/overworld_interaction.c
-index ce1f37c1dd8d74698e3cccf8f2cd0f30c3de6f54..527019987dd9cb3efc5195f05e54c152e48afb2f 100644
+index ce1f37c..d387af8 100644
 --- a/src/game/overworld_interaction.c
 +++ b/src/game/overworld_interaction.c
 @@ -16,6 +16,7 @@
@@ -7345,8 +7596,28 @@ index ce1f37c1dd8d74698e3cccf8f2cd0f30c3de6f54..527019987dd9cb3efc5195f05e54c152
          ow.dad_phone_queued = 0;
      }
      /* Assembly lines 72-81: update pending flag and clear current type. */
+@@ -422,7 +423,9 @@ int16_t find_nearby_checkable_tpt_entry(void) {
+ uint32_t talk_to(void) {
+     uint32_t text_ptr = 0;
+ 
+-    create_window(0x01);  /* WINDOW::TEXT_STANDARD */
++    /* Redux new_controls.ccs removes the eager window creation. Its quick
++     * Talk/Check caller opens the window only after finding actual dialogue. */
++    if (!maternalbound_enabled()) create_window(WINDOW_TEXT_STANDARD);
+ 
+     find_nearby_talkable_tpt_entry();
+ 
+@@ -460,7 +463,7 @@ uint32_t talk_to(void) {
+ uint32_t check_action(void) {
+     uint32_t text_ptr = 0;
+ 
+-    create_window(0x01);  /* WINDOW::TEXT_STANDARD */
++    if (!maternalbound_enabled()) create_window(WINDOW_TEXT_STANDARD);
+ 
+     find_nearby_checkable_tpt_entry();
+ 
 diff --git a/src/game/overworld_palette.c b/src/game/overworld_palette.c
-index 4eeb8d37fda9a23f1af1bd056a30710af16b3261..142ff51358a5a85294a42d503ab64f12930b097e 100644
+index 4eeb8d3..142ff51 100644
 --- a/src/game/overworld_palette.c
 +++ b/src/game/overworld_palette.c
 @@ -150,7 +150,7 @@ StepResult mode_step_hp_alert(ModeState *st) {
@@ -7375,7 +7646,7 @@ index 4eeb8d37fda9a23f1af1bd056a30710af16b3261..142ff51358a5a85294a42d503ab64f12
          if (s->remaining == 0) {
              finalize_palette_fade();
 diff --git a/src/game/overworld_teleport.c b/src/game/overworld_teleport.c
-index e860343891307686505f7da2a81a8b7b93bef91d..5e5ef808eeb8a684726a5020518ca260713d532e 100644
+index e860343..5e5ef80 100644
 --- a/src/game/overworld_teleport.c
 +++ b/src/game/overworld_teleport.c
 @@ -30,6 +30,7 @@
@@ -7494,7 +7765,7 @@ index e860343891307686505f7da2a81a8b7b93bef91d..5e5ef808eeb8a684726a5020518ca260
              ow.psi_teleport_speed_int = 0;
              ow.player_intangibility_frames = 0;
 diff --git a/src/game/position_buffer.c b/src/game/position_buffer.c
-index c7b8ca44dd9931ba635db41f08a77127f60ddb5d..403435575a6fbf4ff89fdc22038e497f2cf42d64 100644
+index c7b8ca4..4034355 100644
 --- a/src/game/position_buffer.c
 +++ b/src/game/position_buffer.c
 @@ -22,6 +22,7 @@
@@ -7641,7 +7912,7 @@ index c7b8ca44dd9931ba635db41f08a77127f60ddb5d..403435575a6fbf4ff89fdc22038e497f
      }
  
 diff --git a/src/game/position_buffer.h b/src/game/position_buffer.h
-index 3fae9b204cae10fd59b3e1ce8954021aac4d85ae..2fee7e886ca1c105f4890f8b28f418ac78eaddcf 100644
+index 3fae9b2..2fee7e8 100644
 --- a/src/game/position_buffer.h
 +++ b/src/game/position_buffer.h
 @@ -17,6 +17,7 @@
@@ -7653,7 +7924,7 @@ index 3fae9b204cae10fd59b3e1ce8954021aac4d85ae..2fee7e886ca1c105f4890f8b28f418ac
  /* Packed version of assembly player_position_buffer_entry (include/structs.asm).
   * Assembly uses 12 bytes (6 words) per entry, but tile_flags, walking_style,
 diff --git a/src/game/text.c b/src/game/text.c
-index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f595f16c6f 100644
+index 236c04f..96115e7 100644
 --- a/src/game/text.c
 +++ b/src/game/text.c
 @@ -4,6 +4,7 @@
@@ -7664,7 +7935,15 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
  #include "game/inventory.h"
  #include "game/overworld.h"
  #include "game/audio.h"
-@@ -35,6 +36,7 @@ typedef struct {
+@@ -22,6 +23,7 @@
+ #include "include/constants.h"
+ #include "include/pad.h"
+ #include "platform/platform.h"
++#include "platform/qa_observer.h"
+ #include <string.h>
+ #include <stdio.h>
+ 
+@@ -35,6 +37,7 @@ typedef struct {
      size_t   glyph_size;  /* total glyph data size */
      uint8_t  height;      /* pixel rows per glyph */
      uint8_t  bytes_per_glyph; /* bytes per glyph in data */
@@ -7672,7 +7951,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
      bool     loaded;
  } FontData;
  
-@@ -92,20 +94,24 @@ static bool load_font(uint8_t font_id, AssetId gfx_id, AssetId width_id,
+@@ -92,20 +95,24 @@ static bool load_font(uint8_t font_id, AssetId gfx_id, AssetId width_id,
      }
  
      f->height = height;
@@ -7700,7 +7979,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
      return fonts[font_id].width_data[char_index];
  }
  
-@@ -285,14 +291,15 @@ void text_load_window_gfx(void) {
+@@ -285,14 +292,15 @@ void text_load_window_gfx(void) {
              /* Render each character of the name (asm lines 82-105).
               * Assembly calls BLIT_VWF_GLYPH directly with fixed 6px advance (@LOCAL06),
               * bypassing RENDER_VWF_CHARACTER. */
@@ -7719,7 +7998,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              }
  
              /* Copy 4 tiles from VWF ert.buffer into ert.buffer+$2A00 (asm lines 109-183).
-@@ -713,6 +720,27 @@ static void build_command_menu(void) {
+@@ -713,6 +721,27 @@ static void build_command_menu(void) {
          return;
      }
  
@@ -7747,7 +8026,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
      /* Command labels loaded from ROM (CMD_WINDOW_TEXT, 6 × 10 bytes EB-encoded padded) */
      const uint8_t *cmd_data = ASSET_DATA(ASSET_US_DATA_COMMAND_WINDOW_TEXT_BIN);
      /* Grid positions, a deliberate deviation from DEBUG_MENU_ELEMENT_SPACING_DATA
-@@ -898,8 +926,8 @@ static void display_equipment_menu(uint16_t char_id) {
+@@ -898,8 +927,8 @@ static void display_equipment_menu(uint16_t char_id) {
      {
          char name_buf[WINDOW_TITLE_SIZE];
          int j;
@@ -7758,7 +8037,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
          name_buf[j] = '\0';
          set_window_title(WINDOW_EQUIP_MENU, name_buf, 6);
      }
-@@ -982,7 +1010,54 @@ static void display_equipment_menu(uint16_t char_id) {
+@@ -982,7 +1011,54 @@ static void display_equipment_menu(uint16_t char_id) {
   * with TEMPORARY_* equipment stats.
   *
   * char_id: 1-based character ID. */
@@ -7813,7 +8092,65 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
      uint16_t char_idx = char_id - 1;
      create_window(WINDOW_EQUIPMENT_STATS);
      window_tick_without_instant_printing();
-@@ -1543,6 +1618,12 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1330,6 +1406,48 @@ void text_menus_savestate_unpack(const void *in) {
+     only_one_character_with_psi = s->only_one_character_with_psi;
+ }
+ 
++static bool psi_menu_repaint_pending;
++
++void text_menus_savestate_recover(void) {
++    /* Schedule drawing only after the loader finishes restoring PPU/DMA. */
++    psi_menu_repaint_pending = true;
++}
++
++void text_menus_resume_repaint(void) {
++    if (!psi_menu_repaint_pending) return;
++    psi_menu_repaint_pending = false;
++    /* The development converter once read the freed PSI-name table. Repaint
++     * an idle PSI selection from the corrected assets on cold load, keeping
++     * its selected ability and leaving party/progression state untouched. */
++    if (!maternalbound_enabled() || g_mode_stack.depth < 2) return;
++    uint8_t top = g_mode_stack.depth - 1;
++    if (g_mode_stack.mode[top] != GAME_MODE_SELECTION_MENU ||
++        g_mode_stack.mode[top-1] != GAME_MODE_PSI_MENU ||
++        g_mode_stack.state[top].selection_menu.phase != SM_MAIN ||
++        g_mode_stack.state[top].selection_menu.menu_window != WINDOW_TEXT_STANDARD)
++        return;
++    PsiMenuState *st = &g_mode_stack.state[top-1].psi_menu;
++    WindowInfo *w = get_window(WINDOW_TEXT_STANDARD);
++    if (st->phase != PS_ABILITY_RESULT || st->char_id < 1 || st->char_id > 4 ||
++        !w || w->current_option >= w->menu_count) return;
++    /* selected_option is NONE during the cursor's blink-off phase. */
++    uint16_t ability = w->menu_items[w->current_option].userdata;
++    close_window(WINDOW_PSI_TARGET_COST);
++    display_character_psi_list(st->char_id);
++    w = get_window(WINDOW_TEXT_STANDARD);
++    if (!w) return;
++    for (uint16_t i = 0; i < w->menu_count; ++i) {
++        if (w->menu_items[i].userdata != ability) continue;
++        w->selected_option = w->current_option = i;
++        set_cursor_move_callback(display_psi_target_and_cost, CURSOR_CB_PSI_TARGET_COST);
++        display_psi_target_and_cost(ability);
++        set_window_focus(WINDOW_TEXT_STANDARD);
++        window_tick_without_instant_printing();
++        clear_instant_printing();
++        break;
++    }
++}
++
+ /* DISPLAY_PSI_ABILITY_DETAILS: Port of asm/text/menu/display_psi_ability_details.asm (54 lines).
+  *
+  * Called during PSI ability selection to refresh the ability list window.
+@@ -1352,6 +1470,8 @@ static void display_psi_ability_details(uint16_t palette_index, uint16_t ability
+     display_character_psi_list(overworld_selected_psi_user);
+     print_menu_items();
+ 
++    w = get_window(WINDOW_TEXT_STANDARD);
++
+     /* Restore text_y (assembly lines 34-37) */
+     if (w) w->text_y = saved_text_y;
+ 
+@@ -1543,6 +1663,12 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
          case EQ_ENTER:
              save_window_text_attributes();
@@ -7826,7 +8163,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              /* Single party: show equipment display before entering the loop.
               * Assembly lines 21-23: if party_count==1, SHOW_EQUIPMENT_AND_STATS
               * first, then fall through to char selection which auto-selects. */
-@@ -1709,6 +1790,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1709,6 +1835,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
              /* Show header "Which?" and run the item selection */
              compare_equipment_mode = 1;
@@ -7834,7 +8171,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              display_menu_header_text(1);  /* "Which?" */
              return pm_push_selection_equip(st, EQ_ITEM_RESULT);
          }
-@@ -1745,6 +1827,11 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1745,6 +1872,11 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
          case EQ_EXIT:
          default:
@@ -7846,7 +8183,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              close_window(WINDOW_EQUIPMENT_STATS);
              close_window(WINDOW_EQUIP_MENU);
              restore_window_text_attributes();
-@@ -1806,6 +1893,7 @@ StepResult mode_step_status_menu(ModeState *ms) {
+@@ -1806,6 +1938,7 @@ StepResult mode_step_status_menu(ModeState *ms) {
              /* Assembly lines 25-57: first-display flag, create the category
               * window, build the 4-item menu (userdata = category + 1). */
              st->first_display = 1;
@@ -7854,7 +8191,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              create_window(WINDOW_STATUS_PSI_CATEGORY);
              for (int i = 0; i < 4; i++) {
                  add_menu_item_no_position(status_psi_category_names[i],
-@@ -2141,15 +2229,15 @@ StepResult mode_step_psi_menu(ModeState *ms) {
+@@ -2141,15 +2274,15 @@ StepResult mode_step_psi_menu(ModeState *ms) {
  
              /* Set attacker name (assembly lines 297-304) */
              set_battle_attacker_name(
@@ -7874,7 +8211,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              }
  
              /* Set current item to the PSI ability (lines 320-321) */
-@@ -2225,8 +2313,8 @@ StepResult mode_step_psi_menu(ModeState *ms) {
+@@ -2225,8 +2358,8 @@ StepResult mode_step_psi_menu(ModeState *ms) {
  
              /* Set target name (assembly lines 404-421) */
              set_battle_target_name(
@@ -7885,7 +8222,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
  
              /* Init target battler (assembly lines 422-428) */
              battle_init_player_stats(member_id, &bt.battlers_table[1]);
-@@ -2517,8 +2605,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+@@ -2517,8 +2650,8 @@ StepResult mode_step_use_item(ModeState *ms) {
  
              /* Set attacker name from character (assembly lines 280-287) */
              set_battle_attacker_name(
@@ -7896,7 +8233,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
  
              /* Set current item (assembly lines 288-291) */
              set_current_item((uint8_t)st->item_id);
-@@ -2535,8 +2623,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+@@ -2535,8 +2668,8 @@ StepResult mode_step_use_item(ModeState *ms) {
               * target_id 0xFF = all targets, skip target name. */
              if (st->target_id != 0xFF) {
                  set_battle_target_name(
@@ -7907,7 +8244,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              }
  
              /* Assembly lines 323-334: if description text is NULL, use fallback */
-@@ -2621,8 +2709,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+@@ -2621,8 +2754,8 @@ StepResult mode_step_use_item(ModeState *ms) {
  
              /* Set target name (assembly lines 392-414) */
              set_battle_target_name(
@@ -7918,7 +8255,23 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
  
              /* Init target battler (assembly lines 415-421) */
              battle_init_player_stats(member_id, &bt.battlers_table[1]);
-@@ -3045,6 +3133,12 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -2925,6 +3058,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+                 uint32_t text_ptr = talk_to();
+                 if (text_ptr == 0)
+                     text_ptr = MSG_SYS_TALK_NO_TARGET;
++                if (maternalbound_enabled()) create_window(WINDOW_TEXT_STANDARD);
+                 bool pushed;
+                 StepResult r = pm_push_text(st, PM_CLEANUP, text_ptr, &pushed);
+                 if (pushed) return r;
+@@ -2979,6 +3113,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+                 uint32_t text_ptr = check_action();
+                 if (text_ptr == 0)
+                     text_ptr = MSG_SYS_NOTHING_WRONG_HERE;
++                if (maternalbound_enabled()) create_window(WINDOW_TEXT_STANDARD);
+                 bool pushed;
+                 StepResult r = pm_push_text(st, PM_CLEANUP, text_ptr, &pushed);
+                 if (pushed) return r;
+@@ -3045,6 +3180,12 @@ StepResult mode_step_pause_menu(ModeState *ms) {
              /* Key Items (this port's own addition, Key Items pool
               * feature, not part of the original ROM/assembly) */
              case 10:
@@ -7931,7 +8284,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
                  /* Key Items menu pops 1 if an item was actually used
                   * (KIM_USE_RESUME), 0 otherwise (cancelled, or closed
                   * after just Help/browsing) -- resume in
-@@ -3058,6 +3152,14 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -3058,6 +3199,14 @@ StepResult mode_step_pause_menu(ModeState *ms) {
                  st->phase = PM_KEY_ITEMS_RESUME;
                  return STEP_RESULT_PUSH_INIT(GAME_MODE_KEY_ITEMS_MENU, &pm_child_init);
  
@@ -7946,7 +8299,7 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              /* Cancel (B/Select) or unknown → cleanup */
              default:
                  st->phase = PM_CLEANUP;
-@@ -3306,6 +3408,13 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -3306,6 +3455,13 @@ StepResult mode_step_pause_menu(ModeState *ms) {
              continue;
  
          case PM_KEY_ITEMS_RESUME:
@@ -7960,18 +8313,30 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              /* KEY_ITEMS_MENU popped 1 (an item was actually used,
               * KIM_USE_RESUME) or 0 (cancelled, or closed after just
               * Help/browsing) -- same branch shape as PM_USE_RESUME
-@@ -3918,6 +4027,10 @@ StepResult mode_step_quick_checktalk(ModeState *ms) {
+@@ -3912,14 +4068,21 @@ StepResult mode_step_quick_checktalk(ModeState *ms) {
+     switch ((QuickChecktalkPhase)st->phase) {
+     case QCT_TEXT: {
+         disable_all_entities();
+-        play_sfx(1);  /* SFX::CURSOR1 */
++        if (!maternalbound_enabled()) play_sfx(1);  /* Redux removes this SFX. */
+ 
+         /* Resolve target text: TALK_TO, then CHECK, then the fallback. */
          uint32_t text_ptr = talk_to();
          if (text_ptr == 0)
              text_ptr = check_action();
 +        if (text_ptr == 0 && maternalbound_enabled()) {
++            /* Also release a stranded window from a pre-fix quick save. */
++            close_window(WINDOW_TEXT_STANDARD);
 +            enable_all_entities();
 +            return STEP_RESULT_POP(0);
 +        }
          if (text_ptr == 0)
              text_ptr = MSG_SYS_NOTHING_WRONG_HERE;
++        if (maternalbound_enabled()) create_window(WINDOW_TEXT_STANDARD);
  
-@@ -3990,14 +4103,14 @@ StepResult mode_step_hppp_display(ModeState *ms) {
+         st->phase = QCT_FADE;
+         static ModeState dt_init;  /* outlives this dispatch (pump copies it) */
+@@ -3990,14 +4153,14 @@ StepResult mode_step_hppp_display(ModeState *ms) {
              return STEP_RESULT_POP(0);  /* blocking `break` had no cleanup */
  
          /* A or L → open the full menu */
@@ -7988,8 +8353,40 @@ index 236c04f03f57b17639df2622d0a28356a6e60cfe..2829aae610dc33f91120d422220314f5
              play_sfx(2);  /* SFX::CURSOR2 */
              clear_instant_printing();
              hide_hppp_windows();
+@@ -4107,6 +4270,7 @@ void print_eb_string(const uint8_t *eb_str, int len) {
+         /* VWF render + flush to VRAM + write to per-window tilemap.
+          * vwf_render_character handles @PRINT_SPECIAL internally for
+          * chars 0x20, 0x22, 0x2F. */
++        qa_text_character(win.current_focus_window, eb_char_to_ascii(eb));
+         vwf_render_character(eb, font_id);
+ 
+         /* Assembly: RENDER_VWF_CHARACTER calls FLUSH_VWF_TILES_TO_VRAM only for
+@@ -4170,6 +4334,7 @@ void print_string(const char *str) {
+         if (eb >= 0x50)
+             dt.last_printed_character = eb;
+ 
++        qa_text_character(win.current_focus_window, *p);
+         vwf_render_character(eb, font_id);
+ 
+         /* Skip flush for special chars, same guard as print_eb_string */
+@@ -4218,6 +4383,7 @@ void print_number(int value, int min_digits) {
+ void clear_window_text(uint16_t window_id) {
+     WindowInfo *w = get_window(window_id);
+     if (!w) return;
++    qa_text_reset(window_id);
+ 
+     /* Free all tiles in per-window content_tilemap and fill with 0 */
+     uint16_t content_width = w->width - 2;
+@@ -4354,6 +4520,7 @@ void print_newline(void) {
+     if (win.current_focus_window == WINDOW_ID_NONE) return;
+     WindowInfo *w = get_window(win.current_focus_window);
+     if (!w) return;
++    qa_text_character(win.current_focus_window, '\n');
+ 
+     /* Reset VWF state for new line (port of RESET_VWF_TEXT_STATE call) */
+     vwf_init();
 diff --git a/src/game/text.h b/src/game/text.h
-index b9339de7639abccbe8119085fae4185d08687c03..9e1a5b6a64bf460c4d87bf30c7eba3fb08283a44 100644
+index b9339de..e7bf280 100644
 --- a/src/game/text.h
 +++ b/src/game/text.h
 @@ -16,7 +16,7 @@
@@ -8001,8 +8398,17 @@ index b9339de7639abccbe8119085fae4185d08687c03..9e1a5b6a64bf460c4d87bf30c7eba3fb
  
  /* Special EB text character codes (from CHAR enum in include/macros.asm) */
  #define EB_CHAR_EQUIPPED  0x22  /* CHAR::EQUIPPED, purple oval with "E" */
+@@ -118,6 +118,8 @@ typedef struct {
+ } TextMenuSaveState;
+ void text_menus_savestate_pack(void *out);   /* out: TextMenuSaveState* */
+ void text_menus_savestate_unpack(const void *in);
++void text_menus_savestate_recover(void);
++void text_menus_resume_repaint(void);
+ 
+ /* VWF internal state (public for ending/cast name rendering + savestates) */
+ extern uint8_t vwf_buffer[VWF_BUFFER_SIZE];
 diff --git a/src/game/town_map.c b/src/game/town_map.c
-index a0a8b75ab8e87112c566e68a2146cd074506705a..21010fc22b793507c32cd96ec397ad8c26cd67fa 100644
+index a0a8b75..21010fc 100644
 --- a/src/game/town_map.c
 +++ b/src/game/town_map.c
 @@ -12,6 +12,7 @@
@@ -8024,10 +8430,10 @@ index a0a8b75ab8e87112c566e68a2146cd074506705a..21010fc22b793507c32cd96ec397ad8c
  
      disable_all_entities();
 diff --git a/src/game/window.c b/src/game/window.c
-index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde35648480823133903011 100644
+index e516652..17c467c 100644
 --- a/src/game/window.c
 +++ b/src/game/window.c
-@@ -5,6 +5,7 @@
+@@ -5,12 +5,14 @@
  #include "game/battle.h"
  #include "game/battle_bg.h"
  #include "game/game_state.h"
@@ -8035,7 +8441,22 @@ index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde356484808231
  #include "game/inventory.h"
  #include "game/overworld.h"
  #include "entity/entity.h"
-@@ -291,7 +292,11 @@ WindowInfo *create_window(uint16_t window_id) {
+ #include "snes/ppu.h"
+ #include "core/memory.h"
+ #include "platform/platform.h"
++#include "platform/qa_observer.h"
+ #include "include/pad.h"
+ #include "include/constants.h"
+ #include "data/assets.h"
+@@ -270,6 +272,7 @@ static void tilemap_pool_free(WindowInfo *w) {
+ }
+ 
+ WindowInfo *create_window(uint16_t window_id) {
++    qa_text_reset(window_id);
+     /* Find existing or free slot */
+     int slot = -1;
+     WindowInfo *w = NULL;
+@@ -291,7 +294,11 @@ WindowInfo *create_window(uint16_t window_id) {
          w->active = true;
          w->id = window_id;
  
@@ -8048,7 +8469,7 @@ index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde356484808231
              w->x = window_configs[window_id][0];
              w->y = window_configs[window_id][1];
              w->width = window_configs[window_id][2];
-@@ -594,6 +599,7 @@ void add_menu_item(const char *label, uint16_t userdata, uint16_t text_x, uint16
+@@ -594,6 +601,7 @@ void add_menu_item(const char *label, uint16_t userdata, uint16_t text_x, uint16
      if (!w || w->menu_count >= MAX_MENU_ITEMS) return;
  
      MenuItem *item = &w->menu_items[w->menu_count];
@@ -8056,7 +8477,7 @@ index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde356484808231
      strncpy(item->label, label, MENU_LABEL_SIZE - 1);
      item->label[MENU_LABEL_SIZE - 1] = '\0';
      item->userdata = userdata;
-@@ -615,6 +621,7 @@ void add_menu_item_no_position(const char *label, uint16_t userdata) {
+@@ -615,6 +623,7 @@ void add_menu_item_no_position(const char *label, uint16_t userdata) {
      if (!w || w->menu_count >= MAX_MENU_ITEMS) return;
  
      MenuItem *item = &w->menu_items[w->menu_count];
@@ -8064,7 +8485,7 @@ index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde356484808231
      strncpy(item->label, label, MENU_LABEL_SIZE - 1);
      item->label[MENU_LABEL_SIZE - 1] = '\0';
      item->userdata = userdata;
-@@ -675,6 +682,16 @@ void print_menu_items(void) {
+@@ -675,6 +684,16 @@ void print_menu_items(void) {
          w = get_window(win.current_focus_window);  /* re-fetch after cursor set */
          if (!w) return;
          print_string(item->label);
@@ -8081,7 +8502,7 @@ index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde356484808231
      }
  }
  
-@@ -1149,7 +1166,7 @@ void set_window_palette_index(uint16_t palette_index) {
+@@ -1149,7 +1168,7 @@ void set_window_palette_index(uint16_t palette_index) {
   * option with a purple/highlight background (palette 6).
   */
  void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, bool set) {
@@ -8090,7 +8511,7 @@ index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde356484808231
  
      MenuItem *item = &w->menu_items[item_index];
      uint16_t content_width = w->width - 2;
-@@ -1164,14 +1181,30 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
+@@ -1164,14 +1183,30 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
       * it hits a blank tile (tile == 64).  In the C port, unwritten entries
       * are 0.  Skip any entry with a zero tile index to avoid painting
       * palette bits onto empty positions (which would make them visible). */
@@ -8124,7 +8545,7 @@ index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde356484808231
              if (set) {
                  w->content_tilemap[upper_pos] = upper_tile | attr;
                  w->content_tilemap[lower_pos] = (w->content_tilemap[lower_pos] & 0x03FF) | attr;
-@@ -1184,6 +1217,42 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
+@@ -1184,6 +1219,42 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
      }
  }
  
@@ -8167,7 +8588,15 @@ index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde356484808231
  /*
   * PRINT_CHAR_WITH_SOUND: Port of asm/text/print_char_with_sound.asm.
   *
-@@ -2574,8 +2643,9 @@ void draw_hp_pp_window(uint16_t char_id) {
+@@ -1916,6 +1987,7 @@ static StepResult sm_handle_input(WindowInfo *w, SelectionMenuState *st, bool *h
+  * phase machine and the `primed` frame-timing scheme.
+  */
+ StepResult mode_step_selection_menu(ModeState *ms) {
++    text_menus_resume_repaint();
+     SelectionMenuState *st = &ms->selection_menu;
+ 
+     /* Resuming after a deferred cursor-callback text push: the pushed DISPLAY_TEXT
+@@ -2574,8 +2646,9 @@ void draw_hp_pp_window(uint16_t char_id) {
       * US: STRLEN computes name width = (strlen*6+9)/8 tiles. */
      uint16_t name_base1 = 0x22A0 + (uint16_t)(member_id - 1) * 4;
      int name_len = 0;
@@ -8180,7 +8609,7 @@ index e51665230966539409283d1c5fd1f42bf3ac8e01..f2ea16aa6dca08e0bdde356484808231
  
      for (int i = 0; i < HPPP_WINDOW_WIDTH - 3; i++) {
 diff --git a/src/game/window.h b/src/game/window.h
-index 4210ac5ea11a5cacd3041550eedc6087874a2ad1..6b14d0bbb7dc865f29283ea92c826b5af0b05da3 100644
+index 4210ac5..6b14d0b 100644
 --- a/src/game/window.h
 +++ b/src/game/window.h
 @@ -73,6 +73,7 @@
@@ -8200,7 +8629,7 @@ index 4210ac5ea11a5cacd3041550eedc6087874a2ad1..6b14d0bbb7dc865f29283ea92c826b5a
      uint8_t  text_x;       /* x position in window tiles (asm offset 8) */
      uint8_t  text_y;       /* y position in window tiles (asm offset 10) */
 diff --git a/src/game_main.c b/src/game_main.c
-index 8ddaa2aa746e7cd043da820523018c86f32ce7d8..2602cc5f925470ef1d4a7b3a9f8412aca172e829 100644
+index 8ddaa2a..2602cc5 100644
 --- a/src/game_main.c
 +++ b/src/game_main.c
 @@ -26,6 +26,7 @@
@@ -8327,7 +8756,7 @@ index 8ddaa2aa746e7cd043da820523018c86f32ce7d8..2602cc5f925470ef1d4a7b3a9f8412ac
  
      /* Push the permanent GAME_MODE_OVERWORLD root (g_mode_stack[0]) so the first
 diff --git a/src/game_main.h b/src/game_main.h
-index c29adc30d4ce340de410370deaefce2809276351..37d206756454d08348c65ad80fe7f81bb01b0422 100644
+index c29adc3..37d2067 100644
 --- a/src/game_main.h
 +++ b/src/game_main.h
 @@ -56,6 +56,7 @@ void host_request_capture(void);
@@ -8339,7 +8768,7 @@ index c29adc30d4ce340de410370deaefce2809276351..37d206756454d08348c65ad80fe7f81b
  /* Perform a pending capture if one was requested, then clear the request. MUST be
   * called ONLY from the outermost host loop (the root boundary), never while a
 diff --git a/src/intro/file_select.c b/src/intro/file_select.c
-index 632f6746f71516966e8c965518a933643feab5a8..c18f76e962f317692610131e25deae3d758ed01b 100644
+index 632f674..c18f76e 100644
 --- a/src/intro/file_select.c
 +++ b/src/intro/file_select.c
 @@ -15,17 +15,20 @@
@@ -8579,7 +9008,7 @@ index 632f6746f71516966e8c965518a933643feab5a8..c18f76e962f317692610131e25deae3d
          case FM_NG_ASPECT: {
 diff --git a/src/platform/pc_options.c b/src/platform/pc_options.c
 new file mode 100644
-index 0000000000000000000000000000000000000000..2d5f45c20370b4ce63e56288c5a39910e8c61769
+index 0000000..2d5f45c
 --- /dev/null
 +++ b/src/platform/pc_options.c
 @@ -0,0 +1,103 @@
@@ -8688,7 +9117,7 @@ index 0000000000000000000000000000000000000000..2d5f45c20370b4ce63e56288c5a39910
 +}
 diff --git a/src/platform/pc_options.h b/src/platform/pc_options.h
 new file mode 100644
-index 0000000000000000000000000000000000000000..fe7b3855407796aea29647f6376e0fca8dc2342b
+index 0000000..fe7b385
 --- /dev/null
 +++ b/src/platform/pc_options.h
 @@ -0,0 +1,50 @@
@@ -8742,8 +9171,28 @@ index 0000000000000000000000000000000000000000..fe7b3855407796aea29647f6376e0fca
 +bool pc_msu_selftest(void);
 +bool pc_msu_pack_selftest(void);
 +#endif
+diff --git a/src/platform/qa_observer.h b/src/platform/qa_observer.h
+new file mode 100644
+index 0000000..043facb
+--- /dev/null
++++ b/src/platform/qa_observer.h
+@@ -0,0 +1,14 @@
++#ifndef EB_QA_OBSERVER_H
++#define EB_QA_OBSERVER_H
++#include <stdint.h>
++#include <stdbool.h>
++/* Diagnostics only. Excluded from game state and absent in ordinary builds. */
++#ifdef EB_QA_OBSERVER
++void qa_text_reset(uint16_t window);
++void qa_text_character(uint16_t window, char value);
++bool qa_observation_write(const char *path, unsigned frame);
++#else
++static inline void qa_text_reset(uint16_t window) { (void)window; }
++static inline void qa_text_character(uint16_t window, char value) { (void)window; (void)value; }
++#endif
++#endif
 diff --git a/src/snes/ppu_render.c b/src/snes/ppu_render.c
-index 5fb988b228c4b93f0a2205046c2ffc81fe2b947a..937dbbbd37286deb753084e50611ffb498ec23a0 100644
+index 5fb988b..937dbbb 100644
 --- a/src/snes/ppu_render.c
 +++ b/src/snes/ppu_render.c
 @@ -1,5 +1,6 @@
@@ -8778,7 +9227,7 @@ index 5fb988b228c4b93f0a2205046c2ffc81fe2b947a..937dbbbd37286deb753084e50611ffb4
          PROF_END(obj, prof_obj);
  
 diff --git a/src/tools/gen_struct_info.c b/src/tools/gen_struct_info.c
-index 3564a35eff49c5a00a38fbc063532488ebcaa95e..30b076f4b8eda5d754ff81bd3279de4e462ebab8 100644
+index 3564a35..30b076f 100644
 --- a/src/tools/gen_struct_info.c
 +++ b/src/tools/gen_struct_info.c
 @@ -470,7 +470,9 @@ int main(void) {

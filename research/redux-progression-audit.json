@@ -1,0 +1,1748 @@
+{
+  "ContentId": "maternalbound-redux-897d0083",
+  "DisplayName": "MaternalBound Redux (native development)",
+  "BaseHash": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "ProtectedItems": [
+    1,
+    2,
+    3,
+    6,
+    7,
+    17,
+    26,
+    27,
+    34,
+    35,
+    36,
+    48,
+    54,
+    58,
+    60,
+    61,
+    63,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    85,
+    86,
+    87,
+    88,
+    90,
+    92,
+    93,
+    95,
+    98,
+    99,
+    100,
+    104,
+    105,
+    106,
+    108,
+    125,
+    127,
+    128,
+    130,
+    131,
+    132,
+    133,
+    134,
+    136,
+    138,
+    139,
+    140,
+    141,
+    152,
+    153,
+    157,
+    158,
+    160,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    220,
+    224,
+    225,
+    249,
+    250,
+    252,
+    253
+  ],
+  "ProtectedEnemies": [
+    1,
+    2,
+    10,
+    11,
+    15,
+    16,
+    21,
+    24,
+    26,
+    27,
+    34,
+    37,
+    39,
+    40,
+    41,
+    42,
+    45,
+    46,
+    49,
+    54,
+    64,
+    67,
+    68,
+    73,
+    74,
+    79,
+    83,
+    88,
+    90,
+    93,
+    95,
+    102,
+    110,
+    113,
+    116,
+    124,
+    125,
+    128,
+    129,
+    130,
+    131,
+    134,
+    137,
+    139,
+    140,
+    146,
+    153,
+    159,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    176,
+    178,
+    179,
+    180,
+    181,
+    182,
+    187,
+    190,
+    191,
+    192,
+    194,
+    197,
+    199,
+    200,
+    201,
+    202,
+    203,
+    205,
+    208,
+    209,
+    214,
+    216,
+    218,
+    219,
+    220,
+    221,
+    226,
+    228,
+    229,
+    230
+  ],
+  "SaveStateVersion": 16,
+  "SaveStateCrcPolynomial": 3988292640,
+  "CompiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+  "DialogueSha256": "5B18885E24F78478B9A06A784981ED827012482E62F7C9DDEC761616F057E811",
+  "ConvertedSpans": 7397,
+  "DecodedOperations": 64360,
+  "LiteralScriptedGroups": 45,
+  "ShopRows": 69,
+  "Items": [
+    {
+      "Id": 1,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_07:give_item_to_character_b",
+        "data_23:check_if_character_has_item",
+        "data_54:check_if_character_has_item",
+        "data_65:give_item_to_character_b",
+        "data_65:print_item_name"
+      ]
+    },
+    {
+      "Id": 2,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "battle_text:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 3,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "battle_text:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 6,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_27:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 7,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_27:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 17,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request",
+        "data_31:check_if_character_doesnt_have_item",
+        "data_31:print_item_name"
+      ]
+    },
+    {
+      "Id": 26,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 27,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request"
+      ]
+    },
+    {
+      "Id": 34,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 35,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 36,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_27:check_if_character_has_item",
+        "data_34:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 48,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 54,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_30:give_item_to_character_b",
+        "data_30:print_item_name"
+      ]
+    },
+    {
+      "Id": 58,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_18:print_item_name"
+      ]
+    },
+    {
+      "Id": 60,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 61,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 63,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 70,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 71,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 72,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 73,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 74,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_32:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 75,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_27:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 76,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_30:give_item_to_character_b",
+        "data_30:print_item_name"
+      ]
+    },
+    {
+      "Id": 85,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 86,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 87,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 88,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_31:give_item_to_character_b",
+        "data_31:print_item_name"
+      ]
+    },
+    {
+      "Id": 90,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request",
+        "data_17:print_item_name",
+        "data_18:print_item_name"
+      ]
+    },
+    {
+      "Id": 92,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Timed transformation source or result",
+        "data_18:give_item_to_character_b",
+        "data_18:print_item_name",
+        "data_51:get_buy_price_of_item",
+        "data_51:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 93,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request",
+        "data_17:print_item_name"
+      ]
+    },
+    {
+      "Id": 95,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request",
+        "data_16:print_item_name",
+        "data_17:print_item_name"
+      ]
+    },
+    {
+      "Id": 98,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_17:give_item_to_character_b",
+        "data_17:print_item_name"
+      ]
+    },
+    {
+      "Id": 99,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_52:give_item_to_character_b",
+        "data_52:print_item_name",
+        "data_59:give_item_to_character_b",
+        "data_59:print_item_name",
+        "data_60:print_item_name"
+      ]
+    },
+    {
+      "Id": 100,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_58:give_item_to_character",
+        "data_58:print_item_name"
+      ]
+    },
+    {
+      "Id": 104,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_25:check_if_character_has_item",
+        "data_25:give_item_to_character_b",
+        "data_25:print_item_name"
+      ]
+    },
+    {
+      "Id": 105,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "battle_text:take_item_from_character",
+        "data_61:check_if_character_has_item",
+        "data_61:give_item_to_character"
+      ]
+    },
+    {
+      "Id": 106,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_17:give_item_to_character_b",
+        "data_17:print_item_name"
+      ]
+    },
+    {
+      "Id": 108,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_17:print_item_name"
+      ]
+    },
+    {
+      "Id": 125,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_51:give_item_to_character_b",
+        "data_51:print_item_name"
+      ]
+    },
+    {
+      "Id": 127,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request",
+        "data_17:print_item_name"
+      ]
+    },
+    {
+      "Id": 128,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_58:give_item_to_character",
+        "data_58:print_item_name"
+      ]
+    },
+    {
+      "Id": 130,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_20:print_item_name",
+        "data_24:print_item_name",
+        "data_61:give_item_to_character_b",
+        "data_61:print_item_name"
+      ]
+    },
+    {
+      "Id": 131,
+      "Reasons": [
+        "data_23:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 132,
+      "Reasons": [
+        "data_23:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 133,
+      "Reasons": [
+        "data_23:take_item_from_character",
+        "shops_scarabia:print_item_name"
+      ]
+    },
+    {
+      "Id": 134,
+      "Reasons": [
+        "data_23:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 136,
+      "Reasons": [
+        "data_23:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 138,
+      "Reasons": [
+        "data_23:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 139,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_07:give_item_to_character_b",
+        "data_17:give_item_to_character_b",
+        "data_17:print_item_name",
+        "data_28:print_item_name",
+        "data_40:check_if_character_has_item",
+        "data_40:print_item_name",
+        "data_40:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 140,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request",
+        "data_18:print_item_name",
+        "data_51:get_buy_price_of_item",
+        "data_51:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 141,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_05:give_item_to_character_b",
+        "data_05:print_item_name"
+      ]
+    },
+    {
+      "Id": 152,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_26:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 153,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_37:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 157,
+      "Reasons": [
+        "data_23:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 158,
+      "Reasons": [
+        "Key-item category"
+      ]
+    },
+    {
+      "Id": 160,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_58:give_item_to_character_b",
+        "data_58:print_item_name"
+      ]
+    },
+    {
+      "Id": 162,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_05:print_item_name"
+      ]
+    },
+    {
+      "Id": 163,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_51:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 164,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_29:take_item_from_character",
+        "data_43:give_item_to_character_b",
+        "data_43:print_item_name",
+        "data_58:give_item_to_character_b",
+        "data_58:print_item_name",
+        "data_58:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 165,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_54:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 166,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request",
+        "Key-item category",
+        "data_18:give_item_to_character_b",
+        "data_18:print_item_name"
+      ]
+    },
+    {
+      "Id": 167,
+      "Reasons": [
+        "Key-item category"
+      ]
+    },
+    {
+      "Id": 168,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "Timed transformation source or result",
+        "data_17:give_item_to_character_b",
+        "data_17:print_item_name"
+      ]
+    },
+    {
+      "Id": 169,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "Timed transformation source or result"
+      ]
+    },
+    {
+      "Id": 170,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_29:give_item_to_character_b",
+        "data_29:print_item_name",
+        "data_56:check_if_character_has_item",
+        "data_56:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 171,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_33:print_item_name",
+        "data_33:take_item_from_character",
+        "data_54:give_item_to_character_b",
+        "data_54:print_item_name"
+      ]
+    },
+    {
+      "Id": 172,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_25:give_item_to_character_b",
+        "data_25:print_item_name",
+        "data_27:print_item_name"
+      ]
+    },
+    {
+      "Id": 173,
+      "Reasons": [
+        "Key-item category"
+      ]
+    },
+    {
+      "Id": 174,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_34:give_item_to_character_b",
+        "data_34:print_item_name",
+        "data_60:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 175,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_20:print_item_name",
+        "data_22:give_item_to_character_b",
+        "data_22:print_item_name",
+        "data_24:give_item_to_character_b",
+        "data_24:print_item_name",
+        "data_28:print_item_name",
+        "data_42:print_item_name",
+        "data_43:print_item_name",
+        "data_50:check_if_character_has_item",
+        "data_50:give_item_to_character_b",
+        "data_50:print_item_name",
+        "data_50:take_item_from_character",
+        "data_57:print_item_name",
+        "data_59:print_item_name",
+        "data_60:take_item_from_character",
+        "data_66:print_item_name"
+      ]
+    },
+    {
+      "Id": 176,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_38:check_if_character_has_item",
+        "data_38:give_item_to_character_b",
+        "data_38:print_item_name",
+        "data_38:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 177,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_22:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 178,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_26:give_item_to_character_b",
+        "data_26:print_item_name",
+        "data_26:take_item_from_character",
+        "data_40:give_item_to_character_b",
+        "data_40:print_item_name"
+      ]
+    },
+    {
+      "Id": 179,
+      "Reasons": [
+        "Key-item category"
+      ]
+    },
+    {
+      "Id": 180,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_52:give_item_to_character_b",
+        "data_52:print_item_name",
+        "data_52:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 181,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_39:give_item_to_character_b",
+        "data_39:print_item_name"
+      ]
+    },
+    {
+      "Id": 182,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_16:give_item_to_character_b",
+        "data_16:print_item_name",
+        "data_26:print_item_name",
+        "data_26:take_item_from_character",
+        "data_44:give_item_to_character_b",
+        "data_44:print_item_name"
+      ]
+    },
+    {
+      "Id": 183,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_26:give_item_to_character_b",
+        "data_26:print_item_name",
+        "data_39:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 184,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_20:print_item_name",
+        "data_22:give_item_to_character_b",
+        "data_22:print_item_name",
+        "data_24:give_item_to_character_b",
+        "data_33:print_item_name",
+        "data_39:give_item_to_character_b",
+        "data_39:print_item_name",
+        "data_44:check_if_character_has_item",
+        "data_44:take_item_from_character",
+        "data_52:print_item_name"
+      ]
+    },
+    {
+      "Id": 185,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_45:give_item_to_character_b",
+        "data_45:print_item_name"
+      ]
+    },
+    {
+      "Id": 186,
+      "Reasons": [
+        "Key-item category"
+      ]
+    },
+    {
+      "Id": 187,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_17:give_item_to_character_b",
+        "data_26:print_item_name",
+        "data_26:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 188,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_38:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 189,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "battle_text:print_item_name",
+        "data_27:give_item_to_character_b",
+        "data_27:print_item_name"
+      ]
+    },
+    {
+      "Id": 190,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request"
+      ]
+    },
+    {
+      "Id": 192,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_06:give_item_to_character_b",
+        "data_06:print_item_name"
+      ]
+    },
+    {
+      "Id": 193,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_37:take_item_from_character",
+        "data_42:give_item_to_character_b",
+        "data_42:print_item_name"
+      ]
+    },
+    {
+      "Id": 194,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 195,
+      "Reasons": [
+        "data_23:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 196,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_16:give_item_to_character_b",
+        "data_16:print_item_name",
+        "data_31:give_item_to_character_b",
+        "data_31:print_item_name",
+        "data_32:print_item_name",
+        "data_32:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 197,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_22:check_if_character_has_item",
+        "data_22:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 201,
+      "Reasons": [
+        "Key-item category"
+      ]
+    },
+    {
+      "Id": 202,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_29:give_item_to_character_b",
+        "data_29:print_item_name",
+        "data_52:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 203,
+      "Reasons": [
+        "Key-item category",
+        "ShopSys:give_item_to_character",
+        "ShopSys:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 204,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_39:give_item_to_character_b",
+        "data_39:print_item_name"
+      ]
+    },
+    {
+      "Id": 205,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_25:give_item_to_character_b",
+        "data_25:print_item_name",
+        "data_25:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 206,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_42:give_item_to_character_b",
+        "data_42:print_item_name",
+        "data_52:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 207,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_45:give_item_to_character_b",
+        "data_45:print_item_name"
+      ]
+    },
+    {
+      "Id": 208,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_45:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 209,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_59:give_item_to_character_b",
+        "data_59:print_item_name"
+      ]
+    },
+    {
+      "Id": 210,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_26:give_item_to_character_b",
+        "data_26:print_item_name"
+      ]
+    },
+    {
+      "Id": 211,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_58:give_item_to_character_b",
+        "data_58:print_item_name",
+        "data_58:take_item_from_character",
+        "data_61:print_item_name"
+      ]
+    },
+    {
+      "Id": 220,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_07:give_item_to_character_b",
+        "data_25:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 224,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Early weapon, Casey bat exclusion or dynamic Monkey Cave request",
+        "data_17:give_item_to_character_b",
+        "data_17:print_item_name"
+      ]
+    },
+    {
+      "Id": 225,
+      "Reasons": [
+        "data_07:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 249,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_37:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 250,
+      "Reasons": [
+        "Key-item category"
+      ]
+    },
+    {
+      "Id": 252,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "data_37:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 253,
+      "Reasons": [
+        "Conservative original-story dependency",
+        "Key-item category",
+        "data_07:give_item_to_character_b",
+        "data_50:check_if_character_has_item"
+      ]
+    }
+  ],
+  "Enemies": [
+    {
+      "Id": 1,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 434: data_23",
+        "Redux scripted battle 436: data_23",
+        "Redux scripted battle 460: data_23"
+      ]
+    },
+    {
+      "Id": 2,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 460: data_23"
+      ]
+    },
+    {
+      "Id": 10,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 457: data_23"
+      ]
+    },
+    {
+      "Id": 11,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 438: data_65"
+      ]
+    },
+    {
+      "Id": 15,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 443: data_65"
+      ]
+    },
+    {
+      "Id": 16,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 444: data_65"
+      ]
+    },
+    {
+      "Id": 21,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 472: data_23"
+      ]
+    },
+    {
+      "Id": 24,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 435: data_23"
+      ]
+    },
+    {
+      "Id": 26,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 454: data_23"
+      ]
+    },
+    {
+      "Id": 27,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 471: data_23"
+      ]
+    },
+    {
+      "Id": 34,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 37,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 450: data_23"
+      ]
+    },
+    {
+      "Id": 39,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 465: data_23"
+      ]
+    },
+    {
+      "Id": 40,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 463: data_23"
+      ]
+    },
+    {
+      "Id": 41,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 455: data_23"
+      ]
+    },
+    {
+      "Id": 42,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 459: data_23"
+      ]
+    },
+    {
+      "Id": 45,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 437: data_23",
+        "Redux scripted battle 456: data_23"
+      ]
+    },
+    {
+      "Id": 46,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 469: data_23"
+      ]
+    },
+    {
+      "Id": 49,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 467: data_23, data_65"
+      ]
+    },
+    {
+      "Id": 54,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 451: data_23"
+      ]
+    },
+    {
+      "Id": 64,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 431: data_23"
+      ]
+    },
+    {
+      "Id": 67,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 466: data_65"
+      ]
+    },
+    {
+      "Id": 68,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 466: data_65"
+      ]
+    },
+    {
+      "Id": 73,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 468: data_65"
+      ]
+    },
+    {
+      "Id": 74,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 466: data_65"
+      ]
+    },
+    {
+      "Id": 79,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 83,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 471: data_23"
+      ]
+    },
+    {
+      "Id": 88,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 445: data_65"
+      ]
+    },
+    {
+      "Id": 90,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 457: data_23"
+      ]
+    },
+    {
+      "Id": 93,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 456: data_23"
+      ]
+    },
+    {
+      "Id": 95,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 469: data_23"
+      ]
+    },
+    {
+      "Id": 102,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 458: data_23"
+      ]
+    },
+    {
+      "Id": 110,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 453: data_23"
+      ]
+    },
+    {
+      "Id": 113,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 447: data_65"
+      ]
+    },
+    {
+      "Id": 116,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 470: data_23"
+      ]
+    },
+    {
+      "Id": 124,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 440: data_65"
+      ]
+    },
+    {
+      "Id": 125,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 442: data_65"
+      ]
+    },
+    {
+      "Id": 128,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 464: data_23"
+      ]
+    },
+    {
+      "Id": 129,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 431: data_23",
+        "Redux scripted battle 433: data_23"
+      ]
+    },
+    {
+      "Id": 130,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 449: data_23"
+      ]
+    },
+    {
+      "Id": 131,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 448: data_23"
+      ]
+    },
+    {
+      "Id": 134,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 431: data_23",
+        "Redux scripted battle 432: data_23"
+      ]
+    },
+    {
+      "Id": 137,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 461: data_23"
+      ]
+    },
+    {
+      "Id": 139,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 446: data_65"
+      ]
+    },
+    {
+      "Id": 140,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 441: data_23"
+      ]
+    },
+    {
+      "Id": 146,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 462: data_23"
+      ]
+    },
+    {
+      "Id": 153,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 439: data_65"
+      ]
+    },
+    {
+      "Id": 159,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 436: data_23"
+      ]
+    },
+    {
+      "Id": 169,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 170,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 171,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 172,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 173,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 174,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 176,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 178,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 179,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 180,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 181,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 182,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 187,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 190,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 191,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 192,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 194,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 197,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 199,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 200,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 201,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 202,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 203,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 205,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 208,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 209,
+      "Reasons": [
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 450: data_23"
+      ]
+    },
+    {
+      "Id": 214,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 474: data_23"
+      ]
+    },
+    {
+      "Id": 216,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 475: data_23"
+      ]
+    },
+    {
+      "Id": 218,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 475: data_23"
+      ]
+    },
+    {
+      "Id": 219,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 220,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 221,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 226,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 482: data_65"
+      ]
+    },
+    {
+      "Id": 228,
+      "Reasons": [
+        "Boss/death-sound flag",
+        "Conservative original scripted-battle dependency",
+        "Redux scripted battle 452: data_23"
+      ]
+    },
+    {
+      "Id": 229,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    },
+    {
+      "Id": 230,
+      "Reasons": [
+        "Boss/death-sound flag"
+      ]
+    }
+  ],
+  "Status": "Development content-specific preservation policy; generator validation pending",
+  "Limits": [
+    "No new item order or world topology is generated.",
+    "No full randomized playthrough verified.",
+    "Pinned source revision only; a changed content pack requires a new audit."
+  ]
+}

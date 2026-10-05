@@ -3,14 +3,16 @@
 **EarthBound for Windows, with a native MaternalBound Redux adaptation, widescreen and ultrawide scenery, 1080p–4K output, MSU music, PC controls, save recovery and Story Shuffle v3.**
 
 > [!WARNING]
-> **Current release: `v0.5.0-redux-dev.2`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **Current release: `v0.5.0-redux-dev.3`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
 The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. Both the original and the pinned Redux packs have content-specific protection policies; unknown packs cannot be randomized.
 
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio or saves. The documentation includes clearly labeled development screenshots. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.2) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+[Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.3) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+
+The third Redux development build fixes stranded empty Talk/Check windows, cutscene masks covering the Starman Junior battle UI, cold quick-save restores during stat-growth messages, and Redux story launch/save-backup handling. It also reads the relocated PSI-name table correctly and rebuilds the PSI menu in front of the pause menu when loading an older checkpoint. Actual Lifeup input heals Ness and consumes 5 PP. Copied player saves passed the Starman fight, victory and following Buzz Buzz dialogue, plus empty Talk/Check → natural Onett combat → victory and roaming, with ordinary inputs. [Jev-assisted development testing](JEV-QA.md) is bounded and isolated from player saves; it has not completed the whole game.
 
 Invited testers need repository access or a ZIP supplied by the project owner. The repository and combined binary releases currently remain private while native-engine redistribution terms are clarified. Private visibility is a precaution, not a redistribution license.
 
@@ -69,6 +71,8 @@ The player-facing setup separates code/tools from player-supplied game data. Set
 6. When setup finishes, choose **Play EarthBound**. The Redux package identifies itself as a development profile. **Redux Port → Use original EarthBound** returns to the original story without changing either edition's saves.
 
 The application accepts the clean 3 MiB USA ROM, with or without a 512-byte copier header. A different revision or modified ROM is rejected before extraction.
+
+For dev.2 → dev.3, extract to a fresh folder and build Redux from your ROM. Then choose **Redux Port → Import dev.2 story saves** and select the previous installation folder. This checked, names-only update copies phone and format-16 quick saves into empty destination saves; it preserves the previous installation and refuses other content pairs. Randomizer seeds keep their original content and save folders.
 
 Switching editions selects a separate adventure; it does not convert an existing playthrough. Normal phone saves are the migration path between engine builds. Development quick saves require a compatible engine and state format.
 

@@ -107,7 +107,25 @@ def convert_game_tables(doc, rom: bytes, assets: dict, relocation: dict, bridge:
                 raise ConversionError("NPC table pointer no longer has its pinned assembly layout")
             source = (int.from_bytes(rom[at+1:at+3],"little") |
                       int.from_bytes(rom[at+6:at+8],"little") << 16)-0xC00000
+        if entry.name == "psi_name_table":
+            # ExpandedTablesModule frees the original name table and patches
+            # GET_PSI_NAME's split immediate pointer. The freed bytes may now
+            # contain scripts, so the dump configuration is not its address.
+            at = 0x1C423
+            code = rom[at:at+10]
+            if (len(code) != 10 or code[0] != 0xA9 or code[3] != 0x85 or
+                    code[5] != 0xA9 or code[8] != 0x85 or code[9] != code[4]+2):
+                raise ConversionError("PSI name loader differs from its pinned pointer layout")
+            pointer = int.from_bytes(code[1:3], "little") | int.from_bytes(code[6:8], "little") << 16
+            source = pointer-0xC00000 if pointer >= 0xC00000 else pointer
+            if source < 0 or source+length > len(rom):
+                raise ConversionError("Relocated PSI names exceed the compiled ROM")
         raw = bytearray(rom[source:source+length])
+        if entry.name == "psi_name_table":
+            for row in range(length//25):
+                text = raw[row*25:(row+1)*25].split(b"\0", 1)
+                if len(text) != 2 or not text[0] or any(c < 0x50 or c > 0xAE for c in text[0]):
+                    raise ConversionError(f"Invalid relocated PSI name {row+1}")
         stride, fields = layouts[entry.name]
         if source < 0 or len(raw) != length or length % stride:
             raise ConversionError(f"Invalid table bounds: {name}")

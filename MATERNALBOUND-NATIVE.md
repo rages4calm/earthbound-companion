@@ -8,7 +8,9 @@ Companion is adapting MaternalBound Redux into the BrianPugh-derived native x64 
 
 This checkpoint targets the active upstream source at `897d00833f4a08a0a92f106abf631629a6a6a041`, compiled locally with CoilSnake into a verified 6 MiB ROM. It is not the official v1.1 release. The v1.1 BPS was separately checksum-verified and tested during initial extraction research; supporting that release requires a separate conversion map and validation record.
 
-The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current runtime checkpoint: `v0.5.0-redux-dev.2`.**
+The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current runtime checkpoint: `v0.5.0-redux-dev.3`.**
+
+The latest fixes resolve the relocated PSI-name table, PSI-window ordering and old-menu repaint on cold restore, an empty Talk/Check window leaking into later combat, Redux cutscene letterboxes overwriting battle masks, a cold-restore level-up cache crash, an attacker-name buffer overread, and the Companion's Redux story backup/launch path. The copied Starman Junior save passes through victory, level-ups and Buzz Buzz dialogue back to roaming. Both the native B status action and the quick Talk/Check action are covered. Repeated empty checks → X leave only the command menu. An ordinary-input empty check → natural Onett battle → victory/roaming also passes; a production render shows the ghost box absent. This is targeted evidence, not a full story playthrough. See [JEV-QA.md](JEV-QA.md) and [validation/](validation/).
 
 ## Implemented development coverage
 
@@ -58,12 +60,17 @@ These are real renders from locally supplied game data. They show Mom's opening 
 ![Native Jeff Tools menu](docs/images/native-redux-tools.png)
 ![Native expanded equipment preview](docs/images/native-redux-equipment.png)
 ![Native cast sequence after a cold save restore](docs/images/native-redux-cast.png)
+![Corrected Lifeup menu restored from an older player checkpoint](docs/images/native-redux-lifeup-dev3.png)
+![Corrected recovery PSI names in a prepared combat fixture](docs/images/native-redux-battle-psi-dev3.png)
+![Ordinary Onett combat after an empty Talk/Check, without the ghost window](docs/images/native-redux-check-combat-dev3.png)
+
+The dev.3 PSI captures show a copied player menu and a separately prepared combat fixture. They establish corrected names and window ordering, not later-story coverage. The corrected pack differs from dev.2 only in the 425-byte PSI-name asset; its new content hash keeps seeds separate. The launcher provides a checked dev.2 story import into an empty dev.3 save folder.
 
 Quick-save format 16 now saves cast/credits continuation fields and reconstructs pending drawing pointers. Older development quick-saves require their matching executable; phone saves remain the migration path. The tests use isolated save folders. Installing the tested runtime was a separate backed-up step; protected owner data, saves and preferences were hash-checked unchanged.
 
 ## Reproducing development conversion
 
-The player package supplies `redux-setup.exe`; **Redux Port → Build Redux test edition** needs your clean USA ROM and an Internet connection for the pinned source download. It creates a separate profile and keeps normal and randomized saves apart. The helper passed with only Windows system directories on PATH and produces pack SHA-256 `62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2`. Compiled ROM SHA-256 is `C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB`.
+The player package supplies `redux-setup.exe`; **Redux Port → Build Redux test edition** needs your clean USA ROM and an Internet connection for the pinned source download. It creates a separate profile and keeps normal and randomized saves apart. The helper passed with only Windows system directories on PATH and produces pack SHA-256 `ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3`. Compiled ROM SHA-256 is `C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB`.
 
 The source-mode equivalent is `scripts/build_redux_profile.py`. Use `scripts/redux_story_walk_qa.py` with `--native-exe`, `--assets` and a fresh `--scratch` directory to reproduce the normal-button opening through Mom's clothes-change event and initial outdoor movement. `--selftest-screen-transitions` runs the 21 real transition-step checks on either edition. Use `scripts/redux_audio_qa.py` with the installed soundtrack, checksum manifest and a fresh scratch directory to reproduce the native MSU transition and loop/end checks. Use `scripts/audit_redux_assembly.py` to regenerate the excluded-span ledger from the matching source and dialogue report. The standalone entry point/spec are `scripts/redux_setup_entry.py` and `scripts/redux_setup.spec`. Source archive SHA-256 is `DB4E9FB842741FBB2671CD4AF119237442F5AE943ABF765F5D4C79852C856796`. Setup detects the actual IPS header of upstream `FixedPSIAnims.bps`, verifies the expanded base, and normalizes CCS line endings only when the result matches the audited checksum. Successful builds remove generated ROMs and duplicate source; failures retain separate diagnostics and cannot overwrite existing profiles.
 

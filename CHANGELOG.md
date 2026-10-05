@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0-redux-dev.3 - PSI names, combat UI and save-restore fixes
+
+- Read the PSI-name table from CoilSnake's patched assembly pointer. The former fixed address held unrelated script bytes, producing names such as `103`. Validate the pointer and names during conversion.
+- Recreate the PSI list in front of the pause menu and repaint older format-16 PSI-menu checkpoints after loading. Lifeup heals Ness and spends 5 PP through ordinary inputs.
+- Add a checked dev.2 → dev.3 story-save importer for the exact names-only content change. Require empty destination saves, preserve the previous installation and reject other content pairs; randomizer seeds remain on their original content.
+- Apply Redux's delayed Talk/Check window creation: empty space no longer leaves an invisible window behind later battle text, and the removed quick-check sound stays removed.
+- Suspend cutscene letterbox updates during battles. Repair the distinctive bad masks in older Redux quick saves without restarting the fight or changing progression.
+- Reload the stat-growth asset cache when resuming between level-up messages; fix an attacker-name stack-buffer overread with six-character Redux names.
+- Fix managed Redux story backup identity and use one production launch path for story and seed sessions, covered by launcher regression checks.
+- Add optional structured QA observations and a bounded Jev runner. Actual copied Starman combat, level-ups and post-fight dialogue return to roaming; normal NPC conversation and empty Talk/Check → natural Onett combat/victory also pass. Player and observer state match at 66 combined checkpoints. Full story and randomized playthroughs remain unverified.
+
 ## 0.5.0-redux-dev.2 - audio, door timing and gameplay checks
 
 - Reviewed README, credits, setup, HD/widescreen, randomizer descriptions and source/license status against the current build. Recorded the retained native foundation and upstream license review; private visibility is explicitly a precaution, not permission to distribute.

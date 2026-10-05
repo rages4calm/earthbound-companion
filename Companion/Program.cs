@@ -7,6 +7,8 @@ static class Program {
  [STAThread]static void Main(string[] args){
   ApplicationConfiguration.Initialize();
   int dataRoot=Array.IndexOf(args,"--data-root");if(dataRoot>=0){if(dataRoot+1>=args.Length)throw new ArgumentException("Supply an isolated data directory.");Settings.OverrideRoot=Path.GetFullPath(args[dataRoot+1]);}
+  int importRedux=Array.IndexOf(args,"--import-redux-story");if(importRedux>=0){try{if(importRedux+1>=args.Length)throw new ArgumentException("Supply the previous dev.2 installation folder.");int count=ReduxStoryUpgrade.Import(args[importRedux+1]);Console.WriteLine($"Imported {count} Redux story save files. Previous saves and seeds are unchanged.");}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
+  int launcherProfileTest=Array.IndexOf(args,"--launcher-profile-test");if(launcherProfileTest>=0){try{if(launcherProfileTest+3>=args.Length)throw new ArgumentException("Supply a Redux pack, installed Game directory and new scratch directory.");LauncherProfileTests.Run(args[launcherProfileTest+1],args[launcherProfileTest+2],args[launcherProfileTest+3]);}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
   int profileTest=Array.IndexOf(args,"--profile-test");if(profileTest>=0){try{if(profileTest+2>=args.Length)throw new ArgumentException("Supply a Redux pack and isolated output directory.");ReduxProfileService.Test(args[profileTest+1],args[profileTest+2]);}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
   int setupRedux=Array.IndexOf(args,"--setup-redux");if(setupRedux>=0){try{if(setupRedux+1>=args.Length)throw new ArgumentException("Supply a clean EarthBound (USA) ROM path.");var report=new Progress<SetupProgress>(p=>Console.WriteLine(p.Detail));SetupService.InstallAsync(args[setupRedux+1],args.Contains("--with-msu"),report).GetAwaiter().GetResult();ReduxProfileService.BuildAsync(args[setupRedux+1],report).GetAwaiter().GetResult();ReduxProfileService.Select(Settings.Load());Console.WriteLine("Redux development profile built. Full playthrough remains unverified.");}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
   int contentTest=Array.IndexOf(args,"--randomizer-content-test");if(contentTest>=0){try{if(contentTest+2>=args.Length)throw new ArgumentException("Supply a content pack and isolated output directory.");ContentRandomizerTests.Run(args[contentTest+1],args[contentTest+2]);}catch(Exception e){Console.Error.WriteLine(e.ToString());Environment.ExitCode=1;}return;}
@@ -186,13 +188,8 @@ sealed partial class MainForm : Form {
  void Resume(){File.WriteAllText(Settings.PathTo("settings.applied"),"resume");settingsRequested=false;}
  void Launch(bool resume,SeedRecord? seed=null){Try(()=>{
   if(Running||generating)return;
-  if(seed!=null)StoryShuffle.Verify(seed);else{if(!File.Exists(settings.Pak))throw new IOException("Game data is missing. Choose a valid native asset pack.");settings.ValidatePak();}
-  try {
-  Settings.SessionDirectory=seed?.Session;activeSeed=seed;settings.Save();Settings.Backup(true);
-  foreach(var marker in new[]{"settings.request","settings.applied"})if(File.Exists(Settings.PathTo(marker)))File.Delete(Settings.PathTo(marker));
-  var p=new ProcessStartInfo(Path.Combine(Settings.BaseGame,"earthbound.exe")){WorkingDirectory=Settings.Game,UseShellExecute=false,CreateNoWindow=true};p.ArgumentList.Add("--session-dir");p.ArgumentList.Add(Settings.Game);p.ArgumentList.Add("--assets");p.ArgumentList.Add(seed?.Pak??settings.Pak);p.ArgumentList.Add("--log-file");p.ArgumentList.Add(Path.Combine(Settings.Game,"game.log"));if(ReduxProfileService.AllowDevelopmentLaunch(settings))p.ArgumentList.Add("--allow-redux-development");if(resume)p.ArgumentList.Add("--load-state");
-  game=Process.Start(p)??throw new IOException("Game did not start.");
-  }catch{Settings.SessionDirectory=null;activeSeed=null;throw;}
+  try {game=GameLaunch.Start(settings,resume,seed);activeSeed=seed;}
+  catch{Settings.SessionDirectory=null;activeSeed=null;throw;}
   Notify(seed==null?"Game running. F1 opens these settings; F9 pauses.":$"Story Shuffle running: {seed.Seed}. F1 opens settings; saves stay with this seed.");ShowPage(seed==null?"Solo Play":"Randomizer");
  });}
  void ImportMod(){using var d=new OpenFileDialog(){Filter="EarthBound profiles (*.ebmod.json)|*.ebmod.json|JSON files (*.json)|*.json"};if(d.ShowDialog(this)!=DialogResult.OK)return;Try(()=>{settings.ImportProfile(d.FileName);ShowPage(current);Notify("Profile imported. Apply settings to enable it.");});}

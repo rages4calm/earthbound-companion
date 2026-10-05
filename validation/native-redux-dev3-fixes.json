@@ -1,0 +1,102 @@
+{
+  "Passed": true,
+  "NativePin": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "NativePatchSha256": "7f366c77e13ff31b958ebbaf598619a9d0436ea4de5186f92e48594409a2bfac",
+  "CleanPatchApplyCheck": true,
+  "PlayerEngineSha256": "30b248784bc27c44bbb5eceb5462864742bf5a1496e5a72cd625a7f3d407338b",
+  "ObserverEngineSha256": "2871c6b70c62a184fafe24bfcb643fbe29a4f6f09e81bebd5540737a3ff0ff0b",
+  "ReduxPackSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "TalkCheckToPauseMenu": [
+    {
+      "version": "before",
+      "case": "check-X",
+      "windows": [
+        1,
+        0
+      ],
+      "passed": false,
+      "ordinaryInputsOnly": true
+    },
+    {
+      "version": "before",
+      "case": "native-B-X",
+      "windows": [
+        10,
+        0
+      ],
+      "passed": false,
+      "ordinaryInputsOnly": true
+    },
+    {
+      "version": "before",
+      "case": "repeated-check-X",
+      "windows": [
+        1,
+        0
+      ],
+      "passed": false,
+      "ordinaryInputsOnly": true
+    },
+    {
+      "version": "after",
+      "case": "check-X",
+      "windows": [
+        0
+      ],
+      "passed": true,
+      "ordinaryInputsOnly": true
+    },
+    {
+      "version": "after",
+      "case": "native-B-X",
+      "windows": [
+        10,
+        0
+      ],
+      "passed": true,
+      "ordinaryInputsOnly": true
+    },
+    {
+      "version": "after",
+      "case": "repeated-check-X",
+      "windows": [
+        0
+      ],
+      "passed": true,
+      "ordinaryInputsOnly": true
+    }
+  ],
+  "JevSequences": [
+    {
+      "stopReason": "target_conversation_completed",
+      "requests": 6,
+      "ordinaryInputsOnly": true,
+      "seededFixture": false,
+      "fullPlaythroughVerified": false,
+      "nativeExeSha256": "35600b15aa35ab68d4427b89eb597f3b7f9de6349791ec78ff62ed1d0ecb4e2f",
+      "assetsSha256": "62ba3d70b37c95812bc742b40f1f599b142263ffb39f3dd949ddc66aa7e246c2",
+      "case": "onett-npc155-v3"
+    },
+    {
+      "stopReason": "battle_completed",
+      "requests": 34,
+      "ordinaryInputsOnly": true,
+      "seededFixture": false,
+      "fullPlaythroughVerified": false,
+      "nativeExeSha256": "35600b15aa35ab68d4427b89eb597f3b7f9de6349791ec78ff62ed1d0ecb4e2f",
+      "assetsSha256": "62ba3d70b37c95812bc742b40f1f599b142263ffb39f3dd949ddc66aa7e246c2",
+      "case": "starman-window-fix-v4"
+    },
+    {
+      "stopReason": "healing_completed",
+      "requests": 3,
+      "ordinaryInputsOnly": true,
+      "seededFixture": false,
+      "fullPlaythroughVerified": false,
+      "nativeExeSha256": "4edc6fec024bc99019ce1e94160e592cd1f32a900bcdbc00dd83248e2615c9df",
+      "assetsSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "case": "psi-lifeup-v2"
+    }
+  ],
+  "FullPlaythroughVerified": false
+}

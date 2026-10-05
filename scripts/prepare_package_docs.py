@@ -7,7 +7,7 @@ from urllib.parse import quote, urlsplit
 DOCUMENTS = {
     name: name for name in (
         "README.md", "RANDOMIZER.md", "CREDITS.md", "LEGAL.md",
-        "MATERNALBOUND-NATIVE.md", "UPSTREAM.md", "LICENSE.md", "RESEARCH.md"
+        "MATERNALBOUND-NATIVE.md", "UPSTREAM.md", "LICENSE.md", "RESEARCH.md", "JEV-QA.md"
     )
 }
 DOCUMENTS["distribution/PACKAGE-NOTES.md"] = "PACKAGE-NOTES.md"
@@ -22,6 +22,8 @@ def prepare(source: Path, destination: Path) -> list[Path]:
     for original, filename in DOCUMENTS.items():
         path = source / original
         contents = path.read_text(encoding="utf-8-sig")
+        if len(contents.strip()) < 100:
+            raise ValueError(f"Documentation is empty or truncated: {original}")
         def target(value: str, image: bool = False) -> str:
             parsed = urlsplit(value)
             if not value or value.startswith("#") or parsed.scheme or parsed.netloc:

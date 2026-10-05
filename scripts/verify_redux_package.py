@@ -63,7 +63,7 @@ def main():
         run('setup',['--setup-redux',str(headered),'--with-msu'])
         tests.append('Self-contained first-run setup with headered owner ROM and online pinned Redux source')
         pack=app/'Profiles/maternalbound-redux-897d0083/assets.pak'
-        if sha(pack)!='62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2':raise ValueError('Unexpected Redux pack.')
+        if sha(pack)!='ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3':raise ValueError('Unexpected Redux pack.')
         if sha(app/'Game/assets.pak')!='4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B':raise ValueError('Unexpected original pack.')
         settings=json.loads((app/'UserData/settings.json').read_text())
         if not settings['ReduxDevelopmentEnabled'] or Path(settings['AssetPack']).resolve()!=pack:raise ValueError('Redux was not selected after setup.')

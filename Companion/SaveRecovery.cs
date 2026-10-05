@@ -17,8 +17,16 @@ static class SaveRecovery {
  static bool IsSave(string name)=>name=="earthbound.srm"||Regex.IsMatch(name,@"\Aquicksave_[1-5]\.bin\.[01]\z",RegexOptions.CultureInvariant);
  internal static SaveSnapshot Snapshot(string session) {
   string id,assets;
-  if(Same(session,Settings.BaseGame)){id="story";assets=Settings.Load().Pak;}
-  else {
+  if(Same(session,Settings.BaseGame)){id="story";assets=Path.Combine(Settings.BaseGame,"assets.pak");}
+  else if(Same(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetFullPath(session))!)!,Path.Combine(Settings.User,"ContentProfiles"))) {
+   string hash=Path.GetFileName(Path.GetDirectoryName(Path.GetFullPath(session))!);
+   if(hash.Length!=64||!hash.All(Uri.IsHexDigit)||!Same(session,Path.Combine(Settings.User,"ContentProfiles",hash,"Game")))
+    throw new InvalidDataException("Choose a managed content-profile story save folder.");
+   assets=Settings.Load().Pak;
+   if(!StoryShuffle.HashFile(assets).Equals(hash,StringComparison.OrdinalIgnoreCase))
+    throw new InvalidDataException("Select this content profile before backing up or restoring its story saves.");
+   id="content:"+hash.ToLowerInvariant();
+  } else {
    var seed=StoryShuffle.Read(Path.GetDirectoryName(Path.GetFullPath(session))!);
    if(!Same(session,seed.Session)||!Same(Path.GetDirectoryName(seed.Folder)!,StoryShuffle.Library))throw new InvalidDataException("Choose a managed story or seed save folder.");
    id=seed.Id;assets=seed.Pak;
