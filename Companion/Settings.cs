@@ -13,7 +13,7 @@ public sealed class Settings {
  public bool HqAudio{get;set;}=true;public int Volume{get;set;}=80;public int MusicVolume{get;set;}=75;
  public int Sprint{get;set;}=1;public bool InstantText{get;set;}=true;
  public bool NoHomesickness{get;set;}=true;public bool NoDadCalls{get;set;}
- public int Exp{get;set;}=1;public int Money{get;set;}=1;
+ public int Exp{get;set;}=1;public int Money{get;set;}=1;public int FastForward{get;set;}=3;
  public int QuickSlot{get;set;} public int Deadzone{get;set;}=8000;
  public int[] Keys{get;set;}=[40,29,22,225,27,26,40,229,82,81,80,79,43,63,64,68,66,69,60,58,6];
  public int[] Buttons{get;set;}=[6,1,3,2,0,10,6,4,11,12,13,14,-1,-1,-1,-1,-1,-1,-1,-1,8];
@@ -55,7 +55,7 @@ public sealed class Settings {
  public void Validate(){
   Width=Math.Clamp(Width,640,7680);Height=Math.Clamp(Height,480,4320);Filter=Math.Clamp(Filter,0,2);Aspect=Math.Clamp(Aspect,0,2);
   Volume=Math.Clamp(Volume,0,100);MusicVolume=Math.Clamp(MusicVolume,0,100);Sprint=Math.Clamp(Sprint,0,2);
-  Exp=Math.Clamp(Exp,1,4);Money=Math.Clamp(Money,1,4);QuickSlot=Math.Clamp(QuickSlot,0,4);Deadzone=Math.Clamp(Deadzone,2000,30000);
+  Exp=Math.Clamp(Exp,1,16);Money=Math.Clamp(Money,1,16);FastForward=Math.Clamp(FastForward,2,16);QuickSlot=Math.Clamp(QuickSlot,0,4);Deadzone=Math.Clamp(Deadzone,2000,30000);
   var defaults=new Settings();if(Keys==null||Keys.Length!=21)Keys=defaults.Keys;if(Buttons==null||Buttons.Length!=21)Buttons=defaults.Buttons;
   for(int i=0;i<21;i++){Keys[i]=Math.Clamp(Keys[i],0,511);Buttons[i]=Math.Clamp(Buttons[i],-1,16);}
  }
@@ -77,7 +77,7 @@ public sealed class Settings {
   b[7]=(byte)(NintendoFaceLabels?1:0);
   b[9]=(byte)(Scanlines?1:0);b[10]=(byte)(Filter==1?1:0);b[11]=(byte)(TiltShift?1:0);b[12]=(byte)(WideFov?1:0);b[13]=(byte)(ColorGrading?1:0);b[14]=(byte)Aspect;
   Atomic(Path.Combine(directory,"settings.dat"),b);
-  var ini=new StringBuilder($"# Managed by EarthBound Companion\ncompanion=1\nwidth={Width}\nheight={Height}\nfullscreen={(Fullscreen?1:0)}\ninteger_scale={(IntegerScale?1:0)}\nfilter={Filter}\nvolume={Volume}\nmusic_volume={MusicVolume}\ninstant_text={(InstantText?1:0)}\nno_homesickness={(NoHomesickness?1:0)}\nno_dad_calls={(NoDadCalls?1:0)}\nexp_multiplier={Exp}\nmoney_multiplier={Money}\nquick_slot={QuickSlot}\ndeadzone={Deadzone}\nmsu_dir={Path.GetFullPath(Path.Combine(Root,"msu"))}\n");
+  var ini=new StringBuilder($"# Managed by EarthBound Companion\ncompanion=1\nwidth={Width}\nheight={Height}\nfullscreen={(Fullscreen?1:0)}\ninteger_scale={(IntegerScale?1:0)}\nfilter={Filter}\nvolume={Volume}\nmusic_volume={MusicVolume}\ninstant_text={(InstantText?1:0)}\nno_homesickness={(NoHomesickness?1:0)}\nno_dad_calls={(NoDadCalls?1:0)}\nexp_multiplier={Exp}\nmoney_multiplier={Money}\nfast_forward_multiplier={FastForward}\nquick_slot={QuickSlot}\ndeadzone={Deadzone}\nmsu_dir={Path.GetFullPath(Path.Combine(Root,"msu"))}\n");
   for(int i=0;i<21;i++)ini.AppendLine($"key.{i}={Keys[i]}\nbutton.{i}={Buttons[i]}");
   Atomic(Path.Combine(directory,"earthbound.ini"),Encoding.UTF8.GetBytes(ini.ToString()));
  }
@@ -100,10 +100,10 @@ public sealed class Settings {
   if(name=="Easygoing"){fresh.Exp=fresh.Money=2;fresh.Sprint=2;fresh.NoDadCalls=true;}
   Width=fresh.Width;Height=fresh.Height;Fullscreen=fresh.Fullscreen;IntegerScale=fresh.IntegerScale;Filter=fresh.Filter;Aspect=fresh.Aspect;
   Scanlines=fresh.Scanlines;TiltShift=fresh.TiltShift;WideFov=fresh.WideFov;ColorGrading=fresh.ColorGrading;HqAudio=fresh.HqAudio;
-  Sprint=fresh.Sprint;InstantText=fresh.InstantText;NoHomesickness=fresh.NoHomesickness;NoDadCalls=fresh.NoDadCalls;Exp=fresh.Exp;Money=fresh.Money;
+  Sprint=fresh.Sprint;InstantText=fresh.InstantText;NoHomesickness=fresh.NoHomesickness;NoDadCalls=fresh.NoDadCalls;Exp=fresh.Exp;Money=fresh.Money;FastForward=fresh.FastForward;
  }
  public int PresetIndex(){
-  string[] props=["IntegerScale","Filter","Aspect","Scanlines","TiltShift","WideFov","ColorGrading","HqAudio","Sprint","InstantText","NoHomesickness","NoDadCalls","Exp","Money"];
+  string[] props=["IntegerScale","Filter","Aspect","Scanlines","TiltShift","WideFov","ColorGrading","HqAudio","Sprint","InstantText","NoHomesickness","NoDadCalls","Exp","Money","FastForward"];
   string[] names=["Enhanced","Classic","CRT","Easygoing"];
   for(int i=0;i<names.Length;i++){var candidate=new Settings();candidate.Preset(names[i]);if(props.All(p=>Equals(typeof(Settings).GetProperty(p)!.GetValue(this),typeof(Settings).GetProperty(p)!.GetValue(candidate))))return i;}
   return 4;
@@ -111,7 +111,7 @@ public sealed class Settings {
  public void ImportProfile(string path){
   var mod=JsonSerializer.Deserialize<ModProfile>(File.ReadAllText(path))??throw new InvalidDataException("Empty profile.");
   if(mod.Schema!=1||string.IsNullOrWhiteSpace(mod.Name)||mod.Options==null)throw new InvalidDataException("Use an EarthBound Companion schema 1 profile.");
-  var allowed=new HashSet<string>(["Filter","Aspect","Scanlines","TiltShift","WideFov","ColorGrading","HqAudio","Sprint","InstantText","NoHomesickness","NoDadCalls","Exp","Money","IntegerScale"]);
+  var allowed=new HashSet<string>(["Filter","Aspect","Scanlines","TiltShift","WideFov","ColorGrading","HqAudio","Sprint","InstantText","NoHomesickness","NoDadCalls","Exp","Money","FastForward","IntegerScale"]);
   var copy=JsonSerializer.Deserialize<Settings>(JsonSerializer.Serialize(this))!;
   foreach(var (key,value) in mod.Options){if(!allowed.Contains(key))throw new InvalidDataException($"Unsupported option: {key}");var p=typeof(Settings).GetProperty(key)!;p.SetValue(copy,value.Deserialize(p.PropertyType));}
   copy.Validate();foreach(var key in mod.Options.Keys)typeof(Settings).GetProperty(key)!.SetValue(this,typeof(Settings).GetProperty(key)!.GetValue(copy));

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.10 - faster playtest progression
+
+- Add 1×–16× experience and battle-money options, and 2×–16× Tab fast-forward targets. Preserve the former 3× default and existing settings.
+- Add Gameplay → Fast playtest settings: 16× rewards, 8× Tab target, 2× sprint, quick dialogue, no homesickness and no Dad reminder calls. Display, input bindings and content selection are retained.
+- Use the chosen target for both frame pacing and render skipping while running every game-logic frame. Normal speed, story events and quest items are unchanged. High rewards change combat balance and full scene compatibility remains unverified.
+- Share bounded reward multiplication across regular and automatic victories, preserve ceiling party splits, and avoid ATM deposit overflow.
+- Keep the corrected pack, state format 16, story saves and randomizer identities unchanged. Check copied-save restores and accelerated playback separately from full-story coverage.
+
 ## 0.5.0-redux-dev.9 - encounter and audio reliability
 
 - Fix an overlapping enemy starting another encounter during instant-win victory processing. Guard the shared contact path, cancel stale encounter slots before indexing entity data, limit encounter-list appends, and repair nested camera-shake backups. This applies across maps, original/Redux editions and Story Shuffle packs.

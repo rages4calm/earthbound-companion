@@ -1,0 +1,89 @@
+{
+  "Passed": true,
+  "Cases": [
+    {
+      "case": "original-rewards",
+      "victoryAndPartySplitCases": 128,
+      "passed": true
+    },
+    {
+      "case": "redux-rewards",
+      "victoryAndPartySplitCases": 128,
+      "passed": true
+    },
+    {
+      "case": "config-default",
+      "passed": true
+    },
+    {
+      "case": "config-high",
+      "passed": true
+    },
+    {
+      "case": "config-invalid",
+      "passed": true
+    },
+    {
+      "case": "previous-normal",
+      "targetMultiplier": 1,
+      "elapsedSeconds": 16.544,
+      "playerObserverSerializedMatch": true,
+      "differentSectionsFromNormal": [],
+      "position": [
+        4443,
+        2272
+      ]
+    },
+    {
+      "case": "updated-normal",
+      "targetMultiplier": 1,
+      "elapsedSeconds": 16.519,
+      "playerObserverSerializedMatch": true,
+      "differentSectionsFromNormal": [],
+      "position": [
+        4443,
+        2272
+      ]
+    },
+    {
+      "case": "turbo-3",
+      "targetMultiplier": 3,
+      "elapsedSeconds": 10.63,
+      "playerObserverSerializedMatch": true,
+      "differentSectionsFromNormal": [],
+      "position": [
+        4443,
+        2272
+      ]
+    },
+    {
+      "case": "turbo-8",
+      "targetMultiplier": 8,
+      "elapsedSeconds": 2.983,
+      "playerObserverSerializedMatch": true,
+      "differentSectionsFromNormal": [],
+      "position": [
+        4443,
+        2272
+      ]
+    },
+    {
+      "case": "turbo-16",
+      "targetMultiplier": 16,
+      "elapsedSeconds": 1.525,
+      "playerObserverSerializedMatch": true,
+      "differentSectionsFromNormal": [],
+      "position": [
+        4443,
+        2272
+      ]
+    }
+  ],
+  "OwnerSavesUnchanged": true,
+  "StateFormat": 16,
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Timed dummy-renderer playback is a bounded copied-save replay, not every game scene or a hardware speed guarantee.",
+    "Amplified experience changes combat balance; story/full combat combinations remain unverified."
+  ]
+}

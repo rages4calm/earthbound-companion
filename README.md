@@ -5,14 +5,16 @@
 **EarthBound for Windows, with a native MaternalBound Redux adaptation, widescreen and ultrawide scenery, 1080p–4K output, MSU music, PC controls, save recovery and Story Shuffle v3.**
 
 > [!WARNING]
-> **Current release: `v0.5.0-redux-dev.9`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **Current release: `v0.5.0-redux-dev.10`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
 The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. Both the original and the pinned Redux packs have content-specific protection policies; unknown packs cannot be randomized.
 
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio or saves. The documentation includes clearly labeled development screenshots. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.9) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+[Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.10) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+
+The tenth development build adds **Gameplay → Fast playtest settings**: 16× battle EXP and money, an 8× Tab fast-forward target, 2× sprint, quick dialogue and disabled reminder calls. Rewards are selectable from 1× to 16×, and Tab targets from 2× to 16×; existing installations retain their settings and the former 3× target. Fast-forward processes normal game frames rather than bypassing quests. High rewards change combat balance; reduce them for balance testing. Actual speed depends on the PC. Content, state format 16 and seed identities are unchanged. [Checks and limits](docs/PLAYTEST-SPEED-dev10.md).
 
 The ninth Redux development build fixes a shared encounter race after instant victories, bicycle music fading away after combat, and unread sound effects being overwritten between audio callbacks. The contact checks cover all 230 non-placeholder enemy records in both editions; audio checks cover original/SPC and MSU playback. These are targeted regressions, not a completed playthrough. [Fixes and test boundaries](docs/RELIABILITY-dev9.md).
 
@@ -32,7 +34,7 @@ The fifth Redux development build fixes present rewards being lost by the deferr
 
 The fourth Redux development build corrects the native `CC 1D 15` argument width: the upstream fix stores a 16-bit value before multiplying, while the former C handler retained high bits. Twenty-five actual dispatcher cases pass after reproducing eight failures in the previous handler. The [36 active bugfix reviews](research/redux-active-bugfix-review.json) distinguish native adaptations, platform differences and remaining gameplay tests. This build also retains the dev.3 fixes for stranded empty Talk/Check windows, cutscene masks covering the Starman Junior battle UI, cold quick-save restores during stat-growth messages, and Redux story launch/save-backup handling. It also reads the relocated PSI-name table correctly and rebuilds the PSI menu in front of the pause menu when loading an older checkpoint. Actual Lifeup input heals Ness and consumes 5 PP. Copied player saves passed the Starman fight, victory and following Buzz Buzz dialogue, plus empty Talk/Check → natural Onett combat → victory and roaming, with ordinary inputs. [Jev-assisted development testing](JEV-QA.md) also completes normal City Hall navigation, the guard conversation and Mayor Pirkle’s Shack Key award from a copied post-Frank save. Testing is bounded and isolated from player saves; it has not completed the whole game.
 
-Invited testers need repository access or a ZIP supplied by the project owner. The repository and combined binary releases currently remain private while native-engine redistribution terms are clarified. Private visibility is a precaution, not a redistribution license.
+The repository is now public. Upstream native-engine redistribution terms remain unresolved; repository visibility and attribution do not grant permission. See LEGAL.md and UPSTREAM.md for the recorded review.
 
 ## Companion at a glance
 
@@ -168,7 +170,7 @@ This generator is inspired by the EarthBound randomizer community but does not c
 - A complete start-to-ending playthrough of this specific build has not yet been verified.
 - [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is being adapted from a pinned active-source snapshot, rather than the official v1.1 BPS release. The checkpoint converts 7,397 dialogue spans, implements 17 routine adapters, passes 81 VM command checks and 48,640 AI-selector turns, and resolves all 898 movement-script roots. Title scenes, 191 SPC tracks, 68 PSI effects, native shops/equipment, all 11 battle Tools and all 32 photo-credit branches have bounded checks. Full story playthroughs, later interactions, all combat-effect combinations and complete music-transition coverage remain unverified. See the [detailed coverage](MATERNALBOUND-NATIVE.md).
 - Arbitrary IPS, BPS and EBP patches cannot be loaded as native mods; their game-code changes require explicit ports.
-- The release is a Windows x64 private test build. Bug reports should include the active edition or seed session's `game.log` and a normal phone save when possible.
+- The release is a Windows x64 development test build. Bug reports should include the active edition or seed session's `game.log` and a normal phone save when possible.
 
 ## Source layout
 
