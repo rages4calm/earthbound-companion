@@ -1,0 +1,80 @@
+{
+  "Passed": true,
+  "Checkpoints": [
+    {
+      "case": "redux-recovery-fixed-v1-full-0",
+      "step": 0,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-recovery-fixed-v1-full-0",
+      "step": 1,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-recovery-fixed-v1-full-1",
+      "step": 0,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-recovery-fixed-v1-full-1",
+      "step": 1,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-recovery-fixed-v1-full-2",
+      "step": 0,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-recovery-fixed-v1-full-2",
+      "step": 1,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-recovery-fixed-v1-full-3",
+      "step": 0,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-recovery-fixed-v1-full-3",
+      "step": 1,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    }
+  ],
+  "baselineEngineSha256": "f35fecdf300b55565ea428d747a0b510cf2a0aecff5df66b745180694a0eb7eb",
+  "observedEngineSha256": "60b31db0b0acc3d244e3bcc987442ddece3d6373cd9ca5ceccfd006623831a12",
+  "packSha256": "6b0e44a432766dcd06aad4b2e7cbf17880c9c612452e1a2b9a172faeb25b0cc7",
+  "Exclusions": [
+    {
+      "section": 8,
+      "fields": [
+        "WindowInfo.content_tilemap",
+        "WindowInfo.cursor_move_callback"
+      ]
+    },
+    {
+      "section": 20,
+      "fields": [
+        "PsiAnimationState.arr_bundled_data",
+        "PsiAnimationState.arr_bundle_buf"
+      ],
+      "offsets": [
+        64,
+        80
+      ]
+    }
+  ],
+  "NullPointerPresenceCompared": true,
+  "PSIPointerLayoutCompilerVerified": true,
+  "ExclusionReason": "Process addresses rebuilt from saved IDs, offsets and the entity staging buffer on every load. Every other serialized byte, including animation timing, palette and bundle identity, must match.",
+  "FullPlaythroughVerified": false
+}

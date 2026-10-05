@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0-redux-dev.6 - rest stamina hooks
+
+- Connect hotel, full-recovery and hot-spring script entries to native stamina reset. Preserve their existing healing bodies, converted pack, quick-save format 16 and seed identities. Rest loop continuations do not reset stamina repeatedly.
+- Reproduce the missing reset in dev.5. Twelve prepared four-member cases pass in dev.6; 24 player/observer checkpoints match and the production VM now passes 112 checks, including six rest-entry/continuation cases. Original-profile regressions pass.
+- Record the exact three active recovery writes and their native adaptation. Ordinary testing of every resting location, the remaining all-module audit and complete story/randomized playthroughs remain unfinished. Jev exploration stays stopped.
+
 ## 0.5.0-redux-dev.5 - present reward fix
 
 - Create the deferred Redux gift window before writing item/cash registers, preserving silent empty Talk/Check behavior. Reproduce two lost present rewards on dev.4, then verify source-defined rewards, opened flags, window cleanup and no duplicate gifts on dev.5. A prepared $123 cash gift also passes.

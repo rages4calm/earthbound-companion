@@ -42,6 +42,8 @@ The extended dev.4 observer comparisons pass 45 shack/present and 57 cave/battle
 
 Dev.5 also passes 16 production/observer item-gift checkpoints and 7 prepared cash-gift checkpoints with the rebuilt player engine. These comparisons include first rewards, opened flags and repeat checks.
 
+Dev.6 recovery testing makes no TypeSafe requests. Its 12 before/after prepared four-member cases invoke actual converted rest scripts through a scratch NPC; party ailments, health and depleted stamina are explicit test inputs. All 24 player/observer state checkpoints match. This checks rest semantics and cold process restores, not ordinary hotel/hot-spring story progress. Reproduce using `scripts/redux_recovery_qa.py` with a copied QA checkpoint and a fresh scratch directory. The script preserves the state-format-16 checksum polynomial and classic Tamp format used by the native engine.
+
 For deterministic gift regression, `scripts/redux_gift_qa.py` takes copied pre-check batches for unopened NPCs 1414/1415, a previous observer engine and a rebuilt observer engine. It requires the locally supplied pack. The prepared cash case changes only one item field in an isolated pack and cannot establish ordinary story coverage.
 
 Route research used [Rick N. Bruns’s Giant Step map at SNESMaps](https://www.snesmaps.com/maps/EarthBound/EarthboundMapGiantStep.html). Its map image remains a local research reference and is not republished. Actual transitions and rewards are checked against the game data and native observations.

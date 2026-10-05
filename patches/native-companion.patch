@@ -4476,7 +4476,7 @@ index 9d558c4..9f2e674 100644
      if (bt.enable_background_darkening) {
          bt.background_brightness -= 0x0555;
 diff --git a/src/game/display_text.c b/src/game/display_text.c
-index 9b2cb3d..4625444 100644
+index 9b2cb3d..297ed96 100644
 --- a/src/game/display_text.c
 +++ b/src/game/display_text.c
 @@ -12,6 +12,7 @@
@@ -4487,7 +4487,7 @@ index 9b2cb3d..4625444 100644
  #include "game/game_state.h"
  #include "game/inventory.h"
  #include "game/text.h"
-@@ -185,6 +186,330 @@ void restore_window_text_attributes(void) {
+@@ -185,6 +186,352 @@ void restore_window_text_attributes(void) {
   * get_working_memory() always returns 0, causing JUMP_IF_FALSE to always jump. */
  static WindowInfo dummy_window;
  
@@ -4808,6 +4808,28 @@ index 9b2cb3d..4625444 100644
 +    }
 +    win.windows[0] = saved_window;
 +    dialogue_blob = saved_blob; dialogue_blob_size = saved_size;
++    /* Real converted entries: jumps must replenish stamina once, while
++     * jumping into a loop continuation must leave depleted stamina alone. */
++    if (maternalbound_enabled()) {
++        const uint32_t rests[] = {0xC91582,0xC915F4,0xC9162C};
++        for (unsigned n=0;n<sizeof(rests)/sizeof(rests[0]);++n) {
++            ScriptReader reader={TEXT_SRC_DIALOGUE,0,0,-1};
++            ow.redux_primary_timer=128;ow.redux_secondary_timer=120;
++            resolve_text_jump(&reader,rests[n]);
++            uint32_t target=maternalbound_resolve_entry(rests[n]);
++            bool passed=target && reader.ptr_off==target-DIALOGUE_BLOB_BASE &&
++                ow.redux_primary_timer==191 && ow.redux_secondary_timer==143;
++            ok &= passed;++checks;
++            if(!passed) fprintf(stderr,"Redux rest jump %u failed\n",n);
++            ow.redux_primary_timer=128;ow.redux_secondary_timer=120;
++            resolve_text_jump(&reader,target+2);
++            passed=reader.ptr_off==target+2-DIALOGUE_BLOB_BASE &&
++                ow.redux_primary_timer==128 && ow.redux_secondary_timer==120;
++            ok &= passed;++checks;
++            if(!passed) fprintf(stderr,"Redux rest continuation %u reset stamina\n",n);
++        }
++        ow=saved_ow;
++    }
 +    dummy_window = saved_dummy; win.current_focus_window = saved_focus;
 +    game_state.money_carried = saved_cash; game_state.bank_balance = saved_bank;
 +    memcpy(game_state.party_order, saved_order, sizeof(saved_order));
@@ -4818,7 +4840,7 @@ index 9b2cb3d..4625444 100644
  WindowInfo *get_focus_window_info(void) {
      if (win.current_focus_window == WINDOW_ID_NONE) return &dummy_window;
      return get_window(win.current_focus_window);
-@@ -520,6 +845,12 @@ typedef struct {
+@@ -520,6 +867,12 @@ typedef struct {
  static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
      static TextBlock dialogue_block = {0};
      static TextBlock string_table_block = {0};
@@ -4831,7 +4853,7 @@ index 9b2cb3d..4625444 100644
  
      /* Dialogue blob */
      if (addr >= DIALOGUE_BLOB_BASE && dialogue_blob != NULL) {
-@@ -543,6 +874,63 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+@@ -543,6 +896,63 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
      return NULL;
  }
  
@@ -4895,7 +4917,7 @@ index 9b2cb3d..4625444 100644
  /* Print a PSI name given a PSI name ID.
   * Port of GET_PSI_NAME (asm/text/get_psi_name.asm).
   * psi_name_id==1 (ROCKIN) → uses favourite_thing from game_state.
-@@ -550,6 +938,10 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+@@ -550,6 +960,10 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
  void print_psi_name(uint16_t psi_name_id) {
  
      if (psi_name_id == 1) {
@@ -4906,7 +4928,7 @@ index 9b2cb3d..4625444 100644
          /* PSI Rockin, print favourite_thing (EB-encoded in game_state, null-terminated) */
          int len = 0;
          while (len < (int)sizeof(game_state.favourite_thing) && game_state.favourite_thing[len] != 0x00) len++;
-@@ -628,7 +1020,9 @@ static bool display_text_load_dialogue_blob(void) {
+@@ -628,7 +1042,9 @@ static bool display_text_load_dialogue_blob(void) {
      dialogue_blob = ASSET_DIALOGUE_DIALOGUE_BIN_DATA;
      dialogue_blob_size = ASSET_DIALOGUE_DIALOGUE_BIN_SIZE;
  #endif
@@ -4917,7 +4939,16 @@ index 9b2cb3d..4625444 100644
  }
  
  bool display_text_init(void) {
-@@ -857,12 +1251,12 @@ void display_status_window(uint16_t char_id) {
+@@ -696,6 +1112,8 @@ void resolve_text_jump(ScriptReader *r, uint32_t addr) {
+         r->source  = (addr >= DIALOGUE_BLOB_BASE) ? TEXT_SRC_DIALOGUE : TEXT_SRC_INLINE_STRINGS;
+         r->ptr_off = (uint32_t)(ptr - blk->data);
+         r->end_off = (uint32_t)blk->size;
++        if (r->source == TEXT_SRC_DIALOGUE)
++            maternalbound_rest_entry(DIALOGUE_BLOB_BASE+r->ptr_off);
+     } else {
+         LOG_WARN("WARNING: resolve_text_addr(0x%06X) returned NULL\n", addr);
+     }
+@@ -857,12 +1275,12 @@ void display_status_window(uint16_t char_id) {
  
      /* Assembly lines 27-40: set window title to character name */
      {
@@ -4934,7 +4965,7 @@ index 9b2cb3d..4625444 100644
      }
  
      dt.force_left_text_alignment = 1;
-@@ -1036,10 +1430,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
+@@ -1036,10 +1454,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
  
          char name_buf[7];
          if (member_id >= 1 && member_id <= 4) {
@@ -4947,7 +4978,7 @@ index 9b2cb3d..4625444 100644
          } else {
              name_buf[0] = '\0';
          }
-@@ -1191,8 +1585,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1191,8 +1609,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
              return (uintptr_t)game_state.pet_name;
          case 4:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -4958,7 +4989,7 @@ index 9b2cb3d..4625444 100644
          case 5:
              *out_type = CC_TABLE_TYPE_STRING;
              *out_str_len = (int)sizeof(game_state.favourite_thing);
-@@ -1216,8 +1610,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1216,8 +1634,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
          switch ((CcCharField)field) {
          case CC_CHAR_NAME:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -4969,7 +5000,7 @@ index 9b2cb3d..4625444 100644
          case CC_CHAR_LEVEL:       return c->level;
          case CC_CHAR_EXP:         return c->exp;
          case CC_CHAR_CURRENT_HP:  return c->current_hp;
-@@ -1259,7 +1653,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1259,7 +1677,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
          case 1: return (uint8_t)sizeof(game_state.mother2_playername);
          case 2: return (uint8_t)sizeof(game_state.earthbound_playername);
          case 3: return (uint8_t)sizeof(game_state.pet_name);
@@ -4978,7 +5009,7 @@ index 9b2cb3d..4625444 100644
          case 5: return (uint8_t)sizeof(game_state.favourite_thing);
          case 6: return (uint8_t)sizeof(game_state.money_carried);
          case 7: return (uint8_t)sizeof(game_state.bank_balance);
-@@ -1270,7 +1664,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1270,7 +1688,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
      if (index >= CC_GLOBAL_COUNT && index < CC_TABLE_TOTAL) {
          uint16_t field = (index - CC_GLOBAL_COUNT) % CC_CHAR_FIELD_COUNT;
          switch ((CcCharField)field) {
@@ -4987,7 +5018,16 @@ index 9b2cb3d..4625444 100644
          case CC_CHAR_LEVEL:       return 1;
          case CC_CHAR_EXP:         return 4;
          case CC_CHAR_CURRENT_HP:  return 2;
-@@ -1779,6 +2173,15 @@ StepResult mode_step_display_text(ModeState *ms) {
+@@ -1569,6 +1987,8 @@ StepResult mode_step_display_text(ModeState *ms) {
+      * call level (including a nested CC_08 child) gets a clean flag; the parent's
+      * value is restored before this level pops. */
+     if (st->phase == DT_ENTER) {
++        if (st->reader.source == TEXT_SRC_DIALOGUE)
++            maternalbound_rest_entry(DIALOGUE_BLOB_BASE+st->reader.ptr_off);
+         st->saved_cc18_attrs = dt.g_cc18_attrs_saved;
+         dt.g_cc18_attrs_saved = 0;
+         dt.upcoming_word_length = 0;
+@@ -1779,6 +2199,15 @@ StepResult mode_step_display_text(ModeState *ms) {
           * unknown4 starts as 0 (cleared by INIT_TEXT_STATE), set to 1 by CC_18_02.
           * In C: dt.g_cc18_attrs_saved tracks this per display_text call level. */
          if (byte == 0x02) {
@@ -6636,10 +6676,10 @@ index cf14f47..effe83c 100644
      /* Offset into event_music_table for the last matched music entry. */
 diff --git a/src/game/maternalbound.c b/src/game/maternalbound.c
 new file mode 100644
-index 0000000..afb5060
+index 0000000..16e73be
 --- /dev/null
 +++ b/src/game/maternalbound.c
-@@ -0,0 +1,424 @@
+@@ -0,0 +1,441 @@
 +/* SPDX-License-Identifier: GPL-3.0-only
 + * Native adaptation of MaternalBound Redux's documented CCExpand behavior.
 + * Credit: ShadowOne333 and upstream contributors; see CREDITS.md and source
@@ -6776,6 +6816,23 @@ index 0000000..afb5060
 +void maternalbound_stamina_reset(void) {
 +    ow.redux_primary_timer = 191;
 +    ow.redux_secondary_timer = 143;
++}
++
++/* refill_stamina_on_heal.ccs adds stamina_reset to these three recovery
++ * entries. CoilSnake relocates the original bodies and their callers, so
++ * its literal ROM trampolines alone do not intercept the converted calls.
++ * Bind the native entry IDs instead, preserving the existing recovery
++ * bodies, pack identity and quick-save instruction offsets. */
++void maternalbound_rest_entry(uint32_t native_address) {
++    if (!maternalbound_enabled()) return;
++    static const uint32_t originals[] = {0xC91582, 0xC915F4, 0xC9162C};
++    for (unsigned i=0;i<sizeof(originals)/sizeof(originals[0]);++i) {
++        uint32_t entry=maternalbound_resolve_entry(originals[i]);
++        if (entry && entry==native_address) {
++            maternalbound_stamina_reset();
++            return;
++        }
++    }
 +}
 +
 +void maternalbound_stamina_update(uint8_t *primary, uint8_t *secondary,
@@ -7066,10 +7123,10 @@ index 0000000..afb5060
 +}
 diff --git a/src/game/maternalbound.h b/src/game/maternalbound.h
 new file mode 100644
-index 0000000..6c33e80
+index 0000000..0c1d830
 --- /dev/null
 +++ b/src/game/maternalbound.h
-@@ -0,0 +1,51 @@
+@@ -0,0 +1,52 @@
 +/* SPDX-License-Identifier: GPL-3.0-only */
 +#ifndef GAME_MATERNALBOUND_H
 +#define GAME_MATERNALBOUND_H
@@ -7096,6 +7153,7 @@ index 0000000..6c33e80
 +void maternalbound_effects_tick(void);
 +void maternalbound_palette_fade_start(bool inward, uint16_t colour, uint16_t mask, uint16_t duration);
 +void maternalbound_stamina_reset(void);
++void maternalbound_rest_entry(uint32_t native_address);
 +void maternalbound_stamina_update(uint8_t *primary, uint8_t *secondary, uint8_t frame,
 +                                 bool moving, bool held);
 +void maternalbound_stamina_tick(void);

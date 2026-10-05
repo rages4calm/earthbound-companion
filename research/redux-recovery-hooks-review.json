@@ -1,0 +1,73 @@
+{
+  "Passed": true,
+  "format": "redux-recovery-hook-review-v1",
+  "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "module": "ccscript/redux/refill_stamina_on_heal.ccs",
+  "sourceSha256": "21f14bd027e740b1effc220ad9dfd19aaac2852f4c17c51c65a75d1f405b71e9",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "activeWritesReviewed": 3,
+  "reviews": [
+    {
+      "originalAddress": "C91582",
+      "compiledOriginalBody": "FB7F3C",
+      "compiledHookTarget": "FC4E28",
+      "nativeEntryAddress": 3504102,
+      "classification": "native-script-entry-adaptation",
+      "reviewDecision": "Reset stamina once on entry, then execute the existing converted recovery body. Loop continuations do not reset stamina.",
+      "compiledTrampolineAndResetCallChecked": true,
+      "originalAndCompiledNativeAliasesMatch": true
+    },
+    {
+      "originalAddress": "C915F4",
+      "compiledOriginalBody": "FB7FAE",
+      "compiledHookTarget": "FC4E74",
+      "nativeEntryAddress": 3504216,
+      "classification": "native-script-entry-adaptation",
+      "reviewDecision": "Reset stamina once on entry, then execute the existing converted recovery body. Loop continuations do not reset stamina.",
+      "compiledTrampolineAndResetCallChecked": true,
+      "originalAndCompiledNativeAliasesMatch": true
+    },
+    {
+      "originalAddress": "C9162C",
+      "compiledOriginalBody": "FB7FE6",
+      "compiledHookTarget": "FC4EB2",
+      "nativeEntryAddress": 3504272,
+      "classification": "native-script-entry-adaptation",
+      "reviewDecision": "Reset stamina once on entry, then execute the existing converted recovery body. Loop continuations do not reset stamina.",
+      "compiledTrampolineAndResetCallChecked": true,
+      "originalAndCompiledNativeAliasesMatch": true
+    }
+  ],
+  "nativeReferences": [
+    {
+      "path": "src/game/maternalbound.c",
+      "line": 144,
+      "anchor": "void maternalbound_rest_entry("
+    },
+    {
+      "path": "src/game/display_text.c",
+      "line": 1116,
+      "anchor": "maternalbound_rest_entry(DIALOGUE_BLOB_BASE+r->ptr_off)"
+    },
+    {
+      "path": "src/game/display_text.c",
+      "line": 1991,
+      "anchor": "maternalbound_rest_entry(DIALOGUE_BLOB_BASE+st->reader.ptr_off)"
+    },
+    {
+      "path": "src/game/display_text.c",
+      "line": 524,
+      "anchor": "Redux rest continuation"
+    }
+  ],
+  "portingIssue": "Original bodies and callers were relocated; the literal ROM trampolines and excluded helper module did not intercept the converted calls. Native hooks now bind both CALL/direct starts and JUMP entry paths.",
+  "runtimeEvidence": "validation/native-redux-recovery-dev6.json; validation/native-runtime-regressions-dev6.json",
+  "symbolPresenceProvesBehavior": false,
+  "completePatchAudit": false,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Prepared four-member recovery fixtures and real dispatcher checks, not ordinary hotel/hot-spring gameplay or every rest location.",
+    "Other active patch modules require separate semantic review."
+  ]
+}
