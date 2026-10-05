@@ -20,7 +20,9 @@ Copy-Item -LiteralPath $native -Destination (Join-Path $app 'Game\earthbound.exe
 Copy-Item -LiteralPath $helper -Destination (Join-Path $app 'Game\redux-setup.exe')
 Copy-Item -LiteralPath $originalHelper -Destination (Join-Path $app 'Game\ebtools-setup.exe')
 Copy-Item -LiteralPath (Join-Path $projectRoot 'tools\SDL2-2.32.10\x86_64-w64-mingw32\bin\SDL2.dll') -Destination (Join-Path $app 'Game\SDL2.dll')
-foreach($name in @('README.md','RANDOMIZER.md','CREDITS.md','LEGAL.md','MATERNALBOUND-NATIVE.md')){Copy-Item -LiteralPath (Join-Path $docs $name) -Destination $app}
+$docHelper=Join-Path $docs 'scripts\prepare_package_docs.py'
+& (Join-Path $projectRoot 'native-source\.venv\Scripts\python.exe') $docHelper --source $docs --destination $app
+if($LASTEXITCODE -ne 0){throw 'Package documentation links could not be prepared.'}
 foreach($file in Get-ChildItem -LiteralPath (Join-Path $docs 'Mods') -File){Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $app 'Mods')}
 foreach($file in Get-ChildItem -LiteralPath (Join-Path $projectRoot 'EarthBound Companion\Licenses') -File){Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $app 'Licenses')}
 Copy-Item -LiteralPath (Join-Path $projectRoot '_BuildScratch\CoilSnake\LICENSE') -Destination (Join-Path $app 'Licenses\CoilSnake-LICENSE')

@@ -1,16 +1,18 @@
 # EarthBound Companion
 
-**A native Windows adaptation of EarthBound that is now evolving into a MaternalBound Redux PC edition with HD and ultrawide output, native MSU music, PC settings, quality-of-life options, mod profiles, and a progression-conscious randomizer.**
+**EarthBound for Windows, with a native MaternalBound Redux adaptation, widescreen and ultrawide scenery, 1080p–4K output, MSU music, PC controls, save recovery and Story Shuffle v3.**
 
 > [!WARNING]
-> **Full MaternalBound compatibility is still under development.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and uses separate story and randomizer saves. Opening, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough remains unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **Current release: `v0.5.0-redux-dev.2`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
 The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. Both the original and the pinned Redux packs have content-specific protection policies; unknown packs cannot be randomized.
 
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio or saves. The documentation includes clearly labeled development screenshots. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Download private test builds](https://github.com/rages4calm/earthbound-companion/releases) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Read the randomizer rules](RANDOMIZER.md) · [See research and compatibility](RESEARCH.md) · [Credits](CREDITS.md)
+[Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.2) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+
+Invited testers need repository access or a ZIP supplied by the project owner. The repository and combined binary releases currently remain private while native-engine redistribution terms are clarified. Private visibility is a precaution, not a redistribution license.
 
 ## Companion at a glance
 
@@ -51,9 +53,11 @@ This 1080p capture uses locally supplied game data. It documents the development
 
 ## What this is
 
-EarthBound Companion packages a native x64 C/SDL2 game build with a self-contained Windows settings application. Gameplay executes as compiled native code. The project still uses software implementations of the original graphics and audio subsystems where required for accuracy; “native” does not mean the original game has been replaced with a new engine or remade art.
+EarthBound Companion packages a native x64 C/SDL2 game build with a self-contained Windows settings application. Gameplay executes as compiled native code; the optional SNES main-CPU verification emulator is disabled. Software implementations of the original graphics and SPC/DSP audio subsystems remain for rendering and sound.
 
-The player-facing setup follows the same asset separation used by established decompilation ports: the downloadable package supplies code and tools, while the player supplies the game. The ROM is read locally, never modified, retained, or uploaded.
+The player-facing setup separates code/tools from player-supplied game data. Setup reads the owner's ROM locally and never modifies or uploads it. Conversion creates local working data and generated ROMs, removed after successful setup. Failed builds can retain private diagnostics and working files; those folders must not be uploaded.
+
+**We still use the upstream native engine. This is an adaptation of that foundation, not a ground-up replacement.** The source lineage is [Herringway/ebsrc](https://github.com/Herringway/ebsrc) → [BrianPugh/earthbound](https://github.com/BrianPugh/earthbound) → [seanstaggsQU/earthboundRecompLinux2026](https://github.com/seanstaggsQU/earthboundRecompLinux2026) → Companion's pinned patch. Our launcher, Redux converters/adapters, PC integration, fixes, randomizer and recovery build on that work. Adding these features does not erase upstream authorship or licensing obligations. [Verified provenance](UPSTREAM.md) · [Full credits](CREDITS.md).
 
 ## Quick start
 
@@ -61,10 +65,12 @@ The player-facing setup follows the same asset separation used by established de
 2. Extract the complete ZIP to a normal folder.
 3. Run **EarthBound Companion.exe**.
 4. Select your clean EarthBound (USA) `.sfc` or `.smc` ROM.
-5. Leave **Install the complete MSU soundtrack** checked for the full audio setup.
+5. Leave **Install the complete MSU soundtrack** checked for enhanced music, or clear it to use SPC music. Internet access is needed for the pinned source and soundtrack downloads; testers need no Python, Git, .NET installation or compiler.
 6. When setup finishes, choose **Play EarthBound**. The Redux package identifies itself as a development profile. **Redux Port → Use original EarthBound** returns to the original story without changing either edition's saves.
 
 The application accepts the clean 3 MiB USA ROM, with or without a 512-byte copier header. A different revision or modified ROM is rejected before extraction.
+
+Switching editions selects a separate adventure; it does not convert an existing playthrough. Normal phone saves are the migration path between engine builds. Development quick saves require a compatible engine and state format.
 
 ## PC features
 
@@ -74,9 +80,13 @@ The application accepts the clean 3 MiB USA ROM, with or without a 512-byte copi
 | Rendering | Crisp pixels, Scale2x and bilinear output; integer scaling; optional color grade, scanlines and miniature depth effect |
 | World view | Expanded native scenery and adjustable field of view; fixed artwork keeps its designed framing |
 | Input | Keyboard and controller rebinding, analog movement, hotplug, deadzone control and Nintendo/Xbox face-label layouts |
-| Quality of life | Sprint, quick dialogue, optional homesickness and Dad-call suppression, reward multipliers and fast-forward |
+| Quality of life | Sprint, quick dialogue, optional homesickness and Dad-reminder suppression, reward multipliers, fast-forward and shared key-item storage |
+| Redux gameplay | Adapted controls/stamina, six-letter names, ten-letter favorite food, Keys/Jeff's Tools menus, inventory-free battle Tools, expanded equipment/resistance previews and native combat/item fixes |
+| Doors | Faster entrance/exit transitions in the Redux profile, added by Companion from an optional upstream hook; original-profile timing stays unchanged |
 | Saves | Normal phone saves, five crash-safe quick-save banks, per-session backups and guided recovery |
 | Tools | F1 settings, F6/F7 quick save/load, F9 pause, F11 fullscreen, F12 screenshots and FPS display |
+
+**HD means high-resolution output and enhanced presentation.** Converted pixel artwork is used; a replacement hand-drawn HD art pack is not included. Widescreen expands the native world view within the renderer's limits, rather than merely stretching the original picture. Physical controller play and every display/DPI combination have not been fully verified. Mod profiles tune supported native options; arbitrary ROM patches require explicit native adaptations.
 
 ## Native MSU soundtrack
 
@@ -88,9 +98,10 @@ The PCM files are not stored in this repository or the release ZIP. See [CREDITS
 
 Companion includes its own native randomizer for replayable adventures:
 
-- eligible optional NPC gifts;
-- shop inventory;
-- ordinary enemy stats and drops;
+- **Gift contents:** eligible optional gifts change within their item category; protected quest/trade sources stay fixed.
+- **Shop stock:** eligible optional stock changes within its type; protected items, each shop's first slot and empty/ineligible slots stay fixed. Item prices are unchanged.
+- **Enemy stats:** ordinary-enemy HP, offense, defense and speed vary within bounded ranges; bosses and scripted enemies stay fixed.
+- **Enemy drops:** eligible ordinary-enemy loot changes within its type. Drop chances, empty drops and protected/boss/scripted drops stay fixed.
 - Balanced and Surprise modes;
 - deterministic seed recipes;
 - isolated saves, screenshots and recovery backups for every seed.
@@ -122,7 +133,7 @@ This generator is inspired by the EarthBound randomizer community but does not c
 
 ## Building from source
 
-The repository source tree intentionally does not vendor the unlicensed upstream EarthBound source. Bootstrap pins the exact revision used by the release:
+The repository records the native foundation as a pin and patch rather than vendoring its entire tree. Bootstrap fetches the exact revision used by the release:
 
 ```powershell
 git clone https://github.com/rages4calm/earthbound-companion.git
@@ -130,13 +141,17 @@ cd earthbound-companion
 powershell -ExecutionPolicy Bypass -File .\scripts\Bootstrap-Native.ps1
 ```
 
-You will need a Windows x64 C toolchain, CMake, Ninja, SDL2 development files, Python 3, PyInstaller, and the .NET 8 SDK. Put your own ROM at `ROM\EarthBound (USA).sfc`; `ROM/` is permanently ignored by Git. The checked-in scripts document the release build flow. Generated ROM data, build outputs, soundtracks, saves and screenshots remain untracked.
+Developers need a Windows x64 C toolchain, CMake/Ninja, SDL2 development files, Python and the .NET 8 SDK. Runtime builds use `EB_RUNTIME_ASSETS=ON`, `EB_ENABLE_VERIFY=OFF` and `EB_ENABLE_AUDIO=ON`. Redux setup-helper builds additionally require the pinned CoilSnake/CCScript toolchain and PyInstaller; see [the conversion instructions](MATERNALBOUND-NATIVE.md#reproducing-development-conversion).
+
+The checked-in rebuild/package scripts record the current workspace's tool paths; they are not a one-command provisioner for a fresh machine. Some historical commands refer to local `tools/` files, while published scripts live in `scripts/`. Put your own ROM at `ROM\EarthBound (USA).sfc`; `ROM/` is ignored by Git. Generated game data, build outputs, soundtracks, saves and runtime screenshots remain untracked; the labeled documentation screenshots are checked in.
 
 ## Legal and project status
 
 EarthBound and Mother 2 are trademarks and copyrighted works of their respective owners. This is an unofficial fan project, not affiliated with or endorsed by Nintendo, Shigesato Itoi, APE, HAL Laboratory, or any rights holder. No ownership of the original game is claimed.
 
-The upstream EarthBound repositories used for the native foundation are public but currently publish no top-level license. Public visibility is not a redistribution license. For that reason this repository records the upstream revision and our patch instead of relicensing or vendoring their full tree. The initial binary release is kept private for invited testing while permission is clarified. See [LEGAL.md](LEGAL.md) and [CREDITS.md](CREDITS.md).
+The October 4 review found no repository-wide redistribution grant in the reviewed native-foundation README/license files; GitHub also detects no top-level license. Third-party library licenses cover those libraries, not the whole engine. Public visibility and credits do not supply missing permission. [Review record](validation/upstream-license-provenance.json) · [GitHub's licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
+
+MaternalBound Redux and its adaptations have separate GPLv3 terms. Those terms do not license the native foundation. The combined engine's distribution and GPL compatibility need clarification before a public combined release; private visibility does not settle either issue. Original Companion files have their own [limited-scope license](LICENSE.md). A patch or compiled executable can still contain upstream material even when the full source tree is not vendored. See [LEGAL.md](LEGAL.md) and [CREDITS.md](CREDITS.md). No disclaimer claims to grant game rights or guarantee legal protection.
 
 ## Verification
 

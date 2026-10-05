@@ -10,9 +10,10 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 ## Scope
 
-This license covers only material the copyright holder has the right to license. It does not license:
+This license covers only material the copyright holder has the right to license. More specific per-file SPDX or third-party notices take precedence. In particular, GPL-marked Redux/CoilSnake adaptation and setup/conversion files remain under their stated GPL terms. This license does not license:
 
 - `patches/native-companion.patch` or the upstream EarthBound source it modifies;
 - EarthBound, Mother 2, or any original game content;
 - third-party libraries and tools governed by their own notices under `Licenses/`;
+- GPL adaptation work or any combined executable's upstream components;
 - names, logos or trademarks owned by others.

@@ -14,11 +14,13 @@ This repository and its release packaging must not contain:
 
 Documentation may include clearly labeled screenshots captured from isolated native development tests using locally supplied game data. Screenshots are not asset packs or permission to redistribute the game.
 
-The release tool verifies a player-supplied clean EarthBound (USA) ROM and generates the native asset pack on that player’s computer. The ROM is not modified, retained by Companion, or uploaded.
+The release tool verifies a player-supplied clean EarthBound (USA) ROM and generates native data on that player's computer. The input ROM is never modified or uploaded. Conversion creates working files and generated ROMs locally; successful builds remove them, while failed builds can retain a private diagnostic staging folder. Do not upload that folder.
 
 ## Upstream source status
 
-As checked on October 4, 2026, GitHub reports no detected top-level license for [Herringway/ebsrc](https://github.com/Herringway/ebsrc), [BrianPugh/earthbound](https://github.com/BrianPugh/earthbound), or [seanstaggsQU/earthboundRecompLinux2026](https://github.com/seanstaggsQU/earthboundRecompLinux2026). Their public availability does not place the work in the public domain.
+As checked on October 4, 2026, GitHub reports no detected top-level license for [Herringway/ebsrc](https://github.com/Herringway/ebsrc), [BrianPugh/earthbound](https://github.com/BrianPugh/earthbound), or [seanstaggsQU/earthboundRecompLinux2026](https://github.com/seanstaggsQU/earthboundRecompLinux2026). A complete-tree path review and inspection of their root README/license files did not locate a repository-wide redistribution grant. Their READMEs describe the C port as open source, but do not state a license's permissions or conditions. Separately licensed vendor files do not license the whole engine. The checked commits, paths and document hashes are recorded in [the provenance audit](validation/upstream-license-provenance.json).
+
+This review cannot rule out permission granted elsewhere. It records the evidence available in the reviewed sources, rather than a legal determination. [GitHub's guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) distinguishes public viewing/forking from permission to reproduce, distribute or create derivative works without a license.
 
 This repository therefore stores:
 
@@ -26,7 +28,17 @@ This repository therefore stores:
 2. a patch containing the changes needed by Companion;
 3. independently authored launcher, tooling and documentation.
 
-It does not vendor or relicense the complete upstream tree. The initial compiled release is restricted to private invited testing while redistribution permission is unresolved. Do not make the repository or binary release public solely on the strength of a disclaimer.
+It does not vendor or relicense the complete upstream tree. **The native engine still derives from that tree.** The patch includes upstream context, the compiled executable contains upstream implementations, and the frozen Redux helper bundles some native source files for conversion. Storing a patch instead of a full checkout does not by itself settle distribution rights.
+
+The repository and combined releases currently remain private as a precaution while terms are clarified. **Private visibility is not permission to distribute, even to invited testers.** It also does not prove compliance with the separately licensed GPL components. Neither attribution nor an unofficial-project disclaimer supplies missing rights. The project does not claim legal clearance for the combined release.
+
+## MaternalBound and GPL components
+
+[MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/LICENSE) supplies GPLv3 terms. Its [README](https://github.com/ShadowOne333/MaternalBound-Redux/tree/897d00833f4a08a0a92f106abf631629a6a6a041#license) also requests public source for modified versions and distinct naming. Companion uses a distinct name and retains source attribution and per-file GPL notices for the adaptation work. CoilSnake and related tools have separate notices as well.
+
+Those terms do not grant rights to the native foundation or Nintendo's original game assets. The native engine links GPL adaptation modules into the same executable; its combined distribution and license compatibility need clarification. Published converters, patches and pinned bootstrap inputs are development source records, not a certification that every corresponding-source/distribution obligation has been satisfied. Recipients must receive the source access and rights required by the applicable licenses; a private GitHub link inaccessible to a recipient is not sufficient.
+
+A public release of the combined project needs documented applicable native-engine terms, resolution of the combined-work license obligations, and a matching source/distribution review. Independently authored launcher/tool components can be assessed separately; rewriting a converter or adding features does not remove retained upstream code from the engine.
 
 ## Trademarks and affiliation
 
@@ -34,7 +46,7 @@ EarthBound and Mother 2 are trademarks and copyrighted works of their respective
 
 ## Original Companion code
 
-Files authored specifically for Companion may be used under [LICENSE.md](LICENSE.md). That license applies only where this repository’s contributors have the right to grant it. It does not cover the upstream patch, Nintendo material, third-party code, trademarks, or separately licensed dependencies.
+Files authored specifically for Companion may be used under [LICENSE.md](LICENSE.md), subject to its scope and any more specific per-file license. It does not override GPL adaptation notices or cover the upstream patch, Nintendo material, third-party code, trademarks, or separately licensed dependencies.
 
 ## Contributions and reports
 

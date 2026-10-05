@@ -1,0 +1,418 @@
+{
+  "checkedAtUtc": "2026-10-05T00:57:56.372739+00:00",
+  "scope": "Repository metadata, complete tree paths, root README/license text, and local tracked native C/H files; not legal advice or a rights-holder permission search.",
+  "upstream": [
+    {
+      "repository": "Herringway/ebsrc",
+      "url": "https://github.com/Herringway/ebsrc",
+      "githubDetectedLicense": null,
+      "fork": false,
+      "parent": null,
+      "source": null,
+      "snapshots": [
+        {
+          "snapshot": "current-default-branch",
+          "commit": "9d6132fa425e5b3b0bfbd25595bea5827ddd9f59",
+          "completeTree": true,
+          "rootLicenseFiles": [],
+          "allLicenseNoticePaths": [],
+          "rootDocumentReview": [
+            {
+              "path": "README.md",
+              "sha256": "8a68159f2712b21ff7e57da834b517656f200b1f79a2a8a6579f0a7e2742228d",
+              "matchingLines": [],
+              "url": "https://github.com/Herringway/ebsrc/blob/9d6132fa425e5b3b0bfbd25595bea5827ddd9f59/README.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "BrianPugh/earthbound",
+      "url": "https://github.com/BrianPugh/earthbound",
+      "githubDetectedLicense": null,
+      "fork": true,
+      "parent": "Herringway/ebsrc",
+      "source": "Herringway/ebsrc",
+      "snapshots": [
+        {
+          "snapshot": "current-default-branch",
+          "commit": "6460134cba9848b1685b215ac27aa76df0524ec2",
+          "completeTree": true,
+          "rootLicenseFiles": [],
+          "allLicenseNoticePaths": [
+            "src/vendor/lakesnes/LICENSE.txt"
+          ],
+          "rootDocumentReview": [
+            {
+              "path": "README.md",
+              "sha256": "1a1dc294e96578416ab029cb8517525e26d67f66769d84a5a9fe4a729eb30c5d",
+              "matchingLines": [
+                {
+                  "line": 3,
+                  "text": "An open-source reimplementation of **EarthBound** (US) / **Mother 2** (Japan) for the Super Nintendo \u2014 written in C, playable on modern platforms."
+                },
+                {
+                  "line": 5,
+                  "text": "Play EarthBound natively on your PC, a Raspberry Pi Pico, or build a byte-perfect SNES ROM from the fully disassembled 65816 assembly. All game data is extracted from your own legally-obtained ROM \u2014 no copyrighted content is included in this repository."
+                }
+              ],
+              "url": "https://github.com/BrianPugh/earthbound/blob/6460134cba9848b1685b215ac27aa76df0524ec2/README.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "seanstaggsQU/earthboundRecompLinux2026",
+      "url": "https://github.com/seanstaggsQU/earthboundRecompLinux2026",
+      "githubDetectedLicense": null,
+      "fork": true,
+      "parent": "BrianPugh/earthbound",
+      "source": "Herringway/ebsrc",
+      "snapshots": [
+        {
+          "snapshot": "current-default-branch",
+          "commit": "76eacab54b05766b82c98da9c55d94d1236ece03",
+          "completeTree": true,
+          "rootLicenseFiles": [],
+          "allLicenseNoticePaths": [
+            "src/vendor/cjson/LICENSE",
+            "src/vendor/lakesnes/LICENSE.txt",
+            "src/vendor/sha256/LICENSE"
+          ],
+          "rootDocumentReview": [
+            {
+              "path": "README.md",
+              "sha256": "6f842bda1a08696e706e51eacb7484baaf941634729930f15da0c0c96146e412",
+              "matchingLines": [
+                {
+                  "line": 3,
+                  "text": "An open-source reimplementation of **EarthBound** (US) / **Mother 2** (Japan) for the Super Nintendo \u2014 written in C, playable on modern platforms."
+                },
+                {
+                  "line": 5,
+                  "text": "Play EarthBound natively on your PC, a Raspberry Pi Pico, or build a byte-perfect SNES ROM from the fully disassembled 65816 assembly. All game data is extracted from your own legally-obtained ROM \u2014 no copyrighted content is included in this repository."
+                }
+              ],
+              "url": "https://github.com/seanstaggsQU/earthboundRecompLinux2026/blob/76eacab54b05766b82c98da9c55d94d1236ece03/README.md"
+            }
+          ]
+        },
+        {
+          "snapshot": "build-pin",
+          "commit": "76eacab54b05766b82c98da9c55d94d1236ece03",
+          "completeTree": true,
+          "rootLicenseFiles": [],
+          "allLicenseNoticePaths": [
+            "src/vendor/cjson/LICENSE",
+            "src/vendor/lakesnes/LICENSE.txt",
+            "src/vendor/sha256/LICENSE"
+          ],
+          "rootDocumentReview": [
+            {
+              "path": "README.md",
+              "sha256": "6f842bda1a08696e706e51eacb7484baaf941634729930f15da0c0c96146e412",
+              "matchingLines": [
+                {
+                  "line": 3,
+                  "text": "An open-source reimplementation of **EarthBound** (US) / **Mother 2** (Japan) for the Super Nintendo \u2014 written in C, playable on modern platforms."
+                },
+                {
+                  "line": 5,
+                  "text": "Play EarthBound natively on your PC, a Raspberry Pi Pico, or build a byte-perfect SNES ROM from the fully disassembled 65816 assembly. All game data is extracted from your own legally-obtained ROM \u2014 no copyrighted content is included in this repository."
+                }
+              ],
+              "url": "https://github.com/seanstaggsQU/earthboundRecompLinux2026/blob/76eacab54b05766b82c98da9c55d94d1236ece03/README.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "ShadowOne333/MaternalBound-Redux",
+      "url": "https://github.com/ShadowOne333/MaternalBound-Redux",
+      "githubDetectedLicense": {
+        "key": "gpl-3.0",
+        "name": "GNU General Public License v3.0",
+        "spdx_id": "GPL-3.0",
+        "url": "https://api.github.com/licenses/gpl-3.0",
+        "node_id": "MDc6TGljZW5zZTk="
+      },
+      "fork": false,
+      "parent": null,
+      "source": null,
+      "snapshots": [
+        {
+          "snapshot": "current-default-branch",
+          "commit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+          "completeTree": true,
+          "rootLicenseFiles": [
+            "LICENSE"
+          ],
+          "allLicenseNoticePaths": [
+            "LICENSE"
+          ],
+          "rootDocumentReview": [
+            {
+              "path": "README.md",
+              "sha256": "d1d3c5922669c052f01411417823408990d809607330c9ad3038f067f11de12c",
+              "matchingLines": [
+                {
+                  "line": 21,
+                  "text": "* [**Project Licence**](#license)"
+                },
+                {
+                  "line": 174,
+                  "text": "## License"
+                },
+                {
+                  "line": 176,
+                  "text": "MaternalBound Redux is a project licensed under the terms of the GPLv3, which means that you are given legal permission to copy, distribute and/or modify this project, as long as:"
+                },
+                {
+                  "line": 178,
+                  "text": "1) The source for the available modified project is shared and also available to the public without exception."
+                },
+                {
+                  "line": 179,
+                  "text": "2) The modified project subjects itself different naming convention, to differentiate it from the main and licensed MaternalBound Redux project."
+                },
+                {
+                  "line": 181,
+                  "text": "You can find a copy of the license in the LICENSE file."
+                },
+                {
+                  "line": 205,
+                  "text": "* **Crav (Great Space Pickle):** Sprite artist for the Mother: Cognitive Dissonance project, and for the permission to use some of the unique overworld sprites from that project into Redux! <br />"
+                }
+              ],
+              "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/README.md"
+            },
+            {
+              "path": "LICENSE",
+              "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+              "matchingLines": [
+                {
+                  "line": 1,
+                  "text": "                    GNU GENERAL PUBLIC LICENSE"
+                },
+                {
+                  "line": 4,
+                  "text": " Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>"
+                },
+                {
+                  "line": 6,
+                  "text": " of this license document, but changing it is not allowed."
+                },
+                {
+                  "line": 10,
+                  "text": "  The GNU General Public License is a free, copyleft license for"
+                },
+                {
+                  "line": 13,
+                  "text": "  The licenses for most software and other practical works are designed"
+                },
+                {
+                  "line": 15,
+                  "text": "the GNU General Public License is intended to guarantee your freedom to"
+                },
+                {
+                  "line": 18,
+                  "text": "GNU General Public License for most of our software; it applies also to"
+                },
+                {
+                  "line": 23,
+                  "text": "price.  Our General Public Licenses are designed to make sure that you"
+                },
+                {
+                  "line": 41,
+                  "text": "(1) assert copyright on the software, and (2) offer you this License"
+                },
+                {
+                  "line": 42,
+                  "text": "giving you legal permission to copy, distribute and/or modify it."
+                },
+                {
+                  "line": 75,
+                  "text": "  \"This License\" refers to version 3 of the GNU General Public License."
+                },
+                {
+                  "line": 77,
+                  "text": "  \"Copyright\" also means copyright-like laws that apply to other kinds of"
+                },
+                {
+                  "line": 80,
+                  "text": "  \"The Program\" refers to any copyrightable work licensed under this"
+                },
+                {
+                  "line": 81,
+                  "text": "License.  Each licensee is addressed as \"you\".  \"Licensees\" and"
+                },
+                {
+                  "line": 85,
+                  "text": "in a fashion requiring copyright permission, other than the making of an"
+                },
+                {
+                  "line": 93,
+                  "text": "permission, would make you directly or secondarily liable for"
+                },
+                {
+                  "line": 94,
+                  "text": "infringement under applicable copyright law, except executing it on a"
+                },
+                {
+                  "line": 105,
+                  "text": "feature that (1) displays an appropriate copyright notice, and (2)"
+                }
+              ],
+              "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/LICENSE"
+            }
+          ]
+        },
+        {
+          "snapshot": "build-pin",
+          "commit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+          "completeTree": true,
+          "rootLicenseFiles": [
+            "LICENSE"
+          ],
+          "allLicenseNoticePaths": [
+            "LICENSE"
+          ],
+          "rootDocumentReview": [
+            {
+              "path": "README.md",
+              "sha256": "d1d3c5922669c052f01411417823408990d809607330c9ad3038f067f11de12c",
+              "matchingLines": [
+                {
+                  "line": 21,
+                  "text": "* [**Project Licence**](#license)"
+                },
+                {
+                  "line": 174,
+                  "text": "## License"
+                },
+                {
+                  "line": 176,
+                  "text": "MaternalBound Redux is a project licensed under the terms of the GPLv3, which means that you are given legal permission to copy, distribute and/or modify this project, as long as:"
+                },
+                {
+                  "line": 178,
+                  "text": "1) The source for the available modified project is shared and also available to the public without exception."
+                },
+                {
+                  "line": 179,
+                  "text": "2) The modified project subjects itself different naming convention, to differentiate it from the main and licensed MaternalBound Redux project."
+                },
+                {
+                  "line": 181,
+                  "text": "You can find a copy of the license in the LICENSE file."
+                },
+                {
+                  "line": 205,
+                  "text": "* **Crav (Great Space Pickle):** Sprite artist for the Mother: Cognitive Dissonance project, and for the permission to use some of the unique overworld sprites from that project into Redux! <br />"
+                }
+              ],
+              "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/README.md"
+            },
+            {
+              "path": "LICENSE",
+              "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+              "matchingLines": [
+                {
+                  "line": 1,
+                  "text": "                    GNU GENERAL PUBLIC LICENSE"
+                },
+                {
+                  "line": 4,
+                  "text": " Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>"
+                },
+                {
+                  "line": 6,
+                  "text": " of this license document, but changing it is not allowed."
+                },
+                {
+                  "line": 10,
+                  "text": "  The GNU General Public License is a free, copyleft license for"
+                },
+                {
+                  "line": 13,
+                  "text": "  The licenses for most software and other practical works are designed"
+                },
+                {
+                  "line": 15,
+                  "text": "the GNU General Public License is intended to guarantee your freedom to"
+                },
+                {
+                  "line": 18,
+                  "text": "GNU General Public License for most of our software; it applies also to"
+                },
+                {
+                  "line": 23,
+                  "text": "price.  Our General Public Licenses are designed to make sure that you"
+                },
+                {
+                  "line": 41,
+                  "text": "(1) assert copyright on the software, and (2) offer you this License"
+                },
+                {
+                  "line": 42,
+                  "text": "giving you legal permission to copy, distribute and/or modify it."
+                },
+                {
+                  "line": 75,
+                  "text": "  \"This License\" refers to version 3 of the GNU General Public License."
+                },
+                {
+                  "line": 77,
+                  "text": "  \"Copyright\" also means copyright-like laws that apply to other kinds of"
+                },
+                {
+                  "line": 80,
+                  "text": "  \"The Program\" refers to any copyrightable work licensed under this"
+                },
+                {
+                  "line": 81,
+                  "text": "License.  Each licensee is addressed as \"you\".  \"Licensees\" and"
+                },
+                {
+                  "line": 85,
+                  "text": "in a fashion requiring copyright permission, other than the making of an"
+                },
+                {
+                  "line": 93,
+                  "text": "permission, would make you directly or secondarily liable for"
+                },
+                {
+                  "line": 94,
+                  "text": "infringement under applicable copyright law, except executing it on a"
+                },
+                {
+                  "line": 105,
+                  "text": "feature that (1) displays an appropriate copyright notice, and (2)"
+                }
+              ],
+              "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/LICENSE"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "nativeBuild": {
+    "commit": "76eacab54b05766b82c98da9c55d94d1236ece03",
+    "origin": "https://github.com/seanstaggsQU/earthboundRecompLinux2026.git",
+    "trackedCHFilesAtPin": 197,
+    "trackedCHFilesChangedByCompanion": 61,
+    "trackedCHFilesUnchangedByCompanion": 136,
+    "caveat": "Counts cover tracked C/H files at the pin; exclude newly added files, generated assets and vendor submodule contents. Changed files also retain upstream code. File counts are not a measure of authorship."
+  },
+  "interpretation": {
+    "nativeEngineReplaced": false,
+    "nativeRepositoryWideRedistributionGrantLocated": false,
+    "privateVisibilityGrantsRedistributionPermission": false,
+    "maternalBoundLicenseIsSeparateFromNativeFoundation": true,
+    "permissionOutsideReviewedSourcesNotRuledOut": true
+  }
+}

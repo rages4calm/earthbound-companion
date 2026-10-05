@@ -1,6 +1,6 @@
 # MaternalBound Redux native port
 
-Companion is adapting MaternalBound Redux into its native x64 C/SDL engine, alongside HD and ultrawide output, MSU music, PC controls, save recovery and Story Shuffle. Gameplay runs as compiled C; patched SNES CPU code is explicitly translated into native behavior.
+Companion is adapting MaternalBound Redux into the BrianPugh-derived native x64 C/SDL engine, through Sean Staggs's pinned fork, alongside HD and ultrawide output, MSU music, PC controls, save recovery and Story Shuffle. Gameplay runs as compiled C; patched SNES CPU code requires explicit native implementations. The native foundation remains a current dependency; see [UPSTREAM.md](UPSTREAM.md).
 
 **Full Redux compatibility is incomplete. The older v0.4 preview and existing original-profile installation contain original EarthBound. The new development setup builds a separate native Redux profile locally from your clean ROM. A full story or randomized playthrough remains unverified. ROMs and extracted packs are excluded from the repository and ZIP.**
 
@@ -8,7 +8,7 @@ Companion is adapting MaternalBound Redux into its native x64 C/SDL engine, alon
 
 This checkpoint targets the active upstream source at `897d00833f4a08a0a92f106abf631629a6a6a041`, compiled locally with CoilSnake into a verified 6 MiB ROM. It is not the official v1.1 release. The v1.1 BPS was separately checksum-verified and tested during initial extraction research; supporting that release requires a separate conversion map and validation record.
 
-The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented.
+The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current runtime checkpoint: `v0.5.0-redux-dev.2`.**
 
 ## Implemented development coverage
 
@@ -59,7 +59,7 @@ These are real renders from locally supplied game data. They show Mom's opening 
 ![Native expanded equipment preview](docs/images/native-redux-equipment.png)
 ![Native cast sequence after a cold save restore](docs/images/native-redux-cast.png)
 
-Quick-save format 16 now saves cast/credits continuation fields and reconstructs pending drawing pointers. Older development quick-saves require their matching executable; phone saves remain the migration path. No player saves or installed game files were replaced by these checks.
+Quick-save format 16 now saves cast/credits continuation fields and reconstructs pending drawing pointers. Older development quick-saves require their matching executable; phone saves remain the migration path. The tests use isolated save folders. Installing the tested runtime was a separate backed-up step; protected owner data, saves and preferences were hash-checked unchanged.
 
 ## Reproducing development conversion
 
@@ -79,4 +79,4 @@ The pack builder reads compiled local data, validates structure/pointers and wri
 
 ## Credit
 
-[ShadowOne333 and the MaternalBound Redux contributors](https://github.com/ShadowOne333/MaternalBound-Redux) created the hack. Its adaptation follows GPLv3 with upstream credit and published corresponding source. The native engine builds on Herringway, BrianPugh and seanstaggsQU. See [CREDITS.md](CREDITS.md) for sources, individual extensions, libraries and tools.
+[ShadowOne333 and the MaternalBound Redux contributors](https://github.com/ShadowOne333/MaternalBound-Redux) created the hack. GPL notices apply to its adaptation modules and converters; source files, compiler/native patches and pinned inputs are recorded in this repository. They do not license the retained native foundation, and combined distribution/corresponding-source obligations remain to be resolved. See [LEGAL.md](LEGAL.md), [UPSTREAM.md](UPSTREAM.md) and [CREDITS.md](CREDITS.md).

@@ -13,7 +13,7 @@ Open **EarthBound Companion → Solo Play → Randomized adventure**. The starte
 
 Eligible categories are priced weapons, armor, food, drinks, condiments, party food and healing items. Balanced replacements cost between half and one-and-a-half times the original price, with a small minimum range for cheap items. Surprise allows the entire eligible category, so strong equipment can appear early. Item prices and equipment stats themselves remain original. Some options have no alternative for an individual item; that entry stays unchanged.
 
-The story, door routing, NPC dialogue/scripts, quest flags, enemy actions, encounter placement, boss records, experience and money rewards remain original. This preserves the original progression structure; it is not a new progression solver or a claim that a full randomized playthrough has been verified.
+The story, door routing, NPC dialogue/scripts, quest flags, enemy actions, encounter placement, boss records, experience and money rewards remain those of the selected base edition. A Redux seed keeps Redux's story/data; an original seed keeps original EarthBound's. This preserves each edition's audited progression structure; it is not a new progression solver or a claim that a full randomized playthrough has been verified.
 
 ## Progression protection
 
@@ -25,7 +25,7 @@ The pinned MaternalBound Redux profile has a separate policy derived from **64,3
 
 This includes ordinary-looking foods: **Hamburger, Pizza, Picnic Lunch, Skip Sandwich, Wet Towel**, plus the Ruler, King Banana and related trades. Their original shops, gift boxes and drops remain unchanged wherever they occur. The unchanged scripts still supply their scripted rewards. The original starting equipment, prices and money/experience rewards also remain fixed.
 
-An independent validator compares the entire approximately 3 MB pack against the audited original. It permits only eligible optional reward/stat fields, enforces category/equip-mask/price/stat bounds, and rejects any other changed byte. It runs during generation and again immediately before launch. An unaudited replacement original pack is refused. **Check seed safety** runs the same checks; **Open safety report** describes what the generator preserved.
+An independent validator compares the entire pack against its audited base edition (3,033,442 bytes for original EarthBound; 9,662,293 bytes for the pinned Redux profile). It permits only eligible optional reward/stat fields, enforces category/equip-mask/price/stat bounds, and rejects any other changed byte. It runs during generation and again immediately before launch. An unaudited replacement base pack is refused. **Check seed safety** runs the same checks; **Open safety report** describes what the generator preserved.
 
 These checks prevent this generator from removing the protected original progression sources. They do not certify every scene in the community C engine, every player action or a completed playthrough.
 
@@ -41,7 +41,7 @@ Each adventure lives at `UserData/Seeds/<identity>/`:
 
 - `seed.json`: version, content profile, options, original/generated checksums and change counts.
 - `safety.json`: protection counts, fixed item/enemy IDs, validation scope and the full-playthrough limit.
-- `assets.pak`: generated native game data, approximately 3 MB; the soundtrack is shared.
+- `assets.pak`: generated native game data, approximately 3 MB for original EarthBound or 9.7 MB for Redux; the soundtrack is shared.
 - `recipe.ebseed.json`: portable seed/options recipe without game assets or saves.
 - `spoiler.json`: actual changed gifts, shops, enemy stats and drops, identified by native table IDs.
 - `Game/saves/`: this seed's phone saves and five quick-save banks.

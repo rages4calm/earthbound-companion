@@ -5,7 +5,7 @@ EarthBound Companion exists because of years of documentation, disassembly, nati
 ## Original game
 
 - **EarthBound / Mother 2** — Nintendo, APE, HAL Laboratory, Shigesato Itoi, and the original development and localization teams.
-- All original game code, characters, text, graphics, music and other assets remain the property of their respective owners. None are included in this repository.
+- Original characters, text, graphics, music and game material remain the property of their respective rights holders. ROM images and extracted asset/audio packs are excluded; labeled development screenshots are included as documentation. The native source patch contains recreation/adaptation code and must not be represented as unrelated to the original game or upstream work.
 
 ## Native source lineage
 
@@ -16,10 +16,13 @@ EarthBound Companion exists because of years of documentation, disassembly, nati
 
 All contributors to those repositories retain credit for their work. Companion’s patch does not erase or replace upstream authorship.
 
-## Music and ROM-hack research
+**These are current dependencies, not just research references.** The compiled engine still uses Brian's C recreation through Sean's pinned fork, with Herringway in its ancestry. The [provenance review](UPSTREAM.md) records the actual build origin, fork chain and retained source. Companion's additional conversion work does not make the engine an independent rewrite.
+
+## Music and ROM-hack work
 
 - **Conn** — EarthBound MSU-1 implementation work.
 - **ShadowOne333** — [EarthBound MSU-1 pack](https://archive.org/details/earthbound-msu-1-pack), track loop rules, and [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux).
+- **TragicManner, H.S., the hack's script/art contributors and all upstream credit-listed authors** — the writing references, assembly help, restored art and additional work identified in MaternalBound's [complete credits](https://github.com/ShadowOne333/MaternalBound-Redux/tree/897d00833f4a08a0a92f106abf631629a6a6a041#credits) and [sprite credits](https://github.com/ShadowOne333/MaternalBound-Redux/tree/897d00833f4a08a0a92f106abf631629a6a6a041#sprite-credits). Those full lists remain the authority for individual upstream assets and changes.
 - **MaternalBound Redux contributors** — the native command adaptation follows their documented CCScript semantics. The [safe money commands](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/bugfixes/try_give_money.ccs), [SupremeKirb's party-position command](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/essential/cc_char_in_party.ccs), and [the window-title extension](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/window_titles.ccs) inform the initial native handlers. **jtolmar**, **cooprocks123e**, **Catador**, **SupremeKirb**, and the other authors credited in those source files retain credit for their extensions. These handlers do not establish support for the complete hack.
 - **JTolmar, The_Kirby and Coop** — Redux's [scripted enemy-AI framework](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/enemy_ai.ccs) and [action commands](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/enemy_ai_actions.ccs), explicitly adapted to the native scheduler.
 - **Vittorio, Chaz and D-Man** — [six-letter names](https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/six_letters.ccs). **D-Man and contributors** — expanded animation/run tables. Redux's favorite-food expansion, controls, stamina, item menus and related extensions also inform their native adaptations; authorship remains with the credited upstream source contributors.
@@ -54,5 +57,7 @@ The reproducible Redux helper pins [CoilSnake `346cfc7`](https://github.com/pk-h
 ## Companion work
 
 The Companion application, native PC option integration, packaging, Story Shuffle v3, recovery workflow, validation tooling and documentation were assembled for Carl Prewitt Jr.’s native PC edition with OpenAI Codex assistance. Generated work was reviewed, built and tested locally; upstream authorship remains as listed above.
+
+Credits identify provenance; they do not grant redistribution permission. Original Companion, GPL adaptation, native-foundation and dependency licensing are separate. The combined release's unresolved terms are recorded in [LEGAL.md](LEGAL.md).
 
 If a material credit is missing or inaccurate, open an issue with the project/file and requested correction.

@@ -1,0 +1,57 @@
+{
+  "Passed": true,
+  "DocumentationOnlyRepackage": true,
+  "Archive": "EarthBound-Companion-Redux-Tester-v0.5.0-redux-dev.2-20261004-200535-docs-9a5f7c3a.zip",
+  "Bytes": 124047305,
+  "PackageSha256": "68AF7A45742D7599EB9CC6351411B359BD14A65C109F0661F94DE16770F191B0",
+  "RuntimeValidationParentArchive": "EarthBound-Companion-Redux-Tester-v0.5.0-redux-dev.2-20261004-194236-6df619b3.zip",
+  "RuntimeValidationParentSha256": "7204B6126D84C9FCE16C8CF88AB50749D861717D4453EA0331A59E6C28015F65",
+  "NativeExeSha256": "20C8FBCB910447E2817F5D22F6D57F8D22C5AE2C8EABF832B18EEA2CF19E0474",
+  "ReduxSetupSha256": "889C677DF234D04AF4C71DA94BB9680589515BBCB5999042B422668E4CE62E9E",
+  "ChangedDocumentation": [
+    "CREDITS.md",
+    "LEGAL.md",
+    "MATERNALBOUND-NATIVE.md",
+    "PACKAGE-MANIFEST.json",
+    "RANDOMIZER.md",
+    "README.md",
+    "START HERE.txt"
+  ],
+  "AddedDocumentation": [
+    "LICENSE.md",
+    "PACKAGE-NOTES.md",
+    "RESEARCH.md",
+    "UPSTREAM.md"
+  ],
+  "ByteIdenticalOtherFiles": [
+    "EarthBound Companion.exe",
+    "Game/earthbound.exe",
+    "Game/ebtools-setup.exe",
+    "Game/redux-setup.exe",
+    "Game/SDL2.dll",
+    "Licenses/cJSON-LICENSE",
+    "Licenses/CoilSnake-LICENSE",
+    "Licenses/DOTNET-NOTICES.txt",
+    "Licenses/Exhal-COPYING.txt",
+    "Licenses/LakeSnes-LICENSE.txt",
+    "Licenses/MaternalBound-Redux-LICENSE",
+    "Licenses/SDL2-LICENSE.txt",
+    "Licenses/SHA256-LICENSE",
+    "Licenses/Tamp-LICENSE",
+    "Mods/Clean ultrawide.ebmod.json",
+    "Mods/Comfort.ebmod.json",
+    "Mods/Easygoing.ebmod.json"
+  ],
+  "PackageLocalLinksChecked": 27,
+  "FullPlaythroughVerified": false,
+  "Tests": [
+    "Archive CRC and traversal/payload checks",
+    "Exact manifest verification",
+    "All non-documentation files byte-identical to the fully tested parent ZIP",
+    "Package-local documentation links resolve"
+  ],
+  "Limits": [
+    "Full setup/audio/gameplay suites were performed on the byte-identical runtime in the parent archive; not rerun for this documentation-only repack.",
+    "Repository URLs and screenshots require access to the private repository."
+  ]
+}

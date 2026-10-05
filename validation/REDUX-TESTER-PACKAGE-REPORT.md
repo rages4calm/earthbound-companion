@@ -2,6 +2,16 @@
 
 This is a private experimental conversion checkpoint, not a completed compatibility release.
 
+## Current documentation refresh
+
+- Distributed archive: `EarthBound-Companion-Redux-Tester-v0.5.0-redux-dev.2-20261004-200535-docs-9a5f7c3a.zip`
+- Bytes: 124047305
+- SHA-256: `68AF7A45742D7599EB9CC6351411B359BD14A65C109F0661F94DE16770F191B0`
+
+Only documentation and the package manifest changed. All 17 other files—including the launcher, native executable, both setup helpers, SDL2, profiles and dependency notices—are byte-identical to the fully tested parent archive below. This refresh passed ZIP CRC/path/payload checks, exact manifest verification and 27 package-local link checks. Source-only report/screenshot links now point to the repository; access to that private repository is required. Full setup/audio/gameplay suites were not repeated for unchanged binaries. See [native-redux-documentation-package.json](native-redux-documentation-package.json).
+
+## Runtime-validation parent archive
+
 - Archive: `EarthBound-Companion-Redux-Tester-v0.5.0-redux-dev.2-20261004-194236-6df619b3.zip`
 - Bytes: 124036401
 - SHA-256: `7204B6126D84C9FCE16C8CF88AB50749D861717D4453EA0331A59E6C28015F65`

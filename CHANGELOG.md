@@ -2,6 +2,8 @@
 
 ## 0.5.0-redux-dev.2 - audio, door timing and gameplay checks
 
+- Reviewed README, credits, setup, HD/widescreen, randomizer descriptions and source/license status against the current build. Recorded the retained native foundation and upstream license review; private visibility is explicitly a precaution, not permission to distribute.
+- Refreshed player documentation in the tester ZIP and added the source/license notes. Package documentation links now point to shipped documents or the repository, so source-only reports and screenshots do not become broken local paths.
 - Fixed a native MSU transition bug: a previous SPC Sound Stone recording could continue underneath its PCM replacement. The native music command now stops that sequence while retaining SPC effects.
 - Added verified checks for all eight recordings, SPC effects under MSU, missing-track fallback, all 164 real PCM loop/end boundaries and fast, slow, quarter-volume and full-volume fades.
 - Added doubled exit/entrance transition timers as Companion QoL, following upstream's optional `fast_doors.ccs` hook (disabled in the pinned upstream import list). Twenty-one native exit/palette/brightness cases pass for Redux and original EarthBound, with the original profile retaining its timing.

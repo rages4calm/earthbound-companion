@@ -35,7 +35,7 @@ The development edition pins active source `897d00833f4a08a0a92f106abf631629a6a6
 
 The [Zeldix EarthBound MSU thread](https://www.zeldix.net/t1931-earthbound) identifies Conn's MSU patch and ShadowOne333's loop table. The installed [EarthBound MSU-1 pack](https://archive.org/details/earthbound-msu-1-pack) is credited by its archive metadata to ShadowOne333, who describes it as prepared for MaternalBound Redux and usable with other MSU-compatible EarthBound builds.
 
-Downloaded 164 individual PCM files, checked sizes and MD5 against the source metadata, and separately validated MSU1 magic, 44.1 kHz stereo frame lengths and loop-point bounds. Full details are in `../validation/msu-audit.json`. A local synthetic-audio test covers one-shot ending, looping, resampling, fade-out, malformed input and missing-track fallback.
+Downloaded 164 individual PCM files, checked sizes and MD5 against the source metadata, and separately validated MSU1 magic, 44.1 kHz stereo frame lengths and loop-point bounds. The checksum registry is [research/msu-manifest.json](research/msu-manifest.json); current native loop/end, transition, effects and fallback evidence is [validation/native-redux-audio.json](validation/native-redux-audio.json). A local synthetic-audio test also covers one-shot ending, looping, resampling, fade-out and malformed input.
 
 The selected source originally repeated every PCM track. This build uses game-specific repeat flags, so fanfares and jingles finish. It also follows music fade/half-volume/full-volume commands and exposes master/MSU volume controls. Gameplay does not need an MSU-patched ROM or emulated MSU hardware to play these files.
 

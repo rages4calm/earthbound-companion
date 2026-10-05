@@ -1,5 +1,7 @@
 # EarthBound Companion local verification
 
+Historical original-EarthBound / Story Shuffle v2 report. For the current Redux runtime and Story Shuffle v3, use [MATERNALBOUND-NATIVE.md](../MATERNALBOUND-NATIVE.md) and [the current package record](REDUX-TESTER-PACKAGE-REPORT.md). The checks below retain their original scope and build context.
+
 Completed October 4, 2026. This report records bounded checks of the local private build, not a complete playthrough or every device combination.
 
 ## Installed entry points
