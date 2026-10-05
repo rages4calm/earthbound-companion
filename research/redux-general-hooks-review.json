@@ -1,0 +1,251 @@
+{
+  "format": "redux-general-hooks-review-v1",
+  "status": "manual-source-and-retained-data-review",
+  "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "module": "ccscript/redux/redux_changes.ccs",
+  "sourceSha256": "f9d0054f61e456369160dfc74d414ee1381ebb98904f6f2f893304a9df87e5f5",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "activeWritesReviewed": 15,
+  "retainedMovementCommandsChecked": 4,
+  "symbolPresenceProvesBehavior": false,
+  "completePatchAudit": false,
+  "fullPlaythroughVerified": false,
+  "reviews": [
+    {
+      "address": "C2381F",
+      "classification": "native-menu",
+      "reviewDecision": "The Transform command uses column 11 in the native battle menu.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle.c",
+          "line": 2745,
+          "anchor": "add_menu_item(maternalbound_enabled()?\"Transform\":\"Mirror\""
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C1C415",
+      "classification": "native-name-data",
+      "reviewDecision": "The favorite-thing field is addressed through the native game-state structure, independently of SNES WRAM offsets.",
+      "nativeReferences": [
+        {
+          "path": "src/game/display_text.c",
+          "line": 947,
+          "anchor": "game_state.favourite_thing"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C1FE3D",
+      "classification": "native-name-rendering",
+      "reviewDecision": "The native renderer explicitly prints the P glyph in the PK prefix.",
+      "nativeReferences": [
+        {
+          "path": "src/game/display_text.c",
+          "line": 942,
+          "anchor": "const uint8_t prefix[]={ 'P'+0x30,'K'+0x30,' '+0x30 }"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C1FE42",
+      "classification": "native-name-rendering",
+      "reviewDecision": "The native renderer explicitly prints the K glyph in the PK prefix.",
+      "nativeReferences": [
+        {
+          "path": "src/game/display_text.c",
+          "line": 942,
+          "anchor": "const uint8_t prefix[]={ 'P'+0x30,'K'+0x30,' '+0x30 }"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C37CD1",
+      "classification": "converted-movement-data",
+      "reviewDecision": "The monkey event retains destination 7 inside the converted C3 movement bank.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 345,
+          "anchor": "WRAM_GLOBAL(0x9F3F, ow.psi_teleport_destination)"
+        }
+      ],
+      "retainedMovementCommand": {
+        "address": "C37CCE",
+        "bytes": 5,
+        "compiledAndConvertedMatch": true
+      },
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C292A0",
+      "classification": "native-gameplay",
+      "reviewDecision": "The Clumsy Robot action reads the flag from Redux teleport destination 15.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 4432,
+          "anchor": "(maternalbound_enabled() ? 15 : 13) * 31"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C490F6",
+      "classification": "native-gameplay",
+      "reviewDecision": "The Piggy Nose distance query finds Redux truffle sprite 440.",
+      "nativeReferences": [
+        {
+          "path": "src/game/display_text_cc.c",
+          "line": 1399,
+          "anchor": "find_entity_by_sprite_id(maternalbound_enabled() ? 440 : 376)"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C292DE",
+      "classification": "native-gameplay",
+      "reviewDecision": "The unused Clumsy Robot smoke branch selects Redux teleport destination 8.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 4453,
+          "anchor": "ow.psi_teleport_destination = maternalbound_enabled() ? 8 : 13"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C38753",
+      "classification": "converted-movement-data",
+      "reviewDecision": "The reduced flash controller stores 3 in entity variable 0; the native interpreter executes that retained movement command.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 817,
+          "anchor": "case OP_SET_VAR:"
+        },
+        {
+          "path": "src/entity/callroutine.c",
+          "line": 2494,
+          "anchor": "apply_palette_brightness_all(entities.var[0][entity_offset])"
+        }
+      ],
+      "retainedMovementCommand": {
+        "address": "C38753",
+        "bytes": 4,
+        "compiledAndConvertedMatch": true
+      },
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C39F67",
+      "classification": "converted-movement-data",
+      "reviewDecision": "The second reduced flash controller stores 11 in entity variable 0; its patched bytes are retained in the C3 bank.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 817,
+          "anchor": "case OP_SET_VAR:"
+        }
+      ],
+      "retainedMovementCommand": {
+        "address": "C39F67",
+        "bytes": 4,
+        "compiledAndConvertedMatch": true
+      },
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C39F75",
+      "classification": "converted-movement-data",
+      "reviewDecision": "The patched bytes form variable-callback ADD with a signed -1 operand, within the command beginning at C39F73; they are not a separate 65816 COP executed by the PC.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 533,
+          "anchor": "case 0x14:"
+        },
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 523,
+          "anchor": "case 2: *target += param; break;"
+        }
+      ],
+      "retainedMovementCommand": {
+        "address": "C39F73",
+        "bytes": 5,
+        "compiledAndConvertedMatch": true
+      },
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C24FFB",
+      "classification": "native-gameplay",
+      "reviewDecision": "Redux turn ordering uses 25-percent speed variance instead of the original 50-percent function.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle.c",
+          "line": 3932,
+          "anchor": "maternalbound_enabled() ? battle_25pct_variance(b->speed)"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C4DE78",
+      "classification": "native-map-data",
+      "reviewDecision": "The sanctuary display swaps Milky Well and Rainy Circle by selecting the corresponding source records in native code.",
+      "nativeReferences": [
+        {
+          "path": "src/game/map_loader.c",
+          "line": 1854,
+          "anchor": "if(maternalbound_enabled() && (source_idx==2 || source_idx==3)) source_idx^=1"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C05284",
+      "classification": "native-timer-adaptation",
+      "reviewDecision": "The native timer uses 2531 ticks for Redux and 1687 for original EarthBound, including the post-call reset.",
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld.c",
+          "line": 2084,
+          "anchor": "ow.dad_phone_timer = maternalbound_enabled() ? 2531 : 1687"
+        },
+        {
+          "path": "src/game/overworld_interaction.c",
+          "line": 101,
+          "anchor": "ow.dad_phone_timer = maternalbound_enabled() ? 2531 : 1687"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    },
+    {
+      "address": "C3E964",
+      "classification": "native-menu-layout-adaptation",
+      "reviewDecision": "The PC menu has its own columns, shorter Keys label and Save/Set Up/Quit rows. It does not reproduce the SNES seven-tile-column table literally.",
+      "nativeReferences": [
+        {
+          "path": "src/game/text.c",
+          "line": 731,
+          "anchor": "add_menu_item(\"Keys\",10,0,2)"
+        },
+        {
+          "path": "src/game/text.c",
+          "line": 728,
+          "anchor": "add_menu_item(\"Equip\",4,6,0)"
+        }
+      ],
+      "limits": "Targeted fixtures and source/data checks; every live story branch remains unverified."
+    }
+  ]
+}

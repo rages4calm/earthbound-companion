@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0-redux-dev.5 - present reward fix
+
+- Create the deferred Redux gift window before writing item/cash registers, preserving silent empty Talk/Check behavior. Reproduce two lost present rewards on dev.4, then verify source-defined rewards, opened flags, window cleanup and no duplicate gifts on dev.5. A prepared $123 cash gift also passes.
+- Rebuild player/observer engines and the setup helper together; keep the corrected pack, state format 16 and seed identities unchanged. Previously opened presents are not automatically compensated.
+- Record 15 additional literal-hook reviews, exact retained movement commands, shack/cave exploration and process-pointer-aware observer comparisons. Complete story, randomized story and all-module conversion parity remain unfinished.
+- Stop Jev exploration at the owner’s request; subsequent gift regressions use deterministic ordinary inputs with no TypeSafe requests.
+
 ## 0.5.0-redux-dev.4 - script width fix and active bugfix review
 
 - Correct Redux `CC 1D 15` variable-argument handling to use the low word stored by the upstream assembly fix. The real dispatcher reproduces eight failures before the correction; all 25 operand/party-position cases now pass, raising the VM suite to 106 checks.

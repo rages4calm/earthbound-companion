@@ -235,7 +235,7 @@ def path_turn(state, target):
             'target': list(turn), 'settle': 140}
 
 
-def candidates(state, target_npc=None, target=None, heal_character=None, seek_battle=False, check_required=False, known_door=False):
+def candidates(state, target_npc=None, target=None, heal_character=None, seek_battle=False, check_required=False, known_door=False, use_key_item=None):
     options = {'stop': {'description': 'Stop and preserve the run if evidence is insufficient.', 'input': None}}
     top = state['modeNames'][-1] if state['modeNames'] else 'NONE'
     window = next((w for w in state['windows'] if w['id'] == state['focusWindow']), None)
@@ -311,6 +311,9 @@ def candidates(state, target_npc=None, target=None, heal_character=None, seek_ba
                 step = {'button': button, 'frames': 4, 'target': list(target), 'settle': 140, 'doorProbe': True}
             if step:
                 options['follow_path'] = {'description': (f'Probe the nearby door waypoint {target} with a short ordinary movement input.' if step.get('doorProbe') else f'Follow the collision-checked path toward waypoint {target}.'), 'input': step}
+        if use_key_item is not None and target is not None and sum(abs(target[i] - state['position'][i]) for i in (0, 1)) <= 48:
+            options['open_key_menu'] = {'description': f'Open the ordinary pause menu, then choose Keys and the held quest item {use_key_item} to use it at this door. Item availability and use are enforced by the game.',
+                                        'input': {'button': 'menu', 'frames': 1, 'settle': 140}}
         if target_npc is not None or target is not None or seek_battle:
             # Local map collision does not account for every movable/sprite
             # object. Offer bounded ordinary sidesteps when a planned route is
@@ -387,6 +390,7 @@ def play(args):
     battle_seen, checked = False, False
     visited={}
     blocked_buttons = set()
+    missed_interactions = set()
     state = None
     try:
         indexes = [int(p.name) for p in directory.iterdir() if p.is_dir() and p.name.isdigit()]
@@ -427,8 +431,18 @@ def play(args):
             if args.target_npc is not None and dialogue_seen and state['modeNames'] == ['OVERWORLD']:
                 reason = 'target_conversation_completed';break
             options = candidates(state, args.target_npc, args.door or args.target, args.heal_character,
-                                 args.seek_battle and not battle_seen, args.check_before_combat and not checked, args.door is not None)
+                                 args.seek_battle and not battle_seen, args.check_before_combat and not checked, args.door is not None, args.use_key_item)
             options = avoid_blocked_movement(options, blocked_buttons)
+            options = {name: option for name, option in options.items() if name not in missed_interactions}
+            if len(options) == 1 and state['modeNames'] == ['OVERWORLD'] and (args.target or args.door or args.target_npc is not None or args.seek_battle):
+                # A blocked fractional corner can disagree with the cached
+                # map footprint. Offer the remaining short ordinary probes;
+                # the native game enforces collision and progress is observed.
+                for button in ('up', 'down', 'left', 'right'):
+                    if button not in blocked_buttons:
+                        options['reposition_' + button] = {
+                            'description': f'The cached path is blocked. Probe {button} for four ordinary frames to escape the corner; the game enforces collision, then re-observe.',
+                            'input': {'button': button, 'frames': 4, 'settle': 140}}
             if len(options) == 1:
                 reason = 'no_valid_candidate';break
             old_fingerprint = fingerprint(state)
@@ -445,6 +459,7 @@ def play(args):
             state = observe_step(directory, run, action, index, state)
             if state['position'] != before_position or state['modeNames'] != before_modes:
                 blocked_buttons.clear()
+                missed_interactions.clear()
             elif choice.startswith(('approach_', 'reposition_')) or choice == 'follow_path':
                 blocked_buttons.add(action['button'])
             if choice == 'check_empty':
@@ -452,6 +467,11 @@ def play(args):
             if choice == 'talk_target' and 'DISPLAY_TEXT' in state['modeNames'] and state.get('interactingNpc') == args.target_npc:
                 dialogue_seen = True
             new_fingerprint = fingerprint(state)
+            if choice == 'talk_target' and new_fingerprint == old_fingerprint:
+                # The coarse approach radius can offer Talk/Check while the
+                # game's exact facing rectangle still misses the object. Try
+                # another ordinary approach instead of repeating the miss.
+                missed_interactions.add(choice)
             repeats = repeats + 1 if new_fingerprint == old_fingerprint else 0
             row = {'step': index, 'choice': choice, 'position': state['position'], 'modes': state['modeNames'],
                    'action': action, 'beforePosition': before_position,
@@ -492,6 +512,7 @@ def main():
     goal.add_argument('--target', type=int, nargs=2)
     goal.add_argument('--door', type=int, nargs=2, help='Approach a known doorway and stop after an ordinary room warp of more than 512 map pixels.')
     run.add_argument('--door-destination', type=int, nargs=2, help='With --door, verify arrival within 24 map pixels of a known destination, including nearby interior rooms.')
+    run.add_argument('--use-key-item', type=int, help='With --door, offer ordinary pause-menu input near the door so Jev can select a held key through Keys and Use.')
     goal.add_argument('--battle-complete', action='store_true')
     goal.add_argument('--heal-character', type=int, choices=range(1,5), help='Verify an HP increase and PP use through ordinary PSI menus.')
     run.add_argument('--seek-battle', action='store_true', help='Approach observed overworld enemies before completing a natural battle.')
@@ -507,6 +528,8 @@ def main():
             parser.error('Encounter options require --battle-complete.')
         if args.door_destination and not args.door:
             parser.error('--door-destination requires --door.')
+        if args.use_key_item is not None and (not args.door or not 1 <= args.use_key_item <= 253):
+            parser.error('--use-key-item requires --door and an item ID from 1 to 253.')
         if not 1 <= args.max_requests <= 500 or not 1 <= args.max_steps <= 1000 or not 1 <= args.max_seconds <= 3600:
             parser.error('Choose bounded request/step/time limits.')
         play(args)

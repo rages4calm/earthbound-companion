@@ -1,0 +1,74 @@
+{
+  "Passed": true,
+  "Checkpoints": [
+    {
+      "case": "redux-gift-dev5-v1-fixed-cash",
+      "step": 0,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-gift-dev5-v1-fixed-cash",
+      "step": 1,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-gift-dev5-v1-fixed-cash",
+      "step": 2,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-gift-dev5-v1-fixed-cash",
+      "step": 3,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-gift-dev5-v1-fixed-cash",
+      "step": 4,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-gift-dev5-v1-fixed-cash",
+      "step": 5,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    },
+    {
+      "case": "redux-gift-dev5-v1-fixed-cash",
+      "step": 6,
+      "serializedSectionsMatch": true,
+      "phoneSaveBytesMatch": true
+    }
+  ],
+  "baselineEngineSha256": "dd62e5bca4afc0e42a59119abb7ba942f2c170bca2ee33c7fd36862dae90f456",
+  "observedEngineSha256": "06e2cc048234b55de5c9ea30b5dd9227f0ae6e78d300be54541bd1f0895e65bd",
+  "packSha256": "335129f8b8f9624e286dece062c49e7269d2353223ec2b4e4596994e846792c0",
+  "Exclusions": [
+    {
+      "section": 8,
+      "fields": [
+        "WindowInfo.content_tilemap",
+        "WindowInfo.cursor_move_callback"
+      ]
+    },
+    {
+      "section": 20,
+      "fields": [
+        "PsiAnimationState.arr_bundled_data",
+        "PsiAnimationState.arr_bundle_buf"
+      ],
+      "offsets": [
+        64,
+        80
+      ]
+    }
+  ],
+  "NullPointerPresenceCompared": true,
+  "PSIPointerLayoutCompilerVerified": true,
+  "ExclusionReason": "Process addresses rebuilt from saved IDs, offsets and the entity staging buffer on every load. Every other serialized byte, including animation timing, palette and bundle identity, must match.",
+  "FullPlaythroughVerified": false
+}

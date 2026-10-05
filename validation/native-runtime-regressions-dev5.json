@@ -1,0 +1,63 @@
+{
+  "Passed": true,
+  "nativeExeSha256": "dd62e5bca4afc0e42a59119abb7ba942f2c170bca2ee33c7fd36862dae90f456",
+  "reduxPackSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "originalPackSha256": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+  "tests": [
+    {
+      "profile": "redux",
+      "test": "--selftest-redux-vm",
+      "passed": true,
+      "log": "runtime-dev5/redux-vm/native.txt"
+    },
+    {
+      "profile": "redux",
+      "test": "--selftest-redux-movement",
+      "passed": true,
+      "log": "runtime-dev5/redux-movement/native.txt"
+    },
+    {
+      "profile": "redux",
+      "test": "--selftest-redux-combat",
+      "passed": true,
+      "log": "runtime-dev5/redux-combat/native.txt"
+    },
+    {
+      "profile": "redux",
+      "test": "--selftest-redux-motion",
+      "passed": true,
+      "log": "runtime-dev5/redux-motion/native.txt"
+    },
+    {
+      "profile": "original",
+      "test": "--selftest-pc",
+      "passed": true,
+      "log": "runtime-dev5/original-pc/native.txt"
+    },
+    {
+      "profile": "original",
+      "test": "--selftest-savestate",
+      "passed": true,
+      "log": "runtime-dev5/original-savestate/native.txt"
+    },
+    {
+      "profile": "original",
+      "test": "--selftest-keyitems",
+      "passed": true,
+      "log": "runtime-dev5/original-keyitems/native.txt"
+    },
+    {
+      "profile": "original",
+      "test": "--selftest-joinlevel",
+      "passed": true,
+      "log": "runtime-dev5/original-joinlevel/native.txt"
+    },
+    {
+      "profile": "original",
+      "test": "--selftest-screen-transitions",
+      "passed": true,
+      "log": "runtime-dev5/original-screen-transitions/native.txt"
+    }
+  ],
+  "FullPlaythroughVerified": false
+}

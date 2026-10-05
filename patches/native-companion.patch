@@ -7629,7 +7629,7 @@ index 16288ab..a6ceb4d 100644
  /* CLEAR_ALL_ENEMIES: Port of asm/overworld/clear_all_enemies.asm.
   * Zeroes enemy spawn counters, removes all non-party entities, clears collision data. */
 diff --git a/src/game/overworld_interaction.c b/src/game/overworld_interaction.c
-index ce1f37c..d387af8 100644
+index ce1f37c..88125b8 100644
 --- a/src/game/overworld_interaction.c
 +++ b/src/game/overworld_interaction.c
 @@ -16,6 +16,7 @@
@@ -7668,6 +7668,30 @@ index ce1f37c..d387af8 100644
 +    if (!maternalbound_enabled()) create_window(WINDOW_TEXT_STANDARD);
  
      find_nearby_checkable_tpt_entry();
+ 
+@@ -483,6 +486,15 @@ uint32_t check_action(void) {
+         break;
+ 
+     case NPC_TYPE_ITEM_BOX: {
++        text_ptr = get_npc_config_text_pointer(ow.interacting_npc_id);
++        /* Redux defers the interaction window until a real target is found.
++         * Gift registers belong to that window: without opening it here the
++         * setters either have no focused window or write into the pause menu,
++         * and the gift script receives zero when its text window opens later.
++         * Only a present with actual dialogue opens a window; empty roaming
++         * checks still leave the screen clear. */
++        if (maternalbound_enabled() && text_ptr != 0)
++            create_window(WINDOW_TEXT_STANDARD);
+         uint16_t item = get_npc_config_item(ow.interacting_npc_id);
+         if (item < 256) {
+             /* Item gift: working_memory = item_id.
+@@ -496,7 +508,6 @@ uint32_t check_action(void) {
+         }
+         /* Store event flag for later flag-setting by text script */
+         dt.current_interacting_event_flag = get_npc_config_event_flag(ow.interacting_npc_id);
+-        text_ptr = get_npc_config_text_pointer(ow.interacting_npc_id);
+         break;
+     }
  
 diff --git a/src/game/overworld_palette.c b/src/game/overworld_palette.c
 index 4eeb8d3..142ff51 100644

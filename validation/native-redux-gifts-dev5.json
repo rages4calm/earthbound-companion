@@ -1,0 +1,160 @@
+{
+  "Passed": true,
+  "format": "redux-gift-replay-v1",
+  "cases": [
+    {
+      "case": "redux-gift-dev5-v2-before-1414",
+      "ordinaryInputsOnly": true,
+      "preparedAssetFixture": false,
+      "nativeExeSha256": "788472439998ff78021d4bdc621eef7e5dbc8971e508e5d0a3e798cc585b5daf",
+      "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "initialPosition": [
+        3906,
+        5081
+      ],
+      "finalPosition": [
+        3906,
+        5081
+      ],
+      "eventFlag": 807,
+      "flagBefore": false,
+      "flagAfter": true,
+      "itemCountBefore": 0,
+      "itemCountAfter": 0,
+      "itemId": 224,
+      "cashBefore": 62,
+      "cashAfter": 62,
+      "expectedCash": null,
+      "reportedEmpty": true,
+      "returnedToRoaming": true,
+      "windowsAfter": 0,
+      "giftDelivered": false,
+      "repeatReturnedToRoaming": true,
+      "repeatDidNotDuplicate": true
+    },
+    {
+      "case": "redux-gift-dev5-v2-fixed-1414",
+      "ordinaryInputsOnly": true,
+      "preparedAssetFixture": false,
+      "nativeExeSha256": "06e2cc048234b55de5c9ea30b5dd9227f0ae6e78d300be54541bd1f0895e65bd",
+      "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "initialPosition": [
+        3906,
+        5081
+      ],
+      "finalPosition": [
+        3906,
+        5081
+      ],
+      "eventFlag": 807,
+      "flagBefore": false,
+      "flagAfter": true,
+      "itemCountBefore": 0,
+      "itemCountAfter": 1,
+      "itemId": 224,
+      "cashBefore": 62,
+      "cashAfter": 62,
+      "expectedCash": null,
+      "reportedEmpty": false,
+      "returnedToRoaming": true,
+      "windowsAfter": 0,
+      "giftDelivered": true,
+      "repeatReturnedToRoaming": true,
+      "repeatDidNotDuplicate": true
+    },
+    {
+      "case": "redux-gift-dev5-v2-before-1415",
+      "ordinaryInputsOnly": true,
+      "preparedAssetFixture": false,
+      "nativeExeSha256": "788472439998ff78021d4bdc621eef7e5dbc8971e508e5d0a3e798cc585b5daf",
+      "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "initialPosition": [
+        3658,
+        5843
+      ],
+      "finalPosition": [
+        3658,
+        5843
+      ],
+      "eventFlag": 808,
+      "flagBefore": false,
+      "flagAfter": true,
+      "itemCountBefore": 0,
+      "itemCountAfter": 0,
+      "itemId": 111,
+      "cashBefore": 62,
+      "cashAfter": 62,
+      "expectedCash": null,
+      "reportedEmpty": true,
+      "returnedToRoaming": true,
+      "windowsAfter": 0,
+      "giftDelivered": false,
+      "repeatReturnedToRoaming": true,
+      "repeatDidNotDuplicate": true
+    },
+    {
+      "case": "redux-gift-dev5-v2-fixed-1415",
+      "ordinaryInputsOnly": true,
+      "preparedAssetFixture": false,
+      "nativeExeSha256": "06e2cc048234b55de5c9ea30b5dd9227f0ae6e78d300be54541bd1f0895e65bd",
+      "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "initialPosition": [
+        3658,
+        5843
+      ],
+      "finalPosition": [
+        3658,
+        5843
+      ],
+      "eventFlag": 808,
+      "flagBefore": false,
+      "flagAfter": true,
+      "itemCountBefore": 0,
+      "itemCountAfter": 1,
+      "itemId": 111,
+      "cashBefore": 62,
+      "cashAfter": 62,
+      "expectedCash": null,
+      "reportedEmpty": false,
+      "returnedToRoaming": true,
+      "windowsAfter": 0,
+      "giftDelivered": true,
+      "repeatReturnedToRoaming": true,
+      "repeatDidNotDuplicate": true
+    },
+    {
+      "case": "redux-gift-dev5-v2-fixed-cash",
+      "ordinaryInputsOnly": true,
+      "preparedAssetFixture": true,
+      "nativeExeSha256": "06e2cc048234b55de5c9ea30b5dd9227f0ae6e78d300be54541bd1f0895e65bd",
+      "packSha256": "335129f8b8f9624e286dece062c49e7269d2353223ec2b4e4596994e846792c0",
+      "initialPosition": [
+        3658,
+        5843
+      ],
+      "finalPosition": [
+        3658,
+        5843
+      ],
+      "eventFlag": 808,
+      "flagBefore": false,
+      "flagAfter": true,
+      "itemCountBefore": null,
+      "itemCountAfter": null,
+      "itemId": null,
+      "cashBefore": 62,
+      "cashAfter": 185,
+      "expectedCash": 123,
+      "reportedEmpty": false,
+      "returnedToRoaming": true,
+      "windowsAfter": 0,
+      "giftDelivered": true,
+      "repeatReturnedToRoaming": true,
+      "repeatDidNotDuplicate": true
+    }
+  ],
+  "TypeSafeRequests": 0,
+  "OwnerSavesWritten": false,
+  "FullPlaythroughVerified": false,
+  "PreparedCashFixture": "Only NPC 1415 item field differs: 256+123 means a $123 gift. This is a test of cash semantics, not a story reward claim."
+}
