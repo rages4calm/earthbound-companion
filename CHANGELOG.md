@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.11 - sprint and cliff collision
+
+- Validate the actual accepted free-walking segment after directional collision and corner nudges, sampling its leading edge and feet at pixel intervals. Prevent unchecked corner slides through solid tiles at normal, sprint and Skip Sandwich speeds in both editions and Story Shuffle packs.
+- Keep existing movement speeds, scripted collision bypass and door/ladder transition handling. No content or save-layout migration is required; quick-save format 16 and seed identities are unchanged.
+- Reproduce a captured cliff crossing with the archived dev.10 engine; verify the corrected player and observer stay on traversable tiles. Check 12,288 prepared corner/cliff paths and 144 free-speed/surface cases per edition/build, plus scripted movement bypass.
+- Verify an isolated recovery to the captured party's own pre-crossing path, preserving story flags, party stats/items, money and the phone save. This is a specific recovery fixture, not an automatic teleport or general recovery feature.
+- Repeat shared encounter, bicycle and sound-effect regressions. A full story/randomized playthrough remains unverified.
+
 ## 0.5.0-redux-dev.10 - faster playtest progression
 
 - Add 1×–16× experience and battle-money options, and 2×–16× Tab fast-forward targets. Preserve the former 3× default and existing settings.

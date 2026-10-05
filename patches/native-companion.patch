@@ -14,7 +14,7 @@ index beecb38..43a704a 100644
  # Emit compile_commands.json so clangd/IDEs resolve include paths and types.
  # A root-level symlink (../../compile_commands.json) points at this file.
 diff --git a/port/unix/main.c b/port/unix/main.c
-index f625aff..a2b15a4 100644
+index f625aff..16dfe59 100644
 --- a/port/unix/main.c
 +++ b/port/unix/main.c
 @@ -32,12 +32,32 @@
@@ -50,7 +50,7 @@ index f625aff..a2b15a4 100644
  #include "version.h"    /* EB_VERSION_STRING -- generated, see CMakeLists.txt.
                            * Unconditionally generated (not gated behind
                            * EB_UPDATER_ENABLED the way sdl2_updater.c's own
-@@ -368,12 +388,56 @@ static void migrate_legacy_saves_to_saves_folder(void) {
+@@ -368,12 +388,57 @@ static void migrate_legacy_saves_to_saves_folder(void) {
  
  int main(int argc, char *argv[]) {
      chdir_to_executable_dir(); /* before anything below touches a relative path */
@@ -88,6 +88,7 @@ index f625aff..a2b15a4 100644
 +    bool transition_selftest = false;
 +    bool encounter_selftest = false;
 +    bool reward_selftest = false;
++    bool sprint_collision_test = false;
 +    bool start_fast_forward = false;
 +    bool bicycle_audio_selftest = false;
 +    bool sfx_audio_selftest = false;
@@ -107,7 +108,7 @@ index f625aff..a2b15a4 100644
      bool threed_zombie_flag_check = false;
      bool threed_zombie_flag_fix = false;
      bool jeff_flag_fix = false;
-@@ -396,7 +460,26 @@ int main(int argc, char *argv[]) {
+@@ -396,7 +461,26 @@ int main(int argc, char *argv[]) {
  #endif
  
      for (int i = 1; i < argc; i++) {
@@ -135,7 +136,7 @@ index f625aff..a2b15a4 100644
              verify_rom_path = argv[++i];
  #ifdef EB_RUNTIME_ASSETS
          } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
-@@ -420,6 +503,75 @@ int main(int argc, char *argv[]) {
+@@ -420,6 +504,78 @@ int main(int argc, char *argv[]) {
               * --save FILE. Implies headless. */
              keyitems_selftest = true;
              platform_headless = true;
@@ -166,6 +167,9 @@ index f625aff..a2b15a4 100644
 +            transition_selftest = true;
 +        } else if (strcmp(argv[i], "--selftest-encounters") == 0) {
 +            encounter_selftest = true;
++        } else if (strcmp(argv[i], "--selftest-sprint-collision") == 0) {
++            sprint_collision_test = true;
++            platform_headless = true;
 +        } else if (strcmp(argv[i], "--selftest-playtest-rewards") == 0) {
 +            reward_selftest = true;
 +            platform_headless = true;
@@ -211,7 +215,7 @@ index f625aff..a2b15a4 100644
          } else if (strcmp(argv[i], "--selftest-joinlevel") == 0) {
              /* Join-level scaling (Paula/Jeff/Poo scaled to Ness's current
               * level, see add_char_to_party()'s doc comment, inventory.c).
-@@ -536,7 +688,7 @@ int main(int argc, char *argv[]) {
+@@ -536,7 +692,7 @@ int main(int argc, char *argv[]) {
  #else
                              " [--export-pak FILE]"
  #endif
@@ -220,7 +224,7 @@ index f625aff..a2b15a4 100644
                      argv[0]);
              return 1;
          }
-@@ -630,6 +782,10 @@ int main(int argc, char *argv[]) {
+@@ -630,6 +786,10 @@ int main(int argc, char *argv[]) {
       * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
       * platform-conventional data dir (see eb_runtime_assets_default_path). */
      char default_assets_path[1024];
@@ -231,7 +235,7 @@ index f625aff..a2b15a4 100644
      if (assets_path == NULL) {
          assets_path = getenv("EB_ASSETS_PAK");
      }
-@@ -916,6 +1072,9 @@ int main(int argc, char *argv[]) {
+@@ -916,6 +1076,9 @@ int main(int argc, char *argv[]) {
       * itself (sdl2_video.c is platform-agnostic and already correct). */
      SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
@@ -241,7 +245,7 @@ index f625aff..a2b15a4 100644
      /* Initialize SDL */
      uint32_t sdl_flags = SDL_INIT_TIMER;
      if (!platform_headless) {
-@@ -938,6 +1097,7 @@ int main(int argc, char *argv[]) {
+@@ -938,6 +1101,7 @@ int main(int argc, char *argv[]) {
      platform_input_init();
      platform_save_init();
      settings_load();
@@ -249,7 +253,7 @@ index f625aff..a2b15a4 100644
      /* Resume logging automatically if a previous session left the Config
       * menu's "Logging" row on -- a tester shouldn't have to re-enable it
       * after every relaunch (including the updater's own self-relaunch) to
-@@ -965,6 +1125,30 @@ int main(int argc, char *argv[]) {
+@@ -965,6 +1129,30 @@ int main(int argc, char *argv[]) {
  
      /* Initialize game systems */
      game_init();
@@ -280,15 +284,17 @@ index f625aff..a2b15a4 100644
  
      /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
       * fresh boot. Just requests it here -- the normal per-frame
-@@ -993,7 +1177,30 @@ int main(int argc, char *argv[]) {
+@@ -993,7 +1181,31 @@ int main(int argc, char *argv[]) {
          fprintf(stderr, "key items pool self-test: %s\n", ok_ki ? "PASS" : "FAIL");
          exit(ok_ki ? 0 : 1);
      }
+-
 +    if (encounter_selftest) exit(battle_encounter_selftest() ? 0 : 1);
 +    if (reward_selftest) exit(battle_reward_selftest() ? 0 : 1);
++    if (sprint_collision_test) exit(sprint_collision_selftest() ? 0 : 1);
 +    if (sfx_audio_selftest) exit(audio_sfx_selftest(msu_dir,msu_name) ? 0 : 1);
 +    if (bicycle_audio_selftest) exit(audio_bicycle_selftest(msu_dir,msu_name) ? 0 : 1);
- 
++
 +    if (redux_vm_selftest) {
 +        exit(maternalbound_vm_selftest() ? 0 : 1);
 +    }
@@ -311,7 +317,7 @@ index f625aff..a2b15a4 100644
      if (joinlevel_selftest) {
          bool ok_jl = join_level_scaling_selftest();
          fprintf(stderr, "join-level scaling self-test: %s\n", ok_jl ? "PASS" : "FAIL");
-@@ -1194,6 +1401,127 @@ int main(int argc, char *argv[]) {
+@@ -1194,6 +1406,127 @@ int main(int argc, char *argv[]) {
          exit(0);
      }
  
@@ -439,7 +445,7 @@ index f625aff..a2b15a4 100644
      /* Initialize audio (loads audio packs from embedded assets) */
      if (!platform_headless)
          platform_audio_init();
-@@ -1208,7 +1536,7 @@ int main(int argc, char *argv[]) {
+@@ -1208,7 +1541,7 @@ int main(int argc, char *argv[]) {
           * --msu-dir/--msu-name flags, and nothing to add to a Steam
           * shortcut's Launch Options (editing those is real friction, and
           * has to be redone every time the pack changes). */
@@ -448,7 +454,7 @@ index f625aff..a2b15a4 100644
          char detected_name[128];
          const char *name = msu_name;
  
-@@ -1278,11 +1606,117 @@ int main(int argc, char *argv[]) {
+@@ -1278,11 +1611,117 @@ int main(int argc, char *argv[]) {
      platform_timer_frame_start();
  
      for (int frame_num = 0; !platform_input_quit_requested(); frame_num++) {
@@ -6997,7 +7003,7 @@ index 7d7e466..2b9600f 100644
   * All take char_id (1-indexed) in A and new_item_id in X.
   * Store the new item, recalculate affected stats, return old item ID. */
 diff --git a/src/game/map_loader.c b/src/game/map_loader.c
-index 620656b..d9de56c 100644
+index 620656b..ca8ceb5 100644
 --- a/src/game/map_loader.c
 +++ b/src/game/map_loader.c
 @@ -16,6 +16,7 @@
@@ -7129,7 +7135,42 @@ index 620656b..d9de56c 100644
          } else {
              /* Scrolling UP: SCREEN_TOP_Y > target.
               * Assembly lines 191-228. */
-@@ -3554,7 +3588,11 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
+@@ -3088,6 +3122,34 @@ process_result:
+     return temp_entity_surface_flags & 0x003F;
+ }
+ 
++/* Check the accepted movement, rather than just the original requested endpoint.
++ * Corner nudges and sprint/Skip Sandwich may select a different endpoint after
++ * CHECK_DIRECTIONAL_COLLISION masked out the original wall flags. Sample each
++ * pixel along that segment with the same leading-edge geometry. This is a pure
++ * lookup: it must not alter slide memory, surface flags or door detection. */
++bool player_movement_path_clear(int32_t from_x, int32_t from_y,
++                                int32_t to_x, int32_t to_y, int16_t direction) {
++    static const uint8_t masks[8]={0x07,0x1E,0x24,0x33,0x38,0x1E,0x09,0x33};
++    if(direction<0 || direction>7) return false;
++    int64_t dx=(int64_t)to_x-from_x,dy=(int64_t)to_y-from_y;
++    int64_t ax=dx<0?-dx:dx,ay=dy<0?-dy:dy;
++    unsigned steps=(unsigned)(((ax>ay?ax:ay)+0xFFFF)>>16);
++    for(unsigned step=1;step<=steps;step++) {
++        int16_t x=(int16_t)((uint32_t)(from_x+dx*step/steps)>>16);
++        int16_t y=(int16_t)((uint32_t)(from_y+dy*step/steps)>>16);
++        for(unsigned point=0;point<6;point++) if(masks[direction]&(1u<<point)) {
++            unsigned tx=((x+collision_x_offsets[point])>>3)&63;
++            unsigned ty=((y+collision_y_offsets[point])>>3)&63;
++            if(ml.loaded_collision_tiles[ty*64+tx]&0xC0) return false;
++        }
++        /* The feet must also stay on a traversable cell even when a cardinal
++         * leading edge is being nudged away from an irregular cliff corner. */
++        unsigned tx=(x>>3)&63,ty=((y+4)>>3)&63;
++        if(ml.loaded_collision_tiles[ty*64+tx]&0xC0) return false;
++    }
++    return true;
++}
++
+ /*
+  * get_collision_at_pixel, simple single-point collision lookup.
+  *
+@@ -3554,7 +3616,11 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
      }
  
      /* If music differs and not fading, trigger fade-out */
@@ -7143,10 +7184,21 @@ index 620656b..d9de56c 100644
      }
  }
 diff --git a/src/game/map_loader.h b/src/game/map_loader.h
-index cf14f47..effe83c 100644
+index cf14f47..816ac49 100644
 --- a/src/game/map_loader.h
 +++ b/src/game/map_loader.h
-@@ -202,9 +202,9 @@ typedef struct {
+@@ -86,6 +86,10 @@ uint16_t lookup_surface_flags(int16_t x, int16_t y, uint16_t size_code);
+  * Returns surface flags, bits 6-7 (0xC0) indicate wall blocking. */
+ uint16_t check_directional_collision(int16_t x, int16_t y, int16_t direction);
+ 
++/* Pure swept check of the accepted 16.16 movement segment, including corner slides. */
++bool player_movement_path_clear(int32_t from_x, int32_t from_y,
++                                int32_t to_x, int32_t to_y, int16_t direction);
++
+ /* Simple single-point collision lookup at a world position.
+  * Port of GET_COLLISION_AT_PIXEL (asm/overworld/collision/get_collision_at_pixel.asm).
+  * Used in movement_locked mode where directional collision is skipped. */
+@@ -202,9 +206,9 @@ typedef struct {
      int16_t screen_left_x;
      int16_t screen_top_y;
  
@@ -8410,7 +8462,7 @@ index e860343..5e5ef80 100644
              ow.psi_teleport_speed_int = 0;
              ow.player_intangibility_frames = 0;
 diff --git a/src/game/position_buffer.c b/src/game/position_buffer.c
-index c7b8ca4..77ff4ce 100644
+index c7b8ca4..a68e6a6 100644
 --- a/src/game/position_buffer.c
 +++ b/src/game/position_buffer.c
 @@ -22,6 +22,7 @@
@@ -8567,15 +8619,118 @@ index c7b8ca4..77ff4ce 100644
          delta = (int32_t)(((int64_t)delta * sprint_speed_multipliers[engine_sprint_speed]) >> 16);
      }
  
+@@ -1491,6 +1554,14 @@ static void update_overworld_player_input(void) {
+     if (collision_flags & 0x00C0)
+         can_move = 0;
+ 
++    /* The original requested endpoint may have been redirected by a corner
++     * nudge. Validate the complete accepted segment, including its new leading
++     * edge, before committing it. Scripted movement retains its original bypass;
++     * ladder/door handlers below retain their intentional transition override. */
++    if (can_move && !(ow.player_movement_flags & 0x0002) &&
++        !player_movement_path_clear(pos_x,pos_y,new_x,new_y,ow.final_movement_direction))
++        can_move = 0;
++
+     /* Lines 194-209: Ladder tile door check. */
+     if (ow.ladder_stairs_tile_x != -1) {
+         can_move = (int)process_door_at_tile((uint16_t)ow.ladder_stairs_tile_x,
+@@ -1750,3 +1821,86 @@ void update_follower_state(int16_t entity_offset) {
+         entity_offset, char_id, read_idx, spacing);
+     party_characters[party_idx].position_index = new_idx & 0xFF;
+ }
++
++
++/* Exercise the real walking callback against prepared cliff/corner grids.
++ * The independently checked feet tile must never enter a solid cell. */
++bool sprint_collision_selftest(void) {
++    static const uint16_t pads[8]={PAD_UP,PAD_UP|PAD_RIGHT,PAD_RIGHT,PAD_DOWN|PAD_RIGHT,
++                                 PAD_DOWN,PAD_DOWN|PAD_LEFT,PAD_LEFT,PAD_UP|PAD_LEFT};
++    uint32_t random=0x6E987DA6u;unsigned cases=0;
++    entity_system_init();velocity_store();
++    for(unsigned speed=0;speed<SPRINT_SPEED_COUNT;speed++)
++    for(unsigned sandwich=0;sandwich<2;sandwich++)
++    for(unsigned pattern=0;pattern<256;pattern++)
++    for(unsigned direction=0;direction<8;direction++) {
++        memset(&ow,0,sizeof(ow));memset(&game_state,0,sizeof(game_state));
++        memset(ml.loaded_collision_tiles,0,sizeof(ml.loaded_collision_tiles));
++        for(unsigned ty=29;ty<=35;ty++) for(unsigned tx=28;tx<=36;tx++) {
++            random=random*1664525u+1013904223u;
++            ml.loaded_collision_tiles[ty*64+tx]=(random>>29)<3?0x80:0;
++        }
++        unsigned x=256+(pattern&7),y=256+((pattern>>3)&7);
++        /* Start with a clear complete collision footprint, including feet. */
++        for(int dy=0;dy<=7;dy++) for(int dx=-8;dx<=7;dx++)
++            ml.loaded_collision_tiles[((y+dy)>>3)*64+((x+dx)>>3)]=0;
++        game_state.leader_x_coord=x;game_state.leader_y_coord=y;
++        game_state.leader_x_frac=(pattern&1)?0xE000:0x2000;
++        game_state.leader_y_frac=(pattern&2)?0xE000:0x2000;
++        game_state.current_party_members=24;game_state.party_status=sandwich?3:0;
++        ow.redux_secondary_timer=143;event_flag_clear(56);
++        engine_sprint_speed=speed;core.pad1_held=pads[direction]|PAD_Y;
++        for(unsigned frame=0;frame<12;frame++) {
++            update_overworld_player_input();
++            unsigned cx=game_state.leader_x_coord>>3,cy=(game_state.leader_y_coord+4)>>3;
++            if(ml.loaded_collision_tiles[cy*64+cx]&0xC0) {
++                fprintf(stderr,"Sprint collision FAIL speed=%u sandwich=%u pattern=%u direction=%u frame=%u from=(%u,%u) at=(%u,%u)\n",
++                        speed,sandwich,pattern,direction,frame,x,y,game_state.leader_x_coord,game_state.leader_y_coord);
++                return false;
++            }
++        }
++        cases++;
++    }
++    unsigned free_cases=0;
++    for(unsigned speed=0;speed<SPRINT_SPEED_COUNT;speed++)
++    for(unsigned sandwich=0;sandwich<2;sandwich++)
++    for(unsigned water=0;water<3;water++)
++    for(unsigned direction=0;direction<8;direction++) {
++        static const uint16_t surfaces[]={0,8,12};
++        memset(&ow,0,sizeof(ow));memset(&game_state,0,sizeof(game_state));
++        memset(ml.loaded_collision_tiles,surfaces[water],sizeof(ml.loaded_collision_tiles));
++        game_state.leader_x_coord=256;game_state.leader_y_coord=256;
++        game_state.current_party_members=24;game_state.party_status=sandwich?3:0;
++        game_state.trodden_tile_type=surfaces[water];ow.redux_secondary_timer=143;
++        engine_sprint_speed=speed;core.pad1_held=pads[direction]|PAD_Y;
++        int64_t component=(direction&1)?0xF8E6:0x16000;
++        if(water) component=component*(water==1?0x8000:0x547A)>>16;
++        else if(sandwich) component=component*0x18000>>16;
++        if(speed && (maternalbound_enabled() || !water))
++            component=component*(speed==1?0x18000:0x20000)>>16;
++        update_overworld_player_input();
++        int64_t moved_x=((int64_t)(game_state.leader_x_coord-256)*0x10000)+game_state.leader_x_frac;
++        int64_t moved_y=((int64_t)(game_state.leader_y_coord-256)*0x10000)+game_state.leader_y_frac;
++        int64_t magnitude=direction==0 || direction==4?moved_y:moved_x;
++        /* Negative fixed-point multiplies round toward -infinity, allowing
++         * up to two fractional units difference from the positive magnitude. */
++        if(magnitude<0) magnitude=-magnitude;
++        if(magnitude<component || magnitude>component+2) {
++            fprintf(stderr,"Free movement speed FAIL setting=%u sandwich=%u water=%u direction=%u\n",speed,sandwich,water,direction);
++            return false;
++        }
++        free_cases++;
++    }
++    /* Scripted movement intentionally crosses collision: never introduce a
++     * cutscene softlock by applying the new free-walking guard to it. */
++    memset(&ow,0,sizeof(ow));memset(&game_state,0,sizeof(game_state));
++    memset(ml.loaded_collision_tiles,0x80,sizeof(ml.loaded_collision_tiles));
++    game_state.leader_x_coord=256;game_state.leader_y_coord=256;
++    game_state.current_party_members=24;ow.player_movement_flags=2;
++    engine_sprint_speed=0;core.pad1_held=PAD_RIGHT;
++    update_overworld_player_input();
++    if(game_state.leader_x_coord!=257 || game_state.leader_x_frac!=0x6000) return false;
++    fprintf(stderr,"Sprint free movement: %u speed/surface cases unchanged; scripted collision bypass: PASS\n",free_cases);
++    fprintf(stderr,"Sprint collision: %u prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\n",cases);
++    return true;
++}
 diff --git a/src/game/position_buffer.h b/src/game/position_buffer.h
-index 3fae9b2..2fee7e8 100644
+index 3fae9b2..b800287 100644
 --- a/src/game/position_buffer.h
 +++ b/src/game/position_buffer.h
-@@ -17,6 +17,7 @@
+@@ -17,6 +17,8 @@
  #include "core/types.h"
  
  #define POSITION_BUFFER_SIZE 256
 +bool maternalbound_motion_selftest(void);
++bool sprint_collision_selftest(void);
  
  /* Packed version of assembly player_position_buffer_entry (include/structs.asm).
   * Assembly uses 12 bytes (6 words) per entry, but tile_flags, walking_style,
