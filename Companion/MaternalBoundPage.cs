@@ -2,7 +2,7 @@ namespace EarthBoundCompanion;
 
 sealed partial class MainForm {
  void MaternalBoundPage(){
-  Header("MaternalBound goes native.","Build a separate development edition from your own ROM. Gameplay runs through the native PC engine.");
+  Header("MaternalBound goes native.","Build or select the MaternalBound Redux development edition, review tested coverage, or switch back to original EarthBound. Play either edition from Solo Play.");
 
   var statusCard=new TableLayoutPanel(){Height=88,ColumnCount=2,RowCount=1,BackColor=Theme.Surface,Padding=new Padding(18,13,18,13),Margin=new Padding(0,4,0,14)};
   statusCard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,72));statusCard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,28));

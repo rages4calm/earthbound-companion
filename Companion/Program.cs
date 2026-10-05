@@ -41,6 +41,20 @@ static class Theme {
 sealed class ActionButton : Button {
  protected override void OnPaint(PaintEventArgs e){base.OnPaint(e);bool hover=Enabled&&ClientRectangle.Contains(PointToClient(Cursor.Position));e.Graphics.Clear(hover?FlatAppearance.MouseOverBackColor:BackColor);using var pen=new Pen(FlatAppearance.BorderColor);e.Graphics.DrawRectangle(pen,0,0,Width-1,Height-1);TextRenderer.DrawText(e.Graphics,Text,Font,ClientRectangle,Enabled?ForeColor:Theme.Muted,TextFormatFlags.HorizontalCenter|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis|TextFormatFlags.NoPrefix);if(Focused)ControlPaint.DrawFocusRectangle(e.Graphics,new Rectangle(4,4,Width-8,Height-8),ForeColor,BackColor);}
 }
+sealed class NavigationButton : Button {
+ public required string Description{get;init;}
+ readonly Font descriptionFont=Theme.Font(10);
+ protected override void OnPaint(PaintEventArgs e){
+  base.OnPaint(e);bool hover=Enabled&&ClientRectangle.Contains(PointToClient(Cursor.Position));
+  e.Graphics.Clear(hover?FlatAppearance.MouseOverBackColor:BackColor);
+  using var pen=new Pen(FlatAppearance.BorderColor);e.Graphics.DrawRectangle(pen,0,0,Width-1,Height-1);
+  var flags=TextFormatFlags.Left|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis|TextFormatFlags.NoPrefix;
+  TextRenderer.DrawText(e.Graphics,Text,Font,new Rectangle(10,6,Width-20,23),ForeColor,flags);
+  TextRenderer.DrawText(e.Graphics,Description,descriptionFont,new Rectangle(10,29,Width-20,23),Theme.Muted,flags);
+  if(Focused)ControlPaint.DrawFocusRectangle(e.Graphics,new Rectangle(4,4,Width-8,Height-8),ForeColor,BackColor);
+ }
+ protected override void Dispose(bool disposing){if(disposing)descriptionFont.Dispose();base.Dispose(disposing);}
+}
 sealed class Scene : Control {
  Image? image;
  public Scene(){DoubleBuffered=true;Height=232;Margin=new Padding(0,8,0,24);TabStop=false;string p=Path.Combine(Settings.Root,"Media","onett.png");if(File.Exists(p))image=Image.FromFile(p);}
@@ -60,23 +74,33 @@ sealed class Scene : Control {
 }
 sealed partial class MainForm : Form {
  Settings settings=Settings.Load();readonly FlowLayoutPanel nav=new(),page=new();readonly Label status=new();
- readonly System.Windows.Forms.Timer timer=new(){Interval=350};readonly Dictionary<string,Button> navigation=[];
+ readonly System.Windows.Forms.Timer timer=new(){Interval=350};readonly Dictionary<string,Button> navigation=[];readonly ToolTip navigationHelp=new(){AutoPopDelay=15000};
  Process? game;string current="Solo Play";bool settingsRequested;bool captureMode;int captureIndex;string captureDir="",capturePython="",captureHelper="";bool capturePrepared;bool captureScrolled;
  readonly string[] pages=["Solo Play","Randomizer","Redux Port","Display","Audio","Gameplay","Controls","Mods & saves"];
+ readonly (string Short,string Help)[] pageHelp=[
+  ("Play / resume story","Start or resume the normal story in your selected EarthBound edition. Choose its look and convenience preset here."),
+  ("Create / replay seeds","Generate Story Shuffle adventures, choose what gets randomized, replay saved seeds and manage their separate saves."),
+  ("Build / switch edition","Build MaternalBound Redux from your own ROM, review conversion coverage and switch between Redux and original EarthBound."),
+  ("Screen & visual effects","Choose resolution, fullscreen, widescreen framing, pixel filtering and finishing effects."),
+  ("Music & volume","Enable MSU music, adjust game and soundtrack volume, install the soundtrack and view its credits."),
+  ("Movement & assists","Set sprint, quick dialogue, homesickness, reminder calls, battle rewards and your quick-save bank."),
+  ("Keyboard & gamepad","Rebind keyboard and controller inputs, tune the left-stick deadzone and choose controller face labels."),
+  ("Packs & save backups","Import or export settings profiles, choose compatible native asset packs and back up or restore saves.")];
  public MainForm(string[] args){
   Text="EarthBound Companion";Font=Theme.Font();BackColor=Theme.Canvas;ForeColor=Theme.Ink;ClientSize=new Size(1120,800);MinimumSize=new Size(990,760);StartPosition=FormStartPosition.CenterScreen;
   if(args.Contains("--compact"))ClientSize=new Size(990,760);
   var layout=new TableLayoutPanel(){Dock=DockStyle.Fill,ColumnCount=2,RowCount=2};layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,210));layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,76));Controls.Add(layout);
-  nav.Dock=DockStyle.Fill;nav.FlowDirection=FlowDirection.TopDown;nav.WrapContents=false;nav.BackColor=Theme.Rail;nav.Padding=new Padding(24,32,18,20);layout.Controls.Add(nav,0,0);layout.SetRowSpan(nav,2);
-  var brand=Theme.Text("EarthBound",17,Theme.Gold);brand.Font=Theme.Font(17,FontStyle.Bold);brand.AutoSize=false;brand.Size=new Size(166,34);nav.Controls.Add(brand);nav.Controls.Add(Theme.Text("Companion",12,Theme.Muted));nav.Controls.Add(new Panel(){Height=28,Width=160});
-  foreach(var name in pages){var b=Theme.Button(name,()=>ShowPage(name));b.Size=new Size(166,46);b.Margin=new Padding(0,0,0,6);navigation[name]=b;nav.Controls.Add(b);}
-  nav.Controls.Add(new Panel(){Height=30,Width=160});nav.Controls.Add(Theme.Text("Windows PC edition",10,Theme.Muted));nav.Controls.Add(Theme.Text("Local. Yours to tune.",10,Theme.Muted));
+  nav.Dock=DockStyle.Fill;nav.FlowDirection=FlowDirection.TopDown;nav.WrapContents=false;nav.BackColor=Theme.Rail;nav.Padding=new Padding(24,24,18,20);layout.Controls.Add(nav,0,0);layout.SetRowSpan(nav,2);
+  var brand=Theme.Text("EarthBound",17,Theme.Gold);brand.Font=Theme.Font(17,FontStyle.Bold);brand.AutoSize=false;brand.Size=new Size(166,34);nav.Controls.Add(brand);nav.Controls.Add(Theme.Text("Companion",12,Theme.Muted));nav.Controls.Add(new Panel(){Height=18,Width=160});
+  for(int i=0;i<pages.Length;i++){string name=pages[i];var help=pageHelp[i];var b=new NavigationButton(){Text=name,Description=help.Short,AccessibleName=name,AccessibleDescription=help.Help,UseMnemonic=false,Size=new Size(166,58),FlatStyle=FlatStyle.Flat,BackColor=Theme.Rail,ForeColor=Theme.Muted,Font=Theme.Font(11,FontStyle.Bold),Cursor=Cursors.Hand,Margin=new Padding(0,0,0,6)};b.FlatAppearance.MouseOverBackColor=Color.FromArgb(63,55,89);b.Click+=(_,_)=>ShowPage(name);navigationHelp.SetToolTip(b,help.Help);navigation[name]=b;nav.Controls.Add(b);}
+  nav.Controls.Add(new Panel(){Height=14,Width=160});nav.Controls.Add(Theme.Text("Windows PC edition",10,Theme.Muted));nav.Controls.Add(Theme.Text("Local. Yours to tune.",10,Theme.Muted));
   page.Dock=DockStyle.Fill;page.FlowDirection=FlowDirection.TopDown;page.WrapContents=false;page.AutoScroll=true;page.Padding=new Padding(32,26,24,12);page.SizeChanged+=(_,_)=>ResizePage();layout.Controls.Add(page,1,0);
   var footer=new TableLayoutPanel(){Dock=DockStyle.Fill,ColumnCount=2,Padding=new Padding(32,9,24,10),BackColor=Theme.Rail};footer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));footer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,190));layout.Controls.Add(footer,1,1);
   status.Dock=DockStyle.Fill;status.TextAlign=ContentAlignment.MiddleLeft;status.Font=Theme.Font(10);status.ForeColor=Theme.Muted;footer.Controls.Add(status,0,0);footer.Controls.Add(Theme.Button("Apply settings",Apply,true),1,0);
   if(!File.Exists(Path.Combine(Settings.User,"settings.json")))settings.Save();
   ShowPage("Solo Play");Notify("Ready. Your saved settings are loaded.");
   timer.Tick+=Tick;timer.Start();FormClosing+=(_,e)=>{if(generating){e.Cancel=true;Notify("Finishing seed generation. You can close the launcher when it is ready.");return;}if(settingsRequested)Resume();};
+  FormClosed+=(_,_)=>navigationHelp.Dispose();
   int capture=Array.IndexOf(args,"--capture");if(capture>=0&&capture+1<args.Length){captureMode=true;captureDir=Path.GetFullPath(args[capture+1]);Directory.CreateDirectory(captureDir);}
   int capturePy=Array.IndexOf(args,"--capture-python"),captureScript=Array.IndexOf(args,"--capture-helper");if(capturePy>=0&&capturePy+1<args.Length)capturePython=Path.GetFullPath(args[capturePy+1]);if(captureScript>=0&&captureScript+1<args.Length)captureHelper=Path.GetFullPath(args[captureScript+1]);
   Shown+=(_,_)=>{if(!captureMode&&!SetupService.DataReady){if(File.Exists(Path.Combine(Settings.BaseGame,"redux-setup.exe")))OpenReduxSetup();else OpenSetup(false);}};
@@ -98,11 +122,11 @@ sealed partial class MainForm : Form {
   foreach(var (n,b) in navigation){b.BackColor=n==name?Theme.Surface:Theme.Rail;b.ForeColor=n==name?Theme.Gold:Theme.Muted;b.FlatAppearance.BorderColor=n==name?Theme.Line:Theme.Rail;}
   switch(name){case "Solo Play":PlayPage();break;case "Randomizer":RandomizerPage();break;case "Redux Port":MaternalBoundPage();break;case "Display":DisplayPage();break;case "Audio":AudioPage();break;case "Gameplay":GameplayPage();break;case "Controls":ControlsPage();break;default:ModsPage();break;}
   page.Controls.Add(new Panel {Height=32,Margin=Padding.Empty});
-  ResizePage();page.ResumeLayout();
+  ResizePage();page.ResumeLayout();page.AutoScrollPosition=Point.Empty;
  }
  bool Running=>game!=null&&!game.HasExited;
  void PlayPage(){
-  Header("A new trip to Onett.","Your native PC edition, with widescreen scenery and enhancements you control.");var scene=new Scene(){Height=200};page.Controls.Add(scene);
+  Header("A new trip to Onett.","Start or resume the normal story in your selected edition. Use Randomizer for shuffled games, or Redux Port to switch editions.");var scene=new Scene(){Height=200};page.Controls.Add(scene);
   bool ready=File.Exists(Path.Combine(Settings.BaseGame,"earthbound.exe"))&&File.Exists(settings.Pak);
   if(settings.ReduxDevelopmentEnabled)page.Controls.Add(Theme.Text("MaternalBound Redux development profile · full playthrough unverified · separate saves",10,Theme.Gold));
   var state=Theme.Text(ready?"Game data ready":"Game data missing",12,ready?Theme.Green:Theme.Error);page.Controls.Add(state);
@@ -169,12 +193,12 @@ sealed partial class MainForm : Form {
   page.Controls.Add(Theme.Text("By default: south talks, east cancels, north opens the map, west sprints.\nThe left stick moves independently of the D-pad bindings.",10,Theme.Muted));
  }
  void ModsPage(){
-  Header("Make room for the extras.","Native profiles, compatible asset packs and recoverable saves.");
+  Header("Make room for the extras.","Import or export settings profiles, select compatible native game data, and back up or restore your story saves. Randomizer manages seed saves.");
   Section("Native mod profiles");page.Controls.Add(Theme.Text("Profiles combine supported gameplay and visual options. Import .ebmod.json files to apply them without rebuilding the game.",11,Theme.Muted));
   Actions(Theme.Button("Import mod profile",ImportMod),Theme.Button("Export current profile",ExportMod));
   Section("Game art and data");page.Controls.Add(Theme.Text(string.IsNullOrEmpty(settings.AssetPack)?"Using your original ROM's extracted assets.":"Using asset pack: "+Path.GetFileName(settings.AssetPack),11,Theme.Muted));
   Actions(Theme.Button("Choose native .pak",ChoosePak),Theme.Button("Use original assets",()=>{settings.AssetPack="";ShowPage(current);Notify("Original assets selected. Apply to save.");}));
-  page.Controls.Add(Theme.Text("A pack must match this native engine's asset layout. ROM patches (.IPS / .BPS) change SNES instructions and cannot be loaded as native mods. Full MaternalBound Redux support needs game-code ports; the research notes track that work.",10,Theme.Muted));
+  page.Controls.Add(Theme.Text("A pack must match this native engine's asset layout. Use Redux Port to build or select the MaternalBound development edition. ROM patches (.IPS / .BPS) cannot be loaded here; their instruction changes need native code ports. The research notes track conversion coverage.",10,Theme.Muted));
   Section("Saves and recovery");Actions(Theme.Button("Back up saves now",()=>BackupSession(Settings.Game)),Theme.Button("Open save folder",()=>Open(Settings.PathTo("saves"))));
   Actions(Theme.Button("Restore save backup",()=>RestoreSession(Settings.Game)));
   Actions(Theme.Button("Open backups",()=>Open(Path.Combine(Settings.User,"Backups"))),Theme.Button("Read research notes",()=>Open(Path.Combine(Settings.Root,"RESEARCH.md"))));

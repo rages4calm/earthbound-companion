@@ -1,0 +1,127 @@
+{
+  "Passed": true,
+  "Cases": [
+    {
+      "profile": "original",
+      "npcId": 680,
+      "ExpectedBattleGroup": 446,
+      "BattleEntryPassed": true,
+      "BattleVictoryVerified": false
+    },
+    {
+      "profile": "original",
+      "npcId": 681,
+      "ExpectedBattleGroup": 446,
+      "BattleEntryPassed": true,
+      "BattleVictoryVerified": false
+    },
+    {
+      "profile": "original",
+      "npcId": 1039,
+      "ExpectedBattleGroup": 442,
+      "BattleEntryPassed": true,
+      "BattleVictoryVerified": false
+    },
+    {
+      "profile": "original",
+      "npcId": 1040,
+      "ExpectedBattleGroup": 442,
+      "BattleEntryPassed": true,
+      "BattleVictoryVerified": false
+    },
+    {
+      "profile": "original",
+      "npcId": 987,
+      "NoRewardOrStaleWindowPassed": true
+    },
+    {
+      "profile": "original",
+      "npcId": 1041,
+      "NoRewardOrStaleWindowPassed": true
+    },
+    {
+      "profile": "original",
+      "npcId": 1042,
+      "NoRewardOrStaleWindowPassed": true
+    },
+    {
+      "profile": "original",
+      "npcId": 1043,
+      "NoRewardOrStaleWindowPassed": true
+    },
+    {
+      "profile": "redux",
+      "npcId": 680,
+      "ExpectedBattleGroup": 446,
+      "BattleEntryPassed": true,
+      "BattleVictoryVerified": false
+    },
+    {
+      "profile": "redux",
+      "npcId": 681,
+      "ExpectedBattleGroup": 446,
+      "BattleEntryPassed": true,
+      "BattleVictoryVerified": false
+    },
+    {
+      "profile": "redux",
+      "npcId": 1039,
+      "ExpectedBattleGroup": 442,
+      "BattleEntryPassed": true,
+      "BattleVictoryVerified": false
+    },
+    {
+      "profile": "redux",
+      "npcId": 1040,
+      "ExpectedBattleGroup": 442,
+      "BattleEntryPassed": true,
+      "BattleVictoryVerified": false
+    },
+    {
+      "profile": "redux",
+      "npcId": 987,
+      "NoRewardOrStaleWindowPassed": true
+    },
+    {
+      "profile": "redux",
+      "npcId": 1041,
+      "NoRewardOrStaleWindowPassed": true
+    },
+    {
+      "profile": "redux",
+      "npcId": 1042,
+      "NoRewardOrStaleWindowPassed": true
+    },
+    {
+      "profile": "redux",
+      "npcId": 1043,
+      "NoRewardOrStaleWindowPassed": true
+    }
+  ],
+  "SourceClassifications": {
+    "scriptedRewardContainers": [
+      582,
+      744,
+      745,
+      746
+    ],
+    "scriptedBattleObjects": {
+      "680": 446,
+      "681": 446,
+      "1039": 442,
+      "1040": 442
+    },
+    "noDialogueScenery": [
+      987,
+      1041,
+      1042,
+      1043
+    ]
+  },
+  "NativeExeSha256": "60b31db0b0acc3d244e3bcc987442ddece3d6373cd9ca5ceccfd006623831a12",
+  "PlayerEngineSha256": "f35fecdf300b55565ea428d747a0b510cf2a0aecff5df66b745180694a0eb7eb",
+  "TypeSafeRequests": 0,
+  "OwnerSavesWritten": false,
+  "FullPlaythroughVerified": false,
+  "Boundary": "NPC identity fixtures execute four exact battle formations and four no-dialogue scenery interactions per edition. No battle victories, physical travel or loot-drop probabilities are verified."
+}

@@ -1,0 +1,38 @@
+{
+  "Passed": true,
+  "PackageSha256": "5BEB8E549D50A65813AEC3462D5B7443045EA82859177DB50C0A7D2BAE956DA6",
+  "NativeExeSha256": "F35FECDF300B55565EA428D747A0B510CF2A0AECFF5DF66B745180694A0EB7EB",
+  "ReduxSetupSha256": "5934C320F0934B43A2D17D61D04A9C56C6BFACB52F791F646AF8B2D72FDBE0C1",
+  "ReduxPackSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+  "Tests": [
+    "ROM-free archive and exact file manifest",
+    "Self-contained first-run setup with headered owner ROM and online pinned Redux source",
+    "164 soundtrack checks; corrupt track and stale partial repaired by real download",
+    "Verified profile installed atomically; generated ROMs cleaned",
+    "Packaged native MSU: eight Sound Stone transitions, SPC effects/fallback and all 164 loop/end checks",
+    "Packaged native story opening, Select naming and cold restore",
+    "Packaged generator, independent seed guard and native randomized opening",
+    "Normal-button story and seed gameplay through house doors/stairs, Mom, clothes change and outdoor movement",
+    "Original/Redux/seed save namespaces and profile switching"
+  ],
+  "DownloadedTrack": "eb_msu1-113.pcm",
+  "MsuTracksVerified": 164,
+  "ExistingTracksReusedViaHardlinks": 163,
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Isolated setup/opening tests; no complete story or randomized playthrough.",
+    "One soundtrack track downloaded; remaining tracks reused and independently checked."
+  ],
+  "VerifiedSetupAndGameplaySourceZipSha256": "48E3B63B38AA38E1E96A32948FCCE0459B143FB4D39AAFB4672195ED6B25BC09",
+  "FinalDocumentationRefresh": {
+    "ManifestPassed": true,
+    "AllNonDocumentationBytesMatchVerifiedZIP": true,
+    "ChangedFiles": [
+      "EarthBound Companion/CHANGELOG.md",
+      "EarthBound Companion/MATERNALBOUND-NATIVE.md",
+      "EarthBound Companion/PACKAGE-MANIFEST.json",
+      "EarthBound Companion/PRESENT-AUDIT.md",
+      "EarthBound Companion/README.md"
+    ]
+  }
+}

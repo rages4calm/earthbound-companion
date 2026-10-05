@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.7 - all-container checks and launcher guidance
+
+- Check all 177 placed containers in both original EarthBound and the pinned Redux edition against their source loot, opened flags, text mappings and map placements. Preserve the two source-defined empty containers and Redux's documented Broken iron â†’ Broken gadget replacement.
+- Replay every reward and repeat-opening path with unmodified packs. Prepare full inventories for every item container and verify rejection/retry, the separate key-item pool or the source-defined permanent Tools/Keys flags. Record the fixture boundary; these checks are not a full map walk or story playthrough.
+- Also replay Fly Honey and all three ending-letter gifts in both editions, including full inventory and repeat checks: 714 reward cases total. Check eight exact scripted-battle entries and eight inert-scenery interactions; 153 representative player/observer checkpoints match.
+- Give all eight launcher tabs visible purpose descriptions, hover help and accessible descriptions. Clarify story versus seed saves, Redux edition switching, native packs and settings profiles. Reset page scrolling after layout so newly selected pages start at their headings.
+- Retain the verified dev.6 native engine and setup helper, corrected content pack, state format 16 and seed identities. The release contains launcher/documentation changes and new validation evidence; it does not claim additional Redux features were ported.
+
 ## 0.5.0-redux-dev.6 - rest stamina hooks
 
 - Connect hotel, full-recovery and hot-spring script entries to native stamina reset. Preserve their existing healing bodies, converted pack, quick-save format 16 and seed identities. Rest loop continuations do not reset stamina repeatedly.
@@ -12,26 +20,26 @@
 - Create the deferred Redux gift window before writing item/cash registers, preserving silent empty Talk/Check behavior. Reproduce two lost present rewards on dev.4, then verify source-defined rewards, opened flags, window cleanup and no duplicate gifts on dev.5. A prepared $123 cash gift also passes.
 - Rebuild player/observer engines and the setup helper together; keep the corrected pack, state format 16 and seed identities unchanged. Previously opened presents are not automatically compensated.
 - Record 15 additional literal-hook reviews, exact retained movement commands, shack/cave exploration and process-pointer-aware observer comparisons. Complete story, randomized story and all-module conversion parity remain unfinished.
-- Stop Jev exploration at the owner’s request; subsequent gift regressions use deterministic ordinary inputs with no TypeSafe requests.
+- Stop Jev exploration at the ownerâ€™s request; subsequent gift regressions use deterministic ordinary inputs with no TypeSafe requests.
 
 ## 0.5.0-redux-dev.4 - script width fix and active bugfix review
 
 - Correct Redux `CC 1D 15` variable-argument handling to use the low word stored by the upstream assembly fix. The real dispatcher reproduces eight failures before the correction; all 25 operand/party-position cases now pass, raising the VM suite to 106 checks.
 - Record all 36 active bugfix imports against the exact source pin, with native bindings, execution differences, targeted coverage and remaining branch tests. This is source review, not full compatibility certification.
 - Rebuild the player engine, QA engine and frozen setup helper together. Fresh movement/combat/original-profile checks, a clean upstream patch check, and 20 natural-combat observer parity checkpoints pass.
-- Extend bounded Jev navigation through shop menus, City Hall, the guard and the mayor’s ordinary Shack Key award. Add expected door-destination checks and alternative NPC approaches. Full story and randomized playthroughs remain unverified.
-- Keep dev.3’s corrected pack and quick-save format 16, preserving content and seed identities. Existing dev.2 story imports remain restricted to the exact checked names-only pack change.
+- Extend bounded Jev navigation through shop menus, City Hall, the guard and the mayorâ€™s ordinary Shack Key award. Add expected door-destination checks and alternative NPC approaches. Full story and randomized playthroughs remain unverified.
+- Keep dev.3â€™s corrected pack and quick-save format 16, preserving content and seed identities. Existing dev.2 story imports remain restricted to the exact checked names-only pack change.
 
 ## 0.5.0-redux-dev.3 - PSI names, combat UI and save-restore fixes
 
 - Read the PSI-name table from CoilSnake's patched assembly pointer. The former fixed address held unrelated script bytes, producing names such as `103`. Validate the pointer and names during conversion.
 - Recreate the PSI list in front of the pause menu and repaint older format-16 PSI-menu checkpoints after loading. Lifeup heals Ness and spends 5 PP through ordinary inputs.
-- Add a checked dev.2 → dev.3 story-save importer for the exact names-only content change. Require empty destination saves, preserve the previous installation and reject other content pairs; randomizer seeds remain on their original content.
+- Add a checked dev.2 â†’ dev.3 story-save importer for the exact names-only content change. Require empty destination saves, preserve the previous installation and reject other content pairs; randomizer seeds remain on their original content.
 - Apply Redux's delayed Talk/Check window creation: empty space no longer leaves an invisible window behind later battle text, and the removed quick-check sound stays removed.
 - Suspend cutscene letterbox updates during battles. Repair the distinctive bad masks in older Redux quick saves without restarting the fight or changing progression.
 - Reload the stat-growth asset cache when resuming between level-up messages; fix an attacker-name stack-buffer overread with six-character Redux names.
 - Fix managed Redux story backup identity and use one production launch path for story and seed sessions, covered by launcher regression checks.
-- Add optional structured QA observations and a bounded Jev runner. Actual copied Starman combat, level-ups and post-fight dialogue return to roaming; normal NPC conversation and empty Talk/Check → natural Onett combat/victory also pass. Player and observer state match at 66 combined checkpoints. Full story and randomized playthroughs remain unverified.
+- Add optional structured QA observations and a bounded Jev runner. Actual copied Starman combat, level-ups and post-fight dialogue return to roaming; normal NPC conversation and empty Talk/Check â†’ natural Onett combat/victory also pass. Player and observer state match at 66 combined checkpoints. Full story and randomized playthroughs remain unverified.
 
 ## 0.5.0-redux-dev.2 - audio, door timing and gameplay checks
 
@@ -57,7 +65,7 @@
 - Accounted for all 105 dialogue-excluded spans in a source-pinned ledger. Classification is not complete assembly equivalence or full gameplay verification.
 - **Full MaternalBound compatibility remains incomplete.** Full story/randomized playthroughs, all combat combinations, listening/transition coverage, live photo collection and developer/debug parity remain unverified. The older v0.4 package remains the original-story preview.
 
-## 0.4.0 — private preview
+## 0.4.0 â€” private preview
 
 - Added a ROM-free first-run setup flow with clean-USA-ROM validation.
 - Bundled a standalone extractor so testers do not need Python.

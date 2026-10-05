@@ -7,10 +7,11 @@ from urllib.parse import quote, urlsplit
 DOCUMENTS = {
     name: name for name in (
         "README.md", "RANDOMIZER.md", "CREDITS.md", "LEGAL.md",
-        "MATERNALBOUND-NATIVE.md", "UPSTREAM.md", "LICENSE.md", "RESEARCH.md", "JEV-QA.md"
+        "MATERNALBOUND-NATIVE.md", "UPSTREAM.md", "LICENSE.md", "RESEARCH.md", "JEV-QA.md", "CHANGELOG.md"
     )
 }
 DOCUMENTS["distribution/PACKAGE-NOTES.md"] = "PACKAGE-NOTES.md"
+DOCUMENTS["docs/PRESENT-AUDIT.md"] = "PRESENT-AUDIT.md"
 REPOSITORY = "https://github.com/rages4calm/earthbound-companion"
 
 def prepare(source: Path, destination: Path) -> list[Path]:
