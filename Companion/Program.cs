@@ -75,18 +75,19 @@ sealed class Scene : Control {
 sealed partial class MainForm : Form {
  Settings settings=Settings.Load();readonly FlowLayoutPanel nav=new(),page=new();readonly Label status=new();
  readonly System.Windows.Forms.Timer timer=new(){Interval=350};readonly Dictionary<string,Button> navigation=[];readonly ToolTip navigationHelp=new(){AutoPopDelay=15000};
- Process? game;string current="Solo Play";bool settingsRequested;bool captureMode;int captureIndex;string captureDir="",capturePython="",captureHelper="";bool capturePrepared;bool captureScrolled;
- readonly string[] pages=["Solo Play","Randomizer","Redux Port","Display","Audio","Gameplay","Controls","Mods & saves"];
+ Process? game;string current="Play";bool settingsRequested;bool captureMode;int captureIndex;string captureDir="",capturePython="",captureHelper="";bool capturePrepared;bool captureScrolled;
+ readonly string[] pages=["Play","Randomizer","Game Mode","Display","Audio","Gameplay","Controls","Mods & saves"];
  readonly (string Short,string Help)[] pageHelp=[
   ("Play / resume story","Start or resume the normal story in your selected EarthBound edition. Choose its look and convenience preset here."),
   ("Create / replay seeds","Generate Story Shuffle adventures, choose what gets randomized, replay saved seeds and manage their separate saves."),
-  ("Build / switch edition","Build MaternalBound Redux from your own ROM, review conversion coverage and switch between Redux and original EarthBound."),
+  ("Choose game edition","Choose original EarthBound or MaternalBound Redux. Each edition has separate saves; Redux setup and conversion details are here too."),
   ("Screen & visual effects","Choose resolution, fullscreen, widescreen framing, pixel filtering and finishing effects."),
   ("Music & volume","Enable MSU music, adjust game and soundtrack volume, install the soundtrack and view its credits."),
   ("Movement & assists","Set sprint, quick dialogue, homesickness, reminder calls, battle rewards and your quick-save bank."),
   ("Keyboard & gamepad","Rebind keyboard and controller inputs, tune the left-stick deadzone and choose controller face labels."),
   ("Packs & save backups","Import or export settings profiles, choose compatible native asset packs and back up or restore saves.")];
  public MainForm(string[] args){
+  AppIcon.Apply(this);
   Text="EarthBound Companion";Font=Theme.Font();BackColor=Theme.Canvas;ForeColor=Theme.Ink;ClientSize=new Size(1120,800);MinimumSize=new Size(990,760);StartPosition=FormStartPosition.CenterScreen;
   if(args.Contains("--compact"))ClientSize=new Size(990,760);
   var layout=new TableLayoutPanel(){Dock=DockStyle.Fill,ColumnCount=2,RowCount=2};layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,210));layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,76));Controls.Add(layout);
@@ -98,7 +99,7 @@ sealed partial class MainForm : Form {
   var footer=new TableLayoutPanel(){Dock=DockStyle.Fill,ColumnCount=2,Padding=new Padding(32,9,24,10),BackColor=Theme.Rail};footer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));footer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,190));layout.Controls.Add(footer,1,1);
   status.Dock=DockStyle.Fill;status.TextAlign=ContentAlignment.MiddleLeft;status.Font=Theme.Font(10);status.ForeColor=Theme.Muted;footer.Controls.Add(status,0,0);footer.Controls.Add(Theme.Button("Apply settings",Apply,true),1,0);
   if(!File.Exists(Path.Combine(Settings.User,"settings.json")))settings.Save();
-  ShowPage("Solo Play");Notify("Ready. Your saved settings are loaded.");
+  ShowPage("Play");Notify("Ready. Your saved settings are loaded.");
   timer.Tick+=Tick;timer.Start();FormClosing+=(_,e)=>{if(generating){e.Cancel=true;Notify("Finishing seed generation. You can close the launcher when it is ready.");return;}if(settingsRequested)Resume();};
   FormClosed+=(_,_)=>navigationHelp.Dispose();
   int capture=Array.IndexOf(args,"--capture");if(capture>=0&&capture+1<args.Length){captureMode=true;captureDir=Path.GetFullPath(args[capture+1]);Directory.CreateDirectory(captureDir);}
@@ -120,13 +121,13 @@ sealed partial class MainForm : Form {
  void ShowPage(string name){
   current=name;page.SuspendLayout();foreach(Control c in page.Controls.Cast<Control>().ToArray())c.Dispose();page.Controls.Clear();page.AutoScrollPosition=Point.Empty;
   foreach(var (n,b) in navigation){b.BackColor=n==name?Theme.Surface:Theme.Rail;b.ForeColor=n==name?Theme.Gold:Theme.Muted;b.FlatAppearance.BorderColor=n==name?Theme.Line:Theme.Rail;}
-  switch(name){case "Solo Play":PlayPage();break;case "Randomizer":RandomizerPage();break;case "Redux Port":MaternalBoundPage();break;case "Display":DisplayPage();break;case "Audio":AudioPage();break;case "Gameplay":GameplayPage();break;case "Controls":ControlsPage();break;default:ModsPage();break;}
+  switch(name){case "Play":PlayPage();break;case "Randomizer":RandomizerPage();break;case "Game Mode":MaternalBoundPage();break;case "Display":DisplayPage();break;case "Audio":AudioPage();break;case "Gameplay":GameplayPage();break;case "Controls":ControlsPage();break;default:ModsPage();break;}
   page.Controls.Add(new Panel {Height=32,Margin=Padding.Empty});
   ResizePage();page.ResumeLayout();page.AutoScrollPosition=Point.Empty;
  }
  bool Running=>game!=null&&!game.HasExited;
  void PlayPage(){
-  Header("A new trip to Onett.","Start or resume the normal story in your selected edition. Use Randomizer for shuffled games, or Redux Port to switch editions.");var scene=new Scene(){Height=200};page.Controls.Add(scene);
+  Header("A new trip to Onett.","Start or resume the normal story in your selected edition. Use Randomizer for shuffled games, or Game Mode to switch editions.");var scene=new Scene(){Height=200};page.Controls.Add(scene);
   bool ready=File.Exists(Path.Combine(Settings.BaseGame,"earthbound.exe"))&&File.Exists(settings.Pak);
   if(settings.ReduxDevelopmentEnabled)page.Controls.Add(Theme.Text("MaternalBound Redux development profile · full playthrough unverified · separate saves",10,Theme.Gold));
   var state=Theme.Text(ready?"Game data ready":"Game data missing",12,ready?Theme.Green:Theme.Error);page.Controls.Add(state);
@@ -136,7 +137,7 @@ sealed partial class MainForm : Form {
   var resume=Theme.Button("Resume quick save",()=>Launch(true));resume.Enabled=ready&&!Running&&!generating&&HasQuickSave();Actions(play,resume);
   if(!ready){Actions(Theme.Button("Set up from your ROM",()=>OpenSetup(false),true));page.Controls.Add(Theme.Text("Choose a clean EarthBound (USA) ROM. Companion verifies it and builds the native PC game data locally; your ROM is never copied or uploaded.",10,Theme.Muted));}
   Actions(Theme.Button("Randomized adventure",()=>ShowPage("Randomizer")));page.Controls.Add(Theme.Text("Generate a Story Shuffle, replay a seed and keep a separate adventure save.",10,Theme.Muted));
-  Section("Make it your edition");Choice("Presentation preset","Select a starting point, then tune individual settings.",["Enhanced","Classic","CRT","Easygoing","Custom"],settings.PresetIndex(),i=>{if(i<4){settings.Preset(new[]{"Enhanced","Classic","CRT","Easygoing"}[i]);ShowPage("Solo Play");Notify("Preset selected. Apply settings to save it.");}});
+  Section("Make it your edition");Choice("Presentation preset","Select a starting point, then tune individual settings.",["Enhanced","Classic","CRT","Easygoing","Custom"],settings.PresetIndex(),i=>{if(i<4){settings.Preset(new[]{"Enhanced","Classic","CRT","Easygoing"}[i]);ShowPage("Play");Notify("Preset selected. Apply settings to save it.");}});
   page.Controls.Add(Theme.Text("F1 settings  ·  F6 save  ·  F7 load  ·  F9 pause  ·  F11 fullscreen\nF12 screenshot  ·  Tab fast-forward  ·  C / right stick changes field of view",10,Theme.Muted));
  }
  bool HasQuickSave()=>File.Exists(Settings.PathTo($"saves/quicksave_{settings.QuickSlot+1}.bin.0"))||File.Exists(Settings.PathTo($"saves/quicksave_{settings.QuickSlot+1}.bin.1"));
@@ -198,7 +199,7 @@ sealed partial class MainForm : Form {
   Actions(Theme.Button("Import mod profile",ImportMod),Theme.Button("Export current profile",ExportMod));
   Section("Game art and data");page.Controls.Add(Theme.Text(string.IsNullOrEmpty(settings.AssetPack)?"Using your original ROM's extracted assets.":"Using asset pack: "+Path.GetFileName(settings.AssetPack),11,Theme.Muted));
   Actions(Theme.Button("Choose native .pak",ChoosePak),Theme.Button("Use original assets",()=>{settings.AssetPack="";ShowPage(current);Notify("Original assets selected. Apply to save.");}));
-  page.Controls.Add(Theme.Text("A pack must match this native engine's asset layout. Use Redux Port to build or select the MaternalBound development edition. ROM patches (.IPS / .BPS) cannot be loaded here; their instruction changes need native code ports. The research notes track conversion coverage.",10,Theme.Muted));
+  page.Controls.Add(Theme.Text("A pack must match this native engine's asset layout. Use Game Mode to build or select the MaternalBound development edition. ROM patches (.IPS / .BPS) cannot be loaded here; their instruction changes need native code ports. The research notes track conversion coverage.",10,Theme.Muted));
   Section("Saves and recovery");Actions(Theme.Button("Back up saves now",()=>BackupSession(Settings.Game)),Theme.Button("Open save folder",()=>Open(Settings.PathTo("saves"))));
   Actions(Theme.Button("Restore save backup",()=>RestoreSession(Settings.Game)));
   Actions(Theme.Button("Open backups",()=>Open(Path.Combine(Settings.User,"Backups"))),Theme.Button("Read research notes",()=>Open(Path.Combine(Settings.Root,"RESEARCH.md"))));
@@ -206,21 +207,21 @@ sealed partial class MainForm : Form {
  }
  void Try(Action action){try{action();}catch(Exception e)when(e is IOException or UnauthorizedAccessException or InvalidDataException or JsonException or ArgumentException or System.ComponentModel.Win32Exception){Notify(e.Message,true);}}
  void Open(string path){Try(()=>{if(!File.Exists(path)&&!Directory.Exists(path))throw new IOException("This file is not available yet: "+Path.GetFileName(path));Process.Start(new ProcessStartInfo(path){UseShellExecute=true});});}
- void OpenSetup(bool soundtrackOnly){if(Running){Notify("Close the game before running setup.",true);return;}using var dialog=new SetupForm(soundtrackOnly);dialog.ShowDialog(this);if(dialog.Completed){settings=Settings.Load();ShowPage(soundtrackOnly?"Audio":"Solo Play");Notify("Setup complete. Your native PC edition is ready.");}}
- void OpenReduxSetup(){if(Running||generating)return;using var dialog=new SetupForm(reduxDevelopment:true);dialog.ShowDialog(this);if(dialog.Completed)Try(()=>{ReduxProfileService.Select(settings);ShowPage("Solo Play");Notify("Redux development profile selected. Full playthrough is still unverified.");});}
+ void OpenSetup(bool soundtrackOnly){if(Running){Notify("Close the game before running setup.",true);return;}using var dialog=new SetupForm(soundtrackOnly);dialog.ShowDialog(this);if(dialog.Completed){settings=Settings.Load();ShowPage(soundtrackOnly?"Audio":"Play");Notify("Setup complete. Your native PC edition is ready.");}}
+ void OpenReduxSetup(){if(Running||generating)return;using var dialog=new SetupForm(reduxDevelopment:true);dialog.ShowDialog(this);if(dialog.Completed)Try(()=>{ReduxProfileService.Select(settings);ShowPage("Play");Notify("Redux development profile selected. Full playthrough is still unverified.");});}
  void Apply(){Try(()=>{settings.Save();if(Running){File.WriteAllText(Settings.PathTo("settings.applied"),"apply");settingsRequested=false;Notify("Settings applied. Game resumed.");}else Notify("Settings saved. Ready for your next session.");});}
  void Resume(){File.WriteAllText(Settings.PathTo("settings.applied"),"resume");settingsRequested=false;}
  void Launch(bool resume,SeedRecord? seed=null){Try(()=>{
   if(Running||generating)return;
   try {game=GameLaunch.Start(settings,resume,seed);activeSeed=seed;}
   catch{Settings.SessionDirectory=null;activeSeed=null;throw;}
-  Notify(seed==null?"Game running. F1 opens these settings; F9 pauses.":$"Story Shuffle running: {seed.Seed}. F1 opens settings; saves stay with this seed.");ShowPage(seed==null?"Solo Play":"Randomizer");
+  Notify(seed==null?"Game running. F1 opens these settings; F9 pauses.":$"Story Shuffle running: {seed.Seed}. F1 opens settings; saves stay with this seed.");ShowPage(seed==null?"Play":"Randomizer");
  });}
  void ImportMod(){using var d=new OpenFileDialog(){Filter="EarthBound profiles (*.ebmod.json)|*.ebmod.json|JSON files (*.json)|*.json"};if(d.ShowDialog(this)!=DialogResult.OK)return;Try(()=>{settings.ImportProfile(d.FileName);ShowPage(current);Notify("Profile imported. Apply settings to enable it.");});}
  void ExportMod(){using var d=new SaveFileDialog(){Filter="EarthBound profile|*.ebmod.json",FileName="My EarthBound.ebmod.json"};if(d.ShowDialog(this)!=DialogResult.OK)return;Try(()=>{var mod=new ModProfile(){Name="My EarthBound",Description="Native visual and gameplay profile"};foreach(string k in new[]{"Filter","Aspect","Scanlines","TiltShift","WideFov","ColorGrading","HqAudio","Sprint","InstantText","NoHomesickness","NoDadCalls","Exp","Money","IntegerScale"})mod.Options[k]=JsonSerializer.SerializeToElement(typeof(Settings).GetProperty(k)!.GetValue(settings));File.WriteAllText(d.FileName,JsonSerializer.Serialize(mod,Settings.JsonOptions));Notify("Profile exported.");});}
  void ChoosePak(){if(Running||generating){Notify("Close the game before changing its data profile.",true);return;}using var d=new OpenFileDialog(){Filter="Native EarthBound asset pack|*.pak"};if(d.ShowDialog(this)!=DialogResult.OK)return;Try(()=>{string old=settings.AssetPack;settings.AssetPack=d.FileName;try{settings.ValidatePak();}catch{settings.AssetPack=old;throw;}settings.ReduxDevelopmentEnabled=false;settings.Save();ShowPage(current);Notify("Compatible pack selected with separate saves.");});}
  void Tick(object? sender,EventArgs args){
-  if(captureMode){if(captureIndex<=pages.Length+2){bool bottom=captureIndex>pages.Length;string name=bottom?(captureIndex==pages.Length+2?"Redux Port":"Randomizer"):pages[captureIndex%pages.Length];if(!capturePrepared){ShowPage(name);WindowState=FormWindowState.Normal;Show();Activate();Refresh();capturePrepared=true;return;}if(bottom&&!captureScrolled){page.AutoScrollPosition=new Point(0,page.VerticalScroll.Maximum);Refresh();captureScrolled=true;return;}string root=Path.GetFullPath(Path.Combine(Settings.Root,".."));var p=new ProcessStartInfo(string.IsNullOrEmpty(capturePython)?Path.Combine(root,"native-source",".venv","Scripts","python.exe"):capturePython){UseShellExecute=false,CreateNoWindow=true};p.ArgumentList.Add(string.IsNullOrEmpty(captureHelper)?Path.Combine(root,"tools","capture_owned_window.py"):captureHelper);p.ArgumentList.Add(Handle.ToInt64().ToString());p.ArgumentList.Add(Path.Combine(captureDir,$"{captureIndex}-{name.Replace(" & ","-")}{(bottom?"-bottom":"")}.png"));using var capture=Process.Start(p);capture?.WaitForExit();captureIndex++;capturePrepared=captureScrolled=false;}else{captureMode=false;Close();}return;}
+  if(captureMode){if(captureIndex<=pages.Length+2){bool bottom=captureIndex>pages.Length;string name=bottom?(captureIndex==pages.Length+2?"Game Mode":"Randomizer"):pages[captureIndex%pages.Length];if(!capturePrepared){ShowPage(name);WindowState=FormWindowState.Normal;Show();Activate();Refresh();capturePrepared=true;return;}if(bottom&&!captureScrolled){page.AutoScrollPosition=new Point(0,page.VerticalScroll.Maximum);Refresh();captureScrolled=true;return;}string root=Path.GetFullPath(Path.Combine(Settings.Root,".."));var p=new ProcessStartInfo(string.IsNullOrEmpty(capturePython)?Path.Combine(root,"native-source",".venv","Scripts","python.exe"):capturePython){UseShellExecute=false,CreateNoWindow=true};p.ArgumentList.Add(string.IsNullOrEmpty(captureHelper)?Path.Combine(root,"tools","capture_owned_window.py"):captureHelper);p.ArgumentList.Add(Handle.ToInt64().ToString());p.ArgumentList.Add(Path.Combine(captureDir,$"{captureIndex}-{name.Replace(" & ","-")}{(bottom?"-bottom":"")}.png"));using var capture=Process.Start(p);capture?.WaitForExit();captureIndex++;capturePrepared=captureScrolled=false;}else{captureMode=false;Close();}return;}
   if(game!=null&&game.HasExited){int code=game.ExitCode;game.Dispose();game=null;settings.ReadEngine();Settings.SessionDirectory=null;activeSeed=null;ShowPage(current);Notify(code==0?"Game closed. Your saves are stored locally.":"The game stopped. See game.log in this game's session folder for details.",code!=0);}
   if(Running&&File.Exists(Settings.PathTo("settings.request"))){File.Delete(Settings.PathTo("settings.request"));settings.ReadEngine();settingsRequested=true;ShowPage("Display");Show();WindowState=FormWindowState.Normal;Activate();Notify("Game paused. Apply settings to resume, or press F9 in the game.");}
  }
@@ -228,6 +229,7 @@ sealed partial class MainForm : Form {
 sealed class BindForm : Form {
  public int Value{get;private set;}readonly bool controller;readonly System.Windows.Forms.Timer timer=new(){Interval=25};HashSet<int> initially=[];
  public BindForm(string action,bool pad){
+  AppIcon.Apply(this);
   controller=pad;Text="Bind "+action;ClientSize=new Size(540,245);FormBorderStyle=FormBorderStyle.FixedDialog;MaximizeBox=MinimizeBox=false;StartPosition=FormStartPosition.CenterParent;BackColor=Theme.Canvas;ForeColor=Theme.Ink;Font=Theme.Font();KeyPreview=true;
   var panel=new FlowLayoutPanel(){Dock=DockStyle.Fill,FlowDirection=FlowDirection.TopDown,WrapContents=false,Padding=new Padding(26)};Controls.Add(panel);panel.Controls.Add(Theme.Text(action,18));panel.Controls.Add(Theme.Text(pad?"Press a controller button or trigger.\nRelease any held buttons first.":"Press a key. Escape cancels.\nEach binding uses one physical key.",11,Theme.Muted));
   var buttons=new FlowLayoutPanel(){Width=480,Height=58};buttons.Controls.Add(Theme.Button("Clear binding",()=>Finish(pad?-1:0)));buttons.Controls.Add(Theme.Button("Cancel",()=>{DialogResult=DialogResult.Cancel;Close();}));panel.Controls.Add(buttons);

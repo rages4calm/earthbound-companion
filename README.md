@@ -1,16 +1,20 @@
+<img src="Companion/Assets/earthbound-companion.png" width="88" height="88" alt="EarthBound Companion red-cap planet icon">
+
 # EarthBound Companion
 
 **EarthBound for Windows, with a native MaternalBound Redux adaptation, widescreen and ultrawide scenery, 1080p–4K output, MSU music, PC controls, save recovery and Story Shuffle v3.**
 
 > [!WARNING]
-> **Current release: `v0.5.0-redux-dev.7`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **Current release: `v0.5.0-redux-dev.8`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
 The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. Both the original and the pinned Redux packs have content-specific protection policies; unknown packs cannot be randomized.
 
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio or saves. The documentation includes clearly labeled development screenshots. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.7) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+[Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.8) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+
+The eighth Redux development build adds an original red-cap planet app icon to the launcher executable, title bars and dialogs. Portable packages include the multi-resolution ICO for shortcuts. The tabs are now named Play and Game Mode, with edition selection at the top of Game Mode. This launcher update keeps the dev.7 game engine, setup helpers, corrected pack and save/seed identities unchanged. [Icon source and generation prompt](Companion/Assets/README.md).
 
 The seventh Redux development build checks all **177 placed containers in each edition** against their source loot, opened flags, text mappings and placements. All 698 prepared native reward/full-inventory cases pass, including repeat-opening protection and collecting rejected gifts after freeing space. It preserves the two source-defined empty containers and Redux's documented Broken iron → Broken gadget replacement. These are exhaustive catalog/reward fixtures, not a walk through every room. [Coverage and method](docs/PRESENT-AUDIT.md).
 
@@ -30,7 +34,7 @@ Invited testers need repository access or a ZIP supplied by the project owner. T
 
 ## Companion at a glance
 
-These are real captures from the ROM-free dev.7 development launcher before game-data setup. They contain no extracted game artwork or gameplay screenshots.
+These are real captures from the ROM-free dev.8 development launcher before game-data setup. They contain no extracted game artwork or gameplay screenshots.
 
 <table>
   <tr>
@@ -50,11 +54,11 @@ These are real captures from the ROM-free dev.7 development launcher before game
     <td align="center"><strong>Native MSU audio setup</strong></td>
   </tr>
   <tr>
-    <td width="50%"><img src="docs/images/solo-play.png" alt="Solo Play and first-run ROM setup"></td>
+    <td width="50%"><img src="docs/images/solo-play.png" alt="Play and first-run ROM setup"></td>
     <td width="50%"><img src="docs/images/mods-saves.png" alt="Native mod profiles, asset packs, saves and recovery"></td>
   </tr>
   <tr>
-    <td align="center"><strong>Guided ROM setup and Solo Play</strong></td>
+    <td align="center"><strong>Guided ROM setup and Play</strong></td>
     <td align="center"><strong>Native profiles, asset packs and save recovery</strong></td>
   </tr>
 </table>
@@ -92,13 +96,13 @@ The player-facing setup separates code/tools from player-supplied game data. Set
 3. Run **EarthBound Companion.exe**.
 4. Select your clean EarthBound (USA) `.sfc` or `.smc` ROM.
 5. Leave **Install the complete MSU soundtrack** checked for enhanced music, or clear it to use SPC music. Internet access is needed for the pinned source and soundtrack downloads; testers need no Python, Git, .NET installation or compiler.
-6. When setup finishes, choose **Play EarthBound**. The Redux package identifies itself as a development profile. **Redux Port → Use original EarthBound** returns to the original story without changing either edition's saves.
+6. When setup finishes, choose **Play EarthBound**. The Redux package identifies itself as a development profile. **Game Mode → Use original EarthBound** returns to the original story without changing either edition's saves.
 
 The application accepts the clean 3 MiB USA ROM, with or without a 512-byte copier header. A different revision or modified ROM is rejected before extraction.
 
-For dev.3, dev.4, dev.5 or dev.6 → dev.7, close the game and launcher, back up the existing installation, then extract the new package over it. Keep `Profiles`, `UserData` and `msu`. The pack hash and quick-save format 16 are unchanged, so existing corrected-pack story and seed saves keep their identities.
+For dev.3 through dev.7 → dev.8, close the game and launcher, back up the existing installation, then extract the new package over it. Keep `Profiles`, `UserData` and `msu`. The pack hash and quick-save format 16 are unchanged, so existing corrected-pack story and seed saves keep their identities.
 
-For dev.2 → dev.7, extract to a fresh folder and build Redux from your ROM. Then choose **Redux Port → Import dev.2 story saves** and select the previous installation folder. This checked, names-only update copies phone and format-16 quick saves into empty destination saves; it preserves the previous installation and refuses other content pairs. Randomizer seeds keep their original content and save folders.
+For dev.2 → dev.8, extract to a fresh folder and build Redux from your ROM. Then choose **Game Mode → Import dev.2 story saves** and select the previous installation folder. This checked, names-only update copies phone and format-16 quick saves into empty destination saves; it preserves the previous installation and refuses other content pairs. Randomizer seeds keep their original content and save folders.
 
 Switching editions selects a separate adventure; it does not convert an existing playthrough. Normal phone saves are the migration path between engine builds. Development quick saves require a compatible engine and state format.
 
@@ -106,16 +110,16 @@ Switching editions selects a separate adventure; it does not convert an existing
 
 | Tab | Use it for |
 |---|---|
-| Solo Play | Start or resume the normal story in the selected edition; choose a presentation/convenience preset. |
+| Play | Start or resume the normal story in the selected edition; choose a presentation/convenience preset. |
 | Randomizer | Choose shuffle options, generate and replay seeds, open spoiler logs and manage each seed's separate saves. |
-| Redux Port | Build/select the MaternalBound development edition, review coverage or switch back to original EarthBound. |
+| Game Mode | Build/select the MaternalBound development edition, review coverage or switch back to original EarthBound. |
 | Display | Resolution, fullscreen, widescreen framing, pixel filtering and visual effects. |
 | Audio | MSU soundtrack selection/installation, music and game volume, and soundtrack credits. |
 | Gameplay | Sprint, quick dialogue, homesickness/call settings, battle rewards and quick-save bank. |
 | Controls | Keyboard/controller bindings, stick deadzone and face-button labels. |
 | Mods & saves | Settings profiles, compatible native asset packs, and story-save backup/restore. |
 
-Click **Apply settings** to save option changes. Redux Port selects the story edition played from Solo Play. Randomizer's seed library manages randomized adventures and their saves.
+Click **Apply settings** to save option changes. Game Mode selects the story edition played from Play. Randomizer's seed library manages randomized adventures and their saves.
 
 ## PC features
 

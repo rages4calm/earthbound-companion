@@ -21,7 +21,7 @@ static class ReduxProfileService {
   ProgressionPolicy policy;
   try{policy=ProgressionGuard.CheckBase(bytes);}catch(InvalidDataException){return false;}
   if(policy.ContentId!=ContentId)return false;
-  if(!settings.ReduxDevelopmentEnabled)throw new InvalidDataException("Select the Redux development profile from Redux Port before playing. It uses separate saves and has not passed a full playthrough.");
+  if(!settings.ReduxDevelopmentEnabled)throw new InvalidDataException("Select the Redux development profile from Game Mode before playing. It uses separate saves and has not passed a full playthrough.");
   return true;
  }
  internal static async Task BuildAsync(string rom,IProgress<SetupProgress>? progress=null,CancellationToken cancel=default){

@@ -1,4 +1,4 @@
-param([string]$Version='0.5.0-redux-dev.7')
+param([string]$Version='0.5.0-redux-dev.8')
 $ErrorActionPreference='Stop'
 $projectRoot=$PSScriptRoot
 $releaseRoot=Join-Path $projectRoot 'release'
@@ -16,6 +16,7 @@ foreach($folder in @('Game','msu','UserData','Profiles','Mods','Licenses')){New-
 & dotnet publish (Join-Path $projectRoot 'Companion\Companion.csproj') -c Release -o (Join-Path $staging 'publish') *> (Join-Path $staging 'publish.log')
 if($LASTEXITCODE -ne 0){throw 'Companion publish failed. See the staging publish.log.'}
 Copy-Item -LiteralPath (Join-Path $staging 'publish\EarthBound Companion.exe') -Destination $app
+Copy-Item -LiteralPath (Join-Path $projectRoot 'Companion\Assets\earthbound-companion.ico') -Destination (Join-Path $app 'EarthBound Companion.ico')
 Copy-Item -LiteralPath $native -Destination (Join-Path $app 'Game\earthbound.exe')
 Copy-Item -LiteralPath $helper -Destination (Join-Path $app 'Game\redux-setup.exe')
 Copy-Item -LiteralPath $originalHelper -Destination (Join-Path $app 'Game\ebtools-setup.exe')
@@ -35,11 +36,11 @@ EarthBound Companion — Redux development edition
 3. Leave the complete MSU soundtrack selected for enhanced music.
 4. Setup downloads the pinned Redux source and soundtrack, checks them,
    and builds the native game data locally. No Python installation is needed.
-5. Play from Solo Play, or generate a Story Shuffle adventure.
+5. Play from Play, or generate a Story Shuffle adventure.
 
 This is an experimental native conversion. A complete story or randomized
 playthrough remains unverified. Read MATERNALBOUND-NATIVE.md for coverage.
-Redux Port lets you return to original EarthBound. Each edition and seed
+Game Mode lets you return to original EarthBound. Each edition and seed
 keeps separate saves. Back up phone saves before moving between builds.
 
 This ZIP contains no ROM, playable game asset pack, soundtrack or saves.

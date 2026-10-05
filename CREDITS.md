@@ -59,6 +59,10 @@ The reproducible Redux helper pins [CoilSnake `346cfc7`](https://github.com/pk-h
 - **CoilSnake ExpandedTablesModule and pointer utility contributors** — [relocated PSI table references](https://github.com/pk-hack/CoilSnake/blob/346cfc753644bc3703b6fc4eaa0a5d6bdcb9bb4a/coilsnake/modules/eb/ExpandedTablesModule.py) guide the corrected PSI-name conversion.
 - [TypeSafe Jev](https://docs.typesafe.ai/primitives/choice) — optional developer gameplay decisions through the TypeSafe API. The QA runner supplies bounded ordinary inputs and native observations; TypeSafe is not needed to play the game.
 
+## Companion app icon
+
+The original red-cap planet emblem was created for Companion with the built-in OpenAI image-generation tool and exported to Windows ICO using [Pillow](https://github.com/python-pillow/Pillow). It is custom launcher artwork. Source artwork, the full prompt and conversion instructions are in [Companion/Assets](Companion/Assets/README.md). It uses no extracted ROM art or official game logo.
+
 ## Companion work
 
 The Companion application, native PC option integration, packaging, Story Shuffle v3, recovery workflow, validation tooling and documentation were assembled for Carl Prewitt Jr.’s native PC edition with OpenAI Codex assistance. Generated work was reviewed, built and tested locally; upstream authorship remains as listed above.

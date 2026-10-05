@@ -15,6 +15,7 @@ $publish=Join-Path $stagingParent 'publish'
 if($LASTEXITCODE -ne 0){throw 'Companion publish failed.'}
 
 Copy-Item -LiteralPath (Join-Path $publish 'EarthBound Companion.exe') -Destination $app
+Copy-Item -LiteralPath (Join-Path $projectRoot 'Companion\Assets\earthbound-companion.ico') -Destination (Join-Path $app 'EarthBound Companion.ico')
 Copy-Item -LiteralPath (Join-Path $projectRoot 'build\companion\earthbound.exe') -Destination (Join-Path $app 'Game\earthbound.exe')
 Copy-Item -LiteralPath (Join-Path $projectRoot 'tools\SDL2-2.32.10\x86_64-w64-mingw32\bin\SDL2.dll') -Destination (Join-Path $app 'Game\SDL2.dll')
 Copy-Item -LiteralPath (Join-Path $projectRoot 'native-source\dist\ebtools-setup.exe') -Destination (Join-Path $app 'Game\ebtools-setup.exe')

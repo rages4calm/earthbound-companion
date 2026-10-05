@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0-redux-dev.8 - application icon and clearer tab names
+
+- Add original red-cap planet artwork and a transparent, multi-resolution Windows ICO with entries from 16 to 256 pixels. Record the source artwork, generation prompt and reproducible ICO exporter.
+- Embed the icon in the published launcher executable and apply it to the main window, setup, input-binding and save-restore dialogs. Include a standalone ICO in portable packages for shortcuts.
+- Rename Solo Play to Play and Redux Port to Game Mode throughout the launcher and player guides. Put the edition-selection buttons first on Game Mode.
+- Keep the dev.7 native engine, setup helpers, corrected content pack and save/seed identities unchanged; this is a launcher branding update.
+
 ## 0.5.0-redux-dev.7 - all-container checks and launcher guidance
 
 - Check all 177 placed containers in both original EarthBound and the pinned Redux edition against their source loot, opened flags, text mappings and map placements. Preserve the two source-defined empty containers and Redux's documented Broken iron â†’ Broken gadget replacement.

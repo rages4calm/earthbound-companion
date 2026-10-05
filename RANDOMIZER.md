@@ -1,6 +1,6 @@
 # Native Story Shuffle v3
 
-Open **EarthBound Companion → Solo Play → Randomized adventure**. The starter seed **Tonight in Onett** is ready in the library. Choose it and press **Play selected seed**, or enter a number/phrase and **Generate & play**. Generation is local and needs no additional downloads, browser, emulator or ROM setup.
+Open **EarthBound Companion → Play → Randomized adventure**. The starter seed **Tonight in Onett** is ready in the library. Choose it and press **Play selected seed**, or enter a number/phrase and **Generate & play**. Generation is local and needs no additional downloads, browser, emulator or ROM setup.
 
 ## What changes
 

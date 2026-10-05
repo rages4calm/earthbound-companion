@@ -6,7 +6,7 @@ sealed partial class MainForm {
  ShuffleOptions draftOptions=new();string? importedBaseHash,selectedSeedId;
  bool generating;SeedRecord? activeSeed;
  void RandomizerPage() {
-  Header("Another kind of EarthBound.","Generate a Story Shuffle adventure, choose what gets randomized, or resume a saved seed. Each seed keeps its own saves, separate from Solo Play.");
+  Header("Another kind of EarthBound.","Generate a Story Shuffle adventure, choose what gets randomized, or resume a saved seed. Each seed keeps its own saves, separate from Play.");
   page.Controls.Add(Theme.Text("Story Shuffle uses the active asset pack. Each supported EarthBound or MaternalBound Redux version has its own audited quest items, scripted battles, seed identity and isolated saves.",11,Theme.Muted));
   page.Controls.Add(Theme.Text("Content-specific progression protection is always on · checked when generating and before play.",10,Theme.Green));
   var input=new TextBox {Text=draftSeed,MaxLength=80,BackColor=Theme.Surface,ForeColor=Theme.Ink,Font=Theme.Font(12),BorderStyle=BorderStyle.FixedSingle,AccessibleName="Randomizer seed",Enabled=!generating};

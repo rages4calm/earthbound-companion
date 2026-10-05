@@ -7,6 +7,7 @@ sealed class SetupForm : Form {
  readonly bool redux;
  public bool Completed{get;private set;}
  public SetupForm(bool soundtrackOnly=false,bool reduxDevelopment=false) {
+  AppIcon.Apply(this);
   redux=reduxDevelopment;
   Text="Set up EarthBound Companion";ClientSize=new Size(650,410);MinimumSize=MaximumSize=Size;FormBorderStyle=FormBorderStyle.FixedDialog;MaximizeBox=false;MinimizeBox=false;StartPosition=FormStartPosition.CenterParent;BackColor=Theme.Canvas;ForeColor=Theme.Ink;Font=Theme.Font();
   var panel=new FlowLayoutPanel(){Dock=DockStyle.Fill,FlowDirection=FlowDirection.TopDown,WrapContents=false,Padding=new Padding(28)};Controls.Add(panel);

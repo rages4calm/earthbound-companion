@@ -10,6 +10,7 @@ sealed partial class MainForm {
   using var dialog=new OpenFileDialog {Filter="Companion save backup (*.zip)|*.zip",InitialDirectory=Path.Combine(Settings.User,"Backups"),Title="Restore matching adventure backup"};
   if(dialog.ShowDialog(this)!=DialogResult.OK)return;
   using var form=new Form {Text="Restore saves",BackColor=Theme.Canvas,ForeColor=Theme.Ink,Font=Theme.Font(),ClientSize=new Size(540,225),FormBorderStyle=FormBorderStyle.FixedDialog,MaximizeBox=false,MinimizeBox=false,StartPosition=FormStartPosition.CenterParent};
+  AppIcon.Apply(form);
   var text=Theme.Text("Restore the selected backup into this adventure. Your current saves will be backed up first. Other adventures and settings stay as they are.",11);text.Location=new Point(22,18);text.MaximumSize=new Size(495,0);form.Controls.Add(text);
   var phone=new CheckBox {Text="Phone saves only (portable across engine builds)",Checked=true,AutoSize=true,ForeColor=Theme.Ink,Location=new Point(22,103)};form.Controls.Add(phone);
   var restore=Theme.Button("Restore backup",()=>form.DialogResult=DialogResult.OK,true);restore.Location=new Point(22,160);form.Controls.Add(restore);
