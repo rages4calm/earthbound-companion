@@ -157,15 +157,22 @@ def main():
             if blobs[0] != blobs[1]:
                 differing = [tag for tag in set(blobs[0]) | set(blobs[1]) if blobs[0].get(tag) != blobs[1].get(tag)]
                 raise RuntimeError(f'State mismatch at {evidence.name} step {index}: sections {differing}')
-            if (sessions[0] / 'fixture.srm').read_bytes() != (sessions[1] / 'fixture.srm').read_bytes():
+            phone = [folder / 'fixture.srm' for folder in sessions]
+            present = [path.exists() for path in phone]
+            if present[0] != present[1]:
+                raise RuntimeError('Phone save presence differs.')
+            if present[0] and phone[0].read_bytes() != phone[1].read_bytes():
                 raise RuntimeError('Phone save differs.')
-            rows.append({'case': evidence.name, 'step': index, 'serializedSectionsMatch': True, 'phoneSaveBytesMatch': True})
+            rows.append({'case': evidence.name, 'step': index, 'serializedSectionsMatch': True,
+                         'phoneSavePresence': 'present' if present[0] else 'both-absent',
+                         'phoneSaveBytesMatch': True if present[0] else None})
     report = {'Passed': True, 'Checkpoints': rows, 'baselineEngineSha256': sha(args.production),
               'observedEngineSha256': sha(args.observer), 'packSha256': sha(args.assets),
               'Exclusions': [
                   {'section': 8, 'fields': ['WindowInfo.content_tilemap', 'WindowInfo.cursor_move_callback']},
                   {'section': 20, 'fields': ['PsiAnimationState.arr_bundled_data', 'PsiAnimationState.arr_bundle_buf'], 'offsets': [64, 80]}],
               'NullPointerPresenceCompared': True, 'PSIPointerLayoutCompilerVerified': True,
+              'PhoneSavePresenceCompared': True,
               'ExclusionReason': 'Process addresses rebuilt from saved IDs, offsets and the entity staging buffer on every load. Every other serialized byte, including animation timing, palette and bundle identity, must match.',
               'FullPlaythroughVerified': False}
     (output / 'results.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')

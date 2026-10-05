@@ -14,6 +14,8 @@ The target is one polished PC edition: MaternalBound Redux's restored writing, a
 
 The sixth Redux development build connects the three rest-script stamina hooks: hotel recovery, full recovery and hot springs now refill running stamina. Twelve prepared four-member cases preserve each rest type’s health/status rules; the previous engine reproduced the missing reset. Twenty-four exact player/observer checkpoints and six real VM jump/continuation checks pass. The corrected pack, state format 16 and seed identities remain unchanged. These fixtures do not establish every rest location or a completed playthrough.
 
+A follow-up [source/data review](research/redux-control-and-battle-hooks-review.json) checks 29 active literal writes across controls, terrain speed, expanded Spy, PSI stat buffs and colored cast text. On the same dev.6 engine, a prepared Spy battle displays the target’s Offense 5, Defense 3 and Speed 77, awards one Cookie to Jeff and returns to the battle menu. All 21 cold-restored input checkpoints match between player and observer builds. These checks do not establish every enemy, map or story branch.
+
 The fifth Redux development build fixes present rewards being lost by the deferred Talk/Check window. Two unopened Giant Step presents reproduce the failure in dev.4 and now deliver the exact items from the pinned source; repeat checks cannot duplicate the rewards. A prepared cash-gift case also passes. No player saves are modified by these tests. The pack and quick-save format remain unchanged. Already opened presents are not retroactively granted items.
 
 The fourth Redux development build corrects the native `CC 1D 15` argument width: the upstream fix stores a 16-bit value before multiplying, while the former C handler retained high bits. Twenty-five actual dispatcher cases pass after reproducing eight failures in the previous handler. The [36 active bugfix reviews](research/redux-active-bugfix-review.json) distinguish native adaptations, platform differences and remaining gameplay tests. This build also retains the dev.3 fixes for stranded empty Talk/Check windows, cutscene masks covering the Starman Junior battle UI, cold quick-save restores during stat-growth messages, and Redux story launch/save-backup handling. It also reads the relocated PSI-name table correctly and rebuilds the PSI menu in front of the pause menu when loading an older checkpoint. Actual Lifeup input heals Ness and consumes 5 PP. Copied player saves passed the Starman fight, victory and following Buzz Buzz dialogue, plus empty Talk/Check → natural Onett combat → victory and roaming, with ordinary inputs. [Jev-assisted development testing](JEV-QA.md) also completes normal City Hall navigation, the guard conversation and Mayor Pirkle’s Shack Key award from a copied post-Frank save. Testing is bounded and isolated from player saves; it has not completed the whole game.
@@ -64,6 +66,10 @@ This 1080p capture uses locally supplied game data. It documents the development
 ![Native dev.5 present reward replay at 1920×1080](docs/images/native-redux-present-dev5.png)
 
 This production-engine capture shows the real present reward after the dev.5 fix. Testing also checks inventory, the opened flag and repeat protection.
+
+![Native dev.6 expanded Spy cold render at 1920×1080](docs/images/native-redux-spy-dev6.png)
+
+This unedited production-engine capture restores the added Speed message from the prepared four-member battle fixture. The debug character names and stats are fixture inputs; this is not ordinary story progress.
 
 ## What this is
 

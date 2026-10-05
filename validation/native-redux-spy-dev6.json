@@ -1,0 +1,325 @@
+{
+  "Passed": true,
+  "format": "redux-prepared-spy-stages-v1",
+  "nativeExeSha256": "60b31db0b0acc3d244e3bcc987442ddece3d6373cd9ca5ceccfd006623831a12",
+  "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "seededFixture": true,
+  "ordinaryInputsOnly": true,
+  "TypeSafeRequests": 0,
+  "expectedEnemy": {
+    "id": 159,
+    "offense": 5,
+    "defense": 3,
+    "speed": 77,
+    "item": 88
+  },
+  "targetStatTextPassed": true,
+  "spyEnteredAndReturned": true,
+  "cookieAwardedExactlyOnce": true,
+  "coldStageCheckpoints": 21,
+  "steps": [
+    {
+      "step": 0,
+      "button": null,
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_MENU",
+        "SELECTION_MENU"
+      ]
+    },
+    {
+      "step": 1,
+      "button": "right",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_MENU",
+        "SELECTION_MENU"
+      ]
+    },
+    {
+      "step": 2,
+      "button": "down",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_MENU",
+        "SELECTION_MENU"
+      ]
+    },
+    {
+      "step": 3,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "@The Spiteful Crow has\n  a big grin",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "DISPLAY_TEXT"
+      ]
+    },
+    {
+      "step": 4,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": " on his face.",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ]
+    },
+    {
+      "step": 5,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "@Native is on guard.",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_WAIT"
+      ]
+    },
+    {
+      "step": 6,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "@Native is on guard.@Native is on",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "DISPLAY_TEXT"
+      ]
+    },
+    {
+      "step": 7,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": " guard.@Native spies on\n  the Spiteful Crow!",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ]
+    },
+    {
+      "step": 8,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "\n@The Spiteful Crow's\n  Offense is 5!",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ]
+    },
+    {
+      "step": 9,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "\n@Defense is 3!",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ]
+    },
+    {
+      "step": 10,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "\n@Speed is 77!",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ]
+    },
+    {
+      "step": 11,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "\n@Vulnerable to PK Fir",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT"
+      ]
+    },
+    {
+      "step": 12,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "e!\n@Vulnerable to PK Fre",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT"
+      ]
+    },
+    {
+      "step": 13,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "eze!\n@Vulnerable to PK Fla",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT"
+      ]
+    },
+    {
+      "step": 14,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "sh!\n@Vulnerable to Paraly",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT"
+      ]
+    },
+    {
+      "step": 15,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "sis!\n@Native saw\n  a present behi",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT"
+      ]
+    },
+    {
+      "step": 16,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "nd the enemy.",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ]
+    },
+    {
+      "step": 17,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "\n@Inside the present,\n ",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT"
+      ]
+    },
+    {
+      "step": 18,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": " there was a Cookie.",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ]
+    },
+    {
+      "step": 19,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "\n@Native takes it.",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_ACTION",
+        "DISPLAY_TEXT",
+        "TEXT_PROMPT"
+      ]
+    },
+    {
+      "step": 20,
+      "button": "confirm",
+      "coldLoaded": true,
+      "captured": true,
+      "freshText": "BashGoodsDefendAuto FightRun AwayPSI",
+      "modes": [
+        "OVERWORLD",
+        "BATTLE_SCRIPTED",
+        "BATTLE",
+        "BATTLE_MENU",
+        "SELECTION_MENU"
+      ]
+    }
+  ],
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Prepared four-member battle against Spiteful Crow; not ordinary story progress.",
+    "Covers this stat/vulnerability/item path with a cold restore between inputs; not every enemy, resistance, full-inventory or itemless branch.",
+    "Window text is native observer output; the production cold render and state-parity records are separate evidence."
+  ]
+}

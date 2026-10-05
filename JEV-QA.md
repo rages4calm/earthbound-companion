@@ -49,3 +49,7 @@ For deterministic gift regression, `scripts/redux_gift_qa.py` takes copied pre-c
 Route research used [Rick N. Bruns’s Giant Step map at SNESMaps](https://www.snesmaps.com/maps/EarthBound/EarthboundMapGiantStep.html). Its map image remains a local research reference and is not republished. Actual transitions and rewards are checked against the game data and native observations.
 
 There is no complete story route planner yet. This tool does not establish a completed EarthBound story, full MaternalBound Redux parity, or a completed randomized playthrough.
+
+Additional dev.6 Spy checks use no Jev/TypeSafe requests. A copied target-confirmed four-member fixture against Spiteful Crow runs through 21 normal-button stages with cold process restores. Offense 5, Defense 3, Speed 77, vulnerability messages, one Cookie award to Jeff and return to the next battle menu pass. All 21 production/observer states match; a separate 1080p production cold render shows the Speed message. Reproduce with `scripts/redux_spy_qa.py` and a copied prepared QA checkpoint. This does not cover every enemy, resistance, itemless or full-inventory branch.
+
+The parity checker now compares phone-save presence before comparing bytes. Prepared battle fixtures have no phone save; two absent files are recorded explicitly as `both-absent` with `phoneSaveBytesMatch: null`. A one-sided file or unequal bytes still fails. Two additional recovery checkpoints verify the existing, byte-compared phone-save path. This fixes a QA-tool assumption, not a native gameplay bug.

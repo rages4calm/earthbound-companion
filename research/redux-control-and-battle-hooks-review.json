@@ -1,0 +1,363 @@
+{
+  "Passed": true,
+  "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "reviewedModules": 5,
+  "activeLiteralWritesReviewed": 29,
+  "offenseHelperBytesVerified": true,
+  "privateHelperAddressFromCallSite": "FC5AF7",
+  "spySpeedAliasVerified": true,
+  "modules": [
+    {
+      "module": "new_controls",
+      "source": "ccscript/redux/new_controls.ccs",
+      "sourceSha256": "f879c7b664fc481300c92dfad4b901102bf54a6fd5837ec5680e9b68a2ba14f0",
+      "activeLiteralWrites": 17,
+      "compiledChecks": [
+        {
+          "address": "C4D6E2",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C0B8E3",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C0B8F1",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C13CC6",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C0B907",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C0B915",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C13CED",
+          "checkedBytes": 9,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C13199",
+          "checkedBytes": 6,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C1324D",
+          "checkedBytes": 4,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C13493",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C134E1",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C134E6",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C134F3",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C13503",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C13C3E",
+          "checkedBytes": 7,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C13C5D",
+          "checkedBytes": 2,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C13C6D",
+          "checkedBytes": 12,
+          "compiledPrefixMatches": true
+        }
+      ],
+      "nativeReferences": [
+        {
+          "path": "src/game_main.c",
+          "line": 1853,
+          "anchor": "maternalbound_enabled() ? PAD_X : PAD_A"
+        },
+        {
+          "path": "src/game_main.c",
+          "line": 1858,
+          "anchor": "maternalbound_enabled() ? (PAD_B | PAD_START) : PAD_CANCEL"
+        },
+        {
+          "path": "src/game_main.c",
+          "line": 1864,
+          "anchor": "maternalbound_enabled() ? PAD_SELECT : PAD_X"
+        },
+        {
+          "path": "src/game_main.c",
+          "line": 1872,
+          "anchor": "maternalbound_enabled() ? PAD_CONFIRM : PAD_L"
+        },
+        {
+          "path": "src/game/town_map.c",
+          "line": 501,
+          "anchor": "!event_flag_get(MATERNALBOUND_FLAG_TOWN_MAP)"
+        },
+        {
+          "path": "src/game/text.c",
+          "line": 727,
+          "anchor": "add_menu_item(\"Goods\",2,0,0)"
+        },
+        {
+          "path": "src/game/text.c",
+          "line": 734,
+          "anchor": "add_menu_item(\"Tools\",11,6,2)"
+        },
+        {
+          "path": "src/game/overworld_interaction.c",
+          "line": 428,
+          "anchor": "if (!maternalbound_enabled()) create_window(WINDOW_TEXT_STANDARD)"
+        },
+        {
+          "path": "src/game/overworld_interaction.c",
+          "line": 496,
+          "anchor": "if (maternalbound_enabled() && text_ptr != 0)"
+        },
+        {
+          "path": "src/game/text.c",
+          "line": 4163,
+          "anchor": "maternalbound_enabled() ? (PAD_B | PAD_START) : PAD_CANCEL"
+        }
+      ],
+      "nativeDecision": "Native input routes implement X pause, B/Start HP/PP, Select map and A/L Talk/Check. Companion controller remapping translates physical buttons to these virtual buttons. The Town Map uses flag 511. Empty checks defer window creation; actual presents open the register-bearing window before assigning reward registers. PC menu uses native userdata and Goods/Equip/PSI/Status/Keys/Tools plus Save/Set Up/Quit, rather than copying the SNES menu indexes or column widths.",
+      "limits": "Prior ordinary Talk/Check, pause, PSI and present cases cover specific branches. Every map location, mapped physical controller layout, special door text and all menu branches remain unverified. Native map dismissal also accepts confirm and X as PC convenience.",
+      "evidence": [
+        "validation/native-check-menu-dev5.json",
+        "validation/native-redux-gifts-dev5.json",
+        "validation/native-redux-menus.json"
+      ]
+    },
+    {
+      "module": "fast_terrain",
+      "source": "ccscript/redux/fast_terrain.ccs",
+      "sourceSha256": "9f311b4370ac9ee7bf3c1a7cf17a1c699649ccdfa4228443d5ecbabff90dea85",
+      "activeLiteralWrites": 3,
+      "compiledChecks": [
+        {
+          "address": "C03AE3",
+          "checkedBytes": 1,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C02F45",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C031CD",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        }
+      ],
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld.c",
+          "line": 1892,
+          "anchor": "maternalbound_enabled() ? WALKING_STYLE_SLOWER : WALKING_STYLE_SLOWEST"
+        },
+        {
+          "path": "src/game/position_buffer.c",
+          "line": 1119,
+          "anchor": "(maternalbound_enabled() || (ws == WALKING_STYLE_NORMAL && !water))"
+        },
+        {
+          "path": "src/game/position_buffer.c",
+          "line": 1121,
+          "anchor": "maternalbound_enabled() ? maternalbound_running()"
+        }
+      ],
+      "nativeDecision": "The active source changes small-party/Lost Underworld walking style from 10 to 6 and permits running outside normal walking style. Native map entry selects style 6 for Redux and the position adjuster permits Redux running with nonstandard styles/water. The swamp no-slowdown patch is commented out upstream and is not an active target. The sprite selector still receives style 10 in the small-party path independently of the global movement-speed style.",
+      "limits": "Native movement/stamina checks do not demonstrate ordinary Lost Underworld, water, ropes or every special movement path.",
+      "evidence": [
+        "validation/native-runtime-regressions-dev6.json"
+      ]
+    },
+    {
+      "module": "offense_defense_psi_buff",
+      "source": "ccscript/redux/offense_defense_psi_buff.ccs",
+      "sourceSha256": "9356b1cf026a9e0d6103b8783c261503e100c16ff3338eff57a0e3b21aa35a9d",
+      "activeLiteralWrites": 6,
+      "compiledChecks": [
+        {
+          "address": "C27D34",
+          "checkedBytes": 18,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C27DF0",
+          "checkedBytes": 4,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C27D96",
+          "checkedBytes": 4,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C27E47",
+          "checkedBytes": 4,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C27DBE",
+          "checkedBytes": 6,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C27E6F",
+          "checkedBytes": 5,
+          "compiledPrefixMatches": true
+        }
+      ],
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_calc.c",
+          "line": 294,
+          "anchor": "redux ? target->base_offense >> 3 : target->offense >> 4"
+        },
+        {
+          "path": "src/game/battle_calc.c",
+          "line": 300,
+          "anchor": "(uint16_t)target->base_offense * 17"
+        },
+        {
+          "path": "src/game/battle_calc.c",
+          "line": 314,
+          "anchor": "target->offense >> (maternalbound_enabled() ? 3 : 4)"
+        },
+        {
+          "path": "src/game/battle_calc.c",
+          "line": 334,
+          "anchor": "target->defense >> (redux ? 3 : 4)"
+        },
+        {
+          "path": "src/game/battle_calc.c",
+          "line": 339,
+          "anchor": "target->base_defense * (redux ? 7 : 5)"
+        },
+        {
+          "path": "src/game/battle_calc.c",
+          "line": 358,
+          "anchor": "(uint16_t)target->base_defense * 5"
+        }
+      ],
+      "nativeDecision": "The assembled _Find3Over8 helper doubles its input then shifts four times: base/8 for Offense Up and current/8 for Offense Down. Its stale 37.5-percent comments are not the active code. Native offense-up cap is base*17/8; offense-down retains base*3/4. Defense changes current stats by 1/8 and caps at base*7/4 or base*5/8. The native original profile retains its original formulas.",
+      "limits": "Production calculation fixtures cover representative increments, repeated caps and zero-current cases. Exhaustive stat combinations, all PSI UI/action branches and 65816 status-register parity are not claimed.",
+      "evidence": [
+        "validation/native-runtime-regressions-dev6.json"
+      ]
+    },
+    {
+      "module": "expanded_spy_action",
+      "source": "ccscript/expansion/expanded_spy_action.ccs",
+      "sourceSha256": "f47bf6419d53a0566bb467de25519e7f2cbaf8583b6c41dbbad8c6b3b65c3fa6",
+      "activeLiteralWrites": 1,
+      "compiledChecks": [
+        {
+          "address": "C28798",
+          "checkedBytes": 6,
+          "compiledPrefixMatches": true
+        }
+      ],
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 212,
+          "anchor": "st->pc = maternalbound_enabled() ? 10 : 2"
+        },
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 217,
+          "anchor": "case 10: /* Redux expanded Spy: Speed follows Defense. */"
+        },
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 221,
+          "anchor": "false, true, tgt->speed"
+        }
+      ],
+      "nativeDecision": "Native Spy enters saved stage 10 after Defense, displays the converted Spy Speed text with the target speed, then returns to the original vulnerability and item path. It derives the target from serialized battle state on each step.",
+      "limits": "A prepared four-member Spiteful Crow battle shows Offense 5, Defense 3 and Speed 77, awards one Cookie to Jeff and returns to the battle menu with cold restores between 21 input stages. All 21 player/observer states match and a production cold render shows Speed at 1080p. Ordinary story encounters, other enemies, full inventory, itemless and other resistance/theft branches remain unverified.",
+      "evidence": [
+        "validation/native-redux-spy-dev6.json",
+        "validation/native-jev-spy-parity-dev6.json",
+        "validation/native-redux-spy-render-dev6.json"
+      ]
+    },
+    {
+      "module": "cast_coloured_text",
+      "source": "ccscript/redux/cast_coloured_text.ccs",
+      "sourceSha256": "29f495e5122a6d256853103adabce39467f81eec741e505cb0f0ce65ccba06e9",
+      "activeLiteralWrites": 2,
+      "compiledChecks": [
+        {
+          "address": "C4E48D",
+          "checkedBytes": 3,
+          "compiledPrefixMatches": true
+        },
+        {
+          "address": "C4E4C0",
+          "checkedBytes": 4,
+          "compiledPrefixMatches": true
+        }
+      ],
+      "nativeReferences": [
+        {
+          "path": "src/game/ending.c",
+          "line": 1124,
+          "anchor": "memcpy(ert.palettes+(maternalbound_enabled() ? 4 : 0), pal, BPP2PALETTE_SIZE * 4)"
+        },
+        {
+          "path": "src/game/ending.c",
+          "line": 1127,
+          "anchor": "if (maternalbound_enabled()) ert.palettes[0]=ert.palettes[3]=0"
+        }
+      ],
+      "nativeDecision": "Native Redux cast setup retains flavour colors in palette zero, copies the cast background into palette one and clears colors zero/three, matching the active patch. This is conditional on the Redux profile.",
+      "limits": "Existing prepared cast and cold-restore scenes are bounded evidence. Ordinary ending progression, every window flavour and named-guardian/photo acquisition remain unverified.",
+      "evidence": [
+        "validation/native-redux-ending.json"
+      ]
+    }
+  ],
+  "fullModuleSemanticParityClaimed": false,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Exactly these five source modules and compiled prefixes; not the remaining all-module audit.",
+    "Native anchors tie manual decisions to code; symbol presence alone does not prove semantic parity.",
+    "Runtime evidence retains the engine identities and coverage limits of its original reports."
+  ]
+}

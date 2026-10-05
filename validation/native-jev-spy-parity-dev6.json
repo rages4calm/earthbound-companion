@@ -1,0 +1,180 @@
+{
+  "Passed": true,
+  "Checkpoints": [
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 0,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 1,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 2,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 3,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 4,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 5,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 6,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 7,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 8,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 9,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 10,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 11,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 12,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 13,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 14,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 15,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 16,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 17,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 18,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 19,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    },
+    {
+      "case": "dev6-spy-stages-v1",
+      "step": 20,
+      "serializedSectionsMatch": true,
+      "phoneSavePresence": "both-absent",
+      "phoneSaveBytesMatch": null
+    }
+  ],
+  "baselineEngineSha256": "f35fecdf300b55565ea428d747a0b510cf2a0aecff5df66b745180694a0eb7eb",
+  "observedEngineSha256": "60b31db0b0acc3d244e3bcc987442ddece3d6373cd9ca5ceccfd006623831a12",
+  "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "Exclusions": [
+    {
+      "section": 8,
+      "fields": [
+        "WindowInfo.content_tilemap",
+        "WindowInfo.cursor_move_callback"
+      ]
+    },
+    {
+      "section": 20,
+      "fields": [
+        "PsiAnimationState.arr_bundled_data",
+        "PsiAnimationState.arr_bundle_buf"
+      ],
+      "offsets": [
+        64,
+        80
+      ]
+    }
+  ],
+  "NullPointerPresenceCompared": true,
+  "PSIPointerLayoutCompilerVerified": true,
+  "PhoneSavePresenceCompared": true,
+  "ExclusionReason": "Process addresses rebuilt from saved IDs, offsets and the entity staging buffer on every load. Every other serialized byte, including animation timing, palette and bundle identity, must match.",
+  "FullPlaythroughVerified": false
+}

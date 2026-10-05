@@ -18,12 +18,14 @@ Dev.5 fixes gift registers being assigned before the deferred interaction window
 
 Dev.6 connects the three `refill_stamina_on_heal.ccs` entries to native stamina reset. Literal ROM trampolines did not intercept the relocated native recovery bodies/callers. Native hooks now run once at CALL/direct entry and JUMP entry, without changing the healing bodies, pack or saved instruction offsets. Twelve prepared four-member cases rotate healthy, poisoned, unconscious and diamondized members across hotel/full-heal/hot-spring scripts; all healing/status rules and stamina reset pass after reproducing the omission in dev.5. Twenty-four player/observer checkpoints match. Six production VM cases cover entry jumps and loop continuations. The [three-hook review](research/redux-recovery-hooks-review.json) records the compiled trampolines, aliases and adaptation. These are prepared fixtures, not ordinary playthroughs of all resting locations.
 
+A follow-up [source/data review](research/redux-control-and-battle-hooks-review.json) checks 29 active literal writes across controls, terrain speed, expanded Spy, PSI stat buffs and colored cast text. On the same dev.6 engine, a prepared Spy battle displays the target’s Offense 5, Defense 3 and Speed 77, awards one Cookie to Jeff and returns to the battle menu. All 21 cold-restored input checkpoints match between player and observer builds. These checks do not establish every enemy, map or story branch.
+
 ## Implemented development coverage
 
 | Area | Current native work and evidence |
 |---|---|
 | Dialogue | 7,397 converted spans, 568,999 bytes and 12,859 relocated fields; zero failed spans, unresolved targets or ambiguous original aliases. Seven pinned malformed source jump tables are repaired explicitly and reported. |
-| Script extensions | Typed menu, title, fade, money, party, item, timeout and enemy-AI commands. Seventeen stable native adapters replace routine calls. 106 native VM checks and four converted window titles pass. |
+| Script extensions | Typed menu, title, fade, money, party, item, timeout and enemy-AI commands. Seventeen stable native adapters replace routine calls. 112 native VM checks and four converted window titles pass. |
 | World | Converted maps, palettes, collision, NPC placements, doors, events, movement data, 69 shops, items, PSI configuration, encounter groups, six auxiliary tables and music-zone selection. Native and raw script entry points map to rewritten scripts. |
 | Graphics | 483 sprite groups / 4,432 frames, all five fonts, map artwork and battle backgrounds/enemy art. Redux walking/run tables and run sprites are bound to the native animation callbacks. Upstream alternate walking tables share some graphics; cycling the tables does not create missing art. |
 | Menu and delivery fixes | Highlighting uses the selected font's rendered widths; ten narrow/wide font cases and row bounds pass. Delivery opens its letterbox through fourteen native frames before music/dismount; the continuation uses scalar modal state. |
@@ -43,7 +45,7 @@ Dev.6 connects the three `refill_stamina_on_heal.ccs` entries to native stamina 
 | Setup and saves | Frozen owner-ROM setup downloads the checksum-pinned source, compiles and converts it without installed Python or Git. It reproduces the verified native pack. A clean tester ZIP additionally passes headered-ROM setup, actual MSU repair and all 164 soundtrack checks. Original, Redux and seed saves are isolated; cold profile restore and switching back preserve both story-save sentinels. |
 | Original profile | Native input/MSU, save-state roundtrip/perturbation/recovery, key-items and join-level regression checks pass with the updated engine. |
 
-Current dev.6 evidence: [build and clean patch](validation/native-redux-dev6-build.json), [recovery before/after fixtures](validation/native-redux-recovery-dev6.json), [player/observer hotel parity](validation/native-jev-recovery-hotel-parity-dev6.json), [full-heal parity](validation/native-jev-recovery-full-parity-dev6.json), [hot-spring parity](validation/native-jev-recovery-spring-parity-dev6.json), and [Redux/original regression](validation/native-runtime-regressions-dev6.json).
+Current dev.6 evidence: [build and clean patch](validation/native-redux-dev6-build.json), [recovery before/after fixtures](validation/native-redux-recovery-dev6.json), [player/observer hotel parity](validation/native-jev-recovery-hotel-parity-dev6.json), [full-heal parity](validation/native-jev-recovery-full-parity-dev6.json), [hot-spring parity](validation/native-jev-recovery-spring-parity-dev6.json), [Redux/original regression](validation/native-runtime-regressions-dev6.json), [clean release package](validation/redux-clean-package-dev6.json), [Spy stages](validation/native-redux-spy-dev6.json), [Spy player/observer parity](validation/native-jev-spy-parity-dev6.json) and [1080p cold render](validation/native-redux-spy-render-dev6.json).
 
 Historical dev.5 evidence: [build and clean patch](validation/native-redux-dev5-build.json), [gift regression](validation/native-redux-gifts-dev5.json), [player/observer item parity](validation/native-jev-gift-parity-dev5.json), [prepared cash parity](validation/native-jev-cash-parity-dev5.json), [Redux and original regression](validation/native-runtime-regressions-dev5.json), and [Talk/Check → menu regression](validation/native-check-menu-dev5.json). The production capture is linked below.
 
@@ -56,7 +58,7 @@ Metadata evidence: [dialogue conversion](research/maternalbound-dialogue-report.
 - Validate converted title/cutscene presentation, battle sprites and PSI through later gameplay, beyond isolated scene and renderer checks.
 - Listen to the converted soundtrack and verify every SPC/MSU transition.
 - Verify gameplay-driven photo collection and every named-guardian choice in the cast.
-- Finish the remaining assembly/native audit beyond the 36 reviewed active bugfix imports and 15 reviewed writes in `redux_changes.ccs` plus the three reviewed recovery hooks, and exercise their outstanding branches. Literal writes and scene hooks outside these modules need separate review.
+- Finish the remaining assembly/native audit beyond the 36 reviewed active bugfix imports and 15 reviewed writes in `redux_changes.ccs` plus the three reviewed recovery hooks, and exercise their outstanding branches. An additional five-module review covers 29 controls/terrain/Spy/stat-buff/cast writes. Literal writes and scene hooks outside these reviewed modules still need separate review.
 - Validate free movement, doors, NPCs, item use, shops and cutscenes through real gameplay, including a start-to-ending playthrough.
 - Complete a full randomized playthrough beyond the content-specific protection checks and opening replay.
 
@@ -85,6 +87,10 @@ The dev.3 PSI captures show a copied player menu and a separately prepared comba
 Quick-save format 16 now saves cast/credits continuation fields and reconstructs pending drawing pointers. Older development quick-saves require their matching executable; phone saves remain the migration path. The tests use isolated save folders. Installing the tested runtime was a separate backed-up step; protected owner data, saves and preferences were hash-checked unchanged.
 
 ![Production-engine present reward after the dev.5 fix](docs/images/native-redux-present-dev5.png)
+
+![Native dev.6 expanded Spy cold render at 1920×1080](docs/images/native-redux-spy-dev6.png)
+
+This unedited production-engine capture restores the added Speed message from the prepared four-member battle fixture. The debug character names and stats are fixture inputs; this is not ordinary story progress.
 
 ## Reproducing development conversion
 
