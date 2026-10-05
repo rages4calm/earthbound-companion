@@ -1,0 +1,33 @@
+{
+  "Passed": true,
+  "NativeExeSha256": "20C8FBCB910447E2817F5D22F6D57F8D22C5AE2C8EABF832B18EEA2CF19E0474",
+  "UpstreamSourcePin": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "UpstreamHookSha256": "DA3CF3A64A2A6FEADA6CE33D36F72449341E1EE64B04BCDD5F1FB82A6416062B",
+  "Original": {
+    "Cases": 21,
+    "TimerStep": 1
+  },
+  "Redux": {
+    "Cases": 21,
+    "TimerStep": 2
+  },
+  "Variants": [
+    "exit",
+    "palette entrance",
+    "brightness entrance"
+  ],
+  "Durations": [
+    0,
+    1,
+    2,
+    3,
+    8,
+    255,
+    900
+  ],
+  "Limits": [
+    "Isolated real transition-step checks; all later story doors and teleports are not verified."
+  ],
+  "UpstreamHookActiveInPinnedBuild": false,
+  "CompanionAdditionalQoL": true
+}

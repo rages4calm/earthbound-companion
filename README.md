@@ -43,7 +43,7 @@ These are real captures from the ROM-free v0.5 development launcher before game-
   </tr>
 </table>
 
-The [Redux port page](MATERNALBOUND-NATIVE.md#development-captures) also shows actual native gameplay, Tools, equipment and cast renders. The latest packaged engine passes normal-button walking through the house, doors and stairs, Mom's dialogue and the clothes-change event, with fresh-process restores between checkpoints.
+The [Redux port page](MATERNALBOUND-NATIVE.md#development-captures) also shows actual native gameplay, Tools, equipment and cast renders. The latest packaged engine passes normal-button walking through the house, doors and stairs, Mom's dialogue, the clothes-change event and initial outdoor movement, with fresh-process restores between checkpoints. This passes for both Redux story and a generated seed.
 
 ![Native Redux opening dialogue at 1920×1080](docs/images/native-redux-mom-1080p.png)
 

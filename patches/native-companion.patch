@@ -1,5 +1,5 @@
 diff --git a/port/unix/main.c b/port/unix/main.c
-index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21dd46aa7b9 100644
+index f625aff2df1e2633bc22539e37c0b5e5744b52c0..0c124a0ad7837e1b54d0ff63bc90c33e3ac3405a 100644
 --- a/port/unix/main.c
 +++ b/port/unix/main.c
 @@ -32,12 +32,31 @@
@@ -34,7 +34,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
  #include "version.h"    /* EB_VERSION_STRING -- generated, see CMakeLists.txt.
                            * Unconditionally generated (not gated behind
                            * EB_UPDATER_ENABLED the way sdl2_updater.c's own
-@@ -368,12 +387,47 @@ static void migrate_legacy_saves_to_saves_folder(void) {
+@@ -368,12 +387,48 @@ static void migrate_legacy_saves_to_saves_folder(void) {
  
  int main(int argc, char *argv[]) {
      chdir_to_executable_dir(); /* before anything below touches a relative path */
@@ -66,6 +66,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
 +    bool redux_audio_selftest = false;
 +    bool redux_psi_selftest = false;
 +    bool redux_movement_selftest = false;
++    bool transition_selftest = false;
 +    bool redux_battle_sprites_selftest = false;
 +    int redux_title_fixture = -1;
 +    int redux_narration_fixture = -1;
@@ -82,7 +83,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
      bool threed_zombie_flag_check = false;
      bool threed_zombie_flag_fix = false;
      bool jeff_flag_fix = false;
-@@ -396,7 +450,22 @@ int main(int argc, char *argv[]) {
+@@ -396,7 +451,22 @@ int main(int argc, char *argv[]) {
  #endif
  
      for (int i = 1; i < argc; i++) {
@@ -106,7 +107,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
              verify_rom_path = argv[++i];
  #ifdef EB_RUNTIME_ASSETS
          } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
-@@ -420,6 +489,60 @@ int main(int argc, char *argv[]) {
+@@ -420,6 +490,63 @@ int main(int argc, char *argv[]) {
               * --save FILE. Implies headless. */
              keyitems_selftest = true;
              platform_headless = true;
@@ -132,6 +133,9 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
 +            platform_headless = true;
 +        } else if (strcmp(argv[i], "--selftest-redux-movement") == 0) {
 +            redux_movement_selftest = true;
++            platform_headless = true;
++        } else if (strcmp(argv[i], "--selftest-screen-transitions") == 0) {
++            transition_selftest = true;
 +            platform_headless = true;
 +        } else if (strcmp(argv[i], "--selftest-redux-battle-sprites") == 0) {
 +            redux_battle_sprites_selftest = true;
@@ -167,7 +171,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
          } else if (strcmp(argv[i], "--selftest-joinlevel") == 0) {
              /* Join-level scaling (Paula/Jeff/Poo scaled to Ness's current
               * level, see add_char_to_party()'s doc comment, inventory.c).
-@@ -536,7 +659,7 @@ int main(int argc, char *argv[]) {
+@@ -536,7 +663,7 @@ int main(int argc, char *argv[]) {
  #else
                              " [--export-pak FILE]"
  #endif
@@ -176,7 +180,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
                      argv[0]);
              return 1;
          }
-@@ -630,6 +753,10 @@ int main(int argc, char *argv[]) {
+@@ -630,6 +757,10 @@ int main(int argc, char *argv[]) {
       * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
       * platform-conventional data dir (see eb_runtime_assets_default_path). */
      char default_assets_path[1024];
@@ -187,7 +191,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
      if (assets_path == NULL) {
          assets_path = getenv("EB_ASSETS_PAK");
      }
-@@ -916,6 +1043,8 @@ int main(int argc, char *argv[]) {
+@@ -916,6 +1047,8 @@ int main(int argc, char *argv[]) {
       * itself (sdl2_video.c is platform-agnostic and already correct). */
      SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
@@ -196,7 +200,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
      /* Initialize SDL */
      uint32_t sdl_flags = SDL_INIT_TIMER;
      if (!platform_headless) {
-@@ -938,6 +1067,7 @@ int main(int argc, char *argv[]) {
+@@ -938,6 +1071,7 @@ int main(int argc, char *argv[]) {
      platform_input_init();
      platform_save_init();
      settings_load();
@@ -204,10 +208,11 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
      /* Resume logging automatically if a previous session left the Config
       * menu's "Logging" row on -- a tester shouldn't have to re-enable it
       * after every relaunch (including the updater's own self-relaunch) to
-@@ -965,6 +1095,28 @@ int main(int argc, char *argv[]) {
+@@ -965,6 +1099,29 @@ int main(int argc, char *argv[]) {
  
      /* Initialize game systems */
      game_init();
++    if (transition_selftest) exit(screen_transition_selftest() ? 0 : 1);
 +    if (maternalbound_enabled() && !redux_development && !redux_vm_selftest && !redux_ai_selftest && !redux_names_selftest && !redux_motion_selftest && !redux_audio_selftest && !redux_psi_selftest && !redux_movement_selftest && !redux_battle_sprites_selftest && !redux_battle_art_selftest && !redux_combat_selftest && !redux_title_test_path) {
 +        fprintf(stderr, "This Redux pack is a development integration fixture. Use --allow-redux-development only in an isolated test session.\n");
 +        return 1;
@@ -233,7 +238,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
  
      /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
       * fresh boot. Just requests it here -- the normal per-frame
-@@ -994,6 +1146,25 @@ int main(int argc, char *argv[]) {
+@@ -994,6 +1151,25 @@ int main(int argc, char *argv[]) {
          exit(ok_ki ? 0 : 1);
      }
  
@@ -259,7 +264,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
      if (joinlevel_selftest) {
          bool ok_jl = join_level_scaling_selftest();
          fprintf(stderr, "join-level scaling self-test: %s\n", ok_jl ? "PASS" : "FAIL");
-@@ -1194,6 +1365,127 @@ int main(int argc, char *argv[]) {
+@@ -1194,6 +1370,127 @@ int main(int argc, char *argv[]) {
          exit(0);
      }
  
@@ -387,7 +392,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
      /* Initialize audio (loads audio packs from embedded assets) */
      if (!platform_headless)
          platform_audio_init();
-@@ -1208,7 +1500,7 @@ int main(int argc, char *argv[]) {
+@@ -1208,7 +1505,7 @@ int main(int argc, char *argv[]) {
           * --msu-dir/--msu-name flags, and nothing to add to a Steam
           * shortcut's Launch Options (editing those is real friction, and
           * has to be redone every time the pack changes). */
@@ -396,7 +401,7 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
          char detected_name[128];
          const char *name = msu_name;
  
-@@ -1278,11 +1570,109 @@ int main(int argc, char *argv[]) {
+@@ -1278,11 +1575,112 @@ int main(int argc, char *argv[]) {
      platform_timer_frame_start();
  
      for (int frame_num = 0; !platform_input_quit_requested(); frame_num++) {
@@ -430,6 +435,9 @@ index f625aff2df1e2633bc22539e37c0b5e5744b52c0..695b565bf6ff2630a11e82977cdae21d
 +            fprintf(stderr,"\nPC replay modes:");
 +            for(unsigned level=0;level<g_mode_stack.depth;level++) fprintf(stderr," %u",g_mode_stack.mode[level]);
 +            fprintf(stderr,"\n");
++            for(unsigned entity=0;entity<MAX_ENTITIES;entity++)
++                if(entities.script_table[entity]>=0 && entities.npc_ids[entity] && entities.npc_ids[entity]<NPC_CONFIG_COUNT)
++                    fprintf(stderr,"PC replay NPC: id=%u position=%d,%d\n",entities.npc_ids[entity],entities.abs_x[entity],entities.abs_y[entity]);
 +            fprintf(stderr,"PC replay Redux battle sprites: active=%u visible=%u targets=%u selected=%d y=%d,%d,%d,%d\n",
 +                maternalbound_battle_sprites.active,maternalbound_battle_sprites.visible_mask,maternalbound_battle_sprites.target_mask,
 +                win.battle_menu_current_character_id,maternalbound_battle_sprites.anchor_y[0],maternalbound_battle_sprites.anchor_y[1],
@@ -5244,7 +5252,7 @@ index dd7f86b6119ee1405adfc8547530f4ddabfd7dd7..15d3fa3d7105adcfd87409f3dd03ffdd
  
      /* Assembly lines 47-148: loop over ITEM_INVENTORY_SIZE (14) slots.
 diff --git a/src/game/door.c b/src/game/door.c
-index c8d134ff1aaccacd6d0473e993f6d116a89f065a..6a7624b3e44228be11fe3d8a605d85014906c100 100644
+index c8d134ff1aaccacd6d0473e993f6d116a89f065a..88fb4e56df1a617f39715c67033a68f988810d9c 100644
 --- a/src/game/door.c
 +++ b/src/game/door.c
 @@ -39,6 +39,7 @@
@@ -5312,15 +5320,85 @@ index c8d134ff1aaccacd6d0473e993f6d116a89f065a..6a7624b3e44228be11fe3d8a605d8501
  uint16_t process_door_at_tile(uint16_t x_tile, uint16_t y_tile) {
      uint8_t door_type = find_door_at_position(x_tile, y_tile);
  
+@@ -903,7 +929,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
+         case ST_EXIT_BODY_FLUSH:
+             update_screen();
+             update_swirl_effect();
+-            s->frame++;
++            /* Redux fast_doors.ccs doubles the exit-loop counter, rather
++             * than changing door data or skipping map-loading work. */
++            s->frame += maternalbound_enabled() ? 2 : 1;
+             s->pal_waited = 0;
+             s->phase = ST_EXIT_BODY;
+             return STEP_RESULT_CONTINUE();   /* the iteration's main yield */
+@@ -966,7 +994,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
+             if (s->frame == 1) {
+                 disable_all_entities();
+             }
+-            s->frame++;
++            /* The matching entrance hook also advances by two. Keep the
++             * original pre-increment entity-disable check in its position. */
++            s->frame += maternalbound_enabled() ? 2 : 1;
+             s->phase = ST_ENTER_BODY;
+             continue;   /* no yield: resume the loop body */
+         }
+@@ -975,6 +1005,46 @@ StepResult mode_step_screen_transition(ModeState *st) {
+     }
+ }
+ 
++bool screen_transition_selftest(void) {
++    /* Boot has not entered a map yet: build empty, valid entity/script lists
++     * before exercising the real per-frame transition renderer. */
++    entity_system_init();
++    const uint16_t durations[] = {0, 1, 2, 3, 8, 255, 900};
++    unsigned speed = maternalbound_enabled() ? 2 : 1;
++    unsigned cases = 0;
++    for (unsigned variant = 0; variant < 3; variant++) {
++        for (unsigned i = 0; i < sizeof(durations) / sizeof(durations[0]); i++) {
++            ModeState state = {0};
++            ScreenTransitionState *s = &state.screen_transition;
++            s->phase = variant == 0 ? ST_EXIT_BODY : ST_ENTER_BODY;
++            s->duration = durations[i];
++            s->enter_mode = variant == 2;
++            unsigned advances = 0;
++            bool finished = false;
++            for (unsigned calls = 0; calls < 4000; calls++) {
++                /* The frame pump normally clears the pending palette upload
++                 * between CONTINUEs; this isolated diagnostic drains it here. */
++                ert.palette_upload_mode = 0;
++                uint16_t before = s->frame;
++                StepResult result = mode_step_screen_transition(&state);
++                if (s->frame != before) {
++                    if (s->frame != before + speed) return false;
++                    advances++;
++                }
++                if (result.kind == STEP_POP) {
++                    finished = true;
++                    break;
++                }
++                if (result.kind != STEP_CONTINUE) return false;
++            }
++            if (!finished || advances != (durations[i] + speed - 1) / speed) return false;
++            cases++;
++        }
++    }
++    fprintf(stderr, "Native screen transitions: %u exit/palette/brightness cases, timer step %u, PASS\n", cases, speed);
++    return true;
++}
++
+ /* ---- SCREEN_TRANSITION (port of asm/overworld/screen_transition.asm) ----
+  * Main screen transition effect used by door transitions.
+  *
 diff --git a/src/game/door.h b/src/game/door.h
-index 784405b6ec93699de60826978ff62455ab1a5ca6..4035932cd179931564e60bebe15c6dfb942bf136 100644
+index 784405b6ec93699de60826978ff62455ab1a5ca6..b1055479181f64f578c49dbfd49600ea31572876 100644
 --- a/src/game/door.h
 +++ b/src/game/door.h
-@@ -130,5 +130,6 @@ typedef struct {
+@@ -130,5 +130,7 @@ typedef struct {
  } DoorTransitionSaveState;
  void door_transition_savestate_pack(void *out);   /* out: DoorTransitionSaveState* */
  void door_transition_savestate_unpack(const void *in);
 +bool maternalbound_door_selftest(void);
++bool screen_transition_selftest(void);
  
  #endif /* DOOR_H */
 diff --git a/src/game/ending.c b/src/game/ending.c

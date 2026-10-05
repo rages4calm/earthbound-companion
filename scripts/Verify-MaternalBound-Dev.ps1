@@ -46,6 +46,10 @@ foreach($required in @('all 898 nonzero entries resolve, PASS','compiled complet
  if(!$movementLog.Contains($required)){throw "Missing movement check: $required"}
 }
 $results+=@{test='native-redux-movement-all-pointers-moldyman-far-tasks-object-effects-teleport-bicycles-doors';resolvedPointers=898;teleportCycles=128;bicycleCases=16;doorBounds=6;stairCallbacks=8;exitCode=0}
+Invoke-NativeCheck 'redux-screen-transitions' '--selftest-screen-transitions'
+$transitionLog=Get-Content -LiteralPath (Join-Path $ScratchDirectory 'redux-screen-transitions.log') -Raw
+if(!$transitionLog.Contains('21 exit/palette/brightness cases, timer step 2, PASS')){throw 'Redux fast door/warp timing did not pass.'}
+$results+=@{test='redux-fast-door-warp-transition-timing';cases=21;timerStep=2;exitCode=0}
 if(!$movementLog.Contains('Redux delivery letterbox: 14 timed frames, deferred music and serialized continuation, PASS')){throw 'Redux delivery sequence did not pass.'}
 $results+=@{test='redux-delivery-letterbox-before-music';frames=14;exitCode=0}
 Invoke-NativeCheck 'redux-audio' '--selftest-redux-audio'

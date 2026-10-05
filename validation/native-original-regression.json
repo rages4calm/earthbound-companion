@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "nativeExeSha256": "EB023CD843ABD90940529E4E5CAB7D6A7C976F2A8A3CA5E95287EEFFEA5812EA",
+  "nativeExeSha256": "20C8FBCB910447E2817F5D22F6D57F8D22C5AE2C8EABF832B18EEA2CF19E0474",
   "packSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
   "tests": [
     {
@@ -17,6 +17,10 @@
     },
     {
       "test": "--selftest-joinlevel",
+      "passed": true
+    },
+    {
+      "test": "--selftest-screen-transitions",
       "passed": true
     }
   ]

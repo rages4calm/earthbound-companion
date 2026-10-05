@@ -1,111 +1,12 @@
 {
-  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
-  "convertedDialogueSha256": "5B18885E24F78478B9A06A784981ED827012482E62F7C9DDEC761616F057E811",
+  "status": "development-only",
+  "format": "maternalbound-native-dev-validation-v1",
+  "packSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
   "limitations": [
     "Isolated test sessions; this command does not replace installed game files or player saves",
     "Remaining assembly-only fixes, later gameplay and full playthrough require verification",
     "This command does not run the separate content-specific randomizer audit or a full randomized playthrough"
   ],
-  "packSha256": "62BA3D70B37C95812BC742B40F1F599B142263FFB39F3DD949DDC66AA7E246C2",
-  "tests": [
-    {
-      "checks": 81,
-      "exitCode": 0,
-      "test": "native-redux-commands"
-    },
-    {
-      "exitCode": 0,
-      "test": "native-redux-stamina"
-    },
-    {
-      "scripts": 190,
-      "exitCode": 0,
-      "turns": 48640,
-      "test": "native-redux-enemy-ai"
-    },
-    {
-      "exitCode": 0,
-      "test": "native-redux-names-food-phone-save-migration"
-    },
-    {
-      "exitCode": 0,
-      "test": "native-redux-animation-run-exhaustion-stationary-stamina"
-    },
-    {
-      "bicycleCases": 16,
-      "resolvedPointers": 898,
-      "exitCode": 0,
-      "teleportCycles": 128,
-      "test": "native-redux-movement-all-pointers-moldyman-far-tasks-object-effects-teleport-bicycles-doors",
-      "stairCallbacks": 8,
-      "doorBounds": 6
-    },
-    {
-      "exitCode": 0,
-      "frames": 14,
-      "test": "redux-delivery-letterbox-before-music"
-    },
-    {
-      "framesPerTrack": 24,
-      "tracksProducingSamples": 188,
-      "exitCode": 0,
-      "tracks": 191,
-      "test": "redux-spc-track-transitions"
-    },
-    {
-      "exitCode": 0,
-      "effects": 68,
-      "frames": 1686,
-      "test": "redux-psi-playback-rebind-extended-ids"
-    },
-    {
-      "exitCode": 0,
-      "test": "redux-extended-enemy-battle-art"
-    },
-    {
-      "exitCode": 0,
-      "test": "redux-party-battle-sprites-selection-victory"
-    },
-    {
-      "condimentRecords": 42,
-      "gutsTrials": 128,
-      "exitCode": 0,
-      "sandwichTrials": 4096,
-      "test": "redux-production-combat-actions-inventory-roller"
-    },
-    {
-      "devices": 11,
-      "exitCode": 0,
-      "test": "redux-battle-tools-availability-inventory-free-actions"
-    },
-    {
-      "exitCode": 0,
-      "fontCases": 10,
-      "test": "redux-font-aware-menu-highlights"
-    },
-    {
-      "previews": 340,
-      "exitCode": 0,
-      "test": "redux-equipment-preview-identity-window-remapping"
-    },
-    {
-      "exitCode": 0,
-      "test": "native-converted-title-KeyItems_Title"
-    },
-    {
-      "exitCode": 0,
-      "test": "native-converted-title-Tools_Title"
-    },
-    {
-      "exitCode": 0,
-      "test": "native-converted-title-Warrior"
-    },
-    {
-      "exitCode": 0,
-      "test": "native-converted-title-Return"
-    }
-  ],
-  "nativeExeSha256": "EB023CD843ABD90940529E4E5CAB7D6A7C976F2A8A3CA5E95287EEFFEA5812EA",
   "conversionCounts": {
     "convertedLabelSpans": 7397,
     "convertedBytes": 568999,
@@ -117,6 +18,111 @@
     "nativeRoutineVariants": 17,
     "ambiguousOriginalAliases": 0
   },
-  "format": "maternalbound-native-dev-validation-v1",
-  "status": "development-only"
+  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+  "tests": [
+    {
+      "exitCode": 0,
+      "checks": 81,
+      "test": "native-redux-commands"
+    },
+    {
+      "test": "native-redux-stamina",
+      "exitCode": 0
+    },
+    {
+      "turns": 48640,
+      "exitCode": 0,
+      "scripts": 190,
+      "test": "native-redux-enemy-ai"
+    },
+    {
+      "test": "native-redux-names-food-phone-save-migration",
+      "exitCode": 0
+    },
+    {
+      "test": "native-redux-animation-run-exhaustion-stationary-stamina",
+      "exitCode": 0
+    },
+    {
+      "teleportCycles": 128,
+      "bicycleCases": 16,
+      "exitCode": 0,
+      "stairCallbacks": 8,
+      "test": "native-redux-movement-all-pointers-moldyman-far-tasks-object-effects-teleport-bicycles-doors",
+      "resolvedPointers": 898,
+      "doorBounds": 6
+    },
+    {
+      "timerStep": 2,
+      "cases": 21,
+      "exitCode": 0,
+      "test": "redux-fast-door-warp-transition-timing"
+    },
+    {
+      "frames": 14,
+      "exitCode": 0,
+      "test": "redux-delivery-letterbox-before-music"
+    },
+    {
+      "tracksProducingSamples": 188,
+      "exitCode": 0,
+      "tracks": 191,
+      "framesPerTrack": 24,
+      "test": "redux-spc-track-transitions"
+    },
+    {
+      "frames": 1686,
+      "exitCode": 0,
+      "effects": 68,
+      "test": "redux-psi-playback-rebind-extended-ids"
+    },
+    {
+      "test": "redux-extended-enemy-battle-art",
+      "exitCode": 0
+    },
+    {
+      "test": "redux-party-battle-sprites-selection-victory",
+      "exitCode": 0
+    },
+    {
+      "condimentRecords": 42,
+      "sandwichTrials": 4096,
+      "gutsTrials": 128,
+      "exitCode": 0,
+      "test": "redux-production-combat-actions-inventory-roller"
+    },
+    {
+      "devices": 11,
+      "exitCode": 0,
+      "test": "redux-battle-tools-availability-inventory-free-actions"
+    },
+    {
+      "fontCases": 10,
+      "exitCode": 0,
+      "test": "redux-font-aware-menu-highlights"
+    },
+    {
+      "exitCode": 0,
+      "previews": 340,
+      "test": "redux-equipment-preview-identity-window-remapping"
+    },
+    {
+      "test": "native-converted-title-KeyItems_Title",
+      "exitCode": 0
+    },
+    {
+      "test": "native-converted-title-Tools_Title",
+      "exitCode": 0
+    },
+    {
+      "test": "native-converted-title-Warrior",
+      "exitCode": 0
+    },
+    {
+      "test": "native-converted-title-Return",
+      "exitCode": 0
+    }
+  ],
+  "convertedDialogueSha256": "5B18885E24F78478B9A06A784981ED827012482E62F7C9DDEC761616F057E811",
+  "nativeExeSha256": "20C8FBCB910447E2817F5D22F6D57F8D22C5AE2C8EABF832B18EEA2CF19E0474"
 }

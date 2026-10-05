@@ -11,6 +11,7 @@ import zipfile
 
 from redux_gameplay_qa import main as opening
 from redux_audio_qa import main as audio_checks
+from redux_story_walk_qa import main as story_walk
 
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest().upper()
@@ -98,6 +99,12 @@ def main():
         try:opening()
         finally:sys.argv=argv
         tests.append('Packaged generator, independent seed guard and native randomized opening')
+        for label, content in (('story', pack), ('seed', seed/'assets.pak')):
+            sys.argv=['story-walk','--native-exe',str(app/'Game/earthbound.exe'),'--assets',str(content),
+                      '--scratch',str(scratch/(label+'-walk')),'--opening-session',str(scratch/(label+'-opening'))]
+            try:story_walk()
+            finally:sys.argv=argv
+        tests.append('Normal-button story and seed gameplay through house doors/stairs, Mom, clothes change and outdoor movement')
         run('profile-isolation',['--profile-test',str(pack),str(scratch/'profile-isolation')])
         tests.append('Original/Redux/seed save namespaces and profile switching')
         if sha(args.rom)!=source_hash:raise ValueError('Owner input ROM changed.')
