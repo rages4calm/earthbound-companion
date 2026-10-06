@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0-redux-dev.13 - stair entry and landing movement
+
+- Correct the ascending direction condition and accept the cardinal components or diagonal toward each of the four stair variants. Moving away does not start stair entry.
+- Recover a real type-4 trigger inside the current collision footprint when a landing puts it behind the requested leading edge. Retain normal alignment, callbacks and swept free-walking collision protection.
+- Replay all 72 type-4 endpoints in Original and Redux, independently in player and observer builds (288 checks). Verify cold continuation and the first real stair exit, plus copied-save up/down parity and progress preservation.
+- Repeat direction, collision, save, encounter/audio and Redux Winters regressions. Preserve assets, settings, format-16 saves and content/seed identities. Complete story and randomized playthrough coverage remains incomplete.
+
 ## 0.5.0-redux-dev.12 - Winters companion progression
 
 - Gate the female monkey's departure event on the completed rope milestone. The wider native viewport could load her while Jeff approached Brick Road, triggering departure before the rope cave. The shared fix covers Original EarthBound and pinned MaternalBound Redux.

@@ -8,7 +8,9 @@ Companion is adapting MaternalBound Redux into the BrianPugh-derived native x64 
 
 This checkpoint targets the active upstream source at `897d00833f4a08a0a92f106abf631629a6a6a041`, compiled locally with CoilSnake into a verified 6 MiB ROM. It is not the official v1.1 release. The v1.1 BPS was separately checksum-verified and tested during initial extraction research; supporting that release requires a separate conversion map and validation record.
 
-The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.12` (Winters companion progression and cold-load item actions).**
+The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.13` (stair entrances/landings, retaining Winters and cold-load item fixes).**
+
+Dev.13 corrects shared stair entry directions and recovers collision-marked landing triggers inside the current footprint. All 72 type-4 endpoints in each edition pass prepared player/observer replays. The reported Redux save also climbs and descends without moving its checkpoint. [Stair fix and coverage](docs/STAIRS-dev13.md).
 
 The dev.12 checkpoint prevents early Bubble Monkey departure caused by the expanded view, repairs the specific pre-rope legacy state, and binds action tables before item/PSI use on cold F6 loads. Prepared Original/Redux replays verify the real menus, Bubble Gum cutscene, rope lowering/climbing, normal later departure and migration exclusions in the player and observer. The shared encounter/audio checks also pass. See [Winters cause and evidence](docs/WINTERS-MONKEY-dev12.md). These checks do not establish a complete story or seed playthrough.
 

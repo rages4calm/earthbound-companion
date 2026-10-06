@@ -1,0 +1,102 @@
+{
+  "Passed": true,
+  "Cases": [
+    {
+      "Engine": "player",
+      "Edition": "original",
+      "Test": "stairs",
+      "Passed": true,
+      "EngineSha256": "11d27e6818ef045f00d4083e5039582e04f375fd390276f658b4859f42fcadf6",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative stairs: 32 input directions, 3 invalid inputs, 3 transition exclusions: PASS\r\n"
+    },
+    {
+      "Engine": "player",
+      "Edition": "original",
+      "Test": "sprint-collision",
+      "Passed": true,
+      "EngineSha256": "11d27e6818ef045f00d4083e5039582e04f375fd390276f658b4859f42fcadf6",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nSprint free movement: 144 speed/surface cases unchanged; scripted collision bypass: PASS\r\nSprint collision: 12288 prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\r\n"
+    },
+    {
+      "Engine": "player",
+      "Edition": "original",
+      "Test": "savestate",
+      "Passed": true,
+      "EngineSha256": "11d27e6818ef045f00d4083e5039582e04f375fd390276f658b4859f42fcadf6",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nsavestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    },
+    {
+      "Engine": "player",
+      "Edition": "redux",
+      "Test": "stairs",
+      "Passed": true,
+      "EngineSha256": "11d27e6818ef045f00d4083e5039582e04f375fd390276f658b4859f42fcadf6",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative stairs: 32 input directions, 3 invalid inputs, 3 transition exclusions: PASS\r\n"
+    },
+    {
+      "Engine": "player",
+      "Edition": "redux",
+      "Test": "sprint-collision",
+      "Passed": true,
+      "EngineSha256": "11d27e6818ef045f00d4083e5039582e04f375fd390276f658b4859f42fcadf6",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nSprint free movement: 144 speed/surface cases unchanged; scripted collision bypass: PASS\r\nSprint collision: 12288 prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\r\n"
+    },
+    {
+      "Engine": "player",
+      "Edition": "redux",
+      "Test": "savestate",
+      "Passed": true,
+      "EngineSha256": "11d27e6818ef045f00d4083e5039582e04f375fd390276f658b4859f42fcadf6",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nsavestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    },
+    {
+      "Engine": "observer",
+      "Edition": "original",
+      "Test": "stairs",
+      "Passed": true,
+      "EngineSha256": "fcefd2683c074162b59fa25f8d7b024ea09b36dcdbbf0eb0eab30daa38487cf2",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative stairs: 32 input directions, 3 invalid inputs, 3 transition exclusions: PASS\r\n"
+    },
+    {
+      "Engine": "observer",
+      "Edition": "original",
+      "Test": "sprint-collision",
+      "Passed": true,
+      "EngineSha256": "fcefd2683c074162b59fa25f8d7b024ea09b36dcdbbf0eb0eab30daa38487cf2",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nSprint free movement: 144 speed/surface cases unchanged; scripted collision bypass: PASS\r\nSprint collision: 12288 prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\r\n"
+    },
+    {
+      "Engine": "observer",
+      "Edition": "original",
+      "Test": "savestate",
+      "Passed": true,
+      "EngineSha256": "fcefd2683c074162b59fa25f8d7b024ea09b36dcdbbf0eb0eab30daa38487cf2",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nsavestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    },
+    {
+      "Engine": "observer",
+      "Edition": "redux",
+      "Test": "stairs",
+      "Passed": true,
+      "EngineSha256": "fcefd2683c074162b59fa25f8d7b024ea09b36dcdbbf0eb0eab30daa38487cf2",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative stairs: 32 input directions, 3 invalid inputs, 3 transition exclusions: PASS\r\n"
+    },
+    {
+      "Engine": "observer",
+      "Edition": "redux",
+      "Test": "sprint-collision",
+      "Passed": true,
+      "EngineSha256": "fcefd2683c074162b59fa25f8d7b024ea09b36dcdbbf0eb0eab30daa38487cf2",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nSprint free movement: 144 speed/surface cases unchanged; scripted collision bypass: PASS\r\nSprint collision: 12288 prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\r\n"
+    },
+    {
+      "Engine": "observer",
+      "Edition": "redux",
+      "Test": "savestate",
+      "Passed": true,
+      "EngineSha256": "fcefd2683c074162b59fa25f8d7b024ea09b36dcdbbf0eb0eab30daa38487cf2",
+      "Log": "PC options: experience=1x money=1x fast-forward=3x target\r\nsavestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    }
+  ],
+  "FullPlaythroughVerified": false
+}

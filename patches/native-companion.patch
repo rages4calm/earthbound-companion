@@ -14,7 +14,7 @@ index beecb38..43a704a 100644
  # Emit compile_commands.json so clangd/IDEs resolve include paths and types.
  # A root-level symlink (../../compile_commands.json) points at this file.
 diff --git a/port/unix/main.c b/port/unix/main.c
-index f625aff..b03ab7d 100644
+index f625aff..744367e 100644
 --- a/port/unix/main.c
 +++ b/port/unix/main.c
 @@ -32,12 +32,32 @@
@@ -50,7 +50,7 @@ index f625aff..b03ab7d 100644
  #include "version.h"    /* EB_VERSION_STRING -- generated, see CMakeLists.txt.
                            * Unconditionally generated (not gated behind
                            * EB_UPDATER_ENABLED the way sdl2_updater.c's own
-@@ -368,12 +388,58 @@ static void migrate_legacy_saves_to_saves_folder(void) {
+@@ -368,12 +388,61 @@ static void migrate_legacy_saves_to_saves_folder(void) {
  
  int main(int argc, char *argv[]) {
      chdir_to_executable_dir(); /* before anything below touches a relative path */
@@ -89,6 +89,7 @@ index f625aff..b03ab7d 100644
 +    bool encounter_selftest = false;
 +    bool reward_selftest = false;
 +    bool sprint_collision_test = false;
++    bool stairs_test = false;
 +    bool start_fast_forward = false;
 +    bool bicycle_audio_selftest = false;
 +    bool sfx_audio_selftest = false;
@@ -101,6 +102,8 @@ index f625aff..b03ab7d 100644
 +    uint32_t redux_dialogue_fixture = 0;
 +    bool redux_world_fixture = false;
 +    int winters_monkey_fixture = -1;
++    int stairs_fixture_x = -1, stairs_fixture_y = -1;
++    bool stairs_stop_at_landing = false;
 +    bool redux_battle_art_selftest = false;
 +    bool redux_combat_selftest = false;
 +    bool redux_development = false;
@@ -109,7 +112,7 @@ index f625aff..b03ab7d 100644
      bool threed_zombie_flag_check = false;
      bool threed_zombie_flag_fix = false;
      bool jeff_flag_fix = false;
-@@ -396,7 +462,26 @@ int main(int argc, char *argv[]) {
+@@ -396,7 +465,26 @@ int main(int argc, char *argv[]) {
  #endif
  
      for (int i = 1; i < argc; i++) {
@@ -137,7 +140,7 @@ index f625aff..b03ab7d 100644
              verify_rom_path = argv[++i];
  #ifdef EB_RUNTIME_ASSETS
          } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
-@@ -420,6 +505,81 @@ int main(int argc, char *argv[]) {
+@@ -420,6 +508,89 @@ int main(int argc, char *argv[]) {
               * --save FILE. Implies headless. */
              keyitems_selftest = true;
              platform_headless = true;
@@ -170,6 +173,9 @@ index f625aff..b03ab7d 100644
 +            encounter_selftest = true;
 +        } else if (strcmp(argv[i], "--selftest-sprint-collision") == 0) {
 +            sprint_collision_test = true;
++            platform_headless = true;
++        } else if (strcmp(argv[i], "--selftest-stairs") == 0) {
++            stairs_test = true;
 +            platform_headless = true;
 +        } else if (strcmp(argv[i], "--selftest-playtest-rewards") == 0) {
 +            reward_selftest = true;
@@ -209,6 +215,11 @@ index f625aff..b03ab7d 100644
 +        } else if (strcmp(argv[i], "--winters-monkey-fixture") == 0 && i+1 < argc) {
 +            winters_monkey_fixture=atoi(argv[++i]);
 +            if(winters_monkey_fixture<0 || winters_monkey_fixture>3) return 1;
++        } else if (strcmp(argv[i], "--stairs-stop-at-landing") == 0) {
++            stairs_stop_at_landing = true;
++        } else if (strcmp(argv[i], "--stairs-fixture") == 0 && i+2 < argc) {
++            stairs_fixture_x=atoi(argv[++i]);stairs_fixture_y=atoi(argv[++i]);
++            if(stairs_fixture_x<0 || stairs_fixture_x>=8192 || stairs_fixture_y<0 || stairs_fixture_y>=10240) return 1;
 +        } else if (strcmp(argv[i], "--redux-dialogue-fixture") == 0 && i+1 < argc) {
 +            char *end=NULL;
 +            unsigned long value=strtoul(argv[++i],&end,0);
@@ -219,7 +230,7 @@ index f625aff..b03ab7d 100644
          } else if (strcmp(argv[i], "--selftest-joinlevel") == 0) {
              /* Join-level scaling (Paula/Jeff/Poo scaled to Ness's current
               * level, see add_char_to_party()'s doc comment, inventory.c).
-@@ -536,7 +696,7 @@ int main(int argc, char *argv[]) {
+@@ -536,7 +707,7 @@ int main(int argc, char *argv[]) {
  #else
                              " [--export-pak FILE]"
  #endif
@@ -228,7 +239,7 @@ index f625aff..b03ab7d 100644
                      argv[0]);
              return 1;
          }
-@@ -630,6 +790,10 @@ int main(int argc, char *argv[]) {
+@@ -630,6 +801,10 @@ int main(int argc, char *argv[]) {
       * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
       * platform-conventional data dir (see eb_runtime_assets_default_path). */
      char default_assets_path[1024];
@@ -239,7 +250,7 @@ index f625aff..b03ab7d 100644
      if (assets_path == NULL) {
          assets_path = getenv("EB_ASSETS_PAK");
      }
-@@ -916,6 +1080,9 @@ int main(int argc, char *argv[]) {
+@@ -916,6 +1091,9 @@ int main(int argc, char *argv[]) {
       * itself (sdl2_video.c is platform-agnostic and already correct). */
      SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
@@ -249,7 +260,7 @@ index f625aff..b03ab7d 100644
      /* Initialize SDL */
      uint32_t sdl_flags = SDL_INIT_TIMER;
      if (!platform_headless) {
-@@ -938,6 +1105,7 @@ int main(int argc, char *argv[]) {
+@@ -938,6 +1116,7 @@ int main(int argc, char *argv[]) {
      platform_input_init();
      platform_save_init();
      settings_load();
@@ -257,7 +268,7 @@ index f625aff..b03ab7d 100644
      /* Resume logging automatically if a previous session left the Config
       * menu's "Logging" row on -- a tester shouldn't have to re-enable it
       * after every relaunch (including the updater's own self-relaunch) to
-@@ -965,6 +1133,30 @@ int main(int argc, char *argv[]) {
+@@ -965,6 +1144,30 @@ int main(int argc, char *argv[]) {
  
      /* Initialize game systems */
      game_init();
@@ -288,7 +299,7 @@ index f625aff..b03ab7d 100644
  
      /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
       * fresh boot. Just requests it here -- the normal per-frame
-@@ -993,7 +1185,31 @@ int main(int argc, char *argv[]) {
+@@ -993,7 +1196,32 @@ int main(int argc, char *argv[]) {
          fprintf(stderr, "key items pool self-test: %s\n", ok_ki ? "PASS" : "FAIL");
          exit(ok_ki ? 0 : 1);
      }
@@ -296,6 +307,7 @@ index f625aff..b03ab7d 100644
 +    if (encounter_selftest) exit(battle_encounter_selftest() ? 0 : 1);
 +    if (reward_selftest) exit(battle_reward_selftest() ? 0 : 1);
 +    if (sprint_collision_test) exit(sprint_collision_selftest() ? 0 : 1);
++    if (stairs_test) exit(stairs_movement_selftest() ? 0 : 1);
 +    if (sfx_audio_selftest) exit(audio_sfx_selftest(msu_dir,msu_name) ? 0 : 1);
 +    if (bicycle_audio_selftest) exit(audio_bicycle_selftest(msu_dir,msu_name) ? 0 : 1);
 +
@@ -321,7 +333,7 @@ index f625aff..b03ab7d 100644
      if (joinlevel_selftest) {
          bool ok_jl = join_level_scaling_selftest();
          fprintf(stderr, "join-level scaling self-test: %s\n", ok_jl ? "PASS" : "FAIL");
-@@ -1194,6 +1410,158 @@ int main(int argc, char *argv[]) {
+@@ -1194,6 +1422,179 @@ int main(int argc, char *argv[]) {
          exit(0);
      }
  
@@ -366,6 +378,27 @@ index f625aff..b03ab7d 100644
 +            fixture.flyover.script_size=(uint32_t)ASSET_SIZE(fixture.flyover.id?ASSET_TEA_BIN:ASSET_COFFEE_BIN);
 +        }
 +        mode_push(GAME_MODE_FLYOVER,&fixture);
++    }
++
++    if(stairs_fixture_x>=0 && !load_state_at_boot) {
++        window_system_init();
++        init_used_bg2_tile_map();text_setup_bg3();text_upload_font_tiles();text_load_window_gfx();
++        game_state.party_count=game_state.player_controlled_party_count=1;
++        game_state.party_members[0]=game_state.party_order[0]=1;
++        game_state.current_party_members=1;
++        party_characters[0].level=30;
++        party_characters[0].max_hp=party_characters[0].current_hp=party_characters[0].current_hp_target=600;
++        game_state.text_flavour=1;
++        game_state.leader_x_coord=(uint16_t)stairs_fixture_x;
++        game_state.leader_y_coord=(uint16_t)stairs_fixture_y;
++        /* Include EVENT_001, which owns the ordinary overworld movement tick. */
++        initialize_overworld_state();
++        ow.enemy_spawns_enabled=ow.npc_spawns_enabled=0;
++        load_map_at_position((uint16_t)stairs_fixture_x,(uint16_t)stairs_fixture_y);
++        set_leader_position_and_load_party((uint16_t)stairs_fixture_x,(uint16_t)stairs_fixture_y,0);
++        enable_character_movement(0xFF);
++        g_mode_stack.state[0].overworld.phase=OWP_RENDER;ppu.inidisp=15;
++        fprintf(stderr,"Stairs fixture prepared at %d,%d\n",stairs_fixture_x,stairs_fixture_y);
 +    }
 +
 +    if(winters_monkey_fixture>=0 && !load_state_at_boot) {
@@ -480,7 +513,7 @@ index f625aff..b03ab7d 100644
      /* Initialize audio (loads audio packs from embedded assets) */
      if (!platform_headless)
          platform_audio_init();
-@@ -1208,7 +1576,7 @@ int main(int argc, char *argv[]) {
+@@ -1208,7 +1609,7 @@ int main(int argc, char *argv[]) {
           * --msu-dir/--msu-name flags, and nothing to add to a Steam
           * shortcut's Launch Options (editing those is real friction, and
           * has to be redone every time the pack changes). */
@@ -489,9 +522,11 @@ index f625aff..b03ab7d 100644
          char detected_name[128];
          const char *name = msu_name;
  
-@@ -1278,11 +1646,117 @@ int main(int argc, char *argv[]) {
+@@ -1277,12 +1678,133 @@ int main(int argc, char *argv[]) {
+      * See docs/plans/savestate-unified-loop.md. */
      platform_timer_frame_start();
  
++    bool stairs_seen = game_state.walking_style == WALKING_STYLE_STAIRS;
      for (int frame_num = 0; !platform_input_quit_requested(); frame_num++) {
 +        if(frame_num==pc_capture_frame) {
 +            if (redux_ending_fixture>=0) {
@@ -564,7 +599,21 @@ index f625aff..b03ab7d 100644
 +        if(pc_paused) {platform_input_poll();SDL_Delay(16);continue;}
          game_loop_step();
          host_process_frame();
++        /* Explicit QA mode: capture the first real stair exit, before held
++         * input walks into another nearby staircase or map doorway. */
++        bool stairs_finished = false;
++        if (stairs_stop_at_landing) {
++            stairs_seen |= game_state.walking_style == WALKING_STYLE_STAIRS;
++            stairs_finished = stairs_seen && game_state.walking_style == WALKING_STYLE_NORMAL &&
++                !ow.player_movement_flags && !ow.demo_frames_left;
++            if (stairs_finished) host_request_capture();
++        }
          host_root_boundary(); /* root boundary: perform any pending torn-safe capture */
++        if (stairs_finished) {
++            fprintf(stderr,"Stair landing completed at %u,%u after %d frames\n",
++                game_state.leader_x_coord,game_state.leader_y_coord,frame_num+1);
++            break;
++        }
 +#ifdef EB_QA_OBSERVER
 +        if(frame_num==pc_capture_frame && pc_observation_path && !qa_observation_write(pc_observation_path,(unsigned)frame_num)) {
 +            fprintf(stderr,"QA observation write failed.\n");return 1;
@@ -6072,7 +6121,7 @@ index dd7f86b..15d3fa3 100644
  
      /* Assembly lines 47-148: loop over ITEM_INVENTORY_SIZE (14) slots.
 diff --git a/src/game/door.c b/src/game/door.c
-index c8d134f..88fb4e5 100644
+index c8d134f..b26ca2a 100644
 --- a/src/game/door.c
 +++ b/src/game/door.c
 @@ -39,6 +39,7 @@
@@ -6093,7 +6142,113 @@ index c8d134f..88fb4e5 100644
      /* Assembly lines 14-29: calculate sector index and look up pointer.
       * sector_x = x_tile >> 5
       * sector_row = y_tile & 0xFFE0 = (y_tile / 32) * 32
-@@ -600,7 +604,7 @@ static void handle_stairs_movement(uint16_t door_val,
+@@ -466,43 +470,70 @@ void door_transition_savestate_unpack(const void *in) {
+  * Sets ow.auto_movement_direction.
+  * Returns 0 if allowed (proceed with entry), non-zero if blocked. */
+ static uint16_t get_stairs_movement_direction(uint16_t door_val) {
+-    uint16_t leader_dir = game_state.leader_direction;
+-    uint16_t result = 1;  /* default: blocked */
+-
+-    switch (door_val) {
+-    case 0x0000:
+-        /* Variant 0: auto direction = LEFT (6).
+-         * Allowed when dir != 0 && (dir & 3) == 0. */
+-        if (leader_dir != 0 && (leader_dir & 0x0003) == 0)
+-            result = 0;
+-        ow.auto_movement_direction = 6;
+-        break;
+-    case 0x0100:
+-        /* Variant 1: auto direction = RIGHT (2).
+-         * Allowed when dir != 0 && (dir & 3) == 0. */
+-        if (leader_dir != 0 && (leader_dir & 0x0003) == 0)
+-            result = 0;
+-        ow.auto_movement_direction = 2;
+-        break;
+-    case 0x0200:
+-        /* Variant 2: auto direction = LEFT (6).
+-         * Allowed when (dir & 7) != 0 (any non-zero direction). */
+-        if ((leader_dir & 0x0007) != 0)
+-            result = 0;
+-        ow.auto_movement_direction = 6;
+-        break;
+-    case 0x0300:
+-        /* Variant 3: auto direction = RIGHT (2).
+-         * Allowed when (dir & 7) != 0 (any non-zero direction). */
+-        if ((leader_dir & 0x0007) != 0)
+-            result = 0;
+-        ow.auto_movement_direction = 2;
+-        break;
+-    default:
+-        return 1;  /* unknown variant, blocked */
++    /* The old ascending C branches reversed GET_STAIRS_MOVEMENT_DIRECTION's assembly
++     * fall-through. For PC controls, accept the two cardinal components and
++     * the diagonal along this flight. Moving away must not start an entry.
++     * Keep the source's alignment movement and deferred stair callbacks. */
++    static const uint8_t toward_stairs[4] = { 0xC1, 0x07, 0x70, 0x1C };
++    unsigned variant = door_val >> 8;
++    unsigned direction = game_state.leader_direction;
++    if ((door_val & 0xFF) || variant >= 4 || direction >= 8) return 1;
++    ow.auto_movement_direction = (variant & 1) ? 2 : 6;
++    return (toward_stairs[variant] & (1u << direction)) ? 0 : 1;
++}
++
++bool find_enterable_stairs_at_player(void) {
++    if (game_state.walking_style != 0 || ow.pending_interactions ||
++        (ow.player_movement_flags & 2)) return false;
++    /* Stair trigger tiles may sit behind the requested leading edge by one
++     * pixel at the landing. Check the current collision footprint, only for
++     * an active type-4 stair tile and movement toward its actual flight.
++     * This does not allow ordinary walls or ladder/rope tiles to be bypassed. */
++    static const int8_t x_offsets[6] = { -8, 0, 7, -8, 0, 7 };
++    static const int8_t y_offsets[6] = { 0, 0, 0, 7, 7, 7 };
++    uint16_t saved_found = dr.door_found, saved_type = dr.door_found_type;
++    uint16_t saved_auto = ow.auto_movement_direction;
++    for (unsigned i = 0; i < 6; i++) {
++        int16_t x = (int16_t)game_state.leader_x_coord + x_offsets[i];
++        int16_t y = (int16_t)game_state.leader_y_coord + y_offsets[i];
++        if (x < 0 || y < 0 || x >= 8192 || y >= 10240) continue;
++        /* Sample without GET_COLLISION_AT_PIXEL's +4 Y offset or its ladder
++         * detection side effect: a failed fallback must leave no trigger. */
++        if (!(ml.loaded_collision_tiles[((y >> 3) & 63) * 64 + ((x >> 3) & 63)] & 0x10)) continue;
++        if (find_door_at_position((uint16_t)x >> 3, (uint16_t)y >> 3) == DOOR_TYPE_4 &&
++            get_stairs_movement_direction(dr.door_found) == 0) {
++            ow.ladder_stairs_tile_x = x >> 3;
++            ow.ladder_stairs_tile_y = y >> 3;
++            return true;
++        }
+     }
++    dr.door_found = saved_found;
++    dr.door_found_type = saved_type;
++    ow.auto_movement_direction = saved_auto;
++    return false;
++}
+ 
+-    return result;
++bool stairs_movement_selftest(void) {
++    static const uint8_t directions[4][3] = { {0,6,7}, {0,1,2}, {4,5,6}, {2,3,4} };
++    for (unsigned variant=0; variant<4; variant++) for (unsigned direction=0; direction<8; direction++) {
++        bool expected=false;
++        for (unsigned i=0; i<3; i++) expected |= directions[variant][i]==direction;
++        game_state.leader_direction=direction;
++        if ((get_stairs_movement_direction(variant<<8)==0)!=expected) return false;
++        if (ow.auto_movement_direction!=((variant&1)?2:6)) return false;
++    }
++    game_state.leader_direction=0;
++    if (!get_stairs_movement_direction(0x0400) || !get_stairs_movement_direction(1)) return false;
++    game_state.leader_direction=8;
++    if (!get_stairs_movement_direction(0x0100)) return false;
++    game_state.walking_style=7;
++    if (find_enterable_stairs_at_player()) return false;
++    game_state.walking_style=0;ow.pending_interactions=1;
++    if (find_enterable_stairs_at_player()) return false;
++    ow.pending_interactions=0;ow.player_movement_flags=2;
++    if (find_enterable_stairs_at_player()) return false;
++    fprintf(stderr,"Native stairs: 32 input directions, 3 invalid inputs, 3 transition exclusions: PASS\n");
++    return true;
+ }
+ 
+ /* Forward declarations for stairs callbacks */
+@@ -600,7 +631,7 @@ static void handle_stairs_movement(uint16_t door_val,
   * If yes, sets walking_style to STAIRS and snaps coords.
   * If no, reschedules for 1 more frame. */
  static void handle_stairs_enter_callback(void) {
@@ -6102,7 +6257,7 @@ index c8d134f..88fb4e5 100644
  
      if (ow.stairs_direction == 0 || ow.stairs_direction == 256) {
          /* Vertical stairs (variant 0/1, UP_LEFT/UP_RIGHT):
-@@ -633,7 +637,7 @@ static void handle_stairs_enter_callback(void) {
+@@ -633,7 +664,7 @@ static void handle_stairs_enter_callback(void) {
   * If yes, clears stairs state and snaps coords.
   * If no, reschedules for 1 more frame. */
  static void handle_stairs_leave_callback(void) {
@@ -6111,7 +6266,7 @@ index c8d134f..88fb4e5 100644
  
      if (ow.stairs_direction == 0 || ow.stairs_direction == 256) {
          /* Ascending (variant 0/1):
-@@ -665,6 +669,28 @@ static void handle_stairs_leave_callback(void) {
+@@ -665,6 +696,28 @@ static void handle_stairs_leave_callback(void) {
  
  /* PROCESS_DOOR_AT_TILE (C07526) */
  
@@ -6140,7 +6295,7 @@ index c8d134f..88fb4e5 100644
  uint16_t process_door_at_tile(uint16_t x_tile, uint16_t y_tile) {
      uint8_t door_type = find_door_at_position(x_tile, y_tile);
  
-@@ -903,7 +929,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
+@@ -903,7 +956,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
          case ST_EXIT_BODY_FLUSH:
              update_screen();
              update_swirl_effect();
@@ -6151,7 +6306,7 @@ index c8d134f..88fb4e5 100644
              s->pal_waited = 0;
              s->phase = ST_EXIT_BODY;
              return STEP_RESULT_CONTINUE();   /* the iteration's main yield */
-@@ -966,7 +994,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
+@@ -966,7 +1021,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
              if (s->frame == 1) {
                  disable_all_entities();
              }
@@ -6162,7 +6317,7 @@ index c8d134f..88fb4e5 100644
              s->phase = ST_ENTER_BODY;
              continue;   /* no yield: resume the loop body */
          }
-@@ -975,6 +1005,46 @@ StepResult mode_step_screen_transition(ModeState *st) {
+@@ -975,6 +1032,46 @@ StepResult mode_step_screen_transition(ModeState *st) {
      }
  }
  
@@ -6210,14 +6365,16 @@ index c8d134f..88fb4e5 100644
   * Main screen transition effect used by door transitions.
   *
 diff --git a/src/game/door.h b/src/game/door.h
-index 784405b..b105547 100644
+index 784405b..045bcad 100644
 --- a/src/game/door.h
 +++ b/src/game/door.h
-@@ -130,5 +130,7 @@ typedef struct {
+@@ -130,5 +130,9 @@ typedef struct {
  } DoorTransitionSaveState;
  void door_transition_savestate_pack(void *out);   /* out: DoorTransitionSaveState* */
  void door_transition_savestate_unpack(const void *in);
 +bool maternalbound_door_selftest(void);
++bool find_enterable_stairs_at_player(void);
++bool stairs_movement_selftest(void);
 +bool screen_transition_selftest(void);
  
  #endif /* DOOR_H */
@@ -8558,7 +8715,7 @@ index e860343..5e5ef80 100644
              ow.psi_teleport_speed_int = 0;
              ow.player_intangibility_frames = 0;
 diff --git a/src/game/position_buffer.c b/src/game/position_buffer.c
-index c7b8ca4..a68e6a6 100644
+index c7b8ca4..897f50d 100644
 --- a/src/game/position_buffer.c
 +++ b/src/game/position_buffer.c
 @@ -22,6 +22,7 @@
@@ -8715,7 +8872,7 @@ index c7b8ca4..a68e6a6 100644
          delta = (int32_t)(((int64_t)delta * sprint_speed_multipliers[engine_sprint_speed]) >> 16);
      }
  
-@@ -1491,6 +1554,14 @@ static void update_overworld_player_input(void) {
+@@ -1491,6 +1554,19 @@ static void update_overworld_player_input(void) {
      if (collision_flags & 0x00C0)
          can_move = 0;
  
@@ -8727,10 +8884,15 @@ index c7b8ca4..a68e6a6 100644
 +        !player_movement_path_clear(pos_x,pos_y,new_x,new_y,ow.final_movement_direction))
 +        can_move = 0;
 +
++    /* A landing's stair trigger can fall just behind this frame's leading
++     * edge. Use its current footprint only when no forward tile was found. */
++    if (ow.ladder_stairs_tile_x == -1)
++        find_enterable_stairs_at_player();
++
      /* Lines 194-209: Ladder tile door check. */
      if (ow.ladder_stairs_tile_x != -1) {
          can_move = (int)process_door_at_tile((uint16_t)ow.ladder_stairs_tile_x,
-@@ -1750,3 +1821,86 @@ void update_follower_state(int16_t entity_offset) {
+@@ -1750,3 +1826,86 @@ void update_follower_state(int16_t entity_offset) {
          entity_offset, char_id, read_idx, spacing);
      party_characters[party_idx].position_index = new_idx & 0xFF;
  }
