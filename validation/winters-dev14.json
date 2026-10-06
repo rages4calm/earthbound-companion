@@ -1,0 +1,107 @@
+{
+  "status": "experimental",
+  "edition": "Redux",
+  "engineSha256": "45d758e698e4621fdc5a7625ca77078194cec4f87ec49aa222c98f149ccb2452",
+  "assetsSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "tests": [
+    {
+      "test": "before-cave",
+      "checks": {
+        "monkeyRemains": true,
+        "ropeNotSkipped": true,
+        "departureNpcDormant": true
+      },
+      "passed": true
+    },
+    {
+      "test": "rope-site",
+      "checks": {
+        "ropeProximity": true,
+        "monkeyRemains": true
+      },
+      "passed": true
+    },
+    {
+      "test": "gum-and-rope",
+      "checks": {
+        "ropeLowered": true,
+        "proximityCleared": true,
+        "monkeyRemains": true
+      },
+      "passed": true
+    },
+    {
+      "test": "climb",
+      "checks": {
+        "reachedUpperLedge": true,
+        "monkeyRemains": true
+      },
+      "passed": true
+    },
+    {
+      "test": "cave-exit",
+      "checks": {
+        "monkeyWaitsAtExit": true,
+        "departureNpcActive": true
+      },
+      "passed": true
+    },
+    {
+      "test": "normal-departure",
+      "checks": {
+        "monkeyLeft": true,
+        "ropeMilestoneRetained": true
+      },
+      "passed": true
+    },
+    {
+      "test": "departure-cold-reload",
+      "checks": {
+        "monkeyStaysGone": true
+      },
+      "passed": true
+    },
+    {
+      "test": "old-broken-state",
+      "checks": {
+        "monkeyRecovered": true,
+        "puzzleStillRequired": true,
+        "positionRetained": true
+      },
+      "passed": true
+    },
+    {
+      "test": "without-gum",
+      "checks": {
+        "noStoryCompanionGranted": true
+      },
+      "passed": true
+    },
+    {
+      "test": "before-tessie",
+      "checks": {
+        "noStoryCompanionGranted": true
+      },
+      "passed": true
+    },
+    {
+      "test": "after-jeff-joins",
+      "checks": {
+        "noStoryCompanionGranted": true
+      },
+      "passed": true
+    },
+    {
+      "test": "different-leader",
+      "checks": {
+        "noStoryCompanionGranted": true
+      },
+      "passed": true
+    }
+  ],
+  "limits": [
+    "Prepared positions/story flags, real native menu and movement paths.",
+    "Does not establish a full story or randomized playthrough."
+  ],
+  "Passed": true
+}

@@ -1,0 +1,64 @@
+{
+  "Passed": true,
+  "Cases": [
+    {
+      "case": "old-crossing",
+      "position": [
+        4671,
+        1730
+      ],
+      "solidFootprintHistoryEntries": 1,
+      "exit": 0
+    },
+    {
+      "case": "fixed-player-crossing",
+      "position": [
+        4681,
+        1740
+      ],
+      "solidFootprintHistoryEntries": 0,
+      "exit": 0
+    },
+    {
+      "case": "fixed-observer-crossing",
+      "position": [
+        4681,
+        1740
+      ],
+      "solidFootprintHistoryEntries": 0,
+      "exit": 0
+    },
+    {
+      "case": "recovered-player",
+      "position": [
+        4681,
+        1744
+      ],
+      "solidFootprintHistoryEntries": 0,
+      "exit": 0,
+      "progressPreserved": true
+    },
+    {
+      "case": "recovered-observer",
+      "position": [
+        4681,
+        1744
+      ],
+      "solidFootprintHistoryEntries": 0,
+      "exit": 0,
+      "progressPreserved": true
+    },
+    {
+      "case": "recovered-egress",
+      "position": [
+        4688,
+        1880
+      ],
+      "solidFootprintHistoryEntries": 0,
+      "exit": 0,
+      "progressPreserved": true
+    }
+  ],
+  "SourceSavesUnchanged": true,
+  "FullPlaythroughVerified": false
+}

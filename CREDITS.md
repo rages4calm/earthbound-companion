@@ -63,6 +63,12 @@ The reproducible Redux helper pins [CoilSnake `346cfc7`](https://github.com/pk-h
 
 The original red-cap planet emblem was created for Companion with the built-in OpenAI image-generation tool and exported to Windows ICO using [Pillow](https://github.com/python-pillow/Pillow). It is custom launcher artwork. Source artwork, the full prompt and conversion instructions are in [Companion/Assets](Companion/Assets/README.md). It uses no extracted ROM art or official game logo.
 
+## Development reference testing
+
+- [Retro Porting Toolkit](https://retroportingtoolkit.com/docs) — source-backed audit and independent co-simulation guidance. This project does not claim full toolkit frame alignment from its selected function comparisons.
+- [atonamy/mesen-agent](https://github.com/atonamy/mesen-agent) and [SourMesen/Mesen2](https://github.com/SourMesen/Mesen2) — development-only original SNES machine-code reference execution. The GPL tool and its license remain local; the player ZIP does not include an emulator. [Pinned tool provenance](research/mesen-agent-provenance.json).
+- Herringway's original collision, arithmetic and text assembly and the pinned MaternalBound contributors' keyboard, battle UI and reset scripts — the sources against which these native corrections are reviewed. Their existing project/file credits remain applicable.
+
 ## Companion work
 
 The Companion application, native PC option integration, packaging, Story Shuffle v3, recovery workflow, validation tooling and documentation were assembled for Carl Prewitt Jr.’s native PC edition with OpenAI Codex assistance. Generated work was reviewed, built and tested locally; upstream authorship remains as listed above.

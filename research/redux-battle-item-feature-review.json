@@ -1,0 +1,430 @@
+{
+  "format": "redux-battle-item-feature-review-v1",
+  "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "status": "source-data-review-with-bounded-runtime-checks",
+  "reviewedModules": 6,
+  "sourceAndDataChecksPassed": true,
+  "compiledHookChecks": [
+    {
+      "module": "better_condiment_search",
+      "address": "C1DB33",
+      "checkedBytes": 4,
+      "matches": true
+    },
+    {
+      "module": "better_condiment_search",
+      "address": "C2B1E2",
+      "checkedBytes": 4,
+      "matches": true
+    },
+    {
+      "module": "m3_defend_roller",
+      "address": "C2569A",
+      "checkedBytes": 10,
+      "matches": true
+    },
+    {
+      "module": "m3_defend_roller",
+      "address": "C26088",
+      "checkedBytes": 4,
+      "matches": true
+    },
+    {
+      "module": "m3_defend_roller",
+      "address": "C24A45",
+      "checkedBytes": 6,
+      "matches": true
+    },
+    {
+      "module": "m3_defend_roller",
+      "address": "C2FFD1",
+      "checkedBytes": 5,
+      "matches": true
+    },
+    {
+      "module": "m3_defend_roller",
+      "address": "C21139",
+      "checkedBytes": 3,
+      "matches": true
+    },
+    {
+      "module": "m3_defend_roller",
+      "address": "C211C3",
+      "checkedBytes": 3,
+      "matches": true
+    }
+  ],
+  "expandedActionsChecked": 320,
+  "allPackedActionFieldsAndDispatchesMatch": true,
+  "luckySandwichPurchaseStubVerified": true,
+  "quantityStoryCallSites": [],
+  "quantityDispatcherCases": 19,
+  "quantityRegression": {
+    "variant": "private final-build variant containing the previous CC 1A10 adapter",
+    "nativeExeSha256": "c54eea59ab90b95b3e302cc0218421eb742226d54b10ca5ba969266be86847a1",
+    "oldExitCode": 1,
+    "oldCasesFailed": [
+      {
+        "index": 2,
+        "got": 0,
+        "expected": 4
+      },
+      {
+        "index": 3,
+        "got": 0,
+        "expected": 50
+      },
+      {
+        "index": 4,
+        "got": 0,
+        "expected": 50
+      },
+      {
+        "index": 10,
+        "got": 0,
+        "expected": 24
+      },
+      {
+        "index": 12,
+        "got": 0,
+        "expected": 12
+      },
+      {
+        "index": 15,
+        "got": 7,
+        "expected": 4
+      },
+      {
+        "index": 16,
+        "got": 0,
+        "expected": 50
+      },
+      {
+        "index": 18,
+        "got": 0,
+        "expected": 1
+      }
+    ],
+    "eightOldFailuresReproduced": true,
+    "allNineteenNewCasesPassBothBuilds": true,
+    "storyFailureClaimed": false
+  },
+  "psiConfigurationsComparedToSource": 68,
+  "psiPalettesComparedToSource": 68,
+  "psiContainerReproducesLinkedData": true,
+  "psiAnimations": 68,
+  "psiFrames": 1686,
+  "psiTilesets": 10,
+  "runtimeChecks": [
+    {
+      "engine": "player",
+      "test": "combat",
+      "nativeExeSha256": "6301ad24b10eefa11192d3f0803571465de4460b6554251a1fbe953cda504812",
+      "passed": true,
+      "exitCode": 0,
+      "requiredMarkerPresent": true,
+      "verificationMarkers": [
+        "Redux battle outcome: simultaneous KO stays a defeat, scripted-loss status unlocked, PASS",
+        "Redux production combat: stat increments/caps/zero boundaries and target Guts (128 damage trials), PASS",
+        "Redux production HP roller: reordered character ID, defending, overworld, stacked slowdown and unchanged PP, PASS",
+        "Redux Clumsy Robot rescue: relocated flag 15 and destinations 15/8, PASS",
+        "Redux production actions: 4096 sandwich trials/all six outcomes, badge/shield targeting, poison fallback, capsule cap, Brain Stone and Spy Speed, PASS",
+        "Redux production inventory: saturated stats, 999 HP/PP, capped EXP, 42 condiment priority records, PASS",
+        "Redux production equipment: 340 item/character previews preserve gear and match committed stats, Teddy-bear identity and window remapping, PASS",
+        "Redux battle Tools: 11 flag devices, maid handoff, paralysis/immobilization and inventory-free action arguments, PASS",
+        "Redux menu highlight: 10 narrow/wide font cases, clear and row bounds, PASS"
+      ]
+    },
+    {
+      "engine": "player",
+      "test": "psi",
+      "nativeExeSha256": "6301ad24b10eefa11192d3f0803571465de4460b6554251a1fbe953cda504812",
+      "passed": true,
+      "exitCode": 0,
+      "requiredMarkerPresent": true,
+      "verificationMarkers": [
+        "Redux native PSI playback: 68 effects, 1686 frames, cold-pointer rebind and extended IDs, PASS"
+      ]
+    },
+    {
+      "engine": "player",
+      "test": "vm",
+      "nativeExeSha256": "6301ad24b10eefa11192d3f0803571465de4460b6554251a1fbe953cda504812",
+      "passed": true,
+      "exitCode": 0,
+      "requiredMarkerPresent": true,
+      "verificationMarkers": [
+        "Redux asset entry mapping / malformed metadata checks: PASS",
+        "Redux item quantity dispatcher: 19 cases checked",
+        "Redux stamina depletion/recovery checks: PASS (945/521 frames)",
+        "Redux VM native command checks: 131, PASS"
+      ]
+    },
+    {
+      "engine": "observer",
+      "test": "combat",
+      "nativeExeSha256": "514529ae9cdd70ba66d94719b4cf158eccafff3281a19c917416f8960f328f8f",
+      "passed": true,
+      "exitCode": 0,
+      "requiredMarkerPresent": true,
+      "verificationMarkers": [
+        "Redux battle outcome: simultaneous KO stays a defeat, scripted-loss status unlocked, PASS",
+        "Redux production combat: stat increments/caps/zero boundaries and target Guts (128 damage trials), PASS",
+        "Redux production HP roller: reordered character ID, defending, overworld, stacked slowdown and unchanged PP, PASS",
+        "Redux Clumsy Robot rescue: relocated flag 15 and destinations 15/8, PASS",
+        "Redux production actions: 4096 sandwich trials/all six outcomes, badge/shield targeting, poison fallback, capsule cap, Brain Stone and Spy Speed, PASS",
+        "Redux production inventory: saturated stats, 999 HP/PP, capped EXP, 42 condiment priority records, PASS",
+        "Redux production equipment: 340 item/character previews preserve gear and match committed stats, Teddy-bear identity and window remapping, PASS",
+        "Redux battle Tools: 11 flag devices, maid handoff, paralysis/immobilization and inventory-free action arguments, PASS",
+        "Redux menu highlight: 10 narrow/wide font cases, clear and row bounds, PASS"
+      ]
+    },
+    {
+      "engine": "observer",
+      "test": "psi",
+      "nativeExeSha256": "514529ae9cdd70ba66d94719b4cf158eccafff3281a19c917416f8960f328f8f",
+      "passed": true,
+      "exitCode": 0,
+      "requiredMarkerPresent": true,
+      "verificationMarkers": [
+        "Redux native PSI playback: 68 effects, 1686 frames, cold-pointer rebind and extended IDs, PASS"
+      ]
+    },
+    {
+      "engine": "observer",
+      "test": "vm",
+      "nativeExeSha256": "514529ae9cdd70ba66d94719b4cf158eccafff3281a19c917416f8960f328f8f",
+      "passed": true,
+      "exitCode": 0,
+      "requiredMarkerPresent": true,
+      "verificationMarkers": [
+        "Redux asset entry mapping / malformed metadata checks: PASS",
+        "Redux item quantity dispatcher: 19 cases checked",
+        "Redux stamina depletion/recovery checks: PASS (945/521 frames)",
+        "Redux VM native command checks: 131, PASS"
+      ]
+    }
+  ],
+  "runtimeChecksPassed": true,
+  "modules": [
+    {
+      "module": "better_condiment_search",
+      "source": "ccscript/redux/better_condiment_search.ccs",
+      "sourceSha256": "8bd0577b3f54c1b3e3c8942d84baee20cc6c86a28335a87483876c086f119855",
+      "activeRomWriteExpressions": [
+        "0xC1DB33",
+        "0xC2B1E2"
+      ],
+      "nativeDecision": "Native food searches try the first compatible condiment, then Delisauce 126, then any condiment. Delisauce matches any food row during consumption; ordinary EarthBound retains its first-condiment search.",
+      "nativeReferences": [
+        {
+          "path": "src/game/inventory.c",
+          "line": 2473,
+          "anchor": "for (int pass = 0; pass < 3; pass++)",
+          "fileSha256": "0457595e19ecc2ede9afc6a528d1240d2ea2602e91831a53e25ff1b302c807d5"
+        },
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 2292,
+          "anchor": "(maternalbound_enabled() && condiment_id == 126)",
+          "fileSha256": "54a58c8ec6945e6dcc4342164f7f282ac7e4c0914daf70f6b61880def8f013c2"
+        }
+      ],
+      "targetedCoverageAndLimits": "Production inventory fixtures exercise compatible-condiment priority, Delisauce fallback and no-condiment on food rows; runtimeChecks records execution. Consumption messages, incompatible sauces, inventory compaction and every food/condiment pairing are not exhaustive."
+    },
+    {
+      "module": "lucky_sandwich_revamp",
+      "source": "ccscript/redux/lucky_sandwich_revamp.ccs",
+      "sourceSha256": "1afa492f5594356a500fccaf748a08703597b5eca9cba0590dba1312c056cc8e",
+      "activeRomWriteExpressions": [],
+      "nativeDecision": "The shared Lucky Sandwich item 226 now routes to action 318. The native action preserves five conditional sequential RNG draws for six outcomes: variable 60/240 HP, full HP, variable 5/20 PP, or full HP+PP. Full recovery yields through separate text children.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 5217,
+          "anchor": "btlact_redux_lucky_sandwich_step",
+          "fileSha256": "54a58c8ec6945e6dcc4342164f7f282ac7e4c0914daf70f6b61880def8f013c2"
+        },
+        {
+          "path": "tools/build_maternalbound_pack.py",
+          "line": 135,
+          "anchor": "if start//stride == 318",
+          "fileSha256": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1"
+        }
+      ],
+      "targetedCoverageAndLimits": "The production action fixture iterates 4096 seeds, requires all six outcomes and checks recovery targets; runtimeChecks records execution. This is not a distribution proof or every ordinary shop/use/target/text continuation."
+    },
+    {
+      "module": "item_quantity",
+      "source": "ccscript/redux/item_quantity.ccs",
+      "sourceSha256": "5f3c6c9fa5241ee4d25a2915a955cfb2acf62c87d5c4d2eef028c6cfe9306606",
+      "activeRomWriteExpressions": [],
+      "nativeDecision": "CC 1A 10 reads a literal byte or the low 16 bits of argument memory, scans four party positions until zero/non-player, and counts all 14 inventory slots including zeros. Native shared key storage adds one pooled possession for a nonzero item as an explicit adaptation.",
+      "nativeReferences": [
+        {
+          "path": "src/game/display_text_cc.c",
+          "line": 2547,
+          "anchor": "CC_ItemQuantity reads one literal byte",
+          "fileSha256": "b00762e25a59e34443c6b490c5522f7ba26a01b9f34faa3c61459a26a06c2e4e"
+        },
+        {
+          "path": "src/game/display_text.c",
+          "line": 258,
+          "anchor": "Exact item_quantity.ccs dispatcher operands",
+          "fileSha256": "7a11de0b21c1984b53859d11bb1bea0784a87b9a0fad53610cbd42fe1ba2eb72"
+        }
+      ],
+      "targetedCoverageAndLimits": "The actual-dispatcher fixture defines 19 cases for empty slots, high argument bits, literal precedence, slot endpoints, reordered party, party boundaries and native pooled keys; runtimeChecks records execution. The pinned source has no call sites for this command; this closes unused API parity, not a reproduced story blocker."
+    },
+    {
+      "module": "Extended_Battle_Action_Table",
+      "source": "ccscript/expansion/Extended_Battle_Action_Table.ccs",
+      "sourceSha256": "dac3d27706e02fe205f8e7962e7fc0da87aeb64b468a6ab2c12547cc6ab2af46",
+      "activeRomWriteExpressions": [
+        "0xC1ADC8",
+        "0xC1AFFD",
+        "0xC1B04F",
+        "0xC1B0CB",
+        "0xC1B138",
+        "0xC1B1A7",
+        "0xC1B259",
+        "0xC1B371",
+        "0xC1B466",
+        "0xC1B89C",
+        "0xC1B8E7",
+        "0xC1B9AD",
+        "0xC1C913",
+        "0xC1CC9B",
+        "0xC1DF64",
+        "0xC1DFB8",
+        "0xC2451F",
+        "0xC2582E",
+        "0xC25C32",
+        "0xC25CEB",
+        "0xC2794D",
+        "0xC11FF1",
+        "0xC1B6E4",
+        "0xC1B80E",
+        "0xC1C9E7",
+        "0xC1CD55",
+        "0xC1CDCF",
+        "0xC244D4",
+        "0xC256EE",
+        "0xC257E4",
+        "0xC25A12",
+        "0xC25A8A",
+        "0xC25B4E",
+        "0xC25B9D",
+        "0xC2699F",
+        "0xC29447"
+      ],
+      "nativeDecision": "All 320 packed actions retain their four targeting/type/PP fields, relocated text and native function mappings. Lucky Sandwich action 318 uses a stable native address; Skip Sandwich action 319 retains the food handler and converted stamina-restoring description. A mapped handler does not establish every action branch.",
+      "nativeReferences": [
+        {
+          "path": "tools/build_maternalbound_pack.py",
+          "line": 99,
+          "anchor": "Missing expanded battle-action exports",
+          "fileSha256": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1"
+        },
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 5249,
+          "anchor": "static const BattleActionEntry btlact_dispatch_table[]",
+          "fileSha256": "54a58c8ec6945e6dcc4342164f7f282ac7e4c0914daf70f6b61880def8f013c2"
+        }
+      ],
+      "targetedCoverageAndLimits": "Packed-record equivalence, converted descriptions and dispatch reachability are checked for every row. Complete 320-action execution, all targets, statuses, reflected effects, RNG and story battle outcomes remain unverified."
+    },
+    {
+      "module": "Extended_PSI_Animations",
+      "source": "ccscript/expansion/Extended_PSI_Animations.ccs",
+      "sourceSha256": "d7e21ec9f75803a542b033cd74b6a13996faeee3f0837b748f68bd1c2b46a46f",
+      "activeRomWriteExpressions": [
+        "0xC3F98D",
+        "0xC3FE00",
+        "0xC2E34F",
+        "0xC2E154",
+        "0xC2E1BB",
+        "0xC2E50A",
+        "0xC2E461",
+        "0xC2E2F4",
+        "PSI_Config_Table",
+        "PSI_Anim_Pointer_Table",
+        "PSI_Palette_Table"
+      ],
+      "nativeDecision": "The normalized native MRPSIX01 container retains 68 configuration rows, ten tilesets, 68 arrangement streams and 68 palettes. Effect IDs 54..87 subtract 20; original special effects 35..53 remain distinct. Invalid out-of-range IDs are rejected as a native bounds adaptation.",
+      "nativeReferences": [
+        {
+          "path": "tools/maternalbound_psi.py",
+          "line": 23,
+          "anchor": "def convert_psi(",
+          "fileSha256": "471858d75646fabf7b2e4302a97650b8411bbc91cfec3c9b32d2d0d2ce759183"
+        },
+        {
+          "path": "src/game/battle_psi.c",
+          "line": 1136,
+          "anchor": "effect_id>=54",
+          "fileSha256": "7adc2f2729909117f5ae3d1847deba99db20ec6344e217d4ff4b5c666d34ca17"
+        },
+        {
+          "path": "src/game/battle_psi.c",
+          "line": 1212,
+          "anchor": "psi_animation_savestate_rebind();",
+          "fileSha256": "7adc2f2729909117f5ae3d1847deba99db20ec6344e217d4ff4b5c666d34ca17"
+        }
+      ],
+      "targetedCoverageAndLimits": "The 2bpp production fixture requires all 68 effects to complete configured frames and pointer rebinds; runtimeChecks records execution. This is not rendered-image comparison, all 4bpp backgrounds, all enemy target layouts or every cold save during an effect."
+    },
+    {
+      "module": "m3_defend_roller",
+      "source": "ccscript/redux/m3_defend_roller.ccs",
+      "sourceSha256": "fe00dff2a8ec0605cc5f02cd8ea2b87be7cbd4a477c03f638e0131d9ee976ecc",
+      "activeRomWriteExpressions": [
+        "turnStartRollerHook",
+        "roundEndHook",
+        "battleStartHook",
+        "getHPPPMeterSpeedSpringboard",
+        "0xC21139",
+        "0xC211C3"
+      ],
+      "nativeDecision": "Actual hooks halve normal HP rolling after a battler begins its own guarding turn; battle start and round end clear the snapshot flags. Despite the module title mentioning HP/PP, its C21139/C211C3 hook sites are HP increase/decrease; PP remains 0x19000. Native indexing uses the real battler ID.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle.c",
+          "line": 714,
+          "anchor": "static int32_t hp_roll_speed(unsigned slot)",
+          "fileSha256": "5e48209394e29848fc0acc12ec71a41c9e9567fc055f8e023cd5fbb4bd108396"
+        },
+        {
+          "path": "src/game/battle.c",
+          "line": 4829,
+          "anchor": "bt.redux_roller_active[attacker->id] = attacker->guarding",
+          "fileSha256": "5e48209394e29848fc0acc12ec71a41c9e9567fc055f8e023cd5fbb4bd108396"
+        },
+        {
+          "path": "src/game/battle.c",
+          "line": 3598,
+          "anchor": "memset(bt.redux_roller_active,0,sizeof(bt.redux_roller_active))",
+          "fileSha256": "5e48209394e29848fc0acc12ec71a41c9e9567fc055f8e023cd5fbb4bd108396"
+        },
+        {
+          "path": "src/game/battle.c",
+          "line": 6660,
+          "anchor": "bool maternalbound_roller_selftest(void)",
+          "fileSha256": "5e48209394e29848fc0acc12ec71a41c9e9567fc055f8e023cd5fbb4bd108396"
+        }
+      ],
+      "targetedCoverageAndLimits": "Direct production roller fixtures exercise reordered character identity, guarding, overworld, stacked slowdown and unchanged PP; runtimeChecks records execution. Actual turn timing is source-reviewed; all initiative/status/death/round-end and ordinary combat combinations remain unverified."
+    }
+  ],
+  "fullModuleSemanticParityClaimed": false,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Exact six active pinned modules; source/data checks do not validate all action branches.",
+    "Runtime checks invoke production functions in isolated prepared states; they do not establish an ordinary full playthrough.",
+    "Matching dispatch addresses establishes reachability only; complete 320-action execution remains separate.",
+    "No game ROM, asset data, dialogue payload or player save is written into this public report."
+  ]
+}

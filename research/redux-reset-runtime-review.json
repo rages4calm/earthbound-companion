@@ -1,0 +1,386 @@
+{
+  "format": "redux-reset-runtime-review-v1",
+  "Passed": true,
+  "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "runner": {
+    "path": "tools/redux_reset_qa.py",
+    "sha256": "5c9e0df890d7ea600e15290c1a23993947492fce49cf8294cfe04d980b1bc996",
+    "reproductionCommands": [
+      {
+        "runtime": "player",
+        "command": "native-source/.venv/Scripts/python.exe tools/redux_reset_qa.py --engine _BuildScratch/audit-dev14-v6-runtime/player.exe --assets '<local Redux profile assets.pak>' --project _BuildScratch/MaternalBound-Redux/Project --scratch _BuildScratch/remaining-feature-audit-reset-player-fresh"
+      },
+      {
+        "runtime": "observer",
+        "command": "native-source/.venv/Scripts/python.exe tools/redux_reset_qa.py --engine _BuildScratch/audit-dev14-v6-runtime/observer.exe --assets '<local Redux profile assets.pak>' --project _BuildScratch/MaternalBound-Redux/Project --scratch _BuildScratch/remaining-feature-audit-reset-observer-fresh"
+      }
+    ]
+  },
+  "sourceDefect": {
+    "entry": "C631E3",
+    "caller": "C68091",
+    "description": "Pinned Gauss End disables input immediately before next, making its appended fade/pause/reset unreachable in the release input-wait loop.",
+    "nativeMismatchClaimed": false,
+    "originalSnesMachineRuntimeTestClaimed": false,
+    "evidence": "Exact pinned source commands and original assembly input-lock/wait loop, plus faithful native v5 reproduction.",
+    "sourceReferences": [
+      {
+        "path": "ccscript/data/data_18.ccs",
+        "lineStart": 714,
+        "lineEnd": 722,
+        "sha256": "eaa93dd91fa647a6464575109b53609e422152957857fff717db82b64c1c720e"
+      },
+      {
+        "path": "ccscript/data/data_19.ccs",
+        "lineStart": 58,
+        "lineEnd": 65,
+        "sha256": "e0f1d64de4a29c1b64411d5424730ac25dc9aaee37e08cdd84a297e9f36ee27a"
+      },
+      {
+        "path": "ccscript/essential/stdext.ccs",
+        "lineStart": 347,
+        "lineEnd": 347,
+        "sha256": "a3c4f321c3275d3503046e21ad1737cc8308d61e712d1884ed962d3a33c5e93c"
+      },
+      {
+        "path": "ccscript/debug/debug_menu_enabler.ccs",
+        "lineStart": 10,
+        "lineEnd": 10,
+        "sha256": "4d2d2875c97967cef913ba48ca89becb0c94aab942758b3ca6bb93812494b4b2"
+      },
+      {
+        "path": "ccscript/redux/reset_routine.ccs",
+        "lineStart": 1,
+        "lineEnd": 19,
+        "sha256": "f83e5ef1ca34c86aa6e5d8f5e9a01b1243d448ef663bb576348102cbf2f8940e"
+      },
+      {
+        "path": "ccscript/data/data_23.ccs",
+        "lineStart": 587,
+        "lineEnd": 591,
+        "sha256": "d04df38f7f2f19875b0c0d2e7b1a86e28ac8003dbe9776af19b4be2be62b5f14"
+      }
+    ],
+    "originalAssemblyReferences": [
+      {
+        "path": "native-source/asm/text/lock_input.asm",
+        "lineStart": 1,
+        "lineEnd": 7,
+        "sha256": "f1d13aa931727399a0ce24cc10f74f1b9ed66045a70de53d3965f5436a941c8d"
+      },
+      {
+        "path": "native-source/asm/text/ccs/halt.asm",
+        "lineStart": 17,
+        "lineEnd": 27,
+        "sha256": "8228b423f2882c120e6f5633410fc8ceb31c08ccc43568088b74ecdb989dc734"
+      }
+    ],
+    "baselineNativeReproductions": [
+      {
+        "runtime": "player",
+        "engineSha256": "6301ad24b10eefa11192d3f0803571465de4460b6554251a1fbe953cda504812",
+        "metadata": "_BuildScratch/remaining-feature-audit-reset-player-v4/gauss-end/095-outcome-text-79.json",
+        "metadataSha256": "068bc42197668f6acd44fa05173c98bb184451453e412a03fcace2613f47b90d",
+        "privateCapturedStateSha256": "865addf5450cfe8fc92e27964b9e9096fa583b70644c14a3d709079a41745136",
+        "modes": [
+          61,
+          28,
+          28,
+          6
+        ],
+        "inputLock": 1,
+        "promptPhase": 0,
+        "expectedFailure": "Gauss End did not invoke native boot/reset after 80 additional confirm batches",
+        "classification": "pinned-upstream-source-defect",
+        "ownerSaveTouched": false
+      },
+      {
+        "runtime": "observer",
+        "engineSha256": "514529ae9cdd70ba66d94719b4cf158eccafff3281a19c917416f8960f328f8f",
+        "metadata": "_BuildScratch/remaining-feature-audit-reset-observer-v2/gauss-end/095-outcome-text-79.json",
+        "metadataSha256": "068bc42197668f6acd44fa05173c98bb184451453e412a03fcace2613f47b90d",
+        "privateCapturedStateSha256": "30edb492350a388d24b2968bd17ee8701748e9c0eb13ce9bf6f917bf6aabc936",
+        "modes": [
+          61,
+          28,
+          28,
+          6
+        ],
+        "inputLock": 1,
+        "promptPhase": 0,
+        "expectedFailure": "Gauss End did not invoke native boot/reset after 80 additional confirm batches",
+        "classification": "pinned-upstream-source-defect",
+        "ownerSaveTouched": false
+      }
+    ]
+  },
+  "nativeAdaptation": {
+    "description": "Only the final input lock in the mapped C631E3 block with its exact converted prompt/music/fade/pause/reset suffix is suppressed. Confirmation then follows normal native text control flow.",
+    "sourceBlock": [
+      "C631E3",
+      "C63229"
+    ],
+    "lockBlobOffset": "21451F",
+    "exactConvertedTailHex": "1f5003001f07031a0c0a00000003105a1a0c10000000",
+    "files": [
+      {
+        "path": "native-source/src/game/maternalbound.c",
+        "sha256": "e6d828b9110f09d315b37a231f7fc4470341f123535dc20b8bce91140d342b74"
+      },
+      {
+        "path": "native-source/src/game/maternalbound.h",
+        "sha256": "ceca7af798ef2dc158601a244508aeb9a24237e40f6c0db2619d67593169bf7d"
+      },
+      {
+        "path": "native-source/src/game/display_text_cc.c",
+        "sha256": "2b33d25a0072c4c2cd0ec774d05c0bf7312f088f995fd6cc80f410c3c0de4a64"
+      }
+    ],
+    "packIdentityChanged": false,
+    "originalLockSemanticsPreservedOutsideMatchedSequence": true,
+    "previousAlreadyLockedGaussEndF6MigrationProvided": false
+  },
+  "production": {
+    "player": {
+      "format": "redux-reset-input-qa-v1",
+      "Passed": true,
+      "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+      "identities": {
+        "engine": "a12abeb0e6601c7779419364311d78d2e42110b87536d6e3a05192475e7c671d",
+        "assets": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+        "fileSelectSource": "abae99bb1bade7de73614e098ba04194b148b62a536a6d3040891faff22c97b5"
+      },
+      "sourceDerivedFlags": {
+        "FLG_ITEM_GAUS": 88,
+        "FLG_JEFF": 14,
+        "FLG_THRK_URBAN_ZOMBI_GONE": 780,
+        "FLG_WIN_GIEGU": 73,
+        "FLG_PHONE_PAPA_FINAL": 772,
+        "FLG_STEP_PAST": 372
+      },
+      "cases": [
+        {
+          "branch": "gauss",
+          "entry": "C68091",
+          "outcome": "continue",
+          "Passed": true,
+          "coldRecordMenuResume": true,
+          "recordedPhoneSaveSha256": "bfe4c6dbae0c6094065c870984fb02f15491736b181eae967cd82031e1dc55c8",
+          "phoneSaveUnchangedDuringOutcome": true,
+          "normalWorldReturn": true,
+          "titleReached": false
+        },
+        {
+          "branch": "gauss",
+          "entry": "C68091",
+          "outcome": "end",
+          "Passed": true,
+          "coldRecordMenuResume": true,
+          "recordedPhoneSaveSha256": "bfe4c6dbae0c6094065c870984fb02f15491736b181eae967cd82031e1dc55c8",
+          "phoneSaveUnchangedDuringOutcome": true,
+          "nativeBootSeen": true,
+          "coldBootResume": true,
+          "titleReached": true,
+          "titleColdRender": true,
+          "finalGaussPromptColdRestore": true,
+          "fadeAndPauseModesSeen": true
+        },
+        {
+          "branch": "dad",
+          "entry": "C63229",
+          "outcome": "continue",
+          "Passed": true,
+          "coldRecordMenuResume": true,
+          "recordedPhoneSaveSha256": "3b3960e9f7e4b4ba6272b25e027707d613388f2709cbf525e438bf4aa5ec8f7a",
+          "phoneSaveUnchangedDuringOutcome": true,
+          "normalWorldReturn": true,
+          "titleReached": false
+        },
+        {
+          "branch": "dad",
+          "entry": "C63229",
+          "outcome": "end",
+          "Passed": true,
+          "coldRecordMenuResume": true,
+          "recordedPhoneSaveSha256": "3b3960e9f7e4b4ba6272b25e027707d613388f2709cbf525e438bf4aa5ec8f7a",
+          "phoneSaveUnchangedDuringOutcome": true,
+          "nativeBootSeen": true,
+          "coldBootResume": true,
+          "titleReached": true,
+          "titleColdRender": true
+        }
+      ],
+      "gaussSourceDefectAdaptationGuard": {
+        "Passed": true,
+        "lockByteCandidates": 52,
+        "matchedGaussOnly": 1,
+        "suffixCorruptionCases": 22,
+        "neighborOffsetsRejected": true,
+        "nonReduxRejected": true,
+        "lockOffset": 2180383,
+        "nativeAdapterSha256": "e6d828b9110f09d315b37a231f7fc4470341f123535dc20b8bce91140d342b74",
+        "verbatimFunctionBodiesSha256": "90dea54a72eb96e98dc743224238bdb5994710307612e50054dc32e0da255dd3",
+        "sourceFunctions": [
+          "redux_u32",
+          "maternalbound_bind_dialogue",
+          "maternalbound_resolve_entry",
+          "maternalbound_gauss_reset_prompt"
+        ]
+      },
+      "otherSourcePowerOffLock": {
+        "Passed": true,
+        "entry": "C687E4",
+        "inputLockStillSet": true,
+        "coldRestoreLockPreserved": true,
+        "resetInvoked": false
+      },
+      "namingFinalBuildSample": {
+        "Passed": true,
+        "coldAccentCaseCursorRestore": true,
+        "renderedKeyboardStatesChecked": 3,
+        "full72StateSuiteClaimed": false,
+        "fileSelectSourceUnchangedFromNamingReview": true
+      },
+      "sourceReferences": [
+        "ccscript/data/data_18.ccs:l_0xc63229/l_0xc631e3",
+        "ccscript/data/data_19.ccs:l_0xc63415/l_0xc63506",
+        "ccscript/data/data_22.ccs:l_0xc68091",
+        "ccscript/definitions/flags.ccs",
+        "ccscript/redux/reset_routine.ccs"
+      ],
+      "ownerSavesTouched": false,
+      "fullStoryCoverage": false,
+      "preparedPhoneSaveSlot": 1,
+      "limits": [
+        "Prepared phone scenes replace only private entry readers and explicitly source-derived party/flags; not a full story or walk-to-phone playthrough.",
+        "C631E3 is Gauss Labs shared record/End flow, rather than a second Dad entry.",
+        "No full-world rendering parity or audio listening oracle."
+      ]
+    },
+    "observer": {
+      "format": "redux-reset-input-qa-v1",
+      "Passed": true,
+      "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+      "identities": {
+        "engine": "10728262dc1b6dadb773499f4a40487791009438a3eefbe3afbe8bcf4a23e7ff",
+        "assets": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+        "fileSelectSource": "abae99bb1bade7de73614e098ba04194b148b62a536a6d3040891faff22c97b5"
+      },
+      "sourceDerivedFlags": {
+        "FLG_ITEM_GAUS": 88,
+        "FLG_JEFF": 14,
+        "FLG_THRK_URBAN_ZOMBI_GONE": 780,
+        "FLG_WIN_GIEGU": 73,
+        "FLG_PHONE_PAPA_FINAL": 772,
+        "FLG_STEP_PAST": 372
+      },
+      "cases": [
+        {
+          "branch": "gauss",
+          "entry": "C68091",
+          "outcome": "continue",
+          "Passed": true,
+          "coldRecordMenuResume": true,
+          "recordedPhoneSaveSha256": "bfe4c6dbae0c6094065c870984fb02f15491736b181eae967cd82031e1dc55c8",
+          "phoneSaveUnchangedDuringOutcome": true,
+          "normalWorldReturn": true,
+          "titleReached": false
+        },
+        {
+          "branch": "gauss",
+          "entry": "C68091",
+          "outcome": "end",
+          "Passed": true,
+          "coldRecordMenuResume": true,
+          "recordedPhoneSaveSha256": "bfe4c6dbae0c6094065c870984fb02f15491736b181eae967cd82031e1dc55c8",
+          "phoneSaveUnchangedDuringOutcome": true,
+          "nativeBootSeen": true,
+          "coldBootResume": true,
+          "titleReached": true,
+          "titleColdRender": true,
+          "finalGaussPromptColdRestore": true,
+          "fadeAndPauseModesSeen": true
+        },
+        {
+          "branch": "dad",
+          "entry": "C63229",
+          "outcome": "continue",
+          "Passed": true,
+          "coldRecordMenuResume": true,
+          "recordedPhoneSaveSha256": "3b3960e9f7e4b4ba6272b25e027707d613388f2709cbf525e438bf4aa5ec8f7a",
+          "phoneSaveUnchangedDuringOutcome": true,
+          "normalWorldReturn": true,
+          "titleReached": false
+        },
+        {
+          "branch": "dad",
+          "entry": "C63229",
+          "outcome": "end",
+          "Passed": true,
+          "coldRecordMenuResume": true,
+          "recordedPhoneSaveSha256": "3b3960e9f7e4b4ba6272b25e027707d613388f2709cbf525e438bf4aa5ec8f7a",
+          "phoneSaveUnchangedDuringOutcome": true,
+          "nativeBootSeen": true,
+          "coldBootResume": true,
+          "titleReached": true,
+          "titleColdRender": true
+        }
+      ],
+      "gaussSourceDefectAdaptationGuard": {
+        "Passed": true,
+        "lockByteCandidates": 52,
+        "matchedGaussOnly": 1,
+        "suffixCorruptionCases": 22,
+        "neighborOffsetsRejected": true,
+        "nonReduxRejected": true,
+        "lockOffset": 2180383,
+        "nativeAdapterSha256": "e6d828b9110f09d315b37a231f7fc4470341f123535dc20b8bce91140d342b74",
+        "verbatimFunctionBodiesSha256": "90dea54a72eb96e98dc743224238bdb5994710307612e50054dc32e0da255dd3",
+        "sourceFunctions": [
+          "redux_u32",
+          "maternalbound_bind_dialogue",
+          "maternalbound_resolve_entry",
+          "maternalbound_gauss_reset_prompt"
+        ]
+      },
+      "otherSourcePowerOffLock": {
+        "Passed": true,
+        "entry": "C687E4",
+        "inputLockStillSet": true,
+        "coldRestoreLockPreserved": true,
+        "resetInvoked": false
+      },
+      "namingFinalBuildSample": {
+        "Passed": true,
+        "coldAccentCaseCursorRestore": true,
+        "renderedKeyboardStatesChecked": 3,
+        "full72StateSuiteClaimed": false,
+        "fileSelectSourceUnchangedFromNamingReview": true
+      },
+      "sourceReferences": [
+        "ccscript/data/data_18.ccs:l_0xc63229/l_0xc631e3",
+        "ccscript/data/data_19.ccs:l_0xc63415/l_0xc63506",
+        "ccscript/data/data_22.ccs:l_0xc68091",
+        "ccscript/definitions/flags.ccs",
+        "ccscript/redux/reset_routine.ccs"
+      ],
+      "ownerSavesTouched": false,
+      "fullStoryCoverage": false,
+      "preparedPhoneSaveSlot": 1,
+      "limits": [
+        "Prepared phone scenes replace only private entry readers and explicitly source-derived party/flags; not a full story or walk-to-phone playthrough.",
+        "C631E3 is Gauss Labs shared record/End flow, rather than a second Dad entry.",
+        "No full-world rendering parity or audio listening oracle."
+      ]
+    }
+  },
+  "ownerSavesTouched": false,
+  "fullStoryCoverage": false,
+  "coverageLimits": [
+    "Prepared private full source entry readers, selected save-slot context, and explicit source-derived flags/party are used; walking through every story prerequisite is not claimed.",
+    "The independent guard compiles verbatim binding/relocation/predicate functions in isolation, without gameplay mocks; live input dispatch is checked separately on both immutable builds.",
+    "52 byte-pattern lock candidates are not a claim of 52 active gameplay locks. The other pinned active source lock C687E4 is checked through real native dispatch.",
+    "Three current-build naming renders and cold accent/case/cursor restores pass on each build. The prior full 72-state naming suite remains tied to its recorded v3 binaries.",
+    "No full playthrough, complete randomizer seed playthrough, audio listening comparison, or original SNES machine execution oracle is claimed."
+  ]
+}

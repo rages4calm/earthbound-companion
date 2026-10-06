@@ -1,0 +1,2345 @@
+{
+  "format": "redux-presentation-feature-review-v1",
+  "status": "bounded-source-and-runtime-audit",
+  "sourceRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "compiledRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+  "originalPackSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
+  "reduxPackSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+  "counts": {
+    "reviewedModules": 6,
+    "activeLiteralWrites": 53,
+    "matchedConvertedAssets": 21,
+    "sourceLoopFlagsChecked": 256
+  },
+  "modules": [
+    {
+      "name": "Bowspr",
+      "pinnedSourceSha256": "15250FDFB7657367AC854AEA3BE280B88A3BAA8CD039790C57186B30DC79FB50",
+      "compiledModuleBytes": 1390,
+      "compiledModuleSha256": "A43156CD092F4DD1C94B18041B790DF2CA24752398825566D1C1BBC7F8C96B30",
+      "activeLiteralWrites": [
+        {
+          "address": "C2F8F9",
+          "sourceLine": 276
+        },
+        {
+          "address": "C01D82",
+          "sourceLine": 662
+        },
+        {
+          "address": "C08139",
+          "sourceLine": 799
+        },
+        {
+          "address": "C085D3",
+          "sourceLine": 823
+        },
+        {
+          "address": "C085EC",
+          "sourceLine": 824
+        },
+        {
+          "address": "C085FE",
+          "sourceLine": 825
+        },
+        {
+          "address": "C085CE",
+          "sourceLine": 827
+        },
+        {
+          "address": "C085D9",
+          "sourceLine": 828
+        },
+        {
+          "address": "C0866C",
+          "sourceLine": 829
+        },
+        {
+          "address": "C085F6",
+          "sourceLine": 831
+        },
+        {
+          "address": "C0DB1D",
+          "sourceLine": 834
+        },
+        {
+          "address": "C0FFE0",
+          "sourceLine": 838
+        }
+      ]
+    },
+    {
+      "name": "m3sprites",
+      "pinnedSourceSha256": "15F106AFF5EC960C65F39FE878A2DE63B6490E1672DBFF344F4AFA406731B6C1",
+      "compiledModuleBytes": 936,
+      "compiledModuleSha256": "C9767430297DF6F8DF705A9BF26DC0A8B7DD39D4C0E346BD890B286A8D680E81",
+      "activeLiteralWrites": [
+        {
+          "address": "C2C544",
+          "sourceLine": 98
+        },
+        {
+          "address": "C2C3A4",
+          "sourceLine": 100
+        },
+        {
+          "address": "C2C75B",
+          "sourceLine": 102
+        },
+        {
+          "address": "C29302",
+          "sourceLine": 135
+        },
+        {
+          "address": "C29388",
+          "sourceLine": 136
+        },
+        {
+          "address": "C229FF",
+          "sourceLine": 151
+        },
+        {
+          "address": "C22907",
+          "sourceLine": 152
+        },
+        {
+          "address": "C18B80",
+          "sourceLine": 182
+        },
+        {
+          "address": "C2044C",
+          "sourceLine": 261
+        },
+        {
+          "address": "C21404",
+          "sourceLine": 262
+        },
+        {
+          "address": "C2FFCC",
+          "sourceLine": 264
+        },
+        {
+          "address": "C2026E",
+          "sourceLine": 280
+        },
+        {
+          "address": "C20295",
+          "sourceLine": 281
+        },
+        {
+          "address": "C2DD9A",
+          "sourceLine": 284
+        },
+        {
+          "address": "C1DDCE",
+          "sourceLine": 290
+        },
+        {
+          "address": "C1DDD5",
+          "sourceLine": 291
+        },
+        {
+          "address": "C2617D",
+          "sourceLine": 321
+        },
+        {
+          "address": "C04A83",
+          "sourceLine": 331
+        },
+        {
+          "address": "C12CAB",
+          "sourceLine": 339
+        }
+      ]
+    },
+    {
+      "name": "m2_title_screen_movements",
+      "pinnedSourceSha256": "C753213D2A99691C610FA41D4022B38E29201D3F6B2534CE005FC6A126BCBDA5",
+      "compiledModuleBytes": 835,
+      "compiledModuleSha256": "094C21577930F209D487DF72447D97155CBB4C93C2D7042169DDBA4EAE3FBA6D",
+      "activeLiteralWrites": [
+        {
+          "address": "EF04E9",
+          "sourceLine": 8
+        },
+        {
+          "address": "EF04F1",
+          "sourceLine": 9
+        },
+        {
+          "address": "C42286",
+          "sourceLine": 375
+        },
+        {
+          "address": "C0EDF6",
+          "sourceLine": 469
+        }
+      ]
+    },
+    {
+      "name": "optimize_text_rendering",
+      "pinnedSourceSha256": "FCCEFEC2212B6A81839EAB220AB4941EC933B1F0D556C6397EC209C2BD66ADC5",
+      "compiledModuleBytes": 922,
+      "compiledModuleSha256": "D2720D538786547EC7DD7AEBF62BBF711F35E048D458C43CCBAFA9E9EA4D0D1C",
+      "activeLiteralWrites": [
+        {
+          "address": "C44B3A",
+          "sourceLine": 86
+        },
+        {
+          "address": "C44E61",
+          "sourceLine": 289
+        }
+      ]
+    },
+    {
+      "name": "multichar_bike",
+      "pinnedSourceSha256": "8835326D15E3E5FA8B349D976CFA1410813ED4FAE5714DF9259CCA92A283242E",
+      "compiledModuleBytes": 905,
+      "compiledModuleSha256": "A5C1799AE926D25A95B0E30911643DB98D04CE11DC9624D905B4C74D451E5B39",
+      "activeLiteralWrites": [
+        {
+          "address": "C3E0C8",
+          "sourceLine": 94
+        },
+        {
+          "address": "C3E100",
+          "sourceLine": 95
+        },
+        {
+          "address": "C02C71",
+          "sourceLine": 101
+        },
+        {
+          "address": "C0B7D0",
+          "sourceLine": 104
+        },
+        {
+          "address": "C051F0",
+          "sourceLine": 135
+        },
+        {
+          "address": "C3EE4F",
+          "sourceLine": 152
+        },
+        {
+          "address": "C078F2",
+          "sourceLine": 181
+        },
+        {
+          "address": "C03C66",
+          "sourceLine": 230
+        },
+        {
+          "address": "C03C8E",
+          "sourceLine": 234
+        },
+        {
+          "address": "C03CBD",
+          "sourceLine": 280
+        },
+        {
+          "address": "C03D25",
+          "sourceLine": 392
+        },
+        {
+          "address": "C03D63",
+          "sourceLine": 429
+        }
+      ]
+    },
+    {
+      "name": "msu1",
+      "pinnedSourceSha256": "CED219E95507B035817FD20C4F9C02528BE5BB91F0FB3E9F00F0B49A5903E20A",
+      "compiledModuleBytes": 616,
+      "compiledModuleSha256": "63B67F970A91E7543889E4198C2D7220C4775F69531FD16C7F5406D0F670883B",
+      "activeLiteralWrites": [
+        {
+          "address": "C4FBF4",
+          "sourceLine": 17
+        },
+        {
+          "address": "C4FD12",
+          "sourceLine": 22
+        },
+        {
+          "address": "C0AC0C",
+          "sourceLine": 26
+        },
+        {
+          "address": "C0834E",
+          "sourceLine": 31
+        }
+      ]
+    }
+  ],
+  "convertedDataChecks": [
+    {
+      "family": "title",
+      "matchedPackAssets": [
+        {
+          "name": "US/intro/title_screen.gfx.lzhal",
+          "bytes": 7647,
+          "sha256": "AA1C21BD4022B478223F22DBD632BDB99E08828521EF390C3A4E75777CF89325"
+        },
+        {
+          "name": "US/intro/title_screen.arr.lzhal",
+          "bytes": 873,
+          "sha256": "658A15223DFDD3FA3E3D7AB6723A579E6C619B0321D4833CAF292B72BF724023"
+        },
+        {
+          "name": "US/intro/title_screen.pal.lzhal",
+          "bytes": 102,
+          "sha256": "E2D5A6B43B89A616BA0D7CDB88F20670B5B802730385993013A926A8368D2598"
+        },
+        {
+          "name": "US/intro/title_screen_letters.gfx.lzhal",
+          "bytes": 1845,
+          "sha256": "75DF4A95EEC6BE57D7ED5064E968E13A32A9D17FED2E8B34CA3F1DE1693D76A2"
+        },
+        {
+          "name": "US/E1AE7C.bin.lzhal",
+          "bytes": 34,
+          "sha256": "4E2BDD14FB39B21B8368E6C54FC92FEE1B18CAC9D8565F26408F006577494AF3"
+        },
+        {
+          "name": "US/E1AE83.bin.lzhal",
+          "bytes": 151,
+          "sha256": "3E4F0C18AC5744293E0EB036DCB1E1155780BD5C13879D381F20CE854D5069A2"
+        },
+        {
+          "name": "US/E1AEFD.bin.lzhal",
+          "bytes": 154,
+          "sha256": "4BC0A74E6DF6AD1FDE27C4BF3BA731A8DD65906E4CC81FC0212075EF23864C02"
+        },
+        {
+          "name": "US/intro/title_screen_spritemaps.bin",
+          "bytes": 423,
+          "sha256": "C2A26DA9F3D1E97D0D8DC08520CC0B58CBD1DF4566F83DA9914DB41F1F6A8A1C"
+        }
+      ],
+      "converterValidation": {
+        "decompressedBytes": {
+          "US/intro/title_screen.gfx.lzhal": 45056,
+          "US/intro/title_screen.arr.lzhal": 2048,
+          "US/intro/title_screen.pal.lzhal": 512,
+          "US/intro/title_screen_letters.gfx.lzhal": 32768,
+          "US/E1AE7C.bin.lzhal": 32,
+          "US/E1AE83.bin.lzhal": 448,
+          "US/E1AEFD.bin.lzhal": 640
+        },
+        "letterLayouts": 9,
+        "layoutEntryCounts": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "relocatedLayoutBank": 238
+      }
+    },
+    {
+      "family": "fonts",
+      "matchedPackAssets": [
+        {
+          "name": "US/fonts/main.bin",
+          "bytes": 128,
+          "sha256": "88234F5FC17474A8918E63B60BC17008FA3547D200DE51734D53D6887E19F2A6"
+        },
+        {
+          "name": "US/fonts/main.gfx",
+          "bytes": 4096,
+          "sha256": "664B47D526CBE8C932C21BAED174E4B4CA078E5064270D2A8364BCF88755B8EB"
+        },
+        {
+          "name": "US/fonts/mrsaturn.bin",
+          "bytes": 128,
+          "sha256": "DE163DD2B396ADEFB4FC4AA179CFBE549B6191DF212022C0273795E34316C9CE"
+        },
+        {
+          "name": "US/fonts/mrsaturn.gfx",
+          "bytes": 4096,
+          "sha256": "F90A1BA9B02D41C181BA4ECC81FBC621B627DCA43BBCCB61A422AFF21A6600F4"
+        },
+        {
+          "name": "US/fonts/battle.bin",
+          "bytes": 128,
+          "sha256": "B6185231BA123D791DDD43F95DB2CA2528930C3CBDB7D9AC8E391D071C45AFF5"
+        },
+        {
+          "name": "US/fonts/battle.gfx",
+          "bytes": 2048,
+          "sha256": "0909BDC848202A819F957F9ADF68512BB348CED9D2B1AF8C7748C5ACDC89E527"
+        },
+        {
+          "name": "US/fonts/tiny.bin",
+          "bytes": 128,
+          "sha256": "73AFC42A5C91E9DD5302E0FA6D9C13E5A46A9B21E7622DC5EB77E4305B141CFB"
+        },
+        {
+          "name": "US/fonts/tiny.gfx",
+          "bytes": 1024,
+          "sha256": "5EB5132BF46FC8D131CD4A118C19B43C975CB199DF696A9544A9A15623EA62B7"
+        },
+        {
+          "name": "US/fonts/large.bin",
+          "bytes": 128,
+          "sha256": "89B77BAE6A84639169CF0549E674DEE9E46DB474234A3C321C346879A4C513F7"
+        },
+        {
+          "name": "US/fonts/large.gfx",
+          "bytes": 4096,
+          "sha256": "00084FB79F2BC11A3483632105CFE0FCCCDC74886AC0B46DE6D6E408C22360EA"
+        }
+      ],
+      "converterValidation": {
+        "fontFamilies": 5,
+        "charactersPerFont": 128
+      }
+    },
+    {
+      "family": "movement",
+      "matchedPackAssets": [
+        {
+          "name": "US/events/event_script_pointers.bin",
+          "bytes": 2697,
+          "sha256": "FD2F427EB0D689FFD49A707A50C1837597197335807BB8F3FE058CB4675A1F0F"
+        },
+        {
+          "name": "US/events/bank_c3_scripts_combined.bin",
+          "bytes": 64280,
+          "sha256": "D42C92EDA5552FCF21DF4788B10FCE93AE4BF8A8FAF27F5FA000A08A8060462B"
+        },
+        {
+          "name": "US/intro/title_screen_scripts.bin",
+          "bytes": 2048,
+          "sha256": "11AC3F2E061889329F95159F4D8E942899DCAE00E91B0CFAF2353129D8D9AB75"
+        }
+      ],
+      "converterValidation": {
+        "movementScriptPointers": 899,
+        "customScriptIds": [
+          895,
+          896,
+          897,
+          898
+        ],
+        "resolvedNonzeroMovementPointers": 898,
+        "regions": [
+          {
+            "bank": 195,
+            "base": 0,
+            "bytes": 57362
+          },
+          {
+            "bank": 196,
+            "base": 3620,
+            "bytes": 3194
+          },
+          {
+            "bank": 196,
+            "base": 8562,
+            "bytes": 2048
+          },
+          {
+            "bank": 192,
+            "base": 44426,
+            "bytes": 21
+          },
+          {
+            "bank": 252,
+            "base": 20447,
+            "bytes": 203
+          },
+          {
+            "bank": 252,
+            "base": 7798,
+            "bytes": 835
+          },
+          {
+            "bank": 252,
+            "base": 15252,
+            "bytes": 524
+          },
+          {
+            "bank": 249,
+            "base": 65519,
+            "bytes": 17
+          }
+        ],
+        "titleMovementIds": [
+          788,
+          789,
+          790,
+          791,
+          792,
+          793,
+          794,
+          795,
+          796,
+          797,
+          798
+        ],
+        "nativeMovementAdapters": [
+          "instant-letterbox",
+          "title-glow-palette"
+        ],
+        "verifiedMovementModules": [
+          {
+            "name": "movscr_codes",
+            "snesAddress": 16530324,
+            "bytes": 524,
+            "sha256": "787C189E12B42287AA41BE062DB75EC46DDE8833966CA04F00AD9BA53F21A417"
+          },
+          {
+            "name": "moldyman_initial_frame_fix",
+            "snesAddress": 16383983,
+            "bytes": 17,
+            "sha256": "2F24BE739B6C934C0A66F3DF40D3C6D747503A83BEC9F9E11BE50D20FE0CAB14"
+          }
+        ],
+        "privateMovementAdapters": [
+          {
+            "name": "distance-from-player",
+            "sourceAddress": 16530526,
+            "nativeId": 12517632,
+            "extraBytes": 0,
+            "calls": 0
+          },
+          {
+            "name": "result-greater",
+            "sourceAddress": 16530560,
+            "nativeId": 12517633,
+            "extraBytes": 2,
+            "calls": 0
+          },
+          {
+            "name": "ceil-movement-speed",
+            "sourceAddress": 16530576,
+            "nativeId": 12517634,
+            "extraBytes": 0,
+            "calls": 1
+          },
+          {
+            "name": "maximum-result",
+            "sourceAddress": 16530591,
+            "nativeId": 12517635,
+            "extraBytes": 2,
+            "calls": 0
+          },
+          {
+            "name": "mosaic-fade-in",
+            "sourceAddress": 16530606,
+            "nativeId": 12517636,
+            "extraBytes": 6,
+            "calls": 0
+          },
+          {
+            "name": "refresh-current-frame",
+            "sourceAddress": 16530628,
+            "nativeId": 12517637,
+            "extraBytes": 0,
+            "calls": 3
+          }
+        ],
+        "deferred": [
+          "Full story and cutscene playthrough validation"
+        ]
+      }
+    }
+  ],
+  "semanticBindings": [
+    {
+      "module": "Bowspr",
+      "writes": [
+        "C2F8F9",
+        "C01D82",
+        "C08139",
+        "C085D3",
+        "C085EC",
+        "C085FE",
+        "C085CE",
+        "C085D9",
+        "C0866C",
+        "C085F6",
+        "C0DB1D",
+        "C0FFE0"
+      ],
+      "sourceMeaning": "Custom battle object rendering, priority and SNES tile/palette/DMA allocation.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/Bowspr.ccs",
+          "line": 276,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/Bowspr.ccs#L276"
+        },
+        {
+          "path": "native-source/src/game/maternalbound_battle_sprites.c",
+          "line": 82
+        },
+        {
+          "path": "native-source/src/game/maternalbound_battle_sprites.c",
+          "line": 110
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check",
+      "platformAdaptation": "Active m3sprites consumer uses priority0. The native scanline compositor reads normalized sprite frames directly and overlays enemy OBJ while BG3 text retains higher priority. General Bowspr priorities1..3, sorting, VRAM/DMA thresholds and palette allocation are not ported APIs because the active consumer does not need them.",
+      "unverifiedLiveBranches": [
+        "Full overlap/palette comparison for all enemy/front-row/back-row combinations."
+      ]
+    },
+    {
+      "module": "m3sprites",
+      "writes": [
+        "C2044C",
+        "C21404",
+        "C2FFCC"
+      ],
+      "sourceMeaning": "Keep battle HP/PP boxes and odometers at row19 regardless of selected member.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/m3sprites.ccs",
+          "line": 269,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m3sprites.ccs#L269"
+        },
+        {
+          "path": "native-source/src/game/window.c",
+          "line": 2276
+        },
+        {
+          "path": "native-source/src/game/window.c",
+          "line": 2912
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check"
+    },
+    {
+      "module": "m3sprites",
+      "writes": [
+        "C2026E",
+        "C20295"
+      ],
+      "sourceMeaning": "Relocate AUTO clear/render operand from RAM8272 to80B2.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/m3sprites.ccs",
+          "line": 280,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m3sprites.ccs#L280"
+        },
+        {
+          "path": "native-source/src/game/window.c",
+          "line": 2127
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check",
+      "platformAdaptation": "Original BG2-buffer base7DFE maps RAM80B2 to native offset2B4, row10 column26; the original offset474 remains row17 column26."
+    },
+    {
+      "module": "m3sprites",
+      "writes": [
+        "C2DD9A"
+      ],
+      "sourceMeaning": "Remove only off-phase UNDRAW_HP_PP_WINDOW call; leave duration and redraw behavior intact.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/m3sprites.ccs",
+          "line": 284,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m3sprites.ccs#L284"
+        },
+        {
+          "path": "native-source/src/game/battle_ui.c",
+          "line": 2405
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check"
+    },
+    {
+      "module": "m3sprites",
+      "writes": [
+        "C1DDCE",
+        "C1DDD5",
+        "C12CAB"
+      ],
+      "sourceMeaning": "Animate selected party portraits and raise conscious members during victory.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/m3sprites.ccs",
+          "line": 293,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m3sprites.ccs#L293"
+        },
+        {
+          "path": "Project/ccscript/redux/m3sprites.ccs",
+          "line": 346,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m3sprites.ccs#L346"
+        },
+        {
+          "path": "native-source/src/game/maternalbound_battle_sprites.c",
+          "line": 45
+        },
+        {
+          "path": "native-source/src/game/battle.c",
+          "line": 5240
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check",
+      "platformAdaptation": "Native frames use their own four-member visibility masks and y168-to152 anchors rather than free_ram bits and Bowspr objects."
+    },
+    {
+      "module": "m3sprites",
+      "writes": [
+        "C2617D",
+        "C04A83"
+      ],
+      "sourceMeaning": "Clear portrait state before new encounters and after battle exit.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/m3sprites.ccs",
+          "line": 332,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m3sprites.ccs#L332"
+        },
+        {
+          "path": "native-source/src/game/maternalbound_battle_sprites.c",
+          "line": 22
+        },
+        {
+          "path": "native-source/src/game/battle.c",
+          "line": 4522
+        },
+        {
+          "path": "native-source/src/game/maternalbound_battle_sprites.c",
+          "line": 36
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check",
+      "platformAdaptation": "Explicit shared BTL_BEGIN reset hardens prepared stale/cold checkpoints. Natural sequential battles already cleared state in baseline; this is not a naturally reproduced user crash."
+    },
+    {
+      "module": "m3sprites",
+      "writes": [
+        "C2C544",
+        "C2C3A4",
+        "C2C75B",
+        "C29302",
+        "C29388",
+        "C229FF",
+        "C22907",
+        "C18B80"
+      ],
+      "sourceMeaning": "Reset/rebuild Bowspr allocation during Giygas scenes, Poo return, temporary-party changes, and defer teddy reward updates.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/m3sprites.ccs",
+          "line": 104,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m3sprites.ccs#L104"
+        },
+        {
+          "path": "Project/ccscript/redux/m3sprites.ccs",
+          "line": 138,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m3sprites.ccs#L138"
+        },
+        {
+          "path": "Project/ccscript/redux/m3sprites.ccs",
+          "line": 183,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m3sprites.ccs#L183"
+        },
+        {
+          "path": "native-source/src/game/maternalbound_battle_sprites.c",
+          "line": 26
+        },
+        {
+          "path": "native-source/src/game/inventory.c",
+          "line": 552
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check",
+      "platformAdaptation": "The direct PC compositor has no shared SNES Bowspr entity/VRAM allocation to end or rebuild; it reads current battlers, character mode and controlled-party count each frame. Native inventory still performs teddy updates immediately, so the source deferral is not literally reproduced.",
+      "unverifiedLiveBranches": [
+        "Giygas prayer/phase5/death portrait hiding/reset timing.",
+        "Master Barf live Poo-joins encounter and portrait repositioning.",
+        "Flying Man/teddy death and teddy-as-battle-reward party refresh."
+      ]
+    },
+    {
+      "module": "m2_title_screen_movements",
+      "writes": [
+        "EF04E9",
+        "EF04F1",
+        "C42286",
+        "C0EDF6"
+      ],
+      "sourceMeaning": "Title letter movement, timed reveal, glowing Mother/2 palettes and no transient blank/reload on A.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/m2_title_screen_movements.ccs",
+          "line": 8,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/m2_title_screen_movements.ccs#L8"
+        },
+        {
+          "path": "native-source/src/intro/title_screen.c",
+          "line": 123
+        },
+        {
+          "path": "native-source/src/entity/callroutine.c",
+          "line": 752
+        },
+        {
+          "path": "native-source/src/entity/callroutine_palette.c",
+          "line": 292
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check",
+      "platformAdaptation": "Eleven Script788..798 movement pointers and full relocated regions are regenerated and matched to the native pack; typed palette-copy call becomes explicit native BF000D, and var3 selects the separate gradient buffer.",
+      "unverifiedLiveBranches": [
+        "Exact title frame/pixel alignment and glow cadence versus source.",
+        "Press-A-at-every-reveal-phase transient blank comparison."
+      ]
+    },
+    {
+      "module": "optimize_text_rendering",
+      "writes": [
+        "C44B3A",
+        "C44E61"
+      ],
+      "sourceMeaning": "Optimized VWF blit and character width/padding handling.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/optimize_text_rendering.ccs",
+          "line": 86,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/optimize_text_rendering.ccs#L86"
+        },
+        {
+          "path": "native-source/src/game/text.c",
+          "line": 4706
+        },
+        {
+          "path": "native-source/src/game/text.c",
+          "line": 4773
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check",
+      "platformAdaptation": "The native renderer performs glyph masking, row/bitplane writes, tile-boundary clearing, and width+padding advances in C. It does not reproduce 65816 cycle optimizations. Five fonts with128 glyphs each are regenerated and byte-matched to the native pack.",
+      "unverifiedLiveBranches": [
+        "All glyphs/fonts at every pixel offset, wide-glyph strip and tile-boundary pixel comparison."
+      ]
+    },
+    {
+      "module": "multichar_bike",
+      "writes": [
+        "C3E0C8",
+        "C3E100",
+        "C02C71",
+        "C0B7D0",
+        "C051F0",
+        "C3EE4F",
+        "C078F2",
+        "C03C66",
+        "C03C8E",
+        "C03CBD",
+        "C03D25",
+        "C03D63"
+      ],
+      "sourceMeaning": "Leader-aware sidecar sprites, follower hiding, faster bike speeds, post-battle/death/revive/mushroom refresh.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/multichar_bike.ccs",
+          "line": 105,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/multichar_bike.ccs#L105"
+        },
+        {
+          "path": "native-source/src/game/overworld.c",
+          "line": 1103
+        },
+        {
+          "path": "native-source/src/game/overworld.c",
+          "line": 1250
+        },
+        {
+          "path": "native-source/src/game/position_buffer.c",
+          "line": 1017
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check",
+      "platformAdaptation": "Native leader slots24..27 and sidecar groups477..480 replace assembly entity offsets. Hiding uses native DRAW_DISABLED; explicit refresh rebuilds status-aware party entities. Single-party Ness bike7 behavior is also in the active source.",
+      "unverifiedLiveBranches": [
+        "All temporary-party compositions, sectors/doors/indoor dismounts and post-battle audio/story combinations."
+      ]
+    },
+    {
+      "module": "msu1",
+      "writes": [
+        "C4FBF4",
+        "C4FD12",
+        "C0AC0C",
+        "C0834E"
+      ],
+      "sourceMeaning": "MSU music request/stop/fades with SPC fallback and source loop policy.",
+      "nativeReferences": [
+        {
+          "path": "Project/ccscript/redux/msu1.ccs",
+          "line": 118,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/msu1.ccs#L118"
+        },
+        {
+          "path": "Project/ccscript/redux/msu1.ccs",
+          "line": 240,
+          "url": "https://github.com/ShadowOne333/MaternalBound-Redux/blob/897d00833f4a08a0a92f106abf631629a6a6a041/Project/ccscript/redux/msu1.ccs#L240"
+        },
+        {
+          "path": "native-source/port/unix/platform/msu_audio.c",
+          "line": 86
+        },
+        {
+          "path": "native-source/src/game/audio.c",
+          "line": 257
+        }
+      ],
+      "evidenceLevel": "semantic-code-review-and-compiled-source-check",
+      "platformAdaptation": "SDL PCM mixing replaces SNES MSU registers and NMI. Source256-track repeat flags match exactly. Native fades are continuous audio-sample ramps: fast240/255 per second, slow120/255, quarter/full180/255; source uses per-NMI integer steps and cutoff thresholds. Audible fade duration can differ slightly; bit-exact NMI envelope parity is not claimed.",
+      "unverifiedLiveBranches": [
+        "Listening to every soundtrack and sound effect.",
+        "Every story/bicycle/boss transition and extended IDs192..255 playback.",
+        "Exact per-frame fade-envelope comparison."
+      ]
+    }
+  ],
+  "nativeReferenceFileHashes": [
+    {
+      "path": "native-source/port/unix/platform/msu_audio.c",
+      "sha256": "7EFE220133D3F05C8EABB9676C568DD4DB54803E4CAEF58177584F10593E988A"
+    },
+    {
+      "path": "native-source/src/entity/callroutine.c",
+      "sha256": "F38853C8607C8DED917325F72531DD49B7D5D58B3749B0BDBB16A579B56BE1E3"
+    },
+    {
+      "path": "native-source/src/entity/callroutine_palette.c",
+      "sha256": "E65949EED37EC6D6AA4481BA63F4D1B7EA0F78CADFF78A2E19DB5E6A70228179"
+    },
+    {
+      "path": "native-source/src/game/audio.c",
+      "sha256": "9B9A9B4811BFF9C7D97E0EC269136CF42773DE0C932B11BA65EB96D0949398DF"
+    },
+    {
+      "path": "native-source/src/game/battle.c",
+      "sha256": "5E48209394E29848FC0ACC12EC71A41C9E9567FC055F8E023CD5FBB4BD108396"
+    },
+    {
+      "path": "native-source/src/game/battle_ui.c",
+      "sha256": "0ABBB69B602AE4EF0354620DA1674D45C6BCF56804F7A464D137F4082615023A"
+    },
+    {
+      "path": "native-source/src/game/inventory.c",
+      "sha256": "0457595E19ECC2EDE9AFC6A528D1240D2EA2602E91831A53E25FF1B302C807D5"
+    },
+    {
+      "path": "native-source/src/game/maternalbound_battle_sprites.c",
+      "sha256": "F75CA5A68290BB571CEEE92D33DB9B4F05EE1A0B6F71047F969C1B0F071F84FD"
+    },
+    {
+      "path": "native-source/src/game/overworld.c",
+      "sha256": "453B9158A6CFC8195B9868BEA6435F84BA618A84F26D2E7FD842220EDDD05107"
+    },
+    {
+      "path": "native-source/src/game/position_buffer.c",
+      "sha256": "1F27F8B05E3DC913EB20103DA54B5579DF3E7193462108C89D855C7D6901CC23"
+    },
+    {
+      "path": "native-source/src/game/text.c",
+      "sha256": "75C9A31C53CAF3658EBC2EA06DB781B58E99D45414FDAA54582E3E4CC4B6FAC6"
+    },
+    {
+      "path": "native-source/src/game/window.c",
+      "sha256": "227FDC7E7959BDBCC1D5267E817B21433F3DAF4E9B0130C165FA820ABB358F6B"
+    },
+    {
+      "path": "native-source/src/intro/title_screen.c",
+      "sha256": "E1794CAA803ADF64BF1E7B90030F5D018AF3F03BC6D440B49BD339AB9AB64A7A"
+    }
+  ],
+  "fixedSourceGaps": [
+    {
+      "feature": "Stationary Redux battle HP/PP boxes and odometer rows",
+      "baseline": "Selected member top row18/digit row21; other members19/22.",
+      "fixed": "All members top row19/digit row22 through real menus and rolling updates."
+    },
+    {
+      "feature": "Redux AUTO indicator placement and cancellation",
+      "baseline": "Rendered at row17 column26.",
+      "fixed": "Rendered at row10 column26; B cancellation clears the same location through a subsequent real battle text push."
+    },
+    {
+      "feature": "Redux damage box blink suppression",
+      "baseline": "Off phase undraws the damaged HP/PP box.",
+      "fixed": "Redux retains its box during the same off phase; Original still undraws."
+    },
+    {
+      "feature": "Explicit portrait reset on cold shared battle entry",
+      "baseline": "Prepared stale victory survives BTL_BEGIN, raises all4 portraits despite Ness selection.",
+      "fixed": "Shared BTL_BEGIN reset removes prepared victory; only selected Ness is raised.",
+      "qualification": "Natural exit/new-entry also passed baseline. Prepared state hardening is not a naturally reproduced user bug."
+    }
+  ],
+  "msuSourcePolicy": {
+    "repeatFlags": 256,
+    "oneShotIds": [
+      1,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      76,
+      78,
+      80,
+      84,
+      90,
+      91,
+      94,
+      95,
+      109,
+      110,
+      111,
+      113,
+      123,
+      124,
+      126,
+      127,
+      135,
+      137,
+      138,
+      139,
+      142,
+      143,
+      147,
+      157,
+      158,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      174,
+      175,
+      176,
+      177,
+      180,
+      181,
+      189
+    ]
+  },
+  "runtimeEvidence": {
+    "ui_results": {
+      "reportSha256": "D1FE2DE7A23FB66AC254F4BDCB212A44453A2A802B2300415075D275AC51C035",
+      "nativeExeSha256": "6301ad24b10eefa11192d3f0803571465de4460b6554251a1fbe953cda504812",
+      "report": {
+        "format": "redux-native-party-ui-qa-v1",
+        "nativeExeSha256": "6301ad24b10eefa11192d3f0803571465de4460b6554251a1fbe953cda504812",
+        "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+        "fixedExpectationsEnforced": true,
+        "rows": [
+          {
+            "case": "ness-selection",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "paula-selection",
+            "actual": {
+              "selected": 1,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 2,
+              "spriteVisible": 2,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "rolling-digit-row",
+            "hpDigitRows": [
+              [
+                22
+              ],
+              [
+                22
+              ],
+              [
+                22
+              ],
+              [
+                22
+              ]
+            ],
+            "actual": {
+              "selected": 1,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 2,
+              "spriteVisible": 2,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "damage-blink-off-phase",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 17,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "auto-indicator-render",
+            "positions": [
+              [
+                10,
+                26
+              ]
+            ]
+          },
+          {
+            "case": "auto-indicator-clear",
+            "positions": [],
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                28,
+                6
+              ]
+            }
+          },
+          {
+            "case": "first-battle-completed",
+            "actual": {
+              "selected": -1,
+              "headerRows": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "spriteActive": 0,
+              "spriteVictory": 0,
+              "spriteTargets": 0,
+              "spriteVisible": 0,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 0,
+              "modes": [
+                61
+              ]
+            }
+          },
+          {
+            "case": "second-production-battle-entry",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "prepared-stale-victory-entry",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            },
+            "preparedState": true
+          },
+          {
+            "case": "original-ness-selection",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  18
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 0,
+              "spriteVictory": 0,
+              "spriteTargets": 0,
+              "spriteVisible": 0,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "original-damage-blink-off-phase",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 0,
+              "spriteVictory": 0,
+              "spriteTargets": 0,
+              "spriteVisible": 0,
+              "damageBlinkDuration": 17,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "original-auto-indicator",
+            "positions": [
+              [
+                17,
+                26
+              ]
+            ]
+          }
+        ],
+        "limits": [
+          "Prepared four-member combat, real production entry/menu/cleanup modes; not an entire story playthrough.",
+          "Stale victory is deliberately prepared to test hardening; it is not evidence of a naturally reproduced user bug.",
+          "Original UI regressions prepare new production battle entry from a scratch completed Redux root with BG2 cleared before entry; independent Original story progress is not claimed."
+        ],
+        "originalPackSha256": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b"
+      }
+    },
+    "observer_ui_results": {
+      "reportSha256": "2695A68757CBDB3C1F7B962A4D043FFD7BDBD3BC5E62AD81FEEA9F6F248719E0",
+      "nativeExeSha256": "514529ae9cdd70ba66d94719b4cf158eccafff3281a19c917416f8960f328f8f",
+      "report": {
+        "format": "redux-native-party-ui-qa-v1",
+        "nativeExeSha256": "514529ae9cdd70ba66d94719b4cf158eccafff3281a19c917416f8960f328f8f",
+        "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+        "fixedExpectationsEnforced": true,
+        "rows": [
+          {
+            "case": "ness-selection",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "paula-selection",
+            "actual": {
+              "selected": 1,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 2,
+              "spriteVisible": 2,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "rolling-digit-row",
+            "hpDigitRows": [
+              [
+                22
+              ],
+              [
+                22
+              ],
+              [
+                22
+              ],
+              [
+                22
+              ]
+            ],
+            "actual": {
+              "selected": 1,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 2,
+              "spriteVisible": 2,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "damage-blink-off-phase",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 17,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "auto-indicator-render",
+            "positions": [
+              [
+                10,
+                26
+              ]
+            ]
+          },
+          {
+            "case": "auto-indicator-clear",
+            "positions": [],
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                28,
+                6
+              ]
+            }
+          },
+          {
+            "case": "first-battle-completed",
+            "actual": {
+              "selected": -1,
+              "headerRows": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "spriteActive": 0,
+              "spriteVictory": 0,
+              "spriteTargets": 0,
+              "spriteVisible": 0,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 0,
+              "modes": [
+                61
+              ]
+            }
+          },
+          {
+            "case": "second-production-battle-entry",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "prepared-stale-victory-entry",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            },
+            "preparedState": true
+          },
+          {
+            "case": "original-ness-selection",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  18
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 0,
+              "spriteVictory": 0,
+              "spriteTargets": 0,
+              "spriteVisible": 0,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "original-damage-blink-off-phase",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 0,
+              "spriteVictory": 0,
+              "spriteTargets": 0,
+              "spriteVisible": 0,
+              "damageBlinkDuration": 17,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "original-auto-indicator",
+            "positions": [
+              [
+                17,
+                26
+              ]
+            ]
+          }
+        ],
+        "limits": [
+          "Prepared four-member combat, real production entry/menu/cleanup modes; not an entire story playthrough.",
+          "Stale victory is deliberately prepared to test hardening; it is not evidence of a naturally reproduced user bug.",
+          "Original UI regressions prepare new production battle entry from a scratch completed Redux root with BG2 cleared before entry; independent Original story progress is not claimed."
+        ],
+        "originalPackSha256": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b"
+      }
+    },
+    "baseline_ui_results": {
+      "reportSha256": "27E89A7BE0F592078134634FE77DAC0E823358128776AEA3CBB819ADA096B740",
+      "nativeExeSha256": "e670627a3d58641a210c9b73ca5a8e852f85aed81954d2c3a41ad06204e69d5e",
+      "report": {
+        "format": "redux-native-party-ui-qa-v1",
+        "nativeExeSha256": "e670627a3d58641a210c9b73ca5a8e852f85aed81954d2c3a41ad06204e69d5e",
+        "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+        "fixedExpectationsEnforced": false,
+        "rows": [
+          {
+            "case": "ness-selection",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  18
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "paula-selection",
+            "actual": {
+              "selected": 1,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  18
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 2,
+              "spriteVisible": 2,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "rolling-digit-row",
+            "hpDigitRows": [
+              [
+                22
+              ],
+              [
+                21
+              ],
+              [
+                22
+              ],
+              [
+                22
+              ]
+            ],
+            "actual": {
+              "selected": 1,
+              "headerRows": [
+                [
+                  19
+                ],
+                [
+                  18
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 2,
+              "spriteVisible": 2,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "damage-blink-off-phase",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 17,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "auto-indicator-render",
+            "positions": [
+              [
+                17,
+                26
+              ]
+            ]
+          },
+          {
+            "case": "auto-indicator-clear",
+            "positions": [],
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  18
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                28,
+                6
+              ]
+            }
+          },
+          {
+            "case": "first-battle-completed",
+            "actual": {
+              "selected": -1,
+              "headerRows": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "spriteActive": 0,
+              "spriteVictory": 0,
+              "spriteTargets": 0,
+              "spriteVisible": 0,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 0,
+              "modes": [
+                61
+              ]
+            }
+          },
+          {
+            "case": "second-production-battle-entry",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  18
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 0,
+              "spriteTargets": 1,
+              "spriteVisible": 1,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            }
+          },
+          {
+            "case": "prepared-stale-victory-entry",
+            "actual": {
+              "selected": 0,
+              "headerRows": [
+                [
+                  18
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ],
+                [
+                  19
+                ]
+              ],
+              "spriteActive": 1,
+              "spriteVictory": 1,
+              "spriteTargets": 15,
+              "spriteVisible": 15,
+              "damageBlinkDuration": 0,
+              "autoFight": 0,
+              "battleActive": 1,
+              "modes": [
+                61,
+                48,
+                45,
+                44,
+                7
+              ]
+            },
+            "preparedState": true
+          }
+        ],
+        "limits": [
+          "Prepared four-member combat, real production entry/menu/cleanup modes; not an entire story playthrough.",
+          "Stale victory is deliberately prepared to test hardening; it is not evidence of a naturally reproduced user bug."
+        ]
+      }
+    },
+    "audio_results": {
+      "reportSha256": "7DC4F6A5583BA1CABA2F6ADA8F535DFDCBF14FBB58F1CBAFBC8B78EB19E7993D",
+      "nativeExeSha256": "6301AD24B10EEFA11192D3F0803571465DE4460B6554251A1FBE953CDA504812",
+      "report": {
+        "status": "development-only",
+        "passed": true,
+        "nativeExeSha256": "6301AD24B10EEFA11192D3F0803571465DE4460B6554251A1FBE953CDA504812",
+        "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+        "msuManifestSha256": "1792247C12770547D07C932E850D76993159451EA80C52CDEA35C5D5DDFFD630",
+        "soundtrackChecksumsVerified": 164,
+        "soundStoneTransitions": [
+          {
+            "track": 160,
+            "residualEchoPeak": 1,
+            "pcmFrames": 24
+          },
+          {
+            "track": 161,
+            "residualEchoPeak": 1,
+            "pcmFrames": 24
+          },
+          {
+            "track": 162,
+            "residualEchoPeak": 1,
+            "pcmFrames": 24
+          },
+          {
+            "track": 163,
+            "residualEchoPeak": 1,
+            "pcmFrames": 24
+          },
+          {
+            "track": 164,
+            "residualEchoPeak": 1,
+            "pcmFrames": 24
+          },
+          {
+            "track": 165,
+            "residualEchoPeak": 1,
+            "pcmFrames": 24
+          },
+          {
+            "track": 166,
+            "residualEchoPeak": 1,
+            "pcmFrames": 24
+          },
+          {
+            "track": 167,
+            "residualEchoPeak": 1,
+            "pcmFrames": 24
+          }
+        ],
+        "spcEffectPeak": 7428,
+        "spcFallbackTrack": 11,
+        "msuTracks": 164,
+        "loopBoundaryChecks": 125,
+        "oneShotEndChecks": 39,
+        "missingTracks": 27,
+        "limits": [
+          "File checks and native loop/end checks do not replace soundtrack listening.",
+          "Eight Sound Stone transitions, one SPC effect and one missing-track fallback are covered; every story audio transition remains unverified."
+        ]
+      }
+    },
+    "scene_results": {
+      "reportSha256": "4947E197E649EF77F177C32F0E99CDE529729B1ACDB47E259EB3DD0404AA760D",
+      "nativeExeSha256": "45D758E698E4621FDC5A7625CA77078194CEC4F87EC49AA222C98F149CCB2452",
+      "report": {
+        "status": "development-only",
+        "nativeExeSha256": "45D758E698E4621FDC5A7625CA77078194CEC4F87EC49AA222C98F149CCB2452",
+        "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+        "tests": [
+          {
+            "test": "title-0",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 32,
+            "passed": true,
+            "completedFrames": 827
+          },
+          {
+            "test": "title-1",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 32,
+            "passed": true,
+            "completedFrames": 827
+          },
+          {
+            "test": "narration-0",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 2,
+            "passed": true,
+            "completedFrames": 272
+          },
+          {
+            "test": "narration-1",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 2,
+            "passed": true,
+            "completedFrames": 272
+          },
+          {
+            "test": "narration-2",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 2,
+            "passed": true,
+            "completedFrames": 272
+          },
+          {
+            "test": "narration-3",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 2,
+            "passed": true,
+            "completedFrames": 272
+          },
+          {
+            "test": "narration-4",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 2,
+            "passed": true,
+            "completedFrames": 272
+          },
+          {
+            "test": "narration-5",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 2,
+            "passed": true,
+            "completedFrames": 272
+          },
+          {
+            "test": "narration-6",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 2,
+            "passed": true,
+            "completedFrames": 274
+          },
+          {
+            "test": "narration-7",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 2,
+            "passed": true,
+            "completedFrames": 272
+          },
+          {
+            "test": "narration-8",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 4,
+            "passed": true,
+            "completedFrames": 11688
+          },
+          {
+            "test": "narration-9",
+            "renderResolution": [
+              1920,
+              1080
+            ],
+            "colours": 51,
+            "passed": true,
+            "completedFrames": 8872
+          }
+        ],
+        "limits": [
+          "Production-mode fixtures; full story playthrough is still required."
+        ]
+      }
+    },
+    "selftests": {
+      "nativeExeSha256": "6301AD24B10EEFA11192D3F0803571465DE4460B6554251A1FBE953CDA504812",
+      "tests": [
+        {
+          "flag": "--selftest-pc",
+          "passed": true,
+          "log": "PC input remap / overlapping sources / deadzone / hotkey / focus-loss: PASS\r\nmsu: native PCM track 1 (one-shot)\r\nmsu: native PCM track 2 (loop)\r\nMSU one-shot / loop-point / resample / fast-slow-quarter-full fades / invalid-header / missing-track: PASS\r\n"
+        },
+        {
+          "flag": "--selftest-redux-battle-sprites",
+          "passed": true,
+          "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nRedux native battle party sprites: 12 variants, selection, victory, cleanup, 862 pixels, PASS\r\n"
+        },
+        {
+          "flag": "--selftest-redux-movement",
+          "passed": true,
+          "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nRedux movement pointers: all 898 nonzero entries resolve, PASS\r\nRedux movement scene bindings: compiled completion writes, invisible controller and DMA-empty wait, PASS\r\nRedux Moldyman movement: real relocated hook, resting frame and return, PASS\r\nRedux movement tasks: range-aware far spawn, exhausted allocation and stored result, PASS\r\nRedux private movement helpers: 65536 speeds, 50 unsigned comparisons, distance/frame and original fade entry, PASS\r\nRedux movement mosaic: resumable fade-in finishes at full brightness without leftover mosaic, PASS\r\nRedux object effects: 22-slot exhaustion, reserved party slots and released-slot reuse, PASS\r\nRedux native teleport: 128 distant-NPC allocation cycles, protected entities, spawn restoration, PASS\r\nRedux native bicycle: 16 leader, revival, KO and mushroom refresh cases, PASS\r\nRedux native doors/stairs: 6 map-boundary rejects, 8 interrupted-stair callbacks, PASS\r\nRedux delivery letterbox: 14 timed frames, deferred music and serialized continuation, PASS\r\n"
+        },
+        {
+          "flag": "--selftest-redux-motion",
+          "passed": true,
+          "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nRedux movement animation / run sprites / exhaustion / static stamina: PASS\r\n"
+        },
+        {
+          "flag": "--selftest-bicycle-audio",
+          "passed": true,
+          "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nBicycle SPC after ordinary victory: first peak=6838, later peak=5093, PASS\r\nBicycle SPC after instant victory: first peak=6838, later peak=4945, PASS\r\nmsu: native PCM track 96 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after ordinary victory: first peak=12915, later peak=14383, PASS\r\nmsu: native PCM track 183 (loop)\r\nmsu: native PCM track 5 (loop)\r\nmsu: native PCM track 82 (loop)\r\nBicycle MSU after instant victory: first peak=12915, later peak=14383, PASS\r\n"
+        }
+      ],
+      "limits": [
+        "Direct maintainer selftests are bounded; real production UI replays are recorded separately."
+      ]
+    }
+  },
+  "playerObserverUiObservationsMatch": true,
+  "scopeLimits": [
+    "Literal patch coverage and converter byte matches do not establish full story or visual/audio parity.",
+    "This review covers six active modules at the pinned revision; other Redux modules are reviewed separately.",
+    "No source hook is considered implemented merely because a symbol or label exists.",
+    "Remaining branches listed above are unverified, rather than silently classified as passed.",
+    "Prepared fixture mutations are scratch-only and do not represent owner story progress.",
+    "Report contains hashes/references only; no ROM, graphics, PCM, asset pack or save data is included."
+  ]
+}

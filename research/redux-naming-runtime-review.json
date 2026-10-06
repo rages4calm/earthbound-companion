@@ -1,0 +1,590 @@
+{
+  "format": "redux-naming-runtime-review-v1",
+  "Passed": true,
+  "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "sourceReview": {
+    "report": "research/redux-remaining-feature-review.json",
+    "sha256": "ad01c4d6859f05728058403cd4f6cb65acabb8c497192f554785285d8c8a79ec",
+    "moduleCount": 16
+  },
+  "nativeAdapter": {
+    "path": "native-source/src/intro/file_select.c",
+    "sha256": "abae99bb1bade7de73614e098ba04194b148b62a536a6d3040891faff22c97b5",
+    "glyphMatrixLines": [
+      712,
+      721
+    ],
+    "fixedGlyphRendererLine": 848
+  },
+  "runner": {
+    "path": "tools/redux_naming_qa.py",
+    "sha256": "2e64a41ce31e54ee157899a92727ce941720abbd68fe32bd3d575f983c63f56e",
+    "inputs": "ordinary replay buttons only",
+    "stateMutation": "none",
+    "sessionScope": "isolated copies under _BuildScratch",
+    "renderOracle": "independent pixel composition from converted inverted 1bpp normal font plus actual captured VRAM tile bytes",
+    "captureFormat": 16
+  },
+  "baselineReproductions": [
+    {
+      "engineSha256": "e670627a3d58641a210c9b73ca5a8e852f85aed81954d2c3a41ad06204e69d5e",
+      "behavior": "Redux accent cell (0,3) selected digit 0",
+      "expectedEbGlyph": "B0",
+      "actualEbGlyph": "60",
+      "cursor": [
+        0,
+        3
+      ],
+      "stateMetadataSha256": "e8940049eddd095b88e4fdb0c682d4992fe7251eb948bcc2e709bf24646a00eb",
+      "expectedFailure": true
+    },
+    {
+      "engineSha256": "dc368f48e9ccdcaed4194a9e8a24e9507597be3f32c963aa7a1ab1d5b67c4b90",
+      "behavior": "Expanded keyboard labels crossed into the text tilemap and showed checker holes",
+      "overlappingTileIds": [
+        "380",
+        "381",
+        "382",
+        "383",
+        "384",
+        "385",
+        "386",
+        "387"
+      ],
+      "tilemapWordAddress": "7C00",
+      "stateMetadataSha256": "ab00263cd89a327f8029b51f19ed9b57d22727771e64a66fe4f67f54ec124dd2",
+      "confirmedByScreenshot": true
+    }
+  ],
+  "production": {
+    "format": "redux-naming-input-qa-v1",
+    "Passed": true,
+    "identities": {
+      "engine": "514ebc45cd92a5d37e5e077a71fa9a22c0c516a62d9b4711e2429cf95fc9e535",
+      "redux": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "original": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b"
+    },
+    "glyphSelectionCases": [
+      {
+        "glyph": "B0",
+        "cell": [
+          0,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B1",
+        "cell": [
+          2,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B2",
+        "cell": [
+          4,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B3",
+        "cell": [
+          6,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B4",
+        "cell": [
+          8,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B5",
+        "cell": [
+          10,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B7",
+        "cell": [
+          12,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "C0",
+        "cell": [
+          0,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C1",
+        "cell": [
+          2,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C2",
+        "cell": [
+          4,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C3",
+        "cell": [
+          6,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C4",
+        "cell": [
+          8,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C5",
+        "cell": [
+          10,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C7",
+        "cell": [
+          12,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "B8",
+        "cell": [
+          22,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B9",
+        "cell": [
+          22,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "60",
+        "cell": [
+          0,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "61",
+        "cell": [
+          2,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "62",
+        "cell": [
+          4,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "63",
+        "cell": [
+          6,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "64",
+        "cell": [
+          8,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "65",
+        "cell": [
+          10,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "66",
+        "cell": [
+          12,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "67",
+        "cell": [
+          14,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "68",
+        "cell": [
+          16,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "69",
+        "cell": [
+          18,
+          4
+        ],
+        "lowercase": false
+      }
+    ],
+    "sixLetterMixedNameRawEbIds": [
+      "79",
+      "B0",
+      "C0",
+      "60",
+      "B8",
+      "B9"
+    ],
+    "keyboardColdResumePreservesCaseCursorGlyphs": true,
+    "committedSixLetterName": true,
+    "tenLetterFoodKeyboard": true,
+    "nativePhoneFormatWriteAndFreshLoad": true,
+    "worldQuicksaveColdLoad": true,
+    "originalRetailChecks": {
+      "digitRow": 3,
+      "selectBackspaces": true,
+      "alphabetRow": 4
+    },
+    "ownerSavesTouched": false,
+    "fullPlaythroughVerified": false,
+    "reduxKeyboardRenderedStatesChecked": 72,
+    "reduxGridExactConvertedFontPixels": true,
+    "buttonLabelsExactConvertedFontPixels": true,
+    "gridNameCursorLabelTileRangesDisjoint": true,
+    "limits": [
+      "Ordinary-input new-game/naming/opening and native menu Save only; no full story or complete rendering oracle.",
+      "Menu Save uses the production phone-format writer; actual Dad dialogue is not exercised by this fixture.",
+      "Raw glyph/state preservation and nonempty font data do not prove every UI renders every name perfectly."
+    ]
+  },
+  "observer": {
+    "format": "redux-naming-input-qa-v1",
+    "Passed": true,
+    "identities": {
+      "engine": "78a87eb58f4ab338a641fe9e9883087ae0c3fbd3514e2d842fffa7da041e4018",
+      "redux": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "original": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b"
+    },
+    "glyphSelectionCases": [
+      {
+        "glyph": "B0",
+        "cell": [
+          0,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B1",
+        "cell": [
+          2,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B2",
+        "cell": [
+          4,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B3",
+        "cell": [
+          6,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B4",
+        "cell": [
+          8,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B5",
+        "cell": [
+          10,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B7",
+        "cell": [
+          12,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "C0",
+        "cell": [
+          0,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C1",
+        "cell": [
+          2,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C2",
+        "cell": [
+          4,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C3",
+        "cell": [
+          6,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C4",
+        "cell": [
+          8,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C5",
+        "cell": [
+          10,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "C7",
+        "cell": [
+          12,
+          3
+        ],
+        "lowercase": true
+      },
+      {
+        "glyph": "B8",
+        "cell": [
+          22,
+          3
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "B9",
+        "cell": [
+          22,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "60",
+        "cell": [
+          0,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "61",
+        "cell": [
+          2,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "62",
+        "cell": [
+          4,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "63",
+        "cell": [
+          6,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "64",
+        "cell": [
+          8,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "65",
+        "cell": [
+          10,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "66",
+        "cell": [
+          12,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "67",
+        "cell": [
+          14,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "68",
+        "cell": [
+          16,
+          4
+        ],
+        "lowercase": false
+      },
+      {
+        "glyph": "69",
+        "cell": [
+          18,
+          4
+        ],
+        "lowercase": false
+      }
+    ],
+    "sixLetterMixedNameRawEbIds": [
+      "79",
+      "B0",
+      "C0",
+      "60",
+      "B8",
+      "B9"
+    ],
+    "keyboardColdResumePreservesCaseCursorGlyphs": true,
+    "committedSixLetterName": true,
+    "tenLetterFoodKeyboard": true,
+    "nativePhoneFormatWriteAndFreshLoad": true,
+    "worldQuicksaveColdLoad": true,
+    "originalRetailChecks": {
+      "digitRow": 3,
+      "selectBackspaces": true,
+      "alphabetRow": 4
+    },
+    "ownerSavesTouched": false,
+    "fullPlaythroughVerified": false,
+    "reduxKeyboardRenderedStatesChecked": 72,
+    "reduxGridExactConvertedFontPixels": true,
+    "buttonLabelsExactConvertedFontPixels": true,
+    "gridNameCursorLabelTileRangesDisjoint": true,
+    "limits": [
+      "Ordinary-input new-game/naming/opening and native menu Save only; no full story or complete rendering oracle.",
+      "Menu Save uses the production phone-format writer; actual Dad dialogue is not exercised by this fixture.",
+      "Raw glyph/state preservation and nonempty font data do not prove every UI renders every name perfectly."
+    ]
+  },
+  "reproduction": {
+    "command": "native-source/.venv/Scripts/python.exe tools/redux_naming_qa.py --engine <frozen-player-or-observer.exe> --assets <owner-Redux-assets.pak> --original-assets <owner-Original-assets.pak> --scratch _BuildScratch/<fresh-directory>",
+    "sourceAuditCommand": "native-source/.venv/Scripts/python.exe tools/audit_redux_remaining_features.py --project <pinned-MaternalBound-Redux-Project> --native-source native-source --bridge research/maternalbound-native-bridge.json --compiled-rom <owner-compiled-pinned-redux.sfc> --assets <owner-Redux-assets.pak> --output research/redux-remaining-feature-review.json"
+  },
+  "ownerSavesTouched": false,
+  "romOrPackPayloadIncluded": false,
+  "fullStoryParityClaimed": false,
+  "limits": [
+    "Naming/new-game/opening/save/load paths only; no full story or all-name rendering guarantee.",
+    "Native menu Save exercises the phone-format writer; actual Dad dialogue and both good-night reset branches are unverified by this runner.",
+    "Unused source destructor callback library and disabled Kirby boot debugger remain outside native gameplay parity."
+  ],
+  "currentBuildSamples": {
+    "runtimeReview": "research/redux-reset-runtime-review.json",
+    "sha256": "b4d1bda35ad67b66a162e003a69cc0576125fa3f9d1e4d36c3e1fb6b5ca540b0",
+    "production": {
+      "player": {
+        "engineSha256": "a12abeb0e6601c7779419364311d78d2e42110b87536d6e3a05192475e7c671d",
+        "Passed": true,
+        "coldAccentCaseCursorRestore": true,
+        "renderedKeyboardStatesChecked": 3,
+        "full72StateSuiteClaimed": false,
+        "fileSelectSourceUnchangedFromNamingReview": true
+      },
+      "observer": {
+        "engineSha256": "10728262dc1b6dadb773499f4a40487791009438a3eefbe3afbe8bcf4a23e7ff",
+        "Passed": true,
+        "coldAccentCaseCursorRestore": true,
+        "renderedKeyboardStatesChecked": 3,
+        "full72StateSuiteClaimed": false,
+        "fileSelectSourceUnchangedFromNamingReview": true
+      }
+    },
+    "full72StateSuiteReRunOnCurrentBuild": false
+  }
+}

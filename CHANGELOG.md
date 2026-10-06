@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0-redux-dev.14 - native audit and source-backed corrections
+
+- Fix scripted hotel wake-up overlaps in the swept movement guard; retain rejection of newly entered walls and cliff escapes. Preserve the reported save and all content/save identities.
+- Match original 16-bit wrapped/logical collision coordinates. Compare 11,088 prepared helper cases with original SNES machine code, reproducing 1,731 prior discrepancies.
+- Preserve full scaled results in damage/healing variance. Original CPU comparisons reproduce 254 prior errors across 1,152 cases.
+- Adapt the exact six-row Redux naming keyboard and prevent glyph/label VRAM overlap. Check normal inputs, converted font pixels, names/food and save/cold restores; retain Original behavior.
+- Match stationary Redux HP/PP boxes/digits, no damage undraw, AUTO placement/clearing and portrait reset at actual encounter entry. Retain Original UI behavior.
+- Correct unused CC 1A10 item quantity API widths, empty slots and party bounds; reproduce eight old dispatcher failures and pass all 19 cases.
+- Correct the pinned Gauss Labs End input-lock deadlock with a narrowly identified native adaptation. Verify actual Dad/Gauss Continue/End flows and cold title continuation.
+- Add reproducible source/data reviews, subsystem/catalog tests and selected independent SNES micro-oracles. Retain explicit incomplete story, randomizer and full semantic coverage. See docs/NATIVE-AUDIT.md.
+
 ## 0.5.0-redux-dev.13 - stair entry and landing movement
 
 - Correct the ascending direction condition and accept the cardinal components or diagonal toward each of the four stair variants. Moving away does not start stair entry.

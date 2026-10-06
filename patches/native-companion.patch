@@ -14,7 +14,7 @@ index beecb38..43a704a 100644
  # Emit compile_commands.json so clangd/IDEs resolve include paths and types.
  # A root-level symlink (../../compile_commands.json) points at this file.
 diff --git a/port/unix/main.c b/port/unix/main.c
-index f625aff..744367e 100644
+index f625aff..ba65de5 100644
 --- a/port/unix/main.c
 +++ b/port/unix/main.c
 @@ -32,12 +32,32 @@
@@ -50,7 +50,7 @@ index f625aff..744367e 100644
  #include "version.h"    /* EB_VERSION_STRING -- generated, see CMakeLists.txt.
                            * Unconditionally generated (not gated behind
                            * EB_UPDATER_ENABLED the way sdl2_updater.c's own
-@@ -368,12 +388,61 @@ static void migrate_legacy_saves_to_saves_folder(void) {
+@@ -368,12 +388,62 @@ static void migrate_legacy_saves_to_saves_folder(void) {
  
  int main(int argc, char *argv[]) {
      chdir_to_executable_dir(); /* before anything below touches a relative path */
@@ -103,6 +103,7 @@ index f625aff..744367e 100644
 +    bool redux_world_fixture = false;
 +    int winters_monkey_fixture = -1;
 +    int stairs_fixture_x = -1, stairs_fixture_y = -1;
++    int teleport_fixture = -1;
 +    bool stairs_stop_at_landing = false;
 +    bool redux_battle_art_selftest = false;
 +    bool redux_combat_selftest = false;
@@ -112,7 +113,7 @@ index f625aff..744367e 100644
      bool threed_zombie_flag_check = false;
      bool threed_zombie_flag_fix = false;
      bool jeff_flag_fix = false;
-@@ -396,7 +465,26 @@ int main(int argc, char *argv[]) {
+@@ -396,7 +466,26 @@ int main(int argc, char *argv[]) {
  #endif
  
      for (int i = 1; i < argc; i++) {
@@ -140,7 +141,7 @@ index f625aff..744367e 100644
              verify_rom_path = argv[++i];
  #ifdef EB_RUNTIME_ASSETS
          } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
-@@ -420,6 +508,89 @@ int main(int argc, char *argv[]) {
+@@ -420,6 +509,94 @@ int main(int argc, char *argv[]) {
               * --save FILE. Implies headless. */
              keyitems_selftest = true;
              platform_headless = true;
@@ -217,7 +218,12 @@ index f625aff..744367e 100644
 +            if(winters_monkey_fixture<0 || winters_monkey_fixture>3) return 1;
 +        } else if (strcmp(argv[i], "--stairs-stop-at-landing") == 0) {
 +            stairs_stop_at_landing = true;
-+        } else if (strcmp(argv[i], "--stairs-fixture") == 0 && i+2 < argc) {
++        } else if (strcmp(argv[i], "--teleport-fixture") == 0 && i+1 < argc) {
++            char *end=NULL;long value=strtol(argv[++i],&end,10);
++            if(!end || *end || value<0 || value>255) return 1;
++            teleport_fixture=(int)value;
++        } else if ((strcmp(argv[i], "--stairs-fixture") == 0 ||
++                    strcmp(argv[i], "--world-fixture") == 0) && i+2 < argc) {
 +            stairs_fixture_x=atoi(argv[++i]);stairs_fixture_y=atoi(argv[++i]);
 +            if(stairs_fixture_x<0 || stairs_fixture_x>=8192 || stairs_fixture_y<0 || stairs_fixture_y>=10240) return 1;
 +        } else if (strcmp(argv[i], "--redux-dialogue-fixture") == 0 && i+1 < argc) {
@@ -230,7 +236,7 @@ index f625aff..744367e 100644
          } else if (strcmp(argv[i], "--selftest-joinlevel") == 0) {
              /* Join-level scaling (Paula/Jeff/Poo scaled to Ness's current
               * level, see add_char_to_party()'s doc comment, inventory.c).
-@@ -536,7 +707,7 @@ int main(int argc, char *argv[]) {
+@@ -536,7 +713,7 @@ int main(int argc, char *argv[]) {
  #else
                              " [--export-pak FILE]"
  #endif
@@ -239,7 +245,7 @@ index f625aff..744367e 100644
                      argv[0]);
              return 1;
          }
-@@ -630,6 +801,10 @@ int main(int argc, char *argv[]) {
+@@ -630,6 +807,10 @@ int main(int argc, char *argv[]) {
       * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
       * platform-conventional data dir (see eb_runtime_assets_default_path). */
      char default_assets_path[1024];
@@ -250,7 +256,7 @@ index f625aff..744367e 100644
      if (assets_path == NULL) {
          assets_path = getenv("EB_ASSETS_PAK");
      }
-@@ -916,6 +1091,9 @@ int main(int argc, char *argv[]) {
+@@ -916,6 +1097,9 @@ int main(int argc, char *argv[]) {
       * itself (sdl2_video.c is platform-agnostic and already correct). */
      SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
@@ -260,7 +266,7 @@ index f625aff..744367e 100644
      /* Initialize SDL */
      uint32_t sdl_flags = SDL_INIT_TIMER;
      if (!platform_headless) {
-@@ -938,6 +1116,7 @@ int main(int argc, char *argv[]) {
+@@ -938,6 +1122,7 @@ int main(int argc, char *argv[]) {
      platform_input_init();
      platform_save_init();
      settings_load();
@@ -268,7 +274,7 @@ index f625aff..744367e 100644
      /* Resume logging automatically if a previous session left the Config
       * menu's "Logging" row on -- a tester shouldn't have to re-enable it
       * after every relaunch (including the updater's own self-relaunch) to
-@@ -965,6 +1144,30 @@ int main(int argc, char *argv[]) {
+@@ -965,6 +1150,30 @@ int main(int argc, char *argv[]) {
  
      /* Initialize game systems */
      game_init();
@@ -299,7 +305,7 @@ index f625aff..744367e 100644
  
      /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
       * fresh boot. Just requests it here -- the normal per-frame
-@@ -993,7 +1196,32 @@ int main(int argc, char *argv[]) {
+@@ -993,7 +1202,32 @@ int main(int argc, char *argv[]) {
          fprintf(stderr, "key items pool self-test: %s\n", ok_ki ? "PASS" : "FAIL");
          exit(ok_ki ? 0 : 1);
      }
@@ -333,7 +339,7 @@ index f625aff..744367e 100644
      if (joinlevel_selftest) {
          bool ok_jl = join_level_scaling_selftest();
          fprintf(stderr, "join-level scaling self-test: %s\n", ok_jl ? "PASS" : "FAIL");
-@@ -1194,6 +1422,179 @@ int main(int argc, char *argv[]) {
+@@ -1194,6 +1428,193 @@ int main(int argc, char *argv[]) {
          exit(0);
      }
  
@@ -380,6 +386,14 @@ index f625aff..744367e 100644
 +        mode_push(GAME_MODE_FLYOVER,&fixture);
 +    }
 +
++    if(teleport_fixture>=0) {
++        const TeleportDestination *dest=get_teleport_dest((uint16_t)teleport_fixture);
++        if(!dest || load_state_at_boot || stairs_fixture_x>=0) {
++            fprintf(stderr,"Invalid or conflicting teleport fixture.\n");return 1;
++        }
++        stairs_fixture_x=dest->x_coord*8;stairs_fixture_y=dest->y_coord*8;
++        if(stairs_fixture_x>=8192 || stairs_fixture_y>=10240) return 1;
++    }
 +    if(stairs_fixture_x>=0 && !load_state_at_boot) {
 +        window_system_init();
 +        init_used_bg2_tile_map();text_setup_bg3();text_upload_font_tiles();text_load_window_gfx();
@@ -399,6 +413,12 @@ index f625aff..744367e 100644
 +        enable_character_movement(0xFF);
 +        g_mode_stack.state[0].overworld.phase=OWP_RENDER;ppu.inidisp=15;
 +        fprintf(stderr,"Stairs fixture prepared at %d,%d\n",stairs_fixture_x,stairs_fixture_y);
++        if(teleport_fixture>=0) {
++            ModeState fixture={0};fixture.teleport_to.phase=TT_BEGIN;
++            fixture.teleport_to.dest_id=(uint8_t)teleport_fixture;
++            mode_push(GAME_MODE_TELEPORT_TO,&fixture);
++            fprintf(stderr,"Teleport fixture %d started through native transition\n",teleport_fixture);
++        }
 +    }
 +
 +    if(winters_monkey_fixture>=0 && !load_state_at_boot) {
@@ -513,7 +533,7 @@ index f625aff..744367e 100644
      /* Initialize audio (loads audio packs from embedded assets) */
      if (!platform_headless)
          platform_audio_init();
-@@ -1208,7 +1609,7 @@ int main(int argc, char *argv[]) {
+@@ -1208,7 +1629,7 @@ int main(int argc, char *argv[]) {
           * --msu-dir/--msu-name flags, and nothing to add to a Steam
           * shortcut's Launch Options (editing those is real friction, and
           * has to be redone every time the pack changes). */
@@ -522,7 +542,7 @@ index f625aff..744367e 100644
          char detected_name[128];
          const char *name = msu_name;
  
-@@ -1277,12 +1678,133 @@ int main(int argc, char *argv[]) {
+@@ -1277,12 +1698,137 @@ int main(int argc, char *argv[]) {
       * See docs/plans/savestate-unified-loop.md. */
      platform_timer_frame_start();
  
@@ -619,6 +639,10 @@ index f625aff..744367e 100644
 +            fprintf(stderr,"QA observation write failed.\n");return 1;
 +        }
 +#endif
++        if(teleport_fixture>=0 && g_mode_stack.depth==1) {
++            fprintf(stderr,"Teleport fixture %d completed in %d frames, PASS\n",teleport_fixture,frame_num+1);
++            teleport_fixture=-1;
++        }
 +        if(redux_narration_fixture>=0) {
 +            bool active=false;
 +            for(unsigned i=0;i<g_mode_stack.depth;i++) active|=g_mode_stack.mode[i]==GAME_MODE_FLYOVER;
@@ -3218,7 +3242,7 @@ index 2a3e5d1..41169d5 100644
  static inline void audio_unlock(void) {}
  
 diff --git a/src/game/battle.c b/src/game/battle.c
-index ef6571c..6f5dc8d 100644
+index ef6571c..86bb001 100644
 --- a/src/game/battle.c
 +++ b/src/game/battle.c
 @@ -1,3 +1,4 @@
@@ -3689,7 +3713,17 @@ index ef6571c..6f5dc8d 100644
          }
      }
  }
-@@ -4411,6 +4616,8 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4314,6 +4519,9 @@ StepResult mode_step_battle(ModeState *ms) {
+         switch ((BattleRoutinePhase)st->phase) {
+ 
+         case BTL_BEGIN:
++            /* Redux before_battle_hj (C04A83) resets m3sbs before the
++             * shared encounter entry, including cold/stale checkpoints. */
++            maternalbound_battle_sprites_reset();
+             /* Phase 1: initial setup (lines 26-133) */
+             btl_begin(st);
+             st->phase = BTL_REINIT;
+@@ -4411,6 +4619,8 @@ StepResult mode_step_battle(ModeState *ms) {
          case BTL_TURN:
              /* start_turn (lines 1110-1176) */
              btl_start_turn(st);
@@ -3698,7 +3732,7 @@ index ef6571c..6f5dc8d 100644
              st->phase = BTL_MENU;
              break;
  
-@@ -4548,7 +4755,8 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4548,7 +4758,8 @@ StepResult mode_step_battle(ModeState *ms) {
  
          case BTL_ENEMY_AI:
              /* Phase 6: enemy AI (lines 1497-1921) */
@@ -3708,7 +3742,7 @@ index ef6571c..6f5dc8d 100644
  
              /* Phase 7: announce enemy-first initiative (lines 1922-1931) */
              create_window(0x0E);
-@@ -4614,6 +4822,8 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4614,6 +4825,8 @@ StepResult mode_step_battle(ModeState *ms) {
              st->attacker = best_battler;
              Battler *attacker = &bt.battlers_table[best_battler];
              attacker->has_taken_turn = 1;
@@ -3717,7 +3751,7 @@ index ef6571c..6f5dc8d 100644
  
              /* Check if attacker is incapacitated */
              uint8_t status0 = attacker->afflictions[STATUS_GROUP_PERSISTENT_EASYHEAL];
-@@ -4829,6 +5039,10 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4829,6 +5042,10 @@ StepResult mode_step_battle(ModeState *ms) {
              if (battle_action_table) {
                  uint32_t func_ptr =
                      battle_action_table[attacker->current_action].battle_function_pointer;
@@ -3728,7 +3762,7 @@ index ef6571c..6f5dc8d 100644
                  if (func_ptr != 0 && battle_action_dispatch(func_ptr, &child_init))
                      return STEP_RESULT_PUSH_INIT(GAME_MODE_BATTLE_ACTION, &child_init);
              }
-@@ -4837,6 +5051,15 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4837,6 +5054,15 @@ StepResult mode_step_battle(ModeState *ms) {
  
          case BTL_TARGET_POST:
              /* ---- Post-action checks for the current target ---- dead-check first. */
@@ -3744,7 +3778,7 @@ index ef6571c..6f5dc8d 100644
              check_dead_players_make_init(&child_init);
              st->phase = BTL_TARGET_POST_BODY;
              return STEP_RESULT_PUSH_INIT(GAME_MODE_CHECK_DEAD_PLAYERS, &child_init);
-@@ -4997,7 +5220,9 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4997,7 +5223,9 @@ StepResult mode_step_battle(ModeState *ms) {
          case BTL_DEFEAT_DONE:
              dt.blinking_triangle_flag = 0;
              st->post_battle_exit = 1;
@@ -3755,7 +3789,7 @@ index ef6571c..6f5dc8d 100644
              break;
  
          case BTL_END_CHECK2:
-@@ -5009,6 +5234,7 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -5009,6 +5237,7 @@ StepResult mode_step_battle(ModeState *ms) {
              break;
  
          case BTL_VICTORY: {
@@ -3763,7 +3797,7 @@ index ef6571c..6f5dc8d 100644
              /* enemies_are_dead (lines 3050-3158) */
              st->battle_result = 0;
              reset_hppp_rolling();
-@@ -5075,6 +5301,7 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -5075,6 +5304,7 @@ StepResult mode_step_battle(ModeState *ms) {
  
          case BTL_CLOSE_WINDOW:
              /* close_battle_window + check_new_turn */
@@ -3771,7 +3805,7 @@ index ef6571c..6f5dc8d 100644
              redirect_close_focus_window();
              if (st->post_battle_exit == 0) {
                  st->phase = BTL_TURN;  /* goto start_turn */
-@@ -5218,7 +5445,7 @@ static void update_mushroom_status(void) {
+@@ -5218,7 +5448,7 @@ static void update_mushroom_status(void) {
              ow.mushroomization_timer = 0x0708;
              ow.mushroomization_modifier = 0;
          }
@@ -3780,7 +3814,7 @@ index ef6571c..6f5dc8d 100644
              dismount_bicycle();
          }
      } else {
-@@ -5663,6 +5890,121 @@ static uint16_t instant_win_check(void) {
+@@ -5663,6 +5893,121 @@ static uint16_t instant_win_check(void) {
      return 0;  /* Ran out of party members */
  }
  
@@ -3902,7 +3936,7 @@ index ef6571c..6f5dc8d 100644
  /*
   * FILL_PALETTES_WITH_COLOR (port of C26189)
   *
-@@ -5702,7 +6044,7 @@ static void iw_victory_setup(void) {
+@@ -5702,7 +6047,7 @@ static void iw_victory_setup(void) {
      }
  
      /* Deposit money into ATM and add to running total (game_state.unknownC4) */
@@ -3911,7 +3945,7 @@ index ef6571c..6f5dc8d 100644
      uint32_t deposited = deposit_into_atm(money32);
  
      /* Add deposited amount to game_state.unknownC4 (32-bit running battle money) */
-@@ -5734,9 +6076,58 @@ static void iw_victory_setup(void) {
+@@ -5734,9 +6079,58 @@ static void iw_victory_setup(void) {
  
      /* Divide EXP evenly among alive party members (ceiling division) */
      uint16_t alive_count = battle_count_chars(0);
@@ -3971,7 +4005,7 @@ index ef6571c..6f5dc8d 100644
  }
  
  /* The random item-drop roll (verbatim from the blocking instant_win_handler).
-@@ -6212,6 +6603,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6212,6 +6606,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
                  fade_in(1, 1);
              } else {
                  /* Party defeated, return immediately */
@@ -3979,7 +4013,7 @@ index ef6571c..6f5dc8d 100644
                  return STEP_RESULT_POP(1);
              }
              st->phase = BS_CLEANUP;
-@@ -6221,6 +6613,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6221,6 +6616,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
          case BS_TELEPORT_DEFEATED:
              /* After a post-battle PSI teleport with the party defeated: pop 1,
               * skipping cleanup (matches the blocking `return 1` after teleport). */
@@ -3987,7 +4021,7 @@ index ef6571c..6f5dc8d 100644
              return STEP_RESULT_POP(1);
  
          case BS_CLEANUP:
-@@ -6260,3 +6653,63 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6260,3 +6656,63 @@ StepResult mode_step_battle_scripted(ModeState *state) {
          }
      }
  }
@@ -4419,7 +4453,7 @@ index d7bc732..876d08b 100644
 +    return true;
 +}
 diff --git a/src/game/battle_calc.c b/src/game/battle_calc.c
-index 58bfb5c..ea42ee8 100644
+index 58bfb5c..e11fd6b 100644
 --- a/src/game/battle_calc.c
 +++ b/src/game/battle_calc.c
 @@ -13,10 +13,12 @@
@@ -4435,7 +4469,34 @@ index 58bfb5c..ea42ee8 100644
  
  /* ======================================================================
   * GAME_MODE_BATTLE_CALC plumbing
-@@ -286,13 +288,17 @@ uint8_t battle_calc_psi_res_modifier(uint8_t resist_level) {
+@@ -184,10 +186,10 @@ uint16_t battle_25pct_variance(uint16_t value) {
+         chosen_abs = abs_r2;
+     }
+ 
+-    /* Apply half the percentage offset to the value.
+-     * The assembly uses TRUNCATE_16_TO_8 which is (value * abs) >> 8,
+-     * then divides by 2 (LSR). */
+-    uint8_t adjustment = (uint8_t)(((uint16_t)value * chosen_abs) >> 8);
++    /* TRUNCATE_16_TO_8 takes an 8-bit factor but returns the full 16-bit
++     * scaled product. The caller then halves it with a 16-bit LSR; narrowing
++     * before that wraps large PSI damage and healing adjustments. */
++    uint16_t adjustment = (uint16_t)(((uint32_t)value * chosen_abs) >> 8);
+     adjustment >>= 1; /* Half for 25% variant (12.5% effective range) */
+ 
+     if (chosen < 0) {
+@@ -225,8 +227,9 @@ uint16_t battle_50pct_variance(uint16_t value) {
+         chosen_abs = abs_r2;
+     }
+ 
+-    /* No /2 for 50% variant, full adjustment */
+-    uint8_t adjustment = (uint8_t)(((uint16_t)value * chosen_abs) >> 8);
++    /* Keep TRUNCATE_16_TO_8's full 16-bit return value. The factor is 8-bit,
++     * not the result; this variant has no following division by two. */
++    uint16_t adjustment = (uint16_t)(((uint32_t)value * chosen_abs) >> 8);
+ 
+     if (chosen < 0) {
+         if (adjustment > value)
+@@ -286,13 +289,17 @@ uint8_t battle_calc_psi_res_modifier(uint8_t resist_level) {
   * Clamps to base_offense * 5 / 4 (125% of base).
   */
  void battle_increase_offense(Battler *target) {
@@ -4456,7 +4517,7 @@ index 58bfb5c..ea42ee8 100644
      if (target->offense > max_offense)
          target->offense = max_offense;
  }
-@@ -305,10 +311,10 @@ void battle_increase_offense(Battler *target) {
+@@ -305,10 +312,10 @@ void battle_increase_offense(Battler *target) {
   * Clamps to base_offense * 3 / 4 (75% of base).
   */
  void battle_decrease_offense(Battler *target) {
@@ -4469,7 +4530,7 @@ index 58bfb5c..ea42ee8 100644
  
      /* Clamp to 75% of base */
      uint16_t min_offense = ((uint16_t)target->base_offense * 3) >> 2;
-@@ -324,12 +330,13 @@ void battle_decrease_offense(Battler *target) {
+@@ -324,12 +331,13 @@ void battle_decrease_offense(Battler *target) {
   * Clamps to base_defense * 5 / 4 (125% of base).
   */
  void battle_increase_defense(Battler *target) {
@@ -4485,7 +4546,7 @@ index 58bfb5c..ea42ee8 100644
      if (target->defense > max_defense)
          target->defense = max_defense;
  }
-@@ -342,12 +349,14 @@ void battle_increase_defense(Battler *target) {
+@@ -342,12 +350,14 @@ void battle_increase_defense(Battler *target) {
   * Clamps to base_defense * 3 / 4 (75% of base).
   */
  void battle_decrease_defense(Battler *target) {
@@ -4503,7 +4564,7 @@ index 58bfb5c..ea42ee8 100644
      if (target->defense < min_defense)
          target->defense = min_defense;
  }
-@@ -568,7 +577,7 @@ static StepResult bc_calc_damage_step(BattleCalcState *st) {
+@@ -568,7 +578,7 @@ static StepResult bc_calc_damage_step(BattleCalcState *st) {
                  if (tgt->hp_target == 0) {
                      if (saved_hp > 1) {
                          Battler *atk = battler_from_offset(bt.current_attacker);
@@ -4512,7 +4573,7 @@ index 58bfb5c..ea42ee8 100644
                          if (guts < GUTS_FLOOR_FOR_SMAAAASH_CHANCE)
                              guts = GUTS_FLOOR_FOR_SMAAAASH_CHANCE;
                          if (battle_success_500(guts)) {
-@@ -977,6 +986,9 @@ static StepResult bc_miss_calc_step(BattleCalcState *st) {
+@@ -977,6 +987,9 @@ static StepResult bc_miss_calc_step(BattleCalcState *st) {
              } else {
                  miss_chance = 0;
              }
@@ -4522,7 +4583,7 @@ index 58bfb5c..ea42ee8 100644
          }
  
          /* Roll for miss */
-@@ -1399,3 +1411,55 @@ void recalc_character_miss_rate(uint16_t character_id) {
+@@ -1399,3 +1412,55 @@ void recalc_character_miss_rate(uint16_t character_id) {
      ch->miss_rate = entry->params[ITEM_PARAM_SPECIAL];
  }
  
@@ -4798,7 +4859,7 @@ index ce9f34f..d3e37de 100644
 +}
 +
 diff --git a/src/game/battle_ui.c b/src/game/battle_ui.c
-index 9d558c4..9f2e674 100644
+index 9d558c4..15f01fd 100644
 --- a/src/game/battle_ui.c
 +++ b/src/game/battle_ui.c
 @@ -6,6 +6,8 @@
@@ -5019,7 +5080,15 @@ index 9d558c4..9f2e674 100644
  
  /*
   * LOAD_BATTLE_SCENE (asm/battle/load_battle_scene.asm)
-@@ -2162,6 +2241,7 @@ void apply_letterbox_to_ppu(void) {
+@@ -1903,6 +1982,7 @@ bool blank_screen_and_wait_vblank_work_step(void) {
+  * Called at the start of battle initialization and from file select/intro.
+  */
+ void initialize_battle_ui_state(void) {
++    maternalbound_battle_sprites_reset();
+     ow.render_hppp_windows = 0;
+     bt.current_flashing_enemy_row = 0xFFFF;
+     bt.current_flashing_row = -1;
+@@ -2162,6 +2242,7 @@ void apply_letterbox_to_ppu(void) {
   * swirl effect, battle sprite palette animation, and letterbox ending.
   */
  void update_battle_screen_effects(void) {
@@ -5027,8 +5096,20 @@ index 9d558c4..9f2e674 100644
      /* Background darkening (battle intro fade) */
      if (bt.enable_background_darkening) {
          bt.background_brightness -= 0x0555;
+@@ -2319,7 +2400,10 @@ void update_battle_screen_effects(void) {
+         bt.hp_pp_box_blink_duration--;
+         if ((bt.hp_pp_box_blink_duration / 3) & 1) {
+             /* Blink off: undraw the HP/PP window */
+-            undraw_hp_pp_window(bt.hp_pp_box_blink_target);
++            /* m3sprites.ccs C2DD9A removes only this call. Its timer and
++             * redraw branch remain active; original EarthBound still blinks. */
++            if (!maternalbound_enabled())
++                undraw_hp_pp_window(bt.hp_pp_box_blink_target);
+         } else {
+             /* Blink on: redraw the HP/PP window */
+             draw_and_mark_hppp_window(bt.hp_pp_box_blink_target);
 diff --git a/src/game/display_text.c b/src/game/display_text.c
-index 9b2cb3d..297ed96 100644
+index 9b2cb3d..69649e1 100644
 --- a/src/game/display_text.c
 +++ b/src/game/display_text.c
 @@ -12,6 +12,7 @@
@@ -5039,7 +5120,7 @@ index 9b2cb3d..297ed96 100644
  #include "game/game_state.h"
  #include "game/inventory.h"
  #include "game/text.h"
-@@ -185,6 +186,352 @@ void restore_window_text_attributes(void) {
+@@ -185,6 +186,399 @@ void restore_window_text_attributes(void) {
   * get_working_memory() always returns 0, causing JUMP_IF_FALSE to always jump. */
  static WindowInfo dummy_window;
  
@@ -5111,6 +5192,53 @@ index 9b2cb3d..297ed96 100644
 +        bool passed = !pushed && reader.ptr_off == size && get_working_memory() == register_cases[i].expected;
 +        ok &= passed; ++checks;
 +        if (!passed) fprintf(stderr, "Redux VM register case %zu failed\n", i);
++    }
++    /* Exact item_quantity.ccs dispatcher operands and party stopping rules.
++     * This extension has no pinned story call site; retain native pooled-key
++     * possession while matching the original four-inventory counting API. */
++    {
++        uint8_t saved_items[4][ITEM_INVENTORY_SIZE];
++        uint8_t saved_pool[sizeof(key_items_pool)];
++        for (unsigned n=0;n<4;++n)
++            memcpy(saved_items[n],party_characters[n].items,ITEM_INVENTORY_SIZE);
++        memcpy(saved_pool,key_items_pool,sizeof(saved_pool));
++        const uint8_t orders[][6] = {
++            {1,2,3,4,0,0},{3,1,0,0,0,0},{1,16,2,0,0,0},
++            {0,1,2,3,4,0},{1,2,3,4,1,2}
++        };
++        const struct {uint8_t order,operand;uint32_t argument,expected;} quantities[] = {
++            {0,42,0xFFFFFFFFu,4},{0,0,42,4},{0,0,0x1234002Au,4},
++            {0,0,0,50},{0,0,0x12340000u,50},{0,0,256,0},
++            {0,0,0x12340100u,0},{0,255,0,1},{0,77,42,1},
++            {1,42,0,3},{1,0,0,24},{2,42,0,2},{2,0,0,12},
++            {3,42,0,0},{3,0,0,0},{4,42,0,4},{4,0,0,50},
++            {0,83,0,1},{3,0,0x12340053u,1}
++        };
++        for (unsigned i=0;i<sizeof(quantities)/sizeof(quantities[0]);++i) {
++            for(unsigned n=0;n<4;++n) memset(party_characters[n].items,0,ITEM_INVENTORY_SIZE);
++            party_characters[0].items[0]=party_characters[0].items[13]=42;
++            party_characters[1].items[0]=42;
++            party_characters[2].items[0]=77;party_characters[2].items[1]=42;
++            party_characters[3].items[0]=255;
++            memset(key_items_pool,0,sizeof(key_items_pool));key_items_pool[0]=83;
++            memcpy(game_state.party_order,orders[quantities[i].order],sizeof(game_state.party_order));
++            uint8_t script[]={0x10,quantities[i].operand};
++            dialogue_blob=script;dialogue_blob_size=sizeof(script);
++            ScriptReader reader={TEXT_SRC_DIALOGUE,0,sizeof(script),-1};
++            ModeState child={0};GameMode mode=0;uint8_t resume=0;uint16_t window=0;uint32_t arg=0;
++            set_argument_memory(quantities[i].argument);
++            set_working_memory(UINT32_MAX);
++            bool pushed=cc_1a_dispatch(&reader,&child,&mode,&resume,&window,&arg);
++            bool passed=!pushed && reader.ptr_off==sizeof(script) && get_working_memory()==quantities[i].expected;
++            ok &= passed;++checks;
++            if(!passed) fprintf(stderr,"Redux item quantity case %u failed: got %u expected %u\n",
++                                i,(unsigned)get_working_memory(),(unsigned)quantities[i].expected);
++        }
++        for(unsigned n=0;n<4;++n)
++            memcpy(party_characters[n].items,saved_items[n],ITEM_INVENTORY_SIZE);
++        memcpy(key_items_pool,saved_pool,sizeof(saved_pool));
++        memcpy(game_state.party_order,order,sizeof(order));
++        fprintf(stderr,"Redux item quantity dispatcher: 19 cases checked\n");
 +    }
 +    /* return_item_fix.ccs stores the low word fetched from argument memory
 +     * into LOCAL01. Exercise the real dispatcher with high argument bits,
@@ -5392,7 +5520,7 @@ index 9b2cb3d..297ed96 100644
  WindowInfo *get_focus_window_info(void) {
      if (win.current_focus_window == WINDOW_ID_NONE) return &dummy_window;
      return get_window(win.current_focus_window);
-@@ -520,6 +867,12 @@ typedef struct {
+@@ -520,6 +914,12 @@ typedef struct {
  static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
      static TextBlock dialogue_block = {0};
      static TextBlock string_table_block = {0};
@@ -5405,7 +5533,7 @@ index 9b2cb3d..297ed96 100644
  
      /* Dialogue blob */
      if (addr >= DIALOGUE_BLOB_BASE && dialogue_blob != NULL) {
-@@ -543,6 +896,63 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+@@ -543,6 +943,63 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
      return NULL;
  }
  
@@ -5469,7 +5597,7 @@ index 9b2cb3d..297ed96 100644
  /* Print a PSI name given a PSI name ID.
   * Port of GET_PSI_NAME (asm/text/get_psi_name.asm).
   * psi_name_id==1 (ROCKIN) → uses favourite_thing from game_state.
-@@ -550,6 +960,10 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+@@ -550,6 +1007,10 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
  void print_psi_name(uint16_t psi_name_id) {
  
      if (psi_name_id == 1) {
@@ -5480,7 +5608,7 @@ index 9b2cb3d..297ed96 100644
          /* PSI Rockin, print favourite_thing (EB-encoded in game_state, null-terminated) */
          int len = 0;
          while (len < (int)sizeof(game_state.favourite_thing) && game_state.favourite_thing[len] != 0x00) len++;
-@@ -628,7 +1042,9 @@ static bool display_text_load_dialogue_blob(void) {
+@@ -628,7 +1089,9 @@ static bool display_text_load_dialogue_blob(void) {
      dialogue_blob = ASSET_DIALOGUE_DIALOGUE_BIN_DATA;
      dialogue_blob_size = ASSET_DIALOGUE_DIALOGUE_BIN_SIZE;
  #endif
@@ -5491,7 +5619,7 @@ index 9b2cb3d..297ed96 100644
  }
  
  bool display_text_init(void) {
-@@ -696,6 +1112,8 @@ void resolve_text_jump(ScriptReader *r, uint32_t addr) {
+@@ -696,6 +1159,8 @@ void resolve_text_jump(ScriptReader *r, uint32_t addr) {
          r->source  = (addr >= DIALOGUE_BLOB_BASE) ? TEXT_SRC_DIALOGUE : TEXT_SRC_INLINE_STRINGS;
          r->ptr_off = (uint32_t)(ptr - blk->data);
          r->end_off = (uint32_t)blk->size;
@@ -5500,7 +5628,7 @@ index 9b2cb3d..297ed96 100644
      } else {
          LOG_WARN("WARNING: resolve_text_addr(0x%06X) returned NULL\n", addr);
      }
-@@ -857,12 +1275,12 @@ void display_status_window(uint16_t char_id) {
+@@ -857,12 +1322,12 @@ void display_status_window(uint16_t char_id) {
  
      /* Assembly lines 27-40: set window title to character name */
      {
@@ -5517,7 +5645,7 @@ index 9b2cb3d..297ed96 100644
      }
  
      dt.force_left_text_alignment = 1;
-@@ -1036,10 +1454,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
+@@ -1036,10 +1501,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
  
          char name_buf[7];
          if (member_id >= 1 && member_id <= 4) {
@@ -5530,7 +5658,7 @@ index 9b2cb3d..297ed96 100644
          } else {
              name_buf[0] = '\0';
          }
-@@ -1191,8 +1609,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1191,8 +1656,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
              return (uintptr_t)game_state.pet_name;
          case 4:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -5541,7 +5669,7 @@ index 9b2cb3d..297ed96 100644
          case 5:
              *out_type = CC_TABLE_TYPE_STRING;
              *out_str_len = (int)sizeof(game_state.favourite_thing);
-@@ -1216,8 +1634,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1216,8 +1681,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
          switch ((CcCharField)field) {
          case CC_CHAR_NAME:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -5552,7 +5680,7 @@ index 9b2cb3d..297ed96 100644
          case CC_CHAR_LEVEL:       return c->level;
          case CC_CHAR_EXP:         return c->exp;
          case CC_CHAR_CURRENT_HP:  return c->current_hp;
-@@ -1259,7 +1677,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1259,7 +1724,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
          case 1: return (uint8_t)sizeof(game_state.mother2_playername);
          case 2: return (uint8_t)sizeof(game_state.earthbound_playername);
          case 3: return (uint8_t)sizeof(game_state.pet_name);
@@ -5561,7 +5689,7 @@ index 9b2cb3d..297ed96 100644
          case 5: return (uint8_t)sizeof(game_state.favourite_thing);
          case 6: return (uint8_t)sizeof(game_state.money_carried);
          case 7: return (uint8_t)sizeof(game_state.bank_balance);
-@@ -1270,7 +1688,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1270,7 +1735,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
      if (index >= CC_GLOBAL_COUNT && index < CC_TABLE_TOTAL) {
          uint16_t field = (index - CC_GLOBAL_COUNT) % CC_CHAR_FIELD_COUNT;
          switch ((CcCharField)field) {
@@ -5570,7 +5698,7 @@ index 9b2cb3d..297ed96 100644
          case CC_CHAR_LEVEL:       return 1;
          case CC_CHAR_EXP:         return 4;
          case CC_CHAR_CURRENT_HP:  return 2;
-@@ -1569,6 +1987,8 @@ StepResult mode_step_display_text(ModeState *ms) {
+@@ -1569,6 +2034,8 @@ StepResult mode_step_display_text(ModeState *ms) {
       * call level (including a nested CC_08 child) gets a clean flag; the parent's
       * value is restored before this level pops. */
      if (st->phase == DT_ENTER) {
@@ -5579,7 +5707,7 @@ index 9b2cb3d..297ed96 100644
          st->saved_cc18_attrs = dt.g_cc18_attrs_saved;
          dt.g_cc18_attrs_saved = 0;
          dt.upcoming_word_length = 0;
-@@ -1779,6 +2199,15 @@ StepResult mode_step_display_text(ModeState *ms) {
+@@ -1779,6 +2246,15 @@ StepResult mode_step_display_text(ModeState *ms) {
           * unknown4 starts as 0 (cleared by INIT_TEXT_STATE), set to 1 by CC_18_02.
           * In C: dt.g_cc18_attrs_saved tracks this per display_text call level. */
          if (byte == 0x02) {
@@ -5612,7 +5740,7 @@ index 1289939..5d6dcd1 100644
  bool display_text_load_battle_text(void);
  void display_text_free_battle_text(void);
 diff --git a/src/game/display_text_cc.c b/src/game/display_text_cc.c
-index 950d47b..30f1679 100644
+index 950d47b..6fe1b36 100644
 --- a/src/game/display_text_cc.c
 +++ b/src/game/display_text_cc.c
 @@ -1,3 +1,4 @@
@@ -5656,7 +5784,21 @@ index 950d47b..30f1679 100644
          st->tri_big = 1;
          st->tri_ticks = 15;
          st->tri_need_tile = 1;
-@@ -1082,6 +1089,13 @@ bool cc_1f_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1031,7 +1038,12 @@ bool cc_1f_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+         /* LOCK_INPUT: 0 args.
+          * Port of CC_1F_50 (asm/text/lock_input.asm).
+          * Sets TEXT_PROMPT_WAITING_FOR_INPUT = 1. */
+-        dt.text_prompt_waiting_for_input = 1;
++        /* The pinned Gauss End source locks its own final prompt before its
++         * appended reset. Match that exact relocated suffix; every other
++         * source and LOCK_INPUT command retains the original lock. */
++        if (r->source != TEXT_SRC_DIALOGUE ||
++            !maternalbound_gauss_reset_prompt(r->ptr_off))
++            dt.text_prompt_waiting_for_input = 1;
+         break;
+     case 0x51:
+         /* UNLOCK_INPUT: 0 args.
+@@ -1082,6 +1094,13 @@ bool cc_1f_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
  
      /* Map/movement commands */
      case 0x60: {
@@ -5670,7 +5812,7 @@ index 950d47b..30f1679 100644
          /* TEXT_SPEED_DELAY: 0 args.
           * Port of CC_1F_60 (asm/text/ccs/unknown_1F_60.asm) → TEXT_SPEED_DELAY
           * (asm/text/text_speed_delay.asm).
-@@ -1382,8 +1396,7 @@ bool cc_1f_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1382,8 +1401,7 @@ bool cc_1f_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
           * or direction+2 (2-9) if close.
           * Stores result in working_memory. */
          {
@@ -5680,7 +5822,7 @@ index 950d47b..30f1679 100644
              if (slot < 0) {
                  set_working_memory(0);
                  break;
-@@ -1593,7 +1606,7 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1593,7 +1611,7 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
          /* OPEN_WINDOW: 1 arg (window ID).
           * Port of CC_18_01 (asm/text/ccs/open_window.asm) → CREATE_WINDOW. */
          uint8_t window_id = script_read_byte(r);
@@ -5689,7 +5831,7 @@ index 950d47b..30f1679 100644
          break;
      }
      case 0x02:
-@@ -1610,7 +1623,7 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1610,7 +1628,7 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
          /* SWITCH_TO_WINDOW: 1 arg (window ID).
           * Port of CC_18_03 (asm/text/ccs/switch_to_window.asm) → SET_WINDOW_FOCUS. */
          uint8_t window_id = script_read_byte(r);
@@ -5698,7 +5840,7 @@ index 950d47b..30f1679 100644
          break;
      }
      case 0x04:
-@@ -1700,13 +1713,19 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1700,13 +1718,19 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
           * The dword arg per textmacro EBTEXT_SELECTION_MENU_NO_CANCEL; handler only uses 1 byte
           * via gather mechanism but textmacro declares DWORD (4 bytes in stream).
           * Stores result in working_memory. */
@@ -5719,7 +5861,7 @@ index 950d47b..30f1679 100644
              if (cancel_target != 0) {
                  resolve_text_jump(r, cancel_target);
              }
-@@ -1716,7 +1735,7 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1716,7 +1740,7 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
          out_init->selection_menu.allow_cancel = 0;
          *out_cancel_target = cancel_target;
          *out_mode   = GAME_MODE_SELECTION_MENU;
@@ -5728,7 +5870,7 @@ index 950d47b..30f1679 100644
          return true;
      }
      case 0x09: {
-@@ -1728,7 +1747,7 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1728,7 +1752,7 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
           * temporarily sets focus to the specified window. */
          uint8_t window_id = script_read_byte(r);
          save_window_text_attributes();
@@ -5737,7 +5879,7 @@ index 950d47b..30f1679 100644
          /* selection_menu(1) → STEP_PUSH GAME_MODE_SELECTION_MENU; the text-attr
           * restore + result store run in DT_RESUME_CC18_SEL_RESTORE on POP. An
           * empty/null menu returns 0 inline (still restoring text attrs). */
-@@ -1750,6 +1769,38 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1750,6 +1774,38 @@ bool cc_18_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
           * Saves/restores text attributes, creates money window, prints "$N". */
          display_money_window();
          break;
@@ -5776,7 +5918,7 @@ index 950d47b..30f1679 100644
      case 0x0D: {
          /* DISPLAY_STATUS: 2 args (char_id, mode).
           * Port of CC_18_0D (asm/text/ccs/display_status.asm).
-@@ -1812,38 +1863,35 @@ void cc_19_dispatch(ScriptReader *r) {
+@@ -1812,38 +1868,35 @@ void cc_19_dispatch(ScriptReader *r) {
           * 0x01 = add menu option with 4-byte callback address following.
           * Assembly ADD_MENU_OPTION sets type=1 (counted), page=1, sound_effect=1.
           * selection_menu returns 1-based index for type=1 items. */
@@ -5843,7 +5985,7 @@ index 950d47b..30f1679 100644
          }
          break;
      }
-@@ -1913,9 +1961,9 @@ void cc_19_dispatch(ScriptReader *r) {
+@@ -1913,9 +1966,9 @@ void cc_19_dispatch(ScriptReader *r) {
          }
          uint8_t letter = 0;
          if (char_id >= 1 && char_id <= TOTAL_PARTY_COUNT) {
@@ -5855,7 +5997,7 @@ index 950d47b..30f1679 100644
                  letter = name[pos - 1];
              }
          }
-@@ -2221,6 +2269,21 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -2221,6 +2274,21 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
      uint8_t sub = script_read_byte(r);
  
      switch (sub) {
@@ -5877,7 +6019,7 @@ index 950d47b..30f1679 100644
      case 0x00: /* fall through */
      case 0x01: {
          /* PARTY_MEMBER_SELECTION_MENU: 17 args (4 dword script_ptrs + 1 byte mode).
-@@ -2381,6 +2444,165 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -2381,6 +2449,169 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
          *out_mode   = GAME_MODE_TELEPORT_MENU;
          *out_resume = DT_RESUME_CC1A_TELEPORT;
          return true;
@@ -5981,17 +6123,21 @@ index 950d47b..30f1679 100644
 +    }
 +    case 0x10: {
 +        uint8_t item = script_read_byte(r);
-+        uint32_t wanted = item ? item : get_argument_memory();
++        /* CC_ItemQuantity reads one literal byte or the argument's low word.
++         * Item zero counts empty slots; it is not a no-op in the upstream API. */
++        uint16_t wanted = item ? item : (uint16_t)get_argument_memory();
 +        uint32_t quantity = 0;
-+        if (wanted && wanted <= UINT8_MAX) {
-+            for (size_t p = 0; p < sizeof(game_state.party_order); ++p) {
++        if (wanted <= UINT8_MAX) {
++            /* The source checks at most four party positions, stopping at
++             * the first empty position or non-player companion. */
++            for (size_t p = 0; p < 4; ++p) {
 +                uint8_t character = game_state.party_order[p];
 +                if (!character || character > 4) break;
 +                for (size_t i = 0; i < sizeof(party_characters[character-1].items); ++i)
 +                    if (party_characters[character-1].items[i] == wanted) ++quantity;
 +            }
 +            /* Native key-item storage represents one possession per pool entry. */
-+            if (key_items_find((uint16_t)wanted)) ++quantity;
++            if (wanted && key_items_find(wanted)) ++quantity;
 +        }
 +        set_working_memory(quantity);
 +        break;
@@ -6043,7 +6189,7 @@ index 950d47b..30f1679 100644
      default:
          FATAL("display_text: unknown CC 1A %02X\n", sub);
          break;
-@@ -2526,8 +2748,8 @@ bool cc_1c_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode) {
+@@ -2526,8 +2757,8 @@ bool cc_1c_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode) {
          const uint8_t *name_data = NULL;
          int name_max = 0;
          if (char_id >= 1 && char_id <= 4) {
@@ -6054,7 +6200,7 @@ index 950d47b..30f1679 100644
          } else if (char_id == PARTY_MEMBER_POKEY) {
              name_data = game_state.pet_name;
              name_max = 6;
-@@ -3201,7 +3423,10 @@ void cc_1d_dispatch(ScriptReader *r) {
+@@ -3201,7 +3432,10 @@ void cc_1d_dispatch(ScriptReader *r) {
      case 0x15: {
          /* PUT_VAL_IN_ARGMEM: 2 data bytes (.WORD).
           * Port of CC_1D_15 (asm/text/ccs/set_argmem.asm).
@@ -6066,7 +6212,7 @@ index 950d47b..30f1679 100644
           * Calls FIND_FIRST_UNCONSCIOUS_PARTY_SLOT (C226F0):
           *   Iterates party_order[0..party_count-1], finds first member
           *   whose afflictions == 1 (unconscious). Returns the index (0-based).
-@@ -3209,6 +3434,7 @@ void cc_1d_dispatch(ScriptReader *r) {
+@@ -3209,6 +3443,7 @@ void cc_1d_dispatch(ScriptReader *r) {
           * Multiplies value * unconscious_slot, stores in working_memory. */
          uint16_t amount = script_read_word(r);
          uint32_t val = amount ? (uint32_t)amount : (uint32_t)get_argument_memory();
@@ -6074,7 +6220,7 @@ index 950d47b..30f1679 100644
          /* FIND_FIRST_UNCONSCIOUS_PARTY_SLOT */
          uint16_t slot = find_first_unconscious_party_slot();
          set_working_memory(val * (uint32_t)slot);
-@@ -3426,11 +3652,11 @@ bool cc_1e_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -3426,11 +3661,11 @@ bool cc_1e_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
          if (char_id >= 1 && char_id <= TOTAL_PARTY_COUNT) {
              CharStruct *c = &party_characters[char_id - 1];
              switch (sub) {
@@ -6611,7 +6757,7 @@ index 67108fa..0aea09c 100644
          if (c < 0x50) break;  /* characters below 0x50 are not valid EB text */
          flyover_render_large_char((uint16_t)c);
 diff --git a/src/game/game_state.c b/src/game/game_state.c
-index c0cc30f..13c8957 100644
+index c0cc30f..fe43d11 100644
 --- a/src/game/game_state.c
 +++ b/src/game/game_state.c
 @@ -2,6 +2,9 @@
@@ -6719,6 +6865,70 @@ index c0cc30f..13c8957 100644
  /* Port of ERASE_SAVE (erase_save_slot.asm) + ERASE_SAVE_BLOCK (erase_save_block.asm):
   * Zeroes both copies of a save slot (primary + backup). The assembly leaves the
   * block's signature in place; an empty (all-zero) block is fine here because the
+@@ -1154,6 +1217,16 @@ bool key_items_selftest(void) {
+     party_ever_joined_mask = 0; /* force the legacy_save branch */
+     const uint16_t NESS_LEGACY_ITEM = 177; /* ATM card */
+     const uint16_t POO_LEGACY_ITEM = 208;  /* Tiny ruby */
++    /* Redux removes Tiny Ruby from Poo's seeded inventory and awards its
++     * flag through dialogue. The repair must follow this pack's starting
++     * data: an unseeded item must remain owned instead of being confiscated.
++     * Keep both expectations exercised, rather than treating vanilla's
++     * starting inventory as universal. */
++    bool poo_ruby_seeded=false;
++    const uint8_t *seed_stats=ASSET_DATA(ASSET_DATA_INITIAL_STATS_BIN);
++    if(!seed_stats || ASSET_SIZE(ASSET_DATA_INITIAL_STATS_BIN)<80) return false;
++    for(unsigned j=0;j<10;j++)
++        if(seed_stats[(POO-1)*20+10+j]==POO_LEGACY_ITEM) poo_ruby_seeded=true;
+     party_characters[0].items[0] = (uint8_t)NESS_LEGACY_ITEM;      /* Ness: IS in party_members below */
+     party_characters[POO - 1].items[0] = (uint8_t)POO_LEGACY_ITEM; /* Poo: seeded, NOT in party */
+     game_state.party_members[0] = 1; /* Ness active, Poo not */
+@@ -1172,15 +1245,14 @@ bool key_items_selftest(void) {
+                         "Ness's (a currently-active character's) key item\n");
+         ok = false;
+     }
+-    if (key_items_find(POO_LEGACY_ITEM) != 0) {
+-        fprintf(stderr, "key_items_selftest: FAIL -- legacy sweep leaked "
+-                        "not-yet-joined Poo's seeded key item into the pool "
+-                        "(this is exactly the live Tiny Ruby bug)\n");
++    if ((key_items_find(POO_LEGACY_ITEM) == 0) != poo_ruby_seeded) {
++        fprintf(stderr, "key_items_selftest: FAIL -- legacy pool repair does "
++                        "not match the current pack's seeded inventory\n");
+         ok = false;
+     }
+-    if (party_characters[POO - 1].items[0] != (uint8_t)POO_LEGACY_ITEM) {
+-        fprintf(stderr, "key_items_selftest: FAIL -- legacy sweep disturbed "
+-                        "not-yet-joined Poo's items[0] (should be untouched)\n");
++    if (party_characters[POO - 1].items[0] != (poo_ruby_seeded ? POO_LEGACY_ITEM : 0)) {
++        fprintf(stderr, "key_items_selftest: FAIL -- legacy inventory repair "
++                        "does not match the current pack's seeded inventory\n");
+         ok = false;
+     }
+ 
+@@ -1208,17 +1280,18 @@ bool key_items_selftest(void) {
+         fprintf(stderr, "key_items_selftest: load_game(pre-corrupted pool) failed\n");
+         return false;
+     }
+-    if (key_items_find(POO_LEGACY_ITEM) != 0) {
+-        fprintf(stderr, "key_items_selftest: FAIL -- retroactive repair didn't "
+-                        "remove not-yet-joined Poo's leaked key item from the pool\n");
++    if ((key_items_find(POO_LEGACY_ITEM) == 0) != poo_ruby_seeded) {
++        fprintf(stderr, "key_items_selftest: FAIL -- existing pool repair does "
++                        "not match the current pack's seeded inventory\n");
+         ok = false;
+     }
+-    if (party_characters[POO - 1].items[0] != (uint8_t)POO_LEGACY_ITEM) {
+-        fprintf(stderr, "key_items_selftest: FAIL -- retroactive repair didn't "
+-                        "restore the leaked key item to Poo's items[0]\n");
++    if (party_characters[POO - 1].items[0] != (poo_ruby_seeded ? POO_LEGACY_ITEM : 0)) {
++        fprintf(stderr, "key_items_selftest: FAIL -- existing inventory repair "
++                        "does not match the current pack's seeded inventory\n");
+         ok = false;
+     }
+ 
++    fprintf(stderr,"Key-item repair source policy: Tiny Ruby seeded=%u; legacy and existing-save checks complete\n",poo_ruby_seeded);
+     return ok;
+ }
+ 
 diff --git a/src/game/game_state.h b/src/game/game_state.h
 index 30256db..bb0113e 100644
 --- a/src/game/game_state.h
@@ -7195,7 +7405,7 @@ index 7d7e466..2b9600f 100644
   * All take char_id (1-indexed) in A and new_item_id in X.
   * Store the new item, recalculate affected stats, return old item ID. */
 diff --git a/src/game/map_loader.c b/src/game/map_loader.c
-index 620656b..46e2acb 100644
+index 620656b..e29cc32 100644
 --- a/src/game/map_loader.c
 +++ b/src/game/map_loader.c
 @@ -16,6 +16,7 @@
@@ -7343,7 +7553,25 @@ index 620656b..46e2acb 100644
          } else {
              /* Scrolling UP: SCREEN_TOP_Y > target.
               * Assembly lines 191-228. */
-@@ -3088,6 +3131,34 @@ process_result:
+@@ -2632,10 +2675,13 @@ static uint16_t check_collision_tile_pattern(uint16_t mask) {
+     for (int i = 0; i < 6; i++) {
+         if (mask & 1) {
+             /* Compute tile coordinates for this check point */
+-            int16_t px = (int16_t)ow.checked_collision_left_x + collision_x_offsets[i];
+-            int16_t py = (int16_t)ow.checked_collision_top_y + collision_y_offsets[i];
+-            int16_t tile_x = px >> 3;
+-            int16_t tile_y = py >> 3;
++            /* The 65816 ADC wraps to 16 bits, then LSR shifts logically.
++             * Signed C shifts preserve the lookup's low six bits but store
++             * incorrect ladder/door coordinates at wraparound boundaries. */
++            uint16_t px = (uint16_t)(ow.checked_collision_left_x + collision_x_offsets[i]);
++            uint16_t py = (uint16_t)(ow.checked_collision_top_y + collision_y_offsets[i]);
++            int16_t tile_x = (int16_t)(px >> 3);
++            int16_t tile_y = (int16_t)(py >> 3);
+ 
+             uint8_t flags = get_collision_tile_and_check_ladder(tile_x, tile_y);
+             surface_accum |= flags;
+@@ -3088,6 +3134,49 @@ process_result:
      return temp_entity_surface_flags & 0x003F;
  }
  
@@ -7351,7 +7579,11 @@ index 620656b..46e2acb 100644
 + * Corner nudges and sprint/Skip Sandwich may select a different endpoint after
 + * CHECK_DIRECTIONAL_COLLISION masked out the original wall flags. Sample each
 + * pixel along that segment with the same leading-edge geometry. This is a pure
-+ * lookup: it must not alter slide memory, surface flags or door detection. */
++ * lookup: it must not alter slide memory, surface flags or door detection.
++ * Scripted arrivals (notably waking beside hotel beds) can leave a sample in a
++ * solid cell. That existing overlap may be left, but no sample may enter a new
++ * solid cell. Comparing unwrapped cell coordinates also keeps this exception
++ * from becoming a way to travel through a wall. */
 +bool player_movement_path_clear(int32_t from_x, int32_t from_y,
 +                                int32_t to_x, int32_t to_y, int16_t direction) {
 +    static const uint8_t masks[8]={0x07,0x1E,0x24,0x33,0x38,0x1E,0x09,0x33};
@@ -7359,18 +7591,29 @@ index 620656b..46e2acb 100644
 +    int64_t dx=(int64_t)to_x-from_x,dy=(int64_t)to_y-from_y;
 +    int64_t ax=dx<0?-dx:dx,ay=dy<0?-dy:dy;
 +    unsigned steps=(unsigned)(((ax>ay?ax:ay)+0xFFFF)>>16);
++    int16_t start_x=(int16_t)((uint32_t)from_x>>16);
++    int16_t start_y=(int16_t)((uint32_t)from_y>>16);
++    int start_tx[7],start_ty[7];
++    bool start_solid[7];
++    for(unsigned point=0;point<7;point++) {
++        int ox=point<6?collision_x_offsets[point]:0;
++        int oy=point<6?collision_y_offsets[point]:4;
++        start_tx[point]=(start_x+ox)>>3;
++        start_ty[point]=(start_y+oy)>>3;
++        start_solid[point]=(ml.loaded_collision_tiles[(start_ty[point]&63)*64+
++                                                     (start_tx[point]&63)]&0xC0)!=0;
++    }
 +    for(unsigned step=1;step<=steps;step++) {
 +        int16_t x=(int16_t)((uint32_t)(from_x+dx*step/steps)>>16);
 +        int16_t y=(int16_t)((uint32_t)(from_y+dy*step/steps)>>16);
-+        for(unsigned point=0;point<6;point++) if(masks[direction]&(1u<<point)) {
-+            unsigned tx=((x+collision_x_offsets[point])>>3)&63;
-+            unsigned ty=((y+collision_y_offsets[point])>>3)&63;
-+            if(ml.loaded_collision_tiles[ty*64+tx]&0xC0) return false;
++        for(unsigned point=0;point<7;point++) if(point==6 || (masks[direction]&(1u<<point))) {
++            int ox=point<6?collision_x_offsets[point]:0;
++            int oy=point<6?collision_y_offsets[point]:4;
++            int tx=(x+ox)>>3,ty=(y+oy)>>3;
++            if((ml.loaded_collision_tiles[(ty&63)*64+(tx&63)]&0xC0) &&
++               (!start_solid[point] || tx!=start_tx[point] || ty!=start_ty[point]))
++                return false;
 +        }
-+        /* The feet must also stay on a traversable cell even when a cardinal
-+         * leading edge is being nudged away from an irregular cliff corner. */
-+        unsigned tx=(x>>3)&63,ty=((y+4)>>3)&63;
-+        if(ml.loaded_collision_tiles[ty*64+tx]&0xC0) return false;
 +    }
 +    return true;
 +}
@@ -7378,7 +7621,7 @@ index 620656b..46e2acb 100644
  /*
   * get_collision_at_pixel, simple single-point collision lookup.
   *
-@@ -3554,7 +3625,11 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
+@@ -3554,7 +3643,11 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
      }
  
      /* If music differs and not fading, trigger fade-out */
@@ -7391,7 +7634,7 @@ index 620656b..46e2acb 100644
          write_apu_port1(2);
      }
  }
-@@ -3599,4 +3674,3 @@ void apply_next_map_music(void) {
+@@ -3599,4 +3692,3 @@ void apply_next_map_music(void) {
          }
      }
  }
@@ -7425,10 +7668,10 @@ index cf14f47..816ac49 100644
      /* Offset into event_music_table for the last matched music entry. */
 diff --git a/src/game/maternalbound.c b/src/game/maternalbound.c
 new file mode 100644
-index 0000000..16e73be
+index 0000000..6f36777
 --- /dev/null
 +++ b/src/game/maternalbound.c
-@@ -0,0 +1,441 @@
+@@ -0,0 +1,465 @@
 +/* SPDX-License-Identifier: GPL-3.0-only
 + * Native adaptation of MaternalBound Redux's documented CCExpand behavior.
 + * Credit: ShadowOne333 and upstream contributors; see CREDITS.md and source
@@ -7833,6 +8076,30 @@ index 0000000..16e73be
 +    return 0; /* never silently mix an unmapped original-story script into Redux */
 +}
 +
++/* Native PC adaptation of the pinned data_18.ccs Gauss End branch. Its
++ * disable_input followed by next deadlocks the SNES input-wait loop before
++ * the appended fade/pause/reset can run. Preserve that final prompt, allowing
++ * its confirmation only when both the relocated source block and its exact
++ * converted reset suffix match. Other LOCK_INPUT commands retain SNES behavior.
++ * Typed native adapters: 10 = cc_fade_out, 16 = reset_routine.Reset. */
++bool maternalbound_gauss_reset_prompt(uint32_t after_lock_offset) {
++    static const uint8_t tail[] = {
++        0x1F,0x50,0x03,0x00,0x1F,0x07,0x03,
++        0x1A,0x0C,0x0A,0x00,0x00,0x00,0x03,
++        0x10,0x5A,0x1A,0x0C,0x10,0x00,0x00,0x00
++    };
++    if (!redux_blob) return false;
++    uint32_t start = maternalbound_resolve_entry(0xC631E3u);
++    uint32_t end = maternalbound_resolve_entry(0xC63229u);
++    if (start < MATERNALBOUND_DIALOGUE_BASE || end <= start) return false;
++    start -= 0x100000u;
++    end -= 0x100000u;
++    if (end > redux_map_offset || end-start < sizeof(tail)) return false;
++    uint32_t lock = end-(uint32_t)sizeof(tail);
++    return after_lock_offset == lock+2 &&
++        !memcmp(redux_blob+lock,tail,sizeof(tail));
++}
++
 +uint32_t maternalbound_item_determiner(uint32_t item, uint32_t argument) {
 +    uint32_t wanted = item ? item : argument;
 +    if (!redux_blob || wanted >= redux_determiner_size) return 5; /* no determiner */
@@ -7872,10 +8139,10 @@ index 0000000..16e73be
 +}
 diff --git a/src/game/maternalbound.h b/src/game/maternalbound.h
 new file mode 100644
-index 0000000..0c1d830
+index 0000000..f3e0be4
 --- /dev/null
 +++ b/src/game/maternalbound.h
-@@ -0,0 +1,52 @@
+@@ -0,0 +1,53 @@
 +/* SPDX-License-Identifier: GPL-3.0-only */
 +#ifndef GAME_MATERNALBOUND_H
 +#define GAME_MATERNALBOUND_H
@@ -7895,6 +8162,7 @@ index 0000000..0c1d830
 +bool maternalbound_asset_selftest(const uint8_t *restore, size_t restore_size);
 +bool maternalbound_enabled(void);
 +uint32_t maternalbound_resolve_entry(uint32_t address);
++bool maternalbound_gauss_reset_prompt(uint32_t after_lock_offset);
 +uint32_t maternalbound_item_determiner(uint32_t item, uint32_t argument);
 +uint32_t maternalbound_enemy_ai_entry(uint16_t enemy);
 +uint16_t maternalbound_sprite_variant(unsigned character,unsigned mode,bool running,bool alternate);
@@ -7930,10 +8198,10 @@ index 0000000..0c1d830
 +#endif
 diff --git a/src/game/maternalbound_battle_sprites.c b/src/game/maternalbound_battle_sprites.c
 new file mode 100644
-index 0000000..49ec96d
+index 0000000..08b7785
 --- /dev/null
 +++ b/src/game/maternalbound_battle_sprites.c
-@@ -0,0 +1,148 @@
+@@ -0,0 +1,154 @@
 +/* SPDX-License-Identifier: GPL-3.0-only
 + * Native adaptation of m3sprites.ccs by ShadowOne333/contributors and
 + * Bowspr by cooprocks123e. The native compositor uses the normalized sprite
@@ -7953,6 +8221,12 @@ index 0000000..49ec96d
 +
 +MaternalboundBattleSprites maternalbound_battle_sprites;
 +
++/* Redux before_battle_hj clears m3sbs before each battle. Old/cold states
++ * must not rely on an intervening overworld fade clearing victory state. */
++void maternalbound_battle_sprites_reset(void) {
++    memset(&maternalbound_battle_sprites,0,sizeof(maternalbound_battle_sprites));
++}
++
 +static uint16_t character_group(unsigned character) {
 +    static const uint16_t robots[]={5,343,355,457};
 +    if(character<1 || character>4) return 0;
@@ -7963,7 +8237,7 @@ index 0000000..49ec96d
 +
 +void maternalbound_battle_sprites_tick(void) {
 +    MaternalboundBattleSprites *s=&maternalbound_battle_sprites;
-+    if(!maternalbound_enabled() || !bt.battle_mode_flag) { memset(s,0,sizeof(*s)); return; }
++    if(!maternalbound_enabled() || !bt.battle_mode_flag) { maternalbound_battle_sprites_reset(); return; }
 +    if(!s->active) {
 +        memset(s,0,sizeof(*s)); s->active=1;
 +        for(unsigned i=0;i<4;i++) s->anchor_y[i]=168;
@@ -8084,10 +8358,10 @@ index 0000000..49ec96d
 +}
 diff --git a/src/game/maternalbound_battle_sprites.h b/src/game/maternalbound_battle_sprites.h
 new file mode 100644
-index 0000000..b0dac79
+index 0000000..fa804f1
 --- /dev/null
 +++ b/src/game/maternalbound_battle_sprites.h
-@@ -0,0 +1,15 @@
+@@ -0,0 +1,16 @@
 +/* SPDX-License-Identifier: GPL-3.0-only */
 +#ifndef GAME_MATERNALBOUND_BATTLE_SPRITES_H
 +#define GAME_MATERNALBOUND_BATTLE_SPRITES_H
@@ -8097,6 +8371,7 @@ index 0000000..b0dac79
 +    uint8_t target_mask, visible_mask, active, victory;
 +} MaternalboundBattleSprites;
 +extern MaternalboundBattleSprites maternalbound_battle_sprites;
++void maternalbound_battle_sprites_reset(void);
 +void maternalbound_battle_sprites_tick(void);
 +void maternalbound_battle_sprites_victory(void);
 +bool maternalbound_battle_sprites_visible(void);
@@ -8715,7 +8990,7 @@ index e860343..5e5ef80 100644
              ow.psi_teleport_speed_int = 0;
              ow.player_intangibility_frames = 0;
 diff --git a/src/game/position_buffer.c b/src/game/position_buffer.c
-index c7b8ca4..897f50d 100644
+index c7b8ca4..9c36143 100644
 --- a/src/game/position_buffer.c
 +++ b/src/game/position_buffer.c
 @@ -22,6 +22,7 @@
@@ -8892,7 +9167,7 @@ index c7b8ca4..897f50d 100644
      /* Lines 194-209: Ladder tile door check. */
      if (ow.ladder_stairs_tile_x != -1) {
          can_move = (int)process_door_at_tile((uint16_t)ow.ladder_stairs_tile_x,
-@@ -1750,3 +1826,86 @@ void update_follower_state(int16_t entity_offset) {
+@@ -1750,3 +1826,108 @@ void update_follower_state(int16_t entity_offset) {
          entity_offset, char_id, read_idx, spacing);
      party_characters[party_idx].position_index = new_idx & 0xFF;
  }
@@ -8937,6 +9212,27 @@ index c7b8ca4..897f50d 100644
 +        cases++;
 +    }
 +    unsigned free_cases=0;
++    /* A scripted hotel arrival can overlap one solid cell. It may exit that
++     * cell, but must neither enter its solid neighbour nor enter any solid
++     * cell from a previously clear sample. Check all eight directions with
++     * the actual swept lookup and its leading-edge/feet geometry. */
++    unsigned arrival_cases=0;
++    for(unsigned direction=0;direction<8;direction++) {
++        static const int8_t sx[8]={0,1,1,1,0,-1,-1,-1};
++        static const int8_t sy[8]={-1,-1,0,1,1,1,0,-1};
++        memset(ml.loaded_collision_tiles,0,sizeof(ml.loaded_collision_tiles));
++        ml.loaded_collision_tiles[32*64+32]=0x80;
++        if(!player_movement_path_clear(256<<16,256<<16,
++               (256+sx[direction]*16)<<16,(256+sy[direction]*16)<<16,direction)) {
++            fprintf(stderr,"Arrival exit FAIL direction=%u\n",direction);return false;
++        }
++        memset(ml.loaded_collision_tiles,0x80,sizeof(ml.loaded_collision_tiles));
++        if(player_movement_path_clear(256<<16,256<<16,
++               (256+sx[direction]*16)<<16,(256+sy[direction]*16)<<16,direction)) {
++            fprintf(stderr,"Arrival wall traversal FAIL direction=%u\n",direction);return false;
++        }
++        arrival_cases+=2;
++    }
 +    for(unsigned speed=0;speed<SPRINT_SPEED_COUNT;speed++)
 +    for(unsigned sandwich=0;sandwich<2;sandwich++)
 +    for(unsigned water=0;water<3;water++)
@@ -8976,6 +9272,7 @@ index c7b8ca4..897f50d 100644
 +    update_overworld_player_input();
 +    if(game_state.leader_x_coord!=257 || game_state.leader_x_frac!=0x6000) return false;
 +    fprintf(stderr,"Sprint free movement: %u speed/surface cases unchanged; scripted collision bypass: PASS\n",free_cases);
++    fprintf(stderr,"Scripted arrival overlap: %u exit/new-wall cases: PASS\n",arrival_cases);
 +    fprintf(stderr,"Sprint collision: %u prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\n",cases);
 +    return true;
 +}
@@ -9499,7 +9796,7 @@ index a0a8b75..21010fc 100644
  
      disable_all_entities();
 diff --git a/src/game/window.c b/src/game/window.c
-index e516652..17c467c 100644
+index e516652..33a6196 100644
 --- a/src/game/window.c
 +++ b/src/game/window.c
 @@ -5,12 +5,14 @@
@@ -9665,7 +9962,74 @@ index e516652..17c467c 100644
      SelectionMenuState *st = &ms->selection_menu;
  
      /* Resuming after a deferred cursor-callback text push: the pushed DISPLAY_TEXT
-@@ -2574,8 +2646,9 @@ void draw_hp_pp_window(uint16_t char_id) {
+@@ -2049,7 +2121,10 @@ StepResult mode_step_selection_menu(ModeState *ms) {
+  *   = ((18 * 32) - 6) * 2 = (576 - 6) * 2 = 570 * 2 = 0x474
+  */
+ void clear_hppp_window_header(void) {
+-    uint16_t offset = ((ACTIVE_HPPP_WINDOW_Y_OFFSET * 32) - 6) * 2;
++    /* m3sprites.ccs C20295: LDY #$80B2, relative to the original
++     * BG2_BUFFER at $7DFE. Keep AUTO above the Redux party portraits. */
++    uint16_t offset = maternalbound_enabled() && bt.battle_mode_flag
++        ? 0x2B4 : ((ACTIVE_HPPP_WINDOW_Y_OFFSET * 32) - 6) * 2;
+     memset(&win.bg2_buffer[offset], 0, 4 * 2);
+ }
+ 
+@@ -2060,7 +2135,9 @@ void clear_hppp_window_header(void) {
+  */
+ void render_hppp_window_header(void) {
+     static const uint16_t header_tiles[4] = { 0x3A69, 0x3A6A, 0x3A6B, 0x3A6C };
+-    uint16_t offset = ((ACTIVE_HPPP_WINDOW_Y_OFFSET * 32) - 6) * 2;
++    /* m3sprites.ccs C2026E uses the same relocated address as clear. */
++    uint16_t offset = maternalbound_enabled() && bt.battle_mode_flag
++        ? 0x2B4 : ((ACTIVE_HPPP_WINDOW_Y_OFFSET * 32) - 6) * 2;
+     memcpy(&win.bg2_buffer[offset], header_tiles, sizeof(header_tiles));
+ }
+ 
+@@ -2193,6 +2270,16 @@ void clear_battle_menu_character_indicator(void) {
+ 
+ /* HPPP Window Drawing */
+ 
++/* m3sprites.ccs handle_windows keeps both the box and rolling digit rows
++ * stationary during Redux battle selection. Outside battle the original
++ * raised selection indicator remains part of the character menus. */
++static uint16_t hppp_row_for_character(uint16_t character) {
++    if (maternalbound_enabled() && bt.battle_mode_flag)
++        return NORMAL_HPPP_WINDOW_Y_OFFSET;
++    return character == (uint16_t)win.battle_menu_current_character_id
++        ? ACTIVE_HPPP_WINDOW_Y_OFFSET : NORMAL_HPPP_WINDOW_Y_OFFSET;
++}
++
+ /*
+  * UNDRAW_HP_PP_WINDOW: Port of asm/text/hp_pp_window/undraw.asm.
+  *
+@@ -2209,12 +2296,7 @@ void undraw_hp_pp_window(uint16_t char_id) {
+     ow.currently_drawn_hppp_windows &= ~(1 << char_id);
+ 
+     /* Determine Y row offset: active character is one row higher */
+-    uint16_t y_offset;
+-    if (char_id == (uint16_t)win.battle_menu_current_character_id) {
+-        y_offset = ACTIVE_HPPP_WINDOW_Y_OFFSET;   /* 18 */
+-    } else {
+-        y_offset = NORMAL_HPPP_WINDOW_Y_OFFSET;   /* 19 */
+-    }
++    uint16_t y_offset = hppp_row_for_character(char_id);
+ 
+     /* Compute position in win.bg2_buffer using same centering as assembly */
+     uint16_t x_byte_offset = calc_character_indicator_x_offset(char_id);
+@@ -2532,11 +2614,7 @@ void draw_hp_pp_window(uint16_t char_id) {
+     }
+ 
+     /* Determine Y row (assembly lines 91-99) */
+-    uint16_t y_row;
+-    if (win.battle_menu_current_character_id == (int16_t)char_id)
+-        y_row = ACTIVE_HPPP_WINDOW_Y_OFFSET;
+-    else
+-        y_row = NORMAL_HPPP_WINDOW_Y_OFFSET;
++    uint16_t y_row = hppp_row_for_character(char_id);
+ 
+     /* Compute BG2_BUFFER position (assembly lines 101-127).
+      * Each party member's window is 7 tiles wide, centered at HPPP_CENTER_TILE.
+@@ -2574,8 +2652,9 @@ void draw_hp_pp_window(uint16_t char_id) {
       * US: STRLEN computes name width = (strlen*6+9)/8 tiles. */
      uint16_t name_base1 = 0x22A0 + (uint16_t)(member_id - 1) * 4;
      int name_len = 0;
@@ -9677,6 +10041,19 @@ index e516652..17c467c 100644
      int ntc = name_tile_count;
  
      for (int i = 0; i < HPPP_WINDOW_WIDTH - 3; i++) {
+@@ -2849,11 +2928,7 @@ void update_hppp_meter_tiles(void) {
+         return;
+ 
+     /* Determine Y row: active character uses row 18, others use row 19 */
+-    uint16_t base_y;
+-    if (win.battle_menu_current_character_id == (int16_t)member_index)
+-        base_y = ACTIVE_HPPP_WINDOW_Y_OFFSET;
+-    else
+-        base_y = NORMAL_HPPP_WINDOW_Y_OFFSET;
++    uint16_t base_y = hppp_row_for_character(member_index);
+ 
+     /* Calculate tilemap word offset for the HP digit row.
+      * base_offset = row * 32 + 96  (96 = 3 rows below header = digit area)
 diff --git a/src/game/window.h b/src/game/window.h
 index 4210ac5..6b14d0b 100644
 --- a/src/game/window.h
@@ -9902,7 +10279,7 @@ index c29adc3..3318423 100644
  /* Perform a pending capture if one was requested, then clear the request. MUST be
   * called ONLY from the outermost host loop (the root boundary), never while a
 diff --git a/src/intro/file_select.c b/src/intro/file_select.c
-index 632f674..c18f76e 100644
+index 632f674..e4a5151 100644
 --- a/src/intro/file_select.c
 +++ b/src/intro/file_select.c
 @@ -15,17 +15,20 @@
@@ -9962,7 +10339,154 @@ index 632f674..c18f76e 100644
              }
              snprintf(slot_labels[slot], sizeof(slot_labels[slot]), "%d: %s",
                       slot + 1, name);
-@@ -887,14 +891,16 @@ static void kb_write_name_tilemap(WindowInfo *nw, int num_cols) {
+@@ -667,7 +671,8 @@ static void fm_tweaks_toggle(uint16_t selection) {
+  */
+ 
+ /* Keyboard grid dimensions for character rows (text_y 0-3) */
+-#define KB_GRID_ROWS   5   /* rows 0-4 */
++#define KB_GRID_ROWS   5   /* retail rows 0-4 */
++#define KB_REDUX_GRID_ROWS 6 /* pinned naming_screen_table.ccs rows 0-5 */
+ #define KB_GRID_COLS  14   /* max columns per row (from offset table) */
+ #define KB_TOTAL_ROWS  8   /* total text_y lines (0-7, height/2) */
+ 
+@@ -700,6 +705,35 @@ static const uint8_t kb_lower_grid[KB_GRID_ROWS][KB_GRID_COLS] = {
+     { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x6F, 0xAF, 0xFF },
+ };
+ 
++/* Native adapter for redux/naming_screen_table.ccs (PhoenixBound,
++ * TragicManner), pinned revision 897d0083. Values are EB-encoded glyph IDs,
++ * including the raw accented/symbol glyphs in the converted normal font.
++ * The retail edition retains its original keyboard below. */
++static const uint8_t kb_redux_upper_grid[KB_REDUX_GRID_ROWS][KB_GRID_COLS] = {
++    { 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0xFF, 0xFF, 0x5D, 0x53, 0xFF },
++    { 0x7A, 0x7B, 0x7C, 0x7D, 0x7E, 0x7F, 0x80, 0x81, 0x82, 0xFF, 0xFF, 0x57, 0xAE, 0xFF },
++    { 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x50, 0xFF, 0xFF, 0x5E, 0x5F, 0xFF },
++    { 0xB0, 0xB1, 0xB2, 0xB3, 0xB4, 0xB5, 0xB7, 0xFF, 0xFF, 0xFF, 0xFF, 0xB8, 0x6F, 0xFF },
++    { 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0xFF, 0xB9, 0x51, 0xFF },
++    { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xAC, 0xAF, 0xFF },
++};
++
++static const uint8_t kb_redux_lower_grid[KB_REDUX_GRID_ROWS][KB_GRID_COLS] = {
++    { 0x91, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97, 0x98, 0x99, 0xFF, 0xFF, 0x5D, 0x53, 0xFF },
++    { 0x9A, 0x9B, 0x9C, 0x9D, 0x9E, 0x9F, 0xA0, 0xA1, 0xA2, 0xFF, 0xFF, 0x57, 0xAE, 0xFF },
++    { 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0x50, 0xFF, 0xFF, 0x5E, 0x5F, 0xFF },
++    { 0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC7, 0xFF, 0xFF, 0xFF, 0xFF, 0xB8, 0x6F, 0xFF },
++    { 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0xFF, 0xB9, 0x51, 0xFF },
++    { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xAC, 0xAF, 0xFF },
++};
++
++static const uint8_t (*kb_active_grid(bool lowercase))[KB_GRID_COLS] {
++    if (maternalbound_enabled()) return lowercase ? kb_redux_lower_grid : kb_redux_upper_grid;
++    return lowercase ? kb_lower_grid : kb_upper_grid;
++}
++
++static int kb_alphabet_row(void) { return maternalbound_enabled() ? 5 : 4; }
++
+ /* Valid cursor stop positions per row.  Each entry is a text_x where a $2F
+    marker tile should be placed.  -1 terminates the list. */
+ static const int kb_row_stops[KB_TOTAL_ROWS][15] = {
+@@ -713,6 +747,21 @@ static const int kb_row_stops[KB_TOTAL_ROWS][15] = {
+     /* text_y=7 */ { -1 },
+ };
+ 
++static const int kb_redux_row_stops[KB_TOTAL_ROWS][15] = {
++    { 0, 2, 4, 6, 8, 10, 12, 14, 16, 22, 24, -1 },
++    { 0, 2, 4, 6, 8, 10, 12, 14, 16, 22, 24, -1 },
++    { 0, 2, 4, 6, 8, 10, 12, 14, 16, 22, 24, -1 },
++    { 0, 2, 4, 6, 8, 10, 12, 22, 24, -1 },
++    { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 22, 24, -1 },
++    { 0, 7, 22, 24, -1 },
++    { 0, 17, 25, -1 },
++    { -1 },
++};
++
++static const int (*kb_active_stops(void))[15] {
++    return maternalbound_enabled() ? kb_redux_row_stops : kb_row_stops;
++}
++
+ /* Map from text_x of a cursor stop to the grid column index (for rows 0-3).
+    Returns -1 if no grid lookup (handled as button). */
+ static int kb_text_x_to_grid_col(int text_x) {
+@@ -729,8 +778,9 @@ static bool kb_is_valid_stop(WindowInfo *kw, int text_x, int text_y) {
+     (void)kw;
+     if (text_y < 0 || text_y >= KB_TOTAL_ROWS) return false;
+     if (text_x < 0) return false;
+-    for (int i = 0; kb_row_stops[text_y][i] >= 0; i++) {
+-        if (kb_row_stops[text_y][i] == text_x) return true;
++    const int (*stops)[15] = kb_active_stops();
++    for (int i = 0; stops[text_y][i] >= 0; i++) {
++        if (stops[text_y][i] == text_x) return true;
+     }
+     return false;
+ }
+@@ -788,21 +838,48 @@ static void kb_write_char(WindowInfo *kw, int text_x, int text_y, uint8_t eb_cha
+     vwf_render_eb_string_at(eb_str, 1, mx, my, FONT_ID_NORMAL, 0);
+ }
+ 
++/* The expanded Redux keyboard has 56 one-column glyphs in its converted
++ * normal font. Putting all of them in the transient title pool at 0x2E0
++ * pushes the final button labels across tile 0x380: that address is the
++ * text layer's tilemap (0x7C00 words), overwritten by the frame upload.
++ * Use the naming screen's unused 0x200-0x26F tile range for its glyphs.
++ * Persistent window content uses 0x000-0x1FF, the small blinking cursor
++ * uses 0x28D/0x29D, and the name display remains at 0x2E0. */
++static void kb_write_redux_char(WindowInfo *kw, int text_x, int text_y,
++                                 uint8_t eb_char, uint16_t *next_tile) {
++    uint8_t eb_str[2] = { eb_char, 0 };
++    uint16_t base = *next_tile;
++    int columns = vwf_render_to_fixed_tiles(eb_str, 1, FONT_ID_NORMAL, base);
++    uint16_t mx = kw->content_x + (uint16_t)text_x;
++    uint16_t my = kw->content_y + (uint16_t)(text_y * 2);
++    uint16_t *tilemap = (uint16_t *)win.bg2_buffer;
++    for (int col = 0; col < columns && mx + col < 32 && my + 1 < 32; col++) {
++        tilemap[my * 32 + mx + col] = (base + col * 2) | 0x2000;
++        tilemap[(my + 1) * 32 + mx + col] = (base + col * 2 + 1) | 0x2000;
++    }
++    *next_tile += (uint16_t)(columns * 2);
++}
++
+ /* Render the selectable character tiles in the keyboard grid via VWF.
+    Each character is rendered through the same VWF tile allocation pool used
+    by all other text, matching the assembly's DISPLAY_TEXT → VWF path. */
+ static void kb_render_grid(WindowInfo *kw, bool is_lowercase) {
+-    const uint8_t (*grid)[KB_GRID_COLS] = is_lowercase ? kb_lower_grid : kb_upper_grid;
++    const uint8_t (*grid)[KB_GRID_COLS] = kb_active_grid(is_lowercase);
++    const int (*stops)[15] = kb_active_stops();
++    bool redux = maternalbound_enabled();
++    int rows = redux ? KB_REDUX_GRID_ROWS : KB_GRID_ROWS;
++    uint16_t redux_next_tile = 0x200;
+ 
+     /* Place character tiles for rows 0-4.
+        Each cursor stop at text_x has its character at text_x+1. */
+-    for (int row = 0; row < KB_GRID_ROWS; row++) {
+-        for (int si = 0; kb_row_stops[row][si] >= 0; si++) {
+-            int tx = kb_row_stops[row][si];
++    for (int row = 0; row < rows; row++) {
++        for (int si = 0; stops[row][si] >= 0; si++) {
++            int tx = stops[row][si];
+ 
+             int col = kb_text_x_to_grid_col(tx);
+             if (col >= 0 && grid[row][col] != 0xFF) {
+-                kb_write_char(kw, tx + 1, row, grid[row][col]);
++                if (redux) kb_write_redux_char(kw, tx + 1, row, grid[row][col], &redux_next_tile);
++                else kb_write_char(kw, tx + 1, row, grid[row][col]);
+             }
+         }
+     }
+@@ -814,9 +891,9 @@ static void kb_render_labels(WindowInfo *kw, bool has_dont_care) {
+     uint16_t bx = kw->content_x;  /* base tilemap x (past border) */
+     uint16_t by = kw->content_y;  /* base tilemap y (past border) */
+ 
+-    /* Row 4: CAPITAL at text_x=1, small at text_x=8 */
+-    vwf_render_string_at("CAPITAL", bx + 1, by + 4 * 2, FONT_ID_NORMAL);
+-    vwf_render_string_at("small",   bx + 8, by + 4 * 2, FONT_ID_NORMAL);
++    int alphabet_row = kb_alphabet_row();
++    vwf_render_string_at("CAPITAL", bx + 1, by + alphabet_row * 2, FONT_ID_NORMAL);
++    vwf_render_string_at("small",   bx + 8, by + alphabet_row * 2, FONT_ID_NORMAL);
+ 
+     /* Row 6: buttons */
+     if (has_dont_care)
+@@ -887,14 +964,16 @@ static void kb_write_name_tilemap(WindowInfo *nw, int num_cols) {
  /* Resolve a NameTargetId to the (stable global) buffer it names. The buffer is
   * only touched on confirm, so a serializable ID rather than a raw pointer keeps
   * the keyboard mode's ModeState plain-old-data. */
@@ -9984,7 +10508,7 @@ index 632f674..c18f76e 100644
      case NAME_TARGET_THING:     return game_state.favourite_thing + 4;
      case NAME_TARGET_M2_PLAYER: return game_state.mother2_playername;
      case NAME_TARGET_EB_PLAYER: return game_state.earthbound_playername;
-@@ -931,6 +937,8 @@ StepResult mode_step_text_input(ModeState *st) {
+@@ -931,6 +1010,8 @@ StepResult mode_step_text_input(ModeState *st) {
         yet, matching the blocking loop's render-before-first-read order) --- */
      if (s->primed) {
          uint16_t pressed = platform_input_get_pad_new();
@@ -9993,7 +10517,7 @@ index 632f674..c18f76e 100644
  
          /* Directional input, assembly: MOVE_CURSOR plays SFX only on
             successful cursor movement (SFX 124 for UP/DOWN, 123 for LEFT/RIGHT) */
-@@ -986,7 +994,7 @@ StepResult mode_step_text_input(ModeState *st) {
+@@ -986,7 +1067,7 @@ StepResult mode_step_text_input(ModeState *st) {
                      const uint8_t *eb_src = get_dont_care_name(s->naming_index, s->dont_care_row);
                      memset(s->eb_name, 0, sizeof(s->eb_name));
                      s->name_pos = 0;
@@ -10002,17 +10526,41 @@ index 632f674..c18f76e 100644
                          s->eb_name[i] = eb_src[i];
                          s->name_pos++;
                      }
-@@ -1017,6 +1025,9 @@ StepResult mode_step_text_input(ModeState *st) {
-                     if (col >= 0 && grid[4][col] != 0xFF && s->name_pos < s->max_len) {
-                         s->eb_name[s->name_pos] = grid[4][col];
+@@ -1003,8 +1084,8 @@ StepResult mode_step_text_input(ModeState *st) {
+                     play_sfx(94); /* SFX::NAMING_CONFIRM */
+                     confirm_request = true;
+                 }
+-            } else if (s->cur_y == 4) {
+-                /* Row 4: CAPITAL/small toggle or punctuation */
++            } else if (s->cur_y == kb_alphabet_row()) {
++                /* CAPITAL/small toggle or punctuation on the edition's row. */
+                 play_sfx(122); /* SFX::TEXT_INPUT */
+                 if (s->cur_x == 0) {
+                     s->is_lowercase = false;
+@@ -1013,26 +1094,39 @@ StepResult mode_step_text_input(ModeState *st) {
+                 } else {
+                     /* Punctuation at column 11/12 */
+                     int col = kb_text_x_to_grid_col(s->cur_x);
+-                    const uint8_t (*grid)[KB_GRID_COLS] = s->is_lowercase ? kb_lower_grid : kb_upper_grid;
+-                    if (col >= 0 && grid[4][col] != 0xFF && s->name_pos < s->max_len) {
+-                        s->eb_name[s->name_pos] = grid[4][col];
++                    const uint8_t (*grid)[KB_GRID_COLS] = kb_active_grid(s->is_lowercase);
++                    if (col >= 0 && grid[s->cur_y][col] != 0xFF && s->name_pos < s->max_len) {
++                        s->eb_name[s->name_pos] = grid[s->cur_y][col];
                          s->name_pos++;
 +                        if (maternalbound_name_capacity()==6 && s->max_len<20 &&
 +                            get_text_pixel_width(FONT_ID_NORMAL,s->eb_name,s->name_pos)>40)
 +                            s->eb_name[--s->name_pos]=0;
                      }
                  }
-             } else if (s->cur_y >= 0 && s->cur_y <= 3) {
-@@ -1027,12 +1038,22 @@ StepResult mode_step_text_input(ModeState *st) {
+-            } else if (s->cur_y >= 0 && s->cur_y <= 3) {
+-                /* Character rows 0-3 */
++            } else if (s->cur_y >= 0 && s->cur_y < kb_alphabet_row()) {
++                /* The other selectable glyph rows. */
+                 play_sfx(122); /* SFX::TEXT_INPUT */
+                 int col = kb_text_x_to_grid_col(s->cur_x);
+-                const uint8_t (*grid)[KB_GRID_COLS] = s->is_lowercase ? kb_lower_grid : kb_upper_grid;
++                const uint8_t (*grid)[KB_GRID_COLS] = kb_active_grid(s->is_lowercase);
                  if (col >= 0 && grid[s->cur_y][col] != 0xFF && s->name_pos < s->max_len) {
                      s->eb_name[s->name_pos] = grid[s->cur_y][col];
                      s->name_pos++;
@@ -10037,7 +10585,7 @@ index 632f674..c18f76e 100644
              play_sfx(125); /* SFX::NAMING_BACKSPACE */
              if (s->name_pos > 0) {
                  s->name_pos--;
-@@ -1060,6 +1081,10 @@ StepResult mode_step_text_input(ModeState *st) {
+@@ -1060,6 +1154,10 @@ StepResult mode_step_text_input(ModeState *st) {
                  memset(name_buf, 0, (size_t)s->max_len);
                  for (int i = 0; i < (int)s->name_pos && i < (int)s->max_len; i++)
                      name_buf[i] = s->eb_name[i];
@@ -10048,7 +10596,7 @@ index 632f674..c18f76e 100644
              }
              close_window(WINDOW_FILE_SELECT_NAMING_KB);
              return STEP_RESULT_POP(0);
-@@ -1167,6 +1192,7 @@ void text_input_prepare(ModeState *init, int name_target, int max_len,
+@@ -1167,6 +1265,7 @@ void text_input_prepare(ModeState *init, int name_target, int max_len,
      s->dont_care_row = -1;
      s->name_pos = 0;
      s->max_len = (uint16_t)max_len;
@@ -10056,7 +10604,7 @@ index 632f674..c18f76e 100644
      s->name_display_window_id = name_display_window_id;
      s->name_text_y = (int16_t)name_text_y;
      s->cur_x = 0;
-@@ -1533,8 +1559,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1533,8 +1632,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
                  uint8_t empty_name[16];
                  uint8_t display[16];
                  memset(empty_name, 0, sizeof(empty_name));
@@ -10067,7 +10615,7 @@ index 632f674..c18f76e 100644
              }
              ngn_child_init = (ModeState){0};
              ngn_child_init.naming_prompt.name_tile_cols = (int16_t)name_tile_cols;
-@@ -1547,7 +1573,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1547,7 +1646,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
                 goes in the name box window at text row 0. */
              int i = st->char_i;
              text_input_prepare(&ngn_child_init, ng_name_targets[i].target,
@@ -10076,7 +10624,7 @@ index 632f674..c18f76e 100644
                                 WINDOW_FILE_SELECT_NAMING_BOX, 0, NULL);
              st->phase = NGN_INPUT_DONE;
              return STEP_RESULT_PUSH_INIT(GAME_MODE_TEXT_INPUT, &ngn_child_init);
-@@ -1585,10 +1611,9 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1585,10 +1684,9 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
              /* Set default names for any empty slots (first name in each group).
               * Names are already EB-encoded in the ROM data, copy directly. */
              for (int c = 0; c < 4; c++) {
@@ -10089,7 +10637,7 @@ index 632f674..c18f76e 100644
                  }
              }
              if (game_state.pet_name[0] == 0) {
-@@ -1598,8 +1623,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1598,8 +1696,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
              }
              if (game_state.favourite_food[0] == 0) {
                  const uint8_t *eb_src = get_dont_care_name(5, 0);
@@ -10099,7 +10647,7 @@ index 632f674..c18f76e 100644
              }
              if (game_state.favourite_thing[4] == 0) {
                  const uint8_t *eb_src = get_dont_care_name(6, 0);
-@@ -1625,8 +1649,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1625,8 +1722,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
                  if (cw) {
                      set_focus_text_cursor(0, 0);
                      int len = 0;
@@ -10110,7 +10658,7 @@ index 632f674..c18f76e 100644
                  }
              }
  
-@@ -1643,7 +1667,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1643,7 +1740,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
              create_window(WINDOW_FILE_SELECT_CONFIRM_FOOD);
              set_focus_text_cursor(0, 0);
              print_string("Favorite food:");
@@ -10119,7 +10667,7 @@ index 632f674..c18f76e 100644
  
              /* Favorite thing, same layout as food */
              create_window(WINDOW_FILE_SELECT_CONFIRM_THING);
-@@ -2058,8 +2082,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
+@@ -2058,8 +2155,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
                      set_focus_text_cursor(2, 1);
                      {
                          int len = 0;
@@ -10130,7 +10678,7 @@ index 632f674..c18f76e 100644
                      }
  
                      set_focus_text_cursor(8, 1);
-@@ -2278,7 +2302,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
+@@ -2278,7 +2375,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
              close_window(WINDOW_FILE_SELECT_TEXT_SPEED);
              close_window(WINDOW_FILE_SELECT_MUSIC_MODE);
              close_window(WINDOW_FILE_SELECT_FLAVOUR);

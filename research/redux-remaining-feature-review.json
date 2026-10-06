@@ -1,0 +1,719 @@
+{
+  "format": "redux-remaining-feature-review-v1",
+  "Passed": true,
+  "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "reviewedModules": 16,
+  "classificationCounts": {
+    "native-command-dispatch": 1,
+    "converted-table-native-reader": 2,
+    "converted-geometry-native-ownership": 1,
+    "native-capacity-and-save-adapter": 1,
+    "converted-tables-native-animation": 1,
+    "converted-pointer-table": 1,
+    "native-bytecode-and-typed-helpers": 1,
+    "native-source-table-adapter": 1,
+    "native-running-adapter": 1,
+    "native-timers-and-effects": 1,
+    "native-input": 1,
+    "native-capacity-save-and-render-adapter": 1,
+    "native-root-reset": 1,
+    "developer-only-partial-native-adapter": 1,
+    "release-disabled-boot-hook": 1
+  },
+  "modules": [
+    {
+      "module": "ccexpand",
+      "source": "ccscript/expansion/ccexpand.ccs",
+      "sourceSha256": "3dd1437879c59a621aee14624e49e35f5a99a88b997eaf3ebab048a7197c7ddc",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 82
+      },
+      "syntacticRomWriteSites": 4,
+      "writeExpressions": [
+        "0xC17B56",
+        "0xC1AF79",
+        "0xC1AF84",
+        "0xC1B5AD"
+      ],
+      "classification": "native-command-dispatch",
+      "reviewDecision": "Active CCExpand slots use typed native handlers; helper stack/WRAM assembly is replaced. Empty SwirlDisplayRGB is not claimed implemented.",
+      "nativeReferences": [
+        {
+          "path": "src/game/display_text_cc.c",
+          "line": 2271,
+          "anchor": "bool cc_1a_dispatch"
+        },
+        {
+          "path": "src/game/display_text_cc.c",
+          "line": 2499,
+          "anchor": "case 14:"
+        },
+        {
+          "path": "src/game/display_text_cc.c",
+          "line": 950,
+          "anchor": "case 0x21:"
+        }
+      ]
+    },
+    {
+      "module": "dont_care_names",
+      "source": "ccscript/expansion/dont_care_names.ccs",
+      "sourceSha256": "784064a97738a406f653af03cea2eca6126cec3381c17371d6d506b44ad6a0bf",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 83
+      },
+      "syntacticRomWriteSites": 5,
+      "writeExpressions": [
+        "addr, 11, 0",
+        "0xC1E4ED",
+        "0xC1E569",
+        "0xC1E54B",
+        "0xC1E55A"
+      ],
+      "classification": "converted-table-native-reader",
+      "reviewDecision": "All 49 eleven-byte entries are retained; the native reader derives the stride from the asset length.",
+      "nativeReferences": [
+        {
+          "path": "src/intro/file_select.c",
+          "line": 78,
+          "anchor": "static const uint8_t *get_dont_care_name"
+        }
+      ]
+    },
+    {
+      "module": "expand_shops",
+      "source": "ccscript/expansion/expand_shops.ccs",
+      "sourceSha256": "e99e3c75d789d3c9d074d39a079108ce5f02c7a3f91625fa47da1cc15cdbad78",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 85
+      },
+      "syntacticRomWriteSites": 1,
+      "writeExpressions": [
+        "0xC19DF7"
+      ],
+      "classification": "converted-table-native-reader",
+      "reviewDecision": "The linked 69-shop table, including custom shops 66-68, is imported and read by native shop menus. Bulk purchase/dialogue semantics belong to the separate shop audit.",
+      "nativeReferences": [
+        {
+          "path": "src/game/display_text_menus.c",
+          "line": 46,
+          "anchor": "store_table_data"
+        }
+      ]
+    },
+    {
+      "module": "expand_text_windows",
+      "source": "ccscript/expansion/expand_text_windows.ccs",
+      "sourceSha256": "31c9f68d4e11e978554a3339333695cae049f939c2114e3bfcf9340329983fbc",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 86
+      },
+      "syntacticRomWriteSites": 16,
+      "writeExpressions": [
+        "0xC2BBD0",
+        "0xC1E1C1",
+        "0xC1FB70",
+        "0xC1FC22",
+        "0xC3E5B3",
+        "0xC104EE",
+        "0xC105C1",
+        "0xC11E94",
+        "0xC11EA5",
+        "0xC20AD6",
+        "0xC20AE7",
+        "0xC2013D",
+        "0xC2014A",
+        "0xC2021F",
+        "0xC20247",
+        "0xC436E3"
+      ],
+      "classification": "converted-geometry-native-ownership",
+      "reviewDecision": "All 62 geometries are retained. Converted script IDs 53-61 become 64-72 to avoid PC settings IDs; native PC command/naming/file windows intentionally retain their own geometry. SNES byte-sized existence-table patches do not apply to the C window structures.",
+      "nativeReferences": [
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 28,
+          "anchor": "maternalbound_script_window"
+        },
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 32,
+          "anchor": "maternalbound_window_config"
+        },
+        {
+          "path": "src/game/window.c",
+          "line": 298,
+          "anchor": "maternalbound_window_config"
+        }
+      ]
+    },
+    {
+      "module": "favorite_food",
+      "source": "ccscript/expansion/favorite_food.ccs",
+      "sourceSha256": "5b5ac684f64d7e66b26c98c772eeb6440384e1df865b3daec2d05328b90b99fb",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 91
+      },
+      "syntacticRomWriteSites": 2,
+      "writeExpressions": [
+        "0xC1ED7B",
+        "0xC1EE7A"
+      ],
+      "classification": "native-capacity-and-save-adapter",
+      "reviewDecision": "Ten food glyphs use tagged spare save bytes; the original six-byte GameState field remains ABI stable. Naming and text expansion use the enlarged capacity. Default-width limits remain source defined.",
+      "nativeReferences": [
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 116,
+          "anchor": "maternalbound_food_capacity"
+        },
+        {
+          "path": "src/game/game_state.c",
+          "line": 447,
+          "anchor": "redux_food_extra"
+        },
+        {
+          "path": "src/game/display_text.c",
+          "line": 1727,
+          "anchor": "case 4: return maternalbound_food_capacity()"
+        }
+      ]
+    },
+    {
+      "module": "four_frames_run",
+      "source": "ccscript/redux/four_frames_run.ccs",
+      "sourceSha256": "75f67b8a21413d794d38d4fc7fc1a852dbf6028af6fda01d2273638dc5b1aa66",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 102
+      },
+      "syntacticRomWriteSites": 7,
+      "writeExpressions": [
+        "0xC0A72F",
+        "0xC0A708",
+        "0xC079E6",
+        "0xC079DA",
+        "0xC079E3",
+        "0xC07835",
+        "0xC078FF"
+      ],
+      "classification": "converted-tables-native-animation",
+      "reviewDecision": "Three 17-by-8 source tables supplement the original table. Native animation toggles VAR4 and chooses running/walking, pajamas, ghost, ladder, rope, robot and tiny variants. Source tables are checked separately from bounded runtime animation fixtures.",
+      "nativeReferences": [
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 287,
+          "anchor": "maternalbound_sprite_variant"
+        },
+        {
+          "path": "src/entity/callroutine_movement.c",
+          "line": 245,
+          "anchor": "entities.var[4]"
+        },
+        {
+          "path": "src/game/position_buffer.c",
+          "line": 42,
+          "anchor": "maternalbound_motion_selftest"
+        }
+      ]
+    },
+    {
+      "module": "movement_reloc",
+      "source": "ccscript/redux/movement_reloc.ccs",
+      "sourceSha256": "a6ae3c95a1b9764c68c0e923ea90491c5d9ffe3b5b8f87703ef79fdbe530025f",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 112
+      },
+      "syntacticRomWriteSites": 5,
+      "writeExpressions": [
+        "0xC093D5",
+        "0xC093DA",
+        "0xC46194",
+        "0xC461E4",
+        "0xC4D87E"
+      ],
+      "classification": "converted-pointer-table",
+      "reviewDecision": "All 899 pointer entries (898 nonzero) are retained, including custom IDs 895-898; pointer validity is not complete scene execution.",
+      "nativeReferences": [
+        {
+          "path": "src/data/event_script_data.c",
+          "line": 122,
+          "anchor": "resolve_script_address"
+        },
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 869,
+          "anchor": "case OP_SHORTJUMP:"
+        }
+      ]
+    },
+    {
+      "module": "movscr_codes",
+      "source": "ccscript/redux/movscr_codes.ccs",
+      "sourceSha256": "6a659169df89354c54ad0bce2a8bd09ed375aede3c0558f6319620cb9d1e35ab",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 113
+      },
+      "syntacticRomWriteSites": 7,
+      "writeExpressions": [
+        "0xC097DC",
+        "0xC097EF",
+        "0xC09802",
+        "0xC09826",
+        "0xC020E7",
+        "0xC02109",
+        "0xC02157"
+      ],
+      "classification": "native-bytecode-and-typed-helpers",
+      "reviewDecision": "Long tasks/result-store/result-load and six typed helpers are implemented. Destructor opcode 34 and destructor callbacks are not adapted; pinned sources and reachable-bytecode checks currently show no active use, so this is an unused-library gap rather than verified gameplay parity.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 1175,
+          "anchor": "Redux's m_task_long"
+        },
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 1205,
+          "anchor": "Redux reserves the top two bytes"
+        },
+        {
+          "path": "src/entity/callroutine.c",
+          "line": 717,
+          "anchor": "ROM_ADDR_REDUX_DISTANCE_FROM_PLAYER"
+        }
+      ]
+    },
+    {
+      "module": "naming_screen_table",
+      "source": "ccscript/redux/naming_screen_table.ccs",
+      "sourceSha256": "11deeee3900d5c6e10bfa8e151121155d53bfd40989960369898856c7b565028",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 116
+      },
+      "syntacticRomWriteSites": 6,
+      "writeExpressions": [
+        "0xC440A2",
+        "0xC1E992",
+        "0xC1E99B",
+        "0xC1E934",
+        "0xC1E939",
+        "0xEFA6D3"
+      ],
+      "classification": "native-source-table-adapter",
+      "reviewDecision": "The pinned six-row upper/lower keyboard and glyph selection/cursor stops are represented directly in native code, retaining the existing pack identity and converted font. Every native glyph is compared with the compiled character-offset table. Redux grid glyphs use naming-only fixed tiles 0x200-0x26F so labels cannot spill into the text tilemap at tile 0x380; actual glyph pixels/ranges are checked separately by ordinary-input runtime QA.",
+      "nativeReferences": [
+        {
+          "path": "src/intro/file_select.c",
+          "line": 712,
+          "anchor": "kb_redux_upper_grid"
+        },
+        {
+          "path": "src/intro/file_select.c",
+          "line": 721,
+          "anchor": "kb_redux_lower_grid"
+        },
+        {
+          "path": "src/intro/file_select.c",
+          "line": 750,
+          "anchor": "kb_redux_row_stops"
+        },
+        {
+          "path": "src/intro/file_select.c",
+          "line": 848,
+          "anchor": "static void kb_write_redux_char"
+        }
+      ]
+    },
+    {
+      "module": "run_patch",
+      "source": "ccscript/redux/run_patch.ccs",
+      "sourceSha256": "b59247f8caeaf946a6ff22ccd6da8ce7ff2afd610a03d36af6dddf63ebf662fb",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 124
+      },
+      "syntacticRomWriteSites": 3,
+      "writeExpressions": [
+        "0xc02f30",
+        "0xc031b8",
+        "0xc07960"
+      ],
+      "classification": "native-running-adapter",
+      "reviewDecision": "Native input uses Y, inversion flag 56, stamina availability and run flag 65. Unlike the source inverted branch, the native tick maintains flag 65 for either inversion state; this is an explicit PC consistency adaptation.",
+      "nativeReferences": [
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 178,
+          "anchor": "bool maternalbound_running"
+        },
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 192,
+          "anchor": "event_flag_set(65)"
+        },
+        {
+          "path": "src/game/position_buffer.c",
+          "line": 129,
+          "anchor": "maternalbound_running()"
+        }
+      ]
+    },
+    {
+      "module": "run_stamina_mechanic",
+      "source": "ccscript/redux/run_stamina_mechanic.ccs",
+      "sourceSha256": "b0fbfa9bb247521a31c6e7d9930bb6290b81f02d1e4ac70265f38ffefe94bdbe",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 125
+      },
+      "syntacticRomWriteSites": 4,
+      "writeExpressions": [
+        "0xC4D995",
+        "0xC0B824",
+        "0xC0B805",
+        "0xC07846"
+      ],
+      "classification": "native-timers-and-effects",
+      "reviewDecision": "Native eight-bit timer arithmetic retains primary 191, secondary 143, fifteen-second capacity and eight-second exhaustion delay, plus source movement high-byte eligibility and sweat overlays. Attract-mode initialization is reviewed separately from ordinary play.",
+      "nativeReferences": [
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 156,
+          "anchor": "maternalbound_stamina_update"
+        },
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 188,
+          "anchor": "entities.var[7][entity] & 0xFF00"
+        },
+        {
+          "path": "src/game/position_buffer.c",
+          "line": 128,
+          "anchor": "entities.overlay_flags[entity_offset]"
+        }
+      ]
+    },
+    {
+      "module": "select_changes_letters_in_naming_screen",
+      "source": "ccscript/redux/select_changes_letters_in_naming_screen.ccs",
+      "sourceSha256": "b852915fe919672936e63b2e997f890571a16b01dfdd7801755d539bc7931e1a",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 126
+      },
+      "syntacticRomWriteSites": 1,
+      "writeExpressions": [
+        "0xC1E9C5"
+      ],
+      "classification": "native-input",
+      "reviewDecision": "Select toggles case without removing entered glyphs; B retains backspace.",
+      "nativeReferences": [
+        {
+          "path": "src/intro/file_select.c",
+          "line": 1123,
+          "anchor": "pressed & PAD_SELECT"
+        },
+        {
+          "path": "src/intro/file_select.c",
+          "line": 1129,
+          "anchor": "maternalbound_enabled() ? PAD_B : PAD_CANCEL"
+        }
+      ]
+    },
+    {
+      "module": "six_letters",
+      "source": "ccscript/redux/six_letters.ccs",
+      "sourceSha256": "ab4b6cbd51c639391428e3e3b2c77310fd07bdb689182dfdbb4e269591e0b20a",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 127
+      },
+      "syntacticRomWriteSites": 28,
+      "writeExpressions": [
+        "0xEF097E",
+        "0xEF0985",
+        "0xEF099B",
+        "0xEF09DA",
+        "0xEF0B2D",
+        "0xEF0B34",
+        "0xEF0B42",
+        "0xEF0B81",
+        "0xC19594",
+        "0xC1D157",
+        "0xC12898",
+        "0xC124D7",
+        "0xC203C8",
+        "0xC204E7",
+        "0xC2058B",
+        "0xC203E0",
+        "0xC4E8C3",
+        "0xC4E97C",
+        "0xC4EA1E",
+        "0xC45527",
+        "0xC45569",
+        "0xC455AB",
+        "0xC455ED",
+        "0xC47E27",
+        "0xEF0B97",
+        "0xC1FAC3",
+        "0xC1FD05",
+        "0xC4432B"
+      ],
+      "classification": "native-capacity-save-and-render-adapter",
+      "reviewDecision": "The first five letters retain retail offsets and tagged extra save bytes store the sixth. Native menus, dialogue, battle HP/name spacing, Lumine Hall and ending readers use the expanded name. Default-width forty-pixel input limit is retained. These bindings are not an exhaustive rendering oracle.",
+      "nativeReferences": [
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 87,
+          "anchor": "maternalbound_name_capacity"
+        },
+        {
+          "path": "src/game/game_state.c",
+          "line": 445,
+          "anchor": "redux_name_magic"
+        },
+        {
+          "path": "src/intro/file_select.c",
+          "line": 1102,
+          "anchor": "get_text_pixel_width(FONT_ID_NORMAL,s->eb_name,s->name_pos)>40"
+        },
+        {
+          "path": "src/entity/callroutine.c",
+          "line": 3207,
+          "anchor": "lcps_name_len < maternalbound_name_capacity()"
+        },
+        {
+          "path": "src/game/ending.c",
+          "line": 382,
+          "anchor": "maternalbound_character_name"
+        }
+      ]
+    },
+    {
+      "module": "reset_routine",
+      "source": "ccscript/redux/reset_routine.ccs",
+      "sourceSha256": "f83e5ef1ca34c86aa6e5d8f5e9a01b1243d448ef663bb576348102cbf2f8940e",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 123
+      },
+      "syntacticRomWriteSites": 0,
+      "writeExpressions": [],
+      "classification": "native-root-reset",
+      "reviewDecision": "Dad and Gauss good-night scripts use stable adapter 16, requesting a deferred root reset rather than executing 65816 reset code. Owner saves are not written by the reset; live branch evidence is recorded separately in redux-reset-runtime-review.json.",
+      "nativeReferences": [
+        {
+          "path": "src/game/display_text_cc.c",
+          "line": 2510,
+          "anchor": "case 16: host_request_reset()"
+        },
+        {
+          "path": "src/game_main.c",
+          "line": 964,
+          "anchor": "if (action == ROOT_ACTION_RESET)"
+        }
+      ]
+    },
+    {
+      "module": "debug_fixes",
+      "source": "ccscript/redux/debug_fixes.ccs",
+      "sourceSha256": "e560d47fab400f6e390fd5ef4d62aed65de3e90e70e0737384624d0ba43c2e38",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 98
+      },
+      "syntacticRomWriteSites": 10,
+      "writeExpressions": [
+        "0xEFD8B5",
+        "0xC47FD9",
+        "0xEFE52F",
+        "0xEFE2F5",
+        "0xC1E21A",
+        "0xC1E21F",
+        "0xC1E237",
+        "0xC1E23C",
+        "0xEFE64E",
+        "0xEFE55E"
+      ],
+      "classification": "developer-only-partial-native-adapter",
+      "reviewDecision": "Kirby boot debugger graphics, controls and several original boot-debug fixes are not fully adapted. Native developer menus and converted dialogue are separate. No normal-story parity claim is made from their existence.",
+      "nativeReferences": [
+        {
+          "path": "src/game_main.c",
+          "line": 1249,
+          "anchor": "mode_step_debug_menu"
+        }
+      ]
+    },
+    {
+      "module": "debug_menu_enabler",
+      "source": "ccscript/debug/debug_menu_enabler.ccs",
+      "sourceSha256": "4d2d2875c97967cef913ba48ca89becb0c94aab942758b3ca6bb93812494b4b2",
+      "activation": {
+        "path": "ccscript/main.ccs",
+        "line": 52
+      },
+      "syntacticRomWriteSites": 28,
+      "writeExpressions": [
+        "0xC0B9B0",
+        "0xC3E874, 10, 0",
+        "0xC3E874, 10, 1",
+        "0xC3E874, 10, 2",
+        "0xC3E874, 10, 3",
+        "0xC3E874, 10, 4",
+        "0xC3E874, 10, 5",
+        "0xC3E874, 10, 6",
+        "0xC3E874, 10, 7",
+        "0xC3E874, 10, 8",
+        "0xC3E874, 10, 9",
+        "0xC3E874, 10, 10",
+        "0xC3E874, 10, 11",
+        "0xC3E874, 10, 12",
+        "0xC3E874, 10, 13",
+        "0xC3E874, 10, 14",
+        "0xC3E874, 10, 15",
+        "0xC3E874, 10, 16",
+        "0xC3E874, 10, 17",
+        "0xC3E874, 10, 18",
+        "0xC3E874, 10, 19",
+        "0xC3E874, 10, 20",
+        "0xC3E874, 10, 21",
+        "0xC3E874, 10, 22",
+        "0xC454BF",
+        "0xC12FEF",
+        "0xEFE60F",
+        "0xEFE2D6"
+      ],
+      "classification": "release-disabled-boot-hook",
+      "reviewDecision": "Pinned DEBUG_BUILD is zero, disabling the boot L/R debugger hook. Native developer menu activation remains an explicit host option; its presence is not equivalent to wholesale Kirby debugger conversion.",
+      "nativeReferences": [
+        {
+          "path": "src/game_main.c",
+          "line": 847,
+          "anchor": "ow.debug_flag = 1;"
+        }
+      ]
+    }
+  ],
+  "dataChecks": [
+    {
+      "name": "49 eleven-byte default names",
+      "bytes": 539,
+      "sha256": "979189ff410da2a97afb84c71b632a00ab8ed48504ea33b4898e46d5808ddd82",
+      "compiledAndConvertedMatch": true
+    },
+    {
+      "name": "69 seven-item shop rows",
+      "bytes": 483,
+      "sha256": "01a5680f8711b8ee6ffb25509d74526f9feaa2b73fa78f74c32fde5686c8cfec",
+      "compiledAndConvertedMatch": true
+    },
+    {
+      "name": "62 window configurations",
+      "bytes": 496,
+      "sha256": "c58f9d010e7370d44f4d7aa3027dcc7910a0930d3eef199ccc556adcd9f1b872",
+      "compiledAndConvertedMatch": true
+    },
+    {
+      "name": "extra_animation_sprite_table",
+      "bytes": 272,
+      "sha256": "6748c014e2a9551ee927d6c03b7f1cb0443152f8d40cc50c1b54b7b7a1bf1baf",
+      "compiledAndConvertedMatch": true
+    },
+    {
+      "name": "extra_animation_sprite_table_running1",
+      "bytes": 272,
+      "sha256": "9531dc765f5fa6e14f4503c8568815f4773e729b6773f79367e9caf1a2d43951",
+      "compiledAndConvertedMatch": true
+    },
+    {
+      "name": "extra_animation_sprite_table_running2",
+      "bytes": 272,
+      "sha256": "9531dc765f5fa6e14f4503c8568815f4773e729b6773f79367e9caf1a2d43951",
+      "compiledAndConvertedMatch": true
+    },
+    {
+      "name": "899 movement pointers",
+      "bytes": 2697,
+      "sha256": "fd2f427eb0d689ffd49a707a50c1837597197335807bb8f3fe058cb4675a1f0f",
+      "compiledAndConvertedMatch": true
+    },
+    {
+      "name": "normal font glyph widths",
+      "bytes": 128,
+      "sha256": "88234f5fc17474a8918e63b60bc17008fa3547d200de51734d53d6887e19f2a6",
+      "compiledAndConvertedMatch": true
+    },
+    {
+      "name": "normal font glyph bitmaps",
+      "bytes": 4096,
+      "sha256": "664b47d526cbe8c932c21baed174e4b4ca078e5064270d2a8364bcf88755b8eb",
+      "compiledAndConvertedMatch": true
+    }
+  ],
+  "namingKeyboard": {
+    "compiledGlyphMatricesMatchNative": true,
+    "selectableUpperCells": 56,
+    "selectableLowerCells": 56,
+    "uniqueGlyphsWithConvertedFontData": 89,
+    "alphabetRow": 5,
+    "digitRow": 4,
+    "convertedFontHeight": 16,
+    "selectableGlyphsFitSingleColumns": true,
+    "fixedGridVramTiles": [
+      "200",
+      "26F"
+    ],
+    "cursorTiles": [
+      "28D",
+      "29D"
+    ],
+    "nameDisplayFirstTile": "2E0",
+    "textTilemapFirstTile": "380",
+    "standaloneAndNewGameGlyphTablesMatch": true,
+    "runtimeParityVerifiedByThisScript": false
+  },
+  "movementLibrary": {
+    "staticReachabilityPassed": true,
+    "reachableInstructions": 17688,
+    "reachableDestructorOpcodes": 0,
+    "activeSourceDestructorCalls": []
+  },
+  "unadaptedOrUnverified": [
+    {
+      "module": "movscr_codes",
+      "feature": "m_ondestroy opcode and callback lifecycle",
+      "normalGameplayUseFound": false
+    },
+    {
+      "module": "debug_fixes/debug_menu_enabler",
+      "feature": "Kirby boot debugger wholesale parity",
+      "bootHookEnabledInPinnedRelease": false
+    },
+    {
+      "module": "reset_routine",
+      "feature": "Dad and Gauss good-night dialogue paths and reset continuation in a live scene",
+      "nativeAdapterPresent": true,
+      "livePathsVerifiedByThisScript": false,
+      "runtimeReview": "research/redux-reset-runtime-review.json"
+    }
+  ],
+  "fullSemanticParityClaimed": false,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Write counts are syntactic inventory, including macro definitions; they are not counts of instantiated patches.",
+    "Native references and exact converted data are evidence of adapters, not every gameplay branch.",
+    "No emulator oracle, complete story/randomized playthrough, audio listening or visual pixel parity is performed by this script."
+  ]
+}
