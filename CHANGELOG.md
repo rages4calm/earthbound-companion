@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.12 - Winters companion progression
+
+- Gate the female monkey's departure event on the completed rope milestone. The wider native viewport could load her while Jeff approached Brick Road, triggering departure before the rope cave. The shared fix covers Original EarthBound and pinned MaternalBound Redux.
+- Recover older saves only when Jeff is alone, has acquired Bubble Gum and crossed Tessie, and has not completed the rope or joined Ness. Restore the actual follower through native party creation; keep the rope puzzle unfinished. Do not restore the monkey after the intended departure.
+- Bind enemy/item battle-action asset tables on every cold boot so using Bubble Gum or overworld PSI after an F6 load can run its actual action.
+- Reproduce premature departure in an isolated baseline with the two departure corrections disabled. Verify gum/menu use, rope animation, climbing, normal departure, reload and migration exclusions in both editions and both native builds. Repeat encounter, bicycle and sound-effect regressions.
+- Retain asset packs, state format 16, content/seed identities and user settings. Full story and randomized playthrough coverage remains incomplete.
+
 ## 0.5.0-redux-dev.11 - sprint and cliff collision
 
 - Validate the actual accepted free-walking segment after directional collision and corner nudges, sampling its leading edge and feet at pixel intervals. Prevent unchecked corner slides through solid tiles at normal, sprint and Skip Sandwich speeds in both editions and Story Shuffle packs.

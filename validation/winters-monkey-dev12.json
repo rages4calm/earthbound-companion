@@ -1,0 +1,456 @@
+{
+  "passed": true,
+  "casesPerEditionBuild": 12,
+  "totalPreparedCases": 48,
+  "variants": [
+    {
+      "edition": "Redux",
+      "engine": "player",
+      "status": "experimental",
+      "engineSha256": "cfbd7930803c85784b3aa072176d32629c40c7ecf1a1a4968de46608cee2bf44",
+      "assetsSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "tests": [
+        {
+          "test": "before-cave",
+          "checks": {
+            "monkeyRemains": true,
+            "ropeNotSkipped": true,
+            "departureNpcDormant": true
+          },
+          "passed": true
+        },
+        {
+          "test": "rope-site",
+          "checks": {
+            "ropeProximity": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "gum-and-rope",
+          "checks": {
+            "ropeLowered": true,
+            "proximityCleared": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "climb",
+          "checks": {
+            "reachedUpperLedge": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "cave-exit",
+          "checks": {
+            "monkeyWaitsAtExit": true,
+            "departureNpcActive": true
+          },
+          "passed": true
+        },
+        {
+          "test": "normal-departure",
+          "checks": {
+            "monkeyLeft": true,
+            "ropeMilestoneRetained": true
+          },
+          "passed": true
+        },
+        {
+          "test": "departure-cold-reload",
+          "checks": {
+            "monkeyStaysGone": true
+          },
+          "passed": true
+        },
+        {
+          "test": "old-broken-state",
+          "checks": {
+            "monkeyRecovered": true,
+            "puzzleStillRequired": true,
+            "positionRetained": true
+          },
+          "passed": true
+        },
+        {
+          "test": "without-gum",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "before-tessie",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "after-jeff-joins",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "different-leader",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        }
+      ],
+      "limits": [
+        "Prepared positions/story flags, real native menu and movement paths.",
+        "Does not establish a full story or randomized playthrough."
+      ]
+    },
+    {
+      "edition": "Redux",
+      "engine": "observer",
+      "status": "experimental",
+      "engineSha256": "9a84228ece20e94ef09167932eafe0a5a6d7840981512ff0a4c80ef614c1ca8f",
+      "assetsSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "tests": [
+        {
+          "test": "before-cave",
+          "checks": {
+            "monkeyRemains": true,
+            "ropeNotSkipped": true,
+            "departureNpcDormant": true
+          },
+          "passed": true
+        },
+        {
+          "test": "rope-site",
+          "checks": {
+            "ropeProximity": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "gum-and-rope",
+          "checks": {
+            "ropeLowered": true,
+            "proximityCleared": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "climb",
+          "checks": {
+            "reachedUpperLedge": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "cave-exit",
+          "checks": {
+            "monkeyWaitsAtExit": true,
+            "departureNpcActive": true
+          },
+          "passed": true
+        },
+        {
+          "test": "normal-departure",
+          "checks": {
+            "monkeyLeft": true,
+            "ropeMilestoneRetained": true
+          },
+          "passed": true
+        },
+        {
+          "test": "departure-cold-reload",
+          "checks": {
+            "monkeyStaysGone": true
+          },
+          "passed": true
+        },
+        {
+          "test": "old-broken-state",
+          "checks": {
+            "monkeyRecovered": true,
+            "puzzleStillRequired": true,
+            "positionRetained": true
+          },
+          "passed": true
+        },
+        {
+          "test": "without-gum",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "before-tessie",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "after-jeff-joins",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "different-leader",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        }
+      ],
+      "limits": [
+        "Prepared positions/story flags, real native menu and movement paths.",
+        "Does not establish a full story or randomized playthrough."
+      ]
+    },
+    {
+      "edition": "Original",
+      "engine": "player",
+      "status": "experimental",
+      "engineSha256": "cfbd7930803c85784b3aa072176d32629c40c7ecf1a1a4968de46608cee2bf44",
+      "assetsSha256": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+      "tests": [
+        {
+          "test": "before-cave",
+          "checks": {
+            "monkeyRemains": true,
+            "ropeNotSkipped": true,
+            "departureNpcDormant": true
+          },
+          "passed": true
+        },
+        {
+          "test": "rope-site",
+          "checks": {
+            "ropeProximity": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "gum-and-rope",
+          "checks": {
+            "ropeLowered": true,
+            "proximityCleared": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "climb",
+          "checks": {
+            "reachedUpperLedge": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "cave-exit",
+          "checks": {
+            "monkeyWaitsAtExit": true,
+            "departureNpcActive": true
+          },
+          "passed": true
+        },
+        {
+          "test": "normal-departure",
+          "checks": {
+            "monkeyLeft": true,
+            "ropeMilestoneRetained": true
+          },
+          "passed": true
+        },
+        {
+          "test": "departure-cold-reload",
+          "checks": {
+            "monkeyStaysGone": true
+          },
+          "passed": true
+        },
+        {
+          "test": "old-broken-state",
+          "checks": {
+            "monkeyRecovered": true,
+            "puzzleStillRequired": true,
+            "positionRetained": true
+          },
+          "passed": true
+        },
+        {
+          "test": "without-gum",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "before-tessie",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "after-jeff-joins",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "different-leader",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        }
+      ],
+      "limits": [
+        "Prepared positions/story flags, real native menu and movement paths.",
+        "Does not establish a full story or randomized playthrough."
+      ]
+    },
+    {
+      "edition": "Original",
+      "engine": "observer",
+      "status": "experimental",
+      "engineSha256": "9a84228ece20e94ef09167932eafe0a5a6d7840981512ff0a4c80ef614c1ca8f",
+      "assetsSha256": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+      "tests": [
+        {
+          "test": "before-cave",
+          "checks": {
+            "monkeyRemains": true,
+            "ropeNotSkipped": true,
+            "departureNpcDormant": true
+          },
+          "passed": true
+        },
+        {
+          "test": "rope-site",
+          "checks": {
+            "ropeProximity": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "gum-and-rope",
+          "checks": {
+            "ropeLowered": true,
+            "proximityCleared": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "climb",
+          "checks": {
+            "reachedUpperLedge": true,
+            "monkeyRemains": true
+          },
+          "passed": true
+        },
+        {
+          "test": "cave-exit",
+          "checks": {
+            "monkeyWaitsAtExit": true,
+            "departureNpcActive": true
+          },
+          "passed": true
+        },
+        {
+          "test": "normal-departure",
+          "checks": {
+            "monkeyLeft": true,
+            "ropeMilestoneRetained": true
+          },
+          "passed": true
+        },
+        {
+          "test": "departure-cold-reload",
+          "checks": {
+            "monkeyStaysGone": true
+          },
+          "passed": true
+        },
+        {
+          "test": "old-broken-state",
+          "checks": {
+            "monkeyRecovered": true,
+            "puzzleStillRequired": true,
+            "positionRetained": true
+          },
+          "passed": true
+        },
+        {
+          "test": "without-gum",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "before-tessie",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "after-jeff-joins",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        },
+        {
+          "test": "different-leader",
+          "checks": {
+            "noStoryCompanionGranted": true
+          },
+          "passed": true
+        }
+      ],
+      "limits": [
+        "Prepared positions/story flags, real native menu and movement paths.",
+        "Does not establish a full story or randomized playthrough."
+      ]
+    }
+  ],
+  "baseline": {
+    "method": "Same source, with only departure guard and legacy repair disabled; prepared pre-cave position.",
+    "engineSha256": "0853a2eca089108539831f2db4a2d09abda08f1764966c5586e867b4c6875565",
+    "Original": {
+      "monkeyLeft": true,
+      "ropeLowered": false
+    },
+    "Redux": {
+      "monkeyLeft": true,
+      "ropeLowered": false
+    }
+  },
+  "copiedSaveRecovery": {
+    "playerCharacterBytesUnchanged": true,
+    "moneyUnchanged": true,
+    "positionUnchanged": true,
+    "onlyPresenceFlagChanged": true,
+    "actualFollowerRestored": true,
+    "ropeStillRequired": true
+  },
+  "FullPlaythroughVerified": false
+}
