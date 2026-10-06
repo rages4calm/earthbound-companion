@@ -1,0 +1,91 @@
+{
+  "toolVersion": "dev20-auto-header",
+  "originalPack": false,
+  "privateBuild": {
+    "driverSourceSha256": "dadd6fcfcac9b663b5a1093fcc7941915c526833415a6333c076968383a2ba87",
+    "executableSha256": "b95e60d4a2246dd7d9a8dd9b6baaa6cee305576cb7a20a68bedc7b628ee990a7",
+    "productionExecutableSha256": "6aceb1c3e96f2ecfad54b9b79ac65d46516335b9ab43d07446591b960c926cdf",
+    "productionLibrarySha256": "569e7605ff90c1fdca3f0d55bb9fb26f450d65be431ec81a365d53a015abbedf",
+    "platformMainObjectSha256": "bc54f2e9f0342e161afc22c758ab9c317c8296f6e72fcf3aa211d04ebd39bbab",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "nativeExit": 0,
+  "logSha256": "eb50f89128bec80953901d110bdc49bb491579a043112a0c2578e8d2c8e66ea4",
+  "cases": [
+    {
+      "group": 1,
+      "passed": false,
+      "errors": [
+        "AUTO leaked out of completed battle"
+      ],
+      "events": [
+        {
+          "type": "QA_AUTO",
+          "actual": {
+            "id": 0,
+            "autoSelected": 1,
+            "autoTicks": 812,
+            "visibleHeaderTicks": 812,
+            "depth": 1,
+            "enabled": 0,
+            "shadowAfterExit": 1,
+            "displayedAfterExit": 1
+          }
+        }
+      ]
+    },
+    {
+      "group": 48,
+      "passed": false,
+      "errors": [
+        "AUTO leaked out of completed battle"
+      ],
+      "events": [
+        {
+          "type": "QA_AUTO",
+          "actual": {
+            "id": 1,
+            "autoSelected": 1,
+            "autoTicks": 896,
+            "visibleHeaderTicks": 896,
+            "depth": 1,
+            "enabled": 0,
+            "shadowAfterExit": 1,
+            "displayedAfterExit": 1
+          }
+        }
+      ]
+    },
+    {
+      "group": 448,
+      "passed": false,
+      "errors": [
+        "AUTO leaked out of completed battle"
+      ],
+      "events": [
+        {
+          "type": "QA_AUTO",
+          "actual": {
+            "id": 2,
+            "autoSelected": 1,
+            "autoTicks": 612,
+            "visibleHeaderTicks": 612,
+            "depth": 1,
+            "enabled": 0,
+            "shadowAfterExit": 1,
+            "displayedAfterExit": 1
+          }
+        }
+      ]
+    }
+  ],
+  "allPassed": false,
+  "limits": [
+    "Three prepared scripted encounter groups, actual platform menu navigation selects Auto Fight, real production battle AI/turn/ending. Not every enemy/escape/defeat/cold battle state.",
+    "Recovery fixtures use actual header draw/upload followed by completed idle flags. Exact four-tile clearing, unrelated tiles and active-battle preservation are checked; not an independent full pixel audit."
+  ],
+  "fullPlaythroughVerified": false
+}

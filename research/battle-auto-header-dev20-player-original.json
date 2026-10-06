@@ -1,0 +1,115 @@
+{
+  "toolVersion": "dev20-auto-header",
+  "originalPack": true,
+  "privateBuild": {
+    "driverSourceSha256": "ba09f0e6c7d0668466c62e835d6f34964454e576c5af9d835a6dade80ce2d7cd",
+    "executableSha256": "b8b81b0da492008e695d82e1179325d14a7552f58141b895ca88aae62ce16d7e",
+    "productionExecutableSha256": "8ae276df3b3509001887d911650f027f72df63935497c9906835f0b60a9df4b7",
+    "productionLibrarySha256": "5d4b08f930654bec53dbb11d3f7eb0b5367f7e85fd1be3f9c321390f2bb0ddcf",
+    "platformMainObjectSha256": "bc54f2e9f0342e161afc22c758ab9c317c8296f6e72fcf3aa211d04ebd39bbab",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "nativeExit": 0,
+  "logSha256": "333ec219fc08b8645262d78217e49ac2b2cb6486a1fd322ba82e24637bb7b867",
+  "cases": [
+    {
+      "group": 1,
+      "passed": true,
+      "errors": [],
+      "events": [
+        {
+          "type": "QA_AUTO",
+          "actual": {
+            "id": 0,
+            "autoSelected": 1,
+            "autoTicks": 812,
+            "visibleHeaderTicks": 812,
+            "depth": 1,
+            "enabled": 0,
+            "shadowAfterExit": 0,
+            "displayedAfterExit": 0
+          }
+        },
+        {
+          "type": "QA_RECOVERY",
+          "actual": {
+            "id": 0,
+            "cleared": 1,
+            "outsideChanged": 0,
+            "unrelatedPreserved": 1,
+            "activePreserved": 1
+          }
+        }
+      ]
+    },
+    {
+      "group": 48,
+      "passed": true,
+      "errors": [],
+      "events": [
+        {
+          "type": "QA_AUTO",
+          "actual": {
+            "id": 1,
+            "autoSelected": 1,
+            "autoTicks": 896,
+            "visibleHeaderTicks": 896,
+            "depth": 1,
+            "enabled": 0,
+            "shadowAfterExit": 0,
+            "displayedAfterExit": 0
+          }
+        },
+        {
+          "type": "QA_RECOVERY",
+          "actual": {
+            "id": 1,
+            "cleared": 1,
+            "outsideChanged": 0,
+            "unrelatedPreserved": 1,
+            "activePreserved": 1
+          }
+        }
+      ]
+    },
+    {
+      "group": 448,
+      "passed": true,
+      "errors": [],
+      "events": [
+        {
+          "type": "QA_AUTO",
+          "actual": {
+            "id": 2,
+            "autoSelected": 1,
+            "autoTicks": 612,
+            "visibleHeaderTicks": 612,
+            "depth": 1,
+            "enabled": 0,
+            "shadowAfterExit": 0,
+            "displayedAfterExit": 0
+          }
+        },
+        {
+          "type": "QA_RECOVERY",
+          "actual": {
+            "id": 2,
+            "cleared": 1,
+            "outsideChanged": 0,
+            "unrelatedPreserved": 1,
+            "activePreserved": 1
+          }
+        }
+      ]
+    }
+  ],
+  "allPassed": true,
+  "limits": [
+    "Three prepared scripted encounter groups, actual platform menu navigation selects Auto Fight, real production battle AI/turn/ending. Not every enemy/escape/defeat/cold battle state.",
+    "Recovery fixtures use actual header draw/upload followed by completed idle flags. Exact four-tile clearing, unrelated tiles and active-battle preservation are checked; not an independent full pixel audit."
+  ],
+  "fullPlaythroughVerified": false
+}

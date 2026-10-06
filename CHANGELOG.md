@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.20 - shop inventory and AUTO cleanup
+
+- Match Redux shared inventory to the pinned source's Keys menu. Suporma, Exit mice, Brain stone, letters and other ordinary key-category records now stay in character Goods, preserving duplicates and per-character shop previews.
+- Recover affected items from old phone/F6 saves into free active character slots. Full inventories retain pending ownership, source find/take/select access and retry when space becomes available; no original owner can be reconstructed from the old shared pool.
+- Clear Redux AUTO at its relocated position after combat, including after the battle flag is reset. Repair exact stale AUTO tiles in older idle roaming states while preserving other window tiles and active battles.
+- Keep the dev.18 data pack, save format 16, current story/seed namespaces, settings and MSU setup unchanged. No new game data or ROM is included.
+- Verify 49 inventory fixtures in player/observer, the Original classifier, nine prepared Auto Fight battle/recovery runs and six shop transactions. Full playthrough coverage remains open.
+
 ## 0.5.0-redux-dev.19 - party names and equipped-item transfers
 
 - Integrate the exact complete native candidate previously tested privately: preserve accented character-name glyphs in Goods/PSI and service target labels, including highlight and cold restore.

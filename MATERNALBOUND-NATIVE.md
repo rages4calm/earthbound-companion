@@ -8,9 +8,11 @@ Companion is adapting MaternalBound Redux into the BrianPugh-derived native x64 
 
 This checkpoint targets the active upstream source at `897d00833f4a08a0a92f106abf631629a6a6a041`, compiled locally with CoilSnake into a verified 6 MiB ROM. It is not the official v1.1 release. The v1.1 BPS was separately checksum-verified and tested during initial extraction research; supporting that release requires a separate conversion map and validation record.
 
-The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.19` (dev.18 presentation and save-menu fixes plus accented party-target labels and equipped-Give QoL; development follows playtesting reports).**
+The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.20` (ordinary Redux inventory/old-save recovery and post-combat AUTO cleanup, with dev.19 fixes retained; development follows playtesting reports).**
 
 The open-ended autonomous audit has been stopped at the owner’s request. Existing evidence is retained; further fixes will follow playtesting reports. No whole normal-play Redux feature is currently confirmed absent, but complete compatibility remains unverified.
+
+Dev.20 corrects the shared-inventory adapter to match the pinned source Keys menu and fixes the relocated AUTO cleanup address. [Reported defects, recovery and bounded verification](docs/RELEASE-dev20.md).
 
 Dev.18 converts the confirmed Town Map/label, gas-station intro, Starman teleport and swirl omissions. It fixes title and file-slot glyphs, fresh-process occupied-slot detection, and current Original setup detection. Exactly 41 presentation assets change from dev.17; compatible story saves are copied into the new namespace and existing seeds keep their original base. [Current audit and remaining conversion](docs/NATIVE-AUDIT-dev18.md). Dev.19 integrates the separately verified party-target glyph correction and intentional equipped-Give QoL fixes. See [dev.19 evidence](docs/RELEASE-dev19.md).
 

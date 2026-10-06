@@ -1,0 +1,129 @@
+{
+  "version": "0.5.0-redux-dev.20",
+  "nativeBase": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "sourceSnapshot": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\shop-suporma-dev20\\source-v2",
+  "changedFiles": [
+    {
+      "path": "src/game/game_state.c",
+      "baselineSha256": "7929fa58c519450ead5a0dd729dabc3767f3356b39075efa8488629a238c4edb",
+      "candidateSha256": "cd8b7cc894255a2b56e9846bc44a1b426458071e22f5dbd510895f5c8d401354"
+    },
+    {
+      "path": "src/game/inventory.c",
+      "baselineSha256": "0ce9700c84c3b14f2df4d3a67ba12fda550da26a8880ba04261e8aebb934856c",
+      "candidateSha256": "7fb8f219f9f69ce6cdf11e553bddb463026effc2beb8c3ac710910f821587fe2"
+    },
+    {
+      "path": "src/game/inventory.h",
+      "baselineSha256": "9137f85742d0c7bb43866abfcbf8296836287f509669391e1c10b197e5f58533",
+      "candidateSha256": "68f1363819b0ecf2b2ebba6838ae8db5bbe141fcae42496910479abe510b017d"
+    },
+    {
+      "path": "src/game/overworld.c",
+      "baselineSha256": "f91e1db767e21a7f72648c17b6662cb037f99bfa0598ab4ad4e820c67b4d370d",
+      "candidateSha256": "6a43728a1aab4d202c39390d8bd7996e2269da8fe57d8e83132f079d0a433d39"
+    },
+    {
+      "path": "src/game/window.c",
+      "baselineSha256": "d861e80a8f9d1f40cbf2c25008bd33028254dce256f39ea49627e83284f0489c",
+      "candidateSha256": "f5b98528e38e3e16722da7c6920c9fe60435a587a368d4b48f53cd40f3e13a09"
+    },
+    {
+      "path": "src/game/window.h",
+      "baselineSha256": "41288c2127d5c9e248bce13302ed2bf5a6ecad25b3b701ec499e3aa30fe23d59",
+      "candidateSha256": "4b197c179655278291108b31cb3a9134d128dabc312807c49423b61fe9ad6777"
+    }
+  ],
+  "lineEndingOnlyDifferences": [
+    "src/CMakeLists.txt",
+    "src/game_main.c",
+    "src/game_main.h",
+    "src/core/mode_stack.h",
+    "src/core/state_dump.c",
+    "src/data/event_script_data.c",
+    "src/data/event_script_data.h",
+    "src/data/runtime_assets.c",
+    "src/data/runtime_assets.h",
+    "src/entity/callbacks.c",
+    "src/entity/callroutine.c",
+    "src/entity/callroutine_movement.c",
+    "src/entity/callroutine_palette.c",
+    "src/entity/callroutine_sprite.c",
+    "src/entity/entity.c",
+    "src/entity/opcodes.c",
+    "src/entity/script.c",
+    "src/entity/script.h",
+    "src/entity/sprite.c",
+    "src/entity/sprite.h",
+    "src/game/audio.c",
+    "src/game/audio.h",
+    "src/game/battle.c",
+    "src/game/battle.h",
+    "src/game/battle_actions.c",
+    "src/game/battle_calc.c",
+    "src/game/battle_psi.c",
+    "src/game/battle_targeting.c",
+    "src/game/battle_ui.c",
+    "src/game/display_text.c",
+    "src/game/display_text.h",
+    "src/game/display_text_internal.h",
+    "src/game/display_text_menus.c",
+    "src/game/door.c",
+    "src/game/door.h",
+    "src/game/ending.c",
+    "src/game/ending.h",
+    "src/game/game_state.h",
+    "src/game/map_loader.c",
+    "src/game/map_loader.h",
+    "src/game/maternalbound.c",
+    "src/game/maternalbound.h",
+    "src/game/maternalbound_battle_sprites.c",
+    "src/game/maternalbound_battle_sprites.h",
+    "src/game/overworld.h",
+    "src/game/overworld_interaction.c",
+    "src/game/overworld_palette.c",
+    "src/game/overworld_spawn.c",
+    "src/game/overworld_teleport.c",
+    "src/game/position_buffer.h",
+    "src/game/text.c",
+    "src/game/text.h",
+    "src/game/town_map.c",
+    "src/intro/file_select.c",
+    "src/platform/pc_options.c",
+    "src/platform/pc_options.h",
+    "src/platform/platform.h",
+    "src/platform/qa_observer.h",
+    "src/snes/ppu_render.c",
+    "src/tools/generate_constants_headers.py",
+    "src/tools/gen_struct_info.c",
+    "port/unix/CMakeLists.txt",
+    "port/unix/main.c",
+    "port/unix/platform/msu_audio.c",
+    "port/unix/platform/qa_observer.c",
+    "port/unix/platform/sdl2_input.c",
+    "port/unix/platform/sdl2_timer.c",
+    "port/unix/platform/sdl2_video.c",
+    "ebtools/cli/extract.py",
+    "ebtools/cli/pack_all.py",
+    "ebtools/parsers/original_movement_banks.py"
+  ],
+  "comparison": "Complete source comparison normalizes CRLF to LF only",
+  "comparedSourceFiles": 4312,
+  "completePatchSha256": "46b4f69f423a97dc13a6bbf5100ee4af666fce1b3c2afff1f40bd5d82253f678",
+  "builds": [
+    {
+      "mode": "player",
+      "build": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\shop-suporma-dev20\\builds-v2\\player",
+      "executableSha256": "8ae276df3b3509001887d911650f027f72df63935497c9906835f0b60a9df4b7",
+      "archiveSha256": "5d4b08f930654bec53dbb11d3f7eb0b5367f7e85fd1be3f9c321390f2bb0ddcf"
+    },
+    {
+      "mode": "observer",
+      "build": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\shop-suporma-dev20\\builds-v2\\observer",
+      "executableSha256": "c685e742e05b5dcd827d2af20c3e2f292cb2715d71476dd68aa5f2dd216453b4",
+      "archiveSha256": "95774e2a1d502b9fb11061d439d5b4aeb447eb328d81bebfedd77cd366cbfb27"
+    }
+  ],
+  "fullCleanCompilation": true,
+  "ownerFilesChanged": false
+}

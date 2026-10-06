@@ -1,6 +1,6 @@
 # Testing the native conversion
 
-The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The autonomous audit is stopped; development now follows playtesting reports. See [dev.19 release evidence](RELEASE-dev19.md). Earlier reports retain their tested release identities.
+The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The autonomous audit is stopped; development now follows playtesting reports. See [dev.20 release evidence](RELEASE-dev20.md). Earlier reports retain their tested release identities.
 
 ## Three different kinds of evidence
 
@@ -84,3 +84,5 @@ Use `verify_redux_package_dev18.py` for the actual clean ZIP, self-contained own
 ## Dev.19 release integration
 
 The completed private party-name/Give suites are now integrated and published; their exact tested player is the shipping binary. See [release evidence](RELEASE-dev19.md) and [shipping provenance](../research/native-runtime-dev19-provenance.json). The reused dev.18 clean-package verifier also checks dev.19 because its pack/content contract is unchanged. No ongoing automated playthrough or autonomous audit is scheduled.
+
+Dev.20 adds source Keys membership/old-save inventory recovery and real Auto Fight encounter/recovery tools. The dev.20 reports bind their complete shipping candidate and retain explicit prepared-scene limits. Dev.19 setup evidence retains its historical identity.

@@ -1,0 +1,235 @@
+[
+  {
+    "id": "custom66-all-bags-full",
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "shop": 66,
+    "stock": [
+      32,
+      43,
+      146,
+      246,
+      242,
+      129
+    ],
+    "flag": 982,
+    "money": 80000,
+    "expectedItem": 246,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "sound": 120,
+    "soundCount": 0,
+    "freeSlots": 0,
+    "party": 4,
+    "plan": [
+      0,
+      3,
+      1
+    ]
+  },
+  {
+    "id": "Onett-bat-keep-unequipped",
+    "sourceEntry": "C5D24B",
+    "entry": 3146798,
+    "shop": 1,
+    "stock": [
+      17,
+      18,
+      49,
+      74,
+      64
+    ],
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 17,
+    "expectedCount": 1,
+    "expectedDelta": -18,
+    "sound": 12,
+    "soundCount": 1,
+    "plan": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    "expectedEquipment": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "id": "Onett-sell-cookie-confirm",
+    "sourceEntry": "C5D24B",
+    "entry": 3146798,
+    "shop": 1,
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 90,
+    "expectedCount": -1,
+    "expectedDelta": 7,
+    "sound": 12,
+    "soundCount": 1,
+    "freeSlots": 13,
+    "plan": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "id": "Onett-equip-upgrade-sell-old",
+    "sourceEntry": "C5D24B",
+    "entry": 3146798,
+    "shop": 1,
+    "stock": [
+      17,
+      18,
+      49,
+      74,
+      64
+    ],
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 18,
+    "expectedCount": 1,
+    "expectedDelta": -39,
+    "sound": 12,
+    "soundCount": 2,
+    "oldItem": 17,
+    "plan": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "expectedEquipment": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "id": "Onett-sell-Suporma",
+    "sourceEntry": "C5D24B",
+    "entry": 3146798,
+    "shop": 1,
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 204,
+    "expectedCount": -1,
+    "expectedDelta": 25,
+    "sound": 12,
+    "soundCount": 1,
+    "freeSlots": 14,
+    "plan": [
+      1,
+      0,
+      0,
+      1
+    ],
+    "item": 204
+  },
+  {
+    "id": "Onett-buy-Suporma-carried",
+    "sourceEntry": "C5D24B",
+    "entry": 3146798,
+    "shop": 1,
+    "stock": [
+      17,
+      18,
+      49,
+      74,
+      64
+    ],
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 17,
+    "expectedCount": 1,
+    "expectedDelta": -18,
+    "sound": 12,
+    "soundCount": 1,
+    "plan": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    "expectedEquipment": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "item": 204,
+    "party": 3
+  }
+]
