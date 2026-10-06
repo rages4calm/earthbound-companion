@@ -1,0 +1,213 @@
+{
+  "format": "snes-enemy-placement-direction-oracle-v1",
+  "Passed": true,
+  "CasesPerMode": 42912,
+  "CaseGroups": {
+    "all-actual-map-cells": 20480,
+    "unsigned-and-map-edge-boundaries": 256,
+    "all-enemy-records-selected-full-word-surface-flags": 22176
+  },
+  "SourceProof": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "MULT168",
+      "address": "C08FF7",
+      "abi": "far",
+      "originalSource": "system/math/mult168.asm",
+      "byteEqualLength": 59,
+      "byteEqualSha256": "e33a6c712d3a05f02efe679c5a8b1f6e80dbf1e44f9b60dc8e6a164940d1c682",
+      "ReduxFunctionByteEqual": true
+    },
+    {
+      "symbol": "GET_MAP_ENEMY_PLACEMENT",
+      "address": "C0263D",
+      "abi": "far A=x/surface, X=y for map, Y=enemy for direction; A/X/Y16",
+      "originalSource": "overworld/get_map_enemy_placement.asm",
+      "byteEqualLength": 43,
+      "byteEqualSha256": "0a0d1b701959c47714aec447262c3e1157239f0e068488c421a069823a992e7c",
+      "ReduxByteEqualSha256": "0a0d1b701959c47714aec447262c3e1157239f0e068488c421a069823a992e7c",
+      "TableOperandBytes": [
+        33,
+        34,
+        35
+      ],
+      "OriginalTablePointer": "D01880",
+      "ReduxTablePointer": "D01880",
+      "AllInstructionsByteEqualBetweenModes": true
+    },
+    {
+      "symbol": "CAN_ENEMY_RUN_IN_DIRECTION",
+      "address": "C05DE7",
+      "abi": "far A=x/surface, X=y for map, Y=enemy for direction; A/X/Y16",
+      "originalSource": "overworld/can_enemy_run_in_direction.asm",
+      "byteEqualLength": 84,
+      "byteEqualSha256": "deefeae42994c8936b55b375cd383f22b7c3553694143afc4daee826bcb7c215",
+      "ReduxByteEqualSha256": "deefeae42994c8936b55b375cd383f22b7c3553694143afc4daee826bcb7c215",
+      "TableOperandBytes": [
+        64,
+        65,
+        66
+      ],
+      "OriginalTablePointer": "D59589",
+      "ReduxTablePointer": "D59589",
+      "AllInstructionsByteEqualBetweenModes": true
+    }
+  ],
+  "PackedTableEvidence": {
+    "original": {
+      "GridBytes": 40960,
+      "GridCells": 20480,
+      "PackedFullGridEqualsMachineReferencedTable": true,
+      "GridSha256": "98548fccde185b042806841f105f05ff2b7954ccc1352225c3c28e329caa65fb",
+      "EnemyRecords": 231,
+      "EnemyRecordBytes": 94,
+      "RunFlagOffset": 32,
+      "EveryPackedRunFlagEqualsSourceMachine": true,
+      "RunFlagSha256": "d436aa7fcb4bcf005e7e3e920540f683c4b7d67201f58fca8daea5a4c87e9796",
+      "RunFlagDistribution": {
+        "7": 226,
+        "6": 5
+      },
+      "EncounterIdDistributionCount": 196,
+      "ReduxAiFooterPresent": false
+    },
+    "redux": {
+      "GridBytes": 40960,
+      "GridCells": 20480,
+      "PackedFullGridEqualsMachineReferencedTable": true,
+      "GridSha256": "85fd585da71f0325ec400862cec63cdba50e8dc6e6216bcc16cf6baafa58f1aa",
+      "EnemyRecords": 231,
+      "EnemyRecordBytes": 94,
+      "RunFlagOffset": 32,
+      "EveryPackedRunFlagEqualsSourceMachine": true,
+      "RunFlagSha256": "aea1a516386095414061713515a1722c6bd319898b2459103ca1e15e334f864c",
+      "RunFlagDistribution": {
+        "7": 226,
+        "5": 5
+      },
+      "EncounterIdDistributionCount": 197,
+      "ReduxAiFooterPresent": true
+    }
+  },
+  "Modes": [
+    {
+      "Mode": "original",
+      "ExecutedCases": 42912,
+      "MismatchCount": 0,
+      "MismatchesByHelper": {},
+      "FirstMismatches": [],
+      "MachineEvidence": {
+        "Calls": 42912,
+        "CallsByHelper": {
+          "map": 20736,
+          "direction": 22176
+        },
+        "StackDirectPageProtectedRamPassed": true,
+        "CompleteOrderedCorpusVerified": true,
+        "CallerSha256": "5f7edbe6fd429c7f3f68e86a1a60c931f913738108df9bd21a7be7c7a74af200",
+        "LuaSha256": "9c47d119cfa14db49c033510fda85de7c5d58e17c10b8a994130de1f00962c0c",
+        "SamplesSha256": "9f4a02e5b08ac3ff06c311fa62fead8925eab01e5809ff1e68cb805ea5aed95d",
+        "OriginalMachineCodeExecuted": true
+      },
+      "NativeEvidence": {
+        "ExecutableSha256": "07a0d4ac3a717a775d3d3b2e5cfb2411bfbb3345f64820729b025f566ca5dffd",
+        "DriverSourceSha256": "c84b0d2bf04b4e036db81ddda7bf58a36faa2a855bcedb0126f209d5bfeacf9d",
+        "ProductionLibrarySha256": "f75aa786f9bc735dcab96adb7e6c89fb77f3f63393ae5ca4f73ab63424a6d93a",
+        "UntouchedProductionLibraryLinked": true,
+        "PrivateCorrectedCallbackReplacement": null,
+        "ReadOnlyPrePostCallbackWrapper": false,
+        "SamePlatformMainAndGameLoop": true,
+        "SharedSourceEditedByBuilder": false,
+        "SharedBuildEdited": false,
+        "Builder": {
+          "path": "tools/party_follow_private_build.py",
+          "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+        }
+      },
+      "EveryMachineResultMatchesActualPackData": true
+    },
+    {
+      "Mode": "redux",
+      "ExecutedCases": 42912,
+      "MismatchCount": 0,
+      "MismatchesByHelper": {},
+      "FirstMismatches": [],
+      "MachineEvidence": {
+        "Calls": 42912,
+        "CallsByHelper": {
+          "map": 20736,
+          "direction": 22176
+        },
+        "StackDirectPageProtectedRamPassed": true,
+        "CompleteOrderedCorpusVerified": true,
+        "CallerSha256": "5f7edbe6fd429c7f3f68e86a1a60c931f913738108df9bd21a7be7c7a74af200",
+        "LuaSha256": "c8d232be12c157b155ee01004777109e4ce5016abf8ba1de4ae618676b5223f0",
+        "SamplesSha256": "828bc129e1ea617daa1d040cdc2fa3c20791917795c04c1653076a618ce10a6c",
+        "OriginalMachineCodeExecuted": true
+      },
+      "NativeEvidence": {
+        "ExecutableSha256": "a273464dc25c8a9e81d51c8788d3ceaef4203c9837dd61f64ad8ad257a13bc54",
+        "DriverSourceSha256": "c84b0d2bf04b4e036db81ddda7bf58a36faa2a855bcedb0126f209d5bfeacf9d",
+        "ProductionLibrarySha256": "f75aa786f9bc735dcab96adb7e6c89fb77f3f63393ae5ca4f73ab63424a6d93a",
+        "UntouchedProductionLibraryLinked": true,
+        "PrivateCorrectedCallbackReplacement": null,
+        "ReadOnlyPrePostCallbackWrapper": false,
+        "SamePlatformMainAndGameLoop": true,
+        "SharedSourceEditedByBuilder": false,
+        "SharedBuildEdited": false,
+        "Builder": {
+          "path": "tools/party_follow_private_build.py",
+          "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+        }
+      },
+      "EveryMachineResultMatchesActualPackData": true
+    }
+  ],
+  "InputIdentities": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+    "tools\\mesen-agent-v0.1.0\\mesen-agent.exe": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe": "2edb5852800b9b5627658b2d14665604efd509cd7bf3754978074d8b3ad21e44",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe": "d2cd0d3244f3f0c24ba9e1a38f1e86569b0e50edad4c0d39476920232e370a9b",
+    "EarthBound Companion\\Game\\assets.pak": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+    "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.15\\Profiles\\maternalbound-redux-897d0083\\assets.pak": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v3-runtime\\player.exe": "9f23afbcc9245618de695c24cecfdfe699d9619866b7796e05c66e8d5d5e4954",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v3-runtime\\observer.exe": "bf2cd88932f30551340ac1cbbbffec160035cca3c1c2872f0e50fcaf98e484c4",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v3-build\\companion\\game_lib\\libearthbound_game.a": "f75aa786f9bc735dcab96adb7e6c89fb77f3f63393ae5ca4f73ab63424a6d93a",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\game\\overworld_spawn.c": "17f16be9014058e45f5eb1cf30d49ee6f9be43b81fe2ba6a3252aa155d9d9075",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\game\\battle.h": "db495d5841fd57e9988077d1d5eab04a6d3116117abe37cb9b3dca0b556da89a",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\include\\structs.asm": "075470f230c8375a3bec8b3d8ec18de2918c70896b1f26d32111fb0813f66433",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\include\\enums.asm": "c38897c5fe42d68fa05bf2933e826fa5219fca5a8d035a4d8f88c72f02d12095",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\include\\macros.asm": "bf93511b3c4b9f9ff9f4d3fb1b54d0e0336e486267905b17d23e355c1a10ad91",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\system\\math\\mult168.asm": "0071354f38c5d7dfde7a402e6095a4f7cf586340f048092ad847340e65ec0841",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\get_map_enemy_placement.asm": "0d7675e7063378ad07215e89601b9916676d479617c17a06122dc408ae9a3360",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\can_enemy_run_in_direction.asm": "efbbc9145172e6c25c2e94173cb8440c39f90cc4c623893ca5924b6cb824ec1f",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_enemy_placement_helpers_oracle.py": "dbaf753eebdab39e94198196986f47e5e3530f40c83ae32b5a67889048e329fd",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_position_arithmetic_oracle.py": "c0eee93f9b9fe1839dd2fe2ab15395b3ec05d76b09954dcf332682d94558c176"
+  },
+  "OwnerSavesTouched": false,
+  "SharedSourceEdited": false,
+  "SharedBuildEdited": false,
+  "FullStoryVerified": false,
+  "Limits": [
+    "Every valid 128x160 map-placement cell and all 231 enemy records are checked. Selected full-word flags/boundaries are covered, not all 65536 squared coordinates.",
+    "These two helpers are tested directly with actual packs and production archive; whole spawning, pathfinding, encounters, RNG ordering and door/stair integration are separate.",
+    "Neither original nor native direction helper has an enemy_id range guard. Invalid IDs are not executed: native out-of-range array access is undefined, not a meaningful parity fixture.",
+    "Native missing-assets fallbacks are deliberate host-side guards and cannot match an original ROM that always supplies its tables; missing/corrupt pack behavior is outside this corpus.",
+    "Native map >=128 or >=160 guards exactly match source unsigned BCS comparisons. Actual run_flag record layout and all values are byte-proven independently of the formulas.",
+    "No ROM bytes, original tables, packs or saves are distributed by this runner or report."
+  ]
+}

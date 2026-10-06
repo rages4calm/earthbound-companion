@@ -1,0 +1,271 @@
+{
+  "Schema": "native-direction-consumer-qualification-v1",
+  "MachineReport": {
+    "Path": "research\\native-direction-approach-dev17-red.json",
+    "Sha256": "6e00449f5b17a2413b799977c6183ec5230f08a81ab56a14ce24acad28fd716a"
+  },
+  "OrdinaryCoordinateSquareCases": 16641,
+  "OrdinaryEightWayDifferences": 947,
+  "NonCoincidentManhattanUnder16Cases": 480,
+  "NonCoincidentManhattanUnder16Differences": 24,
+  "SourcePredicateDerivedInitiativeDifferencesAcross64FacingPairs": 24638,
+  "DerivedExamples": [
+    {
+      "Positions": [
+        1024,
+        1024,
+        1017,
+        1027
+      ],
+      "RelativeVector": [
+        -7,
+        3
+      ],
+      "ActualCpuDirection": 6,
+      "FrozenProductionDirection": 5,
+      "EnemyMovementDirection": 0,
+      "LeaderFacing": 4,
+      "SourcePredicateInitiative": "party-first",
+      "FrozenNativePredicateInitiative": "normal",
+      "EvidenceType": "Derived from complete CPU outputs and source/native identical facing predicates; full encounter not executed."
+    },
+    {
+      "Positions": [
+        1024,
+        1024,
+        1019,
+        1022
+      ],
+      "RelativeVector": [
+        -5,
+        -2
+      ],
+      "ActualCpuDirection": 7,
+      "FrozenProductionDirection": 6,
+      "EnemyMovementDirection": 0,
+      "LeaderFacing": 0,
+      "SourcePredicateInitiative": "enemies-first",
+      "FrozenNativePredicateInitiative": "party-first",
+      "EvidenceType": "Derived from complete CPU outputs and source/native identical facing predicates; full encounter not executed."
+    },
+    {
+      "Positions": [
+        1024,
+        1024,
+        1021,
+        1017
+      ],
+      "RelativeVector": [
+        -3,
+        -7
+      ],
+      "ActualCpuDirection": 0,
+      "FrozenProductionDirection": 7,
+      "EnemyMovementDirection": 0,
+      "LeaderFacing": 1,
+      "SourcePredicateInitiative": "enemies-first",
+      "FrozenNativePredicateInitiative": "normal",
+      "EvidenceType": "Derived from complete CPU outputs and source/native identical facing predicates; full encounter not executed."
+    },
+    {
+      "Positions": [
+        1024,
+        1024,
+        1022,
+        1029
+      ],
+      "RelativeVector": [
+        -2,
+        5
+      ],
+      "ActualCpuDirection": 5,
+      "FrozenProductionDirection": 4,
+      "EnemyMovementDirection": 0,
+      "LeaderFacing": 3,
+      "SourcePredicateInitiative": "party-first",
+      "FrozenNativePredicateInitiative": "normal",
+      "EvidenceType": "Derived from complete CPU outputs and source/native identical facing predicates; full encounter not executed."
+    },
+    {
+      "Positions": [
+        1024,
+        1024,
+        1024,
+        1024
+      ],
+      "RelativeVector": [
+        0,
+        0
+      ],
+      "ActualCpuDirection": 0,
+      "FrozenProductionDirection": 4,
+      "EnemyMovementDirection": 0,
+      "LeaderFacing": 0,
+      "SourcePredicateInitiative": "enemies-first",
+      "FrozenNativePredicateInitiative": "party-first",
+      "EvidenceType": "Derived from complete CPU outputs and source/native identical facing predicates; full encounter not executed."
+    },
+    {
+      "Positions": [
+        1024,
+        1024,
+        1026,
+        1019
+      ],
+      "RelativeVector": [
+        2,
+        -5
+      ],
+      "ActualCpuDirection": 1,
+      "FrozenProductionDirection": 0,
+      "EnemyMovementDirection": 0,
+      "LeaderFacing": 2,
+      "SourcePredicateInitiative": "enemies-first",
+      "FrozenNativePredicateInitiative": "normal",
+      "EvidenceType": "Derived from complete CPU outputs and source/native identical facing predicates; full encounter not executed."
+    },
+    {
+      "Positions": [
+        1024,
+        1024,
+        1027,
+        1031
+      ],
+      "RelativeVector": [
+        3,
+        7
+      ],
+      "ActualCpuDirection": 4,
+      "FrozenProductionDirection": 3,
+      "EnemyMovementDirection": 0,
+      "LeaderFacing": 2,
+      "SourcePredicateInitiative": "party-first",
+      "FrozenNativePredicateInitiative": "normal",
+      "EvidenceType": "Derived from complete CPU outputs and source/native identical facing predicates; full encounter not executed."
+    },
+    {
+      "Positions": [
+        1024,
+        1024,
+        1029,
+        1026
+      ],
+      "RelativeVector": [
+        5,
+        2
+      ],
+      "ActualCpuDirection": 3,
+      "FrozenProductionDirection": 2,
+      "EnemyMovementDirection": 0,
+      "LeaderFacing": 1,
+      "SourcePredicateInitiative": "party-first",
+      "FrozenNativePredicateInitiative": "normal",
+      "EvidenceType": "Derived from complete CPU outputs and source/native identical facing predicates; full encounter not executed."
+    },
+    {
+      "Positions": [
+        1024,
+        1024,
+        1031,
+        1021
+      ],
+      "RelativeVector": [
+        7,
+        -3
+      ],
+      "ActualCpuDirection": 2,
+      "FrozenProductionDirection": 1,
+      "EnemyMovementDirection": 0,
+      "LeaderFacing": 0,
+      "SourcePredicateInitiative": "party-first",
+      "FrozenNativePredicateInitiative": "enemies-first",
+      "EvidenceType": "Derived from complete CPU outputs and source/native identical facing predicates; full encounter not executed."
+    }
+  ],
+  "Consumers": [
+    {
+      "NativePath": "native-source\\src\\game\\overworld_spawn.c",
+      "Function": "initiate_enemy_encounter",
+      "DefinitionLine": 718,
+      "NativeFunctionBodySha256": "4244fcb7cdf36f5cceb5ffcfc706c73b7fba4bcfea7c42288f148b2393318d9e",
+      "SourcePath": "native-source\\asm\\overworld\\initiate_enemy_encounter.asm",
+      "SourceSha256": "2ebb4c156ee4868d6b098ddee3a1a431b8a5cfb544dc5aea957655af6a1952e6",
+      "Behavior": "Encounter initiative: compares enemy moving direction and leader facing with approach direction.",
+      "Evidence": "Current native/source callsite inspection; full consumer execution excluded."
+    },
+    {
+      "NativePath": "native-source\\src\\game\\overworld.c",
+      "Function": "calculate_movement_path_steps",
+      "DefinitionLine": 2423,
+      "NativeFunctionBodySha256": "ce3320161bf4d721b6aef815475ec50c780c34b4761faeb0cc79e7187ea75098",
+      "SourcePath": "native-source\\asm\\misc\\calculate_movement_path_steps.asm",
+      "SourceSha256": "c10b44a280219f2244bfe7d3c6527af501dc09522fcaae347d7c336cc5003af4",
+      "Behavior": "Automatic movement: selects the next eight-way movement step toward a destination.",
+      "Evidence": "Current native/source callsite inspection; full consumer execution excluded."
+    },
+    {
+      "NativePath": "native-source\\src\\entity\\entity.c",
+      "Function": "get_direction_between_entities",
+      "DefinitionLine": 862,
+      "NativeFunctionBodySha256": "7c2545d7807bc5af68efaab5f5a285a12d7d6be0c6aa83a0155aab59846ad83a",
+      "SourcePath": "native-source\\asm\\misc\\get_direction_between_entities.asm",
+      "SourceSha256": "3dbecae8729fb446574eb4a90f3615a080ba79a66dcc730b49672e3941d7bd88",
+      "Behavior": "Scripted entity direction between two resolved character/NPC/sprite positions.",
+      "Evidence": "Current native/source callsite inspection; full consumer execution excluded."
+    },
+    {
+      "NativePath": "native-source\\src\\entity\\callroutine_screen.c",
+      "Function": "cr_make_party_look_at_entity",
+      "DefinitionLine": 876,
+      "NativeFunctionBodySha256": "bfff920404a58cddfc1ec47d8f1b7874ae7e4c73155d2297bddce1bfc605b3ed",
+      "SourcePath": "native-source\\asm\\overworld\\actionscript\\make_party_look_at_active_entity.asm",
+      "SourceSha256": "074e32046856d5a1a02c38ab9c34a9964b10fddb23fafd639930cdbdc8940955",
+      "Behavior": "Party look-at callback: changes sprite facing on even frames.",
+      "Evidence": "Current native/source callsite inspection; full consumer execution excluded."
+    },
+    {
+      "NativePath": "native-source\\src\\entity\\callroutine_movement.c",
+      "Function": "cr_movement_cmd_face_toward_npc",
+      "DefinitionLine": 699,
+      "NativeFunctionBodySha256": "e84e1fe0e7296888a45d526e660d565bfb1cdbc1f82128bc24927f0c56b518ec",
+      "SourcePath": "native-source\\asm\\overworld\\entity\\face_entity_toward_npc.asm",
+      "SourceSha256": "9c597fd466adc567ae0ff5b44add220b7c44d4be45337107e7196110247d905a",
+      "Behavior": "Movement-script NPC facing toward an active entity.",
+      "Evidence": "Current native/source callsite inspection; full consumer execution excluded."
+    },
+    {
+      "NativePath": "native-source\\src\\entity\\callroutine_movement.c",
+      "Function": "cr_movement_cmd_face_toward_sprite",
+      "DefinitionLine": 716,
+      "NativeFunctionBodySha256": "692ff30db7b8f4300f9760b661810f37986d0367bce052515592d439d544df68",
+      "SourcePath": "native-source\\asm\\overworld\\entity\\face_entity_toward_sprite.asm",
+      "SourceSha256": "d3deeb2db48b458caee1978dafafa91b2f72c35772e4e08ef44a3bc31fdd15de",
+      "Behavior": "Movement-script sprite facing toward an active entity.",
+      "Evidence": "Current native/source callsite inspection; full consumer execution excluded."
+    },
+    {
+      "NativePath": "native-source\\src\\game\\overworld_teleport.c",
+      "Function": "get_direction_from_player_to_entity",
+      "DefinitionLine": 1073,
+      "NativeFunctionBodySha256": "ba753b6b59a2488f6117a78e24fb629a1b5aa50b4ef635959330b38b87455533",
+      "SourcePath": "native-source\\asm\\overworld\\get_direction_from_player_to_entity.asm",
+      "SourceSha256": "04fb33c46f137bc90ece0130e1a3a9963cc885ddcbed15d681deac0887eab3e5",
+      "Behavior": "Entity-to-leader direction used by active callback paths.",
+      "Evidence": "Current native/source callsite inspection; full consumer execution excluded."
+    }
+  ],
+  "Reachability": "Inputs are ordinary positive pixel coordinates, with differences within five pixels. These distances fit ordinary proximity/facing domains and do not require overflow, sprint or out-of-bounds state. Map-specific contact route and collision footprints were not executed here.",
+  "Exclusions": [
+    "No actual full encounter or natural contact route is claimed by the derived initiative examples.",
+    "No claim that this helper mismatch caused hotel, cliff or stair blockers.",
+    "No full AI, automatic-path completion or story coverage claim."
+  ],
+  "FullPlaythroughVerified": false,
+  "FullConversionVerified": false,
+  "NativeSourceEdited": false,
+  "SharedBuildEdited": false,
+  "Tool": {
+    "Path": "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\review_direction_approach_consumers.py",
+    "Sha256": "2023ef631b716668c6d9d79103aa6ffec95b460bde343c76fce1d69524be7667"
+  }
+}

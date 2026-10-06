@@ -1,0 +1,3453 @@
+{
+  "schemaVersion": 1,
+  "tool": "battle-semantic-coverage-ledger",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "assetsSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "packedBattleActionTableSha256": "4a0d90b2f614521b5cf6426c5f4dabe360be32c3c92f7874cae4f16e936b2df0",
+  "catalogSource": "Owner-extracted pinned Redux assets; packed table membership is inventory, not semantic proof.",
+  "nativeDispatchReviewSha256": "e1f50167f6ac2f4df6f01034f9b331508eb2339e361643d85301e14ca7833b27",
+  "nativeDispatchReviewRole": "Names from current review source; reports retain immutable executed library identities.",
+  "packedActionRecords": 320,
+  "uniqueActiveCallbacks": 144,
+  "callbacksWithSelectedSemanticEvidence": 111,
+  "callbacksWithoutSelectedSemanticEvidence": 33,
+  "covered": [
+    {
+      "function": "C2859F",
+      "nativeHandler": "btlact_bash_step",
+      "catalogActionIds": [
+        4,
+        216,
+        217,
+        218,
+        219,
+        220,
+        223,
+        224,
+        238
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-physical-coverage-dev16.json",
+          "selectedPassedCases": 3968,
+          "scope": "Prepared nonlethal physical callbacks and DoubleBash children; distinct actual action types, weapon miss parameters, crying/nausea penalties, critical/dodge/floor/guard/shield/boss/strangeness branches. Every outer turn and all row variants remain unevaluated.",
+          "profileCases": {
+            "normal": 128,
+            "floor": 128,
+            "raw-one": 128,
+            "fast": 128,
+            "paralyzed": 128,
+            "solidified": 128,
+            "strange": 128,
+            "guarding": 128,
+            "guard-and-shield": 128,
+            "power-shield": 128,
+            "shield-break": 128,
+            "psi-shield": 128,
+            "forced-smash": 128,
+            "forced-smash-zero": 128,
+            "forced-smash-power-shield": 128,
+            "pc-crying": 128,
+            "pc-nausea": 128,
+            "enemy-attacker": 128,
+            "enemy-attacker-crying": 128,
+            "enemy-attacker-nausea": 128,
+            "immune-boss-93": 128,
+            "immune-boss-192": 128,
+            "immune-boss-219": 128,
+            "immune-boss-221": 128,
+            "immune-boss-229": 128,
+            "giygas4-damageable": 128,
+            "weapon-35-special-0": 128,
+            "weapon-17-special-1": 128,
+            "weapon-49-special-3": 128,
+            "weapon-33-special-4": 128,
+            "weapon-27-special-12": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C285DA",
+      "nativeHandler": "btlact_level_4_attack_step",
+      "catalogActionIds": [
+        105
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-physical-coverage-dev16.json",
+          "selectedPassedCases": 1984,
+          "scope": "Prepared nonlethal physical callbacks and DoubleBash children; distinct actual action types, weapon miss parameters, crying/nausea penalties, critical/dodge/floor/guard/shield/boss/strangeness branches. Every outer turn and all row variants remain unevaluated.",
+          "profileCases": {
+            "normal": 64,
+            "floor": 64,
+            "raw-one": 64,
+            "fast": 64,
+            "paralyzed": 64,
+            "solidified": 64,
+            "strange": 64,
+            "guarding": 64,
+            "guard-and-shield": 64,
+            "power-shield": 64,
+            "shield-break": 64,
+            "psi-shield": 64,
+            "forced-smash": 64,
+            "forced-smash-zero": 64,
+            "forced-smash-power-shield": 64,
+            "pc-crying": 64,
+            "pc-nausea": 64,
+            "enemy-attacker": 64,
+            "enemy-attacker-crying": 64,
+            "enemy-attacker-nausea": 64,
+            "immune-boss-93": 64,
+            "immune-boss-192": 64,
+            "immune-boss-219": 64,
+            "immune-boss-221": 64,
+            "immune-boss-229": 64,
+            "giygas4-damageable": 64,
+            "weapon-35-special-0": 64,
+            "weapon-17-special-1": 64,
+            "weapon-49-special-3": 64,
+            "weapon-33-special-4": 64,
+            "weapon-27-special-12": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28651",
+      "nativeHandler": "btlact_level_3_attack_step",
+      "catalogActionIds": [
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        225,
+        226,
+        227
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-physical-coverage-dev16.json",
+          "selectedPassedCases": 3968,
+          "scope": "Prepared nonlethal physical callbacks and DoubleBash children; distinct actual action types, weapon miss parameters, crying/nausea penalties, critical/dodge/floor/guard/shield/boss/strangeness branches. Every outer turn and all row variants remain unevaluated.",
+          "profileCases": {
+            "normal": 128,
+            "floor": 128,
+            "raw-one": 128,
+            "fast": 128,
+            "paralyzed": 128,
+            "solidified": 128,
+            "strange": 128,
+            "guarding": 128,
+            "guard-and-shield": 128,
+            "power-shield": 128,
+            "shield-break": 128,
+            "psi-shield": 128,
+            "forced-smash": 128,
+            "forced-smash-zero": 128,
+            "forced-smash-power-shield": 128,
+            "pc-crying": 128,
+            "pc-nausea": 128,
+            "enemy-attacker": 128,
+            "enemy-attacker-crying": 128,
+            "enemy-attacker-nausea": 128,
+            "immune-boss-93": 128,
+            "immune-boss-192": 128,
+            "immune-boss-219": 128,
+            "immune-boss-221": 128,
+            "immune-boss-229": 128,
+            "giygas4-damageable": 128,
+            "weapon-35-special-0": 128,
+            "weapon-17-special-1": 128,
+            "weapon-49-special-3": 128,
+            "weapon-33-special-4": 128,
+            "weapon-27-special-12": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C286CB",
+      "nativeHandler": "btlact_level_1_attack_step",
+      "catalogActionIds": [
+        214
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-physical-coverage-dev16.json",
+          "selectedPassedCases": 1984,
+          "scope": "Prepared nonlethal physical callbacks and DoubleBash children; distinct actual action types, weapon miss parameters, crying/nausea penalties, critical/dodge/floor/guard/shield/boss/strangeness branches. Every outer turn and all row variants remain unevaluated.",
+          "profileCases": {
+            "normal": 64,
+            "floor": 64,
+            "raw-one": 64,
+            "fast": 64,
+            "paralyzed": 64,
+            "solidified": 64,
+            "strange": 64,
+            "guarding": 64,
+            "guard-and-shield": 64,
+            "power-shield": 64,
+            "shield-break": 64,
+            "psi-shield": 64,
+            "forced-smash": 64,
+            "forced-smash-zero": 64,
+            "forced-smash-power-shield": 64,
+            "pc-crying": 64,
+            "pc-nausea": 64,
+            "enemy-attacker": 64,
+            "enemy-attacker-crying": 64,
+            "enemy-attacker-nausea": 64,
+            "immune-boss-93": 64,
+            "immune-boss-192": 64,
+            "immune-boss-219": 64,
+            "immune-boss-221": 64,
+            "immune-boss-229": 64,
+            "giygas4-damageable": 64,
+            "weapon-35-special-0": 64,
+            "weapon-17-special-1": 64,
+            "weapon-49-special-3": 64,
+            "weapon-33-special-4": 64,
+            "weapon-27-special-12": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28740",
+      "nativeHandler": "btlact_shoot_step",
+      "catalogActionIds": [
+        5,
+        215,
+        221,
+        222
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-physical-coverage-dev16.json",
+          "selectedPassedCases": 3968,
+          "scope": "Prepared nonlethal physical callbacks and DoubleBash children; distinct actual action types, weapon miss parameters, crying/nausea penalties, critical/dodge/floor/guard/shield/boss/strangeness branches. Every outer turn and all row variants remain unevaluated.",
+          "profileCases": {
+            "normal": 128,
+            "floor": 128,
+            "raw-one": 128,
+            "fast": 128,
+            "paralyzed": 128,
+            "solidified": 128,
+            "strange": 128,
+            "guarding": 128,
+            "guard-and-shield": 128,
+            "power-shield": 128,
+            "shield-break": 128,
+            "psi-shield": 128,
+            "forced-smash": 128,
+            "forced-smash-zero": 128,
+            "forced-smash-power-shield": 128,
+            "pc-crying": 128,
+            "pc-nausea": 128,
+            "enemy-attacker": 128,
+            "enemy-attacker-crying": 128,
+            "enemy-attacker-nausea": 128,
+            "immune-boss-93": 128,
+            "immune-boss-192": 128,
+            "immune-boss-219": 128,
+            "immune-boss-221": 128,
+            "immune-boss-229": 128,
+            "giygas4-damageable": 128,
+            "weapon-35-special-0": 128,
+            "weapon-17-special-1": 128,
+            "weapon-49-special-3": 128,
+            "weapon-33-special-4": 128,
+            "weapon-27-special-12": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2889B",
+      "nativeHandler": "btlact_null",
+      "catalogActionIds": [
+        8,
+        103
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 36,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 6,
+            "player": 6,
+            "NPC": 6,
+            "unconscious": 6,
+            "diamondized": 6,
+            "mixed-status-shield": 6
+          }
+        }
+      ]
+    },
+    {
+      "function": "C289CE",
+      "nativeHandler": "btlact_diamondize_step",
+      "catalogActionIds": [
+        68
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 512,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 512
+          },
+          "entryPcCases": {
+            "0": 512
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28A92",
+      "nativeHandler": "btlact_paralyze_step",
+      "catalogActionIds": [
+        69,
+        203
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 512,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 512
+          },
+          "entryPcCases": {
+            "0": 512
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28AEB",
+      "nativeHandler": "btlact_nauseate_step",
+      "catalogActionIds": [
+        71
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 128,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 128
+          },
+          "entryPcCases": {
+            "0": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28B2C",
+      "nativeHandler": "btlact_poison_step",
+      "catalogActionIds": [
+        72,
+        73,
+        175,
+        205,
+        237,
+        269
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 128,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 128
+          },
+          "entryPcCases": {
+            "0": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28B6D",
+      "nativeHandler": "btlact_cold_step",
+      "catalogActionIds": [
+        74,
+        213,
+        241
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 384,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 384
+          },
+          "entryPcCases": {
+            "0": 384
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28BBE",
+      "nativeHandler": "btlact_mushroomize_step",
+      "catalogActionIds": [
+        75
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 96,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 96
+          },
+          "entryPcCases": {
+            "0": 96
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28BFD",
+      "nativeHandler": "btlact_possess_step",
+      "catalogActionIds": [
+        76
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 128,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 96,
+            "possession-ghost": 32
+          },
+          "entryPcCases": {
+            "0": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28C69",
+      "nativeHandler": "btlact_crying_step",
+      "catalogActionIds": [
+        78,
+        206
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 512,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 512
+          },
+          "entryPcCases": {
+            "0": 512
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28CB8",
+      "nativeHandler": "btlact_immobilize_step",
+      "catalogActionIds": [
+        79,
+        80,
+        81,
+        82,
+        212,
+        242
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 128,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 128
+          },
+          "entryPcCases": {
+            "0": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28CF1",
+      "nativeHandler": "btlact_solidify_step",
+      "catalogActionIds": [
+        70,
+        83,
+        169,
+        172,
+        173,
+        174,
+        204,
+        209,
+        210,
+        211,
+        283
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 96,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 96
+          },
+          "entryPcCases": {
+            "0": 96
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28D5A",
+      "nativeHandler": "btlact_distract_step",
+      "catalogActionIds": [
+        85
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 416,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 384,
+            "brain-stone-concentration": 32
+          },
+          "entryPcCases": {
+            "0": 416
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28DBB",
+      "nativeHandler": "btlact_feel_strange_step",
+      "catalogActionIds": [
+        86
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 96,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 96
+          },
+          "entryPcCases": {
+            "0": 96
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28DFC",
+      "nativeHandler": "btlact_crying2_step",
+      "catalogActionIds": [
+        87
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 128,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 128
+          },
+          "entryPcCases": {
+            "0": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28E42",
+      "nativeHandler": "btlact_reduce_pp_step",
+      "catalogActionIds": [
+        95
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 192,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "pp-reduction": 192
+          },
+          "entryPcCases": {
+            "0": 192
+          }
+        }
+      ]
+    },
+    {
+      "function": "C28FF9",
+      "nativeHandler": "btlact_double_bash_step",
+      "catalogActionIds": [
+        102
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-physical-coverage-dev16.json",
+          "selectedPassedCases": 1984,
+          "scope": "Prepared nonlethal physical callbacks and DoubleBash children; distinct actual action types, weapon miss parameters, crying/nausea penalties, critical/dodge/floor/guard/shield/boss/strangeness branches. Every outer turn and all row variants remain unevaluated.",
+          "profileCases": {
+            "normal": 64,
+            "floor": 64,
+            "raw-one": 64,
+            "fast": 64,
+            "paralyzed": 64,
+            "solidified": 64,
+            "strange": 64,
+            "guarding": 64,
+            "guard-and-shield": 64,
+            "power-shield": 64,
+            "shield-break": 64,
+            "psi-shield": 64,
+            "forced-smash": 64,
+            "forced-smash-zero": 64,
+            "forced-smash-power-shield": 64,
+            "pc-crying": 64,
+            "pc-nausea": 64,
+            "enemy-attacker": 64,
+            "enemy-attacker-crying": 64,
+            "enemy-attacker-nausea": 64,
+            "immune-boss-93": 64,
+            "immune-boss-192": 64,
+            "immune-boss-219": 64,
+            "immune-boss-221": 64,
+            "immune-boss-229": 64,
+            "giygas4-damageable": 64,
+            "weapon-35-special-0": 64,
+            "weapon-17-special-1": 64,
+            "weapon-49-special-3": 64,
+            "weapon-33-special-4": 64,
+            "weapon-27-special-12": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29033",
+      "nativeHandler": "btlact_null2",
+      "catalogActionIds": [
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        186,
+        187,
+        188,
+        235,
+        236,
+        257,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        267
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 540,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 90,
+            "player": 90,
+            "NPC": 90,
+            "unconscious": 90,
+            "diamondized": 90,
+            "mixed-status-shield": 90
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29039",
+      "nativeHandler": "btlact_null4",
+      "catalogActionIds": [
+        0,
+        1,
+        2,
+        3,
+        60,
+        61,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        258,
+        259,
+        270,
+        271,
+        272,
+        276,
+        279,
+        281,
+        282,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289,
+        308,
+        309,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 720,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 120,
+            "player": 120,
+            "NPC": 120,
+            "unconscious": 120,
+            "diamondized": 120,
+            "mixed-status-shield": 120
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2903C",
+      "nativeHandler": "btlact_null5",
+      "catalogActionIds": [
+        9
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 18,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 3,
+            "player": 3,
+            "NPC": 3,
+            "unconscious": 3,
+            "diamondized": 3,
+            "mixed-status-shield": 3
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2903F",
+      "nativeHandler": "btlact_null6",
+      "catalogActionIds": [
+        254
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 18,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 3,
+            "player": 3,
+            "NPC": 3,
+            "unconscious": 3,
+            "diamondized": 3,
+            "mixed-status-shield": 3
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29042",
+      "nativeHandler": "btlact_null7",
+      "catalogActionIds": [
+        252
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 18,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 3,
+            "player": 3,
+            "NPC": 3,
+            "unconscious": 3,
+            "diamondized": 3,
+            "mixed-status-shield": 3
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29045",
+      "nativeHandler": "btlact_null8",
+      "catalogActionIds": [
+        255
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 18,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 3,
+            "player": 3,
+            "NPC": 3,
+            "unconscious": 3,
+            "diamondized": 3,
+            "mixed-status-shield": 3
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29048",
+      "nativeHandler": "btlact_null9",
+      "catalogActionIds": [
+        256
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 18,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 3,
+            "player": 3,
+            "NPC": 3,
+            "unconscious": 3,
+            "diamondized": 3,
+            "mixed-status-shield": 3
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2904B",
+      "nativeHandler": "btlact_null10",
+      "catalogActionIds": [
+        253
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 18,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 3,
+            "player": 3,
+            "NPC": 3,
+            "unconscious": 3,
+            "diamondized": 3,
+            "mixed-status-shield": 3
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2904E",
+      "nativeHandler": "btlact_null11",
+      "catalogActionIds": [
+        251
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 18,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 3,
+            "player": 3,
+            "NPC": 3,
+            "unconscious": 3,
+            "diamondized": 3,
+            "mixed-status-shield": 3
+          }
+        }
+      ]
+    },
+    {
+      "function": "C292EB",
+      "nativeHandler": "btlact_enemy_extend",
+      "catalogActionIds": [
+        245
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 18,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 3,
+            "player": 3,
+            "NPC": 3,
+            "unconscious": 3,
+            "diamondized": 3,
+            "mixed-status-shield": 3
+          }
+        }
+      ]
+    },
+    {
+      "function": "C292EE",
+      "nativeHandler": "btlact_masterbarfdeath_step",
+      "catalogActionIds": [
+        244
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 16,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "poo-return": 16
+          },
+          "entryPcCases": {
+            "0": 16
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29556",
+      "nativeHandler": "btlact_psi_rockin_alpha_step",
+      "catalogActionIds": [
+        10
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-damage-coverage-dev16.json",
+          "selectedPassedCases": 1792,
+          "scope": "Prepared nonlethal Rockin/Starstorm callbacks with shields, dodge/status/guard, boss immunity and Giygas2 HP redirection; outer multi-target traversal and complete turns unevaluated.",
+          "profileCases": {
+            "enemy-7-speed-20": 64,
+            "enemy-64-speed-200": 64,
+            "enemy-169-speed-0": 64,
+            "enemy-220-speed-20": 64,
+            "immune-boss-93": 64,
+            "immune-boss-192": 64,
+            "immune-boss-219": 64,
+            "immune-boss-221": 64,
+            "immune-boss-229": 64,
+            "giygas2-redirect": 64,
+            "enemy-shield-1-hp-1": 64,
+            "enemy-shield-1-hp-3": 64,
+            "enemy-shield-2-hp-1": 64,
+            "enemy-shield-2-hp-3": 64,
+            "enemy-shield-3-hp-3": 64,
+            "enemy-shield-4-hp-3": 64,
+            "player-shield-1-hp-1": 64,
+            "player-shield-1-hp-3": 64,
+            "player-shield-2-hp-1": 64,
+            "player-shield-2-hp-3": 64,
+            "player-shield-3-hp-3": 64,
+            "player-shield-4-hp-3": 64,
+            "player-disabled-paralyzed": 64,
+            "player-disabled-immobilized": 64,
+            "player-disabled-solidified": 64,
+            "player-disabled-asleep": 64,
+            "player-guarding-fast": 64,
+            "player-negative-dodge-speed": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2955F",
+      "nativeHandler": "btlact_psi_rockin_beta_step",
+      "catalogActionIds": [
+        11
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-damage-coverage-dev16.json",
+          "selectedPassedCases": 1792,
+          "scope": "Prepared nonlethal Rockin/Starstorm callbacks with shields, dodge/status/guard, boss immunity and Giygas2 HP redirection; outer multi-target traversal and complete turns unevaluated.",
+          "profileCases": {
+            "enemy-7-speed-20": 64,
+            "enemy-64-speed-200": 64,
+            "enemy-169-speed-0": 64,
+            "enemy-220-speed-20": 64,
+            "immune-boss-93": 64,
+            "immune-boss-192": 64,
+            "immune-boss-219": 64,
+            "immune-boss-221": 64,
+            "immune-boss-229": 64,
+            "giygas2-redirect": 64,
+            "enemy-shield-1-hp-1": 64,
+            "enemy-shield-1-hp-3": 64,
+            "enemy-shield-2-hp-1": 64,
+            "enemy-shield-2-hp-3": 64,
+            "enemy-shield-3-hp-3": 64,
+            "enemy-shield-4-hp-3": 64,
+            "player-shield-1-hp-1": 64,
+            "player-shield-1-hp-3": 64,
+            "player-shield-2-hp-1": 64,
+            "player-shield-2-hp-3": 64,
+            "player-shield-3-hp-3": 64,
+            "player-shield-4-hp-3": 64,
+            "player-disabled-paralyzed": 64,
+            "player-disabled-immobilized": 64,
+            "player-disabled-solidified": 64,
+            "player-disabled-asleep": 64,
+            "player-guarding-fast": 64,
+            "player-negative-dodge-speed": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29568",
+      "nativeHandler": "btlact_psi_rockin_gamma_step",
+      "catalogActionIds": [
+        12
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-damage-coverage-dev16.json",
+          "selectedPassedCases": 1792,
+          "scope": "Prepared nonlethal Rockin/Starstorm callbacks with shields, dodge/status/guard, boss immunity and Giygas2 HP redirection; outer multi-target traversal and complete turns unevaluated.",
+          "profileCases": {
+            "enemy-7-speed-20": 64,
+            "enemy-64-speed-200": 64,
+            "enemy-169-speed-0": 64,
+            "enemy-220-speed-20": 64,
+            "immune-boss-93": 64,
+            "immune-boss-192": 64,
+            "immune-boss-219": 64,
+            "immune-boss-221": 64,
+            "immune-boss-229": 64,
+            "giygas2-redirect": 64,
+            "enemy-shield-1-hp-1": 64,
+            "enemy-shield-1-hp-3": 64,
+            "enemy-shield-2-hp-1": 64,
+            "enemy-shield-2-hp-3": 64,
+            "enemy-shield-3-hp-3": 64,
+            "enemy-shield-4-hp-3": 64,
+            "player-shield-1-hp-1": 64,
+            "player-shield-1-hp-3": 64,
+            "player-shield-2-hp-1": 64,
+            "player-shield-2-hp-3": 64,
+            "player-shield-3-hp-3": 64,
+            "player-shield-4-hp-3": 64,
+            "player-disabled-paralyzed": 64,
+            "player-disabled-immobilized": 64,
+            "player-disabled-solidified": 64,
+            "player-disabled-asleep": 64,
+            "player-guarding-fast": 64,
+            "player-negative-dodge-speed": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29571",
+      "nativeHandler": "btlact_psi_rockin_omega_step",
+      "catalogActionIds": [
+        13
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-damage-coverage-dev16.json",
+          "selectedPassedCases": 1792,
+          "scope": "Prepared nonlethal Rockin/Starstorm callbacks with shields, dodge/status/guard, boss immunity and Giygas2 HP redirection; outer multi-target traversal and complete turns unevaluated.",
+          "profileCases": {
+            "enemy-7-speed-20": 64,
+            "enemy-64-speed-200": 64,
+            "enemy-169-speed-0": 64,
+            "enemy-220-speed-20": 64,
+            "immune-boss-93": 64,
+            "immune-boss-192": 64,
+            "immune-boss-219": 64,
+            "immune-boss-221": 64,
+            "immune-boss-229": 64,
+            "giygas2-redirect": 64,
+            "enemy-shield-1-hp-1": 64,
+            "enemy-shield-1-hp-3": 64,
+            "enemy-shield-2-hp-1": 64,
+            "enemy-shield-2-hp-3": 64,
+            "enemy-shield-3-hp-3": 64,
+            "enemy-shield-4-hp-3": 64,
+            "player-shield-1-hp-1": 64,
+            "player-shield-1-hp-3": 64,
+            "player-shield-2-hp-1": 64,
+            "player-shield-2-hp-3": 64,
+            "player-shield-3-hp-3": 64,
+            "player-shield-4-hp-3": 64,
+            "player-disabled-paralyzed": 64,
+            "player-disabled-immobilized": 64,
+            "player-disabled-solidified": 64,
+            "player-disabled-asleep": 64,
+            "player-guarding-fast": 64,
+            "player-negative-dodge-speed": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C295AB",
+      "nativeHandler": "btlact_psi_fire_alpha_step",
+      "catalogActionIds": [
+        14,
+        89
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 295,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "enemy-configured-elemental": 230,
+            "elemental-tiers": 64,
+            "psi-shield-nullification": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C295B4",
+      "nativeHandler": "btlact_psi_fire_beta_step",
+      "catalogActionIds": [
+        15
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 65,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "elemental-tiers": 64,
+            "psi-shield-nullification": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C295BD",
+      "nativeHandler": "btlact_psi_fire_gamma_step",
+      "catalogActionIds": [
+        16,
+        91,
+        94
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 65,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "elemental-tiers": 64,
+            "psi-shield-nullification": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C295C6",
+      "nativeHandler": "btlact_psi_fire_omega_step",
+      "catalogActionIds": [
+        17,
+        93
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 65,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "elemental-tiers": 64,
+            "psi-shield-nullification": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29647",
+      "nativeHandler": "btlact_psi_freeze_alpha_step",
+      "catalogActionIds": [
+        18,
+        300,
+        303,
+        306
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 296,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "enemy-configured-elemental": 230,
+            "elemental-tiers": 64,
+            "psi-shield-nullification": 1,
+            "elemental-npc": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29650",
+      "nativeHandler": "btlact_psi_freeze_beta_step",
+      "catalogActionIds": [
+        19
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 65,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "elemental-tiers": 64,
+            "psi-shield-nullification": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29659",
+      "nativeHandler": "btlact_psi_freeze_gamma_step",
+      "catalogActionIds": [
+        20
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 65,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "elemental-tiers": 64,
+            "psi-shield-nullification": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29662",
+      "nativeHandler": "btlact_psi_freeze_omega_step",
+      "catalogActionIds": [
+        21
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 65,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "elemental-tiers": 64,
+            "psi-shield-nullification": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29871",
+      "nativeHandler": "btlact_psi_thunder_alpha_step",
+      "catalogActionIds": [
+        22
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-thunder-coverage-dev16-v1.json",
+          "selectedPassedCases": 1408,
+          "scope": "Complete prepared nonlethal Thunder hit loops; distinct actual PSI/non-PSI rows, random target/status filtering, selected shields and badge reflection. Outer AI/turn/PP payment and lethal continuation remain unevaluated.",
+          "profileCases": {
+            "enemies-0": 64,
+            "enemies-1": 64,
+            "enemies-2": 64,
+            "enemies-4": 64,
+            "players-1": 64,
+            "players-2": 64,
+            "players-4": 64,
+            "one-unconscious": 64,
+            "one-diamondized": 64,
+            "all-untargettable": 64,
+            "enemy-shield-1": 64,
+            "enemy-shield-2": 64,
+            "enemy-shield-3": 64,
+            "enemy-shield-4": 64,
+            "badge-ownshield-0-castershield-0": 64,
+            "badge-ownshield-2-castershield-0": 64,
+            "badge-ownshield-4-castershield-0": 64,
+            "badge-ownshield-2-castershield-2": 64,
+            "badge-ownshield-4-castershield-4": 64,
+            "mixed-badge-targets": 64,
+            "badge-PSI-action-castershield-0": 64,
+            "badge-PSI-action-castershield-2": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2987D",
+      "nativeHandler": "btlact_psi_thunder_beta_step",
+      "catalogActionIds": [
+        23,
+        92,
+        202,
+        274,
+        302,
+        305
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-thunder-coverage-dev16-v1.json",
+          "selectedPassedCases": 2816,
+          "scope": "Complete prepared nonlethal Thunder hit loops; distinct actual PSI/non-PSI rows, random target/status filtering, selected shields and badge reflection. Outer AI/turn/PP payment and lethal continuation remain unevaluated.",
+          "profileCases": {
+            "enemies-0": 128,
+            "enemies-1": 128,
+            "enemies-2": 128,
+            "enemies-4": 128,
+            "players-1": 128,
+            "players-2": 128,
+            "players-4": 128,
+            "one-unconscious": 128,
+            "one-diamondized": 128,
+            "all-untargettable": 128,
+            "enemy-shield-1": 128,
+            "enemy-shield-2": 128,
+            "enemy-shield-3": 128,
+            "enemy-shield-4": 128,
+            "badge-ownshield-0-castershield-0": 128,
+            "badge-ownshield-2-castershield-0": 128,
+            "badge-ownshield-4-castershield-0": 128,
+            "badge-ownshield-2-castershield-2": 128,
+            "badge-ownshield-4-castershield-4": 128,
+            "mixed-badge-targets": 128,
+            "badge-PSI-action-castershield-0": 128,
+            "badge-PSI-action-castershield-2": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29889",
+      "nativeHandler": "btlact_psi_thunder_gamma_step",
+      "catalogActionIds": [
+        24
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-thunder-coverage-dev16-v1.json",
+          "selectedPassedCases": 1408,
+          "scope": "Complete prepared nonlethal Thunder hit loops; distinct actual PSI/non-PSI rows, random target/status filtering, selected shields and badge reflection. Outer AI/turn/PP payment and lethal continuation remain unevaluated.",
+          "profileCases": {
+            "enemies-0": 64,
+            "enemies-1": 64,
+            "enemies-2": 64,
+            "enemies-4": 64,
+            "players-1": 64,
+            "players-2": 64,
+            "players-4": 64,
+            "one-unconscious": 64,
+            "one-diamondized": 64,
+            "all-untargettable": 64,
+            "enemy-shield-1": 64,
+            "enemy-shield-2": 64,
+            "enemy-shield-3": 64,
+            "enemy-shield-4": 64,
+            "badge-ownshield-0-castershield-0": 64,
+            "badge-ownshield-2-castershield-0": 64,
+            "badge-ownshield-4-castershield-0": 64,
+            "badge-ownshield-2-castershield-2": 64,
+            "badge-ownshield-4-castershield-4": 64,
+            "mixed-badge-targets": 64,
+            "badge-PSI-action-castershield-0": 64,
+            "badge-PSI-action-castershield-2": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29895",
+      "nativeHandler": "btlact_psi_thunder_omega_step",
+      "catalogActionIds": [
+        25
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-thunder-coverage-dev16-v1.json",
+          "selectedPassedCases": 1408,
+          "scope": "Complete prepared nonlethal Thunder hit loops; distinct actual PSI/non-PSI rows, random target/status filtering, selected shields and badge reflection. Outer AI/turn/PP payment and lethal continuation remain unevaluated.",
+          "profileCases": {
+            "enemies-0": 64,
+            "enemies-1": 64,
+            "enemies-2": 64,
+            "enemies-4": 64,
+            "players-1": 64,
+            "players-2": 64,
+            "players-4": 64,
+            "one-unconscious": 64,
+            "one-diamondized": 64,
+            "all-untargettable": 64,
+            "enemy-shield-1": 64,
+            "enemy-shield-2": 64,
+            "enemy-shield-3": 64,
+            "enemy-shield-4": 64,
+            "badge-ownshield-0-castershield-0": 64,
+            "badge-ownshield-2-castershield-0": 64,
+            "badge-ownshield-4-castershield-0": 64,
+            "badge-ownshield-2-castershield-2": 64,
+            "badge-ownshield-4-castershield-4": 64,
+            "mixed-badge-targets": 64,
+            "badge-PSI-action-castershield-0": 64,
+            "badge-PSI-action-castershield-2": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29987",
+      "nativeHandler": "btlact_psi_flash_alpha_step",
+      "catalogActionIds": [
+        26
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-flash-coverage-dev16-v1.json",
+          "selectedPassedCases": 1728,
+          "scope": "Prepared complete Flash callbacks with distinct PSI/non-PSI rows, resistance, NPC refusal, status priority, shield absorption/reflection and selected ordinary/Giygas KO children. Outer turns and complete final battle unevaluated.",
+          "profileCases": {
+            "enemy-resistance-0": 64,
+            "enemy-resistance-64": 64,
+            "enemy-resistance-128": 64,
+            "enemy-resistance-192": 64,
+            "enemy-resistance-255": 64,
+            "player-resistance-0": 64,
+            "player-resistance-128": 64,
+            "player-resistance-255": 64,
+            "NPC-failure": 64,
+            "enemy-shield-1-hp-1": 64,
+            "enemy-shield-1-hp-3": 64,
+            "enemy-shield-2-hp-1": 64,
+            "enemy-shield-2-hp-3": 64,
+            "enemy-shield-3-hp-3": 64,
+            "enemy-shield-4-hp-3": 64,
+            "status-priority-0-3": 64,
+            "status-priority-0-4": 64,
+            "status-priority-0-7": 64,
+            "status-priority-2-1": 64,
+            "status-priority-2-2": 64,
+            "status-priority-2-3": 64,
+            "status-priority-2-4": 64,
+            "status-priority-3-1": 64,
+            "Giygas-218-prepared-KO-control": 64,
+            "Giygas-219-prepared-KO-control": 64,
+            "Giygas-221-prepared-KO-control": 64,
+            "Giygas-229-prepared-KO-control": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C299AE",
+      "nativeHandler": "btlact_psi_flash_beta_step",
+      "catalogActionIds": [
+        27
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-flash-coverage-dev16-v1.json",
+          "selectedPassedCases": 1728,
+          "scope": "Prepared complete Flash callbacks with distinct PSI/non-PSI rows, resistance, NPC refusal, status priority, shield absorption/reflection and selected ordinary/Giygas KO children. Outer turns and complete final battle unevaluated.",
+          "profileCases": {
+            "enemy-resistance-0": 64,
+            "enemy-resistance-64": 64,
+            "enemy-resistance-128": 64,
+            "enemy-resistance-192": 64,
+            "enemy-resistance-255": 64,
+            "player-resistance-0": 64,
+            "player-resistance-128": 64,
+            "player-resistance-255": 64,
+            "NPC-failure": 64,
+            "enemy-shield-1-hp-1": 64,
+            "enemy-shield-1-hp-3": 64,
+            "enemy-shield-2-hp-1": 64,
+            "enemy-shield-2-hp-3": 64,
+            "enemy-shield-3-hp-3": 64,
+            "enemy-shield-4-hp-3": 64,
+            "status-priority-0-3": 64,
+            "status-priority-0-4": 64,
+            "status-priority-0-7": 64,
+            "status-priority-2-1": 64,
+            "status-priority-2-2": 64,
+            "status-priority-2-3": 64,
+            "status-priority-2-4": 64,
+            "status-priority-3-1": 64,
+            "Giygas-218-prepared-KO-control": 64,
+            "Giygas-219-prepared-KO-control": 64,
+            "Giygas-221-prepared-KO-control": 64,
+            "Giygas-229-prepared-KO-control": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C299EF",
+      "nativeHandler": "btlact_psi_flash_gamma_step",
+      "catalogActionIds": [
+        28,
+        88,
+        201,
+        301,
+        304,
+        307
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-flash-coverage-dev16-v1.json",
+          "selectedPassedCases": 3456,
+          "scope": "Prepared complete Flash callbacks with distinct PSI/non-PSI rows, resistance, NPC refusal, status priority, shield absorption/reflection and selected ordinary/Giygas KO children. Outer turns and complete final battle unevaluated.",
+          "profileCases": {
+            "enemy-resistance-0": 128,
+            "enemy-resistance-64": 128,
+            "enemy-resistance-128": 128,
+            "enemy-resistance-192": 128,
+            "enemy-resistance-255": 128,
+            "player-resistance-0": 128,
+            "player-resistance-128": 128,
+            "player-resistance-255": 128,
+            "NPC-failure": 128,
+            "enemy-shield-1-hp-1": 128,
+            "enemy-shield-1-hp-3": 128,
+            "enemy-shield-2-hp-1": 128,
+            "enemy-shield-2-hp-3": 128,
+            "enemy-shield-3-hp-3": 128,
+            "enemy-shield-4-hp-3": 128,
+            "status-priority-0-3": 128,
+            "status-priority-0-4": 128,
+            "status-priority-0-7": 128,
+            "status-priority-2-1": 128,
+            "status-priority-2-2": 128,
+            "status-priority-2-3": 128,
+            "status-priority-2-4": 128,
+            "status-priority-3-1": 128,
+            "Giygas-218-prepared-KO-control": 128,
+            "Giygas-219-prepared-KO-control": 128,
+            "Giygas-221-prepared-KO-control": 128,
+            "Giygas-229-prepared-KO-control": 128
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29A35",
+      "nativeHandler": "btlact_psi_flash_omega_step",
+      "catalogActionIds": [
+        29
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-flash-coverage-dev16-v1.json",
+          "selectedPassedCases": 1728,
+          "scope": "Prepared complete Flash callbacks with distinct PSI/non-PSI rows, resistance, NPC refusal, status priority, shield absorption/reflection and selected ordinary/Giygas KO children. Outer turns and complete final battle unevaluated.",
+          "profileCases": {
+            "enemy-resistance-0": 64,
+            "enemy-resistance-64": 64,
+            "enemy-resistance-128": 64,
+            "enemy-resistance-192": 64,
+            "enemy-resistance-255": 64,
+            "player-resistance-0": 64,
+            "player-resistance-128": 64,
+            "player-resistance-255": 64,
+            "NPC-failure": 64,
+            "enemy-shield-1-hp-1": 64,
+            "enemy-shield-1-hp-3": 64,
+            "enemy-shield-2-hp-1": 64,
+            "enemy-shield-2-hp-3": 64,
+            "enemy-shield-3-hp-3": 64,
+            "enemy-shield-4-hp-3": 64,
+            "status-priority-0-3": 64,
+            "status-priority-0-4": 64,
+            "status-priority-0-7": 64,
+            "status-priority-2-1": 64,
+            "status-priority-2-2": 64,
+            "status-priority-2-3": 64,
+            "status-priority-2-4": 64,
+            "status-priority-3-1": 64,
+            "Giygas-218-prepared-KO-control": 64,
+            "Giygas-219-prepared-KO-control": 64,
+            "Giygas-221-prepared-KO-control": 64,
+            "Giygas-229-prepared-KO-control": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29AA6",
+      "nativeHandler": "btlact_psi_starstorm_alpha_step",
+      "catalogActionIds": [
+        30
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-damage-coverage-dev16.json",
+          "selectedPassedCases": 1792,
+          "scope": "Prepared nonlethal Rockin/Starstorm callbacks with shields, dodge/status/guard, boss immunity and Giygas2 HP redirection; outer multi-target traversal and complete turns unevaluated.",
+          "profileCases": {
+            "enemy-7-speed-20": 64,
+            "enemy-64-speed-200": 64,
+            "enemy-169-speed-0": 64,
+            "enemy-220-speed-20": 64,
+            "immune-boss-93": 64,
+            "immune-boss-192": 64,
+            "immune-boss-219": 64,
+            "immune-boss-221": 64,
+            "immune-boss-229": 64,
+            "giygas2-redirect": 64,
+            "enemy-shield-1-hp-1": 64,
+            "enemy-shield-1-hp-3": 64,
+            "enemy-shield-2-hp-1": 64,
+            "enemy-shield-2-hp-3": 64,
+            "enemy-shield-3-hp-3": 64,
+            "enemy-shield-4-hp-3": 64,
+            "player-shield-1-hp-1": 64,
+            "player-shield-1-hp-3": 64,
+            "player-shield-2-hp-1": 64,
+            "player-shield-2-hp-3": 64,
+            "player-shield-3-hp-3": 64,
+            "player-shield-4-hp-3": 64,
+            "player-disabled-paralyzed": 64,
+            "player-disabled-immobilized": 64,
+            "player-disabled-solidified": 64,
+            "player-disabled-asleep": 64,
+            "player-guarding-fast": 64,
+            "player-negative-dodge-speed": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29AAF",
+      "nativeHandler": "btlact_psi_starstorm_omega_step",
+      "catalogActionIds": [
+        31
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-damage-coverage-dev16.json",
+          "selectedPassedCases": 1792,
+          "scope": "Prepared nonlethal Rockin/Starstorm callbacks with shields, dodge/status/guard, boss immunity and Giygas2 HP redirection; outer multi-target traversal and complete turns unevaluated.",
+          "profileCases": {
+            "enemy-7-speed-20": 64,
+            "enemy-64-speed-200": 64,
+            "enemy-169-speed-0": 64,
+            "enemy-220-speed-20": 64,
+            "immune-boss-93": 64,
+            "immune-boss-192": 64,
+            "immune-boss-219": 64,
+            "immune-boss-221": 64,
+            "immune-boss-229": 64,
+            "giygas2-redirect": 64,
+            "enemy-shield-1-hp-1": 64,
+            "enemy-shield-1-hp-3": 64,
+            "enemy-shield-2-hp-1": 64,
+            "enemy-shield-2-hp-3": 64,
+            "enemy-shield-3-hp-3": 64,
+            "enemy-shield-4-hp-3": 64,
+            "player-shield-1-hp-1": 64,
+            "player-shield-1-hp-3": 64,
+            "player-shield-2-hp-1": 64,
+            "player-shield-2-hp-3": 64,
+            "player-shield-3-hp-3": 64,
+            "player-shield-4-hp-3": 64,
+            "player-disabled-paralyzed": 64,
+            "player-disabled-immobilized": 64,
+            "player-disabled-solidified": 64,
+            "player-disabled-asleep": 64,
+            "player-guarding-fast": 64,
+            "player-negative-dodge-speed": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29AC6",
+      "nativeHandler": "btlact_lifeup_alpha_step",
+      "catalogActionIds": [
+        32,
+        138
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 9,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "lifeup": 8,
+            "lifeup-blocked": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29ACF",
+      "nativeHandler": "btlact_lifeup_beta_step",
+      "catalogActionIds": [
+        33,
+        139
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 9,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "lifeup": 8,
+            "lifeup-blocked": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29AD8",
+      "nativeHandler": "btlact_lifeup_gamma_step",
+      "catalogActionIds": [
+        34,
+        99,
+        140
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 9,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "lifeup": 8,
+            "lifeup-blocked": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29AE1",
+      "nativeHandler": "btlact_lifeup_omega_step",
+      "catalogActionIds": [
+        35,
+        141
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 9,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "lifeup": 8,
+            "lifeup-blocked": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29AEA",
+      "nativeHandler": "btlact_healing_alpha_step",
+      "catalogActionIds": [
+        36,
+        149
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 13,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "healing-cascade": 13
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29B7A",
+      "nativeHandler": "btlact_healing_beta_step",
+      "catalogActionIds": [
+        37,
+        150
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 13,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "healing-cascade": 13
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29C2C",
+      "nativeHandler": "btlact_healing_gamma_step",
+      "catalogActionIds": [
+        38,
+        151
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 45,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "healing-cascade": 13,
+            "healing-revive": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29CB8",
+      "nativeHandler": "btlact_healing_omega_step",
+      "catalogActionIds": [
+        39,
+        152
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 45,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "healing-cascade": 13,
+            "healing-revive": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29D44",
+      "nativeHandler": "btlact_shield_alpha_step",
+      "catalogActionIds": [
+        40,
+        42
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 30,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "shield-application": 30
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29D81",
+      "nativeHandler": "btlact_shield_beta_step",
+      "catalogActionIds": [
+        41,
+        43
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 30,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "shield-application": 30
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29DBE",
+      "nativeHandler": "btlact_psi_shield_alpha_step",
+      "catalogActionIds": [
+        44,
+        46
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 30,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "shield-application": 30
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29DFB",
+      "nativeHandler": "btlact_psi_shield_beta_step",
+      "catalogActionIds": [
+        45,
+        47
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 30,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "shield-application": 30
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29E38",
+      "nativeHandler": "btlact_offense_up_alpha_step",
+      "catalogActionIds": [
+        48,
+        49,
+        96
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-offense-up-dev15-v5.json",
+          "selectedPassedCases": 144,
+          "scope": "Prepared Offense Up callback with ordinary/repeated/high-word states, NPC controls and independent clean/pinned machine arithmetic comparison."
+        }
+      ]
+    },
+    {
+      "function": "C29F06",
+      "nativeHandler": "btlact_hypnosis_alpha_step",
+      "catalogActionIds": [
+        52,
+        53,
+        77,
+        90,
+        208
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 366,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "enemy-configured-status": 231,
+            "status-chance": 128,
+            "status-npc": 3,
+            "status-priority": 4
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29F5E",
+      "nativeHandler": "btlact_magnet_a_step",
+      "catalogActionIds": [
+        54
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 64,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "pp-drain": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C29FFE",
+      "nativeHandler": "btlact_paralysis_alpha_step",
+      "catalogActionIds": [
+        56,
+        57
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 369,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "enemy-configured-status": 231,
+            "status-chance": 128,
+            "status-npc": 3,
+            "status-priority": 7
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A056",
+      "nativeHandler": "btlact_brainshock_alpha_step",
+      "catalogActionIds": [
+        58,
+        59,
+        84,
+        207
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 363,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "enemy-configured-status": 231,
+            "status-chance": 128,
+            "status-npc": 3,
+            "status-priority": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A0AE",
+      "nativeHandler": "btlact_hp_recovery_1d4_step",
+      "catalogActionIds": [
+        135
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 32,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "recovery-items": 32
+          },
+          "entryPcCases": {
+            "0": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A0BF",
+      "nativeHandler": "btlact_hp_recovery_50_step",
+      "catalogActionIds": [
+        136
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 32,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "recovery-items": 32
+          },
+          "entryPcCases": {
+            "0": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A0CF",
+      "nativeHandler": "btlact_hp_recovery_200_step",
+      "catalogActionIds": [
+        137
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 32,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "recovery-items": 32
+          },
+          "entryPcCases": {
+            "0": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A0DF",
+      "nativeHandler": "btlact_pp_recovery_20_step",
+      "catalogActionIds": [
+        142
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 32,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "recovery-items": 32
+          },
+          "entryPcCases": {
+            "0": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A0EF",
+      "nativeHandler": "btlact_pp_recovery_80_step",
+      "catalogActionIds": [
+        143
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 32,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "recovery-items": 32
+          },
+          "entryPcCases": {
+            "0": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A0FF",
+      "nativeHandler": "btlact_iq_up_1d4_step",
+      "catalogActionIds": [
+        154
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 48,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "stat-items": 32,
+            "stat-width-boundaries": 16
+          },
+          "entryPcCases": {
+            "0": 48
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A14B",
+      "nativeHandler": "btlact_guts_up_1d4_step",
+      "catalogActionIds": [
+        155
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 48,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "stat-items": 32,
+            "stat-width-boundaries": 16
+          },
+          "entryPcCases": {
+            "0": 48
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A193",
+      "nativeHandler": "btlact_speed_up_1d4_step",
+      "catalogActionIds": [
+        156
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 48,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "stat-items": 32,
+            "stat-width-boundaries": 16
+          },
+          "entryPcCases": {
+            "0": 48
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A1DB",
+      "nativeHandler": "btlact_vitality_up_1d4_step",
+      "catalogActionIds": [
+        157
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 48,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "stat-items": 32,
+            "stat-width-boundaries": 16
+          },
+          "entryPcCases": {
+            "0": 48
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A227",
+      "nativeHandler": "btlact_luck_up_1d4_step",
+      "catalogActionIds": [
+        158
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 48,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "stat-items": 32,
+            "stat-width-boundaries": 16
+          },
+          "entryPcCases": {
+            "0": 48
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A26F",
+      "nativeHandler": "btlact_hp_recovery_300_step",
+      "catalogActionIds": [
+        144
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 32,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "recovery-items": 32
+          },
+          "entryPcCases": {
+            "0": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A27F",
+      "nativeHandler": "btlact_random_stat_up_1d4_step",
+      "catalogActionIds": [
+        145
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 64,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "stat-items": 64
+          },
+          "entryPcCases": {
+            "0": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A360",
+      "nativeHandler": "btlact_hp_recovery_10_step",
+      "catalogActionIds": [
+        146
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 32,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "recovery-items": 32
+          },
+          "entryPcCases": {
+            "0": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A370",
+      "nativeHandler": "btlact_hp_recovery_100_step",
+      "catalogActionIds": [
+        147
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 32,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "recovery-items": 32
+          },
+          "entryPcCases": {
+            "0": 32
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A380",
+      "nativeHandler": "btlact_hp_recovery_10000_step",
+      "catalogActionIds": [
+        148
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 64,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "recovery-items": 64
+          },
+          "entryPcCases": {
+            "0": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A39D",
+      "nativeHandler": "btlact_heal_poison_step",
+      "catalogActionIds": [
+        153
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 8,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "status-removal": 8
+          },
+          "entryPcCases": {
+            "0": 8
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A3D1",
+      "nativeHandler": "btlact_counter_psi_step",
+      "catalogActionIds": [
+        159
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 96,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "enemy-item-statuses": 96
+          },
+          "entryPcCases": {
+            "0": 96
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A422",
+      "nativeHandler": "btlact_shield_killer_step",
+      "catalogActionIds": [
+        160
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 240,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "status-removal": 240
+          },
+          "entryPcCases": {
+            "0": 240
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2A46B",
+      "nativeHandler": "btlact_hp_sucker_step",
+      "catalogActionIds": [
+        161
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage.json",
+          "selectedPassedCases": 64,
+          "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+          "categories": {
+            "hp-drain": 64
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2AA7F",
+      "nativeHandler": "btlact_sudden_guts_pill_step",
+      "catalogActionIds": [
+        182
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 14,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "combat-stat-items": 14
+          },
+          "entryPcCases": {
+            "0": 14
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2AAC6",
+      "nativeHandler": "btlact_defense_spray_step",
+      "catalogActionIds": [
+        183
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 16,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "combat-stat-items": 16
+          },
+          "entryPcCases": {
+            "0": 16
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2AB0D",
+      "nativeHandler": "btlact_defense_spray_step",
+      "catalogActionIds": [
+        184
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 16,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "combat-stat-items": 16
+          },
+          "entryPcCases": {
+            "0": 16
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2AB71",
+      "nativeHandler": "btlact_teleport_box_step",
+      "catalogActionIds": [
+        185
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 1536,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "teleport-box": 1536
+          },
+          "entryPcCases": {
+            "0": 1536
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2B27D",
+      "nativeHandler": "btlact_eat_food_step",
+      "catalogActionIds": [
+        249,
+        250,
+        319
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-food-coverage-dev15-v5.json",
+          "selectedPassedCases": 4428,
+          "scope": "Prepared food effects and exact condiment/removal rules; selected production description-to-consumption continuations stop before later status/turn handling.",
+          "categories": {
+            "all-packed-foods": 2080,
+            "condiment-priority-consumption": 1968,
+            "boosted-byte-saturation": 80,
+            "status-food-ordering": 12,
+            "description-to-consumption": 288
+          },
+          "routes": {
+            "direct-handler": 4140,
+            "production-description-to-consumption": 288
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2C13C",
+      "nativeHandler": "btlact_sow_seeds_step",
+      "catalogActionIds": [
+        63
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-food-summon-coverage-dev15-v5.json",
+          "selectedPassedCases": 896,
+          "scope": "Actual BS_ENTER group constructor and art/layout precede one comfortably fitting summon; selected group rows, seeded success/failure and cleared/bound transient entry pointers.",
+          "selectedGroups": [
+            8,
+            9,
+            431,
+            460
+          ]
+        }
+      ]
+    },
+    {
+      "function": "C2C145",
+      "nativeHandler": "btlact_call_for_help_step",
+      "catalogActionIds": [
+        62
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-food-summon-coverage-dev15-v5.json",
+          "selectedPassedCases": 896,
+          "scope": "Actual BS_ENTER group constructor and art/layout precede one comfortably fitting summon; selected group rows, seeded success/failure and cleared/bound transient entry pointers.",
+          "selectedGroups": [
+            8,
+            9,
+            431,
+            460
+          ]
+        }
+      ]
+    },
+    {
+      "function": "C2C1BD",
+      "nativeHandler": "btlact_fly_honey_step",
+      "catalogActionIds": [
+        189
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 10,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "fly-honey": 10
+          },
+          "entryPcCases": {
+            "0": 10
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2C4C0",
+      "nativeHandler": "btlact_pokey_speech_step",
+      "catalogActionIds": [
+        275
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 1,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-progression": 1
+          },
+          "entryPcCases": {
+            "0": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2C513",
+      "nativeHandler": "btlact_null12",
+      "catalogActionIds": [
+        277
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+          "selectedPassedCases": 18,
+          "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+          "profileCases": {
+            "enemy": 3,
+            "player": 3,
+            "NPC": 3,
+            "unconscious": 3,
+            "diamondized": 3,
+            "mixed-status-shield": 3
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2C516",
+      "nativeHandler": "btlact_pokey_speech_2_step",
+      "catalogActionIds": [
+        278
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 1,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-progression": 1
+          },
+          "entryPcCases": {
+            "0": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2C572",
+      "nativeHandler": "btlact_giygas_prayer_1_step",
+      "catalogActionIds": [
+        291
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 1,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-progression": 1
+          },
+          "entryPcCases": {
+            "5": 1
+          }
+        },
+        {
+          "report": "research/redux-complete-prayer-cinematics-review.json",
+          "profile": "Redux",
+          "selectedPassedCases": 1,
+          "entryPcCases": {
+            "0": 1
+          },
+          "scope": "Complete prepared prayer callback entry, actual source scene actors/scripts and natural wait signals through cinematic, damage and battle-scene return. Entry flags372/651 are source prerequisites; flag522 is generated by real entity scripts. No complete final battle or physical-input proof.",
+          "requiredSceneNpcs": [
+            729,
+            735
+          ],
+          "sourceWarp": 229
+        }
+      ]
+    },
+    {
+      "function": "C2C5D1",
+      "nativeHandler": "btlact_giygas_prayer_2_step",
+      "catalogActionIds": [
+        292
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 8,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-prayer-damage": 8
+          },
+          "entryPcCases": {
+            "5": 8
+          }
+        },
+        {
+          "report": "research/redux-complete-prayer-cinematics-review.json",
+          "profile": "Redux",
+          "selectedPassedCases": 1,
+          "entryPcCases": {
+            "0": 1
+          },
+          "scope": "Complete prepared prayer callback entry, actual source scene actors/scripts and natural wait signals through cinematic, damage and battle-scene return. Entry flags372/651 are source prerequisites; flag522 is generated by real entity scripts. No complete final battle or physical-input proof.",
+          "requiredSceneNpcs": [
+            1072,
+            1073,
+            1074,
+            1075
+          ],
+          "sourceWarp": 222
+        }
+      ]
+    },
+    {
+      "function": "C2C5FA",
+      "nativeHandler": "btlact_giygas_prayer_3_step",
+      "catalogActionIds": [
+        293
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 8,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-prayer-damage": 8
+          },
+          "entryPcCases": {
+            "5": 8
+          }
+        },
+        {
+          "report": "research/redux-complete-prayer-cinematics-review.json",
+          "profile": "Redux",
+          "selectedPassedCases": 1,
+          "entryPcCases": {
+            "0": 1
+          },
+          "scope": "Complete prepared prayer callback entry, actual source scene actors/scripts and natural wait signals through cinematic, damage and battle-scene return. Entry flags372/651 are source prerequisites; flag522 is generated by real entity scripts. No complete final battle or physical-input proof.",
+          "requiredSceneNpcs": [],
+          "sourceWarp": 223
+        }
+      ]
+    },
+    {
+      "function": "C2C623",
+      "nativeHandler": "btlact_giygas_prayer_4_step",
+      "catalogActionIds": [
+        294
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 8,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-prayer-damage": 8
+          },
+          "entryPcCases": {
+            "5": 8
+          }
+        },
+        {
+          "report": "research/redux-complete-prayer-cinematics-review.json",
+          "profile": "Redux",
+          "selectedPassedCases": 1,
+          "entryPcCases": {
+            "0": 1
+          },
+          "scope": "Complete prepared prayer callback entry, actual source scene actors/scripts and natural wait signals through cinematic, damage and battle-scene return. Entry flags372/651 are source prerequisites; flag522 is generated by real entity scripts. No complete final battle or physical-input proof.",
+          "requiredSceneNpcs": [
+            600,
+            601,
+            602,
+            603
+          ],
+          "sourceWarp": 224
+        }
+      ]
+    },
+    {
+      "function": "C2C64C",
+      "nativeHandler": "btlact_giygas_prayer_5_step",
+      "catalogActionIds": [
+        295
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 8,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-prayer-damage": 8
+          },
+          "entryPcCases": {
+            "5": 8
+          }
+        },
+        {
+          "report": "research/redux-complete-prayer-cinematics-review.json",
+          "profile": "Redux",
+          "selectedPassedCases": 1,
+          "entryPcCases": {
+            "0": 1
+          },
+          "scope": "Complete prepared prayer callback entry, actual source scene actors/scripts and natural wait signals through cinematic, damage and battle-scene return. Entry flags372/651 are source prerequisites; flag522 is generated by real entity scripts. No complete final battle or physical-input proof.",
+          "requiredSceneNpcs": [
+            1110,
+            1111
+          ],
+          "sourceWarp": 226
+        }
+      ]
+    },
+    {
+      "function": "C2C675",
+      "nativeHandler": "btlact_giygas_prayer_6_step",
+      "catalogActionIds": [
+        296
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 8,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-prayer-damage": 8
+          },
+          "entryPcCases": {
+            "5": 8
+          }
+        },
+        {
+          "report": "research/redux-complete-prayer-cinematics-review.json",
+          "profile": "Redux",
+          "selectedPassedCases": 1,
+          "entryPcCases": {
+            "0": 1
+          },
+          "scope": "Complete prepared prayer callback entry, actual source scene actors/scripts and natural wait signals through cinematic, damage and battle-scene return. Entry flags372/651 are source prerequisites; flag522 is generated by real entity scripts. No complete final battle or physical-input proof.",
+          "requiredSceneNpcs": [
+            38
+          ],
+          "sourceWarp": 227
+        }
+      ]
+    },
+    {
+      "function": "C2C69E",
+      "nativeHandler": "btlact_giygas_prayer_7_step",
+      "catalogActionIds": [
+        297
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 8,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-prayer-damage": 8
+          },
+          "entryPcCases": {
+            "5": 8
+          }
+        },
+        {
+          "report": "research/redux-complete-prayer-cinematics-review.json",
+          "profile": "Redux",
+          "selectedPassedCases": 1,
+          "entryPcCases": {
+            "0": 1
+          },
+          "scope": "Complete prepared prayer callback entry, actual source scene actors/scripts and natural wait signals through cinematic, damage and battle-scene return. Entry flags372/651 are source prerequisites; flag522 is generated by real entity scripts. No complete final battle or physical-input proof.",
+          "requiredSceneNpcs": [],
+          "sourceWarp": 221
+        }
+      ]
+    },
+    {
+      "function": "C2C6D0",
+      "nativeHandler": "btlact_giygas_prayer_8_step",
+      "catalogActionIds": [
+        298
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 1,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-progression": 1
+          },
+          "entryPcCases": {
+            "0": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2C6F0",
+      "nativeHandler": "btlact_giygas_prayer_9_step",
+      "catalogActionIds": [
+        299
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-action-coverage-dev15.json",
+          "selectedPassedCases": 1,
+          "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+          "categories": {
+            "giygas-progression": 1
+          },
+          "entryPcCases": {
+            "0": 1
+          }
+        }
+      ]
+    },
+    {
+      "function": "C2FFF0",
+      "nativeHandler": "btlact_redux_lucky_sandwich_step",
+      "catalogActionIds": [
+        318
+      ],
+      "evidence": [
+        {
+          "report": "research/redux-battle-food-coverage-dev15-v5.json",
+          "selectedPassedCases": 1056,
+          "scope": "Prepared food effects and exact condiment/removal rules; selected production description-to-consumption continuations stop before later status/turn handling.",
+          "categories": {
+            "lucky-sandwich-sequential-outcomes": 1024,
+            "description-to-consumption": 32
+          },
+          "routes": {
+            "direct-handler": 1024,
+            "production-description-to-consumption": 32
+          }
+        }
+      ]
+    }
+  ],
+  "remaining": [
+    {
+      "function": "C1DE43",
+      "nativeHandler": "btlact_switch_weapons_step",
+      "catalogActionIds": [
+        239,
+        246
+      ]
+    },
+    {
+      "function": "C1E00F",
+      "nativeHandler": "btlact_switch_armor_step",
+      "catalogActionIds": [
+        240
+      ]
+    },
+    {
+      "function": "C28770",
+      "nativeHandler": "btlact_spy_step",
+      "catalogActionIds": [
+        6
+      ]
+    },
+    {
+      "function": "C2889E",
+      "nativeHandler": "btlact_steal",
+      "catalogActionIds": [
+        66
+      ]
+    },
+    {
+      "function": "C288EB",
+      "nativeHandler": "btlact_freezetime_step",
+      "catalogActionIds": [
+        67
+      ]
+    },
+    {
+      "function": "C28EAE",
+      "nativeHandler": "btlact_cut_guts_step",
+      "catalogActionIds": [
+        97,
+        229,
+        230,
+        231
+      ]
+    },
+    {
+      "function": "C28F21",
+      "nativeHandler": "btlact_reduce_offense_defense_step",
+      "catalogActionIds": [
+        98,
+        233,
+        234
+      ]
+    },
+    {
+      "function": "C28F97",
+      "nativeHandler": "btlact_level_2_attack_poison_step",
+      "catalogActionIds": [
+        100
+      ]
+    },
+    {
+      "function": "C2900B",
+      "nativeHandler": "btlact_350_fire_damage_step",
+      "catalogActionIds": [
+        104
+      ]
+    },
+    {
+      "function": "C290C6",
+      "nativeHandler": "apply_neutralize_to_all_step",
+      "catalogActionIds": [
+        247,
+        248
+      ]
+    },
+    {
+      "function": "C2916E",
+      "nativeHandler": "btlact_level_2_attack_diamondize_step",
+      "catalogActionIds": [
+        228
+      ]
+    },
+    {
+      "function": "C29254",
+      "nativeHandler": "btlact_reduce_offense_step",
+      "catalogActionIds": [
+        232,
+        273
+      ]
+    },
+    {
+      "function": "C29298",
+      "nativeHandler": "btlact_clumsydeath_step",
+      "catalogActionIds": [
+        243
+      ]
+    },
+    {
+      "function": "C29E86",
+      "nativeHandler": "btlact_defense_down_alpha_step",
+      "catalogActionIds": [
+        50,
+        51
+      ]
+    },
+    {
+      "function": "C29FE1",
+      "nativeHandler": "btlact_magnet_o_step",
+      "catalogActionIds": [
+        55
+      ]
+    },
+    {
+      "function": "C2A507",
+      "nativeHandler": "btlact_hp_sucker_step",
+      "catalogActionIds": [
+        176
+      ]
+    },
+    {
+      "function": "C2A50E",
+      "nativeHandler": "btlact_mummy_wrap_step",
+      "catalogActionIds": [
+        162
+      ]
+    },
+    {
+      "function": "C2A5D1",
+      "nativeHandler": "btlact_bottle_rocket_step",
+      "catalogActionIds": [
+        163
+      ]
+    },
+    {
+      "function": "C2A5DA",
+      "nativeHandler": "btlact_big_bottle_rocket_step",
+      "catalogActionIds": [
+        164
+      ]
+    },
+    {
+      "function": "C2A5E3",
+      "nativeHandler": "btlact_multi_bottle_rocket_step",
+      "catalogActionIds": [
+        165
+      ]
+    },
+    {
+      "function": "C2A5EC",
+      "nativeHandler": "btlact_handbag_strap_step",
+      "catalogActionIds": [
+        166
+      ]
+    },
+    {
+      "function": "C2A818",
+      "nativeHandler": "btlact_bomb_step",
+      "catalogActionIds": [
+        167,
+        310
+      ]
+    },
+    {
+      "function": "C2A821",
+      "nativeHandler": "btlact_super_bomb_step",
+      "catalogActionIds": [
+        64,
+        65,
+        101,
+        168,
+        311
+      ]
+    },
+    {
+      "function": "C2A86B",
+      "nativeHandler": "btlact_yogurt_dispenser_step",
+      "catalogActionIds": [
+        170
+      ]
+    },
+    {
+      "function": "C2A89D",
+      "nativeHandler": "btlact_snake_step",
+      "catalogActionIds": [
+        171,
+        268
+      ]
+    },
+    {
+      "function": "C2A99C",
+      "nativeHandler": "btlact_bag_of_dragonite_step",
+      "catalogActionIds": [
+        177
+      ]
+    },
+    {
+      "function": "C2AA0C",
+      "nativeHandler": "btlact_insecticide_spray_step",
+      "catalogActionIds": [
+        178
+      ]
+    },
+    {
+      "function": "C2AA15",
+      "nativeHandler": "btlact_xterminator_spray_step",
+      "catalogActionIds": [
+        179
+      ]
+    },
+    {
+      "function": "C2AA6D",
+      "nativeHandler": "btlact_rust_promoter_step",
+      "catalogActionIds": [
+        180
+      ]
+    },
+    {
+      "function": "C2AA76",
+      "nativeHandler": "btlact_rust_promoter_dx_step",
+      "catalogActionIds": [
+        181
+      ]
+    },
+    {
+      "function": "C2AD1B",
+      "nativeHandler": "btlact_pray_step",
+      "catalogActionIds": [
+        7
+      ]
+    },
+    {
+      "function": "C2B0A1",
+      "nativeHandler": "btlact_mirror_step",
+      "catalogActionIds": [
+        280
+      ]
+    },
+    {
+      "function": "C2C14E",
+      "nativeHandler": "btlact_rainbow_of_colours",
+      "catalogActionIds": [
+        290
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "path": "research/redux-battle-action-coverage.json",
+      "sha256": "1c82f054e0d3620a586e0c7f211189e1a68d24d88176e834ad32543ca5fab51b",
+      "runtimeSha256": {
+        "player.exe": "6301ad24b10eefa11192d3f0803571465de4460b6554251a1fbe953cda504812",
+        "observer.exe": "514529ae9cdd70ba66d94719b4cf158eccafff3281a19c917416f8960f328f8f"
+      },
+      "executedPlayerLibrarySha256": "9348940a1715916d999a6f7a4461382534eea1f057b9ee0b6ac2ba84e4025830",
+      "privateDriverSourceSha256": "1ad06a2fcf0844749c6239a8d166144c177ccbb2610dbe559e382a66c9754a08",
+      "recordedCases": 2759,
+      "activeCallbacksWithSelectedCases": 25,
+      "scope": "Prepared callbacks, selected elemental/status/recovery/shield/absorption branches; separate enemy initialization and real reward exit cases do not add active callbacks.",
+      "limits": [
+        "Prepared production callbacks and real mode/text/calculation continuations, not all ordinary battles or a full playthrough.",
+        "The private driver links the player build matching the frozen player executable. Observer behavior is checked in the separate six-module audit, not independently for every semantic matrix row.",
+        "Most handler fixtures bypass action selection, PP payment, whole-turn targeting/initiative, item consumption and enemy AI; separate menu/reward QA is required.",
+        "Some functions share multiple table rows: one callback test does not validate every packed targeting/type/description variant.",
+        "Callback membership and missing-handler inventory are metadata, not semantic validation.",
+        "Original machine-code oracle covers exactly two variance helpers; other assertions derive from reviewed source/data and execute native handlers.",
+        "Elemental cases check HP targets/boss immunities; Freeze solidify distribution, reflected PSI, Giygas phase2 redirection, KO/final attacks, player Guts and shield break ordering remain separate.",
+        "No asserted audio/image correctness, all transitions, cold save phases, full randomizer seed progression or every source module.",
+        "No owner ROM, game data, dialogue bytes, screenshots or player save appears in this public report."
+      ]
+    },
+    {
+      "path": "research/redux-battle-action-coverage-dev15.json",
+      "sha256": "eab02b1e03563f62bde91c444680cedc422a6200e772f4b4b743e53b7f5876a4",
+      "runtimeSha256": {
+        "player.exe": "7fd87c4ae48e4357358f0f1f831997e8259b1dd15c8ab05aba878bc0554c98bf",
+        "observer.exe": "eda9705cd5a8cebb6ddf8e5cb659699bc688c526e67e66b9438fd6c8639b777e"
+      },
+      "executedPlayerLibrarySha256": "3aea00ff496a0f4de1be59e4575d7fa15b48bdba53a862e49e1670d6174a3cb7",
+      "privateDriverSourceSha256": "994c44b487847207c44a22c1466117ce72bf22ac96e9847a932d2b8191c538cc",
+      "recordedCases": 6085,
+      "activeCallbacksWithSelectedCases": 49,
+      "scope": "Prepared progression/item/status/stat callbacks; report entryPc boundaries distinguish staged prayers1\u20137 damage from complete cinematic entry.",
+      "limits": [
+        "Source-derived assertions with actual native dispatch/continuations; no new independent original-machine oracle in this tool.",
+        "Prepared handler entry contexts bypass full-turn selection, targeting, cost, AI and story-trigger ordering.",
+        "Pokey and prayers eight/nine exercise full native entry; prayers one through seven enter post-cinematic pc5. Real remaining text/fade/load/swirl children execute, but staged cases do not certify skipped cinematics or complete ending.",
+        "Only the player native library is executed; observer runtime hash is provenance, not separate semantic execution.",
+        "Prior frozen v5 coverage retains its own runtime/library hashes and is not relabeled as testing the current runtime.",
+        "Status, item and stat-width cases prepare exact callback boundaries; broader inventory, input, cost, rolling meter timing and whole-turn behavior remain outside these assertions.",
+        "No owner save, game assets or ROM bytes are published in this report."
+      ]
+    },
+    {
+      "path": "research/redux-battle-food-summon-coverage-dev15-v5.json",
+      "sha256": "f5ae14a136ab357c594e69eb7574bb93b3cdd0b73a3003694860f595166c25ff",
+      "runtimeSha256": {
+        "player.exe": "68935ae10a49086601e872e2b271d3cf6460010598b842c6683aa5779a1ad1ab",
+        "observer.exe": "6bb03da1e7de099ba0a611e65e3a9ce4d703f281d680e00629260edd57ba1407"
+      },
+      "executedPlayerLibrarySha256": "67df5cacc2bb2fecb3491fd9c003eea67a5f0458edc3188a2db36eb40df760b8",
+      "privateDriverSourceSha256": "64a0ecc90b7eb4b14895355e798e39c8b0197cc27c61f29fd9aba0da0c8921da",
+      "recordedCases": 1792,
+      "activeCallbacksWithSelectedCases": 2,
+      "scope": "Actual BS_ENTER group constructor and art/layout precede one comfortably fitting summon; selected group rows, seeded success/failure and cleared/bound transient entry pointers.",
+      "limits": [
+        "Source-derived expected behavior; no original-machine comparison in this tool.",
+        "Actual BS_ENTER constructor and native sprite setup/layout precede real summon callbacks; full encounter turns and AI selection are not executed.",
+        "Both callbacks intentionally tested with exact group parameters, but not every enemy AI assigns both callbacks in every group.",
+        "Selected comfortably fitting groups test one added enemy and full-group art allocation; dead replacement, packed rows and every summon group remain unevaluated.",
+        "Cold cases clear transient battle-entry pointer globals after actual group/sprite construction; they are consumer prerequisites, not serialized owner-save loading.",
+        "State/art allocation assertions do not certify rendered pixel appearance or physical controller interaction.",
+        "Only player library is executed. Observer hash is separate provenance.",
+        "No owner save, ROM or extracted payload bytes included."
+      ]
+    },
+    {
+      "path": "research/redux-battle-food-coverage-dev15-v5.json",
+      "sha256": "c5136707fc78ace7a2fafa1342cebcf35bb40561453acd9f8aaad6a40243be6f",
+      "runtimeSha256": {
+        "player.exe": "68935ae10a49086601e872e2b271d3cf6460010598b842c6683aa5779a1ad1ab",
+        "observer.exe": "6bb03da1e7de099ba0a611e65e3a9ce4d703f281d680e00629260edd57ba1407"
+      },
+      "executedPlayerLibrarySha256": "67df5cacc2bb2fecb3491fd9c003eea67a5f0458edc3188a2db36eb40df760b8",
+      "privateDriverSourceSha256": "9b42b061bf814eb6d7760f9d4ad5e40b16a0c50c97dacb4101f0c27b21d63050",
+      "recordedCases": 5484,
+      "activeCallbacksWithSelectedCases": 2,
+      "scope": "Prepared food effects and exact condiment/removal rules; selected production description-to-consumption continuations stop before later status/turn handling.",
+      "limits": [
+        "Exact packed parameters and pinned/original source-derived state assertions; no independent original-machine food oracle.",
+        "Direct callback fixtures verify condiment consumption but bypass the outer food consumption/description caller. Description-to-consumption cases execute actual BTL_EXEC_DESC through post-action dead-player check and stop before later status/turn processing.",
+        "RNG is observed and restored at actual native effect entry points; this does not independently prove the complete RNG timeline.",
+        "Deferred animation task ID/delay is checked at scheduling, not its complete future execution.",
+        "No full enemy AI, whole encounter, physical input, rendered pixel/audio or full-story claims.",
+        "Only player library executed; observer hash is provenance. No owner save or asset bytes redistributed."
+      ]
+    },
+    {
+      "path": "research/redux-battle-offense-up-dev15-v5.json",
+      "sha256": "ae5d6a6c17b892cf078dafc264ab1890e3318d103ca583d124c1f649f21ab611",
+      "runtimeSha256": {
+        "player.exe": "68935ae10a49086601e872e2b271d3cf6460010598b842c6683aa5779a1ad1ab",
+        "observer.exe": "6bb03da1e7de099ba0a611e65e3a9ce4d703f281d680e00629260edd57ba1407"
+      },
+      "executedPlayerLibrarySha256": "67df5cacc2bb2fecb3491fd9c003eea67a5f0458edc3188a2db36eb40df760b8",
+      "privateDriverSourceSha256": "fd49bdaf8e8eeecf7c82b4b65824b576f5528f94a76357026d49b2c72ae21384",
+      "recordedCases": 144,
+      "activeCallbacksWithSelectedCases": 1,
+      "scope": "Prepared Offense Up callback with ordinary/repeated/high-word states, NPC controls and independent clean/pinned machine arithmetic comparison.",
+      "limits": [
+        "Actual callback and resumable text execute in prepared player/NPC boundaries; full turn and input/render are outside scope.",
+        "Expected arithmetic is derived from exact enabled pinned opcodes; independent patched-machine results are recorded separately.",
+        "Only player library executed; observer hash is provenance. No save, ROM or extracted payload bytes included."
+      ]
+    },
+    {
+      "path": "research/redux-battle-damage-coverage-dev16.json",
+      "sha256": "0183deae809d779af8db757a403909f2946160dd7ea175dcad647c1e6c6534b7",
+      "runtimeSha256": {
+        "player.exe": "68935ae10a49086601e872e2b271d3cf6460010598b842c6683aa5779a1ad1ab",
+        "observer.exe": "6bb03da1e7de099ba0a611e65e3a9ce4d703f281d680e00629260edd57ba1407"
+      },
+      "executedPlayerLibrarySha256": "67df5cacc2bb2fecb3491fd9c003eea67a5f0458edc3188a2db36eb40df760b8",
+      "privateDriverSourceSha256": "7b0348a9d1be49f45a2a0ab554a72286087876625688133158ec76098103cf90",
+      "recordedCases": 10752,
+      "activeCallbacksWithSelectedCases": 6,
+      "scope": "Prepared nonlethal Rockin/Starstorm callbacks with shields, dodge/status/guard, boss immunity and Giygas2 HP redirection; outer multi-target traversal and complete turns unevaluated.",
+      "limits": [
+        "Prepared single-target real callbacks and resumable calculation/text children; no outer action target traversal, whole turn or enemy AI selection.",
+        "Expected state follows reviewed original assembly and exact packed action types; no independent full original-machine oracle in this tool.",
+        "RNG values are observed without consumption at actual effect entry. Complete encounter RNG timing and serialization are outside scope.",
+        "High target/attacker HP isolates non-lethal damage, dodge and shield/boss branches; KO and guts-save are intentionally unevaluated.",
+        "Physical input, rendered pixels, audio, PSI animation timing and the full story remain unevaluated.",
+        "Only player library executed. Observer hash records provenance. No owner save, ROM or asset payload included."
+      ]
+    },
+    {
+      "path": "research/redux-battle-physical-coverage-dev16.json",
+      "sha256": "c1310b8130bc9a2f3ae80c97ed62959b7fbd5e5dcca2fb947ae63af933010252",
+      "runtimeSha256": {
+        "player.exe": "68935ae10a49086601e872e2b271d3cf6460010598b842c6683aa5779a1ad1ab",
+        "observer.exe": "6bb03da1e7de099ba0a611e65e3a9ce4d703f281d680e00629260edd57ba1407"
+      },
+      "executedPlayerLibrarySha256": "67df5cacc2bb2fecb3491fd9c003eea67a5f0458edc3188a2db36eb40df760b8",
+      "privateDriverSourceSha256": "bec2a913a014d3e8db65b0e853f5cbd899ab10659647e531c73d240d8fa89122",
+      "recordedCases": 17856,
+      "activeCallbacksWithSelectedCases": 6,
+      "scope": "Prepared nonlethal physical callbacks and DoubleBash children; distinct actual action types, weapon miss parameters, crying/nausea penalties, critical/dodge/floor/guard/shield/boss/strangeness branches. Every outer turn and all row variants remain unevaluated.",
+      "limits": [
+        "Source-backed prepared physical callbacks, real miss/smash/dodge/variance/damage/text and double-Bash child sequencing; outer turn/AI selection is not executed.",
+        "First packed row of each distinct active physical action type per callback is selected; every description/targeting row variant remains unevaluated.",
+        "Actual weapon miss parameters cover every distinct packed weapon-special value, with normalized offense and HP. This does not certify equipment recalculation.",
+        "Stage RNG is observed without consumption; complete encounter RNG timing and independent original-machine full-action equivalence remain unevaluated.",
+        "Nonlethal target/attacker contexts intentionally exclude KO, Guts saves and final attacks; sleep wake and Giygas2 redirects are covered only in separate PSI report.",
+        "Pixels, audio, physical input, full story and randomizer progression remain unevaluated. Only player library executed; observer identity is provenance.",
+        "Public cases omit successful full trace arrays; immutable private native log is hashed and repeatable by the included runner. No owner save, ROM or asset payload included."
+      ]
+    },
+    {
+      "path": "research/redux-battle-thunder-coverage-dev16-v1.json",
+      "sha256": "a5abd41736e460157037077e0689be0db4cf928d4920ec8391128584935927d3",
+      "runtimeSha256": {
+        "player.exe": "326279758e561d144e61a387469d6a219e678b1a3e425bd16ca03e0b782def0b",
+        "observer.exe": "82324bc52ba943fe6a651ebaa935195c0299ba1f78ec757382f578b479b0d95a"
+      },
+      "executedPlayerLibrarySha256": "bd2970406d516d2a49f31e64f0e73aca92c78716d030347393683abfb6f750f1",
+      "privateDriverSourceSha256": "af4a02151408c814c0f9f7ad1fa638c76e143d5553157b9746143cf9fb5be893",
+      "recordedCases": 7040,
+      "activeCallbacksWithSelectedCases": 4,
+      "scope": "Complete prepared nonlethal Thunder hit loops; distinct actual PSI/non-PSI rows, random target/status filtering, selected shields and badge reflection. Outer AI/turn/PP payment and lethal continuation remain unevaluated.",
+      "limits": [
+        "Actual complete Thunder callback hit loops, native random targeting/filtering, text/waits/calculations and selected badge/shield interactions; no outer turn/AI/PP payment.",
+        "Source-derived state/roll expectations; no independent full original-machine Thunder oracle.",
+        "Target/attacker HP is normalized to prevent KO. Lethal/side-wipe/final-attack branches and reflective shields on the badge-reflected caster remain unevaluated.",
+        "RNG observations occur at actual effect stages without consumption; complete encounter RNG timing is not certified.",
+        "Initial targeted count controls hit chance even when statuses filter some targets, matching original source.",
+        "Pixel/audio/animation timing/physical input/story/randomizer progression remain unevaluated. Only player library executed; observer hash is provenance.",
+        "Successful raw traces remain in hashed private log; no owner ROM/save/asset payload in the public report."
+      ]
+    },
+    {
+      "path": "research/redux-battle-flash-coverage-dev16-v1.json",
+      "sha256": "7e7481bfc696d9c1cc792c9f39837ec4c4c9bd4a37fb082366a0b027a81cbfde",
+      "runtimeSha256": {
+        "player.exe": "326279758e561d144e61a387469d6a219e678b1a3e425bd16ca03e0b782def0b",
+        "observer.exe": "82324bc52ba943fe6a651ebaa935195c0299ba1f78ec757382f578b479b0d95a"
+      },
+      "executedPlayerLibrarySha256": "bd2970406d516d2a49f31e64f0e73aca92c78716d030347393683abfb6f750f1",
+      "privateDriverSourceSha256": "a4a04e10a253e50038574c01b3172b82f45d5ee850b0f875126cb6f16d386ae4",
+      "recordedCases": 8640,
+      "activeCallbacksWithSelectedCases": 4,
+      "scope": "Prepared complete Flash callbacks with distinct PSI/non-PSI rows, resistance, NPC refusal, status priority, shield absorption/reflection and selected ordinary/Giygas KO children. Outer turns and complete final battle unevaluated.",
+      "limits": [
+        "Prepared complete Flash callbacks, real calculation/text/KO children, selected shield and status priority rules; no outer turn/AI/PP payment.",
+        "Source-derived expectations and observed real effect-stage RNG inputs; no independent original-machine Flash execution.",
+        "KO cases use ordinary no-final-attack enemy7 and nonpossessed players. Four normalized Giygas targets force resistance255 to exercise original KO guards; this is not proof of natural boss encounter behavior.",
+        "Final attacks, group death, possession and NPC replacement inside KO remain unevaluated by this tool.",
+        "Complete story/randomizer, physical controller input, pixels/audio and full encounter RNG timing remain unevaluated. Only player library executes; observer hash records provenance.",
+        "No owner ROM/save/asset payload is published; successful detailed traces stay in hashed private log."
+      ]
+    },
+    {
+      "path": "research/redux-battle-empty-callback-coverage-dev16-v1.json",
+      "sha256": "be9477d83ea66008f94fa90b421b9d47edc2753859117efdd3eaa1b11e5d7e7e",
+      "runtimeSha256": {
+        "player.exe": "326279758e561d144e61a387469d6a219e678b1a3e425bd16ca03e0b782def0b",
+        "observer.exe": "82324bc52ba943fe6a651ebaa935195c0299ba1f78ec757382f578b479b0d95a"
+      },
+      "executedPlayerLibrarySha256": "bd2970406d516d2a49f31e64f0e73aca92c78716d030347393683abfb6f750f1",
+      "privateDriverSourceSha256": "750101a0b4292da66d537ecef800da0bdba1f8b58966f59551db3449a9cd30cd",
+      "recordedCases": 1458,
+      "activeCallbacksWithSelectedCases": 12,
+      "scope": "Twelve exact source-empty callbacks match both owner ROM bodies and preserve seeded native gameplay/RNG state through real production dispatch for all81matching actual action rows. Caller text, item/PP consumption and outer turn remain unevaluated.",
+      "limits": [
+        "Exact Original/pinned Redux machine bodies were decoded at original function addresses; this is body inspection, not executed SNES machine proof.",
+        "Actual native production dispatcher executes each pure callback for every actual matching action row with seeded battle, status, inventory and RNG state. Full struct state is unchanged except expected dispatcher temp_function_pointer metadata.",
+        "No claim that action descriptions, outer turn, PP payment, inventory consumption or other caller behavior is empty.",
+        "Core/game/overworld/text/mode/RNG/battle/party state invariants are tested; unlisted globals, pixels/audio and full story/randomizer remain unevaluated.",
+        "No owner ROM, extracted asset or save payload is included in the report. Only player library executed; observer hash records provenance."
+      ]
+    },
+    {
+      "path": "research/redux-complete-prayer-cinematics-review.json",
+      "sha256": "b47f9cd832686f60af039988f351f497682d620946df614959da97983964210b",
+      "runtimeSha256": {
+        "player.exe": "7a96db453b106787060c7e32e3ad8f19d010c07d35b9eff7e57e4c54461e102b",
+        "observer.exe": "4b53e35ad85156e215f97c7823bbf96c703dcc201808eb7d1c1f0d824afe4a27"
+      },
+      "executedPlayerLibrarySha256": "79a1b520f2bb8ffb9a8d02fb4e5985c9c03698994ad76622a821ed5b9094baa2",
+      "privateDriverSourceSha256": "d0f4a1dad0891b4a1c6a0173586ede5a1e70fb492b5284c2d9e00eb96208592f",
+      "recordedCases": 7,
+      "activeCallbacksWithSelectedCases": 7,
+      "scope": "Prepared complete prayer1\u20137 callback cinematics; same seven callback IDs as previous staged damage report.",
+      "limits": [
+        "Prepared endgame callback entries; preceding full story, natural Pray command choice and a continuous final battle remain untested here.",
+        "Production native library/player platform objects executed. Observer executable hash identifies the matching frozen pair; no separate observer run claim.",
+        "Exact wait counts, scene coordinates/NPCs, naturally generated flags/signals and callback progress are asserted. Pixel-perfect visuals, audible mixes and original timing are not independently proved.",
+        "Negative controls demonstrate fixture omissions. Neither omitted prerequisites nor earlier stalls are confirmed native defects.",
+        "This expands branches of existing seven callback IDs; it does not add seven new callbacks to the callback inventory."
+      ]
+    }
+  ],
+  "noncatalogSemanticCallbacks": [
+    [
+      "research/redux-battle-action-coverage.json",
+      "C29051"
+    ]
+  ],
+  "reproductionFlags": {
+    "assets": "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.13\\Profiles\\maternalbound-redux-897d0083\\assets.pak",
+    "native-source": "native-source",
+    "root": "C:\\Users\\crono\\Desktop\\Projects\\eb",
+    "output": "research\\battle-semantic-coverage-dev16-empty.json"
+  },
+  "limits": [
+    "Each listed callback has selected semantic cases only; all branches, all action-row variants and complete game behavior are not certified.",
+    "Repeated/overlapping report cases are listed per callback and never added into a conversion percentage or a deduplicated total.",
+    "Reports span exact dev14 v5, dev15 v3 and dev15 v5 libraries; older execution is never relabeled as current-release verification.",
+    "Cold consumer, source hook inventories, UI/audio, collision and helper machine corpora are separate evidence and do not automatically add active callback coverage.",
+    "No complete story/randomizer seed, full encounter AI/initiative or physical input/pixel/audio proof follows from this ledger.",
+    "No owner ROM, extracted bytes, dialogue or save payload appears in the ledger.",
+    "Complete prayer cinematics use the separate dev15 v6 production library; its exact hashes remain separate from the v5 damage, physical and Thunder tests.",
+    "Thunder, Flash and twelve source-empty callbacks execute on final dev16v1. Other callback evidence keeps earlier exact executed identities; this cumulative ledger does not certify a current-build rerun of every listed callback."
+  ],
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false
+}

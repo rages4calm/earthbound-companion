@@ -1,0 +1,201 @@
+{
+  "Passed": true,
+  "Runtime": {
+    "Player": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "Observer": "290094e1eb7135218fbe5d8403436c058eef672215f34e578ea3f48e5b12bcd6",
+    "Library": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1"
+  },
+  "SourceProvenance": {
+    "Runtime": {
+      "Player": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+      "Observer": "290094e1eb7135218fbe5d8403436c058eef672215f34e578ea3f48e5b12bcd6",
+      "Library": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1"
+    },
+    "Sources": {
+      "ebtools/cli/extract.py": "9d2aa6de93a0f5d976b06126b493e4d3a9cbbd568ba3971578172b44ef628c5f",
+      "ebtools/cli/pack_all.py": "b930154c73f22907115b24be605f7727be496f54ef17cae7228dceb7231218a6",
+      "ebtools/parsers/original_movement_banks.py": "e3a543a65713c140c049758c02e62fec9bebb32a027ad2b41b68804dfcee7358",
+      "port/unix/CMakeLists.txt": "0c65031db5f339da3624271b3b8a24a0321ac44d5474f0aa644c9bcdb372d243",
+      "port/unix/main.c": "0696424eee1f2287bb0594a8a7e2fefa34dc9a7db472a743594eee2d05c02a70",
+      "port/unix/platform/msu_audio.c": "7efe220133d3f05c8eabb9676c568dd4db54803e4caef58177584f10593e988a",
+      "port/unix/platform/qa_observer.c": "794cb0fb0421106822855f259c4a661e5c35dc32a43d30ec550e9d8ce92e3741",
+      "port/unix/platform/sdl2_audio.c": "89e06ee483de3d9b7f8a650d24aecb7eb5b6bfc46811ccf52f5dffdfec86e5cc",
+      "port/unix/platform/sdl2_input.c": "6c18764bf6f0dbf573e9a0cb4a0e2f8590e79f0c45c4dc94e2cddee8a835de76",
+      "port/unix/platform/sdl2_savestate.c": "fa2b0be2e328c4cd352369ee5cb5afd5a8c3937e72a9f3f76348befd0624f73c",
+      "port/unix/platform/sdl2_timer.c": "98da17aa60eda503231dbd4408c28b38d40132c1bfc501ac63dfb9c01537d513",
+      "port/unix/platform/sdl2_video.c": "c8d1e8bcafd18adcae1445fa1b3de1b8746c18be35da38fa9a3680f496b74f86",
+      "src/CMakeLists.txt": "8f9cce5f66c13b558104500f30954372650094033a6bafcc119925d2ae0c38be",
+      "src/core/mode_stack.h": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762",
+      "src/core/state_dump.c": "15a416ea8e9d28199641821b8c7523fc9ebffdb51bdbc32574d2d7f43a205665",
+      "src/data/event_script_data.c": "4854147c1ada08ff15c16f1ecf4ccf16d5a66354c67793e9b487f8a1445089bc",
+      "src/data/event_script_data.h": "9037e0808f8bbfb08d6d0bd9dc22332fc505600967ed02cb8e7f680f4c3d9928",
+      "src/entity/callbacks.c": "c38e6cccc7f9192f404e9eb5f17be6098ff16728ece825c6c6a65baf4a7cc461",
+      "src/entity/callroutine.c": "63835e5c1abd6af31c91ae0079e33997c8f99834b0b3ff94ea22b39e0f083c56",
+      "src/entity/callroutine_movement.c": "3581f9eee4806f9a4cd150eda8ea2ba24c33a317292e676a47c73e14e01ec79d",
+      "src/entity/callroutine_palette.c": "e65949eed37ec6d6aa4481ba63f4d1b7ea0f78cadff78a2e19db5e6a70228179",
+      "src/entity/callroutine_sprite.c": "2c51196229c815fa48de99ca0ab37de0552fc80db4f088242128d07ff3a2cb83",
+      "src/entity/entity.c": "102c31ecd0cca61bb151dd9745b98cae57b978e89fbca0caec0821acee4b521d",
+      "src/entity/opcodes.c": "6994a7646e76911cab1bb7b2bc6c5f526c394c1a97748fd00e1ecb0f8d8023df",
+      "src/entity/script.c": "dc8243e18f1dc69244ba073d81913c4620c5ba3ea766062fd3529948c412f4e2",
+      "src/entity/script.h": "d1b0c204c65d0a3baad0a63792c98c8cf93776318192b44a0cecf4617c75caac",
+      "src/entity/sprite.c": "d749464412e8f6789a3ad1f0e112d1567e210a9144cb855c490c78128f242494",
+      "src/entity/sprite.h": "fd95114637c5c3e75dbfae29de45ab1c6d97b3890398e95abd04ddca433a1170",
+      "src/game/audio.c": "9b9a9b4811bff9c7d97e0ec269136cf42773de0c932b11ba65eb96d0949398df",
+      "src/game/audio.h": "ce063471752c1f36166090b67627deba3b67060be45155acc2ab42e5e49574e0",
+      "src/game/battle.c": "aa8aa01cbf6a4358e9ba845e0f78ef88d2b3e0807b72e04db8e2dc0dd83d443d",
+      "src/game/battle.h": "db495d5841fd57e9988077d1d5eab04a6d3116117abe37cb9b3dca0b556da89a",
+      "src/game/battle_actions.c": "dc847cfbbcea8c2aafd527a061006db2017032d981cfbad0f22c0ba5453a95dd",
+      "src/game/battle_calc.c": "24984edb9ad4984b07640e61e13b010d737fc0b9d33ddb8fd48206405de381a3",
+      "src/game/battle_psi.c": "7adc2f2729909117f5ae3d1847deba99db20ec6344e217d4ff4b5c666d34ca17",
+      "src/game/battle_targeting.c": "7fcad00e1770f4d117a996a020cd2ca9653fc112d821b2947b4020b8f61b8525",
+      "src/game/battle_ui.c": "bb45320a3997bcfacae77a00a58c7f45ae4e58c356faaad50436441efcc487b6",
+      "src/game/display_text.c": "7a11de0b21c1984b53859d11bb1bea0784a87b9a0fad53610cbd42fe1ba2eb72",
+      "src/game/display_text.h": "f3f550466f0fa4597703088dae61041f02272e3fd72611620e74a93febcbca94",
+      "src/game/display_text_cc.c": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7",
+      "src/game/display_text_internal.h": "c4707641a717da75099ee87753b7646fedc31f64e7add2289fc570628bbf4de6",
+      "src/game/display_text_menus.c": "02eaa3abaa822d518a913ae72443af8c5c79f4ac942deaee5955a83625acb2bf",
+      "src/game/door.c": "5918ae3b5f6e357059b6b190d2136f15b661bd9b067d143d54b9c9b65032fc54",
+      "src/game/door.h": "9f8d97608f727f1ae6f17865b1dfc5a793de7a7d5f67eb1c6d6727a61607b29f",
+      "src/game/ending.c": "9e9c48ad186ec4e06619f01bc70d8d4b6dd928f738849eeb5263bd2c7ea9c354",
+      "src/game/ending.h": "c8a319893873595630d4417e3e7d610fe173ae1dab8eb9e0442b15caacdd62b0",
+      "src/game/flyover.c": "ed482ddca6718c48c1b82229ce8dd9f063e16960dde7ef81f4474ba6b4cf7978",
+      "src/game/game_state.c": "4fc6ba0bf0ed71842f174004188c1a430cd33e67ef5cbb13aa6fc8091d45f4be",
+      "src/game/game_state.h": "382853bcad31480f82897be9a2511a4b7d384e5980d7966ce25d3c161740a2f4",
+      "src/game/inventory.c": "3c33e02581db4a684ae72926a0ea283c7ca5161ff918926e7dfac98075306cbe",
+      "src/game/inventory.h": "b60d39b2a3fea8a307e34027befa33d730c001687cd49ebf98d0df86264334f7",
+      "src/game/map_loader.c": "55d858566e2374126c34589d2c6793254b61d83e8d32bb2c353915cc9114f5c3",
+      "src/game/map_loader.h": "caeee9d41a5831d8e83b42359448d5110ff2d9ed17992a4b79b625407ee78b43",
+      "src/game/maternalbound.c": "e6d828b9110f09d315b37a231f7fc4470341f123535dc20b8bce91140d342b74",
+      "src/game/maternalbound.h": "ceca7af798ef2dc158601a244508aeb9a24237e40f6c0db2619d67593169bf7d",
+      "src/game/maternalbound_battle_sprites.c": "fc8a51c108fe173d1835d55219f828edf8b5bc26e8a768dbc37edc83d84ea5a2",
+      "src/game/maternalbound_battle_sprites.h": "e4e34f36e9f845dcd0de4b00fa48a24571d9891a341ed36ea0abadfd81d10991",
+      "src/game/overworld.c": "f91e1db767e21a7f72648c17b6662cb037f99bfa0598ab4ad4e820c67b4d370d",
+      "src/game/overworld.h": "a7aab065f4d173e5c00e1895eb0f64296d0f2adfb9e3727993d8d3837f53fedf",
+      "src/game/overworld_interaction.c": "23de81ce2fabc96ffb4fd789b16b6601b125ea280e6b800bdb4fa6845342f502",
+      "src/game/overworld_palette.c": "bedeeedd47d6ba0c67006c8e66e641c776139a49d4146c5585f0c6305bb45454",
+      "src/game/overworld_spawn.c": "17f16be9014058e45f5eb1cf30d49ee6f9be43b81fe2ba6a3252aa155d9d9075",
+      "src/game/overworld_teleport.c": "39bdf473ad7bd5d95093c8a6530c50c43a912f9847019a2df0d25f0f98ae6cca",
+      "src/game/position_buffer.c": "2ae8e62f3ad225b29872ec73d1c44a3a095d7ce68224f15f5a8bf8a9c3b7d29b",
+      "src/game/position_buffer.h": "91e7dab649f7672e0e79a6c0ea9d5a536fc17b2d7dee6ccdc5b54410c49ce014",
+      "src/game/text.c": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6",
+      "src/game/text.h": "2ac0f01307b7ed2c6b81d21f1838afb7cbe4c8c548b73506747ff54e41749799",
+      "src/game/town_map.c": "d9344b340507d6eaeddc62d21ca79b53116d1eb9e9ae0f5c72731d8a55c50194",
+      "src/game/window.c": "227fdc7e7959bdbcc1d5267e817b21433f3daf4e9b0130c165fa820abb358f6b",
+      "src/game/window.h": "c84254e743eedf17f3e173fb13624f69ff7f7abd235810a56c1150e7a8eed8a6",
+      "src/game_main.c": "ac690d7a23c339dc19616069312c36e440999fc7e9a502f2c968231ba725582c",
+      "src/game_main.h": "d3b9963fd6404071c4db40ae2a9353093231e55c613d5ea5d08964bb8eed3afc",
+      "src/intro/file_select.c": "d2faa938a2ddaa5bc50b2d902679cfcc5373aa8b1d3051ec23b0d6f824919cca",
+      "src/platform/pc_options.c": "21d4f8b0329c2c37db9afc1cb15cdece45baf5db302dc83f25d2ecbd8f68704a",
+      "src/platform/pc_options.h": "5cf49dd20621be2613acf84fce74609155f7e6125dd09454fbc1b4da4ecffed8",
+      "src/platform/platform.h": "b5a3e92feffa89c9a4c0d1c9639d7a435bfa53be245fbc0be2b742787e2aedb2",
+      "src/platform/qa_observer.h": "b9aafd9004282646845cd50f57f5f946edf02d088984fc1310203e3d41114991",
+      "src/snes/ppu_render.c": "fba50b5fd6e76b7605791ebd376ef78d7babb1c685e0b8b06a77e944737474c0",
+      "src/tools/gen_struct_info.c": "25776ba3d3bd3cb82c8ea86c9e4d8cc53855313dd92b81a1421a16de29c682bf",
+      "src/tools/generate_constants_headers.py": "974f4488bceb2db279b46aab459b1dc7351e692018dde6113ac20ec446776e59"
+    },
+    "PatchSha256": "ec4c42e6cbe54bc7c8ff6e25bf53afaea97f09bb5536fc5db6f09ab80c84cd60",
+    "NativeBaseCommit": "76eacab54b05766b82c98da9c55d94d1236ece03",
+    "AllModifiedNativeFilesSnapshotted": true
+  },
+  "PatchBlocksChangedSinceV8": [
+    "a/src/CMakeLists.txt b/src/CMakeLists.txt",
+    "a/src/game/inventory.c b/src/game/inventory.c",
+    "a/src/game/inventory.h b/src/game/inventory.h",
+    "a/src/tools/generate_constants_headers.py b/src/tools/generate_constants_headers.py"
+  ],
+  "FreshPatchApplies": true,
+  "ReduxHelperSha256": "18e83592233a0f11eeb2e3e0672f32b071443aba833e79e1c610a3f4a5ad6612",
+  "RootRegressionJobsPassed": {
+    "Passed": true,
+    "ExecutedJobs": 14,
+    "Jobs": [
+      {
+        "name": "subsystems",
+        "exitCode": 0,
+        "seconds": 7.11,
+        "Passed": true
+      },
+      {
+        "name": "rng",
+        "exitCode": 0,
+        "seconds": 7.23,
+        "Passed": true
+      },
+      {
+        "name": "overworld-rng",
+        "exitCode": 0,
+        "seconds": 9.41,
+        "Passed": true
+      },
+      {
+        "name": "redux-prayer",
+        "exitCode": 0,
+        "seconds": 8.24,
+        "Passed": true
+      },
+      {
+        "name": "redux-letter",
+        "exitCode": 0,
+        "seconds": 7.0,
+        "Passed": true
+      },
+      {
+        "name": "redux-ending-0",
+        "exitCode": 0,
+        "seconds": 5.66,
+        "Passed": true
+      },
+      {
+        "name": "redux-ending-1",
+        "exitCode": 0,
+        "seconds": 6.52,
+        "Passed": true
+      },
+      {
+        "name": "original-prayer",
+        "exitCode": 0,
+        "seconds": 6.53,
+        "Passed": true
+      },
+      {
+        "name": "hotel",
+        "exitCode": 0,
+        "seconds": 28.73,
+        "Passed": true
+      },
+      {
+        "name": "original-letter",
+        "exitCode": 0,
+        "seconds": 9.24,
+        "Passed": true
+      },
+      {
+        "name": "original-ending-0",
+        "exitCode": 0,
+        "seconds": 6.58,
+        "Passed": true
+      },
+      {
+        "name": "owner",
+        "exitCode": 0,
+        "seconds": 2.2,
+        "Passed": true
+      },
+      {
+        "name": "original-ending-1",
+        "exitCode": 0,
+        "seconds": 7.01,
+        "Passed": true
+      },
+      {
+        "name": "repair",
+        "exitCode": 0,
+        "seconds": 109.04,
+        "Passed": true
+      }
+    ],
+    "FullPlaythroughVerified": false
+  },
+  "TimedItemColdCasesPassed": 32,
+  "FullPlaythroughVerified": false
+}

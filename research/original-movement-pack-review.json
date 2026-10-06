@@ -1,0 +1,119 @@
+{
+  "format": "original-movement-pack-qa-v1",
+  "Passed": true,
+  "allPassed": true,
+  "executedCases": 4,
+  "executedAssertions": 13,
+  "skippedCases": 0,
+  "checks": [
+    {
+      "name": "Existing asset layout/header and IDs preserved",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "Fresh actual setup changes only the C3 asset key",
+      "expected": [
+        "US/events/bank_c3_scripts_combined.bin"
+      ],
+      "actual": [
+        "US/events/bank_c3_scripts_combined.bin"
+      ],
+      "passed": true
+    },
+    {
+      "name": "Production setup retains exact previously remapped C3 content",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "Ghost extracted from supported donor pointer region",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "Pinned Redux and owner Original ghost bytecode agree",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "Real setup CLI completed",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "container-raw exact C3 body",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "container-raw donor ghost retained",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "container-json exact C3 body",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "container-json donor ghost retained",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "Legacy naked C3 pack-all stays naked and unchanged",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "Actual Redux builder succeeds using new Original base container",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "name": "Actual rebuilt Redux pack stays byte-identical",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    }
+  ],
+  "freshOriginalPackSha256": "01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549",
+  "legacyOriginalPackSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
+  "expectedReduxPackSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+  "rebuiltReduxPackSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+  "ownerRomSha256": "A8FE2226728002786D68C27DDDDF0B90A894DB52E4DFE268FDF72A68CAE5F02E",
+  "compiledReduxRomSha256": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+  "ghostRegion": {
+    "address": "C0AD8A",
+    "bytes": 21,
+    "sha256": "7B7A76B7B35B15E6D93D85F717925FCDD5F1FCCCB0E2A72E1DC186ACB0A225C5"
+  },
+  "assetCount": 1174,
+  "layoutHeaderSha256": "ECC9263982EF5A2F5BF8583A3AB9FD135A8F8936062083150CBE78E100359302",
+  "setupLogSha256": "A445E11B6B071EE1638CBE91C4DAB232FB8B3371406F4A235358DB6540D36D65",
+  "toolSha256": "CE22E98C95DCD3DDDDCEF992D3405300FDD69FC30B4EB96010B40E940103E927",
+  "sourceFiles": {
+    "ebtools\\cli\\extract.py": "9D2AA6DE93A0F5D976B06126B493E4D3A9CBBD568BA3971578172B44EF628C5F",
+    "ebtools\\cli\\pack_all.py": "B930154C73F22907115B24BE605F7727BE496F54EF17CAE7228DCEB7231218A6",
+    "ebtools\\parsers\\original_movement_banks.py": "E3A543A65713C140C049758C02E62FEC9BEBB32A027AD2B41B68804DFCEE7358"
+  },
+  "reduxCompatibilitySourceSha256": "B2E4BD7A07D216F8D8CED7435F577FD79C9DAABCD26EA11B7630B752DD268A64",
+  "limits": [
+    "Only hashes, addresses and assertions are public; ROM, extracted assets, bytecode, JSON arrays and rebuilt packs remain private.",
+    "JSON override check verifies schema/data preservation, not playability of an arbitrary edited movement instruction.",
+    "Legacy naked C3 remains readable but cannot supply Original EVENT786 until locally regenerated from the owner ROM.",
+    "These extraction checks do not establish complete event interpreter semantics or full gameplay parity."
+  ]
+}

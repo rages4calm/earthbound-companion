@@ -1,0 +1,3456 @@
+{
+  "format": "event-wram-consumer-qa-v1",
+  "Passed": false,
+  "allPassed": false,
+  "executedCases": 24,
+  "executedAssertions": 154,
+  "skippedCases": 0,
+  "failures": [
+    {
+      "check": "Original EVENT670 source destination/departure",
+      "detail": {
+        "tag": "final",
+        "event": 670,
+        "stage": 3,
+        "depth": 1,
+        "steps": 796,
+        "host": 792,
+        "actor": 2,
+        "position": [
+          1267,
+          9928
+        ],
+        "direction": 2,
+        "pending": 0,
+        "teleport": [
+          0,
+          0
+        ],
+        "postCallback": 0,
+        "postBound": 0,
+        "psiDestination": 14,
+        "psiStyle": 5,
+        "leaderDirection": 2,
+        "script": 4,
+        "eventTable": 8,
+        "pc": 31959,
+        "bank": 1,
+        "sleep": -4,
+        "tm": 23,
+        "bg3": 124,
+        "bg34": 6,
+        "paletteUpload": 0
+      }
+    },
+    {
+      "check": "Redux EVENT670 source destination/departure",
+      "detail": {
+        "tag": "final",
+        "event": 670,
+        "stage": 3,
+        "depth": 1,
+        "steps": 796,
+        "host": 792,
+        "actor": 2,
+        "position": [
+          1267,
+          9928
+        ],
+        "direction": 2,
+        "pending": 0,
+        "teleport": [
+          0,
+          0
+        ],
+        "postCallback": 0,
+        "postBound": 0,
+        "psiDestination": 7,
+        "psiStyle": 5,
+        "leaderDirection": 2,
+        "script": 4,
+        "eventTable": 8,
+        "pc": 31959,
+        "bank": 0,
+        "sleep": -4,
+        "tm": 23,
+        "bg3": 124,
+        "bg34": 6,
+        "paletteUpload": 0
+      }
+    }
+  ],
+  "cases": [
+    {
+      "profile": "Original",
+      "event": 109,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 241,
+        "actorId": 231,
+        "param": null
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 109,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 15,
+          "position": [
+            6800,
+            8584
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 17,
+          "eventTable": 108,
+          "pc": 48544,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 109,
+          "stage": 1,
+          "depth": 1,
+          "steps": 58,
+          "host": 57,
+          "actor": 15,
+          "position": [
+            6744,
+            8584
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 17,
+          "eventTable": 108,
+          "pc": 48578,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 109,
+          "stage": 1,
+          "depth": 1,
+          "steps": 58,
+          "host": 57,
+          "actor": 15,
+          "position": [
+            6744,
+            8584
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 17,
+          "eventTable": 108,
+          "pc": 48578,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 109,
+        "kind": 0,
+        "consumed": 5,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 64,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 110,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 120,
+        "param": 255
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 110,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 6,
+          "position": [
+            8176,
+            7528
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 8,
+          "eventTable": 110,
+          "pc": 48579,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 110,
+          "stage": 1,
+          "depth": 1,
+          "steps": 143,
+          "host": 142,
+          "actor": 6,
+          "position": [
+            8040,
+            7512
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 8,
+          "eventTable": 110,
+          "pc": 48640,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 110,
+          "stage": 1,
+          "depth": 1,
+          "steps": 143,
+          "host": 142,
+          "actor": 6,
+          "position": [
+            8040,
+            7512
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 8,
+          "eventTable": 110,
+          "pc": 48640,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 110,
+        "kind": 0,
+        "consumed": 6,
+        "queueBefore": 1,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 192,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 222,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 241,
+        "actorId": 71,
+        "param": null
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 222,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 3,
+          "position": [
+            6976,
+            392
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 5,
+          "eventTable": 605,
+          "pc": 565,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 222,
+          "stage": 1,
+          "depth": 1,
+          "steps": 50,
+          "host": 49,
+          "actor": 3,
+          "position": [
+            6928,
+            392
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 5,
+          "eventTable": 605,
+          "pc": 585,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 222,
+          "stage": 1,
+          "depth": 1,
+          "steps": 50,
+          "host": 49,
+          "actor": 3,
+          "position": [
+            6928,
+            392
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 5,
+          "eventTable": 605,
+          "pc": 585,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 222,
+        "kind": 0,
+        "consumed": 5,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 64,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 224,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 75,
+        "param": 255
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 224,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 608,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 224,
+          "stage": 1,
+          "depth": 1,
+          "steps": 82,
+          "host": 81,
+          "actor": 5,
+          "position": [
+            7552,
+            216
+          ],
+          "direction": 2,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 637,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "saved",
+          "event": 224,
+          "stage": 1,
+          "depth": 1,
+          "steps": 82,
+          "host": 81,
+          "actor": 5,
+          "position": [
+            7552,
+            216
+          ],
+          "direction": 2,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 637,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 224,
+          "stage": 2,
+          "depth": 1,
+          "steps": 164,
+          "host": 162,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 660,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 224,
+          "stage": 2,
+          "depth": 1,
+          "steps": 164,
+          "host": 162,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 660,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 224,
+        "kind": 1,
+        "consumed": 6,
+        "queueBefore": 1,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 68,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 224,
+      "kind": "separate-process-private-checkpoint-continuation",
+      "stages": [
+        {
+          "tag": "cold-restored",
+          "event": 224,
+          "stage": 1,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7552,
+            216
+          ],
+          "direction": 2,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 637,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 224,
+          "stage": 2,
+          "depth": 1,
+          "steps": 82,
+          "host": 81,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 660,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 224,
+          "stage": 2,
+          "depth": 1,
+          "steps": 82,
+          "host": 81,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 660,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 224,
+        "kind": 2,
+        "consumed": 0,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 68,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 298,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 245,
+        "param": 255
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 298,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 0,
+          "position": [
+            1296,
+            5632
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 2,
+          "eventTable": 298,
+          "pc": 4416,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 298,
+          "stage": 1,
+          "depth": 1,
+          "steps": 1304,
+          "host": 1303,
+          "actor": 0,
+          "position": [
+            856,
+            6104
+          ],
+          "direction": 5,
+          "pending": 0,
+          "teleport": [
+            695,
+            886
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 2,
+          "eventTable": 298,
+          "pc": 4481,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 298,
+          "stage": 1,
+          "depth": 1,
+          "steps": 1304,
+          "host": 1303,
+          "actor": 0,
+          "position": [
+            856,
+            6104
+          ],
+          "direction": 5,
+          "pending": 0,
+          "teleport": [
+            695,
+            886
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 2,
+          "eventTable": 298,
+          "pc": 4481,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 298,
+        "kind": 0,
+        "consumed": 6,
+        "queueBefore": 1,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 32,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 351,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 106,
+        "param": 1
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 351,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7241,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 882,
+          "host": 881,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "saved",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 882,
+          "host": 881,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "callback-installed",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 882,
+          "host": 881,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 894,
+          "host": 884,
+          "actor": 5,
+          "position": [
+            152,
+            112
+          ],
+          "direction": 4,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 65535,
+          "script": 7,
+          "eventTable": 606,
+          "pc": 28205,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        }
+      ],
+      "summary": {
+        "event": 351,
+        "kind": 1,
+        "consumed": 6,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 255,
+        "sanctuaryLocations": 255,
+        "modes": [
+          5,
+          17,
+          28,
+          64,
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 351,
+      "kind": "separate-process-private-checkpoint-continuation",
+      "stages": [
+        {
+          "tag": "cold-restored",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "callback-installed",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 12,
+          "host": 3,
+          "actor": 5,
+          "position": [
+            152,
+            112
+          ],
+          "direction": 4,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 65535,
+          "script": 7,
+          "eventTable": 606,
+          "pc": 28205,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        }
+      ],
+      "summary": {
+        "event": 351,
+        "kind": 2,
+        "consumed": 0,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 144,
+        "sanctuaryLocations": 255,
+        "modes": [
+          17,
+          28,
+          64,
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 670,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 241,
+        "actorId": 773,
+        "param": null
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 670,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 2,
+          "position": [
+            1280,
+            10032
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31742,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 670,
+          "stage": 1,
+          "depth": 1,
+          "steps": 194,
+          "host": 193,
+          "actor": 2,
+          "position": [
+            1202,
+            10032
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 43870,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 670,
+          "stage": 2,
+          "depth": 1,
+          "steps": 726,
+          "host": 724,
+          "actor": 2,
+          "position": [
+            1201,
+            9944
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 43870,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "saved",
+          "event": 670,
+          "stage": 2,
+          "depth": 1,
+          "steps": 726,
+          "host": 724,
+          "actor": 2,
+          "position": [
+            1201,
+            9944
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 43870,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 670,
+          "stage": 3,
+          "depth": 1,
+          "steps": 793,
+          "host": 790,
+          "actor": 2,
+          "position": [
+            1265,
+            9928
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 14,
+          "psiStyle": 5,
+          "leaderDirection": 2,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31959,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 670,
+          "stage": 3,
+          "depth": 1,
+          "steps": 796,
+          "host": 792,
+          "actor": 2,
+          "position": [
+            1267,
+            9928
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 14,
+          "psiStyle": 5,
+          "leaderDirection": 2,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31959,
+          "bank": 1,
+          "sleep": -4,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 670,
+        "kind": 1,
+        "consumed": 5,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 197,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5,
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 670,
+      "kind": "separate-process-private-checkpoint-continuation",
+      "stages": [
+        {
+          "tag": "cold-restored",
+          "event": 670,
+          "stage": 2,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 2,
+          "position": [
+            1201,
+            9944
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 43870,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 670,
+          "stage": 3,
+          "depth": 1,
+          "steps": 67,
+          "host": 66,
+          "actor": 2,
+          "position": [
+            1265,
+            9928
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 14,
+          "psiStyle": 5,
+          "leaderDirection": 2,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31959,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 670,
+          "stage": 3,
+          "depth": 1,
+          "steps": 70,
+          "host": 68,
+          "actor": 2,
+          "position": [
+            1267,
+            9928
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 14,
+          "psiStyle": 5,
+          "leaderDirection": 2,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31959,
+          "bank": 1,
+          "sleep": -4,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 670,
+        "kind": 2,
+        "consumed": 0,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 4,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5,
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 777,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 441,
+        "param": 1
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 777,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 777,
+          "pc": 40571,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "final",
+          "event": 777,
+          "stage": 0,
+          "depth": 1,
+          "steps": 5,
+          "host": 4,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": -1,
+          "pc": 41481,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 777,
+        "kind": 0,
+        "consumed": 6,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 0,
+        "directions": 0,
+        "sanctuaryLocations": 0,
+        "modes": [
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "event": 778,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 441,
+        "param": 1
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 778,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 778,
+          "pc": 40579,
+          "bank": 1,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "final",
+          "event": 778,
+          "stage": 0,
+          "depth": 1,
+          "steps": 5,
+          "host": 4,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": -1,
+          "pc": 41481,
+          "bank": 1,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 778,
+        "kind": 0,
+        "consumed": 6,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 0,
+        "directions": 0,
+        "sanctuaryLocations": 0,
+        "modes": [
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 109,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 241,
+        "actorId": 231,
+        "param": null
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 109,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 15,
+          "position": [
+            6800,
+            8584
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 17,
+          "eventTable": 108,
+          "pc": 48544,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 109,
+          "stage": 1,
+          "depth": 1,
+          "steps": 58,
+          "host": 57,
+          "actor": 15,
+          "position": [
+            6744,
+            8584
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 17,
+          "eventTable": 108,
+          "pc": 48578,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 109,
+          "stage": 1,
+          "depth": 1,
+          "steps": 58,
+          "host": 57,
+          "actor": 15,
+          "position": [
+            6744,
+            8584
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 17,
+          "eventTable": 108,
+          "pc": 48578,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 109,
+        "kind": 0,
+        "consumed": 5,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 64,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 110,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 120,
+        "param": 255
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 110,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 6,
+          "position": [
+            8176,
+            7528
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 8,
+          "eventTable": 110,
+          "pc": 48579,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 110,
+          "stage": 1,
+          "depth": 1,
+          "steps": 143,
+          "host": 142,
+          "actor": 6,
+          "position": [
+            8040,
+            7512
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 8,
+          "eventTable": 110,
+          "pc": 48640,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 110,
+          "stage": 1,
+          "depth": 1,
+          "steps": 143,
+          "host": 142,
+          "actor": 6,
+          "position": [
+            8040,
+            7512
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 8,
+          "eventTable": 110,
+          "pc": 48640,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 110,
+        "kind": 0,
+        "consumed": 6,
+        "queueBefore": 1,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 192,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 222,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 241,
+        "actorId": 71,
+        "param": null
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 222,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 3,
+          "position": [
+            6976,
+            392
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 5,
+          "eventTable": 605,
+          "pc": 565,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 222,
+          "stage": 1,
+          "depth": 1,
+          "steps": 50,
+          "host": 49,
+          "actor": 3,
+          "position": [
+            6928,
+            392
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 5,
+          "eventTable": 605,
+          "pc": 585,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 222,
+          "stage": 1,
+          "depth": 1,
+          "steps": 50,
+          "host": 49,
+          "actor": 3,
+          "position": [
+            6928,
+            392
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 5,
+          "eventTable": 605,
+          "pc": 585,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 222,
+        "kind": 0,
+        "consumed": 5,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 64,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 224,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 75,
+        "param": 255
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 224,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 608,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 224,
+          "stage": 1,
+          "depth": 1,
+          "steps": 82,
+          "host": 81,
+          "actor": 5,
+          "position": [
+            7552,
+            216
+          ],
+          "direction": 2,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 637,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "saved",
+          "event": 224,
+          "stage": 1,
+          "depth": 1,
+          "steps": 82,
+          "host": 81,
+          "actor": 5,
+          "position": [
+            7552,
+            216
+          ],
+          "direction": 2,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 637,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 224,
+          "stage": 2,
+          "depth": 1,
+          "steps": 164,
+          "host": 162,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 660,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 224,
+          "stage": 2,
+          "depth": 1,
+          "steps": 164,
+          "host": 162,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 660,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 224,
+        "kind": 1,
+        "consumed": 6,
+        "queueBefore": 1,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 68,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 224,
+      "kind": "separate-process-private-checkpoint-continuation",
+      "stages": [
+        {
+          "tag": "cold-restored",
+          "event": 224,
+          "stage": 1,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7552,
+            216
+          ],
+          "direction": 2,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 637,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 224,
+          "stage": 2,
+          "depth": 1,
+          "steps": 82,
+          "host": 81,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 660,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 224,
+          "stage": 2,
+          "depth": 1,
+          "steps": 82,
+          "host": 81,
+          "actor": 5,
+          "position": [
+            7632,
+            216
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 224,
+          "pc": 660,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 224,
+        "kind": 2,
+        "consumed": 0,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 68,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 298,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 245,
+        "param": 255
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 298,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 0,
+          "position": [
+            1296,
+            5632
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 2,
+          "eventTable": 298,
+          "pc": 4416,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 298,
+          "stage": 1,
+          "depth": 1,
+          "steps": 1304,
+          "host": 1303,
+          "actor": 0,
+          "position": [
+            856,
+            6104
+          ],
+          "direction": 5,
+          "pending": 0,
+          "teleport": [
+            695,
+            886
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 2,
+          "eventTable": 298,
+          "pc": 4481,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 298,
+          "stage": 1,
+          "depth": 1,
+          "steps": 1304,
+          "host": 1303,
+          "actor": 0,
+          "position": [
+            856,
+            6104
+          ],
+          "direction": 5,
+          "pending": 0,
+          "teleport": [
+            695,
+            886
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 2,
+          "eventTable": 298,
+          "pc": 4481,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 298,
+        "kind": 0,
+        "consumed": 6,
+        "queueBefore": 1,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 32,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 351,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 106,
+        "param": 1
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 351,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7241,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 882,
+          "host": 881,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "saved",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 882,
+          "host": 881,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "callback-installed",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 882,
+          "host": 881,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 894,
+          "host": 884,
+          "actor": 5,
+          "position": [
+            152,
+            112
+          ],
+          "direction": 4,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 65535,
+          "script": 7,
+          "eventTable": 606,
+          "pc": 28205,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        }
+      ],
+      "summary": {
+        "event": 351,
+        "kind": 1,
+        "consumed": 6,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 255,
+        "sanctuaryLocations": 255,
+        "modes": [
+          5,
+          17,
+          28,
+          64,
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 351,
+      "kind": "separate-process-private-checkpoint-continuation",
+      "stages": [
+        {
+          "tag": "cold-restored",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "callback-installed",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 7,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 1,
+          "postBound": 1,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 351,
+          "pc": 7311,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 351,
+          "stage": 1,
+          "depth": 1,
+          "steps": 12,
+          "host": 3,
+          "actor": 5,
+          "position": [
+            152,
+            112
+          ],
+          "direction": 4,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 65535,
+          "script": 7,
+          "eventTable": 606,
+          "pc": 28205,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        }
+      ],
+      "summary": {
+        "event": 351,
+        "kind": 2,
+        "consumed": 0,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 144,
+        "sanctuaryLocations": 255,
+        "modes": [
+          17,
+          28,
+          64,
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 670,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 241,
+        "actorId": 773,
+        "param": null
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 670,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 2,
+          "position": [
+            1280,
+            10032
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31742,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "yield",
+          "event": 670,
+          "stage": 1,
+          "depth": 1,
+          "steps": 194,
+          "host": 193,
+          "actor": 2,
+          "position": [
+            1202,
+            10032
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 43870,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 670,
+          "stage": 2,
+          "depth": 1,
+          "steps": 726,
+          "host": 724,
+          "actor": 2,
+          "position": [
+            1201,
+            9944
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 43870,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "saved",
+          "event": 670,
+          "stage": 2,
+          "depth": 1,
+          "steps": 726,
+          "host": 724,
+          "actor": 2,
+          "position": [
+            1201,
+            9944
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 43870,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 670,
+          "stage": 3,
+          "depth": 1,
+          "steps": 793,
+          "host": 790,
+          "actor": 2,
+          "position": [
+            1265,
+            9928
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 7,
+          "psiStyle": 5,
+          "leaderDirection": 2,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31959,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 670,
+          "stage": 3,
+          "depth": 1,
+          "steps": 796,
+          "host": 792,
+          "actor": 2,
+          "position": [
+            1267,
+            9928
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 7,
+          "psiStyle": 5,
+          "leaderDirection": 2,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31959,
+          "bank": 0,
+          "sleep": -4,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 670,
+        "kind": 1,
+        "consumed": 5,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 197,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5,
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 670,
+      "kind": "separate-process-private-checkpoint-continuation",
+      "stages": [
+        {
+          "tag": "cold-restored",
+          "event": 670,
+          "stage": 2,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 2,
+          "position": [
+            1201,
+            9944
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 43870,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "yield",
+          "event": 670,
+          "stage": 3,
+          "depth": 1,
+          "steps": 67,
+          "host": 66,
+          "actor": 2,
+          "position": [
+            1265,
+            9928
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 7,
+          "psiStyle": 5,
+          "leaderDirection": 2,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31959,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        },
+        {
+          "tag": "final",
+          "event": 670,
+          "stage": 3,
+          "depth": 1,
+          "steps": 70,
+          "host": 68,
+          "actor": 2,
+          "position": [
+            1267,
+            9928
+          ],
+          "direction": 2,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 7,
+          "psiStyle": 5,
+          "leaderDirection": 2,
+          "script": 4,
+          "eventTable": 8,
+          "pc": 31959,
+          "bank": 0,
+          "sleep": -4,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 670,
+        "kind": 2,
+        "consumed": 0,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 1,
+        "directions": 4,
+        "sanctuaryLocations": 0,
+        "modes": [
+          5,
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 777,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 441,
+        "param": 1
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 777,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 777,
+          "pc": 40571,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "final",
+          "event": 777,
+          "stage": 0,
+          "depth": 1,
+          "steps": 5,
+          "host": 4,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": -1,
+          "pc": 41481,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 777,
+        "kind": 0,
+        "consumed": 6,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 0,
+        "directions": 0,
+        "sanctuaryLocations": 0,
+        "modes": [
+          72
+        ]
+      }
+    },
+    {
+      "profile": "Redux",
+      "event": 778,
+      "kind": "full-prepared-root-and-retained-children",
+      "caller": {
+        "subcode": 21,
+        "actorId": 441,
+        "param": 1
+      },
+      "stages": [
+        {
+          "tag": "spawned",
+          "event": 778,
+          "stage": 0,
+          "depth": 1,
+          "steps": 0,
+          "host": 0,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 1,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": 778,
+          "pc": 40579,
+          "bank": 0,
+          "sleep": 0,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 24
+        },
+        {
+          "tag": "final",
+          "event": 778,
+          "stage": 0,
+          "depth": 1,
+          "steps": 5,
+          "host": 4,
+          "actor": 5,
+          "position": [
+            7568,
+            360
+          ],
+          "direction": 6,
+          "pending": 0,
+          "teleport": [
+            0,
+            0
+          ],
+          "postCallback": 0,
+          "postBound": 0,
+          "psiDestination": 0,
+          "psiStyle": 0,
+          "leaderDirection": 0,
+          "script": 7,
+          "eventTable": -1,
+          "pc": 41481,
+          "bank": 0,
+          "sleep": -2,
+          "tm": 23,
+          "bg3": 124,
+          "bg34": 6,
+          "paletteUpload": 0
+        }
+      ],
+      "summary": {
+        "event": 778,
+        "kind": 0,
+        "consumed": 6,
+        "queueBefore": 0,
+        "queueAfter": 0,
+        "depth": 1,
+        "moved": 0,
+        "directions": 0,
+        "sanctuaryLocations": 0,
+        "modes": [
+          72
+        ]
+      }
+    }
+  ],
+  "privateBuild": {
+    "driverSourceSha256": "2178727d9d179094f721d1af63701946ad1504734c9530ce1846a0446d140769",
+    "executableSha256": "7a4868b8a0d9617f8184717e9fe704673620d74a9888e9cb29cf25ae3eb426d8",
+    "productionExecutableSha256": "201f68cad2b4347482be618196ab3340f72facd6803be511ec0e5ed2f0c56482",
+    "productionLibrarySha256": "474904c9a4b74784bc8563eb11c006a0216ae97e9870b53b257593c273c09c9c",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "runtimeSha256": {
+    "player.exe": "201F68CAD2B4347482BE618196AB3340F72FACD6803BE511EC0E5ED2F0C56482",
+    "observer.exe": "8C04B958C4EBB1CE8A317F8BDDB4D7C1DE656900C29C339CB74806398B72ADAC"
+  },
+  "packSha256": {
+    "Original": "01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549",
+    "Redux": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3"
+  },
+  "sourceSha256": {
+    "src/entity/opcodes.c": "6994A7646E76911CAB1BB7B2BC6C5F526C394C1A97748FD00E1ECB0F8D8023DF",
+    "src/entity/script.c": "DC8243E18F1DC69244BA073D81913C4620C5BA3EA766062FD3529948C412F4E2",
+    "src/entity/callroutine.c": "F38853C8607C8DED917325F72531DD49B7D5D58B3749B0BDBB16A579B56BE1E3",
+    "src/entity/callroutine_movement.c": "3581F9EEE4806F9A4CD150EDA8EA2BA24C33A317292E676A47C73E14E01EC79D",
+    "src/game/display_text_cc.c": "29B925F8D9282804A633F808341B58BF9F56FA220BD340017D38108DC9068DA7",
+    "src/game/door.c": "5918AE3B5F6E357059B6B190D2136F15B661BD9B067D143D54B9C9B65032FC54",
+    "src/game/overworld_interaction.c": "23DE81CE2FABC96FFB4FD789B16B6601B125EA280E6B800BDB4FA6845342F502"
+  },
+  "frozenFullPatchSha256": "1AE6B433F89F732ADA259907C9C1707905AF0CDADBCB2AE56E82825F65056E3F",
+  "originalReferenceSha256": {
+    "asm/data/events/scripts/109.asm": "CE016DD1050F88C9F1CE12F40E20DB43EAF256B1F3C633ECE9F5863051426CD8",
+    "asm/data/events/scripts/110.asm": "68D42B67AF632DF37E730ED53117223A5D5ED041B91FCD9F7801263A99589135",
+    "asm/data/events/scripts/222.asm": "0BCD7B0D08D2B26DD1ADED44545B4F104C0CD83673B9DE7BF8E71D061FFC705F",
+    "asm/data/events/scripts/224.asm": "F352DFBC9E73CE780A2CB73875475CB0AB1AEE9F4633982028335FE807C37122",
+    "asm/data/events/scripts/298.asm": "855E7C3BA954A561BABD9682A4D8171C1649D74C54557825178B69B8782C4B46",
+    "asm/data/events/scripts/351.asm": "6B14879B7EE36EF561A8A4D734340DF3A41C8135395096FBD61389B8DFF98B6B",
+    "asm/data/events/scripts/670.asm": "E66E9628425483E417FF14E9D9E062D021A3652FA685E5AE99FD480224C8DFCD",
+    "asm/data/events/scripts/777.asm": "DC141CE47899FA676A3C209097DB952BDC5060F74F285E67DC991B227069ED79",
+    "asm/data/events/scripts/778.asm": "37004D7F45D0AF385400EEE71D5636A1B3777B71A1AC568564883438E1513191",
+    "asm/data/events/scripts/035.asm": "48612AADC608A346788AA3D1660F420F5EAEA9B721E7D4D9D9FF5D047700B36B",
+    "asm/data/events/C30295.asm": "56C11677CD5F9F490BE351C1E5E49FABE97F79829FC0CDE6E0A838E970050019",
+    "asm/data/events/C3AB59.asm": "B88EF9B35E5AEFEFAFF3D94F98A592228617C785B5046AC3571F8D9D839C858D",
+    "asm/overworld/teleport.asm": "DD08AA1A217E30A0AB0EBCD0599391DCC0A26885F3F50327D6C2EE33D9C74069"
+  },
+  "pinnedReduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "toolSha256": "B36D79EAE334E90ABFFFC1C4754106652761D7CD042CE852F57216006FC2AB66",
+  "ownerSavesTouched": false,
+  "sharedBuildModified": false,
+  "limits": [
+    "Actual retained dialogue CC1F15 or CC1FF1 spawns/reassigns the appropriate actor and native ACTIONSCRIPT_WAIT executes full roots and called movement/task children to real yields. Prepared scene coordinates/controllers are supplied; surrounding story dialogue/progression is not claimed.",
+    "Immediate script777/778 despawn executes through real WAIT_FRAMES instead of inventing a nonexistent text yield.",
+    "Source-script351 installs the callback; the actual full TELEPORT_TO sequence consumes it, including in a different process after a private checkpoint restore.",
+    "Only the bounded named WRAM consumer families are tested here. Other scalar reads/writes, every story scene and universal interpreter semantics remain outside scope.",
+    "Observer hash is paired provenance; private caller links player production objects. No ROM, asset, bytecode or save content is in the public report."
+  ]
+}

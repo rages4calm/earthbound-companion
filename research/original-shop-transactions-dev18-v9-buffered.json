@@ -1,0 +1,7621 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev18-selected-shop-transactions",
+  "privateBuild": {
+    "driverSourceSha256": "290e809f3bf711f441b2835913bff86f782f07afe6285f74aadd203e26f505b0",
+    "executableSha256": "8673e8d258a18d0315e2df37c90e5ab94227199cc8fe7d610f4f2d02b75e2903",
+    "productionExecutableSha256": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "productionLibrarySha256": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "runtimeSha256": {
+    "player.exe": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "observer.exe": "290094e1eb7135218fbe5d8403436c058eef672215f34e578ea3f48e5b12bcd6"
+  },
+  "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "nativeBaseRevision": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "originalPack": true,
+  "executedSourceSnapshot": "_BuildScratch\\audit-dev16-v9-source",
+  "executedSourceReferences": [
+    {
+      "path": "src/game/display_text.c",
+      "sha256": "7a11de0b21c1984b53859d11bb1bea0784a87b9a0fad53610cbd42fe1ba2eb72"
+    },
+    {
+      "path": "src/game/display_text_cc.c",
+      "sha256": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7"
+    },
+    {
+      "path": "src/game/display_text_menus.c",
+      "sha256": "02eaa3abaa822d518a913ae72443af8c5c79f4ac942deaee5955a83625acb2bf"
+    },
+    {
+      "path": "src/game/inventory.c",
+      "sha256": "3c33e02581db4a684ae72926a0ea283c7ca5161ff918926e7dfac98075306cbe"
+    },
+    {
+      "path": "src/game/audio.c",
+      "sha256": "9b9a9b4811bff9c7d97e0ec269136cf42773de0c932b11ba65eb96d0949398df"
+    },
+    {
+      "path": "src/game/window.c",
+      "sha256": "227fdc7e7959bdbcc1d5267e817b21433f3daf4e9b0130c165fa820abb358f6b"
+    },
+    {
+      "path": "src/game/text.c",
+      "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+    },
+    {
+      "path": "src/core/mode_stack.h",
+      "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+    }
+  ],
+  "pinnedSource": [
+    {
+      "path": "ccscript/shops/ShopMain.ccs",
+      "sha256": "e0da0a89621bedd8a63757093bc79e141057e8096cf405bca8b73935b92b0f45"
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "sha256": "743ce4f6cd1bb175b7f649d1b10ddf8ef22ef9bf55537eb4e3d41d1aff18b664"
+    },
+    {
+      "path": "ccscript/shops/shops_fourside.ccs",
+      "sha256": "c2e0f1aef07483104d05d4d8a0914ddad5b8aadc1c4c0b51734efc97fe55fdc5"
+    },
+    {
+      "path": "ccscript/expansion/expand_shops.ccs",
+      "sha256": "e99e3c75d789d3c9d074d39a079108ce5f02c7a3f91625fa47da1cc15cdbad78"
+    },
+    {
+      "path": "ccscript/main.ccs",
+      "sha256": "eed62cec9d49b138534418f39c9929a4c4ad6e573171b45708180dc3e63a97a3"
+    },
+    {
+      "path": "ccscript/shops/bulk_buy_vanilla.ccs",
+      "sha256": "78ac333f9b8ffb5e1a970207f74de44008196a564f51d2b762f2242d4738ca25"
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "sha256": "475284396f845f0f1b86bd24d3ef818b9d64bd799260d4c845cc9d7c7dfe683d"
+    },
+    {
+      "path": "ccscript/definitions/flags.ccs",
+      "sha256": "b47e0dadc6e23c5fb4daf91f4eb94e99f40d0e660e28acf352e5e4e71b51bb4c"
+    }
+  ],
+  "cases": [
+    {
+      "fixture": {
+        "id": "Onett-bat-equip",
+        "sourceEntry": "C5D24B",
+        "entry": 1491845,
+        "shop": 1,
+        "stock": [
+          17,
+          18,
+          49,
+          74,
+          64
+        ],
+        "flag": 0,
+        "money": 80000,
+        "expectedItem": 17,
+        "expectedCount": 1,
+        "expectedDelta": -18,
+        "sound": 12,
+        "soundCount": 1,
+        "plan": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "expectedEquipment": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 17,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 18,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 49,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 74,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 64,
+                "x": 0,
+                "y": 4
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 17
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 17
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 3,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 954,
+            "menus": 4,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 4,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 79982,
+            "depth": 1,
+            "working": 2,
+            "argument": 1,
+            "inventory": [
+              [
+                17,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        115,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "3cbe66f0c897b64cbe1a1e9808f8d7ae273089acac6020c5192dae0f4a1fdefe",
+      "eventStreamSha256": "960310f2a13ecec05134afd0851ba5e8bd817c0023c9b9fc662863e8e98887ab",
+      "traceStreamSha256": "fe89bebef1517587bd0a4f7e0aab34e5ead10480e625e0c53c390b2ef4afd677",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "Onett-bat-keep-unequipped",
+        "sourceEntry": "C5D24B",
+        "entry": 1491845,
+        "shop": 1,
+        "stock": [
+          17,
+          18,
+          49,
+          74,
+          64
+        ],
+        "flag": 0,
+        "money": 80000,
+        "expectedItem": 17,
+        "expectedCount": 1,
+        "expectedDelta": -18,
+        "sound": 12,
+        "soundCount": 1,
+        "plan": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "expectedEquipment": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 17,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 18,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 49,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 74,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 64,
+                "x": 0,
+                "y": 4
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 17
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 17
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 3,
+            "pick": 1,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 828,
+            "menus": 4,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 4,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 79982,
+            "depth": 1,
+            "working": 2,
+            "argument": 1,
+            "inventory": [
+              [
+                17,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "d7dc5f16d42adbe7c1b1879601993699e1393c1efeb0f8c633266eae7972f9ba",
+      "eventStreamSha256": "57e8317303509a53f685bcfc7dfddef257a93e4740347f879a6bf644c621660e",
+      "traceStreamSha256": "65b1321cff5d587b8cebdb35395e3b4c9a530d7b7162d81829d791d772b482e6",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "Scaraba-frypan-buy-without-equipping",
+        "sourceEntry": "C5D539",
+        "entry": 1492595,
+        "shop": 51,
+        "stock": [
+          32,
+          43,
+          146,
+          133,
+          246,
+          242,
+          129
+        ],
+        "flag": 0,
+        "money": 80000,
+        "expectedItem": 32,
+        "expectedCount": 1,
+        "expectedDelta": -1790,
+        "sound": 120,
+        "soundCount": 1,
+        "plan": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "expectedEquipment": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 32,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 43,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 146,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 133,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 246,
+                "x": 0,
+                "y": 4
+              },
+              {
+                "id": 242,
+                "x": 0,
+                "y": 5
+              },
+              {
+                "id": 129,
+                "x": 0,
+                "y": 6
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 32
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 32
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 3,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1178,
+            "menus": 4,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 4,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 78210,
+            "depth": 1,
+            "working": 2,
+            "argument": 1,
+            "inventory": [
+              [
+                32,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        120,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "49e4e3042b67c807d92daa56341c6e66d832f01325fcbafce319cb2721e7f3f8",
+      "eventStreamSha256": "ff8abc1e61d295e9e7a562f80cfbf6d57bf5a9e9840cd6d1c28ea5c98c3a81b2",
+      "traceStreamSha256": "ef66e0c2242e54f3ff81c97def5dd4753b997a8197b4b8fc15a7590201ae673a",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "Scaraba-frypan-decline-cannot-equip",
+        "sourceEntry": "C5D539",
+        "entry": 1492595,
+        "shop": 51,
+        "stock": [
+          32,
+          43,
+          146,
+          133,
+          246,
+          242,
+          129
+        ],
+        "flag": 0,
+        "money": 80000,
+        "expectedItem": 32,
+        "expectedCount": 0,
+        "expectedDelta": 0,
+        "sound": 120,
+        "soundCount": 0,
+        "plan": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "expectedEquipment": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 32,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 43,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 146,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 133,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 246,
+                "x": 0,
+                "y": 4
+              },
+              {
+                "id": 242,
+                "x": 0,
+                "y": 5
+              },
+              {
+                "id": 129,
+                "x": 0,
+                "y": 6
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 32
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 32
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 3,
+            "pick": 1,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1602,
+            "menus": 4,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 4,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 2,
+            "argument": 1,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "00bb3e20b6570859de31f8202bb5ffe0e82a511c549b9d6ef6c55956ee3e4bca",
+      "eventStreamSha256": "7b946269b9c29f054384c42e5af70f7a8a3786a76f0007960267e46cc95e1c89",
+      "traceStreamSha256": "08ee3ecd8cc0823d00d43dbf0904327d0c28a84556e9d86904932c435cad42c8",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "Onett-insufficient-single",
+        "sourceEntry": "C5D24B",
+        "entry": 1491845,
+        "shop": 1,
+        "stock": [
+          17,
+          18,
+          49,
+          74,
+          64
+        ],
+        "flag": 0,
+        "money": 17,
+        "expectedItem": 17,
+        "expectedCount": 0,
+        "expectedDelta": 0,
+        "sound": 12,
+        "soundCount": 0,
+        "plan": [
+          0,
+          0,
+          1
+        ]
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 17,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 17,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 18,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 49,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 74,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 64,
+                "x": 0,
+                "y": 4
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 17
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 17
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1055,
+            "menus": 3,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 3,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 17,
+            "depth": 1,
+            "working": 2,
+            "argument": 18,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "8139e5cead75134c5a3d05b341f53406bbea19717cce4b466786f6ec78ca5a2a",
+      "eventStreamSha256": "052f4e6406520d0bb8389b6e035e961fe334fe3f247465e2de9fd0a5948ec740",
+      "traceStreamSha256": "b17a1b52909956a146c236739aa6d0d1856081185db0cb661c168de6aef61234",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "Onett-sell-cookie-confirm",
+        "sourceEntry": "C5D24B",
+        "entry": 1491845,
+        "shop": 1,
+        "flag": 0,
+        "money": 80000,
+        "expectedItem": 90,
+        "expectedCount": -1,
+        "expectedDelta": 7,
+        "sound": 12,
+        "soundCount": 1,
+        "freeSlots": 13,
+        "plan": [
+          1,
+          0,
+          0,
+          1
+        ]
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                90,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 0,
+            "initial": 0,
+            "window": 2,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 0,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 3,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 922,
+            "menus": 4,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 4,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80007,
+            "depth": 1,
+            "working": 2,
+            "argument": 90,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "00f9dd8bd8ce42c4a57d55d4ee3a0c726fe25b2a0159b641ba8380282dce62e1",
+      "eventStreamSha256": "4c29c97900f9cdb26f10da7ef9248e2c118c4218b66670f9f00daf69a4868cb5",
+      "traceStreamSha256": "9ec074ba0eff661fa3f3e266485865b95292e31aad9315bf92d5e9a67a497e39",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "Onett-sell-cookie-cancel",
+        "sourceEntry": "C5D24B",
+        "entry": 1491845,
+        "shop": 1,
+        "flag": 0,
+        "money": 80000,
+        "expectedItem": 90,
+        "expectedCount": 0,
+        "expectedDelta": 0,
+        "sound": 12,
+        "soundCount": 0,
+        "freeSlots": 13,
+        "plan": [
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                90,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 0,
+            "initial": 0,
+            "window": 2,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 1,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 3,
+            "pick": 1,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1256,
+            "menus": 4,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 4,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 2,
+            "argument": 7,
+            "inventory": [
+              [
+                90,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "cc8c6a6373667d7b4cb696fc54b882f53df93d267a2cd9d4ad1390d265051f5c",
+      "eventStreamSha256": "7e838a99ede8a69fd2bc37927544d5e33cdf58f33ed5a9a5f1b363f5cb72a1c8",
+      "traceStreamSha256": "946a3b8aad212f3ffdaacaffb2cc9089f165871b7e4953a990c82aa02ea46702",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "Onett-equip-upgrade-sell-old",
+        "sourceEntry": "C5D24B",
+        "entry": 1491845,
+        "shop": 1,
+        "stock": [
+          17,
+          18,
+          49,
+          74,
+          64
+        ],
+        "flag": 0,
+        "money": 80000,
+        "expectedItem": 18,
+        "expectedCount": 1,
+        "expectedDelta": -39,
+        "sound": 12,
+        "soundCount": 2,
+        "oldItem": 17,
+        "plan": [
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        "expectedEquipment": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                17,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 1,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 17,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 18,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 49,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 74,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 64,
+                "x": 0,
+                "y": 4
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 18
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 18
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 3,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 4,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1169,
+            "menus": 5,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 5,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 79961,
+            "depth": 1,
+            "working": 2,
+            "argument": 17,
+            "inventory": [
+              [
+                18,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        3,
+        7,
+        7,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        115,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "cb499d6a4c382f9f7aa78add1ff61581ad47d900900dd2bf3688513463985c6a",
+      "eventStreamSha256": "e785b1df3ee14fe7daf3227a1e8304d0fd0e8a22a949d7b117b5fe63c7b8ae9a",
+      "traceStreamSha256": "e0686836c712cfdee19ba7889a6d9c35a3e0b9457e371400398f89b7b13ddebf",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "moonside-single",
+        "sourceEntry": "C5D593",
+        "entry": 1492685,
+        "shop": 60,
+        "stock": [
+          106,
+          232,
+          90,
+          233,
+          226
+        ],
+        "flag": 0,
+        "money": 80000,
+        "expectedItem": 106,
+        "expectedCount": 1,
+        "expectedDelta": -4,
+        "sound": 120,
+        "soundCount": 1,
+        "plan": [
+          0,
+          0
+        ],
+        "checkpoint": 2
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "capture",
+          "exit": 0
+        },
+        {
+          "stage": "resume",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "captured",
+            "wallet": 80000,
+            "depth": 6,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 426,
+            "menus": 0,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 0,
+            "depth": 6,
+            "mode": 7
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 6,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "cold-loaded",
+            "wallet": 80000,
+            "depth": 6,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 106,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 232,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 90,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 233,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 226,
+                "x": 0,
+                "y": 4
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 106
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 106
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 321,
+            "menus": 2,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 2,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 79996,
+            "depth": 1,
+            "working": 0,
+            "argument": 1,
+            "inventory": [
+              [
+                106,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        120,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "cef5740559e4e30a8b4e39d02155b152f9381043064dc4a7e31fcfcab219ac45",
+      "eventStreamSha256": "76633be694b8fdc015e260a1911aa030675fbd8868dd441deaa909d963d1ac2d",
+      "traceStreamSha256": "f116d9c087173bbdec2741d4e05f55bd1346c2d4aa8cb453ff7574d1b309858f",
+      "errors": [],
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "limits": [
+    "Selected source-entry transactions only: expected wallet/item/equipment changes, source-selected stock, dummy cleanup and configuration flags are asserted where recorded in each fixture. Actual packed entry text and production children, platform replay buttons, private source-prerequisite party/cash fixtures; not every transaction branch, natural NPC/story reachability, physical controllers or pixels.",
+    "Sound request trace proves actual play_sfx requests with initialized production audio; not heard/delivered/queue-completion proof.",
+    "Cold tests capture actual number/store child states through production capture and restore in a fresh process; not every possible serialized shop phase.",
+    "Active source imports ShopSys; shops/bulk_buy_vanilla.ccs is commented out and is not tested as an enabled feature."
+  ],
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false
+}

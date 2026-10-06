@@ -1,0 +1,602 @@
+[
+  {
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Tools-first-Bazooka",
+    "flag": 782,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 0,
+    "expectedDelta": -950,
+    "soundCount": 1,
+    "expectedToolsEnabled": 1,
+    "expectedToolFlags": {
+      "bazookaOwned": 1,
+      "brokenIronPurchased": 0
+    }
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "money": 949,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Tools-Bazooka-insufficient",
+    "flag": 782,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0,
+    "expectedToolsEnabled": 1,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    }
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Tools-Bazooka-all-bags-full",
+    "flag": 782,
+    "freeSlots": 0,
+    "plan": [
+      0,
+      3,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0,
+    "expectedToolsEnabled": 1,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    }
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Tools-off-single-Bazooka",
+    "flag": 66318,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      0,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 1,
+    "expectedDelta": -950,
+    "soundCount": 1,
+    "expectedToolsEnabled": 0,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    }
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Tools-off-multiple-Bazooka",
+    "flag": 66318,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      1,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 3,
+    "expectedDelta": -2850,
+    "soundCount": 3,
+    "expectedToolsEnabled": 0,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    }
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Tools-Bazooka-repeat-stock-transition",
+    "flag": 782,
+    "plan": [
+      0,
+      3,
+      0,
+      0,
+      3,
+      0,
+      1
+    ],
+    "expectedItem": 246,
+    "expectedCount": 1,
+    "expectedDelta": -1148,
+    "soundCount": 2,
+    "expectedToolsEnabled": 1,
+    "expectedToolFlags": {
+      "bazookaOwned": 1,
+      "brokenIronPurchased": 0
+    },
+    "expectedStockSequence": [
+      [
+        32,
+        43,
+        146,
+        133,
+        246,
+        242,
+        129
+      ],
+      [
+        32,
+        43,
+        146,
+        246,
+        242,
+        129
+      ]
+    ]
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-single",
+    "quantity": 1,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      0,
+      1
+    ],
+    "expectedItem": 190,
+    "expectedCount": 1,
+    "expectedDelta": -5,
+    "soundCount": 1
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 4,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-insufficient",
+    "quantity": 1,
+    "freeSlots": 14,
+    "plan": [
+      0
+    ],
+    "expectedItem": 190,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-all-bags-full",
+    "quantity": 1,
+    "freeSlots": 0,
+    "plan": [
+      0
+    ],
+    "expectedItem": 190,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-cancel",
+    "quantity": 1,
+    "freeSlots": 14,
+    "plan": [
+      999
+    ],
+    "expectedItem": 190,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-bulk3",
+    "quantity": 3,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      1,
+      1
+    ],
+    "expectedItem": 190,
+    "expectedCount": 3,
+    "expectedDelta": -15,
+    "soundCount": 3
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-bulk14",
+    "quantity": 14,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      1,
+      1
+    ],
+    "expectedItem": 190,
+    "expectedCount": 14,
+    "expectedDelta": -70,
+    "soundCount": 14
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-bulk-capacity2",
+    "quantity": 3,
+    "freeSlots": 2,
+    "plan": [
+      0,
+      1
+    ],
+    "expectedItem": 190,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-bulk0",
+    "quantity": 0,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      1
+    ],
+    "expectedItem": 190,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0
+  },
+  {
+    "id": "Twoson-BrokenIron-bulk3",
+    "sourceEntry": "C5D2B7",
+    "entry": 3146906,
+    "money": 80000,
+    "shop": 11,
+    "stock": [
+      161,
+      150,
+      54,
+      65,
+      7,
+      9
+    ],
+    "sound": 120,
+    "soundCount": 3,
+    "flag": 782,
+    "quantity": 3,
+    "plan": [
+      0,
+      5,
+      1,
+      1
+    ],
+    "expectedItem": 9,
+    "expectedCount": 3,
+    "expectedDelta": 0,
+    "expectedToolFlags": {
+      "brokenIronPurchased": 0,
+      "bazookaOwned": 0
+    }
+  },
+  {
+    "id": "Fourside-BrokenIron-bulk3",
+    "sourceEntry": "C5D44F",
+    "entry": 3147314,
+    "money": 80000,
+    "shop": 35,
+    "stock": [
+      5,
+      9,
+      161,
+      150
+    ],
+    "sound": 120,
+    "soundCount": 3,
+    "flag": 782,
+    "quantity": 3,
+    "plan": [
+      1,
+      1,
+      1
+    ],
+    "expectedItem": 9,
+    "expectedCount": 3,
+    "expectedDelta": 0,
+    "expectedToolFlags": {
+      "brokenIronPurchased": 0,
+      "bazookaOwned": 0
+    }
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Tools-first-Bazooka-cold",
+    "flag": 782,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 0,
+    "expectedDelta": -950,
+    "soundCount": 1,
+    "expectedToolsEnabled": 1,
+    "expectedToolFlags": {
+      "bazookaOwned": 1,
+      "brokenIronPurchased": 0
+    },
+    "checkpoint": 2
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Tools-off-single-Bazooka-cold",
+    "flag": 66318,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      0,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 1,
+    "expectedDelta": -950,
+    "soundCount": 1,
+    "expectedToolsEnabled": 0,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    },
+    "checkpoint": 2
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 3147548,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Tools-off-multiple-Bazooka-cold",
+    "flag": 66318,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      1,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 3,
+    "expectedDelta": -2850,
+    "soundCount": 3,
+    "expectedToolsEnabled": 0,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    },
+    "checkpoint": 1
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-bulk3-cold",
+    "quantity": 3,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      1,
+      1
+    ],
+    "expectedItem": 190,
+    "expectedCount": 3,
+    "expectedDelta": -15,
+    "soundCount": 3,
+    "checkpoint": 1
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 3146960,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-bulk-capacity2-cold",
+    "quantity": 3,
+    "freeSlots": 2,
+    "plan": [
+      0,
+      1
+    ],
+    "expectedItem": 190,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0,
+    "checkpoint": 1
+  }
+]

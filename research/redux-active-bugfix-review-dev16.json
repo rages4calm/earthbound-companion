@@ -1,0 +1,709 @@
+{
+  "format": "redux-active-bugfix-review-v1",
+  "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "status": "manual-source-review-with-targeted-tests",
+  "activeModulesReviewed": 36,
+  "scope": "Only direct active bugfix imports in pinned main.ccs. Other modules and literal ROM writes need their separate conversion audit.",
+  "symbolPresenceProvesBehavior": false,
+  "allBranchesVerified": false,
+  "fullPlaythroughVerified": false,
+  "reviews": [
+    {
+      "module": "brainstone_fix",
+      "source": "ccscript/bugfixes/brainstone_fix.ccs",
+      "sourceSha256": "363e84ab8d41201c1238b9ffbf2be619fd51689ab1ee3e62e06b109a420c6ba7",
+      "classification": "native-gameplay",
+      "reviewDecision": "Brain Stone possession is checked on the acting character rather than a battle-slot identity.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 5581,
+          "anchor": "Brain Stone"
+        }
+      ],
+      "targetedCoverageAndLimits": "Production combat action fixture; whole-story inventory paths remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC28D92"
+      ]
+    },
+    {
+      "module": "chunked_dma_race_condition_fix",
+      "source": "ccscript/bugfixes/chunked_dma_race_condition_fix.ccs",
+      "sourceSha256": "7417a172464cf5bbd8997aed8d3ae5d325ced1ee18d6b5ee395edf9bdb4dfb73",
+      "classification": "different-native-execution",
+      "reviewDecision": "Native DMA transfers immediately. There is no asynchronous SNES chunk queue race; movement reads of DMA_Total observe zero.",
+      "nativeReferences": [
+        {
+          "path": "src/snes/dma.c",
+          "line": 6,
+          "anchor": "transfers happen immediately"
+        },
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 933,
+          "anchor": "DMA_Total"
+        }
+      ],
+      "targetedCoverageAndLimits": "Native source review; hardware timing is not reproduced.",
+      "activeRomWriteExpressions": [
+        "0xC085DE"
+      ]
+    },
+    {
+      "module": "crying_fix",
+      "source": "ccscript/bugfixes/crying_fix.ccs",
+      "sourceSha256": "465ad6d17fc5b1cbbbbb4272882dcee28af9d2877b330b02b122e5a4375c5059",
+      "classification": "native-gameplay",
+      "reviewDecision": "Redux also applies the crying miss penalty to enemy attackers.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_calc.c",
+          "line": 981,
+          "anchor": "STATUS_2_CRYING"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted calculation/action fixtures; all enemy combinations remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC283AE"
+      ]
+    },
+    {
+      "module": "dad_bike_phone_fix",
+      "source": "ccscript/bugfixes/dad_bike_phone_fix.ccs",
+      "sourceSha256": "64a7926d5eb7c2f5a66dc84ec5acaba9d494e910bc039f73e1217c05772c41c3",
+      "classification": "native-gameplay",
+      "reviewDecision": "Suppress Dad phone interruption while bicycling in Redux.",
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld.c",
+          "line": 1076,
+          "anchor": "game_state.walking_style == WALKING_STYLE_BICYCLE"
+        }
+      ],
+      "targetedCoverageAndLimits": "Bike/movement fixtures; a full live timed phone event remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC0DCF1"
+      ]
+    },
+    {
+      "module": "equip_anything_fix",
+      "source": "ccscript/bugfixes/equip_anything_fix.ccs",
+      "sourceSha256": "79ebd5a4719fa9696601391e22b325ed66d6474eaf30e9b7206d4e15f51befd2",
+      "classification": "native-gameplay",
+      "reviewDecision": "Equipment identity resolves character inventory and party shifts rather than treating battle slots as character IDs.",
+      "nativeReferences": [
+        {
+          "path": "src/game/inventory.c",
+          "line": 2558,
+          "anchor": "maternalbound_equipment_selftest"
+        }
+      ],
+      "targetedCoverageAndLimits": "340 equipment previews plus targeted identity fixtures; all story party changes remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC251B1",
+        "0xC1908A"
+      ]
+    },
+    {
+      "module": "enemy_in_walls_fix",
+      "source": "ccscript/bugfixes/enemy_in_walls_fix.ccs",
+      "sourceSha256": "766420c06d38413bed36d773b6860f28170fe28002f19985b2ea278a3125f9a0",
+      "classification": "native-viewport-adaptation",
+      "reviewDecision": "Spawn lines stay within loaded collision tiles; native widescreen uses viewport tile counts instead of a fixed 33-column SNES view.",
+      "nativeReferences": [
+        {
+          "path": "src/game/map_loader.c",
+          "line": 2548,
+          "anchor": "enemy_in_walls_fix"
+        }
+      ],
+      "targetedCoverageAndLimits": "Movement fixtures and natural Onett combat; all map edges remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC01603",
+        "0xC016BA"
+      ]
+    },
+    {
+      "module": "exp_overflow_fix",
+      "source": "ccscript/bugfixes/exp_overflow_fix.ccs",
+      "sourceSha256": "50c813e9ba8063386b746b06eac127ddfc0d5853b743ab6cb544fff2542068e7",
+      "classification": "native-gameplay",
+      "reviewDecision": "Level-99 experience addition uses a wide intermediate and caps the displayed total at 9,999,999.",
+      "nativeReferences": [
+        {
+          "path": "src/game/inventory.c",
+          "line": 2194,
+          "anchor": "9999999"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted overflow fixture; a normal level-99 story run remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC1DA4F"
+      ]
+    },
+    {
+      "module": "gameover_oss_fix",
+      "source": "ccscript/bugfixes/gameover_oss_fix.ccs",
+      "sourceSha256": "43bca9c511dd709586e9531d6acbad3bcaf8300302436fcbfc33ab12933bc1e5",
+      "classification": "native-gameplay",
+      "reviewDecision": "Scripted battle losses clear the OSS suppression state before returning to story handling.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle.c",
+          "line": 6459,
+          "anchor": "ow.overworld_status_suppression = 0"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted battle result handling; later scripted losses remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC22FD1",
+        "0xC22FEC"
+      ]
+    },
+    {
+      "module": "guts_fix",
+      "source": "ccscript/bugfixes/guts_fix.ccs",
+      "sourceSha256": "e1c8c943cff6e9eee55f59811b3cb4bfc9871c31e95f7b98ec7b42b13688a0dd",
+      "classification": "native-gameplay",
+      "reviewDecision": "Redux mortal-blow survival uses the defender Guts value.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_calc.c",
+          "line": 487,
+          "anchor": "guts"
+        }
+      ],
+      "targetedCoverageAndLimits": "128 Guts trials in native combat fixtures.",
+      "activeRomWriteExpressions": [
+        "0xc27f96"
+      ]
+    },
+    {
+      "module": "heal_poison_fix",
+      "source": "ccscript/bugfixes/heal_poison_fix.ccs",
+      "sourceSha256": "a2f42095b1d79f99c39345fec73087df22eb70b0a225ef8ff0186377fad82cf0",
+      "classification": "native-gameplay",
+      "reviewDecision": "Healing without poison returns the proper no-effect message.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 2835,
+          "anchor": "heal_poison_decide"
+        }
+      ],
+      "targetedCoverageAndLimits": "Actual production action tests for poisoned and unaffected targets.",
+      "activeRomWriteExpressions": [
+        "0xC2A39D"
+      ]
+    },
+    {
+      "module": "hppp_limit_fix",
+      "source": "ccscript/bugfixes/hppp_limit_fix.ccs",
+      "sourceSha256": "2b1598dbefb0719506923e2dbf32ffe362e6e39cd7b2a80b10cd365afd3397af",
+      "classification": "native-gameplay",
+      "reviewDecision": "Stat growth caps maximum HP and PP at 999 in Redux.",
+      "nativeReferences": [
+        {
+          "path": "src/game/inventory.c",
+          "line": 2033,
+          "anchor": "999"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted growth/limit fixtures; all level-up distributions remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC1D66A",
+        "0xC1D67A",
+        "0xC1D73C",
+        "0xC1D752"
+      ]
+    },
+    {
+      "module": "item_transformations_fix",
+      "source": "ccscript/bugfixes/item_transformations_fix.ccs",
+      "sourceSha256": "14263b2ed893dd2035b6156e7d896bb030beef0413e346fde2f6d4809b46a4b3",
+      "classification": "native-gameplay",
+      "reviewDecision": "Redux invokes timed item transformation processing even after the loaded counter resets. Dev.16 separately corrects the initializer and timer SFX consumers to use the serialized source RNG; that helper evidence does not execute the complete reset/game-over story lifecycle.",
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld.c",
+          "line": 1375,
+          "anchor": "maternalbound_enabled() || item_transformations_loaded"
+        }
+      ],
+      "targetedCoverageAndLimits": "research/rng-consumers-dev16-v3-green.json records 48 timer-initialization and 96 timer-SFX/reset-gate warm cases per profile, within a larger combined consumer corpus, plus selected cold continuations. The full timed Egg/Chick/Chicken sequence after a phone load or game over remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC05241"
+      ]
+    },
+    {
+      "module": "moldyman_initial_frame_fix",
+      "source": "ccscript/bugfixes/moldyman_initial_frame_fix.ccs",
+      "sourceSha256": "b42a2609a9390f98f3e84f3a710b7cb36f525fd164d0bc00202ecea13e80a9e8",
+      "classification": "converted-movement-hook",
+      "reviewDecision": "The converted C3 movement bank executes the relocated hook, resting frame 8 and original return address.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/opcodes.c",
+          "line": 1517,
+          "anchor": "real patched Moldyman hook"
+        }
+      ],
+      "targetedCoverageAndLimits": "Actual converted movement interpreter fixture; later live encounter remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC3A6CE"
+      ]
+    },
+    {
+      "module": "mushroom_pos_fix",
+      "source": "ccscript/bugfixes/mushroom_pos_fix.ccs",
+      "sourceSha256": "468c3cadd59ff4bf6ad656d9830e06d6c83950994eb350dd99196ca89566112b",
+      "classification": "native-sprite-adaptation",
+      "reviewDecision": "Mushroom sprite positioning uses shallow/deep standing offsets of 8/16 in the native callback.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/callbacks.c",
+          "line": 539,
+          "anchor": "mushroom"
+        }
+      ],
+      "targetedCoverageAndLimits": "Native callback review; multiparty mushroom gameplay remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC0AD3F"
+      ]
+    },
+    {
+      "module": "objfx_controller_fix",
+      "source": "ccscript/bugfixes/objfx_controller_fix.ccs",
+      "sourceSha256": "0329c9d76ffa55260f25b38bcc86f97b49106eb774ce366b260f2315428cbd07",
+      "classification": "native-allocation-adaptation",
+      "reviewDecision": "Transient object effects allocate from the 22 nonreserved entity slots and avoid party entity ownership.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/entity.c",
+          "line": 301,
+          "anchor": "22"
+        }
+      ],
+      "targetedCoverageAndLimits": "22-slot allocation fixture; every story effect remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC4C95E"
+      ]
+    },
+    {
+      "module": "palette_tint_fix",
+      "source": "ccscript/bugfixes/palette_tint_fix.ccs",
+      "sourceSha256": "ab9cd37772ee1981ee28ee86e67c2ee1f4d6706453196034169af243c6379ff2",
+      "classification": "native-and-converted-data",
+      "reviewDecision": "Native sprite tint uses reference RGB 8A/96/74 and threshold 4. Literal C34E0C elevator bytes 1F/1F/1F are retained in the converted C3 movement bank.",
+      "nativeReferences": [
+        {
+          "path": "src/game/map_loader.c",
+          "line": 1556,
+          "anchor": "palette_tint_fix"
+        }
+      ],
+      "targetedCoverageAndLimits": "Source review and converted literal-byte check; live elevator transitions remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xc005e7",
+        "0xc00453",
+        "0xc0045d",
+        "0xc0046d",
+        "0xc00477",
+        "0xC34E0C"
+      ]
+    },
+    {
+      "module": "party_member_diagonal_fix",
+      "source": "ccscript/bugfixes/party_member_diagonal_fix.ccs",
+      "sourceSha256": "c304f5832ee9d93d82fdcb6a8f413f555b4bcb4272dfd42263e50518d4828387",
+      "classification": "native-source-threshold-corrected-dev16",
+      "reviewDecision": "Original retains its source direction/spacing guard. Redux preserves the active pinned diagonal hook: update screen coordinates when either wrapped predicted-coordinate distance is at least two pixels; cardinal guards remain source-defined. This supersedes the earlier rendering-bypass classification.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/callbacks.c",
+          "line": 110,
+          "anchor": "party_screen_spacing_delta"
+        },
+        {
+          "path": "src/entity/callbacks.c",
+          "line": 286,
+          "anchor": "CB_MOVE_PARTY_SPRITE"
+        }
+      ],
+      "targetedCoverageAndLimits": "research/native-party-screen-dual-dev16-v4-final-green.json compares 5,816 cases per profile with actual Original/pinned Redux CPU execution. research/native-redux-party-run-dev16-v4-final-green.json compares 6,992 ordinary copied-save walk/run callbacks. Both link the untouched frozen production archive; all comparisons pass. This is screen smoothing evidence, not full movement/collision, every rendered frame or story parity.",
+      "activeRomWriteExpressions": [
+        "0xC0A28C"
+      ]
+    },
+    {
+      "module": "psi_teleport_disable_enemies",
+      "source": "ccscript/bugfixes/psi_teleport_disable_enemies.ccs",
+      "sourceSha256": "2d83d520e30c678d5298eb0079743102e8f8cd0c50057298f4fe6f36c773ebd7",
+      "classification": "native-gameplay",
+      "reviewDecision": "Teleport begin saves and disables overworld enemy spawning; cleanup restores the saved state.",
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld_teleport.c",
+          "line": 808,
+          "anchor": "TP_BEGIN"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted teleport lifecycle fixtures; every map/teleport interruption remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC0EAA1",
+        "0xC0EBC5"
+      ]
+    },
+    {
+      "module": "region_crack",
+      "source": "ccscript/bugfixes/region_crack.ccs",
+      "sourceSha256": "f9d821a6839b453c3295422a4e371e7c83b5cfee9b9d9769d2476409088e7baa",
+      "classification": "platform-specific-not-executed",
+      "reviewDecision": "Region/protection patches modify SNES boot code. Native PC startup does not execute that 65816 boot path.",
+      "nativeReferences": [
+        {
+          "path": "port/unix/main.c",
+          "line": 1,
+          "anchor": "main("
+        }
+      ],
+      "targetedCoverageAndLimits": "Native startup review; no SNES hardware claim.",
+      "activeRomWriteExpressions": [
+        "0xC0281D",
+        "0xC083A2",
+        "0xC083AD",
+        "0xC0A12D",
+        "0xC1FFE7",
+        "0xC3FDD6",
+        "0xC0A141"
+      ]
+    },
+    {
+      "module": "return_item_fix",
+      "source": "ccscript/bugfixes/return_item_fix.ccs",
+      "sourceSha256": "9304946f208cbe7814f92ab6e20a39922692b2b9925d358e275bc70efa043b11",
+      "classification": "native-gameplay-corrected-dev4",
+      "reviewDecision": "CC 1D 15 stores the low 16 bits of the fetched argument before unsigned 16-to-32 multiplication by the first unconscious party position. The former C adapter incorrectly retained high argument bits.",
+      "nativeReferences": [
+        {
+          "path": "src/game/display_text_cc.c",
+          "line": 3439,
+          "anchor": "return_item_fix.ccs"
+        },
+        {
+          "path": "src/game/display_text.c",
+          "line": 305,
+          "anchor": "return_item_fix.ccs"
+        }
+      ],
+      "targetedCoverageAndLimits": "25 real dispatcher cases, including first unconscious slots 0..4 and zero/direct/high-word operands. Correct fixture reproduced 8 failures before the fix; all 25 now pass.",
+      "activeRomWriteExpressions": [
+        "0xC15C0E"
+      ]
+    },
+    {
+      "module": "rock_candy_fix",
+      "source": "ccscript/bugfixes/rock_candy_fix.ccs",
+      "sourceSha256": "170b325bf3ba5665806f22b402157af9299d40ab672dade901bdbf87b06c61e2",
+      "classification": "native-gameplay",
+      "reviewDecision": "The random stat choice includes Luck as the fifth outcome.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 2472,
+          "anchor": "rand_limit(maternalbound_enabled() ? 5 : 4)"
+        }
+      ],
+      "targetedCoverageAndLimits": "Production action/random outcome fixtures; every condiment interaction remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC2B3AA"
+      ]
+    },
+    {
+      "module": "show_removed_battle_item_window",
+      "source": "ccscript/bugfixes/show_removed_battle_item_window.ccs",
+      "sourceSha256": "9908823aa60e3b37e310320bc4b2b05a1a7ab963baf3577bb269ecc8be743629",
+      "classification": "native-menu-adaptation",
+      "reviewDecision": "A removed battle item is named in the native item window; success and canceled targeting close it.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle.c",
+          "line": 2443,
+          "anchor": "bm_show_item_name"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted menu/action tests; all cancel transitions remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC1D017"
+      ]
+    },
+    {
+      "module": "single_2bpp_battle_bg_fix",
+      "source": "ccscript/bugfixes/single_2bpp_battle_bg_fix.ccs",
+      "sourceSha256": "e72f329a5bc0957219f51bf72929647fc5d2d3ebfee4ce9b5a3f74f11dc90366",
+      "classification": "native-rendering",
+      "reviewDecision": "BG4 points to the blank SC tilemap in the corresponding battle background mode.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_ui.c",
+          "line": 1143,
+          "anchor": "single_2bpp_battle_bg_fix"
+        }
+      ],
+      "targetedCoverageAndLimits": "Battle-art fixture; every battle backdrop and display setting remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC2D899"
+      ]
+    },
+    {
+      "module": "stairs_message_fix",
+      "source": "ccscript/bugfixes/stairs_message_fix.ccs",
+      "sourceSha256": "199727bef8bf46e11aaf70fe48fdcf329d8b06221df37706b0524979cc9f7677",
+      "classification": "native-door-adaptation",
+      "reviewDecision": "Stairs transitions avoid original single-pixel nudges and handle bounds/interrupted continuations.",
+      "nativeReferences": [
+        {
+          "path": "src/game/door.c",
+          "line": 8,
+          "anchor": "stairs"
+        }
+      ],
+      "targetedCoverageAndLimits": "6 door-bound and 8 interrupted-stairs fixtures; all map stairs remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC06F9C",
+        "0xC06FAE",
+        "0xC07007",
+        "0xC07016"
+      ]
+    },
+    {
+      "module": "stats_limit_fix",
+      "source": "ccscript/bugfixes/stats_limit_fix.ccs",
+      "sourceSha256": "8ba7437a6f82ba631e6feb09c0edbe85f8355bfa2ada0fc55c99f11fcbad7632",
+      "classification": "native-gameplay",
+      "reviewDecision": "Recalculation, capsule actions and script stat boosts clamp Redux stats to 255.",
+      "nativeReferences": [
+        {
+          "path": "src/game/inventory.c",
+          "line": 83,
+          "anchor": "255"
+        },
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 5581,
+          "anchor": "capsule cap"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted native stat and capsule fixtures; all story growth combinations remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC21B69",
+        "0xC2B4D8",
+        "0xC21C22",
+        "0xC2B471",
+        "0xC21D2A",
+        "0xC2B5A5",
+        "0xC21D72",
+        "0xC2B53F",
+        "0xC21D8A",
+        "0xC2B40A"
+      ]
+    },
+    {
+      "module": "status_window_clear",
+      "source": "ccscript/bugfixes/status_window_clear.ccs",
+      "sourceSha256": "f2d0722d2fcc33f567444bf797703b8bfe9eaad3ef184e84c6cecc82f0c1a847",
+      "classification": "native-menu-adaptation",
+      "reviewDecision": "Clear the status window before rendering the next status category.",
+      "nativeReferences": [
+        {
+          "path": "src/game/text.c",
+          "line": 1941,
+          "anchor": "clear_window_text(WINDOW_STATUS_MENU)"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted UI rendering tests; all four-character condition combinations remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC1BBAC"
+      ]
+    },
+    {
+      "module": "swirls_without_ness_fix",
+      "source": "ccscript/bugfixes/swirls_without_ness_fix.ccs",
+      "sourceSha256": "ffdd735595cc39ef422066c7389d5c98a7ec11ea2aa1ec3b4be6e884589d1882",
+      "classification": "native-gameplay",
+      "reviewDecision": "Battle swirl follows the current leading party member rather than assuming Ness entity 24.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/callroutine.c",
+          "line": 1503,
+          "anchor": "current_party_members"
+        }
+      ],
+      "targetedCoverageAndLimits": "Movement/source review; later Jeff/Poo solo story branches remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC0D668"
+      ]
+    },
+    {
+      "module": "teleport_char_snap_fix",
+      "source": "ccscript/bugfixes/teleport_char_snap_fix.ccs",
+      "sourceSha256": "70cc2359297a34ebf64fe75f8eeb9c970899fac4fc139b7e5cdce6e676f428cc",
+      "classification": "native-gameplay",
+      "reviewDecision": "Party refresh snaps the actual party-order leader before rebuilding follower positions.",
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld.c",
+          "line": 1300,
+          "anchor": "refresh_party_entities"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted teleport/movement fixtures; all party configurations remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC07B5A"
+      ]
+    },
+    {
+      "module": "teleport_hardlock_fix",
+      "source": "ccscript/bugfixes/teleport_hardlock_fix.ccs",
+      "sourceSha256": "07a34ab3aed47efd976ba43042e05fc395d1d146f7785f8aafe4598b42cafab0",
+      "classification": "native-lifecycle-adaptation",
+      "reviewDecision": "Distant entities and their scheduler ownership are removed safely before teleport cleanup.",
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld_teleport.c",
+          "line": 100,
+          "anchor": "TP_CLEANUP"
+        }
+      ],
+      "targetedCoverageAndLimits": "128 repeated teleport lifecycle cycles; every live story teleport remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC0C6C4",
+        "0xC0EB63"
+      ]
+    },
+    {
+      "module": "teleport_diamondization_fix",
+      "source": "ccscript/bugfixes/teleport_diamondization_fix.ccs",
+      "sourceSha256": "72733c320b7a3dcdbff33fac200e54ad2d281ab3e957d386c01a5b20e883d081",
+      "classification": "native-gameplay",
+      "reviewDecision": "The active upstream change shortens the failed-teleport wait from 10 frames to 1. The suggested FULL_PARTY_UPDATE hook is commented out and is not an active requirement.",
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld_teleport.c",
+          "line": 1026,
+          "anchor": "maternalbound_enabled() ? 1 : 10"
+        }
+      ],
+      "targetedCoverageAndLimits": "Active-body/source review and teleport fixtures; diamondized-party live gameplay remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC0EBA0"
+      ]
+    },
+    {
+      "module": "tent_check_fix",
+      "source": "ccscript/bugfixes/tent_check_fix.ccs",
+      "sourceSha256": "a02c3b0b9ad9bd52d2aac8605df61174dd374b664e5d22ef9c3c6d9e606efac4",
+      "classification": "native-bounds-adaptation",
+      "reviewDecision": "Reject overflow map coordinates before they wrap into another map sector.",
+      "nativeReferences": [
+        {
+          "path": "src/game/door.c",
+          "line": 104,
+          "anchor": "tent_check_fix"
+        }
+      ],
+      "targetedCoverageAndLimits": "Door/map bounds fixtures; every tent interaction remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC07482"
+      ]
+    },
+    {
+      "module": "text_highlights_fix",
+      "source": "ccscript/bugfixes/text_highlights_fix.ccs",
+      "sourceSha256": "f15e26969ada128dee09444393082e4a011ad3c10f3a7f3dc931cfce9266c3ca",
+      "classification": "native-text-adaptation",
+      "reviewDecision": "Native highlight dimensions use glyph widths and row bounds instead of copying the original assembly operation.",
+      "nativeReferences": [
+        {
+          "path": "src/game/window.c",
+          "line": 8,
+          "anchor": "maternalbound"
+        }
+      ],
+      "targetedCoverageAndLimits": "10 highlight fixtures; every font/title/file-select combination remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC11DC6",
+        "0xC43C20",
+        "0xC43C59"
+      ]
+    },
+    {
+      "module": "thunder_reflect_fix",
+      "source": "ccscript/bugfixes/thunder_reflect_fix.ccs",
+      "sourceSha256": "8d286a16c5af178ed42129c44c9e3958c7b583c36b06f49d6d2300022b7b9c10",
+      "classification": "native-gameplay",
+      "reviewDecision": "Lightning-badge reflection preserves shield state and restores action targeting after the reflected hit.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle_actions.c",
+          "line": 5581,
+          "anchor": "badge/shield targeting"
+        }
+      ],
+      "targetedCoverageAndLimits": "Production badge/shield/targeting fixtures; every multi-target combination remains unverified.",
+      "activeRomWriteExpressions": [
+        "0xC297E2"
+      ]
+    },
+    {
+      "module": "tie_zerodiv_fix",
+      "source": "ccscript/bugfixes/tie_zerodiv_fix.ccs",
+      "sourceSha256": "16dda672f57d3b869a9fbf00da871207c5348bfa775d2f7f69f0f9a8a4b08aa0",
+      "classification": "native-gameplay",
+      "reviewDecision": "Simultaneous party/enemy KOs follow defeat handling without entering victory division.",
+      "nativeReferences": [
+        {
+          "path": "src/game/battle.c",
+          "line": 5235,
+          "anchor": "tie_zerodiv_fix"
+        }
+      ],
+      "targetedCoverageAndLimits": "Targeted simultaneous-KO fixture; full later-story death sequences remain unverified.",
+      "activeRomWriteExpressions": [
+        "0xC25F1A"
+      ]
+    },
+    {
+      "module": "try_give_money",
+      "source": "ccscript/bugfixes/try_give_money.ccs",
+      "sourceSha256": "6f7ee985d929e21cde0cf0695d69cc77fea2a882518d9b21d8d1282448521cd5",
+      "classification": "native-command",
+      "reviewDecision": "The native adapter retains 32-bit operands and caps cash without signed overflow.",
+      "nativeReferences": [
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 438,
+          "anchor": "maternalbound_money"
+        }
+      ],
+      "targetedCoverageAndLimits": "11 money/dispatcher fixtures across give and deposit commands.",
+      "activeRomWriteExpressions": []
+    },
+    {
+      "module": "try_deposit_money",
+      "source": "ccscript/bugfixes/try_deposit_money.ccs",
+      "sourceSha256": "81a9d43e7c63c2567a66b7329e849f6e47eb882ad4bb310a84adb5f7721022f3",
+      "classification": "native-command",
+      "reviewDecision": "The native adapter retains 32-bit operands and caps bank deposits without signed overflow.",
+      "nativeReferences": [
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 438,
+          "anchor": "maternalbound_money"
+        }
+      ],
+      "targetedCoverageAndLimits": "11 money/dispatcher fixtures across give and deposit commands.",
+      "activeRomWriteExpressions": []
+    }
+  ]
+}

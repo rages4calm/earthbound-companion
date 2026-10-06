@@ -1,5 +1,12 @@
 $ErrorActionPreference='Stop'
 $projectRoot=$PSScriptRoot
+Push-Location $projectRoot
+try{
+ & native-source\.venv\Scripts\python.exe scripts\create_fixture.py
+ if($LASTEXITCODE -ne 0){throw 'Runtime fixture preparation failed.'}
+ & native-source\.venv\Scripts\cmake.exe --build build\companion --target test_runtime_assets --parallel 4
+ if($LASTEXITCODE -ne 0){throw 'Runtime loader test build failed.'}
+}finally{Pop-Location}
 $testDir=Join-Path $projectRoot 'validation\tests'
 New-Item -ItemType Directory -Force $testDir | Out-Null
 Copy-Item (Join-Path $projectRoot 'EarthBound Companion\Game\earthbound.exe') $testDir -Force
@@ -32,6 +39,6 @@ if($p.ExitCode -ne 0){throw 'Runtime asset loader test failed.'}
 Get-Content (Join-Path $testDir 'assets.log')
 $results+=@{test='runtime-assets';exit_code=$p.ExitCode}
 Push-Location $projectRoot
-try{& native-source\.venv\Scripts\python.exe tools\validate_msu.py;if($LASTEXITCODE -ne 0){throw 'MSU validation failed.'}}finally{Pop-Location}
+try{& native-source\.venv\Scripts\python.exe scripts\validate_msu.py;if($LASTEXITCODE -ne 0){throw 'MSU validation failed.'}}finally{Pop-Location}
 $results | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $testDir 'results.json') -Encoding UTF8
 Write-Output 'All checks passed. Full-game playthrough remains unverified.'

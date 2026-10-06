@@ -1,0 +1,1030 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev16-bomb-adjacency-machine",
+  "reference": "pinned-redux-machine",
+  "romSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "oracleSha256": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+  "oracleCoreSha256": "69425f547e83648b4aa8507908ff473a3d8c4ac666b8e130b2f5e9d99922d29a",
+  "untouchedBodyAddress": "C2A658",
+  "untouchedBodySha256": "30ab6b536f82e98a85adc8bdf36ba6f1917026319a2f29c13b05da9cf8d47a56",
+  "stubbedChildren": [
+    "C26A44 variance RTS",
+    "C28125 damage RTS",
+    "C23D05 target-name RTL"
+  ],
+  "executedMachineCases": 72,
+  "cases": [
+    {
+      "slot": 0,
+      "rightMember": 0,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 1,
+      "machineDamageTargetSlots": [
+        0,
+        1
+      ],
+      "sourceExpectedSlots": [
+        0,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 2,
+      "machineDamageTargetSlots": [
+        0,
+        1
+      ],
+      "sourceExpectedSlots": [
+        0,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 3,
+      "machineDamageTargetSlots": [
+        0,
+        1
+      ],
+      "sourceExpectedSlots": [
+        0,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 4,
+      "machineDamageTargetSlots": [
+        0,
+        1
+      ],
+      "sourceExpectedSlots": [
+        0,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 5,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 6,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 7,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 8,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 9,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 10,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 11,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 12,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 13,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 14,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 15,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 16,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 0,
+      "rightMember": 17,
+      "machineDamageTargetSlots": [
+        0
+      ],
+      "sourceExpectedSlots": [
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 0,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 1,
+      "machineDamageTargetSlots": [
+        1,
+        0,
+        2
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 2,
+      "machineDamageTargetSlots": [
+        1,
+        0,
+        2
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 3,
+      "machineDamageTargetSlots": [
+        1,
+        0,
+        2
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 4,
+      "machineDamageTargetSlots": [
+        1,
+        0,
+        2
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 5,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 6,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 7,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 8,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 9,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 10,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 11,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 12,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 13,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 14,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 15,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 16,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 1,
+      "rightMember": 17,
+      "machineDamageTargetSlots": [
+        1,
+        0
+      ],
+      "sourceExpectedSlots": [
+        1,
+        0
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 0,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 1,
+      "machineDamageTargetSlots": [
+        2,
+        1,
+        3
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1,
+        3
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 2,
+      "machineDamageTargetSlots": [
+        2,
+        1,
+        3
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1,
+        3
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 3,
+      "machineDamageTargetSlots": [
+        2,
+        1,
+        3
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1,
+        3
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 4,
+      "machineDamageTargetSlots": [
+        2,
+        1,
+        3
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1,
+        3
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 5,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 6,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 7,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 8,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 9,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 10,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 11,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 12,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 13,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 14,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 15,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 16,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 2,
+      "rightMember": 17,
+      "machineDamageTargetSlots": [
+        2,
+        1
+      ],
+      "sourceExpectedSlots": [
+        2,
+        1
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 0,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 1,
+      "machineDamageTargetSlots": [
+        3,
+        2,
+        4
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2,
+        4
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 2,
+      "machineDamageTargetSlots": [
+        3,
+        2,
+        4
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2,
+        4
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 3,
+      "machineDamageTargetSlots": [
+        3,
+        2,
+        4
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2,
+        4
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 4,
+      "machineDamageTargetSlots": [
+        3,
+        2,
+        4
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2,
+        4
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 5,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 6,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 7,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 8,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 9,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 10,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 11,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 12,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 13,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 14,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 15,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 16,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    },
+    {
+      "slot": 3,
+      "rightMember": 17,
+      "machineDamageTargetSlots": [
+        3,
+        2
+      ],
+      "sourceExpectedSlots": [
+        3,
+        2
+      ],
+      "targetRestored": true,
+      "sourceMatched": true
+    }
+  ],
+  "sourceMismatchCount": 0,
+  "stackAndDirectPageCanariesPassed": true,
+  "ownerRomUnchanged": true,
+  "limits": [
+    "Actual unchanged original/pinned BOMB_COMMON party-adjacency instructions; variance, damage and name children intentionally stubbed only in temporary emulator memory.",
+    "Prepared slots0..3 and right member IDs0..17 include synthetic membership. Damage values, RNG consumption, enemy adjacency, art, full actions and natural battles not proved.",
+    "Dev-only oracle excluded from player; no owner ROM/asset/save payload included."
+  ]
+}

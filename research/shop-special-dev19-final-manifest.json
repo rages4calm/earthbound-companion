@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev19-special-shops-freeze",
+  "nativeRuntime": "dev16-v9",
+  "runtimeSha256": {
+    "player.exe": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "observer.exe": "290094e1eb7135218fbe5d8403436c058eef672215f34e578ea3f48e5b12bcd6",
+    "libearthbound_game.a": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1"
+  },
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "priorFrozenManifest": {
+    "path": "research/shop-audit-dev18-final-manifest.json",
+    "sha256": "d7d9dbc08d9d7ff93bbe093441733d75c8b44f58fff862df8be21d7b8838c20e",
+    "unchanged": true
+  },
+  "files": [
+    {
+      "path": "tools/shop_special_entry_qa_dev19.py",
+      "sha256": "1960a78ca3ab681ffd1f09d02045f1a90b1ab4ac00a75f280471f1e4131f47da",
+      "publishedPath": "scripts/shop_special_entry_qa_dev19.py"
+    },
+    {
+      "path": "tools/shop_special_entry_cases_dev19.py",
+      "sha256": "568430ee18fb121df074252ea1665d135928502dc75ebb6cd67def2e4d31815a",
+      "publishedPath": "scripts/shop_special_entry_cases_dev19.py"
+    },
+    {
+      "path": "research/redux-special-shop-fixtures-dev19-final.json",
+      "sha256": "7b060f659b642f164b6a792cebadd54c33cee029a341a19ee50009e33ed69327",
+      "publishedPath": "research/redux-special-shop-fixtures-dev19-final.json"
+    },
+    {
+      "path": "research/original-special-shop-fixtures-dev19-final.json",
+      "sha256": "6bf1cc95d6b346990fc0352ce4fc6ea4f58673ff895ae0b3e607794545cc7f70",
+      "publishedPath": "research/original-special-shop-fixtures-dev19-final.json"
+    },
+    {
+      "path": "research/redux-special-shop-dev19-v9-final.json",
+      "sha256": "5b30f87e5cb7837e913417c1737eff22f89c0b26b27aceecc31ead65eaa15fcb",
+      "publishedPath": "research/redux-special-shop-dev19-v9-final.json"
+    },
+    {
+      "path": "research/original-special-shop-dev19-v9-final.json",
+      "sha256": "e2610afa2d6302a83d03f236061ad95745506c5b91dad38df7e270204792a26c",
+      "publishedPath": "research/original-special-shop-dev19-v9-final.json"
+    },
+    {
+      "path": "research/shop-special-complete-inventory-vectors-dev19-v9.json",
+      "sha256": "ccaf1ddab6977d63e19a568d2eb6a6b03bbeef7a849dd47b132ae4df3d08e8fd",
+      "publishedPath": "research/shop-special-complete-inventory-vectors-dev19-v9.json"
+    },
+    {
+      "path": "research/shop-special-dev19-evidence.md",
+      "sha256": "9a5295bf0a985afa9ea91391b1d3e1f1f1409285bdaed383d11dc8ad9344aa45",
+      "publishedPath": "research/shop-special-dev19-evidence.md"
+    }
+  ],
+  "counts": {
+    "ReduxTransactions": 21,
+    "OriginalControls": 9,
+    "freshProcessContinuations": 7,
+    "overlappingWholeInventoryAssertions": 30
+  },
+  "nativeChanges": false,
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false
+}

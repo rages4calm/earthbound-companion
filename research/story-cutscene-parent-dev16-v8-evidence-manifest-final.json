@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "status": "Passed",
+  "allPassed": true,
+  "frozenRuntime": "audit-dev16-v8",
+  "tools": [
+    {
+      "path": "tools/redux_story_cutscene_parent_qa.py",
+      "sha256": "C01D152B46A879D7B4A326100DD111CF2BC0E2663E75F6AD5EBD9252CCBEF67B"
+    }
+  ],
+  "finalReports": [
+    {
+      "path": "research/redux-story-cutscene-parent-dev16-v8-cold-final-review.json",
+      "sha256": "EE15E517D2202DB2C219CA5F45EAB4F302050BF77EC7601B2CC81C3745503B15"
+    }
+  ],
+  "productionExecutableSha256": {
+    "player.exe": "CD0C6F9EF6D01D7B29EBB6180EEDB29F11B95ADEB3A35DFB6687BCB6CF6CDF67",
+    "observer.exe": "9C21413218297B43C46DB8F784CB6CD228417F7F13CA672EF562BAF7EBFD93D4"
+  },
+  "productionLibrarySha256": "e7cacb1ef302d0b7bec395958af0dbb17fa01a67d777267677f20034964fb7b8",
+  "productionFullPatchSha256": "AA60599C16C9811547C8016B57D2868484F3CD3B85A5C4EC9E056437DD8A8804",
+  "privateDriverSourceSha256": "4611c68c91c15045b94ff5f5604fdcd73d66e25f79eb3e523edf05820b8283cf",
+  "privateDriverExecutableSha256": "ea9520bba868fc56bd06e089cedc95d5675e9ee4c2360ae048868a1c4bbf646b",
+  "packIdentities": {
+    "Original": "01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549",
+    "Redux": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3"
+  },
+  "sourceRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "executedCases": 36,
+  "executedAssertions": 638,
+  "coldFreshProcessCases": 12,
+  "skippedCases": 0,
+  "scenes": 6,
+  "profiles": [
+    "Original",
+    "Redux"
+  ],
+  "assertedSceneBranches": [
+    "full Bubble Gum rope/camera parent C88000\u2192C8824A and all seven action waits",
+    "full Dr. Andonuts C6B18D\u2192actual NPC623 EVENT137\u2192boarding C88332\u2192complete flight C88387\u2192Jeff joining",
+    "actual natural ghost EVENT77\u2192queued parent C79D66 completion",
+    "actual natural hotel ghost EVENT78 full movement/removal and flags296\u2192297",
+    "actual natural hotel ghost EVENT79 full movement/removal and flag298",
+    "complete hotel-capture parent C79D81 with all four actual source zombies, camera/collapse and basement arrival"
+  ],
+  "strictColdPreparation": "A new process runs normal production bootstrap and title-bank binding, then loads the actual mid-scene checkpoint immediately. No prepared-world/map initialization is performed before restoration. No action completion signal, entity PC or parent result is injected.",
+  "sourceDeallocationMetadataClarification": "Original EVENT35 source clears NPC/sprite IDs while the initial allocation metadata script_table260 can remain. The final report directly asserts NPC677 absent in all six rope warm/checkpoint/cold cases; static metadata is not mistaken for a visible blocker.",
+  "sourceDeallocationReferences": {
+    "native-source/asm/overworld/entity/deactivate_npc_entity.asm": "A5BCC87660E5628DA2697A1C4174881D7FB7889F00CADA66514C1C8D4017FC0C",
+    "native-source/asm/overworld/entity/deallocate_entity_sprite.asm": "F41949E4045F75BB1E7733102DDAF25EF9C05FE107E82C861759E2B1052F6CE3",
+    "native-source/asm/data/events/scripts/035.asm": "48612AADC608A346788AA3D1660F420F5EAEA9B721E7D4D9D9FF5D047700B36B"
+  },
+  "earlierEvidence": "Earlier diagnostic/pilot reports remain separate and do not replace the final strict proof. The first standalone flight pilot lacked preceding EVENT137 setup; that fixture omission was corrected without modifying production code.",
+  "limits": [
+    "Six prepared complete scene branches in both profiles, with unchanged production text/entity/map/mode consumers and real SDL input replay.",
+    "Sky Walker begins at the full Dr. Andonuts dialogue C6B18D, whose real CC assigns EVENT137; this actor naturally queues boarding C88332 and launch C88387.",
+    "Six unique destination IDs cover eight ordered map transitions: seven flight segments plus the basement arrival; clouds188 repeats three times.",
+    "NPC/wallet backups are prepared to the source pre-Jeff-solo contract: NPC companions absent, prior Ness wallet1234, Jeff wallet2. Surrounding Threek telepathy/dorm quest entry is not replayed here.",
+    "Ghost stages77,78,79 and hotel-capture text each use their own source map/story contexts; walking all connecting doors between these contexts is not asserted.",
+    "Original EVENT79 does not prime zero before its first flag command; this report asserts flag298 and actor removal, without asserting that flag297 clears.",
+    "Reassigned NPC623 retains its allocation metadata script_table8; the actual resolved EVENT137 bank/PC range is observed independently. The source comment IDs for Redux camera/Jeff duplicate are stale: actual builder assigns897 Jeff_Dup and898 Rope_Camera_Pan; actual generated pack actors are tested.",
+    "Each cold case restores immediately after normal bootstrap and title-bank binding, without prepared-world/map initialization in the new process, from an actual mid-scene checkpoint; finish-state comparison checks party, flags, HP, wallet, position, camera, remaining actors and counts. Native WAIT_FRAMES renders64 ordinary closing-tail frames after each parent finishes; no completion flags are supplied.",
+    "EVENT153/157 first observable post-physics Z is191 Original/167 Redux: source initializes192/168 then applies the first minus-one tick. Actor PCs and original/source contracts are checked; no independent SNES full-scene timing or rendering oracle is claimed. Pixel-perfect frames, all audio and complete game progression remain unverified.",
+    "No owner save, ROM, extracted dialogue/assets or soundtrack bytes are included in this report."
+  ],
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false,
+  "nativeSourceChangedByThisAudit": false,
+  "sharedBuildChangedByThisAudit": false,
+  "ownerSaveChangedByThisAudit": false,
+  "publishOnlyFilesListedAbove": true
+}

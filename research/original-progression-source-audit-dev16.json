@@ -1,0 +1,1111 @@
+{
+  "ContentId": "earthbound-usa",
+  "DisplayName": "EarthBound (USA)",
+  "BaseHash": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "ProtectedItems": [
+    1,
+    2,
+    3,
+    6,
+    7,
+    17,
+    27,
+    36,
+    54,
+    58,
+    74,
+    75,
+    76,
+    88,
+    90,
+    92,
+    93,
+    95,
+    98,
+    99,
+    100,
+    104,
+    105,
+    106,
+    108,
+    125,
+    127,
+    128,
+    130,
+    139,
+    140,
+    141,
+    152,
+    153,
+    160,
+    162,
+    163,
+    164,
+    165,
+    166,
+    168,
+    169,
+    170,
+    171,
+    172,
+    174,
+    175,
+    176,
+    177,
+    178,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    187,
+    188,
+    189,
+    190,
+    192,
+    193,
+    196,
+    197,
+    202,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    220,
+    224,
+    249,
+    252,
+    253
+  ],
+  "ProtectedEnemies": [
+    1,
+    2,
+    10,
+    11,
+    15,
+    16,
+    21,
+    24,
+    26,
+    27,
+    37,
+    39,
+    40,
+    41,
+    42,
+    45,
+    46,
+    49,
+    54,
+    64,
+    67,
+    68,
+    73,
+    74,
+    83,
+    88,
+    90,
+    93,
+    95,
+    102,
+    110,
+    113,
+    116,
+    124,
+    125,
+    128,
+    129,
+    130,
+    131,
+    134,
+    137,
+    139,
+    140,
+    146,
+    153,
+    159,
+    209,
+    214,
+    216,
+    218,
+    226,
+    228
+  ],
+  "SaveStateVersion": 16,
+  "SaveStateCrcPolynomial": 3988292640,
+  "ScriptBlocks": 61,
+  "DecodedEntries": 61972,
+  "UnknownCodes": {},
+  "Items": [
+    {
+      "Id": 1,
+      "Name": "Franklin badge",
+      "Reasons": [
+        "E03HAPPY:check_if_character_has_item",
+        "E04GRFD:give_item_to_character_b",
+        "E04GRFD:print_item_name",
+        "EGLOBAL:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "Teddy bear",
+      "Reasons": [
+        "EBATTLE5:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 3,
+      "Name": "Super plush bear",
+      "Reasons": [
+        "EBATTLE5:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 6,
+      "Name": "Broken air gun",
+      "Reasons": [
+        "EGOODS3:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 7,
+      "Name": "Broken spray can",
+      "Reasons": [
+        "EGOODS3:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 17,
+      "Name": "Cracked bat",
+      "Reasons": [
+        "E01ONET0:check_if_character_doesnt_have_item",
+        "E01ONET0:print_item_name"
+      ]
+    },
+    {
+      "Id": 27,
+      "Name": "Casey bat",
+      "Reasons": [
+        "Casey bat high miss rate"
+      ]
+    },
+    {
+      "Id": 36,
+      "Name": "Pop gun",
+      "Reasons": [
+        "EEVENT1:check_if_character_has_item",
+        "EGOODS3:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 54,
+      "Name": "Travel charm",
+      "Reasons": [
+        "E01ONET1:give_item_to_character_b",
+        "E01ONET1:print_item_name"
+      ]
+    },
+    {
+      "Id": 58,
+      "Name": "Flame pendant",
+      "Reasons": [
+        "E09DSRT:print_item_name"
+      ]
+    },
+    {
+      "Id": 74,
+      "Name": "Baseball cap",
+      "Reasons": [
+        "E18MGKT:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 75,
+      "Name": "Holmes hat",
+      "Reasons": [
+        "EGOODS3:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 76,
+      "Name": "Mr. Baseball cap",
+      "Reasons": [
+        "E01ONET1:give_item_to_character_b",
+        "E01ONET1:print_item_name"
+      ]
+    },
+    {
+      "Id": 88,
+      "Name": "Cookie",
+      "Reasons": [
+        "E01ONET0:give_item_to_character_b",
+        "E01ONET0:print_item_name"
+      ]
+    },
+    {
+      "Id": 90,
+      "Name": "Hamburger",
+      "Reasons": [
+        "E09DSRT:print_item_name",
+        "Monkey Cave trade request; includes dynamic item arguments"
+      ]
+    },
+    {
+      "Id": 92,
+      "Name": "Fresh Egg",
+      "Reasons": [
+        "E02TWSN2:get_buy_price_of_item",
+        "E02TWSN2:give_item_to_character_b",
+        "E09DSRT:give_item_to_character_b",
+        "E09DSRT:print_item_name",
+        "Timed item transformation"
+      ]
+    },
+    {
+      "Id": 93,
+      "Name": "Picnic lunch",
+      "Reasons": [
+        "E09DSRT:print_item_name",
+        "Monkey Cave trade request; includes dynamic item arguments"
+      ]
+    },
+    {
+      "Id": 95,
+      "Name": "Pizza",
+      "Reasons": [
+        "E09DSRT:print_item_name",
+        "Monkey Cave trade request; includes dynamic item arguments"
+      ]
+    },
+    {
+      "Id": 98,
+      "Name": "PSI caramel",
+      "Reasons": [
+        "E09DSRT:give_item_to_character_b",
+        "E09DSRT:print_item_name"
+      ]
+    },
+    {
+      "Id": 99,
+      "Name": "Magic truffle",
+      "Reasons": [
+        "E02TWSN2:give_item_to_character_b",
+        "E02TWSN2:print_item_name",
+        "E14MAKYO:give_item_to_character_b",
+        "E14MAKYO:print_item_name"
+      ]
+    },
+    {
+      "Id": 100,
+      "Name": "Brain food lunch",
+      "Reasons": [
+        "E12RAMA:give_item_to_character",
+        "E12RAMA:print_item_name"
+      ]
+    },
+    {
+      "Id": 104,
+      "Name": "Pak of bubble gum",
+      "Reasons": [
+        "E06WINS:check_if_character_has_item",
+        "E06WINS:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 105,
+      "Name": "Jar of Fly Honey",
+      "Reasons": [
+        "E07GPFT:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 106,
+      "Name": "Can of fruit juice",
+      "Reasons": [
+        "E09DSRT:give_item_to_character_b",
+        "E09DSRT:print_item_name"
+      ]
+    },
+    {
+      "Id": 108,
+      "Name": "Protein drink",
+      "Reasons": [
+        "E09DSRT:print_item_name"
+      ]
+    },
+    {
+      "Id": 125,
+      "Name": "Backstage pass",
+      "Reasons": [
+        "E02TWSN2:give_item_to_character_b",
+        "E02TWSN2:print_item_name"
+      ]
+    },
+    {
+      "Id": 127,
+      "Name": "Wet towel",
+      "Reasons": [
+        "E09DSRT:print_item_name",
+        "Monkey Cave trade request; includes dynamic item arguments"
+      ]
+    },
+    {
+      "Id": 128,
+      "Name": "Refreshing herb",
+      "Reasons": [
+        "E12RAMA:give_item_to_character",
+        "E12RAMA:print_item_name"
+      ]
+    },
+    {
+      "Id": 130,
+      "Name": "Horn of life",
+      "Reasons": [
+        "E16DKFD:give_item_to_character_b",
+        "E16DKFD:print_item_name",
+        "EGLOBAL:print_item_name",
+        "ESHOP3:print_item_name"
+      ]
+    },
+    {
+      "Id": 139,
+      "Name": "Yogurt dispenser",
+      "Reasons": [
+        "E09DSRT:give_item_to_character_b",
+        "E10FOUR1:check_if_character_has_item",
+        "E10FOUR1:print_item_name",
+        "E10FOUR1:take_item_from_character",
+        "EHINT:print_item_name"
+      ]
+    },
+    {
+      "Id": 140,
+      "Name": "Ruler",
+      "Reasons": [
+        "E02TWSN2:get_buy_price_of_item",
+        "E02TWSN2:give_item_to_character_b",
+        "E09DSRT:print_item_name",
+        "Monkey Cave trade request; includes dynamic item arguments"
+      ]
+    },
+    {
+      "Id": 141,
+      "Name": "Snake bag",
+      "Reasons": [
+        "E13SKRB:give_item_to_character_b",
+        "E13SKRB:print_item_name"
+      ]
+    },
+    {
+      "Id": 152,
+      "Name": "Pair`of dirty socks",
+      "Reasons": [
+        "E10FOUR0:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 153,
+      "Name": "Stag beetle",
+      "Reasons": [
+        "E08DOSEI:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 160,
+      "Name": "Bag of Dragonite",
+      "Reasons": [
+        "E15GUMI:give_item_to_character_b",
+        "E15GUMI:print_item_name"
+      ]
+    },
+    {
+      "Id": 162,
+      "Name": "Piggy nose",
+      "Reasons": [
+        "E13SKRB:print_item_name"
+      ]
+    },
+    {
+      "Id": 163,
+      "Name": "For Sale sign",
+      "Reasons": [
+        "E02TWSN2:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 164,
+      "Name": "Shyness book",
+      "Reasons": [
+        "E01ONET1:take_item_from_character",
+        "E15GUMI:give_item_to_character_b",
+        "E15GUMI:take_item_from_character",
+        "EBGMESS:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 165,
+      "Name": "Picture postcard",
+      "Reasons": [
+        "E03HAPPY:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 166,
+      "Name": "King banana",
+      "Reasons": [
+        "E09DSRT:give_item_to_character_b",
+        "E09DSRT:print_item_name",
+        "Monkey Cave trade request; includes dynamic item arguments"
+      ]
+    },
+    {
+      "Id": 168,
+      "Name": "Chick",
+      "Reasons": [
+        "E09DSRT:give_item_to_character_b",
+        "E09DSRT:print_item_name",
+        "Timed item transformation"
+      ]
+    },
+    {
+      "Id": 169,
+      "Name": "Chicken",
+      "Reasons": [
+        "Timed item transformation"
+      ]
+    },
+    {
+      "Id": 170,
+      "Name": "Key to the shack",
+      "Reasons": [
+        "DOOR_SCRIPTS:check_if_character_has_item",
+        "DOOR_SCRIPTS:take_item_from_character",
+        "E01ONET1:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 171,
+      "Name": "Key to the cabin",
+      "Reasons": [
+        "E03HAPPY:give_item_to_character_b",
+        "EEVENT1:print_item_name",
+        "EEVENT1:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 172,
+      "Name": "Bad key machine",
+      "Reasons": [
+        "E06WINS:give_item_to_character_b",
+        "EGOODS3:print_item_name"
+      ]
+    },
+    {
+      "Id": 174,
+      "Name": "Zombie paper",
+      "Reasons": [
+        "EEVENT4:give_item_to_character_b",
+        "EGOODS1:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 175,
+      "Name": "Hawk eye",
+      "Reasons": [
+        "DOOR_SCRIPTS:print_item_name",
+        "E01ONET2:give_item_to_character_b",
+        "E01ONET2:print_item_name",
+        "E14MAKYO:print_item_name",
+        "EBGMESS:print_item_name",
+        "EEVENT3:check_if_character_has_item",
+        "EEVENT3:give_item_to_character_b",
+        "EEVENT3:take_item_from_character",
+        "EGLOBAL:give_item_to_character_b",
+        "EGLOBAL:print_item_name",
+        "EGOODS1:take_item_from_character",
+        "EGOODS2:print_item_name",
+        "EHINT:print_item_name",
+        "ENEWS:print_item_name",
+        "ESHOP3:print_item_name"
+      ]
+    },
+    {
+      "Id": 176,
+      "Name": "Bicycle",
+      "Reasons": [
+        "E02TWSN0:check_if_character_has_item",
+        "E02TWSN0:give_item_to_character_b",
+        "E02TWSN0:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 177,
+      "Name": "ATM card",
+      "Reasons": [
+        "EGLOBAL:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 178,
+      "Name": "Show ticket",
+      "Reasons": [
+        "E10FOUR0:give_item_to_character_b",
+        "E10FOUR0:take_item_from_character",
+        "E10FOUR1:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 180,
+      "Name": "Wad of bills",
+      "Reasons": [
+        "E02TWSN1:give_item_to_character_b",
+        "E02TWSN1:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 181,
+      "Name": "Receiver phone",
+      "Reasons": [
+        "E02TWSN0:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 182,
+      "Name": "Diamond",
+      "Reasons": [
+        "E09DSRT:give_item_to_character_b",
+        "E10FOUR0:print_item_name",
+        "E10FOUR0:take_item_from_character",
+        "EEVENT2:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 183,
+      "Name": "Signed banana",
+      "Reasons": [
+        "E10FOUR0:give_item_to_character_b",
+        "E10FOUR1:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 184,
+      "Name": "Pencil eraser",
+      "Reasons": [
+        "E01ONET2:give_item_to_character_b",
+        "E01ONET2:print_item_name",
+        "E02TWSN0:give_item_to_character_b",
+        "E02TWSN0:print_item_name",
+        "E02TWSN2:print_item_name",
+        "EEVENT2:check_if_character_has_item",
+        "EEVENT2:take_item_from_character",
+        "EGLOBAL:give_item_to_character_b",
+        "Monkey Cave trade request; includes dynamic item arguments"
+      ]
+    },
+    {
+      "Id": 185,
+      "Name": "Hieroglyph copy",
+      "Reasons": [
+        "E11SUMS:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 187,
+      "Name": "Contact lens",
+      "Reasons": [
+        "E09DSRT:give_item_to_character_b",
+        "E10FOUR0:print_item_name",
+        "E10FOUR0:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 188,
+      "Name": "Hand-Aid",
+      "Reasons": [
+        "E02TWSN0:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 189,
+      "Name": "Trout yogurt",
+      "Reasons": [
+        "E10FOUR0:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 190,
+      "Name": "Banana",
+      "Reasons": [
+        "Monkey Cave trade request; includes dynamic item arguments"
+      ]
+    },
+    {
+      "Id": 192,
+      "Name": "Key to the tower",
+      "Reasons": [
+        "E13SKRB:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 193,
+      "Name": "Meteorite piece",
+      "Reasons": [
+        "E08DOSEI:take_item_from_character",
+        "EBGMESS:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 196,
+      "Name": "Sound Stone",
+      "Reasons": [
+        "E01ONET0:give_item_to_character_b",
+        "E18MGKT:print_item_name",
+        "E18MGKT:take_item_from_character",
+        "EEVENT0:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 197,
+      "Name": "Exit mouse",
+      "Reasons": [
+        "E01ONET2:check_if_character_has_item",
+        "E01ONET2:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 202,
+      "Name": "Town map",
+      "Reasons": [
+        "E01ONET1:give_item_to_character_b",
+        "E02TWSN1:check_if_character_has_item"
+      ]
+    },
+    {
+      "Id": 204,
+      "Name": "Suporma",
+      "Reasons": [
+        "E02TWSN0:give_item_to_character_b",
+        "E02TWSN0:print_item_name"
+      ]
+    },
+    {
+      "Id": 205,
+      "Name": "Key to the locker",
+      "Reasons": [
+        "E06WINS:give_item_to_character_b",
+        "E06WINS:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 206,
+      "Name": "Insignificant item",
+      "Reasons": [
+        "E02TWSN2:take_item_from_character",
+        "EBGMESS:give_item_to_character_b",
+        "EBGMESS:print_item_name"
+      ]
+    },
+    {
+      "Id": 207,
+      "Name": "Magic tart",
+      "Reasons": [
+        "E11SUMS:give_item_to_character_b",
+        "E11SUMS:print_item_name"
+      ]
+    },
+    {
+      "Id": 208,
+      "Name": "Tiny ruby",
+      "Reasons": [
+        "E11SUMS:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 209,
+      "Name": "Monkey's love",
+      "Reasons": [
+        "E14MAKYO:give_item_to_character_b",
+        "E14MAKYO:print_item_name"
+      ]
+    },
+    {
+      "Id": 210,
+      "Name": "Eraser eraser",
+      "Reasons": [
+        "E06WINS:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 211,
+      "Name": "Tendakraut",
+      "Reasons": [
+        "E15GUMI:give_item_to_character_b",
+        "E15GUMI:print_item_name",
+        "E16DKFD:print_item_name",
+        "EEVENT5:take_item_from_character"
+      ]
+    },
+    {
+      "Id": 220,
+      "Name": "Saturn ribbon",
+      "Reasons": [
+        "E06WINS:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 224,
+      "Name": "Skip sandwich",
+      "Reasons": [
+        "E09DSRT:give_item_to_character_b",
+        "E09DSRT:print_item_name",
+        "Monkey Cave trade request; includes dynamic item arguments"
+      ]
+    },
+    {
+      "Id": 249,
+      "Name": "Mr. Saturn coin",
+      "Reasons": [
+        "E08DOSEI:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 252,
+      "Name": "Cup of Lifenoodles",
+      "Reasons": [
+        "E08DOSEI:give_item_to_character_b"
+      ]
+    },
+    {
+      "Id": 253,
+      "Name": "Carrot key",
+      "Reasons": [
+        "EEVENT3:check_if_character_has_item"
+      ]
+    }
+  ],
+  "Enemies": [
+    {
+      "Id": 1,
+      "Reasons": [
+        "Scripted battle 434: EGLOBAL",
+        "Scripted battle 436: EGLOBAL",
+        "Scripted battle 460: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 2,
+      "Reasons": [
+        "Scripted battle 460: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 10,
+      "Reasons": [
+        "Scripted battle 457: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 11,
+      "Reasons": [
+        "Scripted battle 438: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 15,
+      "Reasons": [
+        "Scripted battle 443: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 16,
+      "Reasons": [
+        "Scripted battle 444: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 21,
+      "Reasons": [
+        "Scripted battle 472: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 24,
+      "Reasons": [
+        "Scripted battle 435: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 26,
+      "Reasons": [
+        "Scripted battle 454: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 27,
+      "Reasons": [
+        "Scripted battle 471: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 37,
+      "Reasons": [
+        "Scripted battle 450: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 39,
+      "Reasons": [
+        "Scripted battle 465: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 40,
+      "Reasons": [
+        "Scripted battle 463: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 41,
+      "Reasons": [
+        "Scripted battle 455: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 42,
+      "Reasons": [
+        "Scripted battle 459: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 45,
+      "Reasons": [
+        "Scripted battle 437: EGLOBAL",
+        "Scripted battle 456: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 46,
+      "Reasons": [
+        "Scripted battle 469: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 49,
+      "Reasons": [
+        "Scripted battle 467: EBATTLE9, EGLOBAL"
+      ]
+    },
+    {
+      "Id": 54,
+      "Reasons": [
+        "Scripted battle 451: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 64,
+      "Reasons": [
+        "Scripted battle 431: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 67,
+      "Reasons": [
+        "Scripted battle 466: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 68,
+      "Reasons": [
+        "Scripted battle 466: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 73,
+      "Reasons": [
+        "Scripted battle 468: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 74,
+      "Reasons": [
+        "Scripted battle 466: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 83,
+      "Reasons": [
+        "Scripted battle 471: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 88,
+      "Reasons": [
+        "Scripted battle 445: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 90,
+      "Reasons": [
+        "Scripted battle 457: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 93,
+      "Reasons": [
+        "Scripted battle 456: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 95,
+      "Reasons": [
+        "Scripted battle 469: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 102,
+      "Reasons": [
+        "Scripted battle 458: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 110,
+      "Reasons": [
+        "Scripted battle 453: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 113,
+      "Reasons": [
+        "Scripted battle 447: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 116,
+      "Reasons": [
+        "Scripted battle 470: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 124,
+      "Reasons": [
+        "Scripted battle 440: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 125,
+      "Reasons": [
+        "Scripted battle 442: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 128,
+      "Reasons": [
+        "Scripted battle 464: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 129,
+      "Reasons": [
+        "Scripted battle 431: EGLOBAL",
+        "Scripted battle 433: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 130,
+      "Reasons": [
+        "Scripted battle 449: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 131,
+      "Reasons": [
+        "Scripted battle 448: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 134,
+      "Reasons": [
+        "Scripted battle 431: EGLOBAL",
+        "Scripted battle 432: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 137,
+      "Reasons": [
+        "Scripted battle 461: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 139,
+      "Reasons": [
+        "Scripted battle 446: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 140,
+      "Reasons": [
+        "Scripted battle 441: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 146,
+      "Reasons": [
+        "Scripted battle 462: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 153,
+      "Reasons": [
+        "Scripted battle 439: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 159,
+      "Reasons": [
+        "Scripted battle 436: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 209,
+      "Reasons": [
+        "Scripted battle 450: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 214,
+      "Reasons": [
+        "Scripted battle 474: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 216,
+      "Reasons": [
+        "Scripted battle 475: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 218,
+      "Reasons": [
+        "Scripted battle 475: EGLOBAL"
+      ]
+    },
+    {
+      "Id": 226,
+      "Reasons": [
+        "Scripted battle 482: EBATTLE9"
+      ]
+    },
+    {
+      "Id": 228,
+      "Reasons": [
+        "Scripted battle 452: EGLOBAL"
+      ]
+    }
+  ]
+}

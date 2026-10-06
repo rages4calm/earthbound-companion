@@ -1,0 +1,157 @@
+{
+  "format": "snes-sprite-render-live-abi-oracle-v1",
+  "Passed": true,
+  "executedCases": 870,
+  "skippedCases": 0,
+  "modes": [
+    {
+      "profile": "Original",
+      "Passed": true,
+      "executedCases": 435,
+      "renderedNonzeroReturns": 435,
+      "offscreenGuardCases": 3,
+      "mismatches": [],
+      "spriteIdentity": {
+        "sprite": 133,
+        "groupAddress": 15673685,
+        "groupOffset": 3798,
+        "groupSha256": "75030D0F309A582863420DD9109F6BEEBE5FB4513387767C5F0DD4DCE82478B6",
+        "sourceGroupSha256": "75030D0F309A582863420DD9109F6BEEBE5FB4513387767C5F0DD4DCE82478B6",
+        "pointer": 15673694,
+        "bank": 211,
+        "width": 64,
+        "height": 3,
+        "nativeSourceGeometryAndFrameFlagsEqual": true
+      },
+      "cases": 435,
+      "callMarker": "Loading script...\nRegistered memory callback from $C0FF16 to $C0FF16\nRegistered memory callback from $C0A4C4 to $C0A4C4\nRegistered memory callback from $C0A56E to $C0A56E\nRegistered memory callback from $C0FF4D to $C0FF4D\nScript loaded successfully.\nRENDER_ABI_COMPLETE 435 435 1305\n",
+      "samplesSha256": "A2F21D7DA41B90F4B98A72776945ECAF608282FB1663292D51BB9DE52923F9CE",
+      "callerSha256": "90704AF8F626EE426F8A997C313725257E52ED84FD22CFA3FF4556561B533F59",
+      "luaSha256": "6303EDBCB61A168DF90D21A2D87CFC8341415B561DE10F1010ACE5D82EE8D6A7",
+      "stackDirectPageCanaryPassed": true
+    },
+    {
+      "profile": "Redux",
+      "Passed": true,
+      "executedCases": 435,
+      "renderedNonzeroReturns": 435,
+      "offscreenGuardCases": 3,
+      "mismatches": [],
+      "spriteIdentity": {
+        "sprite": 133,
+        "groupAddress": 14570668,
+        "groupOffset": 3935,
+        "groupSha256": "A2C6C321B3E556089F80681A1B2FF8F6C814A0EA88F54309011043A6767930BF",
+        "sourceGroupSha256": "E48225632C7487AF9C1160B1743FC5D2CB4E4C1EE5D45666DB6A7C1899A12594",
+        "pointer": 14570677,
+        "bank": 227,
+        "width": 64,
+        "height": 3,
+        "nativeSourceGeometryAndFrameFlagsEqual": true
+      },
+      "cases": 435,
+      "callMarker": "Loading script...\nRegistered memory callback from $C0FF16 to $C0FF16\nRegistered memory callback from $C0A4C4 to $C0A4C4\nRegistered memory callback from $C0A56E to $C0A56E\nRegistered memory callback from $C0FF4D to $C0FF4D\nScript loaded successfully.\nRENDER_ABI_COMPLETE 435 435 1305\n",
+      "samplesSha256": "58CE2C362902EFF217F382E0065223492024689AB7F2CDB006AA2915C5954098",
+      "callerSha256": "90704AF8F626EE426F8A997C313725257E52ED84FD22CFA3FF4556561B533F59",
+      "luaSha256": "E706C5612A0F5FD44811ABFCB236BDA47EDE4C89D277023DF809DB1B4E3767FE",
+      "stackDirectPageCanaryPassed": true
+    }
+  ],
+  "SourceMapping": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "RENDER_ENTITY_SPRITE",
+      "originalSource": "overworld/render_entity_sprite.asm",
+      "address": "C0A443",
+      "byteEqualLength": 299,
+      "byteEqualSha256": "5BCF3FF88F5E16BC441A905A7CA79506DC7FE368577DA81F093AF2B1B8199999",
+      "dependencies": {
+        "IS_ENTITY_ON_SCREEN": "C0C711",
+        "PREPARE_VRAM_COPY_ROW_SAFE": "C0A56E",
+        "SPRITE_DIRECTION_MAPPING_4_DIRECTION": "C0A60B",
+        "BLANK_TILE_DATA": "C40BE8"
+      },
+      "aliases": {
+        "RENDER_ENTITY_SPRITE": "C0A443",
+        "RENDER_ENTITY_SPRITE_MOVEMENT_ENTRY_1": "C0A4B2",
+        "RENDER_ENTITY_SPRITE_MOVEMENT_ENTRY_2": "C0A4BF",
+        "RENDER_ENTITY_SPRITE_MOVEMENT_ENTRY_3": "C0A480",
+        "RENDER_ENTITY_SPRITE_ENTRY4": "C0A4C4"
+      },
+      "reduxByteEqualSha256": "5BCF3FF88F5E16BC441A905A7CA79506DC7FE368577DA81F093AF2B1B8199999"
+    },
+    {
+      "symbol": "PREPARE_VRAM_COPY_ROW_SAFE",
+      "originalSource": "system/dma/prepare_vram_copy_row_safe.asm",
+      "address": "C0A56E",
+      "byteEqualLength": 157,
+      "byteEqualSha256": "05D658FE0C942D4351E7EDC7EB6FE002207C5C585E192F362E85BC284BB939EF",
+      "dependencies": {
+        "PREPARE_VRAM_COPY_COMMON": "C08643"
+      },
+      "aliases": {
+        "PREPARE_VRAM_COPY_ROW_SAFE": "C0A56E"
+      },
+      "reduxByteEqualSha256": "05D658FE0C942D4351E7EDC7EB6FE002207C5C585E192F362E85BC284BB939EF"
+    },
+    {
+      "symbol": "PREPARE_VRAM_COPY",
+      "originalSource": "system/prepare_vram_copy.asm",
+      "address": "C08616",
+      "byteEqualLength": 69,
+      "byteEqualSha256": "2EC988CB399F6BF39F517469E81297DC5BB6CDEBC73372C438EFA43474481527",
+      "dependencies": {
+        "COPY_TO_VRAM": "00865F"
+      },
+      "aliases": {
+        "PREPARE_VRAM_COPY_COMMON": "C08643"
+      },
+      "reduxByteEqualSha256": "2EC988CB399F6BF39F517469E81297DC5BB6CDEBC73372C438EFA43474481527"
+    },
+    {
+      "symbol": "IS_ENTITY_ON_SCREEN",
+      "originalSource": "overworld/is_entity_on_screen.asm",
+      "address": "C0C711",
+      "byteEqualLength": 79,
+      "byteEqualSha256": "197117F65BAAE7EABA9146D151AC142982B725E29A9BE3A44377322D00B9BF1E",
+      "dependencies": {
+        "ENTITY_COLLISION_X_OFFSET": "C42A1F",
+        "ENTITY_COLLISION_Y_OFFSET": "C42A41"
+      },
+      "aliases": {
+        "IS_ENTITY_ON_SCREEN": "C0C711"
+      },
+      "reduxByteEqualSha256": "197117F65BAAE7EABA9146D151AC142982B725E29A9BE3A44377322D00B9BF1E"
+    }
+  ],
+  "InputIdentities": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "A8FE2226728002786D68C27DDDDF0B90A894DB52E4DFE268FDF72A68CAE5F02E",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak": "01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-rebuilt-redux.pak": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mesen-agent-v0.1.0\\mesen-agent.exe": "4143766F2B900E63663EA000655F24FD824F2CE5324C2575025F8BB68030A910",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe": "2EDB5852800B9B5627658B2D14665604EFD509CD7BF3754978074D8B3AD21E44",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe": "D2CD0D3244F3F0C24BA9E1A38F1E86569B0E50EDAD4C0D39476920232E370A9B",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_sprite_render_abi_oracle.py": "E5CD9CF4C6916829AA7C60847ED90DB28A1B6DDE0243BB0F919A4E7F150DDE31"
+  },
+  "OwnerRomUnchanged": true,
+  "Limits": [
+    "Actual complete original and pinned Redux render wrappers, visibility routine and DMA children execute in a prepared valid NPC773 sprite context with DP1000. The own caller and RAM prerequisites replace surrounding SNES gameplay only.",
+    "ME1 has a source BNE after IS_ENTITY_ON_SCREEN. In this nonzero direct-page context its PLD affects CPU flags, so even the prepared off-screen actor renders. The test does not replace that machine behavior with an invented visibility predicate; other direct-page contexts are not claimed.",
+    "The source return is the live accumulator after the final VRAM row, not an invented true/false value. Native production consumer comparison remains a separate evidence step.",
+    "Machine samples, actual group bytes, reassembled original code and owner ROMs remain private. No source bytecode or assets are embedded in this tool or public report."
+  ]
+}

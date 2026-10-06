@@ -1,0 +1,1519 @@
+{
+  "Schema": "native-direction-approach-machine-audit-v1",
+  "EvidenceComplete": true,
+  "NativeEquivalent": false,
+  "FullConversionVerified": false,
+  "FullPlaythroughVerified": false,
+  "Inputs": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+    "tools\\mesen-agent-v0.1.0\\mesen-agent.exe": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe": "2edb5852800b9b5627658b2d14665604efd509cd7bf3754978074d8b3ad21e44",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe": "d2cd0d3244f3f0c24ba9e1a38f1e86569b0e50edad4c0d39476920232e370a9b",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v6-runtime\\player.exe": "201f68cad2b4347482be618196ab3340f72facd6803be511ec0e5ed2f0c56482",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v6-runtime\\observer.exe": "8c04b958c4ebb1ce8a317f8bddb4d7c1de656900c29c339cb74806398b72adac",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v6-build\\companion\\game_lib\\libearthbound_game.a": "474904c9a4b74784bc8563eb11c006a0216ae97e9870b53b257593c273c09c9c",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\entity\\entity.c": "db10b488f8930930b45a00e36e6868a792b70ac9b8eb6255e3db6e38e964443e",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\game\\overworld_spawn.c": "17f16be9014058e45f5eb1cf30d49ee6f9be43b81fe2ba6a3252aa155d9d9075",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\initiate_enemy_encounter.asm": "2ebb4c156ee4868d6b098ddee3a1a431b8a5cfb544dc5aea957655af6a1952e6",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\include\\macros.asm": "bf93511b3c4b9f9ff9f4d3fb1b54d0e0336e486267905b17d23e355c1a10ad91",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_direction_approach_oracle.py": "de3b1f73c3f0061f711aecaeeaafacf8457823be649d2ae5b112b4b7b9eea466",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_position_arithmetic_oracle.py": "c0eee93f9b9fe1839dd2fe2ab15395b3ec05d76b09954dcf332682d94558c176"
+  },
+  "SourceProof": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "Symbol": "DIRECTION_OFFSET_TABLE",
+      "Source": "data/math/direction_offset_table.asm",
+      "SourceSha256": "f13fa3f70dac0a905aa088349c9fd1aa05e8ec4ecd5443d6b7c71c4f8a366b17",
+      "Address": "C41FC5",
+      "CompleteUnmaskedUniqueByteEqualLength": 26,
+      "CompleteBodySha256": "2569770a8204d48a1cf334017657352915a2f5529ed2251283554954d2065019",
+      "PinnedReduxBodyByteIdentical": true,
+      "EntryIndexWidthExplicitly16": true
+    },
+    {
+      "Symbol": "ATAN2_LOOKUP_TABLE",
+      "Source": "data/math/atan2_lookup_table.asm",
+      "SourceSha256": "77c28dd54e5daded4a3ce767a3515087fb07f7927854b53f7f4a8f78e52a31fc",
+      "Address": "C41FDF",
+      "CompleteUnmaskedUniqueByteEqualLength": 32,
+      "CompleteBodySha256": "dcf36441ec36c76090a72ae916219a006aa8d972922856fbd97762091543891a",
+      "PinnedReduxBodyByteIdentical": true,
+      "EntryIndexWidthExplicitly16": true
+    },
+    {
+      "Symbol": "DIVISION16S",
+      "Source": "system/math/division16s.asm",
+      "SourceSha256": "28e59c515403ac97f6d154f6ab40cb30d15983cf9226ad3ee20dcedc806d165f",
+      "Address": "C0914B",
+      "CompleteUnmaskedUniqueByteEqualLength": 49,
+      "CompleteBodySha256": "396f73ba064716000a45cb2faeac1c15975970c290281387c519ad33f9843044",
+      "PinnedReduxBodyByteIdentical": true,
+      "EntryIndexWidthExplicitly16": true
+    },
+    {
+      "Symbol": "CALCULATE_DIRECTION_FROM_POSITIONS",
+      "Source": "misc/calculate_direction_from_positions.asm",
+      "SourceSha256": "8795170bcc742d677d41989507ecd9da0f611def0a98f38137d659343ee489c4",
+      "Address": "C41EFF",
+      "CompleteUnmaskedUniqueByteEqualLength": 198,
+      "CompleteBodySha256": "de634838b3158caccbb10a270c497109c1aeac077daaae94f66a240619a43fe2",
+      "PinnedReduxBodyByteIdentical": true,
+      "EntryIndexWidthExplicitly16": true
+    }
+  ],
+  "Cases": 115200,
+  "CaseGroups": {
+    "ordinary-local-pixel-vectors": 16641,
+    "source-ratio-bin-boundaries": 98316,
+    "synthetic-wrapped-coordinate-boundaries": 243
+  },
+  "ProductionEvidence": {
+    "ExecutableSha256": "642c1d781ff1a2af0a6a542a22470d879048e6cb43da6704932cc3bc7920e972",
+    "DriverSourceSha256": "5603f35ffc7c0f4cb1927cb12c2be2a1cd5ae4cadc442a2970b4cb94cff99d3b",
+    "ProductionLibrarySha256": "474904c9a4b74784bc8563eb11c006a0216ae97e9870b53b257593c273c09c9c",
+    "UntouchedProductionLibraryLinked": true,
+    "PrivateCorrectedCallbackReplacement": null,
+    "ReadOnlyPrePostCallbackWrapper": false,
+    "SamePlatformMainAndGameLoop": true,
+    "SharedSourceEditedByBuilder": false,
+    "SharedBuildEdited": false,
+    "Builder": {
+      "path": "tools/party_follow_private_build.py",
+      "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+    }
+  },
+  "Modes": [
+    {
+      "Mode": "original",
+      "Cases": 115200,
+      "FineMismatchCount": 113499,
+      "EightWayMismatchCount": 22808,
+      "EightWayMismatchGroups": {
+        "ordinary-local-pixel-vectors": 947,
+        "source-ratio-bin-boundaries": 21774,
+        "synthetic-wrapped-coordinate-boundaries": 87
+      },
+      "FirstEightWayMismatches": [
+        {
+          "Index": 39,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            998
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53177,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 40,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            999
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53037,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 41,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52895,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 42,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52751,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 92,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1051
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44988,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 93,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1052
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44851,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 94,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1053
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44715,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 95,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1054
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44580,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 168,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            998
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53235,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 169,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            999
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53093,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 170,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52949,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 171,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52804,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 221,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1051
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44929,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 222,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1052
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44790,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 223,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1053
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44653,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 298,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            999
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53150,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 299,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53005,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 300,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52858,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 349,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1050
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 45011,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 350,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1051
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44869,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 351,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1052
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44728,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 352,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1053
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44589,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 427,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            999
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53209,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 428,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53062,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 429,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52913,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 430,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1002
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52763,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 478,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1050
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44950,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 479,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1051
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44806,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 480,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1052
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44664,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 557,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            964,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53121,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 558,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            964,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52971,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 559,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            964,
+            1002
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52818,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        }
+      ],
+      "FirstFineMismatches": [
+        {
+          "Index": 2,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            961
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 57262,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 3,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            962
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 57179,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 4,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            963
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 57094,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 5,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            964
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 57008,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 6,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            965
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 56921,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 7,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            966
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 56832,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 8,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            967
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56742,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 9,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            968
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56650,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 10,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            969
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56557,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 11,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            970
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56463,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 12,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            971
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56367,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 13,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            972
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56269,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 14,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            973
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56170,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 15,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            974
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56070,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 16,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            975
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 55968,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 17,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            976
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 55864,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        }
+      ],
+      "MachineEvidence": {
+        "Calls": 115200,
+        "FineAndActualDivisionCallsEach": 115200,
+        "ActualUntouchedRomBodyExecuted": true,
+        "StackDirectPageProtectedRamPassed": true,
+        "OrderedCompleteCorpusVerified": true,
+        "CallerSha256": "a8846ced07958f9feb798f09b8fe80cbc071f627b9a103496de10f14fe6f217e",
+        "LuaSha256": "d6a692fe2fe431d7e582f602fdcdd9fbe6d1bb12bc322f9b6e3a72acf289ae8d",
+        "SamplesSha256": "3f880767961b392e6ee53f197445da740e8eb9ed50aa5e5d0d9138443d374d36"
+      }
+    },
+    {
+      "Mode": "redux",
+      "Cases": 115200,
+      "FineMismatchCount": 113499,
+      "EightWayMismatchCount": 22808,
+      "EightWayMismatchGroups": {
+        "ordinary-local-pixel-vectors": 947,
+        "source-ratio-bin-boundaries": 21774,
+        "synthetic-wrapped-coordinate-boundaries": 87
+      },
+      "FirstEightWayMismatches": [
+        {
+          "Index": 39,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            998
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53177,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 40,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            999
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53037,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 41,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52895,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 42,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52751,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 92,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1051
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44988,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 93,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1052
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44851,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 94,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1053
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44715,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 95,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            1054
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44580,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 168,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            998
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53235,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 169,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            999
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53093,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 170,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52949,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 171,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52804,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 221,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1051
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44929,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 222,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1052
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44790,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 223,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            961,
+            1053
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44653,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 298,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            999
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53150,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 299,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53005,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 300,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52858,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 349,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1050
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 45011,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 350,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1051
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44869,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 351,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1052
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44728,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 352,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            962,
+            1053
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44589,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 427,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            999
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53209,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 428,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53062,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 429,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52913,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 430,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1002
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52763,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 478,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1050
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44950,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 479,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1051
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44806,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 480,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            963,
+            1052
+          ],
+          "ActualCpuFine": 45056,
+          "ProductionFine": 44664,
+          "ActualCpuEightWay": 6,
+          "ProductionEightWay": 5
+        },
+        {
+          "Index": 557,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            964,
+            1000
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 53121,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 558,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            964,
+            1001
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52971,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        },
+        {
+          "Index": 559,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            964,
+            1002
+          ],
+          "ActualCpuFine": 53248,
+          "ProductionFine": 52818,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 6
+        }
+      ],
+      "FirstFineMismatches": [
+        {
+          "Index": 2,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            961
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 57262,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 3,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            962
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 57179,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 4,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            963
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 57094,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 5,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            964
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 57008,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 6,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            965
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 56921,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 7,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            966
+          ],
+          "ActualCpuFine": 57344,
+          "ProductionFine": 56832,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 8,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            967
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56742,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 9,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            968
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56650,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 10,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            969
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56557,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 11,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            970
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56463,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 12,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            971
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56367,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 13,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            972
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56269,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 14,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            973
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56170,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 15,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            974
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 56070,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 16,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            975
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 55968,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        },
+        {
+          "Index": 17,
+          "Group": "ordinary-local-pixel-vectors",
+          "Positions": [
+            1024,
+            1024,
+            960,
+            976
+          ],
+          "ActualCpuFine": 56320,
+          "ProductionFine": 55864,
+          "ActualCpuEightWay": 7,
+          "ProductionEightWay": 7
+        }
+      ],
+      "MachineEvidence": {
+        "Calls": 115200,
+        "FineAndActualDivisionCallsEach": 115200,
+        "ActualUntouchedRomBodyExecuted": true,
+        "StackDirectPageProtectedRamPassed": true,
+        "OrderedCompleteCorpusVerified": true,
+        "CallerSha256": "a8846ced07958f9feb798f09b8fe80cbc071f627b9a103496de10f14fe6f217e",
+        "LuaSha256": "0a88e90fa84ace7fc5ecc6e554f0c4000b2e52ca96b02cff8fada8fbb5c6e80a",
+        "SamplesSha256": "3f880767961b392e6ee53f197445da740e8eb9ed50aa5e5d0d9138443d374d36"
+      }
+    }
+  ],
+  "BothModesActualMachineResultsIdentical": true,
+  "NativeSourceEdited": false,
+  "SharedBuildEdited": false,
+  "OwnerSavesTouched": false,
+  "Reachability": "Ordinary pixel vectors use legal positive local map coordinates; synthetic 16-bit boundaries are separately labeled. This is function-level input reachability, not a recorded real contact route.",
+  "Downstream": "initiate_enemy_encounter in both source and native consumes the tested eight-way enemy-to-target direction for facing/initiative. Fine helpers also serve scripted facing/pursuit. Full swirl/combat/AI outcomes are not exercised here.",
+  "Limitations": [
+    "Exact helper/direction quantization only; no complete encounter pipeline comparison.",
+    "No natural collision trajectory or real map contact geometry asserted by this prepared input corpus.",
+    "No claim that these differences caused owner hotel/stairs blockers."
+  ],
+  "ReproductionFlags": {
+    "rom": "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc",
+    "redux_rom": "_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc",
+    "oracle": "tools\\mesen-agent-v0.1.0\\mesen-agent.exe",
+    "ca65": "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe",
+    "ld65": "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe",
+    "native_source": "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source",
+    "build": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v6-build\\companion",
+    "runtime": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v6-runtime",
+    "scratch": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\direction-approach-dev17-red1",
+    "output": "research\\native-direction-approach-dev17-red.json"
+  }
+}

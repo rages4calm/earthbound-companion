@@ -1,0 +1,60 @@
+{
+  "Passed": true,
+  "NativeBaseCommit": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "TampSubmoduleCommit": "32034abf367d6bf2ee7a25cce8f64482cb955a65",
+  "FullPublishedPatchSha256": "ec4c42e6cbe54bc7c8ff6e25bf53afaea97f09bb5536fc5db6f09ab80c84cd60",
+  "FreshBaseArchiveAndSubmodule": true,
+  "FullCleanNativeCompilation": true,
+  "RomNeededForCompilation": false,
+  "LibrarySha256": "578eab7d6e2c356d529dbab90dea2beea8f0c1daf7d77f0dc09d8860245df31a",
+  "ExecutableSha256": "c47dc50d94d16b30d94541c4b86b35a8ebfeffb175d1cbcfad4726a109b3e956",
+  "Checks": [
+    {
+      "Mode": "original",
+      "Test": "savestate",
+      "Passed": true
+    },
+    {
+      "Mode": "original",
+      "Test": "keyitems",
+      "Passed": true
+    },
+    {
+      "Mode": "original",
+      "Test": "encounters",
+      "Passed": true
+    },
+    {
+      "Mode": "original",
+      "Test": "screen-transitions",
+      "Passed": true
+    },
+    {
+      "Mode": "redux",
+      "Test": "savestate",
+      "Passed": true
+    },
+    {
+      "Mode": "redux",
+      "Test": "keyitems",
+      "Passed": true
+    },
+    {
+      "Mode": "redux",
+      "Test": "encounters",
+      "Passed": true
+    },
+    {
+      "Mode": "redux",
+      "Test": "screen-transitions",
+      "Passed": true
+    }
+  ],
+  "OwnerSavesTouched": false,
+  "SharedBuildEdited": false,
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Source is a clean commit archive plus the exact published patch and pinned submodule. Runtime-only checks use immutable local packs. Fresh archive version stamping/path metadata differ from the packaged checkout; this build does not replace the tested player binary.",
+    "No complete public-machine dependency provisioner or full story parity is claimed."
+  ]
+}

@@ -3,7 +3,8 @@ using System.Text.Json;
 
 namespace EarthBoundCompanion;
 
-internal sealed record ProgressionPolicy(string ContentId,string DisplayName,string BaseHash,int[] ProtectedItems,int[] ProtectedEnemies,int SaveStateVersion,uint SaveStateCrcPolynomial) {
+internal sealed record ProgressionPolicy(string ContentId,string DisplayName,string BaseHash,int[] ProtectedItems,int[] ProtectedEnemies,int SaveStateVersion,uint SaveStateCrcPolynomial,string[]? CompatibleBaseHashes=null) {
+ internal IEnumerable<string> BaseHashes=>new[]{BaseHash}.Concat(CompatibleBaseHashes??Array.Empty<string>());
  internal HashSet<int> Items=>ProtectedItems.ToHashSet();
  internal HashSet<int> Enemies=>ProtectedEnemies.ToHashSet();
 }
@@ -26,15 +27,16 @@ static class ProgressionGuard {
   foreach(string name in names) {
    using var stream=typeof(ProgressionGuard).Assembly.GetManifestResourceStream(name)??throw new InvalidDataException("Cannot read progression policy: "+name);
    var policy=JsonSerializer.Deserialize<ProgressionPolicy>(stream)??throw new InvalidDataException("Empty progression protection registry: "+name);
-   if(string.IsNullOrWhiteSpace(policy.ContentId)||string.IsNullOrWhiteSpace(policy.DisplayName)||policy.BaseHash.Length!=64||!policy.BaseHash.All(Uri.IsHexDigit))throw new InvalidDataException("Invalid progression profile: "+name);
+   if(string.IsNullOrWhiteSpace(policy.ContentId)||string.IsNullOrWhiteSpace(policy.DisplayName)||policy.BaseHashes.Any(h=>h==null||h.Length!=64||!h.All(Uri.IsHexDigit)))throw new InvalidDataException("Invalid progression profile: "+name);
    policies.Add(policy);
   }
-  if(policies.Select(p=>p.ContentId).Distinct(StringComparer.Ordinal).Count()!=policies.Count||policies.Select(p=>p.BaseHash).Distinct(StringComparer.OrdinalIgnoreCase).Count()!=policies.Count)throw new InvalidDataException("Duplicate progression profile identity or asset hash.");
+  var hashes=policies.SelectMany(p=>p.BaseHashes).ToArray();
+  if(policies.Select(p=>p.ContentId).Distinct(StringComparer.Ordinal).Count()!=policies.Count||hashes.Distinct(StringComparer.OrdinalIgnoreCase).Count()!=hashes.Length)throw new InvalidDataException("Duplicate progression profile identity or asset hash.");
   return policies.ToArray();
  }
  internal static ProgressionPolicy CheckBase(byte[] original) {
   StoryShuffle.ValidatePack(original);
-  string hash=StoryShuffle.Hash(original);var policy=Policies.SingleOrDefault(p=>p.BaseHash.Equals(hash,StringComparison.OrdinalIgnoreCase));
+  string hash=StoryShuffle.Hash(original);var policy=Policies.SingleOrDefault(p=>p.BaseHashes.Contains(hash,StringComparer.OrdinalIgnoreCase));
   return policy??throw new InvalidDataException("Story Shuffle does not yet have a progression audit for this content pack. The pack remains playable, but randomization stays locked until its protected items, scripted battles and table layout pass the content-specific audit.");
  }
  internal static object Report(byte[] original) {var policy=CheckBase(original);return new {

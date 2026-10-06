@@ -1,0 +1,79 @@
+{
+  "format": "snes-rand-mod-micro-oracle-v1",
+  "Passed": true,
+  "ExecutedCalls": 5888,
+  "SkippedCalls": 0,
+  "MismatchCount": 0,
+  "FirstMismatches": [],
+  "WrappedZeroDivisorCases": 256,
+  "SourceMapping": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "RAND",
+      "address": "C08E9A",
+      "abi": "far",
+      "originalSource": "system/math/rand.asm",
+      "byteEqualLength": 56,
+      "byteEqualSha256": "ec916a40ca91cf8b5a673271b61b8e030a5fe699319cf8ab3fd35d660a561e45"
+    },
+    {
+      "symbol": "DIVISION16S",
+      "address": "C0914B",
+      "originalSource": "system/math/division16s.asm",
+      "byteEqualLength": 49,
+      "byteEqualSha256": "396f73ba064716000a45cb2faeac1c15975970c290281387c519ad33f9843044"
+    },
+    {
+      "symbol": "DIVISION16S_DIVISOR_POSITIVE",
+      "address": "C0915B",
+      "identifiedWithinByteEqualRoutine": "DIVISION16S",
+      "offset": 16
+    },
+    {
+      "symbol": "MODULUS16",
+      "address": "C09231",
+      "originalSource": "system/math/modulus16.asm",
+      "byteEqualLength": 6,
+      "byteEqualSha256": "8c8f8102d0f9ba1d52f38267f5b75b100e85dc954ac3fbd98eb0aca83b82bdd0"
+    },
+    {
+      "symbol": "RAND_MOD",
+      "address": "C45F7B",
+      "originalSource": "system/math/rand_mod.asm",
+      "byteEqualLength": 27,
+      "byteEqualSha256": "38eafd7fd3e3b6656ca151d9766d538c4e1ceef9a4fb02afd7397e04c0f563da"
+    }
+  ],
+  "InputIdentities": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "tools\\mesen-agent-v0.1.0\\mesen-agent.exe": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe": "2edb5852800b9b5627658b2d14665604efd509cd7bf3754978074d8b3ad21e44",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe": "d2cd0d3244f3f0c24ba9e1a38f1e86569b0e50edad4c0d39476920232e370a9b",
+    "research\\native-rng-generator-dev15-final.json": "60d88d835ed5c6cfd0d7a01a43c018a63b8f5cef9544490991fac76b17d89cd0",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_rand_mod_oracle.py": "b2db90a547ea531d67003ee0c0109e715508bf5c046af67f1f97a75b1c8c195b",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_position_arithmetic_oracle.py": "c0eee93f9b9fe1839dd2fe2ab15395b3ec05d76b09954dcf332682d94558c176"
+  },
+  "StackDirectPageProtectedRamPassed": true,
+  "CompleteCallCountsAndOrderPassed": true,
+  "SamplesSha256": "aa21653694ec01c53005d5f12393dea9412721cbb1837e11a3a7500fa24fd9c1",
+  "CallerSha256": "93ccfece65b1cecba38c2c85984f83e1327ac98fc67c1653b5602c21dac833fd",
+  "LuaSha256": "8ec669591fe05532227644da7f2a691fd2d811f73f7ec573378b24585ff32f93",
+  "OwnerRomUnchanged": true,
+  "Limits": [
+    "Actual original RAND_MOD/RAND/division execution in prepared CPU contexts; not full consumer or story call ordering.",
+    "The inclusive-maximum65535 source wraps divisor to zero and returns the original byte; the widened native expression preserves that result."
+  ]
+}

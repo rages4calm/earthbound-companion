@@ -1,0 +1,336 @@
+{
+  "Passed": false,
+  "Format": "timed-item-file-continue-qa-v1",
+  "Inputs": {
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\timed_item_lifecycle_qa.py": "e4dc58699b3eb3a271345e234e9c24dc5f78119c4a98159e7e92de3721f5f4a9",
+    "_BuildScratch\\interpreter-gap-dev16-fresh-original.pak": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+    "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.15\\Profiles\\maternalbound-redux-897d0083\\assets.pak": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+    "native-source\\src\\intro\\file_select.c": "abae99bb1bade7de73614e098ba04194b148b62a536a6d3040891faff22c97b5",
+    "native-source\\src\\game\\inventory.c": "7d612672b1af0dbceb7cff8690796520c82c8c50d2cc4947a76cb18f1c0bc160",
+    "native-source\\src\\game\\overworld.c": "9c7e6fbe3ee09965a4b8a41fba74c0594f6290585f736d653ec8a4df45385fd6",
+    "native-source\\asm\\intro\\file_select_menu_loop.asm": "9f62c191784e74272bf65c6ac0ce3ff7c5fba8f33a7a0918fb752ff87f7752fa",
+    "native-source\\asm\\data\\timed_item_transformation_table.asm": "e0ea7b78c08932137c530a8812948a1cdc02147eae1c3f563bbeadb71367247f",
+    "native-source\\asm\\overworld\\process_item_transformations.asm": "a3079716b587074cdd4ff2a043427facbd3c5b060099fa01fdf82f3c8427b5bf"
+  },
+  "Build": {
+    "ExecutableSha256": "3d3cc84ab7caeeb3c1c2cf9de07d2b9bce302babce7896d0a2a64e91995d2968",
+    "DriverSourceSha256": "e1e07a3336c21feb50252d6be5b4b9bd04e1a67011e25c9fc92e510ee8738bb9",
+    "ProductionLibrarySha256": "474904c9a4b74784bc8563eb11c006a0216ae97e9870b53b257593c273c09c9c",
+    "UntouchedProductionLibraryLinked": true,
+    "PrivateCorrectedCallbackReplacement": null,
+    "ReadOnlyPrePostCallbackWrapper": false,
+    "SamePlatformMainAndGameLoop": true,
+    "SharedSourceEditedByBuilder": false,
+    "SharedBuildEdited": false,
+    "Builder": {
+      "path": "tools/party_follow_private_build.py",
+      "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+    }
+  },
+  "Modes": [
+    {
+      "Mode": "original",
+      "Passed": false,
+      "SourceTable": [
+        92,
+        0,
+        0,
+        168,
+        50,
+        168,
+        101,
+        2,
+        169,
+        44,
+        169,
+        104,
+        15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "States": [
+        {
+          "tag": "given",
+          "item": 92,
+          "active": 1,
+          "check": 60,
+          "slots": [
+            0,
+            0,
+            1,
+            50,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tag": "continued",
+          "item": 92,
+          "active": 0,
+          "check": 0,
+          "slots": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tag": "final",
+          "item": 92,
+          "active": 0,
+          "check": 0,
+          "slots": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "Mismatches": [
+        {
+          "Field": "itemSequence",
+          "Expected": [
+            92,
+            92,
+            168,
+            169,
+            169
+          ],
+          "Actual": [
+            92,
+            92,
+            92
+          ]
+        },
+        {
+          "Field": "fileContinueTimer",
+          "Expected": {
+            "active": 1,
+            "eggCountdown": 50
+          },
+          "Actual": {
+            "tag": "continued",
+            "item": 92,
+            "active": 0,
+            "check": 0,
+            "slots": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Mode": "redux",
+      "Passed": false,
+      "SourceTable": [
+        92,
+        0,
+        0,
+        168,
+        50,
+        168,
+        101,
+        2,
+        169,
+        44,
+        169,
+        104,
+        15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "States": [
+        {
+          "tag": "given",
+          "item": 92,
+          "active": 1,
+          "check": 60,
+          "slots": [
+            0,
+            0,
+            1,
+            50,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tag": "continued",
+          "item": 92,
+          "active": 0,
+          "check": 0,
+          "slots": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "tag": "final",
+          "item": 92,
+          "active": 0,
+          "check": 16,
+          "slots": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "Mismatches": [
+        {
+          "Field": "itemSequence",
+          "Expected": [
+            92,
+            92,
+            168,
+            169,
+            169
+          ],
+          "Actual": [
+            92,
+            92,
+            92
+          ]
+        },
+        {
+          "Field": "fileContinueTimer",
+          "Expected": {
+            "active": 1,
+            "eggCountdown": 50
+          },
+          "Actual": {
+            "tag": "continued",
+            "item": 92,
+            "active": 0,
+            "check": 0,
+            "slots": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "OwnerSavesTouched": false,
+  "SharedBuildEdited": false,
+  "FullPlaythroughVerified": false,
+  "PreparedMenuOutcome": true,
+  "SourceRequirement": "FILE_SELECT_MENU_LOOP @FINALIZE_AND_START closes all windows then calls INIT_ALL_ITEM_TRANSFORMATIONS before starting the overworld.",
+  "Limits": [
+    "File-menu selected Continue outcome is prepared; actual native load_game, finalization, initialize_overworld_state and 6000 production party-leader callbacks execute. Full title/menu input, phone conversation, game-over and exact timing/audio parity are excluded."
+  ]
+}

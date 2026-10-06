@@ -1,0 +1,65 @@
+{
+  "format": "runtime-source-constants-header-qa-v1",
+  "Passed": true,
+  "sourceComparisons": {
+    "ITEM": {
+      "sourceIDsCompared": 254,
+      "existingHeaderIDsCompared": 254,
+      "existingIDMismatches": 0,
+      "additionalSourceDefinedIDs": {}
+    },
+    "MUSIC": {
+      "sourceIDsCompared": 192,
+      "existingHeaderIDsCompared": 191,
+      "existingIDMismatches": 0,
+      "additionalSourceDefinedIDs": {
+        "MUSIC_GIYGAS_WEAKENED": 191
+      }
+    }
+  },
+  "generatedHeaderSha256": {
+    "items_generated.h": "2a3e89957ca6d11ab01e80991d1bf2f2793de6588bc97b2e0ac2c243840e86df",
+    "music_generated.h": "3e69e97445ac8f53cd38b39e4afb0c557df58687671b5b889ef04159518a09f8"
+  },
+  "compiledConsumerNumericStaticAssertions": 446,
+  "compiledConsumerDiagnosticNameComparisons": 446,
+  "consumerOutput": "254 item and192 music constants/name-array consumers: PASS",
+  "identicalRegenerationPreservedBytesAndMtimes": true,
+  "bothLegacyCp1252GeneratedHeadersSafelyReplaced": true,
+  "malformedInputNegativeControls": [
+    {
+      "case": "duplicate-item-symbol",
+      "rejectedBeforeAnyHeaderOutput": true
+    },
+    {
+      "case": "duplicate-item-value",
+      "rejectedBeforeAnyHeaderOutput": true
+    },
+    {
+      "case": "missing-music-entry",
+      "rejectedBeforeAnyHeaderOutput": true
+    },
+    {
+      "case": "unterminated-music-enum",
+      "rejectedBeforeAnyHeaderOutput": true
+    }
+  ],
+  "inputs": {
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\tools\\generate_constants_headers.py": "974f4488bceb2db279b46aab459b1dc7351e692018dde6113ac20ec446776e59",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\include\\constants\\items.asm": "a2129bd2a072fb98c7f1b8929425320a2703203bd1a62111ca11564ecdd36a53",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\include\\constants\\music.asm": "fbe3a94000d0dd9fbd0e944b07be58245689fdd783183447f88049ffec4db73e",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v8-build\\companion\\game_lib\\generated\\items_generated.h": "20940a3ee74dbed1229dab0e24b960b356708c9e2c1a01f5ed8d97bd4a122ab5",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v8-build\\companion\\game_lib\\generated\\music_generated.h": "4e4e30e9b06be555ecb0b25d83de6257af5b29b5c1b7aa0229f340ba7d6e4fd8",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\gcc.exe": "206f9fc067234f48ae077550658dae06bd75d99110c1b3166887b7090cbd7fa0"
+  },
+  "runnerSha256": "c065daf08b41a47fb8c869f5ecd4b0214d38b384bbe4d20b41cee875f8f3852d",
+  "ROMOrExtractedGameJsonRead": false,
+  "gameDataRecordsWritten": false,
+  "sharedBuildModified": false,
+  "limits": [
+    "Source-defined numeric constants and diagnostics are checked; no gameplay or full story is run.",
+    "All254 existing Item and191 historical Music IDs match; source-defined MUSIC_GIYGAS_WEAKENED191 expands diagnostics to192 entries.",
+    "Diagnostic strings are source symbols, not extracted in-game text. Runtime packs still provide actual records.",
+    "The separate clean-build report records actual CMake/gen_struct_info/whole native executable compilation."
+  ]
+}

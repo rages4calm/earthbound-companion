@@ -1,0 +1,6805 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev19-selected-special-shop-entries",
+  "privateBuild": {
+    "driverSourceSha256": "68a2a3d09227d47859a5cc1bbf5eb00d3b44f6067d759cb0689ce7eba04c1276",
+    "executableSha256": "18ea712674c4f79ae569a3254f3807f97ff9dbd34849ef69eca5f150c0a0baf4",
+    "productionExecutableSha256": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "productionLibrarySha256": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "runtimeSha256": {
+    "player.exe": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "observer.exe": "290094e1eb7135218fbe5d8403436c058eef672215f34e578ea3f48e5b12bcd6"
+  },
+  "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "nativeBaseRevision": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "originalPack": true,
+  "executedSourceSnapshot": "_BuildScratch\\audit-dev16-v9-source",
+  "executedSourceReferences": [
+    {
+      "path": "src/game/display_text.c",
+      "sha256": "7a11de0b21c1984b53859d11bb1bea0784a87b9a0fad53610cbd42fe1ba2eb72"
+    },
+    {
+      "path": "src/game/display_text_cc.c",
+      "sha256": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7"
+    },
+    {
+      "path": "src/game/display_text_menus.c",
+      "sha256": "02eaa3abaa822d518a913ae72443af8c5c79f4ac942deaee5955a83625acb2bf"
+    },
+    {
+      "path": "src/game/inventory.c",
+      "sha256": "3c33e02581db4a684ae72926a0ea283c7ca5161ff918926e7dfac98075306cbe"
+    },
+    {
+      "path": "src/game/audio.c",
+      "sha256": "9b9a9b4811bff9c7d97e0ec269136cf42773de0c932b11ba65eb96d0949398df"
+    },
+    {
+      "path": "src/game/window.c",
+      "sha256": "227fdc7e7959bdbcc1d5267e817b21433f3daf4e9b0130c165fa820abb358f6b"
+    },
+    {
+      "path": "src/game/text.c",
+      "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+    },
+    {
+      "path": "src/core/mode_stack.h",
+      "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+    }
+  ],
+  "pinnedSource": [
+    {
+      "path": "ccscript/shops/ShopMain.ccs",
+      "sha256": "e0da0a89621bedd8a63757093bc79e141057e8096cf405bca8b73935b92b0f45"
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "sha256": "743ce4f6cd1bb175b7f649d1b10ddf8ef22ef9bf55537eb4e3d41d1aff18b664"
+    },
+    {
+      "path": "ccscript/shops/shops_fourside.ccs",
+      "sha256": "c2e0f1aef07483104d05d4d8a0914ddad5b8aadc1c4c0b51734efc97fe55fdc5"
+    },
+    {
+      "path": "ccscript/expansion/expand_shops.ccs",
+      "sha256": "e99e3c75d789d3c9d074d39a079108ce5f02c7a3f91625fa47da1cc15cdbad78"
+    },
+    {
+      "path": "ccscript/main.ccs",
+      "sha256": "eed62cec9d49b138534418f39c9929a4c4ad6e573171b45708180dc3e63a97a3"
+    },
+    {
+      "path": "ccscript/shops/bulk_buy_vanilla.ccs",
+      "sha256": "78ac333f9b8ffb5e1a970207f74de44008196a564f51d2b762f2242d4738ca25"
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "sha256": "475284396f845f0f1b86bd24d3ef818b9d64bd799260d4c845cc9d7c7dfe683d"
+    },
+    {
+      "path": "ccscript/definitions/flags.ccs",
+      "sha256": "b47e0dadc6e23c5fb4daf91f4eb94e99f40d0e660e28acf352e5e4e71b51bb4c"
+    },
+    {
+      "path": "ccscript/shops/shops_scarabia.ccs",
+      "sha256": "45644eb78ca4ea7a2333f766bbc5e45b2fae39cc73e419680b49f87293852d33"
+    },
+    {
+      "path": "ccscript/shops/shops_twoson.ccs",
+      "sha256": "280ade84221ee9bf551fcc78f22031f6f82a4cfaf11f6dd16a35c1b6a6023ec3"
+    },
+    {
+      "path": "ccscript/redux/tools.ccs",
+      "sha256": "adc7edbb4c7f0d9e36ca5903d67635527768a8d825d52bc4d143f0ee08178314"
+    }
+  ],
+  "cases": [
+    {
+      "fixture": {
+        "sourceEntry": "C5D539",
+        "entry": 1492595,
+        "money": 80000,
+        "shop": 51,
+        "stock": [
+          32,
+          43,
+          146,
+          133,
+          246,
+          242,
+          129
+        ],
+        "sound": 120,
+        "id": "Original-Bazooka-single",
+        "freeSlots": 14,
+        "plan": [
+          0,
+          3,
+          1
+        ],
+        "expectedItem": 133,
+        "expectedCount": 1,
+        "expectedDelta": -950,
+        "soundCount": 1,
+        "expectedToolFlags": {
+          "bazookaOwned": 0,
+          "brokenIronPurchased": 0
+        }
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 3,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 32,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 43,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 146,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 133,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 246,
+                "x": 0,
+                "y": 4
+              },
+              {
+                "id": 242,
+                "x": 0,
+                "y": 5
+              },
+              {
+                "id": 129,
+                "x": 0,
+                "y": 6
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 133
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 133
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 931,
+            "menus": 3,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 3,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 79050,
+            "depth": 1,
+            "working": 2,
+            "argument": 1,
+            "inventory": [
+              [
+                133,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        3,
+        3,
+        3,
+        7,
+        7,
+        120,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "4f22dd94a2623380827525813a1cca0ede8625af3f055da209873298a0ef8fa4",
+      "eventStreamSha256": "e5073a3e396d6737cf0680ff9b54537d0a3b501d2c6dd9375dfebe0e8d9c1084",
+      "traceStreamSha256": "a690ec47a0171c19855ee4ad81b32d5100cbcb65ec79d85c3447d06e8b3d9c31",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "sourceEntry": "C5D539",
+        "entry": 1492595,
+        "money": 949,
+        "shop": 51,
+        "stock": [
+          32,
+          43,
+          146,
+          133,
+          246,
+          242,
+          129
+        ],
+        "sound": 120,
+        "id": "Original-Bazooka-insufficient",
+        "freeSlots": 14,
+        "plan": [
+          0,
+          3,
+          1
+        ],
+        "expectedItem": 133,
+        "expectedCount": 0,
+        "expectedDelta": 0,
+        "soundCount": 0,
+        "expectedToolFlags": {
+          "bazookaOwned": 0,
+          "brokenIronPurchased": 0
+        }
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 949,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 3,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 32,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 43,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 146,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 133,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 246,
+                "x": 0,
+                "y": 4
+              },
+              {
+                "id": 242,
+                "x": 0,
+                "y": 5
+              },
+              {
+                "id": 129,
+                "x": 0,
+                "y": 6
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 133
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 133
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1253,
+            "menus": 3,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 3,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 949,
+            "depth": 1,
+            "working": 2,
+            "argument": 950,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        3,
+        3,
+        3,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "fbb7ad49797eaa9fa8d2bbb2e7c0f79a0c5fe240200cbc447f66af9bc5b5e1e8",
+      "eventStreamSha256": "6188cb59ab780c125c06f1bffc253a65eb212201f883c644519ebe9ded58edda",
+      "traceStreamSha256": "8b2ba899205d6a8d317f23439fc89f4e90c78f675fffdede2798f12dcdb97ade",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "sourceEntry": "C5D539",
+        "entry": 1492595,
+        "money": 80000,
+        "shop": 51,
+        "stock": [
+          32,
+          43,
+          146,
+          133,
+          246,
+          242,
+          129
+        ],
+        "sound": 120,
+        "id": "Original-Bazooka-all-bags-full",
+        "freeSlots": 0,
+        "plan": [
+          0,
+          3,
+          1
+        ],
+        "expectedItem": 133,
+        "expectedCount": 0,
+        "expectedDelta": 0,
+        "soundCount": 0,
+        "expectedToolFlags": {
+          "bazookaOwned": 0,
+          "brokenIronPurchased": 0
+        }
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 3,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 32,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 43,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 146,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 133,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 246,
+                "x": 0,
+                "y": 4
+              },
+              {
+                "id": 242,
+                "x": 0,
+                "y": 5
+              },
+              {
+                "id": 129,
+                "x": 0,
+                "y": 6
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 133
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 133
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1163,
+            "menus": 3,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 3,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 2,
+            "argument": 0,
+            "inventory": [
+              [
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        3,
+        3,
+        3,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "84ca2fe7d3ac38dd608be18f75e5ec0cd0e0594fc7ac4d9924e8b55f9a7db764",
+      "eventStreamSha256": "b04a316fedb794a282a27adbd3a26f452bd3990cdacf5518a11061446b00c412",
+      "traceStreamSha256": "0e4351a4088b2b5bbb1a9efefcc25aa00c134e380acb9aa017e0b1d85be32239",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "sourceEntry": "C5D2ED",
+        "entry": 1492007,
+        "money": 80000,
+        "shop": 15,
+        "stock": [
+          190
+        ],
+        "sound": 120,
+        "id": "OneItem-Banana-single",
+        "quantity": 1,
+        "freeSlots": 14,
+        "plan": [
+          0,
+          1
+        ],
+        "expectedItem": 190,
+        "expectedCount": 1,
+        "expectedDelta": -5,
+        "soundCount": 1
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 190,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 190
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 190
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 748,
+            "menus": 2,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 2,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 79995,
+            "depth": 1,
+            "working": 2,
+            "argument": 1,
+            "inventory": [
+              [
+                190,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        120,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "e06eddeaeefdacef4a7fb189f64022c7870e463730bf4ac6201e69677089effa",
+      "eventStreamSha256": "fdac5cccac08306ab246e8e3ec69f0de693b50d5440faf2f262c104640bb18a4",
+      "traceStreamSha256": "4521ba74e4f5c3917e02ed152a71baab62f458c973d2fba219b0fa6fcf5a8f7b",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "sourceEntry": "C5D2ED",
+        "entry": 1492007,
+        "money": 4,
+        "shop": 15,
+        "stock": [
+          190
+        ],
+        "sound": 120,
+        "id": "OneItem-Banana-insufficient",
+        "quantity": 1,
+        "freeSlots": 14,
+        "plan": [
+          0
+        ],
+        "expectedItem": 190,
+        "expectedCount": 0,
+        "expectedDelta": 0,
+        "soundCount": 0
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 4,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 190,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 190
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 190
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 545,
+            "menus": 1,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 1,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 4,
+            "depth": 1,
+            "working": 5,
+            "argument": 190,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "9ed7dc57e0055b6adad4275997c4a81b9851bd10783aced49c125b59c03b648e",
+      "eventStreamSha256": "ac9cb171ea18a52950c9ebc85a4d6081a4d409fd86be14790e9b2ef4311a7c67",
+      "traceStreamSha256": "277cacf1244eee133a8bf0c6206e302ff52046e0d6d6e3b0997203979a789809",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "sourceEntry": "C5D2ED",
+        "entry": 1492007,
+        "money": 80000,
+        "shop": 15,
+        "stock": [
+          190
+        ],
+        "sound": 120,
+        "id": "OneItem-Banana-all-bags-full",
+        "quantity": 1,
+        "freeSlots": 0,
+        "plan": [
+          0
+        ],
+        "expectedItem": 190,
+        "expectedCount": 0,
+        "expectedDelta": 0,
+        "soundCount": 0
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 190,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 190
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 190
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 411,
+            "menus": 1,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 1,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90,
+                90
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "3e15c76b525e982f58061abba47b230e248904e21f90945cc63a07fe57f0aee3",
+      "eventStreamSha256": "eaebf22ffd00ea063679948f71bee45f94e2028803197f5309b11452d25203fe",
+      "traceStreamSha256": "09280c78a077b378cb1d3e4c12b25909210c18be61f1b381a4db33b38b55b676",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "sourceEntry": "C5D2ED",
+        "entry": 1492007,
+        "money": 80000,
+        "shop": 15,
+        "stock": [
+          190
+        ],
+        "sound": 120,
+        "id": "OneItem-Banana-cancel",
+        "quantity": 1,
+        "freeSlots": 14,
+        "plan": [
+          999
+        ],
+        "expectedItem": 190,
+        "expectedCount": 0,
+        "expectedDelta": 0,
+        "soundCount": 0
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 999,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 190,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 563,
+            "menus": 1,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 1,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "a42c4b31751a77a060cbec24f431a43764e3be2e5371671780d0dcd3ad803f83",
+      "eventStreamSha256": "cd002154ba5c94c382ea228a121611ec1691367495a7907fe38ac765401703fe",
+      "traceStreamSha256": "bbf9903da19bf376304c5091400c562841781a157f4cf7ddfd53e748361a5a22",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "sourceEntry": "C5D539",
+        "entry": 1492595,
+        "money": 80000,
+        "shop": 51,
+        "stock": [
+          32,
+          43,
+          146,
+          133,
+          246,
+          242,
+          129
+        ],
+        "sound": 120,
+        "id": "Original-Bazooka-single-cold",
+        "freeSlots": 14,
+        "plan": [
+          0,
+          3,
+          1
+        ],
+        "expectedItem": 133,
+        "expectedCount": 1,
+        "expectedDelta": -950,
+        "soundCount": 1,
+        "expectedToolFlags": {
+          "bazookaOwned": 0,
+          "brokenIronPurchased": 0
+        },
+        "checkpoint": 2
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "capture",
+          "exit": 0
+        },
+        {
+          "stage": "resume",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "captured",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "captured",
+            "wallet": 80000,
+            "depth": 6,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 575,
+            "menus": 1,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 1,
+            "depth": 6,
+            "mode": 7
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 6,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "cold-loaded",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "cold-loaded",
+            "wallet": 80000,
+            "depth": 6,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 3,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 32,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 43,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 146,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 133,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 246,
+                "x": 0,
+                "y": 4
+              },
+              {
+                "id": 242,
+                "x": 0,
+                "y": 5
+              },
+              {
+                "id": 129,
+                "x": 0,
+                "y": 6
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 133
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 133
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 357,
+            "menus": 2,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 3,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 79050,
+            "depth": 1,
+            "working": 2,
+            "argument": 1,
+            "inventory": [
+              [
+                133,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        3,
+        3,
+        3,
+        7,
+        7,
+        120,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "495ad36912b1c8697279d2928b7915cbd8dc9d20bd4617870af3e1a3547fdb27",
+      "eventStreamSha256": "6a6ec78e1788458dd3134bd0b9cd8b566a82746aac6889c4de3c48277f052cc1",
+      "traceStreamSha256": "4bcf3c7b1bec43f8aa204a3ed41ba7aa2262aa1ff8122f3dad626f84e7162b1f",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "sourceEntry": "C5D2ED",
+        "entry": 1492007,
+        "money": 80000,
+        "shop": 15,
+        "stock": [
+          190
+        ],
+        "sound": 120,
+        "id": "OneItem-Banana-single-cold",
+        "quantity": 1,
+        "freeSlots": 14,
+        "plan": [
+          0,
+          1
+        ],
+        "expectedItem": 190,
+        "expectedCount": 1,
+        "expectedDelta": -5,
+        "soundCount": 1,
+        "checkpoint": 2
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "capture",
+          "exit": 0
+        },
+        {
+          "stage": "resume",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "captured",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "captured",
+            "wallet": 80000,
+            "depth": 6,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 280,
+            "menus": 0,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 0,
+            "depth": 6,
+            "mode": 7
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 6,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "before-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "cold-loaded",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "cold-loaded",
+            "wallet": 80000,
+            "depth": 6,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 190,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 190
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 190
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 469,
+            "menus": 2,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 2,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TOOLS",
+          "actual": {
+            "stage": "after-entry",
+            "toolsEnabled": 0,
+            "bazookaOwned": 0,
+            "brokenIronPurchased": 0
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 79995,
+            "depth": 1,
+            "working": 2,
+            "argument": 1,
+            "inventory": [
+              [
+                190,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        120,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "f65819ac05af42eeebe56a64d879c9d3f6e3e666ce4ec61fb3779ec5427e03d7",
+      "eventStreamSha256": "e62c77aa776cb1c7c05baf69e84d9021c555459d5898f9f16d5e739b6f49969b",
+      "traceStreamSha256": "3c4d926716432a96f550627d6869e28f27968e360a30ed706f5b3d6c783bf54d",
+      "errors": [],
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "limits": [
+    "Selected source-entry transactions only: expected wallet/item/equipment changes, source-selected stock, dummy cleanup and configuration flags are asserted where recorded in each fixture. Actual packed entry text and production children, platform replay buttons, private source-prerequisite party/cash fixtures; not every transaction branch, natural NPC/story reachability, physical controllers or pixels.",
+    "Sound request trace proves actual play_sfx requests with initialized production audio; not heard/delivered/queue-completion proof.",
+    "Cold tests capture actual number/store child states through production capture and restore in a fresh process; not every possible serialized shop phase.",
+    "Active source imports ShopSys; shops/bulk_buy_vanilla.ccs is commented out and is not tested as an enabled feature.",
+    "New private driver optionally clears a source flag before entry when fixture flag bit16 is set; no post-entry flag/result mutation. Tools ownership fields are read-only actual source event flags782/982/985. These selected source entries do not prove the subsequent battle Tools menu or natural story reachability."
+  ],
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false
+}

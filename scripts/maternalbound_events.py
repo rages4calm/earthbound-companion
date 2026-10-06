@@ -25,6 +25,7 @@ MOVEMENT_ADAPTERS = (
 
 
 def convert_events(rom, bridge, assets):
+    from ebtools.parsers.original_movement_banks import decode_original_movement_banks
     labels = {(x["module"], x["name"]): x["snesAddress"] for x in bridge["labels"]}
     # The compiler does not export underscore-prefixed labels. Read the
     # verified long-indexed LDA operands patched by movement_reloc instead.
@@ -48,7 +49,12 @@ def convert_events(rom, bridge, assets):
     regions = []
     for key, bank, base in (("US/events/bank_c3_scripts_combined.bin", 0xC3, 0),
                             ("US/events/bank_c4_scripts.bin", 0xC4, 0x0E24)):
-        size = len(assets[key])
+        content = assets[key]
+        if bank == 0xC3:
+            original_regions = decode_original_movement_banks(content)
+            if original_regions is not None:
+                content = original_regions[0]
+        size = len(content)
         offset = snes_offset((bank << 16)|base, len(rom))
         regions.append((bank, base, bytes(rom[offset:offset+size])))
     # These original event scripts live outside the large C3/naming banks.

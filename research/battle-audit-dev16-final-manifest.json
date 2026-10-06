@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "frozen": true,
+  "sourcePin": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "scope": "Selected semantic evidence for144of144activecallbackIDs; no full branch/wholebattle/story/conversion certification.",
+  "files": [
+    {
+      "path": "tools/battle_party_effects_qa_dev16.py",
+      "sha256": "d7bd6e6bb1645379788af1747fc529370be63ff5267b805a5e9a3a9d3fb95ef3",
+      "bytes": 18257
+    },
+    {
+      "path": "tools/battle_stat_drain_qa_dev16.py",
+      "sha256": "a103d48de1623a1ffbc550bfca27ab9534b639f2f27d0e22da3e0148803f8ebd",
+      "bytes": 13383
+    },
+    {
+      "path": "tools/battle_physical_status_qa_dev16.py",
+      "sha256": "0eba73a815664e93322ed7e6b218017c7f1156b32d28438768b049a67c9fb81c",
+      "bytes": 21429
+    },
+    {
+      "path": "tools/snes_stat_down_oracle_dev16.py",
+      "sha256": "28f9fe056d8af71f6f59cdb042300c3c4e3def6f1e56a9ab2218c658a1b32c8f",
+      "bytes": 5981
+    },
+    {
+      "path": "tools/snes_bomb_adjacency_oracle_dev16.py",
+      "sha256": "89526e360f57f8d5d9628cdb290e9900b2136d5be21537bad7417d2c5999e1b0",
+      "bytes": 5934
+    },
+    {
+      "path": "tools/battle_bomb_qa_dev16.py",
+      "sha256": "88dc2600d15b25c5b6ac81dea18f0defa8cb03eb9ff29b2d32119373165374b8",
+      "bytes": 9219
+    },
+    {
+      "path": "tools/battle_equipment_qa_dev16.py",
+      "sha256": "edeba8d0e32a583c312d8594922523f70435db31cdcffa9a038beaf6ad636052",
+      "bytes": 11082
+    },
+    {
+      "path": "tools/battle_transform_drain_qa_dev16.py",
+      "sha256": "bf072e1423c5179a780a53da98c7a3223d5548b853e508369adfa7041731e5e7",
+      "bytes": 10271
+    },
+    {
+      "path": "tools/battle_prayer_freeze_qa_dev16.py",
+      "sha256": "8e4b0910f91fa799287de8658bfdbc87afc4454034ad8ac0471f1b24ed3a074e",
+      "bytes": 16683
+    },
+    {
+      "path": "tools/battle_semantic_coverage_ledger_dev16_party.py",
+      "sha256": "e9eb9e826e9b6b786d9a38d00da10afea5434314465b2eb58cd75eacd12a57f5",
+      "bytes": 690
+    },
+    {
+      "path": "tools/battle_semantic_coverage_ledger_dev16_stats.py",
+      "sha256": "fc34a73b72c63adebad8066bffc2445eb29dccebec5d00091a67f7abac0aabb0",
+      "bytes": 969
+    },
+    {
+      "path": "tools/battle_semantic_coverage_ledger_dev16_final.py",
+      "sha256": "56037d13d07fd60966175de85c316cb2010ac6bde4847d971b6ba676ff811b9b",
+      "bytes": 1856
+    },
+    {
+      "path": "research/redux-battle-party-effects-coverage-dev16-v1.json",
+      "sha256": "6bc64c3b47c64be47c6f08e255a9cc9a49402e9b25192be25598c8bc25e08618",
+      "bytes": 3312671
+    },
+    {
+      "path": "research/original-battle-party-effects-coverage-dev16-v1.json",
+      "sha256": "1696dfa5bb4f1f4bab514bd12831ac95d6a4e8a082abedfea3aa003f2d2bfeba",
+      "bytes": 3296715
+    },
+    {
+      "path": "research/redux-battle-stat-down-machine-dev16-v1.json",
+      "sha256": "ee02644b5b1bcddd0c8f4f323ad9f8d126011f2e54cda4dd41c7e5d5566bef74",
+      "bytes": 1101778
+    },
+    {
+      "path": "research/original-battle-stat-down-machine-dev16-v1.json",
+      "sha256": "7668aefdd684a4e908535cf073a6ebe776c5143b72826c64cd85256ee5a14d49",
+      "bytes": 1101911
+    },
+    {
+      "path": "research/redux-battle-stat-drain-coverage-dev16-v4.json",
+      "sha256": "c8553831a0e0f1488892cc8bc239e9d2eb8c0ccc10f30ddd49fea2d129b7d9fc",
+      "bytes": 7097241
+    },
+    {
+      "path": "research/original-battle-stat-drain-coverage-dev16-v4.json",
+      "sha256": "e1056a7b445063ea8b04bea01987f50e71abea30f57b902705521761032221af",
+      "bytes": 7097161
+    },
+    {
+      "path": "research/redux-battle-physical-status-coverage-dev16-v4.json",
+      "sha256": "6fbe57d661d6bfda324e1277480c267f15faf3ec0e2bc403b4bfb790bb85b4fe",
+      "bytes": 2699752
+    },
+    {
+      "path": "research/original-battle-physical-status-coverage-dev16-v4.json",
+      "sha256": "29f2cedddf020a55a8cca5d4cbea2cc6a252b37eb13fcb5970cbe26cc9bebade",
+      "bytes": 2699601
+    },
+    {
+      "path": "research/redux-bomb-adjacency-machine-dev16.json",
+      "sha256": "4554ca09f5c824b3ba1b6a335db98a2cbfb1a2b6bfa0c2c0ae5774e6809c2034",
+      "bytes": 19444
+    },
+    {
+      "path": "research/original-bomb-adjacency-machine-dev16.json",
+      "sha256": "c14ad5f46351210858c0cdae2d5e139ef9a82fd8ea7fe104cf6cadd06cf839eb",
+      "bytes": 19446
+    },
+    {
+      "path": "research/redux-battle-bomb-coverage-dev16-v4-red.json",
+      "sha256": "73cd8c051f51651b3c535e22e3fbb94a19fa254aec788e86cfaafc06f45ec5f6",
+      "bytes": 708609
+    },
+    {
+      "path": "research/original-battle-bomb-coverage-dev16-v4-red.json",
+      "sha256": "5e4c40ec36da1a538bde46c68a91cb0c72062ad9830adef90e21abad6f206698",
+      "bytes": 708529
+    },
+    {
+      "path": "research/redux-battle-bomb-coverage-dev16-v5.json",
+      "sha256": "ee85cfdf4414d8521ecf4bccc4ee64c4059288213fb424512ee081faa1a944e6",
+      "bytes": 643711
+    },
+    {
+      "path": "research/original-battle-bomb-coverage-dev16-v5.json",
+      "sha256": "cb46c7906b6519b14893d6a2768a5ab9532fbc4d8b5ff14b7720ffcda28e46dd",
+      "bytes": 643631
+    },
+    {
+      "path": "research/redux-battle-equipment-coverage-dev16-v5.json",
+      "sha256": "f8c330f80bd9e84aeb631c83972758ca86acc5ed808ea21bbd7816d0d5d48df0",
+      "bytes": 2385864
+    },
+    {
+      "path": "research/original-battle-equipment-coverage-dev16-v5.json",
+      "sha256": "83238c17aae32ef9165964b75e516547bb1742b262f00e12ef5d5bdb66aa84c8",
+      "bytes": 2385781
+    },
+    {
+      "path": "research/redux-battle-transform-drain-coverage-dev16-v5.json",
+      "sha256": "7b5a4414a6c5f124b0a5fc81b2427b686cb258b23c6e2b0396edb580b29c4653",
+      "bytes": 1450978
+    },
+    {
+      "path": "research/original-battle-transform-drain-coverage-dev16-v5.json",
+      "sha256": "6d56b90c3fdfb456492b03b0d98dec9dd4eb56dfe1ecc8bf42a6cdab7f836e61",
+      "bytes": 1450895
+    },
+    {
+      "path": "research/redux-battle-prayer-freeze-coverage-dev16-v5.json",
+      "sha256": "7dd82503ebeddf978adece199ae6c307ad98c09ef714c4c3119d2e97a67c66d1",
+      "bytes": 415477
+    },
+    {
+      "path": "research/original-battle-prayer-freeze-coverage-dev16-v5.json",
+      "sha256": "ae2fad5e56e16daee6fc656370433661ef789365e1527456f923dd79da60f74d",
+      "bytes": 415394
+    },
+    {
+      "path": "research/battle-semantic-coverage-dev16-party.json",
+      "sha256": "70c61f02da290586b09aa9e083ebb48c989e548dd3a2198bc226ca95ea045599",
+      "bytes": 226672
+    },
+    {
+      "path": "research/battle-semantic-coverage-dev16-stats.json",
+      "sha256": "fcb70dc19f4d7abbcc84c3e1a531ea485144b1ff829508a28f0dcc8cf3cee0e3",
+      "bytes": 321305
+    },
+    {
+      "path": "research/battle-semantic-coverage-dev16-final.json",
+      "sha256": "65de925ea606edbc910fb1d1f1f3bff86a7e3ec275efefdd4e43a567a5606c1b",
+      "bytes": 332825
+    },
+    {
+      "path": "research/battle-audit-dev16-final-evidence.md",
+      "sha256": "782dc42033f53fdec5bd21f466f3f66270e176ec9069bbc817e4878e6bb5aea9",
+      "bytes": 4343
+    }
+  ],
+  "productionChange": {
+    "path": "native-source/src/game/battle_actions.c",
+    "sha256": "dc847cfbbcea8c2aafd527a061006db2017032d981cfbad0f22c0ba5453a95dd",
+    "bytes": 228615,
+    "scope": "Only approved Bomb right-neighbor guard admits IDs1..4; Original andRedux share it."
+  },
+  "runtimeV5": [
+    {
+      "path": "_BuildScratch/audit-dev16-v5-runtime/player.exe",
+      "sha256": "5b834db21019f698552a07ebcfae2fdd4ec1e3c4c570d0766c4d121268f0a0b3",
+      "bytes": 2035062
+    },
+    {
+      "path": "_BuildScratch/audit-dev16-v5-runtime/observer.exe",
+      "sha256": "3294b617c19b5eeeac38f48f68d2c430afbc44d529cc87cd70230bb0e5ecae93",
+      "bytes": 2040542
+    }
+  ],
+  "libraryV5": {
+    "path": "_BuildScratch/audit-dev16-v5-build/companion/game_lib/libearthbound_game.a",
+    "sha256": "fad67535029f4d956eb3b65195c0fa0739b327387f53ddb5558ad88e64221be6",
+    "bytes": 2825136
+  },
+  "caseCountsPerPack": {
+    "partyRedux": 10688,
+    "partyOriginal": 10624,
+    "statsEach": 21864,
+    "physicalStatusEach": 7936,
+    "bombRedEach": 1920,
+    "bombRedFailuresEach": 768,
+    "bombGreenEach": 1920,
+    "equipmentEach": 10880,
+    "transformDrainEach": 6656,
+    "prayerFreezeEach": 2304
+  },
+  "machineScope": {
+    "statDownEach": 4136,
+    "statDownWholeNativeAction": false,
+    "bombAdjacencyEach": 72,
+    "bombMachineChildrenStubbed": true
+  },
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false
+}

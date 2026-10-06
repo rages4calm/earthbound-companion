@@ -1,0 +1,223 @@
+{
+  "format": "redux-ending-letter-qa-v1",
+  "allPassed": true,
+  "sourceRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "profile": "Redux",
+  "nativeExit": 0,
+  "runtimeSha256": {
+    "player.exe": "96fd5364b595184384d4046f307ea94038193bbe8bf938abb0107b8797bc7eb0",
+    "observer.exe": "62d66163154fe4822e419b8610ef8d2d699d30aaf460a8692c64d379dba1df3b"
+  },
+  "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "privateBuild": {
+    "driverSourceSha256": "cedd7c0871f6d4dd4dde7f749d298dbe003920322b47fd8aa857c4a4ae937dad",
+    "executableSha256": "3213f685394ec4d72da622a3be8f9be04baa00cc4c0d18423bb11bf1b5021f77",
+    "productionExecutableSha256": "96fd5364b595184384d4046f307ea94038193bbe8bf938abb0107b8797bc7eb0",
+    "productionLibrarySha256": "a61301a5894a523c6218bc5cd3ff897009e3390a1b55049379065bd9f5835a3a",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "sourceEntries": [
+    "C755C4",
+    "C9C85D",
+    "C9C98A"
+  ],
+  "nativeEntries": [
+    {
+      "entry": "C755C4",
+      "symbol": null
+    },
+    {
+      "entry": "C9C85D",
+      "symbol": null
+    },
+    {
+      "entry": "C9C98A",
+      "symbol": null
+    }
+  ],
+  "expected": {
+    "ENDING": {
+      "castSeen": 1,
+      "creditsSeen": 1,
+      "choiceSeen": 1,
+      "choiceResult": 1,
+      "photoMask": 0,
+      "partyCount": 1,
+      "partyMember": 1,
+      "leader": [
+        3200,
+        1136
+      ],
+      "flags": [
+        11,
+        97,
+        209,
+        467,
+        468,
+        469,
+        472,
+        473,
+        476,
+        513,
+        530,
+        749,
+        750,
+        763,
+        775,
+        781,
+        805
+      ]
+    },
+    "LETTER": {
+      "endingCompleted": 1,
+      "letterStarted": 1,
+      "knockNpc22": 1,
+      "stableTerminalFrames": 120,
+      "letterWaits": 3,
+      "letterNaturalSignals": 2,
+      "actor776Seen": 1,
+      "actor776Count": 0,
+      "animationFrameMask": 3,
+      "tilesMatch": 1,
+      "finalFrameMatch": 1,
+      "paletteMatch": 1,
+      "bg3Y": 65535
+    }
+  },
+  "actual": {
+    "ENDING": {
+      "steps": 38437,
+      "depth": 3,
+      "castSeen": 1,
+      "creditsSeen": 1,
+      "choiceSeen": 1,
+      "photoMask": 0,
+      "waits": 3,
+      "naturalSignals": 2,
+      "homeNpc14": 1,
+      "homeNpc18": 1,
+      "partyCount": 1,
+      "partyMember": 1,
+      "leader": [
+        3200,
+        1136
+      ],
+      "transitionsDisabled": 0,
+      "mainScreenMask": 23,
+      "flags": [
+        11,
+        97,
+        209,
+        467,
+        468,
+        469,
+        472,
+        473,
+        476,
+        513,
+        530,
+        749,
+        750,
+        763,
+        775,
+        781,
+        805
+      ],
+      "choiceResult": 1,
+      "castPalette": [
+        0,
+        31710,
+        14937,
+        0,
+        0,
+        32767,
+        14366,
+        4230,
+        0,
+        32767,
+        14366,
+        4230,
+        0,
+        32767,
+        14366,
+        4230,
+        0,
+        32767,
+        14366,
+        4230
+      ]
+    },
+    "LETTER": {
+      "endingCompleted": 1,
+      "letterStarted": 1,
+      "knockNpc22": 1,
+      "stableTerminalFrames": 120,
+      "terminalReader": 2520706,
+      "expectedReader": 2520706,
+      "letterWaits": 3,
+      "letterNaturalSignals": 2,
+      "actor776Seen": 1,
+      "actor776Count": 0,
+      "animationFrameMask": 3,
+      "tilesMatch": 1,
+      "finalFrameMatch": 1,
+      "paletteMatch": 1,
+      "bg3Y": 65535
+    }
+  },
+  "errors": [],
+  "nativeWarnings": [],
+  "executedCases": 1,
+  "executedAssertions": 23,
+  "skippedCases": 0,
+  "animationOracle": {
+    "assetSha256": "261c8292659a2ce75c9f92de610dd34b621ffd869f4c78ff3d6d69fe931f9ddd",
+    "decompressedSha256": "2383fe7ed6f9b8a1188f0b69b5da6bf1a182720c784858e5230c2a09c60012c4",
+    "tileBytes": 288,
+    "frameBytes": 1792,
+    "frameIndex": 1,
+    "method": "Independently decompressed the actual profile pack; final native VRAM tiles/frame and palette compare without publishing asset bytes."
+  },
+  "sourceReferences": [
+    "Project/ccscript/data/data_58.ccs:545 C9C85D entire final letter, real movement wait, final flags, animation775 and776 waits.",
+    "Project/ccscript/data/data_58.ccs:589 C9C98A fallback pause1/goto loop follows the terminal wait; its entry address bounds the preceding reader.",
+    "Project/ccscript/data/data_57.ccs:576 C9B4B8 camera/freeze/wait helper completes naturally.",
+    "native-source/asm/data/events/scripts/039.asm knock entity yields;775 oval sequence yields;776 THE END sequence6 then despawns without YIELD_TO_TEXT.",
+    "native-source/asm/text/wait_for_actionscript.asm clears signal and waits for YIELD; opcode00/deallocate does not produce a signal. Ordinary THE END remains intentionally parked.",
+    "native-source/asm/data/animation_sequence_pointers.asm USA THE END metadata288 tilebytes,2frames,8delay.",
+    "native-source/asm/misc/load_animation_sequence_frame.asm and display_animation_sequence_frame.asm prescribe VRAM tiles/palette/frame layout."
+  ],
+  "pinnedSourceFiles": {
+    "ccscript/data/data_31.ccs": "067fda3d873bd8c21f4de6c2fdc422e321871677e72dd21603ce38045d818296",
+    "ccscript/data/data_57.ccs": "3fed008d2aaf82c20b41bdd9562b7e7a57fefa6c23e0063c52bf2074a26ea6f5",
+    "ccscript/data/data_58.ccs": "a44ba93ec5e2f52e69253d8e79d8c3fd0104ff8f5c7317c98b87696af01a7664",
+    "map_sprites.yml": "ffcfae390a89cd15ef48d80dd7c605749a0fcbdd846056e90b2b105a98714bac"
+  },
+  "nativeReferenceFiles": {
+    "src/entity/callroutine.c": "f38853c8607c8ded917325f72531dd49b7d5d58b3749b0bdbb16a579b56be1e3",
+    "src/game/display_text.c": "7a11de0b21c1984b53859d11bb1bea0784a87b9a0fad53610cbd42fe1ba2eb72",
+    "src/game/display_text_cc.c": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7",
+    "asm/data/events/scripts/039.asm": "448f8c544d5f6c56a189b482416ac2e54743c5d00b82a46e14b1dcd546d74004",
+    "asm/data/events/scripts/775.asm": "cf0fae16e1d5cebacaf3f9321a1e0f359ecf9d6f2b0dbc72c3a2d239d8a35f46",
+    "asm/data/events/scripts/776.asm": "dc042de851ac03d8449880d84f0a58a5badc4955ee556aa2e3b8380098eee5f1",
+    "asm/data/events/C33C1D.asm": "589da62ecbb2e3c0e1873e8d13e484e12f61741ced09f7c9ca64fbfd40af50fb",
+    "asm/text/wait_for_actionscript.asm": "65b2802a2cb434fe3941946f34020596a27192d4fd71008a4af7dbfd2be9a63c",
+    "asm/overworld/actionscript/script/00.asm": "cb1b6499068198fc0176bb378aeaf0c6689ef848f5286dcc1d9d90473d69fb39",
+    "asm/overworld/entity/deallocate_entity_sprite.asm": "f41949e4045f75bb1e7733102ddaf25ef9c05fe107e82c861759e2b1052f6ce3",
+    "asm/data/animation_sequence_pointers.asm": "3113b0ce1f35ded4d35cef346cd4334ebd839cb8d42a468b952f6d411ca9dfc9",
+    "asm/misc/load_animation_sequence_frame.asm": "5b8fb0bab9c81194ba8a328eb2caff6873679f740c0e81b201999beab1dabfcd",
+    "asm/misc/display_animation_sequence_frame.asm": "31df8beef6331773ab4d131aede4be54d2dc572772790367bf63c704f65c1713"
+  },
+  "runtimeSourceQualification": "Frozen v6 library/platform execute unchanged. Current reviewed display_text_cc.c includes later dev16 CC1D21 serialized RNG change not executed here; privateBuild hashes are authoritative.",
+  "limits": [
+    "Home story/party context is prepared and actual Mom question/Yes ending runs first; preceding full playthrough is not covered.",
+    "Only downstairs arrival7776,344 is prepared between transactions; walking downstairs/knock interaction dispatch is not covered.",
+    "Final letter starts at its first source command and uses real camera, freeze, text, movement/animation waits and terminal wait.",
+    "Intentional source terminal wait is observed for120 native frames after animation776 despawns; no forced pop/completion or debugger skip.",
+    "VRAM/palette state comparison covers final THE END image; audible audio and every transition-frame visual/timing parity remain unverified.",
+    "Player platform/library executes; observer paired hash is provenance only."
+  ]
+}

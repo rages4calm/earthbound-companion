@@ -24,6 +24,10 @@ USA_SHA256 = "A8FE2226728002786D68C27DDDDF0B90A894DB52E4DFE268FDF72A68CAE5F02E"
 REDUX_REVISION = "897d00833f4a08a0a92f106abf631629a6a6a041"
 REDUX_ARCHIVE_SHA256 = "DB4E9FB842741FBB2671CD4AF119237442F5AE943ABF765F5D4C79852C856796"
 ORIGINAL_PACK_SHA256 = "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B"
+AUDITED_ORIGINAL_PACKS = {
+    ORIGINAL_PACK_SHA256,
+    "01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549",
+}
 
 
 def sha(path: Path) -> str:
@@ -63,7 +67,7 @@ def main(argv=None) -> None:
     for entry in bridge["sourceGraph"]["files"]:
         if sha(project / entry["path"]) != entry["sha256"].upper():
             raise RuntimeError("Redux source differs from the audited compiler input: " + entry["path"])
-    if sha(paths["base_assets"]) != ORIGINAL_PACK_SHA256:
+    if sha(paths["base_assets"]) not in AUDITED_ORIGINAL_PACKS:
         raise RuntimeError("Original asset pack does not match the audited native base.")
     for key in ("coilsnake_python", "native_python"):
         if not paths[key].is_file():

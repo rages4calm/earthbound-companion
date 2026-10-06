@@ -1,0 +1,437 @@
+{
+  "format": "redux-active-hook-evidence-completeness-dev16-v1",
+  "status": "manual-source-backed-gap-review-not-a-gameplay-pass",
+  "upstreamCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "structuralAccountingVerified": true,
+  "reusedInventories": {
+    "activeBugfixHooks": 36,
+    "excludedSpans": 105,
+    "excludedGroups": {
+      "ShopSys": 1,
+      "coffee_tea_sequences": 1,
+      "data_19": 1,
+      "data_24": 1,
+      "debug_menu_enabler": 5,
+      "diamond": 4,
+      "flyover_texts": 1,
+      "goods_menu_equip": 2,
+      "item_determiners": 3,
+      "keyitems": 1,
+      "new_stats_equipment": 73,
+      "psi_anims": 1,
+      "psi_battle_anims": 1,
+      "staff_text": 1,
+      "tools": 3,
+      "window_titles": 6
+    },
+    "publicLedgerPath": "github-repo/validation/native-redux-assembly-ledger.json",
+    "publicLedgerExists": true,
+    "newImportOrOpcodeInventoryParsed": false
+  },
+  "prioritizedExactBranchEvidenceGaps": [
+    {
+      "module": "swirls_without_ness_fix",
+      "priority": 1,
+      "source": "ccscript/bugfixes/swirls_without_ness_fix.ccs",
+      "sourceAnchor": "ROM[0xC0D668] = LDA_a (0x9889)",
+      "sourceMeaning": "The player-initiated enemy-contact special case uses the actual party leader instead of hardcoded Ness entity24.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/callroutine.c",
+          "line": 2346,
+          "anchor": "ert.enemy_pathfinding_target_entity = maternalbound_enabled() ? game_state.current_party_members : 24;",
+          "sha256": "f38853c8607c8ded917325f72531dd49b7d5d58b3749b0bdbb16a579b56be1e3"
+        }
+      ],
+      "gap": "The older review records source/movement review. No dedicated Jeff/Poo contact-advantage trace is present in the reviewed evidence set. Shared encounter-race checks do not establish this leader-selection branch.",
+      "nextProof": "Use actual source-defined player-initiated and enemy-initiated contact paths with solo Jeff/Poo, Ness position deliberately distinct, and source-defined facing/coordinates. Compare target selection and resulting advantage against pinned CPU code, including a cold native continuation.",
+      "sourceSha256": "ffdd735595cc39ef422066c7389d5c98a7ec11ea2aa1ec3b4be6e884589d1882",
+      "sourceLine": 27,
+      "activationLine": 38,
+      "nativeAdapterPresent": true,
+      "confirmedNativeDefect": false,
+      "evidenceLevel": "source-review-only-for-the-exact-named-branch",
+      "legacyReviewCoverage": "Movement/source review; later Jeff/Poo solo story branches remain unverified."
+    },
+    {
+      "module": "dad_bike_phone_fix",
+      "priority": 1,
+      "source": "ccscript/bugfixes/dad_bike_phone_fix.ccs",
+      "sourceAnchor": "CMP_i (3)",
+      "sourceMeaning": "While walking_style is bicycle3, skip the Dad interruption to preserve bicycle bell behavior.",
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld.c",
+          "line": 1076,
+          "anchor": "if(pc_options.no_dad_calls || (maternalbound_enabled() && game_state.walking_style == WALKING_STYLE_BICYCLE))return;",
+          "sha256": "9c7e6fbe3ee09965a4b8a41fba74c0594f6290585f736d653ec8a4df45385fd6"
+        },
+        {
+          "path": "src/game/overworld.c",
+          "line": 1406,
+          "anchor": "if (!ow.dad_phone_timer && game_state.camera_mode != 2)",
+          "sha256": "9c7e6fbe3ee09965a4b8a41fba74c0594f6290585f736d653ec8a4df45385fd6"
+        }
+      ],
+      "gap": "The bicycle selftest rotates leaders/statuses but never invokes load_dad_phone. The old review explicitly leaves a live timed phone event unverified. The no_dad_calls host option can also mask the branch in ordinary QA.",
+      "nextProof": "Keep the host no_dad_calls option disabled; obtain event/timer prerequisites from source. Exercise actual overworld timer expiration on bike, dismount, open-window/battle guards and Original control. Measure queued interaction/phone state and subsequent bell/audio requests.",
+      "sourceSha256": "64a7926d5eb7c2f5a66dc84ec5acaba9d494e910bc039f73e1217c05772c41c3",
+      "sourceLine": 14,
+      "activationLine": 14,
+      "nativeAdapterPresent": true,
+      "confirmedNativeDefect": false,
+      "evidenceLevel": "source-review-only-for-the-exact-named-branch",
+      "legacyReviewCoverage": "Bike/movement fixtures; a full live timed phone event remains unverified."
+    },
+    {
+      "module": "mushroom_pos_fix",
+      "priority": 2,
+      "source": "ccscript/bugfixes/mushroom_pos_fix.ccs",
+      "sourceAnchor": "define MUSHROOM_DEEP_WATER_Y_OFFSET\t= 16",
+      "sourceMeaning": "Global trodden tile bits0C select mushroom draw Y offsets8 in shallow water and16 in deep water.",
+      "nativeReferences": [
+        {
+          "path": "src/entity/callbacks.c",
+          "line": 732,
+          "anchor": "unsigned water=game_state.trodden_tile_type & 0x0C;",
+          "sha256": "c38e6cccc7f9192f404e9eb5f17be6098ff16728ece825c6c6a65baf4a7cc461"
+        },
+        {
+          "path": "src/entity/callbacks.c",
+          "line": 733,
+          "anchor": "if (water==8) y+=8;",
+          "sha256": "c38e6cccc7f9192f404e9eb5f17be6098ff16728ece825c6c6a65baf4a7cc461"
+        }
+      ],
+      "gap": "Source and callback constants are reviewed. Bicycle mushroom-refresh tests establish dismount/status, not the mushroom draw queue or shallow/deep-water overlay coordinates. No dedicated rendered multiparty water-overlay check is present in this evidence set.",
+      "nextProof": "Capture actual draw-queue coordinates and rendered overlays for each player at dry/shallow/deep boundaries, zero/nonzero overlay countdown, and cold restore. Preserve the source global terrain input rather than inventing per-follower terrain semantics.",
+      "sourceSha256": "468c3cadd59ff4bf6ad656d9830e06d6c83950994eb350dd99196ca89566112b",
+      "sourceLine": 12,
+      "activationLine": 25,
+      "nativeAdapterPresent": true,
+      "confirmedNativeDefect": false,
+      "evidenceLevel": "source-review-only-for-the-exact-named-branch",
+      "legacyReviewCoverage": "Native callback review; multiparty mushroom gameplay remains unverified."
+    },
+    {
+      "module": "palette_tint_fix",
+      "priority": 2,
+      "source": "ccscript/bugfixes/palette_tint_fix.ccs",
+      "sourceAnchor": "define how_much_tinting = 4",
+      "sourceMeaning": "Reference channel averages are fixed at8A/96/74, channel approach uses threshold4, and the elevator movement bytes are1F1F1F.",
+      "nativeReferences": [
+        {
+          "path": "src/game/map_loader.c",
+          "line": 1558,
+          "anchor": "ml.saved_colour_average_red=0x8A;",
+          "sha256": "55d858566e2374126c34589d2c6793254b61d83e8d32bb2c353915cc9114f5c3"
+        },
+        {
+          "path": "src/game/map_loader.c",
+          "line": 1637,
+          "anchor": "if (orig_r>new_r+4) new_r=orig_r-4;",
+          "sha256": "55d858566e2374126c34589d2c6793254b61d83e8d32bb2c353915cc9114f5c3"
+        },
+        {
+          "path": "src/game/overworld_palette.c",
+          "line": 55,
+          "anchor": "uint16_t adjust_single_colour",
+          "sha256": "bedeeedd47d6ba0c67006c8e66e641c776139a49d4146c5585f0c6305bb45454"
+        }
+      ],
+      "gap": "The old review proves source constants and retained elevator command bytes, not actual palette arithmetic or live elevator sequencing. Dissolve-slot RNG and battle palette tests cover separate paths. A source anchor is insufficient to establish tint parity.",
+      "nextProof": "Identify actual source GET_COLOUR_AVERAGE/ADJUST_SINGLE_COLOUR and the pinned tint hook bodies, compare actual palette-channel results at threshold/greyscale/ratio boundaries, then replay a real elevator transition through its retained movement commands.",
+      "sourceSha256": "ab9cd37772ee1981ee28ee86e67c2ee1f4d6706453196034169af243c6379ff2",
+      "sourceLine": 25,
+      "activationLine": 27,
+      "nativeAdapterPresent": true,
+      "confirmedNativeDefect": false,
+      "evidenceLevel": "source-review-only-for-the-exact-named-branch",
+      "legacyReviewCoverage": "Source review and converted literal-byte check; live elevator transitions remain unverified."
+    }
+  ],
+  "partiallyCoveredActiveGameplayScopes": [
+    {
+      "modules": [
+        "item_transformations_fix"
+      ],
+      "priority": 1,
+      "sources": [
+        "ccscript/bugfixes/item_transformations_fix.ccs"
+      ],
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld.c",
+          "line": 1375,
+          "anchor": "if (maternalbound_enabled() || item_transformations_loaded)",
+          "sha256": "9c7e6fbe3ee09965a4b8a41fba74c0594f6290585f736d653ec8a4df45385fd6"
+        },
+        {
+          "path": "src/game/inventory.c",
+          "line": 421,
+          "anchor": "void reset_item_transformations(void)",
+          "sha256": "7d612672b1af0dbceb7cff8690796520c82c8c50d2cc4947a76cb18f1c0bc160"
+        }
+      ],
+      "existingEvidence": [
+        {
+          "path": "research/rng-consumers-dev16-v3-green.json",
+          "sha256": "191bd395e78218ef7154f5720bafcfc1511ef564cd19f2c728019be43bb5105e"
+        }
+      ],
+      "proved": "Actual production timer initialization and SFX/reset-gate RNG consumers now have warm/cold evidence with serialized source RNG. The active per-frame condition is present.",
+      "remainingGap": "No full Fresh Egg\u2192Chick\u2192Chicken lifecycle is established after phone-save load or game-over/reset, which is the upstream bug trigger. Direct timer consumer calls do not prove actual per-frame invocation/reinitialization through that lifecycle.",
+      "sourceIdentities": {
+        "ccscript/bugfixes/item_transformations_fix.ccs": "14263b2ed893dd2035b6156e7d896bb030beef0413e346fde2f6d4809b46a4b3"
+      },
+      "confirmedNativeDefect": false
+    },
+    {
+      "modules": [
+        "fast_terrain",
+        "four_frames_run",
+        "run_patch",
+        "run_stamina_mechanic"
+      ],
+      "priority": 1,
+      "sources": [
+        "ccscript/redux/fast_terrain.ccs",
+        "ccscript/redux/four_frames_run.ccs",
+        "ccscript/redux/run_patch.ccs",
+        "ccscript/redux/run_stamina_mechanic.ccs"
+      ],
+      "nativeReferences": [
+        {
+          "path": "src/game/overworld.c",
+          "line": 1893,
+          "anchor": "maternalbound_enabled() ? WALKING_STYLE_SLOWER : WALKING_STYLE_SLOWEST",
+          "sha256": "9c7e6fbe3ee09965a4b8a41fba74c0594f6290585f736d653ec8a4df45385fd6"
+        },
+        {
+          "path": "src/game/position_buffer.c",
+          "line": 42,
+          "anchor": "bool maternalbound_motion_selftest(void)",
+          "sha256": "2ae8e62f3ad225b29872ec73d1c44a3a095d7ce68224f15f5a8bf8a9c3b7d29b"
+        },
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 156,
+          "anchor": "maternalbound_stamina_update",
+          "sha256": "e6d828b9110f09d315b37a231f7fc4470341f123535dc20b8bce91140d342b74"
+        }
+      ],
+      "existingEvidence": [
+        {
+          "path": "research/redux-control-and-battle-hooks-review.json",
+          "sha256": "c679a600236358cd0be4e742100a45b6e02943798b1ba16c707a64f0fa8f17c7"
+        },
+        {
+          "path": "research/redux-remaining-feature-review.json",
+          "sha256": "ad01c4d6859f05728058403cd4f6cb65acabb8c497192f554785285d8c8a79ec"
+        },
+        {
+          "path": "research/native-position-arithmetic-runtime-review-dev15-v6-final-green.json",
+          "sha256": "3b918cce155ca971110267832c48543821a5e143f2cabbd890e064a31b280eaa"
+        },
+        {
+          "path": "research/native-redux-party-run-dev16-v4-final-green.json",
+          "sha256": "6bdaac52b288f8a56c37f92e8bef415517445623a2e11c1b45c1f45bbae0c778"
+        }
+      ],
+      "proved": "Converted sprite tables match pinned data; default/PJs/run/exhaustion and timer fixtures exist. Original arithmetic is independently machine-tested; current Redux ordinary walk/run callback parity passes.",
+      "remainingGap": "These are not actual Lost Underworld entrance, water, ladder/rope and special-style stamina/sprite transition traces. The explicit native inversion/run-flag adaptation is documented, not literal source equality.",
+      "sourceIdentities": {
+        "ccscript/redux/fast_terrain.ccs": "9f311b4370ac9ee7bf3c1a7cf17a1c699649ccdfa4228443d5ecbabff90dea85",
+        "ccscript/redux/four_frames_run.ccs": "75f67b8a21413d794d38d4fc7fc1a852dbf6028af6fda01d2273638dc5b1aa66",
+        "ccscript/redux/run_patch.ccs": "b59247f8caeaf946a6ff22ccd6da8ce7ff2afd610a03d36af6dddf63ebf662fb",
+        "ccscript/redux/run_stamina_mechanic.ccs": "b0fbfa9bb247521a31c6e7d9930bb6290b81f02d1e4ac70265f38ffefe94bdbe"
+      },
+      "confirmedNativeDefect": false
+    },
+    {
+      "modules": [
+        "expand_shops",
+        "ShopSys",
+        "ShopMain"
+      ],
+      "priority": 2,
+      "sources": [
+        "ccscript/expansion/expand_shops.ccs",
+        "ccscript/shops/ShopSys.ccs",
+        "ccscript/shops/ShopMain.ccs"
+      ],
+      "nativeReferences": [
+        {
+          "path": "src/game/maternalbound.c",
+          "line": 463,
+          "anchor": "maternalbound_registers_equal",
+          "sha256": "e6d828b9110f09d315b37a231f7fc4470341f123535dc20b8bce91140d342b74"
+        },
+        {
+          "path": "src/game/display_text_menus.c",
+          "line": 841,
+          "anchor": "st->shop_id * STORE_ITEMS_PER_SHOP",
+          "sha256": "02eaa3abaa822d518a913ae72443af8c5c79f4ac942deaee5955a83625acb2bf"
+        }
+      ],
+      "existingEvidence": [
+        {
+          "path": "research/redux-remaining-feature-review.json",
+          "sha256": "ad01c4d6859f05728058403cd4f6cb65acabb8c497192f554785285d8c8a79ec"
+        }
+      ],
+      "existingRunner": "tools/redux_dialogue_qa.py",
+      "proved": "All69 shop rows are retained, typed register comparison exists, and actual early-store buy/equip/sell/cancel replays exist. This is not classification-only at module level.",
+      "remainingGap": "The existing dialogue replay uses one early shop entry; no complete bulk-buy/insufficient-cash/full-inventory transactions across custom shops66..68, Moonside logic and later shop categories are established by that runner.",
+      "sourceIdentities": {
+        "ccscript/expansion/expand_shops.ccs": "e99e3c75d789d3c9d074d39a079108ce5f02c7a3f91625fa47da1cc15cdbad78",
+        "ccscript/shops/ShopSys.ccs": "743ce4f6cd1bb175b7f649d1b10ddf8ef22ef9bf55537eb4e3d41d1aff18b664",
+        "ccscript/shops/ShopMain.ccs": "e0da0a89621bedd8a63757093bc79e141057e8096cf405bca8b73935b92b0f45"
+      },
+      "confirmedNativeDefect": false
+    },
+    {
+      "modules": [
+        "Extended_Battle_Action_Table",
+        "enemy_ai",
+        "m3_defend_roller",
+        "Extended_PSI_Animations"
+      ],
+      "priority": 2,
+      "sources": [
+        "ccscript/expansion/Extended_Battle_Action_Table.ccs",
+        "ccscript/redux/enemy_ai.ccs",
+        "ccscript/redux/m3_defend_roller.ccs",
+        "ccscript/expansion/Extended_PSI_Animations.ccs"
+      ],
+      "nativeReferences": [
+        {
+          "path": "src/game/battle.c",
+          "line": 3601,
+          "anchor": "redux_enemy_ai_active",
+          "sha256": "982eb8183c6d4a728b07150762bf7887638c1d47ef70a66c05940e09ada5cd31"
+        },
+        {
+          "path": "src/game/display_text_cc.c",
+          "line": 889,
+          "anchor": "case 0x1B:",
+          "sha256": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7"
+        }
+      ],
+      "existingEvidence": [
+        {
+          "path": "research/redux-battle-item-feature-review.json",
+          "sha256": "f4f0930a3515fe091a184d13ff31442eb893cebe4db008101e635090957a5b9d"
+        },
+        {
+          "path": "research/battle-semantic-coverage-dev16.json",
+          "sha256": "17ebe9b80b7eaf08887e0ab9eedecaed57b738f036e0f73f95d9bf9506ac8f1b"
+        }
+      ],
+      "proved": "Packed action rows, selector/VM turns, actual handler branches and playback fixtures provide substantial bounded behavior evidence. Dispatch existence alone is explicitly not treated as completion.",
+      "remainingGap": "Cross-turn combinations, all real target layouts/status interactions, each enemy AI condition sequence under evolving combat and pixel-level PSI comparisons still depend on the separate battle audit. These are not new missing-adapter findings.",
+      "sourceIdentities": {
+        "ccscript/expansion/Extended_Battle_Action_Table.ccs": "dac3d27706e02fe205f8e7962e7fc0da87aeb64b468a6ab2c12547cc6ab2af46",
+        "ccscript/redux/enemy_ai.ccs": "c83ffb22bc49ab2fd30575a00659cefa30df4b20a4550666e0ff0be03397c867",
+        "ccscript/redux/m3_defend_roller.ccs": "fe00dff2a8ec0605cc5f02cd8ea2b87be7cbd4a477c03f638e0131d9ee976ecc",
+        "ccscript/expansion/Extended_PSI_Animations.ccs": "d7e21ec9f75803a542b033cd74b6a13996faeee3f0837b748f68bd1c2b46a46f"
+      },
+      "confirmedNativeDefect": false
+    }
+  ],
+  "newMissingNativeAdapterProved": false,
+  "newNativeDefectProved": false,
+  "supersededLegacyClassifications": [
+    {
+      "module": "party_member_diagonal_fix",
+      "oldReport": "research/redux-active-bugfix-review.json",
+      "currentReview": "research/redux-active-bugfix-review-dev16.json",
+      "correction": "Original source guards retained; actual pinned Redux two-pixel predicted-coordinate threshold now implemented and independently tested. Earlier rendering-bypass row is historical.",
+      "currentEvidence": [
+        {
+          "path": "research/native-party-screen-dual-dev16-v4-final-green.json",
+          "sha256": "5f78bda019f7633d9953424bd052f7f5fe2d35a463ffab1cd1888df07760efc4",
+          "Passed": true
+        },
+        {
+          "path": "research/native-redux-party-run-dev16-v4-final-green.json",
+          "sha256": "6bdaac52b288f8a56c37f92e8bef415517445623a2e11c1b45c1f45bbae0c778",
+          "Passed": true
+        },
+        {
+          "path": "research/native-tile-merge-dev16-v4-final-green.json",
+          "sha256": "6f4603b76bf34d7c9fa3d6f392424cf599e4f7a08fcbd8e0e8d120ad41d1b99f",
+          "Passed": true
+        }
+      ]
+    },
+    {
+      "module": "item_transformations_fix",
+      "correction": "Dev16 timer/RNG helper evidence supersedes source-only helper wording; complete reset/game-over Egg timeline remains open."
+    }
+  ],
+  "explicitlyUnusedOrPlatformOnly": [
+    {
+      "scope": "movscr_codes destructor API",
+      "activeReachableOpcodes": 0,
+      "activeSourceCalls": 0,
+      "qualification": "Unused-library gap in audited pinned graph, not an active normal-story conversion requirement."
+    },
+    {
+      "scope": "debug_fixes/debug_menu_enabler/diamond/psi_anims debugger support",
+      "DEBUG_BUILD": 0,
+      "qualification": "Pinned boot debugger disabled; wholesale developer-menu parity remains separate from normal gameplay."
+    },
+    {
+      "scope": "chunked DMA race and region/protection boot patches",
+      "qualification": "Native immediate DMA/PC startup have different execution; no SNES hardware emulation claim."
+    }
+  ],
+  "builderIdentityRegression": {
+    "beforeNoteChangePackSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+    "afterNoteChangePackSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+    "bothPacksByteIdentical": true,
+    "matchesInstalledPinnedPack": true,
+    "reviewGeneratorSha256BeforeNotes": "7dc2742c6d4014a6435022bb73feda90f1557215dbb2ee4cff703fc20154e85f",
+    "reviewGeneratorSha256AfterNotes": "26f4405a515a46e58f91324aa33b02bd1788f35910aa2333c8c9202ed42ac535",
+    "builderSha256": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1",
+    "builderBehaviorEdited": false,
+    "onlyTwoReviewNotesEdited": true
+  },
+  "inputIdentities": {
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-active-bugfix-review.json": "937229db44b48d88adaf562cd490a42906a74288a1f40c99d3efc5c603b5fca4",
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-active-bugfix-review-dev16.json": "e54ec7a90e782b468cdc52d3f04db1eb7d40c2bcaa1ba2d378eb0fd5e1f468ca",
+    "C:/Users/crono/Desktop/Projects/eb/github-repo/validation/native-redux-assembly-ledger.json": "4dc3019cb308ae0d13a48900344cceab4761344728d1dc2b01abb6b48470f1fb",
+    "C:/Users/crono/Desktop/Projects/eb/research/maternalbound-dialogue-report.json": "b24855dec923f699d64008ac1a0a1b0957f1294322876de132607dffa9c946bd",
+    "C:/Users/crono/Desktop/Projects/eb/research/rng-consumers-dev16-v3-green.json": "191bd395e78218ef7154f5720bafcfc1511ef564cd19f2c728019be43bb5105e",
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-control-and-battle-hooks-review.json": "c679a600236358cd0be4e742100a45b6e02943798b1ba16c707a64f0fa8f17c7",
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-remaining-feature-review.json": "ad01c4d6859f05728058403cd4f6cb65acabb8c497192f554785285d8c8a79ec",
+    "C:/Users/crono/Desktop/Projects/eb/research/native-position-arithmetic-runtime-review-dev15-v6-final-green.json": "3b918cce155ca971110267832c48543821a5e143f2cabbd890e064a31b280eaa",
+    "C:/Users/crono/Desktop/Projects/eb/research/native-redux-party-run-dev16-v4-final-green.json": "6bdaac52b288f8a56c37f92e8bef415517445623a2e11c1b45c1f45bbae0c778",
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-battle-item-feature-review.json": "f4f0930a3515fe091a184d13ff31442eb893cebe4db008101e635090957a5b9d",
+    "C:/Users/crono/Desktop/Projects/eb/research/battle-semantic-coverage-dev16.json": "17ebe9b80b7eaf08887e0ab9eedecaed57b738f036e0f73f95d9bf9506ac8f1b",
+    "C:/Users/crono/Desktop/Projects/eb/research/native-party-screen-dual-dev16-v4-final-green.json": "5f78bda019f7633d9953424bd052f7f5fe2d35a463ffab1cd1888df07760efc4",
+    "C:/Users/crono/Desktop/Projects/eb/research/native-tile-merge-dev16-v4-final-green.json": "6f4603b76bf34d7c9fa3d6f392424cf599e4f7a08fcbd8e0e8d120ad41d1b99f",
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-naming-runtime-review.json": "112a4b7c2001367464cb8d8424457001ad650c08556bcb4a21a21d4bef351386",
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-reset-runtime-review.json": "b4d1bda35ad67b66a162e003a69cc0576125fa3f9d1e4d36c3e1fb6b5ca540b0",
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-special-presentation-v6-review.json": "d3c0157d531a601430fef310fc731a9bd339c9695bdf04709ae129dc6b46dd62",
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-prayer-complete-dev16-v3.json": "aebcca4b378b535d3ec67657e9d772bdee129060bffbb0518b4bc65bc5ce6d06",
+    "C:/Users/crono/Desktop/Projects/eb/research/redux-letter-complete-dev16-v3.json": "6880e076d5d4a331313a26b3db5152f39c6618dddefb18f9d269461acb78c2d3",
+    "C:/Users/crono/Desktop/Projects/eb/tools/audit_redux_bugfixes.py": "26f4405a515a46e58f91324aa33b02bd1788f35910aa2333c8c9202ed42ac535",
+    "C:/Users/crono/Desktop/Projects/eb/tools/build_maternalbound_pack.py": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1",
+    "C:/Users/crono/Desktop/Projects/eb/tools/audit_redux_hook_evidence_completeness.py": "c27aa09b921b12556324063dc3b6be3140518d8aa3eea03a769a236286ea6c59"
+  },
+  "nativeCEdited": false,
+  "sharedBuildEdited": false,
+  "ownerSavesTouched": false,
+  "fullReduxSemanticParityVerified": false,
+  "fullStoryVerified": false,
+  "limits": [
+    "This reuses existing accounting, current source anchors and stated runtime evidence; source binding is never automatically a behavior pass.",
+    "Absence of dedicated evidence means not found in this reviewed set, not a proof that no test exists anywhere or that the feature is broken.",
+    "The105 spans and36 hooks overlap other module reviews. Their counts are not added into a completion percentage.",
+    "Existing historical runtime reports retain their actual hashes; only the explicitly named final-v4 refreshes claim that exact current production library.",
+    "No new machine execution, scene traversal, audio listening or screenshot comparison is performed by this completeness runner.",
+    "Prepared unit/branch coverage does not prove every reachable story, randomizer, controller/display or save migration combination."
+  ]
+}

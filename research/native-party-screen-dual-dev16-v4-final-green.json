@@ -1,0 +1,205 @@
+{
+  "format": "redux-party-screen-micro-oracle-v1",
+  "Passed": true,
+  "ExecutedCases": 5816,
+  "NativeMismatchCount": 0,
+  "MismatchesByDirection": {},
+  "NativeMismatches": [],
+  "SourceProof": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "FOLLOWER_SPACING_THRESHOLDS",
+      "address": "C0A2AB",
+      "abi": "data",
+      "originalSource": "data/overworld/follower_spacing_thresholds.asm",
+      "byteEqualLength": 12,
+      "byteEqualSha256": "f050bf60f193418b04f78eb47a5f38e42f946b2ed16f7b19c13471d297539880"
+    },
+    {
+      "symbol": "FOLLOWER_DIAGONAL_SPACING_THRESHOLDS",
+      "address": "C0A30B",
+      "abi": "data",
+      "originalSource": "data/overworld/follower_diagonal_spacing_thresholds.asm",
+      "byteEqualLength": 12,
+      "byteEqualSha256": "4ae9176c4555df1b031ea80b3d483e19b71b8186c5f0955f0866fa8f6e739a5f"
+    },
+    {
+      "symbol": "CHECK_FOLLOWER_VERTICAL_DISTANCE",
+      "address": "C0A2B7",
+      "abi": "near",
+      "originalSource": "overworld/party/check_follower_vertical_distance.asm",
+      "byteEqualLength": 42,
+      "byteEqualSha256": "05c0caa68b2ff5a67814bd2b0ff1119567784fdadd1d7b21bea9201df51a18e2"
+    },
+    {
+      "symbol": "CHECK_FOLLOWER_HORIZONTAL_DISTANCE",
+      "address": "C0A2E1",
+      "abi": "near",
+      "originalSource": "../identification-wrappers/check_follower_horizontal_distance.asm",
+      "byteEqualLength": 42,
+      "byteEqualSha256": "59dc8bbd8ed351ca73a39c3c45530b1a235721267f79401aa25b9968d5216f54"
+    },
+    {
+      "symbol": "CHECK_FOLLOWER_DIAGONAL_DISTANCE",
+      "address": "C0A317",
+      "abi": "near",
+      "originalSource": "../identification-wrappers/check_follower_diagonal_distance.asm",
+      "byteEqualLength": 57,
+      "byteEqualSha256": "13186ef43e857c46971da6d7cabefa888135441ff86d2568119d49b88bd9289a"
+    },
+    {
+      "symbol": "FOLLOWER_DISTANCE_CHECK_TABLE",
+      "address": "C0A350",
+      "abi": "data",
+      "originalSource": "data/overworld/follower_distance_check_table.asm",
+      "byteEqualLength": 16,
+      "byteEqualSha256": "12ccd16e8ca35d8247c0eaf4e83b82d3ae6b8db3716a61f7da2448146f514cdf"
+    },
+    {
+      "symbol": "UPDATE_PARTY_SPRITE_POSITION",
+      "address": "C0A26B",
+      "abi": "near",
+      "originalSource": "overworld/party/update_party_sprite_position.asm",
+      "byteEqualLength": 64,
+      "byteEqualSha256": "6de3896a0740aea4c468f4e9acae6e1ea290bcd57248bcd74b27f352dcec40d5"
+    },
+    {
+      "symbol": "party_member_diagonal_fix",
+      "address": "FC576A",
+      "byteEqualLength": 109,
+      "byteEqualSha256": "613d3e4cc411b10994fd7441856bed08592bd21d5d434b4ca5febbc88630fe4e",
+      "PinnedSourceSha256": "c304f5832ee9d93d82fdcb6a8f413f555b4bcb4272dfd42263e50518d4828387",
+      "ActiveImportVerified": true,
+      "CompleteCompiledModuleByteEqual": true,
+      "PatchAddress": "C0A28C",
+      "ActualSourceLabels": {
+        "dirDiagonal": "FC579A",
+        "dirHorizontal": "FC578E",
+        "dirVertical": "FC5782",
+        "newDirectionalUpdateCheck": "FC576A",
+        "updateDirectionalIndexFuncList": "FC5772"
+      }
+    }
+  ],
+  "Modes": [
+    {
+      "Mode": "original",
+      "ExecutedCases": 5816,
+      "NativeMismatchCount": 0,
+      "MismatchesByDirection": {},
+      "MachineEvidence": {
+        "Calls": 5816,
+        "StackDirectPageProtectedRamPassed": true,
+        "CallerSha256": "5faeb75000137953dc0faea9abaf82a838058c0e438d5e0a1ee950236272ea81",
+        "LuaSha256": "49185d62ba77fb0f985e9d0b296cc2cb5d377659a5b98011eeb6967d44b57d85",
+        "SamplesSha256": "7e675913163d9c548ae68ac62dda2bc93d692faac78d8489189b90248543e681",
+        "ActualCompiledReduxCodeExecuted": false,
+        "OwnCallerMirroredForPinnedBank80Return": false,
+        "EverySampleReentersC0Entry": true
+      },
+      "NativeEvidence": {
+        "ProductionLibrarySha256": "a61301a5894a523c6218bc5cd3ff897009e3390a1b55049379065bd9f5835a3a",
+        "ProductionExecutableSha256": "96fd5364b595184384d4046f307ea94038193bbe8bf938abb0107b8797bc7eb0",
+        "ProbeSha256": "0a763fc3cda9470bfb70343a81a919410b932a204defedd0b2abfb73ebd6035c",
+        "DriverSourceSha256": "01de6a5dafa1f4ee3c85962354d92d014330df8f1c786bf53a4218f9d5eec216",
+        "PrivateLinkEvidence": {
+          "ExecutableSha256": "0a763fc3cda9470bfb70343a81a919410b932a204defedd0b2abfb73ebd6035c",
+          "DriverSourceSha256": "01de6a5dafa1f4ee3c85962354d92d014330df8f1c786bf53a4218f9d5eec216",
+          "ProductionLibrarySha256": "a61301a5894a523c6218bc5cd3ff897009e3390a1b55049379065bd9f5835a3a",
+          "UntouchedProductionLibraryLinked": true,
+          "PrivateCorrectedCallbackReplacement": null,
+          "ReadOnlyPrePostCallbackWrapper": false,
+          "SamePlatformMainAndGameLoop": true,
+          "SharedSourceEditedByBuilder": false,
+          "SharedBuildEdited": false,
+          "Builder": {
+            "path": "tools/party_follow_private_build.py",
+            "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+          }
+        },
+        "PreparedPreviousLookupUsesActualDistanceWithCurrentZero": true,
+        "NativeLogSha256": "376f7e8bc78da4fd43266087f465b57c06c80fb8ce6f6d33cdae2972775dc7c4"
+      }
+    },
+    {
+      "Mode": "redux",
+      "ExecutedCases": 5816,
+      "NativeMismatchCount": 0,
+      "MismatchesByDirection": {},
+      "MachineEvidence": {
+        "Calls": 5816,
+        "StackDirectPageProtectedRamPassed": true,
+        "CallerSha256": "5faeb75000137953dc0faea9abaf82a838058c0e438d5e0a1ee950236272ea81",
+        "LuaSha256": "ee421af3743dec511908eaf5ce82d3dfaa196c9444e24d13b170c843865521ed",
+        "SamplesSha256": "b56426ff69d0b775400a7a98818e8c02904026fec5ae4674a409cb9b0e5c18bb",
+        "ActualCompiledReduxCodeExecuted": true,
+        "OwnCallerMirroredForPinnedBank80Return": true,
+        "EverySampleReentersC0Entry": true
+      },
+      "NativeEvidence": {
+        "ProductionLibrarySha256": "a61301a5894a523c6218bc5cd3ff897009e3390a1b55049379065bd9f5835a3a",
+        "ProductionExecutableSha256": "96fd5364b595184384d4046f307ea94038193bbe8bf938abb0107b8797bc7eb0",
+        "ProbeSha256": "d83cf79e29612b2bf75017e52adf70c1194d96fee5d253fbf70882527c8cec3e",
+        "DriverSourceSha256": "01de6a5dafa1f4ee3c85962354d92d014330df8f1c786bf53a4218f9d5eec216",
+        "PrivateLinkEvidence": {
+          "ExecutableSha256": "d83cf79e29612b2bf75017e52adf70c1194d96fee5d253fbf70882527c8cec3e",
+          "DriverSourceSha256": "01de6a5dafa1f4ee3c85962354d92d014330df8f1c786bf53a4218f9d5eec216",
+          "ProductionLibrarySha256": "a61301a5894a523c6218bc5cd3ff897009e3390a1b55049379065bd9f5835a3a",
+          "UntouchedProductionLibraryLinked": true,
+          "PrivateCorrectedCallbackReplacement": null,
+          "ReadOnlyPrePostCallbackWrapper": false,
+          "SamePlatformMainAndGameLoop": true,
+          "SharedSourceEditedByBuilder": false,
+          "SharedBuildEdited": false,
+          "Builder": {
+            "path": "tools/party_follow_private_build.py",
+            "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+          }
+        },
+        "PreparedPreviousLookupUsesActualDistanceWithCurrentZero": true,
+        "NativeLogSha256": "01d27ffbce0567ae447a8520f554a7d5cc1bcfb025cdb788798e822933fc71ca"
+      }
+    }
+  ],
+  "InputIdentities": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+    "research\\maternalbound-native-bridge.json": "081177d81cc462359906a855e22a4045c4c18a325f0296e071a753004e9e6179",
+    "_BuildScratch\\MaternalBound-Redux\\Project\\ccscript\\main.ccs": "eed62cec9d49b138534418f39c9929a4c4ad6e573171b45708180dc3e63a97a3",
+    "_BuildScratch\\MaternalBound-Redux\\Project\\ccscript\\bugfixes\\party_member_diagonal_fix.ccs": "c304f5832ee9d93d82fdcb6a8f413f555b4bcb4272dfd42263e50518d4828387",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v4-build\\companion\\game_lib\\libearthbound_game.a": "a61301a5894a523c6218bc5cd3ff897009e3390a1b55049379065bd9f5835a3a",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v4-runtime\\player.exe": "96fd5364b595184384d4046f307ea94038193bbe8bf938abb0107b8797bc7eb0",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v4-runtime\\observer.exe": "62d66163154fe4822e419b8610ef8d2d699d30aaf460a8692c64d379dba1df3b",
+    "EarthBound Companion\\Game\\assets.pak": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+    "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.15\\Profiles\\maternalbound-redux-897d0083\\assets.pak": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\entity\\callbacks.c": "c38e6cccc7f9192f404e9eb5f17be6098ff16728ece825c6c6a65baf4a7cc461",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\redux_party_screen_oracle.py": "31125449f05ce3a39b3b040fb07a6713a9f67d760b3c2fd6328a4253a8138301",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_party_follow_oracle.py": "3327769f221e2322f807c6b619fdfa09588fe7490d2332e0522bee4b8d04eba4",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_position_arithmetic_oracle.py": "c0eee93f9b9fe1839dd2fe2ab15395b3ec05d76b09954dcf332682d94558c176"
+  },
+  "PreservedRedBaseline": {
+    "Path": "research/native-redux-party-screen-dev16-v1-red.json",
+    "Sha256": "f780fe5e9adefa31d5f16ae7110b66c7c955ccac381695f14c49ba5cf1569a08",
+    "NativeMismatchCount": 960
+  },
+  "OwnerSavesTouched": false,
+  "SharedBuildChanged": false,
+  "Limits": [
+    "Actual pinned Redux hook and Original cardinal dependencies execute unchanged; Original-only screen equality is not Redux parity.",
+    "Prepared aligned/unaligned and screen-distance contexts include synthetic speed-transition geometry; full story coverage remains false.",
+    "These checks concern screen-coordinate smoothing only; entity absolute movement and collision are not changed."
+  ]
+}

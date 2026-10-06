@@ -1,0 +1,161 @@
+{
+  "format": "runtime-source-constants-clean-build-qa-v1",
+  "Passed": true,
+  "runnerSha256": "888a482d39c6c81bba15622d68c6dd090890bfc581c0d784aff7cacbfdefaa3d",
+  "inputs": {
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\CMakeLists.txt": "8f9cce5f66c13b558104500f30954372650094033a6bafcc119925d2ae0c38be",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\tools\\generate_constants_headers.py": "974f4488bceb2db279b46aab459b1dc7351e692018dde6113ac20ec446776e59",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\cmake.exe": "474b48d3458a081a882f13b8b136b7e14bdd74b3ab2853d601269e1e56113271",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\gcc.exe": "206f9fc067234f48ae077550658dae06bd75d99110c1b3166887b7090cbd7fa0",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\ninja.exe": "5e865665724322dc15aa9b8fc41f54ed2a3ee5a2aa38c2799de1e3f1519e4091",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe": "896ccf899b9d45c1c119ba35d6cce6e16cc10dd6a7f502f88fb50429a6e5cf4c",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\ebtools.exe": "6ca6e04c8e2b83257c9d1a40c0d16ad7aba373b1dcd271a609529b9dd56fba45",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\github-repo\\scripts\\create_fixture.py": "2d882842d3c19626a6d518af482c051ae664d937dd18f1bde5d97a15850996f3",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\runtime-constants-header-qa-dev16-final.json": "2645bb93baa6059df75c5a564bc50b942a2fcfe1380413386d1e3093d72cf36c",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\dev16-public-clean-source-r2\\compile.log": "3d6fadc6bcaa7a07a0bd4f493b6923ab077efbb0b4057d5e860640aa6c87c6bb",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\dev16-public-clean-source-r2\\native-source\\src\\CMakeLists.txt": "c04ba48c0182e052d39bf6e624f9ee7473af7f51bb020b08a6792a2635cb8105"
+  },
+  "baselineSource": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\dev16-public-clean-source-r2\\native-source",
+  "baselineSourceFileCount": 4311,
+  "baselineSourceManifestSha256": "4f08f8e7afcfa1b21634cc446306b273cf4c7a46535cd8862646f871631977ad",
+  "privateOverlaidSourceFileCount": 4312,
+  "privateOverlaidSourceManifestSha256": "6c60b1efc78ba74fc130d8d5e2811120e4050b40d022a6be1c82a632f05059c6",
+  "exactOverlayChanges": [
+    "src/CMakeLists.txt",
+    "src/tools/generate_constants_headers.py"
+  ],
+  "plainDefaultBuildPassedWithoutEbtools": true,
+  "fixtureExecutableExcludedFromDefaultBuild": true,
+  "genStructInfoAndStructInfoTargetsPassed": true,
+  "extractedItemsOrMusicJsonReadOrCreated": false,
+  "OFFJsonCodegenCommandBodiesPreserved": true,
+  "explicitPublicFixtureGenerationBuildAndExecutionPassed": true,
+  "steps": [
+    {
+      "name": "configure-without-ebtools",
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\cmake.exe",
+        "-S",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\native-source\\port\\unix",
+        "-B",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\build",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_C_COMPILER=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\gcc.exe",
+        "-DCMAKE_MAKE_PROGRAM=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\ninja.exe",
+        "-DSDL2_DIR=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\SDL2-2.32.10\\x86_64-w64-mingw32\\lib\\cmake\\SDL2",
+        "-DPython3_EXECUTABLE=C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe",
+        "-DEBTOOLS_EXE=EBTOOLS_EXE-NOTFOUND",
+        "-DEB_RUNTIME_ASSETS=ON",
+        "-DEB_ENABLE_AUDIO=ON"
+      ],
+      "exitCode": 0,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\configure-without-ebtools.log",
+      "logSha256": "b229f963b12d95eb1c0d8c67b426ea9f12f4f98d20dac1f48579d5b3fb499c73"
+    },
+    {
+      "name": "plain-default-build",
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\cmake.exe",
+        "--build",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\build",
+        "--parallel",
+        "8"
+      ],
+      "exitCode": 0,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\plain-default-build.log",
+      "logSha256": "1f2459be803ec01419af49d3e86f35cac40c983224c6bfb91d6d08241023094b"
+    },
+    {
+      "name": "explicit-struct-targets",
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\cmake.exe",
+        "--build",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\build",
+        "--target",
+        "gen_struct_info",
+        "struct_info",
+        "--parallel",
+        "8"
+      ],
+      "exitCode": 0,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\explicit-struct-targets.log",
+      "logSha256": "7716162f3cd3b99cf3b8a8dd6decf324e08c7e941aae7e730baba5e4fc8c075b"
+    },
+    {
+      "name": "create-public-test-fixture",
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\scripts\\create_fixture.py"
+      ],
+      "exitCode": 0,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\create-public-test-fixture.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "configure-explicit-fixture-tools",
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\cmake.exe",
+        "-S",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\native-source\\port\\unix",
+        "-B",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\build",
+        "-DEBTOOLS_EXE=C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\ebtools.exe"
+      ],
+      "exitCode": 0,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\configure-explicit-fixture-tools.log",
+      "logSha256": "3b6df92227c31a1a1605afa7f762abea632716123ca1e959c82ca2e1ab75eae6"
+    },
+    {
+      "name": "explicit-fixture-build",
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\cmake.exe",
+        "--build",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\build",
+        "--target",
+        "test_runtime_assets",
+        "--parallel",
+        "8"
+      ],
+      "exitCode": 0,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\explicit-fixture-build.log",
+      "logSha256": "00096e5e38fdc29ae4346b04af3188426ea6301b4d56306afd25de02d128735e"
+    },
+    {
+      "name": "explicit-fixture-run",
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\build\\game_lib\\test_runtime_assets.exe",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\build\\game_lib\\runtime_assets_test\\assets_test.pak",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\build\\game_lib\\runtime_assets_test\\scratch"
+      ],
+      "exitCode": 0,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\constants-default-clean-dev16-final-r2\\explicit-fixture-run.log",
+      "logSha256": "39ff367896deaffccec74fc3ea6718bc4aed4177d152711e6f9462592d69a4ea"
+    }
+  ],
+  "defaultBuildOutputSha256": {
+    "earthbound.exe": "3ab5154203b8c9162fb59978d9437ab7c2ed5970341223ff85f630766357138f",
+    "game_lib/libearthbound_game.a": "eb0331e82ee9e8bbf21e3c47fd85108bd74307a9d8002247dbfaae673e700fc4",
+    "game_lib/gen_struct_info.exe": "f7d3d5c7022df780d3309e43352a8e37ecd4d76ed948fea99280e715e81172c0",
+    "game_lib/struct_info.json": "3929d4b2cc52b5710417bc219e9d1320fa50a601816fe59980cee942da3ce6bb",
+    "game_lib/generated/items_generated.h": "2a3e89957ca6d11ab01e80991d1bf2f2793de6588bc97b2e0ac2c243840e86df",
+    "game_lib/generated/music_generated.h": "3e69e97445ac8f53cd38b39e4afb0c557df58687671b5b889ef04159518a09f8"
+  },
+  "privateFixtureOutputSha256": {
+    "game_lib/test_runtime_assets.exe": "9f21f092fad018431d6a3b40d297ec2cb08eb7a95688d0db2750cdd6b7485f12",
+    "game_lib/runtime_assets_test/assets_test.pak": "38e10b3a9ed010c184ac8a019d77f40664a3a7ac03cc0b163e289248955e5c27"
+  },
+  "noEbtoolsDefaultCacheSha256": "ffaa945c16fbab75f96b36ee88623f8a5142bac5d2c26ddc68850d1441d88249",
+  "nativeGameplayRun": false,
+  "sharedBuildOrOwnerSaveOrRealPackModified": false,
+  "limits": [
+    "This builds a private fresh source copy; these executable hashes are not release runtime identities.",
+    "The baseline is the recorded fresh Base archive plus public v8 patch and pinned tamp prepared by root; its missing-JSON failure log is hash-bound.",
+    "Only CMakeLists.txt and the new constants generator differ before the explicit test-fixture step.",
+    "Default runtime build, numeric/header consumer QA and gen_struct_info are executed; gameplay and full story are not run.",
+    "EB_RUNTIME_ASSETS=OFF JSON commands are compared textually, not built without required extracted assets.",
+    "The explicit fixture requires ebtools and the published synthetic fixture script; it creates only private loader test data, not game records.",
+    "Runtime packs still provide actual item/music records; diagnostic arrays are source symbols and include the explicit source ID MUSIC_GIYGAS_WEAKENED191."
+  ]
+}

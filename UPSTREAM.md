@@ -23,4 +23,4 @@ The October 4 review found no root license file or repository-wide redistributio
 
 The [machine-readable review](validation/upstream-license-provenance.json) records checked branch/pin commits, complete-tree coverage, notice paths, README/license hashes and relevant document lines. It cannot rule out permission granted outside those sources.
 
-The repository and combined releases remain private as a precaution, not as a claim that private distribution is automatically permitted. Public visibility alone does not grant a redistribution license, and credits/pin/patch packaging do not replace one. Combined native/GPL distribution terms remain unresolved. See [LEGAL.md](LEGAL.md) for the concrete boundaries and [CREDITS.md](CREDITS.md) for authorship.
+The repository and experimental releases are public as of October 6, 2026. Visibility does not resolve the recorded distribution terms. Public visibility alone does not grant a redistribution license, and credits/pin/patch packaging do not replace one. Combined native/GPL distribution terms remain unresolved. See [LEGAL.md](LEGAL.md) for the concrete boundaries and [CREDITS.md](CREDITS.md) for authorship.

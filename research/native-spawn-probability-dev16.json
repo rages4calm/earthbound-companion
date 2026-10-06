@@ -1,0 +1,53 @@
+{
+  "format": "snes-spawn-probability-micro-oracle-v1",
+  "Passed": true,
+  "ExecutedCalls": 256,
+  "SkippedCalls": 0,
+  "MismatchCount": 0,
+  "FirstMismatches": [],
+  "OldModuloDisagreements": 253,
+  "SourceMapping": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "MULT168",
+      "address": "C08FF7",
+      "abi": "far",
+      "originalSource": "system/math/mult168.asm",
+      "byteEqualLength": 59,
+      "byteEqualSha256": "e33a6c712d3a05f02efe679c5a8b1f6e80dbf1e44f9b60dc8e6a164940d1c682"
+    }
+  ],
+  "InputIdentities": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "tools\\mesen-agent-v0.1.0\\mesen-agent.exe": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe": "2edb5852800b9b5627658b2d14665604efd509cd7bf3754978074d8b3ad21e44",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe": "d2cd0d3244f3f0c24ba9e1a38f1e86569b0e50edad4c0d39476920232e370a9b",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_spawn_probability_oracle.py": "3d02d29fec6db313600925dbb21c8b9307ca946f44aded41621b6721e5eb6ab5",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_position_arithmetic_oracle.py": "c0eee93f9b9fe1839dd2fe2ab15395b3ec05d76b09954dcf332682d94558c176",
+    "native-source\\asm\\system\\math\\mult168.asm": "0071354f38c5d7dfde7a402e6095a4f7cf586340f048092ad847340e65ec0841",
+    "native-source\\asm\\overworld\\attempt_enemy_spawn.asm": "1cd4e643a661ce43f9ebf1b71d20e0c3c6f2b181ac8446a6af8559fc3aabd629"
+  },
+  "StackDirectPageProtectedRamPassed": true,
+  "CompleteCallCountsAndOrderPassed": true,
+  "SamplesSha256": "15c1186c6fbc7c1e8647cc5305c86394b633d449541578acd94564eeea5a5e04",
+  "CallerSha256": "8ccfb74d882377949a906dba695fe52fbb47519bc4eb8d2abe55d5b11c093c7f",
+  "LuaSha256": "18d2f1afcdb25a3ce3d01b704854ab2a257dec2bacd201d23968084fa9f5b5c5",
+  "OwnerRomUnchanged": true,
+  "Limits": [
+    "Actual original multiplication and source-defined postprocessing, not the whole enemy spawn routine or story RNG ordering.",
+    "Butterfly probability uses a different source modulo100 operation; this correction applies to ordinary enemy spawning."
+  ]
+}

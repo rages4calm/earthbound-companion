@@ -5,24 +5,30 @@
 **EarthBound for Windows, with a native MaternalBound Redux adaptation, widescreen and ultrawide scenery, 1080p–4K output, MSU music, PC controls, save recovery and Story Shuffle v3.**
 
 > [!WARNING]
-> **Current release: `v0.5.0-redux-dev.15`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **Current release: `v0.5.0-redux-dev.16`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
 The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. Both the original and the pinned Redux packs have content-specific protection policies; unknown packs cannot be randomized.
 
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio or saves. The documentation includes clearly labeled development screenshots. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.15) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+[Developer testing tools](docs/TESTING.md) · [Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.16) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+
+Dev.16 restores serialized random rolls, corrects encounter probability, bomb splash targets, boss transformation cleanup, encounter direction, sprite-script returns, loaded item timers, Redux bulk-buy capacity/refunds and Redux follower spacing, and adds Original mode's missing possession script with guarded old-save recovery. Expanded source-backed tests cover selected paths in all 144 active battle callbacks and complete prepared encounters, prayer, ending and final-letter transactions. The Original data-upgrade and real checkpoint-recovery checks also pass. Redux content/seed identities and owner saves are retained; complete story and randomized coverage remain open. [Audit, evidence and remaining work](docs/NATIVE-AUDIT-dev16.md).
 
 Dev.15 corrects cold-loaded battle tables, summon eligibility/artwork, special-battle presentation, conditional music and dialogue audio commands, repeated Offense Up, terrain movement arithmetic, ladder coordinates and Jeff repair RNG. Source-backed scenarios and independent original-SNES comparisons now cover more of the native conversion. Saves, pack and seed identities are unchanged. [Audit, evidence and remaining work](docs/NATIVE-AUDIT-dev15.md).
 
 Dev.14 fixes hotel wake-up traps, boundary collision coordinates, large damage/healing variance, Redux naming and battle UI, and the Gauss Labs End reset. It adds source-backed audit tools, ordinary-input/cold-save tests and selected independent SNES CPU comparisons. The reported Threek save walks out with normal Down input; no relocation or save repair is needed. [Audit, evidence and remaining work](docs/NATIVE-AUDIT.md).
 
+![Actual dev.16 copied-save hotel exit in the final native engine](docs/images/native-redux-hotel-exit-dev16.png)
+
+This current development capture shows the copied Threek save after ordinary Down input leaves the bed gap. [Replay and image identities](validation/hotel-exit-capture-dev16.json). No owner save was changed; this is an isolated movement check.
+
 ![Redux accented keyboard in an isolated native development fixture](docs/images/native-redux-naming-dev14.png)
 
 This unchanged native capture shows the six-row keyboard after the rendering correction. The mixed test name is a prepared input, not story progress; the capture retains its v3 runtime identity in the naming report.
 
-Earlier checkpoints corrected [Talk/Check and PSI menus](JEV-QA.md), [present rewards](docs/PRESENT-AUDIT.md), [encounter/audio delivery](docs/RELIABILITY-dev9.md), [sprint cliff escapes](docs/SPRINT-COLLISION-dev11.md), [Bubble Monkey progression](docs/WINTERS-MONKEY-dev12.md) and [stair entry/landings](docs/STAIRS-dev13.md). The [changelog](CHANGELOG.md) and linked evidence retain their original scope and runtime hashes.
+Earlier checkpoints corrected [Talk/Check and PSI menus](JEV-QA.md), [present rewards](docs/PRESENT-AUDIT.md), encounter/audio delivery, [sprint cliff escapes](docs/SPRINT-COLLISION-dev11.md), [Bubble Monkey progression](docs/WINTERS-MONKEY-dev12.md) and [stair entry/landings](docs/STAIRS-dev13.md). The [changelog](CHANGELOG.md) and linked evidence retain their original scope and runtime hashes.
 
 The repository is now public. Upstream native-engine redistribution terms remain unresolved; repository visibility and attribution do not grant permission. See LEGAL.md and UPSTREAM.md for the recorded review.
 
@@ -184,7 +190,9 @@ cd earthbound-companion
 powershell -ExecutionPolicy Bypass -File .\scripts\Bootstrap-Native.ps1
 ```
 
-Developers need a Windows x64 C toolchain, CMake/Ninja, SDL2 development files, Python and the .NET 8 SDK. Runtime builds use `EB_RUNTIME_ASSETS=ON`, `EB_ENABLE_VERIFY=OFF` and `EB_ENABLE_AUDIO=ON`. Redux setup-helper builds additionally require the pinned CoilSnake/CCScript toolchain and PyInstaller; see [the conversion instructions](MATERNALBOUND-NATIVE.md#reproducing-development-conversion).
+Developers need a Windows x64 C toolchain, CMake/Ninja, SDL2 development files, Python and the .NET 8 SDK. Runtime builds use `EB_RUNTIME_ASSETS=ON`, `EB_ENABLE_VERIFY=OFF` and `EB_ENABLE_AUDIO=ON`. The native executable compiles without a ROM, extracted JSON or `ebtools`: numeric constants come from the checked-in assembly enums using Python 3.9+ standard-library code. Game setup still requires your own ROM to produce playable data. [Fresh full-patch build and runtime checks](validation/public-clean-source-dev16.json) · [Constants and loader proof](research/runtime-constants-final-manifest-dev16-v9.json). Redux setup-helper builds additionally require the pinned CoilSnake/CCScript toolchain and PyInstaller; see [the conversion instructions](MATERNALBOUND-NATIVE.md#reproducing-development-conversion).
+
+For a code-only build after installing your toolchain, configure `native-source/port/unix` with the runtime flags above and your `SDL2_DIR`, then run `cmake --build` on that build directory. The loader fixture is deliberately excluded from the default build. For its separate test, install `ebtools`, run `python scripts/create_fixture.py`, then build the explicit `test_runtime_assets` target and execute it with the generated fixture pack and scratch paths. `Verify.ps1` records that sequence. It uses synthetic test data, not game JSON.
 
 The checked-in rebuild/package scripts record the current workspace's tool paths; they are not a one-command provisioner for a fresh machine. Some historical commands refer to local `tools/` files, while published scripts live in `scripts/`. Put your own ROM at `ROM\EarthBound (USA).sfc`; `ROM/` is ignored by Git. Generated game data, build outputs, soundtracks, saves and runtime screenshots remain untracked; the labeled documentation screenshots are checked in.
 
@@ -194,7 +202,7 @@ EarthBound and Mother 2 are trademarks and copyrighted works of their respective
 
 The October 4 review found no repository-wide redistribution grant in the reviewed native-foundation README/license files; GitHub also detects no top-level license. Third-party library licenses cover those libraries, not the whole engine. Public visibility and credits do not supply missing permission. [Review record](validation/upstream-license-provenance.json) · [GitHub's licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
 
-MaternalBound Redux and its adaptations have separate GPLv3 terms. Those terms do not license the native foundation. The combined engine's distribution and GPL compatibility need clarification before a public combined release; private visibility does not settle either issue. Original Companion files have their own [limited-scope license](LICENSE.md). A patch or compiled executable can still contain upstream material even when the full source tree is not vendored. See [LEGAL.md](LEGAL.md) and [CREDITS.md](CREDITS.md). No disclaimer claims to grant game rights or guarantee legal protection.
+MaternalBound Redux and its adaptations have separate GPLv3 terms. Those terms do not license the native foundation. The combined engine's distribution and GPL compatibility remain unresolved in the recorded review despite the public development releases; repository visibility does not settle either issue. Original Companion files have their own [limited-scope license](LICENSE.md). A patch or compiled executable can still contain upstream material even when the full source tree is not vendored. See [LEGAL.md](LEGAL.md) and [CREDITS.md](CREDITS.md). No disclaimer claims to grant game rights or guarantee legal protection.
 
 ## Verification
 

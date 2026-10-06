@@ -1,0 +1,105 @@
+{
+  "SchemaVersion": 1,
+  "Frozen": true,
+  "ActiveReduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "FinalRuntime": "dev16-v8",
+  "FinalPlayerSha256": "cd0c6f9ef6d01d7b29ebb6180eedb29f11b95adeb3a35dfb6687bcb6cf6cdf67",
+  "FinalObserverSha256": "9c21413218297b43c46db8f784cb6cd228417f7f13ca672ef562baf7ebfd93d4",
+  "FinalPlayerLibrarySha256": "e7cacb1ef302d0b7bec395958af0dbb17fa01a67d777267677f20034964fb7b8",
+  "FinalCases": {
+    "TransformPoolRedux": 177,
+    "TransformPoolOriginal": 177,
+    "GameOverRedux": 16,
+    "GameOverOriginal": 16,
+    "FullEncounterRedux": 72,
+    "FullEncounterOriginal": 72
+  },
+  "FullConversionVerified": false,
+  "FullPlaythroughVerified": false,
+  "Files": [
+    {
+      "Path": "tools/inventory_gameover_lifecycle_qa_dev17.py",
+      "Sha256": "d56dbcce92cadb413b480ec481ea1025662ba216f615bb55f00f3fe3bb6a5a72"
+    },
+    {
+      "Path": "tools/inventory_transform_pool_qa_dev17.py",
+      "Sha256": "87be96949d1b2ccfad546a399f70f9eeea42ddea99316bdd692dc31c6ae2ae92"
+    },
+    {
+      "Path": "tools/battle_full_encounter_qa_dev17.py",
+      "Sha256": "01c884e00c0d997b5a09dcead7b25d54a6ff1b83506ac5890953a37b2fe86689"
+    },
+    {
+      "Path": "research/inventory-lifecycle-dev17-evidence.md",
+      "Sha256": "613bc6508b66a0c28eb76c89373a1913b3640c54bcefa92b5344dd2b4a91cd8a"
+    },
+    {
+      "Path": "research/inventory-lifecycle-dev17-execution-provenance.json",
+      "Sha256": "7d5ff891d3bd004226041f9f9c59bb6439aaf75bf780f436bce14543b292311b"
+    },
+    {
+      "Path": "research/redux-inventory-gameover-dev17-v6-red.json",
+      "Sha256": "0358c01553a6b5658bb3154eab0096af25cfcbefc83a03528cbbc91d4d2a949d"
+    },
+    {
+      "Path": "research/original-inventory-gameover-dev17-v6.json",
+      "Sha256": "0e2ffd1196a9d52066163a3fbf047f9be498921ff9fc8f5c3c3101c5c84c0892"
+    },
+    {
+      "Path": "research/redux-inventory-transform-pool-dev17-v6-red.json",
+      "Sha256": "1feaff2419363c6deab0e5e3751dc1c02440638e4980471c356f654e741642be"
+    },
+    {
+      "Path": "research/original-inventory-transform-pool-dev17-v6-red.json",
+      "Sha256": "cd8719a304feb0415607978798de4466e8a07836a509e5145839cea4cb9ac018"
+    },
+    {
+      "Path": "research/redux-inventory-gameover-dev17-v7.json",
+      "Sha256": "61381da77a5b7b959763d65f62af52d7ee3e942ce16cf34138556cb93f856e29"
+    },
+    {
+      "Path": "research/redux-inventory-transform-pool-dev17-v7.json",
+      "Sha256": "f16c0ad49422e51466d04dd95dad6aff2ea195982950ae597c9e33581ef15e38"
+    },
+    {
+      "Path": "research/redux-battle-full-encounters-dev17-v7.json",
+      "Sha256": "903fbed201a4b77f1f3715e3fd5952d63891af81c11d046ab64de7cfe6536931"
+    },
+    {
+      "Path": "research/original-inventory-gameover-dev17-v7.json",
+      "Sha256": "9912cbc1e78c1fb62fd55a67eecb63289111b5dbd8d9fffc65bc98b50ea56746"
+    },
+    {
+      "Path": "research/original-inventory-transform-pool-dev17-v7.json",
+      "Sha256": "1bfe73ed3aec1af83bdceaa8b355a1c486de8a1b60f4ef7f46d76f0d8c583bbe"
+    },
+    {
+      "Path": "research/original-battle-full-encounters-dev17-v7.json",
+      "Sha256": "6f026510337955767f0139285384be739800bdca6eaaa8c4759e0730a3e0f970"
+    },
+    {
+      "Path": "research/redux-inventory-gameover-dev17-v8.json",
+      "Sha256": "5fc828df338ed9b7b74b69c2fa4b28229b162879174c006fec5613b01e50ccf4"
+    },
+    {
+      "Path": "research/redux-inventory-transform-pool-dev17-v8.json",
+      "Sha256": "7f1d640ea6f07fec9f763d692c23f32ce9ad55b9dcab7826551948471b03cc5e"
+    },
+    {
+      "Path": "research/redux-battle-full-encounters-dev17-v8.json",
+      "Sha256": "fd37a392ac5968f99bff6be687458b3cf20f69364e57aa2e7dc71efd48ef335f"
+    },
+    {
+      "Path": "research/original-inventory-gameover-dev17-v8.json",
+      "Sha256": "7b0df763013e14963d7aab46ab0690726f098f9e4d02b3abaeb5188519212ed1"
+    },
+    {
+      "Path": "research/original-inventory-transform-pool-dev17-v8.json",
+      "Sha256": "a371ec10da0608b71fee7574ee78deaf67ad8ff9425025e80dbbe21a18100651"
+    },
+    {
+      "Path": "research/original-battle-full-encounters-dev17-v8.json",
+      "Sha256": "ca241caec8ff65288bc2d3ffbd795ace81ae2e0ebec315e350255bbb3231f569"
+    }
+  ]
+}

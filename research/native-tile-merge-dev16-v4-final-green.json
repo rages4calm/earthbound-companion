@@ -1,0 +1,192 @@
+{
+  "format": "tile-merge-rng-micro-oracle-v1",
+  "Passed": true,
+  "SourceProof": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "RAND",
+      "address": "C08E9A",
+      "abi": "far",
+      "originalSource": "system/math/rand.asm",
+      "byteEqualLength": 56,
+      "byteEqualSha256": "ec916a40ca91cf8b5a673271b61b8e030a5fe699319cf8ab3fd35d660a561e45"
+    },
+    {
+      "symbol": "DIVISION16S",
+      "address": "C0914B",
+      "originalSource": "system/math/division16s.asm",
+      "byteEqualLength": 49,
+      "byteEqualSha256": "396f73ba064716000a45cb2faeac1c15975970c290281387c519ad33f9843044"
+    },
+    {
+      "symbol": "DIVISION16S_DIVISOR_POSITIVE",
+      "address": "C0915B",
+      "identifiedWithinByteEqualRoutine": "DIVISION16S",
+      "offset": 16
+    },
+    {
+      "symbol": "MODULUS16",
+      "address": "C09231",
+      "originalSource": "system/math/modulus16.asm",
+      "byteEqualLength": 6,
+      "byteEqualSha256": "8c8f8102d0f9ba1d52f38267f5b75b100e85dc954ac3fbd98eb0aca83b82bdd0"
+    },
+    {
+      "symbol": "RAND_MOD",
+      "address": "C45F7B",
+      "originalSource": "system/math/rand_mod.asm",
+      "byteEqualLength": 27,
+      "byteEqualSha256": "38eafd7fd3e3b6656ca151d9766d538c4e1ceef9a4fb02afd7397e04c0f563da"
+    },
+    {
+      "symbol": "MULT16",
+      "address": "C09032",
+      "originalSource": "system/math/mult16.asm",
+      "byteEqualLength": 84,
+      "byteEqualSha256": "86c5abe38059737f10fc6b494306f190639b7bf6d15e8a889b261c1bc73459c6"
+    },
+    {
+      "symbol": "MODULUS16S",
+      "address": "C091F4",
+      "originalSource": "system/math/modulus16s.asm",
+      "byteEqualLength": 18,
+      "byteEqualSha256": "26876a105682a4c5ab33b6b30b75583a8433e4f60c143863b46afa61db184f90"
+    },
+    {
+      "symbol": "DIVISION16",
+      "address": "C090E6",
+      "originalSource": "system/math/division16.asm",
+      "byteEqualLength": 25,
+      "byteEqualSha256": "85b2bc8148d7da6b6d22cc323ebc536f701c8ca608852aae06ddd559df611489"
+    },
+    {
+      "symbol": "STATS_GROWTH_VARS",
+      "address": "D5EA5B",
+      "originalSource": "data/stats_growth_vars.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "1a1a55207e52258efa50a65109ac94d4ee8ece8d7ae8b8ba12a56fcf5bedea13"
+    },
+    {
+      "symbol": "STAT_GAIN_MODIFIER_TABLE",
+      "address": "C3F2B1",
+      "originalSource": "data/stat_gain_modifier_table.asm",
+      "pointerResolvedFromCompleteOriginalFunction": true,
+      "byteEqualLength": 4,
+      "byteEqualSha256": "1e9d1aa0a1d9fbab8fa2daf768d10409970d96c8cc085f5ddd7cbbbb952c5893"
+    },
+    {
+      "symbol": "CALCULATE_STAT_GAIN",
+      "address": "C1D08B",
+      "originalSource": "text/calculate_stat_gain.asm",
+      "byteEqualLength": 126,
+      "byteEqualSha256": "b87f99c8c054385564e87d605dbd28fa2ecdf685793cfa6a49dab35a62278389",
+      "abi": "near; A=old level; caller DP+14 decimal (0x0e)=growth, +15 decimal (0x0f)=base"
+    },
+    {
+      "symbol": "ANIMATE_ENTITY_TILE_MERGE",
+      "address": "C4CED8",
+      "originalSource": "overworld/entity/animate_entity_tile_merge.asm",
+      "byteEqualLength": 311,
+      "byteEqualSha256": "541f1b4a7579345a2e71f26da5bd04a51ea30dd817c67c842f6b9b474fc3b756",
+      "ReduxFunctionByteEqual": true,
+      "UnreachedOriginalExternalCalls": {
+        "MERGE_SPRITE_TILE_PAIR": "C42965",
+        "UPLOAD_ENTITY_SPRITE_TO_VRAM": "C429AE"
+      }
+    }
+  ],
+  "MachineEvidence": {
+    "Calls": 1536,
+    "StackDirectPageProtectedRamPassed": true,
+    "CallerSha256": "2fa2552bb485ab36a23cd914363ca015607f94fc6f0981f940acbe70ad7e5d09",
+    "LuaSha256": "c454cd8b71606477109f128664fbb66b11dc819aba460bb003b36be77ca1ad12",
+    "SamplesSha256": "fd778087f954720dbbae4b396026f35f4d6ddf1da5f56897a8de44b45efe6e97"
+  },
+  "Modes": [
+    {
+      "Mode": "original",
+      "Calls": 1536,
+      "MismatchCount": 0,
+      "FirstMismatches": [],
+      "PrivateBuildEvidence": {
+        "ExecutableSha256": "2556f980d8744e61b6f4438c7e62e5ef1e88070e6bd5e0d10f961f03c5f57b43",
+        "DriverSourceSha256": "58d6af9bfeb3bdaaca48ac18b7126b250ae2e31b19942b85727a76aed58d0626",
+        "ProductionLibrarySha256": "a61301a5894a523c6218bc5cd3ff897009e3390a1b55049379065bd9f5835a3a",
+        "UntouchedProductionLibraryLinked": true,
+        "PrivateCorrectedCallbackReplacement": null,
+        "ReadOnlyPrePostCallbackWrapper": false,
+        "SamePlatformMainAndGameLoop": true,
+        "SharedSourceEditedByBuilder": false,
+        "SharedBuildEdited": false,
+        "Builder": {
+          "path": "tools/party_follow_private_build.py",
+          "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+        }
+      }
+    },
+    {
+      "Mode": "redux",
+      "Calls": 1536,
+      "MismatchCount": 0,
+      "FirstMismatches": [],
+      "PrivateBuildEvidence": {
+        "ExecutableSha256": "95be0326d12ddc8966722a00465f5816c18a42defc117ab363e7da3520a7579f",
+        "DriverSourceSha256": "58d6af9bfeb3bdaaca48ac18b7126b250ae2e31b19942b85727a76aed58d0626",
+        "ProductionLibrarySha256": "a61301a5894a523c6218bc5cd3ff897009e3390a1b55049379065bd9f5835a3a",
+        "UntouchedProductionLibraryLinked": true,
+        "PrivateCorrectedCallbackReplacement": null,
+        "ReadOnlyPrePostCallbackWrapper": false,
+        "SamePlatformMainAndGameLoop": true,
+        "SharedSourceEditedByBuilder": false,
+        "SharedBuildEdited": false,
+        "Builder": {
+          "path": "tools/party_follow_private_build.py",
+          "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+        }
+      }
+    }
+  ],
+  "InputIdentities": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+    "tools\\mesen-agent-v0.1.0\\mesen-agent.exe": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe": "2edb5852800b9b5627658b2d14665604efd509cd7bf3754978074d8b3ad21e44",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe": "d2cd0d3244f3f0c24ba9e1a38f1e86569b0e50edad4c0d39476920232e370a9b",
+    "EarthBound Companion\\Game\\assets.pak": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+    "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.15\\Profiles\\maternalbound-redux-897d0083\\assets.pak": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v4-runtime\\player.exe": "96fd5364b595184384d4046f307ea94038193bbe8bf938abb0107b8797bc7eb0",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v4-runtime\\observer.exe": "62d66163154fe4822e419b8610ef8d2d699d30aaf460a8692c64d379dba1df3b",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v4-build\\companion\\game_lib\\libearthbound_game.a": "a61301a5894a523c6218bc5cd3ff897009e3390a1b55049379065bd9f5835a3a",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\entity\\callbacks.c": "c38e6cccc7f9192f404e9eb5f17be6098ff16728ece825c6c6a65baf4a7cc461",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\tile_merge_rng_oracle.py": "be485b56a0fdd854c017fb330fc1958023b352bed2c79a623ee6cd2a19aa138f",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_stat_growth_oracle.py": "69db18dc2e9e56c5bac9e66e8306858b16452d46e261626a78d2b0c29587c9ed"
+  },
+  "PreservedRedBaseline": {
+    "Path": "research/native-tile-merge-dev16-v1-red.json",
+    "Sha256": "033dbdc443912333a7fff81e0aa03544420d2aea602336c25cac70d86bba341e",
+    "MismatchCounts": [
+      1536,
+      1536
+    ]
+  },
+  "OwnerSavesTouched": false,
+  "SharedBuildEdited": false,
+  "Limits": [
+    "Actual original full function runs with zero active fade entries; unused upload/blend helpers are not executed.",
+    "RNG state transition, slot selection and occupied-slot wrap are compared; sprite blend/VRAM fidelity and full fade timelines remain unverified.",
+    "Redux original function is byte-identical here; native profile checks use actual pack loading."
+  ]
+}

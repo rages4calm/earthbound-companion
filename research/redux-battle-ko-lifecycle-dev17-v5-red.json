@@ -1,0 +1,2854 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev17-ko-lifecycle",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "originalPack": false,
+  "runtimeSha256": {
+    "player.exe": "5b834db21019f698552a07ebcfae2fdd4ec1e3c4c570d0766c4d121268f0a0b3",
+    "observer.exe": "3294b617c19b5eeeac38f48f68d2c430afbc44d529cc87cd70230bb0e5ecae93"
+  },
+  "assetsSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "privateBuild": {
+    "driverSourceSha256": "d0f1af6e4ff4483bd3d006be855675bf26258aa06feeddd999fbd515ea6ee586",
+    "executableSha256": "e749f0c8c237d6bf7705c6f7c5a88eaf9ad99a977bf73ce858b49c48fa3f1702",
+    "productionExecutableSha256": "5b834db21019f698552a07ebcfae2fdd4ec1e3c4c570d0766c4d121268f0a0b3",
+    "productionLibrarySha256": "fad67535029f4d956eb3b65195c0fa0739b327387f53ddb5558ad88e64221be6",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "nativeExitCode": 0,
+  "nativeLogSha256": "707de759504b5010ca2dff3fbc7690a516407b7110a5b38e19c2c1416250d23b",
+  "sourceReferences": [
+    {
+      "path": "src/game/battle.c",
+      "sha256": "982eb8183c6d4a728b07150762bf7887638c1d47ef70a66c05940e09ada5cd31"
+    },
+    {
+      "path": "src/game/battle_actions.c",
+      "sha256": "dc847cfbbcea8c2aafd527a061006db2017032d981cfbad0f22c0ba5453a95dd"
+    },
+    {
+      "path": "src/game/battle_ui.c",
+      "sha256": "bb45320a3997bcfacae77a00a58c7f45ae4e58c356faaad50436441efcc487b6"
+    },
+    {
+      "path": "asm/battle/ko_target.asm",
+      "sha256": "84e388e8105621b0a6ba795b278f286ae6aedb0f657cbb7cd2e34eb8558a2a51"
+    },
+    {
+      "path": "asm/battle/actions/rainbow_of_colours.asm",
+      "sha256": "90b29842e48639d4d28976d9b6449d8b17a40da0e38a57ee73390dd8eb63eaf5"
+    },
+    {
+      "path": "asm/battle/init_scripted.asm",
+      "sha256": "48ce2a45170b051a23df02865a8e5a66a1e80ff3166f62e57b6d8c6e5c645f9d"
+    }
+  ],
+  "cases": [
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 1,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 2,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 3,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 4,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 5,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 6,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 7,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 8,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 1,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 2,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 3,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 4,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 5,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 6,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 7,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 8,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 1,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 2,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 3,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 4,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 5,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 6,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 7,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": false,
+      "seed": 8,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 1,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 2,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 3,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 4,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 5,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 6,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 7,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 448,
+      "enemy": 131,
+      "new": 131,
+      "action": 0,
+      "cold": true,
+      "seed": 8,
+      "expected": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 131,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 50,
+        "battleMoney": 48,
+        "depth": 1
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 1,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 2,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 3,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 4,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 5,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 6,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 7,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 8,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 1,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 2,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 3,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 4,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 5,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 6,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 7,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 8,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 1,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 2,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 3,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 4,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 5,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 6,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 7,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": false,
+      "seed": 8,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 1,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 2,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 3,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 4,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 5,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 6,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 7,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    },
+    {
+      "group": 471,
+      "enemy": 27,
+      "new": 83,
+      "action": 290,
+      "cold": true,
+      "seed": 8,
+      "expected": {
+        "targetId": 83,
+        "hp": 3344,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "actual": {
+        "targetId": 83,
+        "hp": 0,
+        "aff": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "depth": 1
+      },
+      "passed": false,
+      "errors": [
+        "hp: got0 expected3344",
+        "aff: got[1, 0, 0, 0, 0, 0, 0] expected[0, 0, 0, 0, 0, 0, 3]"
+      ]
+    }
+  ],
+  "allPassed": false,
+  "diagnostic": true,
+  "reproductionFlags": {
+    "build": "_BuildScratch\\audit-dev16-v5-build\\companion",
+    "native-source": "native-source",
+    "assets": "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.13\\Profiles\\maternalbound-redux-897d0083\\assets.pak",
+    "runtime": "_BuildScratch\\audit-dev16-v5-runtime",
+    "scratch": "_BuildScratch\\battle-item-audit-dev17-ko-redux-red2",
+    "output": "research\\redux-battle-ko-lifecycle-dev17-v5-red.json",
+    "project": "_BuildScratch\\MaternalBound-Redux\\Project"
+  },
+  "limits": [
+    "Real KO frompc0 including packed final action, text/apply/calc children and source group constructor/art/layout. Prepared dying HP0; not a full menu/turn encounter or natural story reachability proof.",
+    "Frank group448 no-final negative control; Carbon Dog group471 final action290arg83. Cold only transient entry pointers cleared after constructor, not fresh restore.",
+    "Source SKIP_DEATH_TEXT_AND_CLEANUP branches to whole KO return before death text/animation/status. Current native ordinary KO control and transformed boss expected separately.",
+    "Only player library executes; observer hash provenance. No owner payload published."
+  ],
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false
+}

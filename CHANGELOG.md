@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.5.0-redux-dev.16 - random rolls and expanded native audit
+
+- Fix Redux bulk-buy inventory reservations so capacity failures abort and refund rather than charging for items that cannot fit. Test actual purchases, quantity overflow, cash refunds, equip/sell decisions, reversed Moonside choices and cold menu continuations. Original item classification stays source-specific.
+
+- Build the native runtime directly from checked-in assembly constants without extracted JSON or `ebtools`; keep the asset-dependent developer pipeline separate. Verify the complete public patch in a fresh source tree and run the explicit synthetic loader fixture.
+
+- Match source fine-direction lookup and actual encounter advantage, including solo Jeff/Poo leader selection in Redux.
+- Preserve sprite-render return values and C0A4A8 transient frame-zero semantics consumed by event-script branches; prevent child animations entering a neighboring script.
+- Initialize transforming item timers on real Continue/new-game finalization. Keep chicks/chickens in ordinary bags and recover legacy pooled copies without dropping items when active bags are full.
+
+- Honor the original KO skip-cleanup branch after Carbon Dog's actual transformation final action, preserving Diamond Dog's second form. Keep ordinary death cleanup controls.
+- Allow the two exact audited Original base hashes in both the launcher policy and frozen Redux setup helper; verify the full local source build with updated Original data.
+
+- Correct Bomb/Super Bomb's empty/NPC right-neighbor guard, preventing extra damage-child dispatch and random-roll consumption; reproduce it in both modes before the fix.
+- Re-derive Original story protections for the exact updated pack while retaining the prior audited hash. Check 1,000 seeds/all 30 option combinations for each Original pack and Redux.
+- Fix stale launcher quick-save recovery metadata to actual native format 16. Verify backup/restore using a real copied checkpoint and native loading; retain obsolete-format rejection.
+
+- Replace remaining gameplay C-library random rolls with source-specific consumers of the serialized game RNG; verify warm and cold restores in both modes.
+- Correct normal encounter probability to the source's scaled byte formula. Retain the separate butterfly formula and original zero-divisor behavior.
+- Reproduce each mode's follower spacing rules and use serialized RNG for dissolve tile selection. Independent machine comparisons and ordinary Redux walking/running traces pass.
+- Extract Original mode's missing possession script from the owner's clean ROM without changing asset IDs or old script-bank indices. Safely recover the recognized unresolved mini-ghost state on old Original F6 loads. Updated setup can rebuild legacy Original data when supplied the ROM; older seed packs retain their own data.
+- Expand real battle callback testing, full prayer cinematics, Mom's ending transaction and final-letter sequences; retain executed runtime identities and explicit scenario limits.
+- Preserve the Redux pack, seed namespaces, save format and owner story/quick saves. Full story/randomized playthroughs, complete turns and audiovisual parity remain unverified. See [the dev.16 audit](docs/NATIVE-AUDIT-dev16.md).
+
 ## 0.5.0-redux-dev.15 - battle, music and scenario audit
 
 - Bind NPC HP/replacement, consolation and targeting tables at their actual consumers, including cold mid-action saves. Both packs pass 680 targeted bound/cold cases.

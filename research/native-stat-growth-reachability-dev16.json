@@ -1,0 +1,301 @@
+{
+  "format": "stat-growth-base-corner-reachability-review-v1",
+  "HelperDifferenceConfirmed": true,
+  "CompletedCpuReview": {
+    "Path": "research/native-stat-growth-dev16-red.json",
+    "Sha256": "f23930c855ec652b3b8b152ef37d2b9e7a40fc400fe54a1f2fd14e5278ccdf56",
+    "Calls": 462237,
+    "Mismatches": 2393,
+    "MismatchBaseStatCounts": {
+      "1": 1189,
+      "0": 1204
+    }
+  },
+  "OriginalAndPinnedReduxHelperByteEqual": true,
+  "HelperAddress": "C1D08B",
+  "HelperBytes": 126,
+  "HelperSha256": "b87f99c8c054385564e87d605dbd28fa2ecdf685793cfa6a49dab35a62278389",
+  "OriginalStartingBaseStat": 2,
+  "AllSevenNativeStartingBaseStats": 2,
+  "NewGameUsesResetPath": true,
+  "JoinScalingUsesResetPath": true,
+  "NormalStoryBaseZeroOrOneReachabilityDemonstrated": false,
+  "InitialAndJoinSeedZeroOrOne": false,
+  "ChangeApplied": false,
+  "SourceBackedExplanation": "OPTIMIZED_MULT x10 emits ASL/ASL/ADC/ASL without clearing carry. For (base\u22122) negative at base0/1, original effective subtraction term is\u221218/\u22128, versus native full multiplication\u221220/\u221210. Positive base2..255 matches all completed contexts. The source branch correctly consumes RAND when diff=1.",
+  "SourceReferences": [
+    {
+      "Path": "native-source/include/config.asm",
+      "Line": 8,
+      "Anchor": ".DEFINE STARTING_STATS 2"
+    },
+    {
+      "Path": "native-source/asm/misc/reset_char_level_one.asm",
+      "Line": 22,
+      "Anchor": "LDA #STARTING_STATS"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2106,
+      "Anchor": "void reset_char_level_one("
+    },
+    {
+      "Path": "native-source/src/intro/file_select.c",
+      "Line": 1829,
+      "Anchor": "reset_char_level_one(c + 1, level, 0);"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 729,
+      "Anchor": "void apply_join_level_scaling("
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 1941,
+      "Anchor": "static int16_t level_up_apply_stage("
+    },
+    {
+      "Path": "native-source/src/game/display_text_cc.c",
+      "Line": 3669,
+      "Anchor": "case 0x0A: c->boosted_iq"
+    },
+    {
+      "Path": "native-source/src/game/battle_actions.c",
+      "Line": 2366,
+      "Anchor": "party_characters[idx].boosted_iq = boost_stat_byte"
+    }
+  ],
+  "LiteralBaseStatWrites": [
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 176,
+      "Text": "battler->base_offense = (uint8_t)edata->offense;"
+    },
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 178,
+      "Text": "battler->base_defense = (uint8_t)edata->defense;"
+    },
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 180,
+      "Text": "battler->base_speed = edata->speed;"
+    },
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 182,
+      "Text": "battler->base_guts = edata->guts;"
+    },
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 184,
+      "Text": "battler->base_luck = edata->luck;"
+    },
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 266,
+      "Text": "target->base_offense = cs->offense;"
+    },
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 268,
+      "Text": "target->base_defense = cs->defense;"
+    },
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 270,
+      "Text": "target->base_speed = cs->speed;"
+    },
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 272,
+      "Text": "target->base_guts = cs->guts;"
+    },
+    {
+      "Path": "native-source/src/game/battle.c",
+      "Line": 274,
+      "Text": "target->base_luck = cs->luck;"
+    },
+    {
+      "Path": "native-source/src/game/battle_actions.c",
+      "Line": 4281,
+      "Text": "attacker->base_offense = ch->offense;"
+    },
+    {
+      "Path": "native-source/src/game/battle_actions.c",
+      "Line": 4284,
+      "Text": "attacker->base_guts = ch->guts;"
+    },
+    {
+      "Path": "native-source/src/game/battle_actions.c",
+      "Line": 4391,
+      "Text": "attacker->base_defense = ch->defense;"
+    },
+    {
+      "Path": "native-source/src/game/battle_actions.c",
+      "Line": 4394,
+      "Text": "attacker->base_speed = ch->speed;"
+    },
+    {
+      "Path": "native-source/src/game/battle_actions.c",
+      "Line": 4397,
+      "Text": "attacker->base_luck = ch->luck;"
+    },
+    {
+      "Path": "native-source/src/game/battle_actions.c",
+      "Line": 5551,
+      "Text": "BattleTailText tail={0}; party_characters[0].boosted_iq=254;party_characters[0].base_iq=20;"
+    },
+    {
+      "Path": "native-source/src/game/battle_calc.c",
+      "Line": 1422,
+      "Text": "Battler b = {0}; b.base_offense=80; b.offense=80; b.base_defense=80; b.defense=80;"
+    },
+    {
+      "Path": "native-source/src/game/battle_calc.c",
+      "Line": 1422,
+      "Text": "Battler b = {0}; b.base_offense=80; b.offense=80; b.base_defense=80; b.defense=80;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 1952,
+      "Text": "ch->base_offense = clamp_stat_lower((int16_t)ch->base_offense + gain);"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 1961,
+      "Text": "ch->base_defense = clamp_stat_lower((int16_t)ch->base_defense + gain);"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 1970,
+      "Text": "ch->base_speed = clamp_stat_lower((int16_t)ch->base_speed + gain);"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 1979,
+      "Text": "ch->base_guts = clamp_stat_lower((int16_t)ch->base_guts + gain);"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 1993,
+      "Text": "ch->base_vitality = clamp_stat_lower((int16_t)ch->base_vitality + gain);"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2004,
+      "Text": "ch->base_iq = clamp_stat_lower((int16_t)ch->base_iq + gain);"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2013,
+      "Text": "ch->base_luck = clamp_stat_lower((int16_t)ch->base_luck + gain);"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2115,
+      "Text": "ch->base_offense = 2;   /* STARTING_STATS */"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2116,
+      "Text": "ch->base_defense = 2;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2117,
+      "Text": "ch->base_speed = 2;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2118,
+      "Text": "ch->base_guts = 2;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2119,
+      "Text": "ch->base_luck = 2;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2120,
+      "Text": "ch->base_vitality = 2;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2121,
+      "Text": "ch->base_iq = 2;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2565,
+      "Text": "ch->base_offense=80; ch->base_defense=70; ch->base_speed=30;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2565,
+      "Text": "ch->base_offense=80; ch->base_defense=70; ch->base_speed=30;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2565,
+      "Text": "ch->base_offense=80; ch->base_defense=70; ch->base_speed=30;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2566,
+      "Text": "ch->base_guts=20; ch->base_luck=40;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2566,
+      "Text": "ch->base_guts=20; ch->base_luck=40;"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2630,
+      "Text": "ch->base_speed=250;ch->boosted_speed=20;recalc_character_postmath_speed(1);if(ch->speed!=255) { fprintf(stderr,\"Redux test failure: %s:%d\\n\",__FILE__,__LINE__); return false; }"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2631,
+      "Text": "ch->base_guts=250;ch->boosted_guts=20;recalc_character_postmath_guts(1);if(ch->guts!=255) { fprintf(stderr,\"Redux test failure: %s:%d\\n\",__FILE__,__LINE__); return false; }"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2632,
+      "Text": "ch->base_luck=250;ch->boosted_luck=20;recalc_character_postmath_luck(1);if(ch->luck!=255) { fprintf(stderr,\"Redux test failure: %s:%d\\n\",__FILE__,__LINE__); return false; }"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2633,
+      "Text": "ch->base_iq=250;ch->boosted_iq=20;recalc_character_postmath_iq(1);if(ch->iq!=255) { fprintf(stderr,\"Redux test failure: %s:%d\\n\",__FILE__,__LINE__); return false; }"
+    },
+    {
+      "Path": "native-source/src/game/inventory.c",
+      "Line": 2634,
+      "Text": "ch->base_vitality=250;ch->boosted_vitality=20;recalc_character_postmath_vitality(1);if(ch->vitality!=255) { fprintf(stderr,\"Redux test failure: %s:%d\\n\",__FILE__,__LINE__); return false; }"
+    }
+  ],
+  "NativeResetBodySha256": "fdc308030463082ff4359a23fc8d736274a1219fc1ff7b08075709529d7f4a41",
+  "NativeStageBodySha256": "bd38f580bbf008e685a937bf3a9a16a007f1c9bc0f771eba0d1b2ac1af467ac7",
+  "InputIdentities": {
+    "native-source\\src\\game\\inventory.c": "7d612672b1af0dbceb7cff8690796520c82c8c50d2cc4947a76cb18f1c0bc160",
+    "native-source\\src\\intro\\file_select.c": "abae99bb1bade7de73614e098ba04194b148b62a536a6d3040891faff22c97b5",
+    "native-source\\include\\config.asm": "918415dddccd0079efbdd705da7eef0d529e4523c8c002caba27301264cf08ea",
+    "native-source\\asm\\misc\\reset_char_level_one.asm": "e0cc50770400b7c4ad2e0e8df7894be3e71c5236f97dfcea51a893334147dae1",
+    "native-source\\src\\game\\display_text_cc.c": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7",
+    "native-source\\src\\game\\battle_actions.c": "e1f50167f6ac2f4df6f01034f9b331508eb2339e361643d85301e14ca7833b27",
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+    "research\\native-stat-growth-dev16-red.json": "f23930c855ec652b3b8b152ef37d2b9e7a40fc400fe54a1f2fd14e5278ccdf56",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\stat_growth_reachability_audit.py": "19e37543f0db6a851cb517b6c5c5cd788a905257738d2bd6ac46c50a7b5f4f61"
+  },
+  "Limits": [
+    "Source initial/reset/join seed review proves these routes initialize base stats to2, not that every later script or deserialized state can never contain0/1.",
+    "Stat-boost item/text handlers write boosted_* fields, not the seven base_* growth inputs. Equipment and temporary combat buffs alter recalculated/battler fields.",
+    "Literal member-write inventory includes Battler and selftest writes; it is not a complete alias, serialized-save or arbitrary-memory write analysis.",
+    "The CPU corpus includes synthetic base bytes; no ordinary playthrough defect or movement/crash consequence is established from this corner.",
+    "LEVEL_UP_CHAR silent full-function execution and low-level vitality/IQ branches were not executed in the helper corpus. Native source was left unchanged pending stronger reachability evidence."
+  ]
+}

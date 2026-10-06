@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "frozen": true,
+  "scope": "Prepared real KO and actual platform-input full scripted encounter checkpoints, separate from callback address inventory; no full conversion/playthrough certification.",
+  "files": [
+    {
+      "path": "tools/battle_ko_lifecycle_qa_dev17.py",
+      "sha256": "6467f62c042b6aaf3030c39e5b0f019095c7e8bf7eb847ed81f4d17afcf1b3a8",
+      "bytes": 6101
+    },
+    {
+      "path": "tools/snes_ko_skip_oracle_dev17.py",
+      "sha256": "a4a88a607cb2a3584cbcd9ae9576aa42036976a315ce13b07640fbe6cd3fa75d",
+      "bytes": 4497
+    },
+    {
+      "path": "tools/battle_full_encounter_qa_dev17.py",
+      "sha256": "01c884e00c0d997b5a09dcead7b25d54a6ff1b83506ac5890953a37b2fe86689",
+      "bytes": 15734
+    },
+    {
+      "path": "research/redux-battle-ko-lifecycle-dev17-v5-red.json",
+      "sha256": "c985e6e87dc118270a3b21c1ade21187f414094a7e183ecc95d727717e251940",
+      "bytes": 53702
+    },
+    {
+      "path": "research/redux-battle-ko-lifecycle-dev17-v6.json",
+      "sha256": "1c7836184d6a0537937366c143c352ef0ff0c361c6d30f9fc4fd8efdefef5287",
+      "bytes": 50144
+    },
+    {
+      "path": "research/redux-battle-ko-skip-machine-dev17.json",
+      "sha256": "387bd69a8a9bdf370469555e018584981ecfef8ef04b004d3af9b5cae3382b1b",
+      "bytes": 1926
+    },
+    {
+      "path": "research/redux-battle-full-encounters-dev17-v5-red.json",
+      "sha256": "fd66035dcc6db36d3fa88d501fee9444531b8f53968f2a579039b5e18a536f45",
+      "bytes": 15733
+    },
+    {
+      "path": "research/redux-battle-full-encounters-dev17-v6.json",
+      "sha256": "559ff7812d644127531b76ce521718292b8bb8119f0fa7c12ff533ec38ea5f50",
+      "bytes": 207979
+    },
+    {
+      "path": "research/original-battle-ko-lifecycle-dev17-v5-red.json",
+      "sha256": "0356d47101322619c16d21759062a10699757a703f0d785f5b6ef565ceaf3b48",
+      "bytes": 53619
+    },
+    {
+      "path": "research/original-battle-ko-lifecycle-dev17-v6.json",
+      "sha256": "6a49451f54ba5fe342f635e62aa490129622e2e099b80989258b18b2dda21f36",
+      "bytes": 50061
+    },
+    {
+      "path": "research/original-battle-ko-skip-machine-dev17.json",
+      "sha256": "20dc2d3890b8b056844e172553ac81e82d1aea7154094796efeaeb499a02d035",
+      "bytes": 1928
+    },
+    {
+      "path": "research/original-battle-full-encounters-dev17-v5-red.json",
+      "sha256": "24b8362d602357605ad86b7754d6b2853339b981721ff3b22a9824b622ca5285",
+      "bytes": 15591
+    },
+    {
+      "path": "research/original-battle-full-encounters-dev17-v6.json",
+      "sha256": "bf42541579cdbbd3abf8312a80c869fc81721ddb7befcdcf514e3ad977aa7443",
+      "bytes": 208236
+    }
+  ],
+  "runtimeV6": [
+    {
+      "path": "_BuildScratch/audit-dev16-v6-runtime/player.exe",
+      "sha256": "201f68cad2b4347482be618196ab3340f72facd6803be511ec0e5ed2f0c56482",
+      "bytes": 2035574
+    },
+    {
+      "path": "_BuildScratch/audit-dev16-v6-runtime/observer.exe",
+      "sha256": "8c04b958c4ebb1ce8a317f8bddb4d7c1de656900c29c339cb74806398b72adac",
+      "bytes": 2040542
+    }
+  ],
+  "libraryV6": {
+    "path": "_BuildScratch/audit-dev16-v6-build/companion/game_lib/libearthbound_game.a",
+    "sha256": "474904c9a4b74784bc8563eb11c006a0216ae97e9870b53b257593c273c09c9c",
+    "bytes": 2825460
+  },
+  "productionFix": {
+    "path": "native-source/src/game/battle.c",
+    "sha256": "aa8aa01cbf6a4358e9ba845e0f78ef88d2b3e0807b72e04db8e2dc0dd83d443d",
+    "bytes": 285858
+  },
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false
+}

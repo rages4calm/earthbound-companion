@@ -1,0 +1,230 @@
+[
+  {
+    "sourceEntry": "C5D539",
+    "entry": 1492595,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Original-Bazooka-single",
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 1,
+    "expectedDelta": -950,
+    "soundCount": 1,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    }
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 1492595,
+    "money": 949,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Original-Bazooka-insufficient",
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    }
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 1492595,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Original-Bazooka-all-bags-full",
+    "freeSlots": 0,
+    "plan": [
+      0,
+      3,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    }
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 1492007,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-single",
+    "quantity": 1,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      1
+    ],
+    "expectedItem": 190,
+    "expectedCount": 1,
+    "expectedDelta": -5,
+    "soundCount": 1
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 1492007,
+    "money": 4,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-insufficient",
+    "quantity": 1,
+    "freeSlots": 14,
+    "plan": [
+      0
+    ],
+    "expectedItem": 190,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 1492007,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-all-bags-full",
+    "quantity": 1,
+    "freeSlots": 0,
+    "plan": [
+      0
+    ],
+    "expectedItem": 190,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 1492007,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-cancel",
+    "quantity": 1,
+    "freeSlots": 14,
+    "plan": [
+      999
+    ],
+    "expectedItem": 190,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "soundCount": 0
+  },
+  {
+    "sourceEntry": "C5D539",
+    "entry": 1492595,
+    "money": 80000,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "sound": 120,
+    "id": "Original-Bazooka-single-cold",
+    "freeSlots": 14,
+    "plan": [
+      0,
+      3,
+      1
+    ],
+    "expectedItem": 133,
+    "expectedCount": 1,
+    "expectedDelta": -950,
+    "soundCount": 1,
+    "expectedToolFlags": {
+      "bazookaOwned": 0,
+      "brokenIronPurchased": 0
+    },
+    "checkpoint": 2
+  },
+  {
+    "sourceEntry": "C5D2ED",
+    "entry": 1492007,
+    "money": 80000,
+    "shop": 15,
+    "stock": [
+      190
+    ],
+    "sound": 120,
+    "id": "OneItem-Banana-single-cold",
+    "quantity": 1,
+    "freeSlots": 14,
+    "plan": [
+      0,
+      1
+    ],
+    "expectedItem": 190,
+    "expectedCount": 1,
+    "expectedDelta": -5,
+    "soundCount": 1,
+    "checkpoint": 2
+  }
+]

@@ -1,0 +1,122 @@
+{
+  "format": "snes-palette-tint-micro-oracle-v1",
+  "Passed": true,
+  "executedCases": 298,
+  "executedColorComparisons": 38144,
+  "skippedCases": 0,
+  "modes": [
+    {
+      "profile": "Original",
+      "Passed": true,
+      "ExecutedCases": 149,
+      "ExecutedColorComparisons": 19072,
+      "SkippedCases": 0,
+      "MismatchCount": 0,
+      "FirstMismatches": [],
+      "AverageMismatchCount": 0,
+      "CompleteCallMarker": "Loading script...\nRegistered memory callback from $C0FF16 to $C0FF16\nRegistered memory callback from $C00480 to $C00480\nRegistered memory callback from $C00391 to $C00391\nRegistered memory callback from $C00434 to $C00434\nRegistered memory callback from $C0FF24 to $C0FF24\nScript loaded successfully.\nPALETTE_COMPLETE 149 17664\n",
+      "SamplesSha256": "96D92F69233B5FD83AD86A04F8832C393630D0AC31C7B65875057023C1F3E0D4",
+      "CallerSha256": "A3A2970779AB2FCAC686463EFC228B70F8035F027F73B087C2EFB0F6A1568FD0",
+      "LuaSha256": "DB55BA78A86A4AD7C7DCEF44A33C492DFD6191565FB7D75EB0B055D00832A47C",
+      "StackDirectPageProtectedRamPassed": true
+    },
+    {
+      "profile": "Redux",
+      "Passed": true,
+      "ExecutedCases": 149,
+      "ExecutedColorComparisons": 19072,
+      "SkippedCases": 0,
+      "MismatchCount": 0,
+      "FirstMismatches": [],
+      "AverageMismatchCount": 0,
+      "CompleteCallMarker": "Loading script...\nRegistered memory callback from $C0FF16 to $C0FF16\nRegistered memory callback from $C00480 to $C00480\nRegistered memory callback from $C00391 to $C00391\nRegistered memory callback from $C00434 to $C00434\nRegistered memory callback from $C0FF24 to $C0FF24\nScript loaded successfully.\nPALETTE_COMPLETE 149 17664\n",
+      "SamplesSha256": "9CA0F62794BFD56EA268DC6EA1D90995BD528FFFB166FDF71E903F351F3B47CF",
+      "CallerSha256": "A3A2970779AB2FCAC686463EFC228B70F8035F027F73B087C2EFB0F6A1568FD0",
+      "LuaSha256": "EFCF76333F86523A0F9979D8576CEF5283FBA653F60AA4A50D72A397CD35D7B8",
+      "StackDirectPageProtectedRamPassed": true
+    }
+  ],
+  "SourceMapping": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "MULT16",
+      "address": "C09032",
+      "abi": "far",
+      "originalSource": "system/math/mult16.asm",
+      "byteEqualLength": 84,
+      "byteEqualSha256": "86c5abe38059737f10fc6b494306f190639b7bf6d15e8a889b261c1bc73459c6",
+      "reduxByteEqualSha256": "86C5ABE38059737F10FC6B494306F190639B7BF6D15E8A889B261C1BC73459C6"
+    },
+    {
+      "symbol": "ADJUST_SINGLE_COLOUR",
+      "address": "C00434",
+      "abi": "near",
+      "originalSource": "overworld/adjust_single_colour.asm",
+      "byteEqualLength": 76,
+      "byteEqualSha256": "b3b12cc0e2c9713e2b35724bb815c82b5293da374fa15a7c0dad5d1b003a53a8",
+      "reduxByteEqualSha256": "DDE788F022A95BA37359B1DDAC3651DBC254EFA8EC1439B2CF716244B7E58494"
+    },
+    {
+      "symbol": "DIVISION16S",
+      "address": "C0914B",
+      "originalSource": "system/math/division16s.asm",
+      "byteEqualLength": 49,
+      "byteEqualSha256": "396F73BA064716000A45CB2FAEAC1C15975970C290281387C519AD33F9843044",
+      "reduxByteEqualSha256": "396F73BA064716000A45CB2FAEAC1C15975970C290281387C519AD33F9843044"
+    },
+    {
+      "symbol": "GET_COLOUR_AVERAGE",
+      "address": "C00391",
+      "originalSource": "system/get_colour_average.asm",
+      "byteEqualLength": 163,
+      "byteEqualSha256": "4318A94FCA2FB3E17BF1B60904CD2872B5729487F2AD105C861CA661B9DE88A2",
+      "reduxByteEqualSha256": "4318A94FCA2FB3E17BF1B60904CD2872B5729487F2AD105C861CA661B9DE88A2"
+    },
+    {
+      "symbol": "ADJUST_SPRITE_PALETTES_BY_AVERAGE",
+      "address": "C00480",
+      "originalSource": "overworld/adjust_sprite_palettes_by_average.asm",
+      "byteEqualLength": 359,
+      "byteEqualSha256": "207FBB8ABE8A097D9B23392908EF74A978CA85B0A3FEC2575DA50FBD7DFFCF56",
+      "reduxByteEqualSha256": "207FBB8ABE8A097D9B23392908EF74A978CA85B0A3FEC2575DA50FBD7DFFCF56"
+    }
+  ],
+  "InputIdentities": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "A8FE2226728002786D68C27DDDDF0B90A894DB52E4DFE268FDF72A68CAE5F02E",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mesen-agent-v0.1.0\\mesen-agent.exe": "4143766F2B900E63663EA000655F24FD824F2CE5324C2575025F8BB68030A910",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe": "2EDB5852800B9B5627658B2D14665604EFD509CD7BF3754978074D8B3AD21E44",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe": "D2CD0D3244F3F0C24BA9E1A38F1E86569B0E50EDAD4C0D39476920232E370A9B",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\redux-overlay-palette-behavior-dev16-v5-review.json": "4FC85F47579AF1A7D8D6761876D99FA4F7283B09B15350E7FC84070BF850E240",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\overlay-palette-dev16-v5-final\\palette-machine-cases.json": "4D803CCF02EC9F65FC4824777F698EE55B7ABADF4274B53E9636FE666E70292D",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_palette_tint_oracle.py": "2004E06E6902F652C4BFAB9E660598970A9F3123DEB6AD1AD92E67FB95886CC6"
+  },
+  "NativeRuntimeSha256": {
+    "player.exe": "5B834DB21019F698552A07EBCFAE2FDD4EC1E3C4C570D0766C4D121268F0A0B3",
+    "observer.exe": "3294B617C19B5EEEAC38F48F68D2C430AFBC44D529CC87CD70230BB0E5ECAE93"
+  },
+  "NativeProductionLibrarySha256": "fad67535029f4d956eb3b65195c0fa0739b327387f53ddb5558ad88e64221be6",
+  "NativeConsumerReportSha256": "4FC85F47579AF1A7D8D6761876D99FA4F7283B09B15350E7FC84070BF850E240",
+  "OwnerRomUnchanged": true,
+  "SharedNativeSourceChanged": false,
+  "Limits": [
+    "Actual complete source tint/average/multiply/division/channel routines execute in prepared CPU contexts with real native-consumer captured palettes; surrounding map loading and full SNES rendering are not executed.",
+    "Native map consumer includes a final LOAD_SPECIAL_SPRITE_PALETTE. This separate source copy is applied after the machine tint output where required, rather than mislabeling that caller difference as a tint defect.",
+    "The active pinned Redux threshold patch is verified across the complete original channel body and executed from the compiled pinned ROM, not an invented formula.",
+    "All 298 unique packed map combo/palette configurations use native representative sectors with fixed story-flag prerequisites; alternative event palette override branches remain separate.",
+    "Reference runner, compiled Redux ROM and all palette captures are private development inputs, never game runtime/release dependencies or public report data."
+  ]
+}

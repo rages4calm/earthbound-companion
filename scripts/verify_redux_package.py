@@ -21,6 +21,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ("zip","rom","scratch","msu-cache","msu-manifest"):
         parser.add_argument("--"+name,required=True,type=Path)
+    parser.add_argument('--legacy-original-pack',type=Path,help='Exercise upgrading an existing Original pack during real setup.')
+    parser.add_argument('--checkpoint',type=Path,help='Read-only matching Redux format-16 checkpoint for actual packaged backup/restore/native-load verification.')
     args=parser.parse_args();scratch=args.scratch.resolve()
     if scratch.exists():raise ValueError("Use a fresh isolated verification directory.")
     scratch.mkdir(parents=True);tests=[];source_hash=sha(args.rom)
@@ -36,6 +38,11 @@ def main():
         file=app/record['Path']
         if file.stat().st_size!=record['Bytes'] or sha(file)!=record['SHA256']:raise ValueError("Package manifest mismatch.")
     tests.append('ROM-free archive and exact file manifest')
+    legacy_hash=None
+    if args.legacy_original_pack:
+        legacy_hash=sha(args.legacy_original_pack)
+        (app/'Game/assets.pak').write_bytes(args.legacy_original_pack.read_bytes())
+        tests.append('Prepared legacy Original pack for the actual setup upgrade path')
     tracks=json.loads(args.msu_manifest.read_text(encoding='utf-8-sig'))
     download=min((x for x in tracks if int(x['size'])>2000),key=lambda x:int(x['size']))
     folder=app/'msu';folder.mkdir(exist_ok=True)
@@ -64,7 +71,10 @@ def main():
         tests.append('Self-contained first-run setup with headered owner ROM and online pinned Redux source')
         pack=app/'Profiles/maternalbound-redux-897d0083/assets.pak'
         if sha(pack)!='ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3':raise ValueError('Unexpected Redux pack.')
-        if sha(app/'Game/assets.pak')!='4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B':raise ValueError('Unexpected original pack.')
+        if sha(app/'Game/assets.pak')!='01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549':raise ValueError('Unexpected original pack.')
+        if args.legacy_original_pack:
+            if sha(args.legacy_original_pack)!=legacy_hash:raise ValueError('Legacy input pack changed.')
+            tests.append('Legacy Original movement data upgraded; input pack unchanged')
         settings=json.loads((app/'UserData/settings.json').read_text())
         if not settings['ReduxDevelopmentEnabled'] or Path(settings['AssetPack']).resolve()!=pack:raise ValueError('Redux was not selected after setup.')
         for record in tracks:
@@ -107,9 +117,17 @@ def main():
         tests.append('Normal-button story and seed gameplay through house doors/stairs, Mom, clothes change and outdoor movement')
         run('profile-isolation',['--profile-test',str(pack),str(scratch/'profile-isolation')])
         tests.append('Original/Redux/seed save namespaces and profile switching')
+        checkpoint_hash=None
+        if args.checkpoint:
+            checkpoint_hash=sha(args.checkpoint)
+            run('checkpoint-recovery',['--checkpoint-recovery-test',str(pack),str(args.checkpoint.resolve()),str(scratch/'checkpoint-recovery')])
+            checkpoint_result=json.loads((scratch/'checkpoint-recovery/results.json').read_text())
+            if not checkpoint_result['Passed'] or sha(args.checkpoint)!=checkpoint_hash:raise ValueError('Actual checkpoint recovery failed or input changed.')
+            tests.append('Packaged launcher restores actual format-16 checkpoint and native engine loads it; obsolete version rejected and input unchanged')
         if sha(args.rom)!=source_hash:raise ValueError('Owner input ROM changed.')
         record={'Passed':True,'PackageSha256':sha(args.zip),'NativeExeSha256':sha(app/'Game/earthbound.exe'),
                 'ReduxSetupSha256':sha(app/'Game/redux-setup.exe'),'ReduxPackSha256':sha(pack),
+                'ActualCheckpointSha256':checkpoint_hash,
                 'Tests':tests,'DownloadedTrack':download['name'],'MsuTracksVerified':len(tracks),
                 'ExistingTracksReusedViaHardlinks':len(tracks)-1,'FullPlaythroughVerified':False,
                 'Limits':['Isolated setup/opening tests; no complete story or randomized playthrough.','One soundtrack track downloaded; remaining tracks reused and independently checked.']}

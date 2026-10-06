@@ -1,0 +1,167 @@
+{
+  "format": "redux-ending-transaction-qa-v1",
+  "sourceRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "profile": "Original",
+  "allPassed": true,
+  "nativeExit": 0,
+  "runtimeSha256": {
+    "player.exe": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "observer.exe": "290094e1eb7135218fbe5d8403436c058eef672215f34e578ea3f48e5b12bcd6"
+  },
+  "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "privateBuild": {
+    "driverSourceSha256": "e261bb8d0383df060d87d82eef6bb859b43eacfa1e00a8a202630bdd6e5fc39a",
+    "executableSha256": "fcd8c9ecbf8dea75f260694aa016d9e7dfa3a352270f30820c8735b7b052f4d8",
+    "productionExecutableSha256": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "productionLibrarySha256": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "sourceEntry": "C755C4",
+  "nativeEntry": "102F6C",
+  "nativeEntrySymbol": "MSG_ONET_MOM_ENDGAME_DONE_YET",
+  "allPhotoFlagsPrepared": true,
+  "entryPrerequisites": {
+    "flags": [
+      73,
+      304,
+      469,
+      643
+    ],
+    "position": [
+      7568,
+      360
+    ],
+    "party": [
+      1,
+      2
+    ],
+    "initialization": [
+      "load_title_screen_script_data",
+      "audio_init",
+      "initialize_overworld_state"
+    ]
+  },
+  "expected": {
+    "depth": 1,
+    "castSeen": 1,
+    "creditsSeen": 1,
+    "photoMask": 4294967295,
+    "homeNpc14": 1,
+    "homeNpc18": 1,
+    "partyCount": 1,
+    "partyMember": 1,
+    "leader": [
+      8120,
+      1104
+    ],
+    "transitionsDisabled": 0,
+    "mainScreenMask": 23,
+    "waits": 5,
+    "naturalSignals": 6,
+    "flags": [
+      11,
+      295,
+      468,
+      469,
+      472,
+      473,
+      476,
+      513,
+      530,
+      749,
+      750,
+      763,
+      775,
+      805
+    ],
+    "choiceSeen": 1,
+    "choiceResult": 1
+  },
+  "actual": {
+    "steps": 36843,
+    "depth": 1,
+    "castSeen": 1,
+    "creditsSeen": 1,
+    "choiceSeen": 1,
+    "photoMask": 4294967295,
+    "waits": 5,
+    "naturalSignals": 6,
+    "homeNpc14": 1,
+    "homeNpc18": 1,
+    "partyCount": 1,
+    "partyMember": 1,
+    "leader": [
+      8120,
+      1104
+    ],
+    "transitionsDisabled": 0,
+    "mainScreenMask": 23,
+    "flags": [
+      11,
+      295,
+      468,
+      469,
+      472,
+      473,
+      476,
+      513,
+      530,
+      749,
+      750,
+      763,
+      775,
+      805
+    ],
+    "choiceResult": 1,
+    "castPalette": [
+      0,
+      32767,
+      14366,
+      4230,
+      0,
+      32767,
+      14366,
+      4230,
+      0,
+      32767,
+      14366,
+      4230,
+      0,
+      32767,
+      14366,
+      4230,
+      15232,
+      31710,
+      22034,
+      30290
+    ]
+  },
+  "errors": [],
+  "nativeWarnings": [],
+  "executedCases": 1,
+  "executedAssertions": 17,
+  "skippedCases": 0,
+  "pinnedSourceFiles": {
+    "ccscript/data/data_31.ccs": "067fda3d873bd8c21f4de6c2fdc422e321871677e72dd21603ce38045d818296",
+    "ccscript/data/data_58.ccs": "a44ba93ec5e2f52e69253d8e79d8c3fd0104ff8f5c7317c98b87696af01a7664",
+    "ccscript/redux/cast_coloured_text.ccs": "29f495e5122a6d256853103adabce39467f81eec741e505cb0f0ce65ccba06e9"
+  },
+  "nativeReferenceFiles": {
+    "src/game/ending.c": "9e9c48ad186ec4e06619f01bc70d8d4b6dd928f738849eeb5263bd2c7ea9c354",
+    "src/game/display_text_menus.c": "02eaa3abaa822d518a913ae72443af8c5c79f4ac942deaee5955a83625acb2bf",
+    "src/game/display_text_cc.c": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7",
+    "src/intro/init_intro.c": "a681ece59de65ab4c47604632cc76d7dceb0d5df58d845858f5419bed8b950ad"
+  },
+  "runtimeSourceQualification": "Runtime uses unchanged frozen library/platform objects. Native reference files are current reviewed source; display_text_cc.c includes a later dev16 CC1D21 RNG correction not present in executed v6. Production library hash is authoritative.",
+  "diagnosticMode": false,
+  "limits": [
+    "Prepared home/party/story context; preceding full story and interaction dispatch to Mom not covered.",
+    "Actual text/cast/credits/interlude/post-credits children execute without injected completion flags or mid-scene PCs.",
+    "Photo acquisition is fixture-prepared; complete audiovisual and original timing parity unverified.",
+    "Missing prerequisites are investigated before attributing a failure to production native conversion.",
+    "Observer hash identifies matching frozen binary pair; this private driver executes player platform objects only."
+  ]
+}

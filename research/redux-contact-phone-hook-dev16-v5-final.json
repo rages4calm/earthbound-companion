@@ -1,0 +1,931 @@
+{
+  "format": "redux-contact-phone-hook-qa-v1",
+  "ReduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "Passed": true,
+  "InputIdentities": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+    "_BuildScratch\\interpreter-gap-dev16-fresh-original.pak": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+    "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.15\\Profiles\\maternalbound-redux-897d0083\\assets.pak": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v5-runtime\\player.exe": "5b834db21019f698552a07ebcfae2fdd4ec1e3c4c570d0766c4d121268f0a0b3",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v5-runtime\\observer.exe": "3294b617c19b5eeeac38f48f68d2c430afbc44d529cc87cd70230bb0e5ecae93",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v5-build\\companion\\game_lib\\libearthbound_game.a": "fad67535029f4d956eb3b65195c0fa0739b327387f53ddb5558ad88e64221be6",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\redux_contact_phone_hook_qa.py": "cc2c5223e05da9e449e8ed6f5e6333ddc47c14a4226b56e165de6eefa35bc1b2",
+    "_BuildScratch\\MaternalBound-Redux\\Project\\ccscript\\bugfixes\\swirls_without_ness_fix.ccs": "ffdd735595cc39ef422066c7389d5c98a7ec11ea2aa1ec3b4be6e884589d1882",
+    "_BuildScratch\\MaternalBound-Redux\\Project\\ccscript\\bugfixes\\dad_bike_phone_fix.ccs": "64a7926d5eb7c2f5a66dc84ec5acaba9d494e910bc039f73e1217c05772c41c3",
+    "_BuildScratch\\MaternalBound-Redux\\Project\\ccscript\\redux\\msu1.ccs": "6ccd47c216ae1ac91a4ecd28a4d66923c4e8d31dc37b80def095813a01dac016",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\handle_enemy_contact.asm": "de72155b3fc0669e01f80ea3f8e035b5dd6608026447fa3242052a8f98cf576e",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\load_dad_phone.asm": "ed2b7a9395376653e88d5fbe1c0e52ce97c4c41ad63ba2a98cd13def0593eac7",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\queue_interaction.asm": "430734439cf48cc372b0a019004548aa3d783dc0ac68d24f60662c85d68080de",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\process_overworld_tasks.asm": "802e804151ac7e309e83675e2b5b21a051541fc9dcffd627c34798c35d3884b2",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\collision\\check_entity_enemy_collision.asm": "99687c155835d56e11f57ea26b2b6b0be43702ffb766f349e211f0d07b495d33",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\camera\\start_camera_shake.asm": "047b552030a4fcfaa6a8fb0574fc2bb9945748037a0c28da02121a637d313190",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\overworld\\write_apu_port1.asm": "810bb9a4fd42d56dccb7c38a50aaf16cce51d08bb64afeb459d49d61d0a26369",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\asm\\text\\get_event_flag.asm": "25871eaaae1e7061f92487f4124ae01d5d29bfc7cc9e0c294f688317938267af",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\include\\structs.asm": "075470f230c8375a3bec8b3d8ec18de2918c70896b1f26d32111fb0813f66433",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\include\\macros.asm": "bf93511b3c4b9f9ff9f4d3fb1b54d0e0336e486267905b17d23e355c1a10ad91",
+    "_BuildScratch\\MaternalBound-Redux\\Project\\ccscript\\essential\\asm65816.ccs": "681b4723441ecfaa857d8b4ca913337ea877232f9bbb29c27ca89733486c9c91",
+    "_BuildScratch\\MaternalBound-Redux\\Project\\ccscript\\data\\data_35.ccs": "af2af4af39967d2e8befb447bcfc6b899549df9e7c5dd89fd1718a0be1901183",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\entity\\callroutine.c": "f38853c8607c8ded917325f72531dd49b7d5d58b3749b0bdbb16a579b56be1e3",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\game\\overworld.c": "9c7e6fbe3ee09965a4b8a41fba74c0594f6290585f736d653ec8a4df45385fd6",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\game\\overworld_interaction.c": "23de81ce2fabc96ffb4fd789b16b6601b125ea280e6b800bdb4fa6845342f502",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\src\\include\\constants.h": "45c66ebe2368aa0ecb6f1ad46f16b81fd7e2a69d11f785ae258847b3244e5f89"
+  },
+  "SourceProof": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "CHECK_ENTITY_ENEMY_COLLISION",
+      "address": "C0D15C",
+      "source": "overworld/collision/check_entity_enemy_collision.asm",
+      "OriginalByteEqualLength": 57,
+      "OriginalByteEqualSha256": "171c9105a2b0e6bbae6b9c3b7f641542d92d5316fa3f8c3d22c2f0b3c42d4681",
+      "ResolvedDependencies": {},
+      "ReduxBodyByteIdentical": true
+    },
+    {
+      "symbol": "WRITE_APU_PORT1",
+      "address": "C0AC0C",
+      "source": "overworld/write_apu_port1.asm",
+      "OriginalByteEqualLength": 20,
+      "OriginalByteEqualSha256": "c2cbeff9765a780671f47ddca0033a533ceb1db8838f288524f6ae09e71d761a",
+      "ResolvedDependencies": {},
+      "ReduxMsuHookAddress": "FC30D8",
+      "ReduxMsuHookLength": 24,
+      "ReduxMsuHookSha256": "708b68c953e494b9ceb95e89e93e612dfae12cfb3265f9a61e145cb5cbf9f4ca"
+    },
+    {
+      "symbol": "START_CAMERA_SHAKE",
+      "address": "C04A88",
+      "source": "overworld/camera/start_camera_shake.asm",
+      "OriginalByteEqualLength": 37,
+      "OriginalByteEqualSha256": "b7403d17ac47d4b987de3e922e551509826d5ae47bde7d384486a272a0b0bfe2",
+      "ResolvedDependencies": {
+        "WRITE_APU_PORT1": "C0AC0C"
+      },
+      "ReduxBodyByteIdentical": true
+    },
+    {
+      "symbol": "HANDLE_ENEMY_CONTACT",
+      "address": "C0D5B0",
+      "source": "overworld/handle_enemy_contact.asm",
+      "OriginalByteEqualLength": 463,
+      "OriginalByteEqualSha256": "a8b6f37af77938954bda5cbba9c18fe8bc0139f4aab6205ecfa8cbc0fd8b2165",
+      "ResolvedDependencies": {
+        "CHECK_ENTITY_ENEMY_COLLISION": "C0D15C",
+        "DESATURATE_PALETTES": "C0D4DE",
+        "START_CAMERA_SHAKE": "C04A88",
+        "IS_BATTLE_SWIRL_ACTIVE": "C2E9C8"
+      },
+      "ReduxByteEqualSha256": "f7c4d05f85c99a03863c6aa06d782c22f55dbca95e75ebf0d77d88b8dc3c6140",
+      "ReduxPatchAddress": "C0D668"
+    },
+    {
+      "symbol": "QUEUE_INTERACTION",
+      "address": "C064E3",
+      "source": "overworld/queue_interaction.asm",
+      "OriginalByteEqualLength": 84,
+      "OriginalByteEqualSha256": "911553f01fa0b2d2d99ca8f54dc8a1d53beed5daac2f669374eac1f65b2a23df",
+      "ResolvedDependencies": {},
+      "ReduxBodyByteIdentical": true
+    },
+    {
+      "symbol": "GET_EVENT_FLAG",
+      "address": "C21628",
+      "source": "text/get_event_flag.asm",
+      "OriginalByteEqualLength": 54,
+      "OriginalByteEqualSha256": "83eaf2337c9dabbccc55dd5484e43d4a034ee59f3876eb1b79dacdd15f19ae3e",
+      "ResolvedDependencies": {
+        "MODULUS16": "C09231",
+        "POWERS_OF_TWO_8BIT": "C4562F"
+      },
+      "ReduxBodyByteIdentical": true
+    },
+    {
+      "symbol": "LOAD_DAD_PHONE",
+      "address": "C0DCC6",
+      "source": "overworld/load_dad_phone.asm",
+      "OriginalByteEqualLength": 73,
+      "OriginalByteEqualSha256": "8a6eaa147b05a8a77cb6feb509aba5b3573be43774b09ab45cb7b5814a899d99",
+      "ResolvedDependencies": {
+        "GET_EVENT_FLAG": "C21628",
+        "QUEUE_INTERACTION": "C064E3",
+        "MSG_SYS_PAPA_2H": "C7D33E"
+      },
+      "ReduxPatchAddress": "C0DCF1",
+      "ReduxHookAddress": "FC5B59",
+      "ReduxHookByteEqualLength": 27,
+      "ReduxHookSha256": "603b51bcf365c69b83d8c6d4dcc09d40e28845ce27e5d249ee8b8b67a32e7278"
+    },
+    {
+      "symbol": "PROCESS_OVERWORLD_TASKS",
+      "address": "C0DC4E",
+      "source": "overworld/process_overworld_tasks.asm",
+      "OriginalByteEqualLength": 120,
+      "OriginalByteEqualSha256": "1e906ab885e15a3385fb8001662a48bf2f08b699366cdb60b1a51f01061f7c0f",
+      "ResolvedDependencies": {
+        "JUMP_TEMP_FUNCTION_POINTER": "C09279"
+      },
+      "ReduxBodyByteIdentical": true
+    }
+  ],
+  "Modes": [
+    {
+      "Mode": "original",
+      "ContactMachine": {
+        "Calls": 288,
+        "ActualOriginalOrPinnedMachineExecuted": true,
+        "CompleteOrderedCorpus": true,
+        "FrameAndProtectedRamGuards": true,
+        "CallerSha256": "bd1818f9792bfa9feb25abb1a1d64886d88f1e81ca38f12f6ef096e4d5878077",
+        "LuaSha256": "c0f7fd5a7db5f31056279bfaf82e78bb8dba2d5af2f6670a64cdd19b3f042e2b",
+        "SamplesSha256": "fbb1d6f260dffdfff45f56cedfc0adfe03f193533ec584ae270edc3748c4500b",
+        "CompletionMarker": "CONTACT_COMPLETE 288 96 32 32"
+      },
+      "ContactNative": {
+        "Cases": 288,
+        "MismatchCount": 0,
+        "FirstMismatches": [],
+        "Build": {
+          "ExecutableSha256": "f546c7466da1acb22c26b66ce5ed71fe18f960177695c968d37df181fd706073",
+          "DriverSourceSha256": "0c0b723d2dcda142f5897aff8fcd8e81f9eadd01bb81458c2b786de5ea542a7d",
+          "ProductionLibrarySha256": "fad67535029f4d956eb3b65195c0fa0739b327387f53ddb5558ad88e64221be6",
+          "UntouchedProductionLibraryLinked": true,
+          "PrivateCorrectedCallbackReplacement": null,
+          "ReadOnlyPrePostCallbackWrapper": false,
+          "SamePlatformMainAndGameLoop": true,
+          "SharedSourceEditedByBuilder": false,
+          "SharedBuildEdited": false,
+          "Builder": {
+            "path": "tools/party_follow_private_build.py",
+            "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+          }
+        }
+      },
+      "PhoneMachine": {
+        "Calls": 112,
+        "ActualOriginalOrPinnedMachineExecuted": true,
+        "CompleteOrderedCorpus": true,
+        "FrameAndProtectedRamGuards": true,
+        "CallerSha256": "bc77f43139045c8a7fba6b859e5fbd73cf2ca493719d47d4e3fd458f654750b7",
+        "LuaSha256": "98edb00d3595d8cce930dc64c7c8b8848ad326b2e1194353ab77e6f29b1a9445",
+        "SamplesSha256": "6200ba2755640051325ed103b72f64e7d99df97830fd066d2d332359e6dc5d40",
+        "CompletionMarker": "PHONE_COMPLETE 112 16 32"
+      },
+      "PhoneNative": {
+        "Cases": 112,
+        "MismatchCount": 0,
+        "FirstMismatches": [],
+        "ColdRestore": [
+          {
+            "Index": 1,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 8,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 9,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 49,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 57,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 64,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 105,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          }
+        ],
+        "ExpiryDismountQueue": [
+          [
+            1,
+            1,
+            1,
+            0,
+            1,
+            65535,
+            0,
+            3,
+            [
+              [
+                10,
+                1
+              ],
+              [
+                65535,
+                0
+              ],
+              [
+                65535,
+                0
+              ],
+              [
+                65535,
+                0
+              ]
+            ]
+          ]
+        ],
+        "FullColdPhoneFlow": {
+          "SourceMenuReached": {
+            "Chunks": 8,
+            "State": {
+              "Phone": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                10,
+                0,
+                3,
+                [
+                  [
+                    10,
+                    1
+                  ],
+                  [
+                    65535,
+                    0
+                  ],
+                  [
+                    65535,
+                    0
+                  ],
+                  [
+                    65535,
+                    0
+                  ]
+                ]
+              ],
+              "Modes": [
+                61,
+                31,
+                30,
+                28,
+                7
+              ]
+            },
+            "MenuSourceConfirmed": true,
+            "LogSha256": "e5a74c49eea016efb3d4ed7eaa96777b571a4125db7f4a17f06318c8e54bcd58"
+          },
+          "Results": [
+            {
+              "Build": "player",
+              "ExecutableSha256": "5b834db21019f698552a07ebcfae2fdd4ec1e3c4c570d0766c4d121268f0a0b3",
+              "Answer": "yes",
+              "ActualSelectionOption": 0,
+              "FinishChunks": 6,
+              "State": {
+                "Phone": [
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  65535,
+                  1687,
+                  3,
+                  [
+                    [
+                      10,
+                      1
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ]
+                  ]
+                ],
+                "Modes": [
+                  61
+                ]
+              },
+              "SecondColdRestoreEqual": true,
+              "ActualDialogueMenuFadeAndQueueFinishExecuted": true
+            },
+            {
+              "Build": "player",
+              "ExecutableSha256": "5b834db21019f698552a07ebcfae2fdd4ec1e3c4c570d0766c4d121268f0a0b3",
+              "Answer": "no",
+              "ActualSelectionOption": 1,
+              "FinishChunks": 5,
+              "State": {
+                "Phone": [
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  65535,
+                  1687,
+                  3,
+                  [
+                    [
+                      10,
+                      1
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ]
+                  ]
+                ],
+                "Modes": [
+                  61
+                ]
+              },
+              "SecondColdRestoreEqual": true,
+              "ActualDialogueMenuFadeAndQueueFinishExecuted": true
+            },
+            {
+              "Build": "observer",
+              "ExecutableSha256": "3294b617c19b5eeeac38f48f68d2c430afbc44d529cc87cd70230bb0e5ecae93",
+              "Answer": "yes",
+              "ActualSelectionOption": 0,
+              "FinishChunks": 6,
+              "State": {
+                "Phone": [
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  65535,
+                  1687,
+                  3,
+                  [
+                    [
+                      10,
+                      1
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ]
+                  ]
+                ],
+                "Modes": [
+                  61
+                ]
+              },
+              "SecondColdRestoreEqual": true,
+              "ActualDialogueMenuFadeAndQueueFinishExecuted": true
+            },
+            {
+              "Build": "observer",
+              "ExecutableSha256": "3294b617c19b5eeeac38f48f68d2c430afbc44d529cc87cd70230bb0e5ecae93",
+              "Answer": "no",
+              "ActualSelectionOption": 1,
+              "FinishChunks": 5,
+              "State": {
+                "Phone": [
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  65535,
+                  1687,
+                  3,
+                  [
+                    [
+                      10,
+                      1
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ]
+                  ]
+                ],
+                "Modes": [
+                  61
+                ]
+              },
+              "SecondColdRestoreEqual": true,
+              "ActualDialogueMenuFadeAndQueueFinishExecuted": true
+            }
+          ],
+          "NoManualInterpreterJumpOrQueueFinish": true
+        },
+        "Build": {
+          "ExecutableSha256": "d163cdcc5bb3c4db73717c7d29af3aa3347442ca9d3838b34316ca1bc7ebdaab",
+          "DriverSourceSha256": "ab21eb44c2ea668d8a9113c26040c3a544865a8ffeccefbf672c8bf539548209",
+          "ProductionLibrarySha256": "fad67535029f4d956eb3b65195c0fa0739b327387f53ddb5558ad88e64221be6",
+          "UntouchedProductionLibraryLinked": true,
+          "PrivateCorrectedCallbackReplacement": null,
+          "ReadOnlyPrePostCallbackWrapper": false,
+          "SamePlatformMainAndGameLoop": true,
+          "SharedSourceEditedByBuilder": false,
+          "SharedBuildEdited": false,
+          "Builder": {
+            "path": "tools/party_follow_private_build.py",
+            "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+          }
+        }
+      },
+      "TimerMachine": {
+        "Calls": 60,
+        "ActualOriginalOrPinnedMachineExecuted": true,
+        "CompleteOrderedCorpus": true,
+        "FrameAndProtectedRamGuards": true,
+        "CallerSha256": "9de2ca76e3025db1092c4ecdec859535105f239e9683cc5a999f5250d5940cf5",
+        "LuaSha256": "5c97b39ca8c0392dfc4270661f56a8c577333e7d94af4485561fff65793488e9",
+        "SamplesSha256": "267cbbb568d5e0742b5ac0cd7be1730026cd5706c3f7a3b668be503887901a2b",
+        "CompletionMarker": "PHONE_TIMER_COMPLETE 60"
+      },
+      "TimerNative": {
+        "Cases": 60,
+        "MismatchCount": 0,
+        "FirstMismatches": []
+      }
+    },
+    {
+      "Mode": "redux",
+      "ContactMachine": {
+        "Calls": 288,
+        "ActualOriginalOrPinnedMachineExecuted": true,
+        "CompleteOrderedCorpus": true,
+        "FrameAndProtectedRamGuards": true,
+        "CallerSha256": "bd1818f9792bfa9feb25abb1a1d64886d88f1e81ca38f12f6ef096e4d5878077",
+        "LuaSha256": "405f834952838fd5c703563d123012a8bb2875c9ed7cb4b7de9526ca228cbc3d",
+        "SamplesSha256": "837165d197ad67788da51bae3a7f83364756fd0a62caa62befba0ea76ec3eb61",
+        "CompletionMarker": "CONTACT_COMPLETE 288 96 32 32"
+      },
+      "ContactNative": {
+        "Cases": 288,
+        "MismatchCount": 0,
+        "FirstMismatches": [],
+        "Build": {
+          "ExecutableSha256": "1cec53729cb9518d5f5c913fb048214a202d1522395e4c340512703826c80474",
+          "DriverSourceSha256": "0c0b723d2dcda142f5897aff8fcd8e81f9eadd01bb81458c2b786de5ea542a7d",
+          "ProductionLibrarySha256": "fad67535029f4d956eb3b65195c0fa0739b327387f53ddb5558ad88e64221be6",
+          "UntouchedProductionLibraryLinked": true,
+          "PrivateCorrectedCallbackReplacement": null,
+          "ReadOnlyPrePostCallbackWrapper": false,
+          "SamePlatformMainAndGameLoop": true,
+          "SharedSourceEditedByBuilder": false,
+          "SharedBuildEdited": false,
+          "Builder": {
+            "path": "tools/party_follow_private_build.py",
+            "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+          }
+        }
+      },
+      "PhoneMachine": {
+        "Calls": 112,
+        "ActualOriginalOrPinnedMachineExecuted": true,
+        "CompleteOrderedCorpus": true,
+        "FrameAndProtectedRamGuards": true,
+        "CallerSha256": "bc77f43139045c8a7fba6b859e5fbd73cf2ca493719d47d4e3fd458f654750b7",
+        "LuaSha256": "aa326fb89acf7a89c21ba2caa684b630dbd718811bafca8f3e1548366d16e2fa",
+        "SamplesSha256": "ef1ee3425f683b579422e0669c9a50e8d2dbd131ebdf49bfe8aea27e5aa46cec",
+        "CompletionMarker": "PHONE_COMPLETE 112 8 32"
+      },
+      "PhoneNative": {
+        "Cases": 112,
+        "MismatchCount": 0,
+        "FirstMismatches": [],
+        "ColdRestore": [
+          {
+            "Index": 1,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 8,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 9,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 49,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 57,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 64,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          },
+          {
+            "Index": 105,
+            "MatchesMachine": true,
+            "MatchesWarm": true
+          }
+        ],
+        "ExpiryDismountQueue": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            65535,
+            0,
+            3,
+            [
+              [
+                65535,
+                0
+              ],
+              [
+                65535,
+                0
+              ],
+              [
+                65535,
+                0
+              ],
+              [
+                65535,
+                0
+              ]
+            ]
+          ],
+          [
+            2,
+            1,
+            1,
+            0,
+            1,
+            65535,
+            0,
+            0,
+            [
+              [
+                10,
+                1
+              ],
+              [
+                65535,
+                0
+              ],
+              [
+                65535,
+                0
+              ],
+              [
+                65535,
+                0
+              ]
+            ]
+          ]
+        ],
+        "FullColdPhoneFlow": {
+          "SourceMenuReached": {
+            "Chunks": 8,
+            "State": {
+              "Phone": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                10,
+                0,
+                0,
+                [
+                  [
+                    10,
+                    1
+                  ],
+                  [
+                    65535,
+                    0
+                  ],
+                  [
+                    65535,
+                    0
+                  ],
+                  [
+                    65535,
+                    0
+                  ]
+                ]
+              ],
+              "Modes": [
+                61,
+                31,
+                30,
+                28,
+                7
+              ]
+            },
+            "MenuSourceConfirmed": true,
+            "LogSha256": "bb407d83a652c8fc10da0d0bbb71cdf3581f7b46da181cc8b143b1ea63305d7b"
+          },
+          "Results": [
+            {
+              "Build": "player",
+              "ExecutableSha256": "5b834db21019f698552a07ebcfae2fdd4ec1e3c4c570d0766c4d121268f0a0b3",
+              "Answer": "yes",
+              "ActualSelectionOption": 0,
+              "FinishChunks": 6,
+              "State": {
+                "Phone": [
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  65535,
+                  2531,
+                  0,
+                  [
+                    [
+                      10,
+                      1
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ]
+                  ]
+                ],
+                "Modes": [
+                  61
+                ]
+              },
+              "SecondColdRestoreEqual": true,
+              "ActualDialogueMenuFadeAndQueueFinishExecuted": true
+            },
+            {
+              "Build": "player",
+              "ExecutableSha256": "5b834db21019f698552a07ebcfae2fdd4ec1e3c4c570d0766c4d121268f0a0b3",
+              "Answer": "no",
+              "ActualSelectionOption": 1,
+              "FinishChunks": 5,
+              "State": {
+                "Phone": [
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  65535,
+                  2531,
+                  0,
+                  [
+                    [
+                      10,
+                      1
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ]
+                  ]
+                ],
+                "Modes": [
+                  61
+                ]
+              },
+              "SecondColdRestoreEqual": true,
+              "ActualDialogueMenuFadeAndQueueFinishExecuted": true
+            },
+            {
+              "Build": "observer",
+              "ExecutableSha256": "3294b617c19b5eeeac38f48f68d2c430afbc44d529cc87cd70230bb0e5ecae93",
+              "Answer": "yes",
+              "ActualSelectionOption": 0,
+              "FinishChunks": 6,
+              "State": {
+                "Phone": [
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  65535,
+                  2531,
+                  0,
+                  [
+                    [
+                      10,
+                      1
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ]
+                  ]
+                ],
+                "Modes": [
+                  61
+                ]
+              },
+              "SecondColdRestoreEqual": true,
+              "ActualDialogueMenuFadeAndQueueFinishExecuted": true
+            },
+            {
+              "Build": "observer",
+              "ExecutableSha256": "3294b617c19b5eeeac38f48f68d2c430afbc44d529cc87cd70230bb0e5ecae93",
+              "Answer": "no",
+              "ActualSelectionOption": 1,
+              "FinishChunks": 5,
+              "State": {
+                "Phone": [
+                  1,
+                  0,
+                  1,
+                  1,
+                  0,
+                  65535,
+                  2531,
+                  0,
+                  [
+                    [
+                      10,
+                      1
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ],
+                    [
+                      65535,
+                      0
+                    ]
+                  ]
+                ],
+                "Modes": [
+                  61
+                ]
+              },
+              "SecondColdRestoreEqual": true,
+              "ActualDialogueMenuFadeAndQueueFinishExecuted": true
+            }
+          ],
+          "NoManualInterpreterJumpOrQueueFinish": true
+        },
+        "Build": {
+          "ExecutableSha256": "c8e18948b19ce07721c2384984f778c477fe01dfa60d255a0257a4eca2ab03fe",
+          "DriverSourceSha256": "ab21eb44c2ea668d8a9113c26040c3a544865a8ffeccefbf672c8bf539548209",
+          "ProductionLibrarySha256": "fad67535029f4d956eb3b65195c0fa0739b327387f53ddb5558ad88e64221be6",
+          "UntouchedProductionLibraryLinked": true,
+          "PrivateCorrectedCallbackReplacement": null,
+          "ReadOnlyPrePostCallbackWrapper": false,
+          "SamePlatformMainAndGameLoop": true,
+          "SharedSourceEditedByBuilder": false,
+          "SharedBuildEdited": false,
+          "Builder": {
+            "path": "tools/party_follow_private_build.py",
+            "sha256": "81c29984f4c443b192cd29c98b7b50ca34fcc60d6eaf1dafb0058d79561be850"
+          }
+        }
+      },
+      "TimerMachine": {
+        "Calls": 60,
+        "ActualOriginalOrPinnedMachineExecuted": true,
+        "CompleteOrderedCorpus": true,
+        "FrameAndProtectedRamGuards": true,
+        "CallerSha256": "9de2ca76e3025db1092c4ecdec859535105f239e9683cc5a999f5250d5940cf5",
+        "LuaSha256": "45c710aa1fde7e66deb8ac789f4870094fa1d7bfb140a884081362b3c3bbdf40",
+        "SamplesSha256": "267cbbb568d5e0742b5ac0cd7be1730026cd5706c3f7a3b668be503887901a2b",
+        "CompletionMarker": "PHONE_TIMER_COMPLETE 60"
+      },
+      "TimerNative": {
+        "Cases": 60,
+        "MismatchCount": 0,
+        "FirstMismatches": []
+      }
+    }
+  ],
+  "CaseGroups": {
+    "normal-contact": 32,
+    "battle-blocked": 32,
+    "door-blocked": 32,
+    "camera2-blocked": 32,
+    "movement-bit-blocked": 32,
+    "escalator-blocked": 32,
+    "intangible-blocked": 32,
+    "no-collision": 32,
+    "magic-butterfly": 32
+  },
+  "OwnerSavesTouched": false,
+  "SharedSourceEdited": false,
+  "SharedBuildEdited": false,
+  "FullConversionVerified": false,
+  "FullPlaythroughVerified": false,
+  "ReproductionFlags": {
+    "rom": "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc",
+    "redux-rom": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\MaternalBound-Redux\\Mother 2.sfc",
+    "oracle": "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mesen-agent-v0.1.0\\mesen-agent.exe",
+    "ca65": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe",
+    "ld65": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe",
+    "native-source": "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source",
+    "project": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\MaternalBound-Redux\\Project",
+    "build": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v5-build\\companion",
+    "runtime": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev16-v5-runtime",
+    "original-assets": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak",
+    "redux-assets": "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.15\\Profiles\\maternalbound-redux-897d0083\\assets.pak",
+    "scratch": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\contact-phone-dev16-v5-final",
+    "output": "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\redux-contact-phone-hook-dev16-v5-final.json"
+  },
+  "Limits": [
+    "Contact first-touch target, return, camera shake/suppression and tick flags are compared through actual callback dispatcher and original/pinned CPU. Prepared collision results are source-defined entry prerequisites; movement geometry creating contact is not tested here.",
+    "Palette routine executes on the reference CPU but palette RGB/VRAM and later swirl/battle completion are not compared in this first-touch scope.",
+    "Dad call guards, FIFO queue/deduplication, timer clock boundaries and seven cold entries are compared to actual original/pinned CPU. Native full automatic phone Yes/No dialogue, fade, queue finish, rearm and second cold restore run on both exact player/observer binaries.",
+    "Phone fixtures use the source-defined single-party and dialogue prerequisites at a private loaded map. Actual two-hour real-time waiting, every late-story speaker branch and bicycle bell/music audibility are not covered here."
+  ]
+}

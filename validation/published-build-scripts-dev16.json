@@ -1,0 +1,57 @@
+﻿{
+    "Passed":  true,
+    "Scope":  "Syntax and the actual published policy guard against independently regenerated Original protections; not a fresh-machine toolchain provisioner.",
+    "PublicPolicySha256":  "707415cce13e3d93444cb698a8e5c96514971ca2090aa84aac45ac9e14a375b2",
+    "SourceFile":  "Rebuild.ps1",
+    "ExistingAuditedHashAliasesPreserved":  true,
+    "Tests":  [
+                  {
+                      "Case":  "Syntax Rebuild.ps1",
+                      "Passed":  true
+                  },
+                  {
+                      "Case":  "Syntax Verify.ps1",
+                      "Passed":  true
+                  },
+                  {
+                      "Case":  "new-accepted-hash",
+                      "Rejected":  false,
+                      "Passed":  true
+                  },
+                  {
+                      "Case":  "legacy-accepted-hash",
+                      "Rejected":  false,
+                      "Passed":  true
+                  },
+                  {
+                      "Case":  "unknown-hash",
+                      "Rejected":  true,
+                      "Passed":  true
+                  },
+                  {
+                      "Case":  "content-id",
+                      "Rejected":  true,
+                      "Passed":  true
+                  },
+                  {
+                      "Case":  "save-version",
+                      "Rejected":  true,
+                      "Passed":  true
+                  },
+                  {
+                      "Case":  "save-polynomial",
+                      "Rejected":  true,
+                      "Passed":  true
+                  },
+                  {
+                      "Case":  "protected-item",
+                      "Rejected":  true,
+                      "Passed":  true
+                  },
+                  {
+                      "Case":  "protected-enemy",
+                      "Rejected":  true,
+                      "Passed":  true
+                  }
+              ]
+}

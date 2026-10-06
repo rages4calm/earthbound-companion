@@ -1,0 +1,27 @@
+{
+  "Passed": false,
+  "Checks": {
+    "Legacy pack is the currently audited Original base": true,
+    "New source-derived policy identifies the exact new Original pack": true,
+    "Asset IDs and layout header identical": true,
+    "Only the movement container changes": true,
+    "Item protections source-derived and identical": true,
+    "Scripted-battle enemy protections source-derived and identical": true,
+    "Content identity, display name and save contract identical": false,
+    "Full original dialogue decode contains no unknown control codes": true
+  },
+  "LegacyPackSha256": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+  "NewPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "LegacyPolicySha256": "2c31ff4f1ced487eb53684a1da6c197519a6d501a1fa80fc300b34356dba3089",
+  "DerivedPolicySha256": "d7237ef53211b081ccf1165fd9d572147ce4a304cb1c0616840821e8f64f8f85",
+  "SourceAuditSha256": "beaef4d8793c2306b7a1de9ff7c7a541b408f829a65a25789c67d124bbd09478",
+  "ProtectedItemCount": 78,
+  "ProtectedEnemyCount": 52,
+  "UnchangedAssetCount": 1173,
+  "Limits": [
+    "Source-derived story and table invariants; no full story or randomized playthrough proof.",
+    "New Original seeds use the exact new pack hash. Existing seeds retain their prior identity and must not be migrated by relabeling.",
+    "Missing ghost bytecode extraction/runtime is separately checked by the pack and interpreter reports."
+  ],
+  "FullPlaythroughVerified": false
+}

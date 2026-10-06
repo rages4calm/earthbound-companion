@@ -1,0 +1,47 @@
+{
+  "format": "runtime-source-constants-final-manifest-v1",
+  "Passed": true,
+  "files": {
+    "native-source/src/CMakeLists.txt": "8f9cce5f66c13b558104500f30954372650094033a6bafcc119925d2ae0c38be",
+    "native-source/src/tools/generate_constants_headers.py": "974f4488bceb2db279b46aab459b1dc7351e692018dde6113ac20ec446776e59",
+    "tools/runtime_constants_headers_qa.py": "c065daf08b41a47fb8c869f5ecd4b0214d38b384bbe4d20b41cee875f8f3852d",
+    "tools/runtime_constants_clean_build_qa.py": "888a482d39c6c81bba15622d68c6dd090890bfc581c0d784aff7cacbfdefaa3d",
+    "research/runtime-constants-header-qa-dev16-final.json": "2645bb93baa6059df75c5a564bc50b942a2fcfe1380413386d1e3093d72cf36c",
+    "research/runtime-constants-clean-build-dev16-final.json": "257b2e93b720e51b1d2ac5050195339b5727149da537809867e6a639838e90e5"
+  },
+  "frozenV9SourceIdentity": {
+    "_BuildScratch/audit-dev16-v9-source/src/CMakeLists.txt": "8f9cce5f66c13b558104500f30954372650094033a6bafcc119925d2ae0c38be",
+    "_BuildScratch/audit-dev16-v9-source/src/tools/generate_constants_headers.py": "974f4488bceb2db279b46aab459b1dc7351e692018dde6113ac20ec446776e59"
+  },
+  "frozenV9CompiledHeaderIdentity": {
+    "_BuildScratch/audit-dev16-v9-build/companion/game_lib/generated/items_generated.h": "2a3e89957ca6d11ab01e80991d1bf2f2793de6588bc97b2e0ac2c243840e86df",
+    "_BuildScratch/audit-dev16-v9-build/companion/game_lib/generated/music_generated.h": "3e69e97445ac8f53cd38b39e4afb0c557df58687671b5b889ef04159518a09f8"
+  },
+  "frozenV9RuntimeProvenance": {
+    "_BuildScratch/audit-dev16-v9-runtime/player.exe": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "_BuildScratch/audit-dev16-v9-runtime/observer.exe": "290094e1eb7135218fbe5d8403436c058eef672215f34e578ea3f48e5b12bcd6",
+    "_BuildScratch/audit-dev16-v9-build/companion/game_lib/libearthbound_game.a": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1"
+  },
+  "checks": {
+    "existingItemIDsUnchanged": 254,
+    "existingMusicIDsUnchanged": 191,
+    "explicitSourceMusicIDsTotal": 192,
+    "numericStaticAssertions": 446,
+    "diagnosticNameComparisons": 446,
+    "malformedSourceNegativeControls": 4,
+    "legacyCp1252HeadersSafelyReplaced": 2,
+    "plainDefaultBuildWithoutEbtools": true,
+    "defaultFixtureExecutableExcluded": true,
+    "explicitStructTargets": true,
+    "explicitFixtureBuildAndRealExecution": true,
+    "pythonSyntax": true
+  },
+  "limits": [
+    "Private clean build starts from recorded public v8 patched Base+tamp source and changes exactly the two authorized build files; root separately verifies the complete public v9 source.",
+    "Actual frozen v9 header bytes and owned source snapshots match the tested generator outputs. Runtime hashes are provenance bindings; this runner does not execute player or observer gameplay.",
+    "EB_RUNTIME_ASSETS=OFF JSON command bodies are retained and text-compared; that asset-dependent developer build was not run.",
+    "Diagnostic name arrays use source symbols; no real ROM, extracted game JSON, real asset pack or owner save was read or written.",
+    "Music ID191 is explicitly defined in checked-in source and newly included; the prior header omitted it. All previously generated numeric IDs are unchanged.",
+    "No full-story or complete gameplay parity claim follows from this build/loader evidence."
+  ]
+}

@@ -6,19 +6,26 @@ every enemy in a literal scripted battle. This retains the original story's
 dependencies; it does not solve a newly shuffled world.
 """
 from pathlib import Path
-import sys, re, json, struct, hashlib
+import argparse, sys, re, json, struct, hashlib
 from collections import defaultdict
 
 root = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(root / 'native-source'))
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--pack',type=Path,default=root/'EarthBound Companion/Game/assets.pak')
+parser.add_argument('--rom',type=Path,default=root/'ROM/EarthBound (USA).sfc')
+parser.add_argument('--native-source',type=Path,default=root/'native-source')
+parser.add_argument('--policy-output',type=Path,default=root/'Companion/progression-policy.json')
+parser.add_argument('--report-output',type=Path,default=root/'validation/randomizer/progression-audit.json')
+args=parser.parse_args()
+sys.path.insert(0, str(args.native_source.resolve()))
 from ebtools.text_dsl.decoder import decode_text_block
 from ebtools.text_dsl.opcodes import OPCODES, ArgType
 
-pack = (root / 'EarthBound Companion/Game/assets.pak').read_bytes()
-rom = (root / 'ROM/EarthBound (USA).sfc').read_bytes()
+pack = args.pack.read_bytes()
+rom = args.rom.read_bytes()
 if hashlib.sha256(rom).hexdigest() != 'a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e':
     raise RuntimeError('Progression audit requires this build\'s verified original USA donor ROM.')
-names = re.findall(r'^\s*ASSET_\w+, /\* (.*?) \*/', (root / 'native-source/src/data/runtime_generated/asset_ids.h').read_text(), re.M)
+names = re.findall(r'^\s*ASSET_\w+, /\* (.*?) \*/', (args.native_source/'src/data/runtime_generated/asset_ids.h').read_text(), re.M)
 blob = 44 + len(names) * 8
 def table(name):
     start, size = struct.unpack_from('<II', pack, 44 + names.index(name) * 8)
@@ -27,7 +34,7 @@ def table(name):
 item_ops = {op.yaml_name: [a.name for a in op.args if a.type == ArgType.ITEM] for op in OPCODES}
 item_reasons = defaultdict(set)
 battles = defaultdict(set)
-source = (root / 'native-source/src/data/runtime_generated/text_dialogue_source.c').read_text()
+source = (args.native_source/'src/data/runtime_generated/text_dialogue_source.c').read_text()
 blocks = re.findall(r'\{ (\d+)u, (\d+)u, \d+u, \d+u \}, /\* (\w+) \*/', source)
 unknown = defaultdict(int)
 operations = 0
@@ -79,16 +86,17 @@ for group, locations in battles.items():
 
 items = table('data/item_configuration_table.bin')
 def item_name(i): return ''.join(chr(b-0x30) for b in items[i*39:i*39+25] if 0x50 <= b <= 0xAD)
-state_source = (root / 'native-source/src/core/state_dump.c').read_text()
+state_source = (args.native_source/'src/core/state_dump.c').read_text()
 state_version = int(re.search(r'#define STATE_DUMP_VERSION (\d+)', state_source).group(1))
 state_polynomial = int(re.search(r'crc = \(crc >> 1\) \^ \((0x[0-9A-F]+)u', state_source).group(1), 16)
 policy = dict(ContentId='earthbound-usa', DisplayName='EarthBound (USA)', BaseHash=hashlib.sha256(pack).hexdigest(), ProtectedItems=sorted(item_reasons), ProtectedEnemies=sorted(enemy_reasons), SaveStateVersion=state_version, SaveStateCrcPolynomial=state_polynomial)
-(root / 'Companion/progression-policy.json').write_text(json.dumps(policy, indent=2)+'\n', encoding='utf-8')
+args.policy_output.parent.mkdir(parents=True,exist_ok=True)
+args.policy_output.write_text(json.dumps(policy, indent=2)+'\n', encoding='utf-8')
 report = dict(**policy, ScriptBlocks=len(blocks), DecodedEntries=operations, UnknownCodes=dict(unknown),
               Items=[dict(Id=i, Name=item_name(i), Reasons=sorted(v)) for i,v in sorted(item_reasons.items())],
               Enemies=[dict(Id=i, Reasons=sorted(v)) for i,v in sorted(enemy_reasons.items())])
-out = root / 'validation/randomizer'; out.mkdir(parents=True, exist_ok=True)
-(out / 'progression-audit.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
+args.report_output.parent.mkdir(parents=True,exist_ok=True)
+args.report_output.write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
 print(f'Decoded {len(blocks)} script blocks / {operations} entries. Protected {len(item_reasons)} items and {len(enemy_reasons)} scripted-battle enemies.')
 print('Unknown opcode counts:', dict(unknown))
 print('Protected trade/food items:', [(i, item_name(i)) for i in item_reasons if items[i*39+25] in (32,36,40,44,48)])

@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev18-final-shop-and-regression-freeze",
+  "revision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "runtimeVersion": "dev16-v9",
+  "runtimeSha256": {
+    "player.exe": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "observer.exe": "290094e1eb7135218fbe5d8403436c058eef672215f34e578ea3f48e5b12bcd6",
+    "libearthbound_game.a": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1"
+  },
+  "sourcePatchSha256": "ec4c42e6cbe54bc7c8ff6e25bf53afaea97f09bb5536fc5db6f09ab80c84cd60",
+  "sourceSnapshot": "_BuildScratch/audit-dev16-v9-source",
+  "files": [
+    {
+      "path": "tools/shop_transaction_qa_dev18.py",
+      "sha256": "0f7cdbf128474dc8a1f5402395132a2e41ad083bf6e4915af67c028df25b76fc",
+      "publishedPath": "scripts/shop_transaction_qa_dev18.py"
+    },
+    {
+      "path": "tools/shop_transaction_qa_dev18_v8_red.py",
+      "sha256": "7bcb9b23211b5f55c5086e38c1e603bef69b86db3e55d80405e45b5b71b8888c",
+      "publishedPath": "scripts/shop_transaction_qa_dev18_v8_red.py"
+    },
+    {
+      "path": "tools/shop_transaction_cases_dev18.py",
+      "sha256": "ac257e7e5b64290f537ca1c3a5a21f81620f87e14d9d0a0ba5d0bdddc683c0c7",
+      "publishedPath": "scripts/shop_transaction_cases_dev18.py"
+    },
+    {
+      "path": "tools/shop_inventory_outcome_audit_dev18.py",
+      "sha256": "939321948e1e524843bdd998176e013f4e12d4c6e22256818971f0381ae00f18",
+      "publishedPath": "scripts/shop_inventory_outcome_audit_dev18.py"
+    },
+    {
+      "path": "tools/inventory_transform_pool_qa_dev18.py",
+      "sha256": "d98b8e3e0e427e64e954e70fd9dbf0a79b0d79d21d1fe8e2a68c9b6ef8251044",
+      "publishedPath": "scripts/inventory_transform_pool_qa_dev18.py"
+    },
+    {
+      "path": "tools/battle_full_encounter_qa_dev18.py",
+      "sha256": "e557b41b62c0e165a9c8e2b6f325231497dc1a3211cc1af96649a4366506544a",
+      "publishedPath": "scripts/battle_full_encounter_qa_dev18.py"
+    },
+    {
+      "path": "tools/inventory_gameover_lifecycle_qa_dev17.py",
+      "sha256": "d56dbcce92cadb413b480ec481ea1025662ba216f615bb55f00f3fe3bb6a5a72",
+      "publishedPath": "scripts/inventory_gameover_lifecycle_qa_dev17.py"
+    },
+    {
+      "path": "tools/battle_action_catalog_qa.py",
+      "sha256": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823",
+      "publishedPath": "scripts/battle_action_catalog_qa.py"
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1",
+      "publishedPath": "scripts/build_maternalbound_pack.py"
+    },
+    {
+      "path": "research/redux-shop-transaction-fixtures-dev18.json",
+      "sha256": "5beca7d839367d896086955f0a9eb0dc2abf3895ba492f62a8319044d89778ac",
+      "publishedPath": "research/redux-shop-transaction-fixtures-dev18.json"
+    },
+    {
+      "path": "research/original-shop-transaction-fixtures-dev18.json",
+      "sha256": "031367d9b5920f6a30cebd5bad2a8b08e0a1f75c1dfdfa1ca013f54343da8ca3",
+      "publishedPath": "research/original-shop-transaction-fixtures-dev18.json"
+    },
+    {
+      "path": "research/redux-shop-transaction-v8-red-fixtures-dev18.json",
+      "sha256": "e048fce270a6fed6f6e353bf0ead2219475d3c90d0b8ab1975334c4359f1f696",
+      "publishedPath": "research/redux-shop-transaction-v8-red-fixtures-dev18.json"
+    },
+    {
+      "path": "research/redux-shop-transactions-dev18-v8-red.json",
+      "sha256": "73e6e7b09dc8614d09af40ab7e2deb61d4e0d212261a35804bb7e1500a645c35",
+      "publishedPath": "research/redux-shop-transactions-dev18-v8-red.json"
+    },
+    {
+      "path": "research/shop-bulk-v8-red-evidence-dev18.json",
+      "sha256": "23c0302292e8b77657d8e7da65103afbd061e19da5916b1e91fef7a1aa4efc55",
+      "publishedPath": "research/shop-bulk-v8-red-evidence-dev18.json"
+    },
+    {
+      "path": "research/redux-shop-transactions-dev18-v9-buffered.json",
+      "sha256": "0b58c5b53e24fe181780b709a4b2fe7be53a6799e9e86e98c75372d566afe431",
+      "publishedPath": "research/redux-shop-transactions-dev18-v9-buffered.json"
+    },
+    {
+      "path": "research/original-shop-transactions-dev18-v9-buffered.json",
+      "sha256": "960e0768cafaa2ce6cae5b11862a1d28cb929f38e0fb669f65382ce2e19b0c66",
+      "publishedPath": "research/original-shop-transactions-dev18-v9-buffered.json"
+    },
+    {
+      "path": "research/shop-complete-inventory-vectors-dev18-v9.json",
+      "sha256": "dffac3da10cc3cdb9dcb84ca2a4bc374558f4f361f1d779ce983cf2aad848fc1",
+      "publishedPath": "research/shop-complete-inventory-vectors-dev18-v9.json"
+    },
+    {
+      "path": "research/redux-inventory-transform-pool-dev18-v9.json",
+      "sha256": "70add450e15a2a7a97ed64f4ddeb60150b868f54e8e567f18e9320be149949d6",
+      "publishedPath": "research/redux-inventory-transform-pool-dev18-v9.json"
+    },
+    {
+      "path": "research/original-inventory-transform-pool-dev18-v9.json",
+      "sha256": "0209a1b82acad3db4d0788eb1da6174ecfb7efa4ce51c2e7b980e2087db697eb",
+      "publishedPath": "research/original-inventory-transform-pool-dev18-v9.json"
+    },
+    {
+      "path": "research/redux-inventory-gameover-dev18-v9.json",
+      "sha256": "a9e6fa752b4bb2bf21a66d566686d1124e44c71cb7a600d5fdabf3ce551871df",
+      "publishedPath": "research/redux-inventory-gameover-dev18-v9.json"
+    },
+    {
+      "path": "research/original-inventory-gameover-dev18-v9.json",
+      "sha256": "cee0559beb83565de6d417145da1e2691de1f548ee5e4d899dc2fa4603332f49",
+      "publishedPath": "research/original-inventory-gameover-dev18-v9.json"
+    },
+    {
+      "path": "research/redux-battle-full-encounters-dev18-v9.json",
+      "sha256": "3e864c283498e387213c60493823b5df0b13f434d90e8b5d1c9287ad5247674e",
+      "publishedPath": "research/redux-battle-full-encounters-dev18-v9.json"
+    },
+    {
+      "path": "research/original-battle-full-encounters-dev18-v9.json",
+      "sha256": "21c6e34145bfc0116fec795147617328a5b61a905aa3bbac7dc2a84acba15fa5",
+      "publishedPath": "research/original-battle-full-encounters-dev18-v9.json"
+    },
+    {
+      "path": "research/shop-audit-dev18-final-evidence.md",
+      "sha256": "dd1dd368e53e9a89edab02ff0fa8f2999635937f2f5b91e12f1c232adf1e0652",
+      "publishedPath": "research/shop-audit-dev18-final-evidence.md"
+    }
+  ],
+  "selectedLogicalCaseCounts": {
+    "shopRedux": 74,
+    "shopOriginal": 9,
+    "shopFreshProcessContinuations": 17,
+    "overlappingCompleteInventoryAssertions": 83,
+    "inventoryPerProfile": 177,
+    "gameoverPerProfile": 16,
+    "fullEncountersPerProfile": 72,
+    "totalNativeLogicalCases": 613
+  },
+  "redHistoricalEvidence": {
+    "runtime": "dev16-v8",
+    "preparedTransactions": 25,
+    "capacityFailures": 15,
+    "insufficientCashPassingControls": 10,
+    "freshProcessContinuations": 10,
+    "redInputsIdenticalToMatchingGreenFixtures": true,
+    "driverNormalizedSourceMatchesFrozenRedTool": true,
+    "driverSourceFileSha256": "84e092d4aae3b4fc148a53074c6ac8b1504fed05c6fa6e6a504f8f2a35b441e9",
+    "pilotMetadataPreserved": true,
+    "earlierPrivatePilotsExcluded": true
+  },
+  "structuralCountsNotTransactionProof": {
+    "nativeClassifierByteIDsPerProfile": 256,
+    "ReduxShopRows": 69,
+    "OriginalShopRows": 66
+  },
+  "reproduction": {
+    "shopRunner": "scripts/shop_transaction_qa_dev18.py",
+    "shopFlags": {
+      "--build": "_BuildScratch/audit-dev16-v9-build/companion",
+      "--native-source": "native-source",
+      "--runtime": "_BuildScratch/audit-dev16-v9-runtime",
+      "--executed-source": "_BuildScratch/audit-dev16-v9-source",
+      "--project": "_BuildScratch/MaternalBound-Redux/Project",
+      "--cases": "research/redux-shop-transaction-fixtures-dev18.json",
+      "--assets": "Privately prepared exact matching profile assets.pak",
+      "--scratch": "New private scratch directory",
+      "--output": "New report path",
+      "--jobs": "3"
+    },
+    "originalControlFlags": {
+      "--original": true,
+      "--cases": "research/original-shop-transaction-fixtures-dev18.json",
+      "--assets": "Privately prepared exact matching Original assets.pak"
+    },
+    "regressionRunnerFlags": {
+      "inventory": "scripts/inventory_transform_pool_qa_dev18.py --seeds 8",
+      "gameover": "scripts/inventory_gameover_lifecycle_qa_dev17.py --seeds 8",
+      "encounters": "scripts/battle_full_encounter_qa_dev18.py --groups 1,48,448,450,453,462,471 --seeds 8 --suppression-controls"
+    }
+  },
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false
+}

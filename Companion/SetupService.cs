@@ -22,10 +22,20 @@ internal static class SetupService {
  static readonly HttpClient Http=new(){Timeout=TimeSpan.FromMinutes(10)};
 
  internal static bool DataReady=>File.Exists(Path.Combine(Settings.BaseGame,"assets.pak"));
+ internal static bool OriginalMovementUpdateNeeded {
+  get {
+   if(!DataReady)return false;
+   try {
+    byte[] pack=File.ReadAllBytes(Path.Combine(Settings.BaseGame,"assets.pak"));
+    StoryShuffle.ValidatePack(pack);
+    return !StoryShuffle.Table(pack,"US/events/bank_c3_scripts_combined.bin").StartsWith("EBMVBN01"u8);
+   } catch(Exception e)when(e is IOException or UnauthorizedAccessException or InvalidDataException or ArgumentException or OverflowException or KeyNotFoundException){return true;}
+  }
+ }
 
  internal static async Task<SetupResult> InstallAsync(string? romPath,bool installMsu,IProgress<SetupProgress>? progress=null,CancellationToken cancel=default) {
   bool createdSeed=false;
-  if(!DataReady) {
+  if(!DataReady||(!string.IsNullOrWhiteSpace(romPath)&&OriginalMovementUpdateNeeded)) {
    if(string.IsNullOrWhiteSpace(romPath))throw new ArgumentException("Choose your EarthBound (USA) ROM first.");
    progress?.Report(new("ROM","Checking your ROM…"));
    await ValidateRomAsync(romPath,cancel);

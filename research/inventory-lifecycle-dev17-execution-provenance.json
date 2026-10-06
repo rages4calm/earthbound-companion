@@ -1,0 +1,91 @@
+{
+  "SchemaVersion": 1,
+  "Role": "Root-frozen native source snapshots supplement exact unchanged library/runtime execution identities; absent snapshot files are not claimed matched. Reviewed-source hashes in old reports can differ from executed files.",
+  "Versions": {
+    "v6": {
+      "PlayerSha256": "201f68cad2b4347482be618196ab3340f72facd6803be511ec0e5ed2f0c56482",
+      "ObserverSha256": "8c04b958c4ebb1ce8a317f8bddb4d7c1de656900c29c339cb74806398b72adac",
+      "PlayerLibrarySha256": "474904c9a4b74784bc8563eb11c006a0216ae97e9870b53b257593c273c09c9c",
+      "SourceReferences": [
+        {
+          "Path": "src/game/inventory.c",
+          "Sha256": "7d612672b1af0dbceb7cff8690796520c82c8c50d2cc4947a76cb18f1c0bc160"
+        },
+        {
+          "Path": "src/game/overworld.c",
+          "Sha256": "9c7e6fbe3ee09965a4b8a41fba74c0594f6290585f736d653ec8a4df45385fd6"
+        },
+        {
+          "Path": "src/core/state_dump.c",
+          "Sha256": "15a416ea8e9d28199641821b8c7523fc9ebffdb51bdbc32574d2d7f43a205665"
+        },
+        {
+          "Path": "src/game/display_text_cc.c",
+          "Sha256": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7"
+        }
+      ]
+    },
+    "v7": {
+      "PlayerSha256": "bf45c717a10c9b07be40aa98b6f31c44c11f18a50d2eeaa7cab4db0926f30fe4",
+      "ObserverSha256": "ed34443ea979443f7eff5733ddca7e050f32dea03bd94acd879846083f933a60",
+      "PlayerLibrarySha256": "7cdde401c6b3623dfc935679096a825194298725bec44462264ea4733e1c8c0c",
+      "SourceReferences": [
+        {
+          "Path": "src/game/inventory.c",
+          "Sha256": "41857fe8284a87fcce0ee95208e2aedcce6ae3b12994a18dd0312304197c5c7e"
+        },
+        {
+          "Path": "src/game/game_state.c",
+          "Sha256": "4fc6ba0bf0ed71842f174004188c1a430cd33e67ef5cbb13aa6fc8091d45f4be"
+        },
+        {
+          "Path": "src/game/overworld.c",
+          "Sha256": "f91e1db767e21a7f72648c17b6662cb037f99bfa0598ab4ad4e820c67b4d370d"
+        },
+        {
+          "Path": "src/core/state_dump.c",
+          "Sha256": "15a416ea8e9d28199641821b8c7523fc9ebffdb51bdbc32574d2d7f43a205665"
+        },
+        {
+          "Path": "src/intro/file_select.c",
+          "Sha256": "d2faa938a2ddaa5bc50b2d902679cfcc5373aa8b1d3051ec23b0d6f824919cca"
+        },
+        {
+          "Path": "src/game/display_text_cc.c",
+          "Sha256": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7"
+        }
+      ]
+    },
+    "v8": {
+      "PlayerSha256": "cd0c6f9ef6d01d7b29ebb6180eedb29f11b95adeb3a35dfb6687bcb6cf6cdf67",
+      "ObserverSha256": "9c21413218297b43c46db8f784cb6cd228417f7f13ca672ef562baf7ebfd93d4",
+      "PlayerLibrarySha256": "e7cacb1ef302d0b7bec395958af0dbb17fa01a67d777267677f20034964fb7b8",
+      "SourceReferences": [
+        {
+          "Path": "src/game/inventory.c",
+          "Sha256": "41857fe8284a87fcce0ee95208e2aedcce6ae3b12994a18dd0312304197c5c7e"
+        },
+        {
+          "Path": "src/game/game_state.c",
+          "Sha256": "4fc6ba0bf0ed71842f174004188c1a430cd33e67ef5cbb13aa6fc8091d45f4be"
+        },
+        {
+          "Path": "src/game/overworld.c",
+          "Sha256": "f91e1db767e21a7f72648c17b6662cb037f99bfa0598ab4ad4e820c67b4d370d"
+        },
+        {
+          "Path": "src/core/state_dump.c",
+          "Sha256": "15a416ea8e9d28199641821b8c7523fc9ebffdb51bdbc32574d2d7f43a205665"
+        },
+        {
+          "Path": "src/intro/file_select.c",
+          "Sha256": "d2faa938a2ddaa5bc50b2d902679cfcc5373aa8b1d3051ec23b0d6f824919cca"
+        },
+        {
+          "Path": "src/game/display_text_cc.c",
+          "Sha256": "29b925f8d9282804a633f808341b58bf9f56fa220bd340017d38108dc9068da7"
+        }
+      ]
+    }
+  }
+}

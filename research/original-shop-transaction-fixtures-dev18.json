@@ -1,0 +1,358 @@
+[
+  {
+    "id": "Onett-bat-equip",
+    "sourceEntry": "C5D24B",
+    "entry": 1491845,
+    "shop": 1,
+    "stock": [
+      17,
+      18,
+      49,
+      74,
+      64
+    ],
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 17,
+    "expectedCount": 1,
+    "expectedDelta": -18,
+    "sound": 12,
+    "soundCount": 1,
+    "plan": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "expectedEquipment": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "id": "Onett-bat-keep-unequipped",
+    "sourceEntry": "C5D24B",
+    "entry": 1491845,
+    "shop": 1,
+    "stock": [
+      17,
+      18,
+      49,
+      74,
+      64
+    ],
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 17,
+    "expectedCount": 1,
+    "expectedDelta": -18,
+    "sound": 12,
+    "soundCount": 1,
+    "plan": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "expectedEquipment": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "id": "Scaraba-frypan-buy-without-equipping",
+    "sourceEntry": "C5D539",
+    "entry": 1492595,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 32,
+    "expectedCount": 1,
+    "expectedDelta": -1790,
+    "sound": 120,
+    "soundCount": 1,
+    "plan": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "expectedEquipment": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "id": "Scaraba-frypan-decline-cannot-equip",
+    "sourceEntry": "C5D539",
+    "entry": 1492595,
+    "shop": 51,
+    "stock": [
+      32,
+      43,
+      146,
+      133,
+      246,
+      242,
+      129
+    ],
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 32,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "sound": 120,
+    "soundCount": 0,
+    "plan": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "expectedEquipment": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "id": "Onett-insufficient-single",
+    "sourceEntry": "C5D24B",
+    "entry": 1491845,
+    "shop": 1,
+    "stock": [
+      17,
+      18,
+      49,
+      74,
+      64
+    ],
+    "flag": 0,
+    "money": 17,
+    "expectedItem": 17,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "sound": 12,
+    "soundCount": 0,
+    "plan": [
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "id": "Onett-sell-cookie-confirm",
+    "sourceEntry": "C5D24B",
+    "entry": 1491845,
+    "shop": 1,
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 90,
+    "expectedCount": -1,
+    "expectedDelta": 7,
+    "sound": 12,
+    "soundCount": 1,
+    "freeSlots": 13,
+    "plan": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "id": "Onett-sell-cookie-cancel",
+    "sourceEntry": "C5D24B",
+    "entry": 1491845,
+    "shop": 1,
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 90,
+    "expectedCount": 0,
+    "expectedDelta": 0,
+    "sound": 12,
+    "soundCount": 0,
+    "freeSlots": 13,
+    "plan": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "id": "Onett-equip-upgrade-sell-old",
+    "sourceEntry": "C5D24B",
+    "entry": 1491845,
+    "shop": 1,
+    "stock": [
+      17,
+      18,
+      49,
+      74,
+      64
+    ],
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 18,
+    "expectedCount": 1,
+    "expectedDelta": -39,
+    "sound": 12,
+    "soundCount": 2,
+    "oldItem": 17,
+    "plan": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    "expectedEquipment": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "id": "moonside-single",
+    "sourceEntry": "C5D593",
+    "entry": 1492685,
+    "shop": 60,
+    "stock": [
+      106,
+      232,
+      90,
+      233,
+      226
+    ],
+    "flag": 0,
+    "money": 80000,
+    "expectedItem": 106,
+    "expectedCount": 1,
+    "expectedDelta": -4,
+    "sound": 120,
+    "soundCount": 1,
+    "plan": [
+      0,
+      0
+    ],
+    "checkpoint": 2
+  }
+]

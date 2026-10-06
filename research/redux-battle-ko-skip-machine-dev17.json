@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev17-ko-skip-machine",
+  "reference": "pinned-redux-machine",
+  "romSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "oracleSha256": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+  "oracleCoreSha256": "69425f547e83648b4aa8507908ff473a3d8c4ac666b8e130b2f5e9d99922d29a",
+  "branchAddress": "C27A07",
+  "branchBodySha256": "03bdad6d21731cccc408416f34e561eaa9c7044349b04c7617365168b6f81366",
+  "returnEpilogueAddress": "C27C92",
+  "returnEpilogueSha256": "73f3a36632b472d52f09f933224e09eee27694a51f4b0508c142d4e05cac4a3e",
+  "cases": [
+    {
+      "skipFlag": 0,
+      "observed": "death",
+      "expected": "death",
+      "passed": true,
+      "canariesChecked": false
+    },
+    {
+      "skipFlag": 1,
+      "observed": "return:4096:8191",
+      "expected": "return:4096:8191",
+      "passed": true,
+      "canariesChecked": true
+    },
+    {
+      "skipFlag": 2,
+      "observed": "return:4096:8191",
+      "expected": "return:4096:8191",
+      "passed": true,
+      "canariesChecked": true
+    },
+    {
+      "skipFlag": 65535,
+      "observed": "return:4096:8191",
+      "expected": "return:4096:8191",
+      "passed": true,
+      "canariesChecked": true
+    }
+  ],
+  "allPassed": true,
+  "ownerRomUnchanged": true,
+  "limits": [
+    "Actual untouched LDA skip flag, conditional jump and original KO return epilogue. Private temporary ABI trampoline establishes PHD; prepared flag values0/1/2/65535.",
+    "Zero control breaks at death path entry. Nonzero controls return with direct-page1000/stack1FFF canaries. Complete KO/final action/damage/animation and natural reachability are not proved by this machine snippet.",
+    "No child routine stub or machine-body edit. Only reset/caller/trampoline is patched in ephemeral emulator ROM memory; owner ROM remains unchanged."
+  ]
+}

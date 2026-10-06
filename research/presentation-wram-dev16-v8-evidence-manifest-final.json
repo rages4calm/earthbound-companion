@@ -1,0 +1,120 @@
+{
+  "format": "presentation-wram-proof-manifest-v1",
+  "Passed": true,
+  "allFinalProofReportsPassed": true,
+  "finalRuntimeSha256": {
+    "player.exe": "CD0C6F9EF6D01D7B29EBB6180EEDB29F11B95ADEB3A35DFB6687BCB6CF6CDF67",
+    "observer.exe": "9C21413218297B43C46DB8F784CB6CD228417F7F13CA672EF562BAF7EBFD93D4"
+  },
+  "finalProductionLibrarySha256": "E7CACB1EF302D0B7BEC395958AF0DBB17FA01A67D777267677F20034964FB7B8",
+  "finalFullPatchSha256": "AA60599C16C9811547C8016B57D2868484F3CD3B85A5C4EC9E056437DD8A8804",
+  "finalSourceSha256": {
+    "src/entity/sprite.c": "D749464412E8F6789A3AD1F0E112D1567E210A9144CB855C490C78128F242494",
+    "src/entity/sprite.h": "FD95114637C5C3E75DBFAE29DE45AB1C6D97B3890398E95ABD04DDCA433A1170",
+    "src/entity/callroutine_sprite.c": "2C51196229C815FA48DE99CA0AB37DE0552FC80DB4F088242128D07FF3A2CB83",
+    "src/entity/callroutine.c": "63835E5C1ABD6AF31C91AE0079E33997C8F99834B0B3FF94EA22B39E0F083C56"
+  },
+  "originalSourceSha256": {
+    "include/eventmacros.asm": "22ED181DFFDD3E5CC87EBD26DC56CD22BA7DA61168E153241A79932819FE609C",
+    "asm/overworld/render_entity_sprite.asm": "C103EF72490B86ADAA80999941E87DA0573DCF1A4F27495B74D5ED7BAAC96EA6",
+    "asm/system/dma/prepare_vram_copy_row_safe.asm": "65DB69F05AAA7DBB253298237C0A4E4A0C386416E24590796DD8C6D987574CBB",
+    "asm/system/prepare_vram_copy.asm": "230C77914617698F19AA0F47E8B41DC042E4A1B9894C45E8582C557FB8D5BBFA",
+    "asm/overworld/is_entity_on_screen.asm": "87FD8E0138FECF053A30CB55130EEA1E5692E277037889C32B5D4CF6785A4669",
+    "asm/overworld/actionscript/script/42_4C.asm": "1CB75A3AE442B71879DC7EBED400A6F899AC3DE0B305DB98F3F7355B25660E8E",
+    "asm/data/events/scripts/670.asm": "E66E9628425483E417FF14E9D9E062D021A3652FA685E5AE99FD480224C8DFCD",
+    "asm/data/events/C3A0D8.asm": "19487ADA66A51698C36959CC02B4C9499383E5257C2BE71E5B88078488BBAF4B",
+    "asm/data/events/C3A09F.asm": "B6C816045A1655E139E2B12331D2B586FD32763E520567D7A492A82E22916411"
+  },
+  "frozenPublicFiles": {
+    "tools/event_wram_consumer_qa.py": "B36D79EAE334E90ABFFFC1C4754106652761D7CD042CE852F57216006FC2AB66",
+    "tools/snes_sprite_render_abi_oracle.py": "E5CD9CF4C6916829AA7C60847ED90DB28A1B6DDE0243BB0F919A4E7F150DDE31",
+    "tools/snes_sprite_entry3_abi_oracle.py": "BF1B3AB2545999EFB6807D844C6730B584B314E828C5816A755498DCDE043906",
+    "tools/native_sprite_render_abi_qa.py": "4412A8C7A04E7A2A78C1F06154C5A611FD6EA5AE6EED31035AEE13086033E61A",
+    "tools/native_sprite_entry3_abi_qa.py": "3E92DB2F7CD01009781514DFBCB93ECC67A143E1A55AB69114A995780E48E95F",
+    "tools/freeze_presentation_wram_evidence.py": "2A6C364CDAA2FD8A35ADA7DEB34D07FD8CF1A1600E75D131A69CBD778BA816FD",
+    "research/snes-sprite-render-live-abi-dev16-review.json": "EBF5E72C916DDFCC3EE4459A7B148525B4605A1487254F3996BBCB8C63308ED6",
+    "research/snes-sprite-entry3-live-abi-dev16-review.json": "33BEFE054D45E12127020A634C717E3B6101ED4E55DE2D85D8479B04D2F8C83E",
+    "research/native-sprite-render-live-abi-dev16-v8-review.json": "0893E1658A374FB964B268668214E547E4D29BF0EFE8931512D14212140F1990",
+    "research/native-sprite-entry3-live-abi-dev16-v8-review.json": "87C0699FF0372BF8E04CB1F28106423F78376D00872C43D5156D3E6304EA136C",
+    "research/event-wram-consumer-dev16-v8-review.json": "F04EA698D4C13C13348BF0F7F124CC62C03FF25630B3C8E2D28EAE27D1D027CA",
+    "research/native-sprite-render-live-abi-dev16-v6-red.json": "74A530B624DDA89F85EB81592FE77D4BB7E6C7DC047C68768C3877EADE3C255B",
+    "research/native-sprite-entry3-live-abi-dev16-v7-red.json": "F27F2D75CF62101535BF3CD83DA40C101F0BA096A692F30B0A4ED070D4181B53",
+    "research/event-wram-consumer-dev16-v6-red.json": "E815C154DBD736CE372B56297BADFF5FDB8EA3C45AB439DD1BC5B49F7315AA5E",
+    "research/event-wram-consumer-dev16-v7-red.json": "D1B0645276CC21D39048A57A5718D330B0EAFFC19E581EA5A202E406B94525F9",
+    "research/native-sprite-render-live-abi-dev16-v7-review.json": "9D2CEF11DCB5EA67C7505DECB97060A08EFC3BCA130E2756BB66E025B8F48975"
+  },
+  "finalProofReports": [
+    "research/snes-sprite-render-live-abi-dev16-review.json",
+    "research/snes-sprite-entry3-live-abi-dev16-review.json",
+    "research/native-sprite-render-live-abi-dev16-v8-review.json",
+    "research/native-sprite-entry3-live-abi-dev16-v8-review.json",
+    "research/event-wram-consumer-dev16-v8-review.json"
+  ],
+  "retainedRedReports": [
+    "research/native-sprite-render-live-abi-dev16-v6-red.json",
+    "research/native-sprite-entry3-live-abi-dev16-v7-red.json",
+    "research/event-wram-consumer-dev16-v6-red.json",
+    "research/event-wram-consumer-dev16-v7-red.json"
+  ],
+  "retainedEarlierGreenReports": [
+    "research/native-sprite-render-live-abi-dev16-v7-review.json"
+  ],
+  "counts": {
+    "executedMachineCalls": 1160,
+    "executedNativeCases": 1212,
+    "executedNativeAssertions": 4020,
+    "executedColdContinuations": 6,
+    "skippedCasesInFinalTools": 0
+  },
+  "mechanism": {
+    "source": "MOVEMENT_CODE_42_4C saves the called routine accumulator as a script tempvar. The renderer returns the advanced final VRAM row destination. A constant native zero changes conditional animation loops into fallthroughs.",
+    "macroMapping": "EVENT_RENDER_ENTITY_SPRITE_ME3 actually calls C0A4A8 RENDER_ENTITY_SPRITE_ENTRY3, separately from C0A480 RENDER_ENTITY_SPRITE_MOVEMENT_ENTRY_3. Both entries have independent actual source-machine proof.",
+    "nativeCorrection": "The renderer and its three movement callbacks retain the live result. The actual C0A4A8 dispatcher selects transient frame0, preserves the persistent animation field, and retains the result.",
+    "sourceStoryRegression": "Real retained CC1FF1 actor773/EVENT670 runs all 3 text yields and its tasks. Its final source position is 1264,9928 in both profiles; Original destination 14/Redux destination 7 and style 5/direction 2 complete. Source-correct v8 private checkpoints cold-resume equivalently.",
+    "renderRegression": "All 884 full native VRAM upload checksums in the first matrix remain unchanged from frozen v6. The separate active ENTRY3 frame0 correction has its own real dispatcher/machine controls."
+  },
+  "oldAlreadyCorruptedCheckpointLimit": [
+    {
+      "profile": "Original",
+      "remainingTransactionCompleted": true,
+      "sourceExpectedFinalPosition": [
+        1264,
+        9928
+      ],
+      "observedFinalPosition": [
+        1266,
+        9928
+      ],
+      "automaticChildPcRewindImplemented": false,
+      "privateLogSha256": "D4AC6AEED767710B804E527A349F2CDE1E67E5DEE96D2A9A0AC053C5328F6C7D"
+    },
+    {
+      "profile": "Redux",
+      "remainingTransactionCompleted": true,
+      "sourceExpectedFinalPosition": [
+        1264,
+        9928
+      ],
+      "observedFinalPosition": [
+        1266,
+        9928
+      ],
+      "automaticChildPcRewindImplemented": false,
+      "privateLogSha256": "8AA29175FE9590A4E5639AF1D00E4BA848F4AB77135067215356445601E43166"
+    }
+  ],
+  "coverageLimits": [
+    "Final green counts are executed bounded cases, not deduplicated gameplay scenarios or proof of universal parity.",
+    "The full event fixtures supply actual packed actors, dialogue call sites, map and controller prerequisites. Surrounding story progression and every naturally reachable condition are not executed.",
+    "Machine proof executes actual complete render/visibility/DMA routines in prepared DP1000 contexts; full SNES event interpreter/tick timing is not compared. Other direct-page visibility contexts remain outside scope.",
+    "Only the nine named full scalar/event roots per profile are executed here: 109,110,222,224,298,351,670,777,778. The separate 1792-root operand scan is structural evidence with zero runtime cases.",
+    "The EVENT351 test covers rotation and callback installation/consumption through real teleport, not all Your Sanctuary bitmap/story-flag variants.",
+    "The movement callback frame mutations retained from the earlier native renderer are not claimed as complete source animation-state parity. The proven active C0A4A8 transient-frame behavior has separate controls.",
+    "A prior checkpoint whose EVENT670 child had already fallen into EVENT671 preserves that wrong PC. It completes remaining yields/scalars under v8 but does not automatically rewind the child. New v8 checkpoints pass; no owner save was altered and no broad NPC repair was added.",
+    "Every active CALLROUTINE return, concurrent task family, eight-direction special renderer, source audio/HP-meter timing and all story scenes remain independent audit scope."
+  ],
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false,
+  "ownerSavesTouched": false,
+  "publicContainsOriginalPixelsBytecodeOrSaves": false
+}

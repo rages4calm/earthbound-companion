@@ -30,7 +30,7 @@ This repository therefore stores:
 
 It does not vendor or relicense the complete upstream tree. **The native engine still derives from that tree.** The patch includes upstream context, the compiled executable contains upstream implementations, and the frozen Redux helper bundles some native source files for conversion. Storing a patch instead of a full checkout does not by itself settle distribution rights.
 
-The repository and combined releases currently remain private as a precaution while terms are clarified. **Private visibility is not permission to distribute, even to invited testers.** It also does not prove compliance with the separately licensed GPL components. Neither attribution nor an unofficial-project disclaimer supplies missing rights. The project does not claim legal clearance for the combined release.
+The repository and experimental combined releases are public as of October 6, 2026. Public visibility does not resolve native-foundation distribution terms or prove compliance with the separately licensed GPL components. Neither attribution nor an unofficial-project disclaimer supplies missing rights. The project does not claim legal clearance for the combined release.
 
 ## MaternalBound and GPL components
 

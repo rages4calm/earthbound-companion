@@ -1,0 +1,48 @@
+{
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "pinnedSource": [
+    {
+      "path": "ccscript/shops/ShopMain.ccs",
+      "sha256": "e0da0a89621bedd8a63757093bc79e141057e8096cf405bca8b73935b92b0f45"
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "sha256": "743ce4f6cd1bb175b7f649d1b10ddf8ef22ef9bf55537eb4e3d41d1aff18b664"
+    },
+    {
+      "path": "ccscript/main.ccs",
+      "sha256": "eed62cec9d49b138534418f39c9929a4c4ad6e573171b45708180dc3e63a97a3"
+    },
+    {
+      "path": "ccscript/shops/bulk_buy_vanilla.ccs",
+      "sha256": "78ac333f9b8ffb5e1a970207f74de44008196a564f51d2b762f2242d4738ca25"
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "sha256": "475284396f845f0f1b86bd24d3ef818b9d64bd799260d4c845cc9d7c7dfe683d"
+    },
+    {
+      "path": "ccscript/definitions/flags.ccs",
+      "sha256": "b47e0dadc6e23c5fb4daf91f4eb94e99f40d0e660e28acf352e5e4e71b51bb4c"
+    },
+    {
+      "path": "ccscript/expansion/expand_shops.ccs",
+      "sha256": "e99e3c75d789d3c9d074d39a079108ce5f02c7a3f91625fa47da1cc15cdbad78"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "tools\\shop_transaction_qa_dev18_v8_red.py",
+      "sha256": "7bcb9b23211b5f55c5086e38c1e603bef69b86db3e55d80405e45b5b71b8888c"
+    },
+    {
+      "path": "research\\redux-shop-transactions-dev18-v8-red.json",
+      "sha256": "73e6e7b09dc8614d09af40ab7e2deb61d4e0d212261a35804bb7e1500a645c35"
+    },
+    {
+      "path": "research\\redux-shop-transaction-v8-red-fixtures-dev18.json",
+      "sha256": "e048fce270a6fed6f6e353bf0ead2219475d3c90d0b8ab1975334c4359f1f696"
+    }
+  ],
+  "scope": "Twenty-five selected actual entry/transaction executions on immutable v8: fifteen capacity failures and ten passing insufficient-cash refund controls. Inputs/source prerequisites are prepared before entry. Not all shop branches or natural NPC reachability. Active ShopSys.BulkBuy reserves ordinary slots with dummy203; shops/bulk_buy_vanilla.ccs is not imported by main.ccs. Child text/menu/number selection runs actual dispatcher with replay input and initialized sound requests; not audible playback proof."
+}
