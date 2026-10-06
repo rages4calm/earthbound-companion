@@ -1,4 +1,4 @@
-param([string]$Version='0.5.0-redux-dev.16')
+param([string]$Version='0.5.0-redux-dev.17')
 $ErrorActionPreference='Stop'
 $projectRoot=$PSScriptRoot
 $releaseRoot=Join-Path $projectRoot 'release'
