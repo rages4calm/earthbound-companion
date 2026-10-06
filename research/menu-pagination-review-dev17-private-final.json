@@ -1,0 +1,108 @@
+{
+  "format": "menu-pagination-source-native-review-v1",
+  "status": "source-machine-red-private-window-green",
+  "artifacts": {
+    "tools/snes_menu_pagination_oracle.py": "e4ac2f625bcfa57456e47b7707a2a26749591ea5aa980eeb1ea88d8825e25f40",
+    "tools/redux_menu_pagination_qa.py": "4e3639b72ff5e9493c118126ec447f77d73d90d39db54a7e66a3eadf9067af0a",
+    "tools/redux_two_string_menu_qa.py": "26a6c4e5b205a585200311c821640c43d13a4cb2abde86b747f837085c9c5ceb",
+    "research/menu-pagination-actual-cpu-dev17-final-r2.json": "4e4f07eda6e9376209ba098e6dd9fee78612f663ae3a0bce32cc3431f4ea0654",
+    "research/menu-pagination-native-dev17-v1-final-frozen-red.json": "cd5ac7642272b3c99a5d0e1f08475413ed2ac61372439d9acb3c0a8c1d8844cf",
+    "research/menu-pagination-native-dev17-private-final-frozen.json": "6e7e6a7cb4c7450c03b7a25fe8bc792173a388675e169be35769f93c32a54442",
+    "research/barter-selector-dev20-v1-red-manifest.json": "975691eecf304caa2d941a0edec0976f505db075d8abfc8436532114fe49dcf2",
+    "native-source/src/game/window.c": "ad9256445b09df105f345fc07c2af2d0a3fa15ad4828c46615c9a55d6fcabdc6"
+  },
+  "comparisons": [
+    {
+      "profile": "original",
+      "actualCpuLayouts": 182,
+      "nativeLayouts": 546,
+      "oldDifferences": 431,
+      "privateCorrectedDifferences": 0,
+      "nativeConfiguredWindows": 60,
+      "capacityCases": 8,
+      "shortWindowGuardCases": 14,
+      "virtualUserdataPreserved": true
+    },
+    {
+      "profile": "redux",
+      "actualCpuLayouts": 182,
+      "nativeLayouts": 546,
+      "oldDifferences": 431,
+      "privateCorrectedDifferences": 0,
+      "nativeConfiguredWindows": 60,
+      "capacityCases": 8,
+      "shortWindowGuardCases": 14,
+      "virtualUserdataPreserved": true
+    }
+  ],
+  "baselineLink": {
+    "driverSourceSha256": "e2623a86cceecb44444718af4879e02f002cf62b170e80106cd7d566c90a67da",
+    "privateExeSha256": "982ff3d4b3822faa84877f0fb7f8f9594b39e5c7f9ce0515925c52a2907138d9",
+    "unchangedProductionLibrarySha256": "48be6d8e49d8d579ac3f9f562fd140c38678949b63c32cab22069c941ca3c9b2",
+    "wrappers": [
+      "script_read_byte",
+      "script_read_dword",
+      "platform_input_get_pad_new",
+      "play_sfx"
+    ],
+    "productionObjectsRecompiledOrReplaced": false,
+    "privateSourceObjectOverrides": [],
+    "frozenSourceSnapshotIdentities": {
+      "src/game/window.c": "726239f30b1c84704a61e4cd720db2884df83a91b0e0b7f8963ff9888e733479",
+      "src/game/display_text_cc.c": "9a22e3e8adc5457cde9c69a5d318eb9ca39242c0035288897f8eba36dc5f73e5"
+    },
+    "sourceInputsAreCurrentReviewContext": true,
+    "onlyProposedFunctionalChange": null
+  },
+  "privateCorrectedLink": {
+    "driverSourceSha256": "1a963332891286fcd077b7357671785caa74670b63b50a9d0203c5eecef3e8a8",
+    "privateExeSha256": "172b6ada5a6ccd62bc56435d7412ba5e38cb5565bb241b43d8a71f2fc3918d88",
+    "unchangedProductionLibrarySha256": "48be6d8e49d8d579ac3f9f562fd140c38678949b63c32cab22069c941ca3c9b2",
+    "wrappers": [
+      "script_read_byte",
+      "script_read_dword",
+      "platform_input_get_pad_new",
+      "play_sfx"
+    ],
+    "productionObjectsRecompiledOrReplaced": true,
+    "privateSourceObjectOverrides": [
+      {
+        "source": "src/game/window.c",
+        "sourceSha256": "ad9256445b09df105f345fc07c2af2d0a3fa15ad4828c46615c9a55d6fcabdc6",
+        "privateObjectSha256": "1b22262698e412fa7aeb8e2f2faa33b845f2019a305c5a5b539fc3507cdb7b9f"
+      },
+      {
+        "source": "src/game/display_text_cc.c",
+        "sourceSha256": "9a22e3e8adc5457cde9c69a5d318eb9ca39242c0035288897f8eba36dc5f73e5",
+        "privateObjectSha256": "bef63076cafd9af331dfccd1dcf8553388717aefd784be899e6119b515c48656"
+      }
+    ],
+    "frozenSourceSnapshotIdentities": {
+      "src/game/window.c": "726239f30b1c84704a61e4cd720db2884df83a91b0e0b7f8963ff9888e733479",
+      "src/game/display_text_cc.c": "9a22e3e8adc5457cde9c69a5d318eb9ca39242c0035288897f8eba36dc5f73e5"
+    },
+    "sourceInputsAreCurrentReviewContext": true,
+    "onlyProposedFunctionalChange": "src/game/window.c"
+  },
+  "sourceChange": "Shared LAYOUT_MENU_OPTIONS adapter used by both public entry points; normalize native outer height minus2 before source row bound, guard invalid short-window pagination, restore initial selection page.",
+  "actualButtonParentRedManifest": "research/barter-selector-dev20-v1-red-manifest.json",
+  "actualButtonParentGreenPendingCombinedProductionBuild": true,
+  "invalidFixtureExclusions": [
+    "Initial CPU reference used selected_option offset47 instead of option_count45; those exploratory reports are superseded and not correctness evidence. Final-r2 prepares and reads source field45.",
+    "Standalone prepared move-phase fixture lacked full entity/frame prerequisites and timed out. It is excluded; real Monkey parent actual platform button QA owns integration.",
+    "Old unguarded invalid-short baseline is excluded from ordinary source corpus; current private guards are measured separately."
+  ],
+  "limits": [
+    "Own prepared menu records and geometry only; actual button phases are separately proved by real Monkey-parent QA, not this standalone driver.",
+    "Actual original/pinned CPU layout records independently reference546 native geometry cases per profile; selected-page behavior is source-selected item page.",
+    "All configured native window IDs tested with one item; arbitrary counts in every window and invalid columns are not exhausted.",
+    "Native24/64/78/79 record pagination capacity controls preserve16bit virtual userdata;80items has no remaining overflow slot and is outside supported pooled selector bound78.",
+    "Height0..6 oversized fixture guards characterize native safety, not source-loop parity for invalid short source windows.",
+    "Complete real Monkey-parent warm/cold actual-button delivery remains separately owned by barter QA."
+  ],
+  "native80ItemOverflowSlotLimit": "Supported pooled selector has at most78real items. Exactly80real items cannot append an overflow slot; no claim of80+ native pagination completeness.",
+  "fullMenuSourceParityVerified": false,
+  "fullPlaythroughVerified": false,
+  "ownerSavesModified": false,
+  "romOrPackModified": false
+}

@@ -1,0 +1,171 @@
+{
+  "toolSha256": "7345bb171d35fc184bf48895da810ba035cbf101ded7bd20bfd1441abb936976",
+  "artToolSha256": "762fdd49116aed3fca154f38a6cba8405067755a55fe984181c354ef2896e4c9",
+  "provenance": {
+    "driverSourceSha256": "7e3758a40bf2f0d79279765849b888987d5f6dd6349c6faa338dfe8a56cf98af",
+    "executableSha256": "a717c76b3129ddfcfeea932051f4548211aa176055230d06a51bc5a540a54779",
+    "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+    "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "oldPackSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "newPackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "sourceGraphicsOffset": 2794526,
+  "sourcePaletteOffset": 2806062,
+  "expectedGraphicsSha256": "6631c0bcbb649238f66da1ade748faf1488b8234efe8dd9a4b322638b77048ea",
+  "expectedPaletteSha256": "7b3d462d3b63ebdb3f5c3a1ae2a13671d8812325fb551c8c48813e213fd22ea5",
+  "runtimeIdentities": {
+    "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+    "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+  },
+  "executedCases": 3,
+  "executedAssertions": 8,
+  "skippedCases": 0,
+  "allPassed": true,
+  "checks": [
+    {
+      "check": "same-prepared-presentation-restored-old-and-new",
+      "passed": true
+    },
+    {
+      "check": "same96actual-native-waits-old-and-new",
+      "passed": true
+    },
+    {
+      "check": "same-expected-wait-state",
+      "passed": true
+    },
+    {
+      "check": "new-production-load-refreshes-art",
+      "passed": true
+    },
+    {
+      "check": "new-production-reload-graphics-equal-pinned-source",
+      "passed": true
+    },
+    {
+      "check": "new-production-reload-palette-equal-pinned-source",
+      "passed": true
+    },
+    {
+      "check": "oldCold-story-stats-items-unchanged",
+      "passed": true
+    },
+    {
+      "check": "newCold-story-stats-items-unchanged",
+      "passed": true
+    }
+  ],
+  "runs": {
+    "prepared": {
+      "events": {
+        "QA_COLD_LOADED": {
+          "vram": "c9133969769e44d3",
+          "palettes": "d4ac2826e61b3be3",
+          "bg1": "cbc4dc0a7217d9ef",
+          "game": "940bda9b70de96bb",
+          "party": "c5002f70845caa9b",
+          "depth": 2,
+          "mode": 11,
+          "remaining": 963,
+          "frame": 37
+        },
+        "QA_COLD_CONTINUED": {
+          "vram": "c9133969769e44d3",
+          "palettes": "d4374d9254337123",
+          "bg1": "4aeccd1dd7c4673f",
+          "game": "940bda9b70de96bb",
+          "party": "c5002f70845caa9b",
+          "depth": 2,
+          "mode": 11,
+          "remaining": 867,
+          "frame": 133
+        },
+        "QA_COLD_RELOADED": {
+          "vram": "c9133969769e44d3",
+          "palette": "5d43bca6607d2923",
+          "game": "940bda9b70de96bb",
+          "party": "c5002f70845caa9b"
+        }
+      },
+      "stdoutSha256": "a0948e68f80c82f1f3c93e7fd73e0bdf76edbcbf67036e3d069233e8aab958f6",
+      "stderrSha256": "fa5fe515519abf78d494c24add59aa526e7f928c2a434a2e651e29878528e793"
+    },
+    "oldCold": {
+      "events": {
+        "QA_COLD_LOADED": {
+          "vram": "c9133969769e44d3",
+          "palettes": "d4ac2826e61b3be3",
+          "bg1": "cbc4dc0a7217d9ef",
+          "game": "940bda9b70de96bb",
+          "party": "c5002f70845caa9b",
+          "depth": 2,
+          "mode": 11,
+          "remaining": 963,
+          "frame": 37
+        },
+        "QA_COLD_CONTINUED": {
+          "vram": "c9133969769e44d3",
+          "palettes": "d4374d9254337123",
+          "bg1": "4aeccd1dd7c4673f",
+          "game": "940bda9b70de96bb",
+          "party": "c5002f70845caa9b",
+          "depth": 2,
+          "mode": 11,
+          "remaining": 867,
+          "frame": 133
+        },
+        "QA_COLD_RELOADED": {
+          "vram": "c9133969769e44d3",
+          "palette": "5d43bca6607d2923",
+          "game": "940bda9b70de96bb",
+          "party": "c5002f70845caa9b"
+        }
+      },
+      "stdoutSha256": "a0948e68f80c82f1f3c93e7fd73e0bdf76edbcbf67036e3d069233e8aab958f6",
+      "stderrSha256": "fa5fe515519abf78d494c24add59aa526e7f928c2a434a2e651e29878528e793"
+    },
+    "newCold": {
+      "events": {
+        "QA_COLD_LOADED": {
+          "vram": "c9133969769e44d3",
+          "palettes": "d4ac2826e61b3be3",
+          "bg1": "cbc4dc0a7217d9ef",
+          "game": "940bda9b70de96bb",
+          "party": "c5002f70845caa9b",
+          "depth": 2,
+          "mode": 11,
+          "remaining": 963,
+          "frame": 37
+        },
+        "QA_COLD_CONTINUED": {
+          "vram": "c9133969769e44d3",
+          "palettes": "d4374d9254337123",
+          "bg1": "4aeccd1dd7c4673f",
+          "game": "940bda9b70de96bb",
+          "party": "c5002f70845caa9b",
+          "depth": 2,
+          "mode": 11,
+          "remaining": 867,
+          "frame": 133
+        },
+        "QA_COLD_RELOADED": {
+          "vram": "775608a9f4a005de",
+          "palette": "4a423703d2346ff0",
+          "game": "940bda9b70de96bb",
+          "party": "c5002f70845caa9b"
+        }
+      },
+      "stdoutSha256": "be3605cc86d95bce4f617c871b13379e4d4e377d7d01890da8f0c2b945ed39af",
+      "stderrSha256": "fa5fe515519abf78d494c24add59aa526e7f928c2a434a2e651e29878528e793"
+    }
+  },
+  "scope": "Prepared real background 284 + native BW_FRAMES checkpoint, actual format16 writer/loader and 96 actual native wait continuations in three fresh processes. No natural full encounter/quest claim.",
+  "cachedOldArtUntilNextLoad": true,
+  "fullVisualParityVerified": false,
+  "ownerWrites": false
+}

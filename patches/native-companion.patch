@@ -2417,6 +2417,81 @@ index 9fbd2ba..00ceab1 100644
  
  /*
   * A loaded script bank region, a contiguous chunk of bytecode from ROM.
+diff --git a/src/data/runtime_assets.c b/src/data/runtime_assets.c
+index dfade12..4998466 100644
+--- a/src/data/runtime_assets.c
++++ b/src/data/runtime_assets.c
+@@ -80,6 +80,11 @@ static HANDLE s_mapping_handle = NULL;
+ #endif
+ static bool s_ready = false;
+ static unsigned int s_asset_lengths[ASSET_COUNT];
++/* EBPK offsets are byte offsets, not a promise of host C alignment. Some
++ * consumers view records as native structs (for example TeleportDestination).
++ * Keep their bytes unchanged but own an aligned copy when mmap cannot provide
++ * a suitably aligned base. malloc covers all fundamental C type alignments. */
++static void *s_aligned_asset_copies[ASSET_COUNT];
+ 
+ /* Maps `path` read-only into memory. Returns NULL (out_size untouched) on
+  * any failure. On success, must be paired with unmap_pak_file(). Two
+@@ -163,10 +168,13 @@ static void hash_to_hex(const unsigned char *hash, char out[EB_PAK_HASH_SIZE * 2
+  * gap entry. */
+ static void clear_globals(void) {
+     for (int i = 0; i < ASSET_COUNT; i++) {
++        free(s_aligned_asset_copies[i]);
++        s_aligned_asset_copies[i] = NULL;
+         embedded_assets[i].data = NULL;
+         embedded_assets[i].size_ptr = &s_asset_lengths[i];
+         s_asset_lengths[i] = 0;
+     }
++    eb_runtime_assets_populate_families();
+ }
+ 
+ void eb_runtime_assets_unload(void) {
+@@ -248,7 +256,19 @@ EbAssetLoadResult eb_runtime_assets_load(const char *path) {
+             clear_globals();
+             return EB_ASSETS_IO_ERROR; /* truncated/corrupt pak */
+         }
+-        embedded_assets[i].data = bytes + blob_start + offset;
++        const unsigned char *data = bytes + blob_start + offset;
++        if ((uintptr_t)data % _Alignof(max_align_t) != 0) {
++            void *aligned = malloc(length);
++            if (aligned == NULL) {
++                clear_globals();
++                unmap_pak_file(mapping, file_size);
++                return EB_ASSETS_IO_ERROR;
++            }
++            memcpy(aligned, data, length);
++            s_aligned_asset_copies[i] = aligned;
++            data = aligned;
++        }
++        embedded_assets[i].data = data;
+         s_asset_lengths[i] = length;
+     }
+ 
+diff --git a/src/data/runtime_assets.h b/src/data/runtime_assets.h
+index b3ffb70..ef6a0be 100644
+--- a/src/data/runtime_assets.h
++++ b/src/data/runtime_assets.h
+@@ -24,7 +24,9 @@ typedef enum {
+ 
+ /* Loads (mmaps) assets.pak at `path` and populates embedded_assets[] and
+  * every asset_family_*[] array. Must be called once at startup, before any
+- * ASSET_DATA/ASSET_SIZE use. On any failure, no globals are modified and
++ * ASSET_DATA/ASSET_SIZE use. Byte-offset entries are copied only when needed
++ * to provide fundamental host C alignment; pack bytes and format are unchanged.
++ * On any failure, globals are cleared and
+  * eb_runtime_assets_ready() remains false. Calling this while a pack is
+  * already loaded first unloads the previous one. */
+ EbAssetLoadResult eb_runtime_assets_load(const char *path);
+@@ -32,7 +34,7 @@ EbAssetLoadResult eb_runtime_assets_load(const char *path);
+ /* True if a valid pack is currently loaded. */
+ bool eb_runtime_assets_ready(void);
+ 
+-/* Unmaps the current pack and clears embedded_assets[]/family arrays back
++/* Frees alignment copies, unmaps the current pack and clears embedded_assets[]/family arrays back
+  * to all-NULL entries. Only needed for clean shutdown / tests, the OS
+  * reclaims the mapping on process exit regardless. */
+ void eb_runtime_assets_unload(void);
 diff --git a/src/entity/callbacks.c b/src/entity/callbacks.c
 index 857f81e..b434ef2 100644
 --- a/src/entity/callbacks.c
@@ -5231,6 +5306,47 @@ index d7bc732..0558ec6 100644
 +    fprintf(stderr,"Redux production actions: 4096 sandwich trials/all six outcomes, badge/shield targeting, poison fallback, capsule cap, Brain Stone and Spy Speed, PASS\n");
 +    return true;
 +}
+diff --git a/src/game/battle_bg.c b/src/game/battle_bg.c
+index e025603..c73224c 100644
+--- a/src/game/battle_bg.c
++++ b/src/game/battle_bg.c
+@@ -66,22 +66,22 @@ static uint16_t bg_palette_count;
+  * bytes, peak ±127).  Generated mathematically: round(127 * sin(i*2π/256)).
+  * The ROM stores these as .BYTE in asm/data/sine_table.asm. */
+ const int8_t sine_table[256] = {
+-       0,    3,    6,    9,   12,   16,   19,   22,   25,   28,   31,   34,   37,   40,   43,   46,
+-      49,   51,   54,   57,   60,   63,   65,   68,   71,   73,   76,   78,   81,   83,   85,   88,
+-      90,   92,   94,   96,   98,  100,  102,  104,  106,  107,  109,  111,  112,  113,  115,  116,
+-     117,  118,  120,  121,  122,  122,  123,  124,  125,  125,  126,  126,  126,  127,  127,  127,
+-     127,  127,  127,  127,  126,  126,  126,  125,  125,  124,  123,  122,  122,  121,  120,  118,
+-     117,  116,  115,  113,  112,  111,  109,  107,  106,  104,  102,  100,   98,   96,   94,   92,
++       0,    3,    6,    9,   12,   15,   18,   21,   24,   28,   31,   34,   37,   40,   43,   46,
++      48,   51,   54,   57,   60,   63,   65,   68,   71,   73,   76,   78,   81,   83,   85,   88,
++      90,   92,   94,   96,   98,  100,  102,  104,  106,  108,  109,  111,  112,  114,  115,  117,
++     118,  119,  120,  121,  122,  123,  124,  124,  125,  126,  126,  127,  127,  127,  127,  127,
++     127,  127,  127,  127,  127,  127,  126,  126,  125,  124,  124,  123,  122,  121,  120,  119,
++     118,  117,  115,  114,  112,  111,  109,  108,  106,  104,  102,  100,   98,   96,   94,   92,
+       90,   88,   85,   83,   81,   78,   76,   73,   71,   68,   65,   63,   60,   57,   54,   51,
+-      49,   46,   43,   40,   37,   34,   31,   28,   25,   22,   19,   16,   12,    9,    6,    3,
+-       0,   -3,   -6,   -9,  -12,  -16,  -19,  -22,  -25,  -28,  -31,  -34,  -37,  -40,  -43,  -46,
+-     -49,  -51,  -54,  -57,  -60,  -63,  -65,  -68,  -71,  -73,  -76,  -78,  -81,  -83,  -85,  -88,
+-     -90,  -92,  -94,  -96,  -98, -100, -102, -104, -106, -107, -109, -111, -112, -113, -115, -116,
+-    -117, -118, -120, -121, -122, -122, -123, -124, -125, -125, -126, -126, -126, -127, -127, -127,
+-    -127, -127, -127, -127, -126, -126, -126, -125, -125, -124, -123, -122, -122, -121, -120, -118,
+-    -117, -116, -115, -113, -112, -111, -109, -107, -106, -104, -102, -100,  -98,  -96,  -94,  -92,
++      48,   46,   43,   40,   37,   34,   31,   28,   24,   21,   18,   15,   12,    9,    6,    3,
++       0,   -3,   -6,   -9,  -12,  -15,  -18,  -21,  -24,  -28,  -31,  -34,  -37,  -40,  -43,  -46,
++     -48,  -51,  -54,  -57,  -60,  -63,  -65,  -68,  -71,  -73,  -76,  -78,  -81,  -83,  -85,  -88,
++     -90,  -92,  -94,  -96,  -98, -100, -102, -104, -106, -108, -109, -111, -112, -114, -115, -117,
++    -118, -119, -120, -121, -122, -123, -124, -124, -125, -126, -126, -127, -127, -127, -127, -127,
++    -127, -127, -127, -127, -127, -127, -126, -126, -125, -124, -124, -123, -122, -121, -120, -119,
++    -118, -117, -115, -114, -112, -111, -109, -108, -106, -104, -102, -100,  -98,  -96,  -94,  -92,
+      -90,  -88,  -85,  -83,  -81,  -78,  -76,  -73,  -71,  -68,  -65,  -63,  -60,  -57,  -54,  -51,
+-     -49,  -46,  -43,  -40,  -37,  -34,  -31,  -28,  -25,  -22,  -19,  -16,  -12,   -9,   -6,   -3,
++     -48,  -46,  -43,  -40,  -37,  -34,  -31,  -28,  -24,  -21,  -18,  -15,  -12,   -9,   -6,   -3,
+ };
+ 
+ void battle_bg_init(void) {
 diff --git a/src/game/battle_calc.c b/src/game/battle_calc.c
 index 58bfb5c..495c51d 100644
 --- a/src/game/battle_calc.c
@@ -5924,7 +6040,7 @@ index 9d558c4..d8ac818 100644
              /* Blink on: redraw the HP/PP window */
              draw_and_mark_hppp_window(bt.hp_pp_box_blink_target);
 diff --git a/src/game/display_text.c b/src/game/display_text.c
-index 9b2cb3d..69649e1 100644
+index 9b2cb3d..228be2d 100644
 --- a/src/game/display_text.c
 +++ b/src/game/display_text.c
 @@ -12,6 +12,7 @@
@@ -5935,7 +6051,15 @@ index 9b2cb3d..69649e1 100644
  #include "game/game_state.h"
  #include "game/inventory.h"
  #include "game/text.h"
-@@ -185,6 +186,399 @@ void restore_window_text_attributes(void) {
+@@ -82,7 +83,6 @@ static size_t inline_string_table_size = 0;
+ 
+ /* Flat dialogue blob, all compiled dialogue concatenated into one blob.
+  * See resolve_text_addr() for the address range layout. */
+-#define DIALOGUE_BLOB_BASE 0x100000
+ static const uint8_t *dialogue_blob = NULL;
+ static size_t dialogue_blob_size = 0;
+ 
+@@ -185,6 +185,399 @@ void restore_window_text_attributes(void) {
   * get_working_memory() always returns 0, causing JUMP_IF_FALSE to always jump. */
  static WindowInfo dummy_window;
  
@@ -6335,7 +6459,7 @@ index 9b2cb3d..69649e1 100644
  WindowInfo *get_focus_window_info(void) {
      if (win.current_focus_window == WINDOW_ID_NONE) return &dummy_window;
      return get_window(win.current_focus_window);
-@@ -520,6 +914,12 @@ typedef struct {
+@@ -520,6 +913,12 @@ typedef struct {
  static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
      static TextBlock dialogue_block = {0};
      static TextBlock string_table_block = {0};
@@ -6348,7 +6472,7 @@ index 9b2cb3d..69649e1 100644
  
      /* Dialogue blob */
      if (addr >= DIALOGUE_BLOB_BASE && dialogue_blob != NULL) {
-@@ -543,6 +943,63 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+@@ -543,6 +942,63 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
      return NULL;
  }
  
@@ -6412,7 +6536,7 @@ index 9b2cb3d..69649e1 100644
  /* Print a PSI name given a PSI name ID.
   * Port of GET_PSI_NAME (asm/text/get_psi_name.asm).
   * psi_name_id==1 (ROCKIN) → uses favourite_thing from game_state.
-@@ -550,6 +1007,10 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
+@@ -550,6 +1006,10 @@ static const uint8_t *resolve_text_addr(uint32_t addr, TextBlock **out_block) {
  void print_psi_name(uint16_t psi_name_id) {
  
      if (psi_name_id == 1) {
@@ -6423,7 +6547,7 @@ index 9b2cb3d..69649e1 100644
          /* PSI Rockin, print favourite_thing (EB-encoded in game_state, null-terminated) */
          int len = 0;
          while (len < (int)sizeof(game_state.favourite_thing) && game_state.favourite_thing[len] != 0x00) len++;
-@@ -628,7 +1089,9 @@ static bool display_text_load_dialogue_blob(void) {
+@@ -628,7 +1088,9 @@ static bool display_text_load_dialogue_blob(void) {
      dialogue_blob = ASSET_DIALOGUE_DIALOGUE_BIN_DATA;
      dialogue_blob_size = ASSET_DIALOGUE_DIALOGUE_BIN_SIZE;
  #endif
@@ -6434,7 +6558,7 @@ index 9b2cb3d..69649e1 100644
  }
  
  bool display_text_init(void) {
-@@ -696,6 +1159,8 @@ void resolve_text_jump(ScriptReader *r, uint32_t addr) {
+@@ -696,6 +1158,8 @@ void resolve_text_jump(ScriptReader *r, uint32_t addr) {
          r->source  = (addr >= DIALOGUE_BLOB_BASE) ? TEXT_SRC_DIALOGUE : TEXT_SRC_INLINE_STRINGS;
          r->ptr_off = (uint32_t)(ptr - blk->data);
          r->end_off = (uint32_t)blk->size;
@@ -6443,7 +6567,7 @@ index 9b2cb3d..69649e1 100644
      } else {
          LOG_WARN("WARNING: resolve_text_addr(0x%06X) returned NULL\n", addr);
      }
-@@ -857,12 +1322,12 @@ void display_status_window(uint16_t char_id) {
+@@ -857,12 +1321,12 @@ void display_status_window(uint16_t char_id) {
  
      /* Assembly lines 27-40: set window title to character name */
      {
@@ -6460,7 +6584,7 @@ index 9b2cb3d..69649e1 100644
      }
  
      dt.force_left_text_alignment = 1;
-@@ -1036,10 +1501,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
+@@ -1036,10 +1500,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
  
          char name_buf[7];
          if (member_id >= 1 && member_id <= 4) {
@@ -6473,7 +6597,7 @@ index 9b2cb3d..69649e1 100644
          } else {
              name_buf[0] = '\0';
          }
-@@ -1191,8 +1656,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1191,8 +1655,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
              return (uintptr_t)game_state.pet_name;
          case 4:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -6484,7 +6608,7 @@ index 9b2cb3d..69649e1 100644
          case 5:
              *out_type = CC_TABLE_TYPE_STRING;
              *out_str_len = (int)sizeof(game_state.favourite_thing);
-@@ -1216,8 +1681,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1216,8 +1680,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
          switch ((CcCharField)field) {
          case CC_CHAR_NAME:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -6495,7 +6619,7 @@ index 9b2cb3d..69649e1 100644
          case CC_CHAR_LEVEL:       return c->level;
          case CC_CHAR_EXP:         return c->exp;
          case CC_CHAR_CURRENT_HP:  return c->current_hp;
-@@ -1259,7 +1724,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1259,7 +1723,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
          case 1: return (uint8_t)sizeof(game_state.mother2_playername);
          case 2: return (uint8_t)sizeof(game_state.earthbound_playername);
          case 3: return (uint8_t)sizeof(game_state.pet_name);
@@ -6504,7 +6628,7 @@ index 9b2cb3d..69649e1 100644
          case 5: return (uint8_t)sizeof(game_state.favourite_thing);
          case 6: return (uint8_t)sizeof(game_state.money_carried);
          case 7: return (uint8_t)sizeof(game_state.bank_balance);
-@@ -1270,7 +1735,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1270,7 +1734,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
      if (index >= CC_GLOBAL_COUNT && index < CC_TABLE_TOTAL) {
          uint16_t field = (index - CC_GLOBAL_COUNT) % CC_CHAR_FIELD_COUNT;
          switch ((CcCharField)field) {
@@ -6513,7 +6637,7 @@ index 9b2cb3d..69649e1 100644
          case CC_CHAR_LEVEL:       return 1;
          case CC_CHAR_EXP:         return 4;
          case CC_CHAR_CURRENT_HP:  return 2;
-@@ -1569,6 +2034,8 @@ StepResult mode_step_display_text(ModeState *ms) {
+@@ -1569,6 +2033,8 @@ StepResult mode_step_display_text(ModeState *ms) {
       * call level (including a nested CC_08 child) gets a clean flag; the parent's
       * value is restored before this level pops. */
      if (st->phase == DT_ENTER) {
@@ -6522,7 +6646,7 @@ index 9b2cb3d..69649e1 100644
          st->saved_cc18_attrs = dt.g_cc18_attrs_saved;
          dt.g_cc18_attrs_saved = 0;
          dt.upcoming_word_length = 0;
-@@ -1779,6 +2246,15 @@ StepResult mode_step_display_text(ModeState *ms) {
+@@ -1779,6 +2245,15 @@ StepResult mode_step_display_text(ModeState *ms) {
           * unknown4 starts as 0 (cleared by INIT_TEXT_STATE), set to 1 by CC_18_02.
           * In C: dt.g_cc18_attrs_saved tracks this per display_text call level. */
          if (byte == 0x02) {
@@ -6555,7 +6679,7 @@ index 1289939..5d6dcd1 100644
  bool display_text_load_battle_text(void);
  void display_text_free_battle_text(void);
 diff --git a/src/game/display_text_cc.c b/src/game/display_text_cc.c
-index 950d47b..063f63b 100644
+index 950d47b..8b89b6d 100644
 --- a/src/game/display_text_cc.c
 +++ b/src/game/display_text_cc.c
 @@ -1,3 +1,4 @@
@@ -6760,7 +6884,7 @@ index 950d47b..063f63b 100644
      case 0x0D: {
          /* DISPLAY_STATUS: 2 args (char_id, mode).
           * Port of CC_18_0D (asm/text/ccs/display_status.asm).
-@@ -1812,38 +1871,35 @@ void cc_19_dispatch(ScriptReader *r) {
+@@ -1812,38 +1871,40 @@ void cc_19_dispatch(ScriptReader *r) {
           * 0x01 = add menu option with 4-byte callback address following.
           * Assembly ADD_MENU_OPTION sets type=1 (counted), page=1, sound_effect=1.
           * selection_menu returns 1-based index for type=1 items. */
@@ -6822,12 +6946,17 @@ index 950d47b..063f63b 100644
 +        if (w && w->menu_count < MAX_MENU_ITEMS) {
 +            add_menu_item(label_buf, (uint16_t)(w->menu_count + 1), w->text_x, w->text_y);
 +            MenuItem *item = &w->menu_items[w->menu_count-1];
++            /* ADD_MENU_OPTION initializes counted, first-page choices with
++             * the normal confirm sound before the caller lays them out. */
++            item->type = 1;
++            item->page = 1;
++            item->sound_effect = 1;
 +            item->script = callback;
 +            memcpy(item->right_label, right_buf, sizeof(right_buf));
          }
          break;
      }
-@@ -1913,9 +1969,9 @@ void cc_19_dispatch(ScriptReader *r) {
+@@ -1913,9 +1974,9 @@ void cc_19_dispatch(ScriptReader *r) {
          }
          uint8_t letter = 0;
          if (char_id >= 1 && char_id <= TOTAL_PARTY_COUNT) {
@@ -6839,7 +6968,30 @@ index 950d47b..063f63b 100644
                  letter = name[pos - 1];
              }
          }
-@@ -2221,6 +2277,21 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -1975,6 +2036,22 @@ void cc_19_dispatch(ScriptReader *r) {
+         uint16_t char_id = char_arg ? (uint16_t)char_arg : (uint16_t)(get_working_memory() & 0xFFFF);
+         uint16_t slot = slot_arg ? (uint16_t)slot_arg : (uint16_t)(get_argument_memory() & 0xFFFF);
+         uint8_t item_id = cc_get_character_item(char_id, slot);
++        /* C5E431 checks whether any active party member can offer an item to
++         * the script inventory selector, using ordinary slot 1 as its compact
++         * bag test. The PC selector also offers the shared Key Pool. Adapt
++         * only that named helper's literal (0,1) read; unrelated slot 1 reads
++         * retain their original bag meaning. Resolved labels survive Redux's
++         * relocation and the reader carries this context through cold saves. */
++        if (!item_id && char_arg == 0 && slot_arg == 1 &&
++            r->source == TEXT_SRC_DIALOGUE && r->prefix_off < 0) {
++            uint32_t start = maternalbound_enabled()
++                ? maternalbound_resolve_entry(0xC5E433u) : _Q_GDSEMP_LOOP;
++            uint32_t end = maternalbound_enabled()
++                ? maternalbound_resolve_entry(0xC5E453u) : _Q_GDSEMP_END2;
++            uint32_t address = DIALOGUE_BLOB_BASE + r->ptr_off;
++            if (start && end > start && address > start && address < end)
++                item_id = (uint8_t)key_items_pool_first_selectable(char_id);
++        }
+         set_argument_memory((uint32_t)item_id);
+         set_working_memory((uint32_t)char_id);
+         break;
+@@ -2221,6 +2298,21 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
      uint8_t sub = script_read_byte(r);
  
      switch (sub) {
@@ -6861,7 +7013,7 @@ index 950d47b..063f63b 100644
      case 0x00: /* fall through */
      case 0x01: {
          /* PARTY_MEMBER_SELECTION_MENU: 17 args (4 dword script_ptrs + 1 byte mode).
-@@ -2381,6 +2452,169 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -2381,6 +2473,169 @@ bool cc_1a_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
          *out_mode   = GAME_MODE_TELEPORT_MENU;
          *out_resume = DT_RESUME_CC1A_TELEPORT;
          return true;
@@ -7031,7 +7183,7 @@ index 950d47b..063f63b 100644
      default:
          FATAL("display_text: unknown CC 1A %02X\n", sub);
          break;
-@@ -2526,8 +2760,8 @@ bool cc_1c_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode) {
+@@ -2526,8 +2781,8 @@ bool cc_1c_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode) {
          const uint8_t *name_data = NULL;
          int name_max = 0;
          if (char_id >= 1 && char_id <= 4) {
@@ -7042,7 +7194,7 @@ index 950d47b..063f63b 100644
          } else if (char_id == PARTY_MEMBER_POKEY) {
              name_data = game_state.pet_name;
              name_max = 6;
-@@ -3201,7 +3435,10 @@ void cc_1d_dispatch(ScriptReader *r) {
+@@ -3201,7 +3456,10 @@ void cc_1d_dispatch(ScriptReader *r) {
      case 0x15: {
          /* PUT_VAL_IN_ARGMEM: 2 data bytes (.WORD).
           * Port of CC_1D_15 (asm/text/ccs/set_argmem.asm).
@@ -7054,7 +7206,7 @@ index 950d47b..063f63b 100644
           * Calls FIND_FIRST_UNCONSCIOUS_PARTY_SLOT (C226F0):
           *   Iterates party_order[0..party_count-1], finds first member
           *   whose afflictions == 1 (unconscious). Returns the index (0-based).
-@@ -3209,6 +3446,7 @@ void cc_1d_dispatch(ScriptReader *r) {
+@@ -3209,6 +3467,7 @@ void cc_1d_dispatch(ScriptReader *r) {
           * Multiplies value * unconscious_slot, stores in working_memory. */
          uint16_t amount = script_read_word(r);
          uint32_t val = amount ? (uint32_t)amount : (uint32_t)get_argument_memory();
@@ -7062,7 +7214,7 @@ index 950d47b..063f63b 100644
          /* FIND_FIRST_UNCONSCIOUS_PARTY_SLOT */
          uint16_t slot = find_first_unconscious_party_slot();
          set_working_memory(val * (uint32_t)slot);
-@@ -3264,10 +3502,12 @@ void cc_1d_dispatch(ScriptReader *r) {
+@@ -3264,10 +3523,12 @@ void cc_1d_dispatch(ScriptReader *r) {
          /* GENERATE_RANDOM_NUMBER: 1 arg.
           * Port of CC_1D_21 (asm/text/ccs/get_random_number.asm).
           * If arg != 0, use arg; else use argument_memory.
@@ -7077,7 +7229,7 @@ index 950d47b..063f63b 100644
          set_working_memory((uint32_t)result);
          break;
      }
-@@ -3426,11 +3666,11 @@ bool cc_1e_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
+@@ -3426,11 +3687,11 @@ bool cc_1e_dispatch(ScriptReader *r, ModeState *out_init, GameMode *out_mode,
          if (char_id >= 1 && char_id <= TOTAL_PARTY_COUNT) {
              CharStruct *c = &party_characters[char_id - 1];
              switch (sub) {
@@ -7095,10 +7247,18 @@ index 950d47b..063f63b 100644
          }
          break;
 diff --git a/src/game/display_text_internal.h b/src/game/display_text_internal.h
-index 7a668e8..03fdc52 100644
+index 7a668e8..8c1c4d5 100644
 --- a/src/game/display_text_internal.h
 +++ b/src/game/display_text_internal.h
-@@ -21,6 +21,7 @@ uint16_t script_read_word(ScriptReader *r);
+@@ -16,11 +16,15 @@
+  * so the GAME_MODE_DISPLAY_TEXT ModeState in mode_stack.h can embed the reader. */
+ 
+ /* Script reader helpers (display_text.c) */
++/* Virtual address origin of the flat dialogue asset; shared by reader-aware
++ * adapters and the interpreter, never an address in native process memory. */
++#define DIALOGUE_BLOB_BASE 0x100000u
+ uint8_t script_read_byte(ScriptReader *r);
+ uint16_t script_read_word(ScriptReader *r);
  uint32_t script_read_dword(ScriptReader *r);
  void script_skip(ScriptReader *r, int n);
  void resolve_text_jump(ScriptReader *r, uint32_t addr);
@@ -7107,7 +7267,7 @@ index 7a668e8..03fdc52 100644
  /* Data helpers (display_text.c) */
  void toggle_hppp_flipout_mode(uint16_t enable);
 diff --git a/src/game/display_text_menus.c b/src/game/display_text_menus.c
-index dd7f86b..15d3fa3 100644
+index dd7f86b..f639adc 100644
 --- a/src/game/display_text_menus.c
 +++ b/src/game/display_text_menus.c
 @@ -743,9 +743,9 @@ void show_character_inventory(uint16_t window_id, uint16_t char_source) {
@@ -7123,10 +7283,50 @@ index dd7f86b..15d3fa3 100644
      }
  
      /* Assembly lines 47-148: loop over ITEM_INVENTORY_SIZE (14) slots.
+@@ -780,6 +780,30 @@ void show_character_inventory(uint16_t window_id, uint16_t char_source) {
+         add_menu_item_no_position(label, (uint16_t)(i + 1));
+     }
+ 
++    /* Native Key Items QoL moves quest items out of ordinary bags, but source
++     * barter/store scripts still select a character inventory location (e.g.
++     * King banana -> Man K. Man). Preserve that interface with stable virtual
++     * locations after the unchanged ordinary slots. The shared getter/remover
++     * validates active-party access and the currently owned item. Maximum list
++     * size is 14 + 64, below MAX_MENU_ITEMS including its pagination option. */
++    if (key_items_pool_available_to_character(char_id)) {
++        for (unsigned i = 0; i < KEY_ITEMS_POOL_SIZE; i++) {
++            uint16_t item_id = key_items_pool[i];
++            uint16_t slot = KEY_ITEMS_POOL_SELECTION_SLOT_BASE + item_id;
++            if (!item_id || !key_items_pool_selection_item(char_id, slot)) continue;
++            bool duplicate = false;
++            for (unsigned j = 0; j < i; j++) {
++                if (key_items_pool[j] == item_id) { duplicate = true; break; }
++            }
++            if (duplicate) continue;
++            const ItemConfig *item_entry = get_item_entry(item_id);
++            if (!item_entry) continue;
++            char label[MENU_LABEL_SIZE];
++            eb_to_ascii_buf(item_entry->name, ITEM_NAME_LEN, label);
++            add_menu_item_no_position(label, slot);
++        }
++    }
++
+     /* Assembly lines 149-155: WINDOW_TICK_WITHOUT_INSTANT_PRINTING,
+      * then OPEN_WINDOW_AND_PRINT_MENU(columns=2, start_index=0). */
+     window_tick_without_instant_printing();
 diff --git a/src/game/door.c b/src/game/door.c
-index c8d134f..b26ca2a 100644
+index c8d134f..24ad606 100644
 --- a/src/game/door.c
 +++ b/src/game/door.c
+@@ -18,7 +18,7 @@
+ 
+ #include "game/door.h"
+ 
+-#include <math.h>
++#include "core/math.h"
+ #include "include/binary.h"
+ #include <string.h>
+ #include <stdio.h>
 @@ -39,6 +39,7 @@
  #include "game/map_loader.h"
  #include "game/oval_window.h"
@@ -7298,7 +7498,65 @@ index c8d134f..b26ca2a 100644
  uint16_t process_door_at_tile(uint16_t x_tile, uint16_t y_tile) {
      uint8_t door_type = find_door_at_position(x_tile, y_tile);
  
-@@ -903,7 +956,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
+@@ -829,40 +882,34 @@ static void init_transition_scroll_velocity(uint16_t speed,
+         /* Assembly: ADC #$0080 / AND #$00FF, add 128 (180°) to byte angle */
+         uint8_t angle = (uint8_t)((direction_x4 + 0x80) & 0xFF);
+ 
+-        /* COSINE_SINE returns speed * sin(angle) in 8.8 fixed point.
+-         * Then stored at TRANSITION_X_VELOCITY_FRAC+1, effectively << 8 within the
+-         * 32-bit velocity field. So total shift is << 8 from 8.8 = << 8.
+-         * Net: velocity = speed * sin(angle) * 256 in 16.16 fixed point,
+-         * i.e. speed * sin(angle) pixels-per-frame when divided by 65536.
+-         * But actually the result is already in the right range for smooth scroll. */
+-        double rad = (double)angle * 2.0 * M_PI / 256.0;
+-
+-        /* COSINE_SINE → X velocity component: speed * sin(angle).
+-         * COSINE → Y velocity component: speed * sin(angle-64) = -speed * cos(angle).
+-         * Assembly uses COSINE (not COSINE_SINE) for Y, so Y velocity is NEGATIVE cosine.
+-         * Assembly stores trig result in middle 16 bits of 32-bit field. */
+-        int16_t sin_val = (int16_t)round((double)speed * sin(rad));
+-        int16_t cos_val = (int16_t)round((double)speed * cos(rad));
+-
+-        dr.transition_x_velocity = (int32_t)sin_val << 8;
+-        dr.transition_y_velocity = -(int32_t)cos_val << 8;
++        /* The source calls Mode 7's signed multiply through COSINE_SINE and
++         * COSINE, using the original signed-byte sine table. Store that exact
++         * 16-bit result in velocity bytes 1..2, then sign-extend byte 3.
++         * Multiplication expresses the byte placement without signed-shift UB. */
++        int16_t sin_val = cosine_sine((int16_t)speed, angle);
++        int16_t cos_val = cosine_func((int16_t)speed, angle);
++        dr.transition_x_velocity = (int32_t)sin_val * 256;
++        dr.transition_y_velocity = (int32_t)cos_val * 256;
+     }
+ 
+     /* Initialize position from current BG scroll */
+-    dr.transition_x_accum = (int32_t)ppu.bg_hofs[0] << 16;
+-    dr.transition_y_accum = (int32_t)ppu.bg_vofs[0] << 16;
++    dr.transition_x_accum = (int32_t)((uint32_t)ppu.bg_hofs[0] << 16);
++    dr.transition_y_accum = (int32_t)((uint32_t)ppu.bg_vofs[0] << 16);
+ }
+ 
+ /* ---- UPDATE_TRANSITION_SCROLL (port of C4268A) ----
+  * Applies scroll velocity to background positions each frame. */
+ static void update_transition_scroll(void) {
+-    dr.transition_x_accum += dr.transition_x_velocity;
+-    uint16_t new_x = (uint16_t)(dr.transition_x_accum >> 16);
++    /* Assembly adds the two 16-bit halves with carry, wrapping at 32 bits. */
++    dr.transition_x_accum = (int32_t)((uint32_t)dr.transition_x_accum +
++                                    (uint32_t)dr.transition_x_velocity);
++    uint16_t new_x = (uint16_t)((uint32_t)dr.transition_x_accum >> 16);
+     ppu.bg_hofs[0] = new_x;
+     ppu.bg_hofs[1] = new_x;
+ 
+-    dr.transition_y_accum += dr.transition_y_velocity;
+-    uint16_t new_y = (uint16_t)(dr.transition_y_accum >> 16);
++    dr.transition_y_accum = (int32_t)((uint32_t)dr.transition_y_accum +
++                                    (uint32_t)dr.transition_y_velocity);
++    uint16_t new_y = (uint16_t)((uint32_t)dr.transition_y_accum >> 16);
+     ppu.bg_vofs[0] = new_y;
+     ppu.bg_vofs[1] = new_y;
+ 
+@@ -903,7 +950,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
          case ST_EXIT_BODY_FLUSH:
              update_screen();
              update_swirl_effect();
@@ -7309,7 +7567,7 @@ index c8d134f..b26ca2a 100644
              s->pal_waited = 0;
              s->phase = ST_EXIT_BODY;
              return STEP_RESULT_CONTINUE();   /* the iteration's main yield */
-@@ -966,7 +1021,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
+@@ -966,7 +1015,9 @@ StepResult mode_step_screen_transition(ModeState *st) {
              if (s->frame == 1) {
                  disable_all_entities();
              }
@@ -7320,7 +7578,7 @@ index c8d134f..b26ca2a 100644
              s->phase = ST_ENTER_BODY;
              continue;   /* no yield: resume the loop body */
          }
-@@ -975,6 +1032,46 @@ StepResult mode_step_screen_transition(ModeState *st) {
+@@ -975,6 +1026,46 @@ StepResult mode_step_screen_transition(ModeState *st) {
      }
  }
  
@@ -7833,7 +8091,7 @@ index 30256db..bb0113e 100644
  /* Initialize game state to defaults */
  void game_state_init(void);
 diff --git a/src/game/inventory.c b/src/game/inventory.c
-index 8978181..a4cf1e0 100644
+index 8978181..0596cab 100644
 --- a/src/game/inventory.c
 +++ b/src/game/inventory.c
 @@ -2,8 +2,10 @@
@@ -7978,7 +8236,67 @@ index 8978181..a4cf1e0 100644
                      loaded_transformations[off + LIT_OFF_SFX_COUNTDOWN] =
                          (uint8_t)(sfx_freq + rand_val - 1);
                      /* Play the SFX */
-@@ -1159,6 +1184,7 @@ uint16_t remove_item_from_inventory(uint16_t char_id, uint16_t item_slot) {
+@@ -874,6 +899,36 @@ uint16_t key_items_peek_use_in_progress(void) {
+     return key_items_pool_use_item_id;
+ }
+ 
++bool key_items_pool_available_to_character(uint16_t char_id) {
++    if (char_id < 1 || char_id > 4 ||
++        !(party_ever_joined_mask & (1u << (char_id - 1)))) return false;
++    for (unsigned i = 0; i < TOTAL_PARTY_COUNT; i++) {
++        if (game_state.party_members[i] == char_id) return true;
++    }
++    return false;
++}
++
++/* Source scripts can inspect a selected location repeatedly, save its
++ * registers, then consume it. A stable item-encoded location preserves that
++ * sequence even when another pool entry is removed or a menu is cold-restored.
++ * It introduces no transient latch or new serialized state. */
++uint16_t key_items_pool_selection_item(uint16_t char_id, uint16_t slot) {
++    if (slot <= KEY_ITEMS_POOL_SELECTION_SLOT_BASE ||
++        slot > KEY_ITEMS_POOL_SELECTION_SLOT_BASE + 0xFFu ||
++        !key_items_pool_available_to_character(char_id)) return 0;
++    uint16_t item_id = slot - KEY_ITEMS_POOL_SELECTION_SLOT_BASE;
++    return is_key_item_type(item_id) ? key_items_find(item_id) : 0;
++}
++
++uint16_t key_items_pool_first_selectable(uint16_t char_id) {
++    if (!key_items_pool_available_to_character(char_id)) return 0;
++    for (unsigned i = 0; i < KEY_ITEMS_POOL_SIZE; i++) {
++        uint16_t item_id = key_items_pool[i];
++        if (item_id && is_key_item_type(item_id)) return item_id;
++    }
++    return 0;
++}
++
+ /* GET_CHARACTER_ITEM: Port of asm/misc/get_character_item.asm.
+  * Assembly calling convention: A=char_id, X=slot (both 1-indexed).
+  * Returns the item ID at items[slot-1] for party_characters[char_id-1].
+@@ -898,6 +953,9 @@ uint16_t get_character_item(uint16_t char_id, uint16_t slot) {
+         key_items_pool_use_item_id = 0;
+         return item_id;
+     }
++    if (slot > KEY_ITEMS_POOL_SELECTION_SLOT_BASE &&
++        slot <= KEY_ITEMS_POOL_SELECTION_SLOT_BASE + 0xFFu)
++        return key_items_pool_selection_item(char_id, slot);
+     if (char_id == 0 || char_id > TOTAL_PARTY_COUNT) return 0;
+     if (slot == 0 || slot > ITEM_INVENTORY_SIZE) return 0;
+     uint16_t char_idx = char_id - 1;
+@@ -1057,6 +1115,12 @@ uint16_t give_item_to_character(uint16_t char_id, uint16_t item_id) {
+  * items[item_slot-1] far outside items[]'s 14 entries. */
+ uint16_t remove_item_from_inventory(uint16_t char_id, uint16_t item_slot) {
+     if (char_id == 0 || char_id > TOTAL_PARTY_COUNT) return char_id;
++    if (item_slot > KEY_ITEMS_POOL_SELECTION_SLOT_BASE &&
++        item_slot <= KEY_ITEMS_POOL_SELECTION_SLOT_BASE + 0xFFu) {
++        uint16_t item_id = key_items_pool_selection_item(char_id, item_slot);
++        if (item_id) key_items_remove(item_id);
++        return char_id;
++    }
+     if (item_slot == 0 || item_slot > ITEM_INVENTORY_SIZE) return char_id;
+     uint16_t char_idx = char_id - 1;
+ 
+@@ -1159,6 +1223,7 @@ uint16_t remove_item_from_inventory(uint16_t char_id, uint16_t item_slot) {
   * char_id: 1-indexed. item_slot: 1-indexed inventory position.
   * Returns old equipment slot index, or 0 if not equippable. */
  uint16_t equip_item(uint16_t char_id, uint16_t item_slot) {
@@ -7986,7 +8304,7 @@ index 8978181..a4cf1e0 100644
      uint16_t char_idx = char_id - 1;
      uint16_t slot_idx = item_slot - 1;
  
-@@ -1170,6 +1196,8 @@ uint16_t equip_item(uint16_t char_id, uint16_t item_slot) {
+@@ -1170,6 +1235,8 @@ uint16_t equip_item(uint16_t char_id, uint16_t item_slot) {
      const ItemConfig *entry = get_item_entry(item_id);
      if (!entry) return 0;
  
@@ -7995,7 +8313,7 @@ index 8978181..a4cf1e0 100644
      uint8_t equip_type = entry->type & EQUIP_TYPE_MASK;
  
      switch (equip_type) {
-@@ -1186,6 +1214,18 @@ uint16_t equip_item(uint16_t char_id, uint16_t item_slot) {
+@@ -1186,6 +1253,18 @@ uint16_t equip_item(uint16_t char_id, uint16_t item_slot) {
      }
  }
  
@@ -8014,7 +8332,18 @@ index 8978181..a4cf1e0 100644
  /* SWAP_ITEM_INTO_EQUIPMENT: Port of asm/battle/swap_item_into_equipment.asm (643 lines).
   *
   * Moves an item from source character's inventory to target character's inventory,
-@@ -1484,11 +1524,56 @@ uint16_t take_item_from_character(uint16_t char_id, uint16_t item_id) {
+@@ -1351,6 +1430,10 @@ uint16_t is_item_equipped_by_id(uint16_t char_id, uint16_t item_id) {
+  * char_id: 1-indexed. item_slot: 1-based inventory position.
+  * Returns 1 if that slot is equipped, 0 if not. */
+ uint16_t check_item_equipped(uint16_t char_id, uint16_t item_slot) {
++    /* Virtual pool selections never name an equipment slot. Keep the full
++     * location width before the ordinary byte-sized equipment comparison. */
++    if (char_id < 1 || char_id > TOTAL_PARTY_COUNT ||
++        item_slot < 1 || item_slot > ITEM_INVENTORY_SIZE) return 0;
+     uint16_t char_idx = char_id - 1;
+ 
+     for (int slot = 0; slot < EQUIP_COUNT; slot++) {
+@@ -1484,11 +1567,56 @@ uint16_t take_item_from_character(uint16_t char_id, uint16_t item_id) {
  
  bool is_key_item_type(uint16_t item_id) {
      const ItemConfig *entry = get_item_entry(item_id);
@@ -8072,7 +8401,7 @@ index 8978181..a4cf1e0 100644
  /* MIGRATE_KEY_ITEMS_TO_POOL: not a ROM/assembly port. New-game setup
   * (file_select.c) seeds all 4 characters' stats/inventory from
   * INITIAL_STATS up front, matching the original SRAM layout, even though
-@@ -1693,7 +1778,7 @@ uint16_t get_item_ep(uint16_t item_id) {
+@@ -1693,7 +1821,7 @@ uint16_t get_item_ep(uint16_t item_id) {
   * Scans Jeff's inventory for broken items. For each broken item:
   *   1. Checks item.type == 8 (broken)
   *   2. Checks item.params.epi <= Jeff's IQ
@@ -8081,7 +8410,7 @@ index 8978181..a4cf1e0 100644
   * On success, replaces the broken item with item.params.ep in-place.
   * Returns original broken item ID on success, 0 if nothing fixed. */
  uint16_t try_fix_broken_item(uint16_t fix_probability) {
-@@ -1723,8 +1808,10 @@ uint16_t try_fix_broken_item(uint16_t fix_probability) {
+@@ -1723,8 +1851,10 @@ uint16_t try_fix_broken_item(uint16_t fix_probability) {
          uint8_t epi = entry->params[ITEM_PARAM_EPI];
          if (epi > jeff->iq) continue;
  
@@ -8094,7 +8423,7 @@ index 8978181..a4cf1e0 100644
          if (roll >= fix_probability) continue;
  
          /* Fix the item: replace broken with fixed version */
-@@ -1830,12 +1917,12 @@ static int16_t calculate_stat_gain(uint8_t growth_var, uint8_t base_stat, uint16
+@@ -1830,12 +1960,12 @@ static int16_t calculate_stat_gain(uint8_t growth_var, uint8_t base_stat, uint16
      if (diff <= 0) return 0;
  
      /* Assembly lines 42-62: apply random modifier.
@@ -8109,7 +8438,7 @@ index 8978181..a4cf1e0 100644
      int16_t cycle = (int16_t)((old_level + 1) % 4);
      int16_t table_val = (int16_t)stat_gain_mod_data[cycle];
      int16_t modifier = table_val + rand_val - 1;
-@@ -1859,7 +1946,7 @@ static int16_t calculate_stat_gain_simple(uint8_t growth_var, uint8_t base_stat,
+@@ -1859,7 +1989,7 @@ static int16_t calculate_stat_gain_simple(uint8_t growth_var, uint8_t base_stat,
   *
   * Split for the run-to-completion conversion: the per-stage stat math lives
   * in level_up_apply_stage() (shared so both paths run the exact assembly
@@ -8118,7 +8447,7 @@ index 8978181..a4cf1e0 100644
   * (no music, no texts, no PSI-learn scan, the assembly gates all of those
   * on the play-sound flag) is level_up_char_silent(); the text-displaying
   * play_sound != 0 path is mode_step_level_up() (GAME_MODE_LEVEL_UP), defined
-@@ -1907,7 +1994,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1907,7 +2037,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 0];
          int16_t gain = calculate_stat_gain(growth, ch->base_offense, old_level);
          if (gain <= 0) return 0;
@@ -8127,7 +8456,7 @@ index 8978181..a4cf1e0 100644
          recalc_character_postmath_offense(char_id);
          return gain;
      }
-@@ -1916,7 +2003,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1916,7 +2046,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 1];
          int16_t gain = calculate_stat_gain(growth, ch->base_defense, old_level);
          if (gain <= 0) return 0;
@@ -8136,7 +8465,7 @@ index 8978181..a4cf1e0 100644
          recalc_character_postmath_defense(char_id);
          return gain;
      }
-@@ -1925,7 +2012,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1925,7 +2055,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 2];
          int16_t gain = calculate_stat_gain(growth, ch->base_speed, old_level);
          if (gain <= 0) return 0;
@@ -8145,7 +8474,7 @@ index 8978181..a4cf1e0 100644
          recalc_character_postmath_speed(char_id);
          return gain;
      }
-@@ -1934,7 +2021,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1934,7 +2064,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 3];
          int16_t gain = calculate_stat_gain(growth, ch->base_guts, old_level);
          if (gain <= 0) return 0;
@@ -8154,7 +8483,7 @@ index 8978181..a4cf1e0 100644
          recalc_character_postmath_guts(char_id);
          return gain;
      }
-@@ -1948,7 +2035,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1948,7 +2078,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
              ? calculate_stat_gain_simple(growth, ch->base_vitality, old_level)
              : calculate_stat_gain(growth, ch->base_vitality, old_level);
          if (gain <= 0) return 0;
@@ -8163,7 +8492,7 @@ index 8978181..a4cf1e0 100644
          recalc_character_postmath_vitality(char_id);
          return gain;
      }
-@@ -1959,7 +2046,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1959,7 +2089,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
              ? calculate_stat_gain_simple(growth, ch->base_iq, old_level)
              : calculate_stat_gain(growth, ch->base_iq, old_level);
          if (gain <= 0) return 0;
@@ -8172,7 +8501,7 @@ index 8978181..a4cf1e0 100644
          recalc_character_postmath_iq(char_id);
          return gain;
      }
-@@ -1968,14 +2055,14 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1968,14 +2098,14 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 6];
          int16_t gain = calculate_stat_gain(growth, ch->base_luck, old_level);
          if (gain <= 0) return 0;
@@ -8189,7 +8518,7 @@ index 8978181..a4cf1e0 100644
       * the HP message always shows. */
      case LU_STAGE_HP: {
          int16_t hp_potential = (int16_t)ch->vitality * 15 - (int16_t)ch->max_hp;
-@@ -1983,10 +2070,17 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1983,10 +2113,17 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          if (hp_potential > 1) {
              hp_increase = (uint16_t)hp_potential;
          } else {
@@ -8210,7 +8539,7 @@ index 8978181..a4cf1e0 100644
          return (int16_t)hp_increase;
      }
      /* --- Max PP increase (assembly lines 541-626) ---
-@@ -1995,7 +2089,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1995,7 +2132,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
       * Otherwise: pp_base = iq
       * pp_potential = pp_base * 5 - max_pp
       * If pp_potential > 1: pp_increase = pp_potential
@@ -8219,7 +8548,7 @@ index 8978181..a4cf1e0 100644
      case LU_STAGE_PP: {
          if (char_index == 2) return 0;
          uint16_t pp_base = (uint16_t)ch->iq;
-@@ -2007,11 +2101,18 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -2007,11 +2144,18 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          if (pp_potential > 1) {
              pp_increase = (uint16_t)pp_potential;
          } else {
@@ -8241,7 +8570,7 @@ index 8978181..a4cf1e0 100644
          return (int16_t)pp_increase;
      }
      default:
-@@ -2132,7 +2233,11 @@ bool gain_exp_prepare(uint16_t char_id, uint32_t exp_amount) {
+@@ -2132,7 +2276,11 @@ bool gain_exp_prepare(uint16_t char_id, uint32_t exp_amount) {
      if (char_id < 1 || char_id > 4) return false;
  
      /* Assembly lines 20-30: add exp to character */
@@ -8254,7 +8583,7 @@ index 8978181..a4cf1e0 100644
  
      return level_up_pending(char_id);
  }
-@@ -2181,7 +2286,7 @@ StepResult mode_step_level_up(ModeState *state) {
+@@ -2181,7 +2329,7 @@ StepResult mode_step_level_up(ModeState *state) {
  
              /* Lines 42-59: display "reached level XX". */
              dt.blinking_triangle_flag = 1;
@@ -8263,7 +8592,7 @@ index 8978181..a4cf1e0 100644
              set_cnum((uint32_t)ch->level);
              st->phase = LU_STAT;
              st->stage = 0;
-@@ -2190,16 +2295,15 @@ StepResult mode_step_level_up(ModeState *state) {
+@@ -2190,16 +2338,15 @@ StepResult mode_step_level_up(ModeState *state) {
              break;  /* unresolvable: fall through to LU_STAT inline */
          }
          case LU_STAT: {
@@ -8286,7 +8615,7 @@ index 8978181..a4cf1e0 100644
              }
              while (st->stage < LU_STAGE_COUNT) {
                  uint8_t stage = st->stage++;
-@@ -2311,7 +2415,7 @@ uint16_t decrease_wallet_balance(uint32_t amount) {
+@@ -2311,7 +2458,7 @@ uint16_t decrease_wallet_balance(uint32_t amount) {
   * Transfers from wallet to bank, clamped to ATM_ACCOUNT_LIMIT.
   * Returns the actual amount deposited (may be less if bank hit limit). */
  uint32_t deposit_into_atm(uint32_t amount) {
@@ -8295,7 +8624,7 @@ index 8978181..a4cf1e0 100644
      if (new_balance > ATM_ACCOUNT_LIMIT) {
          new_balance = ATM_ACCOUNT_LIMIT;
      }
-@@ -2403,7 +2507,27 @@ uint16_t find_condiment(uint16_t item_id) {
+@@ -2403,7 +2550,27 @@ uint16_t find_condiment(uint16_t item_id) {
  
      /* Assembly lines 21-25: get attacker's character index (0-indexed) */
      Battler *atk = battler_from_offset(bt.current_attacker);
@@ -8323,7 +8652,7 @@ index 8978181..a4cf1e0 100644
  
      /* Assembly lines 26-62: loop through character's inventory for a condiment */
      for (int slot = 0; slot < ITEM_INVENTORY_SIZE; slot++) {
-@@ -2475,3 +2599,104 @@ uint16_t find_inventory_space2(uint16_t char_id) {
+@@ -2475,3 +2642,104 @@ uint16_t find_inventory_space2(uint16_t char_id) {
      }
      return 0;
  }
@@ -8429,7 +8758,7 @@ index 8978181..a4cf1e0 100644
 +    return true;
 +}
 diff --git a/src/game/inventory.h b/src/game/inventory.h
-index 7d7e466..a9dec97 100644
+index 7d7e466..87c92e2 100644
 --- a/src/game/inventory.h
 +++ b/src/game/inventory.h
 @@ -96,6 +96,11 @@ void recalc_character_miss_rate(uint16_t char_id);
@@ -8463,7 +8792,25 @@ index 7d7e466..a9dec97 100644
  /* KEY_ITEMS_GIVE: stores item_id in the first empty pool slot.
   * Returns item_id on success, 0 if the pool is full. */
  uint16_t key_items_give(uint16_t item_id);
-@@ -395,9 +408,10 @@ uint16_t find_inventory_space2(uint16_t char_id);
+@@ -235,6 +248,17 @@ void migrate_key_items_to_pool(uint16_t char_id);
+  * for the full rationale. Never a real 1-14 inventory slot. */
+ #define KEY_ITEMS_POOL_USE_SLOT_SENTINEL 0xFFFFu
+ 
++/* Stable virtual slot for source inventory-selection scripts. The item ID,
++ * rather than the compacting pool index, is encoded in the low byte. Menu
++ * userdata, script registers and captured menu state retain all 16 bits.
++ * This is separate from the one-shot pool Use sentinel above. */
++#define KEY_ITEMS_POOL_SELECTION_SLOT_BASE 0x0100u
++bool key_items_pool_available_to_character(uint16_t char_id);
++uint16_t key_items_pool_selection_item(uint16_t char_id, uint16_t slot);
++/* Read-only first pool item exposed by the script inventory selector. Used by
++ * the source's party-has-items preflight, never by ordinary bag slot reads. */
++uint16_t key_items_pool_first_selectable(uint16_t char_id);
++
+ /* KEY_ITEMS_REMOVE: finds and removes item_id from the pool, compacting
+  * (shift-left) to keep it packed toward index 0.
+  * Returns the removed item_id, or 0 if not found. */
+@@ -395,9 +419,10 @@ uint16_t find_inventory_space2(uint16_t char_id);
  
  /* Party management */
  
@@ -8476,7 +8823,7 @@ index 7d7e466..a9dec97 100644
   * the definition (inventory.c) for the full rationale. Exposed so
   * join_level_scaling_selftest() (game_state.c) can exercise it without
   * going through add_char_to_party()'s live entity/position-buffer setup,
-@@ -419,6 +433,11 @@ void remove_char_from_party(uint16_t char_id);
+@@ -419,6 +444,11 @@ void remove_char_from_party(uint16_t char_id);
  
  /* Item transformation system */
  
@@ -11109,7 +11456,7 @@ index a0a8b75..21010fc 100644
  
      disable_all_entities();
 diff --git a/src/game/window.c b/src/game/window.c
-index e516652..33a6196 100644
+index e516652..76c9d9e 100644
 --- a/src/game/window.c
 +++ b/src/game/window.c
 @@ -5,12 +5,14 @@
@@ -11127,6 +11474,15 @@ index e516652..33a6196 100644
  #include "include/pad.h"
  #include "include/constants.h"
  #include "data/assets.h"
+@@ -176,7 +178,7 @@ static const uint16_t window_configs[][4] = {
+      * time as either, so no collision); it already extends further right
+      * than the Command Menu it's opened over (0x00, roughly x=1..14), so
+      * it's meant to cover it, same as any other pause-menu submenu.
+-     * Height bumped 16->20 (max_rows 8->10, 20 unpaginated items at this
++     * Height bumped 16->20 (interior max_rows 7->9, 18 unpaginated items at this
+      * window's 2 columns): with KEY_ITEMS_POOL_SIZE now 64 (game_state.h),
+      * a real save with a modest ~17 key items already needed a second,
+      * easy-to-miss page via open_window_and_print_menu()'s "..." overflow
 @@ -270,6 +272,7 @@ static void tilemap_pool_free(WindowInfo *w) {
  }
  
@@ -11164,24 +11520,118 @@ index e516652..33a6196 100644
      strncpy(item->label, label, MENU_LABEL_SIZE - 1);
      item->label[MENU_LABEL_SIZE - 1] = '\0';
      item->userdata = userdata;
-@@ -675,6 +684,16 @@ void print_menu_items(void) {
-         w = get_window(win.current_focus_window);  /* re-fetch after cursor set */
+@@ -676,6 +685,27 @@ void print_menu_items(void) {
          if (!w) return;
          print_string(item->label);
+     }
++
++    /* cc_load_two_str.ccs draws the queued right labels after the left
++     * labels, using screen pixel coordinates rather than VWF buffer X.
++     * Its saved indent flag must not reset the positioned text to column 0. */
++    uint8_t saved_indent = vwf_indent_new_line;
++    clear_vwf_indent_new_line();
++    for (uint16_t i = 0; i < w->menu_count; i++) {
++        MenuItem *item = &w->menu_items[i];
++        if (item->page != w->menu_page_number && item->page != 0)
++            continue;
 +        if (item->right_label[0]) {
 +            uint8_t eb[sizeof(item->right_label)] = {0};
 +            size_t length = strlen(item->right_label);
 +            for (size_t n = 0; n < length; ++n) eb[n] = ascii_to_eb_char(item->right_label[n]);
 +            uint16_t width = get_string_pixel_width(eb, -1);
 +            uint16_t edge = (uint16_t)(w->width-2)*8-1;
-+            set_focus_text_cursor(0, item->text_y);
-+            vwf_set_position(width <= edge ? edge-width : 0);
++            set_text_pixel_position(item->text_y, width <= edge ? edge-width : 0);
 +            print_string(item->right_label);
 +        }
-     }
++    }
++    vwf_indent_new_line = saved_indent;
  }
  
-@@ -1149,7 +1168,7 @@ void set_window_palette_index(uint16_t palette_index) {
+ /*
+@@ -692,9 +722,10 @@ void print_menu_items(void) {
+  * columns: number of columns for layout (1 = single column, 2 = two columns)
+  * start_index: if non-zero, reassign userdata starting from this value
+  */
+-void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+-    WindowInfo *w = get_window(win.current_focus_window);
+-    if (!w || w->menu_count == 0) return;
++static bool layout_menu_options(WindowInfo *w, uint16_t columns,
++                                uint16_t start_index) {
++    if (!w || w->menu_count == 0 || w->width < 3 || w->height < 4)
++        return false;
+ 
+     if (columns < 1) columns = 1;
+ 
+@@ -703,13 +734,20 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+     uint16_t interior_w = w->width - 2;
+     uint16_t col_width = interior_w / columns;
+ 
+-    /* Assembly LAYOUT_MENU_OPTIONS (line 155-156): max_rows = height / 2.
+-     * Uses raw height (LSR), not border-adjusted. */
+-    uint16_t max_rows = w->height / 2;
++    /* CREATE_WINDOW stores config height minus both borders in the source
++     * window_stats. This native struct retains the outer config height, so
++     * normalize before source LAYOUT_MENU_OPTIONS' height LSR. Cursor search
++     * uses this same interior bound; the last content row must be reachable. */
++    uint16_t max_rows = (w->height - 2) / 2;
+     uint16_t total_items = w->menu_count;
+     uint16_t rows_needed = (total_items + columns - 1) / columns;
+     bool needs_pagination = (rows_needed > max_rows);
+ 
++    /* The source reserves two rows for overflow. Invalid short-window API
++     * inputs must not wrap this subtraction or create a zero-sized page. */
++    if (needs_pagination && max_rows <= 2)
++        return false;
++
+     /* If paginated, assembly (layout_menu_options.asm lines 170-173) does
+      * DEX;DEX, reduces rows_per_page by 2 from max_rows, reserving
+      * the last row for the overflow indicator with one blank row gap. */
+@@ -760,6 +798,14 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+ 
+     w->menu_page_number = 1;
+ 
++    return true;
++}
++
++void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
++    WindowInfo *w = get_window(win.current_focus_window);
++    if (!layout_menu_options(w, columns, start_index))
++        return;
++
+     /* Assembly: LAYOUT_MENU_OPTIONS then PRINT_MENU_ITEMS */
+     print_menu_items();
+ }
+@@ -776,26 +822,13 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+ void layout_and_print_menu_at_selection(uint16_t columns, uint16_t start_index,
+                                         uint16_t initial_selection) {
+     WindowInfo *w = get_window(win.current_focus_window);
+-    if (!w || w->menu_count == 0) return;
+-
+-    if (columns < 1) columns = 1;
+-
+-    /* Layout items (same as open_window_and_print_menu) */
+-    uint16_t interior_w = w->width - 2;
+-    uint16_t col_width = interior_w / columns;
+-
+-    for (uint16_t i = 0; i < w->menu_count; i++) {
+-        uint16_t col = i % columns;
+-        uint16_t row = i / columns;
+-        w->menu_items[i].text_x = (uint8_t)(col * col_width);
+-        w->menu_items[i].text_y = (uint8_t)(w->text_y + row);
+-        if (start_index)
+-            w->menu_items[i].userdata = start_index + i;
+-    }
++    if (!layout_menu_options(w, columns, start_index))
++        return;
+ 
+     /* Set initial selection position (assembly lines 17-55) */
+     if (initial_selection != (uint16_t)(-1) && initial_selection < w->menu_count) {
+         w->selected_option = initial_selection;
++        w->menu_page_number = w->menu_items[initial_selection].page;
+     }
+ 
+     print_menu_items();
+@@ -1149,7 +1182,7 @@ void set_window_palette_index(uint16_t palette_index) {
   * option with a purple/highlight background (palette 6).
   */
  void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, bool set) {
@@ -11190,7 +11640,7 @@ index e516652..33a6196 100644
  
      MenuItem *item = &w->menu_items[item_index];
      uint16_t content_width = w->width - 2;
-@@ -1164,14 +1183,30 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
+@@ -1164,14 +1197,30 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
       * it hits a blank tile (tile == 64).  In the C port, unwritten entries
       * are 0.  Skip any entry with a zero tile index to avoid painting
       * palette bits onto empty positions (which would make them visible). */
@@ -11224,7 +11674,7 @@ index e516652..33a6196 100644
              if (set) {
                  w->content_tilemap[upper_pos] = upper_tile | attr;
                  w->content_tilemap[lower_pos] = (w->content_tilemap[lower_pos] & 0x03FF) | attr;
-@@ -1184,6 +1219,42 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
+@@ -1184,6 +1233,42 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
      }
  }
  
@@ -11267,7 +11717,7 @@ index e516652..33a6196 100644
  /*
   * PRINT_CHAR_WITH_SOUND: Port of asm/text/print_char_with_sound.asm.
   *
-@@ -1916,6 +1987,7 @@ static StepResult sm_handle_input(WindowInfo *w, SelectionMenuState *st, bool *h
+@@ -1916,6 +2001,7 @@ static StepResult sm_handle_input(WindowInfo *w, SelectionMenuState *st, bool *h
   * phase machine and the `primed` frame-timing scheme.
   */
  StepResult mode_step_selection_menu(ModeState *ms) {
@@ -11275,7 +11725,7 @@ index e516652..33a6196 100644
      SelectionMenuState *st = &ms->selection_menu;
  
      /* Resuming after a deferred cursor-callback text push: the pushed DISPLAY_TEXT
-@@ -2049,7 +2121,10 @@ StepResult mode_step_selection_menu(ModeState *ms) {
+@@ -2049,7 +2135,10 @@ StepResult mode_step_selection_menu(ModeState *ms) {
   *   = ((18 * 32) - 6) * 2 = (576 - 6) * 2 = 570 * 2 = 0x474
   */
  void clear_hppp_window_header(void) {
@@ -11287,7 +11737,7 @@ index e516652..33a6196 100644
      memset(&win.bg2_buffer[offset], 0, 4 * 2);
  }
  
-@@ -2060,7 +2135,9 @@ void clear_hppp_window_header(void) {
+@@ -2060,7 +2149,9 @@ void clear_hppp_window_header(void) {
   */
  void render_hppp_window_header(void) {
      static const uint16_t header_tiles[4] = { 0x3A69, 0x3A6A, 0x3A6B, 0x3A6C };
@@ -11298,7 +11748,7 @@ index e516652..33a6196 100644
      memcpy(&win.bg2_buffer[offset], header_tiles, sizeof(header_tiles));
  }
  
-@@ -2193,6 +2270,16 @@ void clear_battle_menu_character_indicator(void) {
+@@ -2193,6 +2284,16 @@ void clear_battle_menu_character_indicator(void) {
  
  /* HPPP Window Drawing */
  
@@ -11315,7 +11765,7 @@ index e516652..33a6196 100644
  /*
   * UNDRAW_HP_PP_WINDOW: Port of asm/text/hp_pp_window/undraw.asm.
   *
-@@ -2209,12 +2296,7 @@ void undraw_hp_pp_window(uint16_t char_id) {
+@@ -2209,12 +2310,7 @@ void undraw_hp_pp_window(uint16_t char_id) {
      ow.currently_drawn_hppp_windows &= ~(1 << char_id);
  
      /* Determine Y row offset: active character is one row higher */
@@ -11329,7 +11779,7 @@ index e516652..33a6196 100644
  
      /* Compute position in win.bg2_buffer using same centering as assembly */
      uint16_t x_byte_offset = calc_character_indicator_x_offset(char_id);
-@@ -2532,11 +2614,7 @@ void draw_hp_pp_window(uint16_t char_id) {
+@@ -2532,11 +2628,7 @@ void draw_hp_pp_window(uint16_t char_id) {
      }
  
      /* Determine Y row (assembly lines 91-99) */
@@ -11342,7 +11792,7 @@ index e516652..33a6196 100644
  
      /* Compute BG2_BUFFER position (assembly lines 101-127).
       * Each party member's window is 7 tiles wide, centered at HPPP_CENTER_TILE.
-@@ -2574,8 +2652,9 @@ void draw_hp_pp_window(uint16_t char_id) {
+@@ -2574,8 +2666,9 @@ void draw_hp_pp_window(uint16_t char_id) {
       * US: STRLEN computes name width = (strlen*6+9)/8 tiles. */
      uint16_t name_base1 = 0x22A0 + (uint16_t)(member_id - 1) * 4;
      int name_len = 0;
@@ -11354,7 +11804,7 @@ index e516652..33a6196 100644
      int ntc = name_tile_count;
  
      for (int i = 0; i < HPPP_WINDOW_WIDTH - 3; i++) {
-@@ -2849,11 +2928,7 @@ void update_hppp_meter_tiles(void) {
+@@ -2849,11 +2942,7 @@ void update_hppp_meter_tiles(void) {
          return;
  
      /* Determine Y row: active character uses row 18, others use row 19 */

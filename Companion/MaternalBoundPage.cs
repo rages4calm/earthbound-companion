@@ -5,9 +5,9 @@ sealed partial class MainForm {
   Header("Choose your game mode.","Select original EarthBound or MaternalBound Redux, then continue from Play. Each edition keeps separate saves. Redux setup and conversion details are below.");
 
   Section("Game edition");
-  var build=Theme.Button(ReduxProfileService.Ready?"Use Redux test edition":"Build Redux test edition",()=>Try(()=>{
+  var build=Theme.Button(ReduxProfileService.UpdateNeeded?"Update Redux game data":ReduxProfileService.Ready?"Use Redux test edition":"Build Redux test edition",()=>Try(()=>{
    if(Running||generating)return;
-   if(!ReduxProfileService.Ready){OpenReduxSetup();return;}
+   if(!ReduxProfileService.Ready||ReduxProfileService.UpdateNeeded){OpenReduxSetup();return;}
    ReduxProfileService.Select(settings);ShowPage("Play");Notify("Redux development profile selected. Its story saves and seeds stay separate.");
   }),true);build.Enabled=!Running&&!generating;build.Width=240;
   var original=Theme.Button("Use original EarthBound",()=>Try(()=>{if(Running||generating)return;settings.AssetPack="";settings.ReduxDevelopmentEnabled=false;settings.Save();ShowPage("Play");Notify("Original EarthBound selected. Its existing saves are preserved.");}));original.Enabled=!Running&&!generating;original.Width=240;Actions(build,original);
@@ -32,11 +32,12 @@ sealed partial class MainForm {
   Section("Story Shuffle v3");
   page.Controls.Add(Theme.Text("Redux's audited profile protects 110 story or trade items and 84 enemy records. Scripts, routes, bosses and required sources stay fixed. Seeds have their own saves. These checks passed; a full randomized playthrough remains unverified.",11,Theme.Muted));
   page.Controls.Add(Theme.Text("The older v0.4 preview contains original EarthBound. This source build's Redux profile is experimental and does not claim complete MaternalBound compatibility.",10,Theme.Muted));
-  Section("Continue a dev.2 story");
-  page.Controls.Add(Theme.Text("After building Redux in a fresh corrected-pack folder, import your dev.2 phone and quick saves here. This checked names-only upgrade preserves the old installation. It requires empty destination saves; randomized seeds keep their original edition.",10,Theme.Muted));
-  var import=Theme.Button("Import dev.2 story saves",()=>Try(()=>{
+  Section("Continue an earlier Redux story");
+  page.Controls.Add(Theme.Text("The game-data update rebuilds from your ROM, checks the exact reviewed art changes and copies compatible phone/F6 saves unchanged. A backup of the earlier profile remains on disk. To move saves from a separate dev.2–16 installation, use Import below; destination saves must be empty. Earlier randomizer seeds retain their original base data and saves.",10,Theme.Muted));
+  page.Controls.Add(Theme.Text("A quick save made during combat retains that scene's cached art until the next battle loads. Updating never rewrites the contents of your saved scene.",10,Theme.Muted));
+  var import=Theme.Button("Import earlier story saves",()=>Try(()=>{
    if(Running||generating)return;
-   using var picker=new FolderBrowserDialog{Description="Select your previous dev.2 EarthBound Companion installation folder."};
+   using var picker=new FolderBrowserDialog{Description="Select your previous Redux EarthBound Companion installation folder (dev.2–16)."};
    if(picker.ShowDialog(this)!=DialogResult.OK)return;
    int count=ReduxStoryUpgrade.Import(picker.SelectedPath);ReduxProfileService.Select(settings);ShowPage("Play");Notify($"Imported {count} story save files. Use Resume quick save to continue your F6 checkpoint.");
   }));import.Enabled=ReduxProfileService.Ready&&!Running&&!generating;import.Width=260;Actions(import);

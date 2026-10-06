@@ -1,0 +1,100 @@
+{
+  "Passed": true,
+  "Jobs": [
+    {
+      "Job": "story-parents",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 45.08
+    },
+    {
+      "Job": "timed_item_lifecycle_qa",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 1.61
+    },
+    {
+      "Job": "timed_item_cold_continue_qa",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 9.45
+    },
+    {
+      "Job": "original-battle_ko_lifecycle_qa_dev17",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 2.27
+    },
+    {
+      "Job": "original-inventory_gameover_lifecycle_qa_dev17",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 4.86
+    },
+    {
+      "Job": "original-battle_full_encounter_qa_dev18",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 63.08
+    },
+    {
+      "Job": "original-prayer",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 8.5
+    },
+    {
+      "Job": "original-ending-0",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 10.36
+    },
+    {
+      "Job": "original-ending-1",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 11.34
+    },
+    {
+      "Job": "redux-battle_ko_lifecycle_qa_dev17",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 2.24
+    },
+    {
+      "Job": "redux-inventory_gameover_lifecycle_qa_dev17",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 4.5
+    },
+    {
+      "Job": "redux-battle_full_encounter_qa_dev18",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 48.3
+    },
+    {
+      "Job": "redux-prayer",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 7.53
+    },
+    {
+      "Job": "redux-ending-0",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 7.43
+    },
+    {
+      "Job": "redux-ending-1",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 7.48
+    }
+  ],
+  "SkippedJobs": 0,
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Selected existing source-backed scenarios rerun on instrumented private objects, not shipping/independent SNES proof. Individual diagnostic reports record traps or runner failures and retain precise runtime provenance."
+  ]
+}

@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev22-full-escargo-parent-freeze",
+  "frozenRuntime": "dev17-v4",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "sourceParentSequences": 72,
+  "coldContinuationsIncluded": 18,
+  "naturalCourierArrivalVisitDeparture": 68,
+  "naturalRouteFailureRefund": 4,
+  "nativeProductionChanged": false,
+  "verifiedLedger": [
+    {
+      "profile": "original",
+      "report": "research/original-escargo-courier-dev22-v4-final-r2.json",
+      "fixtures": "research/original-escargo-courier-fixtures-dev22-v4-final-r2.json",
+      "selectedParentSequences": 36,
+      "naturalCourierArrivalVisitDeparture": 34,
+      "naturalRouteFailureRefund": 2,
+      "coldContinuationsIncluded": 9,
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "privateBuild": {
+        "driverSourceSha256": "9a7142f46a5cd4849b345f11b80067e6911ed8664c91991fb1d1918245ea740e",
+        "executableSha256": "cb5378ba70b8b0f64e3afc831d055b23cbbe36d2653c6088730b3b1967f17656",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "sourceReferences": [
+        {
+          "path": "src/game/display_text.c",
+          "sha256": "ee5cc9ef3056cbd5b6cc1bb846d2eb74a2bdfc16d2f1743953a8a112709d13a7"
+        },
+        {
+          "path": "src/game/display_text_cc.c",
+          "sha256": "8823d80be9f5de41518dd81684618493a4f66d790976eab38dee211706375638"
+        },
+        {
+          "path": "src/game/display_text_menus.c",
+          "sha256": "8735294cd95d0f039334048d8259624e29a9997dc09cf689b422a8a7fbceec54"
+        },
+        {
+          "path": "src/game/inventory.c",
+          "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+        },
+        {
+          "path": "src/game/audio.c",
+          "sha256": "9b9a9b4811bff9c7d97e0ec269136cf42773de0c932b11ba65eb96d0949398df"
+        },
+        {
+          "path": "src/game/window.c",
+          "sha256": "ad9256445b09df105f345fc07c2af2d0a3fa15ad4828c46615c9a55d6fcabdc6"
+        },
+        {
+          "path": "src/game/text.c",
+          "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+        },
+        {
+          "path": "src/core/mode_stack.h",
+          "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+        },
+        {
+          "path": "src/game/overworld_interaction.c",
+          "sha256": "23de81ce2fabc96ffb4fd789b16b6601b125ea280e6b800bdb4fa6845342f502"
+        },
+        {
+          "path": "src/game/overworld_spawn.c",
+          "sha256": "17f16be9014058e45f5eb1cf30d49ee6f9be43b81fe2ba6a3252aa155d9d9075"
+        },
+        {
+          "path": "src/game/overworld.c",
+          "sha256": "f91e1db767e21a7f72648c17b6662cb037f99bfa0598ab4ad4e820c67b4d370d"
+        },
+        {
+          "path": "src/entity/callroutine.c",
+          "sha256": "63835e5c1abd6af31c91ae0079e33997c8f99834b0b3ff94ea22b39e0f083c56"
+        },
+        {
+          "path": "src/entity/script.c",
+          "sha256": "dc8243e18f1dc69244ba073d81913c4620c5ba3ea766062fd3529948c412f4e2"
+        },
+        {
+          "path": "src/entity/pathfinding.c",
+          "sha256": "31c691d3eaeebbfb8bb377b778d70cc4c94262ecee38feb0a6b60cac883e7d7b"
+        },
+        {
+          "path": "src/game/map_loader.c",
+          "sha256": "55d858566e2374126c34589d2c6793254b61d83e8d32bb2c353915cc9114f5c3"
+        }
+      ]
+    },
+    {
+      "profile": "redux",
+      "report": "research/redux-escargo-courier-dev22-v4-final-r2.json",
+      "fixtures": "research/redux-escargo-courier-fixtures-dev22-v4-final-r2.json",
+      "selectedParentSequences": 36,
+      "naturalCourierArrivalVisitDeparture": 34,
+      "naturalRouteFailureRefund": 2,
+      "coldContinuationsIncluded": 9,
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "privateBuild": {
+        "driverSourceSha256": "aaada6f648f3f1c8ef37d8a82acb520bafbae4bdef836b4ae2fc277367fc1ee3",
+        "executableSha256": "bbe3ac3b6b0f5e73a1c6371fa20280331475dc3d3a5b7c1ae7e1dd6f4d34d7ea",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "sourceReferences": [
+        {
+          "path": "src/game/display_text.c",
+          "sha256": "ee5cc9ef3056cbd5b6cc1bb846d2eb74a2bdfc16d2f1743953a8a112709d13a7"
+        },
+        {
+          "path": "src/game/display_text_cc.c",
+          "sha256": "8823d80be9f5de41518dd81684618493a4f66d790976eab38dee211706375638"
+        },
+        {
+          "path": "src/game/display_text_menus.c",
+          "sha256": "8735294cd95d0f039334048d8259624e29a9997dc09cf689b422a8a7fbceec54"
+        },
+        {
+          "path": "src/game/inventory.c",
+          "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+        },
+        {
+          "path": "src/game/audio.c",
+          "sha256": "9b9a9b4811bff9c7d97e0ec269136cf42773de0c932b11ba65eb96d0949398df"
+        },
+        {
+          "path": "src/game/window.c",
+          "sha256": "ad9256445b09df105f345fc07c2af2d0a3fa15ad4828c46615c9a55d6fcabdc6"
+        },
+        {
+          "path": "src/game/text.c",
+          "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+        },
+        {
+          "path": "src/core/mode_stack.h",
+          "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+        },
+        {
+          "path": "src/game/overworld_interaction.c",
+          "sha256": "23de81ce2fabc96ffb4fd789b16b6601b125ea280e6b800bdb4fa6845342f502"
+        },
+        {
+          "path": "src/game/overworld_spawn.c",
+          "sha256": "17f16be9014058e45f5eb1cf30d49ee6f9be43b81fe2ba6a3252aa155d9d9075"
+        },
+        {
+          "path": "src/game/overworld.c",
+          "sha256": "f91e1db767e21a7f72648c17b6662cb037f99bfa0598ab4ad4e820c67b4d370d"
+        },
+        {
+          "path": "src/entity/callroutine.c",
+          "sha256": "63835e5c1abd6af31c91ae0079e33997c8f99834b0b3ff94ea22b39e0f083c56"
+        },
+        {
+          "path": "src/entity/script.c",
+          "sha256": "dc8243e18f1dc69244ba073d81913c4620c5ba3ea766062fd3529948c412f4e2"
+        },
+        {
+          "path": "src/entity/pathfinding.c",
+          "sha256": "31c691d3eaeebbfb8bb377b778d70cc4c94262ecee38feb0a6b60cac883e7d7b"
+        },
+        {
+          "path": "src/game/map_loader.c",
+          "sha256": "55d858566e2374126c34589d2c6793254b61d83e8d32bb2c353915cc9114f5c3"
+        }
+      ]
+    }
+  ],
+  "sourceProof": [
+    {
+      "path": "asm/misc/give_item_to_specific_character.asm",
+      "sha256": "0be50e80068f574ae61f5b0f6697b3a233fa4bdb12b5806ad1829e627e41055f"
+    },
+    {
+      "path": "asm/misc/remove_item_from_inventory.asm",
+      "sha256": "83b33caa02be0f178f14cab39aa2f1b6fd6211002b843354f40afe88f9f02247"
+    },
+    {
+      "path": "src/entity/callroutine_movement.c",
+      "sha256": "3581f9eee4806f9a4cd150eda8ea2ba24c33a317292e676a47c73e14e01ec79d"
+    },
+    {
+      "path": "src/entity/opcodes.c",
+      "sha256": "6994a7646e76911cab1bb7b2bc6c5f526c394c1a97748fd00e1ecb0f8d8023df"
+    },
+    {
+      "path": "src/game_main.c",
+      "sha256": "ac690d7a23c339dc19616069312c36e440999fc7e9a502f2c968231ba725582c"
+    }
+  ],
+  "pinnedProof": [
+    {
+      "path": "npc_config_table.yml",
+      "sha256": "59ee6fb0904e5542c2db3317cd2b1fee153c854fb423b637a8d82c3400da976f"
+    },
+    {
+      "path": "map_sprites.yml",
+      "sha256": "ffcfae390a89cd15ef48d80dd7c605749a0fcbdd846056e90b2b105a98714bac"
+    },
+    {
+      "path": "map_doors.yml",
+      "sha256": "2c67ba44e4d57acb9f0087e37d666bae5272c28e59044f0ce2cd74d2ac1afcec"
+    },
+    {
+      "path": "timed_delivery_table.yml",
+      "sha256": "c1ccfb31b4175467eca59abc3f570785472d5b873c6d3b7a4300fbcc6dd9f9fb"
+    },
+    {
+      "path": "ccscript/data/data_19.ccs",
+      "sha256": "e0f1d64de4a29c1b64411d5424730ac25dc9aaee37e08cdd84a297e9f36ee27a"
+    },
+    {
+      "path": "ccscript/data/data_22.ccs",
+      "sha256": "23426b68d740d643652fbe8db5f0983bbaeeb1c841f579ed0b9bb7c8ec79e653"
+    },
+    {
+      "path": "ccscript/data/data_36.ccs",
+      "sha256": "a37750fb9c775c5954b11d8e8a616505bdadab2176cd00792a757dc6b276dfc4"
+    }
+  ],
+  "preservedDiagnostics": [
+    {
+      "path": "research/original-escargo-courier-dev22-v4.json",
+      "sha256": "c70338706a9d3001e08178e124f270cc59cc2b946bb8d22b86f1655323b9ae12",
+      "selectedCases": 34,
+      "failedExpectedCases": [
+        {
+          "id": "pickup-sound-stone-rejected",
+          "errors": [
+            "Actual complete inventory differs",
+            "Source keyPool differs: [196, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] expected [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+          ]
+        },
+        {
+          "id": "pickup-reconfirm-return",
+          "errors": [
+            "Actual complete inventory differs"
+          ]
+        }
+      ],
+      "status": "Pre-entry QoL classification or source refund ordering expectation; no production defect established."
+    },
+    {
+      "path": "research/original-escargo-courier-dev22-v4-final.json",
+      "sha256": "fa89e878959d818b91a01df8a7b2af1ea820446ad54955c6d399d5b6ca9c3d8a",
+      "selectedCases": 36,
+      "failedExpectedCases": [
+        {
+          "id": "pickup-banana-ordinary",
+          "errors": [
+            "Pre-entry source snapshot inventory differs",
+            "Pre-entry source transfer keyPool differs"
+          ]
+        },
+        {
+          "id": "pickup-banana-ordinary-cold-7",
+          "errors": [
+            "Pre-entry source snapshot inventory differs",
+            "Pre-entry source transfer keyPool differs"
+          ]
+        }
+      ],
+      "status": "Pre-entry QoL classification or source refund ordering expectation; no production defect established."
+    },
+    {
+      "path": "research/redux-escargo-courier-dev22-v4.json",
+      "sha256": "5fae039f5ae06af728b501b54d714cbe27b15fd9b19b9623650845f1d0f3cc24",
+      "selectedCases": 34,
+      "failedExpectedCases": [
+        {
+          "id": "pickup-reconfirm-return",
+          "errors": [
+            "Actual complete inventory differs"
+          ]
+        }
+      ],
+      "status": "Pre-entry QoL classification or source refund ordering expectation; no production defect established."
+    },
+    {
+      "path": "research/redux-escargo-courier-dev22-v4-final.json",
+      "sha256": "6cb4eb5958dcdc668addea64b2e165a93f17bbf75cd40035af7d48ce0c13c456",
+      "selectedCases": 36,
+      "failedExpectedCases": [],
+      "status": "Pre-entry QoL classification or source refund ordering expectation; no production defect established."
+    }
+  ],
+  "previousTransactionManifest": {
+    "path": "research/inventory-selector-dev22-v4-refresh-manifest.json",
+    "sha256": "674599f54d401d894af7df9dce72c5ed138580a4e827265491d8990ab96878a1",
+    "historicalEscargoLimitSupersededOnlyBySelectedNewCorpus": true
+  },
+  "files": [
+    {
+      "path": "tools/escargo_courier_qa_dev22.py",
+      "sha256": "de9d3043ce6050048be244907a2d44087e68cae8bd696deedc187548dc3707dc",
+      "bytes": 12571
+    },
+    {
+      "path": "tools/escargo_courier_cases_dev22.py",
+      "sha256": "37d951d7d10e72c751ff59765ccfd36d844add32ce692e9e02559aef06382528",
+      "bytes": 7494
+    },
+    {
+      "path": "tools/write_escargo_manifest_dev22.py",
+      "sha256": "7fa08cbe1cd3d8fbf0f4faaa3d22839aea92da47672193d1d90011e1c3eed992",
+      "bytes": 6703
+    },
+    {
+      "path": "tools/barter_delivery_qa_dev20.py",
+      "sha256": "b85c2890cb250af29455ef364f73f662559d7ee611a61af71cebd4d73be3de43",
+      "bytes": 8549
+    },
+    {
+      "path": "tools/shop_transaction_qa_dev18.py",
+      "sha256": "0f7cdbf128474dc8a1f5402395132a2e41ad083bf6e4915af67c028df25b76fc",
+      "bytes": 16355
+    },
+    {
+      "path": "tools/transaction_menu_replay_dev20.py",
+      "sha256": "05ed1f6fbf4f3f26df120f2daca2905390fd6bdc15fdc9f1706aa825a90e2670",
+      "bytes": 3791
+    },
+    {
+      "path": "tools/battle_action_catalog_qa.py",
+      "sha256": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823",
+      "bytes": 40111
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1",
+      "bytes": 21769
+    },
+    {
+      "path": "research/escargo-courier-dev22-evidence.md",
+      "sha256": "98229d27b2905b57242fa6868b71edef6294d082b5b26b3d64e0204aba136fd8",
+      "bytes": 7392
+    },
+    {
+      "path": "research/inventory-selector-dev22-v4-refresh-manifest.json",
+      "sha256": "674599f54d401d894af7df9dce72c5ed138580a4e827265491d8990ab96878a1",
+      "bytes": 5903
+    },
+    {
+      "path": "research/original-escargo-courier-dev22-v4-final-r2.json",
+      "sha256": "f931fb6e9ea78a7f09767a8fc9ba97e51c8135e2da58429afe8ca67ee60f5d8b",
+      "bytes": 2166267
+    },
+    {
+      "path": "research/original-escargo-courier-fixtures-dev22-v4-final-r2.json",
+      "sha256": "0c1d17663a50a9561c832e4892cfcb0ceb1505ee2c327c2d86a0672ef58ca3a5",
+      "bytes": 212467
+    },
+    {
+      "path": "research/redux-escargo-courier-dev22-v4-final-r2.json",
+      "sha256": "579723c91043e0b977c603ea2004f02b6c8c4e9f5ecef7e7f5479d5b3b96e307",
+      "bytes": 2169280
+    },
+    {
+      "path": "research/redux-escargo-courier-fixtures-dev22-v4-final-r2.json",
+      "sha256": "a19746ff260f9d6911f6836d144672510b3ad7e1d94d6dfb18dbe8c96e6b4f22",
+      "bytes": 212628
+    },
+    {
+      "path": "research/original-escargo-courier-dev22-v4.json",
+      "sha256": "c70338706a9d3001e08178e124f270cc59cc2b946bb8d22b86f1655323b9ae12",
+      "bytes": 1974584
+    },
+    {
+      "path": "research/original-escargo-courier-dev22-v4-final.json",
+      "sha256": "fa89e878959d818b91a01df8a7b2af1ea820446ad54955c6d399d5b6ca9c3d8a",
+      "bytes": 2166428
+    },
+    {
+      "path": "research/redux-escargo-courier-dev22-v4.json",
+      "sha256": "5fae039f5ae06af728b501b54d714cbe27b15fd9b19b9623650845f1d0f3cc24",
+      "bytes": 1977580
+    },
+    {
+      "path": "research/redux-escargo-courier-dev22-v4-final.json",
+      "sha256": "6cb4eb5958dcdc668addea64b2e165a93f17bbf75cd40035af7d48ce0c13c456",
+      "bytes": 2169280
+    }
+  ],
+  "limits": [
+    "Cold counts are included in parent counts. Source-parent counts are selected cases, not product-feature counts or all-route coverage.",
+    "Original controls use Original packed scripts with the native shared key-pool QoL retained; they are not an untouched SNES behavior proof.",
+    "Real QCT starts at QCT_TEXT after a source-derived pre-entry world fixture. All subsequent phone/door/courier/transaction/departure dispatch and platform input run normally.",
+    "Private library-linked driver executes these cases; observer identity is recorded but not separately executed.",
+    "Runtime reports prove native numeric state, source-selected outcomes and actual SFX requests. No full playthrough, all service/route, render or audible-delivery claim.",
+    "Readonly courier timer fields refer to delivery table index1; do not infer pickup-index2 timer assertions from them.",
+    "Diagnostic expectation failures are not red evidence for a native defect. Earlier missing NPC/input prerequisites are private pilot diagnostics, not full courier failures."
+  ]
+}

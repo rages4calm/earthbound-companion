@@ -4,3 +4,7 @@
 *.json text eol=lf
 *.md text eol=lf
 *.patch text eol=lf
+# Evidence manifests bind exact file bytes, including historical line endings.
+research/** -text whitespace=cr-at-eol
+scripts/** -text whitespace=cr-at-eol
+patches/*.patch -text

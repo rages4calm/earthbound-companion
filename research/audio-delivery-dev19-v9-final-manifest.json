@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev19-final-audio-delivery-evidence",
+  "runtimeVersion": "dev16-v9",
+  "runtimeSha256": {
+    "player.exe": "56ab9f539d50383b236098c80f8feeaea606d23dd3f2ad26b0326bd138650d73",
+    "observer.exe": "290094e1eb7135218fbe5d8403436c058eef672215f34e578ea3f48e5b12bcd6"
+  },
+  "productionLibrarySha256": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1",
+  "sourcePatchSha256": "ec4c42e6cbe54bc7c8ff6e25bf53afaea97f09bb5536fc5db6f09ab80c84cd60",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "executedCases": 186,
+  "executedProcesses": 946,
+  "skippedCases": 0,
+  "allPassed": true,
+  "files": [
+    {
+      "path": "tools/audio_delivery_qa_dev19.py",
+      "sha256": "e65b25b30357c3e4f33700002eb3e9ba0f5747e0ce519ba6cf1c59576e3b4860"
+    },
+    {
+      "path": "tools/freeze_audio_delivery_evidence_dev19.py",
+      "sha256": "9986c6967d09fa93898fef710ef52fbe3f7dbf2cad7ae375061432338bf9b3eb"
+    },
+    {
+      "path": "tools/shop_transaction_qa_dev18.py",
+      "sha256": "0f7cdbf128474dc8a1f5402395132a2e41ad083bf6e4915af67c028df25b76fc"
+    },
+    {
+      "path": "tools/battle_full_encounter_qa_dev18.py",
+      "sha256": "e557b41b62c0e165a9c8e2b6f325231497dc1a3211cc1af96649a4366506544a"
+    },
+    {
+      "path": "tools/battle_action_catalog_qa.py",
+      "sha256": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823"
+    },
+    {
+      "path": "tools/battle_food_summon_qa_dev15.py",
+      "sha256": "f1916b1c5aa5a27891341d7558925eafcc501134f8f0ae0ead4dc00aa6ee8450"
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1"
+    },
+    {
+      "path": "research/redux-shop-transaction-fixtures-dev18.json",
+      "sha256": "5beca7d839367d896086955f0a9eb0dc2abf3895ba492f62a8319044d89778ac"
+    },
+    {
+      "path": "research/original-shop-transaction-fixtures-dev18.json",
+      "sha256": "031367d9b5920f6a30cebd5bad2a8b08e0a1f75c1dfdfa1ca013f54343da8ca3"
+    },
+    {
+      "path": "research/original-audio-delivery-dev19-v9-direct-review.json",
+      "sha256": "6d207e916bf5259ba11e531efcbde33f4c075b4a868850c209668f468435ac5b",
+      "rawReportSha256": "073379ad85686f6305b052f812f1c647ce89682f86e5bdff5142c469236f4ea9",
+      "cases": 70,
+      "processExecutions": 350,
+      "originalProfile": true,
+      "allPassed": true
+    },
+    {
+      "path": "research/original-audio-delivery-dev19-v9-shops-review.json",
+      "sha256": "e01038b26f2dcc97122aeed3569bb8fea7a1422b887d4165685fe173f935a838",
+      "rawReportSha256": "4d6a5752e1c9d34a0d44a42e42971816de75186e7ad38dc3458a69c159c1c4ff",
+      "cases": 14,
+      "processExecutions": 78,
+      "originalProfile": true,
+      "allPassed": true
+    },
+    {
+      "path": "research/original-audio-delivery-dev19-v9-encounters-review.json",
+      "sha256": "465203df17e3f4407cdddc3f7200218f3934122a689a5821b5bbf550791fde40",
+      "rawReportSha256": "ecbdf0b6b26c1172adba7fdd1db95f5cfc5c461e7f41276aaf0bff07477368aa",
+      "cases": 4,
+      "processExecutions": 20,
+      "originalProfile": true,
+      "allPassed": true
+    },
+    {
+      "path": "research/redux-audio-delivery-dev19-v9-direct-review.json",
+      "sha256": "910a08eb590665cb956ee58dcb5ec2326c2d970bfb077a819b38e7cb0b177f1b",
+      "rawReportSha256": "3667d913081c498070d7bc75e632f2a06d496a4c6041e8972e3c3a04cf4833bf",
+      "cases": 70,
+      "processExecutions": 350,
+      "originalProfile": false,
+      "allPassed": true
+    },
+    {
+      "path": "research/redux-audio-delivery-dev19-v9-shops-review.json",
+      "sha256": "b310cd257f3ece47c67faef8c7e428bb43c7cc971475094454259bd96914b3bb",
+      "rawReportSha256": "7b8aea1b98b15120cf7fc5c29cddaca4b911d03a92be27ce22e266b529ac4cbf",
+      "cases": 24,
+      "processExecutions": 128,
+      "originalProfile": false,
+      "allPassed": true
+    },
+    {
+      "path": "research/redux-audio-delivery-dev19-v9-encounters-review.json",
+      "sha256": "15d3da4d218f8b280f1bd511de36b106d15be02ce492fd0e342d70da9393cd0c",
+      "rawReportSha256": "332a360cdb14ecd522757942853a71f3a85c9728164c66660c59668b851ad183",
+      "cases": 4,
+      "processExecutions": 20,
+      "originalProfile": false,
+      "allPassed": true
+    }
+  ],
+  "noNativeChanges": true,
+  "noOwnerWrites": true,
+  "conclusion": "No independent audio-delivery defect reproduced in the bounded selected v9 production tests. Cash-register, shop equip, bulk ping and bicycle bell effects reach SPC command starts, generate nonzero voice7 samples and alter the real final SDL mixed PCM against sound-suppressed controls.",
+  "evidence": [
+    "Both Original and pinned Redux profile assets, with normal SPC music and the installed real MSU soundtrack.",
+    "Six selected SFX table pointers, preceding header types and complete source macro definitions bytechecked against the actual uploaded initial audio pack. This is separate from runtime consumption/PCM proof.",
+    "Forty isolated effect/track/HQ fixtures per profile plus thirty queue/scheduling/mute/track-transition fixtures per profile; actual production queue and SPC interpreter/DSP, no effect engine replaced.",
+    "Thirty-eight source-selected real shop transaction fixtures across both profiles: buy, sell, equip and sell old weapon, failed/cancelled purchases, Redux bulk3 and bulk56. Actual text/menu/number children and input replay. Negative audio controls preserve final wallet/inventory/equipment/flags.",
+    "Eight full prepared bicycle encounters: actual mount, group1 scripted battle or actual BE_ENTER instant-win predicate, victory, native map reload/exit, retained track82 and R-button movement-consumer bell. Complete encounter state unchanged by audio negative/layout controls.",
+    "533/534 versus split128 callback output is byte-identical at equal sample schedules. Real1024 callback delivery uses separate target-suppressed PCM controls; different request latency is allowed.",
+    "Private SPC memory callback observers forward each production call exactly once. Copied objects alter symbol visibility/names only, with every raw section hash and uninitialized section size unchanged."
+  ],
+  "sourceMechanisms": [
+    {
+      "reference": "Original asm/spc700/main.spc700.s: READ_PORT / UNK0596 / UNK11DC / UNK1505",
+      "contract": "SPC reads and echoes new port3 commands, then its existing shared effect logic accepts a channel7 sequence and stores its current effect ID at 04B4+X for X=3. Observers separately record port acknowledgment, starts, DSP keyon and generated channel samples. An acknowledgment alone is not an audible effect guarantee."
+    },
+    {
+      "reference": "Pinned ccscript/shops/ShopSys.ccs: Sound_Cash_Register / Sound_Ping / List_Stat_Change",
+      "contract": "Cash register12 or flag-selected ping120; the stat-change/equip stage requests115. The active source parents and production control-code children execute these requests. Declined/insufficient/full-inventory branches assert the expected absence of the transaction-success effect."
+    },
+    {
+      "reference": "Native src/game/audio.c / port/unix/platform/sdl2_audio.c",
+      "contract": "Acknowledgment-aware bounded native64-slot queue; 17066-cycle SPC frame plus DSP resampling and SDL fractional-frame overflow; real MSU mixing and volume applied by the actual callback. Queue overflow deliberately retains recent63, adapting the original eight-slot hardware queue."
+    }
+  ],
+  "openBoundaries": [
+    "Separate source-proven CC19 scripted Yes/No menu sound-default producer gap is owned by the hook audit. These delivery passes do not certify missing producer requests or repair CC19.",
+    "No independent SPC emulator or physical SNES audio comparison, subjective listening or speaker/device delivery proof.",
+    "Deterministic private scheduling at60Hz and three callback layouts, not exhaustive asynchronous operating-system thread scheduling.",
+    "Prepared source-entry fixtures, not natural quest/enemy-contact reachability or whole-game audiovisual parity.",
+    "Full effect/track coverage and long fast-forward-overflow retention are not certified; fast-forward intentionally mutes and suspends SPC while the native queue may retain only recent requests."
+  ],
+  "fullAudioParityVerified": false,
+  "fullPlaythroughVerified": false
+}

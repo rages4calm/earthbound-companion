@@ -1,0 +1,194 @@
+{
+  "format": "remaining-hook-menu-transition-finalpack-supplement-v1",
+  "status": "actual-dev17-v4-final-package-inputs-green",
+  "previousManifest": {
+    "path": "research/remaining-hook-menu-transition-final-manifest-dev17-v4.json",
+    "sha256": "1948b6e5fb0ffada6a3f0f8ac4a7fd1d852fc3e94bc9491b0c80e968a6384a08"
+  },
+  "artifacts": {
+    "research/redux-two-string-menu-dev17-v4-finalpacks-green.json": "57837076404a235e0485b31b88b475cc93543a7102f7340d89ba52ad3a3143c1",
+    "research/menu-pagination-native-dev17-v4-finalpacks-green.json": "8d2dbef1e13b3b92a2501ce2fb6eb746cddecb60687354c9f0afe1a5d41bdf61",
+    "research/transition-scroll-production-dev17-v4-finalpacks-green.json": "54598070c2f551e1fc141101e2a42d6136cade5764a9073ce275acfcef5df08b"
+  },
+  "dataAssetContinuity": [
+    {
+      "profile": "original",
+      "priorPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "finalPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "testedDataAssets": [
+        {
+          "name": "US/fonts/battle.bin",
+          "sha256": "41d73e02cd5558d5f3fd73879481c636ec3b98028c86601efbd16e293ae7dcfd",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/battle.gfx",
+          "sha256": "8b78300de0e4f98df6c70613418ff5c2c53f00f5e2d0726576e00188708595e7",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/large.bin",
+          "sha256": "1f646960adeea65e600c0eb2b0e2293ddd851cfaf14daaf229e4208a05c19369",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/large.gfx",
+          "sha256": "c288895a84a0e6bede6b1b331123ef487bb537a95c967b4609a4d5e0589876e6",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/main.bin",
+          "sha256": "fbd546dc4542376229e909fd634c9fec393c723729fd139cb8f5fa9765dd8bbb",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/main.gfx",
+          "sha256": "af55a1059cd997d5cfd1b64e5c14f1f52fef69f3724498e863b69550410375de",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/mrsaturn.bin",
+          "sha256": "08b2a42de4c7e0767b70029c71cbc7c956cd1810a1a52b9dab199dccaae942f6",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/mrsaturn.gfx",
+          "sha256": "d7f34785645e5f31a29e85b3f9db5427c5e1d70a01986fb8f2200fa62dc30b53",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/romaji.gfx",
+          "sha256": "a4e73ae3fc59932d706b9e3562d14827ec3360b9c625b4582c09387356b7bbae",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/tiny.bin",
+          "sha256": "41d73e02cd5558d5f3fd73879481c636ec3b98028c86601efbd16e293ae7dcfd",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/tiny.gfx",
+          "sha256": "7d34dcd5f2e8d2b4f23b74eebf58bfca098180a16a627779b510f10ddb94062b",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "dialogue/dialogue.bin",
+          "sha256": "4f9d018b6f79b0511aeee7a1c95da3c28dc65512ae09c0c52e7c01a7a96e3007",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "maps/screen_transition_config.bin",
+          "sha256": "ead39458898cd4a217114e115a4c20e72d14949c86cb9121479e6cb639534567",
+          "matchesEarlierAsset": true
+        }
+      ]
+    },
+    {
+      "profile": "redux",
+      "priorPackSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "finalPackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "testedDataAssets": [
+        {
+          "name": "US/fonts/battle.bin",
+          "sha256": "b6185231ba123d791ddd43f95db2ca2528930c3cbdb7d9ac8e391d071c45aff5",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/battle.gfx",
+          "sha256": "0909bdc848202a819f957f9adf68512bb348ced9d2b1af8c7748c5acdc89e527",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/large.bin",
+          "sha256": "89b77bae6a84639169cf0549e674dee9e46db474234a3c321c346879a4c513f7",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/large.gfx",
+          "sha256": "00084fb79f2bc11a3483632105cfe0fcccdc74886ac0b46de6d6e408c22360ea",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/main.bin",
+          "sha256": "88234f5fc17474a8918e63b60bc17008fa3547d200de51734d53d6887e19f2a6",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/main.gfx",
+          "sha256": "664b47d526cbe8c932c21baed174e4b4ca078e5064270d2a8364bcf88755b8eb",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/mrsaturn.bin",
+          "sha256": "de163dd2b396adefb4fc4aa179cfbe549b6191df212022c0273795e34316c9ce",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/mrsaturn.gfx",
+          "sha256": "f90a1ba9b02d41c181ba4ecc81fbc621b627dca43bbccb61a422aff21a6600f4",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/romaji.gfx",
+          "sha256": "a4e73ae3fc59932d706b9e3562d14827ec3360b9c625b4582c09387356b7bbae",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/tiny.bin",
+          "sha256": "73afc42a5c91e9dd5302e0fa6d9c13e5a46a9b21e7622dc5eb77e4305b141cfb",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "US/fonts/tiny.gfx",
+          "sha256": "5eb5132bf46fc8d131cd4a118c19b43c975cb199df696a9544a9a15623ea62b7",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "dialogue/dialogue.bin",
+          "sha256": "60110af4920e5e57612735cdb7aa1eea2768e6fa7ae8f8865041a6c7a263c47e",
+          "matchesEarlierAsset": true
+        },
+        {
+          "name": "maps/screen_transition_config.bin",
+          "sha256": "ead39458898cd4a217114e115a4c20e72d14949c86cb9121479e6cb639534567",
+          "matchesEarlierAsset": true
+        }
+      ]
+    }
+  ],
+  "independentCpuMenuComparison": [
+    {
+      "profile": "original",
+      "fontWidthsComparedToActualCpu": 540,
+      "highlightCasesComparedToActualCpu": 60,
+      "mismatches": 0,
+      "sourceDefaultsMatch": true,
+      "rightLabelRenderAndIndentDifferences": 0,
+      "actualPackedConfirmCases": 2,
+      "actualConfirmSfxCalls": 2
+    },
+    {
+      "profile": "redux",
+      "fontWidthsComparedToActualCpu": 540,
+      "highlightCasesComparedToActualCpu": 60,
+      "mismatches": 0,
+      "sourceDefaultsMatch": true,
+      "rightLabelRenderAndIndentDifferences": 0,
+      "actualPackedConfirmCases": 2,
+      "actualConfirmSfxCalls": 2
+    }
+  ],
+  "runtimeSha256": {
+    "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+    "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+  },
+  "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+  "productionHandlersOrDataRecompiledOrPatched": false,
+  "limits": [
+    "New reports rerun the bounded production native fixtures on final package inputs; immutable previous reports retain prior exact pack identities.",
+    "The frozen two-string join tool intentionally refuses cross-pack red/green identities. Its finalpack join attempt produced no report and is not credited. This supplement independently compares actual CPU widths/highlights/defaults and final records after proving the relevant font/dialogue/config assets byte-identical.",
+    "Actual source CPU executions retain their original ROM and tool identities; the production initializer calls and menu fixtures are new native executions, not new CPU runs.",
+    "Actual full parent and cold delivery remain separate selector reports. Transition streaming child remains excluded. No full-playthrough, all-callers, all-text or full conversion claim."
+  ],
+  "ownerSavesInputRomsOrPacksModified": false
+}

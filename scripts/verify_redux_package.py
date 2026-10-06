@@ -70,7 +70,7 @@ def main():
         run('setup',['--setup-redux',str(headered),'--with-msu'])
         tests.append('Self-contained first-run setup with headered owner ROM and online pinned Redux source')
         pack=app/'Profiles/maternalbound-redux-897d0083/assets.pak'
-        if sha(pack)!='ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3':raise ValueError('Unexpected Redux pack.')
+        if sha(pack)!='3ED273EAEDAD5131A13DC07B6916377130857929854886B139B30A723482F8B9':raise ValueError('Unexpected Redux pack.')
         if sha(app/'Game/assets.pak')!='01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549':raise ValueError('Unexpected original pack.')
         if args.legacy_original_pack:
             if sha(args.legacy_original_pack)!=legacy_hash:raise ValueError('Legacy input pack changed.')

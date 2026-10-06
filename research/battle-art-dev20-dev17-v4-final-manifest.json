@@ -1,0 +1,96 @@
+{
+  "audit": "Packed battle backgrounds and PSI animation data/production consumers",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "allPassed": true,
+  "executedAssertions": 4123,
+  "nativePreparedCases": 1270,
+  "coldProcesses": 3,
+  "playedPsiFrames": 5294,
+  "skippedCases": 0,
+  "reports": {
+    "graphicsRed": "research/redux-battle-art-dev20-v9-red-review.json",
+    "paletteRed": "research/redux-battle-art-dev20-v9-palette-red-review.json",
+    "originalFinal": "research/original-battle-art-dev20-dev17-v4-final-review.json",
+    "reduxFinal": "research/redux-battle-art-dev20-dev17-v4-final-review.json",
+    "coldFinal": "research/redux-battle-art-dev20-dev17-v4-cold-review.json",
+    "finalPackDiff": "research/redux-battle-art-dev20-final-pack-change-review.json"
+  },
+  "artifactSha256": {
+    "research/redux-battle-art-dev20-v9-red-review.json": "d60e2fe1c3bac4254e4199b32f272a35294817c6a1f83cf1bb4639dc1a7d32e3",
+    "research/redux-battle-art-dev20-v9-palette-red-review.json": "f884b8f7b7873d7cf3c188a53d683c16248024c5f2bf564f8fa1d917eb960479",
+    "research/original-battle-art-dev20-dev17-v4-final-review.json": "7f093d7488d3ec5952e4c6a88566d598d0c11a5ff617726104ef80c6908c1679",
+    "research/redux-battle-art-dev20-dev17-v4-final-review.json": "3895f82f9bc8bf543e318d035ff3d950c96611bdd2f4fab9e188fa2146adc671",
+    "research/redux-battle-art-dev20-dev17-v4-cold-review.json": "c1239d8afa92c82f330b5072b392fe12bd74c95211b5452c06090ba0353ed228",
+    "research/redux-battle-art-dev20-final-pack-change-review.json": "90b679692199236dbe4afb8f58652a96b05cae26ddc9f8f350ae9c2cc5587322",
+    "tools/battle_art_decode_qa_dev20.py": "762fdd49116aed3fca154f38a6cba8405067755a55fe984181c354ef2896e4c9",
+    "tools/battle_art_cold_qa_dev20.py": "7345bb171d35fc184bf48895da810ba035cbf101ded7bd20bfd1441abb936976",
+    "tools/freeze_battle_art_evidence_dev20_v4.py": "be3b9b260dd87626feb5d3be9f338c9066488f5dfdc7e7be9e662c07b5c75442",
+    "tools/battle_action_catalog_qa.py": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823",
+    "tools/build_maternalbound_pack.py": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1",
+    "tools/maternalbound_graphics.py": "1fa43ae6ed57c24d88622bc7370b6fad57b9282ae1f5c70cdd99191150a5409b",
+    "research/evidence-tools/maternalbound_graphics-dev16-v9.py": "8a40424914a064a4d6e707e9f8767e63f18b90af24f394283bd3bbfa9adaebb8",
+    "research/evidence-tools/maternalbound_graphics-dev20-graphics-only.py": "304ccdd2d7b428ad105dc75d20b7701203e3607ac033fdd46a5b983ee78e55e6",
+    "research/evidence-tools/battle_art_decode_qa_dev20-v9-red.py": "728c7dcf58aa457dae566ca8e67fdc1a7477a2d659dbb36caaec529324afe043",
+    "research/evidence-tools/battle_art_decode_qa_dev20-v9-palette-red.py": "5ee750a330d837e3b83044c6f34e622ef6f31e2b8ea05f3cdb3c3b554ed0d093"
+  },
+  "runtimeIdentities": {
+    "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+    "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+  },
+  "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+  "productionPlatformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+  "completeNativePatchSha256": "6830770da2de72ef0e4df81a7bf731e6e3274045f6dde880879938d2eda9a4e2",
+  "nativeSourceIdentities": {
+    "src/core/decomp.c": "e31e09d0aa7677386197b9c40ae9160737f2db2ee2d5fd0734ada0bd2284bf15",
+    "src/game/battle_bg.c": "275e117d57cf4943d0d742c6c30e43d92ec9ca49319b5cc615cbf5ec1db7bc78",
+    "src/game/battle_psi.c": "7adc2f2729909117f5ae3d1847deba99db20ec6344e217d4ff4b5c666d34ca17",
+    "src/game/battle_ui.c": "bb45320a3997bcfacae77a00a58c7f45ae4e58c356faaad50436441efcc487b6",
+    "asm/system/decomp.asm": "d0b65828d6ef9e86d36a322d8a51abf9d74081ff22fd81aaf4c1f62d589f4cc3",
+    "asm/battle/show_psi_animation.asm": "d8fc60b3ce9910e3054f36e1f5f60201a2c9cce5a394273d78985e48da82e213",
+    "earthbound.yml": "d0b6845b303784f17fc2a4a05821fdc0ed422c3473cb1251cfda5cb3754cf6e1"
+  },
+  "originalPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "legacyReduxPackSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "correctedReduxPackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+  "compiledReduxRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "originalRomSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+  "registrySha256": "a196a4d9de0f93a36c399b6f72178c3dd15c89288dbb0bf8232ceb3be4161579",
+  "changedAssetCount": 107,
+  "changedGraphicsAssets": 103,
+  "changedPaletteIds": [
+    "ASSET_BATTLE_BGS_PALETTES_101_PAL",
+    "ASSET_BATTLE_BGS_PALETTES_102_PAL",
+    "ASSET_BATTLE_BGS_PALETTES_107_PAL",
+    "ASSET_BATTLE_BGS_PALETTES_108_PAL"
+  ],
+  "redEvidence": {
+    "graphics": {
+      "runtimeLibrarySha256": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1",
+      "failedNativeBackgroundGraphicsRecords": 327,
+      "reason": "Importer matched battle_bgs/gfx instead of the real battle_bgs/graphics registry family; Redux arrangements referenced retained Original tiles."
+    },
+    "palette": {
+      "runtimeLibrarySha256": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1",
+      "failedNativeBackgroundPaletteRecords": 3,
+      "reason": "Palette source pointers were correct but donor lengths were reused after Redux reassigned palette IDs; active 4bpp records lost colors 4 through 13."
+    }
+  },
+  "correctionScope": "Only tools/maternalbound_graphics.py graphics-family match, expected size branch and compiled-consumer palette width import. Exact 107-asset diff; native C, namespace and registry IDs unchanged by this correction.",
+  "coldCheckpointLimit": "Prepared real background 284 and native BW_FRAMES format16 save/load. Cached old art and exact continuation stay unchanged on cold restore under the corrected pack; next actual load_battle_bg refresh matches pinned source. No full natural battle continuation or owner-save coverage claimed.",
+  "coverageLimits": [
+    "All 327 packed background records execute load_battle_bg independently; this does not rerun every configured two-layer natural encounter or full special Giygas render path.",
+    "Every packed PSI effect plays both 2bpp and 4bpp through show_psi_animation and actual BW_PSI_ANIM steps with prepared real enemy sprite data; this does not prove every ability-to-animation routing or natural battle action.",
+    "Decoded source bytes, uploaded graphics and palettes, every played arrangement/palette frame, bounded OAM count, protected VRAM and timer/cleanup state are asserted; no full visual parity or heard audio claim.",
+    "Repacked HAL backwards-copy at position zero uses the documented native clamp; original ROM streams are independently decoded without that adaptation.",
+    "Original animation 20 retains ten source-backed packed tail frames unused by its configured playback length; unused Redux background graphics slots retain explicit empty streams."
+  ],
+  "reproduction": [
+    "Use battle_art_decode_qa_dev20.py with each owner-provided ROM/pack and matching immutable --build/--runtime. --redux selects pinned Redux tables. Each --scratch must be new.",
+    "Use battle_art_cold_qa_dev20.py with --old-assets, --new-assets and --compiled-rom plus the same immutable native build/runtime. No owner saves are used.",
+    "Archived red QA tools and old converter revisions retain their exact recorded SHA. Run archived tools with tools on PYTHONPATH and an explicit --native-source; their default ROOT is archive-relative.",
+    "Final pack is built locally with build_maternalbound_pack.py from the source ROM, pinned compiled Redux ROM, bridge and converted dialogue inputs. No ROM, pack, decoded graphics, palette bytes or saves appear in these public reports."
+  ],
+  "ownerWrites": false,
+  "fullVisualParityVerified": false,
+  "naturalFullPlaythroughVerified": false
+}

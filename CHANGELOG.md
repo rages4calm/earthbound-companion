@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0-redux-dev.17 - item menus, transitions and Redux battle art
+
+- Make pooled Keys selectable by actual inventory callers; verify the Monkey Cave King banana trade, Tracy storage and eligible retail sale/rejection paths, including full bags and cold menu continuations.
+- Correct shared pagination, right-column label rendering and standard Yes/No defaults/confirmation sound requests.
+- Match source integer transition trigonometry and wrapped scrolling arithmetic; align mapped native asset buffers and clean up partial loads.
+- Import all 103 Redux battle-background graphics entries and correct four palette lengths. Verify actual native backgrounds and PSI animation consumers against compiled source, and preserve cached old mid-battle saves until the next battle load.
+- Add a guarded old-profile backup and compatible story-save copy for the new graphics pack. Existing randomizer seeds retain their exact original base; new seeds use the corrected content policy.
+- Expand source-backed, independent-machine and instrumented QA. Publish actual earlier audio-delivery evidence under its unchanged dev.16 v9 identity.
+- Preserve save format 16. Town Map art, accented title glyphs and broader story/service/combat coverage remain active work. Full conversion and full story/seed playthroughs are not complete. See [the dev.17 audit](docs/NATIVE-AUDIT-dev17.md).
+
 ## 0.5.0-redux-dev.16 - random rolls and expanded native audit
 
 - Fix Redux bulk-buy inventory reservations so capacity failures abort and refund rather than charging for items that cannot fit. Test actual purchases, quantity overflow, cash refunds, equip/sell decisions, reversed Moonside choices and cold menu continuations. Original item classification stays source-specific.

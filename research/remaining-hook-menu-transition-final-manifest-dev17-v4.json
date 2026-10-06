@@ -1,0 +1,115 @@
+{
+  "format": "remaining-hook-menu-transition-final-manifest-v1",
+  "status": "final-dev17-v4-actual-production-green",
+  "artifacts": {
+    "tools/snes_menu_text_oracle.py": "fce2478ee815433e560b38a5b39ec4640fc6da1fde983600e64e592513069113",
+    "tools/redux_two_string_menu_qa.py": "26a6c4e5b205a585200311c821640c43d13a4cb2abde86b747f837085c9c5ceb",
+    "tools/audit_two_string_menu_contracts.py": "88b894dcbca4ba0d90cfb2595eb24fd83ac87b94af441e5f5f4c6f092f097e8a",
+    "tools/snes_menu_pagination_oracle.py": "e4ac2f625bcfa57456e47b7707a2a26749591ea5aa980eeb1ea88d8825e25f40",
+    "tools/redux_menu_pagination_qa.py": "4e3639b72ff5e9493c118126ec447f77d73d90d39db54a7e66a3eadf9067af0a",
+    "tools/snes_transition_scroll_oracle.py": "5c90f43b9a4814731095011cd3f026daa64704be12bdab2cd112798c54eaec0f",
+    "tools/redux_transition_scroll_production_qa.py": "089f0e91da199fa2768a2d5f6708f89ef1cb3163a78ecaf5610d5fa78ee345ab",
+    "tools/snes_position_arithmetic_oracle.py": "c0eee93f9b9fe1839dd2fe2ab15395b3ec05d76b09954dcf332682d94558c176",
+    "tools/check_jev_observer_parity.py": "a7e931b2a42c78e570e8af69bea5298f917544c9ec125442cae0b2654cda7dd0",
+    "tools/maternalbound_dialogue.py": "54038806cb18cb575c576c616f5c31b9c30ae0c957cecd2a6674b153efc2da87",
+    "research/menu-text-actual-cpu-dev17-final.json": "775e29251e4fe88f018c1fb9f0f3d05886db00ac7b20eafd1960568ec187d44c",
+    "research/redux-two-string-menu-v9-dev17-multi-red.json": "398a48c84236ce5c1a3fb46e9453f1f5b8d04e6ae0cd27c13d19204281bc5842",
+    "research/redux-two-string-menu-dev17-v4-production-green.json": "94b6cc9c84a5e31b3e8c324636e70fd8a3dc71a54b5a3c36020a6ce7f66080da",
+    "research/redux-two-string-menu-contract-review-dev17-v4-production.json": "3ad957d1ccc41e932abbde4d6392be1016e8d2726e25a9e248746708354a9e58",
+    "research/menu-pagination-actual-cpu-dev17-final-r2.json": "4e4f07eda6e9376209ba098e6dd9fee78612f663ae3a0bce32cc3431f4ea0654",
+    "research/menu-pagination-native-dev17-v1-final-frozen-red.json": "cd5ac7642272b3c99a5d0e1f08475413ed2ac61372439d9acb3c0a8c1d8844cf",
+    "research/menu-pagination-native-dev17-private-final-frozen.json": "6e7e6a7cb4c7450c03b7a25fe8bc792173a388675e169be35769f93c32a54442",
+    "research/menu-pagination-review-dev17-private-final.json": "aa0b45ef49d2e5eff6c74332d3a894be31f9f1ea8e8599cdfe5fd47ad993c321",
+    "research/menu-pagination-native-dev17-v4-production-green.json": "028e5368f74b65b1b83307d483d9444c8fd72961c4580b31fac04599622ad8bb",
+    "research/barter-selector-dev20-v1-red-manifest.json": "975691eecf304caa2d941a0edec0976f505db075d8abfc8436532114fe49dcf2",
+    "research/transition-scroll-actual-cpu-dev17-r4.json": "aef8ecc7a6b7e9cbb541e4cb4ba0c25ab9d43c93333a95343f014b225858818b",
+    "research/transition-scroll-actual-cpu-dev17-table-control.json": "74918b357ec92dc555063fd66b17eb088c3714ace9b8fc7c174a84afbe947579",
+    "research/transition-scroll-actual-cpu-dev17-source-final-green.json": "0ab77a4ed3b2b569721655cecbc2e5b8e4654514e6d476737f426ba13e5ef9bb",
+    "research/transition-scroll-production-dev17-v4-green.json": "a500706e31e62fa8f6d8cc49d060d4d3b9b6bf09770e41e0f2507ecbf0355fc1",
+    "native-source/src/game/window.c": "ad9256445b09df105f345fc07c2af2d0a3fa15ad4828c46615c9a55d6fcabdc6",
+    "native-source/src/game/battle_bg.c": "275e117d57cf4943d0d742c6c30e43d92ec9ca49319b5cc615cbf5ec1db7bc78",
+    "native-source/src/game/door.c": "a56c5695cbde1e11dc20bb2a61beebf76898d2fd10671e5eba7f1ef5e730d3cf"
+  },
+  "frozenRuntime": {
+    "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+    "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+  },
+  "productionArchiveSha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+  "sourceSnapshotMatchesCurrentHeldBodies": true,
+  "sourcePatchSha256": "6830770da2de72ef0e4df81a7bf731e6e3274045f6dde880879938d2eda9a4e2",
+  "coverage": {
+    "twoStringMenu": {
+      "profiles": [
+        "original",
+        "redux"
+      ],
+      "cpuCalls": [
+        683,
+        698
+      ],
+      "nativeFontWidthsPerProfile": 540,
+      "cpuHighlightPerProfile": 60,
+      "renderSingleRowPerProfile": 90,
+      "renderMultiRowPerProfile": 30,
+      "actualPackedChoiceConfirmPerProfile": 2,
+      "productionObjectOverrides": false,
+      "renderOrHighlightDifferences": 0,
+      "sourceDefaultTypePageSoundRestored": true,
+      "fullParentOrColdRestoreVerifiedByThisTool": false
+    },
+    "pagination": {
+      "cpuLayoutCallsPerProfile": 182,
+      "productionLayoutsPerProfile": 546,
+      "oldGeometryDifferencesPerProfile": 431,
+      "finalGeometryDifferencesPerProfile": 0,
+      "configuredWindowsOneItemPerProfile": 60,
+      "capacityControlsPerProfile": 8,
+      "shortWindowSafetyControlsPerProfile": 14,
+      "actualButtonParentReference": "research/barter-selector-dev20-v1-red-manifest.json",
+      "standaloneButtonPhaseExcluded": true,
+      "productionObjectOverrides": false,
+      "supportedPooledSelectorMaximumRealItems": 78,
+      "native80RealItemsOverflowSlotUnproved": true
+    },
+    "transition": {
+      "cpuFullInitCallsPerProfile": 4616,
+      "oldV1ObservedDifferencesPerProfile": 3265,
+      "oldNativeTableSourceDifferences": 60,
+      "rootNewFormulaWithOldTableDifferencesPerProfile": 982,
+      "finalSourceCpuInitDifferences": 0,
+      "productionCosineHelperCallsPerProfile": 4616,
+      "realPackedPreparerCallsPerProfile": 340,
+      "productionPrepareDifferences": 0,
+      "productionCodeSectionVisibilityOnlyProof": {
+        "unchangedProductionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "originalDoorObjectSha256": "70bc27d0a8049fe8a352aa77d8f60953bb444f3e9b485f80490e0e78a456527f",
+        "visibilityOnlyDoorObjectSha256": "280459cd84d9327a2e0007f27391734a4f9dbbc4463339e5d16e9338c9cd9b9c",
+        "testedPrepareCodeSectionSha256": "5c46d7ba5b98c43e437a3deaca3470b59c7e9dc739e1d72f64841e75f8a72293",
+        "testedPrepareCodeSectionBytes": 512,
+        "testedPrepareInstructionsUnchanged": true,
+        "productionHandlersRecompiled": false,
+        "productionDataPatched": false,
+        "privateDriverSha256": "4ace86d815d8316614ab55bb7dee50350c31c63785ae2822962b2d0c14548028",
+        "privateExeSha256": "e69b9607f4ba3aca50f3fba10f4d756b65f9a83e870f4db7bfd78832863b050f",
+        "staticPreparerAbi": "compiler-split part.0 Win64 RCX=transition byte, RDX=mode byte, R8=ModeState pointer, verified actual disassembly against source call-site contract"
+      },
+      "sourceUpdatePrefixCallsPerProfile": 20,
+      "fullScrollMapChildExecuted": false,
+      "fullProductionMapStreamingParity": false
+    }
+  },
+  "limitations": [
+    "Actual font/highlight source contracts and prepared menu geometry are bounded observations, not full menu/story coverage.",
+    "Extended CC19 right-label macro has no named invocation in the pinned191reachableCCS graph and no separate native right-label writer; raw encoded/save absence is not proved. Original extended API cases characterize the native adapter rather than a retail extended feature.",
+    "Menu wrappers supply prepared script reads/buttons and observe SFX dispatch, not final audible hardware output. Exact parent actual-button and warm/cold delivery remain the separate barter audit.",
+    "Transition CPU executes untouched Original/pinned INIT plus real COSINE/Mode7 multiplication. Synthetic signed speed/high direction/BG cases are ABI controls; actual34configurations have speeds0and232.",
+    "Production static preparer has unchanged frozen instructions; private symbol visibility only exposes its compiler-split part. Outer type guard and subsequent palette/audio/streaming effects are excluded.",
+    "UPDATE_TRANSITION_SCROLL evidence stops before original SCROLL_MAP child call. No replacement or skipped original instructions are claimed as a completed full routine.",
+    "Prior wrong pagination option_count fixture and standalone move-phase timeouts are explicitly superseded/excluded in the immutable private review; they are not gameplay correctness evidence."
+  ],
+  "fullPlaythroughVerified": false,
+  "fullConversionParityVerified": false,
+  "ownerSavesModified": false,
+  "inputRomsOrPacksModified": false,
+  "sharedBuildsModifiedByThisAgent": false
+}

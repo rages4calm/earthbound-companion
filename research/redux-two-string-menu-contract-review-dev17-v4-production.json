@@ -1,0 +1,242 @@
+{
+  "format": "two-string-menu-source-native-review-v1",
+  "status": "actual-production-green",
+  "evidenceInputs": {
+    "research\\menu-text-actual-cpu-dev17-final.json": "775e29251e4fe88f018c1fb9f0f3d05886db00ac7b20eafd1960568ec187d44c",
+    "research\\redux-two-string-menu-v9-dev17-multi-red.json": "398a48c84236ce5c1a3fb46e9453f1f5b8d04e6ae0cd27c13d19204281bc5842",
+    "research\\redux-two-string-menu-dev17-v4-production-green.json": "94b6cc9c84a5e31b3e8c324636e70fd8a3dc71a54b5a3c36020a6ce7f66080da",
+    "research\\maternalbound-native-bridge.json": "081177d81cc462359906a855e22a4045c4c18a325f0296e071a753004e9e6179"
+  },
+  "toolSha256": "88b894dcbca4ba0d90cfb2595eb24fd83ac87b94af441e5f5f4c6f092f097e8a",
+  "unchangedFrozenArchive": "1d7054446d01284f1bb13025ef12371bf2c0c6cecd979685252795ecafc5c8f1",
+  "privateCorrectedObjects": [],
+  "greenArchiveSha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+  "greenUsesPrivateObjectOverrides": false,
+  "comparisons": [
+    {
+      "profile": "original",
+      "actualCpuCounts": {
+        "width": 545,
+        "position": 72,
+        "menu": 6,
+        "highlight": 60
+      },
+      "fontWidthCases": 540,
+      "fontWidthMismatches": [],
+      "actualCpuHighlightSetClearCases": 60,
+      "highlightMismatchIndices": [],
+      "frozenRenderLossCases": 90,
+      "privateCorrectedRenderLossCases": 0,
+      "multirowPageIndentCases": 30,
+      "frozenMultirowDifferences": 20,
+      "privateCorrectedMultirowDifferences": 0,
+      "packedChoiceConfirmCases": 2,
+      "frozenConfirmSfxCalls": 0,
+      "privateCorrectedConfirmSfxCalls": 2,
+      "originalModeExtendedApiIsNativeRegressionOnly": true
+    },
+    {
+      "profile": "redux",
+      "actualCpuCounts": {
+        "width": 545,
+        "edge": 9,
+        "position": 72,
+        "menu": 12,
+        "highlight": 60
+      },
+      "fontWidthCases": 540,
+      "fontWidthMismatches": [],
+      "actualCpuHighlightSetClearCases": 60,
+      "highlightMismatchIndices": [],
+      "frozenRenderLossCases": 90,
+      "privateCorrectedRenderLossCases": 0,
+      "multirowPageIndentCases": 30,
+      "frozenMultirowDifferences": 20,
+      "privateCorrectedMultirowDifferences": 0,
+      "packedChoiceConfirmCases": 2,
+      "frozenConfirmSfxCalls": 0,
+      "privateCorrectedConfirmSfxCalls": 2,
+      "originalModeExtendedApiIsNativeRegressionOnly": false
+    }
+  ],
+  "sourceRefs": {
+    "defaults": [
+      {
+        "path": "asm/text/menu/add_menu_option.asm",
+        "line": 72
+      },
+      {
+        "path": "asm/text/menu/add_menu_option.asm",
+        "line": 79
+      }
+    ],
+    "screenPosition": [
+      {
+        "path": "asm/text/set_text_pixel_position.asm",
+        "line": 2
+      }
+    ],
+    "sourceRightPass": [
+      {
+        "path": "ccscript/essential/cc_load_two_str.ccs",
+        "line": 80
+      },
+      {
+        "path": "ccscript/essential/cc_load_two_str.ccs",
+        "line": 327
+      }
+    ],
+    "sourceCommonChoiceBuilder": [
+      {
+        "path": "ccscript/data/data_36.ccs",
+        "line": 334
+      }
+    ],
+    "sourceCommonChoiceSelection": [
+      {
+        "path": "ccscript/data/data_36.ccs",
+        "line": 345
+      }
+    ],
+    "nativeOrdinaryInterpreter": [
+      {
+        "path": "src/game/display_text.c",
+        "line": 2467
+      }
+    ],
+    "nativeConfirm": [
+      {
+        "path": "src/game/window.c",
+        "line": 1965
+      }
+    ]
+  },
+  "commonChoicePinnedCallSites": [
+    {
+      "path": "ccscript/data/data_14.ccs",
+      "line": 72
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 29
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 42
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 79
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 123
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 182
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 202
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 224
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 237
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 263
+    },
+    {
+      "path": "ccscript/data/data_49.ccs",
+      "line": 26
+    },
+    {
+      "path": "ccscript/data/data_49.ccs",
+      "line": 376
+    }
+  ],
+  "commonChoicePinnedCallCount": 12,
+  "rightStringGraph": {
+    "onlyNativeWriter": {
+      "path": "src/game/display_text_cc.c",
+      "line": 1907,
+      "usage": "write"
+    },
+    "allNativeOccurrences": [
+      {
+        "path": "src/game/display_text.c",
+        "line": 399,
+        "usage": "read"
+      },
+      {
+        "path": "src/game/display_text_cc.c",
+        "line": 1907,
+        "usage": "write"
+      },
+      {
+        "path": "src/game/window.c",
+        "line": 698,
+        "usage": "read"
+      },
+      {
+        "path": "src/game/window.c",
+        "line": 699,
+        "usage": "read"
+      },
+      {
+        "path": "src/game/window.c",
+        "line": 700,
+        "usage": "read"
+      },
+      {
+        "path": "src/game/window.c",
+        "line": 701,
+        "usage": "read"
+      },
+      {
+        "path": "src/game/window.c",
+        "line": 705,
+        "usage": "read"
+      },
+      {
+        "path": "src/game/window.h",
+        "line": 125,
+        "usage": "read"
+      }
+    ],
+    "extendedNamedPinnedInvocations": [],
+    "claim": "The extended macro API has no named source calls and no separate direct native C member writer. Whole-window/menu state copy or deserialization can retain previous API-populated strings. Raw encoded invocation/save reachability has not been exhaustively proved absent."
+  },
+  "productionImplementation": {
+    "files": [
+      "src/game/window.c",
+      "src/game/display_text_cc.c"
+    ],
+    "changes": [
+      "Set type/page/sound_effect=1 only for CC19-created items, preserving generic native menu userdata/type semantics.",
+      "Draw right labels in a second pass using SET_TEXT_PIXEL_POSITION screen coordinates; save/clear/restore VWF indent exactly as the pinned helper does."
+    ],
+    "genericAddMenuItemUnchanged": true,
+    "virtualInventoryUserdataPreserved": true,
+    "wideRightStringBoundsFallback": "Existing native width>edge clamp to0 retained; oversized-label source underflow is not proven useful gameplay behavior.",
+    "remainingBoundaryQualification": "Pinned dispatcher caps right text at30; native safe buffer accepts31. No active named caller established, and this bounded dormant API difference is outside the approved narrow correction."
+  },
+  "productionCSourceChangedOnlyByAuthorizedLease": true,
+  "fullPlaythroughVerified": false,
+  "fullMenuSourceParityVerified": false,
+  "limits": [
+    "Real installed Original common entry0x17654B and Redux source alias0xC7DD4F are read unwrapped; CC19 loads and CC1C07 layouts execute production functions. Prepared SM_MAIN primed input phase then confirms the two actual choices.",
+    "Full choice parent/story and initial overworld setup/navigation are excluded; exploratory uninitialized full-frame setup timed out and is not credited as passing coverage.",
+    "Right-string raster references use the native existing screen-position API, independently qualified by actual full source CPU position chains, real font widths and actual Redux right-edge helper.",
+    "Original has no source two-string API. Those90 raster/30 multirow cases are native adapter regression controls; only Redux source contracts establish extended behavior.",
+    "Highlight CPU fixtures initialize both retail word-indexed and Redux byte-indexed existence entries; the earlier incomplete prerequisites are not a native defect.",
+    "No full SNES glyph raster comparison, hover script execution, cold restored menu continuation, all labels/fonts/width boundaries, or frontend/controller hardware input claim.",
+    "Actual production green links the final immutable archive without source-object overrides. Broader sanitizer/subsystem regression remains root-owned."
+  ]
+}

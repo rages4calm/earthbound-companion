@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "status": "confirmed-v9-key-pool-selector-red-plus-ordinary-controls",
+  "limits": [
+    "Eight selected packed script sequences: four banana selection failures (direct and actual gift-to-trade, both profiles), four passing ordinary controls. No Escargo visit or general delivery completion claim.",
+    "Expected source outcomes fail as recorded; --diagnostic is necessary for baseline reproduction."
+  ],
+  "files": [
+    {
+      "path": "tools/barter_delivery_qa_dev20_v9_red.py",
+      "sha256": "34c4ea5a26ca02b31aa895cb0ff719a88b21cab8bf572c60ed25685c3922ce3c"
+    },
+    {
+      "path": "tools/barter_delivery_cases_dev20_v9_red.py",
+      "sha256": "6fbf8b0fca7c99652aa2a15f432b876015c25924d35e60912abd2ac9176a7681"
+    },
+    {
+      "path": "research/redux-barter-delivery-fixtures-dev20-pilot2.json",
+      "sha256": "3a57bbdce419dfb5a02f0afe45525d5dea29e8cf806f42a106011a5dfd4abc83"
+    },
+    {
+      "path": "research/original-barter-delivery-fixtures-dev20-pilot2.json",
+      "sha256": "0b385ccd43d47482a3efa793cfba85c5027dc030126f4e2b4e5e2021c1e0847d"
+    },
+    {
+      "path": "research/redux-barter-delivery-dev20-v9-pilot2.json",
+      "sha256": "5aed9f77c01791ca965b996df02fd91ae20908f6bbb8a46d4d67b6fa11891e0e"
+    },
+    {
+      "path": "research/original-barter-delivery-dev20-v9-pilot2.json",
+      "sha256": "7eafbe3ea10a1d1aaff7f70d96e0717e131337308b7b1c59817688d2adfe8594"
+    }
+  ]
+}

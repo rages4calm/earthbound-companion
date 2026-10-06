@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev21-inventory-selector-checkpoint-manifest",
+  "frozenRuntime": "dev17-v3",
+  "verifiedLedger": [
+    {
+      "profile": "redux",
+      "scope": "monkey",
+      "report": "research/redux-monkey-barter-dev20-v3-finalpack.json",
+      "selectedCases": 101,
+      "coldContinuationsIncluded": 16,
+      "runtimeSha256": {
+        "player.exe": "6480c4cc810cd590976483abe4abd1c6bbcb8c87856ee420a179e57b94c05db4",
+        "observer.exe": "c031e4f5d86489c05e0e140e6ca5e8e5c1ceed9e06e35c654f03eae9cf48d6df"
+      },
+      "librarySha256": "57869320efc3550cba07eb7ef5c5607d42e0755ed09070b062796a56aec3eb0c",
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9"
+    },
+    {
+      "profile": "redux",
+      "scope": "services",
+      "report": "research/redux-service-selector-dev21-v3-finalpack.json",
+      "selectedCases": 28,
+      "coldContinuationsIncluded": 12,
+      "runtimeSha256": {
+        "player.exe": "6480c4cc810cd590976483abe4abd1c6bbcb8c87856ee420a179e57b94c05db4",
+        "observer.exe": "c031e4f5d86489c05e0e140e6ca5e8e5c1ceed9e06e35c654f03eae9cf48d6df"
+      },
+      "librarySha256": "57869320efc3550cba07eb7ef5c5607d42e0755ed09070b062796a56aec3eb0c",
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9"
+    },
+    {
+      "profile": "redux",
+      "scope": "api",
+      "report": "research/redux-key-selector-dev21-v3-finalpack.json",
+      "selectedCases": 16475,
+      "coldContinuationsIncluded": 0,
+      "runtimeSha256": {
+        "player.exe": "6480c4cc810cd590976483abe4abd1c6bbcb8c87856ee420a179e57b94c05db4",
+        "observer.exe": "c031e4f5d86489c05e0e140e6ca5e8e5c1ceed9e06e35c654f03eae9cf48d6df"
+      },
+      "librarySha256": "57869320efc3550cba07eb7ef5c5607d42e0755ed09070b062796a56aec3eb0c",
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9"
+    },
+    {
+      "profile": "original",
+      "scope": "monkey",
+      "report": "research/original-monkey-barter-dev20-v3.json",
+      "selectedCases": 101,
+      "coldContinuationsIncluded": 16,
+      "runtimeSha256": {
+        "player.exe": "6480c4cc810cd590976483abe4abd1c6bbcb8c87856ee420a179e57b94c05db4",
+        "observer.exe": "c031e4f5d86489c05e0e140e6ca5e8e5c1ceed9e06e35c654f03eae9cf48d6df"
+      },
+      "librarySha256": "57869320efc3550cba07eb7ef5c5607d42e0755ed09070b062796a56aec3eb0c",
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549"
+    },
+    {
+      "profile": "original",
+      "scope": "services",
+      "report": "research/original-service-selector-dev21-v3.json",
+      "selectedCases": 28,
+      "coldContinuationsIncluded": 12,
+      "runtimeSha256": {
+        "player.exe": "6480c4cc810cd590976483abe4abd1c6bbcb8c87856ee420a179e57b94c05db4",
+        "observer.exe": "c031e4f5d86489c05e0e140e6ca5e8e5c1ceed9e06e35c654f03eae9cf48d6df"
+      },
+      "librarySha256": "57869320efc3550cba07eb7ef5c5607d42e0755ed09070b062796a56aec3eb0c",
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549"
+    },
+    {
+      "profile": "original",
+      "scope": "api",
+      "report": "research/original-key-selector-dev21-v3.json",
+      "selectedCases": 16479,
+      "coldContinuationsIncluded": 0,
+      "runtimeSha256": {
+        "player.exe": "6480c4cc810cd590976483abe4abd1c6bbcb8c87856ee420a179e57b94c05db4",
+        "observer.exe": "c031e4f5d86489c05e0e140e6ca5e8e5c1ceed9e06e35c654f03eae9cf48d6df"
+      },
+      "librarySha256": "57869320efc3550cba07eb7ef5c5607d42e0755ed09070b062796a56aec3eb0c",
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549"
+    }
+  ],
+  "selectedParentSequences": 258,
+  "coldContinuationsIncluded": 56,
+  "boundedApiObservationsSeparateAndOverlapping": 32954,
+  "originalMachineSlotCasesSeparate": 420,
+  "files": [
+    {
+      "path": "tools/barter_delivery_qa_dev20.py",
+      "sha256": "b85c2890cb250af29455ef364f73f662559d7ee611a61af71cebd4d73be3de43",
+      "bytes": 8549
+    },
+    {
+      "path": "tools/barter_delivery_cases_dev20.py",
+      "sha256": "b4d243b5d33b5af3525ebb189013c01893964a12cb67de1219e3decd10b34ac0",
+      "bytes": 7821
+    },
+    {
+      "path": "tools/transaction_menu_replay_dev20.py",
+      "sha256": "05ed1f6fbf4f3f26df120f2daca2905390fd6bdc15fdc9f1706aa825a90e2670",
+      "bytes": 3791
+    },
+    {
+      "path": "tools/menu_geometry_full_bag_red_dev20.py",
+      "sha256": "0873cab56a9aff557f1a6cdce698bcea04624f4621633aef924c235fb28402f5",
+      "bytes": 668
+    },
+    {
+      "path": "tools/service_transaction_qa_dev21.py",
+      "sha256": "daf8d9e6edaa1b713e292ab16122e463ab6e29ab34a69a724b6d0fa9e023ac58",
+      "bytes": 10005
+    },
+    {
+      "path": "tools/service_transaction_cases_dev21.py",
+      "sha256": "447bbf11a6467db95c8fb1b2d8813cceb0920e6cba104af0c36aa52c149da235",
+      "bytes": 4363
+    },
+    {
+      "path": "tools/key_pool_selection_qa_dev21.py",
+      "sha256": "af7fa3d2adb3653e35285883229ba35c6e4097cc971fb7376a41cb7dd7266c63",
+      "bytes": 13449
+    },
+    {
+      "path": "tools/snes_inventory_slot_oracle_dev20.py",
+      "sha256": "e72386e919d32dba1d236c8a1c4cfadb6819e99c6b4102979c63e36a33fa9f57",
+      "bytes": 8051
+    },
+    {
+      "path": "tools/catalog_inventory_selection_callers_dev21.py",
+      "sha256": "d60c096e6a3744cb2a7a4ad384bde0c9d712a5ad0b9b3960fc655d426f64a1a8",
+      "bytes": 3590
+    },
+    {
+      "path": "tools/write_inventory_selector_manifest_dev21.py",
+      "sha256": "3c5dd839a5f939267d78c276bfac179e66c3406d2c8b104dc58e42631e3924eb",
+      "bytes": 4840
+    },
+    {
+      "path": "tools/shop_transaction_qa_dev18.py",
+      "sha256": "0f7cdbf128474dc8a1f5402395132a2e41ad083bf6e4915af67c028df25b76fc",
+      "bytes": 16355
+    },
+    {
+      "path": "tools/battle_action_catalog_qa.py",
+      "sha256": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823",
+      "bytes": 40111
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1",
+      "bytes": 21769
+    },
+    {
+      "path": "tools/check_jev_observer_parity.py",
+      "sha256": "a7e931b2a42c78e570e8af69bea5298f917544c9ec125442cae0b2654cda7dd0",
+      "bytes": 9959
+    },
+    {
+      "path": "tools/snes_position_arithmetic_oracle.py",
+      "sha256": "c0eee93f9b9fe1839dd2fe2ab15395b3ec05d76b09954dcf332682d94558c176",
+      "bytes": 25386
+    },
+    {
+      "path": "tools/snes_movement_helpers_oracle.py",
+      "sha256": "7391ced1e25ab737e1bd9737c2675b5f4bf1130661bdb0591a42c8f7d2eeb112",
+      "bytes": 21521
+    },
+    {
+      "path": "research/barter-selector-dev20-v9-red-manifest.json",
+      "sha256": "c615b91e6a2e75cc958a484aa32cf6bdf2a1e99536e053b37682aceed4e6d461",
+      "bytes": 1474
+    },
+    {
+      "path": "research/barter-selector-dev20-v1-red-manifest.json",
+      "sha256": "975691eecf304caa2d941a0edec0976f505db075d8abfc8436532114fe49dcf2",
+      "bytes": 2300
+    },
+    {
+      "path": "research/original-inventory-slot-machine-dev20.json",
+      "sha256": "18ca96009a6d2131d79d9025213f6bbb1f0970058e64910727f1e81220658aca",
+      "bytes": 53557
+    },
+    {
+      "path": "research/inventory-selector-source-catalog-dev21.json",
+      "sha256": "5234882082457e1555440a7e16fca89dbfae0d3bcf6945b6998dc100c451ce68",
+      "bytes": 16206
+    },
+    {
+      "path": "research/inventory-selector-finalpack-comparison-dev21.json",
+      "sha256": "cd97001fb41fbf1348b97b1974876b76f28ea779fc1b47a6a90960c67cf1771b",
+      "bytes": 26985
+    },
+    {
+      "path": "research/inventory-selector-dev21-evidence.md",
+      "sha256": "91afa660403c7aeaa13b8cab5595446e55c6f229640f11a13177fad46495624e",
+      "bytes": 5477
+    },
+    {
+      "path": "research/redux-monkey-barter-fixtures-dev20-final.json",
+      "sha256": "60df191d434582a8ead14deff45e0aeb139141f6a9204d3ed0bcfb37efe374ce",
+      "bytes": 252651
+    },
+    {
+      "path": "research/redux-service-selector-fixtures-dev21.json",
+      "sha256": "4f6f72864785050d5e638ed360c1068e8ba9774e75a8707d6a3a601493d95412",
+      "bytes": 93764
+    },
+    {
+      "path": "research/original-monkey-barter-fixtures-dev20-final.json",
+      "sha256": "efe6c94c302a5f5aa3f9b8fe5e59eb5d44b7e4eda5de0671012ba6132ca6d9b6",
+      "bytes": 252651
+    },
+    {
+      "path": "research/original-service-selector-fixtures-dev21.json",
+      "sha256": "8b4232136f989bb829d2fb3c5eb024ef45681a7c95483c5f18c6cdcc3f586651",
+      "bytes": 93764
+    },
+    {
+      "path": "research/redux-monkey-barter-dev20-v3-finalpack.json",
+      "sha256": "338a9de118cb7b642a730080413925e8ff834001986fcd21d0bdf3bbb97846d5",
+      "bytes": 2160279
+    },
+    {
+      "path": "research/redux-service-selector-dev21-v3-finalpack.json",
+      "sha256": "15ec4ed8ccbd6aff29fcbc95dfd5c0dd148a4f4c1c2af5eb9110e71fc5afd43a",
+      "bytes": 735180
+    },
+    {
+      "path": "research/redux-key-selector-dev21-v3-finalpack.json",
+      "sha256": "6a581c756463bffc39360bacfb45f4960701f7dfe6f41eaac88e1e994cb8a155",
+      "bytes": 5055772
+    },
+    {
+      "path": "research/original-monkey-barter-dev20-v3.json",
+      "sha256": "404a0873d03b34eaf70d7ec521871ea51779e6bc7724968f249beb31cbc9673a",
+      "bytes": 2161768
+    },
+    {
+      "path": "research/original-service-selector-dev21-v3.json",
+      "sha256": "fa853a030d771fe673c7e7ac8aefafa800cdc8bb5adaa06187d64e19263a3b1d",
+      "bytes": 732729
+    },
+    {
+      "path": "research/original-key-selector-dev21-v3.json",
+      "sha256": "9adfb8a255c494d59445730d664e048ad90e70fc024fc96d95d73a2f14c0464c",
+      "bytes": 5056801
+    },
+    {
+      "path": "research/redux-monkey-barter-dev20-v3.json",
+      "sha256": "0ee57f68281cd83d8498cbbc9ae741daa91c9c27ba40a6b2a24d8616c7cddb5e",
+      "bytes": 2160279
+    },
+    {
+      "path": "research/redux-service-selector-dev21-v3.json",
+      "sha256": "1c5f056e7946d19da0f0d356beb98ce40421e4bc333eadaea76dc05a14b3376d",
+      "bytes": 735180
+    },
+    {
+      "path": "research/redux-key-selector-dev21-v3.json",
+      "sha256": "c12f1db08091dde0034bf1d461a33812f2520b1ed92f6db6915d5beafa0559fa",
+      "bytes": 5055772
+    },
+    {
+      "path": "tools/barter_delivery_qa_dev20_v9_red.py",
+      "sha256": "34c4ea5a26ca02b31aa895cb0ff719a88b21cab8bf572c60ed25685c3922ce3c",
+      "bytes": 7859
+    },
+    {
+      "path": "tools/barter_delivery_cases_dev20_v9_red.py",
+      "sha256": "6fbf8b0fca7c99652aa2a15f432b876015c25924d35e60912abd2ac9176a7681",
+      "bytes": 6456
+    },
+    {
+      "path": "research/redux-barter-delivery-fixtures-dev20-pilot2.json",
+      "sha256": "3a57bbdce419dfb5a02f0afe45525d5dea29e8cf806f42a106011a5dfd4abc83",
+      "bytes": 10877
+    },
+    {
+      "path": "research/original-barter-delivery-fixtures-dev20-pilot2.json",
+      "sha256": "0b385ccd43d47482a3efa793cfba85c5027dc030126f4e2b4e5e2021c1e0847d",
+      "bytes": 10877
+    },
+    {
+      "path": "research/redux-barter-delivery-dev20-v9-pilot2.json",
+      "sha256": "5aed9f77c01791ca965b996df02fd91ae20908f6bbb8a46d4d67b6fa11891e0e",
+      "bytes": 88431
+    },
+    {
+      "path": "research/original-barter-delivery-dev20-v9-pilot2.json",
+      "sha256": "7eafbe3ea10a1d1aaff7f70d96e0717e131337308b7b1c59817688d2adfe8594",
+      "bytes": 88783
+    },
+    {
+      "path": "research/redux-menu-geometry-fixtures-dev20-v1-red.json",
+      "sha256": "9054dc9c6d0eb5ce141fd82e80fc9cda2d821491baef3de315b4e116a077c9e7",
+      "bytes": 6856
+    },
+    {
+      "path": "research/original-menu-geometry-fixtures-dev20-v1-red.json",
+      "sha256": "0c12c6bda31efc6d0e48365b00690000d1977bdd34569a262e26ac3f9406a5d2",
+      "bytes": 6856
+    },
+    {
+      "path": "research/redux-menu-geometry-dev20-v1-red.json",
+      "sha256": "f02ca9df1c7566d65d2c7357777e50d936e3a8eeb0db3193731ed49a133a6d3c",
+      "bytes": 68208
+    },
+    {
+      "path": "research/original-menu-geometry-dev20-v1-red.json",
+      "sha256": "9acf5c0e65122c9751eb324e75c24c6dbaedcfda49406c97713ac11dd75954c3",
+      "bytes": 68399
+    },
+    {
+      "path": "research/redux-service-selector-fixtures-dev20-pilot.json",
+      "sha256": "832416169d019f5aa9819de3eb7405513cf7111b2150e4dcacbd5ef3153b4917",
+      "bytes": 19657
+    },
+    {
+      "path": "research/original-service-selector-fixtures-dev20-pilot.json",
+      "sha256": "a50b49dc4bbe5bb63f80c297b3ce19a32013701275694c393a91ec18b5253431",
+      "bytes": 19657
+    },
+    {
+      "path": "research/redux-service-selector-dev20-v1-pilot.json",
+      "sha256": "277b35678f7697c2903dc895c1660e75db08dd44592de153a883031ffafde10a",
+      "bytes": 136640
+    },
+    {
+      "path": "research/original-service-selector-dev20-v1-pilot.json",
+      "sha256": "16554ac073f18b86c60770ed212f36a2715ac5e19b48b6361cb626f3a0d5b3aa",
+      "bytes": 136154
+    }
+  ],
+  "limits": [
+    "Exact selected sequence/API proof, not every inventory consumer or branch.",
+    "Cold counts are included in parent counts. API rows overlap semantic behaviors and are not additional complete transactions.",
+    "Escargo arrival/exit delivery parent remains an unqualified fixture prerequisite gap, not a reported native defect."
+  ]
+}

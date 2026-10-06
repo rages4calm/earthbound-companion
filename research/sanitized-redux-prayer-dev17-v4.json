@@ -1,0 +1,1684 @@
+{
+  "format": "redux-prayer-cinematic-qa-v2",
+  "profile": "Redux",
+  "sourceRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "runtimeSha256": {
+    "player.exe": "2e6b579a4b02cd5e51348771e60fa146bddb6fa1b4bc7b2cfd7d45d049bbe7fa",
+    "observer.exe": "2e6b579a4b02cd5e51348771e60fa146bddb6fa1b4bc7b2cfd7d45d049bbe7fa"
+  },
+  "packSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+  "privateBuild": {
+    "driverSourceSha256": "d0f4a1dad0891b4a1c6a0173586ede5a1e70fb492b5284c2d9e00eb96208592f",
+    "DriverSourceSha256": "d0f4a1dad0891b4a1c6a0173586ede5a1e70fb492b5284c2d9e00eb96208592f",
+    "ExecutableSha256": "7384e35d8f4fa355be1325cf16db8b12b6a97e2c3cd7ae28985feec441677df9",
+    "executableSha256": "7384e35d8f4fa355be1325cf16db8b12b6a97e2c3cd7ae28985feec441677df9",
+    "InstrumentedLibrarySha256": "ed569638410afe674a3be36a99f08f3b225a0e0a3b368e9acaf03af30a077e2d",
+    "LinkedLibrarySha256": "ed569638410afe674a3be36a99f08f3b225a0e0a3b368e9acaf03af30a077e2d",
+    "DoorDiagnosticSourceSha256": null,
+    "InstrumentedPlatformMainSha256": "504429d6bc814580041892a815704d13189c3879e1e14e60e5a705846e32afdb",
+    "InstrumentedPlayerSha256": "2e6b579a4b02cd5e51348771e60fa146bddb6fa1b4bc7b2cfd7d45d049bbe7fa",
+    "SharedBuildModified": false,
+    "sharedBuildModified": false,
+    "SharedSourceModified": false,
+    "sharedSourceModified": false,
+    "UntouchedInstrumentedLibraryLinked": true,
+    "ReadOnlyPrePostCallbackWrapper": false,
+    "Method": "Private GCC trap-instrumented rebuild; production objects retained, copied main symbol renamed. No scenario result or game handler replaced.",
+    "NegativeSignedShiftControlTrapped": true,
+    "Limits": [
+      "Diagnostic compiler flags and exception observer differ from shipping code. No independent SNES-reference or shipping-runtime proof is claimed."
+    ]
+  },
+  "overworldInitialization": true,
+  "titleScriptInitialization": true,
+  "entryStoryFlags": [
+    372,
+    651
+  ],
+  "entryStoryFlagSources": {
+    "372": "Project/ccscript/data/data_58.ccs l_0xc9c19b: phase-distorter entry sets FLG_STEP_PAST",
+    "651": "Project/ccscript/data/data_58.ccs before FLG_DKFD_GUMI_BOSS; data_09.ccs progress counter62 also sets FLG_DKFD_DOOR_DISAPPEAR"
+  },
+  "nativeExit": 0,
+  "allPassed": true,
+  "executedCases": 7,
+  "requestedCases": 7,
+  "cases": [
+    {
+      "prayer": 1,
+      "callback": "C2C572",
+      "requiredSceneNpcs": [
+        729,
+        735
+      ],
+      "sourceWarp": 229,
+      "expectedSceneCoordinates": [
+        368,
+        7624
+      ],
+      "expected": {
+        "depth": 1,
+        "giygasPhase": 5,
+        "battleGroup": 479,
+        "naturalSignals": 4,
+        "waitEntries": 4,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "seen757": 1,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "event859Bound": 1,
+        "callbackPcMask": 1023
+      },
+      "actual": {
+        "id": 0,
+        "steps": 3204,
+        "depth": 1,
+        "firstRoll": 123,
+        "hp": 9999,
+        "pp": 0,
+        "maxhp": 9999,
+        "maxpp": 0,
+        "offense": 255,
+        "defense": 127,
+        "speed": 80,
+        "guts": 5,
+        "luck": 255,
+        "shieldhp": 0,
+        "npc": 0,
+        "consciousness": 1,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "res": [
+          102,
+          102,
+          0,
+          0,
+          0,
+          255
+        ],
+        "attackerHp": 500,
+        "attackerPp": 200,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "lootQuantity": 0,
+        "postBattleFlag": 1,
+        "partyCount": 4,
+        "npc1": 0,
+        "npc2": 0,
+        "party": [
+          1,
+          2,
+          3,
+          4,
+          0,
+          0
+        ],
+        "targetId": 229,
+        "targetTurn": 1,
+        "targetSprite": [
+          55,
+          66
+        ],
+        "giygasPhase": 5,
+        "battleGroup": 479,
+        "specialDefeat": 0,
+        "skipDeath": 0,
+        "teleportStyle": 0,
+        "teleportDestination": 0,
+        "attackerRestored": 1,
+        "targetRestored": 1,
+        "secondId": 0,
+        "secondHp": 0,
+        "secondConscious": 0,
+        "pooId": 4,
+        "pooConscious": 1,
+        "targetIq": 3,
+        "targetVitality": 0,
+        "attackerItem": 0,
+        "rolls8": [
+          123,
+          227,
+          119,
+          185,
+          243,
+          109,
+          28,
+          247
+        ],
+        "varianceRolls": [],
+        "damageInputs": [],
+        "naturalSignals": 4,
+        "waitEntries": 4,
+        "seen757": 1,
+        "seen729": 1,
+        "seen735": 1,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "frame": 3126,
+        "event859Bound": 1,
+        "callbackPcMask": 1023,
+        "observedScripts": [
+          1,
+          2,
+          8,
+          9,
+          10,
+          279,
+          280,
+          281,
+          282,
+          283,
+          746,
+          747,
+          749,
+          751,
+          752,
+          753,
+          754,
+          757,
+          785,
+          859
+        ],
+        "observedNpcs": [
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          727,
+          728,
+          729,
+          735,
+          741,
+          1419,
+          1470
+        ]
+      },
+      "waitTimeline": [
+        {
+          "id": 0,
+          "ordinal": 1,
+          "step": 576,
+          "frame": 550,
+          "leader": [
+            368,
+            7624
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 0,
+          "ordinal": 2,
+          "step": 838,
+          "frame": 802,
+          "leader": [
+            368,
+            7624
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 0,
+          "ordinal": 3,
+          "step": 1452,
+          "frame": 1414,
+          "leader": [
+            368,
+            7624
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 0,
+          "ordinal": 4,
+          "step": 2344,
+          "frame": 2290,
+          "leader": [
+            368,
+            7624
+          ],
+          "animPort522": 1,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        }
+      ],
+      "passed": true,
+      "errors": []
+    },
+    {
+      "prayer": 2,
+      "callback": "C2C5D1",
+      "requiredSceneNpcs": [
+        1072,
+        1073,
+        1074,
+        1075
+      ],
+      "sourceWarp": 222,
+      "expectedSceneCoordinates": [
+        5416,
+        2752
+      ],
+      "expected": {
+        "depth": 1,
+        "giygasPhase": 6,
+        "battleGroup": 479,
+        "naturalSignals": 2,
+        "waitEntries": 2,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "seen757": 1,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "event859Bound": 1,
+        "callbackPcMask": 511
+      },
+      "actual": {
+        "id": 1,
+        "steps": 1908,
+        "depth": 1,
+        "firstRoll": 123,
+        "hp": 60000,
+        "pp": 200,
+        "maxhp": 60000,
+        "maxpp": 300,
+        "offense": 80,
+        "defense": 50,
+        "speed": 20,
+        "guts": 0,
+        "luck": 20,
+        "shieldhp": 0,
+        "npc": 0,
+        "consciousness": 1,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "res": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "attackerHp": 500,
+        "attackerPp": 200,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "lootQuantity": 0,
+        "postBattleFlag": 1,
+        "partyCount": 4,
+        "npc1": 0,
+        "npc2": 0,
+        "party": [
+          1,
+          2,
+          3,
+          4,
+          0,
+          0
+        ],
+        "targetId": 229,
+        "targetTurn": 0,
+        "targetSprite": [
+          55,
+          66
+        ],
+        "giygasPhase": 6,
+        "battleGroup": 479,
+        "specialDefeat": 0,
+        "skipDeath": 0,
+        "teleportStyle": 0,
+        "teleportDestination": 0,
+        "attackerRestored": 1,
+        "targetRestored": 1,
+        "secondId": 0,
+        "secondHp": 0,
+        "secondConscious": 0,
+        "pooId": 4,
+        "pooConscious": 1,
+        "targetIq": 20,
+        "targetVitality": 20,
+        "attackerItem": 0,
+        "rolls8": [
+          123,
+          227,
+          119,
+          185,
+          243,
+          109,
+          28,
+          247
+        ],
+        "varianceRolls": [
+          200,
+          208
+        ],
+        "damageInputs": [
+          57
+        ],
+        "naturalSignals": 2,
+        "waitEntries": 2,
+        "seen757": 1,
+        "seen729": 0,
+        "seen735": 0,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "frame": 4953,
+        "event859Bound": 1,
+        "callbackPcMask": 511,
+        "observedScripts": [
+          1,
+          2,
+          8,
+          9,
+          10,
+          12,
+          279,
+          280,
+          281,
+          282,
+          283,
+          722,
+          723,
+          757,
+          785
+        ],
+        "observedNpcs": [
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          1054,
+          1072,
+          1073,
+          1074,
+          1075,
+          1080,
+          1081,
+          1082,
+          1084,
+          1085,
+          1087,
+          1419
+        ]
+      },
+      "waitTimeline": [
+        {
+          "id": 1,
+          "ordinal": 1,
+          "step": 513,
+          "frame": 3612,
+          "leader": [
+            5416,
+            2752
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 1,
+          "ordinal": 2,
+          "step": 1416,
+          "frame": 4481,
+          "leader": [
+            5416,
+            2752
+          ],
+          "animPort522": 1,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        }
+      ],
+      "passed": true,
+      "errors": []
+    },
+    {
+      "prayer": 3,
+      "callback": "C2C5FA",
+      "requiredSceneNpcs": [],
+      "sourceWarp": 223,
+      "expectedSceneCoordinates": [
+        2104,
+        7072
+      ],
+      "expected": {
+        "depth": 1,
+        "giygasPhase": 7,
+        "battleGroup": 479,
+        "naturalSignals": 4,
+        "waitEntries": 4,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "seen757": 1,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "event859Bound": 1,
+        "callbackPcMask": 511
+      },
+      "actual": {
+        "id": 2,
+        "steps": 2077,
+        "depth": 1,
+        "firstRoll": 123,
+        "hp": 60000,
+        "pp": 200,
+        "maxhp": 60000,
+        "maxpp": 300,
+        "offense": 80,
+        "defense": 50,
+        "speed": 20,
+        "guts": 0,
+        "luck": 20,
+        "shieldhp": 0,
+        "npc": 0,
+        "consciousness": 1,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "res": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "attackerHp": 500,
+        "attackerPp": 200,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "lootQuantity": 0,
+        "postBattleFlag": 1,
+        "partyCount": 4,
+        "npc1": 0,
+        "npc2": 0,
+        "party": [
+          1,
+          2,
+          3,
+          4,
+          0,
+          0
+        ],
+        "targetId": 229,
+        "targetTurn": 0,
+        "targetSprite": [
+          55,
+          66
+        ],
+        "giygasPhase": 7,
+        "battleGroup": 479,
+        "specialDefeat": 0,
+        "skipDeath": 0,
+        "teleportStyle": 0,
+        "teleportDestination": 0,
+        "attackerRestored": 1,
+        "targetRestored": 1,
+        "secondId": 0,
+        "secondHp": 0,
+        "secondConscious": 0,
+        "pooId": 4,
+        "pooConscious": 1,
+        "targetIq": 20,
+        "targetVitality": 20,
+        "attackerItem": 0,
+        "rolls8": [
+          123,
+          227,
+          119,
+          185,
+          243,
+          109,
+          28,
+          247
+        ],
+        "varianceRolls": [
+          248,
+          56
+        ],
+        "damageInputs": [
+          86
+        ],
+        "naturalSignals": 4,
+        "waitEntries": 4,
+        "seen757": 1,
+        "seen729": 0,
+        "seen735": 0,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "frame": 6969,
+        "event859Bound": 1,
+        "callbackPcMask": 511,
+        "observedScripts": [
+          1,
+          2,
+          8,
+          9,
+          10,
+          279,
+          280,
+          281,
+          282,
+          283,
+          606,
+          724,
+          725,
+          726,
+          727,
+          728,
+          757,
+          785
+        ],
+        "observedNpcs": [
+          304,
+          337,
+          351,
+          354,
+          365,
+          368,
+          369,
+          370,
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          1419
+        ]
+      },
+      "waitTimeline": [
+        {
+          "id": 2,
+          "ordinal": 1,
+          "step": 241,
+          "frame": 5177,
+          "leader": [
+            2104,
+            7072
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 2,
+          "ordinal": 2,
+          "step": 424,
+          "frame": 5356,
+          "leader": [
+            2104,
+            7072
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 2,
+          "ordinal": 3,
+          "step": 969,
+          "frame": 5891,
+          "leader": [
+            2104,
+            7072
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 2,
+          "ordinal": 4,
+          "step": 1585,
+          "frame": 6497,
+          "leader": [
+            2104,
+            7072
+          ],
+          "animPort522": 1,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        }
+      ],
+      "passed": true,
+      "errors": []
+    },
+    {
+      "prayer": 4,
+      "callback": "C2C623",
+      "requiredSceneNpcs": [
+        600,
+        601,
+        602,
+        603
+      ],
+      "sourceWarp": 224,
+      "expectedSceneCoordinates": [
+        7912,
+        3088
+      ],
+      "expected": {
+        "depth": 1,
+        "giygasPhase": 8,
+        "battleGroup": 479,
+        "naturalSignals": 5,
+        "waitEntries": 5,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "seen757": 1,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "event859Bound": 1,
+        "callbackPcMask": 511
+      },
+      "actual": {
+        "id": 3,
+        "steps": 2332,
+        "depth": 1,
+        "firstRoll": 123,
+        "hp": 60000,
+        "pp": 200,
+        "maxhp": 60000,
+        "maxpp": 300,
+        "offense": 80,
+        "defense": 50,
+        "speed": 20,
+        "guts": 0,
+        "luck": 20,
+        "shieldhp": 0,
+        "npc": 0,
+        "consciousness": 1,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "res": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "attackerHp": 500,
+        "attackerPp": 200,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "lootQuantity": 0,
+        "postBattleFlag": 1,
+        "partyCount": 4,
+        "npc1": 0,
+        "npc2": 0,
+        "party": [
+          1,
+          2,
+          3,
+          4,
+          0,
+          0
+        ],
+        "targetId": 229,
+        "targetTurn": 0,
+        "targetSprite": [
+          55,
+          66
+        ],
+        "giygasPhase": 8,
+        "battleGroup": 479,
+        "specialDefeat": 0,
+        "skipDeath": 0,
+        "teleportStyle": 0,
+        "teleportDestination": 0,
+        "attackerRestored": 1,
+        "targetRestored": 1,
+        "secondId": 0,
+        "secondHp": 0,
+        "secondConscious": 0,
+        "pooId": 4,
+        "pooConscious": 1,
+        "targetIq": 20,
+        "targetVitality": 20,
+        "attackerItem": 0,
+        "rolls8": [
+          123,
+          227,
+          119,
+          185,
+          243,
+          109,
+          28,
+          247
+        ],
+        "varianceRolls": [
+          19,
+          109
+        ],
+        "damageInputs": [
+          193
+        ],
+        "naturalSignals": 5,
+        "waitEntries": 5,
+        "seen757": 1,
+        "seen729": 0,
+        "seen735": 0,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "frame": 9232,
+        "event859Bound": 1,
+        "callbackPcMask": 511,
+        "observedScripts": [
+          1,
+          2,
+          9,
+          10,
+          279,
+          280,
+          281,
+          282,
+          283,
+          605,
+          606,
+          729,
+          735,
+          757
+        ],
+        "observedNpcs": [
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          600,
+          601,
+          602,
+          603,
+          1419
+        ]
+      },
+      "waitTimeline": [
+        {
+          "id": 3,
+          "ordinal": 1,
+          "step": 249,
+          "frame": 7199,
+          "leader": [
+            7912,
+            3088
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 3,
+          "ordinal": 2,
+          "step": 510,
+          "frame": 7458,
+          "leader": [
+            7912,
+            3088
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 3,
+          "ordinal": 3,
+          "step": 733,
+          "frame": 7675,
+          "leader": [
+            7912,
+            3088
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 3,
+          "ordinal": 4,
+          "step": 917,
+          "frame": 7857,
+          "leader": [
+            7912,
+            3088
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 3,
+          "ordinal": 5,
+          "step": 1840,
+          "frame": 8760,
+          "leader": [
+            7912,
+            3088
+          ],
+          "animPort522": 1,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        }
+      ],
+      "passed": true,
+      "errors": []
+    },
+    {
+      "prayer": 5,
+      "callback": "C2C64C",
+      "requiredSceneNpcs": [
+        1110,
+        1111
+      ],
+      "sourceWarp": 226,
+      "expectedSceneCoordinates": [
+        4448,
+        3480
+      ],
+      "expected": {
+        "depth": 1,
+        "giygasPhase": 9,
+        "battleGroup": 479,
+        "naturalSignals": 4,
+        "waitEntries": 4,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "seen757": 1,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "event859Bound": 1,
+        "callbackPcMask": 511
+      },
+      "actual": {
+        "id": 4,
+        "steps": 2247,
+        "depth": 1,
+        "firstRoll": 123,
+        "hp": 60000,
+        "pp": 200,
+        "maxhp": 60000,
+        "maxpp": 300,
+        "offense": 80,
+        "defense": 50,
+        "speed": 20,
+        "guts": 0,
+        "luck": 20,
+        "shieldhp": 0,
+        "npc": 0,
+        "consciousness": 1,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "res": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "attackerHp": 500,
+        "attackerPp": 200,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "lootQuantity": 0,
+        "postBattleFlag": 1,
+        "partyCount": 4,
+        "npc1": 0,
+        "npc2": 0,
+        "party": [
+          1,
+          2,
+          3,
+          4,
+          0,
+          0
+        ],
+        "targetId": 229,
+        "targetTurn": 0,
+        "targetSprite": [
+          55,
+          66
+        ],
+        "giygasPhase": 9,
+        "battleGroup": 479,
+        "specialDefeat": 0,
+        "skipDeath": 0,
+        "teleportStyle": 0,
+        "teleportDestination": 0,
+        "attackerRestored": 1,
+        "targetRestored": 1,
+        "secondId": 0,
+        "secondHp": 0,
+        "secondConscious": 0,
+        "pooId": 4,
+        "pooConscious": 1,
+        "targetIq": 20,
+        "targetVitality": 20,
+        "attackerItem": 0,
+        "rolls8": [
+          123,
+          227,
+          119,
+          185,
+          243,
+          109,
+          28,
+          247
+        ],
+        "varianceRolls": [
+          68,
+          53
+        ],
+        "damageInputs": [
+          354
+        ],
+        "naturalSignals": 4,
+        "waitEntries": 4,
+        "seen757": 1,
+        "seen729": 0,
+        "seen735": 0,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "frame": 11420,
+        "event859Bound": 1,
+        "callbackPcMask": 511,
+        "observedScripts": [
+          1,
+          2,
+          8,
+          9,
+          10,
+          12,
+          279,
+          280,
+          281,
+          282,
+          283,
+          742,
+          757,
+          785,
+          882
+        ],
+        "observedNpcs": [
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          1101,
+          1110,
+          1111,
+          1113,
+          1114,
+          1115,
+          1116,
+          1419
+        ]
+      },
+      "waitTimeline": [
+        {
+          "id": 4,
+          "ordinal": 1,
+          "step": 304,
+          "frame": 9517,
+          "leader": [
+            4448,
+            3480
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 4,
+          "ordinal": 2,
+          "step": 454,
+          "frame": 9663,
+          "leader": [
+            4448,
+            3480
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 4,
+          "ordinal": 3,
+          "step": 901,
+          "frame": 10104,
+          "leader": [
+            4448,
+            3480
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 4,
+          "ordinal": 4,
+          "step": 1755,
+          "frame": 10948,
+          "leader": [
+            4448,
+            3480
+          ],
+          "animPort522": 1,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        }
+      ],
+      "passed": true,
+      "errors": []
+    },
+    {
+      "prayer": 6,
+      "callback": "C2C675",
+      "requiredSceneNpcs": [
+        38
+      ],
+      "sourceWarp": 227,
+      "expectedSceneCoordinates": [
+        7552,
+        456
+      ],
+      "expected": {
+        "depth": 1,
+        "giygasPhase": 10,
+        "battleGroup": 479,
+        "naturalSignals": 2,
+        "waitEntries": 2,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "seen757": 1,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "event859Bound": 1,
+        "callbackPcMask": 511
+      },
+      "actual": {
+        "id": 5,
+        "steps": 1483,
+        "depth": 1,
+        "firstRoll": 123,
+        "hp": 60000,
+        "pp": 200,
+        "maxhp": 60000,
+        "maxpp": 300,
+        "offense": 80,
+        "defense": 50,
+        "speed": 20,
+        "guts": 0,
+        "luck": 20,
+        "shieldhp": 0,
+        "npc": 0,
+        "consciousness": 1,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "res": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "attackerHp": 500,
+        "attackerPp": 200,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "lootQuantity": 0,
+        "postBattleFlag": 1,
+        "partyCount": 4,
+        "npc1": 0,
+        "npc2": 0,
+        "party": [
+          1,
+          2,
+          3,
+          4,
+          0,
+          0
+        ],
+        "targetId": 229,
+        "targetTurn": 0,
+        "targetSprite": [
+          55,
+          66
+        ],
+        "giygasPhase": 10,
+        "battleGroup": 479,
+        "specialDefeat": 0,
+        "skipDeath": 0,
+        "teleportStyle": 0,
+        "teleportDestination": 0,
+        "attackerRestored": 1,
+        "targetRestored": 1,
+        "secondId": 0,
+        "secondHp": 0,
+        "secondConscious": 0,
+        "pooId": 4,
+        "pooConscious": 1,
+        "targetIq": 20,
+        "targetVitality": 20,
+        "attackerItem": 0,
+        "rolls8": [
+          123,
+          227,
+          119,
+          185,
+          243,
+          109,
+          28,
+          247
+        ],
+        "varianceRolls": [
+          106,
+          1
+        ],
+        "damageInputs": [
+          766
+        ],
+        "naturalSignals": 2,
+        "waitEntries": 2,
+        "seen757": 1,
+        "seen729": 0,
+        "seen735": 0,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "frame": 12854,
+        "event859Bound": 1,
+        "callbackPcMask": 511,
+        "observedScripts": [
+          1,
+          2,
+          8,
+          9,
+          10,
+          12,
+          279,
+          280,
+          281,
+          282,
+          283,
+          606,
+          757,
+          785
+        ],
+        "observedNpcs": [
+          33,
+          34,
+          35,
+          37,
+          38,
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          1419
+        ]
+      },
+      "waitTimeline": [
+        {
+          "id": 5,
+          "ordinal": 1,
+          "step": 304,
+          "frame": 11705,
+          "leader": [
+            7552,
+            456
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 5,
+          "ordinal": 2,
+          "step": 991,
+          "frame": 12382,
+          "leader": [
+            7552,
+            456
+          ],
+          "animPort522": 1,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        }
+      ],
+      "passed": true,
+      "errors": []
+    },
+    {
+      "prayer": 7,
+      "callback": "C2C69E",
+      "requiredSceneNpcs": [],
+      "sourceWarp": 221,
+      "expectedSceneCoordinates": [
+        1600,
+        8784
+      ],
+      "expected": {
+        "depth": 1,
+        "giygasPhase": 11,
+        "battleGroup": 480,
+        "naturalSignals": 5,
+        "waitEntries": 5,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "seen757": 1,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "event859Bound": 1,
+        "callbackPcMask": 1023
+      },
+      "actual": {
+        "id": 6,
+        "steps": 2567,
+        "depth": 1,
+        "firstRoll": 123,
+        "hp": 60000,
+        "pp": 200,
+        "maxhp": 60000,
+        "maxpp": 300,
+        "offense": 80,
+        "defense": 50,
+        "speed": 20,
+        "guts": 0,
+        "luck": 20,
+        "shieldhp": 0,
+        "npc": 0,
+        "consciousness": 1,
+        "aff": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "res": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "attackerHp": 500,
+        "attackerPp": 200,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ],
+        "battleExp": 0,
+        "battleMoney": 0,
+        "lootQuantity": 0,
+        "postBattleFlag": 1,
+        "partyCount": 4,
+        "npc1": 0,
+        "npc2": 0,
+        "party": [
+          1,
+          2,
+          3,
+          4,
+          0,
+          0
+        ],
+        "targetId": 229,
+        "targetTurn": 0,
+        "targetSprite": [
+          55,
+          66
+        ],
+        "giygasPhase": 11,
+        "battleGroup": 480,
+        "specialDefeat": 0,
+        "skipDeath": 0,
+        "teleportStyle": 0,
+        "teleportDestination": 0,
+        "attackerRestored": 1,
+        "targetRestored": 1,
+        "secondId": 0,
+        "secondHp": 0,
+        "secondConscious": 0,
+        "pooId": 4,
+        "pooConscious": 1,
+        "targetIq": 20,
+        "targetVitality": 20,
+        "attackerItem": 0,
+        "rolls8": [
+          123,
+          227,
+          119,
+          185,
+          243,
+          109,
+          28,
+          247
+        ],
+        "varianceRolls": [
+          127,
+          118
+        ],
+        "damageInputs": [
+          1597
+        ],
+        "naturalSignals": 5,
+        "waitEntries": 5,
+        "seen757": 1,
+        "seen729": 0,
+        "seen735": 0,
+        "animPort522": 1,
+        "monsterOff": 0,
+        "init23Script": 1,
+        "npcSpawnsEnabled": 255,
+        "frame": 15350,
+        "event859Bound": 1,
+        "callbackPcMask": 1023,
+        "observedScripts": [
+          1,
+          2,
+          9,
+          10,
+          279,
+          280,
+          281,
+          282,
+          283,
+          717,
+          718,
+          719,
+          757,
+          785
+        ],
+        "observedNpcs": [
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          1419
+        ]
+      },
+      "waitTimeline": [
+        {
+          "id": 6,
+          "ordinal": 1,
+          "step": 324,
+          "frame": 13159,
+          "leader": [
+            1600,
+            8784
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 6,
+          "ordinal": 2,
+          "step": 627,
+          "frame": 13458,
+          "leader": [
+            1600,
+            8784
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 6,
+          "ordinal": 3,
+          "step": 1004,
+          "frame": 13825,
+          "leader": [
+            1600,
+            8784
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 6,
+          "ordinal": 4,
+          "step": 1141,
+          "frame": 13958,
+          "leader": [
+            1600,
+            8784
+          ],
+          "animPort522": 0,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        },
+        {
+          "id": 6,
+          "ordinal": 5,
+          "step": 1993,
+          "frame": 14800,
+          "leader": [
+            1600,
+            8784
+          ],
+          "animPort522": 1,
+          "monsterOff": 1,
+          "battleModeFlag": 0
+        }
+      ],
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "executedAssertions": 208,
+  "skippedCases": 0,
+  "nativeWarnings": [],
+  "sourceFiles": {
+    "src/game/battle_actions.c": "dc847cfbbcea8c2aafd527a061006db2017032d981cfbad0f22c0ba5453a95dd",
+    "src/game/display_text_cc.c": "8823d80be9f5de41518dd81684618493a4f66d790976eab38dee211706375638",
+    "src/game/overworld.c": "f91e1db767e21a7f72648c17b6662cb037f99bfa0598ab4ad4e820c67b4d370d",
+    "src/game/map_loader.c": "55d858566e2374126c34589d2c6793254b61d83e8d32bb2c353915cc9114f5c3",
+    "src/entity/script.c": "dc8243e18f1dc69244ba073d81913c4620c5ba3ea766062fd3529948c412f4e2",
+    "src/entity/callroutine.c": "63835e5c1abd6af31c91ae0079e33997c8f99834b0b3ff94ea22b39e0f083c56",
+    "asm/battle/display_battle_cutscene_text.asm": "af9767b367351e6e06d6a79224011aad75e644a68e5371f3232f5c3f5f50df51",
+    "asm/text/wait_for_actionscript.asm": "65b2802a2cb434fe3941946f34020596a27192d4fd71008a4af7dbfd2be9a63c",
+    "asm/overworld/initialize_overworld_state.asm": "105343bfe07bc9acdd4fd4b19370a66e5efcec33fb8c9db0df52d7fa09ec0bda",
+    "asm/data/events/scripts/757.asm": "35602c63b12ac139f06efdb76a9a7840c2f342cf2d49304303f6c2120da5b73f",
+    "asm/data/events/scripts/747.asm": "0414192c453d0448e3d213356a75df61e6eb3c06c1dd566b8efb44b957df97c6",
+    "asm/data/events/scripts/859.asm": "c6148e883a95f1c1c592aff9cc6844dd3d0af4e624c20d8fe14e306a8f6f17c9",
+    "src/intro/init_intro.c": "a681ece59de65ab4c47604632cc76d7dceb0d5df58d845858f5419bed8b950ad",
+    "src/data/event_script_data.c": "4854147c1ada08ff15c16f1ecf4ccf16d5a66354c67793e9b487f8a1445089bc",
+    "src/entity/callbacks.c": "c38e6cccc7f9192f404e9eb5f17be6098ff16728ece825c6c6a65baf4a7cc461",
+    "src/game_main.c": "ac690d7a23c339dc19616069312c36e440999fc7e9a502f2c968231ba725582c",
+    "src/game/door.c": "a56c5695cbde1e11dc20bb2a61beebf76898d2fd10671e5eba7f1ef5e730d3cf"
+  },
+  "pinnedSourceFiles": {
+    "ccscript/data/data_34.ccs": "3d35064adb59d0664472b0107b465c6c6444c4f2a6fcdb685c3ca5b233b5c2b0",
+    "ccscript/data/data_58.ccs": "a44ba93ec5e2f52e69253d8e79d8c3fd0104ff8f5c7317c98b87696af01a7664",
+    "ccscript/data/data_09.ccs": "e27d314f0a49f5de51e92e7446cf3dad911cd27657673c469daaee16c6551d23",
+    "ccscript/data/data_59.ccs": "4c1a6b8ad889bb4d1fabee319177bb2bd872e4347422d4ac2b753ff417104226"
+  },
+  "diagnosticMode": false,
+  "limits": [
+    "Prepared battle callback entry; no preceding full story or natural Pray command selection claim.",
+    "Natural text/map/entity scene children are driven without injected completion flags or skipped callback PCs.",
+    "Actor observations show real assigned scripts/NPCs; no pixel-perfect appearance, sound audibility or original timing oracle claim.",
+    "A failed bounded diagnostic is not a native defect until missing fixture prerequisites have been excluded."
+  ]
+}

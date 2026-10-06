@@ -180,13 +180,20 @@ def convert_indexed_graphics(rom: bytes, project: Path, assets: dict):
     bg_graphic_count = max(row[0] for row in bg_rows)+1
     bg_palette_count = max(row[1] for row in bg_rows)+1
     bg_depths = {}
+    bg_palette_sizes = {}
     for row in bg_rows:
+        if row[2] not in (2, 4):
+            raise ConversionError("A Redux battle background has invalid bit depth")
         if row[0] in bg_depths and bg_depths[row[0]] != row[2]:
             raise ConversionError("A Redux battle background graphic has inconsistent bit depth")
         bg_depths[row[0]] = row[2]
+        # CoilSnake renumbers/deduplicates palettes as well as graphics. Their
+        # Original donor slot width is unrelated to the relocated palette's
+        # bit depth; retain the widest actual compiled consumer for shared IDs.
+        bg_palette_sizes[row[1]] = max(bg_palette_sizes.get(row[1], 0), (1 << row[2]) * 2)
     families = (
         (r"(?:US/)?battle_sprites/(\d+)\.gfx\.lzhal",asm_pointer(rom,0x2EE0B),5,True),
-        (r"(?:US/)?battle_bgs/gfx/(\d+)\.gfx\.lzhal",asm_pointer(rom,0x2D1BA),4,True),
+        (r"(?:US/)?battle_bgs/graphics/(\d+)\.gfx\.lzhal",asm_pointer(rom,0x2D1BA),4,True),
         (r"(?:US/)?battle_bgs/arrangements/(\d+)\.arr\.lzhal",asm_pointer(rom,0x2D2C1),4,True),
         (r"(?:US/)?battle_bgs/palettes/(\d+)\.pal",asm_pointer(rom,0x2D3BB),4,False),
         (r"(?:US/)?maps/gfx/(\d+)\.gfx\.lzhal",0xEF105B,4,True),
@@ -215,7 +222,7 @@ def convert_indexed_graphics(rom: bytes, project: Path, assets: dict):
                 if len(unpacked) > 65536:
                     raise ConversionError(f"Oversized decompressed graphics: {key}")
                 expected = None
-                if "battle_bgs/gfx/" in key: expected = 512*8*bg_depths[index]
+                if "battle_bgs/graphics/" in key: expected = 512*8*bg_depths[index]
                 elif "battle_bgs/arrangements/" in key: expected = 2048
                 elif "maps/gfx/" in key: expected = 896*32
                 elif "maps/arrangements/" in key: expected = 32768
@@ -227,7 +234,8 @@ def convert_indexed_graphics(rom: bytes, project: Path, assets: dict):
                     if len(unpacked) != expected:
                         raise ConversionError(f"Battle sprite {index} size {len(unpacked)} disagrees with size enum {kind}")
             else:
-                content = slice_rom(rom,pointer,len(assets[key]))
+                size = bg_palette_sizes[index] if "battle_bgs/palettes/" in key else len(assets[key])
+                content = slice_rom(rom,pointer,size)
             assets[key] = bytes(content); converted.append(key)
     sprite_table = slice_rom(rom,asm_pointer(rom,0x2EE0B),550)
     assets["data/battle_sprites_pointers.bin"] = sprite_table

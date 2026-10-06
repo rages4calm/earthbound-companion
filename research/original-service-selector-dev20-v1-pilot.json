@@ -1,0 +1,7422 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev20-selected-barter-delivery-transactions",
+  "privateBuild": {
+    "driverSourceSha256": "ba20c94706c8b8032e8d8e17641a874a0468c650d1c7ed230ddafb0699a65636",
+    "executableSha256": "42b387b37156fd2c96ae625f2ecfcf1bcd8ce83e8aad27c8c6ad5b221c4b0b72",
+    "productionExecutableSha256": "5977d91cc4c5ad4da943aa414b5aefa03014586eb86c6a5bee5d882eaa3fad7f",
+    "productionLibrarySha256": "48be6d8e49d8d579ac3f9f562fd140c38678949b63c32cab22069c941ca3c9b2",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "runtimeSha256": {
+    "player.exe": "5977d91cc4c5ad4da943aa414b5aefa03014586eb86c6a5bee5d882eaa3fad7f",
+    "observer.exe": "a2fcd127a32808dcedd38eee461aec3236cd22379d9594dc0e6c2a0f7013bd1b"
+  },
+  "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "nativeBaseRevision": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "originalPack": true,
+  "executedSourceSnapshot": "_BuildScratch\\audit-dev17-v1-source",
+  "executedSourceReferences": [
+    {
+      "path": "src/game/display_text.c",
+      "sha256": "7a11de0b21c1984b53859d11bb1bea0784a87b9a0fad53610cbd42fe1ba2eb72"
+    },
+    {
+      "path": "src/game/display_text_cc.c",
+      "sha256": "9a22e3e8adc5457cde9c69a5d318eb9ca39242c0035288897f8eba36dc5f73e5"
+    },
+    {
+      "path": "src/game/display_text_menus.c",
+      "sha256": "8735294cd95d0f039334048d8259624e29a9997dc09cf689b422a8a7fbceec54"
+    },
+    {
+      "path": "src/game/inventory.c",
+      "sha256": "feb662eeadb5bfc8d6cf2fa2fad812fa0145e91de025800673082a17cd0ccaad"
+    },
+    {
+      "path": "src/game/audio.c",
+      "sha256": "9b9a9b4811bff9c7d97e0ec269136cf42773de0c932b11ba65eb96d0949398df"
+    },
+    {
+      "path": "src/game/window.c",
+      "sha256": "726239f30b1c84704a61e4cd720db2884df83a91b0e0b7f8963ff9888e733479"
+    },
+    {
+      "path": "src/game/text.c",
+      "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+    },
+    {
+      "path": "src/core/mode_stack.h",
+      "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+    }
+  ],
+  "pinnedSource": [
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "sha256": "475284396f845f0f1b86bd24d3ef818b9d64bd799260d4c845cc9d7c7dfe683d"
+    },
+    {
+      "path": "ccscript/data/data_17.ccs",
+      "sha256": "31dc2d63322dd52d52b750bb072d2701e9af7975afdb6ab08fb3faea65c20b38"
+    },
+    {
+      "path": "ccscript/data/data_18.ccs",
+      "sha256": "eaa93dd91fa647a6464575109b53609e422152957857fff717db82b64c1c720e"
+    },
+    {
+      "path": "ccscript/data/data_19.ccs",
+      "sha256": "e0f1d64de4a29c1b64411d5424730ac25dc9aaee37e08cdd84a297e9f36ee27a"
+    },
+    {
+      "path": "ccscript/data/data_21.ccs",
+      "sha256": "6d1654dfb8a648850c29129379af39edd315a5bddb57fb36855eea55572977a4"
+    },
+    {
+      "path": "ccscript/data/data_36.ccs",
+      "sha256": "a37750fb9c775c5954b11d8e8a616505bdadab2176cd00792a757dc6b276dfc4"
+    },
+    {
+      "path": "ccscript/redux/keyitems.ccs",
+      "sha256": "83d8f27a2f9c139d65a369e2f97d30e13eab6d989520e9b763ce5e16c3401fc8"
+    },
+    {
+      "path": "ccscript/definitions/items.ccs",
+      "sha256": "a0c81f83b356164a00beb36da6d7d6dd0ff4e6446c8ab0e279f4e86d40f47c9d"
+    },
+    {
+      "path": "ccscript/definitions/flags.ccs",
+      "sha256": "b47e0dadc6e23c5fb4daf91f4eb94e99f40d0e660e28acf352e5e4e71b51bb4c"
+    },
+    {
+      "path": "timed_delivery_table.yml",
+      "sha256": "c1ccfb31b4175467eca59abc3f570785472d5b873c6d3b7a4300fbcc6dd9f9fb"
+    }
+  ],
+  "cases": [
+    {
+      "fixture": {
+        "id": "tracy-pool-166-ordinary0",
+        "sourceEntry": "C6474F",
+        "entry": 1517471,
+        "initialInventory": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "initialPool": [
+          166
+        ],
+        "plan": [
+          0,
+          1,
+          999
+        ],
+        "expectedDelta": 0,
+        "expectedInventory": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "sound": 118,
+        "soundCount": 1,
+        "expectedTransfer": {
+          "storage": [
+            166,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "keyPool": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "sourceContract": {
+          "item": 166,
+          "allowed": true,
+          "storageFlag": 0,
+          "bagGuardMustIncludeSourceSelectablePool": true
+        }
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "before-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              166,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 0,
+            "userdata": 1,
+            "keys": []
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 2,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 999,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1173,
+            "menus": 3,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 3,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "after-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              166,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 2,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "dc8755b3399485697b8d5540f729d29a02b88eefd95f3134174b29c4e283cad8",
+      "eventStreamSha256": "303128b8c77734a75cddf159859e8305bfcadca53f6796b07635ef02ece91c94",
+      "traceStreamSha256": "05affa5b6ffb9a39d47bf99096964e328fa033c5dccb1f604506d6dfbd6c3f55",
+      "errors": [
+        "Actual transaction sound request count differs",
+        "Source storage differs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] expected [166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+        "Source keyPool differs: [166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] expected [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+      ],
+      "passed": false
+    },
+    {
+      "fixture": {
+        "id": "tracy-pool-196-ordinary0",
+        "sourceEntry": "C6474F",
+        "entry": 1517471,
+        "initialInventory": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "initialPool": [
+          196
+        ],
+        "plan": [
+          0,
+          1,
+          999
+        ],
+        "expectedDelta": 0,
+        "expectedInventory": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "sound": 118,
+        "soundCount": 0,
+        "expectedTransfer": {
+          "storage": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "keyPool": [
+            196,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "sourceContract": {
+          "item": 196,
+          "allowed": false,
+          "storageFlag": 64,
+          "bagGuardMustIncludeSourceSelectablePool": true
+        }
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "before-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              196,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 0,
+            "userdata": 1,
+            "keys": []
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 2,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 999,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1173,
+            "menus": 3,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 3,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "after-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              196,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 2,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "59208b352f805dff95f1e775228e00011d185c35628d49a444c0dbc1bded4e5e",
+      "eventStreamSha256": "0170e3e9b4d523c9827507585e0d53f3c81cefde557b161451ee455cf8f13f25",
+      "traceStreamSha256": "05affa5b6ffb9a39d47bf99096964e328fa033c5dccb1f604506d6dfbd6c3f55",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "retail-pool-piggy-ordinary0",
+        "sourceEntry": "C5D24B",
+        "entry": 1491845,
+        "initialInventory": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "initialPool": [
+          162
+        ],
+        "plan": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "expectedDelta": 150,
+        "expectedInventory": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "sound": 12,
+        "soundCount": 1,
+        "expectedTransfer": {
+          "keyPool": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "storage": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "sourceContract": {
+          "item": 162,
+          "price": 300,
+          "sourceSale": 150,
+          "bagGuardMustIncludeSourceSelectablePool": true
+        }
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "before-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              162,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 2,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 0,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 0,
+            "userdata": 1,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 0,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 0,
+            "userdata": 1,
+            "keys": []
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 3,
+            "pick": 1,
+            "initial": 0,
+            "window": 12,
+            "options": [
+              {
+                "id": 17,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 18,
+                "x": 0,
+                "y": 1
+              },
+              {
+                "id": 49,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 74,
+                "x": 0,
+                "y": 3
+              },
+              {
+                "id": 64,
+                "x": 0,
+                "y": 4
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 18,
+            "keys": [
+              1024
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 18
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 69,
+            "result": 18
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 4,
+            "pick": 999,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 5,
+            "pick": 999,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 1400,
+            "menus": 6,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 4,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "after-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              162,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 79952,
+            "depth": 1,
+            "working": 0,
+            "argument": 1,
+            "inventory": [
+              [
+                18,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        3,
+        7,
+        7,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "240b187dd1e30d096407bb10e1a16d697fb0e6d8908af3a9a2bdf2549e064b35",
+      "eventStreamSha256": "1aa303b0f40274e86aad1f068e03cccb2abb5e4137d589c5f127f0406a05f68d",
+      "traceStreamSha256": "bd9f7363179da645a8b14a8b2d3ac899584e9c21d39a986a9f61d5436da293ae",
+      "errors": [
+        "Source wallet delta mismatch",
+        "Actual complete inventory differs",
+        "Source keyPool differs: [162, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] expected [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+      ],
+      "passed": false
+    },
+    {
+      "fixture": {
+        "id": "tracy-pool-166-ordinary1",
+        "sourceEntry": "C6474F",
+        "entry": 1517471,
+        "initialInventory": [
+          [
+            87,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "initialPool": [
+          166
+        ],
+        "plan": [
+          1,
+          1,
+          999
+        ],
+        "expectedDelta": 0,
+        "expectedInventory": [
+          [
+            87,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "sound": 118,
+        "soundCount": 1,
+        "expectedTransfer": {
+          "storage": [
+            166,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "keyPool": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "sourceContract": {
+          "item": 166,
+          "allowed": true,
+          "storageFlag": 0,
+          "bagGuardMustIncludeSourceSelectablePool": true
+        }
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "before-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              166,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                87,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 1,
+            "initial": 0,
+            "window": 2,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 422,
+                "x": 11,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 422,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 422
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 2,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 999,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 903,
+            "menus": 3,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 3,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "after-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              166,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 422,
+            "inventory": [
+              [
+                87,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        118,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "054cbdc37d1b00101aa04427f6c046882bd3c62375310a5d176f8266e36c471b",
+      "eventStreamSha256": "7c9e6b748b0f59e8eff21cb0f69c695b736d47afa23d57da13e1b826ec43bb45",
+      "traceStreamSha256": "39956f758c54003518401617b5ef498e5ed757d1797d4337f9493177b21db643",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "tracy-pool-196-ordinary1",
+        "sourceEntry": "C6474F",
+        "entry": 1517471,
+        "initialInventory": [
+          [
+            87,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "initialPool": [
+          196
+        ],
+        "plan": [
+          1,
+          1,
+          999
+        ],
+        "expectedDelta": 0,
+        "expectedInventory": [
+          [
+            87,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "sound": 118,
+        "soundCount": 0,
+        "expectedTransfer": {
+          "storage": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "keyPool": [
+            196,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "sourceContract": {
+          "item": 196,
+          "allowed": false,
+          "storageFlag": 64,
+          "bagGuardMustIncludeSourceSelectablePool": true
+        }
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "before-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              196,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                87,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 1,
+            "initial": 0,
+            "window": 2,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 452,
+                "x": 11,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 452,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 452
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 2,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 999,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 903,
+            "menus": 3,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 3,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "after-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              196,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 452,
+            "inventory": [
+              [
+                87,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "e0562f2b65f0bef24360ba9998bfac15d685bd272e6d19cb0be5640fdde69467",
+      "eventStreamSha256": "635c72c2df3fed35ab4b208e0109028014b66c54273e1e04f34f8cd137498010",
+      "traceStreamSha256": "c2e905fe8d37e2fcff0ed39c30cf746536a9158b62c7ca3bbee2c268ba504f3c",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "fixture": {
+        "id": "retail-pool-piggy-ordinary1",
+        "sourceEntry": "C5D24B",
+        "entry": 1491845,
+        "initialInventory": [
+          [
+            87,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "initialPool": [
+          162
+        ],
+        "plan": [
+          1,
+          1,
+          0,
+          1
+        ],
+        "expectedDelta": 150,
+        "expectedInventory": [
+          [
+            87,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "sound": 12,
+        "soundCount": 1,
+        "expectedTransfer": {
+          "keyPool": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "storage": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "sourceContract": {
+          "item": 162,
+          "price": 300,
+          "sourceSale": 150,
+          "bagGuardMustIncludeSourceSelectablePool": true
+        }
+      },
+      "nativeExit": 0,
+      "stages": [
+        {
+          "stage": "warm",
+          "exit": 0
+        }
+      ],
+      "events": [
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "before-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              162,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "before-entry",
+            "wallet": 80000,
+            "depth": 1,
+            "working": 0,
+            "argument": 0,
+            "inventory": [
+              [
+                87,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 0,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 2,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 1,
+            "pick": 1,
+            "initial": 0,
+            "window": 2,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": 418,
+                "x": 11,
+                "y": 0
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 418,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 418
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 2,
+            "pick": 0,
+            "initial": 1,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 0,
+            "userdata": 1,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 1
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_MENU",
+          "actual": {
+            "index": 3,
+            "pick": 1,
+            "initial": 0,
+            "window": 1,
+            "options": [
+              {
+                "id": 1,
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": 2,
+                "x": 8,
+                "y": 2
+              }
+            ]
+          }
+        },
+        {
+          "type": "QA_NAV",
+          "actual": {
+            "pick": 1,
+            "userdata": 2,
+            "keys": [
+              512
+            ]
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 7,
+            "result": 2
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 6,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_POP",
+          "actual": {
+            "mode": 28,
+            "result": 0
+          }
+        },
+        {
+          "type": "QA_END",
+          "actual": {
+            "steps": 998,
+            "menus": 4,
+            "numbers": 0,
+            "chars": 0,
+            "planUsed": 4,
+            "depth": 1,
+            "mode": 0
+          }
+        },
+        {
+          "type": "QA_TRANSFER",
+          "actual": {
+            "stage": "after-entry",
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "deliveryFlags": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "storage": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "queuedItems": [
+              0,
+              0,
+              0
+            ],
+            "queuedSources": [
+              0,
+              0,
+              0
+            ],
+            "keyPool": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "type": "QA_SNAP",
+          "actual": {
+            "stage": "after-entry",
+            "wallet": 80150,
+            "depth": 1,
+            "working": 2,
+            "argument": 162,
+            "inventory": [
+              [
+                87,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "equipment": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "flags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "soundRequests": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        1,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        2,
+        1,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "logSha256": "8d99f7ee7df1a4348808a20433998a9142d8a8fefd1cf599836337a4f0e2638a",
+      "eventStreamSha256": "cf98401629a30db8ec3cd2c6b5e473a388fc420d1b0da408f024f359ad612506",
+      "traceStreamSha256": "e3f2a62ccda9a1fd00c1b3d07e2779541adb080432b212c0cc52f2543abdba91",
+      "errors": [],
+      "passed": true
+    }
+  ],
+  "allPassed": false,
+  "limits": [
+    "Selected packed text entries and production child/menu/button/capture dispatch only. Source prerequisites prepared before entry; no post-entry inventory, register, flag or result injection. No natural NPC reachability, complete courier pathfinding, all callers, pixels or full-game proof.",
+    "Storage/queued items/key pool and all ordinary slots are actual read-only snapshots. Initial bag contents pass through production give-item classification; queue/storage fixture setup uses production APIs.",
+    "Cold captures are at actual inventory/storage menu setup, resumed through production restore in a fresh process. Sound trace proves requests only."
+  ],
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false,
+  "privateDriverSourceSha256": null
+}

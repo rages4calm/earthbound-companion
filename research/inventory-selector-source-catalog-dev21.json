@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev21-inventory-selector-source-catalog",
+  "pinnedRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "sourceReferences": [
+    {
+      "path": "ccscript/data/data_07.ccs",
+      "sha256": "6f1f3ca9771759c906cf99b53c498449f087b3d29fd988228757b4da0bd04f73"
+    },
+    {
+      "path": "ccscript/data/data_14.ccs",
+      "sha256": "2cae315662f18049751d63bb2efe556d15a1e42571ab8a515b421c776c35e7d8"
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "sha256": "475284396f845f0f1b86bd24d3ef818b9d64bd799260d4c845cc9d7c7dfe683d"
+    },
+    {
+      "path": "ccscript/data/data_16.ccs",
+      "sha256": "d6469d2d2d92aab508e4312dbe65c2f72d33f747d488cd043b81230e58aad0d1"
+    },
+    {
+      "path": "ccscript/data/data_17.ccs",
+      "sha256": "31dc2d63322dd52d52b750bb072d2701e9af7975afdb6ab08fb3faea65c20b38"
+    },
+    {
+      "path": "ccscript/data/data_18.ccs",
+      "sha256": "eaa93dd91fa647a6464575109b53609e422152957857fff717db82b64c1c720e"
+    },
+    {
+      "path": "ccscript/data/data_19.ccs",
+      "sha256": "e0f1d64de4a29c1b64411d5424730ac25dc9aaee37e08cdd84a297e9f36ee27a"
+    },
+    {
+      "path": "ccscript/data/data_20.ccs",
+      "sha256": "1b82b8cd584b6af510a061291a69d1083464b2829a27744da821205616213c67"
+    },
+    {
+      "path": "ccscript/data/data_34.ccs",
+      "sha256": "3d35064adb59d0664472b0107b465c6c6444c4f2a6fcdb685c3ca5b233b5c2b0"
+    },
+    {
+      "path": "ccscript/data/data_39.ccs",
+      "sha256": "1a537aa3cff16bb605e4c7f05b3a0ae39560e036c412d3613733afb3b2392a55"
+    },
+    {
+      "path": "ccscript/data/data_40.ccs",
+      "sha256": "a5b8a05ed4285f15d44e27877e72e8b5ef535577e6b7f5dcaee6a8c19747e129"
+    },
+    {
+      "path": "ccscript/debug/options/events.ccs",
+      "sha256": "26b399e5c6c2ffbd0a2f48e93e64ed4ac23c0799f63aceb2d06abedb5f39db17"
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "sha256": "abc49d29052f071c5e4def5cff3c3608e997aa2967c28cf04fb1d75ae844b00a"
+    },
+    {
+      "path": "ccscript/dialogue/battle_text.ccs",
+      "sha256": "20f6a75b24cc4dd9eabcba936bd973300b187f3c90bf5bbdaea9c526e05c16c0"
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "sha256": "743ce4f6cd1bb175b7f649d1b10ddf8ef22ef9bf55537eb4e3d41d1aff18b664"
+    }
+  ],
+  "staticCallSites": [
+    {
+      "path": "ccscript/data/data_07.ccs",
+      "line": 269,
+      "callerLabel": "l_0xc585c7",
+      "kind": "generic-inventory-selector",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_14.ccs",
+      "line": 65,
+      "callerLabel": "l_0xc5d89e",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 16,
+      "callerLabel": "l_0xc5df3a",
+      "kind": "party-has-items-preflight",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 255,
+      "callerLabel": "l_0xc5e1ef",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 561,
+      "callerLabel": "l_0xc5e499",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 600,
+      "callerLabel": "l_0xc5e504",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 646,
+      "callerLabel": "l_0xc5e584",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 651,
+      "callerLabel": "l_0xc5e58b",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 656,
+      "callerLabel": "l_0xc5e592",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 661,
+      "callerLabel": "l_0xc5e599",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 666,
+      "callerLabel": "l_0xc5e5a0",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 671,
+      "callerLabel": "l_0xc5e5a7",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 676,
+      "callerLabel": "l_0xc5e5ae",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_15.ccs",
+      "line": 681,
+      "callerLabel": "l_0xc5e5b5",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_16.ccs",
+      "line": 1204,
+      "callerLabel": "l_0xc6044c",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_17.ccs",
+      "line": 665,
+      "callerLabel": "l_0xc616b2",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_17.ccs",
+      "line": 706,
+      "callerLabel": "l_0xc617bb",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_17.ccs",
+      "line": 749,
+      "callerLabel": "l_0xc618ed",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_17.ccs",
+      "line": 792,
+      "callerLabel": "l_0xc61a14",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_17.ccs",
+      "line": 831,
+      "callerLabel": "l_0xc61b03",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_17.ccs",
+      "line": 871,
+      "callerLabel": "l_0xc61c20",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_17.ccs",
+      "line": 911,
+      "callerLabel": "l_0xc61d5d",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_18.ccs",
+      "line": 28,
+      "callerLabel": "l_0xc61e8e",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_18.ccs",
+      "line": 70,
+      "callerLabel": "l_0xc61fab",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_18.ccs",
+      "line": 109,
+      "callerLabel": "l_0xc62089",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_18.ccs",
+      "line": 149,
+      "callerLabel": "l_0xc621d0",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_18.ccs",
+      "line": 191,
+      "callerLabel": "l_0xc622fc",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_19.ccs",
+      "line": 469,
+      "callerLabel": "l_0xc63fa2",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_19.ccs",
+      "line": 491,
+      "callerLabel": "l_0xc6400a",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_19.ccs",
+      "line": 513,
+      "callerLabel": "l_0xc64078",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_20.ccs",
+      "line": 32,
+      "callerLabel": "l_0xc6474f",
+      "kind": "party-has-items-preflight",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_20.ccs",
+      "line": 40,
+      "callerLabel": "l_0xc6474f",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_20.ccs",
+      "line": 100,
+      "callerLabel": "l_0xc64865",
+      "kind": "recipient-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_20.ccs",
+      "line": 360,
+      "callerLabel": "l_0xc64e04",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_20.ccs",
+      "line": 567,
+      "callerLabel": "l_0xc6512f",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_34.ccs",
+      "line": 681,
+      "callerLabel": "l_0xc7a72f",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_39.ccs",
+      "line": 160,
+      "callerLabel": "l_0xc81789",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/data/data_40.ccs",
+      "line": 448,
+      "callerLabel": "l_0xc83b7b",
+      "kind": "generic-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/events.ccs",
+      "line": 1072,
+      "callerLabel": "l_0xc5a54d",
+      "kind": "generic-inventory-selector",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "line": 172,
+      "callerLabel": "l_0xc5e584",
+      "kind": "build-inventory-menu",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "line": 177,
+      "callerLabel": "l_0xc5e58b",
+      "kind": "build-inventory-menu",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "line": 182,
+      "callerLabel": "l_0xc5e592",
+      "kind": "build-inventory-menu",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "line": 187,
+      "callerLabel": "l_0xc5e599",
+      "kind": "build-inventory-menu",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "line": 192,
+      "callerLabel": "l_0xc5e5a0",
+      "kind": "build-inventory-menu",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "line": 197,
+      "callerLabel": "l_0xc5e5a7",
+      "kind": "build-inventory-menu",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "line": 202,
+      "callerLabel": "l_0xc5e5ae",
+      "kind": "build-inventory-menu",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "line": 207,
+      "callerLabel": "l_0xc5e5b5",
+      "kind": "build-inventory-menu",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/debug/options/goods.ccs",
+      "line": 277,
+      "callerLabel": "l_0xc5e499",
+      "kind": "build-inventory-menu",
+      "scope": "debug-source",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/dialogue/battle_text.ccs",
+      "line": 2208,
+      "callerLabel": "l_0xef7d0f",
+      "kind": "battle-discard-inventory-selector",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "line": 119,
+      "callerLabel": "BuySell_Sell_String",
+      "kind": "party-has-items-preflight",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "line": 698,
+      "callerLabel": "Character_Inventory_1",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "line": 704,
+      "callerLabel": "Character_Inventory_2",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "line": 710,
+      "callerLabel": "Character_Inventory_3",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "line": 716,
+      "callerLabel": "Character_Inventory_4",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    },
+    {
+      "path": "ccscript/shops/ShopSys.ccs",
+      "line": 748,
+      "callerLabel": "Select_Sell_Single_Char",
+      "kind": "build-inventory-menu",
+      "scope": "production-source-candidate",
+      "executedByThisTool": false
+    }
+  ],
+  "scanEncoding": "Lossless byte-to-codepoint mapping; only ASCII labels/calls are matched.",
+  "callSiteCount": 55,
+  "executedCases": 0,
+  "limits": [
+    "Static syntax inventory only; source import reachability and runtime branches are not established by this scan.",
+    "Multiple labels in one parent transaction and multiple calls to the same helper are separate call sites, not separate game features.",
+    "Debug candidates are recorded separately and excluded from gameplay verification claims.",
+    "Monkey, Tracy and retail selected runtime proofs remain in separate immutable reports; other transactions need independent prerequisites and outcomes."
+  ]
+}

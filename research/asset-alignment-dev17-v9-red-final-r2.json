@@ -1,0 +1,703 @@
+{
+  "Passed": false,
+  "Cases": [
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 0,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3108,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "LogSha256": "fa09ce5c128d0a3ee0e26357590b627efbaed06a8a37a1afd081a564f68aaf7f"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 1,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3369,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "641f4e83ea31bf59b91b5c0d6fe60756f86616704e8896c0197b77c570a05b20",
+      "LogSha256": "d2ea47455ebb99ad0e0dd114bd2105c430e14f2c9498f8589b3f3d984514d054"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 2,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3351,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "d99858c7a11145192299ec8602e4785b704db7078ead5bfb769021c6f58e78bb",
+      "LogSha256": "c4a226bba45918b83bd19ffe6b68746a41111d11dda0f94927d2843b141f806c"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 3,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3348,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "c2183f84471484e340b2ecf63ade78196d09c997a3d4906e3bb2211a5c76275a",
+      "LogSha256": "efa8ca3d9dbe3517cec495290f0aadca9536a652ac76572cf83deb5e81927310"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 4,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3330,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "ceeec2c8a6bfa56a907058920ade9a4b538190ede6bac4dae280768c7c904096",
+      "LogSha256": "d573efd1a6a2e8fff5231256e22f891b8399b15e5cc3676071d531ec01255d56"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 5,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3348,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "ba8b382050bb66846b73692954605affb067e0a2bf7f04b134cd5c0220c518a7",
+      "LogSha256": "efa8ca3d9dbe3517cec495290f0aadca9536a652ac76572cf83deb5e81927310"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 6,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3261,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "c399256eb583038d012342a1996cfd5b5b3579fdebfe456c793bca2fee07592f",
+      "LogSha256": "850ef948cec38ad7af01f9b772d82b67b1b9c3f990cfc7293134daaa4bb5e46a"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 7,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3333,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "da8b6b5f4458eb9752b18d31aa44749725bc24459c0e0e7c21827bd27df1292a",
+      "LogSha256": "669065d4667c8c78347712ffd3087f052b17999bf18ca3d459bd87e42fc2ad88"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 8,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3090,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "ade6a7881b9c1dba526d7d66883b9b3185812d744ec901af396111d29ef411ff",
+      "LogSha256": "4ac494eb366bcfb0ba396f2e3e7f1da09c89f9ea55062104dc1322b6b964586d"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 9,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3351,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "682b71f1b2e478044ff53149158069f7fe1b5a57f86052ff82b7433ae6b88000",
+      "LogSha256": "998f893911b6aefb8d77755aa59e12f3c98a66f6d0f3da4680070c5e66aa1376"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 10,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3339,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "01594425381ee951e73e76224479794087a62503550b3e52425b1e3840bd3af7",
+      "LogSha256": "653189b1a64f42e453c973c3d2149d9102d56957370274774028a8ebf6ad8f69"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 11,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3342,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "79ecf7e5a6ebcee9df1e596b7d21ea4c5ca52e379651583b1075e8718c1885e4",
+      "LogSha256": "c86996824dfe5cdab81e47596617e31e38119a2ae72ee49bc4cdddc772bacf6d"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 12,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3255,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "25928ba488413803fb977a810db76caeb8d72fa582733c432a33f153b26b5733",
+      "LogSha256": "c09bac0e76f761d8ace179cfd74e7953ea01e74a7f45969acdd6390fbcad8355"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 13,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3291,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "b1645d1472c212ac8a95a46fbee074c9ad78e6251c3571fb1b15337fa9024071",
+      "LogSha256": "7dd4568f9282c51b67ca6cd52975d20ffa908d8946800929386ba876fa060bb5"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 14,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3327,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "a6c5fe992013df463863f300d646654020378fc7ad844fc4b48edcf78ebb6aaa",
+      "LogSha256": "2b9b29a870eae6c3c95b90569b25bfed6dcef6dff41a493044e0b9166ac72604"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 15,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3387,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "3af685cb1b2579576ac318453e5d36f6203bf0e469dd632b48bd840708f86ee4",
+      "LogSha256": "180697038d0f2ac2038458658c0c40ee23aa38034c9b2bae99725a4cee9dfeb5"
+    },
+    {
+      "Mode": "Original",
+      "PrivateBlobPrefixShift": 16,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3108,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "443feb379f0c2ce8ab2ba6b039964fd0bf711d54bd1ad37aa0fdf9403c22870d",
+      "LogSha256": "fa09ce5c128d0a3ee0e26357590b627efbaed06a8a37a1afd081a564f68aaf7f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 0,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 2787,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "62ba3d70b37c95812bc742b40f1f599b142263ffb39f3dd949ddc66aa7e246c2",
+      "LogSha256": "b0f57ac8c1c1bfc42acd1effcebc8e7004116bb6348be35d7f50267df06ca83f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 1,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "5e5773f93e49b5b3962e9dc1f2b3c6a6418be9a4b162b8bab9c6a6f45f2d351e",
+      "LogSha256": "267f45e897833c7b8a75efa9b6889601427bc41d95e4ac77083d02d3f9e2bd3f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 2,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "415f277be47c7916facdcda37f40e0b5ebf2ee2c12de7bfdb7432180a9f2a11e",
+      "LogSha256": "38300afabbe179fc71a9312f45c864ae7e49f3eb93955eeccab9a747b519ffa6"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 3,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "e15cc772c17c92f8965db1bc3b8080d57dd909447823020a1ca9e6bae8506dc0",
+      "LogSha256": "267f45e897833c7b8a75efa9b6889601427bc41d95e4ac77083d02d3f9e2bd3f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 4,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 2583,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "468327732c5c6a68534d867d7cec64cce287b67e4e8fff9f4bb676ef1aac9f49",
+      "LogSha256": "cda5e2f393e08916163bab18145d9fe86bbe765c65413607550db7333b2e4610"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 5,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "e267a3b060989ff45baa9b1a7395785bdc54d7bf39fcf893ae2512341443b9a8",
+      "LogSha256": "267f45e897833c7b8a75efa9b6889601427bc41d95e4ac77083d02d3f9e2bd3f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 6,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "3e67d4daf6e27e1d2925801f711b43d7c883bcd244d617c0877f93cee5c86d2f",
+      "LogSha256": "38300afabbe179fc71a9312f45c864ae7e49f3eb93955eeccab9a747b519ffa6"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 7,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "d2502320fb5693aff452b1c50a1de4bcb920e7d82e4b8e447e888f768bdede19",
+      "LogSha256": "267f45e897833c7b8a75efa9b6889601427bc41d95e4ac77083d02d3f9e2bd3f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 8,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 2793,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "727332394804789ed8ffbbf05c39452f4212952c7939818d66010498bb033fe1",
+      "LogSha256": "ec3e242686f1fcc93b084d0ce4de02f5a63bd93e54aadd315314a5f8898ff449"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 9,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "f1a9ad744d8a5357a81214659232010c6079af06b569a546cb14eeb584784787",
+      "LogSha256": "267f45e897833c7b8a75efa9b6889601427bc41d95e4ac77083d02d3f9e2bd3f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 10,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "9fd4d4504c0f11858efa18e312847979bfac69225297e9657d74aa9ef381dff6",
+      "LogSha256": "38300afabbe179fc71a9312f45c864ae7e49f3eb93955eeccab9a747b519ffa6"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 11,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "49e597aaeb5c0faf9a8ad992ecd9968636f36e671d804462776f127b37d88ada",
+      "LogSha256": "267f45e897833c7b8a75efa9b6889601427bc41d95e4ac77083d02d3f9e2bd3f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 12,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 2403,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "4d40da1f80a078901dc551d20e203b2b82ae79764dd385a6028075bef21d159a",
+      "LogSha256": "e49b30a7eb24ac864f1510a2395102ada2f46c30cbb28f7bb3ad936a799fcaf9"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 13,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "476f76c343768bce5e1a9d4c0b443d18dab2f897e86719dccd655eafab372377",
+      "LogSha256": "267f45e897833c7b8a75efa9b6889601427bc41d95e4ac77083d02d3f9e2bd3f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 14,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "3ef8003e66c28faf29361b195881ff0075620dd6afb58113c2985d53da9bb14e",
+      "LogSha256": "38300afabbe179fc71a9312f45c864ae7e49f3eb93955eeccab9a747b519ffa6"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 15,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 17616,
+        "Alignment": 16,
+        "Unaligned": 3522,
+        "ByteFailures": 0,
+        "TypedFailures": 3,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "0de537e42e0ba42446ffa7cff46d3ed7dca3bec685cea6ecb6f73e12ab279305",
+      "LogSha256": "267f45e897833c7b8a75efa9b6889601427bc41d95e4ac77083d02d3f9e2bd3f"
+    },
+    {
+      "Mode": "Redux",
+      "PrivateBlobPrefixShift": 16,
+      "ExitCode": 12,
+      "Passed": false,
+      "Measurement": {
+        "Assets": 1174,
+        "Cycles": 3,
+        "Assertions": 21126,
+        "Alignment": 16,
+        "Unaligned": 2787,
+        "ByteFailures": 0,
+        "TypedFailures": 0,
+        "ClearingFailures": 3,
+        "AllocationFailures": 0,
+        "PartialLoadCleanupFailures": 0
+      },
+      "FixturePackSha256": "ba12d3c15b0453df9964801296127f921274b78d34b1ecb6535e7f749a1b5ab2",
+      "LogSha256": "b0f57ac8c1c1bfc42acd1effcebc8e7004116bb6348be35d7f50267df06ca83f"
+    }
+  ],
+  "InputIdentities": {
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\EarthBound Companion\\Profiles\\maternalbound-redux-897d0083\\assets.pak": "62ba3d70b37c95812bc742b40f1f599b142263ffb39f3dd949ddc66aa7e246c2",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\dev16-public-clean-source-v9\\native-source\\src\\data\\runtime_assets.c": "f0aa2cb562c99b5ad2cf1f448bdb414937c7b209314afccbe2f43ae5fb6ba98b",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\dev16-public-clean-source-v9\\native-source\\src\\data\\runtime_assets.h": "e8a824127890abc705ee53b8884a2cdf3d133c7763fcdaae4498219d8f1c3b7f",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\dev16-public-clean-source-v9\\native-source\\src\\data\\runtime_generated\\asset_pack_layout.c": "3ea44ce5eb7ac9e270364153c48cb49dc21c1e527b456feecbf420d9b56015c7"
+  },
+  "ExecutableSha256": "fb3ec8e6e5a5ba9b841b0093940039820838120d4bafe70adba5737ed9f32429",
+  "ToolSha256": "b18f0084b784858a904e7af048d2143650e1044b1fa0531951a857185da9bae8",
+  "Flags": "-fsanitize=undefined,float-cast-overflow -fsanitize-trap=all -fno-omit-frame-pointer -g",
+  "PrivateShiftedPackPayloadBytesUnchanged": true,
+  "OwnerInputsUnchanged": true,
+  "SkippedCases": 0,
+  "Limits": [
+    "Real loader/layout sources and all input asset bytes; three load/unload cycles and rejected reload per pack/shift, first/second/last allocation failure and late corrupt-index cleanup controls. No owner save writes or pack rewrite.",
+    "34 selected pack/shift cases overlap repeated asset byte assertions; no full-game or all malformed pack input claim.",
+    "Typed record comparison uses the actual eight-byte teleport table layout. Game semantics are validated separately."
+  ]
+}

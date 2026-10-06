@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev22-v4-inventory-transaction-refresh",
+  "frozenRuntime": "dev17-v4",
+  "parentSequences": 258,
+  "coldContinuationsIncluded": 56,
+  "verifiedLedger": [
+    {
+      "profile": "original",
+      "scope": "monkey",
+      "report": "research/original-monkey-barter-dev20-v4.json",
+      "selectedCases": 101,
+      "coldContinuationsIncluded": 16,
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "librarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "transactionSourceByteIdenticalToV3": true
+    },
+    {
+      "profile": "original",
+      "scope": "services",
+      "report": "research/original-service-selector-dev21-v4.json",
+      "selectedCases": 28,
+      "coldContinuationsIncluded": 12,
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "librarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "transactionSourceByteIdenticalToV3": true
+    },
+    {
+      "profile": "redux",
+      "scope": "monkey",
+      "report": "research/redux-monkey-barter-dev20-v4-finalpack.json",
+      "selectedCases": 101,
+      "coldContinuationsIncluded": 16,
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "librarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "transactionSourceByteIdenticalToV3": true
+    },
+    {
+      "profile": "redux",
+      "scope": "services",
+      "report": "research/redux-service-selector-dev21-v4-finalpack.json",
+      "selectedCases": 28,
+      "coldContinuationsIncluded": 12,
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "librarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "transactionSourceByteIdenticalToV3": true
+    }
+  ],
+  "previousManifest": {
+    "path": "research/inventory-selector-dev21-final-manifest.json",
+    "sha256": "4089bb000cba3d1f7627624570cf002efc9686ea6b8c8e63b98229b62aefe9c5",
+    "filesVerified": 49
+  },
+  "retainedV3ApiEvidence": [
+    {
+      "profile": "redux",
+      "scope": "api",
+      "report": "research/redux-key-selector-dev21-v3-finalpack.json",
+      "selectedCases": 16475,
+      "coldContinuationsIncluded": 0,
+      "runtimeSha256": {
+        "player.exe": "6480c4cc810cd590976483abe4abd1c6bbcb8c87856ee420a179e57b94c05db4",
+        "observer.exe": "c031e4f5d86489c05e0e140e6ca5e8e5c1ceed9e06e35c654f03eae9cf48d6df"
+      },
+      "librarySha256": "57869320efc3550cba07eb7ef5c5607d42e0755ed09070b062796a56aec3eb0c",
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9"
+    },
+    {
+      "profile": "original",
+      "scope": "api",
+      "report": "research/original-key-selector-dev21-v3.json",
+      "selectedCases": 16479,
+      "coldContinuationsIncluded": 0,
+      "runtimeSha256": {
+        "player.exe": "6480c4cc810cd590976483abe4abd1c6bbcb8c87856ee420a179e57b94c05db4",
+        "observer.exe": "c031e4f5d86489c05e0e140e6ca5e8e5c1ceed9e06e35c654f03eae9cf48d6df"
+      },
+      "librarySha256": "57869320efc3550cba07eb7ef5c5607d42e0755ed09070b062796a56aec3eb0c",
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549"
+    }
+  ],
+  "files": [
+    {
+      "path": "research/inventory-selector-dev21-final-manifest.json",
+      "sha256": "4089bb000cba3d1f7627624570cf002efc9686ea6b8c8e63b98229b62aefe9c5",
+      "bytes": 13568
+    },
+    {
+      "path": "tools/write_inventory_selector_refresh_dev22.py",
+      "sha256": "bc113778c13a8e1bb075d3f51687b5742542cb9dc8cf0da99fa2b1a2443107b8",
+      "bytes": 3796
+    },
+    {
+      "path": "research/original-monkey-barter-dev20-v4.json",
+      "sha256": "e9c0ba70a1bf520a1a6d09af69e6e7c26c59fdf296b5dc372e06567a797ef247",
+      "bytes": 2161768
+    },
+    {
+      "path": "research/original-service-selector-dev21-v4.json",
+      "sha256": "675d60344ed1e85456956e1a687ac85150f2da28256b6f5d22f3447eabee03fd",
+      "bytes": 732729
+    },
+    {
+      "path": "research/redux-monkey-barter-dev20-v4-finalpack.json",
+      "sha256": "1ab765ef046ba97d3c4a3d6b2ce4be01db051ca6a766a87c7055ceb0cc0a0eed",
+      "bytes": 2160279
+    },
+    {
+      "path": "research/redux-service-selector-dev21-v4-finalpack.json",
+      "sha256": "da89d12ac627993663f23d72cc5356e1184b220fbc1f7b5b93a5dc1f8579b731",
+      "bytes": 735180
+    }
+  ],
+  "limits": [
+    "Only the selected complete Monkey and service source-parent sequences were rerun on v4.",
+    "The separate API corpus retains its executed v3 identity. It is not relabelled as a v4 execution.",
+    "Cold counts are included in parent counts. Sound requests are not audible delivery proof.",
+    "Complete Escargo courier arrival, departure and delivery transactions remain unqualified."
+  ]
+}

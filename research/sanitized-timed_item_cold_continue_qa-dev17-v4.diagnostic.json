@@ -1,0 +1,23 @@
+{
+  "Passed": true,
+  "Tool": "timed_item_cold_continue_qa",
+  "ScenarioToolSha256": "2d9c77ff123cad28453aa39e50157fe24e1f6d5aec3843cba449e153cce29dda",
+  "BuilderToolSha256": "1a23672b2933bf7d3e0d099d0b2bdcb6a2349680f04a8f792a0922b20a69987f",
+  "InstrumentedInputs": {
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\native-sanitizer-dev17-v4-green\\build\\earthbound.exe": "2e6b579a4b02cd5e51348771e60fa146bddb6fa1b4bc7b2cfd7d45d049bbe7fa",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\native-sanitizer-dev17-v4-green\\build\\game_lib\\libearthbound_game.a": "ed569638410afe674a3be36a99f08f3b225a0e0a3b368e9acaf03af30a077e2d",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\native-sanitizer-dev17-v4-green\\observer.o": "676a1381b1467597620ab22199bafe4c2902aa3fa14a45ba43a9cd465a09e9ea"
+  },
+  "DoorSourcePrivatelyRecompiledAtO0": false,
+  "DiagnosticBuildSource": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\native-sanitizer-dev17-v4-green\\build",
+  "Faults": [],
+  "RunnerFailure": null,
+  "InputsUnchanged": true,
+  "ScenarioReportExists": true,
+  "Limits": [
+    "Only the driver builder is substituted; inputs, production dispatch and assertions remain the selected existing tool.",
+    "Instrumentation and crash reporting differ from shipping code. Traps identify diagnostic failures, not an observed production crash or independent game parity.",
+    "If a scenario traps before a cold checkpoint exists, its original runner can stop before later cases; no skipped case is counted as passed."
+  ],
+  "ScenarioReportSha256": "2061f04514e4c57e2653842104a26648055fef0a4e37e8f1c61dd08900838a0d"
+}

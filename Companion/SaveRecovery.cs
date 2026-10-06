@@ -12,7 +12,7 @@ static class SaveRecovery {
  // Match this native engine's on-disk format exactly. Its CRC polynomial is
  // derived from state_dump.c, rather than assuming the standard ZIP CRC.
  internal static uint Crc(ReadOnlySpan<byte> bytes) {uint crc=0xffffffff;foreach(byte b in bytes){crc^=b;for(int i=0;i<8;i++)crc=(crc>>1)^((crc&1)!=0?ProgressionGuard.SaveStateCrcPolynomial:0);}return crc^0xffffffff;}
- static bool ValidQuick(byte[] bytes)=>bytes.Length>=20&&bytes.AsSpan(0,4).SequenceEqual("EBSD"u8)&&BinaryPrimitives.ReadUInt16LittleEndian(bytes.AsSpan(4))==ProgressionGuard.SaveStateVersion&&BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(16))==bytes.Length-20&&BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(12))==Crc(bytes.AsSpan(20));
+ internal static bool ValidQuick(byte[] bytes)=>bytes.Length>=20&&bytes.AsSpan(0,4).SequenceEqual("EBSD"u8)&&BinaryPrimitives.ReadUInt16LittleEndian(bytes.AsSpan(4))==ProgressionGuard.SaveStateVersion&&BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(16))==bytes.Length-20&&BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(12))==Crc(bytes.AsSpan(20));
  static bool Same(string a,string b)=>Path.GetFullPath(a).TrimEnd(Path.DirectorySeparatorChar).Equals(Path.GetFullPath(b).TrimEnd(Path.DirectorySeparatorChar),StringComparison.OrdinalIgnoreCase);
  static bool IsSave(string name)=>name=="earthbound.srm"||Regex.IsMatch(name,@"\Aquicksave_[1-5]\.bin\.[01]\z",RegexOptions.CultureInvariant);
  internal static SaveSnapshot Snapshot(string session) {

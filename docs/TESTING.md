@@ -1,6 +1,6 @@
 # Testing the native conversion
 
-The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. See [the current audit](NATIVE-AUDIT-dev16.md) for evidence and remaining work.
+The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. See [the current audit](NATIVE-AUDIT-dev17.md) for evidence and remaining work.
 
 ## Three different kinds of evidence
 
@@ -70,3 +70,7 @@ Run this from a complete installation containing `Game/earthbound.exe` and SDL2.
 Each accepted content pack also runs 1,000 deterministic seeds and all 30 option/preset combinations, with independent rejected mutations of protected story assets, stock and scripted enemies. These preservation checks do not establish a full randomized playthrough.
 
 Further testing still includes untested turn/encounter branches and groups, untested shop/service/barter transactions, natural NPC callers, full progression, photo acquisition, all map/event/audio transitions, displays/controllers and start-to-ending story/seed playthroughs. Reports should identify the first changed field or missing continuation, rather than infer a cause from the final screenshot.
+
+## Dev.17 reproducible additions
+
+Use the explicit input paths in each tool's `--help`. `redux_pack_upgrade_qa_dev17.py` exercises the real ROM-driven graphics update on isolated copies. `runtime_asset_alignment_qa_dev17.py` varies private pack alignment and tests cleanup/failure controls. `native_sanitizer_qa_dev17.py` builds a separate instrumented runtime; `native_sanitizer_scenarios_dev17.py` links its untouched archive into whitelisted source-prerequisite scenarios. Menu, transition, item-selector and battle-art tools are bound by the manifests linked from the current audit. Historical manifest paths beginning `tools/` refer to the same byte-identical public file under `scripts/`; the manifests retain their original paths and hashes. Reports from dev.16 v9 or dev.17 v3 retain those executed identities.
