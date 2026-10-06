@@ -1,0 +1,114 @@
+{
+  "privateBuild": {
+    "driverSourceSha256": "b9436ff03079cc31f327083649298255b2838f8746b0ccb48488ce14afd635a0",
+    "executableSha256": "84bbfdcf086c3f027632381004dab727d5e9caf0ea5ca1869705e8248d3762d1",
+    "productionExecutableSha256": "173c1338e636e9cfd81a8a8b0ee650bff385e1af6d367e3fb7ddd35b929a3b37",
+    "productionLibrarySha256": "9f49c47e827fc9e414bded5572409498dd6c563a51c49d8343638d292213e214",
+    "platformMainObjectSha256": "bc54f2e9f0342e161afc22c758ab9c317c8296f6e72fcf3aa211d04ebd39bbab",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "originalPack": false,
+  "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "nativeExit": 0,
+  "copiedOwnerInput": true,
+  "cases": [
+    {
+      "stage": "copied-save-loaded",
+      "character": 2,
+      "level": 51,
+      "depth": 6,
+      "available": [
+        1,
+        1,
+        1
+      ],
+      "window": 1,
+      "page": 1,
+      "current": 0,
+      "items": [
+        {
+          "label": "Offense",
+          "id": 1,
+          "y": 0,
+          "page": 1,
+          "type": 0
+        },
+        {
+          "label": "Recover",
+          "id": 2,
+          "y": 0,
+          "page": 2,
+          "type": 0
+        },
+        {
+          "label": "Assist",
+          "id": 3,
+          "y": 0,
+          "page": 3,
+          "type": 0
+        },
+        {
+          "label": "Other",
+          "id": 4,
+          "y": 0,
+          "page": 4,
+          "type": 0
+        },
+        {
+          "label": "...",
+          "id": 0,
+          "y": 2,
+          "page": 0,
+          "type": 2
+        }
+      ],
+      "passed": false
+    },
+    {
+      "stage": "copied-save-repainted",
+      "character": 2,
+      "level": 51,
+      "depth": 6,
+      "available": [
+        1,
+        1,
+        1
+      ],
+      "window": 1,
+      "page": 1,
+      "current": 0,
+      "items": [
+        {
+          "label": "Offense",
+          "id": 1,
+          "y": 0,
+          "page": 1,
+          "type": 2
+        },
+        {
+          "label": "Recover",
+          "id": 2,
+          "y": 1,
+          "page": 1,
+          "type": 2
+        },
+        {
+          "label": "Assist",
+          "id": 3,
+          "y": 2,
+          "page": 1,
+          "type": 2
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "sourceReference": "asm/battle/battle_psi_menu.asm: category loop CMP #$0003 and ADD_MENU_ITEM_NO_POSITION",
+  "limits": [
+    "Category layout and availability in prepared levels or an unchanged copied F6 state. Does not certify full battles or story progression."
+  ],
+  "fullPlaythroughVerified": false
+}

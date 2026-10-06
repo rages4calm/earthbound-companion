@@ -1,0 +1,46 @@
+{
+  "nativeInputReplay": true,
+  "copiedOwnerInput": true,
+  "allPassed": true,
+  "cases": [
+    {
+      "category": 0,
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "actual": [
+        1,
+        2,
+        3
+      ],
+      "categories": [
+        {
+          "label": "Offense",
+          "id": 1,
+          "page": 1
+        },
+        {
+          "label": "Recover",
+          "id": 2,
+          "page": 1
+        },
+        {
+          "label": "Assist",
+          "id": 3,
+          "page": 1
+        }
+      ],
+      "passed": true,
+      "executableSha256": "173c1338e636e9cfd81a8a8b0ee650bff385e1af6d367e3fb7ddd35b929a3b37",
+      "screenshotSha256": "59021d4002b8313f1604731d7ffe5273590e98f04bd394fabc933028ab6637a3"
+    }
+  ],
+  "limits": [
+    "Actual saved Paula menu with level51; real category navigation, ability IDs and 1080p renderer. Does not cover all ability targeting/action outcomes."
+  ],
+  "fullPlaythroughVerified": false,
+  "oldAbilitySelectionPreserved": true,
+  "abilityIdsAndCursorPreserved": true
+}

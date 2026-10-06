@@ -1,0 +1,23 @@
+{
+  "enemy": 98,
+  "level": 16,
+  "partySum": 158,
+  "spawnValueCount": 256,
+  "fleeCount": 192,
+  "noFleeCount": 64,
+  "runFlagOverride": false,
+  "nativeExecutableSha256": "173c1338e636e9cfd81a8a8b0ee650bff385e1af6d367e3fb7ddd35b929a3b37",
+  "sourceRules": [
+    "asm/overworld/check_enemy_should_flee.asm",
+    "asm/overworld/party/sum_alive_party_levels.asm",
+    "asm/overworld/attempt_enemy_spawn.asm"
+  ],
+  "nativeRules": [
+    "src/game/overworld.c",
+    "src/game/overworld_spawn.c"
+  ],
+  "pinnedEnemySource": "Project/enemy_configuration_table.yml: Foppy ID98 level16",
+  "preparedEnemyConsumer": true,
+  "roamingAiAndFactorySceneVerified": false,
+  "fullPlaythroughVerified": false
+}

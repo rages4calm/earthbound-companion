@@ -1,0 +1,42 @@
+{
+  "version": "0.5.0-redux-dev.21",
+  "nativeBase": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "sourceSnapshot": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\paula-psi-dev21\\source",
+  "changedFiles": [
+    {
+      "path": "src/game/battle.h",
+      "baselineSha256": "391df2c674bbd2ac71e208f09129e61d8358dd068c2a8f49f16c199c34258105",
+      "candidateSha256": "3b639ae42bd72aacad4dfa1892a0638d1053ac19cefbbe34201214215b8e225f"
+    },
+    {
+      "path": "src/game/battle_psi.c",
+      "baselineSha256": "905e3576ec6454128ab78f99d18dd34071baa921114ba7b5b0290e5ea37c2aec",
+      "candidateSha256": "3a9b993d7a6d929562073b9bdee307145283e70a6b4169b9503dcf40bc505967"
+    },
+    {
+      "path": "src/game/text.c",
+      "baselineSha256": "207b03b009e2c026ea70bad4f5a0c1f342c55489988c2dfa63ebf992a0048689",
+      "candidateSha256": "859f0367162846b144a6e856ec66862f0b04aea73e5e3ef72f68c6685e39fa99"
+    }
+  ],
+  "lineEndingOnlyDifferences": [],
+  "comparison": "Complete source comparison normalizes CRLF to LF only",
+  "comparedSourceFiles": 4312,
+  "completePatchSha256": "7be589c06e21d159a6921f363e8177338336452e393c7141d458c1d72c24fb9f",
+  "builds": [
+    {
+      "mode": "player",
+      "build": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\paula-psi-dev21\\builds\\player",
+      "executableSha256": "173c1338e636e9cfd81a8a8b0ee650bff385e1af6d367e3fb7ddd35b929a3b37",
+      "archiveSha256": "9f49c47e827fc9e414bded5572409498dd6c563a51c49d8343638d292213e214"
+    },
+    {
+      "mode": "observer",
+      "build": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\paula-psi-dev21\\builds\\observer",
+      "executableSha256": "aa7af9643768f958a6808ab0f9feb1455098c6983b57be54cfcf7d131826b061",
+      "archiveSha256": "e4d6d4358692c1ce2529dfc64b9f19a8a3f9381ea73c3968a0a2df516762e3f9"
+    }
+  ],
+  "fullCleanCompilation": true,
+  "ownerFilesChanged": false
+}

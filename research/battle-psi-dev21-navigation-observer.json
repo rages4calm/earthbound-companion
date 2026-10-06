@@ -1,0 +1,159 @@
+{
+  "nativeInputReplay": true,
+  "copiedOwnerInput": true,
+  "allPassed": true,
+  "cases": [
+    {
+      "category": 0,
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "actual": [
+        1,
+        2,
+        3
+      ],
+      "categories": [
+        {
+          "label": "Offense",
+          "id": 1,
+          "page": 1
+        },
+        {
+          "label": "Recover",
+          "id": 2,
+          "page": 1
+        },
+        {
+          "label": "Assist",
+          "id": 3,
+          "page": 1
+        }
+      ],
+      "passed": true,
+      "executableSha256": "aa7af9643768f958a6808ab0f9feb1455098c6983b57be54cfcf7d131826b061",
+      "screenshotSha256": "0d00476a6983c4ac2837e43bfb093d886bbbd9f05bf6fb6b6370535bcb65ecf8"
+    },
+    {
+      "category": 1,
+      "expected": [
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "actual": [
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "categories": [
+        {
+          "label": "Offense",
+          "id": 1,
+          "page": 1
+        },
+        {
+          "label": "Recover",
+          "id": 2,
+          "page": 1
+        },
+        {
+          "label": "Assist",
+          "id": 3,
+          "page": 1
+        }
+      ],
+      "passed": true,
+      "executableSha256": "aa7af9643768f958a6808ab0f9feb1455098c6983b57be54cfcf7d131826b061",
+      "screenshotSha256": "46074bd575eb535a6b1e2ada2eff0c621b9e8001f2a72cda7d4e5d1a823c1b19"
+    },
+    {
+      "category": 2,
+      "expected": [
+        45,
+        46
+      ],
+      "actual": [
+        45,
+        46
+      ],
+      "categories": [
+        {
+          "label": "Offense",
+          "id": 1,
+          "page": 1
+        },
+        {
+          "label": "Recover",
+          "id": 2,
+          "page": 1
+        },
+        {
+          "label": "Assist",
+          "id": 3,
+          "page": 1
+        }
+      ],
+      "passed": true,
+      "executableSha256": "aa7af9643768f958a6808ab0f9feb1455098c6983b57be54cfcf7d131826b061",
+      "screenshotSha256": "463f63f0fdfeac5a83f5296b2d9618add7219886b09725d8a967a1e0602da8dc"
+    },
+    {
+      "category": 3,
+      "expected": [
+        35,
+        36,
+        37,
+        39,
+        40,
+        41
+      ],
+      "actual": [
+        35,
+        36,
+        37,
+        39,
+        40,
+        41
+      ],
+      "categories": [
+        {
+          "label": "Offense",
+          "id": 1,
+          "page": 1
+        },
+        {
+          "label": "Recover",
+          "id": 2,
+          "page": 1
+        },
+        {
+          "label": "Assist",
+          "id": 3,
+          "page": 1
+        }
+      ],
+      "passed": true,
+      "executableSha256": "aa7af9643768f958a6808ab0f9feb1455098c6983b57be54cfcf7d131826b061",
+      "screenshotSha256": "fc6f01e1a5728add2f35700a0cdb7be279eaea22660c80b8cc804bf6a11725f7"
+    }
+  ],
+  "limits": [
+    "Actual saved Paula menu with level51; real category navigation, ability IDs and 1080p renderer. Does not cover all ability targeting/action outcomes."
+  ],
+  "fullPlaythroughVerified": false
+}

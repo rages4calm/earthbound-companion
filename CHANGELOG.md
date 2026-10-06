@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0-redux-dev.21 - battle PSI categories
+
+- Restore Offense, Recover and Assist together in the battle PSI menu. An incorrectly added Other category caused unnecessary pagination and hid Recover/Assist on later pages.
+- Recover recognizable old F6 category/ability menus after cold load, preserving active ability selection. Keep the four-category Status menu and learned abilities unchanged.
+- Verify 45 prepared category layouts, copied battle-menu recovery, real player/observer category inputs and Original controls. Record the original per-spawn enemy fleeing rule and a 256-value Foppy decision check.
+- Retain dev.20 fixes, game packs, save format, seed identities, settings and MSU setup. Full playthrough coverage remains open.
+
 ## 0.5.0-redux-dev.20 - shop inventory and AUTO cleanup
 
 - Match Redux shared inventory to the pinned source's Keys menu. Suporma, Exit mice, Brain stone, letters and other ordinary key-category records now stay in character Goods, preserving duplicates and per-character shop previews.

@@ -4850,7 +4850,7 @@ index ef6571c..3027e63 100644
 +    return true;
 +}
 diff --git a/src/game/battle.h b/src/game/battle.h
-index 379bc0e..3dd522a 100644
+index 379bc0e..b44edf2 100644
 --- a/src/game/battle.h
 +++ b/src/game/battle.h
 @@ -512,9 +512,14 @@ typedef struct {
@@ -4877,7 +4877,15 @@ index 379bc0e..3dd522a 100644
  
  /* BATTLE_INIT_PLAYER_STATS (asm/battle/init_player_stats.asm)
   * Initialize a battler from a party character's stats. Copies HP, PP, stats,
-@@ -1159,9 +1166,12 @@ void set_color_math_from_table(uint16_t index);
+@@ -1089,6 +1096,7 @@ uint16_t check_character_has_psi_ability(uint16_t char_id,
+ /* CHECK_PSI_CATEGORY_AVAILABLE: Port of asm/text/check_psi_category_available.asm.
+  * Returns nonzero if the character has PSI abilities in the given category (1-3). */
+ uint16_t check_psi_category_available(uint16_t category, uint16_t char_id);
++void battle_psi_menu_resume_repaint(void);
+ 
+ /* PSI menu shared functions (used by status menu in text.c) */
+ 
+@@ -1159,9 +1167,12 @@ void set_color_math_from_table(uint16_t index);
  /* LOAD_BATTLE_BG (asm/battle/load_battle_bg.asm)
   * Loads two battle BG layers with letterbox configuration. */
  void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_style);
@@ -5539,7 +5547,7 @@ index 58bfb5c..495c51d 100644
 +    return true;
 +}
 diff --git a/src/game/battle_psi.c b/src/game/battle_psi.c
-index ce9f34f..3b06942 100644
+index ce9f34f..8c02484 100644
 --- a/src/game/battle_psi.c
 +++ b/src/game/battle_psi.c
 @@ -29,7 +29,9 @@
@@ -5552,6 +5560,17 @@ index ce9f34f..3b06942 100644
  
  /* PSI ability IDs */
  #define PSI_STARSTORM_ALPHA  21
+@@ -44,8 +46,8 @@
+ /* PSI category name size (from config.asm, US version) */
+ #define PSI_CATEGORY_NAME_SIZE  8
+ 
+-/* Number of PSI categories in the menu */
+-#define PSI_CATEGORY_COUNT  4
++/* The source battle loop stops at 3. "Other" belongs to the status menu. */
++#define PSI_CATEGORY_COUNT  3
+ 
+ static size_t battle_psi_table_size = 0;
+ 
 @@ -56,6 +58,7 @@ static size_t battle_psi_table_size = 0;
  #define PSI_ANIM_GFX_LOWORD_SET4  0xE31D
  
@@ -5622,7 +5641,94 @@ index ce9f34f..3b06942 100644
  
      /* Assembly lines 36-43: generate PSI list.
       * @LOCAL00 = [usability=1 (overworld), category=15 (all)].
-@@ -682,7 +718,7 @@ StepResult mode_step_battle_psi_menu(ModeState *ms) {
+@@ -504,6 +540,59 @@ void display_psi_description(uint16_t ability_id) {
+  * STEP_PUSHed children. Entered via STEP_PUSH from GAME_MODE_BATTLE_MENU's
+  * PSI case (BM_PSI_RESULT).
+  */
++static void open_battle_psi_categories(void) {
++    create_window(WINDOW_PSI_CATEGORY);
++    for (uint16_t i = 0; i < PSI_CATEGORY_COUNT; ++i) {
++        const uint8_t *eb = ASSET_DATA(ASSET_US_DATA_PSI_CATEGORIES_BIN)
++                            + i * PSI_CATEGORY_NAME_SIZE;
++        char label[PSI_CATEGORY_NAME_SIZE + 1];
++        unsigned len = 0;
++        while (len < PSI_CATEGORY_NAME_SIZE && eb[len]) {
++            label[len] = eb_char_to_ascii(eb[len]);
++            ++len;
++        }
++        label[len] = '\0';
++        add_menu_item_no_position(label, i + 1);
++    }
++    open_window_and_print_menu(1, 0);
++}
++
++void battle_psi_menu_resume_repaint(void) {
++    /* Recognizable legacy four-category layout, at an idle category/ability
++     * selector only. Drawing runs after cold-load PPU/DMA restoration. */
++    if (g_mode_stack.depth < 2) return;
++    unsigned top = g_mode_stack.depth - 1;
++    if (g_mode_stack.mode[top] != GAME_MODE_SELECTION_MENU ||
++        g_mode_stack.mode[top-1] != GAME_MODE_BATTLE_PSI_MENU) return;
++    SelectionMenuState *selection = &g_mode_stack.state[top].selection_menu;
++    BattlePsiMenuState *psi = &g_mode_stack.state[top-1].battle_psi_menu;
++    if (selection->phase != SM_MAIN || selection->sm_flush != SMF_NONE ||
++        (psi->phase != BP_CATEGORY_RESULT && psi->phase != BP_LIST_RESULT)) return;
++    WindowInfo *w = get_window(WINDOW_PSI_CATEGORY);
++    if (!w || w->menu_count != 5 || w->menu_items[4].page != 0 ||
++        strcmp(w->menu_items[4].label, "...")) return;
++    for (unsigned i = 0; i < 4; ++i)
++        if (w->menu_items[i].userdata != i + 1 || w->menu_items[i].page != i + 1)
++            return;
++    bool category = psi->phase == BP_CATEGORY_RESULT;
++    if (selection->menu_window != (category ? WINDOW_PSI_CATEGORY : WINDOW_TEXT_STANDARD))
++        return;
++    unsigned chosen = category ? w->current_option : psi->category - 1;
++    if (chosen >= PSI_CATEGORY_COUNT) chosen = 0;
++    unsigned focus = win.current_focus_window;
++    open_battle_psi_categories();
++    w = get_window(WINDOW_PSI_CATEGORY);
++    if (!w) return;
++    w->current_option = w->selected_option = chosen;
++    if (category) {
++        set_cursor_move_callback(generate_battle_psi_list_callback, CURSOR_CB_PSI_LIST_GEN);
++        selection->phase = SM_SETUP;
++        selection->primed = 0;
++        selection->redraw_cursor = 1;
++    }
++    set_window_focus(focus);
++}
++
+ StepResult mode_step_battle_psi_menu(ModeState *ms) {
+     BattlePsiMenuState *st = &ms->battle_psi_menu;
+     static ModeState child_init;  /* outlives the dispatch (the pump copies it) */
+@@ -516,23 +605,9 @@ StepResult mode_step_battle_psi_menu(ModeState *ms) {
+         case BP_OPEN:
+             /* @OPEN_CATEGORY_WINDOW: create the category window
+              * (WINDOW::BATTLE_PSI_CATEGORY = 0x10) and add the category menu
+-             * items (Offense, Recover, Assist, Other). Assembly: loops 0..2
+-             * adding categories 1-3, then adds the 4th; userdata = category
+-             * (1-based). */
+-            create_window(WINDOW_PSI_CATEGORY);
+-            for (uint16_t i = 0; i < PSI_CATEGORY_COUNT; i++) {
+-                /* Decode EB-encoded category name from ROM data to ASCII */
+-                const uint8_t *eb = ASSET_DATA(ASSET_US_DATA_PSI_CATEGORIES_BIN) + i * PSI_CATEGORY_NAME_SIZE;
+-                char ascii_buf[PSI_CATEGORY_NAME_SIZE + 1];
+-                int len = 0;
+-                for (int j = 0; j < PSI_CATEGORY_NAME_SIZE && eb[j] != 0; j++)
+-                    ascii_buf[len++] = eb_char_to_ascii(eb[j]);
+-                ascii_buf[len] = '\0';
+-                add_menu_item(ascii_buf, i + 1, 0, i * 2);
+-            }
+-            win.current_focus_window = WINDOW_PSI_CATEGORY;
+-            /* Layout and print (assembly: OPEN_WINDOW_AND_PRINT_MENU, :57) */
+-            open_window_and_print_menu(1, 0);
++             * items (Offense, Recover, Assist). Assembly loops 0..2 with
++             * ADD_MENU_ITEM_NO_POSITION; userdata = category (1-based). */
++            open_battle_psi_categories();
+             st->phase = BP_CATEGORY;
+             break;
+ 
+@@ -682,7 +757,7 @@ StepResult mode_step_battle_psi_menu(ModeState *ms) {
  
  
  void show_psi_animation(uint16_t anim_id) {
@@ -5631,7 +5737,7 @@ index ce9f34f..3b06942 100644
  
      /* Load PSI_ANIM_CFG from ROM asset */
      size_t cfg_size = ASSET_SIZE(ASSET_DATA_PSI_ANIM_CFG_BIN);
-@@ -708,7 +744,10 @@ void show_psi_animation(uint16_t anim_id) {
+@@ -708,7 +783,10 @@ void show_psi_animation(uint16_t anim_id) {
  
      /* Determine which GFX set to load */
      int gfx_set;
@@ -5643,7 +5749,7 @@ index ce9f34f..3b06942 100644
      case PSI_ANIM_GFX_LOWORD_SET1: gfx_set = 0; break;
      case PSI_ANIM_GFX_LOWORD_SET2: gfx_set = 1; break;
      case PSI_ANIM_GFX_LOWORD_SET3: gfx_set = 2; break;
-@@ -717,8 +756,8 @@ void show_psi_animation(uint16_t anim_id) {
+@@ -717,8 +795,8 @@ void show_psi_animation(uint16_t anim_id) {
      }
  
      /* Load and decompress GFX */
@@ -5654,7 +5760,7 @@ index ce9f34f..3b06942 100644
      if (!gfx_compressed) return;
  
      bool is_2bpp = (loaded_bg_data_layer1.bitdepth == 2);
-@@ -764,8 +803,8 @@ void show_psi_animation(uint16_t anim_id) {
+@@ -764,8 +842,8 @@ void show_psi_animation(uint16_t anim_id) {
      (void)psi_anim_parked;  /* battle mode -> always false */
  
      /* Load PSI palette for this animation (4 colors = 8 bytes) */
@@ -5665,7 +5771,7 @@ index ce9f34f..3b06942 100644
      if (pal_data) {
          uint16_t copy_bytes = (uint16_t)(pal_size < 8 ? pal_size : 8);
          /* Copy to psi_animation_state.palette */
-@@ -779,8 +818,9 @@ void show_psi_animation(uint16_t anim_id) {
+@@ -779,8 +857,9 @@ void show_psi_animation(uint16_t anim_id) {
       * Only one bundle (8 KB) is decompressed at a time into ert.buffer,
       * which is free during battle (verified by concurrency analysis). */
      {
@@ -5677,7 +5783,7 @@ index ce9f34f..3b06942 100644
          psi_animation_state.arr_bundle_buf = ert.buffer;
          psi_animation_state.arr_current_bundle = -1; /* none decompressed yet */
          psi_animation_state.arr_current_anim_id = anim_id; /* serializable backing for rebind */
-@@ -901,11 +941,11 @@ void psi_animation_savestate_rebind(void) {
+@@ -901,11 +980,11 @@ void psi_animation_savestate_rebind(void) {
      if (psi_animation_state.arr_bundle_buf != NULL)
          psi_animation_state.arr_bundle_buf = ert.buffer;
      if (psi_animation_state.arr_bundled_data != NULL
@@ -5693,7 +5799,7 @@ index ce9f34f..3b06942 100644
      }
  }
  
-@@ -961,8 +1001,12 @@ void update_psi_animation(void) {
+@@ -961,8 +1040,12 @@ void update_psi_animation(void) {
                              /* Offset table starts at byte 4, bundle_count+1 entries × 2 bytes */
                              size_t offset_table = 4;
                              size_t data_start = offset_table + ((size_t)bundle_count + 1) * 2;
@@ -5706,7 +5812,7 @@ index ce9f34f..3b06942 100644
                              size_t comp_size = comp_end - comp_off;
                              decomp(&asset[data_start + comp_off], comp_size,
                                     psi_animation_state.arr_bundle_buf,
-@@ -1087,6 +1131,12 @@ void update_psi_animation(void) {
+@@ -1087,6 +1170,12 @@ void update_psi_animation(void) {
   * = CGWSEL=$10 (fixed color sub-screen), CGADSUB=$3F (subtract all).
   */
  void apply_psi_battle_effect(uint16_t effect_id) {
@@ -5719,7 +5825,7 @@ index ce9f34f..3b06942 100644
      if (effect_id < 35) {
          /* PSI animation */
          show_psi_animation(effect_id);
-@@ -1143,3 +1193,37 @@ void apply_psi_battle_effect(uint16_t effect_id) {
+@@ -1143,3 +1232,36 @@ void apply_psi_battle_effect(uint16_t effect_id) {
      /* effect_id >= 54: nothing */
  }
  
@@ -5756,7 +5862,6 @@ index ce9f34f..3b06942 100644
 +    fprintf(stderr,"Redux native PSI playback: 68 effects, %u frames, cold-pointer rebind and extended IDs, PASS\n",frames);
 +    return true;
 +}
-+
 diff --git a/src/game/battle_targeting.c b/src/game/battle_targeting.c
 index dce15fe..f5f72f4 100644
 --- a/src/game/battle_targeting.c
@@ -11364,7 +11469,7 @@ index 3fae9b2..b800287 100644
  /* Packed version of assembly player_position_buffer_entry (include/structs.asm).
   * Assembly uses 12 bytes (6 words) per entry, but tile_flags, walking_style,
 diff --git a/src/game/text.c b/src/game/text.c
-index 236c04f..bb4b998 100644
+index 236c04f..4abdc2a 100644
 --- a/src/game/text.c
 +++ b/src/game/text.c
 @@ -4,6 +4,7 @@
@@ -11532,7 +11637,7 @@ index 236c04f..bb4b998 100644
      uint16_t char_idx = char_id - 1;
      create_window(WINDOW_EQUIPMENT_STATS);
      window_tick_without_instant_printing();
-@@ -1330,6 +1406,48 @@ void text_menus_savestate_unpack(const void *in) {
+@@ -1330,6 +1406,49 @@ void text_menus_savestate_unpack(const void *in) {
      only_one_character_with_psi = s->only_one_character_with_psi;
  }
  
@@ -11546,6 +11651,7 @@ index 236c04f..bb4b998 100644
 +void text_menus_resume_repaint(void) {
 +    if (!psi_menu_repaint_pending) return;
 +    psi_menu_repaint_pending = false;
++    battle_psi_menu_resume_repaint();
 +    /* The development converter once read the freed PSI-name table. Repaint
 +     * an idle PSI selection from the corrected assets on cold load, keeping
 +     * its selected ability and leaving party/progression state untouched. */
@@ -11581,7 +11687,7 @@ index 236c04f..bb4b998 100644
  /* DISPLAY_PSI_ABILITY_DETAILS: Port of asm/text/menu/display_psi_ability_details.asm (54 lines).
   *
   * Called during PSI ability selection to refresh the ability list window.
-@@ -1352,6 +1470,8 @@ static void display_psi_ability_details(uint16_t palette_index, uint16_t ability
+@@ -1352,6 +1471,8 @@ static void display_psi_ability_details(uint16_t palette_index, uint16_t ability
      display_character_psi_list(overworld_selected_psi_user);
      print_menu_items();
  
@@ -11590,7 +11696,7 @@ index 236c04f..bb4b998 100644
      /* Restore text_y (assembly lines 34-37) */
      if (w) w->text_y = saved_text_y;
  
-@@ -1543,6 +1663,12 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1543,6 +1664,12 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
          case EQ_ENTER:
              save_window_text_attributes();
@@ -11603,7 +11709,7 @@ index 236c04f..bb4b998 100644
              /* Single party: show equipment display before entering the loop.
               * Assembly lines 21-23: if party_count==1, SHOW_EQUIPMENT_AND_STATS
               * first, then fall through to char selection which auto-selects. */
-@@ -1620,7 +1746,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1620,7 +1747,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
                  char title_buf[WINDOW_TITLE_SIZE];
                  const uint8_t *title_src = equip_text_data + ETEXT11_OFF
                                             + (slot_type - 1) * ETEXT11_STRIDE;
@@ -11612,7 +11718,7 @@ index 236c04f..bb4b998 100644
                  /* STRLEN equivalent: length excluding trailing spaces/nulls */
                  int title_len = (int)strlen(title_buf);
                  set_window_title(WINDOW_EQUIP_MENU_ITEMLIST, title_buf, title_len);
-@@ -1709,6 +1835,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1709,6 +1836,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
              /* Show header "Which?" and run the item selection */
              compare_equipment_mode = 1;
@@ -11620,7 +11726,7 @@ index 236c04f..bb4b998 100644
              display_menu_header_text(1);  /* "Which?" */
              return pm_push_selection_equip(st, EQ_ITEM_RESULT);
          }
-@@ -1745,6 +1872,11 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1745,6 +1873,11 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
          case EQ_EXIT:
          default:
@@ -11632,7 +11738,7 @@ index 236c04f..bb4b998 100644
              close_window(WINDOW_EQUIPMENT_STATS);
              close_window(WINDOW_EQUIP_MENU);
              restore_window_text_attributes();
-@@ -1806,6 +1938,7 @@ StepResult mode_step_status_menu(ModeState *ms) {
+@@ -1806,6 +1939,7 @@ StepResult mode_step_status_menu(ModeState *ms) {
              /* Assembly lines 25-57: first-display flag, create the category
               * window, build the 4-item menu (userdata = category + 1). */
              st->first_display = 1;
@@ -11640,7 +11746,7 @@ index 236c04f..bb4b998 100644
              create_window(WINDOW_STATUS_PSI_CATEGORY);
              for (int i = 0; i < 4; i++) {
                  add_menu_item_no_position(status_psi_category_names[i],
-@@ -2141,15 +2274,15 @@ StepResult mode_step_psi_menu(ModeState *ms) {
+@@ -2141,15 +2275,15 @@ StepResult mode_step_psi_menu(ModeState *ms) {
  
              /* Set attacker name (assembly lines 297-304) */
              set_battle_attacker_name(
@@ -11660,7 +11766,7 @@ index 236c04f..bb4b998 100644
              }
  
              /* Set current item to the PSI ability (lines 320-321) */
-@@ -2225,8 +2358,8 @@ StepResult mode_step_psi_menu(ModeState *ms) {
+@@ -2225,8 +2359,8 @@ StepResult mode_step_psi_menu(ModeState *ms) {
  
              /* Set target name (assembly lines 404-421) */
              set_battle_target_name(
@@ -11671,7 +11777,7 @@ index 236c04f..bb4b998 100644
  
              /* Init target battler (assembly lines 422-428) */
              battle_init_player_stats(member_id, &bt.battlers_table[1]);
-@@ -2517,8 +2650,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+@@ -2517,8 +2651,8 @@ StepResult mode_step_use_item(ModeState *ms) {
  
              /* Set attacker name from character (assembly lines 280-287) */
              set_battle_attacker_name(
@@ -11682,7 +11788,7 @@ index 236c04f..bb4b998 100644
  
              /* Set current item (assembly lines 288-291) */
              set_current_item((uint8_t)st->item_id);
-@@ -2535,8 +2668,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+@@ -2535,8 +2669,8 @@ StepResult mode_step_use_item(ModeState *ms) {
               * target_id 0xFF = all targets, skip target name. */
              if (st->target_id != 0xFF) {
                  set_battle_target_name(
@@ -11693,7 +11799,7 @@ index 236c04f..bb4b998 100644
              }
  
              /* Assembly lines 323-334: if description text is NULL, use fallback */
-@@ -2621,8 +2754,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+@@ -2621,8 +2755,8 @@ StepResult mode_step_use_item(ModeState *ms) {
  
              /* Set target name (assembly lines 392-414) */
              set_battle_target_name(
@@ -11704,7 +11810,7 @@ index 236c04f..bb4b998 100644
  
              /* Init target battler (assembly lines 415-421) */
              battle_init_player_stats(member_id, &bt.battlers_table[1]);
-@@ -2925,6 +3058,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -2925,6 +3059,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
                  uint32_t text_ptr = talk_to();
                  if (text_ptr == 0)
                      text_ptr = MSG_SYS_TALK_NO_TARGET;
@@ -11712,7 +11818,7 @@ index 236c04f..bb4b998 100644
                  bool pushed;
                  StepResult r = pm_push_text(st, PM_CLEANUP, text_ptr, &pushed);
                  if (pushed) return r;
-@@ -2979,6 +3113,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -2979,6 +3114,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
                  uint32_t text_ptr = check_action();
                  if (text_ptr == 0)
                      text_ptr = MSG_SYS_NOTHING_WRONG_HERE;
@@ -11720,7 +11826,7 @@ index 236c04f..bb4b998 100644
                  bool pushed;
                  StepResult r = pm_push_text(st, PM_CLEANUP, text_ptr, &pushed);
                  if (pushed) return r;
-@@ -3045,6 +3180,12 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -3045,6 +3181,12 @@ StepResult mode_step_pause_menu(ModeState *ms) {
              /* Key Items (this port's own addition, Key Items pool
               * feature, not part of the original ROM/assembly) */
              case 10:
@@ -11733,7 +11839,7 @@ index 236c04f..bb4b998 100644
                  /* Key Items menu pops 1 if an item was actually used
                   * (KIM_USE_RESUME), 0 otherwise (cancelled, or closed
                   * after just Help/browsing) -- resume in
-@@ -3058,6 +3199,14 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -3058,6 +3200,14 @@ StepResult mode_step_pause_menu(ModeState *ms) {
                  st->phase = PM_KEY_ITEMS_RESUME;
                  return STEP_RESULT_PUSH_INIT(GAME_MODE_KEY_ITEMS_MENU, &pm_child_init);
  
@@ -11748,7 +11854,7 @@ index 236c04f..bb4b998 100644
              /* Cancel (B/Select) or unknown → cleanup */
              default:
                  st->phase = PM_CLEANUP;
-@@ -3306,6 +3455,13 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -3306,6 +3456,13 @@ StepResult mode_step_pause_menu(ModeState *ms) {
              continue;
  
          case PM_KEY_ITEMS_RESUME:
@@ -11762,7 +11868,7 @@ index 236c04f..bb4b998 100644
              /* KEY_ITEMS_MENU popped 1 (an item was actually used,
               * KIM_USE_RESUME) or 0 (cancelled, or closed after just
               * Help/browsing) -- same branch shape as PM_USE_RESUME
-@@ -3912,14 +4068,21 @@ StepResult mode_step_quick_checktalk(ModeState *ms) {
+@@ -3912,14 +4069,21 @@ StepResult mode_step_quick_checktalk(ModeState *ms) {
      switch ((QuickChecktalkPhase)st->phase) {
      case QCT_TEXT: {
          disable_all_entities();
@@ -11785,7 +11891,7 @@ index 236c04f..bb4b998 100644
  
          st->phase = QCT_FADE;
          static ModeState dt_init;  /* outlives this dispatch (pump copies it) */
-@@ -3990,14 +4153,14 @@ StepResult mode_step_hppp_display(ModeState *ms) {
+@@ -3990,14 +4154,14 @@ StepResult mode_step_hppp_display(ModeState *ms) {
              return STEP_RESULT_POP(0);  /* blocking `break` had no cleanup */
  
          /* A or L → open the full menu */
@@ -11802,7 +11908,7 @@ index 236c04f..bb4b998 100644
              play_sfx(2);  /* SFX::CURSOR2 */
              clear_instant_printing();
              hide_hppp_windows();
-@@ -4107,6 +4270,7 @@ void print_eb_string(const uint8_t *eb_str, int len) {
+@@ -4107,6 +4271,7 @@ void print_eb_string(const uint8_t *eb_str, int len) {
          /* VWF render + flush to VRAM + write to per-window tilemap.
           * vwf_render_character handles @PRINT_SPECIAL internally for
           * chars 0x20, 0x22, 0x2F. */
@@ -11810,7 +11916,7 @@ index 236c04f..bb4b998 100644
          vwf_render_character(eb, font_id);
  
          /* Assembly: RENDER_VWF_CHARACTER calls FLUSH_VWF_TILES_TO_VRAM only for
-@@ -4170,6 +4334,7 @@ void print_string(const char *str) {
+@@ -4170,6 +4335,7 @@ void print_string(const char *str) {
          if (eb >= 0x50)
              dt.last_printed_character = eb;
  
@@ -11818,7 +11924,7 @@ index 236c04f..bb4b998 100644
          vwf_render_character(eb, font_id);
  
          /* Skip flush for special chars, same guard as print_eb_string */
-@@ -4218,6 +4383,7 @@ void print_number(int value, int min_digits) {
+@@ -4218,6 +4384,7 @@ void print_number(int value, int min_digits) {
  void clear_window_text(uint16_t window_id) {
      WindowInfo *w = get_window(window_id);
      if (!w) return;
@@ -11826,7 +11932,7 @@ index 236c04f..bb4b998 100644
  
      /* Free all tiles in per-window content_tilemap and fill with 0 */
      uint16_t content_width = w->width - 2;
-@@ -4332,6 +4498,33 @@ uint8_t ascii_to_eb_char(char ascii) {
+@@ -4332,6 +4499,33 @@ uint8_t ascii_to_eb_char(char ascii) {
      return table[c - 0x20];
  }
  
@@ -11860,7 +11966,7 @@ index 236c04f..bb4b998 100644
  /* VWF Engine */
  
  /* VRAM tile index for next VWF allocation. Reset each frame. */
-@@ -4354,6 +4547,7 @@ void print_newline(void) {
+@@ -4354,6 +4548,7 @@ void print_newline(void) {
      if (win.current_focus_window == WINDOW_ID_NONE) return;
      WindowInfo *w = get_window(win.current_focus_window);
      if (!w) return;
@@ -11868,7 +11974,7 @@ index 236c04f..bb4b998 100644
  
      /* Reset VWF state for new line (port of RESET_VWF_TEXT_STATE call) */
      vwf_init();
-@@ -4972,11 +5166,11 @@ int vwf_render_to_fixed_tiles(const uint8_t *eb_str, int len, uint8_t font_id,
+@@ -4972,11 +5167,11 @@ int vwf_render_to_fixed_tiles(const uint8_t *eb_str, int len, uint8_t font_id,
  int render_title_to_vram(const char *title, uint8_t title_slot) {
      if (!title || title[0] == '\0' || title_slot == 0) return 0;
  
