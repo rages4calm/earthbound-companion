@@ -1,0 +1,1372 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev15-offense-up",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "originalPack": false,
+  "runtimeSha256": {
+    "player.exe": "da6d9d29b1bd74754566f534cf9835af86c52d9f959e47c0394ed322e579e3a2",
+    "observer.exe": "fc42f717698f37bf08f8d1f1876349595dd8152b953d36a3cd5d69308f29b85d"
+  },
+  "assetsSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "privateBuild": {
+    "driverSourceSha256": "fd49bdaf8e8eeecf7c82b4b65824b576f5528f94a76357026d49b2c72ae21384",
+    "executableSha256": "c8ed4649ef519bd46c9c6e1b38a17e61e1c35764461257f3333424e3bfa7c1f6",
+    "productionExecutableSha256": "da6d9d29b1bd74754566f534cf9835af86c52d9f959e47c0394ed322e579e3a2",
+    "productionLibrarySha256": "8f6040cfe7c5f7f617ad1cdf10be7e733919fe07e1662850dbdcb1880ab21936",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "nativeExitCode": 0,
+  "function": "C29E38",
+  "actionId": 48,
+  "cases": [
+    {
+      "initialOffense": 0,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 0,
+      "actualOffense": 0,
+      "machineOffense": 0,
+      "passed": true
+    },
+    {
+      "initialOffense": 1,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 1,
+      "actualOffense": 1,
+      "machineOffense": 1,
+      "passed": true
+    },
+    {
+      "initialOffense": 7,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 8,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 16,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 50,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 60,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 80,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 90,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 101,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 113,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 127,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 142,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 159,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 170,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 255,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 32768,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 65535,
+      "baseOffense": 1,
+      "npc": 0,
+      "expectedOffense": 2,
+      "actualOffense": 2,
+      "machineOffense": 2,
+      "passed": true
+    },
+    {
+      "initialOffense": 0,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 0,
+      "actualOffense": 0,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 1,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 1,
+      "actualOffense": 1,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 7,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 7,
+      "actualOffense": 7,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 8,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 8,
+      "actualOffense": 8,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 16,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 16,
+      "actualOffense": 16,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 50,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 50,
+      "actualOffense": 50,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 60,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 60,
+      "actualOffense": 60,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 80,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 80,
+      "actualOffense": 80,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 90,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 90,
+      "actualOffense": 90,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 101,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 101,
+      "actualOffense": 101,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 113,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 113,
+      "actualOffense": 113,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 127,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 127,
+      "actualOffense": 127,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 142,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 142,
+      "actualOffense": 142,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 159,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 159,
+      "actualOffense": 159,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 170,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 170,
+      "actualOffense": 170,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 255,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 255,
+      "actualOffense": 255,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 32768,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 32768,
+      "actualOffense": 32768,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 65535,
+      "baseOffense": 1,
+      "npc": 9,
+      "expectedOffense": 65535,
+      "actualOffense": 65535,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 0,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 0,
+      "actualOffense": 10,
+      "machineOffense": 0,
+      "passed": false
+    },
+    {
+      "initialOffense": 1,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 1,
+      "actualOffense": 11,
+      "machineOffense": 1,
+      "passed": false
+    },
+    {
+      "initialOffense": 7,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 7,
+      "actualOffense": 17,
+      "machineOffense": 7,
+      "passed": false
+    },
+    {
+      "initialOffense": 8,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 9,
+      "actualOffense": 18,
+      "machineOffense": 9,
+      "passed": false
+    },
+    {
+      "initialOffense": 16,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 18,
+      "actualOffense": 26,
+      "machineOffense": 18,
+      "passed": false
+    },
+    {
+      "initialOffense": 50,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 56,
+      "actualOffense": 60,
+      "machineOffense": 56,
+      "passed": false
+    },
+    {
+      "initialOffense": 60,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 67,
+      "actualOffense": 70,
+      "machineOffense": 67,
+      "passed": false
+    },
+    {
+      "initialOffense": 80,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 90,
+      "actualOffense": 90,
+      "machineOffense": 90,
+      "passed": true
+    },
+    {
+      "initialOffense": 90,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 101,
+      "actualOffense": 100,
+      "machineOffense": 101,
+      "passed": false
+    },
+    {
+      "initialOffense": 101,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 113,
+      "actualOffense": 111,
+      "machineOffense": 113,
+      "passed": false
+    },
+    {
+      "initialOffense": 113,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 127,
+      "actualOffense": 123,
+      "machineOffense": 127,
+      "passed": false
+    },
+    {
+      "initialOffense": 127,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 142,
+      "actualOffense": 137,
+      "machineOffense": 142,
+      "passed": false
+    },
+    {
+      "initialOffense": 142,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 159,
+      "actualOffense": 152,
+      "machineOffense": 159,
+      "passed": false
+    },
+    {
+      "initialOffense": 159,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 170,
+      "actualOffense": 169,
+      "machineOffense": 170,
+      "passed": false
+    },
+    {
+      "initialOffense": 170,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 170,
+      "actualOffense": 170,
+      "machineOffense": 170,
+      "passed": true
+    },
+    {
+      "initialOffense": 255,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 170,
+      "actualOffense": 170,
+      "machineOffense": 170,
+      "passed": true
+    },
+    {
+      "initialOffense": 32768,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 170,
+      "actualOffense": 170,
+      "machineOffense": 170,
+      "passed": true
+    },
+    {
+      "initialOffense": 65535,
+      "baseOffense": 80,
+      "npc": 0,
+      "expectedOffense": 170,
+      "actualOffense": 9,
+      "machineOffense": 170,
+      "passed": false
+    },
+    {
+      "initialOffense": 0,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 0,
+      "actualOffense": 0,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 1,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 1,
+      "actualOffense": 1,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 7,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 7,
+      "actualOffense": 7,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 8,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 8,
+      "actualOffense": 8,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 16,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 16,
+      "actualOffense": 16,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 50,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 50,
+      "actualOffense": 50,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 60,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 60,
+      "actualOffense": 60,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 80,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 80,
+      "actualOffense": 80,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 90,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 90,
+      "actualOffense": 90,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 101,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 101,
+      "actualOffense": 101,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 113,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 113,
+      "actualOffense": 113,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 127,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 127,
+      "actualOffense": 127,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 142,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 142,
+      "actualOffense": 142,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 159,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 159,
+      "actualOffense": 159,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 170,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 170,
+      "actualOffense": 170,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 255,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 255,
+      "actualOffense": 255,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 32768,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 32768,
+      "actualOffense": 32768,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 65535,
+      "baseOffense": 80,
+      "npc": 9,
+      "expectedOffense": 65535,
+      "actualOffense": 65535,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 0,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 0,
+      "actualOffense": 25,
+      "machineOffense": 0,
+      "passed": false
+    },
+    {
+      "initialOffense": 1,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 1,
+      "actualOffense": 26,
+      "machineOffense": 1,
+      "passed": false
+    },
+    {
+      "initialOffense": 7,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 7,
+      "actualOffense": 32,
+      "machineOffense": 7,
+      "passed": false
+    },
+    {
+      "initialOffense": 8,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 9,
+      "actualOffense": 33,
+      "machineOffense": 9,
+      "passed": false
+    },
+    {
+      "initialOffense": 16,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 18,
+      "actualOffense": 41,
+      "machineOffense": 18,
+      "passed": false
+    },
+    {
+      "initialOffense": 50,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 56,
+      "actualOffense": 75,
+      "machineOffense": 56,
+      "passed": false
+    },
+    {
+      "initialOffense": 60,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 67,
+      "actualOffense": 85,
+      "machineOffense": 67,
+      "passed": false
+    },
+    {
+      "initialOffense": 80,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 90,
+      "actualOffense": 105,
+      "machineOffense": 90,
+      "passed": false
+    },
+    {
+      "initialOffense": 90,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 101,
+      "actualOffense": 115,
+      "machineOffense": 101,
+      "passed": false
+    },
+    {
+      "initialOffense": 101,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 113,
+      "actualOffense": 126,
+      "machineOffense": 113,
+      "passed": false
+    },
+    {
+      "initialOffense": 113,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 127,
+      "actualOffense": 138,
+      "machineOffense": 127,
+      "passed": false
+    },
+    {
+      "initialOffense": 127,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 142,
+      "actualOffense": 152,
+      "machineOffense": 142,
+      "passed": false
+    },
+    {
+      "initialOffense": 142,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 159,
+      "actualOffense": 167,
+      "machineOffense": 159,
+      "passed": false
+    },
+    {
+      "initialOffense": 159,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 178,
+      "actualOffense": 184,
+      "machineOffense": 178,
+      "passed": false
+    },
+    {
+      "initialOffense": 170,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 191,
+      "actualOffense": 195,
+      "machineOffense": 191,
+      "passed": false
+    },
+    {
+      "initialOffense": 255,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 286,
+      "actualOffense": 280,
+      "machineOffense": 286,
+      "passed": false
+    },
+    {
+      "initialOffense": 32768,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 425,
+      "actualOffense": 425,
+      "machineOffense": 425,
+      "passed": true
+    },
+    {
+      "initialOffense": 65535,
+      "baseOffense": 200,
+      "npc": 0,
+      "expectedOffense": 425,
+      "actualOffense": 24,
+      "machineOffense": 425,
+      "passed": false
+    },
+    {
+      "initialOffense": 0,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 0,
+      "actualOffense": 0,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 1,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 1,
+      "actualOffense": 1,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 7,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 7,
+      "actualOffense": 7,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 8,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 8,
+      "actualOffense": 8,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 16,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 16,
+      "actualOffense": 16,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 50,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 50,
+      "actualOffense": 50,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 60,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 60,
+      "actualOffense": 60,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 80,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 80,
+      "actualOffense": 80,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 90,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 90,
+      "actualOffense": 90,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 101,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 101,
+      "actualOffense": 101,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 113,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 113,
+      "actualOffense": 113,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 127,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 127,
+      "actualOffense": 127,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 142,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 142,
+      "actualOffense": 142,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 159,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 159,
+      "actualOffense": 159,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 170,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 170,
+      "actualOffense": 170,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 255,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 255,
+      "actualOffense": 255,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 32768,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 32768,
+      "actualOffense": 32768,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 65535,
+      "baseOffense": 200,
+      "npc": 9,
+      "expectedOffense": 65535,
+      "actualOffense": 65535,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 0,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 0,
+      "actualOffense": 31,
+      "machineOffense": 0,
+      "passed": false
+    },
+    {
+      "initialOffense": 1,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 1,
+      "actualOffense": 32,
+      "machineOffense": 1,
+      "passed": false
+    },
+    {
+      "initialOffense": 7,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 7,
+      "actualOffense": 38,
+      "machineOffense": 7,
+      "passed": false
+    },
+    {
+      "initialOffense": 8,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 9,
+      "actualOffense": 39,
+      "machineOffense": 9,
+      "passed": false
+    },
+    {
+      "initialOffense": 16,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 18,
+      "actualOffense": 47,
+      "machineOffense": 18,
+      "passed": false
+    },
+    {
+      "initialOffense": 50,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 56,
+      "actualOffense": 81,
+      "machineOffense": 56,
+      "passed": false
+    },
+    {
+      "initialOffense": 60,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 67,
+      "actualOffense": 91,
+      "machineOffense": 67,
+      "passed": false
+    },
+    {
+      "initialOffense": 80,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 90,
+      "actualOffense": 111,
+      "machineOffense": 90,
+      "passed": false
+    },
+    {
+      "initialOffense": 90,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 101,
+      "actualOffense": 121,
+      "machineOffense": 101,
+      "passed": false
+    },
+    {
+      "initialOffense": 101,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 113,
+      "actualOffense": 132,
+      "machineOffense": 113,
+      "passed": false
+    },
+    {
+      "initialOffense": 113,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 127,
+      "actualOffense": 144,
+      "machineOffense": 127,
+      "passed": false
+    },
+    {
+      "initialOffense": 127,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 142,
+      "actualOffense": 158,
+      "machineOffense": 142,
+      "passed": false
+    },
+    {
+      "initialOffense": 142,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 159,
+      "actualOffense": 173,
+      "machineOffense": 159,
+      "passed": false
+    },
+    {
+      "initialOffense": 159,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 178,
+      "actualOffense": 190,
+      "machineOffense": 178,
+      "passed": false
+    },
+    {
+      "initialOffense": 170,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 191,
+      "actualOffense": 201,
+      "machineOffense": 191,
+      "passed": false
+    },
+    {
+      "initialOffense": 255,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 286,
+      "actualOffense": 286,
+      "machineOffense": 286,
+      "passed": true
+    },
+    {
+      "initialOffense": 32768,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 541,
+      "actualOffense": 541,
+      "machineOffense": 541,
+      "passed": true
+    },
+    {
+      "initialOffense": 65535,
+      "baseOffense": 255,
+      "npc": 0,
+      "expectedOffense": 541,
+      "actualOffense": 30,
+      "machineOffense": 541,
+      "passed": false
+    },
+    {
+      "initialOffense": 0,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 0,
+      "actualOffense": 0,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 1,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 1,
+      "actualOffense": 1,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 7,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 7,
+      "actualOffense": 7,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 8,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 8,
+      "actualOffense": 8,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 16,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 16,
+      "actualOffense": 16,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 50,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 50,
+      "actualOffense": 50,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 60,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 60,
+      "actualOffense": 60,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 80,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 80,
+      "actualOffense": 80,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 90,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 90,
+      "actualOffense": 90,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 101,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 101,
+      "actualOffense": 101,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 113,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 113,
+      "actualOffense": 113,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 127,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 127,
+      "actualOffense": 127,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 142,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 142,
+      "actualOffense": 142,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 159,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 159,
+      "actualOffense": 159,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 170,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 170,
+      "actualOffense": 170,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 255,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 255,
+      "actualOffense": 255,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 32768,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 32768,
+      "actualOffense": 32768,
+      "machineOffense": null,
+      "passed": true
+    },
+    {
+      "initialOffense": 65535,
+      "baseOffense": 255,
+      "npc": 9,
+      "expectedOffense": 65535,
+      "actualOffense": 65535,
+      "machineOffense": null,
+      "passed": true
+    }
+  ],
+  "pinnedReduxReferences": [
+    {
+      "path": "ccscript/main.ccs",
+      "sha256": "eed62cec9d49b138534418f39c9929a4c4ad6e573171b45708180dc3e63a97a3",
+      "matchesPinnedSource": true
+    },
+    {
+      "path": "ccscript/redux/offense_defense_psi_buff.ccs",
+      "sha256": "9356b1cf026a9e0d6103b8783c261503e100c16ff3338eff57a0e3b21aa35a9d",
+      "matchesPinnedSource": true
+    }
+  ],
+  "sourceReferences": [
+    {
+      "path": "asm/battle/increase_offense_16th.asm",
+      "sha256": "a713f8bde7093e863f295be7b19411b8670faf94f1147c90c889cd074e516d04"
+    },
+    {
+      "path": "asm/battle/actions/offense_up_alpha.asm",
+      "sha256": "684e3f38b2bfa06de59243bbca19cc2b5c81928481008d0bcf87781ed00d395b"
+    },
+    {
+      "path": "src/game/battle_calc.c",
+      "sha256": "24984edb9ad4984b07640e61e13b010d737fc0b9d33ddb8fd48206405de381a3"
+    },
+    {
+      "path": "src/game/battle_actions.c",
+      "sha256": "e1f50167f6ac2f4df6f01034f9b331508eb2339e361643d85301e14ca7833b27"
+    }
+  ],
+  "sourceReferenceRole": "Current review files separately identified from immutable tested library.",
+  "machineReportSha256": "f6e2ea7284a2bf9f20426093ff36436b5198f2e46009486f5eae94b0fbc8343d",
+  "machineComparedCases": 72,
+  "reproductionFlags": {
+    "build": "_BuildScratch\\audit-dev15-v4-build\\companion",
+    "native-source": "native-source",
+    "assets": "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.13\\Profiles\\maternalbound-redux-897d0083\\assets.pak",
+    "runtime": "_BuildScratch\\audit-dev15-v4-runtime",
+    "scratch": "_BuildScratch\\battle-item-audit-dev15-offense-up-v4-expanded-red",
+    "output": "research\\redux-battle-offense-up-v4-expanded-red.json",
+    "project": "_BuildScratch\\MaternalBound-Redux\\Project",
+    "machine-report": "research\\redux-battle-offense-up-machine-v4-red.json"
+  },
+  "allPassed": false,
+  "diagnosticMode": true,
+  "limits": [
+    "Actual callback and resumable text execute in prepared player/NPC boundaries; full turn and input/render are outside scope.",
+    "Expected arithmetic is derived from exact enabled pinned opcodes; independent patched-machine results are recorded separately.",
+    "Only player library executed; observer hash is provenance. No save, ROM or extracted payload bytes included."
+  ]
+}

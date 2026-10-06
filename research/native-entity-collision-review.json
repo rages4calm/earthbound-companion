@@ -1,0 +1,435 @@
+{
+  "format": "native-entity-collision-micro-oracle-v1",
+  "Passed": true,
+  "ExecutedCases": 138261,
+  "SkippedCases": 0,
+  "MismatchCount": 0,
+  "MismatchesByHelper": {},
+  "MismatchExamples": [],
+  "AllMismatchesPrivateArtifact": "native-mismatches.jsonl",
+  "OutputColumns": [
+    "returnWord",
+    "surfaceFlags",
+    "checkedLeftX",
+    "checkedTopY",
+    "ladderTileX",
+    "ladderTileY",
+    "selectedSlotSize"
+  ],
+  "ExactSampleTileSequenceCompared": true,
+  "InputColumns": [
+    "kind",
+    "x",
+    "y",
+    "sizeCode",
+    "entitySlot",
+    "direction",
+    "initialSurfaceFlags",
+    "syntheticGridPattern",
+    "reserved"
+  ],
+  "SizeCodesCovered": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "EntitySlotsCovered": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "ValidDirectionsCovered": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "All17EntriesOfAll5GeometryTablesMatch": true,
+  "GeometryTables": [
+    {
+      "nativeTable": "entity_collision_x_offset",
+      "originalLabel": "ENTITY_COLLISION_X_OFFSET",
+      "originalAddress": "C42A1F",
+      "EntriesCompared": 17,
+      "EveryEntryMatches": true,
+      "ZeroEntryIndices": [],
+      "originalAsmPath": "asm/data/overworld/entity_collision_x_offset.asm",
+      "originalAsmSha256": "5662d0eb23a61958c3b95500c74db9e293df2a7ed45e675e822596c42370d724",
+      "OriginalTableBytesSha256": "533c31376f3202a8477057f5df5911b67b9a84fc4d1ca0785037a46647afe473"
+    },
+    {
+      "nativeTable": "entity_collision_y_offset",
+      "originalLabel": "ENTITY_COLLISION_Y_OFFSET",
+      "originalAddress": "C42A41",
+      "EntriesCompared": 17,
+      "EveryEntryMatches": true,
+      "ZeroEntryIndices": [],
+      "originalAsmPath": "asm/data/overworld/entity_collision_y_offset.asm",
+      "originalAsmSha256": "e0d912a6d792c8c9399a78bd152b2d84b8872a494833ea5e87bb7da8dedea8fe",
+      "OriginalTableBytesSha256": "8a3e056dae56f281c6b99b0a263ef06d78459546adcc757b47759929fb8cb9c2"
+    },
+    {
+      "nativeTable": "sprite_hitbox_enable",
+      "originalLabel": "SPRITE_HITBOX_ENABLE_TABLE",
+      "originalAddress": "C42AEB",
+      "EntriesCompared": 17,
+      "EveryEntryMatches": true,
+      "ZeroEntryIndices": [
+        1,
+        10,
+        15
+      ],
+      "originalAsmPath": "asm/data/overworld/sprite_hitbox_enable_table.asm",
+      "originalAsmSha256": "117022c2c5961550eb5588ff478009ef8bb83679920412f9ce11642a3656961f",
+      "OriginalTableBytesSha256": "2a6e0760429fd971a1b7e7b84abbdae1a2427b5f9d16c6b67dca35d14dc4bc2b"
+    },
+    {
+      "nativeTable": "entity_coll_h_count",
+      "originalLabel": "ENTITY_COLLISION_WIDTH_TABLE",
+      "originalAddress": "C42AA7",
+      "EntriesCompared": 17,
+      "EveryEntryMatches": true,
+      "ZeroEntryIndices": [
+        1,
+        10,
+        15
+      ],
+      "originalAsmPath": "asm/data/overworld/entity_collision_width_table.asm",
+      "originalAsmSha256": "177334c3e0d941a523721773b93cbe5eac3b181aec43ec6b20c6c0d76cad18ac",
+      "OriginalTableBytesSha256": "b8799e2c20860fe34591f5ecd1a20de1f0f1f4e85b203933a408958a8de7fdba"
+    },
+    {
+      "nativeTable": "entity_coll_v_count",
+      "originalLabel": "ENTITY_COLLISION_HEIGHT_TABLE",
+      "originalAddress": "C42AC9",
+      "EntriesCompared": 17,
+      "EveryEntryMatches": true,
+      "ZeroEntryIndices": [
+        1,
+        10,
+        15
+      ],
+      "originalAsmPath": "asm/data/overworld/entity_collision_height_table.asm",
+      "originalAsmSha256": "ee5d72c2c65d85c6518669887afce87c9151adb9f460850c80e69a475369b3c9",
+      "OriginalTableBytesSha256": "5aecae3f6bb7cfce94cf94327b7f438aca6697c024bba16dcb0b9891269c360d"
+    }
+  ],
+  "HelperCatalog": [
+    {
+      "nativeHelper": "check_entity_collision",
+      "originalLabel": "CHECK_ENTITY_COLLISION",
+      "originalAddress": "C05CD7",
+      "endExclusive": "C05D8B",
+      "originalMachineBytesSha256": "c4b5ea68be63e69f4d1d3073d5b217a2b06c4d38a7bdd66691a3bf5f67700f0c",
+      "originalAsmPath": "asm/overworld/collision/check_entity_collision.asm",
+      "originalAsmSha256": "821438e080a34777f5e48872363626a252d9f95ea73fa3c6c0973024ad62ab55",
+      "abi": "A=x, X=y, Y=entity slot; direction at caller DP+14; JSL/RTL"
+    },
+    {
+      "nativeHelper": "check_top_edge",
+      "originalLabel": "CHECK_COLLISION_TILES_HORIZONTAL",
+      "originalAddress": "C05503",
+      "endExclusive": "C0559C",
+      "originalMachineBytesSha256": "e006a64df1fa1ca11dc402379dd69455bf4d10ca451af47714311130ec7ca1d0",
+      "originalAsmPath": "asm/overworld/collision/check_collision_tiles_horizontal.asm",
+      "originalAsmSha256": "7eeb072c8edd45c01d101ae7c7360e66e3599ecb6ae0a019710f93ed51864e37",
+      "abi": "A=left x, X=size code; JSR/RTS"
+    },
+    {
+      "nativeHelper": "check_bottom_edge",
+      "originalLabel": "CHECK_COLLISION_TILES_VERTICAL",
+      "originalAddress": "C0559C",
+      "endExclusive": "C05639",
+      "originalMachineBytesSha256": "07ae61b85f2f1d4a4f5e29b56b525782b5752d08e67fde335a6ed042acfba7e3",
+      "originalAsmPath": "asm/overworld/collision/check_collision_tiles_vertical.asm",
+      "originalAsmSha256": "63355fa61db54a247128d542814576adbff713a58e32fdb21a94b71ce63eb987",
+      "abi": "A=left x, X=size code; JSR/RTS"
+    },
+    {
+      "nativeHelper": "check_right_edge",
+      "originalLabel": "ACCUMULATE_COLLISION_FLAGS_HORIZONTAL",
+      "originalAddress": "C056D0",
+      "endExclusive": "C05769",
+      "originalMachineBytesSha256": "411ff6b95801e756a8fc29d512f4c655d1f0d6fb739ae8320aa6a274d6b279fe",
+      "originalAsmPath": "asm/overworld/collision/accumulate_collision_flags_horizontal.asm",
+      "originalAsmSha256": "8d3da0dc9f547e37d4833c17b03be0c7ac5c166c45ef928a1cbabfaee4f75f31",
+      "abi": "A=top y, X=size code; JSR/RTS"
+    },
+    {
+      "nativeHelper": "check_left_edge",
+      "originalLabel": "ACCUMULATE_COLLISION_FLAGS_VERTICAL",
+      "originalAddress": "C05639",
+      "endExclusive": "C056D0",
+      "originalMachineBytesSha256": "d1615eb810c1cf8eb400162f3b2fdad44e5b12c65abbdb98ce596d8ed9271374",
+      "originalAsmPath": "asm/overworld/collision/accumulate_collision_flags_vertical.asm",
+      "originalAsmSha256": "782959a330cb69376aa571791fe9a2954e7c9fbd2c77de3f2a5247bd5892cd20",
+      "abi": "A=top y, X=size code; JSR/RTS"
+    }
+  ],
+  "OriginalGridReadInstructionAddresses": [
+    "C0553C",
+    "C05573",
+    "C055E2",
+    "C0561A",
+    "C05714",
+    "C0574A",
+    "C05670",
+    "C056A7"
+  ],
+  "GlobalAddresses": {
+    "entitySizes": "002B6E",
+    "surfaceFlags": "005DA4",
+    "checkedLeftX": "005DAC",
+    "checkedTopY": "005DAE",
+    "collisionGrid": "00E000",
+    "ladderTileX": "005DA8",
+    "ladderTileY": "005DAA"
+  },
+  "CaseGroups": {
+    "all-sizes-tile-phases-directions": 34816,
+    "direct-edge-phases-flag-preservation": 52224,
+    "coordinate-arithmetic-and-grid-wrap-boundaries": 8704,
+    "direct-edge-arithmetic-boundaries": 4352,
+    "all-entity-slot-indexing": 16320,
+    "source-default-direction-no-edge-dispatch": 85,
+    "all-collision-byte-flags-and-size-codes": 21760
+  },
+  "ActualOriginalEntryCalls": {
+    "check_entity_collision": 64277,
+    "check_top_edge": 42568,
+    "check_bottom_edge": 42568,
+    "check_right_edge": 42568,
+    "check_left_edge": 42568
+  },
+  "TotalTileSamplesCompared": 555888,
+  "InputIdentities": {
+    "rom": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "oracle": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+    "compiler": "206f9fc067234f48ae077550658dae06bd75d99110c1b3166887b7090cbd7fa0",
+    "nativeSource": "3df5e031e00b83dbb073ea4c7e059d13702ce324ec18cc0fb46c1aaad16f4f95",
+    "originalMacros": "bf93511b3c4b9f9ff9f4d3fb1b54d0e0336e486267905b17d23e355c1a10ad91",
+    "originalRamLayout": "6cc3c7b2b6245fee4a6293b4ce4519b25dea0439862e16385af3ea55f962ad4b",
+    "nativeEntityHeader": "121d1080f6828c5c0025ee0f1f095f6f388ff183815c13097d7d50eabe39547b",
+    "nativeOverworldHeader": "a7aab065f4d173e5c00e1895eb0f64296d0f2adfb9e3727993d8d3837f53fedf",
+    "oracleCore": "69425f547e83648b4aa8507908ff473a3d8c4ac666b8e130b2f5e9d99922d29a"
+  },
+  "OriginalRomSha1": "d67a8ef36ef616bc39306aa1b486e1bd3047815a",
+  "VerbatimActualBodiesAndTablesSha256": "dfe08b54621bda3d742a72bff8fc529711cbfc2a08b64406747d478d0407c0b2",
+  "NativeVerbatimProbeSha256": "ac8bba14756875f3408bc6358fbbc048e1b4ee19ae7450addf90afe38f13c0cc",
+  "NativeTraceProbeSha256": "1b2deb46f1d55a1665c87ed66bab0a0a3ff11bbbab8877f3bb2b11f9efb6e273",
+  "TraceInstrumentationResultParity": true,
+  "OriginalMachineCodeExecuted": true,
+  "OwnCallerSha256": "3d25d9cc1e52bd536232736a792b19c6c1cc710869aa594cb2fc8a68ae766f3e",
+  "OriginalMachineBatches": [
+    {
+      "FirstCase": 1,
+      "LastCase": 20000,
+      "ExecutedCases": 20000,
+      "CompleteOrderedCorpusVerified": true,
+      "ActualOriginalEntryCounts": [
+        8000,
+        6000,
+        6000,
+        6000,
+        6000
+      ],
+      "OracleLuaSha256": "bdb9bf80fe5e19fdec7de6ab673b259e37a854a8a8c9044eb1e262112212507f",
+      "OwnCallerSha256": "3d25d9cc1e52bd536232736a792b19c6c1cc710869aa594cb2fc8a68ae766f3e",
+      "OriginalSamplesSha256": "e2db83b2b9e1f0c12e7f019ec2263ef078559faf6c02a0a579fa06dea0a96420",
+      "PrivateArtifactDirectory": "machine-batch-001"
+    },
+    {
+      "FirstCase": 20001,
+      "LastCase": 40000,
+      "ExecutedCases": 20000,
+      "CompleteOrderedCorpusVerified": true,
+      "ActualOriginalEntryCounts": [
+        11320,
+        6416,
+        6416,
+        6415,
+        6413
+      ],
+      "OracleLuaSha256": "73f1c65c8370cf5c088d5d9c369019567f732152870195fc40a05dae0df97553",
+      "OwnCallerSha256": "3d25d9cc1e52bd536232736a792b19c6c1cc710869aa594cb2fc8a68ae766f3e",
+      "OriginalSamplesSha256": "631de4b216f62af1a4dea17c698f1b7f3cb6706eebf29b224a22a319be7d6569",
+      "PrivateArtifactDirectory": "machine-batch-002"
+    },
+    {
+      "FirstCase": 40001,
+      "LastCase": 60000,
+      "ExecutedCases": 20000,
+      "CompleteOrderedCorpusVerified": true,
+      "ActualOriginalEntryCounts": [
+        11320,
+        6416,
+        6414,
+        6414,
+        6416
+      ],
+      "OracleLuaSha256": "df5a8ee58f94dc70f3184e03c7b68f6b2513c5719d6b44c276569d89f0978ae6",
+      "OwnCallerSha256": "3d25d9cc1e52bd536232736a792b19c6c1cc710869aa594cb2fc8a68ae766f3e",
+      "OriginalSamplesSha256": "fd195780e6cf475c3f0bf48b7b6bf5b93213aec3b63e432baff89d47c4a7aded",
+      "PrivateArtifactDirectory": "machine-batch-003"
+    },
+    {
+      "FirstCase": 60001,
+      "LastCase": 80000,
+      "ExecutedCases": 20000,
+      "CompleteOrderedCorpusVerified": true,
+      "ActualOriginalEntryCounts": [
+        8008,
+        5999,
+        6001,
+        6002,
+        6002
+      ],
+      "OracleLuaSha256": "5b67c52319902b34bba3d64f4a707610ad9a39e11e194ae845a829fe660d72c2",
+      "OwnCallerSha256": "3d25d9cc1e52bd536232736a792b19c6c1cc710869aa594cb2fc8a68ae766f3e",
+      "OriginalSamplesSha256": "1b7dd9333fde09aea7d5d7b25743fec6c3b0361bfa9d97d528dde2705545fb4c",
+      "PrivateArtifactDirectory": "machine-batch-004"
+    },
+    {
+      "FirstCase": 80001,
+      "LastCase": 100000,
+      "ExecutedCases": 20000,
+      "CompleteOrderedCorpusVerified": true,
+      "ActualOriginalEntryCounts": [
+        11312,
+        6414,
+        6414,
+        6414,
+        6414
+      ],
+      "OracleLuaSha256": "d2f0203d75c218593a49c31d67fee22b80bdf594e5513e67b91d2ff29ffc7d9d",
+      "OwnCallerSha256": "3d25d9cc1e52bd536232736a792b19c6c1cc710869aa594cb2fc8a68ae766f3e",
+      "OriginalSamplesSha256": "d9217b076cbcd77aa7752d743704ff1d437d1a1b0c8a1d15b20736a51d303cfc",
+      "PrivateArtifactDirectory": "machine-batch-005"
+    },
+    {
+      "FirstCase": 100001,
+      "LastCase": 120000,
+      "ExecutedCases": 20000,
+      "CompleteOrderedCorpusVerified": true,
+      "ActualOriginalEntryCounts": [
+        10665,
+        6314,
+        6294,
+        6297,
+        6293
+      ],
+      "OracleLuaSha256": "977869e9b9e1cad537095824ad8b929c68c779fa7b8f88a98122afe76284af32",
+      "OwnCallerSha256": "3d25d9cc1e52bd536232736a792b19c6c1cc710869aa594cb2fc8a68ae766f3e",
+      "OriginalSamplesSha256": "6a602897d8e14225ef65cd9645118c4c3aacd75d74ca2ccdea4aa140ae2e4eb7",
+      "PrivateArtifactDirectory": "machine-batch-006"
+    },
+    {
+      "FirstCase": 120001,
+      "LastCase": 138261,
+      "ExecutedCases": 18261,
+      "CompleteOrderedCorpusVerified": true,
+      "ActualOriginalEntryCounts": [
+        3652,
+        5009,
+        5029,
+        5026,
+        5030
+      ],
+      "OracleLuaSha256": "4ddd79860505eb713e7bb06e374ed046850243bf9d42f03d9570c588815a227a",
+      "OwnCallerSha256": "3d25d9cc1e52bd536232736a792b19c6c1cc710869aa594cb2fc8a68ae766f3e",
+      "OriginalSamplesSha256": "c46379cfa2252ff7c494912901ad99a8bc9c1a7ca5f2136a53e3509fa83afe3e",
+      "PrivateArtifactDirectory": "machine-batch-007"
+    }
+  ],
+  "SourceABI": {
+    "OriginalDirectPageFrameBytes": 20,
+    "FourthParameterOffsetFromCallerDirectPage": 14,
+    "OriginalEntitySizeEntryBytes": 2,
+    "NativeEntitySizeEntryBytes": 1,
+    "ValidSizeRangeVerified": [
+      0,
+      16
+    ]
+  },
+  "TraceCalibrationPassed": true,
+  "InputSha256": "4180adf6bf27fd04c6e6c9b17caf5be32a0047f1399331677261dd1bed9fde85",
+  "OriginalSamplesSha256": "c29005fee012aae29c156a555d5010f3815ee67f6e2ffcb7cb98f84338ccd5e4",
+  "StackAndDirectPageCanariesPassed": true,
+  "ProtectedMemoryCanaryPassed": true,
+  "CompleteOrderedCorpusVerified": true,
+  "OwnerRomUnchanged": true,
+  "OwnerSavesTouched": false,
+  "SharedSourceEdited": false,
+  "SharedBuildsEdited": false,
+  "FullCollisionParityVerified": false,
+  "FullCompatibilityVerified": false,
+  "FullPlaythroughVerified": false,
+  "Runner": {
+    "path": "tools/snes_entity_collision_oracle.py",
+    "sha256": "6d3128db258b0fc79a64fd27a39c53b3740e667037b9061a580bbf9dfcec7058",
+    "ReproductionArguments": {
+      "rom": "<local clean USA .sfc>",
+      "oracle": "<local mesen-agent.exe>",
+      "compiler": "<local gcc.exe>",
+      "native-source": "native-source",
+      "generated": "build/companion/game_lib/generated",
+      "scratch": "_BuildScratch/<fresh audit directory>",
+      "batch-size": 20000,
+      "output": "research/<fresh report filename>.json"
+    }
+  },
+  "Limits": [
+    "Original clean USA machine code is compared with these five actual native C bodies compiled in isolation; no complete game executable or story parity is claimed.",
+    "Every size, slot, tile phase and valid direction is exercised with selected arithmetic/grid-wrap boundaries. All possible coordinate pairs, grids and initial flags are not exhaustive.",
+    "The original always samples a first tile even for zero width/height entries; table equality, read order/count and ORed flags are compared directly.",
+    "All 256 collision bytes are checked as values. Their gameplay effects, actual stairs/doors, sprite/NPC collision integration, sprint guards and collision-grid loading are outside this function audit.",
+    "Source-defined default direction returns are included; invalid entity slots/size indices are not invoked because the source indexes arrays without bounds checks.",
+    "Trace uses CPU X at each original LDA abs,X grid instruction and a separately result-checked native sample wrapper. Other CPU registers, scratch RAM and nonspecified helper return registers are not parity outputs.",
+    "No original ROM, game assets, original machine-byte copies or emulator are included in public tools/reports."
+  ]
+}

@@ -1,0 +1,607 @@
+{
+  "Passed": true,
+  "InputsUnchanged": true,
+  "Identities": {
+    "_BuildScratch\\hotel-dev14\\owner-capture\\saves\\quicksave_1.bin.0": "f5ef3d28a5efcceb6b0b0179a11f0e8cae890a2a463eeebd0dea458ef5676f31",
+    "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.14\\Profiles\\maternalbound-redux-897d0083\\assets.pak": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+    "_BuildScratch\\audit-dev15-v6-runtime\\player.exe": "7a96db453b106787060c7e32e3ad8f19d010c07d35b9eff7e57e4c54461e102b",
+    "_BuildScratch\\audit-dev15-v6-runtime\\observer.exe": "4b53e35ad85156e215f97c7823bbf96c703dcc201808eb7d1c1f0d824afe4a27",
+    "_BuildScratch\\MaternalBound-Redux\\Project\\ccscript\\data\\data_48.ccs": "e458c2b3024c48eeedb2e651e64b3847fd3e61ec75153ce51ef0fcceea32db7a"
+  },
+  "Cases": [
+    {
+      "engine": "player",
+      "branch": "pay",
+      "start": {
+        "modes": [
+          61,
+          28
+        ],
+        "money": 5000,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "final": {
+        "modes": [
+          61
+        ],
+        "money": 4820,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 360,
+            "current_pp_target": 125
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 95,
+            "current_pp_target": 80
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 139,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": true
+      },
+      "passed": true
+    },
+    {
+      "engine": "player",
+      "branch": "decline",
+      "start": {
+        "modes": [
+          61,
+          28
+        ],
+        "money": 5000,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "final": {
+        "modes": [
+          61
+        ],
+        "money": 5000,
+        "bank": 27282,
+        "position": [
+          7498,
+          9434
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "passed": true
+    },
+    {
+      "engine": "player",
+      "branch": "insufficient",
+      "start": {
+        "modes": [
+          61,
+          28
+        ],
+        "money": 0,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "final": {
+        "modes": [
+          61
+        ],
+        "money": 0,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "passed": true
+    },
+    {
+      "engine": "observer",
+      "branch": "pay",
+      "start": {
+        "modes": [
+          61,
+          28
+        ],
+        "money": 5000,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "final": {
+        "modes": [
+          61
+        ],
+        "money": 4820,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 360,
+            "current_pp_target": 125
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 95,
+            "current_pp_target": 80
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 139,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": true
+      },
+      "passed": true
+    },
+    {
+      "engine": "observer",
+      "branch": "decline",
+      "start": {
+        "modes": [
+          61,
+          28
+        ],
+        "money": 5000,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "final": {
+        "modes": [
+          61
+        ],
+        "money": 5000,
+        "bank": 27282,
+        "position": [
+          7498,
+          9434
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "passed": true
+    },
+    {
+      "engine": "observer",
+      "branch": "insufficient",
+      "start": {
+        "modes": [
+          61,
+          28
+        ],
+        "money": 0,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "final": {
+        "modes": [
+          61
+        ],
+        "money": 0,
+        "bank": 27282,
+        "position": [
+          7496,
+          9432
+        ],
+        "controlledCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "characters": [
+          {
+            "max_hp": 360,
+            "max_pp": 125,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 95,
+            "max_pp": 80,
+            "current_hp_target": 10,
+            "current_pp_target": 2
+          },
+          {
+            "max_hp": 139,
+            "max_pp": 0,
+            "current_hp_target": 10,
+            "current_pp_target": 0
+          }
+        ],
+        "inventorySha256": "599d9dad656e57f6a5164ce6c79b81600cd7aeff0652af09e34f3bb37e58912e",
+        "partyOrder": [
+          1,
+          2,
+          3,
+          16,
+          0,
+          0
+        ],
+        "hotelFlag": false
+      },
+      "passed": true
+    }
+  ],
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Prepared full source dialogue entry from an existing copied hotel-room checkpoint, with standard text/window state from the native fixture constructor; not an ordinary receptionist interaction.",
+    "Explicitly clears sleep diversion flags and removes scratch Jeff repair candidates; zombie trap, telepathy and broken-item repair branches are separate.",
+    "Healthy party, no real controller or audiovisual parity proof."
+  ]
+}

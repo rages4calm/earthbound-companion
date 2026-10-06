@@ -1,0 +1,755 @@
+{
+  "Passed": true,
+  "PlayerObserverObservationsEqual": true,
+  "Cases": [
+    {
+      "format": "redux-native-party-ui-qa-v1",
+      "nativeExeSha256": "7a96db453b106787060c7e32e3ad8f19d010c07d35b9eff7e57e4c54461e102b",
+      "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "fixedExpectationsEnforced": true,
+      "rows": [
+        {
+          "case": "ness-selection",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "paula-selection",
+          "actual": {
+            "selected": 1,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 2,
+            "spriteVisible": 2,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "rolling-digit-row",
+          "hpDigitRows": [
+            [
+              22
+            ],
+            [
+              22
+            ],
+            [
+              22
+            ],
+            [
+              22
+            ]
+          ],
+          "actual": {
+            "selected": 1,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 2,
+            "spriteVisible": 2,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "damage-blink-off-phase",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 17,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "auto-indicator-render",
+          "positions": [
+            [
+              10,
+              26
+            ]
+          ]
+        },
+        {
+          "case": "auto-indicator-clear",
+          "positions": [],
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              28,
+              6
+            ]
+          }
+        },
+        {
+          "case": "first-battle-completed",
+          "actual": {
+            "selected": -1,
+            "headerRows": [
+              [],
+              [],
+              [],
+              []
+            ],
+            "spriteActive": 0,
+            "spriteVictory": 0,
+            "spriteTargets": 0,
+            "spriteVisible": 0,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 0,
+            "modes": [
+              61
+            ]
+          }
+        },
+        {
+          "case": "second-production-battle-entry",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "prepared-stale-victory-entry",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          },
+          "preparedState": true
+        },
+        {
+          "case": "original-ness-selection",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                18
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 0,
+            "spriteVictory": 0,
+            "spriteTargets": 0,
+            "spriteVisible": 0,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "original-damage-blink-off-phase",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 0,
+            "spriteVictory": 0,
+            "spriteTargets": 0,
+            "spriteVisible": 0,
+            "damageBlinkDuration": 17,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "original-auto-indicator",
+          "positions": [
+            [
+              17,
+              26
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "Prepared four-member combat, real production entry/menu/cleanup modes; not an entire story playthrough.",
+        "Stale victory is deliberately prepared to test hardening; it is not evidence of a naturally reproduced user bug.",
+        "Original UI regressions prepare new production battle entry from a scratch completed Redux root with BG2 cleared before entry; independent Original story progress is not claimed."
+      ],
+      "originalPackSha256": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b"
+    },
+    {
+      "format": "redux-native-party-ui-qa-v1",
+      "nativeExeSha256": "4b53e35ad85156e215f97c7823bbf96c703dcc201808eb7d1c1f0d824afe4a27",
+      "packSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+      "fixedExpectationsEnforced": true,
+      "rows": [
+        {
+          "case": "ness-selection",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "paula-selection",
+          "actual": {
+            "selected": 1,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 2,
+            "spriteVisible": 2,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "rolling-digit-row",
+          "hpDigitRows": [
+            [
+              22
+            ],
+            [
+              22
+            ],
+            [
+              22
+            ],
+            [
+              22
+            ]
+          ],
+          "actual": {
+            "selected": 1,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 2,
+            "spriteVisible": 2,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "damage-blink-off-phase",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 17,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "auto-indicator-render",
+          "positions": [
+            [
+              10,
+              26
+            ]
+          ]
+        },
+        {
+          "case": "auto-indicator-clear",
+          "positions": [],
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              28,
+              6
+            ]
+          }
+        },
+        {
+          "case": "first-battle-completed",
+          "actual": {
+            "selected": -1,
+            "headerRows": [
+              [],
+              [],
+              [],
+              []
+            ],
+            "spriteActive": 0,
+            "spriteVictory": 0,
+            "spriteTargets": 0,
+            "spriteVisible": 0,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 0,
+            "modes": [
+              61
+            ]
+          }
+        },
+        {
+          "case": "second-production-battle-entry",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "prepared-stale-victory-entry",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 1,
+            "spriteVictory": 0,
+            "spriteTargets": 1,
+            "spriteVisible": 1,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          },
+          "preparedState": true
+        },
+        {
+          "case": "original-ness-selection",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [
+                18
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 0,
+            "spriteVictory": 0,
+            "spriteTargets": 0,
+            "spriteVisible": 0,
+            "damageBlinkDuration": 0,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "original-damage-blink-off-phase",
+          "actual": {
+            "selected": 0,
+            "headerRows": [
+              [],
+              [
+                19
+              ],
+              [
+                19
+              ],
+              [
+                19
+              ]
+            ],
+            "spriteActive": 0,
+            "spriteVictory": 0,
+            "spriteTargets": 0,
+            "spriteVisible": 0,
+            "damageBlinkDuration": 17,
+            "autoFight": 0,
+            "battleActive": 1,
+            "modes": [
+              61,
+              48,
+              45,
+              44,
+              7
+            ]
+          }
+        },
+        {
+          "case": "original-auto-indicator",
+          "positions": [
+            [
+              17,
+              26
+            ]
+          ]
+        }
+      ],
+      "limits": [
+        "Prepared four-member combat, real production entry/menu/cleanup modes; not an entire story playthrough.",
+        "Stale victory is deliberately prepared to test hardening; it is not evidence of a naturally reproduced user bug.",
+        "Original UI regressions prepare new production battle entry from a scratch completed Redux root with BG2 cleared before entry; independent Original story progress is not claimed."
+      ],
+      "originalPackSha256": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b"
+    }
+  ],
+  "FullPlaythroughVerified": false
+}

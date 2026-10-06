@@ -1,0 +1,113 @@
+{
+  "Passed": true,
+  "RequestedCalls": 68288,
+  "ExecutedCalls": 68288,
+  "SkippedCalls": 0,
+  "Mismatches": 0,
+  "FirstMismatches": [],
+  "Identities": {
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "tools\\mesen-agent-v0.1.0\\mesen-agent.exe": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ca65.exe": "2edb5852800b9b5627658b2d14665604efd509cd7bf3754978074d8b3ad21e44",
+    "_BuildScratch\\position-arithmetic-tooling\\cc65\\bin\\ld65.exe": "d2cd0d3244f3f0c24ba9e1a38f1e86569b0e50edad4c0d39476920232e370a9b",
+    "tools\\mingw64\\bin\\gcc.exe": "206f9fc067234f48ae077550658dae06bd75d99110c1b3166887b7090cbd7fa0",
+    "native-source\\src\\core\\math.c": "5fa4a9a2d5c9a477577aa09f2ecee0cb175ab762087cb085ce23aadb9a39e327",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_rng_oracle.py": "cefbda42bcb352861cc11c6e8dc14c5d9953d8527a7ac9d924cab35a73a54219",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\snes_position_arithmetic_oracle.py": "c0eee93f9b9fe1839dd2fe2ab15395b3ec05d76b09954dcf332682d94558c176"
+  },
+  "SourceMapping": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "RAND",
+      "address": "C08E9A",
+      "abi": "far",
+      "originalSource": "system/math/rand.asm",
+      "byteEqualLength": 56,
+      "byteEqualSha256": "ec916a40ca91cf8b5a673271b61b8e030a5fe699319cf8ab3fd35d660a561e45"
+    }
+  ],
+  "OriginalGlobals": {
+    "RAND_A": "7E0024",
+    "RAND_B": "7E0026"
+  },
+  "MachineBatches": [
+    {
+      "ExecutedCalls": 10000,
+      "StackDirectPageProtectedRamPassed": true,
+      "CompleteOrderedCorpusVerified": true,
+      "OwnCallerSha256": "caa7305ae07dc397bb4b0d9bbedc0d1d3ca993ba5243ec0cb62a016872c27911",
+      "LuaSha256": "5d0d6eef6db950e8d4b5e4b351ec84f62327ae168277daf452b14aaf2b47fde5",
+      "SamplesSha256": "2dad68b341060b032112aaae801a3f82581fb1cbaa21ac681c2f97e08224d8d4"
+    },
+    {
+      "ExecutedCalls": 10000,
+      "StackDirectPageProtectedRamPassed": true,
+      "CompleteOrderedCorpusVerified": true,
+      "OwnCallerSha256": "caa7305ae07dc397bb4b0d9bbedc0d1d3ca993ba5243ec0cb62a016872c27911",
+      "LuaSha256": "a2d5288df3e50dc26e1e5ff5ccb2ba43ce19a87d033e7d80c50de49689e0897d",
+      "SamplesSha256": "ebb770b9eb1d3c3fd4c51dd5033dd5be3078aaaab69f32f122a8acd2861e209d"
+    },
+    {
+      "ExecutedCalls": 10000,
+      "StackDirectPageProtectedRamPassed": true,
+      "CompleteOrderedCorpusVerified": true,
+      "OwnCallerSha256": "caa7305ae07dc397bb4b0d9bbedc0d1d3ca993ba5243ec0cb62a016872c27911",
+      "LuaSha256": "e729994e74c549b71b72d611945d6349da07a35111cf14df0fb8965bd673d02e",
+      "SamplesSha256": "3126a7f8aca2e895cf2f2ec4a278799699db6605bf01643b242df5fbd67411de"
+    },
+    {
+      "ExecutedCalls": 10000,
+      "StackDirectPageProtectedRamPassed": true,
+      "CompleteOrderedCorpusVerified": true,
+      "OwnCallerSha256": "caa7305ae07dc397bb4b0d9bbedc0d1d3ca993ba5243ec0cb62a016872c27911",
+      "LuaSha256": "2bfe8f4ac3b3f84f38a3d9131fe71d919dc8b8ed50229c8d64648466d72fb56a",
+      "SamplesSha256": "9372e69615914b0e68c51f6158df4db41d89f58dc5fc46b31a1369df819fe599"
+    },
+    {
+      "ExecutedCalls": 10000,
+      "StackDirectPageProtectedRamPassed": true,
+      "CompleteOrderedCorpusVerified": true,
+      "OwnCallerSha256": "caa7305ae07dc397bb4b0d9bbedc0d1d3ca993ba5243ec0cb62a016872c27911",
+      "LuaSha256": "09a591e0c1b6633a448e5a005ea9649fd5c631a23677d74dbf80bc4c77f32a26",
+      "SamplesSha256": "cc3343c59a297298f3f24d99c4ca88b18ca0df15a2084de7b0fcb27562b30ef6"
+    },
+    {
+      "ExecutedCalls": 10000,
+      "StackDirectPageProtectedRamPassed": true,
+      "CompleteOrderedCorpusVerified": true,
+      "OwnCallerSha256": "caa7305ae07dc397bb4b0d9bbedc0d1d3ca993ba5243ec0cb62a016872c27911",
+      "LuaSha256": "9c0d2467fe6792fa780bbef6e6ff4d2c2e28cbd0d7efa646044cb76397347b4d",
+      "SamplesSha256": "c66a6ce1d88b6d35974200ece2f135c6cbe531dc19293571544ea0b886ff0bda"
+    },
+    {
+      "ExecutedCalls": 8288,
+      "StackDirectPageProtectedRamPassed": true,
+      "CompleteOrderedCorpusVerified": true,
+      "OwnCallerSha256": "caa7305ae07dc397bb4b0d9bbedc0d1d3ca993ba5243ec0cb62a016872c27911",
+      "LuaSha256": "720850907abc8baee88ac6c2a93ad0722d42849843fd9e4ff4f465b54f705e9b",
+      "SamplesSha256": "e54d98ac278aed413699ca5b82dbb6fcf4f50b2b6d564b4882a91058b4adb9bc"
+    }
+  ],
+  "NativeFunctionSha256": "5ed6236d588785826c12cd0d39251a2d1594209acf76db226d9e1f4fb758a26b",
+  "OwnerRomUnchanged": true,
+  "Pilot": false,
+  "Limits": [
+    "Selected state and sequence generator equivalence; not all four-billion RNG states.",
+    "Actual native source compiled in isolation; not production binary execution.",
+    "Generator correctness does not establish consumers or complete RNG call ordering.",
+    "Temporary caller only; actual original RAND and hardware multiply run unchanged."
+  ]
+}

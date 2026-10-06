@@ -1,0 +1,158 @@
+{
+  "format": "map-music-conditional-review-v1",
+  "Passed": true,
+  "InputIdentities": {
+    "originalRom": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "reduxRom": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+    "originalAssets": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+    "reduxAssets": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+    "nativeSource": "55d858566e2374126c34589d2c6793254b61d83e8d32bb2c353915cc9114f5c3",
+    "oracle": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+    "oracleCore": "69425f547e83648b4aa8507908ff473a3d8c4ac666b8e130b2f5e9d99922d29a",
+    "compiler": "206f9fc067234f48ae077550658dae06bd75d99110c1b3166887b7090cbd7fa0"
+  },
+  "PreservedRedBaseline": {
+    "path": "research/map-music-conditional-review-dev15-red.json",
+    "sha256": "309e2136d5aca4e1f65a89b7cc0d30160869bc8a929b39d7357d74412d2ea83f",
+    "Passed": false,
+    "Modes": [
+      {
+        "mode": "original",
+        "ExecutedCases": 624,
+        "NativeMismatchCount": 6
+      },
+      {
+        "mode": "redux",
+        "ExecutedCases": 624,
+        "NativeMismatchCount": 6
+      }
+    ]
+  },
+  "PinnedReduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "UnsignedPredicate": {
+    "CompareInstructionAddress": "C0695E",
+    "ConditionalBranches": [
+      "BCC",
+      "BEQ"
+    ],
+    "BothDestinationAddresses": "C06968",
+    "ExpectedState": "0 when unsigned flag word <=0x8000; 1 when >0x8000",
+    "OriginalAndPinnedReduxMachineBranchesVerified": true
+  },
+  "Modes": [
+    {
+      "mode": "original",
+      "ExecutedCases": 624,
+      "NativeMismatchCount": 0,
+      "NativeMismatches": [],
+      "ActualLowFlagRecords": [
+        {
+          "zone": 122,
+          "flagId": 23,
+          "track": 119,
+          "offset": 1516
+        },
+        {
+          "zone": 128,
+          "flagId": 57,
+          "track": 28,
+          "offset": 1584
+        },
+        {
+          "zone": 164,
+          "flagId": 474,
+          "track": 150,
+          "offset": 1948
+        }
+      ],
+      "UnreachableMusicZones": [
+        26,
+        28,
+        30,
+        33,
+        157
+      ],
+      "AllReachableZoneChainsPreservePinnedFlagAndTrackSequence": true,
+      "OriginalMachineEvidence": {
+        "ExecutedCases": 624,
+        "StackDirectPageAndProtectedRamCanariesPassed": true,
+        "CompleteOrderedCorpusVerified": true,
+        "SelectorCallsVerified": 624,
+        "OwnCallerSha256": "2cc54e89f29d35fd62c11c284abb0447c8d5f983a65488871d5d1d6ddf8dd0d2",
+        "OracleLuaSha256": "51fba13fa5e89ebbf758f3639e67437398a1441900ecdce7ec33529ddda2c41b",
+        "SamplesSha256": "19cac9adf7d75fb6ac7bdc05a5f41b975d1341728ea629157bd58834c430c90e"
+      },
+      "CompiledActualNativeEvidence": {
+        "ProbeSha256": "a0da21df69fd90a14ceac460db8db6826cc19f393d7777769668649063e2a409",
+        "ActualSelectorBodySha256": "6af8e89278624a92d0b43cb9b36ea2946bde13663ab8697cff7affb288b6db41",
+        "ActualEventGetterSha256": "0e7b4310af391c537219a0049ae1f52d5d8cc50c26a152436b8faf642ca30214"
+      },
+      "CasesPrivateArtifact": "original-machine/music.lua"
+    },
+    {
+      "mode": "redux",
+      "ExecutedCases": 624,
+      "NativeMismatchCount": 0,
+      "NativeMismatches": [],
+      "ActualLowFlagRecords": [
+        {
+          "zone": 122,
+          "flagId": 23,
+          "track": 119,
+          "offset": 1520
+        },
+        {
+          "zone": 128,
+          "flagId": 57,
+          "track": 28,
+          "offset": 1588
+        },
+        {
+          "zone": 164,
+          "flagId": 474,
+          "track": 150,
+          "offset": 1952
+        }
+      ],
+      "UnreachableMusicZones": [
+        26,
+        28,
+        30,
+        33,
+        157
+      ],
+      "AllReachableZoneChainsPreservePinnedFlagAndTrackSequence": true,
+      "OriginalMachineEvidence": {
+        "ExecutedCases": 624,
+        "StackDirectPageAndProtectedRamCanariesPassed": true,
+        "CompleteOrderedCorpusVerified": true,
+        "SelectorCallsVerified": 624,
+        "OwnCallerSha256": "2cc54e89f29d35fd62c11c284abb0447c8d5f983a65488871d5d1d6ddf8dd0d2",
+        "OracleLuaSha256": "7d6c37235d7a91cc2c8fbbd3178df23587d2176fceeb8ed438d8c17bfcaefd8e",
+        "SamplesSha256": "f5654cc16ba86ae17f275c966b50445f5a385699d2e52d3e889258a758076ea1"
+      },
+      "CompiledActualNativeEvidence": {
+        "ProbeSha256": "3d8fa0a8986f144d60bedab5b733ad1a28fa1b646a4a794157255cd4658983e5",
+        "ActualSelectorBodySha256": "6af8e89278624a92d0b43cb9b36ea2946bde13663ab8697cff7affb288b6db41",
+        "ActualEventGetterSha256": "0e7b4310af391c537219a0049ae1f52d5d8cc50c26a152436b8faf642ca30214"
+      },
+      "CasesPrivateArtifact": "redux-machine/music.lua"
+    }
+  ],
+  "OwnerSavesTouched": false,
+  "OwnerRomsAndAssetPacksUnchanged": true,
+  "SharedSourceEdited": false,
+  "SharedBuildsEdited": false,
+  "FullPlaythroughVerified": false,
+  "AudiblePlaybackVerified": false,
+  "Runner": {
+    "path": "tools/map_music_conditional_qa.py",
+    "sha256": "b527dd9ddd379e500affa771ba53ab754ca91b411bb5b302acf463d2f2cb6379"
+  },
+  "Limits": [
+    "Actual untouched full selector executes original divide/event-flag helpers with real source chains. Native actual selector/event getter are compiled in isolation.",
+    "Prepared reachable-zone flag states are function evidence; flags are not legal-story progression proof. Zone-zero upstream conversion repair is outside this audit.",
+    "Fade is suppressed in these selection probes. Track selection and semantic matched entry are compared; music decoding, MSU playback and actual audio are not certified.",
+    "Packed Redux offsets differ by normalization; source record sequence is checked independently rather than comparing pointer numbers blindly."
+  ]
+}

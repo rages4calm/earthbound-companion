@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0-redux-dev.15 - battle, music and scenario audit
+
+- Bind NPC HP/replacement, consolation and targeting tables at their actual consumers, including cold mid-action saves. Both packs pass 680 targeted bound/cold cases.
+- Match full-group summon eligibility and preload artwork for zero-count group entries. Both packs pass 3,584 actual-dispatch/art checks; all 484 groups per pack pass capacity and pointer bounds.
+- Resolve special battle background tables after cold entry; clear Redux portraits at exact prayer/Pokey stages and suspend/resume them around Poo's entrance. Preserve the 12-byte state format and older checkpoints; Original controls remain unchanged.
+- Match unsigned conditional map-music branches for boarding school, department store and Ness's home. Compare actual original/pinned Redux CPU execution and linked native warm/cold restores.
+- Match wrapped/logical single-point ladder coordinates. Independent helper and entity comparisons record their precise scope and unchanged original inputs.
+- Add reusable food/condiment/Lucky Sandwich, hotel purchase/decline/insufficient funds and all 13 first-night Jeff repair scenarios; continue selected battle callback coverage.
+- Preserve owner saves, profile/seed identities and existing MSU files during installation. Complete story/randomizer, all action branches and audiovisual parity remain unverified. See docs/NATIVE-AUDIT-dev15.md.
+- Match the original signed terrain/Skip Sandwich quantization and wrapped position addition; retain sprint/collision safeguards and use independently recorded original-machine deltas in the movement regression test.
+- Fix repeated Redux Offense Up increments against the current offense, with exact wrapped arithmetic; retain the Original formula. Verify real dispatch and untouched original/pinned CPU execution.
+- Update map-track globals for dialogue music commands and resolve zero SFX operands through argument memory. Both profiles pass actual APU-initialized command controls.
+- Use the serialized game RNG for Jeff repair chances; all broken records pass warm/fresh-process controls in both editions. Other RNG consumers and the full game timeline remain under audit.
+
 ## 0.5.0-redux-dev.14 - native audit and source-backed corrections
 
 - Fix scripted hotel wake-up overlaps in the swept movement guard; retain rejection of newly entered walls and cliff escapes. Preserve the reported save and all content/save identities.

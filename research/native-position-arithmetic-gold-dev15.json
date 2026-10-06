@@ -1,0 +1,515 @@
+{
+  "format": "native-position-original-machine-gold-v1",
+  "SourceMachineCases": 96,
+  "GeneratedFromUntouchedOriginalMachine": true,
+  "OriginalMachineReview": {
+    "path": "research\\native-position-arithmetic-review-dev15-green.json",
+    "sha256": "95c8def95d801e0b3f663063e0dd6cf21f403c5a9b7a60bceb9842aca09b96f6"
+  },
+  "MachineSamplesSha256": "65b30b7eb7658baa7c8466a7f8a19fb5f4b0d015100cd0c965da0d8f94002a8a",
+  "SourceFunctions": [
+    {
+      "symbol": "ADJUST_POSITION_HORIZONTAL",
+      "address": "C02D8F",
+      "abi": "near",
+      "originalSource": "overworld/adjust_position_horizontal.asm",
+      "byteEqualLength": 648,
+      "byteEqualSha256": "082874c0b1df18aad44ddf02c66297d982db8c46c3ca9870c55794fbea57483a"
+    },
+    {
+      "symbol": "ADJUST_POSITION_VERTICAL",
+      "address": "C03017",
+      "abi": "near",
+      "originalSource": "overworld/adjust_position_vertical.asm",
+      "byteEqualLength": 648,
+      "byteEqualSha256": "a2b5bb44f1f3ade7827ea2f4deefb5668fb2be57a1eeab2faa36df2a9ead830a"
+    }
+  ],
+  "PositionBits": 4227072,
+  "Gold": [
+    {
+      "style": 0,
+      "status": 0,
+      "surface": 0,
+      "demo": 0,
+      "directions": [
+        {
+          "direction": 0,
+          "xDelta": 0,
+          "yDelta": -90112,
+          "sourceMachineSampleIndices": [
+            1345,
+            1361
+          ]
+        },
+        {
+          "direction": 1,
+          "xDelta": 63718,
+          "yDelta": -63718,
+          "sourceMachineSampleIndices": [
+            1377,
+            1393
+          ]
+        },
+        {
+          "direction": 2,
+          "xDelta": 90112,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1409,
+            1425
+          ]
+        },
+        {
+          "direction": 3,
+          "xDelta": 63718,
+          "yDelta": 63718,
+          "sourceMachineSampleIndices": [
+            1441,
+            1457
+          ]
+        },
+        {
+          "direction": 4,
+          "xDelta": 0,
+          "yDelta": 90112,
+          "sourceMachineSampleIndices": [
+            1473,
+            1489
+          ]
+        },
+        {
+          "direction": 5,
+          "xDelta": -63718,
+          "yDelta": 63718,
+          "sourceMachineSampleIndices": [
+            1505,
+            1521
+          ]
+        },
+        {
+          "direction": 6,
+          "xDelta": -90112,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1537,
+            1553
+          ]
+        },
+        {
+          "direction": 7,
+          "xDelta": -63718,
+          "yDelta": -63718,
+          "sourceMachineSampleIndices": [
+            1569,
+            1585
+          ]
+        }
+      ]
+    },
+    {
+      "style": 0,
+      "status": 0,
+      "surface": 8,
+      "demo": 0,
+      "directions": [
+        {
+          "direction": 0,
+          "xDelta": 0,
+          "yDelta": -45056,
+          "sourceMachineSampleIndices": [
+            1353,
+            1369
+          ]
+        },
+        {
+          "direction": 1,
+          "xDelta": 31744,
+          "yDelta": -31872,
+          "sourceMachineSampleIndices": [
+            1385,
+            1401
+          ]
+        },
+        {
+          "direction": 2,
+          "xDelta": 45056,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1417,
+            1433
+          ]
+        },
+        {
+          "direction": 3,
+          "xDelta": 31744,
+          "yDelta": 31744,
+          "sourceMachineSampleIndices": [
+            1449,
+            1465
+          ]
+        },
+        {
+          "direction": 4,
+          "xDelta": 0,
+          "yDelta": 45056,
+          "sourceMachineSampleIndices": [
+            1481,
+            1497
+          ]
+        },
+        {
+          "direction": 5,
+          "xDelta": -31872,
+          "yDelta": 31744,
+          "sourceMachineSampleIndices": [
+            1513,
+            1529
+          ]
+        },
+        {
+          "direction": 6,
+          "xDelta": -45056,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1545,
+            1561
+          ]
+        },
+        {
+          "direction": 7,
+          "xDelta": -31872,
+          "yDelta": -31872,
+          "sourceMachineSampleIndices": [
+            1577,
+            1593
+          ]
+        }
+      ]
+    },
+    {
+      "style": 0,
+      "status": 0,
+      "surface": 12,
+      "demo": 0,
+      "directions": [
+        {
+          "direction": 0,
+          "xDelta": 0,
+          "yDelta": -29736,
+          "sourceMachineSampleIndices": [
+            1357,
+            1373
+          ]
+        },
+        {
+          "direction": 1,
+          "xDelta": 20950,
+          "yDelta": -21035,
+          "sourceMachineSampleIndices": [
+            1389,
+            1405
+          ]
+        },
+        {
+          "direction": 2,
+          "xDelta": 29735,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1421,
+            1437
+          ]
+        },
+        {
+          "direction": 3,
+          "xDelta": 20950,
+          "yDelta": 20950,
+          "sourceMachineSampleIndices": [
+            1453,
+            1469
+          ]
+        },
+        {
+          "direction": 4,
+          "xDelta": 0,
+          "yDelta": 29735,
+          "sourceMachineSampleIndices": [
+            1485,
+            1501
+          ]
+        },
+        {
+          "direction": 5,
+          "xDelta": -21035,
+          "yDelta": 20950,
+          "sourceMachineSampleIndices": [
+            1517,
+            1533
+          ]
+        },
+        {
+          "direction": 6,
+          "xDelta": -29736,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1549,
+            1565
+          ]
+        },
+        {
+          "direction": 7,
+          "xDelta": -21035,
+          "yDelta": -21035,
+          "sourceMachineSampleIndices": [
+            1581,
+            1597
+          ]
+        }
+      ]
+    },
+    {
+      "style": 0,
+      "status": 3,
+      "surface": 0,
+      "demo": 0,
+      "directions": [
+        {
+          "direction": 0,
+          "xDelta": 0,
+          "yDelta": -135168,
+          "sourceMachineSampleIndices": [
+            1347,
+            1363
+          ]
+        },
+        {
+          "direction": 1,
+          "xDelta": 95232,
+          "yDelta": -95616,
+          "sourceMachineSampleIndices": [
+            1379,
+            1395
+          ]
+        },
+        {
+          "direction": 2,
+          "xDelta": 135168,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1411,
+            1427
+          ]
+        },
+        {
+          "direction": 3,
+          "xDelta": 95232,
+          "yDelta": 95232,
+          "sourceMachineSampleIndices": [
+            1443,
+            1459
+          ]
+        },
+        {
+          "direction": 4,
+          "xDelta": 0,
+          "yDelta": 135168,
+          "sourceMachineSampleIndices": [
+            1475,
+            1491
+          ]
+        },
+        {
+          "direction": 5,
+          "xDelta": -95616,
+          "yDelta": 95232,
+          "sourceMachineSampleIndices": [
+            1507,
+            1523
+          ]
+        },
+        {
+          "direction": 6,
+          "xDelta": -135168,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1539,
+            1555
+          ]
+        },
+        {
+          "direction": 7,
+          "xDelta": -95616,
+          "yDelta": -95616,
+          "sourceMachineSampleIndices": [
+            1571,
+            1587
+          ]
+        }
+      ]
+    },
+    {
+      "style": 0,
+      "status": 3,
+      "surface": 8,
+      "demo": 0,
+      "directions": [
+        {
+          "direction": 0,
+          "xDelta": 0,
+          "yDelta": -45056,
+          "sourceMachineSampleIndices": [
+            1355,
+            1371
+          ]
+        },
+        {
+          "direction": 1,
+          "xDelta": 31744,
+          "yDelta": -31872,
+          "sourceMachineSampleIndices": [
+            1387,
+            1403
+          ]
+        },
+        {
+          "direction": 2,
+          "xDelta": 45056,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1419,
+            1435
+          ]
+        },
+        {
+          "direction": 3,
+          "xDelta": 31744,
+          "yDelta": 31744,
+          "sourceMachineSampleIndices": [
+            1451,
+            1467
+          ]
+        },
+        {
+          "direction": 4,
+          "xDelta": 0,
+          "yDelta": 45056,
+          "sourceMachineSampleIndices": [
+            1483,
+            1499
+          ]
+        },
+        {
+          "direction": 5,
+          "xDelta": -31872,
+          "yDelta": 31744,
+          "sourceMachineSampleIndices": [
+            1515,
+            1531
+          ]
+        },
+        {
+          "direction": 6,
+          "xDelta": -45056,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1547,
+            1563
+          ]
+        },
+        {
+          "direction": 7,
+          "xDelta": -31872,
+          "yDelta": -31872,
+          "sourceMachineSampleIndices": [
+            1579,
+            1595
+          ]
+        }
+      ]
+    },
+    {
+      "style": 0,
+      "status": 3,
+      "surface": 12,
+      "demo": 0,
+      "directions": [
+        {
+          "direction": 0,
+          "xDelta": 0,
+          "yDelta": -29736,
+          "sourceMachineSampleIndices": [
+            1359,
+            1375
+          ]
+        },
+        {
+          "direction": 1,
+          "xDelta": 20950,
+          "yDelta": -21035,
+          "sourceMachineSampleIndices": [
+            1391,
+            1407
+          ]
+        },
+        {
+          "direction": 2,
+          "xDelta": 29735,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1423,
+            1439
+          ]
+        },
+        {
+          "direction": 3,
+          "xDelta": 20950,
+          "yDelta": 20950,
+          "sourceMachineSampleIndices": [
+            1455,
+            1471
+          ]
+        },
+        {
+          "direction": 4,
+          "xDelta": 0,
+          "yDelta": 29735,
+          "sourceMachineSampleIndices": [
+            1487,
+            1503
+          ]
+        },
+        {
+          "direction": 5,
+          "xDelta": -21035,
+          "yDelta": 20950,
+          "sourceMachineSampleIndices": [
+            1519,
+            1535
+          ]
+        },
+        {
+          "direction": 6,
+          "xDelta": -29736,
+          "yDelta": 0,
+          "sourceMachineSampleIndices": [
+            1551,
+            1567
+          ]
+        },
+        {
+          "direction": 7,
+          "xDelta": -21035,
+          "yDelta": -21035,
+          "sourceMachineSampleIndices": [
+            1583,
+            1599
+          ]
+        }
+      ]
+    }
+  ],
+  "Limits": [
+    "Signed X/Y component deltas only, original style0, directions0..7, surfaces0/8/12, status0/3, demo0.",
+    "Sprint is a native adapter and is not part of this original-machine golden table."
+  ]
+}

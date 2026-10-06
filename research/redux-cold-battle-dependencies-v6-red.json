@@ -1,0 +1,4689 @@
+{
+  "schemaVersion": 1,
+  "tool": "cold-battle-dependency-qa",
+  "runtimeSha256": {
+    "player.exe": "a12abeb0e6601c7779419364311d78d2e42110b87536d6e3a05192475e7c671d",
+    "observer.exe": "10728262dc1b6dadb773499f4a40487791009438a3eefbe3afbe8bcf4a23e7ff"
+  },
+  "assetsSha256": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3",
+  "privateBuild": {
+    "driverSourceSha256": "0c21fc6b25fc48fcdd3bc250ddebdd3b97803ca6b1d162cdea2861d19214c1b6",
+    "executableSha256": "eb28ebd306351dcc2d1622cff67db2ffe291b4cc938fc491d79bd0a0067f4099",
+    "productionExecutableSha256": "a12abeb0e6601c7779419364311d78d2e42110b87536d6e3a05192475e7c671d",
+    "productionLibrarySha256": "ee0e811d09cf9f00d7089262da7d62b366ec2906d02bdb14c50462f33ec2eaae",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "nativeExitCode": 0,
+  "coldBootstrap": {
+    "npcTableBound": 0,
+    "consolationTableBound": 0,
+    "enemyConfigTableBound": 1
+  },
+  "cases": [
+    {
+      "kind": 0,
+      "warm": 0,
+      "member": 9,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 9,
+        "hp": 999
+      },
+      "actual": {
+        "index": 0,
+        "kind": 0,
+        "warm": 0,
+        "member": 9,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 9,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "hp: got 0 expected 999"
+      ]
+    },
+    {
+      "kind": 0,
+      "warm": 1,
+      "member": 9,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 9,
+        "hp": 999
+      },
+      "actual": {
+        "index": 1,
+        "kind": 0,
+        "warm": 1,
+        "member": 9,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 9,
+        "hp": 999,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 1,
+      "warm": 0,
+      "member": 9,
+      "seed": 2654435769,
+      "expected": {
+        "id": 164,
+        "npc": 9,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 2,
+        "kind": 1,
+        "warm": 0,
+        "member": 9,
+        "seed": 2654435769,
+        "id": 167,
+        "npc": 9,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 167 expected 164"
+      ]
+    },
+    {
+      "kind": 1,
+      "warm": 1,
+      "member": 9,
+      "seed": 2654435769,
+      "expected": {
+        "id": 164,
+        "npc": 9,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 3,
+        "kind": 1,
+        "warm": 1,
+        "member": 9,
+        "seed": 2654435769,
+        "id": 164,
+        "npc": 9,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 0,
+      "warm": 0,
+      "member": 10,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 10,
+        "hp": 999
+      },
+      "actual": {
+        "index": 4,
+        "kind": 0,
+        "warm": 0,
+        "member": 10,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 10,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "hp: got 0 expected 999"
+      ]
+    },
+    {
+      "kind": 0,
+      "warm": 1,
+      "member": 10,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 10,
+        "hp": 999
+      },
+      "actual": {
+        "index": 5,
+        "kind": 0,
+        "warm": 1,
+        "member": 10,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 10,
+        "hp": 999,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 1,
+      "warm": 0,
+      "member": 10,
+      "seed": 2654435769,
+      "expected": {
+        "id": 165,
+        "npc": 10,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 6,
+        "kind": 1,
+        "warm": 0,
+        "member": 10,
+        "seed": 2654435769,
+        "id": 167,
+        "npc": 10,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 167 expected 165"
+      ]
+    },
+    {
+      "kind": 1,
+      "warm": 1,
+      "member": 10,
+      "seed": 2654435769,
+      "expected": {
+        "id": 165,
+        "npc": 10,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 7,
+        "kind": 1,
+        "warm": 1,
+        "member": 10,
+        "seed": 2654435769,
+        "id": 165,
+        "npc": 10,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 0,
+      "warm": 0,
+      "member": 11,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 11,
+        "hp": 300
+      },
+      "actual": {
+        "index": 8,
+        "kind": 0,
+        "warm": 0,
+        "member": 11,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 11,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "hp: got 0 expected 300"
+      ]
+    },
+    {
+      "kind": 0,
+      "warm": 1,
+      "member": 11,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 11,
+        "hp": 300
+      },
+      "actual": {
+        "index": 9,
+        "kind": 0,
+        "warm": 1,
+        "member": 11,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 11,
+        "hp": 300,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 1,
+      "warm": 0,
+      "member": 11,
+      "seed": 2654435769,
+      "expected": {
+        "id": 166,
+        "npc": 11,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 10,
+        "kind": 1,
+        "warm": 0,
+        "member": 11,
+        "seed": 2654435769,
+        "id": 167,
+        "npc": 11,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 167 expected 166"
+      ]
+    },
+    {
+      "kind": 1,
+      "warm": 1,
+      "member": 11,
+      "seed": 2654435769,
+      "expected": {
+        "id": 166,
+        "npc": 11,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 11,
+        "kind": 1,
+        "warm": 1,
+        "member": 11,
+        "seed": 2654435769,
+        "id": 166,
+        "npc": 11,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 0,
+      "warm": 0,
+      "member": 16,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 16,
+        "hp": 100
+      },
+      "actual": {
+        "index": 12,
+        "kind": 0,
+        "warm": 0,
+        "member": 16,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 16,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "hp: got 0 expected 100"
+      ]
+    },
+    {
+      "kind": 0,
+      "warm": 1,
+      "member": 16,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 16,
+        "hp": 100
+      },
+      "actual": {
+        "index": 13,
+        "kind": 0,
+        "warm": 1,
+        "member": 16,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 16,
+        "hp": 100,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 1,
+      "warm": 0,
+      "member": 16,
+      "seed": 2654435769,
+      "expected": {
+        "id": 167,
+        "npc": 16,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 14,
+        "kind": 1,
+        "warm": 0,
+        "member": 16,
+        "seed": 2654435769,
+        "id": 167,
+        "npc": 16,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 1,
+      "warm": 1,
+      "member": 16,
+      "seed": 2654435769,
+      "expected": {
+        "id": 167,
+        "npc": 16,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 15,
+        "kind": 1,
+        "warm": 1,
+        "member": 16,
+        "seed": 2654435769,
+        "id": 167,
+        "npc": 16,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 0,
+      "warm": 0,
+      "member": 17,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 17,
+        "hp": 400
+      },
+      "actual": {
+        "index": 16,
+        "kind": 0,
+        "warm": 0,
+        "member": 17,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 17,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "hp: got 0 expected 400"
+      ]
+    },
+    {
+      "kind": 0,
+      "warm": 1,
+      "member": 17,
+      "seed": 2654435769,
+      "expected": {
+        "npc": 17,
+        "hp": 400
+      },
+      "actual": {
+        "index": 17,
+        "kind": 0,
+        "warm": 1,
+        "member": 17,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 17,
+        "hp": 400,
+        "conscious": 0,
+        "stepKind": 0,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 1,
+      "warm": 0,
+      "member": 17,
+      "seed": 2654435769,
+      "expected": {
+        "id": 168,
+        "npc": 17,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 18,
+        "kind": 1,
+        "warm": 0,
+        "member": 17,
+        "seed": 2654435769,
+        "id": 167,
+        "npc": 17,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 167 expected 168"
+      ]
+    },
+    {
+      "kind": 1,
+      "warm": 1,
+      "member": 17,
+      "seed": 2654435769,
+      "expected": {
+        "id": 168,
+        "npc": 17,
+        "hp": 321,
+        "conscious": 1
+      },
+      "actual": {
+        "index": 19,
+        "kind": 1,
+        "warm": 1,
+        "member": 17,
+        "seed": 2654435769,
+        "id": 168,
+        "npc": 17,
+        "hp": 321,
+        "conscious": 1,
+        "stepKind": 2,
+        "phase": 0,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 2654435769,
+      "expected": {
+        "id": 91
+      },
+      "actual": {
+        "index": 20,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 91"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 2654435769,
+      "expected": {
+        "id": 91
+      },
+      "actual": {
+        "index": 21,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 2654435769,
+        "id": 91,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 1013904242,
+      "expected": {
+        "id": 95
+      },
+      "actual": {
+        "index": 22,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 1013904242,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          15,
+          241,
+          231,
+          231
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 95"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 1013904242,
+      "expected": {
+        "id": 95
+      },
+      "actual": {
+        "index": 23,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 1013904242,
+        "id": 95,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          15,
+          241,
+          231,
+          231
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 3668340011,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 24,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 3668340011,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          190,
+          176,
+          96,
+          154
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 90"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 3668340011,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 25,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 3668340011,
+        "id": 90,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          190,
+          176,
+          96,
+          154
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 2027808484,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 26,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 2027808484,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          77,
+          15,
+          67,
+          243
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 89"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 2027808484,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 27,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 2027808484,
+        "id": 89,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          77,
+          15,
+          67,
+          243
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 387276957,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 28,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 387276957,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          206,
+          121,
+          85,
+          120
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 90"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 387276957,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 29,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 387276957,
+        "id": 90,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          206,
+          121,
+          85,
+          120
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 3041712726,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 30,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 3041712726,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          152,
+          252,
+          102,
+          186
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 90"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 3041712726,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 31,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 3041712726,
+        "id": 90,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          152,
+          252,
+          102,
+          186
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 1401181199,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 32,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 1401181199,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          123,
+          135,
+          29,
+          126
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 88"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 1401181199,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 33,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 1401181199,
+        "id": 88,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          123,
+          135,
+          29,
+          126
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 4055616968,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 34,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 4055616968,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          33,
+          60,
+          46,
+          23
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 89"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 4055616968,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 35,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 4055616968,
+        "id": 89,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          33,
+          60,
+          46,
+          23
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 2415085441,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 36,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 2415085441,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          167,
+          128,
+          54,
+          102
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 89"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 2415085441,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 37,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 2415085441,
+        "id": 89,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          167,
+          128,
+          54,
+          102
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 774553914,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 38,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 774553914,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          152,
+          201,
+          19,
+          33
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 88"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 774553914,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 39,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 774553914,
+        "id": 88,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          152,
+          201,
+          19,
+          33
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 3428989683,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 40,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 3428989683,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          208,
+          42,
+          196,
+          246
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 93"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 3428989683,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 41,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 3428989683,
+        "id": 93,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          208,
+          42,
+          196,
+          246
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 1788458156,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 42,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 1788458156,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          108,
+          32,
+          60,
+          52
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 89"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 1788458156,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 43,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 1788458156,
+        "id": 89,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          108,
+          32,
+          60,
+          52
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 147926629,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 44,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 147926629,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          39,
+          197,
+          109,
+          53
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 90"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 147926629,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 45,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 147926629,
+        "id": 90,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          39,
+          197,
+          109,
+          53
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 2802362398,
+      "expected": {
+        "id": 91
+      },
+      "actual": {
+        "index": 46,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 2802362398,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          15,
+          109,
+          113,
+          19
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 91"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 2802362398,
+      "expected": {
+        "id": 91
+      },
+      "actual": {
+        "index": 47,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 2802362398,
+        "id": 91,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          15,
+          109,
+          113,
+          19
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 1161830871,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 48,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 1161830871,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          92,
+          236,
+          193,
+          250
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 93"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 1161830871,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 49,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 1161830871,
+        "id": 93,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          92,
+          236,
+          193,
+          250
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 3816266640,
+      "expected": {
+        "id": 91
+      },
+      "actual": {
+        "index": 50,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 3816266640,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          47,
+          34,
+          130,
+          73
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 91"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 3816266640,
+      "expected": {
+        "id": 91
+      },
+      "actual": {
+        "index": 51,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 3816266640,
+        "id": 91,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          47,
+          34,
+          130,
+          73
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 2175735113,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 52,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 2175735113,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          30,
+          32,
+          207,
+          53
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 93"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 2175735113,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 53,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 2175735113,
+        "id": 93,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          30,
+          32,
+          207,
+          53
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 535203586,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 54,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 535203586,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          28,
+          162,
+          12,
+          118
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 88"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 535203586,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 55,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 535203586,
+        "id": 88,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          28,
+          162,
+          12,
+          118
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 3189639355,
+      "expected": {
+        "id": 95
+      },
+      "actual": {
+        "index": 56,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 3189639355,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          94,
+          48,
+          232,
+          151
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 95"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 3189639355,
+      "expected": {
+        "id": 95
+      },
+      "actual": {
+        "index": 57,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 3189639355,
+        "id": 95,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          94,
+          48,
+          232,
+          151
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 1549107828,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 58,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 1549107828,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          104,
+          191,
+          205,
+          248
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 93"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 1549107828,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 59,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 1549107828,
+        "id": 93,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          104,
+          191,
+          205,
+          248
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 4203543597,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 60,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 4203543597,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          137,
+          117,
+          82,
+          1
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 90"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 4203543597,
+      "expected": {
+        "id": 90
+      },
+      "actual": {
+        "index": 61,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 4203543597,
+        "id": 90,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          137,
+          117,
+          82,
+          1
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 2563012070,
+      "expected": {
+        "id": 92
+      },
+      "actual": {
+        "index": 62,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 2563012070,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          1,
+          235,
+          180,
+          130
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 92"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 2563012070,
+      "expected": {
+        "id": 92
+      },
+      "actual": {
+        "index": 63,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 2563012070,
+        "id": 92,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          1,
+          235,
+          180,
+          130
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 922480543,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 64,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 922480543,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          190,
+          72,
+          16,
+          242
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 88"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 922480543,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 65,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 922480543,
+        "id": 88,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          190,
+          72,
+          16,
+          242
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 3576916312,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 66,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 3576916312,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          24,
+          194,
+          69,
+          79
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 89"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 3576916312,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 67,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 3576916312,
+        "id": 89,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          24,
+          194,
+          69,
+          79
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 1936384785,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 68,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 1936384785,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          112,
+          48,
+          73,
+          82
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 89"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 1936384785,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 69,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 1936384785,
+        "id": 89,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          112,
+          48,
+          73,
+          82
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 295853258,
+      "expected": {
+        "id": 91
+      },
+      "actual": {
+        "index": 70,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 295853258,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          253,
+          94,
+          139,
+          194
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 91"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 295853258,
+      "expected": {
+        "id": 91
+      },
+      "actual": {
+        "index": 71,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 295853258,
+        "id": 91,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          253,
+          94,
+          139,
+          194
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 2950289027,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 72,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 2950289027,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          240,
+          32,
+          20,
+          162
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 88"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 2950289027,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 73,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 2950289027,
+        "id": 88,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          240,
+          32,
+          20,
+          162
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 1309757500,
+      "expected": {
+        "id": 95
+      },
+      "actual": {
+        "index": 74,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 1309757500,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          63,
+          244,
+          220,
+          44
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 95"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 1309757500,
+      "expected": {
+        "id": 95
+      },
+      "actual": {
+        "index": 75,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 1309757500,
+        "id": 95,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          63,
+          244,
+          220,
+          44
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 3964193269,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 76,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 3964193269,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          78,
+          23,
+          11,
+          60
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 88"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 3964193269,
+      "expected": {
+        "id": 88
+      },
+      "actual": {
+        "index": 77,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 3964193269,
+        "id": 88,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          78,
+          23,
+          11,
+          60
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 2323661742,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 78,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 2323661742,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          112,
+          112,
+          47,
+          200
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 89"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 2323661742,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 79,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 2323661742,
+        "id": 89,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          112,
+          112,
+          47,
+          200
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 683130215,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 80,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 683130215,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          154,
+          146,
+          56,
+          202
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 89"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 683130215,
+      "expected": {
+        "id": 89
+      },
+      "actual": {
+        "index": 81,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 683130215,
+        "id": 89,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          154,
+          146,
+          56,
+          202
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 132,
+      "seed": 3337565984,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 82,
+        "kind": 2,
+        "warm": 0,
+        "member": 132,
+        "seed": 3337565984,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          222,
+          60,
+          208,
+          4
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 93"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 132,
+      "seed": 3337565984,
+      "expected": {
+        "id": 93
+      },
+      "actual": {
+        "index": 83,
+        "kind": 2,
+        "warm": 1,
+        "member": 132,
+        "seed": 3337565984,
+        "id": 93,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          222,
+          60,
+          208,
+          4
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 2654435769,
+      "expected": {
+        "id": 109
+      },
+      "actual": {
+        "index": 84,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 2654435769,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 109"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 2654435769,
+      "expected": {
+        "id": 109
+      },
+      "actual": {
+        "index": 85,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 2654435769,
+        "id": 109,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          123,
+          227,
+          119,
+          185
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 1013904242,
+      "expected": {
+        "id": 112
+      },
+      "actual": {
+        "index": 86,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 1013904242,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          15,
+          241,
+          231,
+          231
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 112"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 1013904242,
+      "expected": {
+        "id": 112
+      },
+      "actual": {
+        "index": 87,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 1013904242,
+        "id": 112,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          15,
+          241,
+          231,
+          231
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 3668340011,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 88,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 3668340011,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          190,
+          176,
+          96,
+          154
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 108"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 3668340011,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 89,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 3668340011,
+        "id": 108,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          190,
+          176,
+          96,
+          154
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 2027808484,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 90,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 2027808484,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          77,
+          15,
+          67,
+          243
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 107"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 2027808484,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 91,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 2027808484,
+        "id": 107,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          77,
+          15,
+          67,
+          243
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 387276957,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 92,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 387276957,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          206,
+          121,
+          85,
+          120
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 108"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 387276957,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 93,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 387276957,
+        "id": 108,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          206,
+          121,
+          85,
+          120
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 3041712726,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 94,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 3041712726,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          152,
+          252,
+          102,
+          186
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 108"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 3041712726,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 95,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 3041712726,
+        "id": 108,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          152,
+          252,
+          102,
+          186
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 1401181199,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 96,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 1401181199,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          123,
+          135,
+          29,
+          126
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 106"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 1401181199,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 97,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 1401181199,
+        "id": 106,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          123,
+          135,
+          29,
+          126
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 4055616968,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 98,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 4055616968,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          33,
+          60,
+          46,
+          23
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 107"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 4055616968,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 99,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 4055616968,
+        "id": 107,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          33,
+          60,
+          46,
+          23
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 2415085441,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 100,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 2415085441,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          167,
+          128,
+          54,
+          102
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 107"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 2415085441,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 101,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 2415085441,
+        "id": 107,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          167,
+          128,
+          54,
+          102
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 774553914,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 102,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 774553914,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          152,
+          201,
+          19,
+          33
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 106"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 774553914,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 103,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 774553914,
+        "id": 106,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          152,
+          201,
+          19,
+          33
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 3428989683,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 104,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 3428989683,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          208,
+          42,
+          196,
+          246
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 111"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 3428989683,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 105,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 3428989683,
+        "id": 111,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          208,
+          42,
+          196,
+          246
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 1788458156,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 106,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 1788458156,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          108,
+          32,
+          60,
+          52
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 107"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 1788458156,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 107,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 1788458156,
+        "id": 107,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          108,
+          32,
+          60,
+          52
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 147926629,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 108,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 147926629,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          39,
+          197,
+          109,
+          53
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 108"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 147926629,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 109,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 147926629,
+        "id": 108,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          39,
+          197,
+          109,
+          53
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 2802362398,
+      "expected": {
+        "id": 109
+      },
+      "actual": {
+        "index": 110,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 2802362398,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          15,
+          109,
+          113,
+          19
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 109"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 2802362398,
+      "expected": {
+        "id": 109
+      },
+      "actual": {
+        "index": 111,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 2802362398,
+        "id": 109,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          15,
+          109,
+          113,
+          19
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 1161830871,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 112,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 1161830871,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          92,
+          236,
+          193,
+          250
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 111"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 1161830871,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 113,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 1161830871,
+        "id": 111,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          92,
+          236,
+          193,
+          250
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 3816266640,
+      "expected": {
+        "id": 109
+      },
+      "actual": {
+        "index": 114,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 3816266640,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          47,
+          34,
+          130,
+          73
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 109"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 3816266640,
+      "expected": {
+        "id": 109
+      },
+      "actual": {
+        "index": 115,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 3816266640,
+        "id": 109,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          47,
+          34,
+          130,
+          73
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 2175735113,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 116,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 2175735113,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          30,
+          32,
+          207,
+          53
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 111"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 2175735113,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 117,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 2175735113,
+        "id": 111,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          30,
+          32,
+          207,
+          53
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 535203586,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 118,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 535203586,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          28,
+          162,
+          12,
+          118
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 106"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 535203586,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 119,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 535203586,
+        "id": 106,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          28,
+          162,
+          12,
+          118
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 3189639355,
+      "expected": {
+        "id": 112
+      },
+      "actual": {
+        "index": 120,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 3189639355,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          94,
+          48,
+          232,
+          151
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 112"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 3189639355,
+      "expected": {
+        "id": 112
+      },
+      "actual": {
+        "index": 121,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 3189639355,
+        "id": 112,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          94,
+          48,
+          232,
+          151
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 1549107828,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 122,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 1549107828,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          104,
+          191,
+          205,
+          248
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 111"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 1549107828,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 123,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 1549107828,
+        "id": 111,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          104,
+          191,
+          205,
+          248
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 4203543597,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 124,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 4203543597,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          137,
+          117,
+          82,
+          1
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 108"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 4203543597,
+      "expected": {
+        "id": 108
+      },
+      "actual": {
+        "index": 125,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 4203543597,
+        "id": 108,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          137,
+          117,
+          82,
+          1
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 2563012070,
+      "expected": {
+        "id": 110
+      },
+      "actual": {
+        "index": 126,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 2563012070,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          1,
+          235,
+          180,
+          130
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 110"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 2563012070,
+      "expected": {
+        "id": 110
+      },
+      "actual": {
+        "index": 127,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 2563012070,
+        "id": 110,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          1,
+          235,
+          180,
+          130
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 922480543,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 128,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 922480543,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          190,
+          72,
+          16,
+          242
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 106"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 922480543,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 129,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 922480543,
+        "id": 106,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          190,
+          72,
+          16,
+          242
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 3576916312,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 130,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 3576916312,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          24,
+          194,
+          69,
+          79
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 107"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 3576916312,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 131,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 3576916312,
+        "id": 107,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          24,
+          194,
+          69,
+          79
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 1936384785,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 132,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 1936384785,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          112,
+          48,
+          73,
+          82
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 107"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 1936384785,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 133,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 1936384785,
+        "id": 107,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          112,
+          48,
+          73,
+          82
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 295853258,
+      "expected": {
+        "id": 109
+      },
+      "actual": {
+        "index": 134,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 295853258,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          253,
+          94,
+          139,
+          194
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 109"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 295853258,
+      "expected": {
+        "id": 109
+      },
+      "actual": {
+        "index": 135,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 295853258,
+        "id": 109,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          253,
+          94,
+          139,
+          194
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 2950289027,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 136,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 2950289027,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          240,
+          32,
+          20,
+          162
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 106"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 2950289027,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 137,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 2950289027,
+        "id": 106,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          240,
+          32,
+          20,
+          162
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 1309757500,
+      "expected": {
+        "id": 112
+      },
+      "actual": {
+        "index": 138,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 1309757500,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          63,
+          244,
+          220,
+          44
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 112"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 1309757500,
+      "expected": {
+        "id": 112
+      },
+      "actual": {
+        "index": 139,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 1309757500,
+        "id": 112,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          63,
+          244,
+          220,
+          44
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 3964193269,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 140,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 3964193269,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          78,
+          23,
+          11,
+          60
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 106"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 3964193269,
+      "expected": {
+        "id": 106
+      },
+      "actual": {
+        "index": 141,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 3964193269,
+        "id": 106,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          78,
+          23,
+          11,
+          60
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 2323661742,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 142,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 2323661742,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          112,
+          112,
+          47,
+          200
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 107"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 2323661742,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 143,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 2323661742,
+        "id": 107,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          112,
+          112,
+          47,
+          200
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 683130215,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 144,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 683130215,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          154,
+          146,
+          56,
+          202
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 107"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 683130215,
+      "expected": {
+        "id": 107
+      },
+      "actual": {
+        "index": 145,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 683130215,
+        "id": 107,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          154,
+          146,
+          56,
+          202
+        ]
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "kind": 2,
+      "warm": 0,
+      "member": 133,
+      "seed": 3337565984,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 146,
+        "kind": 2,
+        "warm": 0,
+        "member": 133,
+        "seed": 3337565984,
+        "id": 0,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          222,
+          60,
+          208,
+          4
+        ]
+      },
+      "passed": false,
+      "errors": [
+        "id: got 0 expected 111"
+      ]
+    },
+    {
+      "kind": 2,
+      "warm": 1,
+      "member": 133,
+      "seed": 3337565984,
+      "expected": {
+        "id": 111
+      },
+      "actual": {
+        "index": 147,
+        "kind": 2,
+        "warm": 1,
+        "member": 133,
+        "seed": 3337565984,
+        "id": 111,
+        "npc": 0,
+        "hp": 0,
+        "conscious": 0,
+        "stepKind": 1,
+        "phase": 4,
+        "rolls": [
+          222,
+          60,
+          208,
+          4
+        ]
+      },
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "summary": {
+    "cold": {
+      "cases": 74,
+      "passed": 1
+    },
+    "boundControl": {
+      "cases": 74,
+      "passed": 74
+    }
+  },
+  "sourceReferences": [
+    {
+      "path": "asm/overworld/party/update_npc_party_lineup.asm",
+      "sha256": "b969e3b53a7873bd1b389a8efb424e4cc806ec2da058ea3206a12a8abea8e581"
+    },
+    {
+      "path": "asm/battle/ko_target.asm",
+      "sha256": "84e388e8105621b0a6ba795b278f286ae6aedb0f657cbb7cd2e34eb8558a2a51"
+    },
+    {
+      "path": "asm/battle/main_battle_routine.asm",
+      "sha256": "50abb497ef4b6a3b69f29309af7f8f7d1e79a95c4500ee712c4b7a24edd1d7fd"
+    },
+    {
+      "path": "src/game/battle.c",
+      "sha256": "5e48209394e29848fc0acc12ec71a41c9e9567fc055f8e023cd5fbb4bd108396"
+    }
+  ],
+  "limits": [
+    "KO test starts at the actual serialized post-text pc11 continuation; it does not exercise preceding inventory destruction or text.",
+    "PREP test executes the real drop/consolation selection and stops at its next native child/phase. It does not certify whole encounter entry or rewards.",
+    "Cold quickloads past BTL_PREP do not rerun this drop selection; only an entry/PREP checkpoint can hit that missing table.",
+    "NPC addition is an actual native helper call after prepared party initialization; owner saves are untouched.",
+    "Expected values derive from exact original assembly and real packed tables; this is not independent full original-machine validation."
+  ],
+  "allPassed": false
+}

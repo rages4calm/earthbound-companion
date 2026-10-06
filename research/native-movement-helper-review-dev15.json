@@ -1,0 +1,4153 @@
+{
+  "format": "native-movement-helper-review-dev15-v1",
+  "Passed": true,
+  "reviewedHelpers": 6,
+  "executedSourceCases": 98864,
+  "baselineMismatchCount": 704,
+  "actualSourcePostFixMismatchCount": 0,
+  "confirmedScope": {
+    "helper": "get_collision_at_pixel",
+    "sourceFunctionLine": 3189,
+    "originalAddress": "C05FD1",
+    "defect": "Signed C shifts recorded negative ladder coordinates when source coordinate bit15 was set. Original INC/LSR operations use wrapped 16-bit words and logical shifts.",
+    "fix": "Wrap y+4 to uint16_t and logically shift uint16_t x/y before recording tile coordinates.",
+    "changedOutputColumns": [
+      "ladderTileX",
+      "ladderTileY"
+    ],
+    "returnedFlagsUnchangedAcrossRecordedCases": true,
+    "surfaceFlagsUnchangedAcrossRecordedCases": true,
+    "allRecordedBaselineMismatchesHadCoordinateHighBitAndLadderBitSet": true,
+    "normalStoryCrashDemonstrated": false,
+    "nativeCallerReference": {
+      "path": "native-source/src/game/position_buffer.c",
+      "line": 1520,
+      "sha256": "1f27f8b05e3dc913eb20103da54b5579df3e7193462108c89d855c7d6901cc23",
+      "condition": "Movement-locked path, excluding demo_frames_left, calls get_collision_at_pixel."
+    },
+    "directionalHelperSourceChanges": false,
+    "dev14ReleaseAltered": false
+  },
+  "baseline": {
+    "format": "native-movement-helper-micro-oracle-dev15-v1",
+    "Passed": false,
+    "ExecutedCases": 98864,
+    "SkippedCases": 0,
+    "MismatchCount": 704,
+    "MismatchesByHelper": {
+      "get_collision_at_pixel": 704
+    },
+    "MismatchExamples": [
+      {
+        "case": 159,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          0,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          0,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 163,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          0,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          0,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 164,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          0,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          0,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 165,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          0,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          0,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 170,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          0,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          0,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 174,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          0,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          0,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 175,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          0,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          0,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 176,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          0,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          0,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 181,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          0,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          0,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 185,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          0,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          0,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 186,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          0,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          0,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 187,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          0,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          0,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 192,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          0,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          0,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 196,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          0,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          0,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 197,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          0,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          0,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 198,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          0,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          0,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          0,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 379,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          1,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          1,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 383,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          1,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          1,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 384,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          1,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          1,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 385,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          1,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          1,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 390,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          1,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          1,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 394,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          1,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          1,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 395,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          1,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          1,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 396,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          1,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          1,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 401,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          1,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          1,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 405,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          1,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          1,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 406,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          1,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          1,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 407,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          1,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          1,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 412,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          1,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          1,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 416,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          1,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          1,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 417,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          1,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          1,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 418,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          1,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          1,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          1,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 599,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          3,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          3,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 603,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          3,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          3,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 604,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          3,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          3,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 605,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          3,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          3,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 610,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          3,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          3,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 614,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          3,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          3,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 615,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          3,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          3,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 616,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          3,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          3,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 621,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          3,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          3,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 625,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          3,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          3,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 626,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          3,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          3,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 627,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          3,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          3,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 632,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          3,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          3,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 636,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          3,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          3,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 637,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          3,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          3,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 638,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          3,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          3,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          3,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 819,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          4,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          4,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 823,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          4,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          4,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 824,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          4,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          4,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 825,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          4,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          4,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 830,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          4,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          4,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 834,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          4,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          4,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 835,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          4,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          4,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 836,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          4,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          4,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 841,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          4,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          4,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 845,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          4,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          4,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 846,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          4,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          4,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 847,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          4,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          4,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 852,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          4,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          4,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 856,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          4,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          4,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 857,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          4,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          4,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 858,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          4,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          4,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          4,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 1039,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          7,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          7,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 1043,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          7,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          7,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 1044,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          7,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          7,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 1045,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          32768,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          7,
+          32768,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          7,
+          32768,
+          0
+        ]
+      },
+      {
+        "case": 1050,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          61440,
+          7,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          4096,
+          7,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 1054,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          61440,
+          7,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          4096,
+          7,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 1055,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          61440,
+          7,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          4096,
+          7,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 1056,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          32769,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            0,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          61440,
+          7,
+          32769,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          4096,
+          7,
+          32769,
+          0
+        ]
+      },
+      {
+        "case": 1061,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          7,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          7,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 1065,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          7,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          7,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 1066,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          7,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          7,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 1067,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          65528,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          7,
+          65528,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          7,
+          65528,
+          0
+        ]
+      },
+      {
+        "case": 1072,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            16
+          ]
+        ],
+        "native": [
+          16,
+          16,
+          0,
+          65535,
+          7,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          16,
+          16,
+          0,
+          8191,
+          7,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 1076,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            144
+          ]
+        ],
+        "native": [
+          144,
+          144,
+          0,
+          65535,
+          7,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          144,
+          144,
+          0,
+          8191,
+          7,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 1077,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            208
+          ]
+        ],
+        "native": [
+          208,
+          208,
+          0,
+          65535,
+          7,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          208,
+          208,
+          0,
+          8191,
+          7,
+          65531,
+          0
+        ]
+      },
+      {
+        "case": 1078,
+        "helper": "get_collision_at_pixel",
+        "sourceCaseGroup": "pixel-coordinate-boundaries",
+        "input": [
+          0,
+          7,
+          65531,
+          0,
+          0,
+          42405,
+          48879,
+          51966
+        ],
+        "syntheticGridCells": [
+          [
+            4032,
+            255
+          ]
+        ],
+        "native": [
+          255,
+          255,
+          0,
+          65535,
+          7,
+          65531,
+          0
+        ],
+        "originalMachine": [
+          255,
+          255,
+          0,
+          8191,
+          7,
+          65531,
+          0
+        ]
+      }
+    ],
+    "AllMismatchesPrivateArtifact": "native-mismatches.jsonl",
+    "OutputColumns": [
+      "returnWord",
+      "surfaceFlags",
+      "ladderTileX",
+      "ladderTileY",
+      "checkedLeftX",
+      "checkedTopY",
+      "surfaceControl"
+    ],
+    "InputIdentities": {
+      "rom": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+      "oracle": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+      "compiler": "206f9fc067234f48ae077550658dae06bd75d99110c1b3166887b7090cbd7fa0",
+      "nativeSource": "e919d5e3dca4a1171412db338a6fe4d55d54ac71a6d670d60cfbc1c9368153eb",
+      "oracleCore": "69425f547e83648b4aa8507908ff473a3d8c4ac666b8e130b2f5e9d99922d29a"
+    },
+    "OriginalRomSha1": "d67a8ef36ef616bc39306aa1b486e1bd3047815a",
+    "HelperCatalog": [
+      {
+        "helper": "get_collision_at_pixel",
+        "originalAddress": "C05FD1",
+        "endExclusive": "C05FF6",
+        "originalMachineBytesSha256": "a6591b702e8ea58e75761a9da7fa68670e12a283188894333a76a9e993e40914",
+        "originalAsmPath": "asm/overworld/collision/get_collision_at_pixel.asm",
+        "originalAsmSha256": "f440033117ed655d4a297a7b5b25d7fd2c0265a8712ccfc81d64b60644c31991",
+        "abi": "A=x, X=y; RTS, original C direct-page frame"
+      },
+      {
+        "helper": "test_collision_north",
+        "originalAddress": "C057E8",
+        "endExclusive": "C0583C",
+        "originalMachineBytesSha256": "c21d0f0bb7033427e22edf4a1c4f8252f793634367358f0994470dc501ab9df4",
+        "originalAsmPath": "asm/overworld/collision/test_collision_north.asm",
+        "originalAsmSha256": "2b01107f47ca697673d0c89059b16d817032a827f7548ccbd243cbb6356076ed",
+        "abi": "no parameters; RTS"
+      },
+      {
+        "helper": "test_collision_south",
+        "originalAddress": "C0583C",
+        "endExclusive": "C05890",
+        "originalMachineBytesSha256": "6900c853a586503eecdebbfdf49d7510bdb77e104ac26c0cf599d14f668c11a9",
+        "originalAsmPath": "asm/overworld/collision/test_collision_south.asm",
+        "originalAsmSha256": "f5008628e507283844678175814fc157d5ce117e9b8c20d8b1bb9afb2ee3b5b0",
+        "abi": "no parameters; RTS"
+      },
+      {
+        "helper": "test_collision_west",
+        "originalAddress": "C05890",
+        "endExclusive": "C059EF",
+        "originalMachineBytesSha256": "786ce4b44c24cc43f45fe0442fa2526492b75f934440339f82f17236c71894f3",
+        "originalAsmPath": "asm/overworld/collision/test_collision_west.asm",
+        "originalAsmSha256": "052785b6c6fd52764d145af203b31569f17664b2218d0e6c4b00759a8005acf1",
+        "abi": "no parameters; RTS, original C direct-page frame"
+      },
+      {
+        "helper": "test_collision_east",
+        "originalAddress": "C059EF",
+        "endExclusive": "C05B4E",
+        "originalMachineBytesSha256": "8b2f4278920fe907ea3888e44a6684895810940ea65917bf592ffaf7595c6383",
+        "originalAsmPath": "asm/overworld/collision/test_collision_east.asm",
+        "originalAsmSha256": "606a31f0d83be4d7b6cef05e621230513a25ff847029888a41c3de9fb93cf863",
+        "abi": "no parameters; RTS, original C direct-page frame"
+      },
+      {
+        "helper": "test_collision_diagonal",
+        "originalAddress": "C05B4E",
+        "endExclusive": "C05B7B",
+        "originalMachineBytesSha256": "2546f3f9375f003dc21be29c9b38939fcb3c1867fd27c7250e45f2f17b360524",
+        "originalAsmPath": "asm/overworld/collision/test_collision_diagonal.asm",
+        "originalAsmSha256": "b1b45b1f5352ae50101ababf8ae53bfeea21ef88d088bfa7dc02f805d0afd9f8",
+        "abi": "A=direction 1,3,5,7; RTS, original C direct-page frame"
+      }
+    ],
+    "CaseGroups": {
+      "pixel-coordinate-boundaries": 4400,
+      "pixel-all-byte-flags": 256,
+      "all-tile-phases-primary-wall-masks": 65536,
+      "cardinal-corner-and-extended-check": 8192,
+      "wrapped-coordinate-and-surface-control": 20480
+    },
+    "ActualOriginalEntryCalls": {
+      "get_collision_at_pixel": 4656,
+      "test_collision_north": 10752,
+      "test_collision_south": 10752,
+      "test_collision_west": 14848,
+      "test_collision_east": 14848,
+      "test_collision_diagonal": 43008
+    },
+    "CompiledActualNativeHelpersSha256": "eea637e34d7c9df0c521cad7868a4e82ab04c889389f8b331d0d70a0f8341f40",
+    "NativeProbeSha256": "fab04e3f799a07198dae084e5ae7004b77684a28697e90f8ecee7489c22f3222",
+    "InputSha256": "b6777fa7521fd819b98a3073446c71af598c07c15d77d4a7c3aab0e3cccbf2df",
+    "OracleLuaSha256": "1d20d4ae41509abeee61faac362d15bf813256e6b04b0ec5695b68c3c2ab52d9",
+    "OwnCallerSha256": "9c022c2521ffb2c2885e49581759130b28cf6a307f833725e8647b40c9f5a8c8",
+    "OriginalMachineCodeExecuted": true,
+    "StackAndDirectPageCanariesPassed": true,
+    "ProtectedMemoryCanaryPassed": true,
+    "CompleteOrderedCorpusVerified": true,
+    "OwnerRomUnchanged": true,
+    "OwnerSavesTouched": false,
+    "SharedSourceEdited": false,
+    "SharedBuildsEdited": false,
+    "FullCompatibilityVerified": false,
+    "FullPlaythroughVerified": false,
+    "Limits": [
+      "Verbatim actual native helper bodies compiled in isolation, compared with untouched original 65816 routines; this is not full native executable or story parity.",
+      "Collision grids are synthetic. All sub-tile phases and primary wall masks, corners, wrapping and selected flag/control boundaries are exercised; all possible world grids are not exhaustive.",
+      "Ladder/stairs/door-bit observation is compared as a side effect. Actual stair walking, door transitions, NPC collisions, sprint swept guards and event-script execution are outside this helper audit.",
+      "Diagonal directions are restricted to valid source callers 1,3,5,7; invalid out-of-range directions are not invoked.",
+      "No original ROM, extracted game assets, machine-code copies or emulator are included in the public script/report."
+    ]
+  },
+  "isolatedCandidateEvidence": {
+    "Passed": true,
+    "ExecutedCases": 98864,
+    "MismatchCount": 0,
+    "CompiledIsolatedCandidateSha256": "015ae2792dffa91da43af6cbe93eafd6879093db21c23d8c08dd62cef778668d",
+    "CandidateBodiesSha256": "4ab6c9f6fdcd82767bbd4b49f8520f593572730f168ae180a64db3b8f15b05df",
+    "InputSha256": "b6777fa7521fd819b98a3073446c71af598c07c15d77d4a7c3aab0e3cccbf2df",
+    "ExistingActualMachineSamplesSha256": "fa6eb4df0c24d56d9ae2b8bbf769fa3082d502c1f4e7f7e380892f153fecd4e6",
+    "SharedNativeSourceEdited": false,
+    "SharedBuildsEdited": false,
+    "ShippedFixClaimed": false,
+    "proposedChange": "Cast x to uint16; wrap y+4 to uint16; use logical shifts before recording ladder tile coordinates."
+  },
+  "production": {
+    "format": "native-movement-helper-micro-oracle-dev15-v1",
+    "Passed": true,
+    "ExecutedCases": 98864,
+    "SkippedCases": 0,
+    "MismatchCount": 0,
+    "MismatchesByHelper": {},
+    "MismatchExamples": [],
+    "AllMismatchesPrivateArtifact": "native-mismatches.jsonl",
+    "OutputColumns": [
+      "returnWord",
+      "surfaceFlags",
+      "ladderTileX",
+      "ladderTileY",
+      "checkedLeftX",
+      "checkedTopY",
+      "surfaceControl"
+    ],
+    "InputIdentities": {
+      "rom": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+      "oracle": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+      "compiler": "206f9fc067234f48ae077550658dae06bd75d99110c1b3166887b7090cbd7fa0",
+      "nativeSource": "3df5e031e00b83dbb073ea4c7e059d13702ce324ec18cc0fb46c1aaad16f4f95",
+      "previousProbe": "fab04e3f799a07198dae084e5ae7004b77684a28697e90f8ecee7489c22f3222",
+      "oracleCore": "69425f547e83648b4aa8507908ff473a3d8c4ac666b8e130b2f5e9d99922d29a"
+    },
+    "OriginalRomSha1": "d67a8ef36ef616bc39306aa1b486e1bd3047815a",
+    "HelperCatalog": [
+      {
+        "helper": "get_collision_at_pixel",
+        "originalAddress": "C05FD1",
+        "endExclusive": "C05FF6",
+        "originalMachineBytesSha256": "a6591b702e8ea58e75761a9da7fa68670e12a283188894333a76a9e993e40914",
+        "originalAsmPath": "asm/overworld/collision/get_collision_at_pixel.asm",
+        "originalAsmSha256": "f440033117ed655d4a297a7b5b25d7fd2c0265a8712ccfc81d64b60644c31991",
+        "abi": "A=x, X=y; RTS, original C direct-page frame"
+      },
+      {
+        "helper": "test_collision_north",
+        "originalAddress": "C057E8",
+        "endExclusive": "C0583C",
+        "originalMachineBytesSha256": "c21d0f0bb7033427e22edf4a1c4f8252f793634367358f0994470dc501ab9df4",
+        "originalAsmPath": "asm/overworld/collision/test_collision_north.asm",
+        "originalAsmSha256": "2b01107f47ca697673d0c89059b16d817032a827f7548ccbd243cbb6356076ed",
+        "abi": "no parameters; RTS"
+      },
+      {
+        "helper": "test_collision_south",
+        "originalAddress": "C0583C",
+        "endExclusive": "C05890",
+        "originalMachineBytesSha256": "6900c853a586503eecdebbfdf49d7510bdb77e104ac26c0cf599d14f668c11a9",
+        "originalAsmPath": "asm/overworld/collision/test_collision_south.asm",
+        "originalAsmSha256": "f5008628e507283844678175814fc157d5ce117e9b8c20d8b1bb9afb2ee3b5b0",
+        "abi": "no parameters; RTS"
+      },
+      {
+        "helper": "test_collision_west",
+        "originalAddress": "C05890",
+        "endExclusive": "C059EF",
+        "originalMachineBytesSha256": "786ce4b44c24cc43f45fe0442fa2526492b75f934440339f82f17236c71894f3",
+        "originalAsmPath": "asm/overworld/collision/test_collision_west.asm",
+        "originalAsmSha256": "052785b6c6fd52764d145af203b31569f17664b2218d0e6c4b00759a8005acf1",
+        "abi": "no parameters; RTS, original C direct-page frame"
+      },
+      {
+        "helper": "test_collision_east",
+        "originalAddress": "C059EF",
+        "endExclusive": "C05B4E",
+        "originalMachineBytesSha256": "8b2f4278920fe907ea3888e44a6684895810940ea65917bf592ffaf7595c6383",
+        "originalAsmPath": "asm/overworld/collision/test_collision_east.asm",
+        "originalAsmSha256": "606a31f0d83be4d7b6cef05e621230513a25ff847029888a41c3de9fb93cf863",
+        "abi": "no parameters; RTS, original C direct-page frame"
+      },
+      {
+        "helper": "test_collision_diagonal",
+        "originalAddress": "C05B4E",
+        "endExclusive": "C05B7B",
+        "originalMachineBytesSha256": "2546f3f9375f003dc21be29c9b38939fcb3c1867fd27c7250e45f2f17b360524",
+        "originalAsmPath": "asm/overworld/collision/test_collision_diagonal.asm",
+        "originalAsmSha256": "b1b45b1f5352ae50101ababf8ae53bfeea21ef88d088bfa7dc02f805d0afd9f8",
+        "abi": "A=direction 1,3,5,7; RTS, original C direct-page frame"
+      }
+    ],
+    "CaseGroups": {
+      "pixel-coordinate-boundaries": 4400,
+      "pixel-all-byte-flags": 256,
+      "all-tile-phases-primary-wall-masks": 65536,
+      "cardinal-corner-and-extended-check": 8192,
+      "wrapped-coordinate-and-surface-control": 20480
+    },
+    "ActualOriginalEntryCalls": {
+      "get_collision_at_pixel": 4656,
+      "test_collision_north": 10752,
+      "test_collision_south": 10752,
+      "test_collision_west": 14848,
+      "test_collision_east": 14848,
+      "test_collision_diagonal": 43008
+    },
+    "CompiledActualNativeHelpersSha256": "6b5696718312bde0c8030d1fa10357f950a41d0fa593ef45248b6aa4a99caa2e",
+    "NativeProbeSha256": "4cf7fe9ed8ac60cbe67cf7f6bda9a501bf6789230e3c7b0e29f390f4769463f5",
+    "InputSha256": "b6777fa7521fd819b98a3073446c71af598c07c15d77d4a7c3aab0e3cccbf2df",
+    "PreviousProbeMismatchCount": 704,
+    "PreviousProbeMismatchedCases": [
+      159,
+      163,
+      164,
+      165,
+      170,
+      174,
+      175,
+      176,
+      181,
+      185,
+      186,
+      187,
+      192,
+      196,
+      197,
+      198,
+      379,
+      383,
+      384,
+      385,
+      390,
+      394,
+      395,
+      396,
+      401,
+      405,
+      406,
+      407,
+      412,
+      416,
+      417,
+      418,
+      599,
+      603,
+      604,
+      605,
+      610,
+      614,
+      615,
+      616,
+      621,
+      625,
+      626,
+      627,
+      632,
+      636,
+      637,
+      638,
+      819,
+      823,
+      824,
+      825,
+      830,
+      834,
+      835,
+      836,
+      841,
+      845,
+      846,
+      847,
+      852,
+      856,
+      857,
+      858,
+      1039,
+      1043,
+      1044,
+      1045,
+      1050,
+      1054,
+      1055,
+      1056,
+      1061,
+      1065,
+      1066,
+      1067,
+      1072,
+      1076,
+      1077,
+      1078,
+      1259,
+      1263,
+      1264,
+      1265,
+      1270,
+      1274,
+      1275,
+      1276,
+      1281,
+      1285,
+      1286,
+      1287,
+      1292,
+      1296,
+      1297,
+      1298,
+      1479,
+      1483,
+      1484,
+      1485,
+      1490,
+      1494,
+      1495,
+      1496,
+      1501,
+      1505,
+      1506,
+      1507,
+      1512,
+      1516,
+      1517,
+      1518,
+      1699,
+      1703,
+      1704,
+      1705,
+      1710,
+      1714,
+      1715,
+      1716,
+      1721,
+      1725,
+      1726,
+      1727,
+      1732,
+      1736,
+      1737,
+      1738,
+      1919,
+      1923,
+      1924,
+      1925,
+      1930,
+      1934,
+      1935,
+      1936,
+      1941,
+      1945,
+      1946,
+      1947,
+      1952,
+      1956,
+      1957,
+      1958,
+      2139,
+      2143,
+      2144,
+      2145,
+      2150,
+      2154,
+      2155,
+      2156,
+      2161,
+      2165,
+      2166,
+      2167,
+      2172,
+      2176,
+      2177,
+      2178,
+      2359,
+      2363,
+      2364,
+      2365,
+      2370,
+      2374,
+      2375,
+      2376,
+      2381,
+      2385,
+      2386,
+      2387,
+      2392,
+      2396,
+      2397,
+      2398,
+      2579,
+      2583,
+      2584,
+      2585,
+      2590,
+      2594,
+      2595,
+      2596,
+      2601,
+      2605,
+      2606,
+      2607,
+      2612,
+      2616,
+      2617,
+      2618,
+      2799,
+      2803,
+      2804,
+      2805,
+      2810,
+      2814,
+      2815,
+      2816,
+      2821,
+      2825,
+      2826,
+      2827,
+      2832,
+      2836,
+      2837,
+      2838,
+      3019,
+      3023,
+      3024,
+      3025,
+      3030,
+      3034,
+      3035,
+      3036,
+      3041,
+      3045,
+      3046,
+      3047,
+      3052,
+      3056,
+      3057,
+      3058,
+      3085,
+      3089,
+      3090,
+      3091,
+      3096,
+      3100,
+      3101,
+      3102,
+      3107,
+      3111,
+      3112,
+      3113,
+      3118,
+      3122,
+      3123,
+      3124,
+      3129,
+      3133,
+      3134,
+      3135,
+      3140,
+      3144,
+      3145,
+      3146,
+      3151,
+      3155,
+      3156,
+      3157,
+      3162,
+      3166,
+      3167,
+      3168,
+      3173,
+      3177,
+      3178,
+      3179,
+      3184,
+      3188,
+      3189,
+      3190,
+      3195,
+      3199,
+      3200,
+      3201,
+      3206,
+      3210,
+      3211,
+      3212,
+      3217,
+      3221,
+      3222,
+      3223,
+      3228,
+      3232,
+      3233,
+      3234,
+      3239,
+      3243,
+      3244,
+      3245,
+      3250,
+      3254,
+      3255,
+      3256,
+      3261,
+      3265,
+      3266,
+      3267,
+      3272,
+      3276,
+      3277,
+      3278,
+      3283,
+      3287,
+      3288,
+      3289,
+      3294,
+      3298,
+      3299,
+      3300,
+      3305,
+      3309,
+      3310,
+      3311,
+      3316,
+      3320,
+      3321,
+      3322,
+      3327,
+      3331,
+      3332,
+      3333,
+      3338,
+      3342,
+      3343,
+      3344,
+      3349,
+      3353,
+      3354,
+      3355,
+      3360,
+      3364,
+      3365,
+      3366,
+      3371,
+      3375,
+      3376,
+      3377,
+      3382,
+      3386,
+      3387,
+      3388,
+      3393,
+      3397,
+      3398,
+      3399,
+      3404,
+      3408,
+      3409,
+      3410,
+      3415,
+      3419,
+      3420,
+      3421,
+      3426,
+      3430,
+      3431,
+      3432,
+      3437,
+      3441,
+      3442,
+      3443,
+      3448,
+      3452,
+      3453,
+      3454,
+      3459,
+      3463,
+      3464,
+      3465,
+      3470,
+      3474,
+      3475,
+      3476,
+      3481,
+      3485,
+      3486,
+      3487,
+      3492,
+      3496,
+      3497,
+      3498,
+      3503,
+      3507,
+      3508,
+      3509,
+      3514,
+      3518,
+      3519,
+      3520,
+      3525,
+      3529,
+      3530,
+      3531,
+      3536,
+      3540,
+      3541,
+      3542,
+      3547,
+      3551,
+      3552,
+      3553,
+      3558,
+      3562,
+      3563,
+      3564,
+      3569,
+      3573,
+      3574,
+      3575,
+      3580,
+      3584,
+      3585,
+      3586,
+      3591,
+      3595,
+      3596,
+      3597,
+      3602,
+      3606,
+      3607,
+      3608,
+      3613,
+      3617,
+      3618,
+      3619,
+      3624,
+      3628,
+      3629,
+      3630,
+      3635,
+      3639,
+      3640,
+      3641,
+      3646,
+      3650,
+      3651,
+      3652,
+      3657,
+      3661,
+      3662,
+      3663,
+      3668,
+      3672,
+      3673,
+      3674,
+      3679,
+      3683,
+      3684,
+      3685,
+      3690,
+      3694,
+      3695,
+      3696,
+      3701,
+      3705,
+      3706,
+      3707,
+      3712,
+      3716,
+      3717,
+      3718,
+      3723,
+      3727,
+      3728,
+      3729,
+      3734,
+      3738,
+      3739,
+      3740,
+      3745,
+      3749,
+      3750,
+      3751,
+      3756,
+      3760,
+      3761,
+      3762,
+      3767,
+      3771,
+      3772,
+      3773,
+      3778,
+      3782,
+      3783,
+      3784,
+      3789,
+      3793,
+      3794,
+      3795,
+      3800,
+      3804,
+      3805,
+      3806,
+      3811,
+      3815,
+      3816,
+      3817,
+      3822,
+      3826,
+      3827,
+      3828,
+      3833,
+      3837,
+      3838,
+      3839,
+      3844,
+      3848,
+      3849,
+      3850,
+      3855,
+      3859,
+      3860,
+      3861,
+      3866,
+      3870,
+      3871,
+      3872,
+      3877,
+      3881,
+      3882,
+      3883,
+      3888,
+      3892,
+      3893,
+      3894,
+      3899,
+      3903,
+      3904,
+      3905,
+      3910,
+      3914,
+      3915,
+      3916,
+      3921,
+      3925,
+      3926,
+      3927,
+      3932,
+      3936,
+      3937,
+      3938,
+      3943,
+      3947,
+      3948,
+      3949,
+      3954,
+      3958,
+      3959,
+      3960,
+      3965,
+      3969,
+      3970,
+      3971,
+      3976,
+      3980,
+      3981,
+      3982,
+      3987,
+      3991,
+      3992,
+      3993,
+      3998,
+      4002,
+      4003,
+      4004,
+      4009,
+      4013,
+      4014,
+      4015,
+      4020,
+      4024,
+      4025,
+      4026,
+      4031,
+      4035,
+      4036,
+      4037,
+      4042,
+      4046,
+      4047,
+      4048,
+      4053,
+      4057,
+      4058,
+      4059,
+      4064,
+      4068,
+      4069,
+      4070,
+      4075,
+      4079,
+      4080,
+      4081,
+      4086,
+      4090,
+      4091,
+      4092,
+      4097,
+      4101,
+      4102,
+      4103,
+      4108,
+      4112,
+      4113,
+      4114,
+      4119,
+      4123,
+      4124,
+      4125,
+      4130,
+      4134,
+      4135,
+      4136,
+      4141,
+      4145,
+      4146,
+      4147,
+      4152,
+      4156,
+      4157,
+      4158,
+      4163,
+      4167,
+      4168,
+      4169,
+      4174,
+      4178,
+      4179,
+      4180,
+      4185,
+      4189,
+      4190,
+      4191,
+      4196,
+      4200,
+      4201,
+      4202,
+      4207,
+      4211,
+      4212,
+      4213,
+      4218,
+      4222,
+      4223,
+      4224,
+      4229,
+      4233,
+      4234,
+      4235,
+      4240,
+      4244,
+      4245,
+      4246,
+      4251,
+      4255,
+      4256,
+      4257,
+      4262,
+      4266,
+      4267,
+      4268,
+      4273,
+      4277,
+      4278,
+      4279,
+      4284,
+      4288,
+      4289,
+      4290,
+      4295,
+      4299,
+      4300,
+      4301,
+      4306,
+      4310,
+      4311,
+      4312,
+      4317,
+      4321,
+      4322,
+      4323,
+      4328,
+      4332,
+      4333,
+      4334,
+      4339,
+      4343,
+      4344,
+      4345,
+      4350,
+      4354,
+      4355,
+      4356,
+      4361,
+      4365,
+      4366,
+      4367,
+      4372,
+      4376,
+      4377,
+      4378,
+      4383,
+      4387,
+      4388,
+      4389,
+      4394,
+      4398,
+      4399,
+      4400
+    ],
+    "OracleLuaSha256": "9402848f57476a9e22d793cfebccb22d19847b704c19fa9383d8725206ff9dc8",
+    "OwnCallerSha256": "9c022c2521ffb2c2885e49581759130b28cf6a307f833725e8647b40c9f5a8c8",
+    "OriginalMachineCodeExecuted": true,
+    "StackAndDirectPageCanariesPassed": true,
+    "ProtectedMemoryCanaryPassed": true,
+    "CompleteOrderedCorpusVerified": true,
+    "OwnerRomUnchanged": true,
+    "OwnerSavesTouched": false,
+    "SharedSourceEdited": false,
+    "SharedBuildsEdited": false,
+    "FullCompatibilityVerified": false,
+    "FullPlaythroughVerified": false,
+    "IsolatedPixelWrapCandidate": null,
+    "ReturnAndSurfaceFlagsMatchAcrossCorpus": true,
+    "MismatchColumns": {},
+    "Runner": {
+      "path": "tools/snes_movement_helpers_oracle.py",
+      "sha256": "7391ced1e25ab737e1bd9737c2675b5f4bf1130661bdb0591a42c8f7d2eeb112"
+    },
+    "Limits": [
+      "Verbatim actual native helper bodies compiled in isolation, compared with untouched original 65816 routines; this is not full native executable or story parity.",
+      "Collision grids are synthetic. All sub-tile phases and primary wall masks, corners, wrapping and selected flag/control boundaries are exercised; all possible world grids are not exhaustive.",
+      "Ladder/stairs/door-bit observation is compared as a side effect. Actual stair walking, door transitions, NPC collisions, sprint swept guards and event-script execution are outside this helper audit.",
+      "Diagonal directions are restricted to valid source callers 1,3,5,7; invalid out-of-range directions are not invoked.",
+      "No original ROM, extracted game assets, machine-code copies or emulator are included in the public script/report."
+    ]
+  },
+  "privateEvidence": [
+    {
+      "path": "_BuildScratch/movement-helpers-micro-oracle-dev15-v1/results.json",
+      "sha256": "3ea10eb51a64ddb7a81562693b039e6d6e97d3bc612cb570f893db19efdd07ff"
+    },
+    {
+      "path": "_BuildScratch/movement-helpers-micro-oracle-dev15-v2/results.json",
+      "sha256": "9347f69063d2a2f4147368d5144b8d5f7ccec0745e1635c038a982e83e49aa62"
+    },
+    {
+      "path": "_BuildScratch/movement-helpers-micro-oracle-dev15-v1/isolated-pixel-wrap-candidate/results.json",
+      "sha256": "fc69fd594b930c6d06abb7d725f3df215e9382e0d7faaf02d191b52860679654"
+    }
+  ],
+  "runner": {
+    "path": "tools/snes_movement_helpers_oracle.py",
+    "sha256": "7391ced1e25ab737e1bd9737c2675b5f4bf1130661bdb0591a42c8f7d2eeb112",
+    "reproductionCommand": "native-source/.venv/Scripts/python.exe tools/snes_movement_helpers_oracle.py --rom '<local clean USA EarthBound ROM.sfc>' --oracle tools/mesen-agent-v0.1.0/mesen-agent.exe --compiler tools/mingw64/bin/gcc.exe --native-source native-source --generated build/companion/game_lib/generated --scratch _BuildScratch/movement-helpers-dev15-fresh --previous-probe _BuildScratch/movement-helpers-micro-oracle-dev15-v1/native-probe.exe"
+  },
+  "ownerRomUnchanged": true,
+  "ownerSavesTouched": false,
+  "sharedBuildsChangedByThisAgent": false,
+  "fullCompatibilityVerified": false,
+  "fullPlaythroughVerified": false,
+  "coverageLimits": [
+    "Only the named six isolated helper bodies and their listed outputs are compared. Original volatile scratch CPU registers and unrelated RAM are not an equivalence claim.",
+    "Prepared synthetic grids cover all sub-tile phases and primary wall masks, selected corner/extended checks, coordinate wraps and flag/control combinations. All possible map grids are not exhaustive.",
+    "Ladder/stairs/door-bit coordinate observations are covered. Actual stair traversal, hotel egress, scripted door events, NPC interactions, sprint guards and story sequences need separate native gameplay tests.",
+    "No normal-story crash or player-visible scene caused by this particular high-bit coordinate mismatch has been demonstrated.",
+    "The oracle emulator executes original routines for development only and is absent from native player releases. No owner ROM bytes or extracted assets are published."
+  ]
+}

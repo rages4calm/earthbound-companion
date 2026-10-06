@@ -1,5 +1,7 @@
 # Native conversion audit — dev.14 checkpoint
 
+For the following checkpoint, see [dev.15 audit](NATIVE-AUDIT-dev15.md).
+
 The audit covers the pinned MaternalBound Redux source `897d00833f4a08a0a92f106abf631629a6a6a041` and the shared native engine. It combines source/data reviews, ordinary-input replay, cold saves, prepared subsystem scenarios and independent execution of selected original SNES routines. **Complete Redux compatibility and a complete story or randomized playthrough remain unverified.** A green fixture is evidence for its stated behavior, not for the whole game.
 
 ## Corrections in this checkpoint

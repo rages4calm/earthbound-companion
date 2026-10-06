@@ -1,0 +1,729 @@
+{
+  "format": "redux-audio-consumer-qa-v1",
+  "sourceRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "privateBuild": {
+    "driverSourceSha256": "AD9EC875EDCA756453C28C56F26871351E10968E3C0474D6C10B4064413C474E",
+    "executableSha256": "1459BB777288695DA2853E90CED713AC75B35A1D3A187E1DF86C71A394E91422",
+    "productionExecutableSha256": "7A96DB453B106787060C7E32E3AD8F19D010C07D35B9EFF7E57E4C54461E102B",
+    "productionLibrarySha256": "79A1B520F2BB8FFB9A8D02FB4E5985C9C03698994AD76622A821ED5B9094BAA2",
+    "platformMainObjectSha256": "8387F7F5405F60E59A059C84FCF6791A1DB2F6CA96015872520398CBB2BA6FEB",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Private driver linked to unchanged frozen production library and copied platform objects; SFX wrapper forwards unchanged."
+  },
+  "runtimeSha256": {
+    "player.exe": "7A96DB453B106787060C7E32E3AD8F19D010C07D35B9EFF7E57E4C54461E102B",
+    "observer.exe": "4B53E35AD85156E215F97C7823BBF96C703DCC201808EB7D1C1F0D824AFE4A27"
+  },
+  "sourceFiles": {
+    "src/game/display_text_cc.c": "2994EB5C58C9E6C72ACDA4C91A3998C420968289D5AD5129A0E74463AA280CC3",
+    "src/game/display_text.c": "7A11DE0B21C1984B53859D11BB1BEA0784A87B9A0FAD53610CBD42FE1BA2EB72",
+    "src/game/audio.c": "9B9A9B4811BFF9C7D97E0EC269136CF42773DE0C932B11BA65EB96D0949398DF",
+    "src/game/map_loader.c": "55D858566E2374126C34589D2C6793254B61D83E8D32BB2C353915CC9114F5C3",
+    "asm/text/ccs/play_music.asm": "8CCE3E5F42120AD10F236AED3C068A0A358B69D9C3DCB875E3BAEEA66FA793F9",
+    "asm/text/ccs/play_sfx.asm": "BA53467273EB794497C9ED0E19A98B8D17FAA676BB6C76E648EB495CFDD5776C",
+    "asm/battle/set_map_music.asm": "561BD1437EB238270AED76F9F91531F991DC595E35E2BF26C01F7D6B59541F22",
+    "asm/audio/play_sound_and_update_meters.asm": "6251A50EDA60E9971DDC7751FECA87DBA32FE4B4B9FC91A776117B8A61CC4DB9"
+  },
+  "fixtures": [
+    {
+      "profile": "Redux",
+      "packSha256": "ED299183D4B1AFF4B38C56EF16DA28A256C3A65D33BA1D9327C9B19DF0272EF3",
+      "existingOperandLocations": {
+        "musicDynamic": [
+          262648,
+          3
+        ],
+        "musicLiteral5": [
+          244479,
+          3
+        ],
+        "soundDynamic": [
+          262690,
+          2
+        ],
+        "soundLiteral12": [
+          444791,
+          2
+        ]
+      }
+    },
+    {
+      "profile": "Original",
+      "packSha256": "4E01C943711D32C41E85CB858D9058169E7C8B1739FC7DC0A211E441F9631B9B",
+      "existingOperandLocations": {
+        "musicDynamic": [
+          262648,
+          3
+        ],
+        "musicLiteral5": [
+          244479,
+          3
+        ],
+        "soundDynamic": [
+          262690,
+          2
+        ],
+        "soundLiteral12": [
+          444791,
+          2
+        ]
+      }
+    }
+  ],
+  "cases": [
+    {
+      "profile": "Redux",
+      "name": "Music argument-memory 5",
+      "operandOffset": 262648,
+      "argumentMemory": 5,
+      "expected": {
+        "music": 5,
+        "currentMapMusic": 5,
+        "nextMapMusic": 5,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 0,
+        "profileRedux": 1,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 5,
+        "currentMapMusic": 5,
+        "nextMapMusic": 5,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Music argument-memory 11",
+      "operandOffset": 262648,
+      "argumentMemory": 11,
+      "expected": {
+        "music": 11,
+        "currentMapMusic": 11,
+        "nextMapMusic": 11,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 1,
+        "profileRedux": 1,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 11,
+        "currentMapMusic": 11,
+        "nextMapMusic": 11,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Music argument-memory 82",
+      "operandOffset": 262648,
+      "argumentMemory": 82,
+      "expected": {
+        "music": 82,
+        "currentMapMusic": 82,
+        "nextMapMusic": 82,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 2,
+        "profileRedux": 1,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 82,
+        "nextMapMusic": 82,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Music argument-memory 160",
+      "operandOffset": 262648,
+      "argumentMemory": 160,
+      "expected": {
+        "music": 160,
+        "currentMapMusic": 160,
+        "nextMapMusic": 160,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 3,
+        "profileRedux": 1,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 160,
+        "currentMapMusic": 160,
+        "nextMapMusic": 160,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Music argument-memory 191",
+      "operandOffset": 262648,
+      "argumentMemory": 191,
+      "expected": {
+        "music": 191,
+        "currentMapMusic": 191,
+        "nextMapMusic": 191,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 4,
+        "profileRedux": 1,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 191,
+        "currentMapMusic": 191,
+        "nextMapMusic": 191,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Music literal5",
+      "operandOffset": 244479,
+      "argumentMemory": 99,
+      "expected": {
+        "music": 5,
+        "currentMapMusic": 5,
+        "nextMapMusic": 5,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 5,
+        "profileRedux": 1,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 5,
+        "currentMapMusic": 5,
+        "nextMapMusic": 5,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Sound argument-memory 0",
+      "operandOffset": 262690,
+      "argumentMemory": 0,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 0,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 6,
+        "profileRedux": 1,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Sound argument-memory 5",
+      "operandOffset": 262690,
+      "argumentMemory": 5,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 5,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 7,
+        "profileRedux": 1,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 5
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Sound argument-memory 12",
+      "operandOffset": 262690,
+      "argumentMemory": 12,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 12,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 8,
+        "profileRedux": 1,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 12
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Sound argument-memory 120",
+      "operandOffset": 262690,
+      "argumentMemory": 120,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 120,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 9,
+        "profileRedux": 1,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 120
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Redux",
+      "name": "Sound literal12",
+      "operandOffset": 444791,
+      "argumentMemory": 99,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 12,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 10,
+        "profileRedux": 1,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 12
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Music argument-memory 5",
+      "operandOffset": 262648,
+      "argumentMemory": 5,
+      "expected": {
+        "music": 5,
+        "currentMapMusic": 5,
+        "nextMapMusic": 5,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 0,
+        "profileRedux": 0,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 5,
+        "currentMapMusic": 5,
+        "nextMapMusic": 5,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Music argument-memory 11",
+      "operandOffset": 262648,
+      "argumentMemory": 11,
+      "expected": {
+        "music": 11,
+        "currentMapMusic": 11,
+        "nextMapMusic": 11,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 1,
+        "profileRedux": 0,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 11,
+        "currentMapMusic": 11,
+        "nextMapMusic": 11,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Music argument-memory 82",
+      "operandOffset": 262648,
+      "argumentMemory": 82,
+      "expected": {
+        "music": 82,
+        "currentMapMusic": 82,
+        "nextMapMusic": 82,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 2,
+        "profileRedux": 0,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 82,
+        "nextMapMusic": 82,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Music argument-memory 160",
+      "operandOffset": 262648,
+      "argumentMemory": 160,
+      "expected": {
+        "music": 160,
+        "currentMapMusic": 160,
+        "nextMapMusic": 160,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 3,
+        "profileRedux": 0,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 160,
+        "currentMapMusic": 160,
+        "nextMapMusic": 160,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Music argument-memory 191",
+      "operandOffset": 262648,
+      "argumentMemory": 191,
+      "expected": {
+        "music": 191,
+        "currentMapMusic": 191,
+        "nextMapMusic": 191,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 4,
+        "profileRedux": 0,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 191,
+        "currentMapMusic": 191,
+        "nextMapMusic": 191,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Music literal5",
+      "operandOffset": 244479,
+      "argumentMemory": 99,
+      "expected": {
+        "music": 5,
+        "currentMapMusic": 5,
+        "nextMapMusic": 5,
+        "readerConsumed": 3,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 5,
+        "profileRedux": 0,
+        "subcommand": 0,
+        "readerConsumed": 3,
+        "pushed": 0,
+        "music": 5,
+        "currentMapMusic": 5,
+        "nextMapMusic": 5,
+        "sfxCalls": 0,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Sound argument-memory 0",
+      "operandOffset": 262690,
+      "argumentMemory": 0,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 0,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 6,
+        "profileRedux": 0,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 0
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Sound argument-memory 5",
+      "operandOffset": 262690,
+      "argumentMemory": 5,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 5,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 7,
+        "profileRedux": 0,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 5
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Sound argument-memory 12",
+      "operandOffset": 262690,
+      "argumentMemory": 12,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 12,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 8,
+        "profileRedux": 0,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 12
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Sound argument-memory 120",
+      "operandOffset": 262690,
+      "argumentMemory": 120,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 120,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 9,
+        "profileRedux": 0,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 120
+      },
+      "passed": true,
+      "errors": []
+    },
+    {
+      "profile": "Original",
+      "name": "Sound literal12",
+      "operandOffset": 444791,
+      "argumentMemory": 99,
+      "expected": {
+        "sfxCalls": 1,
+        "lastSfx": 12,
+        "readerConsumed": 2,
+        "pushed": 0
+      },
+      "actual": {
+        "id": 10,
+        "profileRedux": 0,
+        "subcommand": 2,
+        "readerConsumed": 2,
+        "pushed": 0,
+        "music": 82,
+        "currentMapMusic": 31,
+        "nextMapMusic": 32,
+        "sfxCalls": 1,
+        "lastSfx": 12
+      },
+      "passed": true,
+      "errors": []
+    }
+  ],
+  "sourceExpectations": [
+    {
+      "consumer": "CC_1F_00",
+      "native": "src/game/display_text_cc.c:cc_1f_dispatch case0x00",
+      "source": "asm/text/ccs/play_music.asm -> asm/battle/set_map_music.asm",
+      "semantics": "Resolve zero through argument memory, call CHANGE_MUSIC, then write CURRENT_MAP_MUSIC_TRACK and NEXT_MAP_MUSIC_TRACK in that order."
+    },
+    {
+      "consumer": "CC_1F_02",
+      "native": "src/game/display_text_cc.c:cc_1f_dispatch case0x02",
+      "source": "asm/text/ccs/play_sfx.asm -> asm/audio/play_sound_and_update_meters.asm",
+      "semantics": "Resolve a zero operand through argument memory before forwarding the sound request.",
+      "unverified": "The source also updates HP/PP meters and renders; exact host-yield and meter/SFX timing parity is outside this argument-forwarding test."
+    }
+  ],
+  "allPassed": true,
+  "executedCases": 22,
+  "passedCases": 22,
+  "failedCases": 0,
+  "skippedCases": 0,
+  "executedAssertions": 100,
+  "passedAssertions": 100,
+  "failedAssertions": 0,
+  "diagnosticMode": false,
+  "fixturePrerequisites": [
+    "Reviewed one-frame bootstrap binds immutable text assets.",
+    "Explicit production audio_init binds the SPC engine omitted by headless host startup."
+  ],
+  "limits": [
+    "Isolated production CC consumers with existing packed operands; preceding story/event execution is not claimed.",
+    "SFX request argument forwarding is measured; audible quality and every story/music transition are not verified.",
+    "Full source-level HP/PP meter/render and SFX scheduling parity remains unverified.",
+    "Literal ka-ching12 passed; this audit does not establish the cause of the earlier shopping sound report.",
+    "Raw byte-pattern fixture locations are not an inventory of reachable script calls.",
+    "Audio commands execute in a private driver linked to the frozen production library; observer hashes identify the paired build, not a separate audio execution."
+  ],
+  "baselineEvidence": {
+    "reportPath": "research/redux-audio-consumer-v4-red.json",
+    "reportSha256": "E73C96A9342A93FF2E0F45E89F7C89EA40D8E818931AD1D9566F00E78B1348C6",
+    "runtimeSha256": {
+      "player.exe": "DA6D9D29B1BD74754566F534CF9835AF86C52D9F959E47C0394ED322E579E3A2",
+      "observer.exe": "FC42F717698F37BF08F8D1F1876349595DD8152B953D36A3CD5D69308F29B85D"
+    },
+    "sourceFiles": {
+      "src/game/display_text_cc.c": "2B33D25A0072C4C2CD0EC774D05C0BF7312F088F995FD6CC80F410C3C0DE4A64",
+      "src/game/display_text.c": "7A11DE0B21C1984B53859D11BB1BEA0784A87B9A0FAD53610CBD42FE1BA2EB72",
+      "src/game/audio.c": "9B9A9B4811BFF9C7D97E0EC269136CF42773DE0C932B11BA65EB96D0949398DF",
+      "src/game/map_loader.c": "55D858566E2374126C34589D2C6793254B61D83E8D32BB2C353915CC9114F5C3",
+      "asm/text/ccs/play_music.asm": "8CCE3E5F42120AD10F236AED3C068A0A358B69D9C3DCB875E3BAEEA66FA793F9",
+      "asm/text/ccs/play_sfx.asm": "BA53467273EB794497C9ED0E19A98B8D17FAA676BB6C76E648EB495CFDD5776C",
+      "asm/battle/set_map_music.asm": "561BD1437EB238270AED76F9F91531F991DC595E35E2BF26C01F7D6B59541F22",
+      "asm/audio/play_sound_and_update_meters.asm": "6251A50EDA60E9971DDC7751FECA87DBA32FE4B4B9FC91A776117B8A61CC4DB9"
+    },
+    "failedCases": 18,
+    "failedAssertions": 30,
+    "qualification": "Definitive v4 red includes explicit production APU initialization; earlier no-APU fixture attempts are excluded."
+  },
+  "priorV5Evidence": {
+    "reportPath": "research/redux-audio-consumer-review.json",
+    "reportSha256": "C64F94C06FCA41C3ACF161E1D37957F1E4D82F05B52934A172D244E59EBAE590",
+    "runtimeSha256": {
+      "player.exe": "68935AE10A49086601E872E2B271D3CF6460010598B842C6683AA5779A1AD1AB",
+      "observer.exe": "6BB03DA1E7DE099BA0A611E65E3A9CE4D703F281D680E00629260EDD57BA1407"
+    },
+    "executedCases": 22,
+    "executedAssertions": 100,
+    "measuredCasesMatch": true,
+    "qualification": "Final v6 production consumers were executed again; results match the frozen v5 cases."
+  }
+}

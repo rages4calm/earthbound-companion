@@ -1,0 +1,143 @@
+{
+  "format": "native-position-arithmetic-micro-oracle-v1",
+  "Passed": true,
+  "ExecutedCases": 6272,
+  "NativeMismatchCount": 0,
+  "NativeMismatches": [],
+  "MismatchGroups": {},
+  "VelocityTableEntries": 224,
+  "VelocityMismatchCount": 0,
+  "VelocityMismatches": [],
+  "SourceMapping": [
+    {
+      "symbol": "MOVEMENT_SPEEDS",
+      "address": "C3E0BC",
+      "originalSource": "data/map/movement_speeds.asm",
+      "byteEqualLength": 112,
+      "byteEqualSha256": "074a3fa9bd7975a2f6c273b2d97c2ffa4c4d6d21b7d482362f6c2a175b9a9f3a"
+    },
+    {
+      "symbol": "ALLOWED_INPUT_DIRECTIONS",
+      "address": "C3E12C",
+      "originalSource": "data/map/allowed_input_directions.asm",
+      "byteEqualLength": 28,
+      "byteEqualSha256": "afff8140e7469984379e67c8d87626fca915767bfc5886e9f68fcfc176a93e76"
+    },
+    {
+      "symbol": "MULT16",
+      "address": "C09032",
+      "abi": "far",
+      "originalSource": "system/math/mult16.asm",
+      "byteEqualLength": 84,
+      "byteEqualSha256": "86c5abe38059737f10fc6b494306f190639b7bf6d15e8a889b261c1bc73459c6"
+    },
+    {
+      "symbol": "MULT32",
+      "address": "C09086",
+      "abi": "far",
+      "originalSource": "system/math/mult32.asm",
+      "byteEqualLength": 72,
+      "byteEqualSha256": "b1ca77267ed8e79435a2c31478d1a0494548a911c898355ddd0b8de861b0215e"
+    },
+    {
+      "symbol": "VELOCITY_STORE",
+      "address": "C430EC",
+      "abi": "far",
+      "originalSource": "overworld/velocity_store.asm",
+      "byteEqualLength": 453,
+      "byteEqualSha256": "0008420b7d09298bb03261303df0a4816ed415356d38ae4991cc4664f459fcad"
+    },
+    {
+      "symbol": "MAP_INPUT_TO_DIRECTION",
+      "address": "C0404F",
+      "abi": "far",
+      "originalSource": "overworld/map_input_to_direction.asm",
+      "byteEqualLength": 199,
+      "byteEqualSha256": "92c42fad56dcf3efa1b1fa1e32761b500cc4d7deef9476566c1a2f0a8bfff352"
+    },
+    {
+      "symbol": "ADJUST_POSITION_HORIZONTAL",
+      "address": "C02D8F",
+      "abi": "near",
+      "originalSource": "overworld/adjust_position_horizontal.asm",
+      "byteEqualLength": 648,
+      "byteEqualSha256": "082874c0b1df18aad44ddf02c66297d982db8c46c3ca9870c55794fbea57483a"
+    },
+    {
+      "symbol": "ADJUST_POSITION_VERTICAL",
+      "address": "C03017",
+      "abi": "near",
+      "originalSource": "overworld/adjust_position_vertical.asm",
+      "byteEqualLength": 648,
+      "byteEqualSha256": "a2b5bb44f1f3ade7827ea2f4deefb5668fb2be57a1eeab2faa36df2a9ead830a"
+    }
+  ],
+  "GlobalAddresses": {
+    "GAME_STATE": "7E97F5",
+    "PAD_STATE": "7E0065",
+    "PENDING_INTERACTIONS": "7E5D9A",
+    "DEMO_FRAMES_LEFT": "7E0081",
+    "HORIZONTAL_MOVEMENT_SPEEDS": "7E4DD6",
+    "VERTICAL_MOVEMENT_SPEEDS": "7E4F96"
+  },
+  "OriginalMachineEvidence": {
+    "ExecutedCases": 6272,
+    "HelperCalls": {
+      "input": 1344,
+      "h": 2464,
+      "v": 2464
+    },
+    "VelocityStoreCalls": 1,
+    "CompleteOrderedCorpusVerified": true,
+    "StackDirectPageAndProtectedRamCanariesPassed": true,
+    "OriginalSourceReassemblyUsedForIdentificationOnly": true,
+    "OwnCallerSha256": "dc9beff33b104fb6fcb6cfaf9b39e8dde459782db994838c7532c6858469ce81",
+    "LuaSha256": "fff8c563918677fa6e3231fe68050fdfaf6936f9772f3a641b5dfa7cf436ddb8",
+    "SamplesSha256": "65b30b7eb7658baa7c8466a7f8a19fb5f4b0d015100cd0c965da0d8f94002a8a",
+    "VelocitySampleSha256": "4db2506d9492870cc1e2dd6625e328abbd19f62abe442e9762854c8b70f0b070"
+  },
+  "CompiledActualNativeEvidence": {
+    "ProbeSha256": "a4642c2f9d2c80a22a5493f35666194eeaada01cdb21fb0c77272e67b46c634c",
+    "ActualBodiesSha256": "004e634dd1ab5afc0d50f75b9f2aa3acc5b40159af46b3c1632e0d9c99081880",
+    "ActualArraysSha256": "63144e1ee3e7c852fd8f308b4019d8f22b361985216b01909842570f2e54d9d9",
+    "OriginalModeAndSprintOffForced": true,
+    "SprintAndReduxBehaviorOutsideThisOracle": true
+  },
+  "SourceIncludeSyntaxAdaptation": {
+    "PrivateOnly": true,
+    "SharedIncludesUnchanged": true,
+    "Change": "Unused SPRITE_PALETTES_SIZE empty parameter-list define normalized for current ca65; common.asm copied verbatim into that overlay.",
+    "OriginalEnumsSha256": "c38897c5fe42d68fa05bf2933e826fa5219fca5a8d035a4d8f88c72f02d12095"
+  },
+  "InputIdentities": {
+    "rom": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "nativeSource": "2ae8e62f3ad225b29872ec73d1c44a3a095d7ce68224f15f5a8bf8a9c3b7d29b",
+    "oracle": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+    "oracleCore": "69425f547e83648b4aa8507908ff473a3d8c4ac666b8e130b2f5e9d99922d29a",
+    "ca65": "2edb5852800b9b5627658b2d14665604efd509cd7bf3754978074d8b3ad21e44",
+    "ld65": "d2cd0d3244f3f0c24ba9e1a38f1e86569b0e50edad4c0d39476920232e370a9b",
+    "compiler": "206f9fc067234f48ae077550658dae06bd75d99110c1b3166887b7090cbd7fa0"
+  },
+  "Runner": {
+    "path": "tools/snes_position_arithmetic_oracle.py",
+    "sha256": "c0eee93f9b9fe1839dd2fe2ab15395b3ec05d76b09954dcf332682d94558c176"
+  },
+  "OwnerRomsAndSavesUnchanged": true,
+  "SharedSourceEdited": false,
+  "SharedBuildsEdited": false,
+  "FullPlaythroughVerified": false,
+  "FullMovementParityVerified": false,
+  "Limits": [
+    "Untouched original full functions execute original multiply helpers and use their original velocity tables; reassembly only establishes byte-equal identity and address.",
+    "Native original-mode functions/arrays are copied verbatim into an isolated probe. Redux enabled and running decisions are forced false and sprint off; their deliberate adapters are outside this original oracle.",
+    "Covers valid styles0..13, directions0..7, all16 dpad combinations, pending-interaction blocking, terrain/demo/skip arithmetic, fractional and32bit wrap samples.",
+    "Does not assert legal story reachability of every style/surface combination, full collision traversal, followers, stairs transitions, input-device mapping or sprint/Redux animation parity."
+  ],
+  "PreservedRedBaseline": {
+    "path": "research/native-position-arithmetic-review-dev15-red.json",
+    "sha256": "be2a073cb117eea49f6a848d0cfe8b284308dc90bd24622cab8dc0f28b096f09",
+    "ExecutedCases": 6272,
+    "NativeMismatchCount": 1496,
+    "VelocityMismatchCount": 0
+  }
+}

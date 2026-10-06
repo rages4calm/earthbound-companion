@@ -1,0 +1,67 @@
+{
+  "format": "native-position-arithmetic-production-review-v1",
+  "Passed": true,
+  "ImmutableNativeBuild": {
+    "productionExecutableSha256": "7a96db453b106787060c7e32e3ad8f19d010c07d35b9eff7e57e4c54461e102b",
+    "productionLibrarySha256": "79a1b520f2bb8ffb9a8d02fb4e5985c9c03698994ad76622a821ed5b9094baa2",
+    "PrivateSymbolVisibilityOnly": true,
+    "ProductionAdjustTextByteIdentical": true,
+    "ProductionAdjustTextSha256": "3aa4f2e9efddd026ed36556cb72537a617bafe41b6a721da20278a9ed3d5ae42",
+    "PrivateLibrarySha256": "e92232f367efd4a6126b956f89122cedab02b51b81c9a0311704c1eef8c8aa26",
+    "DriverSourceSha256": "988bc19a027f33934c952926046988cf0c4b66d0134a372fb208905cad0d393a",
+    "DriverExecutableSha256": "256277266da5fdba1a2216cc9b9ae6256e7d888043fbee13ee86dc25ca647bab",
+    "SharedBuildEdited": false,
+    "SharedSourceEdited": false
+  },
+  "RuntimeSha256": {
+    "player.exe": "7a96db453b106787060c7e32e3ad8f19d010c07d35b9eff7e57e4c54461e102b",
+    "observer.exe": "4b53e35ad85156e215f97c7823bbf96c703dcc201808eb7d1c1f0d824afe4a27"
+  },
+  "Modes": [
+    {
+      "mode": "original",
+      "ExecutedCases": 6272,
+      "NativeMismatchCount": 0,
+      "NativeMismatches": [],
+      "VelocityEntriesCompared": 224,
+      "VelocityMismatchCount": 0,
+      "VelocityMismatches": [],
+      "DeliberateReduxBicycleArithmeticCasesExcluded": 0,
+      "DriverLogSha256": "84fd26f98b634883e55ae1d81d465a37ffda2d814ee169574ebc8ec6901152a3"
+    },
+    {
+      "mode": "redux",
+      "ExecutedCases": 6016,
+      "NativeMismatchCount": 0,
+      "NativeMismatches": [],
+      "VelocityEntriesCompared": 208,
+      "VelocityMismatchCount": 0,
+      "VelocityMismatches": [],
+      "DeliberateReduxBicycleArithmeticCasesExcluded": 256,
+      "DriverLogSha256": "6153f5958db222f4c5768cab70163252f95770654034be11ff7cc465bdb9ada2"
+    }
+  ],
+  "IndependentOriginalMachineReview": {
+    "path": "research/native-position-arithmetic-review-dev15-final-green.json",
+    "sha256": "2e95074e68468d1b4548eecfb9a4d8f5f4b12242a69648c2fa9b2bf0a4a65270"
+  },
+  "InputIdentities": {
+    "originalAssets": "4e01c943711d32c41e85cb858d9058169e7c8b1739fc7dc0a211e441f9631b9b",
+    "reduxAssets": "ed299183d4b1aff4b38c56ef16da28a256c3a65d33ba1d9327c9b19df0272ef3"
+  },
+  "OwnerSavesTouched": false,
+  "SharedSourceEdited": false,
+  "SharedBuildsEdited": false,
+  "SprintDisabledInPreparedTests": true,
+  "Runner": {
+    "path": "tools/position_arithmetic_runtime_qa.py",
+    "sha256": "554f6789445b542e7092bca301d287d5801f8c6011b88e931339cb44c009d8db"
+  },
+  "FullPlaythroughVerified": false,
+  "FullReduxMovementParityVerified": false,
+  "Limits": [
+    "Private copied production object changes symbol visibility only; original adjust_position compiled text must remain identical. Actual production input/velocity code and game globals are linked unchanged.",
+    "Original mode compares every prepared source-machine context. Redux common arithmetic excludes intentional bicycle speeds; original-comparator skip tests verify the native adapter, not full pinned Redux running semantics.",
+    "Prepared direct helper inputs establish numerical behavior; collision traversal, follower timing, live sprint, controllers and legal story progress are separate tests. This runner does not invoke physical F6 or cold restoration."
+  ]
+}

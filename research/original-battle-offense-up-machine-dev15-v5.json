@@ -1,0 +1,670 @@
+{
+  "schemaVersion": 1,
+  "reference": "clean-original-machine",
+  "romSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+  "oracleSha256": "4143766f2b900e63663ea000655f24fd824f2ce5324c2575025f8bb68030a910",
+  "oracleCoreSha256": "69425f547e83648b4aa8507908ff473a3d8c4ac666b8e130b2f5e9d99922d29a",
+  "routineAddress": "C27D28",
+  "cases": [
+    {
+      "baseOffense": 1,
+      "initialOffense": 0,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 1,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 7,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 8,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 16,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 50,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 60,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 80,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 90,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 101,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 113,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 127,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 142,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 159,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 170,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 255,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 32768,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 1,
+      "initialOffense": 65535,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 0,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 1,
+      "machineOffense": 2,
+      "sourceExpectedOffense": 2,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 2,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 7,
+      "machineOffense": 8,
+      "sourceExpectedOffense": 8,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 8,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 8,
+      "machineOffense": 9,
+      "sourceExpectedOffense": 9,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 9,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 16,
+      "machineOffense": 17,
+      "sourceExpectedOffense": 17,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 17,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 50,
+      "machineOffense": 53,
+      "sourceExpectedOffense": 53,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 53,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 60,
+      "machineOffense": 63,
+      "sourceExpectedOffense": 63,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 63,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 80,
+      "machineOffense": 85,
+      "sourceExpectedOffense": 85,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 85,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 90,
+      "machineOffense": 95,
+      "sourceExpectedOffense": 95,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 95,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 101,
+      "machineOffense": 100,
+      "sourceExpectedOffense": 100,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 100,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 113,
+      "machineOffense": 100,
+      "sourceExpectedOffense": 100,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 100,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 127,
+      "machineOffense": 100,
+      "sourceExpectedOffense": 100,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 100,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 142,
+      "machineOffense": 100,
+      "sourceExpectedOffense": 100,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 100,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 159,
+      "machineOffense": 100,
+      "sourceExpectedOffense": 100,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 100,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 170,
+      "machineOffense": 100,
+      "sourceExpectedOffense": 100,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 100,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 255,
+      "machineOffense": 100,
+      "sourceExpectedOffense": 100,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 100,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 32768,
+      "machineOffense": 100,
+      "sourceExpectedOffense": 100,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 100,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 80,
+      "initialOffense": 65535,
+      "machineOffense": 100,
+      "sourceExpectedOffense": 100,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 100,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 0,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 1,
+      "machineOffense": 2,
+      "sourceExpectedOffense": 2,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 2,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 7,
+      "machineOffense": 8,
+      "sourceExpectedOffense": 8,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 8,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 8,
+      "machineOffense": 9,
+      "sourceExpectedOffense": 9,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 9,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 16,
+      "machineOffense": 17,
+      "sourceExpectedOffense": 17,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 17,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 50,
+      "machineOffense": 53,
+      "sourceExpectedOffense": 53,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 53,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 60,
+      "machineOffense": 63,
+      "sourceExpectedOffense": 63,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 63,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 80,
+      "machineOffense": 85,
+      "sourceExpectedOffense": 85,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 85,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 90,
+      "machineOffense": 95,
+      "sourceExpectedOffense": 95,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 95,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 101,
+      "machineOffense": 107,
+      "sourceExpectedOffense": 107,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 107,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 113,
+      "machineOffense": 120,
+      "sourceExpectedOffense": 120,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 120,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 127,
+      "machineOffense": 134,
+      "sourceExpectedOffense": 134,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 134,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 142,
+      "machineOffense": 150,
+      "sourceExpectedOffense": 150,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 150,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 159,
+      "machineOffense": 168,
+      "sourceExpectedOffense": 168,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 168,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 170,
+      "machineOffense": 180,
+      "sourceExpectedOffense": 180,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 180,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 255,
+      "machineOffense": 250,
+      "sourceExpectedOffense": 250,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 250,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 32768,
+      "machineOffense": 250,
+      "sourceExpectedOffense": 250,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 250,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 200,
+      "initialOffense": 65535,
+      "machineOffense": 250,
+      "sourceExpectedOffense": 250,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 250,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 0,
+      "machineOffense": 1,
+      "sourceExpectedOffense": 1,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 1,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 1,
+      "machineOffense": 2,
+      "sourceExpectedOffense": 2,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 2,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 7,
+      "machineOffense": 8,
+      "sourceExpectedOffense": 8,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 8,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 8,
+      "machineOffense": 9,
+      "sourceExpectedOffense": 9,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 9,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 16,
+      "machineOffense": 17,
+      "sourceExpectedOffense": 17,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 17,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 50,
+      "machineOffense": 53,
+      "sourceExpectedOffense": 53,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 53,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 60,
+      "machineOffense": 63,
+      "sourceExpectedOffense": 63,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 63,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 80,
+      "machineOffense": 85,
+      "sourceExpectedOffense": 85,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 85,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 90,
+      "machineOffense": 95,
+      "sourceExpectedOffense": 95,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 95,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 101,
+      "machineOffense": 107,
+      "sourceExpectedOffense": 107,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 107,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 113,
+      "machineOffense": 120,
+      "sourceExpectedOffense": 120,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 120,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 127,
+      "machineOffense": 134,
+      "sourceExpectedOffense": 134,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 134,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 142,
+      "machineOffense": 150,
+      "sourceExpectedOffense": 150,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 150,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 159,
+      "machineOffense": 168,
+      "sourceExpectedOffense": 168,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 168,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 170,
+      "machineOffense": 180,
+      "sourceExpectedOffense": 180,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 180,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 255,
+      "machineOffense": 270,
+      "sourceExpectedOffense": 270,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 270,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 32768,
+      "machineOffense": 318,
+      "sourceExpectedOffense": 318,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 318,
+      "nativeMatchedMachine": true
+    },
+    {
+      "baseOffense": 255,
+      "initialOffense": 65535,
+      "machineOffense": 318,
+      "sourceExpectedOffense": 318,
+      "sourceMatchedMachine": true,
+      "nativeOffense": 318,
+      "nativeMatchedMachine": true
+    }
+  ],
+  "executedMachineCases": 72,
+  "sourceMismatchCount": 0,
+  "nativeComparedCases": 72,
+  "nativeMismatchCount": 0,
+  "nativeReportSha256": "5edc687c05cea7eb200c8dbbdc4a1a2bad1b8a101f371b249e3f9d7cf3778524",
+  "stackAndDirectPageCanariesPassed": true,
+  "ownerRomUnchanged": true,
+  "limits": [
+    "Actual unmodified helper and pinned relocated callees execute with prepared battler fields; this is not whole-game equivalence.",
+    "Native comparison refers to the separately identified immutable real-dispatch report.",
+    "Emulator is a development reference only and not part of native player releases. No ROM or payload bytes included."
+  ]
+}
