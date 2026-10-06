@@ -1,0 +1,22 @@
+{
+  "ContentId": "maternalbound-redux-897d0083",
+  "DisplayName": "MaternalBound Redux (native development)",
+  "BaseHash": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "Seeds": 1000,
+  "OptionCombinations": 30,
+  "ProtectedItems": 110,
+  "ProtectedEnemies": 84,
+  "ShopRows": 69,
+  "EnemyRecords": 231,
+  "EnemyAiBytes": 936,
+  "Passed": true,
+  "Checks": [
+    "Deterministic seeds and distinct seed output",
+    "1000 seeds across Balanced and Surprise preserve protected gift/shop sources, scripted enemies and enemy-AI data",
+    "All 30 option/preset combinations pass the content policy",
+    "Independent corruption checks reject altered AI pointers/counts, protected stock and story assets",
+    "Content-specific generation, verification, recipes and separate saves survive regeneration"
+  ],
+  "FullPlaythroughVerified": false,
+  "LauncherSha256": "afd77b7898cf5c2461778652602a225d66eb7bfafd93c2cc58cd8b55bb18cb23"
+}

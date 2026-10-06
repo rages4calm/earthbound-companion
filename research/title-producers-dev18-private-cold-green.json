@@ -1,0 +1,666 @@
+{
+  "format": "private-full-executable-title-cold-dev18-v1",
+  "completeCandidateBuilds": {
+    "player": {
+      "executableSha256": "41600ed916b09e03996525f337c0c3c556ede2bc9f68c74409db54106d60bada",
+      "archiveSha256": "82656677bd2ff6c63972b7d20bc4a563d9cf09970d398ace46ca02caf934bad9",
+      "cmakeCacheSha256": "8fca35b2fb2a17cb6e5b96073d9b0f988d073b89dcaecb5d662caf2c280544da",
+      "compileCommandsSha256": "200547128363e9434a0400e170c3b5a55755eedee00865c9ea06c4762277db97"
+    },
+    "observer": {
+      "executableSha256": "d355d25f35741012d58ae42cffe8a58625b090f50a012b22768755618d08b04d",
+      "archiveSha256": "9ea7f135e39f6fcbe72ce4a978f592ac6fd84acc41012c1b436b84c71e2e4ea2",
+      "cmakeCacheSha256": "4a015e30a4c0c027fdf81b29c9d551d52782805aa97f0c52b804d19fcd1f589b",
+      "compileCommandsSha256": "70f1f527ed237303eb6dff08439971aaa6b521b7a2e9610f8f9196abda300cba"
+    }
+  },
+  "candidateSource": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\title-producers-dev18-proposal-source",
+  "sourceIdentities": {
+    "src/game/text.c": "8550780d11e5873f2f8d22a52ae08f228b00f664a1888bbb9f39af3e3eaa7a62",
+    "src/game/text.h": "9efe2a603affbce7cae7567fa7b05d51091a214045d1b7ac48aff2cfd7345c29",
+    "src/game/display_text.c": "47ec18c4d515759a409a800076ea05c66cc959c0f894b6ff0d1af38bc0864b20",
+    "src/game/display_text_cc.c": "7ccee8908df5b0a5c5891b99f5a3a7a222518f8d667bb2b319d31ae20b071415",
+    "src/game/window.h": "41288c2127d5c9e248bce13302ed2bf5a6ecad25b3b701ec499e3aa30fe23d59",
+    "src/game/display_text_menus.c": "d5a03a5134afc578444b4ae488d64d8c7da2187d23bbcbd514a96619123eda7e",
+    "src/core/state_dump.c": "15a416ea8e9d28199641821b8c7523fc9ebffdb51bdbc32574d2d7f43a205665"
+  },
+  "windowInfoDeclarationUnchanged": true,
+  "format16Unchanged": true,
+  "results": [
+    {
+      "build": "player",
+      "profile": "original",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "inventoryTitle": {
+        "before": {
+          "title": {
+            "id": 2,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 2,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 2,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 2,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "40931a6c98f75f32ebb37f1b26d35c5d5e0515ccd397994a0729f765fbc03723",
+        "ordinaryDownAfterCold": {
+          "previous": 0,
+          "current": 0,
+          "titleGlyphsPreserved": true,
+          "tinyTilesPreserved": true
+        },
+        "Passed": true
+      },
+      "sourceDefinedPreparedItemIds": [
+        88,
+        90
+      ]
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "packSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "inventoryTitle": {
+        "before": {
+          "title": {
+            "id": 2,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 2,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 2,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 2,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "887837a543fbcb10100bb71be515cbe23ecc456920b4e48447ae3c096f984422",
+        "ordinaryDownAfterCold": {
+          "previous": 0,
+          "current": 0,
+          "titleGlyphsPreserved": true,
+          "tinyTilesPreserved": true
+        },
+        "Passed": true
+      },
+      "sourceDefinedPreparedItemIds": [
+        88,
+        90
+      ],
+      "paulaSourceTitle": {
+        "before": {
+          "title": {
+            "id": 1,
+            "raw": [
+              74,
+              177,
+              193,
+              49,
+              185,
+              184
+            ],
+            "glyphs": [
+              122,
+              177,
+              193,
+              97,
+              185,
+              184
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "ba23369241587b15fdf6273129607e71d47db365fc8c1bd0093afcfca05bf698",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            122,
+            177,
+            193,
+            97,
+            185,
+            184
+          ],
+          "expectedTinyVramSha256": "ba23369241587b15fdf6273129607e71d47db365fc8c1bd0093afcfca05bf698",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 1,
+            "raw": [
+              74,
+              177,
+              193,
+              49,
+              185,
+              184
+            ],
+            "glyphs": [
+              122,
+              177,
+              193,
+              97,
+              185,
+              184
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "ba23369241587b15fdf6273129607e71d47db365fc8c1bd0093afcfca05bf698",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            122,
+            177,
+            193,
+            97,
+            185,
+            184
+          ],
+          "expectedTinyVramSha256": "ba23369241587b15fdf6273129607e71d47db365fc8c1bd0093afcfca05bf698",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "b408b973bc91b99d8393909d91afc84f1de893c75e5d2fb3623c2932e0bbf2b5",
+        "Passed": true
+      },
+      "sourceParentContinuedAfterCold": true,
+      "preparedNames": [
+        [
+          121,
+          176,
+          192,
+          96,
+          184,
+          185
+        ],
+        [
+          122,
+          177,
+          193,
+          97,
+          185,
+          184
+        ],
+        [
+          123,
+          178,
+          194,
+          98,
+          184,
+          185
+        ],
+        [
+          124,
+          179,
+          195,
+          99,
+          185,
+          184
+        ]
+      ]
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "inventoryTitle": {
+        "before": {
+          "title": {
+            "id": 2,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 2,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 2,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 2,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "83df682c8d25d5f91297bc48adde005e9757477c22d50b410568feb63ebb8a37",
+        "ordinaryDownAfterCold": {
+          "previous": 0,
+          "current": 0,
+          "titleGlyphsPreserved": true,
+          "tinyTilesPreserved": true
+        },
+        "Passed": true
+      },
+      "sourceDefinedPreparedItemIds": [
+        88,
+        90
+      ]
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "packSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "inventoryTitle": {
+        "before": {
+          "title": {
+            "id": 2,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 2,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 2,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 2,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "1f4a49b050a1ba9f63f1054d6e734566005ea44c5d0a6cdae345a1d74faf2e33",
+        "ordinaryDownAfterCold": {
+          "previous": 0,
+          "current": 0,
+          "titleGlyphsPreserved": true,
+          "tinyTilesPreserved": true
+        },
+        "Passed": true
+      },
+      "sourceDefinedPreparedItemIds": [
+        88,
+        90
+      ],
+      "paulaSourceTitle": {
+        "before": {
+          "title": {
+            "id": 1,
+            "raw": [
+              74,
+              177,
+              193,
+              49,
+              185,
+              184
+            ],
+            "glyphs": [
+              122,
+              177,
+              193,
+              97,
+              185,
+              184
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "ba23369241587b15fdf6273129607e71d47db365fc8c1bd0093afcfca05bf698",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            122,
+            177,
+            193,
+            97,
+            185,
+            184
+          ],
+          "expectedTinyVramSha256": "ba23369241587b15fdf6273129607e71d47db365fc8c1bd0093afcfca05bf698",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 1,
+            "raw": [
+              74,
+              177,
+              193,
+              49,
+              185,
+              184
+            ],
+            "glyphs": [
+              122,
+              177,
+              193,
+              97,
+              185,
+              184
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "ba23369241587b15fdf6273129607e71d47db365fc8c1bd0093afcfca05bf698",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            122,
+            177,
+            193,
+            97,
+            185,
+            184
+          ],
+          "expectedTinyVramSha256": "ba23369241587b15fdf6273129607e71d47db365fc8c1bd0093afcfca05bf698",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "4ec5fdca017620751b89744d67fc03272bd30bb37fe600dd12a981f1c9e30906",
+        "Passed": true
+      },
+      "sourceParentContinuedAfterCold": true,
+      "preparedNames": [
+        [
+          121,
+          176,
+          192,
+          96,
+          184,
+          185
+        ],
+        [
+          122,
+          177,
+          193,
+          97,
+          185,
+          184
+        ],
+        [
+          123,
+          178,
+          194,
+          98,
+          184,
+          185
+        ],
+        [
+          124,
+          179,
+          195,
+          99,
+          185,
+          184
+        ]
+      ]
+    }
+  ],
+  "allPassed": true,
+  "inputSeed": {
+    "path": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\remaining-feature-audit-naming-player-v4\\redux\\fixture.srm",
+    "sha256": "a52be1e2509027cb14858234903f448734b31142730c23c625b34e9d0bb3318d",
+    "originatingOrdinaryNamingProof": "research/redux-naming-runtime-review.json"
+  },
+  "toolSha256": "29381cb7ca6d1efa417258a62f91edbeda8fd7eceebc9f7a31d49ba1bb2d307d",
+  "runnerDependencies": {
+    "tools\\redux_naming_qa.py": "2e64a41ce31e54ee157899a92727ce941720abbd68fe32bd3d575f983c63f56e",
+    "tools/redux_recovery_qa.py": "5155f40603788da80ac7f87a998d9720a3aee2eeb50e312f6dabbbed944a4657"
+  },
+  "limits": [
+    "Complete proposed player and observer binaries execute real input replay, text/menu interpreter and capture/save/load code. Capture-state enters the same production root writer as F6; physical keyboard/controller F6 is not synthesized.",
+    "Redux mixed name1 comes from a private ordinary-input-proved phone seed; other character names and a full source-parent reader are prepared from exact public layout/source entry prerequisites, not naturally acquired story states.",
+    "Window title/menu state and actual tiny-font VRAM are captured through format16 and restored in fresh processes. Independent font compositor validates source glyph contributions; this is not an original CPU whole-screen renderer oracle.",
+    "Original uses ordinary new-game default naming and actual X/Goods input controls; it does not exercise Redux-only extended title commands.",
+    "Candidate private source/build/runtime only. No root source, owner save, commercial ROM/pack or old frozen report is changed."
+  ],
+  "rootOrOwnerInputsModified": false
+}

@@ -3955,7 +3955,7 @@ index 2a3e5d1..41169d5 100644
  static inline void audio_unlock(void) {}
  
 diff --git a/src/game/battle.c b/src/game/battle.c
-index ef6571c..b595213 100644
+index ef6571c..bc32e7e 100644
 --- a/src/game/battle.c
 +++ b/src/game/battle.c
 @@ -1,3 +1,4 @@
@@ -4003,7 +4003,7 @@ index ef6571c..b595213 100644
 -        eb_to_ascii_buf(party_characters[char_idx].name, 5, name_buf);
 -        set_window_title(window_type, name_buf, 5);
 +        char name_buf[7];
-+        eb_to_ascii_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf);
++        eb_to_title_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf, sizeof(name_buf));
 +        set_window_title(window_type, name_buf, maternalbound_name_capacity());
      }
  
@@ -4170,7 +4170,7 @@ index ef6571c..b595213 100644
 -                for (j = 0; j < 5 && ch->name[j]; j++)
 -                    name_buf[j] = eb_char_to_ascii(ch->name[j]);
 +                for (j = 0; j < maternalbound_name_capacity() && maternalbound_character_name_of(ch)[j]; j++)
-+                    name_buf[j] = eb_char_to_ascii(maternalbound_character_name_of(ch)[j]);
++                    name_buf[j] = eb_char_to_title_byte(maternalbound_character_name_of(ch)[j]);
                  name_buf[j] = '\0';
 -                set_window_title(window_id, name_buf, 5);
 +                set_window_title(window_id, name_buf, maternalbound_name_capacity());
@@ -5537,7 +5537,7 @@ index 58bfb5c..495c51d 100644
 +    return true;
 +}
 diff --git a/src/game/battle_psi.c b/src/game/battle_psi.c
-index ce9f34f..d3e37de 100644
+index ce9f34f..3b06942 100644
 --- a/src/game/battle_psi.c
 +++ b/src/game/battle_psi.c
 @@ -29,7 +29,9 @@
@@ -5614,7 +5614,7 @@ index ce9f34f..d3e37de 100644
 -    name_buf[5] = '\0';
 -    set_window_title(WINDOW_TEXT_STANDARD, name_buf, 5);
 +    for (int j = 0; j < maternalbound_name_capacity(); j++)
-+        name_buf[j] = eb_char_to_ascii(maternalbound_character_name(char_idx)[j]);
++        name_buf[j] = eb_char_to_title_byte(maternalbound_character_name(char_idx)[j]);
 +    name_buf[maternalbound_name_capacity()] = '\0';
 +    set_window_title(WINDOW_TEXT_STANDARD, name_buf, maternalbound_name_capacity());
  
@@ -6040,7 +6040,7 @@ index 9d558c4..d8ac818 100644
              /* Blink on: redraw the HP/PP window */
              draw_and_mark_hppp_window(bt.hp_pp_box_blink_target);
 diff --git a/src/game/display_text.c b/src/game/display_text.c
-index 9b2cb3d..228be2d 100644
+index 9b2cb3d..7be40b8 100644
 --- a/src/game/display_text.c
 +++ b/src/game/display_text.c
 @@ -12,6 +12,7 @@
@@ -6488,7 +6488,7 @@ index 9b2cb3d..228be2d 100644
 +        if (!text[i]) {out[copied] = 0; return true;}
 +        /* Titles are plain strings; script opcodes must never become glyphs. */
 +        if (text[i] < 0x20) {out[0] = 0; return false;}
-+        if (copied + 1 < capacity) out[copied++] = eb_char_to_ascii(text[i]);
++        if (copied + 1 < capacity) out[copied++] = eb_char_to_title_byte(text[i]);
 +    }
 +    out[0] = 0;
 +    return false;
@@ -6577,7 +6577,7 @@ index 9b2cb3d..228be2d 100644
 -        for (i = 0; i < 5 && c->name[i] != 0x00; i++)
 -            name_buf[i] = eb_char_to_ascii(c->name[i]);
 +        for (i = 0; i < maternalbound_name_capacity() && maternalbound_character_name_of(c)[i] != 0x00; i++)
-+            name_buf[i] = eb_char_to_ascii(maternalbound_character_name_of(c)[i]);
++            name_buf[i] = eb_char_to_title_byte(maternalbound_character_name_of(c)[i]);
          name_buf[i] = '\0';
 -        set_window_title(WINDOW_STATUS_MENU, name_buf, 5);
 +        set_window_title(WINDOW_STATUS_MENU, name_buf, maternalbound_name_capacity());
@@ -6679,7 +6679,7 @@ index 1289939..5d6dcd1 100644
  bool display_text_load_battle_text(void);
  void display_text_free_battle_text(void);
 diff --git a/src/game/display_text_cc.c b/src/game/display_text_cc.c
-index 950d47b..8b89b6d 100644
+index 950d47b..fc643cb 100644
 --- a/src/game/display_text_cc.c
 +++ b/src/game/display_text_cc.c
 @@ -1,3 +1,4 @@
@@ -6864,7 +6864,7 @@ index 950d47b..8b89b6d 100644
 +        } else FATAL("Invalid Redux title character %u\n",character);
 +        char decoded[WINDOW_TITLE_SIZE] = {0}, affix[WINDOW_TITLE_SIZE] = {0};
 +        for (size_t i=0; i<length && i<capacity && i<sizeof(decoded)-1 && name[i]; ++i)
-+            decoded[i] = eb_char_to_ascii(name[i]);
++            decoded[i] = eb_char_to_title_byte(name[i]);
 +        if (address && !dt_copy_plain_string(address,affix,sizeof(affix)))
 +            FATAL("Invalid Redux title affix 0x%06X\n",address);
 +        char title[WINDOW_TITLE_SIZE];
@@ -7267,7 +7267,7 @@ index 7a668e8..8c1c4d5 100644
  /* Data helpers (display_text.c) */
  void toggle_hppp_flipout_mode(uint16_t enable);
 diff --git a/src/game/display_text_menus.c b/src/game/display_text_menus.c
-index dd7f86b..f639adc 100644
+index dd7f86b..c479f19 100644
 --- a/src/game/display_text_menus.c
 +++ b/src/game/display_text_menus.c
 @@ -743,9 +743,9 @@ void show_character_inventory(uint16_t window_id, uint16_t char_source) {
@@ -7278,7 +7278,7 @@ index dd7f86b..f639adc 100644
 -        eb_to_ascii_buf(party_characters[char_idx].name, 5, name_buf);
 -        set_window_title(window_id, name_buf, 5);
 +        char name_buf[7];
-+        eb_to_ascii_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf);
++        eb_to_title_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf, sizeof(name_buf));
 +        set_window_title(window_id, name_buf, maternalbound_name_capacity());
      }
  
@@ -7314,6 +7314,33 @@ index dd7f86b..f639adc 100644
      /* Assembly lines 149-155: WINDOW_TICK_WITHOUT_INSTANT_PRINTING,
       * then OPEN_WINDOW_AND_PRINT_MENU(columns=2, start_index=0). */
      window_tick_without_instant_printing();
+@@ -963,7 +987,7 @@ StepResult mode_step_teleport_menu(ModeState *ms) {
+         load_menu_title_assets();
+         if (status_equip_text_14) {
+             char title_buf[WINDOW_TITLE_SIZE];
+-            eb_to_ascii_buf(status_equip_text_14, (int)status_equip_text_14_size, title_buf);
++            eb_to_title_buf(status_equip_text_14, (int)status_equip_text_14_size, title_buf, sizeof(title_buf));
+             set_window_title(WINDOW_PHONE_MENU, title_buf, 3);
+         }
+ 
+@@ -1056,7 +1080,7 @@ StepResult mode_step_escargo_menu(ModeState *ms) {
+         load_menu_title_assets();
+         if (status_equip_text_7) {
+             char title_buf[WINDOW_TITLE_SIZE];
+-            eb_to_ascii_buf(status_equip_text_7, (int)status_equip_text_7_size, title_buf);
++            eb_to_title_buf(status_equip_text_7, (int)status_equip_text_7_size, title_buf, sizeof(title_buf));
+             set_window_title(WINDOW_ESCARGO_EXPRESS_ITEM, title_buf, -1);
+         }
+ 
+@@ -1145,7 +1169,7 @@ StepResult mode_step_telephone_menu(ModeState *ms) {
+         load_menu_title_assets();
+         if (phone_call_text_data) {
+             char title_buf[WINDOW_TITLE_SIZE];
+-            eb_to_ascii_buf(phone_call_text_data, (int)phone_call_text_size, title_buf);
++            eb_to_title_buf(phone_call_text_data, (int)phone_call_text_size, title_buf, sizeof(title_buf));
+             /* Assembly: LDX #sizeof(char_struct::name) = 5 for max_len */
+             set_window_title(WINDOW_EQUIP_MENU_ITEMLIST, title_buf, 5);
+         }
 diff --git a/src/game/door.c b/src/game/door.c
 index c8d134f..24ad606 100644
 --- a/src/game/door.c
@@ -7872,7 +7899,7 @@ index 67108fa..0aea09c 100644
          if (c < 0x50) break;  /* characters below 0x50 are not valid EB text */
          flyover_render_large_char((uint16_t)c);
 diff --git a/src/game/game_state.c b/src/game/game_state.c
-index c0cc30f..3737902 100644
+index c0cc30f..371f6c3 100644
 --- a/src/game/game_state.c
 +++ b/src/game/game_state.c
 @@ -2,6 +2,9 @@
@@ -7903,7 +7930,33 @@ index c0cc30f..3737902 100644
  
      /* Defaults */
      game_state.text_speed = 2; /* medium */
-@@ -434,6 +441,11 @@ bool save_game(int slot) {
+@@ -418,6 +425,25 @@ static uint16_t compute_xor_checksum(const SaveBlock *block) {
+     return xor_sum;
+ }
+ 
++/* File-menu occupancy uses the same first-valid-copy ADD/XOR checks and
++ * favourite-thing sentinel as load_game()/FILE_SELECT_MENU. A cold F6 restore
++ * can resume after the slot-list builder, so its derived static presence flags
++ * are unavailable. Inspect a local block rather than loading it into live
++ * GameState/characters/event flags or performing inventory migrations. */
++bool save_game_slot_occupied(int slot) {
++    if (slot < 0 || slot >= SAVE_COUNT) return false;
++    SaveBlock block;
++    for (int copy = 0; copy < SAVE_COPY_COUNT; copy++) {
++        size_t offset = (size_t)(slot * SAVE_COPY_COUNT + copy) * sizeof(SaveBlock);
++        if (platform_save_read(&block, offset, sizeof(block)) != sizeof(block))
++            continue;
++        if (block.header.checksum == compute_add_checksum(&block) &&
++            block.header.checksum_complement == compute_xor_checksum(&block))
++            return block.game_state.favourite_thing[1] != 0;
++    }
++    return false;
++}
++
+ /* fuzzy pickles. thats it thats the comment */
+ bool save_game(int slot) {
+     if (slot < 0 || slot >= SAVE_COUNT) return false;
+@@ -434,6 +460,11 @@ bool save_game(int slot) {
      memcpy(block->event_flags, event_flags, sizeof(block->event_flags));
      memcpy(block->key_items_pool, key_items_pool, sizeof(key_items_pool));
      block->party_ever_joined_mask = party_ever_joined_mask;
@@ -7915,7 +7968,7 @@ index c0cc30f..3737902 100644
  
      /* Stamp the on-cartridge block signature so real EarthBound's
       * CHECK_BLOCK_SIGNATURE accepts the slot instead of erasing it. The checksums
-@@ -487,6 +499,17 @@ bool load_game(int slot) {
+@@ -487,6 +518,17 @@ bool load_game(int slot) {
      memcpy(event_flags, block->event_flags, sizeof(event_flags));
      memcpy(key_items_pool, block->key_items_pool, sizeof(key_items_pool));
      party_ever_joined_mask = block->party_ever_joined_mask;
@@ -7933,7 +7986,7 @@ index c0cc30f..3737902 100644
  
      /* Sanitize key_items_pool[]: any entry that isn't a real key item
       * (is_key_item_type() false) can never have been placed there by any
-@@ -509,7 +532,7 @@ bool load_game(int slot) {
+@@ -509,7 +551,7 @@ bool load_game(int slot) {
          int write_idx = 0;
          for (int i = 0; i < KEY_ITEMS_POOL_SIZE; i++) {
              uint8_t id = key_items_pool[i];
@@ -7942,7 +7995,7 @@ index c0cc30f..3737902 100644
                  key_items_pool[write_idx++] = id;
          }
          for (; write_idx < KEY_ITEMS_POOL_SIZE; write_idx++)
-@@ -680,6 +703,51 @@ bool load_game(int slot) {
+@@ -680,6 +722,51 @@ bool load_game(int slot) {
      return true;
  }
  
@@ -7994,7 +8047,7 @@ index c0cc30f..3737902 100644
  /* Port of ERASE_SAVE (erase_save_slot.asm) + ERASE_SAVE_BLOCK (erase_save_block.asm):
   * Zeroes both copies of a save slot (primary + backup). The assembly leaves the
   * block's signature in place; an empty (all-zero) block is fine here because the
-@@ -1154,6 +1222,16 @@ bool key_items_selftest(void) {
+@@ -1154,6 +1241,16 @@ bool key_items_selftest(void) {
      party_ever_joined_mask = 0; /* force the legacy_save branch */
      const uint16_t NESS_LEGACY_ITEM = 177; /* ATM card */
      const uint16_t POO_LEGACY_ITEM = 208;  /* Tiny ruby */
@@ -8011,7 +8064,7 @@ index c0cc30f..3737902 100644
      party_characters[0].items[0] = (uint8_t)NESS_LEGACY_ITEM;      /* Ness: IS in party_members below */
      party_characters[POO - 1].items[0] = (uint8_t)POO_LEGACY_ITEM; /* Poo: seeded, NOT in party */
      game_state.party_members[0] = 1; /* Ness active, Poo not */
-@@ -1172,15 +1250,14 @@ bool key_items_selftest(void) {
+@@ -1172,15 +1269,14 @@ bool key_items_selftest(void) {
                          "Ness's (a currently-active character's) key item\n");
          ok = false;
      }
@@ -8033,7 +8086,7 @@ index c0cc30f..3737902 100644
          ok = false;
      }
  
-@@ -1208,17 +1285,18 @@ bool key_items_selftest(void) {
+@@ -1208,17 +1304,18 @@ bool key_items_selftest(void) {
          fprintf(stderr, "key_items_selftest: load_game(pre-corrupted pool) failed\n");
          return false;
      }
@@ -8059,7 +8112,7 @@ index c0cc30f..3737902 100644
  }
  
 diff --git a/src/game/game_state.h b/src/game/game_state.h
-index 30256db..bb0113e 100644
+index 30256db..5103187 100644
 --- a/src/game/game_state.h
 +++ b/src/game/game_state.h
 @@ -209,7 +209,9 @@ typedef struct {
@@ -8090,6 +8143,15 @@ index 30256db..bb0113e 100644
  
  /* Initialize game state to defaults */
  void game_state_init(void);
+@@ -315,6 +327,8 @@ extern uint8_t fastest_hppp_meter_speed;
+ extern uint8_t current_save_slot; /* 1-indexed: 1, 2, or 3. Port of CURRENT_SAVE_SLOT BSS. */
+ bool save_game(int slot);
+ bool load_game(int slot);
++/* Check phone-slot occupancy without applying/migrating live game state. */
++bool save_game_slot_occupied(int slot);
+ bool erase_save(int slot);
+ 
+ /* Key Items pool self-test (Key Items pool feature, not a ROM routine):
 diff --git a/src/game/inventory.c b/src/game/inventory.c
 index 8978181..0596cab 100644
 --- a/src/game/inventory.c
@@ -9849,6 +9911,171 @@ index 0000000..131bba8
 +bool maternalbound_battle_sprites_line(int y,uint16_t *colour,uint8_t *priority,int width);
 +bool maternalbound_battle_sprites_selftest(void);
 +#endif
+diff --git a/src/game/oval_window.c b/src/game/oval_window.c
+index 2d642ce..4f4a643 100644
+--- a/src/game/oval_window.c
++++ b/src/game/oval_window.c
+@@ -135,6 +135,10 @@ static int16_t loaded_oval_window_height_acceleration;
+ 
+ /* Per-scanline window boundary buffer (EB_VIEWPORT_HEIGHT entries, 2 bytes each: left|right packed) */
+ static uint16_t swirl_window_hdma_buffer[EB_VIEWPORT_HEIGHT];
++/* DMAP4 writes WH0/WH1/WH2/WH3. Both buffers are derived render caches. */
++static uint16_t swirl_window2_hdma_buffer[EB_VIEWPORT_HEIGHT];
++static bool swirl_window2_enabled;
++static void rebuild_active_swirl_window_cache(void);
+ 
+ /* Sequence table for serializing the loaded_oval_window cursor as (seq id, frame
+  * index), savestate pointer purge, build item #3. Order defines the seq ids (1..N;
+@@ -224,6 +228,7 @@ void oval_window_savestate_unpack(const void *in) {
+         loaded_oval_window = oval_seq_table[s->loaded_oval_window_seq - 1].base
+                            + s->loaded_oval_window_index;
+     }
++    rebuild_active_swirl_window_cache();
+ }
+ 
+ #define SWIRL_DATA_COUNT 126
+@@ -244,14 +249,17 @@ void oval_window_savestate_unpack(const void *in) {
+  */
+ static void parse_hdma_to_window_buffer(const uint8_t *data, size_t data_size) {
+     /* Clear buffer to disabled state (WH0=0xFF, WH1=0x00) */
+-    for (int i = 0; i < EB_VIEWPORT_HEIGHT; i++)
++    for (int i = 0; i < EB_VIEWPORT_HEIGHT; i++) {
+         swirl_window_hdma_buffer[i] = 0xFF00;
+-
++        swirl_window2_hdma_buffer[i] = 0xFF00;
++    }
++    swirl_window2_enabled = false;
+     if (data_size < 2) return;
+ 
+     /* Read DMAP byte to determine bytes per entry */
+     uint8_t dmap = data[0];
+     int bytes_per_entry = (dmap == 0x04) ? 4 : 2;
++    swirl_window2_enabled = (dmap == 0x04);
+ 
+     const uint8_t *p = data + 1;
+     const uint8_t *end = data + data_size;
+@@ -268,10 +276,12 @@ static void parse_hdma_to_window_buffer(const uint8_t *data, size_t data_size) {
+             for (int i = 0; i < count && scanline < max_scanline && p + 1 < end; i++) {
+                 uint8_t wh0 = *p++;
+                 uint8_t wh1 = *p++;
+-                swirl_window_hdma_buffer[scanline++] = (uint16_t)((wh0 << 8) | wh1);
+-                /* Skip WH2/WH3 in 4-register mode */
+-                if (bytes_per_entry == 4 && p + 1 < end)
++                swirl_window_hdma_buffer[scanline] = (uint16_t)((wh0 << 8) | wh1);
++                if (bytes_per_entry == 4 && p + 1 < end) {
++                    swirl_window2_hdma_buffer[scanline] = (uint16_t)((p[0] << 8) | p[1]);
+                     p += 2;
++                }
++                scanline++;
+             }
+         } else {
+             /* Repeat mode: same bytes for `count` scanlines */
+@@ -279,11 +289,14 @@ static void parse_hdma_to_window_buffer(const uint8_t *data, size_t data_size) {
+             if (p + 1 >= end) break;
+             uint8_t wh0 = *p++;
+             uint8_t wh1 = *p++;
+-            /* Skip WH2/WH3 in 4-register mode */
+-            if (bytes_per_entry == 4 && p + 1 < end)
++            uint16_t second = 0xFF00;
++            if (bytes_per_entry == 4 && p + 1 < end) {
++                second = (uint16_t)((p[0] << 8) | p[1]);
+                 p += 2;
++            }
+             for (int i = 0; i < count && scanline < max_scanline; i++) {
+-                swirl_window_hdma_buffer[scanline++] = (uint16_t)((wh0 << 8) | wh1);
++                swirl_window_hdma_buffer[scanline] = (uint16_t)((wh0 << 8) | wh1);
++                swirl_window2_hdma_buffer[scanline++] = second;
+             }
+         }
+     }
+@@ -291,13 +304,17 @@ static void parse_hdma_to_window_buffer(const uint8_t *data, size_t data_size) {
+     /* Extend edge values into padding rows so the swirl covers the full viewport */
+     if (EB_VIEWPORT_PAD_TOP > 0) {
+         uint16_t top_val = swirl_window_hdma_buffer[EB_VIEWPORT_PAD_TOP];
+-        for (int i = 0; i < EB_VIEWPORT_PAD_TOP; i++)
++        for (int i = 0; i < EB_VIEWPORT_PAD_TOP; i++) {
+             swirl_window_hdma_buffer[i] = top_val;
++            swirl_window2_hdma_buffer[i] = swirl_window2_hdma_buffer[EB_VIEWPORT_PAD_TOP];
++        }
+ 
+         int last = EB_VIEWPORT_PAD_TOP + SNES_HEIGHT - 1;
+         uint16_t bot_val = swirl_window_hdma_buffer[last];
+-        for (int i = last + 1; i < EB_VIEWPORT_HEIGHT; i++)
++        for (int i = last + 1; i < EB_VIEWPORT_HEIGHT; i++) {
+             swirl_window_hdma_buffer[i] = bot_val;
++            swirl_window2_hdma_buffer[i] = swirl_window2_hdma_buffer[last];
++        }
+     }
+ }
+ 
+@@ -323,6 +340,7 @@ static const uint8_t swirl_primary_table[] = {
+  */
+ static void generate_oval_window_data(int16_t centre_x, int16_t centre_y,
+                                        uint16_t half_width, uint16_t half_height) {
++    swirl_window2_enabled = false;
+     /* The assembly has two paths: one for centre_y in the upper half (drawing top-down),
+      * and one for centre_y in the lower half (drawing bottom-up).
+      * The top-down path starts from Y=0 in the buffer and works down.
+@@ -481,8 +499,35 @@ static void apply_hdma_to_ppu(void) {
+         uint16_t packed = swirl_window_hdma_buffer[i];
+         ppu.wh0_table[i] = (packed >> 8) & 0xFF; /* left */
+         ppu.wh1_table[i] = packed & 0xFF;         /* right */
++        uint16_t second = swirl_window2_hdma_buffer[i];
++        ppu.wh2_table[i] = (second >> 8) & 0xFF;
++        ppu.wh3_table[i] = second & 0xFF;
+     }
+     ppu.window_hdma_active = true;
++    ppu.window2_hdma_active = swirl_window2_enabled;
++}
++
++/* F6 excludes per-scanline caches. Reconstruct the current already-consumed
++ * frame from the serialized cursor without advancing timing or frame state. */
++static void rebuild_active_swirl_window_cache(void) {
++    if (!frames_until_next_swirl_update || !ppu.window_hdma_active)
++        return;
++    if (loaded_oval_window) {
++        generate_oval_window_data(loaded_oval_window_centre_x,
++            loaded_oval_window_centre_y, (loaded_oval_window_width >> 8) & 0xFF,
++            (loaded_oval_window_height >> 8) & 0xFF);
++        apply_hdma_to_ppu();
++        return;
++    }
++    int id = swirl_reversed ? swirl_hdma_table_id : swirl_hdma_table_id - 1;
++    if (id >= 0 && id < SWIRL_DATA_COUNT) {
++        const uint8_t *data = ASSET_DATA(ASSET_SWIRLS(id));
++        size_t size = ASSET_SIZE(ASSET_SWIRLS(id));
++        if (data && size >= 2) {
++            parse_hdma_to_window_buffer(data, size);
++            apply_hdma_to_ppu();
++        }
++    }
+ }
+ 
+ /* SET_WINDOW_MASK (port of asm/system/set_window_mask.asm) */
+@@ -612,6 +657,7 @@ void stop_oval_window(void) {
+     loaded_oval_window = NULL;
+     /* mask_hdma_channel(3), in the port we just disable the HDMA */
+     ppu.window_hdma_active = false;
++    ppu.window2_hdma_active = false;
+     set_window_mask(0, 0);
+ }
+ 
+@@ -629,6 +675,7 @@ void stop_battle_swirl(void) {
+     frames_until_next_swirl_update = 0;
+     /* mask_hdma_channel(swirl_hdma_channel_offset+3), disable the HDMA */
+     ppu.window_hdma_active = false;
++    ppu.window2_hdma_active = false;
+     /* SET_COLDATA(0,0,0): clear fixed color to black */
+     ppu.coldata_r = 0;
+     ppu.coldata_g = 0;
+@@ -849,6 +896,7 @@ process_swirl_frame:
+      *   SET_COLDATA(0,0,0), SET_COLOR_MATH_FROM_TABLE(CURRENT_LAYER_CONFIG) */
+     if (swirl_auto_restore) {
+         ppu.window_hdma_active = false;
++    ppu.window2_hdma_active = false;
+         set_window_mask(0, 0);
+         restore_bg_palette_backups();
+         ppu.coldata_r = 0;
 diff --git a/src/game/overworld.c b/src/game/overworld.c
 index 723f690..dd2f527 100644
 --- a/src/game/overworld.c
@@ -10950,7 +11177,7 @@ index 3fae9b2..b800287 100644
  /* Packed version of assembly player_position_buffer_entry (include/structs.asm).
   * Assembly uses 12 bytes (6 words) per entry, but tile_flags, walking_style,
 diff --git a/src/game/text.c b/src/game/text.c
-index 236c04f..96115e7 100644
+index 236c04f..bb4b998 100644
 --- a/src/game/text.c
 +++ b/src/game/text.c
 @@ -4,6 +4,7 @@
@@ -11059,7 +11286,7 @@ index 236c04f..96115e7 100644
 -        for (j = 0; j < 5 && party_characters[char_idx].name[j]; j++)
 -            name_buf[j] = eb_char_to_ascii(party_characters[char_idx].name[j]);
 +        for (j = 0; j < maternalbound_name_capacity() && maternalbound_character_name(char_idx)[j]; j++)
-+            name_buf[j] = eb_char_to_ascii(maternalbound_character_name(char_idx)[j]);
++            name_buf[j] = eb_char_to_title_byte(maternalbound_character_name(char_idx)[j]);
          name_buf[j] = '\0';
          set_window_title(WINDOW_EQUIP_MENU, name_buf, 6);
      }
@@ -11189,6 +11416,15 @@ index 236c04f..96115e7 100644
              /* Single party: show equipment display before entering the loop.
               * Assembly lines 21-23: if party_count==1, SHOW_EQUIPMENT_AND_STATS
               * first, then fall through to char selection which auto-selects. */
+@@ -1620,7 +1746,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+                 char title_buf[WINDOW_TITLE_SIZE];
+                 const uint8_t *title_src = equip_text_data + ETEXT11_OFF
+                                            + (slot_type - 1) * ETEXT11_STRIDE;
+-                eb_to_ascii_buf(title_src, ETEXT11_STRIDE, title_buf);
++                eb_to_title_buf(title_src, ETEXT11_STRIDE, title_buf, sizeof(title_buf));
+                 /* STRLEN equivalent: length excluding trailing spaces/nulls */
+                 int title_len = (int)strlen(title_buf);
+                 set_window_title(WINDOW_EQUIP_MENU_ITEMLIST, title_buf, title_len);
 @@ -1709,6 +1835,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
              /* Show header "Which?" and run the item selection */
@@ -11403,7 +11639,41 @@ index 236c04f..96115e7 100644
  
      /* Free all tiles in per-window content_tilemap and fill with 0 */
      uint16_t content_width = w->width - 2;
-@@ -4354,6 +4520,7 @@ void print_newline(void) {
+@@ -4332,6 +4498,33 @@ uint8_t ascii_to_eb_char(char ascii) {
+     return table[c - 0x20];
+ }
+ 
++/* Window titles keep their existing byte-string/save layout. Preserve raw
++ * EB glyphs that have no ASCII spelling as high-bit bytes; ordinary ASCII
++ * titles retain their original representation. Only the tiny-title renderer
++ * consumes this encoding, so general text/menu ASCII conversion is unchanged. */
++char eb_char_to_title_byte(uint8_t eb_char) {
++    char ascii = eb_char_to_ascii(eb_char);
++    if (ascii_to_eb_char(ascii) == eb_char) return ascii;
++    if (eb_char >= 0x80) return (char)eb_char;
++    return ascii; /* retain the existing fallback for invalid/control bytes */
++}
++
++int eb_to_title_buf(const uint8_t *src, int max_len, char *dst, int capacity) {
++    int copied = 0;
++    if (!dst || capacity <= 0) return 0;
++    if (src) {
++        for (int i = 0; i < max_len && src[i] && copied + 1 < capacity; i++)
++            dst[copied++] = eb_char_to_title_byte(src[i]);
++    }
++    dst[copied] = '\0';
++    return copied;
++}
++
++uint8_t title_byte_to_eb_char(char title_byte) {
++    uint8_t byte = (uint8_t)title_byte;
++    return byte >= 0x80 ? byte : ascii_to_eb_char(title_byte);
++}
++
+ /* VWF Engine */
+ 
+ /* VRAM tile index for next VWF allocation. Reset each frame. */
+@@ -4354,6 +4547,7 @@ void print_newline(void) {
      if (win.current_focus_window == WINDOW_ID_NONE) return;
      WindowInfo *w = get_window(win.current_focus_window);
      if (!w) return;
@@ -11411,8 +11681,22 @@ index 236c04f..96115e7 100644
  
      /* Reset VWF state for new line (port of RESET_VWF_TEXT_STATE call) */
      vwf_init();
+@@ -4972,11 +5166,11 @@ int vwf_render_to_fixed_tiles(const uint8_t *eb_str, int len, uint8_t font_id,
+ int render_title_to_vram(const char *title, uint8_t title_slot) {
+     if (!title || title[0] == '\0' || title_slot == 0) return 0;
+ 
+-    /* Convert ASCII title to EB encoding */
++    /* Decode the title-only byte string without losing raw extended glyphs. */
+     uint8_t eb_str[WINDOW_TITLE_SIZE];
+     int len = 0;
+     for (int i = 0; title[i] != '\0' && i < WINDOW_TITLE_SIZE - 1; i++) {
+-        eb_str[len++] = ascii_to_eb_char(title[i]);
++        eb_str[len++] = title_byte_to_eb_char(title[i]);
+     }
+ 
+     /* Save VWF state, set_window_title can be called while other windows
 diff --git a/src/game/text.h b/src/game/text.h
-index b9339de..e7bf280 100644
+index b9339de..34c4eb8 100644
 --- a/src/game/text.h
 +++ b/src/game/text.h
 @@ -16,7 +16,7 @@
@@ -11424,7 +11708,20 @@ index b9339de..e7bf280 100644
  
  /* Special EB text character codes (from CHAR enum in include/macros.asm) */
  #define EB_CHAR_EQUIPPED  0x22  /* CHAR::EQUIPPED, purple oval with "E" */
-@@ -118,6 +118,8 @@ typedef struct {
+@@ -89,6 +89,12 @@ char eb_char_to_ascii(uint8_t eb_char);
+ /* Convert ASCII to EarthBound internal character code */
+ uint8_t ascii_to_eb_char(char ascii);
+ 
++/* Reversible title-only byte encoding; ASCII plus unmapped high-bit EB glyphs. */
++char eb_char_to_title_byte(uint8_t eb_char);
++/* Bounded EB-to-title-only string conversion; leaves ordinary text unchanged. */
++int eb_to_title_buf(const uint8_t *src, int max_len, char *dst, int capacity);
++uint8_t title_byte_to_eb_char(char title_byte);
++
+ /* TEXT_RENDER_STATE: tracks current VWF tile VRAM positions.
+  * Port of assembly's TEXT_RENDER_STATE BSS struct.
+  * pixels_rendered: VWF_X value at last flush
+@@ -118,6 +124,8 @@ typedef struct {
  } TextMenuSaveState;
  void text_menus_savestate_pack(void *out);   /* out: TextMenuSaveState* */
  void text_menus_savestate_unpack(const void *in);
@@ -11433,8 +11730,17 @@ index b9339de..e7bf280 100644
  
  /* VWF internal state (public for ending/cast name rendering + savestates) */
  extern uint8_t vwf_buffer[VWF_BUFFER_SIZE];
+@@ -188,7 +196,7 @@ int vwf_render_to_fixed_tiles(const uint8_t *eb_str, int len, uint8_t font_id,
+ 
+ /* Render a window title string to dedicated VRAM tiles (once, at set_window_title time).
+    Matches assembly's RENDER_WINDOW_TITLE → RENDER_TINY_FONT_STRING flow.
+-   title: ASCII title string.  title_slot: 1-based TITLED_WINDOWS slot.
++   title: title-only bytes (ASCII plus preserved EB glyphs). title_slot: 1-based slot.
+    Returns the number of VWF tile columns rendered. */
+ int render_title_to_vram(const char *title, uint8_t title_slot);
+ 
 diff --git a/src/game/town_map.c b/src/game/town_map.c
-index a0a8b75..21010fc 100644
+index a0a8b75..470c30f 100644
 --- a/src/game/town_map.c
 +++ b/src/game/town_map.c
 @@ -12,6 +12,7 @@
@@ -11445,7 +11751,24 @@ index a0a8b75..21010fc 100644
  #include "game/map_loader.h"
  #include "game/overworld.h"
  #include "game/game_state.h"
-@@ -497,7 +498,8 @@ uint16_t display_town_map_prepare(ModeState *init) {
+@@ -149,8 +150,15 @@ static void load_town_map_finish(uint16_t map_index) {
+     /* Upload tilemap: BUFFER+$40 → VRAM $3000, $800 bytes */
+     memcpy(&ppu.vram[0x3000 * 2], ert.buffer + 0x40, 0x800);
+ 
+-    /* Upload tile data: BUFFER+$840 → VRAM $0000, $4000 bytes */
++    /* Pinned Redux C4D625 uploads $6000 tile bytes. The importer proves
++     * its extra $2000 are zero and no arrangement references tiles above511.
++     * Native's shared buffer holds20KB, so retain the bounded $4000 tile copy
++     * and reproduce the source zero tail directly in VRAM. Original unchanged. */
++    _Static_assert(0x6000 <= sizeof(ppu.vram), "Town Map tile upload exceeds VRAM");
++    _Static_assert(0x840 + 0x4000 <= BUFFER_SIZE, "Town Map tile read exceeds buffer");
+     memcpy(&ppu.vram[0x0000], ert.buffer + 0x840, 0x4000);
++    if (maternalbound_enabled())
++        memset(&ppu.vram[0x4000], 0, 0x2000);
+ 
+     /* Decompress label GFX directly to VRAM $6000 */
+     size_t label_size = ASSET_SIZE(ASSET_TOWN_MAPS_LABEL_GFX_LZHAL);
+@@ -497,7 +505,8 @@ uint16_t display_town_map_prepare(ModeState *init) {
   * false if there is no Town Map item or no map at this location (the disable/enable
   * bracket is balanced here for the no-map case, matching show_town_map()). */
  bool show_town_map_prepare(ModeState *init) {
@@ -11456,7 +11779,7 @@ index a0a8b75..21010fc 100644
  
      disable_all_entities();
 diff --git a/src/game/window.c b/src/game/window.c
-index e516652..76c9d9e 100644
+index e516652..e0ed68c 100644
 --- a/src/game/window.c
 +++ b/src/game/window.c
 @@ -5,12 +5,14 @@
@@ -11520,9 +11843,46 @@ index e516652..76c9d9e 100644
      strncpy(item->label, label, MENU_LABEL_SIZE - 1);
      item->label[MENU_LABEL_SIZE - 1] = '\0';
      item->userdata = userdata;
-@@ -676,6 +685,27 @@ void print_menu_items(void) {
+@@ -650,6 +659,23 @@ uint16_t get_window_menu_option_count(uint16_t window_id) {
+     return w->menu_count;
+ }
+ 
++/* Occupied file-slot labels preserve source name glyphs that lack an ASCII
++ * equivalent. They are bounded, single-byte labels in the existing MenuItem;
++ * slot userdata 1..3 and WINDOW_FILE_SELECT_MAIN identify both live and F6
++ * restored consumers without changing the serialized struct. Empty/ASCII
++ * labels and every other menu retain the existing ASCII contract. */
++static bool menu_item_is_file_slot(const WindowInfo *w, const MenuItem *item) {
++    return w->id == WINDOW_FILE_SELECT_MAIN &&
++           item->userdata >= 1 && item->userdata <= SAVE_COUNT;
++}
++
++static uint8_t menu_item_label_glyph(const WindowInfo *w,
++                                     const MenuItem *item, unsigned index) {
++    uint8_t byte = (uint8_t)item->label[index];
++    if (menu_item_is_file_slot(w, item) && byte >= 0x80) return byte;
++    return ascii_to_eb_char(item->label[index]);
++}
++
+ void print_menu_items(void) {
+     WindowInfo *w = get_window(win.current_focus_window);
+     if (!w || w->menu_count == 0) {
+@@ -674,8 +700,39 @@ void print_menu_items(void) {
+         set_focus_text_cursor(item->text_x + 1, item->text_y);
+         w = get_window(win.current_focus_window);  /* re-fetch after cursor set */
          if (!w) return;
-         print_string(item->label);
+-        print_string(item->label);
++        if (menu_item_is_file_slot(w, item)) {
++            uint8_t glyphs[sizeof(item->label)] = {0};
++            unsigned length = 0;
++            while (length < sizeof(item->label) && item->label[length]) {
++                glyphs[length] = menu_item_label_glyph(w, item, length);
++                ++length;
++            }
++            print_eb_string(glyphs, (int)length);
++        } else {
++            print_string(item->label);
++        }
      }
 +
 +    /* cc_load_two_str.ccs draws the queued right labels after the left
@@ -11548,7 +11908,7 @@ index e516652..76c9d9e 100644
  }
  
  /*
-@@ -692,9 +722,10 @@ void print_menu_items(void) {
+@@ -692,9 +749,10 @@ void print_menu_items(void) {
   * columns: number of columns for layout (1 = single column, 2 = two columns)
   * start_index: if non-zero, reassign userdata starting from this value
   */
@@ -11562,7 +11922,7 @@ index e516652..76c9d9e 100644
  
      if (columns < 1) columns = 1;
  
-@@ -703,13 +734,20 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+@@ -703,13 +761,20 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
      uint16_t interior_w = w->width - 2;
      uint16_t col_width = interior_w / columns;
  
@@ -11586,7 +11946,7 @@ index e516652..76c9d9e 100644
      /* If paginated, assembly (layout_menu_options.asm lines 170-173) does
       * DEX;DEX, reduces rows_per_page by 2 from max_rows, reserving
       * the last row for the overflow indicator with one blank row gap. */
-@@ -760,6 +798,14 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+@@ -760,6 +825,14 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
  
      w->menu_page_number = 1;
  
@@ -11601,7 +11961,7 @@ index e516652..76c9d9e 100644
      /* Assembly: LAYOUT_MENU_OPTIONS then PRINT_MENU_ITEMS */
      print_menu_items();
  }
-@@ -776,26 +822,13 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+@@ -776,26 +849,13 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
  void layout_and_print_menu_at_selection(uint16_t columns, uint16_t start_index,
                                          uint16_t initial_selection) {
      WindowInfo *w = get_window(win.current_focus_window);
@@ -11631,7 +11991,7 @@ index e516652..76c9d9e 100644
      }
  
      print_menu_items();
-@@ -1149,7 +1182,7 @@ void set_window_palette_index(uint16_t palette_index) {
+@@ -1149,7 +1209,7 @@ void set_window_palette_index(uint16_t palette_index) {
   * option with a purple/highlight background (palette 6).
   */
  void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, bool set) {
@@ -11640,7 +12000,7 @@ index e516652..76c9d9e 100644
  
      MenuItem *item = &w->menu_items[item_index];
      uint16_t content_width = w->width - 2;
-@@ -1164,14 +1197,30 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
+@@ -1164,14 +1224,30 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
       * it hits a blank tile (tile == 64).  In the C port, unwritten entries
       * are 0.  Skip any entry with a zero tile index to avoid painting
       * palette bits onto empty positions (which would make them visible). */
@@ -11653,7 +12013,7 @@ index e516652..76c9d9e 100644
 +         * and color the next option after a string of narrow glyphs. */
 +        unsigned pixels = 0;
 +        for (unsigned i = 0; item->label[i]; i++) {
-+            uint8_t glyph = (ascii_to_eb_char(item->label[i]) - 0x50) & 0x7F;
++            uint8_t glyph = (menu_item_label_glyph(w, item, i) - 0x50) & 0x7F;
 +            pixels += font_get_width(w->font, glyph) + character_padding;
 +        }
 +        tile_count = (pixels + 7) / 8;
@@ -11674,7 +12034,7 @@ index e516652..76c9d9e 100644
              if (set) {
                  w->content_tilemap[upper_pos] = upper_tile | attr;
                  w->content_tilemap[lower_pos] = (w->content_tilemap[lower_pos] & 0x03FF) | attr;
-@@ -1184,6 +1233,42 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
+@@ -1184,6 +1260,42 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
      }
  }
  
@@ -11717,7 +12077,7 @@ index e516652..76c9d9e 100644
  /*
   * PRINT_CHAR_WITH_SOUND: Port of asm/text/print_char_with_sound.asm.
   *
-@@ -1916,6 +2001,7 @@ static StepResult sm_handle_input(WindowInfo *w, SelectionMenuState *st, bool *h
+@@ -1916,6 +2028,7 @@ static StepResult sm_handle_input(WindowInfo *w, SelectionMenuState *st, bool *h
   * phase machine and the `primed` frame-timing scheme.
   */
  StepResult mode_step_selection_menu(ModeState *ms) {
@@ -11725,7 +12085,7 @@ index e516652..76c9d9e 100644
      SelectionMenuState *st = &ms->selection_menu;
  
      /* Resuming after a deferred cursor-callback text push: the pushed DISPLAY_TEXT
-@@ -2049,7 +2135,10 @@ StepResult mode_step_selection_menu(ModeState *ms) {
+@@ -2049,7 +2162,10 @@ StepResult mode_step_selection_menu(ModeState *ms) {
   *   = ((18 * 32) - 6) * 2 = (576 - 6) * 2 = 570 * 2 = 0x474
   */
  void clear_hppp_window_header(void) {
@@ -11737,7 +12097,7 @@ index e516652..76c9d9e 100644
      memset(&win.bg2_buffer[offset], 0, 4 * 2);
  }
  
-@@ -2060,7 +2149,9 @@ void clear_hppp_window_header(void) {
+@@ -2060,7 +2176,9 @@ void clear_hppp_window_header(void) {
   */
  void render_hppp_window_header(void) {
      static const uint16_t header_tiles[4] = { 0x3A69, 0x3A6A, 0x3A6B, 0x3A6C };
@@ -11748,7 +12108,7 @@ index e516652..76c9d9e 100644
      memcpy(&win.bg2_buffer[offset], header_tiles, sizeof(header_tiles));
  }
  
-@@ -2193,6 +2284,16 @@ void clear_battle_menu_character_indicator(void) {
+@@ -2193,6 +2311,16 @@ void clear_battle_menu_character_indicator(void) {
  
  /* HPPP Window Drawing */
  
@@ -11765,7 +12125,7 @@ index e516652..76c9d9e 100644
  /*
   * UNDRAW_HP_PP_WINDOW: Port of asm/text/hp_pp_window/undraw.asm.
   *
-@@ -2209,12 +2310,7 @@ void undraw_hp_pp_window(uint16_t char_id) {
+@@ -2209,12 +2337,7 @@ void undraw_hp_pp_window(uint16_t char_id) {
      ow.currently_drawn_hppp_windows &= ~(1 << char_id);
  
      /* Determine Y row offset: active character is one row higher */
@@ -11779,7 +12139,7 @@ index e516652..76c9d9e 100644
  
      /* Compute position in win.bg2_buffer using same centering as assembly */
      uint16_t x_byte_offset = calc_character_indicator_x_offset(char_id);
-@@ -2532,11 +2628,7 @@ void draw_hp_pp_window(uint16_t char_id) {
+@@ -2532,11 +2655,7 @@ void draw_hp_pp_window(uint16_t char_id) {
      }
  
      /* Determine Y row (assembly lines 91-99) */
@@ -11792,7 +12152,7 @@ index e516652..76c9d9e 100644
  
      /* Compute BG2_BUFFER position (assembly lines 101-127).
       * Each party member's window is 7 tiles wide, centered at HPPP_CENTER_TILE.
-@@ -2574,8 +2666,9 @@ void draw_hp_pp_window(uint16_t char_id) {
+@@ -2574,8 +2693,9 @@ void draw_hp_pp_window(uint16_t char_id) {
       * US: STRLEN computes name width = (strlen*6+9)/8 tiles. */
      uint16_t name_base1 = 0x22A0 + (uint16_t)(member_id - 1) * 4;
      int name_len = 0;
@@ -11804,7 +12164,7 @@ index e516652..76c9d9e 100644
      int ntc = name_tile_count;
  
      for (int i = 0; i < HPPP_WINDOW_WIDTH - 3; i++) {
-@@ -2849,11 +2942,7 @@ void update_hppp_meter_tiles(void) {
+@@ -2849,11 +2969,7 @@ void update_hppp_meter_tiles(void) {
          return;
  
      /* Determine Y row: active character uses row 18, others use row 19 */
@@ -11818,7 +12178,7 @@ index e516652..76c9d9e 100644
      /* Calculate tilemap word offset for the HP digit row.
       * base_offset = row * 32 + 96  (96 = 3 rows below header = digit area)
 diff --git a/src/game/window.h b/src/game/window.h
-index 4210ac5..6b14d0b 100644
+index 4210ac5..8cc5636 100644
 --- a/src/game/window.h
 +++ b/src/game/window.h
 @@ -73,6 +73,7 @@
@@ -11837,6 +12197,15 @@ index 4210ac5..6b14d0b 100644
      uint16_t userdata;     /* value returned on selection (asm offset 12) */
      uint8_t  text_x;       /* x position in window tiles (asm offset 8) */
      uint8_t  text_y;       /* y position in window tiles (asm offset 10) */
+@@ -196,7 +198,7 @@ typedef struct {
+                                          fn ptr above (savestate hardening, D0a). */
+     uint8_t  title_slot;              /* asm offset 59: TITLED_WINDOWS slot index (1-5), 0=none */
+     uint8_t  title_tile_count;        /* number of VWF tile columns rendered for title (set once at set_window_title time) */
+-    char     title[WINDOW_TITLE_SIZE]; /* asm offset 60: window title text (tiny font) */
++    char     title[WINDOW_TITLE_SIZE]; /* tiny title: ASCII plus preserved high-bit EB glyph bytes; ABI unchanged */
+     uint8_t   palette_index;
+     MenuItem  menu_items[MAX_MENU_ITEMS];
+     uint8_t   menu_count;
 diff --git a/src/game_main.c b/src/game_main.c
 index 8ddaa2a..5bda82b 100644
 --- a/src/game_main.c
@@ -12042,7 +12411,7 @@ index c29adc3..3318423 100644
  /* Perform a pending capture if one was requested, then clear the request. MUST be
   * called ONLY from the outermost host loop (the root boundary), never while a
 diff --git a/src/intro/file_select.c b/src/intro/file_select.c
-index 632f674..9b42537 100644
+index 632f674..a8c9e72 100644
 --- a/src/intro/file_select.c
 +++ b/src/intro/file_select.c
 @@ -15,17 +15,20 @@
@@ -12076,7 +12445,24 @@ index 632f674..9b42537 100644
  }
  
  /* See file_select.h. Mirrors a cold load: null the (un-sectioned) asset caches,
-@@ -215,9 +219,9 @@ static int fm_file_select_build(void) {
+@@ -203,6 +207,16 @@ static void file_select_init(void) {
+ /* Build the file-select slot list window (formerly file_select_menu() minus the
+  * blocking selection_menu(0) call). Returns -1 when the window is ready to push a
+  * selection menu, or an early result (create-window failure → 1) otherwise. */
++/* FILE_SELECT_MENU copies raw name glyphs into the source slot label.
++ * This native menu stores ASCII labels, so keep reversible ASCII bytes while
++ * retaining source-only high glyphs as single bytes. Only file-slot consumers
++ * decode this bounded representation; ordinary dialogue conversion is unchanged. */
++static char file_slot_label_byte(uint8_t glyph) {
++    char ascii = eb_char_to_ascii(glyph);
++    if (ascii_to_eb_char(ascii) == glyph) return ascii;
++    return glyph >= 0x80 ? (char)glyph : ascii;
++}
++
+ static int fm_file_select_build(void) {
+     WindowInfo *w = create_window(WINDOW_FILE_SELECT_MAIN);
+     if (!w) return 1;
+@@ -215,9 +229,9 @@ static int fm_file_select_build(void) {
      for (int slot = 0; slot < SAVE_COUNT; slot++) {
          bool occupied = load_game(slot) && game_state.favourite_thing[1] != 0;
          if (occupied) {
@@ -12085,11 +12471,20 @@ index 632f674..9b42537 100644
 -                name[i] = eb_char_to_ascii(party_characters[0].name[i]);
 +            char name[7] = {0};
 +            for (int i = 0; i < maternalbound_name_capacity() && maternalbound_character_name(0)[i]; i++) {
-+                name[i] = eb_char_to_ascii(maternalbound_character_name(0)[i]);
++                name[i] = file_slot_label_byte(maternalbound_character_name(0)[i]);
              }
              snprintf(slot_labels[slot], sizeof(slot_labels[slot]), "%d: %s",
                       slot + 1, name);
-@@ -346,9 +350,9 @@ static void file_select_menu_display_only(void) {
+@@ -315,7 +329,7 @@ static int fm_submenu_build(void) {
+     /* Copy is only shown if an empty slot exists to copy to (assembly condition:
+        slot != current_save_slot AND SAVE_FILES_PRESENT[slot] == 0) */
+     for (int i = 0; i < SAVE_COUNT; i++) {
+-        if (i != (current_save_slot - 1) && !save_files_present[i]) {
++        if (i != (current_save_slot - 1) && !save_game_slot_occupied(i)) {
+             add_menu_item("Copy", 2, 6, 0);
+             break;
+         }
+@@ -346,9 +360,9 @@ static void file_select_menu_display_only(void) {
      for (int slot = 0; slot < SAVE_COUNT; slot++) {
          bool occupied = load_game(slot) && game_state.favourite_thing[1] != 0;
          if (occupied) {
@@ -12098,11 +12493,11 @@ index 632f674..9b42537 100644
 -                name[i] = eb_char_to_ascii(party_characters[0].name[i]);
 +            char name[7] = {0};
 +            for (int i = 0; i < maternalbound_name_capacity() && maternalbound_character_name(0)[i]; i++) {
-+                name[i] = eb_char_to_ascii(maternalbound_character_name(0)[i]);
++                name[i] = file_slot_label_byte(maternalbound_character_name(0)[i]);
              }
              snprintf(slot_labels[slot], sizeof(slot_labels[slot]), "%d: %s",
                       slot + 1, name);
-@@ -667,7 +671,8 @@ static void fm_tweaks_toggle(uint16_t selection) {
+@@ -667,7 +681,8 @@ static void fm_tweaks_toggle(uint16_t selection) {
   */
  
  /* Keyboard grid dimensions for character rows (text_y 0-3) */
@@ -12112,7 +12507,7 @@ index 632f674..9b42537 100644
  #define KB_GRID_COLS  14   /* max columns per row (from offset table) */
  #define KB_TOTAL_ROWS  8   /* total text_y lines (0-7, height/2) */
  
-@@ -700,6 +705,35 @@ static const uint8_t kb_lower_grid[KB_GRID_ROWS][KB_GRID_COLS] = {
+@@ -700,6 +715,35 @@ static const uint8_t kb_lower_grid[KB_GRID_ROWS][KB_GRID_COLS] = {
      { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x6F, 0xAF, 0xFF },
  };
  
@@ -12148,7 +12543,7 @@ index 632f674..9b42537 100644
  /* Valid cursor stop positions per row.  Each entry is a text_x where a $2F
     marker tile should be placed.  -1 terminates the list. */
  static const int kb_row_stops[KB_TOTAL_ROWS][15] = {
-@@ -713,6 +747,21 @@ static const int kb_row_stops[KB_TOTAL_ROWS][15] = {
+@@ -713,6 +757,21 @@ static const int kb_row_stops[KB_TOTAL_ROWS][15] = {
      /* text_y=7 */ { -1 },
  };
  
@@ -12170,7 +12565,7 @@ index 632f674..9b42537 100644
  /* Map from text_x of a cursor stop to the grid column index (for rows 0-3).
     Returns -1 if no grid lookup (handled as button). */
  static int kb_text_x_to_grid_col(int text_x) {
-@@ -729,8 +778,9 @@ static bool kb_is_valid_stop(WindowInfo *kw, int text_x, int text_y) {
+@@ -729,8 +788,9 @@ static bool kb_is_valid_stop(WindowInfo *kw, int text_x, int text_y) {
      (void)kw;
      if (text_y < 0 || text_y >= KB_TOTAL_ROWS) return false;
      if (text_x < 0) return false;
@@ -12182,7 +12577,7 @@ index 632f674..9b42537 100644
      }
      return false;
  }
-@@ -788,21 +838,48 @@ static void kb_write_char(WindowInfo *kw, int text_x, int text_y, uint8_t eb_cha
+@@ -788,21 +848,48 @@ static void kb_write_char(WindowInfo *kw, int text_x, int text_y, uint8_t eb_cha
      vwf_render_eb_string_at(eb_str, 1, mx, my, FONT_ID_NORMAL, 0);
  }
  
@@ -12236,7 +12631,7 @@ index 632f674..9b42537 100644
              }
          }
      }
-@@ -814,9 +891,9 @@ static void kb_render_labels(WindowInfo *kw, bool has_dont_care) {
+@@ -814,9 +901,9 @@ static void kb_render_labels(WindowInfo *kw, bool has_dont_care) {
      uint16_t bx = kw->content_x;  /* base tilemap x (past border) */
      uint16_t by = kw->content_y;  /* base tilemap y (past border) */
  
@@ -12249,7 +12644,7 @@ index 632f674..9b42537 100644
  
      /* Row 6: buttons */
      if (has_dont_care)
-@@ -887,14 +964,16 @@ static void kb_write_name_tilemap(WindowInfo *nw, int num_cols) {
+@@ -887,14 +974,16 @@ static void kb_write_name_tilemap(WindowInfo *nw, int num_cols) {
  /* Resolve a NameTargetId to the (stable global) buffer it names. The buffer is
   * only touched on confirm, so a serializable ID rather than a raw pointer keeps
   * the keyboard mode's ModeState plain-old-data. */
@@ -12271,7 +12666,7 @@ index 632f674..9b42537 100644
      case NAME_TARGET_THING:     return game_state.favourite_thing + 4;
      case NAME_TARGET_M2_PLAYER: return game_state.mother2_playername;
      case NAME_TARGET_EB_PLAYER: return game_state.earthbound_playername;
-@@ -931,6 +1010,8 @@ StepResult mode_step_text_input(ModeState *st) {
+@@ -931,6 +1020,8 @@ StepResult mode_step_text_input(ModeState *st) {
         yet, matching the blocking loop's render-before-first-read order) --- */
      if (s->primed) {
          uint16_t pressed = platform_input_get_pad_new();
@@ -12280,7 +12675,7 @@ index 632f674..9b42537 100644
  
          /* Directional input, assembly: MOVE_CURSOR plays SFX only on
             successful cursor movement (SFX 124 for UP/DOWN, 123 for LEFT/RIGHT) */
-@@ -986,7 +1067,7 @@ StepResult mode_step_text_input(ModeState *st) {
+@@ -986,7 +1077,7 @@ StepResult mode_step_text_input(ModeState *st) {
                      const uint8_t *eb_src = get_dont_care_name(s->naming_index, s->dont_care_row);
                      memset(s->eb_name, 0, sizeof(s->eb_name));
                      s->name_pos = 0;
@@ -12289,7 +12684,7 @@ index 632f674..9b42537 100644
                          s->eb_name[i] = eb_src[i];
                          s->name_pos++;
                      }
-@@ -1003,8 +1084,8 @@ StepResult mode_step_text_input(ModeState *st) {
+@@ -1003,8 +1094,8 @@ StepResult mode_step_text_input(ModeState *st) {
                      play_sfx(94); /* SFX::NAMING_CONFIRM */
                      confirm_request = true;
                  }
@@ -12300,7 +12695,7 @@ index 632f674..9b42537 100644
                  play_sfx(122); /* SFX::TEXT_INPUT */
                  if (s->cur_x == 0) {
                      s->is_lowercase = false;
-@@ -1013,26 +1094,39 @@ StepResult mode_step_text_input(ModeState *st) {
+@@ -1013,26 +1104,39 @@ StepResult mode_step_text_input(ModeState *st) {
                  } else {
                      /* Punctuation at column 11/12 */
                      int col = kb_text_x_to_grid_col(s->cur_x);
@@ -12348,7 +12743,7 @@ index 632f674..9b42537 100644
              play_sfx(125); /* SFX::NAMING_BACKSPACE */
              if (s->name_pos > 0) {
                  s->name_pos--;
-@@ -1060,6 +1154,10 @@ StepResult mode_step_text_input(ModeState *st) {
+@@ -1060,6 +1164,10 @@ StepResult mode_step_text_input(ModeState *st) {
                  memset(name_buf, 0, (size_t)s->max_len);
                  for (int i = 0; i < (int)s->name_pos && i < (int)s->max_len; i++)
                      name_buf[i] = s->eb_name[i];
@@ -12359,7 +12754,7 @@ index 632f674..9b42537 100644
              }
              close_window(WINDOW_FILE_SELECT_NAMING_KB);
              return STEP_RESULT_POP(0);
-@@ -1167,6 +1265,7 @@ void text_input_prepare(ModeState *init, int name_target, int max_len,
+@@ -1167,6 +1275,7 @@ void text_input_prepare(ModeState *init, int name_target, int max_len,
      s->dont_care_row = -1;
      s->name_pos = 0;
      s->max_len = (uint16_t)max_len;
@@ -12367,7 +12762,7 @@ index 632f674..9b42537 100644
      s->name_display_window_id = name_display_window_id;
      s->name_text_y = (int16_t)name_text_y;
      s->cur_x = 0;
-@@ -1533,8 +1632,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1533,8 +1642,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
                  uint8_t empty_name[16];
                  uint8_t display[16];
                  memset(empty_name, 0, sizeof(empty_name));
@@ -12378,7 +12773,7 @@ index 632f674..9b42537 100644
              }
              ngn_child_init = (ModeState){0};
              ngn_child_init.naming_prompt.name_tile_cols = (int16_t)name_tile_cols;
-@@ -1547,7 +1646,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1547,7 +1656,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
                 goes in the name box window at text row 0. */
              int i = st->char_i;
              text_input_prepare(&ngn_child_init, ng_name_targets[i].target,
@@ -12387,7 +12782,7 @@ index 632f674..9b42537 100644
                                 WINDOW_FILE_SELECT_NAMING_BOX, 0, NULL);
              st->phase = NGN_INPUT_DONE;
              return STEP_RESULT_PUSH_INIT(GAME_MODE_TEXT_INPUT, &ngn_child_init);
-@@ -1585,10 +1684,9 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1585,10 +1694,9 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
              /* Set default names for any empty slots (first name in each group).
               * Names are already EB-encoded in the ROM data, copy directly. */
              for (int c = 0; c < 4; c++) {
@@ -12400,7 +12795,7 @@ index 632f674..9b42537 100644
                  }
              }
              if (game_state.pet_name[0] == 0) {
-@@ -1598,8 +1696,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1598,8 +1706,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
              }
              if (game_state.favourite_food[0] == 0) {
                  const uint8_t *eb_src = get_dont_care_name(5, 0);
@@ -12410,7 +12805,7 @@ index 632f674..9b42537 100644
              }
              if (game_state.favourite_thing[4] == 0) {
                  const uint8_t *eb_src = get_dont_care_name(6, 0);
-@@ -1625,8 +1722,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1625,8 +1732,8 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
                  if (cw) {
                      set_focus_text_cursor(0, 0);
                      int len = 0;
@@ -12421,7 +12816,7 @@ index 632f674..9b42537 100644
                  }
              }
  
-@@ -1643,7 +1740,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
+@@ -1643,7 +1750,7 @@ StepResult mode_step_new_game_naming(ModeState *ms) {
              create_window(WINDOW_FILE_SELECT_CONFIRM_FOOD);
              set_focus_text_cursor(0, 0);
              print_string("Favorite food:");
@@ -12430,7 +12825,18 @@ index 632f674..9b42537 100644
  
              /* Favorite thing, same layout as food */
              create_window(WINDOW_FILE_SELECT_CONFIRM_THING);
-@@ -2035,8 +2132,12 @@ StepResult mode_step_file_menu(ModeState *ms) {
+@@ -1932,7 +2039,9 @@ StepResult mode_step_file_menu(ModeState *ms) {
+             current_save_slot = (uint8_t)selected;   /* file_select_menu() did this */
+             if (selected == 0) { st->phase = FM_SELECT; continue; }
+             int slot = selected - 1;
+-            if (save_files_present[slot]) {
++            /* Presence is derived from phone data; do not trust builder-only
++             * flags after a fresh-process restore of the selection child. */
++            if (save_game_slot_occupied(slot)) {
+                 st->phase = FM_SUBMENU;              /* @VALID_FILE_SELECTED */
+             } else {
+                 game_state_init();
+@@ -2035,8 +2144,12 @@ StepResult mode_step_file_menu(ModeState *ms) {
                      dt.text_speed_based_wait = 0;
                  else
                      dt.text_speed_based_wait = (uint16_t)game_state.text_speed * 30;
@@ -12444,7 +12850,7 @@ index 632f674..9b42537 100644
                  return STEP_RESULT_POP(1);
  
              case 2: /* Copy, @MENU_COPY_SELECTED */
-@@ -2058,8 +2159,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
+@@ -2058,8 +2171,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
                      set_focus_text_cursor(2, 1);
                      {
                          int len = 0;
@@ -12455,7 +12861,7 @@ index 632f674..9b42537 100644
                      }
  
                      set_focus_text_cursor(8, 1);
-@@ -2278,7 +2379,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
+@@ -2278,7 +2391,8 @@ StepResult mode_step_file_menu(ModeState *ms) {
              close_window(WINDOW_FILE_SELECT_TEXT_SPEED);
              close_window(WINDOW_FILE_SELECT_MUSIC_MODE);
              close_window(WINDOW_FILE_SELECT_FLAVOUR);
@@ -12465,7 +12871,7 @@ index 632f674..9b42537 100644
              continue;
          }
          case FM_NG_ASPECT: {
-@@ -2351,6 +2453,10 @@ StepResult mode_step_file_menu(ModeState *ms) {
+@@ -2351,6 +2465,10 @@ StepResult mode_step_file_menu(ModeState *ms) {
                  st->phase = FM_NG_FLV;
                  continue;
              }

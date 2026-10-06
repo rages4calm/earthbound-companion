@@ -1,0 +1,61 @@
+{
+  "Checkpoint": "v0.5.0-redux-dev.18",
+  "Status": "experimental-conversion-under-audit",
+  "FullConversionVerified": false,
+  "PinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "SaveFormat": 16,
+  "Runtime": {
+    "Player": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "Observer": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92",
+    "Library": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411"
+  },
+  "FullNativePatchSha256": "955557298e7b3f92d1b9e3ab8f952ffccea2707b6ebd16c9f2bbd442d665ae12",
+  "ReduxPackSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "ImplementedAndExecuted": [
+    "Town Map graphics and labels",
+    "Redux gas-station intro art",
+    "Starman teleport frames",
+    "Second battle-transition window and compiled swirl rows",
+    "Bounded lossless window titles",
+    "File-select slot labels and fresh-process occupied-save detection",
+    "Current Original pack setup detection"
+  ],
+  "Evidence": {
+    "Presentation": "research/presentation-release-dev18-v2-final-manifest.json",
+    "TitlesAndSaves": "research/title-save-menu-dev18-v2-final-manifest.json",
+    "AllSpriteUploads": "research/sprite-frame-upload-dev25-dev18-v2-manifest.json",
+    "AllEquipment": "research/all-equipment-dev27-final-manifest.json",
+    "GeneralRegression": "research/native-regressions-dev18-v2.json",
+    "Sanitizer": "research/native-sanitizer-dev18-v2-green.json",
+    "InstrumentedScenes": "research/sanitized-scenarios-dev18-v2-summary.json",
+    "RealOwnerRomUpgrade": "research/redux-real-upgrade-dev18-v2.json",
+    "Randomizer": "research/redux-randomizer-dev18-v3.json",
+    "OriginalSetupRegistry": "research/original-setup-registry-dev18-v3-green.json",
+    "PublicCleanSource": "validation/public-clean-source-dev18.json",
+    "NormalTinyTerrainParents": "research/special-terrain-dev27-dev18-v2-manifest.json",
+    "FinalCleanPackage": "validation/redux-clean-package-dev18.json",
+    "InstalledOwnerSave": "validation/package-dev18.json",
+    "CurrentInstallationCleanup": "validation/current-installation-cleanup-dev18.json"
+  },
+  "ConfirmedOpenWork": [
+    {
+      "Issue": "Accented party-target labels",
+      "Evidence": "Actual Give/Goods/PSI parents: 32 Redux target-label failures among 80 prepared cases; Original/ASCII controls pass.",
+      "State": "Separate private dev19 producer/window correction in progress; not fixed in dev18."
+    },
+    {
+      "Issue": "Equipped Give source quirks",
+      "Evidence": "Full-bag self-Give equipment index and cross-character armor-stat ordering reproduce source behavior.",
+      "State": "Intentional QoL correction passes private dev26 tests, not integrated in dev18."
+    }
+  ],
+  "UnverifiedCoverage": [
+    "Full start-to-ending Original and Redux story",
+    "Full seed progression",
+    "All combat combinations and multi-turn state interactions",
+    "Natural photo acquisition",
+    "All terrain, doors, progression events and special party forms",
+    "Complete soundtrack transition listening and physical controller/display testing"
+  ],
+  "Interpretation": "Executed assertions and prepared source-prerequisite scenes are not a conversion percentage or proof of the quests that reach them."
+}

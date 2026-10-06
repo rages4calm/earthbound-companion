@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "status": "Passed",
+  "allPassed": true,
+  "report": {
+    "path": "research/special-terrain-dev27-dev18-v2-final-review.json",
+    "sha256": "EF0979B3698C7A7E6350CE08275AD7FA3ECB9D3EEC9D4711B9889A270E22D982"
+  },
+  "tools": {
+    "C:/Users/crono/Desktop/Projects/eb/tools/special_terrain_parent_qa_dev27.py": "7614C8B0B7020740F3D379C34406CF09FD942E76D76A6534D80FD75A7DA50EE9",
+    "C:/Users/crono/Desktop/Projects/eb/tools/freeze_special_terrain_evidence_dev27.py": "E1EAE4A4C78B1788118709A4186E164D155DACA69A3F229FCFC042FA6827D3C5"
+  },
+  "runtimeIdentities": {
+    "_BuildScratch\\audit-dev18-v2-runtime\\player.exe": "3B467F471ACD6BB5AA0CB29B96D89790BE3097D8D0C5DD114CE2F128895D6292",
+    "_BuildScratch\\audit-dev18-v2-runtime\\observer.exe": "033ED02642E0FC2CB61E2244DE40C1B918F6B8E17635FB0C86EB7C11F92AEB92",
+    "_BuildScratch\\interpreter-gap-dev16-fresh-original.pak": "01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549",
+    "_BuildScratch\\swirl-import-dev18-candidate3\\map-gas-teleport-swirl-candidate.pak": "D9A772D10AFF68BDF93C077CDA640D42B835884D6834BB18BF0D43C3800F57BB"
+  },
+  "production": {
+    "executableSha256": "FE083E1FC186486FA8E48C35CA1EC38BA3A7A10C63C08E08527CDBD2AF690121",
+    "driverSourceSha256": "0CE5AACD0AD8802519D97431433E1CD8869A2FF3A1A94B7DC091FF8E18E86FE3",
+    "productionExecutableSha256": "3B467F471ACD6BB5AA0CB29B96D89790BE3097D8D0C5DD114CE2F128895D6292",
+    "productionLibrarySha256": "6A2EA279A762DF4C3A887EDA7580E09C8034DA55F08FB7F9059EB404C949D411",
+    "platformMainObjectSha256": "8387F7F5405F60E59A059C84FCF6791A1DB2F6CA96015872520398CBB2BA6FEB",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "readOnlyWrapper": "update_follower_state: pre-call source buffer entry and post-call direction/surface/position assertions only"
+  },
+  "frozenPatchSha256": "955557298E7B3F92D1B9E3AB8F952FFCCEA2707B6EBD16C9F2BBD442D665AE12",
+  "sourceReview": {
+    "pinnedRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+    "doors": [
+      {
+        "xy": [
+          6064,
+          136
+        ],
+        "destination": [
+          1976,
+          2632
+        ],
+        "modes": [
+          0,
+          3
+        ],
+        "eventFlag": 0,
+        "style": 1,
+        "text": "$0"
+      },
+      {
+        "xy": [
+          1976,
+          2624
+        ],
+        "destination": [
+          6048,
+          136
+        ],
+        "modes": [
+          3,
+          0
+        ],
+        "eventFlag": 0,
+        "style": 1,
+        "text": "$0"
+      },
+      {
+        "xy": [
+          1872,
+          3088
+        ],
+        "destination": [
+          2872,
+          6792
+        ],
+        "modes": [
+          3,
+          2
+        ],
+        "eventFlag": 0,
+        "style": 1,
+        "text": "data_57.l_0xc9b10b"
+      },
+      {
+        "xy": [
+          2856,
+          6792
+        ],
+        "destination": [
+          1872,
+          3096
+        ],
+        "modes": [
+          2,
+          3
+        ],
+        "eventFlag": 0,
+        "style": 1,
+        "text": "$0"
+      }
+    ],
+    "crossModeDoorEntriesInventoried": 4,
+    "compiledSectorTablesByteEqual": true,
+    "activeTinyStyle": 6,
+    "activeNonstandardRunNops": true,
+    "sourceFiles": {
+      "src/game/position_buffer.c": "2AE8E62F3AD225B29872EC73D1C44A3A095D7CE68224F15F5A8BF8A9C3B7D29B",
+      "src/game/position_buffer.h": "91E7DAB649F7672E0E79A6C0EA9D5A536FC17B2D7DEE6CCDC5B54410C49CE014",
+      "src/game/overworld.c": "F91E1DB767E21A7F72648C17B6662CB037F99BFA0598AB4AD4E820C67B4D370D",
+      "src/game/map_loader.c": "55D858566E2374126C34589D2C6793254B61D83E8D32BB2C353915CC9114F5C3",
+      "src/game/door.c": "A56C5695CBDE1E11DC20BB2A61BEEBF76898D2FD10671E5EBA7F1EF5E730D3CF",
+      "src/game/maternalbound.c": "E6D828B9110F09D315B37A231F7FC4470341F123535DC20B8BCE91140D342B74",
+      "src/game_main.c": "AC690D7A23C339DC19616069312C36E440999FC7E9A502F2C968231BA725582C",
+      "src/entity/callroutine_screen.c": "C748CDAB07C1001D1BEF0CDD44B882430879DBD85F2C594ED583DD2CC5CAC870",
+      "src/core/mode_stack.h": "1D8D69B7ED1A7F72FB4ED08FE93C4D36CBB463CC960CC2BB2C333C05109AF762",
+      "src/core/state_dump.c": "15A416EA8E9D28199641821B8C7523FC9EBFFDB51BDBC32574D2D7F43A205665",
+      "port/unix/platform/sdl2_input.c": "6C18764BF6F0DBF573E9A0CB4A0E2F8590E79F0C45C4DC94E2CDDEE8A835DE76"
+    },
+    "originalAssembly": {
+      "asm/overworld/party/load_party_at_map_position.asm": "271E78EB6945DA888DA9AD1E5DD61769BC054A0EE73E44096B8B2403F796985C",
+      "asm/overworld/party/get_party_member_sprite_id.asm": "711C6C33EBF43527C59E19ED1475804BD7FE788C6BDF294FA985DBCC98DACCC3",
+      "asm/overworld/update_follower_state.asm": "E8BDD7531B88A56CF196A2B9A842E5149787ADA98AEE5460393B58018E6E8C4E",
+      "asm/overworld/party/update_party_entity_graphics.asm": "527D34F056EEA60A0B203C973FE54A2A47261D784A8258947EDB54D5A733046E",
+      "asm/overworld/load_sector_attributes.asm": "28150389325D4795B7B4AFABE5D26AC19894560F6E76B50E202666E1D6BEDAD1"
+    },
+    "pinnedFiles": {
+      "map_doors.yml": "2C67BA44E4D57ACB9F0087E37D666BAE5272C28E59044F0CE2CD74D2AC1AFCEC",
+      "map_sectors.yml": "6E305CC59920E99BF6D7F19E6F163A2D62816DBC44F698A9DB63FE0499C690CC",
+      "ccscript/redux/fast_terrain.ccs": "9F311B4370AC9EE7BF3C1A7CF17A1C699649CCDFA4228443D5ECBABFF90DEA85",
+      "ccscript/redux/four_frames_run.ccs": "75F67B8A21413D794D38D4FC7FC1A852DBF6028AF6FDA01D2273638DC5B1AA66",
+      "ccscript/redux/run_stamina_mechanic.ccs": "B0FBFA9BB247521A31C6E7D9930BB6290B81F02D1E4AC70265F38FFEFE94BDBE"
+    },
+    "romIdentities": {
+      "Original": "A8FE2226728002786D68C27DDDDF0B90A894DB52E4DFE268FDF72A68CAE5F02E",
+      "Redux": "C2A2FC98C7E6518B797959FFADF24CA4DB8B4D7745ED3A9EB92EEE106DB1D0AB"
+    }
+  },
+  "executedProcesses": 48,
+  "coldCases": 16,
+  "executedAssertions": 1800,
+  "executedFollowerAssertions": 370976,
+  "skippedCases": 0,
+  "scope": [
+    "Prepared source entrance approaches; production root OVERWORLD ordinary SDL held inputs then actual entrance and return doors. Full corpus covers all four normal\u2194tiny door records; --pilot intentionally runs one branch only. All connecting Lost Underworld tiles or surrounding quest are not walked.",
+    "Only initial world, party, healthy/rested stamina and enemy-spawn isolation are prepared. External controller journal travels alongside actual F6; its input poll counter is not claimed serialized. Polling is primed outside the game loop to supply a stable held controller rather than a fabricated new-button edge on restore.",
+    "Actual Redux Y shuttles exhaust stamina through ordinary movement, then normal idle frames recover it; no entity moving bits or timer results supplied after entry. Source atomic timing proof remains in the earlier v8 report; no full source WaitFrame CPU oracle here.",
+    "Read-only forwarding wrapper verifies actual follower direction/surface/position writes against the source history entry from the production callback. Spacing index selection and render pixels are not independently machine-compared in this fixture.",
+    "Graphics pointers are checked against packed source table groups. entities.sprite_ids is an allocation diagnostic and remains stale when animation graphics change; it is not used as rendered sprite proof.",
+    "Tiny exit approach is aligned by ordinary directional input at destinationX+8. Earlier fixed-coordinate pilots that held Up from a misaligned fractional position stalled; those controller failures are not called native collision defects.",
+    "Player production library only; observer identity is provenance. Robot/Magicant parents, wet terrain, all stairs/ropes and campaign/audio parity remain separate gaps."
+  ],
+  "nextUnverifiedIntegration": [
+    "Ghost/Magicant real source entry parent followed by ordinary movement",
+    "Robot landing real source entry parent followed by ordinary movement",
+    "Actual dry/shallow/deep route with ordinary input and follower history",
+    "Natural stair/rope entry and exit beyond prior selector/helper fixtures"
+  ],
+  "ownerSavesTouched": false,
+  "sharedSourceEdited": false
+}

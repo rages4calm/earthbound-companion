@@ -1,0 +1,324 @@
+{
+  "toolSha256": "ff98f7dfcc8ee84ce82ab6784c40d108e64d4eb22a984a4b76a10479cacfdf55",
+  "checkpoint": "dev.17-v4 evidence / private dev.18 proposal",
+  "evidenceReports": {
+    "reduxRed": {
+      "path": "research/redux-intro-retained-dev22-v4-red-review.json",
+      "sha256": "6432a51b7b4cd6dbfde179ad479cad92c29aee07b75df3dda35ca8ab7b2b46ce"
+    },
+    "originalControl": {
+      "path": "research/original-intro-retained-dev22-v4-control-review.json",
+      "sha256": "83a306e29524f25bb23238addb1da501d17c2052e67f4f862ea8bdc39891bb8d"
+    },
+    "reduxPrivateGreen": {
+      "path": "research/redux-intro-retained-dev22-private-dev18-review.json",
+      "sha256": "d1d133da3942877e7d28ea050498052d06d802ec94d6e715804b318519faf51a"
+    },
+    "mapPrivateGreen": {
+      "path": "research/redux-retained-presentation-dev21-gas-private-dev18-review.json",
+      "sha256": "de1fc5b0afd3be7296277afaa77ebe1926b85644fa171beeefd0f57c28aa1f09"
+    }
+  },
+  "evidenceTools": [
+    {
+      "path": "tools/intro_retained_presentation_qa_dev22.py",
+      "sha256": "1b8e24b875b9142eff04f740439c8522df8aa966251b26fbc7db1d80f7fb0753"
+    },
+    {
+      "path": "tools/prepare_private_gas_station_dev18.py",
+      "sha256": "e1c5d36e6b3fc36570f3784e8b5634173c260ff7722c969abb94a452ffa68bb9"
+    },
+    {
+      "path": "tools/freeze_intro_family_evidence_dev22.py",
+      "sha256": "ff98f7dfcc8ee84ce82ab6784c40d108e64d4eb22a984a4b76a10479cacfdf55"
+    }
+  ],
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "nativeDefectProven": true,
+  "nativeCodeChangeRequired": false,
+  "confirmedSourceOmission": "Gas-station BG1 still shows EARTH BOUND / THE WAR AGAINST GIYGAS! instead of compiled Redux MOTHER 2 / GIYGAS STRIKES BACK!",
+  "differingSourcePixels": 5794,
+  "resolvedSharedControls": [
+    "All three company logos render exactly the compiled source image through the real timed logo parent/fades.",
+    "Produced by Itoi and Nintendo Presentation render exactly the compiled source through real CALLROUTINE dispatch, with prepared BG3 layout.",
+    "Both gas-station palettes decode identically to source and remain unchanged.",
+    "Raw repacking differences for those controls are not missing semantic conversion."
+  ],
+  "sourceConsumers": [
+    {
+      "asset": "US/intro/logos/nintendo.gfx.lzhal",
+      "loadPointerSite": 61091,
+      "sourcePointer": 15400065,
+      "decodedBytes": 4096,
+      "decodedSha256": "cd6a64f0afea65c0239d024ffe3438e9dfb75b6fa68d0dc27e4f7686a9f17a5f",
+      "uploadBytes": 32768,
+      "bitdepth": 2
+    },
+    {
+      "asset": "US/intro/logos/nintendo.arr.lzhal",
+      "loadPointerSite": 61115,
+      "sourcePointer": 15400328,
+      "decodedBytes": 1792,
+      "decodedSha256": "5abf17b6ce49f69603c1fd960c0085ac9e0840cc85dd3ce725cbe23562821c32",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/nintendo.pal.lzhal",
+      "loadPointerSite": 61139,
+      "sourcePointer": 14811107,
+      "decodedBytes": 40,
+      "decodedSha256": "a5cbfeb835389c84f33d5b6757353b0a2965723f947e0aec58c66e8a04fd0fc3",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/ape.gfx.lzhal",
+      "loadPointerSite": 61179,
+      "sourcePointer": 15400404,
+      "decodedBytes": 4096,
+      "decodedSha256": "5460f0ee8c848686ca7d0e6d1bdbad79b0fb936b403bf800a09adb0a01f14b9e",
+      "uploadBytes": 32768,
+      "bitdepth": 2
+    },
+    {
+      "asset": "intro/logos/ape.arr.lzhal",
+      "loadPointerSite": 61203,
+      "sourcePointer": 15445689,
+      "decodedBytes": 1792,
+      "decodedSha256": "6cdff72ebff1de1252aa3490903212935777e7c73ee490d9b922375b8c40728a",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/ape.pal.lzhal",
+      "loadPointerSite": 61227,
+      "sourcePointer": 15400935,
+      "decodedBytes": 40,
+      "decodedSha256": "a5cbfeb835389c84f33d5b6757353b0a2965723f947e0aec58c66e8a04fd0fc3",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/halken.gfx.lzhal",
+      "loadPointerSite": 61266,
+      "sourcePointer": 15445804,
+      "decodedBytes": 4096,
+      "decodedSha256": "2e4c0a4813e9eda512daf4d2ebc7d61553d1fb3f8950e72cb293a55faabc77d3",
+      "uploadBytes": 32768,
+      "bitdepth": 2
+    },
+    {
+      "asset": "intro/logos/halken.arr.lzhal",
+      "loadPointerSite": 61290,
+      "sourcePointer": 15446296,
+      "decodedBytes": 1792,
+      "decodedSha256": "2454a1fd5d8d0f9aa19bb6c79dcfa825b5d449ca411b74d925f914c241770696",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/halken.pal.lzhal",
+      "loadPointerSite": 61314,
+      "sourcePointer": 15446415,
+      "decodedBytes": 40,
+      "decodedSha256": "3daba975718730ac0781a119a741aa0bcdbfc7c095fe5c6c54a7439f8d93f512",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/attract/produced_by_itoi.gfx.lzhal",
+      "loadPointerSite": 318835,
+      "sourcePointer": 15446446,
+      "decodedBytes": 4096,
+      "decodedSha256": "5dfac1eee7c175f6e0a9004bcee6599d458f5557b6b7943818290c971fc010c2",
+      "uploadBytes": 1024,
+      "bitdepth": 2
+    },
+    {
+      "asset": "intro/attract/produced_by_itoi.arr.lzhal",
+      "loadPointerSite": 318778,
+      "sourcePointer": 15446908,
+      "decodedBytes": 2048,
+      "decodedSha256": "2e84927f715d7d551d5c8678d35adfb79fe5562ff547ce86c83d1ea5e483e8d1",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/attract/nintendo_itoi.pal.lzhal",
+      "loadPointerSite": 318879,
+      "sourcePointer": 14757616,
+      "decodedBytes": 8,
+      "decodedSha256": "10235d9e2d4d67b1206be79878553219710072fa15018cb993ae73eded034add",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/attract/nintendo_presentation.gfx.lzhal",
+      "loadPointerSite": 319003,
+      "sourcePointer": 15447020,
+      "decodedBytes": 4096,
+      "decodedSha256": "1f830c1205e5b77340c74af7372bb2555dd2627afb9232d0b2299efe9c11d2f6",
+      "uploadBytes": 1024,
+      "bitdepth": 2
+    },
+    {
+      "asset": "intro/attract/nintendo_presentation.arr.lzhal",
+      "loadPointerSite": 318946,
+      "sourcePointer": 15447322,
+      "decodedBytes": 2048,
+      "decodedSha256": "27398a024baf7d503928ca6a6bfada328e1b850b767633592e3c90bc54e592d3",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/attract/nintendo_itoi.pal.lzhal",
+      "loadPointerSite": 319047,
+      "sourcePointer": 14790255,
+      "decodedBytes": 8,
+      "decodedSha256": "10235d9e2d4d67b1206be79878553219710072fa15018cb993ae73eded034add",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "US/intro/gas_station.gfx.lzhal",
+      "loadPointerSite": 61680,
+      "sourcePointer": 15466496,
+      "decodedBytes": 40448,
+      "decodedSha256": "f54b8d160d64d3aa176d6e7e2e884cf9770186429feb6f7217b5b6d724eabd5a",
+      "uploadBytes": 49152,
+      "bitdepth": 8
+    },
+    {
+      "asset": "US/intro/gas_station.arr.lzhal",
+      "loadPointerSite": 61723,
+      "sourcePointer": 15447405,
+      "decodedBytes": 2048,
+      "decodedSha256": "eb66db19ae1962a9d2b03ff55b401086f4d5358d13a16f178dcd16877cf0b9c8",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/gas_station.pal.lzhal",
+      "loadPointerSite": 61767,
+      "sourcePointer": 15448788,
+      "decodedBytes": 512,
+      "decodedSha256": "e7d54392ce3d9b2ed886203f9423dcbffa07d517439535ea0667b15855019114",
+      "uploadBytes": 512,
+      "bitdepth": null
+    }
+  ],
+  "privateProposal": {
+    "privateOnly": true,
+    "releaseCandidate": false,
+    "ownerWrites": false,
+    "baselineTownMapPackSha256": "48b91e28fc4d0f45e71b1c2d4f92ec77095d361902b82099e4ab7826346703ba",
+    "proposedPackSha256": "dda71db53d6bc0c6a3f122d1537c2f94d88656b56ebcfe6e7d1e22f0b018b499",
+    "baselineDev17PackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+    "registrySha256": "a196a4d9de0f93a36c399b6f72178c3dd15c89288dbb0bf8232ceb3be4161579",
+    "namespaceAndHeaderUnchanged": true,
+    "incrementalChangedAssetCount": 2,
+    "incrementalChangedAssets": [
+      {
+        "id": 55,
+        "symbol": "ASSET_US_INTRO_GAS_STATION_ARR_LZHAL",
+        "asset": "US/intro/gas_station.arr.lzhal",
+        "oldBytes": 1379,
+        "newBytes": 1383,
+        "oldSha256": "1bc0aae09a2b683a7d31c4f28efd1fa0e9feee65f46f9c54ebb52909d30cd997",
+        "newSha256": "84423a9e67dc4d251b1fbd84f19e68e664cddc71bd550c8d5955268fbf0edc0e"
+      },
+      {
+        "id": 56,
+        "symbol": "ASSET_US_INTRO_GAS_STATION_GFX_LZHAL",
+        "asset": "US/intro/gas_station.gfx.lzhal",
+        "oldBytes": 19692,
+        "newBytes": 19873,
+        "oldSha256": "f4f6f3e326de27d28146f17789be6ecdc0bbbdd3c5d4e78ddfd3259443df1652",
+        "newSha256": "40a0a3de33968050e651a74c12db6db5763215e3efd5982b49c95ec2a4fc064b"
+      }
+    ],
+    "cumulativeChangedAssetCount": 9,
+    "cumulativeChangedAssets": [
+      {
+        "id": 55,
+        "symbol": "ASSET_US_INTRO_GAS_STATION_ARR_LZHAL",
+        "asset": "US/intro/gas_station.arr.lzhal"
+      },
+      {
+        "id": 56,
+        "symbol": "ASSET_US_INTRO_GAS_STATION_GFX_LZHAL",
+        "asset": "US/intro/gas_station.gfx.lzhal"
+      },
+      {
+        "id": 71,
+        "symbol": "ASSET_US_TOWN_MAPS_LABEL_GFX_LZHAL",
+        "asset": "US/town_maps/label.gfx.lzhal"
+      },
+      {
+        "id": 1168,
+        "symbol": "ASSET_TOWN_MAPS_0_BIN_LZHAL",
+        "asset": "town_maps/0.bin.lzhal"
+      },
+      {
+        "id": 1169,
+        "symbol": "ASSET_TOWN_MAPS_1_BIN_LZHAL",
+        "asset": "town_maps/1.bin.lzhal"
+      },
+      {
+        "id": 1170,
+        "symbol": "ASSET_TOWN_MAPS_2_BIN_LZHAL",
+        "asset": "US/town_maps/2.bin.lzhal"
+      },
+      {
+        "id": 1171,
+        "symbol": "ASSET_TOWN_MAPS_3_BIN_LZHAL",
+        "asset": "town_maps/3.bin.lzhal"
+      },
+      {
+        "id": 1172,
+        "symbol": "ASSET_TOWN_MAPS_4_BIN_LZHAL",
+        "asset": "US/town_maps/4.bin.lzhal"
+      },
+      {
+        "id": 1173,
+        "symbol": "ASSET_TOWN_MAPS_5_BIN_LZHAL",
+        "asset": "town_maps/5.bin.lzhal"
+      }
+    ],
+    "unchangedComparedWithDev17": 1165,
+    "importer": {
+      "path": "research/evidence-tools/maternalbound_gas_station-dev18-private.py",
+      "sha256": "38d057ed07eaa012ccd555dbeeb3cb0f7b76b5b959f1d19ebffbf1085d6658b2"
+    },
+    "builderPatch": {
+      "path": "research/evidence-tools/gas-station-dev18-private-builder.patch",
+      "sha256": "b1c16f5c289b55ad110d343c0eab4a458a0c5dd59279bac589517152f82af6a7"
+    },
+    "baselineBuilderSha256": "e04d6632c11e09596a3470198585a701a8b6130f4ba7bb90d4136244debc1b9c",
+    "candidateBuilderSha256": "20a8b878618111ba67ddcf73ef063a07f7e3499a303da59bc4f1b6369abb95d5",
+    "unchangedNativePrivateRuntime": {
+      "playerSha256": "6071f96b0498c39112c6acde5eef5b0a07019fb49155f87c75f35fb214963e16",
+      "librarySha256": "78cb5e9c2acbef1afebf353574ae82116ac19c54fd5a24d4276b036024c7d122",
+      "observerAliasOnly": true,
+      "observerUsed": false,
+      "releaseCandidate": false,
+      "sharedBuildModified": false
+    },
+    "preparedCases": 14,
+    "executedAssertions": 75,
+    "skippedCases": 0,
+    "allPassed": true
+  },
+  "limits": [
+    "Source256x224 centered BG1 comparison covers the normal gas image at GS_PH3, not every dynamic color-math frame or modern shader.",
+    "Native gas child completes real EVENT860 flash and fade sequence in1678 frames with normal cleanup; full intro boot/title/file-selection parent is not run.",
+    "Produced/Presented caller art registers are prepared source prerequisites; complete natural attract scenes are not run.",
+    "Private pack regeneration and consumers are proved. Root must separately adopt importer, regenerate final coherent pack and verify phone/F6/content migration.",
+    "Observer private alias was not tested; shipping observer needs a coherent actual build."
+  ],
+  "ownerWrites": false,
+  "redistributableGameAssetsIncluded": false,
+  "sharedSourcesModifiedByThisTask": false
+}

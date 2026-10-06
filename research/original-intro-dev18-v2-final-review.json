@@ -1,0 +1,697 @@
+{
+  "toolSha256": "1b8e24b875b9142eff04f740439c8522df8aa966251b26fbc7db1d80f7fb0753",
+  "production": {
+    "driverSourceSha256": "1def5bd3d6d2130ca6bad4379a0f1a155eb7c4c14aee85bb378785b64156f4cd",
+    "executableSha256": "68b742f84614544fd039844f29e548641db8bc67231827722abac4528cca3f41",
+    "productionExecutableSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "productionLibrarySha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "romSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+  "pinnedReduxCommit": null,
+  "profile": "Original",
+  "runtimeExecuted": true,
+  "ownerWrites": false,
+  "fullVisualParityVerified": false,
+  "nativeRuns": [
+    {
+      "kind": "logos",
+      "exitCode": 0,
+      "rows": [
+        {
+          "event": "QA_CAPTURE",
+          "kind": "logos",
+          "id": 0,
+          "frames": 28,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 1,
+          "tm": 4,
+          "ts": 0,
+          "bgSc": [
+            0,
+            0,
+            64
+          ],
+          "bgNba": [
+            0,
+            0
+          ],
+          "bgHofs": [
+            0,
+            0,
+            0
+          ],
+          "bgVofs": [
+            0,
+            0,
+            0
+          ],
+          "colorMath": 0,
+          "cgwsel": 0
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "logos",
+          "id": 1,
+          "frames": 266,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 1,
+          "tm": 4,
+          "ts": 0,
+          "bgSc": [
+            0,
+            0,
+            64
+          ],
+          "bgNba": [
+            0,
+            0
+          ],
+          "bgHofs": [
+            0,
+            0,
+            0
+          ],
+          "bgVofs": [
+            0,
+            0,
+            0
+          ],
+          "colorMath": 0,
+          "cgwsel": 0
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "logos",
+          "id": 2,
+          "frames": 444,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 1,
+          "tm": 4,
+          "ts": 0,
+          "bgSc": [
+            0,
+            0,
+            64
+          ],
+          "bgNba": [
+            0,
+            0
+          ],
+          "bgHofs": [
+            0,
+            0,
+            0
+          ],
+          "bgVofs": [
+            0,
+            0,
+            0
+          ],
+          "colorMath": 0,
+          "cgwsel": 0
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "logos",
+          "steps": 607,
+          "frames": 594,
+          "captured": 7,
+          "depth": 1,
+          "result": 0
+        }
+      ],
+      "stdoutSha256": "31be5d5097ff7c68f058683a0aa7f2a756727534ceb79b32b1be32bcc8eaf988",
+      "stderrSha256": "fe09056023888e4196c82969f0634df8be3ae025da3aeacb71dfb802cab0dfc5"
+    },
+    {
+      "kind": "overlays",
+      "exitCode": 0,
+      "rows": [
+        {
+          "event": "QA_CAPTURE",
+          "kind": "overlays",
+          "id": 0,
+          "frames": 0,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 4,
+          "ts": 0,
+          "bgSc": [
+            0,
+            0,
+            124
+          ],
+          "bgNba": [
+            0,
+            6
+          ],
+          "bgHofs": [
+            0,
+            0,
+            0
+          ],
+          "bgVofs": [
+            0,
+            0,
+            0
+          ],
+          "colorMath": 0,
+          "cgwsel": 0
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "overlays",
+          "id": 0,
+          "result": 0,
+          "outPc": 0
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "overlays",
+          "id": 1,
+          "frames": 0,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 4,
+          "ts": 0,
+          "bgSc": [
+            0,
+            0,
+            124
+          ],
+          "bgNba": [
+            0,
+            6
+          ],
+          "bgHofs": [
+            0,
+            0,
+            0
+          ],
+          "bgVofs": [
+            0,
+            0,
+            0
+          ],
+          "colorMath": 0,
+          "cgwsel": 0
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "overlays",
+          "id": 1,
+          "result": 0,
+          "outPc": 0
+        }
+      ],
+      "stdoutSha256": "d476a42d5c6956e7034f9e9e3fd1f63317c19635672bfd6eda7ca29e6d74db2e",
+      "stderrSha256": "fe09056023888e4196c82969f0634df8be3ae025da3aeacb71dfb802cab0dfc5"
+    },
+    {
+      "kind": "gas",
+      "exitCode": 0,
+      "rows": [
+        {
+          "event": "QA_CAPTURE",
+          "kind": "gas",
+          "id": 0,
+          "frames": 0,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 128,
+          "mode": 3,
+          "tm": 1,
+          "ts": 2,
+          "bgSc": [
+            120,
+            124,
+            0
+          ],
+          "bgNba": [
+            96,
+            0
+          ],
+          "bgHofs": [
+            0,
+            0,
+            0
+          ],
+          "bgVofs": [
+            0,
+            0,
+            0
+          ],
+          "colorMath": 3,
+          "cgwsel": 2
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "gas",
+          "id": 1,
+          "frames": 716,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 3,
+          "tm": 1,
+          "ts": 2,
+          "bgSc": [
+            120,
+            124,
+            0
+          ],
+          "bgNba": [
+            96,
+            0
+          ],
+          "bgHofs": [
+            0,
+            0,
+            0
+          ],
+          "bgVofs": [
+            0,
+            0,
+            0
+          ],
+          "colorMath": 0,
+          "cgwsel": 0
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "gas",
+          "id": 2,
+          "frames": 1678,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 0,
+          "brightness": 15,
+          "mode": 3,
+          "tm": 0,
+          "ts": 0,
+          "bgSc": [
+            120,
+            124,
+            0
+          ],
+          "bgNba": [
+            96,
+            0
+          ],
+          "bgHofs": [
+            0,
+            0,
+            0
+          ],
+          "bgVofs": [
+            0,
+            0,
+            0
+          ],
+          "colorMath": 0,
+          "cgwsel": 0
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "gas",
+          "steps": 1679,
+          "frames": 1678,
+          "captured": 1,
+          "flashSeen": 1,
+          "depth": 2,
+          "result": 0,
+          "tm": 0,
+          "ts": 0,
+          "spriteYOffset": 0,
+          "bgYOffset": 0,
+          "bg2Fill": 0
+        }
+      ],
+      "stdoutSha256": "cff34fed4c378bdffd3b1aaad0fe5728bb4c991df2557f5220cc3b93ef5f93bd",
+      "stderrSha256": "fe09056023888e4196c82969f0634df8be3ae025da3aeacb71dfb802cab0dfc5"
+    }
+  ],
+  "checks": [
+    {
+      "check": "logo-0-native-uploads",
+      "passed": true
+    },
+    {
+      "check": "logo-0-native-render",
+      "passed": true
+    },
+    {
+      "check": "logo-1-native-uploads",
+      "passed": true
+    },
+    {
+      "check": "logo-1-native-render",
+      "passed": true
+    },
+    {
+      "check": "logo-2-native-uploads",
+      "passed": true
+    },
+    {
+      "check": "logo-2-native-render",
+      "passed": true
+    },
+    {
+      "check": "overlay-0-native-uploads",
+      "passed": true
+    },
+    {
+      "check": "overlay-0-native-render",
+      "passed": true
+    },
+    {
+      "check": "overlay-1-native-uploads",
+      "passed": true
+    },
+    {
+      "check": "overlay-1-native-render",
+      "passed": true
+    },
+    {
+      "check": "gas-native-uploads",
+      "passed": true
+    },
+    {
+      "check": "gas-native-render",
+      "passed": true
+    },
+    {
+      "check": "gas-full-native-child-cleanup",
+      "passed": true,
+      "native": {
+        "event": "QA_EXIT",
+        "kind": "gas",
+        "steps": 1679,
+        "frames": 1678,
+        "captured": 1,
+        "flashSeen": 1,
+        "depth": 2,
+        "result": 0,
+        "tm": 0,
+        "ts": 0,
+        "spriteYOffset": 0,
+        "bgYOffset": 0,
+        "bg2Fill": 0
+      }
+    }
+  ],
+  "sourceParityChecks": [
+    {
+      "check": "logo-0-source-base-art",
+      "passed": true,
+      "sourceSha256": "9e84a151f60b374a6eefc4420a99b4f7da67922f38f370ec2697c35cb288d065",
+      "nativeSha256": "9e84a151f60b374a6eefc4420a99b4f7da67922f38f370ec2697c35cb288d065",
+      "differingPixels": 0,
+      "sourceDecodedBytes": {
+        "graphics": 1280,
+        "arrangement": 2048,
+        "palette": 512
+      },
+      "scope": "Actual timed native logo parent with real mosaic-fade children; source buffers retain prior source logo data beyond each decoded stream."
+    },
+    {
+      "check": "logo-1-source-base-art",
+      "passed": true,
+      "sourceSha256": "e4ed6d61768afd1ce813223bee56bd2696a5b96272bfc96ce66f9ce5af7fe4f9",
+      "nativeSha256": "e4ed6d61768afd1ce813223bee56bd2696a5b96272bfc96ce66f9ce5af7fe4f9",
+      "differingPixels": 0,
+      "sourceDecodedBytes": {
+        "graphics": 1280,
+        "arrangement": 2048,
+        "palette": 512
+      },
+      "scope": "Actual timed native logo parent with real mosaic-fade children; source buffers retain prior source logo data beyond each decoded stream."
+    },
+    {
+      "check": "logo-2-source-base-art",
+      "passed": true,
+      "sourceSha256": "6995e246698f3e86bb68c3bbb1f59944773160dc09e43e418d37260610e5d466",
+      "nativeSha256": "6995e246698f3e86bb68c3bbb1f59944773160dc09e43e418d37260610e5d466",
+      "differingPixels": 0,
+      "sourceDecodedBytes": {
+        "graphics": 1280,
+        "arrangement": 2048,
+        "palette": 512
+      },
+      "scope": "Actual timed native logo parent with real mosaic-fade children; source buffers retain prior source logo data beyond each decoded stream."
+    },
+    {
+      "check": "overlay-0-source-base-art",
+      "passed": true,
+      "sourceSha256": "fa0d13aa0c061a68576a79eb4ae0d9380d2be022d8b484a1f69e2ef2ab90b9cf",
+      "nativeSha256": "fa0d13aa0c061a68576a79eb4ae0d9380d2be022d8b484a1f69e2ef2ab90b9cf",
+      "differingPixels": 0,
+      "sourceDecodedBytes": {
+        "graphics": 1024,
+        "arrangement": 2048,
+        "palette": 32
+      },
+      "sourceGraphicsUploadBytes": 1024,
+      "uploadInstructionWindowSha256": "08203ee444d64c1c3d351935a71361a9408d47945284333b4df4836d0bdb6fb3",
+      "scope": "Actual CALLROUTINE dispatch; prepared source BG3 register layout, isolated art rather than owning attract parent."
+    },
+    {
+      "check": "overlay-1-source-base-art",
+      "passed": true,
+      "sourceSha256": "32f33de2a0172d9b1d889eaa0a321deeafaa3dd3afa9572117b52838a4671db7",
+      "nativeSha256": "32f33de2a0172d9b1d889eaa0a321deeafaa3dd3afa9572117b52838a4671db7",
+      "differingPixels": 0,
+      "sourceDecodedBytes": {
+        "graphics": 1024,
+        "arrangement": 2048,
+        "palette": 32
+      },
+      "sourceGraphicsUploadBytes": 1024,
+      "uploadInstructionWindowSha256": "73b2cd914da847ef6f1218cf388a9261f5c6d2229e31dbf063f2384f99543460",
+      "scope": "Actual CALLROUTINE dispatch; prepared source BG3 register layout, isolated art rather than owning attract parent."
+    },
+    {
+      "check": "gas-source-base-art",
+      "passed": true,
+      "sourceSha256": "c759f78e816d15416adf05f732a6b36496ffa4ba303aaf960fec796e122c463e",
+      "nativeSha256": "c759f78e816d15416adf05f732a6b36496ffa4ba303aaf960fec796e122c463e",
+      "differingPixels": 0,
+      "sourceDecodedBytes": {
+        "graphics": 49153,
+        "arrangement": 2048,
+        "palette": 512
+      },
+      "scope": "Actual init_intro II_GAS setup and 236+480 production frames to GS_PH3; source BG1 after palette-fade completion. Dynamic static/color-math frames excluded from independent art comparison."
+    }
+  ],
+  "compiledConsumers": [
+    {
+      "asset": "US/intro/logos/nintendo.gfx.lzhal",
+      "loadPointerSite": 61091,
+      "sourcePointer": 14767262,
+      "decodedBytes": 1280,
+      "decodedSha256": "0769e85e8a28e81ba9d0f756d1820a39722ad842161d81c32b23832438831da0",
+      "uploadBytes": 32768,
+      "bitdepth": 2
+    },
+    {
+      "asset": "US/intro/logos/nintendo.arr.lzhal",
+      "loadPointerSite": 61115,
+      "sourcePointer": 14767189,
+      "decodedBytes": 2048,
+      "decodedSha256": "d94722b40f5545d54f979546234f0416c12965db919e0f7eabcc70d1769cfcd7",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/nintendo.pal.lzhal",
+      "loadPointerSite": 61139,
+      "sourcePointer": 14767503,
+      "decodedBytes": 512,
+      "decodedSha256": "6864dc32d396a55792441eb877128f792d0ac739453fb47dc30d2018de3ba5b5",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/ape.gfx.lzhal",
+      "loadPointerSite": 61179,
+      "sourcePointer": 14765866,
+      "decodedBytes": 1280,
+      "decodedSha256": "3ef02955eda84a37bafdc60e45704d2adf18801f34a7566b873a006063b57046",
+      "uploadBytes": 32768,
+      "bitdepth": 2
+    },
+    {
+      "asset": "intro/logos/ape.arr.lzhal",
+      "loadPointerSite": 61203,
+      "sourcePointer": 14765761,
+      "decodedBytes": 2048,
+      "decodedSha256": "b8b4104edb760dd441ea200bb1d12d20158eb92bbaea989173c52d9c3d21a402",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/ape.pal.lzhal",
+      "loadPointerSite": 61227,
+      "sourcePointer": 14766384,
+      "decodedBytes": 512,
+      "decodedSha256": "6864dc32d396a55792441eb877128f792d0ac739453fb47dc30d2018de3ba5b5",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/halken.gfx.lzhal",
+      "loadPointerSite": 61266,
+      "sourcePointer": 14766568,
+      "decodedBytes": 1280,
+      "decodedSha256": "1831c414b9569fc58ca249b78d41fc5a6cd9e33d9a4b56f918b0abf6c6acb563",
+      "uploadBytes": 32768,
+      "bitdepth": 2
+    },
+    {
+      "asset": "intro/logos/halken.arr.lzhal",
+      "loadPointerSite": 61290,
+      "sourcePointer": 14766452,
+      "decodedBytes": 2048,
+      "decodedSha256": "868b59004de3bb72085953a84c004da18a4b93c8afddc7fdddc188710ea1252d",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/logos/halken.pal.lzhal",
+      "loadPointerSite": 61314,
+      "sourcePointer": 14767032,
+      "decodedBytes": 512,
+      "decodedSha256": "a6c57c86acde36dc894377119da01793a0ef57446c72518b6123d60b1cd346f0",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/attract/produced_by_itoi.gfx.lzhal",
+      "loadPointerSite": 318835,
+      "sourcePointer": 14789451,
+      "decodedBytes": 1024,
+      "decodedSha256": "016ea1c9d180355486c7382a196d8358f0d292ea4f666a8c251e4abed61cf475",
+      "uploadBytes": 1024,
+      "bitdepth": 2
+    },
+    {
+      "asset": "intro/attract/produced_by_itoi.arr.lzhal",
+      "loadPointerSite": 318778,
+      "sourcePointer": 14789343,
+      "decodedBytes": 2048,
+      "decodedSha256": "cb7066891ae3dc36e4f13be3460fff2924740d2ddc6dc096b4911814d72ad93a",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/attract/nintendo_itoi.pal.lzhal",
+      "loadPointerSite": 318879,
+      "sourcePointer": 14790255,
+      "decodedBytes": 32,
+      "decodedSha256": "e0bfe03f03a9a8e6e17adf80ce343bb96fcdcba39526edcbc3b81f39a3ebe734",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/attract/nintendo_presentation.gfx.lzhal",
+      "loadPointerSite": 319003,
+      "sourcePointer": 14789966,
+      "decodedBytes": 1024,
+      "decodedSha256": "cf1974046fcf10bc66987c4b63b95289bcb9fcf99f75e2547df8b89657999ac3",
+      "uploadBytes": 1024,
+      "bitdepth": 2
+    },
+    {
+      "asset": "intro/attract/nintendo_presentation.arr.lzhal",
+      "loadPointerSite": 318946,
+      "sourcePointer": 14789889,
+      "decodedBytes": 2048,
+      "decodedSha256": "e2d8097a851cda0cc3efa76de64c2ec927ff37bf96c35f98ee12c377c967a6a1",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/attract/nintendo_itoi.pal.lzhal",
+      "loadPointerSite": 319047,
+      "sourcePointer": 14790255,
+      "decodedBytes": 32,
+      "decodedSha256": "e0bfe03f03a9a8e6e17adf80ce343bb96fcdcba39526edcbc3b81f39a3ebe734",
+      "uploadBytes": 512,
+      "bitdepth": null
+    },
+    {
+      "asset": "US/intro/gas_station.gfx.lzhal",
+      "loadPointerSite": 61680,
+      "sourcePointer": 14768947,
+      "decodedBytes": 49153,
+      "decodedSha256": "f4337dbae7b54fade9619d5d07aec5516eb36d06045bd0eb19659f25b42228d5",
+      "uploadBytes": 49152,
+      "bitdepth": 8
+    },
+    {
+      "asset": "US/intro/gas_station.arr.lzhal",
+      "loadPointerSite": 61723,
+      "sourcePointer": 14767571,
+      "decodedBytes": 2048,
+      "decodedSha256": "73def81ee877bbf6786abcd9817128f042bea129786c08171b3f59191ead037f",
+      "uploadBytes": 2048,
+      "bitdepth": null
+    },
+    {
+      "asset": "intro/gas_station.pal.lzhal",
+      "loadPointerSite": 61767,
+      "sourcePointer": 14789047,
+      "decodedBytes": 512,
+      "decodedSha256": "e7d54392ce3d9b2ed886203f9423dcbffa07d517439535ea0667b15855019114",
+      "uploadBytes": 512,
+      "bitdepth": null
+    }
+  ],
+  "sourceIdentities": {
+    "src/intro/logo_screen.c": "04293126294fd521b1a6a2e8a916482289cce68260a51d68550c3232a42b52dd",
+    "src/intro/gas_station.c": "d0af11a261394555470cc183df385274324cbd94c94e1fcf0968446c3c4e00cf",
+    "src/intro/init_intro.c": "a681ece59de65ab4c47604632cc76d7dceb0d5df58d845858f5419bed8b950ad",
+    "src/entity/callroutine_screen.c": "c748cdab07c1001d1bef0cdd44b882430879dbd85f2c594ed583dd2cc5cac870",
+    "src/entity/callroutine.c": "63835e5c1abd6af31c91ae0079e33997c8f99834b0b3ff94ea22b39e0f083c56",
+    "src/snes/ppu_render.c": "fba50b5fd6e76b7605791ebd376ef78d7babb1c685e0b8b06a77e944737474c0",
+    "asm/intro/logo_screen_load.asm": "0912b342189d9e137a4cccb644b87ada46adaa32cfd00a963d7aca3d8af1357e",
+    "asm/intro/gas_station_load.asm": "32b13ba1384ee5dd944b31a31b7ac60f60a800970021cd9045d3be584d0e332f",
+    "asm/intro/decomp_itoi_production.asm": "254527f5f597c0922fda39e95bb3c25fee20dd1a7d837944ae5d786be0ef6523",
+    "asm/intro/decomp_nintendo_presentation.asm": "705934a156e1f9b7145cd02d4a3f2c4e9ec7d8e8713bd42206d72a213f272571"
+  },
+  "preparedCases": 6,
+  "skippedCases": 0,
+  "executedAssertions": 19,
+  "nativeExecutionPassed": true,
+  "sourceParityPassed": true,
+  "allPassed": true,
+  "limits": [
+    "Prepared real logo parent and gas child complete through timed frames/native fades/scripts; complete boot-to-file-selection intro is outside this tool.",
+    "Produced/Presented art uses actual CALLROUTINE dispatch with prepared BG3 registers; natural attract scene actors/parent timeline are not executed.",
+    "Independent art comparisons cover centered source 256x224 base layers at full brightness, not all audiovisual timing, dynamic overlays, modern shaders or gutters.",
+    "Decoded or uploaded byte differences alone do not prove a missing semantic conversion."
+  ]
+}

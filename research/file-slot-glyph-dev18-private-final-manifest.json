@@ -1,0 +1,186 @@
+{
+  "format": "private-file-slot-glyph-final-manifest-dev18-v1",
+  "base": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-cold-dev18-proposal-source",
+  "candidate": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-proposal-source",
+  "patch": {
+    "path": "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\file-slot-glyph-dev18-private-final.patch",
+    "sha256": "33414348fc381b45d11b24de3a0665c7a8044c7868b170507bcfc4ff228d796e"
+  },
+  "sourceChanges": [
+    {
+      "path": "src/intro/file_select.c",
+      "baseSha256": "ab4b241d04cbb447a1e33f48b7434ffae716e73d3a52191e498d76322841e1a1",
+      "candidateSha256": "84719fb8d3b05bd754522d03dc9cd580accad68cc62ebb837d0e1b49066e38e6",
+      "rootAtFreezeSha256": "ab4b241d04cbb447a1e33f48b7434ffae716e73d3a52191e498d76322841e1a1",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/game/window.c",
+      "baseSha256": "ad9256445b09df105f345fc07c2af2d0a3fa15ad4828c46615c9a55d6fcabdc6",
+      "candidateSha256": "7776ba2620809d8a5477a1183a3fc42d48fd1078b05b045aab15ffe136069db1",
+      "rootAtFreezeSha256": "ad9256445b09df105f345fc07c2af2d0a3fa15ad4828c46615c9a55d6fcabdc6",
+      "rootStillBase": true
+    }
+  ],
+  "allOtherSrcFilesByteIdentical": true,
+  "frozenTitleAndPureOccupancyHelpersUnchanged": true,
+  "format16Unchanged": true,
+  "windowInfoAndMenuItemUnchanged": true,
+  "proofs": [
+    {
+      "path": "research/file-slot-glyph-dev18-private-red-v2.json",
+      "sha256": "184ea7091554d1c1a7d4f5758041c16273e993837cdc2b3a199d02ae9dc083bc"
+    },
+    {
+      "path": "research/file-slot-glyph-dev18-private-green-v2.json",
+      "sha256": "c92b60c8942c1ed631c68b3f5cf16e255c6f668bd7c80d35f61cbe08f0288aa5"
+    },
+    {
+      "path": "research/file-slot-glyph-dev18-backdrop-red.json",
+      "sha256": "74c69927d6dd4fc2b680ae5779c0400a7d40ba5fe6ae4ab8e1ee864ec08688e9"
+    },
+    {
+      "path": "research/file-slot-glyph-dev18-backdrop-green.json",
+      "sha256": "130e201fc380619063e174646f1f02def2f266b8bd582b1d52106bc6dcc78f1f"
+    },
+    {
+      "path": "research/file-slot-glyph-dev18-private-preparation.json",
+      "sha256": "515c5a6c31d02a1066c648c7badb07ca31439262f6e9bae7376244dd57717075"
+    },
+    {
+      "path": "research/file-slot-glyph-dev18-private-builds.json",
+      "sha256": "4274cd3370322168b9d0e28ee3995d88ca70ece9f2a8fcca9c89649cfdb905ce"
+    },
+    {
+      "path": "research/title-producers-dev18-private-final-manifest.json",
+      "sha256": "d7532433083a8d3c47c4172034b1022bd82864a08e6f729e56b5313a5e6a48ab"
+    },
+    {
+      "path": "research/file-select-cold-dev18-private-final-manifest.json",
+      "sha256": "74b95deab7bb96ecce5110bc3a6eddd9e9f515c749bf33b1191ac08d3cf4de8b"
+    }
+  ],
+  "tools": [
+    {
+      "path": "tools/prepare_file_slot_glyph_private_dev18.py",
+      "sha256": "30b7bfd64b90ee603d1b014a32049da3ec54d862e04909e7f47fdd310a4f442c"
+    },
+    {
+      "path": "tools/file_slot_glyph_qa_dev18.py",
+      "sha256": "76addf15fe3b79409041d09dbdd5b56334474abfb312b627e7da5a81beab3f5d"
+    },
+    {
+      "path": "tools/file_slot_backdrop_qa_dev18.py",
+      "sha256": "4ae6e225a85e88ad8ae407d1535f1a7960d921acb12364b80d978a5351fe6a38"
+    },
+    {
+      "path": "tools/freeze_file_slot_glyph_private_dev18.py",
+      "sha256": "67b32b679ea14131db4468fbbcdce4824fea5e7e84415c43572288480493349b"
+    },
+    {
+      "path": "tools/build_title_private_dev18.py",
+      "sha256": "5ac6f3da60246d6fcd80b6b1eb5b38ab6cd706c5d46214e1f7189e0211340cc4"
+    },
+    {
+      "path": "tools/redux_title_cold_qa_dev18.py",
+      "sha256": "29381cb7ca6d1efa417258a62f91edbeda8fd7eceebc9f7a31d49ba1bb2d307d"
+    },
+    {
+      "path": "tools/file_select_cold_qa_dev18.py",
+      "sha256": "cee89344c772dfcc6ad88411bf9ce9bfc09b549b001b99c579d62e673a71563a"
+    },
+    {
+      "path": "tools/redux_title_producers_qa_dev18.py",
+      "sha256": "8608ea1a439880b886bbd8ae0109eb362a5980d4136095e637a42bf43b56726d"
+    },
+    {
+      "path": "tools/redux_naming_qa.py",
+      "sha256": "2e64a41ce31e54ee157899a92727ce941720abbd68fe32bd3d575f983c63f56e"
+    }
+  ],
+  "originalSourceRefs": [
+    {
+      "path": "asm/intro/file_select_menu.asm",
+      "sha256": "433779c17a89d244eb09d235280cb91b54790d3d96b40c5be87054c4674b7094"
+    },
+    {
+      "path": "asm/text/print_menu_items.asm",
+      "sha256": "00e6b4b52193f763fd3fe04ebd703adb601ca94e4387c796bd652e89f77ce9bf"
+    },
+    {
+      "path": "asm/text/set_file_select_text_highlight.asm",
+      "sha256": "12faf1a8fda74081182447760489d8da97b7951bd1408d60d723887dedc4b834"
+    }
+  ],
+  "pinnedReduxSourceRefs": [
+    {
+      "path": "ccscript/redux/naming_screen_table.ccs",
+      "sha256": "11deeee3900d5c6e10bfa8e151121155d53bfd40989960369898856c7b565028"
+    },
+    {
+      "path": "ccscript/redux/six_letters.ccs",
+      "sha256": "ab4b6cbd51c639391428e3e3b2c77310fd07bdb689182dfdbb4e269591e0b20a"
+    },
+    {
+      "path": "ccscript/bugfixes/text_highlights_fix.ccs",
+      "sha256": "f15e26969ada128dee09444393082e4a011ad3c10f3a7f3dc931cfce9266c3ca"
+    }
+  ],
+  "asciiControls": [
+    {
+      "build": "player",
+      "profile": "original",
+      "case": "ascii-three",
+      "warmColdRenderingAndSelectionsByteIdentical": true
+    },
+    {
+      "build": "player",
+      "profile": "original",
+      "case": "one-ascii-two-empty",
+      "warmColdRenderingAndSelectionsByteIdentical": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "case": "width-boundary-ascii",
+      "warmColdRenderingAndSelectionsByteIdentical": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "case": "ascii-three",
+      "warmColdRenderingAndSelectionsByteIdentical": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "case": "one-ascii-two-empty",
+      "warmColdRenderingAndSelectionsByteIdentical": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "case": "width-boundary-ascii",
+      "warmColdRenderingAndSelectionsByteIdentical": true
+    }
+  ],
+  "coverage": {
+    "warmColdActualSlotListPairs": 14,
+    "slotListSourceGlyphAndIndependentVramObservations": 84,
+    "actualSlotConfirmInputs": 38,
+    "namingCancellationBackdropWarmColdParents": 4,
+    "meaningfulRedSlotListPairs": 8,
+    "meaningfulRedNamingCancellationBackdrops": 2,
+    "bothCompletePlayerObserverAndBothProfiles": true,
+    "allNineteenExtendedPinnedKeyboardGlyphsIncluded": true,
+    "sourceLegalSixCharacterFortyPixelBoundaryIncluded": true
+  },
+  "limits": [
+    "A bounded reversible slot-label representation preserves high source-only EB glyphs; only file-select main slot userdata1..3 consumers decode it. Every other label and dialogue path keeps its existing ASCII contract.",
+    "The actual normal slot builder and naming-cancellation display-only builder are exercised with ordinary input. Names/occupied slots are private prerequisites written through native name/save APIs, not natural story progress or a new complete keyboard-entry proof.",
+    "Expected pixels use the packed source main-font bytes with an independent compositor. Highlight tests cover actual measured columns, trailing columns and real Confirm/cancel, but no original CPU whole-screen file-menu renderer is claimed.",
+    "Original and selected ASCII controls have identical warm/cold rendered source columns and selections across old/new candidate binaries. Existing already-lossy captured file-menu labels recover only after the builder reruns.",
+    "No new save fields, MenuItem/WindowInfo layout, asset content identity, ROM/pack or owner data changes. Complete shipping combined binaries require refreshed controls after root integration."
+  ],
+  "rootOrOwnerInputsModified": false
+}

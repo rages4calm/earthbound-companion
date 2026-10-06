@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev25-selected-full-goods-equipment-freeze",
+  "frozenRuntime": "dev17-v4",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "fullPauseParents": 142,
+  "coldContinuationsIncluded": 30,
+  "warmColdComparisons": 30,
+  "independentSourceChecks": 77,
+  "sourceOddityExecutionsIncluded": 8,
+  "nativeProductionChanged": false,
+  "verifiedLedger": [
+    {
+      "profile": "original",
+      "report": "research/original-goods-equipment-dev25-v4-final.json",
+      "fixtures": "research/original-goods-equipment-fixtures-dev25-v4-final.json",
+      "fullParents": 71,
+      "coldContinuationsIncluded": 15,
+      "warmColdComparisons": 15,
+      "sourceOddityCaseIDs": [
+        "give-equipped-type2",
+        "give-equipped-type3",
+        "source-oddity-self-give-full-equipped-bag",
+        "give-equipped-type3-cold"
+      ],
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "privateBuild": {
+        "driverSourceSha256": "8be0a427fa35643ef99235165ee81bc7d7f95ca21131c95e2aaba8f1ac4705d5",
+        "executableSha256": "97583799c6013cbe213930230407f63e3ff77b81077198ae837f7ed05adfbc05",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "executedSourceReferences": [
+        {
+          "path": "src/game/text.c",
+          "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+        },
+        {
+          "path": "src/game/inventory.c",
+          "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+        },
+        {
+          "path": "src/game/display_text.c",
+          "sha256": "ee5cc9ef3056cbd5b6cc1bb846d2eb74a2bdfc16d2f1743953a8a112709d13a7"
+        },
+        {
+          "path": "src/game/display_text_cc.c",
+          "sha256": "8823d80be9f5de41518dd81684618493a4f66d790976eab38dee211706375638"
+        },
+        {
+          "path": "src/core/mode_stack.h",
+          "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+        },
+        {
+          "path": "asm/overworld/open_menu.asm",
+          "sha256": "080d1c3c89db668e39b24313fdc84c214ca8c19dbb12f38bf530e462e780e6f2"
+        },
+        {
+          "path": "asm/battle/swap_item_into_equipment.asm",
+          "sha256": "d82333c8328002326a47f7ef81190d9d704b5254c9f57db9c242746df97db3c5"
+        },
+        {
+          "path": "asm/battle/find_empty_inventory_slot.asm",
+          "sha256": "39783eb8f57b5aef14a405866160fa8d1d40cab0c8e8eaed5bbdc7ebd1e62cf5"
+        },
+        {
+          "path": "asm/misc/equip_item.asm",
+          "sha256": "ee4252a301aa2a0b25ee1e71884ee6b3a8345145b1f82759cba3b9ba6baf51c7"
+        },
+        {
+          "path": "asm/inventory/equipment/equipment_change_menu.asm",
+          "sha256": "a1c71dc40dbdbded3b5bbf47733ced06bd7fe855335ea2a94eb5e0b1a2e1b09e"
+        },
+        {
+          "path": "asm/misc/change_equipped_weapon.asm",
+          "sha256": "2e5884c725f8f0aec4cb7283d13e9acffd7c7559c647f991a82b8413382da417"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_offense.asm",
+          "sha256": "efb5144ddac44e0e5ad485597d6a9622cc4acf2e0e59d4fa0a4d34471b6b84cd"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_defense.asm",
+          "sha256": "6d9ce74307daf5925efa7e4d7b160ef071428efe9a8afc0aaa85690c9c2f1176"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_speed.asm",
+          "sha256": "98ebdd9fb8f814d24596124b7d9e060aaf9db650487778ae4a249736cb730e5a"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_guts.asm",
+          "sha256": "dcf8a7dbfe2623442020fe6fec028274fb969cca604ca7dc992fdce43226ea6a"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_luck.asm",
+          "sha256": "10b7960a6e2de63e836ecffe7685d2cedbe341604ccb079279758ce0cd84f2af"
+        }
+      ]
+    },
+    {
+      "profile": "redux",
+      "report": "research/redux-goods-equipment-dev25-v4-final.json",
+      "fixtures": "research/redux-goods-equipment-fixtures-dev25-v4-final.json",
+      "fullParents": 71,
+      "coldContinuationsIncluded": 15,
+      "warmColdComparisons": 15,
+      "sourceOddityCaseIDs": [
+        "give-equipped-type2",
+        "give-equipped-type3",
+        "source-oddity-self-give-full-equipped-bag",
+        "give-equipped-type3-cold"
+      ],
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "privateBuild": {
+        "driverSourceSha256": "a390ba38f0559782670bd85831d71259a638085a4b48d77b2c9e17373790270d",
+        "executableSha256": "432f5b1be585d71ea6210caac8f7cee98858b9641ebb96dd76529531782208d8",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "executedSourceReferences": [
+        {
+          "path": "src/game/text.c",
+          "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+        },
+        {
+          "path": "src/game/inventory.c",
+          "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+        },
+        {
+          "path": "src/game/display_text.c",
+          "sha256": "ee5cc9ef3056cbd5b6cc1bb846d2eb74a2bdfc16d2f1743953a8a112709d13a7"
+        },
+        {
+          "path": "src/game/display_text_cc.c",
+          "sha256": "8823d80be9f5de41518dd81684618493a4f66d790976eab38dee211706375638"
+        },
+        {
+          "path": "src/core/mode_stack.h",
+          "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+        },
+        {
+          "path": "asm/overworld/open_menu.asm",
+          "sha256": "080d1c3c89db668e39b24313fdc84c214ca8c19dbb12f38bf530e462e780e6f2"
+        },
+        {
+          "path": "asm/battle/swap_item_into_equipment.asm",
+          "sha256": "d82333c8328002326a47f7ef81190d9d704b5254c9f57db9c242746df97db3c5"
+        },
+        {
+          "path": "asm/battle/find_empty_inventory_slot.asm",
+          "sha256": "39783eb8f57b5aef14a405866160fa8d1d40cab0c8e8eaed5bbdc7ebd1e62cf5"
+        },
+        {
+          "path": "asm/misc/equip_item.asm",
+          "sha256": "ee4252a301aa2a0b25ee1e71884ee6b3a8345145b1f82759cba3b9ba6baf51c7"
+        },
+        {
+          "path": "asm/inventory/equipment/equipment_change_menu.asm",
+          "sha256": "a1c71dc40dbdbded3b5bbf47733ced06bd7fe855335ea2a94eb5e0b1a2e1b09e"
+        },
+        {
+          "path": "asm/misc/change_equipped_weapon.asm",
+          "sha256": "2e5884c725f8f0aec4cb7283d13e9acffd7c7559c647f991a82b8413382da417"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_offense.asm",
+          "sha256": "efb5144ddac44e0e5ad485597d6a9622cc4acf2e0e59d4fa0a4d34471b6b84cd"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_defense.asm",
+          "sha256": "6d9ce74307daf5925efa7e4d7b160ef071428efe9a8afc0aaa85690c9c2f1176"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_speed.asm",
+          "sha256": "98ebdd9fb8f814d24596124b7d9e060aaf9db650487778ae4a249736cb730e5a"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_guts.asm",
+          "sha256": "dcf8a7dbfe2623442020fe6fec028274fb969cca604ca7dc992fdce43226ea6a"
+        },
+        {
+          "path": "asm/misc/recalc_character_postmath_luck.asm",
+          "sha256": "10b7960a6e2de63e836ecffe7685d2cedbe341604ccb079279758ce0cd84f2af"
+        }
+      ]
+    }
+  ],
+  "sourceContractReport": {
+    "path": "research/goods-equipment-source-contracts-dev25.json",
+    "sha256": "2785508a82d4decb904434bc17699723ba7b382731b3a85eb1797d108ab2b917"
+  },
+  "files": [
+    {
+      "path": "tools/goods_equipment_qa_dev25.py",
+      "sha256": "6afdae2ac581c50bd57327f4ced81f93cb1cccd5d2ff8d60bd7fdd39e790dcd7",
+      "bytes": 6700
+    },
+    {
+      "path": "tools/goods_equipment_cases_dev25.py",
+      "sha256": "aa26ce69898747dc3e4421bccdb5560f2e238e86305eb5285572b86f1ba262eb",
+      "bytes": 14316
+    },
+    {
+      "path": "tools/goods_equipment_source_review_dev25.py",
+      "sha256": "99414bd74bed995af3f3c05932df2df19e7ab87d937c451cb23aee23ca8c84f0",
+      "bytes": 9016
+    },
+    {
+      "path": "tools/write_goods_equipment_manifest_dev25.py",
+      "sha256": "63095fdf9ba5de3426b96ec2a2ee860d06dbe856ae0f6e56b3b69f1925b42329",
+      "bytes": 5500
+    },
+    {
+      "path": "tools/overworld_use_qa_dev24.py",
+      "sha256": "66548859083f45fc28fe6664af62838548c53d384b00e43fe9fdddf6bfc25aa6",
+      "bytes": 12185
+    },
+    {
+      "path": "tools/overworld_use_source_review_dev24.py",
+      "sha256": "fcf5aca6aec06b15702d23378f97c7bfaa9c1cda88c7a0a885511cdc603973b4",
+      "bytes": 7866
+    },
+    {
+      "path": "tools/barter_delivery_qa_dev20.py",
+      "sha256": "b85c2890cb250af29455ef364f73f662559d7ee611a61af71cebd4d73be3de43",
+      "bytes": 8549
+    },
+    {
+      "path": "tools/shop_transaction_qa_dev18.py",
+      "sha256": "0f7cdbf128474dc8a1f5402395132a2e41ad083bf6e4915af67c028df25b76fc",
+      "bytes": 16355
+    },
+    {
+      "path": "tools/transaction_menu_replay_dev20.py",
+      "sha256": "05ed1f6fbf4f3f26df120f2daca2905390fd6bdc15fdc9f1706aa825a90e2670",
+      "bytes": 3791
+    },
+    {
+      "path": "tools/battle_action_catalog_qa.py",
+      "sha256": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823",
+      "bytes": 40111
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "97f3c8cea7d1f5155ad4fd218ead2876f6693c6ead748860cc322fb8a41cece1",
+      "bytes": 22410
+    },
+    {
+      "path": "tools/maternalbound_dialogue.py",
+      "sha256": "54038806cb18cb575c576c616f5c31b9c30ae0c957cecd2a6674b153efc2da87",
+      "bytes": 26455
+    },
+    {
+      "path": "research/goods-equipment-dev25-evidence.md",
+      "sha256": "993bc4b875d9f01bb8dd765f71ef82c3c7814184176d4d64dbbe0d4d0c4adb8c",
+      "bytes": 6325
+    },
+    {
+      "path": "research/goods-equipment-source-contracts-dev25.json",
+      "sha256": "2785508a82d4decb904434bc17699723ba7b382731b3a85eb1797d108ab2b917",
+      "bytes": 11877
+    },
+    {
+      "path": "research/original-goods-equipment-dev25-v4-final.json",
+      "sha256": "4d7e85809d1b0564104689d38051995d368a78e09f1e1dc82367a55d42e4cc97",
+      "bytes": 3166384
+    },
+    {
+      "path": "research/original-goods-equipment-fixtures-dev25-v4-final.json",
+      "sha256": "21cbc2e75b47fca5c7831af553d3e73cfc7146db6a69f93d6728ec46deb50b86",
+      "bytes": 685952
+    },
+    {
+      "path": "research/redux-goods-equipment-dev25-v4-final.json",
+      "sha256": "5c616743649eab08b82bdb8eedae0bddcfae0289f22b24f623930f4f89af52eb",
+      "bytes": 3116084
+    },
+    {
+      "path": "research/redux-goods-equipment-fixtures-dev25-v4-final.json",
+      "sha256": "064a80f2c90d3e5b9d66ded1d29496799aacfe3abede2b7aecc52cf706398d32",
+      "bytes": 685652
+    }
+  ],
+  "limits": [
+    "Prepared actual complete pause parents; production menus/children/text/input, no post-entry outcome injection or natural reachability claim.",
+    "Selected callbacks and gear IDs/ordinary stats only; no complete conversion/family percentage. Cold and oddity counts are included in parent totals.",
+    "Source-faithful equipment-location/stale-stat oddities are explicit unresolved behaviors, not desired-correctness or native mismatch claims.",
+    "No original CPU execution, copyrighted payload, observer execution, delivered pixel/audio or full playthrough claim. Existing proofs and shared source/build remain unchanged."
+  ]
+}

@@ -1,0 +1,1208 @@
+{
+  "schemaVersion": 1,
+  "toolSha256": "5ac1a057c047ab32b0953cd6a8cc3680a89f4dab0be4f85df5f92f6c491fd8d9",
+  "originalRomSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "pinnedSource": [
+    {
+      "path": "ccscript/main.ccs",
+      "sha256": "eed62cec9d49b138534418f39c9929a4c4ad6e573171b45708180dc3e63a97a3"
+    },
+    {
+      "path": "ccscript/data/data_18.ccs",
+      "sha256": "eaa93dd91fa647a6464575109b53609e422152957857fff717db82b64c1c720e"
+    },
+    {
+      "path": "ccscript/data/data_22.ccs",
+      "sha256": "23426b68d740d643652fbe8db5f0983bbaeeb1c841f579ed0b9bb7c8ec79e653"
+    },
+    {
+      "path": "ccscript/data/data_47.ccs",
+      "sha256": "641b596e229811e02acc2954525d73788f069941f810a34bcad910e5de9a88bf"
+    },
+    {
+      "path": "ccscript/data/data_48.ccs",
+      "sha256": "e458c2b3024c48eeedb2e651e64b3847fd3e61ec75153ce51ef0fcceea32db7a"
+    },
+    {
+      "path": "ccscript/data/data_49.ccs",
+      "sha256": "c7a2aabaa3b2e5676786faf30c69b02ea575e5a4c3b19d331816b6972704f43f"
+    },
+    {
+      "path": "ccscript/bugfixes/try_give_money.ccs",
+      "sha256": "6f7ee985d929e21cde0cf0695d69cc77fea2a882518d9b21d8d1282448521cd5"
+    },
+    {
+      "path": "ccscript/bugfixes/try_deposit_money.ccs",
+      "sha256": "81a9d43e7c63c2567a66b7329e849f6e47eb882ad4bb310a84adb5f7721022f3"
+    }
+  ],
+  "nativeConfigSha256": "d0b6845b303784f17fc2a4a05821fdc0ed422c3473cb1251cfda5cb3754cf6e1",
+  "parserSha256": "54038806cb18cb575c576c616f5c31b9c30ae0c957cecd2a6674b153efc2da87",
+  "checks": [
+    {
+      "id": "doctor-onett-original-label",
+      "passed": true
+    },
+    {
+      "id": "doctor-onett-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-onett-original-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-onett-original-callee",
+      "passed": true
+    },
+    {
+      "id": "doctor-twoson-original-label",
+      "passed": true
+    },
+    {
+      "id": "doctor-twoson-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-twoson-original-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-twoson-original-callee",
+      "passed": true
+    },
+    {
+      "id": "doctor-happy-original-label",
+      "passed": true
+    },
+    {
+      "id": "doctor-happy-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-happy-original-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-happy-original-callee",
+      "passed": true
+    },
+    {
+      "id": "doctor-threed-original-label",
+      "passed": true
+    },
+    {
+      "id": "doctor-threed-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-threed-original-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-threed-original-callee",
+      "passed": true
+    },
+    {
+      "id": "doctor-desert-original-label",
+      "passed": true
+    },
+    {
+      "id": "doctor-desert-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-desert-original-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-desert-original-callee",
+      "passed": true
+    },
+    {
+      "id": "doctor-fourside-original-label",
+      "passed": true
+    },
+    {
+      "id": "doctor-fourside-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-fourside-original-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-fourside-original-callee",
+      "passed": true
+    },
+    {
+      "id": "doctor-summers-original-label",
+      "passed": true
+    },
+    {
+      "id": "doctor-summers-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-summers-original-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-summers-original-callee",
+      "passed": true
+    },
+    {
+      "id": "doctor-scaraba-original-label",
+      "passed": true
+    },
+    {
+      "id": "doctor-scaraba-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-scaraba-original-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-scaraba-original-callee",
+      "passed": true
+    },
+    {
+      "id": "doctor-moonside-original-label",
+      "passed": true
+    },
+    {
+      "id": "doctor-moonside-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-moonside-original-price",
+      "passed": true
+    },
+    {
+      "id": "doctor-moonside-original-callee",
+      "passed": true
+    },
+    {
+      "id": "doctor-moonside-original-inversion-bracket",
+      "passed": true
+    },
+    {
+      "id": "nurse-onett-original-label",
+      "passed": true
+    },
+    {
+      "id": "nurse-onett-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-onett-original-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-onett-original-callee",
+      "passed": true
+    },
+    {
+      "id": "nurse-twoson-original-label",
+      "passed": true
+    },
+    {
+      "id": "nurse-twoson-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-twoson-original-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-twoson-original-callee",
+      "passed": true
+    },
+    {
+      "id": "nurse-happy-original-label",
+      "passed": true
+    },
+    {
+      "id": "nurse-happy-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-happy-original-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-happy-original-callee",
+      "passed": true
+    },
+    {
+      "id": "nurse-threed-original-label",
+      "passed": true
+    },
+    {
+      "id": "nurse-threed-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-threed-original-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-threed-original-callee",
+      "passed": true
+    },
+    {
+      "id": "nurse-desert-original-label",
+      "passed": true
+    },
+    {
+      "id": "nurse-desert-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-desert-original-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-desert-original-callee",
+      "passed": true
+    },
+    {
+      "id": "nurse-fourside-original-label",
+      "passed": true
+    },
+    {
+      "id": "nurse-fourside-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-fourside-original-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-fourside-original-callee",
+      "passed": true
+    },
+    {
+      "id": "nurse-summers-original-label",
+      "passed": true
+    },
+    {
+      "id": "nurse-summers-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-summers-original-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-summers-original-callee",
+      "passed": true
+    },
+    {
+      "id": "nurse-scaraba-original-label",
+      "passed": true
+    },
+    {
+      "id": "nurse-scaraba-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-scaraba-original-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-scaraba-original-callee",
+      "passed": true
+    },
+    {
+      "id": "nurse-moonside-original-label",
+      "passed": true
+    },
+    {
+      "id": "nurse-moonside-pinned-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-moonside-original-price",
+      "passed": true
+    },
+    {
+      "id": "nurse-moonside-original-callee",
+      "passed": true
+    },
+    {
+      "id": "nurse-moonside-original-inversion-bracket",
+      "passed": true
+    },
+    {
+      "id": "healer-onett-original-label",
+      "passed": true
+    },
+    {
+      "id": "healer-onett-price0-original",
+      "passed": true
+    },
+    {
+      "id": "healer-onett-price0-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-onett-price1-original",
+      "passed": true
+    },
+    {
+      "id": "healer-onett-price1-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-onett-price2-original",
+      "passed": true
+    },
+    {
+      "id": "healer-onett-price2-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-twoson-original-label",
+      "passed": true
+    },
+    {
+      "id": "healer-twoson-price0-original",
+      "passed": true
+    },
+    {
+      "id": "healer-twoson-price0-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-twoson-price1-original",
+      "passed": true
+    },
+    {
+      "id": "healer-twoson-price1-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-twoson-price2-original",
+      "passed": true
+    },
+    {
+      "id": "healer-twoson-price2-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-threed-original-label",
+      "passed": true
+    },
+    {
+      "id": "healer-threed-price0-original",
+      "passed": true
+    },
+    {
+      "id": "healer-threed-price0-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-threed-price1-original",
+      "passed": true
+    },
+    {
+      "id": "healer-threed-price1-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-threed-price2-original",
+      "passed": true
+    },
+    {
+      "id": "healer-threed-price2-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-desert-original-label",
+      "passed": true
+    },
+    {
+      "id": "healer-desert-price0-original",
+      "passed": true
+    },
+    {
+      "id": "healer-desert-price0-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-desert-price1-original",
+      "passed": true
+    },
+    {
+      "id": "healer-desert-price1-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-desert-price2-original",
+      "passed": true
+    },
+    {
+      "id": "healer-desert-price2-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-fourside-original-label",
+      "passed": true
+    },
+    {
+      "id": "healer-fourside-price0-original",
+      "passed": true
+    },
+    {
+      "id": "healer-fourside-price0-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-fourside-price1-original",
+      "passed": true
+    },
+    {
+      "id": "healer-fourside-price1-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-fourside-price2-original",
+      "passed": true
+    },
+    {
+      "id": "healer-fourside-price2-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-summers-original-label",
+      "passed": true
+    },
+    {
+      "id": "healer-summers-price0-original",
+      "passed": true
+    },
+    {
+      "id": "healer-summers-price0-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-summers-price1-original",
+      "passed": true
+    },
+    {
+      "id": "healer-summers-price1-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-summers-price2-original",
+      "passed": true
+    },
+    {
+      "id": "healer-summers-price2-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-scaraba-original-label",
+      "passed": true
+    },
+    {
+      "id": "healer-scaraba-price0-original",
+      "passed": true
+    },
+    {
+      "id": "healer-scaraba-price0-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-scaraba-price1-original",
+      "passed": true
+    },
+    {
+      "id": "healer-scaraba-price1-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-scaraba-price2-original",
+      "passed": true
+    },
+    {
+      "id": "healer-scaraba-price2-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-moonside-original-label",
+      "passed": true
+    },
+    {
+      "id": "healer-moonside-price0-original",
+      "passed": true
+    },
+    {
+      "id": "healer-moonside-price0-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-moonside-price1-original",
+      "passed": true
+    },
+    {
+      "id": "healer-moonside-price1-pinned",
+      "passed": true
+    },
+    {
+      "id": "healer-moonside-price2-original",
+      "passed": true
+    },
+    {
+      "id": "healer-moonside-price2-pinned",
+      "passed": true
+    },
+    {
+      "id": "atm-original-card-caller-label",
+      "passed": true
+    },
+    {
+      "id": "atm-original-card-guard",
+      "passed": true
+    },
+    {
+      "id": "atm-original-card-jump",
+      "passed": true
+    },
+    {
+      "id": "atm-redux-card-guard",
+      "passed": true
+    },
+    {
+      "id": "atm-original-five-digits",
+      "passed": true
+    },
+    {
+      "id": "atm-original-normal-sounds",
+      "passed": true
+    },
+    {
+      "id": "atm-redux-refund-before-retry",
+      "passed": true
+    },
+    {
+      "id": "atm-redux-account-preflight",
+      "passed": true
+    },
+    {
+      "id": "atm-redux-wallet-preflight",
+      "passed": true
+    },
+    {
+      "id": "active-try_give_money",
+      "passed": true
+    },
+    {
+      "id": "active-try_deposit_money",
+      "passed": true
+    },
+    {
+      "id": "doctor-original-exact-status-group",
+      "passed": true
+    },
+    {
+      "id": "nurse-original-exact-status-groups",
+      "passed": true
+    },
+    {
+      "id": "nurse-original-hp-pp-target-treatment",
+      "passed": true
+    }
+  ],
+  "originalSourceSpans": [
+    {
+      "start": "C90000",
+      "endExclusive": "C90008",
+      "rawSha256": "3bc8f33f43302fb76646cb6a26cd50a402a3c99da1f5c9f2ac1e9565caea2a36",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C90008",
+      "endExclusive": "C90010",
+      "rawSha256": "10797b572e19bb99f252490256ddb023bbdc5d2841413cac2aebc95fa0187b95",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C90010",
+      "endExclusive": "C9002B",
+      "rawSha256": "87c73e96051a96014ecd1cd8a6bbd37aafac06d36db221a09d0ee77f752e584b",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "jump_if_flag_set": 1,
+        "halt_with_prompt": 1,
+        "line_break": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9002B",
+      "endExclusive": "C90033",
+      "rawSha256": "9cac1cd69c756dc60ea1e700cb77f84fc1fad681c21a07f78a5b8f107689fe6c",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C90033",
+      "endExclusive": "C90067",
+      "rawSha256": "ef10f79e978d3f9b94671365583f81f5fe569147274db0a9ac4d9693b533dcbd",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "line_break": 2,
+        "halt_with_prompt": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C90067",
+      "endExclusive": "C9006F",
+      "rawSha256": "1a9b070b18d018807bdd09b9399fe600779122b3db56dafb666ffd1aae3e0003",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9006F",
+      "endExclusive": "C90077",
+      "rawSha256": "5965a9080f8c136838047be55e52b2c3cb892ef3185e96ff0559626ac0548678",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C90077",
+      "endExclusive": "C9007F",
+      "rawSha256": "d1c1f58edb6e97664e0d24acc0c1a924fdafb6c6592111aa6d46c21902e63c62",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9007F",
+      "endExclusive": "C9008D",
+      "rawSha256": "cd52647630c5c1658bf98d54c77afb672617d4042aa28af7702521093a468597",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "set_event_flag": 1,
+        "call_text": 1,
+        "clear_event_flag": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9008D",
+      "endExclusive": "C90095",
+      "rawSha256": "8cb719529354853e2f29cfe5797b73fe15a1c75ffebdd65558bb8d042767f83c",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C90095",
+      "endExclusive": "C9009D",
+      "rawSha256": "e37e76e4da7e1173376ac567113bfffe746eb3cc5159689df2cfb64bb7bf43ac",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9009D",
+      "endExclusive": "C900BD",
+      "rawSha256": "4f3330a82734221be3e6d47e820e951bce08f4122c1a0d2f5659eb436b06fb75",
+      "opcodeCounts": {
+        "set_event_flag": 1,
+        "store_to_argmem": 1,
+        "jump_if_flag_set": 1,
+        "halt_with_prompt": 1,
+        "line_break": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C900BD",
+      "endExclusive": "C900C5",
+      "rawSha256": "049cae7bd26f562520706d1415c3269561123d2bd8a84b0d07ac845d28317ca7",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C900C5",
+      "endExclusive": "C900CD",
+      "rawSha256": "a60411175115eb28953c6029c5c89da6eddd7baad30f90f1586b41ef9a5bb74a",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C900CD",
+      "endExclusive": "C900D5",
+      "rawSha256": "357d6bf44b53e67d48154c4b33d22c0287708b0df0332b2a42dbf520fc3cb4c9",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C900D5",
+      "endExclusive": "C900DD",
+      "rawSha256": "f71c241849df3f5219ed2429294f4cd2f23b617fdd03b82e92a338428e0cd84d",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C900DD",
+      "endExclusive": "C900E8",
+      "rawSha256": "559425fc4123744c3a74922c228f4d20fa5e5aed81c249b25c9179400cbd6fe5",
+      "opcodeCounts": {
+        "set_event_flag": 1,
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C900E8",
+      "endExclusive": "C900F9",
+      "rawSha256": "f998e34ea0f7caedd0b07e509f29609d82b8fd946326549373d780cdc92a84cc",
+      "opcodeCounts": {
+        "set_event_flag": 2,
+        "store_to_argmem": 1,
+        "call_text": 1,
+        "clear_event_flag": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C91745",
+      "endExclusive": "C91748",
+      "rawSha256": "cd6332b6647e2015e32b497919a2d0de7963dd24a0e6173288713c52c04e726d",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C91799",
+      "endExclusive": "C9179C",
+      "rawSha256": "12bdede8487049de4722f35f664068c56f9332c425b8a291c79f7e3426390453",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917ED",
+      "endExclusive": "C917F0",
+      "rawSha256": "9ec83849678b783eb2268b0c1728e1ff0c153d2a141f4c2c9647d61b17082ddf",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C91748",
+      "endExclusive": "C9174B",
+      "rawSha256": "3dc8c56c2379706f35f0c7bf3281f9154423a23b64ed07f1021d756866b0506c",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9179C",
+      "endExclusive": "C9179F",
+      "rawSha256": "cd6332b6647e2015e32b497919a2d0de7963dd24a0e6173288713c52c04e726d",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917F0",
+      "endExclusive": "C917F3",
+      "rawSha256": "12bdede8487049de4722f35f664068c56f9332c425b8a291c79f7e3426390453",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9174B",
+      "endExclusive": "C9174E",
+      "rawSha256": "de07ce98d004c14529d4695d6c48c015911b402887b2707cfe1c857cadbad9ae",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9179F",
+      "endExclusive": "C917A2",
+      "rawSha256": "3dc8c56c2379706f35f0c7bf3281f9154423a23b64ed07f1021d756866b0506c",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917F3",
+      "endExclusive": "C917F6",
+      "rawSha256": "cd6332b6647e2015e32b497919a2d0de7963dd24a0e6173288713c52c04e726d",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9174E",
+      "endExclusive": "C91751",
+      "rawSha256": "2cc7af3be6c056f107250c682727c84be41a1428d251a330d3bc94acb7f793ca",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917A2",
+      "endExclusive": "C917A5",
+      "rawSha256": "de07ce98d004c14529d4695d6c48c015911b402887b2707cfe1c857cadbad9ae",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917F6",
+      "endExclusive": "C917F9",
+      "rawSha256": "3dc8c56c2379706f35f0c7bf3281f9154423a23b64ed07f1021d756866b0506c",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C91751",
+      "endExclusive": "C91754",
+      "rawSha256": "2cc7af3be6c056f107250c682727c84be41a1428d251a330d3bc94acb7f793ca",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917A5",
+      "endExclusive": "C917A8",
+      "rawSha256": "de07ce98d004c14529d4695d6c48c015911b402887b2707cfe1c857cadbad9ae",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917F9",
+      "endExclusive": "C917FC",
+      "rawSha256": "3dc8c56c2379706f35f0c7bf3281f9154423a23b64ed07f1021d756866b0506c",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C91754",
+      "endExclusive": "C91757",
+      "rawSha256": "d5bd3c33a50ea0cf80747af4d52da0ecc06dc2d15a2336e41f1bc82129d02cfb",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917A8",
+      "endExclusive": "C917AB",
+      "rawSha256": "28f7dfbd9f52c7bcd0f9a75cdd53b17700422f00fae391d5ba0cd74b14468f2e",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917FC",
+      "endExclusive": "C917FF",
+      "rawSha256": "2cc7af3be6c056f107250c682727c84be41a1428d251a330d3bc94acb7f793ca",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C91757",
+      "endExclusive": "C9175A",
+      "rawSha256": "63b588022b9a11b0bf1dbb259e54ee2c6c4f13cabb80f1962db420a0540854c9",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917AB",
+      "endExclusive": "C917AE",
+      "rawSha256": "775f3cb78132e6d97ff92e79dd2292b12fd6134cb039e6a966f7415506af9c8c",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917FF",
+      "endExclusive": "C91802",
+      "rawSha256": "fd4dcda88240068f8fdf5f789af2d95dafe5a42f00a6d776b0be2e03966c5d35",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C9175A",
+      "endExclusive": "C9175D",
+      "rawSha256": "2cc7af3be6c056f107250c682727c84be41a1428d251a330d3bc94acb7f793ca",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C917AE",
+      "endExclusive": "C917B1",
+      "rawSha256": "de07ce98d004c14529d4695d6c48c015911b402887b2707cfe1c857cadbad9ae",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C91802",
+      "endExclusive": "C91805",
+      "rawSha256": "3dc8c56c2379706f35f0c7bf3281f9154423a23b64ed07f1021d756866b0506c",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C680A6",
+      "endExclusive": "C680C2",
+      "rawSha256": "b68e3aeded8e25bc3e2d149dccbb1224246303c6ab5542695a40b7feb5be214c",
+      "opcodeCounts": {
+        "check_if_character_has_item": 1,
+        "jump_if_true": 1,
+        "halt_without_prompt": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "start": "C62D30",
+      "endExclusive": "C63029",
+      "rawSha256": "2a66ac60dac0e8ce0fd371086be2f222a66cc581e244704693ce44f2bfe7e31f",
+      "opcodeCounts": {
+        "store_to_argmem": 1,
+        "copy_to_argmem": 3,
+        "halt_with_prompt": 14,
+        "line_break": 21,
+        "load_string_to_memory": 2,
+        "print_horizontal_text_string": 1,
+        "create_selection_menu": 1,
+        "clear_text_line": 2,
+        "jump_multi": 1,
+        "halt_without_prompt": 1,
+        "end_block": 4,
+        "have_enough_money_in_atm": 3,
+        "jump_if_false": 5,
+        "call_text": 4,
+        "have_enough_money": 3,
+        "jump_if_true": 3,
+        "take_from_wallet": 1,
+        "add_to_atm": 2,
+        "show_wallet_window": 3,
+        "play_sound": 2,
+        "pause": 2,
+        "print_number": 2,
+        "jump": 10,
+        "copy_active_memory_to_storage": 1,
+        "take_from_atm": 1,
+        "add_to_wallet": 1,
+        "copy_storage_memory_to_active": 1,
+        "print_stat": 3,
+        "force_text_alignment": 2,
+        "create_number_selector": 1
+      }
+    },
+    {
+      "start": "C91259",
+      "endExclusive": "C9128D",
+      "rawSha256": "8170bdadb8546629032cd7baa28bc0090e67c3102caf108e5d709d01d6194f62",
+      "opcodeCounts": {
+        "copy_storage_memory_to_active": 2,
+        "inflict_status": 1,
+        "take_from_wallet": 1,
+        "show_wallet_window": 1,
+        "play_sound": 1,
+        "pause": 1,
+        "halt_with_prompt": 1,
+        "line_break": 2,
+        "jump": 1
+      }
+    },
+    {
+      "start": "C91345",
+      "endExclusive": "C913A4",
+      "rawSha256": "5959f62facfb7ea84882ee81ba52b6459aa81e1b9b8012e597cc8a0a66d6b1de",
+      "opcodeCounts": {
+        "have_enough_money": 1,
+        "jump_if_true": 1,
+        "take_from_wallet": 1,
+        "show_wallet_window": 1,
+        "copy_storage_memory_to_active": 4,
+        "inflict_status": 3,
+        "swap_working_and_arg_memory": 1,
+        "recover_hp_percent": 1,
+        "recover_pp_percent": 1,
+        "play_sound": 1,
+        "pause": 1,
+        "print_char_name": 1,
+        "halt_with_prompt": 1,
+        "line_break": 1,
+        "halt_without_prompt": 1,
+        "end_block": 1
+      }
+    }
+  ],
+  "originalMutationCommands": {
+    "doctor": [
+      [
+        "inflict_status",
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      [
+        "take_from_wallet",
+        [
+          0
+        ]
+      ],
+      [
+        "show_wallet_window",
+        []
+      ],
+      [
+        "play_sound",
+        [
+          37
+        ]
+      ]
+    ],
+    "nurse": [
+      [
+        "take_from_wallet",
+        [
+          0
+        ]
+      ],
+      [
+        "show_wallet_window",
+        []
+      ],
+      [
+        "inflict_status",
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      [
+        "inflict_status",
+        [
+          0,
+          2,
+          1
+        ]
+      ],
+      [
+        "inflict_status",
+        [
+          0,
+          6,
+          1
+        ]
+      ],
+      [
+        "recover_hp_percent",
+        [
+          0,
+          100
+        ]
+      ],
+      [
+        "recover_pp_percent",
+        [
+          0,
+          100
+        ]
+      ],
+      [
+        "play_sound",
+        [
+          37
+        ]
+      ]
+    ]
+  },
+  "allPassed": true,
+  "limits": [
+    "Original locally parsed bytecode and pinned textual source contracts; no original-machine execution, dialogue payload or ROM bytes are included.",
+    "Validates selected wrapper entry identity, price, callees, ATM five-digit/cap-preflight contracts and exact parsed treatment commands. It does not prove native transactions; those are in the separate real-dispatch reports."
+  ]
+}

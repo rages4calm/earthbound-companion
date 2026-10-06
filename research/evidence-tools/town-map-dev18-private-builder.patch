@@ -1,0 +1,29 @@
+--- a/tools/build_maternalbound_pack.py
++++ b/tools/build_maternalbound_pack.py
+@@ -23,6 +23,7 @@
+ from maternalbound_presentation import convert_title, convert_special_text, convert_ending
+ from maternalbound_audio import convert_audio
+ from maternalbound_psi import convert_psi
++from maternalbound_town_maps import convert_town_maps
+ from audit_redux_movement import audit as audit_movement
+ 
+ BASE = 0x100000
+@@ -303,6 +304,7 @@
+     title = convert_title(rom,assets)
+     special_text = convert_special_text(rom,bridge,assets)
+     ending = convert_ending(rom,args.project,assets)
++    town_maps = convert_town_maps(rom,assets)
+     audio = convert_audio(rom,assets)
+     psi = convert_psi(rom,assets)
+     events = convert_events(rom,bridge,assets)
+@@ -335,8 +337,8 @@
+         "packSha256":sha(args.output.read_bytes()),"compiledRomSha256":sha(rom),"dialogueSha256":sha(text),
+         "legacyEntryMappings":legacy_mapping_count,"romAddressTextMappings":len(rom_entries),"nativeExports":exports,"requiredNativeEntries":len(used),"requiredUnmappedEntries":required_missing,
+         "unusedUnmappedEntryCount":len(missing),"dialogueBytes":len(dialogue),
+-        "convertedAssets":["dialogue/dialogue.bin", "US/data/dont_care_names.bin"]+[x["asset"] for x in tables]+sprites["assets"]+fonts["assets"]+windows["assets"]+graphics["assets"]+battle_art["assets"]+title["assets"]+special_text["assets"]+ending["assets"]+audio["assets"]+psi["assets"]+events["assets"]+world["assets"]+auxiliary["assets"]+encounters["assets"],"convertedTables":tables,
+-        "sprites":sprites,"fonts":fonts,"windows":windows,"indexedGraphics":graphics,"battleArt":battle_art,"title":title,"specialText":special_text,"ending":ending,"audio":audio,"psiEffects":psi,"events":events,"world":world,"encounters":encounters,
++        "convertedAssets":["dialogue/dialogue.bin", "US/data/dont_care_names.bin"]+[x["asset"] for x in tables]+sprites["assets"]+fonts["assets"]+windows["assets"]+graphics["assets"]+battle_art["assets"]+title["assets"]+special_text["assets"]+ending["assets"]+town_maps["assets"]+audio["assets"]+psi["assets"]+events["assets"]+world["assets"]+auxiliary["assets"]+encounters["assets"],"convertedTables":tables,
++        "sprites":sprites,"fonts":fonts,"windows":windows,"indexedGraphics":graphics,"battleArt":battle_art,"title":title,"specialText":special_text,"ending":ending,"townMaps":town_maps,"audio":audio,"psiEffects":psi,"events":events,"world":world,"encounters":encounters,
+         "auxiliaryTables":auxiliary,"enemyAi":{"records":enemy_count,"scriptedEnemies":ai_scripts,"sourceOffset":ai_source},
+         "spriteVariants":{"tables":4,"characters":17,"entries":544},
+         "expandedNaming":{"defaultEntries":49,"stride":11,"characterLimit":6,"foodLimit":10},

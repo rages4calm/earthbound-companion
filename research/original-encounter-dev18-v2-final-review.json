@@ -1,0 +1,765 @@
+{
+  "schemaVersion": 1,
+  "reviewedSourceReferences": [
+    {
+      "path": "src/game/battle.c",
+      "sha256": "dc63db4360d44539d96ee1436c4d282aceebf4256252a9698bb1ab4497bb638c"
+    },
+    {
+      "path": "src/game/battle_actions.c",
+      "sha256": "dc847cfbbcea8c2aafd527a061006db2017032d981cfbad0f22c0ba5453a95dd"
+    },
+    {
+      "path": "src/game/inventory.c",
+      "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+    },
+    {
+      "path": "src/game/window.c",
+      "sha256": "7776ba2620809d8a5477a1183a3fc42d48fd1078b05b045aab15ffe136069db1"
+    },
+    {
+      "path": "port/unix/platform/sdl2_input.c",
+      "sha256": "6c18764bf6f0dbf573e9a0cb4a0e2f8590e79f0c45c4dc94e2cddee8a835de76"
+    },
+    {
+      "path": "asm/battle/ko_target.asm",
+      "sha256": "84e388e8105621b0a6ba795b278f286ae6aedb0f657cbb7cd2e34eb8558a2a51"
+    },
+    {
+      "path": "asm/battle/init_scripted.asm",
+      "sha256": "48ce2a45170b051a23df02865a8e5a66a1e80ff3166f62e57b6d8c6e5c645f9d"
+    },
+    {
+      "path": "asm/battle/main_battle_routine.asm",
+      "sha256": "50abb497ef4b6a3b69f29309af7f8f7d1e79a95c4500ee712c4b7a24edd1d7fd"
+    },
+    {
+      "path": "asm/battle/init_common.asm",
+      "sha256": "a309b10dc8fbf4a25c9d5a51cfdf603e8c397fb57d7de83b2a63270159b14c86"
+    },
+    {
+      "path": "asm/battle/actions/rainbow_of_colours.asm",
+      "sha256": "90b29842e48639d4d28976d9b6449d8b17a40da0e38a57ee73390dd8eb63eaf5"
+    }
+  ],
+  "reproductionFlags": {
+    "build": "_BuildScratch\\audit-dev18-v2-build\\companion",
+    "native-source": "_BuildScratch\\audit-dev18-v2-complete-source",
+    "assets": "_BuildScratch\\interpreter-gap-dev16-fresh-original.pak",
+    "runtime": "_BuildScratch\\audit-dev18-v2-runtime",
+    "scratch": "_BuildScratch\\original-encounter-dev18-v2-final",
+    "output": "research\\original-encounter-dev18-v2-final-review.json",
+    "project": "_BuildScratch\\MaternalBound-Redux\\Project",
+    "groups": "1,48,448,471",
+    "seeds": "1"
+  },
+  "toolVersion": "dev18-full-encounter-v9-regression",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "originalPack": true,
+  "runtimeSha256": {
+    "player.exe": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "observer.exe": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92"
+  },
+  "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "privateBuild": {
+    "driverSourceSha256": "1e25296ec8622e949b1136831d93ec57943986ddb38e3d2fece3005e7251661b",
+    "executableSha256": "e59561962d9f1cfa07a6c303883be8a38a4aeb3cc98ac68ebd2ff93865c0e86a",
+    "productionExecutableSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "productionLibrarySha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "nativeExitCode": 0,
+  "nativeLogSha256": "0c74bd3a7f4d2a0e22b21c93c5a27a9a019e7261ceb43bf8f5df9bb73d12f2ec",
+  "cases": [
+    {
+      "group": 1,
+      "seed": 1,
+      "incomingSuppression": 0,
+      "clumsyRescuePrerequisite": null,
+      "observedOutcome": "victory",
+      "passed": true,
+      "errors": [],
+      "actual": {
+        "id": 0,
+        "group": 1,
+        "steps": 969,
+        "depth": 1,
+        "result": 0,
+        "turns": 1,
+        "menuChoices": 4,
+        "actionCount": 1,
+        "postBattleFlag": 0,
+        "overworldBattleMode": 0,
+        "statusSuppression": 0,
+        "intangibility": 120,
+        "autoFight": 0,
+        "rollingDisabled": 0,
+        "rollingHalf": 0,
+        "metersStable": 1,
+        "bank": 1005,
+        "depositBookkeeping": 5,
+        "battleMoney": 5,
+        "battleExpPerSurvivor": 1,
+        "itemDrop": 88,
+        "partyExp": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "partyStatus": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "enemyStates": [
+          [
+            159,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "kos": [
+          {
+            "before": 159,
+            "after": 159,
+            "slot": 8,
+            "hp": 0,
+            "aff": 1,
+            "skip": 0,
+            "finalAction": 0,
+            "exp": 3,
+            "money": 5
+          }
+        ],
+        "actionRows": [
+          [
+            3,
+            1
+          ]
+        ],
+        "battlePhases": [
+          0,
+          4,
+          8,
+          17,
+          20,
+          21,
+          22,
+          32,
+          33,
+          37,
+          38,
+          40,
+          41,
+          42
+        ]
+      }
+    },
+    {
+      "group": 48,
+      "seed": 1,
+      "incomingSuppression": 0,
+      "clumsyRescuePrerequisite": null,
+      "observedOutcome": "victory",
+      "passed": true,
+      "errors": [],
+      "actual": {
+        "id": 1,
+        "group": 48,
+        "steps": 994,
+        "depth": 1,
+        "result": 0,
+        "turns": 1,
+        "menuChoices": 4,
+        "actionCount": 2,
+        "postBattleFlag": 0,
+        "overworldBattleMode": 0,
+        "statusSuppression": 0,
+        "intangibility": 120,
+        "autoFight": 0,
+        "rollingDisabled": 0,
+        "rollingHalf": 0,
+        "metersStable": 1,
+        "bank": 1029,
+        "depositBookkeeping": 29,
+        "battleMoney": 29,
+        "battleExpPerSurvivor": 89,
+        "itemDrop": 0,
+        "partyExp": [
+          89,
+          89,
+          89,
+          89
+        ],
+        "partyStatus": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "enemyStates": [
+          [
+            81,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "kos": [
+          {
+            "before": 81,
+            "after": 81,
+            "slot": 8,
+            "hp": 0,
+            "aff": 1,
+            "skip": 0,
+            "finalAction": 65,
+            "exp": 356,
+            "money": 29
+          }
+        ],
+        "actionRows": [
+          [
+            3,
+            1
+          ],
+          [
+            127,
+            1
+          ]
+        ],
+        "battlePhases": [
+          0,
+          4,
+          8,
+          17,
+          20,
+          21,
+          22,
+          32,
+          37,
+          38,
+          40,
+          41,
+          42
+        ]
+      }
+    },
+    {
+      "group": 448,
+      "seed": 1,
+      "incomingSuppression": 0,
+      "clumsyRescuePrerequisite": null,
+      "observedOutcome": "victory",
+      "passed": true,
+      "errors": [],
+      "actual": {
+        "id": 2,
+        "group": 448,
+        "steps": 782,
+        "depth": 1,
+        "result": 0,
+        "turns": 1,
+        "menuChoices": 4,
+        "actionCount": 1,
+        "postBattleFlag": 0,
+        "overworldBattleMode": 0,
+        "statusSuppression": 0,
+        "intangibility": 0,
+        "autoFight": 0,
+        "rollingDisabled": 0,
+        "rollingHalf": 0,
+        "metersStable": 1,
+        "bank": 1048,
+        "depositBookkeeping": 48,
+        "battleMoney": 48,
+        "battleExpPerSurvivor": 13,
+        "itemDrop": 0,
+        "partyExp": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "partyStatus": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "enemyStates": [
+          [
+            131,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "kos": [
+          {
+            "before": 131,
+            "after": 131,
+            "slot": 8,
+            "hp": 0,
+            "aff": 1,
+            "skip": 0,
+            "finalAction": 0,
+            "exp": 50,
+            "money": 48
+          }
+        ],
+        "actionRows": [
+          [
+            3,
+            1
+          ]
+        ],
+        "battlePhases": [
+          0,
+          4,
+          8,
+          17,
+          20,
+          21,
+          22,
+          32,
+          37,
+          38,
+          40,
+          41,
+          42
+        ]
+      }
+    },
+    {
+      "group": 471,
+      "seed": 1,
+      "incomingSuppression": 0,
+      "clumsyRescuePrerequisite": null,
+      "observedOutcome": "victory",
+      "passed": true,
+      "errors": [],
+      "actual": {
+        "id": 3,
+        "group": 471,
+        "steps": 4430,
+        "depth": 1,
+        "result": 0,
+        "turns": 4,
+        "menuChoices": 16,
+        "actionCount": 15,
+        "postBattleFlag": 0,
+        "overworldBattleMode": 0,
+        "statusSuppression": 0,
+        "intangibility": 0,
+        "autoFight": 0,
+        "rollingDisabled": 0,
+        "rollingHalf": 0,
+        "metersStable": 1,
+        "bank": 7968,
+        "depositBookkeeping": 6968,
+        "battleMoney": 6968,
+        "battleExpPerSurvivor": 84435,
+        "itemDrop": 0,
+        "partyExp": [
+          84435,
+          84435,
+          84435,
+          84435
+        ],
+        "partyStatus": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "enemyStates": [
+          [
+            190,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "kos": [
+          {
+            "before": 27,
+            "after": 83,
+            "slot": 8,
+            "hp": 3344,
+            "aff": 0,
+            "skip": 1,
+            "finalAction": 290,
+            "exp": 0,
+            "money": 0
+          },
+          {
+            "before": 190,
+            "after": 190,
+            "slot": 8,
+            "hp": 0,
+            "aff": 1,
+            "skip": 0,
+            "finalAction": 0,
+            "exp": 337738,
+            "money": 6968
+          }
+        ],
+        "actionRows": [
+          [
+            3,
+            13
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            32,
+            1
+          ]
+        ],
+        "battlePhases": [
+          0,
+          4,
+          8,
+          17,
+          20,
+          21,
+          22,
+          32,
+          37,
+          38,
+          40,
+          41,
+          42,
+          43,
+          44
+        ]
+      }
+    }
+  ],
+  "allPassed": true,
+  "diagnostic": false,
+  "limits": [
+    "Prepared four-player level99/HP9999/stats255, real scripted BS_ENTER, swirl, battle constructors/AI/menus/attacks/KO/rewards/map reload/cleanup. Actual platform input replay of pulsed A feeds real dispatcher; no physical-controller/pixels/audio/story reachability certification.",
+    "Source-derived money/EXP expectations use actual KO victim IDs. Complete lifecycle mutation assertions; no independent whole original-machine encounter execution.",
+    "Actual packed Clumsy rescue flag is set for rescue cases; explicit missing-flag controls execute its failure teleport/no-reward branch. Incoming suppression1 controls must remain1 as original scripted wrapper preserves it. A-only Diamond fights can legitimately lose to reflected shield damage; defeat checks exclude rewards.",
+    "Observer hash provenance only. Prepared group membership/source data unchanged. Owner saves/assets/ROMs untouched."
+  ],
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false,
+  "executedSourceSnapshot": "_BuildScratch\\audit-dev18-v2-complete-source",
+  "executedSourceReferences": [
+    {
+      "path": "src/game/battle.c",
+      "sha256": "dc63db4360d44539d96ee1436c4d282aceebf4256252a9698bb1ab4497bb638c"
+    },
+    {
+      "path": "src/game/battle_actions.c",
+      "sha256": "dc847cfbbcea8c2aafd527a061006db2017032d981cfbad0f22c0ba5453a95dd"
+    },
+    {
+      "path": "src/game/inventory.c",
+      "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+    },
+    {
+      "path": "src/game/window.c",
+      "sha256": "7776ba2620809d8a5477a1183a3fc42d48fd1078b05b045aab15ffe136069db1"
+    },
+    {
+      "path": "port/unix/platform/sdl2_input.c",
+      "sha256": "6c18764bf6f0dbf573e9a0cb4a0e2f8590e79f0c45c4dc94e2cddee8a835de76"
+    },
+    {
+      "path": "asm/battle/ko_target.asm",
+      "sha256": "84e388e8105621b0a6ba795b278f286ae6aedb0f657cbb7cd2e34eb8558a2a51"
+    },
+    {
+      "path": "asm/battle/init_scripted.asm",
+      "sha256": "48ce2a45170b051a23df02865a8e5a66a1e80ff3166f62e57b6d8c6e5c645f9d"
+    },
+    {
+      "path": "asm/battle/main_battle_routine.asm",
+      "sha256": "50abb497ef4b6a3b69f29309af7f8f7d1e79a95c4500ee712c4b7a24edd1d7fd"
+    },
+    {
+      "path": "asm/battle/init_common.asm",
+      "sha256": "a309b10dc8fbf4a25c9d5a51cfdf603e8c397fb57d7de83b2a63270159b14c86"
+    },
+    {
+      "path": "asm/battle/actions/rainbow_of_colours.asm",
+      "sha256": "90b29842e48639d4d28976d9b6449d8b17a40da0e38a57ee73390dd8eb63eaf5"
+    }
+  ]
+}

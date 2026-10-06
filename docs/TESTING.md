@@ -1,6 +1,6 @@
 # Testing the native conversion
 
-The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. See [the current audit](NATIVE-AUDIT-dev17.md) for evidence and remaining work.
+The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. See [the current audit](NATIVE-AUDIT-dev18.md) for evidence and remaining work.
 
 ## Three different kinds of evidence
 
@@ -74,3 +74,9 @@ Further testing still includes untested turn/encounter branches and groups, unte
 ## Dev.17 reproducible additions
 
 Use the explicit input paths in each tool's `--help`. `redux_pack_upgrade_qa_dev17.py` exercises the real ROM-driven graphics update on isolated copies. `runtime_asset_alignment_qa_dev17.py` varies private pack alignment and tests cleanup/failure controls. `native_sanitizer_qa_dev17.py` builds a separate instrumented runtime; `native_sanitizer_scenarios_dev17.py` links its untouched archive into whitelisted source-prerequisite scenarios. Menu, transition, item-selector and battle-art tools are bound by the manifests linked from the current audit. Historical manifest paths beginning `tools/` refer to the same byte-identical public file under `scripts/`; the manifests retain their original paths and hashes. Reports from dev.16 v9 or dev.17 v3 retain those executed identities.
+
+## Dev.18 additions
+
+The current ledger and [dev.18 audit](NATIVE-AUDIT-dev18.md) bind the final player/observer and exact native/data inputs. Presentation drivers compare the owner's compiled Original/Redux routines with the actual native map, intro, sequence and swirl consumers. Title/save drivers run real parents and fresh-process cold restores. Sprite upload checks cover every nonempty packed frame; equipment checks cover all 85 equipment IDs and four PC flags. These are bounded subsystem/parent checks, not full quests or story completion.
+
+Use `verify_redux_package_dev18.py` for the actual clean ZIP, self-contained owner-ROM setup, soundtrack repair, native story/seed opening and actual checkpoint recovery. `redux_pack_upgrade_qa_dev18.py` runs the real ROM-driven historical pack update. Runtime and sanitizer reports retain the exact binaries that executed them. Historical builder hashes describe historical input construction; the current builder creates dev.18 packs.

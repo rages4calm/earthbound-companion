@@ -1,0 +1,164 @@
+{
+  "format": "presentation-release-dev18-v2-final-v1",
+  "allPassed": true,
+  "evidenceReports": {
+    "originalMap": {
+      "path": "research/original-map-dev18-v2-final-review.json",
+      "sha256": "85b49f20041e11ae5329748e00e31ac4f5ef6c832f678ea91538433be5511f71"
+    },
+    "reduxMap": {
+      "path": "research/redux-map-dev18-v2-final-review.json",
+      "sha256": "b5553144a67c23eac6447f5f894cf3de2e115b4eab9d101e217953465b304e44"
+    },
+    "originalIntro": {
+      "path": "research/original-intro-dev18-v2-final-review.json",
+      "sha256": "8a2fcdbd88552951da1235dbfd21b25f3b3b89e8710a1ad6128808818df22fbd"
+    },
+    "reduxIntro": {
+      "path": "research/redux-intro-dev18-v2-final-review.json",
+      "sha256": "dc0e8c314df18fee2682f8811749a69d9529f7f154988c63269d2bf476a12f0b"
+    },
+    "originalSequences": {
+      "path": "research/original-sequence-dev18-v2-final-review.json",
+      "sha256": "ef3850f2fa1d0697ea5dda5759434a4f05d1ff7b24226da6db9d8e3b5e41638e"
+    },
+    "reduxSequences": {
+      "path": "research/redux-sequence-dev18-v2-final-review.json",
+      "sha256": "73e3dd04b9cfc31ec6052ee8c245ef4b4b8b5fec8d1111f2c5da76d4c7ec933a"
+    },
+    "originalSwirls": {
+      "path": "research/original-swirl-dev18-v2-final-review.json",
+      "sha256": "2351dab5a1749956952f069ead55b6928be5f1e2d4bcc924d8283c75d93b07b3"
+    },
+    "reduxSwirls": {
+      "path": "research/redux-swirl-dev18-v2-final-review.json",
+      "sha256": "279b5f2c3d0dfb009c1e03a8e39c244d42ce839a52b8c12d208f3a800a3e6b3f"
+    },
+    "starmanAppearanceCold": {
+      "path": "research/starman-parent-dev18-v2-final-review.json",
+      "sha256": "d122e242db9b6a5699be3005a75cf772c3c0ca18c14ea285a73ce9f79941571e"
+    },
+    "swirlFullParentCold": {
+      "path": "research/swirl-cold-dev18-v2-final-review.json",
+      "sha256": "89f4bc87b33047d0e032a69fef92062e4f019851dfe2de3dea9ec2488ab8bd79"
+    },
+    "originalFullEncounters": {
+      "path": "research/original-encounter-dev18-v2-final-review.json",
+      "sha256": "5f45f88692a140aea49705071720561f6c63e0afd4867819d712befd789d4893"
+    },
+    "reduxFullEncounters": {
+      "path": "research/redux-encounter-dev18-v2-final-review.json",
+      "sha256": "ab83022c5ebb6c104d3a3e89ab9a86c725cfbb33b59990d7918ffbd67d801b6a"
+    }
+  },
+  "evidenceTools": [
+    {
+      "path": "tools/retained_presentation_qa_dev21.py",
+      "sha256": "34c97d593c73ff1333aef3f80977ef16f0d0618aef5b10db7089f35bc0526970"
+    },
+    {
+      "path": "tools/intro_retained_presentation_qa_dev22.py",
+      "sha256": "1b8e24b875b9142eff04f740439c8522df8aa966251b26fbc7db1d80f7fb0753"
+    },
+    {
+      "path": "tools/sequence_animation_consumer_qa_dev23.py",
+      "sha256": "2ca4a394b67643634595d772c251a625ebc6ad8605d44a4dcb428ee0ce89f300"
+    },
+    {
+      "path": "tools/starman_appearance_parent_qa_dev23.py",
+      "sha256": "1738209e84fcc19889af21161ec1f6d8d3f45d57d742155027afdd8d915ff0a0"
+    },
+    {
+      "path": "tools/swirl_source_consumer_qa_dev24.py",
+      "sha256": "d6fa513704b5791b9eab28c33b046d243ef614cb501ca10095c8d0275ae735b2"
+    },
+    {
+      "path": "tools/swirl_transition_cold_qa_dev24.py",
+      "sha256": "b2f7517de0aa9acd52a1925b2e36d5e03e381cb69eb112c1392bbe13d5aa8afa"
+    },
+    {
+      "path": "tools/battle_full_encounter_qa_dev18.py",
+      "sha256": "e557b41b62c0e165a9c8e2b6f325231497dc1a3211cc1af96649a4366506544a"
+    },
+    {
+      "path": "tools/freeze_presentation_release_evidence_dev18.py",
+      "sha256": "c1855799bd087ab738bdcd8299ff856a06d2a6ef44c12cf0a0a3fc55242068e6"
+    }
+  ],
+  "runtime": {
+    "playerSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "observerSha256": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92",
+    "executedPlayerLibrarySha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+    "distinctObserver": true,
+    "observerExecutionScope": "Paired final observer executable is identified here; these drivers execute the final player production library. Observer-specific execution/parity is outside this manifest."
+  },
+  "frozenRuntimeProvenance": {
+    "path": "_BuildScratch/audit-dev18-v2-runtime/provenance.json",
+    "sha256": "8b9d184268f1c3c1c5e7a82dd60310fd4624860dd553055be2730bf882fe5688"
+  },
+  "frozenFullNativePatch": {
+    "path": "_BuildScratch/audit-dev18-v2-source/native-companion.patch",
+    "sha256": "955557298e7b3f92d1b9e3ab8f952ffccea2707b6ebd16c9f2bbd442d665ae12"
+  },
+  "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "originalPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "executedAssertions": 6794,
+  "assertionsByReport": {
+    "originalMap": 56,
+    "reduxMap": 56,
+    "originalIntro": 19,
+    "reduxIntro": 19,
+    "originalSequences": 130,
+    "reduxSequences": 130,
+    "originalSwirls": 3075,
+    "reduxSwirls": 3075,
+    "starmanAppearanceCold": 98,
+    "swirlFullParentCold": 136
+  },
+  "actualFullEncounters": 8,
+  "starmanPreparedParents": 2,
+  "starmanColdProcesses": 2,
+  "swirlPreparedWarmColdParents": 4,
+  "swirlColdProcesses": 4,
+  "skippedCases": 0,
+  "archivedPriorProofManifests": [
+    {
+      "path": "research/converter-family-dev21-dev17-v4-manifest.json",
+      "sha256": "a58d1b5c6ad26cb531f170f910d0fdef551bfa131501ca7711707ec60e8f8bd4"
+    },
+    {
+      "path": "research/intro-family-dev22-dev17-v4-manifest.json",
+      "sha256": "8491133e7eef905f42c62ddf9dbf0e546ffed9842b5f60f5d305804d9c8af1be"
+    },
+    {
+      "path": "research/sequence-animation-dev23-dev17-v4-manifest.json",
+      "sha256": "e08d37be6be8b22c42c512f50b1a4a27e4eeb21bc075ade3c0286d3e704dd74b"
+    },
+    {
+      "path": "research/swirl-consumer-dev24-dev17-v4-manifest.json",
+      "sha256": "a927d0c38a848d9b34fc775d3aac9372d0cabd8a850a15a750ff44da848aee53"
+    }
+  ],
+  "coverage": [
+    "Both profiles: all six Town Maps plus two game-over leader variants through actual upload/render consumers.",
+    "Both profiles: three company logo parents, Produced/Presented actual callroutine consumers, full gas-station child/fade cleanup with source images.",
+    "Both profiles: six retained animation records/all28 actual native displayed frames, metadata, upload spans and source images.",
+    "Both profiles: all six swirl sequence types/all126 frames under8 option variants, native timeline plus independent two-window mask compositions.",
+    "Both profiles: packed Starman appearance parent until first naturally completed movement wait, mid-appearance strict bootstrap-only cold continuation.",
+    "Both profiles: scripted regular/boss warm+cold parent continuation, immediate restored first/second HDMA masks and final gameplay state/cleanup.",
+    "Both profiles: four complete prepared encounters run real modes/menu/turns/KO/reward/cleanup."
+  ],
+  "limits": [
+    "Starman appearance proof stops before later dialogue/smoke/boss story stages; surrounding party/position prerequisites are prepared.",
+    "Encounter parties are deliberately level99. Natural campaign progression and all battle-script branches are not claimed.",
+    "Swirl composition uses uniform BG1 and independent Boolean windows; complete hardware audiovisual/color-math parity is not claimed.",
+    "Cold scene checkpoints here use this candidate content; cross-version/cross-content migration and inactive held-mask caches are outside these reports.",
+    "No serialized save size/version change in the swirl correction. Root-owned migration/setup proofs remain separate.",
+    "This manifest identifies a tested integrated candidate, not a public release/publication confirmation."
+  ],
+  "ownerWrites": false,
+  "sharedSourcesModifiedByThisTask": false,
+  "redistributableGameAssetsIncluded": false
+}

@@ -1,0 +1,762 @@
+{
+  "toolSha256": "1738209e84fcc19889af21161ec1f6d8d3f45d57d742155027afdd8d915ff0a0",
+  "production": {
+    "driverSourceSha256": "389729280439dba0f121355b8420dbfcfe159e693cf388b2fd6b079ed2d1bb4f",
+    "executableSha256": "1ad79e4d9c41debf2eb9827ab45f0b70334f8ac90358f707dae8abf1a10de76f",
+    "productionExecutableSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "productionLibrarySha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "sourceHotspot43Sha256": "5a8a8acd371bf5250e5d6ab1518406c1ea7f1479f888ffac9796c0debbae1250",
+  "preparedLeaderXY": [
+    2556,
+    524
+  ],
+  "rows": [
+    {
+      "profile": "Original",
+      "continuation": "warm",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "entryReference": "10B732",
+      "nativeExit": 0,
+      "checks": {
+        "nativeExitZero": true,
+        "naturallyCompleted": true,
+        "returnedToPackedText": true,
+        "actualActor622": true,
+        "sourceSpriteId": true,
+        "sourceLastAnimationFrame": true,
+        "completionSignalConsumed": true,
+        "partyPreserved": true,
+        "flagsPreserved": true,
+        "exactOneSourceWait": true,
+        "signalProduced": true,
+        "allEightFramesObserved": true
+      },
+      "passed": true,
+      "stages": [
+        {
+          "tag": "wait-entry",
+          "steps": 2,
+          "frames": 0,
+          "depth": 3,
+          "top": 5,
+          "waits": 1,
+          "signals": 0,
+          "actorSeen": 1,
+          "frameMask": 0,
+          "actor": 12,
+          "spriteId": 303,
+          "actorXY": [
+            0,
+            0
+          ],
+          "var1": 0,
+          "pc": 28925,
+          "bank": 1,
+          "scriptSleep": 0,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        },
+        {
+          "tag": "appearance-completed",
+          "steps": 116,
+          "frames": 113,
+          "depth": 2,
+          "top": 28,
+          "waits": 1,
+          "signals": 1,
+          "actorSeen": 1,
+          "frameMask": 255,
+          "actor": 12,
+          "spriteId": 303,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 7,
+          "pc": 29020,
+          "bank": 1,
+          "scriptSleep": -2,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "Original",
+      "continuation": "checkpoint",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "entryReference": "10B732",
+      "nativeExit": 0,
+      "checks": {
+        "nativeExitZero": true,
+        "naturallyCompleted": true,
+        "returnedToPackedText": true,
+        "actualActor622": true,
+        "sourceSpriteId": true,
+        "sourceLastAnimationFrame": true,
+        "completionSignalConsumed": true,
+        "partyPreserved": true,
+        "flagsPreserved": true,
+        "exactOneSourceWait": true,
+        "signalProduced": true,
+        "allEightFramesObserved": true,
+        "realMidFrameCheckpoint": true
+      },
+      "passed": true,
+      "stages": [
+        {
+          "tag": "wait-entry",
+          "steps": 2,
+          "frames": 0,
+          "depth": 3,
+          "top": 5,
+          "waits": 1,
+          "signals": 0,
+          "actorSeen": 1,
+          "frameMask": 0,
+          "actor": 12,
+          "spriteId": 303,
+          "actorXY": [
+            0,
+            0
+          ],
+          "var1": 0,
+          "pc": 28925,
+          "bank": 1,
+          "scriptSleep": 0,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        },
+        {
+          "tag": "saved",
+          "steps": 74,
+          "frames": 73,
+          "depth": 3,
+          "top": 5,
+          "waits": 1,
+          "signals": 0,
+          "actorSeen": 1,
+          "frameMask": 7,
+          "actor": 12,
+          "spriteId": 303,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 2,
+          "pc": 15401,
+          "bank": 1,
+          "scriptSleep": 7,
+          "state": 0,
+          "bgVofs": 65535,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        },
+        {
+          "tag": "appearance-completed",
+          "steps": 116,
+          "frames": 113,
+          "depth": 2,
+          "top": 28,
+          "waits": 1,
+          "signals": 1,
+          "actorSeen": 1,
+          "frameMask": 255,
+          "actor": 12,
+          "spriteId": 303,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 7,
+          "pc": 29020,
+          "bank": 1,
+          "scriptSleep": -2,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "Original",
+      "continuation": "cold",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "entryReference": "10B732",
+      "nativeExit": 0,
+      "checks": {
+        "nativeExitZero": true,
+        "naturallyCompleted": true,
+        "returnedToPackedText": true,
+        "actualActor622": true,
+        "sourceSpriteId": true,
+        "sourceLastAnimationFrame": true,
+        "completionSignalConsumed": true,
+        "partyPreserved": true,
+        "flagsPreserved": true,
+        "bootstrapOnlyRestore": true,
+        "sameFinal.depth": true,
+        "sameFinal.top": true,
+        "sameFinal.spriteId": true,
+        "sameFinal.actorXY": true,
+        "sameFinal.var1": true,
+        "sameFinal.pc": true,
+        "sameFinal.bank": true,
+        "sameFinal.scriptSleep": true,
+        "sameFinal.state": true,
+        "sameFinal.bgVofs": true,
+        "sameFinal.party": true,
+        "sameFinal.flags": true,
+        "sameFinal.xy": true,
+        "sameFinal.pending": true
+      },
+      "passed": true,
+      "stages": [
+        {
+          "tag": "cold-restored",
+          "steps": 0,
+          "frames": 0,
+          "depth": 3,
+          "top": 5,
+          "waits": 0,
+          "signals": 0,
+          "actorSeen": 0,
+          "frameMask": 0,
+          "actor": 12,
+          "spriteId": 303,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 2,
+          "pc": 15401,
+          "bank": 1,
+          "scriptSleep": 7,
+          "state": 0,
+          "bgVofs": 65535,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        },
+        {
+          "tag": "appearance-completed",
+          "steps": 42,
+          "frames": 40,
+          "depth": 2,
+          "top": 28,
+          "waits": 0,
+          "signals": 1,
+          "actorSeen": 1,
+          "frameMask": 252,
+          "actor": 12,
+          "spriteId": 303,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 7,
+          "pc": 29020,
+          "bank": 1,
+          "scriptSleep": -2,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "Redux",
+      "continuation": "warm",
+      "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "entryReference": "C67501",
+      "nativeExit": 0,
+      "checks": {
+        "nativeExitZero": true,
+        "naturallyCompleted": true,
+        "returnedToPackedText": true,
+        "actualActor622": true,
+        "sourceSpriteId": true,
+        "sourceLastAnimationFrame": true,
+        "completionSignalConsumed": true,
+        "partyPreserved": true,
+        "flagsPreserved": true,
+        "exactOneSourceWait": true,
+        "signalProduced": true,
+        "allEightFramesObserved": true
+      },
+      "passed": true,
+      "stages": [
+        {
+          "tag": "wait-entry",
+          "steps": 18,
+          "frames": 14,
+          "depth": 3,
+          "top": 5,
+          "waits": 1,
+          "signals": 0,
+          "actorSeen": 1,
+          "frameMask": 0,
+          "actor": 12,
+          "spriteId": 481,
+          "actorXY": [
+            0,
+            0
+          ],
+          "var1": 0,
+          "pc": 28925,
+          "bank": 0,
+          "scriptSleep": 0,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        },
+        {
+          "tag": "appearance-completed",
+          "steps": 132,
+          "frames": 127,
+          "depth": 2,
+          "top": 28,
+          "waits": 1,
+          "signals": 1,
+          "actorSeen": 1,
+          "frameMask": 255,
+          "actor": 12,
+          "spriteId": 481,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 7,
+          "pc": 29020,
+          "bank": 0,
+          "scriptSleep": -2,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "Redux",
+      "continuation": "checkpoint",
+      "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "entryReference": "C67501",
+      "nativeExit": 0,
+      "checks": {
+        "nativeExitZero": true,
+        "naturallyCompleted": true,
+        "returnedToPackedText": true,
+        "actualActor622": true,
+        "sourceSpriteId": true,
+        "sourceLastAnimationFrame": true,
+        "completionSignalConsumed": true,
+        "partyPreserved": true,
+        "flagsPreserved": true,
+        "exactOneSourceWait": true,
+        "signalProduced": true,
+        "allEightFramesObserved": true,
+        "realMidFrameCheckpoint": true
+      },
+      "passed": true,
+      "stages": [
+        {
+          "tag": "wait-entry",
+          "steps": 18,
+          "frames": 14,
+          "depth": 3,
+          "top": 5,
+          "waits": 1,
+          "signals": 0,
+          "actorSeen": 1,
+          "frameMask": 0,
+          "actor": 12,
+          "spriteId": 481,
+          "actorXY": [
+            0,
+            0
+          ],
+          "var1": 0,
+          "pc": 28925,
+          "bank": 0,
+          "scriptSleep": 0,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        },
+        {
+          "tag": "saved",
+          "steps": 90,
+          "frames": 87,
+          "depth": 3,
+          "top": 5,
+          "waits": 1,
+          "signals": 0,
+          "actorSeen": 1,
+          "frameMask": 7,
+          "actor": 12,
+          "spriteId": 481,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 2,
+          "pc": 15401,
+          "bank": 0,
+          "scriptSleep": 7,
+          "state": 0,
+          "bgVofs": 65535,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        },
+        {
+          "tag": "appearance-completed",
+          "steps": 132,
+          "frames": 127,
+          "depth": 2,
+          "top": 28,
+          "waits": 1,
+          "signals": 1,
+          "actorSeen": 1,
+          "frameMask": 255,
+          "actor": 12,
+          "spriteId": 481,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 7,
+          "pc": 29020,
+          "bank": 0,
+          "scriptSleep": -2,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "Redux",
+      "continuation": "cold",
+      "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "entryReference": "C67501",
+      "nativeExit": 0,
+      "checks": {
+        "nativeExitZero": true,
+        "naturallyCompleted": true,
+        "returnedToPackedText": true,
+        "actualActor622": true,
+        "sourceSpriteId": true,
+        "sourceLastAnimationFrame": true,
+        "completionSignalConsumed": true,
+        "partyPreserved": true,
+        "flagsPreserved": true,
+        "bootstrapOnlyRestore": true,
+        "sameFinal.depth": true,
+        "sameFinal.top": true,
+        "sameFinal.spriteId": true,
+        "sameFinal.actorXY": true,
+        "sameFinal.var1": true,
+        "sameFinal.pc": true,
+        "sameFinal.bank": true,
+        "sameFinal.scriptSleep": true,
+        "sameFinal.state": true,
+        "sameFinal.bgVofs": true,
+        "sameFinal.party": true,
+        "sameFinal.flags": true,
+        "sameFinal.xy": true,
+        "sameFinal.pending": true
+      },
+      "passed": true,
+      "stages": [
+        {
+          "tag": "cold-restored",
+          "steps": 0,
+          "frames": 0,
+          "depth": 3,
+          "top": 5,
+          "waits": 0,
+          "signals": 0,
+          "actorSeen": 0,
+          "frameMask": 0,
+          "actor": 12,
+          "spriteId": 481,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 2,
+          "pc": 15401,
+          "bank": 0,
+          "scriptSleep": 7,
+          "state": 0,
+          "bgVofs": 65535,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        },
+        {
+          "tag": "appearance-completed",
+          "steps": 42,
+          "frames": 40,
+          "depth": 2,
+          "top": 28,
+          "waits": 0,
+          "signals": 1,
+          "actorSeen": 1,
+          "frameMask": 252,
+          "actor": 12,
+          "spriteId": 481,
+          "actorXY": [
+            2556,
+            508
+          ],
+          "var1": 7,
+          "pc": 29020,
+          "bank": 0,
+          "scriptSleep": -2,
+          "state": 0,
+          "bgVofs": 0,
+          "pending": 0,
+          "xy": [
+            2556,
+            524
+          ],
+          "party": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "flags": [
+            11
+          ]
+        }
+      ]
+    }
+  ],
+  "originalRomSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+  "originalSourceEntryPrefixSha256": "4926333f2821154868bf1f8d07b9c2da9d316255b6ae83d78f2346a653837745",
+  "originalSourceSpawnSprite": 303,
+  "reduxAppearanceSourceSha256": "23426b68d740d643652fbe8db5f0983bbaeeb1c841f579ed0b9bb7c8ec79e653",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "runtimeExecuted": true,
+  "preparedCases": 2,
+  "processes": 6,
+  "coldCases": 2,
+  "skippedCases": 0,
+  "executedAssertions": 98,
+  "allPassed": true,
+  "sourceIdentities": {
+    "asm/data/events/scripts/622.asm": "47229badd73f44ef642131baf901f6f31e5ab3790dea05f0590ae08ae4a75bdc",
+    "asm/data/events/C33C1D.asm": "589da62ecbb2e3c0e1873e8d13e484e12f61741ced09f7c9ca64fbfd40af50fb",
+    "src/game/display_text_cc.c": "7ccee8908df5b0a5c5891b99f5a3a7a222518f8d667bb2b319d31ae20b071415",
+    "src/entity/callroutine.c": "63835e5c1abd6af31c91ae0079e33997c8f99834b0b3ff94ea22b39e0f083c56",
+    "src/core/state_dump.c": "15a416ea8e9d28199641821b8c7523fc9ebffdb51bdbc32574d2d7f43a205665"
+  },
+  "limits": [
+    "Real packed C67501 entry creates its actual source sprite and runs complete EVENT622 appearance until the first WAIT_FOR_ACTIONSCRIPT naturally returns.",
+    "Surrounding quest/party are prepared: Ness only at source hotspot43 midpoint. Later capsule/smoke, dialogue, boss combat and full quest are not executed.",
+    "Checkpoint is saved naturally at animation frame2; each cold child bootstraps assets only, loads the state and runs the remaining real appearance without injected completion.",
+    "Prepared raw-frame art/render proofs are separate; parent evidence asserts sequencing/cleanup and cold state, not every composite visual frame."
+  ],
+  "ownerWrites": false
+}

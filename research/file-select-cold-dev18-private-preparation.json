@@ -1,0 +1,50 @@
+{
+  "format": "private-pure-phone-file-select-preparation-dev18-v1",
+  "base": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\title-producers-dev18-proposal-source",
+  "candidate": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-cold-dev18-proposal-source",
+  "changes": [
+    {
+      "path": "src/game/game_state.c",
+      "baseSha256": "4fc6ba0bf0ed71842f174004188c1a430cd33e67ef5cbb13aa6fc8091d45f4be",
+      "candidateSha256": "7929fa58c519450ead5a0dd729dabc3767f3356b39075efa8488629a238c4edb"
+    },
+    {
+      "path": "src/game/game_state.h",
+      "baseSha256": "382853bcad31480f82897be9a2511a4b7d384e5980d7966ce25d3c161740a2f4",
+      "candidateSha256": "34bfc901f455145c51afff81637cf755140b1fb62c48d76ccd03883f8c4ba261"
+    },
+    {
+      "path": "src/intro/file_select.c",
+      "baseSha256": "d2faa938a2ddaa5bc50b2d902679cfcc5373aa8b1d3051ec23b0d6f824919cca",
+      "candidateSha256": "ab4b241d04cbb447a1e33f48b7434ffae716e73d3a52191e498d76322841e1a1"
+    }
+  ],
+  "exactEdits": {
+    "src/game/game_state.h": [
+      {
+        "before": "bool load_game(int slot);",
+        "after": "bool load_game(int slot);\n/* Check phone-slot occupancy without applying/migrating live game state. */\nbool save_game_slot_occupied(int slot);"
+      }
+    ],
+    "src/game/game_state.c": [
+      {
+        "before": "/* fuzzy pickles. thats it thats the comment */\nbool save_game(int slot) {",
+        "after": "/* File-menu occupancy uses the same first-valid-copy ADD/XOR checks and\n * favourite-thing sentinel as load_game()/FILE_SELECT_MENU. A cold F6 restore\n * can resume after the slot-list builder, so its derived static presence flags\n * are unavailable. Inspect a local block rather than loading it into live\n * GameState/characters/event flags or performing inventory migrations. */\nbool save_game_slot_occupied(int slot) {\n    if (slot < 0 || slot >= SAVE_COUNT) return false;\n    SaveBlock block;\n    for (int copy = 0; copy < SAVE_COPY_COUNT; copy++) {\n        size_t offset = (size_t)(slot * SAVE_COPY_COUNT + copy) * sizeof(SaveBlock);\n        if (platform_save_read(&block, offset, sizeof(block)) != sizeof(block))\n            continue;\n        if (block.header.checksum == compute_add_checksum(&block) &&\n            block.header.checksum_complement == compute_xor_checksum(&block))\n            return block.game_state.favourite_thing[1] != 0;\n    }\n    return false;\n}\n\n/* fuzzy pickles. thats it thats the comment */\nbool save_game(int slot) {"
+      }
+    ],
+    "src/intro/file_select.c": [
+      {
+        "before": "if (i != (current_save_slot - 1) && !save_files_present[i]) {",
+        "after": "if (i != (current_save_slot - 1) && !save_game_slot_occupied(i)) {"
+      },
+      {
+        "before": "if (save_files_present[slot]) {",
+        "after": "/* Presence is derived from phone data; do not trust builder-only\n             * flags after a fresh-process restore of the selection child. */\n            if (save_game_slot_occupied(slot)) {"
+      }
+    ]
+  },
+  "toolSha256": "171773c54bde1158926c9bc183b7d109d576df6be711d2bd3ea380840d51defa",
+  "titleProposalFilesUnchanged": true,
+  "format16Unchanged": true,
+  "rootModified": false
+}

@@ -1,0 +1,29 @@
+--- a/tools/build_maternalbound_pack.py
++++ b/tools/build_maternalbound_pack.py
+@@ -26,6 +26,7 @@
+ from maternalbound_town_maps import convert_town_maps
+ from maternalbound_gas_station import convert_gas_station
+ from maternalbound_sequence_animations import convert_sequence_animations
++from maternalbound_swirls import convert_swirls
+ from audit_redux_movement import audit as audit_movement
+ 
+ BASE = 0x100000
+@@ -309,6 +310,7 @@
+     town_maps = convert_town_maps(rom,assets)
+     gas_station = convert_gas_station(rom,assets)
+     sequence_animations = convert_sequence_animations(rom,assets)
++    swirls = convert_swirls(rom,assets)
+     audio = convert_audio(rom,assets)
+     psi = convert_psi(rom,assets)
+     events = convert_events(rom,bridge,assets)
+@@ -341,8 +343,8 @@
+         "packSha256":sha(args.output.read_bytes()),"compiledRomSha256":sha(rom),"dialogueSha256":sha(text),
+         "legacyEntryMappings":legacy_mapping_count,"romAddressTextMappings":len(rom_entries),"nativeExports":exports,"requiredNativeEntries":len(used),"requiredUnmappedEntries":required_missing,
+         "unusedUnmappedEntryCount":len(missing),"dialogueBytes":len(dialogue),
+-        "convertedAssets":["dialogue/dialogue.bin", "US/data/dont_care_names.bin"]+[x["asset"] for x in tables]+sprites["assets"]+fonts["assets"]+windows["assets"]+graphics["assets"]+battle_art["assets"]+title["assets"]+special_text["assets"]+ending["assets"]+town_maps["assets"]+gas_station["assets"]+sequence_animations["assets"]+audio["assets"]+psi["assets"]+events["assets"]+world["assets"]+auxiliary["assets"]+encounters["assets"],"convertedTables":tables,
+-        "sprites":sprites,"fonts":fonts,"windows":windows,"indexedGraphics":graphics,"battleArt":battle_art,"title":title,"specialText":special_text,"ending":ending,"townMaps":town_maps,"gasStation":gas_station,"sequenceAnimations":sequence_animations,"audio":audio,"psiEffects":psi,"events":events,"world":world,"encounters":encounters,
++        "convertedAssets":["dialogue/dialogue.bin", "US/data/dont_care_names.bin"]+[x["asset"] for x in tables]+sprites["assets"]+fonts["assets"]+windows["assets"]+graphics["assets"]+battle_art["assets"]+title["assets"]+special_text["assets"]+ending["assets"]+town_maps["assets"]+gas_station["assets"]+sequence_animations["assets"]+swirls["assets"]+audio["assets"]+psi["assets"]+events["assets"]+world["assets"]+auxiliary["assets"]+encounters["assets"],"convertedTables":tables,
++        "sprites":sprites,"fonts":fonts,"windows":windows,"indexedGraphics":graphics,"battleArt":battle_art,"title":title,"specialText":special_text,"ending":ending,"townMaps":town_maps,"gasStation":gas_station,"sequenceAnimations":sequence_animations,"swirls":swirls,"audio":audio,"psiEffects":psi,"events":events,"world":world,"encounters":encounters,
+         "auxiliaryTables":auxiliary,"enemyAi":{"records":enemy_count,"scriptedEnemies":ai_scripts,"sourceOffset":ai_source},
+         "spriteVariants":{"tables":4,"characters":17,"entries":544},
+         "expandedNaming":{"defaultEntries":49,"stride":11,"characterLimit":6,"foodLimit":10},

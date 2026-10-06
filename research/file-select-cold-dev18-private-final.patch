@@ -1,0 +1,64 @@
+diff --git a/src/game/game_state.c b/src/game/game_state.c
+--- a/src/game/game_state.c
++++ b/src/game/game_state.c
+@@ -423,6 +423,25 @@
+         xor_sum ^= data[i];
+     }
+     return xor_sum;
++}
++
++/* File-menu occupancy uses the same first-valid-copy ADD/XOR checks and
++ * favourite-thing sentinel as load_game()/FILE_SELECT_MENU. A cold F6 restore
++ * can resume after the slot-list builder, so its derived static presence flags
++ * are unavailable. Inspect a local block rather than loading it into live
++ * GameState/characters/event flags or performing inventory migrations. */
++bool save_game_slot_occupied(int slot) {
++    if (slot < 0 || slot >= SAVE_COUNT) return false;
++    SaveBlock block;
++    for (int copy = 0; copy < SAVE_COPY_COUNT; copy++) {
++        size_t offset = (size_t)(slot * SAVE_COPY_COUNT + copy) * sizeof(SaveBlock);
++        if (platform_save_read(&block, offset, sizeof(block)) != sizeof(block))
++            continue;
++        if (block.header.checksum == compute_add_checksum(&block) &&
++            block.header.checksum_complement == compute_xor_checksum(&block))
++            return block.game_state.favourite_thing[1] != 0;
++    }
++    return false;
+ }
+ 
+ /* fuzzy pickles. thats it thats the comment */
+diff --git a/src/game/game_state.h b/src/game/game_state.h
+--- a/src/game/game_state.h
++++ b/src/game/game_state.h
+@@ -327,6 +327,8 @@
+ extern uint8_t current_save_slot; /* 1-indexed: 1, 2, or 3. Port of CURRENT_SAVE_SLOT BSS. */
+ bool save_game(int slot);
+ bool load_game(int slot);
++/* Check phone-slot occupancy without applying/migrating live game state. */
++bool save_game_slot_occupied(int slot);
+ bool erase_save(int slot);
+ 
+ /* Key Items pool self-test (Key Items pool feature, not a ROM routine):
+diff --git a/src/intro/file_select.c b/src/intro/file_select.c
+--- a/src/intro/file_select.c
++++ b/src/intro/file_select.c
+@@ -319,7 +319,7 @@
+     /* Copy is only shown if an empty slot exists to copy to (assembly condition:
+        slot != current_save_slot AND SAVE_FILES_PRESENT[slot] == 0) */
+     for (int i = 0; i < SAVE_COUNT; i++) {
+-        if (i != (current_save_slot - 1) && !save_files_present[i]) {
++        if (i != (current_save_slot - 1) && !save_game_slot_occupied(i)) {
+             add_menu_item("Copy", 2, 6, 0);
+             break;
+         }
+@@ -2029,7 +2029,9 @@
+             current_save_slot = (uint8_t)selected;   /* file_select_menu() did this */
+             if (selected == 0) { st->phase = FM_SELECT; continue; }
+             int slot = selected - 1;
+-            if (save_files_present[slot]) {
++            /* Presence is derived from phone data; do not trust builder-only
++             * flags after a fresh-process restore of the selection child. */
++            if (save_game_slot_occupied(slot)) {
+                 st->phase = FM_SUBMENU;              /* @VALID_FILE_SELECTED */
+             } else {
+                 game_state_init();

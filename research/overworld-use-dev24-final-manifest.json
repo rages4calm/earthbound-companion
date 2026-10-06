@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev24-complete-selected-overworld-use-freeze",
+  "frozenRuntime": "dev17-v4",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "selectedFullPauseParents": 310,
+  "coldContinuationsIncluded": 24,
+  "warmColdComparisons": 18,
+  "independentSourceChecks": 69,
+  "nativeProductionChanged": false,
+  "verifiedLedger": [
+    {
+      "profile": "original",
+      "report": "research/original-overworld-use-dev24-v4-final.json",
+      "fixtures": "research/original-overworld-use-fixtures-dev24-v4-final.json",
+      "selectedFullPauseParents": 155,
+      "coldContinuationsIncluded": 12,
+      "warmColdComparisons": 9,
+      "gammaRevivalOutcomes": {
+        "item": {
+          "success": 18,
+          "failure": 6
+        },
+        "psi": {
+          "success": 17,
+          "failure": 7
+        }
+      },
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "privateBuild": {
+        "driverSourceSha256": "3e079c4a3bdbe1155372c35a36b75a141f630f2f57ee6414f42268d746cb9b6a",
+        "executableSha256": "a44927ce9368ec3e9ffcd5c8843285ecfd9afb3a8636e811f6ad7b8c58914f73",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "executedSourceReferences": [
+        {
+          "path": "src/game/text.c",
+          "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+        },
+        {
+          "path": "src/game/battle_targeting.c",
+          "sha256": "7fcad00e1770f4d117a996a020cd2ca9653fc112d821b2947b4020b8f61b8525"
+        },
+        {
+          "path": "src/game/battle_psi.c",
+          "sha256": "7adc2f2729909117f5ae3d1847deba99db20ec6344e217d4ff4b5c666d34ca17"
+        },
+        {
+          "path": "src/game/battle_actions.c",
+          "sha256": "dc847cfbbcea8c2aafd527a061006db2017032d981cfbad0f22c0ba5453a95dd"
+        },
+        {
+          "path": "src/game/overworld_spawn.c",
+          "sha256": "17f16be9014058e45f5eb1cf30d49ee6f9be43b81fe2ba6a3252aa155d9d9075"
+        },
+        {
+          "path": "src/game/inventory.c",
+          "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+        },
+        {
+          "path": "src/core/mode_stack.h",
+          "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+        },
+        {
+          "path": "asm/overworld/use_item.asm",
+          "sha256": "e3beb4b67e9b5e96ddbf54c7cd507833ae5898b02bd2eb08a7addf651f0a0f53"
+        },
+        {
+          "path": "asm/overworld/open_menu.asm",
+          "sha256": "080d1c3c89db668e39b24313fdc84c214ca8c19dbb12f38bf530e462e780e6f2"
+        },
+        {
+          "path": "asm/text/menu/overworld_psi_menu.asm",
+          "sha256": "a4557b8d44864c9159336b976a1fd2c12361fbaffeb894c79c3a0b7be940616b"
+        },
+        {
+          "path": "asm/battle/actions/healing_alpha.asm",
+          "sha256": "0cca8bba99396ef8772420054ccdb67a19529b57cfb46167d80a2f2af635b1c7"
+        },
+        {
+          "path": "asm/battle/actions/healing_beta.asm",
+          "sha256": "ae502fdb4092536059ca585e29826250cce5831a5992ff7d9ad35ea76f2ee302"
+        },
+        {
+          "path": "asm/battle/actions/healing_gamma.asm",
+          "sha256": "925bc7cd22d80bdd2657e5560f71ca8e1d4e9be1a989484ebd916e0cb7fabd05"
+        },
+        {
+          "path": "asm/battle/actions/healing_omega.asm",
+          "sha256": "4bf974cffa5e417db8ee107b85d9c4038b816598c5abbc852a8d99d0b0f41c28"
+        },
+        {
+          "path": "asm/battle/revive_target.asm",
+          "sha256": "4cacf587de12e1f5b63ad0f883a894fdada6f452efb673810e86e37240d6e3fe"
+        },
+        {
+          "path": "asm/battle/actions/lifeup_common.asm",
+          "sha256": "28288c7b93b5b39a7703dcf98666cc8e9f5212f65c264085d3dea509770f594b"
+        },
+        {
+          "path": "asm/battle/recover_hp.asm",
+          "sha256": "ed551d90a34ff7f892e110cebfaac4e968f15038814770b430679ce39567bea4"
+        },
+        {
+          "path": "asm/battle/set_hp.asm",
+          "sha256": "78fdff400717589484c4867d45bbf7d3b38efca4af61ba5b998747ba70031ce3"
+        },
+        {
+          "path": "asm/battle/success_255.asm",
+          "sha256": "c77d43f523624168d5b8cc3cdc03cb8140b88e0e74d88e19c942cda8ebe85cbd"
+        }
+      ]
+    },
+    {
+      "profile": "redux",
+      "report": "research/redux-overworld-use-dev24-v4-final.json",
+      "fixtures": "research/redux-overworld-use-fixtures-dev24-v4-final.json",
+      "selectedFullPauseParents": 155,
+      "coldContinuationsIncluded": 12,
+      "warmColdComparisons": 9,
+      "gammaRevivalOutcomes": {
+        "item": {
+          "success": 19,
+          "failure": 5
+        },
+        "psi": {
+          "success": 17,
+          "failure": 7
+        }
+      },
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "privateBuild": {
+        "driverSourceSha256": "1a0ac4b59bcfa6616ef20e5b570a19700df24f46c242193e0c43f0e8e27cf35c",
+        "executableSha256": "8814df3844a94b7e05087b138108f387b0fc79516bccd9464944299cbb8e078b",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "executedSourceReferences": [
+        {
+          "path": "src/game/text.c",
+          "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+        },
+        {
+          "path": "src/game/battle_targeting.c",
+          "sha256": "7fcad00e1770f4d117a996a020cd2ca9653fc112d821b2947b4020b8f61b8525"
+        },
+        {
+          "path": "src/game/battle_psi.c",
+          "sha256": "7adc2f2729909117f5ae3d1847deba99db20ec6344e217d4ff4b5c666d34ca17"
+        },
+        {
+          "path": "src/game/battle_actions.c",
+          "sha256": "dc847cfbbcea8c2aafd527a061006db2017032d981cfbad0f22c0ba5453a95dd"
+        },
+        {
+          "path": "src/game/overworld_spawn.c",
+          "sha256": "17f16be9014058e45f5eb1cf30d49ee6f9be43b81fe2ba6a3252aa155d9d9075"
+        },
+        {
+          "path": "src/game/inventory.c",
+          "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+        },
+        {
+          "path": "src/core/mode_stack.h",
+          "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+        },
+        {
+          "path": "asm/overworld/use_item.asm",
+          "sha256": "e3beb4b67e9b5e96ddbf54c7cd507833ae5898b02bd2eb08a7addf651f0a0f53"
+        },
+        {
+          "path": "asm/overworld/open_menu.asm",
+          "sha256": "080d1c3c89db668e39b24313fdc84c214ca8c19dbb12f38bf530e462e780e6f2"
+        },
+        {
+          "path": "asm/text/menu/overworld_psi_menu.asm",
+          "sha256": "a4557b8d44864c9159336b976a1fd2c12361fbaffeb894c79c3a0b7be940616b"
+        },
+        {
+          "path": "asm/battle/actions/healing_alpha.asm",
+          "sha256": "0cca8bba99396ef8772420054ccdb67a19529b57cfb46167d80a2f2af635b1c7"
+        },
+        {
+          "path": "asm/battle/actions/healing_beta.asm",
+          "sha256": "ae502fdb4092536059ca585e29826250cce5831a5992ff7d9ad35ea76f2ee302"
+        },
+        {
+          "path": "asm/battle/actions/healing_gamma.asm",
+          "sha256": "925bc7cd22d80bdd2657e5560f71ca8e1d4e9be1a989484ebd916e0cb7fabd05"
+        },
+        {
+          "path": "asm/battle/actions/healing_omega.asm",
+          "sha256": "4bf974cffa5e417db8ee107b85d9c4038b816598c5abbc852a8d99d0b0f41c28"
+        },
+        {
+          "path": "asm/battle/revive_target.asm",
+          "sha256": "4cacf587de12e1f5b63ad0f883a894fdada6f452efb673810e86e37240d6e3fe"
+        },
+        {
+          "path": "asm/battle/actions/lifeup_common.asm",
+          "sha256": "28288c7b93b5b39a7703dcf98666cc8e9f5212f65c264085d3dea509770f594b"
+        },
+        {
+          "path": "asm/battle/recover_hp.asm",
+          "sha256": "ed551d90a34ff7f892e110cebfaac4e968f15038814770b430679ce39567bea4"
+        },
+        {
+          "path": "asm/battle/set_hp.asm",
+          "sha256": "78fdff400717589484c4867d45bbf7d3b38efca4af61ba5b998747ba70031ce3"
+        },
+        {
+          "path": "asm/battle/success_255.asm",
+          "sha256": "c77d43f523624168d5b8cc3cdc03cb8140b88e0e74d88e19c942cda8ebe85cbd"
+        }
+      ]
+    }
+  ],
+  "sourceContractReport": {
+    "path": "research/overworld-use-source-contracts-dev24.json",
+    "sha256": "268b94d01f131e6d9939cf157f5f7f6deabe1e1d07de643e2b014bf54b264940"
+  },
+  "files": [
+    {
+      "path": "tools/overworld_use_qa_dev24.py",
+      "sha256": "66548859083f45fc28fe6664af62838548c53d384b00e43fe9fdddf6bfc25aa6",
+      "bytes": 12185
+    },
+    {
+      "path": "tools/overworld_use_cases_dev24.py",
+      "sha256": "35b90e1578dd267a6f6058108c461d0ac58bcc8305552d67a98a328a63021d2c",
+      "bytes": 13174
+    },
+    {
+      "path": "tools/overworld_use_source_review_dev24.py",
+      "sha256": "fcf5aca6aec06b15702d23378f97c7bfaa9c1cda88c7a0a885511cdc603973b4",
+      "bytes": 7866
+    },
+    {
+      "path": "tools/write_overworld_use_manifest_dev24.py",
+      "sha256": "860583a5e3798e83c8f73e564b6f87346c6797f261919d4be46278b6654dd423",
+      "bytes": 6095
+    },
+    {
+      "path": "tools/barter_delivery_qa_dev20.py",
+      "sha256": "b85c2890cb250af29455ef364f73f662559d7ee611a61af71cebd4d73be3de43",
+      "bytes": 8549
+    },
+    {
+      "path": "tools/shop_transaction_qa_dev18.py",
+      "sha256": "0f7cdbf128474dc8a1f5402395132a2e41ad083bf6e4915af67c028df25b76fc",
+      "bytes": 16355
+    },
+    {
+      "path": "tools/transaction_menu_replay_dev20.py",
+      "sha256": "05ed1f6fbf4f3f26df120f2daca2905390fd6bdc15fdc9f1706aa825a90e2670",
+      "bytes": 3791
+    },
+    {
+      "path": "tools/battle_action_catalog_qa.py",
+      "sha256": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823",
+      "bytes": 40111
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "97f3c8cea7d1f5155ad4fd218ead2876f6693c6ead748860cc322fb8a41cece1",
+      "bytes": 22410
+    },
+    {
+      "path": "tools/maternalbound_dialogue.py",
+      "sha256": "54038806cb18cb575c576c616f5c31b9c30ae0c957cecd2a6674b153efc2da87",
+      "bytes": 26455
+    },
+    {
+      "path": "research/overworld-use-dev24-evidence.md",
+      "sha256": "e5dd1e7ba8f8bdaa3b0072bd34f301288d1ce08a673194566c2805152d315a5d",
+      "bytes": 5361
+    },
+    {
+      "path": "research/overworld-use-source-contracts-dev24.json",
+      "sha256": "268b94d01f131e6d9939cf157f5f7f6deabe1e1d07de643e2b014bf54b264940",
+      "bytes": 9868
+    },
+    {
+      "path": "research/original-overworld-use-dev24-v4-final.json",
+      "sha256": "bebf92573ed4304885bac0cf9463bb87fba06602f7ca41d24ac52e422860d743",
+      "bytes": 4737689
+    },
+    {
+      "path": "research/original-overworld-use-fixtures-dev24-v4-final.json",
+      "sha256": "40c74fa246f8c1170a695dd8c541c8afd39a4ee7db597c122be1968f225694da",
+      "bytes": 972272
+    },
+    {
+      "path": "research/redux-overworld-use-dev24-v4-final.json",
+      "sha256": "c6f10f4c7a752d22c88ce45551e83764b3d749e23bf454a103ba459daabacec7",
+      "bytes": 4713736
+    },
+    {
+      "path": "research/redux-overworld-use-fixtures-dev24-v4-final.json",
+      "sha256": "40c74fa246f8c1170a695dd8c541c8afd39a4ee7db597c122be1968f225694da",
+      "bytes": 972272
+    }
+  ],
+  "limits": [
+    "Prepared source-prerequisite full pause parents; actual production menus, target/effect children and platform replay input. No post-entry result/state or completion injection; no natural controller/map/story reachability proof.",
+    "Cold counts are included in parent counts; comparisons/checks are separate evidence units. No complete item/PSI family or conversion percentage claim.",
+    "Gamma expected success uses a non-consuming peek of actual serialized RNG and original strict threshold; separate Original ROM/pinned metadata/control-token review is not SNES CPU execution.",
+    "Exact target HP/PP/status and inventory/pool/storage/queue are checked. Frame counters/current roller progress, pixels/audio delivery, observer execution and full playthrough remain unproved.",
+    "Qualified pilot fixture priority, primary-status and nonyielding capture assumptions are documented; no native defect or production change established. Existing frozen reports are unchanged."
+  ]
+}

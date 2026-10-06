@@ -1,0 +1,74 @@
+{
+  "format": "private-complete-title-builds-dev18-v1",
+  "source": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-proposal-source",
+  "builds": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-builds",
+  "runtime": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-runtime",
+  "results": [
+    {
+      "mode": "player",
+      "commands": [
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "-S",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-proposal-source\\port\\unix",
+          "-B",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-builds\\player",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_C_COMPILER=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\gcc.exe",
+          "-DCMAKE_MAKE_PROGRAM=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\ninja.exe",
+          "-DSDL2_DIR=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\SDL2-2.32.10\\x86_64-w64-mingw32\\lib\\cmake\\SDL2",
+          "-DEB_RUNTIME_ASSETS=ON",
+          "-DEB_QA_OBSERVER=OFF"
+        ],
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "--build",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-builds\\player",
+          "--target",
+          "earthbound",
+          "-j4"
+        ]
+      ],
+      "executableSha256": "81bfdc211818e1c430335d74e54cf87fec250cb09c3ac8b8d649249eb0248bb9",
+      "archiveSha256": "96827ffaf0905244067aea6556fcb2ffeb43ee2859f250b848c46e6a8ee91158",
+      "cmakeCacheSha256": "c8998fb05111b8bc8cfd44ed41d17d7f0cc9d5a43f9dc45f6de60245978568a4",
+      "compileCommandsSha256": "32479ec5a66c8cd368db59f859b30be58e9d8e6e0678b661ccc3e4c905384298"
+    },
+    {
+      "mode": "observer",
+      "commands": [
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "-S",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-proposal-source\\port\\unix",
+          "-B",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-builds\\observer",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_C_COMPILER=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\gcc.exe",
+          "-DCMAKE_MAKE_PROGRAM=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\ninja.exe",
+          "-DSDL2_DIR=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\SDL2-2.32.10\\x86_64-w64-mingw32\\lib\\cmake\\SDL2",
+          "-DEB_RUNTIME_ASSETS=ON",
+          "-DEB_QA_OBSERVER=ON"
+        ],
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "--build",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-slot-glyph-dev18-builds\\observer",
+          "--target",
+          "earthbound",
+          "-j4"
+        ]
+      ],
+      "executableSha256": "098e11532baf7ca6bb0738576af3afb12ea9caedf37bfc8212685d1723afca31",
+      "archiveSha256": "e1b026591418c10fc6eeba9ed3a316ba4d591e5617ce633b3a1f3e7549f62d80",
+      "cmakeCacheSha256": "41091eea2c362683b80bf8ed89ac34a8b21a3be277991c114d2fbc6c645ae825",
+      "compileCommandsSha256": "7a10a7e8ae77e6bef826009cb01e353d0d6ddf7195288e66ce100b7fb28af392"
+    }
+  ],
+  "toolSha256": "5ac6f3da60246d6fcd80b6b1eb5b38ab6cd706c5d46214e1f7189e0211340cc4",
+  "rootBuildsModified": false
+}

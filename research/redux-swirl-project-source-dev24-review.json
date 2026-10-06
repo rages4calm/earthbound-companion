@@ -1,0 +1,1174 @@
+{
+  "toolSha256": "a8e77c9369f379a2760dfb7359821f72cf926a494f649b1d5264ad437c02060f",
+  "sourceReviewSha256": "6434e4751b177a82caf16205e2e2927381fb7f68f53e7b4e805e56c54be0e52b",
+  "romSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "sourceYamlSha256": "42de2ed925e514ef23a7c7bf3a000b3f5e41db77da7092db28168ac9c2b02b2b",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "checks": [
+    {
+      "check": "type1-source-metadata",
+      "passed": true
+    },
+    {
+      "check": "type1-frame0-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 0,
+      "sourceMode": 1,
+      "pngSha256": "190a77a215189f71ea60fe43513f941c674b9729d4a5c9c3fbca84ee39879618",
+      "derivedMaskSha256": "4f81904a9b06c58572a0e5769b3b4ffb99e7bd4be88ee8c2b64a804f483d9dc6",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame1-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 1,
+      "sourceMode": 1,
+      "pngSha256": "ea86ccab02207104c78029194164e8f0f6ee60ca692c30562a7ab58283401705",
+      "derivedMaskSha256": "2baf3c9a5f12c6188ad467a198cec562b1de02a4e2f9d8c5593d54b97f81bb02",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame2-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 2,
+      "sourceMode": 4,
+      "pngSha256": "4fd09b5cd572ca6755bd80f135034913f7c940c965f748d3ad155fd26a58e8de",
+      "derivedMaskSha256": "480d00e04c77e2deddb9ad61a871e6627a373e97447a0cd3d839d0bdab3e8de8",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame3-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 3,
+      "sourceMode": 4,
+      "pngSha256": "ddcdb6e2c20875a4882758b28b509ecad80cd57001454bbab93fcd43a0907466",
+      "derivedMaskSha256": "d15f57ece83e0bec0ab7a771d17d5051aab7ae48ebf7b1e368dafe54b123c71b",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame4-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 4,
+      "sourceMode": 4,
+      "pngSha256": "67b34071bd978fa8ce72bc43856e79730462a9d4eef76701348712093203db39",
+      "derivedMaskSha256": "8106c1f149e2c03f87881c41bca36d0687cd74d36c325ee6094731267f9628dc",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame5-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 5,
+      "sourceMode": 4,
+      "pngSha256": "6445492ce7d057fe59d6542e068e0965429cf01f152f6b80a209356c55f6db39",
+      "derivedMaskSha256": "f1c25816a9bb38eb5810860d4cf8092332cf71c92a34508fb800ee4036c3badd",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame6-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 6,
+      "sourceMode": 4,
+      "pngSha256": "8969f94898f0feda5b71cff49da1d96211aa7d0269d26e5abbbb991c04c9b35f",
+      "derivedMaskSha256": "0ae5a36c7dc1705ad35882972978bedbb50a3a1134d3e58d7c2a4fdda424aa71",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame7-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 7,
+      "sourceMode": 4,
+      "pngSha256": "f27b829e079b17da6d80e0338b1c693ffa200b44acc79f83c7a72f2b5cbe815a",
+      "derivedMaskSha256": "950f02b50ef8bd5031215baa83a4482182fda9abfc3114df03b58febc6051ec8",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame8-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 8,
+      "sourceMode": 4,
+      "pngSha256": "787f28a670d92d8b59ef6241c09129b603e1180c8afef9df75c3d812b62d8b41",
+      "derivedMaskSha256": "92a0dc54636324d3d0f20d3d9a03ba7ec3c2b1428ed6194fbe89ceb13e6e0eae",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame9-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 9,
+      "sourceMode": 4,
+      "pngSha256": "a0817bc040c1524dfa25507aa7a12e69c40df0a18f4a826d9f2a50a16a1f97a8",
+      "derivedMaskSha256": "1af64afa9d8889c0bbb95b319696827d93302f278fd47417066d8b10b8644898",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame10-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 10,
+      "sourceMode": 4,
+      "pngSha256": "a7ff8a348045d308fed9c6130b25e726fd61e0afd5333d3a491d8e268972a3e9",
+      "derivedMaskSha256": "d6e3772d937edc6d6ced4ec3177a69a5b60ca111fe498d9d929051e0da972791",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame11-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 11,
+      "sourceMode": 4,
+      "pngSha256": "7e237b69354b4092489d91383186b7bf0f0af8ce160a9f7cdb2d61d68d484709",
+      "derivedMaskSha256": "f03af59ad268f3f25a8db4eb788c40005b8db9c4efabe9562781f5aef3a41d20",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame12-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 12,
+      "sourceMode": 4,
+      "pngSha256": "1fd0d29defef50ffc6431650a132968b9b9c7c18ff50bb0152b6615992b9a8a0",
+      "derivedMaskSha256": "e86bbe7bb2494d98abb57832ae6ff43578687b1f7bde6c5576caccdec9fbaf24",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame13-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 13,
+      "sourceMode": 4,
+      "pngSha256": "f7e428b787ce966fd2f5cc517bd163ab806fe73f212dc776a138614abe0b1d41",
+      "derivedMaskSha256": "5871f629d8d33720dc35af26bfdcfbe78901482a79cf7dacaff13bd37e1fdc72",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame14-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 14,
+      "sourceMode": 4,
+      "pngSha256": "f768e61e945f162451c79f9e400fab2b4b0f13123c666a6028561ce34c03dd90",
+      "derivedMaskSha256": "c46daed68db18cf8e5c5db2cf6333863d97aba7239530cb8f0cd23187ab5dc72",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame15-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 15,
+      "sourceMode": 4,
+      "pngSha256": "bded7932d03bd4223d1c5e4bb12afad12ce781698ad473cbcbe68093262fc45b",
+      "derivedMaskSha256": "5dd8b3d0d8e8befd80c134edb9c56e4761732ade5df6b47325b4d36eb18fe341",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame16-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 16,
+      "sourceMode": 4,
+      "pngSha256": "75d6a22db2ce8c5b0de799b8d68f5d608a72b528d05a7fe0d7f22763601d78e4",
+      "derivedMaskSha256": "a9c8a0b637de75c93ab68f2fe344a16d7a2761a20bfb2b2cf7fa0f589d94fdfb",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame17-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 17,
+      "sourceMode": 4,
+      "pngSha256": "70b326fd4db4b29132af26f08cc4844d266c241c42cb266b7062049e21355cab",
+      "derivedMaskSha256": "a3be0d97b149b7c4f435478ab237d3cb6fea65207a0d9f0fe3663e5c05673a16",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame18-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 18,
+      "sourceMode": 4,
+      "pngSha256": "222b7bca90b0bfa204f004d8b5ae455adb7e695270dd7e8ad7185653d4d89b67",
+      "derivedMaskSha256": "1b64fc7e5f3811e92a496d295595fd4ce582ab8e14d2a389445e6757e4a17645",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame19-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 19,
+      "sourceMode": 4,
+      "pngSha256": "a5586c5ab100a00336e14cbf1f1e3f3145f2adbd167ab2f57ff1a56bded82fea",
+      "derivedMaskSha256": "3149ba2e9d6c0c95d60ff8777ce7caf5122d7bf741a0ffb53723e1b5d6aefe34",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame20-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 20,
+      "sourceMode": 1,
+      "pngSha256": "bbb2511a73d783e2a5b789b8138288ee52c479fcb91ccf03e22d3a2f21e5a251",
+      "derivedMaskSha256": "6d71ab7c5ce16b2d24f1b590c822474c38c511f3864435c57c3fe4cc7aa212ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame21-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 21,
+      "sourceMode": 1,
+      "pngSha256": "0db2964613737ba5c55e6b41924cc286a3bb408d122125cc6ebdc8d6aff82d28",
+      "derivedMaskSha256": "51a3edf43c6cfcd55a90c6ea0129f5e0a8f127af611de789252eb7244923db55",
+      "differingPixels": 0
+    },
+    {
+      "check": "type1-frame22-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 22,
+      "sourceMode": 1,
+      "pngSha256": "77302783cd4f49b544b83b8e6133be3e25b35163fa3d274f0b54433b7df8644d",
+      "derivedMaskSha256": "a838632db15f6f7de2d6f09e984af9a89c140529986c1dcada6746222100371d",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-source-metadata",
+      "passed": true
+    },
+    {
+      "check": "type2-frame0-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 23,
+      "sourceMode": 1,
+      "pngSha256": "190a77a215189f71ea60fe43513f941c674b9729d4a5c9c3fbca84ee39879618",
+      "derivedMaskSha256": "4f81904a9b06c58572a0e5769b3b4ffb99e7bd4be88ee8c2b64a804f483d9dc6",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame1-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 24,
+      "sourceMode": 4,
+      "pngSha256": "258b93b1e01a2363e617052111bbbe8c195e37b38865a52a1247e91898b75fde",
+      "derivedMaskSha256": "2253d5ec6b7b590bec9a4d57488274741f8edc36275eb5d3825580d59a67673b",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame2-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 25,
+      "sourceMode": 4,
+      "pngSha256": "2a373c30614077279231941a5408c4a4e82b84aef5027b395da24cdded06d2d6",
+      "derivedMaskSha256": "c3c14c7babd6ef96471fffc3f1ecd27255971ab81374bca61deb51df5c7fb873",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame3-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 26,
+      "sourceMode": 4,
+      "pngSha256": "2f0b125a35b5a4c3d0882faed5ec5fdc69da1f4b2ff8c48b7ea4ad94eaa5ee5f",
+      "derivedMaskSha256": "88a5d6c0dd7ee6990be08b3bcbf04dd8d3edc094accbbb81e0f801eb8bbf4294",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame4-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 27,
+      "sourceMode": 4,
+      "pngSha256": "60cddc94cf0a8cd98ae5d1e0dc478baa37b5af10c6523d0bd4e559071553ae58",
+      "derivedMaskSha256": "b177d9704f83b65589beb2df4b0be4a88083b255e55d1c1c0f1443a53d10ab14",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame5-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 28,
+      "sourceMode": 4,
+      "pngSha256": "0be61edb62047c5d723950359060fdcda9690944f31352ea10658a15aea3218d",
+      "derivedMaskSha256": "f06c3f7a6720251efea0c8a6ea0298cb21992bfc02ca4e250bb6574832c76e1f",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame6-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 29,
+      "sourceMode": 4,
+      "pngSha256": "0f66195575f926cf1dfa845be64d4ed1637858161133b1ace464e26ae64f5818",
+      "derivedMaskSha256": "c772abaf0d400469cc2ac527d9e21473477538f78b5ed6018364a6b051dd4e9e",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame7-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 30,
+      "sourceMode": 4,
+      "pngSha256": "d9fe86c56fc73681545733700013e71be2cb89e3a8c29d6d9279648c9d0d05c9",
+      "derivedMaskSha256": "c6ca298907d9737230bffd005f9276c4c105169a40eb14c968e71e79f391b627",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame8-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 31,
+      "sourceMode": 4,
+      "pngSha256": "ab1d32b10c8992a9c50e25b2115b33a83507e058b847e03133151a5813114d94",
+      "derivedMaskSha256": "973543a949300b94f3af1ecda7a9a7ba2985556067cc233686d60122f01ad890",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame9-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 32,
+      "sourceMode": 4,
+      "pngSha256": "17e1e0546e41d0964400299f43d00e9945c430419c3b2833085a38ae4fab588a",
+      "derivedMaskSha256": "f1a279579a50d0ef3a91ad1819a5d6fba84f3b85eedc39c6798e6d79ee1aa270",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame10-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 33,
+      "sourceMode": 4,
+      "pngSha256": "760a5a23edf22c73f5181b2a0d3dd20f4b3692e2f28efcca0499efa9dba41acc",
+      "derivedMaskSha256": "c7db04c075624bdf2102ff876c319caeda08d5fed7d9365b7e947d06e80084f2",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame11-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 34,
+      "sourceMode": 4,
+      "pngSha256": "4f95e8edeb143d45878668dec83cebc2b98b0e5b5b296512b8ed2f8a8aa6d368",
+      "derivedMaskSha256": "970b272a7d3b3af22037f870ff6a2c91882895e9a524da15c90a654a7e009639",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame12-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 35,
+      "sourceMode": 4,
+      "pngSha256": "6c4e25ba0c8f43d2fa69debe0328889f43d0a23a6fb08a66745748b85b87f72a",
+      "derivedMaskSha256": "207327860036d719afd66edbafda4ca51bddad08990a018e5dc44a7c2affa01e",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame13-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 36,
+      "sourceMode": 4,
+      "pngSha256": "ebb93a970bdac2b2bacf7c01d4f948ea0a275d27288740c39176b2a173c69104",
+      "derivedMaskSha256": "5e2c325872a4981596941f5b827bca2907e811fd5a37718ed3d7aa5aca6e18df",
+      "differingPixels": 0
+    },
+    {
+      "check": "type2-frame14-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 37,
+      "sourceMode": 4,
+      "pngSha256": "dfaa53dade7630adc6b6f53cc082ebe34bca2e0698f4c7985eec084551b2864b",
+      "derivedMaskSha256": "b2fded09c1b3246f62a58deb931b43cc3579542d791dff259731352d672eb360",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-source-metadata",
+      "passed": true
+    },
+    {
+      "check": "type3-frame0-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 38,
+      "sourceMode": 4,
+      "pngSha256": "1eaa3a380e3837b61c6b47a0046e6f29014a0168255ec2dc7f1fbf43d14bac4b",
+      "derivedMaskSha256": "6dec73ae82f8d4b1d8ae6f0d4314e0434d3f2fec95341fb836bd78b3e2f2d880",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame1-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 39,
+      "sourceMode": 4,
+      "pngSha256": "1a0909a2dbbfa5dfbaf456e32b29fcf540d795050e9a21520a2cf0b2a95bfb44",
+      "derivedMaskSha256": "44815fe8629fe766ca138224f84a7482d5fa3dbaa0f0b14dc59194fd651538ba",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame2-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 40,
+      "sourceMode": 4,
+      "pngSha256": "902f0deab311eeec7568843b6f40302bb61bf0b8a336e0722e168e1cb1c21eba",
+      "derivedMaskSha256": "8daf70ca710b970e56a30eb929eb679420134590b7fcb0ad121d929e30573940",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame3-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 41,
+      "sourceMode": 4,
+      "pngSha256": "3939760a1669041c97ddb7e3309edaec7617ff72718639266557ed496da5c0e1",
+      "derivedMaskSha256": "f28fa566b5b643ab2e1727c31c916338c3dbfb30a97d7fca4e7efff8fb8cce93",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame4-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 42,
+      "sourceMode": 4,
+      "pngSha256": "367f96ef281172a18fb3d311dd1b0ff9679c7ed3b568df44cbeab69d8900d0fb",
+      "derivedMaskSha256": "a8793ee20dfd45c87191601172a93cd7fbfc21a80e2ac99036df95f8161b0bf1",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame5-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 43,
+      "sourceMode": 4,
+      "pngSha256": "848d68a6d42cf48e5677ee10acf6f86f35128de3da8989a8bdb768d4eb9a6cb5",
+      "derivedMaskSha256": "698fac144dc0884dfd890fecb190f41e43043aa1b09f5d586c93969b68b2260f",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame6-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 44,
+      "sourceMode": 4,
+      "pngSha256": "c01d00387c6e4c82ab347059993a4d1e8a6a9bfe03feffd59b29b778bccb4db2",
+      "derivedMaskSha256": "fd214e9164582eca1a9397db49b63b404267e6631d3057a3a01ffe70cddecdef",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame7-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 45,
+      "sourceMode": 4,
+      "pngSha256": "1ffb9d93e728d5be11ae58d9a9075a24067b387c68f39ac63c74656d9f4129bb",
+      "derivedMaskSha256": "cd2241acd4aa76be18a6fd2293e06f5c4e11bc6c71c10043974efc637c7c728c",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame8-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 46,
+      "sourceMode": 4,
+      "pngSha256": "07f39c644116d3c10709a68aeb028f0c8784c16367d5f357be9de1b799738a90",
+      "derivedMaskSha256": "4b9ba17628da794c496b02d35d66f12d20af0fed7594cd7a13562b12da3115fc",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame9-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 47,
+      "sourceMode": 4,
+      "pngSha256": "189088a894db37360b76da625b82a51c9f22fd5033c8f3312543c16c4c939bcf",
+      "derivedMaskSha256": "b097b077d5bd440b3138088a62e602f79bbf53460cc767f0a638305608614ea6",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame10-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 48,
+      "sourceMode": 4,
+      "pngSha256": "5124ce2c656b3f2ab765a7c88422b89d93e359b96a7b690450ebba5c1c39f8f0",
+      "derivedMaskSha256": "799ba92369f5f76525502b0f41af1eec47be347324f5dd01f3e035503a44b43d",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame11-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 49,
+      "sourceMode": 4,
+      "pngSha256": "019b75982257e22f100b6e0dfd9dce3d1a777833855848b781a8cf4f4340c1e3",
+      "derivedMaskSha256": "3af0e0487cc9fa3f67a56210feeb7d68c83f0d51ec9944a4a64dbda627751c0e",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame12-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 50,
+      "sourceMode": 4,
+      "pngSha256": "d26d626e411f4d841acd68d4b1041caeb7f65e504d89759ce95868f55dce1e11",
+      "derivedMaskSha256": "3730f8d1e930a78792f16c060da7b8e40b8a6db2adb73d3e2434ad7a4d886240",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame13-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 51,
+      "sourceMode": 4,
+      "pngSha256": "f3d258b303f8b0decdb93040714680afc810e6ffcad4a312142293ff026686f8",
+      "derivedMaskSha256": "118c0beedccb1a1460256b61fa57c979b840d15c737e1eaa299616a31b922964",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame14-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 52,
+      "sourceMode": 4,
+      "pngSha256": "82131613e5ab9718d127edaa346b9cb6ef0a0c35b3e21072e915bf05a0331c6d",
+      "derivedMaskSha256": "8da8318945d2581d6387869e44887fef364f7b7d5cf4feb4f2d4ab3491713485",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame15-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 53,
+      "sourceMode": 4,
+      "pngSha256": "6a93315c14423c96181dbc72c17121a19d9f3048ab451fe65777b694498dfa5b",
+      "derivedMaskSha256": "6258b85dcd13560283961ca5d533896f6efc617934cf80a0d6c835fb3747817c",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame16-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 54,
+      "sourceMode": 4,
+      "pngSha256": "39373a8381fa674148cc6ef790065aaea7a3872d52141403f0e2842ad77eedad",
+      "derivedMaskSha256": "ca17335976881216839acfbbf0397c8a9c5d4c1b1f53a464ce530e17f5fdc3d5",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame17-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 55,
+      "sourceMode": 4,
+      "pngSha256": "d5ac9c004d0129ffb56eaef55fb478f37cdb23bf77d8bc83762f50800b3930c2",
+      "derivedMaskSha256": "c8d1708e4cc7c6cae747eb0c2ef32e963d175add8133adbaba86722c529ce160",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame18-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 56,
+      "sourceMode": 4,
+      "pngSha256": "58b33e8d99374413a4149e30e560c3360d8ab76860bb22709ad77861d61081ea",
+      "derivedMaskSha256": "0095e429a5487d6ba8553ec48697e0c631b8126c56b10f09a030262abc65da7f",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame19-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 57,
+      "sourceMode": 4,
+      "pngSha256": "c413d3d53e395a650a590ec47a654e8fa36ce73aa412b101a0370554d7f80493",
+      "derivedMaskSha256": "58c16c0ee391d20d099eb8d4d1d85bdc24a1d3903d9c7682e658d193597b4231",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame20-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 58,
+      "sourceMode": 4,
+      "pngSha256": "80e528dc7e9a1759dc555cdf717bad5c4d51dbcc3ba9fe3f4eabd2627647738c",
+      "derivedMaskSha256": "11229723abe3894603051302fac7aa9f86ff781708b483d256ae87ae4bb6fc7d",
+      "differingPixels": 0
+    },
+    {
+      "check": "type3-frame21-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 59,
+      "sourceMode": 1,
+      "pngSha256": "77302783cd4f49b544b83b8e6133be3e25b35163fa3d274f0b54433b7df8644d",
+      "derivedMaskSha256": "a838632db15f6f7de2d6f09e984af9a89c140529986c1dcada6746222100371d",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-source-metadata",
+      "passed": true
+    },
+    {
+      "check": "type4-frame0-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 60,
+      "sourceMode": 1,
+      "pngSha256": "72e4b871e32b4f4a773d9a01367e254e7ab47119d0d0aa8a81f4a30415d4c241",
+      "derivedMaskSha256": "3930a07860d38b6e08bfc67cddb4f0e4e48198ac4b53c67dc3cff2afae8c4b72",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame1-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 61,
+      "sourceMode": 4,
+      "pngSha256": "260aa141c7d4400408e3e135982a3598c98f03b58704bde08e1408516f395653",
+      "derivedMaskSha256": "ea655d3ce6cf05adba0ee5c1288324c978fcd68759ac4f633098b33c1fd2c9c6",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame2-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 62,
+      "sourceMode": 4,
+      "pngSha256": "627f381447fba7efb880318683df2e8001e2b2c0a6fdacdcb2bf35b7c16af411",
+      "derivedMaskSha256": "bbf34c0e255b15ec84ce7774034e4b974e0f3195652ebeb35705004040db6376",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame3-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 63,
+      "sourceMode": 4,
+      "pngSha256": "3681a952c577a2ecffc74327615211bc71945edf7910442a51c81418c48fbf28",
+      "derivedMaskSha256": "9917d588d79e2dbad65c00de3dd0b967dc2f85c522b6e179d8ba126600dc6462",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame4-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 64,
+      "sourceMode": 4,
+      "pngSha256": "e44a038a7b5354fcac677098e6bdf04b8c9522b847689b353fdafc1e044ec77f",
+      "derivedMaskSha256": "59e071a3002eda148ca0ed8df789fcd3f68a5fd4b8750d0033072dabd72af664",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame5-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 65,
+      "sourceMode": 4,
+      "pngSha256": "c2d0f940df7af0abd0592c527518ac6a7a835f010ddd845e3d6268ab2012dca0",
+      "derivedMaskSha256": "6b9ca090cb31de07be5c4f8446d39fb3a59f208c518358d0947dd005af85248d",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame6-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 66,
+      "sourceMode": 4,
+      "pngSha256": "6a2cd36644590aa7244644c6df2f030b6ecfa165202942b3c2b5d5acae1508d9",
+      "derivedMaskSha256": "2d9d3d6c6e1ef9894261ae7dff1f5a7d1928db85ddb50cffbc6e803ccc6b69a7",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame7-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 67,
+      "sourceMode": 4,
+      "pngSha256": "95aca12be656e390db6c931f3dc3612d43e3f7bc344a73bac2b0de9578662d99",
+      "derivedMaskSha256": "f03a0c4e4e141d9acf0966df8093388c4f89ac8848cc94e99fa47cbf585a6b6c",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame8-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 68,
+      "sourceMode": 4,
+      "pngSha256": "583dcfb492cc935b5b85199109a5b8dfaa68953579f9c83303d1741d0179bc28",
+      "derivedMaskSha256": "c9c40028e719858157484984c741c8ccab7b81dd5886457abdcb14d255b47ef5",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame9-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 69,
+      "sourceMode": 4,
+      "pngSha256": "07704af3ba6d986812285bd2829be10a6ba74decb4442b099c0a87045338d28c",
+      "derivedMaskSha256": "6d234ba534efea400fc59b16146d6fb402e1f538d0fdfc6e609520b272ecebee",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame10-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 70,
+      "sourceMode": 4,
+      "pngSha256": "f8e84a8c9f822e038d720e38e024da89f09b957d6579803d03a6795360ad392c",
+      "derivedMaskSha256": "0e9efa333c0970881f1b093f3343a25c74f049ea2c2e9aa5f23cc0dd1590d9d4",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame11-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 71,
+      "sourceMode": 4,
+      "pngSha256": "72a20184d787d11039a9e3a50e911181ccfb6a8cce197e6adc15110f56a40356",
+      "derivedMaskSha256": "4c28d162358c37eb0034e46bc0bbf2f82b2f5d65a21187f904d16cbb98853ea0",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame12-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 72,
+      "sourceMode": 4,
+      "pngSha256": "4c51df9eaaca949749115d7fa517fd51c301bd381327b2799331d48c418bef87",
+      "derivedMaskSha256": "30e2d44ee21a8167ebfb24a12a98d08e852cfa4ab8d18c7e4eac7f455beb11f9",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame13-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 73,
+      "sourceMode": 4,
+      "pngSha256": "b6d0d498c66527d326a06a34d2f39a42cdde06face80caf18a0aebb88970162c",
+      "derivedMaskSha256": "2ee12a0819b55221f7eca668ca6db646790ffbaaf3a75cd5086afbbd32f063a4",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame14-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 74,
+      "sourceMode": 4,
+      "pngSha256": "c1e3859a90b784e85a429687d50858d36f3f54956a0efe6c7f3b61bb4112a878",
+      "derivedMaskSha256": "55df66772ee9aff26622c9fe77c5a1139a6aedb24ea3185cec7a135ffebd91eb",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame15-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 75,
+      "sourceMode": 4,
+      "pngSha256": "788f75fe8ef8bb152a2377ec92387a767684903edf84953de303b97e842006b7",
+      "derivedMaskSha256": "06892f8f65bf11871183e27fa90dd76817c80e5609105e578448c785f70396fc",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame16-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 76,
+      "sourceMode": 1,
+      "pngSha256": "7d1cdccf5ca9713ac0846684ab6a2eb2f56d3e9ad5064119225aff6eeb543404",
+      "derivedMaskSha256": "f9f5d315b1ea4b425a45389b311ebe48793ce507737cb28c1ad52af9bded3369",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame17-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 77,
+      "sourceMode": 1,
+      "pngSha256": "14ebc8896cccc8ba903fd627fe90250ed82cc88ec55ca5ce8d42803a49a8fe18",
+      "derivedMaskSha256": "69e4715c4ae3815c347429f90f2df679befb139a77358c6cd6a659c93847758d",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame18-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 78,
+      "sourceMode": 1,
+      "pngSha256": "d02bc28602b9e52574a999a0382b619c59a8881e2d910c7e7e82c167a6982743",
+      "derivedMaskSha256": "aa107f2a3ae29edf506904f753383eed8f3ba53b0fa8c8476b1f257a4b98de16",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame19-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 79,
+      "sourceMode": 1,
+      "pngSha256": "27de27c7cb20826e2bb4bb6877dc2834e6c9e9278f8e961ab6c6f200bbcd7be8",
+      "derivedMaskSha256": "371213e67991db2ca2d9af1046ab86b0268936efe0d97ad3b1a50fd05ea79019",
+      "differingPixels": 0
+    },
+    {
+      "check": "type4-frame20-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 80,
+      "sourceMode": 1,
+      "pngSha256": "77302783cd4f49b544b83b8e6133be3e25b35163fa3d274f0b54433b7df8644d",
+      "derivedMaskSha256": "a838632db15f6f7de2d6f09e984af9a89c140529986c1dcada6746222100371d",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-source-metadata",
+      "passed": true
+    },
+    {
+      "check": "type5-frame0-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 81,
+      "sourceMode": 1,
+      "pngSha256": "77302783cd4f49b544b83b8e6133be3e25b35163fa3d274f0b54433b7df8644d",
+      "derivedMaskSha256": "a838632db15f6f7de2d6f09e984af9a89c140529986c1dcada6746222100371d",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame1-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 82,
+      "sourceMode": 1,
+      "pngSha256": "3266df6b64b7fb66b68bea255531199566b6ae475df687f50e542b01e322ec7d",
+      "derivedMaskSha256": "b35902b13ab38fd3f26494e554cee4d43d7103a0837d9574bed16df4486ca236",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame2-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 83,
+      "sourceMode": 1,
+      "pngSha256": "ad5b038cc42f8a76e01c8089ad4cce26696307303130344462ca022b955527a8",
+      "derivedMaskSha256": "b8ec38260dcea5ef6208bfe7d876c7c9f6fa1ec86586b57c6afff4284570d969",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame3-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 84,
+      "sourceMode": 1,
+      "pngSha256": "90079e9d423626543dd48e654589c9c70f0d734576f4dce7b01d06f1bc94c792",
+      "derivedMaskSha256": "58ad26528c8d2770060aba96119fecc1deba8bb45ce6127c8cd8709a182d2e13",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame4-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 85,
+      "sourceMode": 1,
+      "pngSha256": "d66e1ff4095f06b84c74c505eed82439c161e5b939cc3a21628293d6e2456309",
+      "derivedMaskSha256": "6e09487c4e830c7fdfe9d3dc2e3eeb5024200310a454c099da36813742562bef",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame5-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 86,
+      "sourceMode": 1,
+      "pngSha256": "af9a03ab9620da8f97b0413b70862530f97f5921436655c655e0b7ac49534617",
+      "derivedMaskSha256": "cf1ceb6343cef5e8766050425aeae83161eae5b510ddbc38b0a07cbadbfc27eb",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame6-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 87,
+      "sourceMode": 1,
+      "pngSha256": "dab1e7064493bdfee6d6a4f007d134381f2bb9c77f74910ef0c872ff12660c87",
+      "derivedMaskSha256": "ae4e6c86445d9adae129e8100de907e0b53f33f384480c339014896bd8d5a7d1",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame7-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 88,
+      "sourceMode": 1,
+      "pngSha256": "45dba4b16a071c9fcb1769c91d8b6f47a487d8c1e59597c4f882e205040c45e1",
+      "derivedMaskSha256": "3be5e798579f1f39e4cf6c38889cd45b09e9db6513665007b752505670fc17a9",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame8-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 89,
+      "sourceMode": 1,
+      "pngSha256": "87525b35174da4667bf062e8c236f4e4946d886dca4376673dc2b8aec5842a62",
+      "derivedMaskSha256": "a13cf409b321ddc8ce2fe366713ebb26f05eaf1fadf1146442c1a784e3474a16",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame9-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 90,
+      "sourceMode": 1,
+      "pngSha256": "690bb6f4e1c1ae70730d3ddad51ba83dcac7e1549299f0df13aa6b42eeba2777",
+      "derivedMaskSha256": "1e9816a696391933b6240b3ff895725781e5d1a9d673a81c81e3c61d33ae3035",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame10-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 91,
+      "sourceMode": 1,
+      "pngSha256": "5706b4e069babe589d391da6873f64796c49aced07d275ded26f47303ee0caf7",
+      "derivedMaskSha256": "da7f2906b459b90ead240c4734a011c60b8ac1ef8c72b157cb316113ea898462",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame11-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 92,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame12-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 93,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame13-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 94,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame14-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 95,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame15-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 96,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame16-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 97,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame17-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 98,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame18-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 99,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame19-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 100,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame20-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 101,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame21-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 102,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame22-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 103,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame23-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 104,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame24-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 105,
+      "sourceMode": 1,
+      "pngSha256": "e21b79968001aff6ece1b5bb9543343245a02fe30e5cf30da607dbe4de3172a8",
+      "derivedMaskSha256": "eae53331bbfa7780f5a2e35c94ed0d3f744b8f35019b4abe9b70988fc13185ff",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame25-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 106,
+      "sourceMode": 1,
+      "pngSha256": "58d85150d44dbd791b931fc17a323437a7faa04b128999c4e67bf56b49cf3340",
+      "derivedMaskSha256": "c532a117398d0009ff6b4eeaffda43da28964f89039723282baebc97566d9d8a",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame26-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 107,
+      "sourceMode": 1,
+      "pngSha256": "58d85150d44dbd791b931fc17a323437a7faa04b128999c4e67bf56b49cf3340",
+      "derivedMaskSha256": "c532a117398d0009ff6b4eeaffda43da28964f89039723282baebc97566d9d8a",
+      "differingPixels": 0
+    },
+    {
+      "check": "type5-frame27-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 108,
+      "sourceMode": 1,
+      "pngSha256": "190a77a215189f71ea60fe43513f941c674b9729d4a5c9c3fbca84ee39879618",
+      "derivedMaskSha256": "4f81904a9b06c58572a0e5769b3b4ffb99e7bd4be88ee8c2b64a804f483d9dc6",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-source-metadata",
+      "passed": true
+    },
+    {
+      "check": "type6-frame0-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 109,
+      "sourceMode": 1,
+      "pngSha256": "190a77a215189f71ea60fe43513f941c674b9729d4a5c9c3fbca84ee39879618",
+      "derivedMaskSha256": "4f81904a9b06c58572a0e5769b3b4ffb99e7bd4be88ee8c2b64a804f483d9dc6",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame1-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 110,
+      "sourceMode": 1,
+      "pngSha256": "b853052a2c50bc83168ef74aaa5561544b832f202997721c0bc9d8aee3afe683",
+      "derivedMaskSha256": "f614f634bbd7b2ebb23a327cc3521675f43ac176c4bf1b196b0d64f30da86276",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame2-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 111,
+      "sourceMode": 1,
+      "pngSha256": "bf45f53c68441b58aa20fde8920caba8c4c87f239b7beb032befa9523e34868d",
+      "derivedMaskSha256": "d60243855fa52f65f72fc905845af97762c052808a52b7620f83a4e45356f431",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame3-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 112,
+      "sourceMode": 1,
+      "pngSha256": "2b8c6d12144bcebc868c5e6b9794bf9c25202d4a60c11e20e08fd87b7e9f5e88",
+      "derivedMaskSha256": "ace85049c8ded28d7bc660889dd5907cf8a229956d3853e72702377f6b3ee68a",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame4-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 113,
+      "sourceMode": 1,
+      "pngSha256": "3b187fbf177e32f1aed7da41ca9d7fed569feabddc63b7b32b79bda722245bbd",
+      "derivedMaskSha256": "9aed91e29baa87aaaaffb3f26860b7e55d5cafd5503fcfd64c270c75b24c221a",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame5-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 114,
+      "sourceMode": 1,
+      "pngSha256": "3b91ba197374f5e0a2a754f3d6f4947212a7fc0f5bfd2434c3c175961070d1bf",
+      "derivedMaskSha256": "2215b39cf6ee106b3740df5e4efa57cbc0d3ed8eb68ece5cb36cc74af4c35436",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame6-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 115,
+      "sourceMode": 1,
+      "pngSha256": "df71af338b68d24810a2a23b42312bd74602b4f7d2946091da4007010846b484",
+      "derivedMaskSha256": "86ca804bcd753b193ba798cd8e88a34b6faaf64bafc2e20e440e22380711d5c9",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame7-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 116,
+      "sourceMode": 1,
+      "pngSha256": "6ff1e4443f5468995e4081b210ae0961180b28f00788d48cd8f884598b8b1b2b",
+      "derivedMaskSha256": "a373c73f21db055c7372b05848ca0c8cdb2bec2c70af0509a4a5fab03d73b3c2",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame8-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 117,
+      "sourceMode": 1,
+      "pngSha256": "36f2c028a465a1b75fb70499bfe82cf4cb536b984a30b17c22e720a669b6b41a",
+      "derivedMaskSha256": "1f5da14a169ff203f2d29d08da404965aab209ffdb2706247be6c2315632c5ab",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame9-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 118,
+      "sourceMode": 1,
+      "pngSha256": "20266f9bd37579bb226eb76e93469e4285213c500a35124ed7ebfcebd26dd2ff",
+      "derivedMaskSha256": "310054f2941b739142b22296a9e594d35c5361e85f49c7f4c40d67e41228779f",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame10-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 119,
+      "sourceMode": 1,
+      "pngSha256": "fe448f04fca197ea362c52d7739996b0cc216cd56d92426ecf10b18cffcf7a0f",
+      "derivedMaskSha256": "606679e35b8baa0c8b8c1f03e6a9741c68638380a1cefa57bdfdfe72483f9f0b",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame11-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 120,
+      "sourceMode": 1,
+      "pngSha256": "7bc6cd3fc0343f4524f62823e4f711d70fea9b76e495e7921c56a093b6749c52",
+      "derivedMaskSha256": "cbb6df3de77c6b16cd7f21aea32a76c6a1f76dbcb3cebb5c30909ba2961034e3",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame12-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 121,
+      "sourceMode": 1,
+      "pngSha256": "94602256284eb5c2d477253d14c4bb4358052befd3217a72ca928a04b9ea9032",
+      "derivedMaskSha256": "bf819ed99fd900758eeb11bfe81e1aa78e45b0cab4dad4f5a70244cd447e2899",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame13-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 122,
+      "sourceMode": 1,
+      "pngSha256": "fd659191cf7acb0628d4f47393e16a3cc2bbe15e451c8954122b6e8aafdccf90",
+      "derivedMaskSha256": "7af29758f5d4f2535739945022c0f00d4b31968b26565e62648a3d22cee1a9f2",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame14-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 123,
+      "sourceMode": 1,
+      "pngSha256": "e5ca39818be56a463b5ccf1aab637c7adea211b699f1e682c57c8af95aedae92",
+      "derivedMaskSha256": "aa249f9059f4dab3303ad06fa07bfc8b9b4138f081808fe3abce4b1637419206",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame15-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 124,
+      "sourceMode": 1,
+      "pngSha256": "cea04c127f69eb482559bffdb462d4ff66cd1d26e5abf21d904ac5f87a7da729",
+      "derivedMaskSha256": "f5e728bdcb47dad5e66d4a3349d59e8b1dd4550ebbe93c916542867369968c0f",
+      "differingPixels": 0
+    },
+    {
+      "check": "type6-frame16-compiled-vs-project",
+      "passed": true,
+      "assetFrame": 125,
+      "sourceMode": 1,
+      "pngSha256": "1a8a3e9e24c32ea3ddb9d65257cb3da3d7c4fd44653ef5827a598212b75259e2",
+      "derivedMaskSha256": "360339ebfee08da875c0d68e12e2edd9601f6a4d4ddcb80403d0608a924015fd",
+      "differingPixels": 0
+    }
+  ],
+  "executedAssertions": 132,
+  "allPassed": true,
+  "skippedCases": 0,
+  "limits": [
+    "Independent project PNG union-of-two-intervals proof for all126 compiled frames; native production consumers/render evidence is in the separate referenced report."
+  ],
+  "ownerWrites": false
+}

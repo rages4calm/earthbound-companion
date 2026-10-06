@@ -21,11 +21,11 @@ sealed partial class MainForm {
   var badge=Theme.Text("PORT IN PROGRESS",10,Theme.Gold);badge.Font=Theme.Font(10,FontStyle.Bold);badge.Dock=DockStyle.Fill;badge.TextAlign=ContentAlignment.MiddleRight;badge.AutoSize=false;statusCard.Controls.Add(badge,1,0);page.Controls.Add(statusCard);
 
   Section("The edition we are building");
-  page.Controls.Add(Theme.Text("MaternalBound Redux's restored writing, presentation and fixes · Native x64 gameplay · HD and ultrawide output · MSU music · PC controls and settings · QoL profiles · Safe randomized adventures",11));
+  page.Controls.Add(Theme.Text("MaternalBound Redux's restored writing, presentation and fixes · Native x64 gameplay · HD and ultrawide output · MSU music · PC controls and settings · QoL profiles · Story Shuffle adventures",11));
 
   var stages=new TableLayoutPanel(){Height=210,ColumnCount=2,RowCount=1,Margin=new Padding(0,4,0,8)};
   stages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,50));stages.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,50));
-  stages.Controls.Add(PortCard("VERIFIED CHECKPOINT",Theme.Green,"7,397 converted dialogue spans\nNative shops, equipment and Jeff's Tools\nTitles, narration, cast and all 32 photos\n191 SPC tracks and 68 PSI effects\n1,000 seeds and 30 option combinations\nReproducible owner-ROM conversion"),0,0);
+  stages.Controls.Add(PortCard("VERIFIED CHECKPOINT",Theme.Green,"7,397 converted dialogue spans\nNative shops, equipment and Jeff's Tools\nPrepared narration, cast and photo scenes\n191 SPC tracks and 68 PSI effects\n1,000 seeds and 30 option combinations\nReproducible owner-ROM conversion"),0,0);
   stages.Controls.Add(PortCard("STILL UNDER TEST",Theme.Gold,"Complete story and randomized playthroughs\nLater event and cutscene interactions\nRemaining assembly feature audit\nEvery music transition and combat effect\nOriginal and Redux saves stay separate\nThis is a development edition"),1,0);
   page.Controls.Add(stages);
 
@@ -33,11 +33,11 @@ sealed partial class MainForm {
   page.Controls.Add(Theme.Text("Redux's audited profile protects 110 story or trade items and 84 enemy records. Scripts, routes, bosses and required sources stay fixed. Seeds have their own saves. These checks passed; a full randomized playthrough remains unverified.",11,Theme.Muted));
   page.Controls.Add(Theme.Text("The older v0.4 preview contains original EarthBound. This source build's Redux profile is experimental and does not claim complete MaternalBound compatibility.",10,Theme.Muted));
   Section("Continue an earlier Redux story");
-  page.Controls.Add(Theme.Text("The game-data update rebuilds from your ROM, checks the exact reviewed art changes and copies compatible phone/F6 saves unchanged. A backup of the earlier profile remains on disk. To move saves from a separate dev.2–16 installation, use Import below; destination saves must be empty. Earlier randomizer seeds retain their original base data and saves.",10,Theme.Muted));
+  page.Controls.Add(Theme.Text("The game-data update rebuilds from your ROM, checks the exact reviewed art changes and copies compatible phone/F6 saves unchanged. A backup of the earlier profile remains on disk. To move saves from a separate dev.2–17 installation, use Import below; destination saves must be empty. Earlier randomizer seeds retain their original base data and saves.",10,Theme.Muted));
   page.Controls.Add(Theme.Text("A quick save made during combat retains that scene's cached art until the next battle loads. Updating never rewrites the contents of your saved scene.",10,Theme.Muted));
   var import=Theme.Button("Import earlier story saves",()=>Try(()=>{
    if(Running||generating)return;
-   using var picker=new FolderBrowserDialog{Description="Select your previous Redux EarthBound Companion installation folder (dev.2–16)."};
+   using var picker=new FolderBrowserDialog{Description="Select your previous Redux EarthBound Companion installation folder (dev.2–17)."};
    if(picker.ShowDialog(this)!=DialogResult.OK)return;
    int count=ReduxStoryUpgrade.Import(picker.SelectedPath);ReduxProfileService.Select(settings);ShowPage("Play");Notify($"Imported {count} story save files. Use Resume quick save to continue your F6 checkpoint.");
   }));import.Enabled=ReduxProfileService.Ready&&!Running&&!generating;import.Width=260;Actions(import);

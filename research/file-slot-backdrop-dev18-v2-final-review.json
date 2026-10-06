@@ -1,0 +1,4586 @@
+{
+  "format": "actual-naming-cancel-file-slot-backdrop-dev18-v1",
+  "toolSha256": "4ae6e225a85e88ad8ae407d1535f1a7960d921acb12364b80d978a5351fe6a38",
+  "dependencies": {
+    "tools/file_slot_glyph_qa_dev18.py": "76addf15fe3b79409041d09dbdd5b56334474abfb312b627e7da5a81beab3f5d",
+    "tools/redux_title_cold_qa_dev18.py": "29381cb7ca6d1efa417258a62f91edbeda8fd7eceebc9f7a31d49ba1bb2d307d"
+  },
+  "results": [
+    {
+      "build": "player",
+      "profile": "original",
+      "executableSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+      "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "parentActualCaptureSha256": "0d69e8825e28deef103add0192708d3802e396c88bdc6867bb6e614ffe84b665",
+      "parentReportSha256": "09781de54a06ebd04f8d4036f3c633603d82137bf4726e42aabe5f3bae20141f",
+      "sourceCascadeStages": [
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24,
+            25
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24,
+            25,
+            50
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            65,
+            16
+          ],
+          "activeWindows": [
+            26,
+            27
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            65,
+            15
+          ],
+          "activeWindows": [
+            26,
+            27,
+            28
+          ]
+        }
+      ],
+      "actualCancellationCapturedSha256": "ac541ca48ed93465fcdf1082348bfd56b6af2ffe3a2a78a100a942ee9e9b343b",
+      "warm": [
+        {
+          "slot": 0,
+          "rawLabel": [
+            49,
+            58,
+            32,
+            78,
+            101,
+            115,
+            115
+          ],
+          "actualGlyphs": [
+            97,
+            106,
+            80,
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedGlyphs": [
+            97,
+            106,
+            80,
+            126,
+            149,
+            163,
+            163
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "712cf943673cde87eb9b6b649b80b21ac1236983bf35fa7e98568398165e93b1",
+          "expectedVramSha256": "712cf943673cde87eb9b6b649b80b21ac1236983bf35fa7e98568398165e93b1",
+          "pixels": 33,
+          "columns": 5,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 1,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              78,
+              77
+            ],
+            [
+              76,
+              94
+            ],
+            [
+              93,
+              92
+            ],
+            [
+              91,
+              90
+            ],
+            [
+              89,
+              88
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              145,
+              175
+            ],
+            [
+              174,
+              173
+            ],
+            [
+              172,
+              171
+            ],
+            [
+              170,
+              169
+            ],
+            [
+              168,
+              167
+            ],
+            [
+              166,
+              165
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              164,
+              163
+            ],
+            [
+              162,
+              161
+            ],
+            [
+              160,
+              191
+            ],
+            [
+              190,
+              189
+            ],
+            [
+              188,
+              187
+            ],
+            [
+              186,
+              185
+            ],
+            [
+              184,
+              183
+            ],
+            [
+              182,
+              181
+            ],
+            [
+              180,
+              179
+            ],
+            [
+              178,
+              177
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 1,
+          "rawLabel": [
+            50,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "expectedVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 2,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              6231,
+              6230
+            ],
+            [
+              6229,
+              6255
+            ],
+            [
+              6254,
+              6253
+            ],
+            [
+              6252,
+              6251
+            ],
+            [
+              6250,
+              6271
+            ],
+            [
+              6270,
+              6269
+            ],
+            [
+              6268,
+              6267
+            ],
+            [
+              6266,
+              6287
+            ],
+            [
+              6286,
+              6285
+            ],
+            [
+              6284,
+              6283
+            ],
+            [
+              6282,
+              6281
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 2,
+          "rawLabel": [
+            51,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "expectedVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 3,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              136,
+              135
+            ],
+            [
+              134,
+              133
+            ],
+            [
+              132,
+              131
+            ],
+            [
+              130,
+              129
+            ],
+            [
+              159,
+              158
+            ],
+            [
+              157,
+              156
+            ],
+            [
+              155,
+              154
+            ],
+            [
+              153,
+              152
+            ],
+            [
+              151,
+              150
+            ],
+            [
+              149,
+              148
+            ],
+            [
+              147,
+              146
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "cold": [
+        {
+          "slot": 0,
+          "rawLabel": [
+            49,
+            58,
+            32,
+            78,
+            101,
+            115,
+            115
+          ],
+          "actualGlyphs": [
+            97,
+            106,
+            80,
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedGlyphs": [
+            97,
+            106,
+            80,
+            126,
+            149,
+            163,
+            163
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "712cf943673cde87eb9b6b649b80b21ac1236983bf35fa7e98568398165e93b1",
+          "expectedVramSha256": "712cf943673cde87eb9b6b649b80b21ac1236983bf35fa7e98568398165e93b1",
+          "pixels": 33,
+          "columns": 5,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 1,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              78,
+              77
+            ],
+            [
+              76,
+              94
+            ],
+            [
+              93,
+              92
+            ],
+            [
+              91,
+              90
+            ],
+            [
+              89,
+              88
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              145,
+              175
+            ],
+            [
+              174,
+              173
+            ],
+            [
+              172,
+              171
+            ],
+            [
+              170,
+              169
+            ],
+            [
+              168,
+              167
+            ],
+            [
+              166,
+              165
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              164,
+              163
+            ],
+            [
+              162,
+              161
+            ],
+            [
+              160,
+              191
+            ],
+            [
+              190,
+              189
+            ],
+            [
+              188,
+              187
+            ],
+            [
+              186,
+              185
+            ],
+            [
+              184,
+              183
+            ],
+            [
+              182,
+              181
+            ],
+            [
+              180,
+              179
+            ],
+            [
+              178,
+              177
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 1,
+          "rawLabel": [
+            50,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "expectedVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 2,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              6231,
+              6230
+            ],
+            [
+              6229,
+              6255
+            ],
+            [
+              6254,
+              6253
+            ],
+            [
+              6252,
+              6251
+            ],
+            [
+              6250,
+              6271
+            ],
+            [
+              6270,
+              6269
+            ],
+            [
+              6268,
+              6267
+            ],
+            [
+              6266,
+              6287
+            ],
+            [
+              6286,
+              6285
+            ],
+            [
+              6284,
+              6283
+            ],
+            [
+              6282,
+              6281
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 2,
+          "rawLabel": [
+            51,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "expectedVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 3,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              136,
+              135
+            ],
+            [
+              134,
+              133
+            ],
+            [
+              132,
+              131
+            ],
+            [
+              130,
+              129
+            ],
+            [
+              159,
+              158
+            ],
+            [
+              157,
+              156
+            ],
+            [
+              155,
+              154
+            ],
+            [
+              153,
+              152
+            ],
+            [
+              151,
+              150
+            ],
+            [
+              149,
+              148
+            ],
+            [
+              147,
+              146
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "freshF6LabelVramAndHighlightPreserved": true,
+      "ordinaryFlavourCursorAfterCold": {
+        "before": 0,
+        "after": 1,
+        "moved": true
+      },
+      "externalPhoneBytesPreserved": true,
+      "stateVersion": 16,
+      "sourceExpectedPassed": true,
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "executableSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+      "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+      "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "parentActualCaptureSha256": "88802adb28dd98e96e47f1750c2e281244c7efc1dc2eb1ef8e5e4fe2dd755ee7",
+      "parentReportSha256": "09781de54a06ebd04f8d4036f3c633603d82137bf4726e42aabe5f3bae20141f",
+      "sourceCascadeStages": [
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24,
+            25
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24,
+            25,
+            50
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            65,
+            16
+          ],
+          "activeWindows": [
+            26,
+            27
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            65,
+            15
+          ],
+          "activeWindows": [
+            26,
+            27,
+            28
+          ]
+        }
+      ],
+      "actualCancellationCapturedSha256": "e142b9a61987ebe1d04eb7a3e3f05171cd8d15b7533015b909d1d85150cd56e5",
+      "warm": [
+        {
+          "slot": 0,
+          "rawLabel": [
+            49,
+            58,
+            32,
+            73,
+            176,
+            192,
+            48,
+            184,
+            185
+          ],
+          "actualGlyphs": [
+            97,
+            106,
+            80,
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedGlyphs": [
+            97,
+            106,
+            80,
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "c14ed3bbaaa93badfc9e3782904e7c26a4848f5154d39fbd2424316f7ccd038e",
+          "expectedVramSha256": "c14ed3bbaaa93badfc9e3782904e7c26a4848f5154d39fbd2424316f7ccd038e",
+          "pixels": 41,
+          "columns": 6,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 1,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              78,
+              77
+            ],
+            [
+              76,
+              94
+            ],
+            [
+              93,
+              92
+            ],
+            [
+              91,
+              90
+            ],
+            [
+              89,
+              88
+            ],
+            [
+              87,
+              86
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              174,
+              173
+            ],
+            [
+              172,
+              171
+            ],
+            [
+              170,
+              169
+            ],
+            [
+              168,
+              167
+            ],
+            [
+              166,
+              165
+            ],
+            [
+              164,
+              163
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              162,
+              161
+            ],
+            [
+              160,
+              191
+            ],
+            [
+              190,
+              189
+            ],
+            [
+              188,
+              187
+            ],
+            [
+              186,
+              185
+            ],
+            [
+              184,
+              183
+            ],
+            [
+              182,
+              181
+            ],
+            [
+              180,
+              179
+            ],
+            [
+              178,
+              177
+            ],
+            [
+              176,
+              207
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 1,
+          "rawLabel": [
+            50,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "expectedVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 2,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              6229,
+              6255
+            ],
+            [
+              6254,
+              6253
+            ],
+            [
+              6252,
+              6251
+            ],
+            [
+              6250,
+              6271
+            ],
+            [
+              6270,
+              6269
+            ],
+            [
+              6268,
+              6267
+            ],
+            [
+              6266,
+              6287
+            ],
+            [
+              6286,
+              6285
+            ],
+            [
+              6284,
+              6283
+            ],
+            [
+              6282,
+              6281
+            ],
+            [
+              6280,
+              6279
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 2,
+          "rawLabel": [
+            51,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "expectedVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 3,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              134,
+              133
+            ],
+            [
+              132,
+              131
+            ],
+            [
+              130,
+              129
+            ],
+            [
+              159,
+              158
+            ],
+            [
+              157,
+              156
+            ],
+            [
+              155,
+              154
+            ],
+            [
+              153,
+              152
+            ],
+            [
+              151,
+              150
+            ],
+            [
+              149,
+              148
+            ],
+            [
+              147,
+              146
+            ],
+            [
+              145,
+              175
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "cold": [
+        {
+          "slot": 0,
+          "rawLabel": [
+            49,
+            58,
+            32,
+            73,
+            176,
+            192,
+            48,
+            184,
+            185
+          ],
+          "actualGlyphs": [
+            97,
+            106,
+            80,
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedGlyphs": [
+            97,
+            106,
+            80,
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "c14ed3bbaaa93badfc9e3782904e7c26a4848f5154d39fbd2424316f7ccd038e",
+          "expectedVramSha256": "c14ed3bbaaa93badfc9e3782904e7c26a4848f5154d39fbd2424316f7ccd038e",
+          "pixels": 41,
+          "columns": 6,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 1,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              78,
+              77
+            ],
+            [
+              76,
+              94
+            ],
+            [
+              93,
+              92
+            ],
+            [
+              91,
+              90
+            ],
+            [
+              89,
+              88
+            ],
+            [
+              87,
+              86
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              174,
+              173
+            ],
+            [
+              172,
+              171
+            ],
+            [
+              170,
+              169
+            ],
+            [
+              168,
+              167
+            ],
+            [
+              166,
+              165
+            ],
+            [
+              164,
+              163
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              162,
+              161
+            ],
+            [
+              160,
+              191
+            ],
+            [
+              190,
+              189
+            ],
+            [
+              188,
+              187
+            ],
+            [
+              186,
+              185
+            ],
+            [
+              184,
+              183
+            ],
+            [
+              182,
+              181
+            ],
+            [
+              180,
+              179
+            ],
+            [
+              178,
+              177
+            ],
+            [
+              176,
+              207
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 1,
+          "rawLabel": [
+            50,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "expectedVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 2,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              6229,
+              6255
+            ],
+            [
+              6254,
+              6253
+            ],
+            [
+              6252,
+              6251
+            ],
+            [
+              6250,
+              6271
+            ],
+            [
+              6270,
+              6269
+            ],
+            [
+              6268,
+              6267
+            ],
+            [
+              6266,
+              6287
+            ],
+            [
+              6286,
+              6285
+            ],
+            [
+              6284,
+              6283
+            ],
+            [
+              6282,
+              6281
+            ],
+            [
+              6280,
+              6279
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 2,
+          "rawLabel": [
+            51,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "expectedVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 3,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              134,
+              133
+            ],
+            [
+              132,
+              131
+            ],
+            [
+              130,
+              129
+            ],
+            [
+              159,
+              158
+            ],
+            [
+              157,
+              156
+            ],
+            [
+              155,
+              154
+            ],
+            [
+              153,
+              152
+            ],
+            [
+              151,
+              150
+            ],
+            [
+              149,
+              148
+            ],
+            [
+              147,
+              146
+            ],
+            [
+              145,
+              175
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "freshF6LabelVramAndHighlightPreserved": true,
+      "ordinaryFlavourCursorAfterCold": {
+        "before": 0,
+        "after": 1,
+        "moved": true
+      },
+      "externalPhoneBytesPreserved": true,
+      "stateVersion": 16,
+      "sourceExpectedPassed": true,
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "executableSha256": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92",
+      "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "parentActualCaptureSha256": "d25e7413c8d818cfe45e0c1e5ab6f6581f83d8c398e4a0397c12d12e98e01d2c",
+      "parentReportSha256": "09781de54a06ebd04f8d4036f3c633603d82137bf4726e42aabe5f3bae20141f",
+      "sourceCascadeStages": [
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24,
+            25
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24,
+            25,
+            50
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            65,
+            16
+          ],
+          "activeWindows": [
+            26,
+            27
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            65,
+            15
+          ],
+          "activeWindows": [
+            26,
+            27,
+            28
+          ]
+        }
+      ],
+      "actualCancellationCapturedSha256": "401a1903daa72863dd901247d41ceabacc3226eba05de9735118b36a8b82d91b",
+      "warm": [
+        {
+          "slot": 0,
+          "rawLabel": [
+            49,
+            58,
+            32,
+            78,
+            101,
+            115,
+            115
+          ],
+          "actualGlyphs": [
+            97,
+            106,
+            80,
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedGlyphs": [
+            97,
+            106,
+            80,
+            126,
+            149,
+            163,
+            163
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "712cf943673cde87eb9b6b649b80b21ac1236983bf35fa7e98568398165e93b1",
+          "expectedVramSha256": "712cf943673cde87eb9b6b649b80b21ac1236983bf35fa7e98568398165e93b1",
+          "pixels": 33,
+          "columns": 5,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 1,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              78,
+              77
+            ],
+            [
+              76,
+              94
+            ],
+            [
+              93,
+              92
+            ],
+            [
+              91,
+              90
+            ],
+            [
+              89,
+              88
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              145,
+              175
+            ],
+            [
+              174,
+              173
+            ],
+            [
+              172,
+              171
+            ],
+            [
+              170,
+              169
+            ],
+            [
+              168,
+              167
+            ],
+            [
+              166,
+              165
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              164,
+              163
+            ],
+            [
+              162,
+              161
+            ],
+            [
+              160,
+              191
+            ],
+            [
+              190,
+              189
+            ],
+            [
+              188,
+              187
+            ],
+            [
+              186,
+              185
+            ],
+            [
+              184,
+              183
+            ],
+            [
+              182,
+              181
+            ],
+            [
+              180,
+              179
+            ],
+            [
+              178,
+              177
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 1,
+          "rawLabel": [
+            50,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "expectedVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 2,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              6231,
+              6230
+            ],
+            [
+              6229,
+              6255
+            ],
+            [
+              6254,
+              6253
+            ],
+            [
+              6252,
+              6251
+            ],
+            [
+              6250,
+              6271
+            ],
+            [
+              6270,
+              6269
+            ],
+            [
+              6268,
+              6267
+            ],
+            [
+              6266,
+              6287
+            ],
+            [
+              6286,
+              6285
+            ],
+            [
+              6284,
+              6283
+            ],
+            [
+              6282,
+              6281
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 2,
+          "rawLabel": [
+            51,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "expectedVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 3,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              136,
+              135
+            ],
+            [
+              134,
+              133
+            ],
+            [
+              132,
+              131
+            ],
+            [
+              130,
+              129
+            ],
+            [
+              159,
+              158
+            ],
+            [
+              157,
+              156
+            ],
+            [
+              155,
+              154
+            ],
+            [
+              153,
+              152
+            ],
+            [
+              151,
+              150
+            ],
+            [
+              149,
+              148
+            ],
+            [
+              147,
+              146
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "cold": [
+        {
+          "slot": 0,
+          "rawLabel": [
+            49,
+            58,
+            32,
+            78,
+            101,
+            115,
+            115
+          ],
+          "actualGlyphs": [
+            97,
+            106,
+            80,
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedGlyphs": [
+            97,
+            106,
+            80,
+            126,
+            149,
+            163,
+            163
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "712cf943673cde87eb9b6b649b80b21ac1236983bf35fa7e98568398165e93b1",
+          "expectedVramSha256": "712cf943673cde87eb9b6b649b80b21ac1236983bf35fa7e98568398165e93b1",
+          "pixels": 33,
+          "columns": 5,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 1,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              78,
+              77
+            ],
+            [
+              76,
+              94
+            ],
+            [
+              93,
+              92
+            ],
+            [
+              91,
+              90
+            ],
+            [
+              89,
+              88
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              145,
+              175
+            ],
+            [
+              174,
+              173
+            ],
+            [
+              172,
+              171
+            ],
+            [
+              170,
+              169
+            ],
+            [
+              168,
+              167
+            ],
+            [
+              166,
+              165
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              164,
+              163
+            ],
+            [
+              162,
+              161
+            ],
+            [
+              160,
+              191
+            ],
+            [
+              190,
+              189
+            ],
+            [
+              188,
+              187
+            ],
+            [
+              186,
+              185
+            ],
+            [
+              184,
+              183
+            ],
+            [
+              182,
+              181
+            ],
+            [
+              180,
+              179
+            ],
+            [
+              178,
+              177
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 1,
+          "rawLabel": [
+            50,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "expectedVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 2,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              6231,
+              6230
+            ],
+            [
+              6229,
+              6255
+            ],
+            [
+              6254,
+              6253
+            ],
+            [
+              6252,
+              6251
+            ],
+            [
+              6250,
+              6271
+            ],
+            [
+              6270,
+              6269
+            ],
+            [
+              6268,
+              6267
+            ],
+            [
+              6266,
+              6287
+            ],
+            [
+              6286,
+              6285
+            ],
+            [
+              6284,
+              6283
+            ],
+            [
+              6282,
+              6281
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 2,
+          "rawLabel": [
+            51,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "expectedVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 3,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              136,
+              135
+            ],
+            [
+              134,
+              133
+            ],
+            [
+              132,
+              131
+            ],
+            [
+              130,
+              129
+            ],
+            [
+              159,
+              158
+            ],
+            [
+              157,
+              156
+            ],
+            [
+              155,
+              154
+            ],
+            [
+              153,
+              152
+            ],
+            [
+              151,
+              150
+            ],
+            [
+              149,
+              148
+            ],
+            [
+              147,
+              146
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "freshF6LabelVramAndHighlightPreserved": true,
+      "ordinaryFlavourCursorAfterCold": {
+        "before": 0,
+        "after": 1,
+        "moved": true
+      },
+      "externalPhoneBytesPreserved": true,
+      "stateVersion": 16,
+      "sourceExpectedPassed": true,
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "executableSha256": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92",
+      "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+      "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "parentActualCaptureSha256": "07d0bce8c8d5a729a9d9c39f2cbd40694ea42c3902d44de057f895164f691c2e",
+      "parentReportSha256": "09781de54a06ebd04f8d4036f3c633603d82137bf4726e42aabe5f3bae20141f",
+      "sourceCascadeStages": [
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24,
+            25
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            7
+          ],
+          "activeWindows": [
+            19,
+            24,
+            25,
+            50
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            65,
+            16
+          ],
+          "activeWindows": [
+            26,
+            27
+          ]
+        },
+        {
+          "modes": [
+            61,
+            27,
+            26,
+            65,
+            15
+          ],
+          "activeWindows": [
+            26,
+            27,
+            28
+          ]
+        }
+      ],
+      "actualCancellationCapturedSha256": "195d95044236e846defaf0e1611aaee64de825bd9d53ac7e83c498a638c5efd4",
+      "warm": [
+        {
+          "slot": 0,
+          "rawLabel": [
+            49,
+            58,
+            32,
+            73,
+            176,
+            192,
+            48,
+            184,
+            185
+          ],
+          "actualGlyphs": [
+            97,
+            106,
+            80,
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedGlyphs": [
+            97,
+            106,
+            80,
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "c14ed3bbaaa93badfc9e3782904e7c26a4848f5154d39fbd2424316f7ccd038e",
+          "expectedVramSha256": "c14ed3bbaaa93badfc9e3782904e7c26a4848f5154d39fbd2424316f7ccd038e",
+          "pixels": 41,
+          "columns": 6,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 1,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              78,
+              77
+            ],
+            [
+              76,
+              94
+            ],
+            [
+              93,
+              92
+            ],
+            [
+              91,
+              90
+            ],
+            [
+              89,
+              88
+            ],
+            [
+              87,
+              86
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              174,
+              173
+            ],
+            [
+              172,
+              171
+            ],
+            [
+              170,
+              169
+            ],
+            [
+              168,
+              167
+            ],
+            [
+              166,
+              165
+            ],
+            [
+              164,
+              163
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              162,
+              161
+            ],
+            [
+              160,
+              191
+            ],
+            [
+              190,
+              189
+            ],
+            [
+              188,
+              187
+            ],
+            [
+              186,
+              185
+            ],
+            [
+              184,
+              183
+            ],
+            [
+              182,
+              181
+            ],
+            [
+              180,
+              179
+            ],
+            [
+              178,
+              177
+            ],
+            [
+              176,
+              207
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 1,
+          "rawLabel": [
+            50,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "expectedVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 2,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              6229,
+              6255
+            ],
+            [
+              6254,
+              6253
+            ],
+            [
+              6252,
+              6251
+            ],
+            [
+              6250,
+              6271
+            ],
+            [
+              6270,
+              6269
+            ],
+            [
+              6268,
+              6267
+            ],
+            [
+              6266,
+              6287
+            ],
+            [
+              6286,
+              6285
+            ],
+            [
+              6284,
+              6283
+            ],
+            [
+              6282,
+              6281
+            ],
+            [
+              6280,
+              6279
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 2,
+          "rawLabel": [
+            51,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "expectedVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 3,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              134,
+              133
+            ],
+            [
+              132,
+              131
+            ],
+            [
+              130,
+              129
+            ],
+            [
+              159,
+              158
+            ],
+            [
+              157,
+              156
+            ],
+            [
+              155,
+              154
+            ],
+            [
+              153,
+              152
+            ],
+            [
+              151,
+              150
+            ],
+            [
+              149,
+              148
+            ],
+            [
+              147,
+              146
+            ],
+            [
+              145,
+              175
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "cold": [
+        {
+          "slot": 0,
+          "rawLabel": [
+            49,
+            58,
+            32,
+            73,
+            176,
+            192,
+            48,
+            184,
+            185
+          ],
+          "actualGlyphs": [
+            97,
+            106,
+            80,
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedGlyphs": [
+            97,
+            106,
+            80,
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "c14ed3bbaaa93badfc9e3782904e7c26a4848f5154d39fbd2424316f7ccd038e",
+          "expectedVramSha256": "c14ed3bbaaa93badfc9e3782904e7c26a4848f5154d39fbd2424316f7ccd038e",
+          "pixels": 41,
+          "columns": 6,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 1,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              78,
+              77
+            ],
+            [
+              76,
+              94
+            ],
+            [
+              93,
+              92
+            ],
+            [
+              91,
+              90
+            ],
+            [
+              89,
+              88
+            ],
+            [
+              87,
+              86
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              174,
+              173
+            ],
+            [
+              172,
+              171
+            ],
+            [
+              170,
+              169
+            ],
+            [
+              168,
+              167
+            ],
+            [
+              166,
+              165
+            ],
+            [
+              164,
+              163
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              162,
+              161
+            ],
+            [
+              160,
+              191
+            ],
+            [
+              190,
+              189
+            ],
+            [
+              188,
+              187
+            ],
+            [
+              186,
+              185
+            ],
+            [
+              184,
+              183
+            ],
+            [
+              182,
+              181
+            ],
+            [
+              180,
+              179
+            ],
+            [
+              178,
+              177
+            ],
+            [
+              176,
+              207
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 1,
+          "rawLabel": [
+            50,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            98,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "expectedVramSha256": "1dc0d2d8b65a0a0523ea7104bf9eea4022ff0eeb42f1b36c888f698ee0796a08",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 2,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              6229,
+              6255
+            ],
+            [
+              6254,
+              6253
+            ],
+            [
+              6252,
+              6251
+            ],
+            [
+              6250,
+              6271
+            ],
+            [
+              6270,
+              6269
+            ],
+            [
+              6268,
+              6267
+            ],
+            [
+              6266,
+              6287
+            ],
+            [
+              6286,
+              6285
+            ],
+            [
+              6284,
+              6283
+            ],
+            [
+              6282,
+              6281
+            ],
+            [
+              6280,
+              6279
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "slot": 2,
+          "rawLabel": [
+            51,
+            58,
+            32,
+            83,
+            116,
+            97,
+            114,
+            116,
+            32,
+            78,
+            101,
+            119,
+            32,
+            71,
+            97,
+            109,
+            101
+          ],
+          "actualGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "expectedGlyphs": [
+            99,
+            106,
+            80,
+            131,
+            164,
+            145,
+            162,
+            164,
+            80,
+            126,
+            149,
+            167,
+            80,
+            119,
+            145,
+            157,
+            149
+          ],
+          "sourceGlyphsMatch": true,
+          "sourceFontColumnsMatch": true,
+          "sourceFontDiffBytes": 0,
+          "actualVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "expectedVramSha256": "1f9a883a88d287712a6dfe9a0d1aa785bd0d61806ca682a6e950df9b93cd0141",
+          "pixels": 84,
+          "columns": 11,
+          "labelBytesBounded": true,
+          "occupiedLabelBeforeLevelColumn": true,
+          "userdata": 3,
+          "currentOption": 255,
+          "selectedOption": 255,
+          "tilemaps": [
+            [
+              134,
+              133
+            ],
+            [
+              132,
+              131
+            ],
+            [
+              130,
+              129
+            ],
+            [
+              159,
+              158
+            ],
+            [
+              157,
+              156
+            ],
+            [
+              155,
+              154
+            ],
+            [
+              153,
+              152
+            ],
+            [
+              151,
+              150
+            ],
+            [
+              149,
+              148
+            ],
+            [
+              147,
+              146
+            ],
+            [
+              145,
+              175
+            ]
+          ],
+          "remainingTilemaps": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "freshF6LabelVramAndHighlightPreserved": true,
+      "ordinaryFlavourCursorAfterCold": {
+        "before": 0,
+        "after": 1,
+        "moved": true
+      },
+      "externalPhoneBytesPreserved": true,
+      "stateVersion": 16,
+      "sourceExpectedPassed": true,
+      "Passed": true
+    }
+  ],
+  "allPassed": true,
+  "limits": [
+    "Real empty-slot selection and ordinary new-game setting Confirm inputs reach the first naming keyboard; erasing/default-cancel then B executes FM_NG_NAMING_RESULT and file_select_menu_display_only. No production mode/window/name/label/pixel edit or direct builder call is made.",
+    "Initial private slot names derive the separately reported native phone writer prerequisites; name acquisition/story progression is excluded.",
+    "Captured actual title/font/menu state is restored through production format16/F6 load in a fresh process; physical F6 is not synthesized.",
+    "Whole-screen source CPU renderer and all file-menu branches remain outside scope. Private complete builds only; root and owner files untouched."
+  ],
+  "rootOrOwnerInputsModified": false
+}

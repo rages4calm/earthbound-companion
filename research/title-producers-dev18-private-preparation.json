@@ -1,0 +1,117 @@
+{
+  "format": "private-complete-title-producers-preparation-dev18-v1",
+  "base": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\title-glyph-dev18-proposal-source",
+  "candidate": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\title-producers-dev18-proposal-source",
+  "changedFiles": [
+    {
+      "path": "src/game/battle.c",
+      "baseSha256": "aa8aa01cbf6a4358e9ba845e0f78ef88d2b3e0807b72e04db8e2dc0dd83d443d",
+      "candidateSha256": "dc63db4360d44539d96ee1436c4d282aceebf4256252a9698bb1ab4497bb638c"
+    },
+    {
+      "path": "src/game/battle_psi.c",
+      "baseSha256": "7adc2f2729909117f5ae3d1847deba99db20ec6344e217d4ff4b5c666d34ca17",
+      "candidateSha256": "66ecc870e1e8c89ba83034c6a696268960aa5b3323b9888c612f606fd8647092"
+    },
+    {
+      "path": "src/game/display_text.c",
+      "baseSha256": "5b162db5d5455dc7ea6ec3079bf25dbed9f788b7175454ffaa3e2bf50bda5880",
+      "candidateSha256": "47ec18c4d515759a409a800076ea05c66cc959c0f894b6ff0d1af38bc0864b20"
+    },
+    {
+      "path": "src/game/display_text_menus.c",
+      "baseSha256": "8735294cd95d0f039334048d8259624e29a9997dc09cf689b422a8a7fbceec54",
+      "candidateSha256": "d5a03a5134afc578444b4ae488d64d8c7da2187d23bbcbd514a96619123eda7e"
+    },
+    {
+      "path": "src/game/text.c",
+      "baseSha256": "ae80db290a5590f0b75e7785469bd8edae002fec7558799f24d3c0785befef6c",
+      "candidateSha256": "8550780d11e5873f2f8d22a52ae08f228b00f664a1888bbb9f39af3e3eaa7a62"
+    },
+    {
+      "path": "src/game/text.h",
+      "baseSha256": "0165aba150eae1f9f7eb43aa97506952535f14f35557ef8d7b35079e62a5f31d",
+      "candidateSha256": "9efe2a603affbce7cae7567fa7b05d51091a214045d1b7ac48aff2cfd7345c29"
+    }
+  ],
+  "exactTitleOnlySites": {
+    "src/game/text.h": [
+      {
+        "before": "char eb_char_to_title_byte(uint8_t eb_char);",
+        "after": "char eb_char_to_title_byte(uint8_t eb_char);\n/* Bounded EB-to-title-only string conversion; leaves ordinary text unchanged. */\nint eb_to_title_buf(const uint8_t *src, int max_len, char *dst, int capacity);",
+        "sites": 1
+      }
+    ],
+    "src/game/text.c": [
+      {
+        "before": "uint8_t title_byte_to_eb_char(char title_byte) {",
+        "after": "int eb_to_title_buf(const uint8_t *src, int max_len, char *dst, int capacity) {\n    int copied = 0;\n    if (!dst || capacity <= 0) return 0;\n    if (src) {\n        for (int i = 0; i < max_len && src[i] && copied + 1 < capacity; i++)\n            dst[copied++] = eb_char_to_title_byte(src[i]);\n    }\n    dst[copied] = '\\0';\n    return copied;\n}\n\nuint8_t title_byte_to_eb_char(char title_byte) {",
+        "sites": 1
+      },
+      {
+        "before": "name_buf[j] = eb_char_to_ascii(maternalbound_character_name(char_idx)[j]);",
+        "after": "name_buf[j] = eb_char_to_title_byte(maternalbound_character_name(char_idx)[j]);",
+        "sites": 1
+      },
+      {
+        "before": "eb_to_ascii_buf(title_src, ETEXT11_STRIDE, title_buf);",
+        "after": "eb_to_title_buf(title_src, ETEXT11_STRIDE, title_buf, sizeof(title_buf));",
+        "sites": 1
+      }
+    ],
+    "src/game/battle.c": [
+      {
+        "before": "name_buf[j] = eb_char_to_ascii(maternalbound_character_name_of(ch)[j]);",
+        "after": "name_buf[j] = eb_char_to_title_byte(maternalbound_character_name_of(ch)[j]);",
+        "sites": 1
+      },
+      {
+        "before": "eb_to_ascii_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf);",
+        "after": "eb_to_title_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf, sizeof(name_buf));",
+        "sites": 1
+      }
+    ],
+    "src/game/battle_psi.c": [
+      {
+        "before": "name_buf[j] = eb_char_to_ascii(maternalbound_character_name(char_idx)[j]);",
+        "after": "name_buf[j] = eb_char_to_title_byte(maternalbound_character_name(char_idx)[j]);",
+        "sites": 1
+      }
+    ],
+    "src/game/display_text.c": [
+      {
+        "before": "name_buf[i] = eb_char_to_ascii(maternalbound_character_name_of(c)[i]);",
+        "after": "name_buf[i] = eb_char_to_title_byte(maternalbound_character_name_of(c)[i]);",
+        "sites": 1
+      }
+    ],
+    "src/game/display_text_menus.c": [
+      {
+        "before": "eb_to_ascii_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf);",
+        "after": "eb_to_title_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf, sizeof(name_buf));",
+        "sites": 1
+      },
+      {
+        "before": "eb_to_ascii_buf(status_equip_text_14, (int)status_equip_text_14_size, title_buf);",
+        "after": "eb_to_title_buf(status_equip_text_14, (int)status_equip_text_14_size, title_buf, sizeof(title_buf));",
+        "sites": 1
+      },
+      {
+        "before": "eb_to_ascii_buf(status_equip_text_7, (int)status_equip_text_7_size, title_buf);",
+        "after": "eb_to_title_buf(status_equip_text_7, (int)status_equip_text_7_size, title_buf, sizeof(title_buf));",
+        "sites": 1
+      },
+      {
+        "before": "eb_to_ascii_buf(phone_call_text_data, (int)phone_call_text_size, title_buf);",
+        "after": "eb_to_title_buf(phone_call_text_data, (int)phone_call_text_size, title_buf, sizeof(title_buf));",
+        "sites": 1
+      }
+    ]
+  },
+  "toolSha256": "8354a9a1ec11afa6943ba0cf909a3303417883c867be32127639654de7be442e",
+  "rootSourceModified": false,
+  "limits": [
+    "Build, direct producer, ordinary input, cold rendering tests remain separate requirements. This preparation is not gameplay proof.",
+    "The existing five-file proposal is copied unchanged as input; only direct title producer conversions and a bounded helper are added."
+  ]
+}

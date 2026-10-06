@@ -1,0 +1,1638 @@
+{
+  "checkpoint": "dev.17-v4 red evidence / isolated private dev.18 proposal",
+  "toolSha256": "a998ca43c4215cec56f7918980bf2f09c0ff3fb1074ba15e5c7df4b93ba2dbf4",
+  "evidenceReports": {
+    "originalRed": {
+      "path": "research/original-swirl-consumer-dev24-v4-red-review.json",
+      "sha256": "2865c64a4c553fef918efd7362be3046a0a2f7688d4c8cdc3841a062aface95f"
+    },
+    "reduxRed": {
+      "path": "research/redux-swirl-consumer-dev24-v4-red-review.json",
+      "sha256": "6434e4751b177a82caf16205e2e2927381fb7f68f53e7b4e805e56c54be0e52b"
+    },
+    "projectSource": {
+      "path": "research/redux-swirl-project-source-dev24-review.json",
+      "sha256": "569257599df1bd210ee4632c78682528c86fd99ff3735923a6bee5ce81502e11"
+    },
+    "originalPrivateGreen": {
+      "path": "research/original-swirl-consumer-dev24-private-dev18-review.json",
+      "sha256": "76f1889bd1ec423d36dbc6c14a3f9a868bb4145e5a29643d6b2a3633ad1699b1"
+    },
+    "reduxPrivateGreen": {
+      "path": "research/redux-swirl-consumer-dev24-private-dev18-review.json",
+      "sha256": "91af6666f308e158035368a78ba360c107117c5fbedeac3313b66aa15c6efb9c"
+    },
+    "originalActualParent": {
+      "path": "research/original-swirl-full-parent-dev24-private-dev18-review.json",
+      "sha256": "02d587bdff3de48adc3c5e2f12924c9578ebfeeb3393b6be5d063cb419c11d40"
+    },
+    "reduxActualParent": {
+      "path": "research/redux-swirl-full-parent-dev24-private-dev18-review.json",
+      "sha256": "53a02f5b526b417db3705e2191cb8b17e58319619e7b030ae3d4a10f720a807d"
+    },
+    "actualColdParents": {
+      "path": "research/swirl-transition-cold-dev24-private-dev18-review.json",
+      "sha256": "615994f8edd1e2f235a10aee20860053aeb4859f433496b23a7123d55ea84dc8"
+    }
+  },
+  "evidenceTools": [
+    {
+      "path": "tools/swirl_source_consumer_qa_dev24.py",
+      "sha256": "d6fa513704b5791b9eab28c33b046d243ef614cb501ca10095c8d0275ae735b2"
+    },
+    {
+      "path": "tools/swirl_project_source_addendum_dev24.py",
+      "sha256": "a8e77c9369f379a2760dfb7359821f72cf926a494f649b1d5264ad437c02060f"
+    },
+    {
+      "path": "tools/swirl_transition_cold_qa_dev24.py",
+      "sha256": "b2f7517de0aa9acd52a1925b2e36d5e03e381cb69eb112c1392bbe13d5aa8afa"
+    },
+    {
+      "path": "tools/prepare_private_swirl_dev18.py",
+      "sha256": "cc10c9a39ea29b405854177249f272c70c6185674751dd470573343e31154f81"
+    },
+    {
+      "path": "tools/battle_full_encounter_qa_dev18.py",
+      "sha256": "e557b41b62c0e165a9c8e2b6f325231497dc1a3211cc1af96649a4366506544a"
+    },
+    {
+      "path": "tools/freeze_swirl_evidence_dev24.py",
+      "sha256": "a998ca43c4215cec56f7918980bf2f09c0ff3fb1074ba15e5c7df4b93ba2dbf4"
+    }
+  ],
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "baselineProduction": {
+    "driverSourceSha256": "9c44bdc99de98258d11f8ccd0e1d8953c463ad34777071a2623ad16702f523e5",
+    "executableSha256": "a09173236985cf283e2c6eacdb338d51a8dacd377096d6e52fbe95221c20aeda",
+    "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+    "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "confirmedRed": {
+    "originalRed": {
+      "sourceMode4Frames": 70,
+      "changedSourceVsDonorFrames": [],
+      "actualMaskRenderFailures": 280,
+      "differingMaskedPixels": 574280
+    },
+    "reduxRed": {
+      "sourceMode4Frames": 68,
+      "changedSourceVsDonorFrames": [
+        5,
+        9,
+        11,
+        13,
+        17,
+        39,
+        41,
+        44,
+        45,
+        46,
+        48,
+        49,
+        50,
+        52,
+        53,
+        54,
+        56,
+        57,
+        58,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        77
+      ],
+      "actualMaskRenderFailures": 276,
+      "differingMaskedPixels": 574236
+    }
+  },
+  "confirmedDefects": [
+    "Native swirl DMAP4 parser discarded WH2/WH3 and never enabled the second HDMA window.",
+    "31 retained Original swirl payloads differ semantically from pinned Redux source masks at the actual relocated four-byte pointer table."
+  ],
+  "independentSourceProof": "All126 compiled Redux masks equal the pinned source PNGs; six source sequence metadata contracts also agree (132 assertions).",
+  "privateProposal": {
+    "privateOnly": true,
+    "releaseCandidate": false,
+    "baselineDev17PackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+    "baselineMapGasTeleportPackSha256": "18408af37805bfd65c012abbb600fa823f599347c8751bf1f7ef5390369ba865",
+    "proposedPackSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+    "namespaceAndHeaderUnchanged": true,
+    "registrySha256": "a196a4d9de0f93a36c399b6f72178c3dd15c89288dbb0bf8232ceb3be4161579",
+    "incrementalChangedAssetCount": 31,
+    "incrementalChangedAssetIds": [
+      1047,
+      1051,
+      1053,
+      1055,
+      1059,
+      1081,
+      1083,
+      1086,
+      1087,
+      1088,
+      1090,
+      1091,
+      1092,
+      1094,
+      1095,
+      1096,
+      1098,
+      1099,
+      1100,
+      1102,
+      1103,
+      1104,
+      1105,
+      1106,
+      1107,
+      1108,
+      1109,
+      1110,
+      1111,
+      1112,
+      1119
+    ],
+    "incrementalChangedAssets": [
+      {
+        "id": 1047,
+        "symbol": "ASSET_SWIRLS_5_SWIRL",
+        "asset": "swirls/5.swirl",
+        "oldBytes": 171,
+        "newBytes": 171,
+        "oldSha256": "c92477d6d57a9612193d6afadcf228a002f4e01bef8affa94cec131a75e6fedc",
+        "newSha256": "b71ba6fa32e61a86685f793433c6e456bda3c664f1c0b2bb08abe8b2e0c13445"
+      },
+      {
+        "id": 1051,
+        "symbol": "ASSET_SWIRLS_9_SWIRL",
+        "asset": "swirls/9.swirl",
+        "oldBytes": 280,
+        "newBytes": 280,
+        "oldSha256": "380ea6075ee4e0db1195072ff3985e2febbd1d337d28f1c87049b0f7ac1a87a1",
+        "newSha256": "e2b8ed9e89dc52e1335b89d79b07523a776cf4aa8f62a2233d55b2af41d74427"
+      },
+      {
+        "id": 1053,
+        "symbol": "ASSET_SWIRLS_11_SWIRL",
+        "asset": "swirls/11.swirl",
+        "oldBytes": 364,
+        "newBytes": 364,
+        "oldSha256": "c6720eed64d5ec5920d049b885f79a08e0163a6a79c83e1825e16477bfb6adb6",
+        "newSha256": "900eeceef17c331a0b911422391a997fe9ba9a98b3ef1fab49c87313ebaa870c"
+      },
+      {
+        "id": 1055,
+        "symbol": "ASSET_SWIRLS_13_SWIRL",
+        "asset": "swirls/13.swirl",
+        "oldBytes": 459,
+        "newBytes": 459,
+        "oldSha256": "9a5871317b392e09f3687e8da47a704754275f4bb596c107ec18efd3eae17a01",
+        "newSha256": "27c7bef0e4cd97bda8ede2610981ca631d864f0ea525ed7e7519b95ba045fba9"
+      },
+      {
+        "id": 1059,
+        "symbol": "ASSET_SWIRLS_17_SWIRL",
+        "asset": "swirls/17.swirl",
+        "oldBytes": 669,
+        "newBytes": 669,
+        "oldSha256": "be4523902655d118305139e19cbc6403c45de212eee072f9f241c01ee1998081",
+        "newSha256": "7d6447e8da1c2bdb9227edb5265bc7d84c2f3ace53e6acb71cf7d752b9049971"
+      },
+      {
+        "id": 1081,
+        "symbol": "ASSET_SWIRLS_39_SWIRL",
+        "asset": "swirls/39.swirl",
+        "oldBytes": 85,
+        "newBytes": 85,
+        "oldSha256": "b2cc18976e3a0a93974cbea057826d12d8cf441ea800797668b3999a0005b8ac",
+        "newSha256": "435b3343f3fdc1c24be28f95806e1ca50e19f2c336825f44f287b10ab694a7a8"
+      },
+      {
+        "id": 1083,
+        "symbol": "ASSET_SWIRLS_41_SWIRL",
+        "asset": "swirls/41.swirl",
+        "oldBytes": 67,
+        "newBytes": 67,
+        "oldSha256": "f7f742681e35a4ab2772e9504d413a6cf4ada0e7b34d4e8da00d9d6cb7949e59",
+        "newSha256": "7fdf92665414c83f693794d034547609d78c1d27447300eeb55e171060b14230"
+      },
+      {
+        "id": 1086,
+        "symbol": "ASSET_SWIRLS_44_SWIRL",
+        "asset": "swirls/44.swirl",
+        "oldBytes": 101,
+        "newBytes": 99,
+        "oldSha256": "c10f3ecacdf0d8df1802fc2f6ec9f65509aa1e3fb106f75988bb59fd3a78ca9f",
+        "newSha256": "3413d8fa4313cc8413fe3ad0f1cf9108b4621d090bf7a2c0eacf8797f89ff9e8"
+      },
+      {
+        "id": 1087,
+        "symbol": "ASSET_SWIRLS_45_SWIRL",
+        "asset": "swirls/45.swirl",
+        "oldBytes": 97,
+        "newBytes": 97,
+        "oldSha256": "643ab1ea62c175d11cd137e3bce1dae7bd63b7bc91ed546b83cde504d16a8406",
+        "newSha256": "1a4d6cef40ec9c5ea58d5382dc0df6ea2e175c7e81b59975d1a5a6f196aad0d1"
+      },
+      {
+        "id": 1088,
+        "symbol": "ASSET_SWIRLS_46_SWIRL",
+        "asset": "swirls/46.swirl",
+        "oldBytes": 115,
+        "newBytes": 115,
+        "oldSha256": "deba30bc4572d48501130d844fe2f1e0da7fa7f1f5cc3be3f23a9c1552377a40",
+        "newSha256": "3ecc3d1490a615d0ca14bdc1df3b28dd4d8dc4fb6c11ce6e2666da94e7fd4123"
+      },
+      {
+        "id": 1090,
+        "symbol": "ASSET_SWIRLS_48_SWIRL",
+        "asset": "swirls/48.swirl",
+        "oldBytes": 155,
+        "newBytes": 153,
+        "oldSha256": "8e07c99f1a2e8a50d8e72a4b136e1c5d6b429eae998ab298c6c04bbff66becc8",
+        "newSha256": "a2b099fc0fd240723ef12d10509ef9ebebe4cf28ce2edd40eb2d0a3a8e447298"
+      },
+      {
+        "id": 1091,
+        "symbol": "ASSET_SWIRLS_49_SWIRL",
+        "asset": "swirls/49.swirl",
+        "oldBytes": 136,
+        "newBytes": 136,
+        "oldSha256": "fe16a919b6f79c396298c9bb9ec1604d483010eb22b6f87102c529cbe86f5eb4",
+        "newSha256": "ea5aeadfc42d5f91c257550e6f337f32a87262c89fb8f1c281d91282e4badb1b"
+      },
+      {
+        "id": 1092,
+        "symbol": "ASSET_SWIRLS_50_SWIRL",
+        "asset": "swirls/50.swirl",
+        "oldBytes": 155,
+        "newBytes": 155,
+        "oldSha256": "45de8c7eed3ebb37d99cdc92b5a97e2ca53b57fe11b82d3e261eda611270a44a",
+        "newSha256": "498973fb1bde00e9786cbaf5105f4fbfa37ef21ff6e0f61defe0a568ce8299fc"
+      },
+      {
+        "id": 1094,
+        "symbol": "ASSET_SWIRLS_52_SWIRL",
+        "asset": "swirls/52.swirl",
+        "oldBytes": 275,
+        "newBytes": 275,
+        "oldSha256": "c221454662ec26e71192ea27702ada1df7e0d8128fa89ef826930510ba701288",
+        "newSha256": "d7025f956445212a1cb91f39f1bef9710407d4e015ab83310b93965c4438d12e"
+      },
+      {
+        "id": 1095,
+        "symbol": "ASSET_SWIRLS_53_SWIRL",
+        "asset": "swirls/53.swirl",
+        "oldBytes": 278,
+        "newBytes": 278,
+        "oldSha256": "9a70b35c9d7d6b34e7b8661126ed1f9fbb844f0a47e8c3fcb0e3ed741fcccc21",
+        "newSha256": "6c0756038deaca54e24c0a026fe5b3b1733232c18fc91bb068276d12ae888bbd"
+      },
+      {
+        "id": 1096,
+        "symbol": "ASSET_SWIRLS_54_SWIRL",
+        "asset": "swirls/54.swirl",
+        "oldBytes": 364,
+        "newBytes": 364,
+        "oldSha256": "64fa59506b9cd4a220214f021bee483b516d8dbc88de6ebae8cb5fc4b9f2a216",
+        "newSha256": "b0142d4ed488a2c2da91b3aa5a70fdfd27e1ffdae410edaee9a3c07187b1ab6f"
+      },
+      {
+        "id": 1098,
+        "symbol": "ASSET_SWIRLS_56_SWIRL",
+        "asset": "swirls/56.swirl",
+        "oldBytes": 879,
+        "newBytes": 879,
+        "oldSha256": "3c515dd8cc71c33de42fbb59ffd6422ce3fce73a55d4416c074830be7de4a1db",
+        "newSha256": "023d41b51c170b5641ef560a3911f3497d9d0b663da26b9998a29fdb1030b802"
+      },
+      {
+        "id": 1099,
+        "symbol": "ASSET_SWIRLS_57_SWIRL",
+        "asset": "swirls/57.swirl",
+        "oldBytes": 826,
+        "newBytes": 826,
+        "oldSha256": "dd0fe0e4ce3f398aa95ee86c6732dbce1ff821f16856d4959696f7939a241e71",
+        "newSha256": "b52f90e51465e5664a9f63c698abfa2f30866411620612c1000b61d3e61841a1"
+      },
+      {
+        "id": 1100,
+        "symbol": "ASSET_SWIRLS_58_SWIRL",
+        "asset": "swirls/58.swirl",
+        "oldBytes": 522,
+        "newBytes": 509,
+        "oldSha256": "e86d85b1f169063a5d090f548c2ab5d979509c4c38a5c148c451353af41aa7c8",
+        "newSha256": "4aa5af617be9fe50e5670b5c1f48399ab3babdc7c4dacb53638bf2bd6456e20f"
+      },
+      {
+        "id": 1102,
+        "symbol": "ASSET_SWIRLS_60_SWIRL",
+        "asset": "swirls/60.swirl",
+        "oldBytes": 17,
+        "newBytes": 11,
+        "oldSha256": "7317e8afc13b51b10d4d49b70176822b49478ea0e0247b8065656559067e849b",
+        "newSha256": "842ef408de5cda03034d5a5d67debcc0c96f69082a17bc0aa3ec33a963b2b6c3"
+      },
+      {
+        "id": 1103,
+        "symbol": "ASSET_SWIRLS_61_SWIRL",
+        "asset": "swirls/61.swirl",
+        "oldBytes": 25,
+        "newBytes": 25,
+        "oldSha256": "15a01d1304ebc1618b1766136d359b7a862ac3106fe3d84c5de1568584963b16",
+        "newSha256": "c57c5f6bf9f88c0de7b8af4b525405833ff780aaaf6f22b577f4bf3941debb50"
+      },
+      {
+        "id": 1104,
+        "symbol": "ASSET_SWIRLS_62_SWIRL",
+        "asset": "swirls/62.swirl",
+        "oldBytes": 49,
+        "newBytes": 49,
+        "oldSha256": "7640f817b9c94d52d32c07fa73b89b04dce56d67f45d8fcc0855db3341fce328",
+        "newSha256": "a49395df59c138b45f8628c66ae3c0bba5cff83b555d2a2a8e518ed9821d58db"
+      },
+      {
+        "id": 1105,
+        "symbol": "ASSET_SWIRLS_63_SWIRL",
+        "asset": "swirls/63.swirl",
+        "oldBytes": 81,
+        "newBytes": 81,
+        "oldSha256": "bde3820d5b5b76120ba60bbcf7feea90b169e4e8edae282fba20f3f012911db0",
+        "newSha256": "992924002702b4d4d4a651a7c365f596987587f579ab6bd73d587e08c8ea2e1e"
+      },
+      {
+        "id": 1106,
+        "symbol": "ASSET_SWIRLS_64_SWIRL",
+        "asset": "swirls/64.swirl",
+        "oldBytes": 137,
+        "newBytes": 137,
+        "oldSha256": "3d59a77fe49262adb17e113cb08f9bdfc40447f16bddc4c93f4d41a9d7769a8d",
+        "newSha256": "ce89f828bc22b22695c2b40cc3edec2306b67c8628e67f7b44806d99a5fe3e59"
+      },
+      {
+        "id": 1107,
+        "symbol": "ASSET_SWIRLS_65_SWIRL",
+        "asset": "swirls/65.swirl",
+        "oldBytes": 209,
+        "newBytes": 209,
+        "oldSha256": "2097987e84db9c6e389a848a03d9925fa2adf79898434226ffaefdcff616a638",
+        "newSha256": "8f92420d7b3c4a60acc9a7fc11a36e0de5af8f2200db803d2dc4eaf73ea7a891"
+      },
+      {
+        "id": 1108,
+        "symbol": "ASSET_SWIRLS_66_SWIRL",
+        "asset": "swirls/66.swirl",
+        "oldBytes": 289,
+        "newBytes": 289,
+        "oldSha256": "f3c90d600324f1082de920de635e5af1e6578bef71df17919d85111167dfe903",
+        "newSha256": "02c026db133006fed85752484a4c76b309ce6090fba2466ab1cb377a17b8858c"
+      },
+      {
+        "id": 1109,
+        "symbol": "ASSET_SWIRLS_67_SWIRL",
+        "asset": "swirls/67.swirl",
+        "oldBytes": 393,
+        "newBytes": 393,
+        "oldSha256": "46504b866f2114bdfb180ef6eac59e16ab74ac51ec17bbc53292c641e3aacab0",
+        "newSha256": "eee10906d4ad40c80b84766c74988964ad5e655bb22c62d6e5bd1ec911ad69e2"
+      },
+      {
+        "id": 1110,
+        "symbol": "ASSET_SWIRLS_68_SWIRL",
+        "asset": "swirls/68.swirl",
+        "oldBytes": 505,
+        "newBytes": 505,
+        "oldSha256": "4c31b01be8875735f424cfafca3bcdbb0044d6de7fb87e15cec6d18f03b9e87d",
+        "newSha256": "7bbcd96eb20e2f0fb967c71879a87b39300da7d578694e22e0d1ae1cdc23f0c2"
+      },
+      {
+        "id": 1111,
+        "symbol": "ASSET_SWIRLS_69_SWIRL",
+        "asset": "swirls/69.swirl",
+        "oldBytes": 642,
+        "newBytes": 642,
+        "oldSha256": "2648de785945f34bf2140e47db6094030bbc9d484faea342913e036096dfdb8e",
+        "newSha256": "dec317e05bcc1c8e2d164ac65a84b1f15c160cb257c07f499bfac8e2c674ef82"
+      },
+      {
+        "id": 1112,
+        "symbol": "ASSET_SWIRLS_70_SWIRL",
+        "asset": "swirls/70.swirl",
+        "oldBytes": 786,
+        "newBytes": 786,
+        "oldSha256": "7198d2c49ce92516eb1bd23128b61835cc3b98ed507c047c0521f57d56a8fa3c",
+        "newSha256": "4d09b5bbaa00b82a785fc3923024ed4fe23acae43610a25bd108b0e1f530766e"
+      },
+      {
+        "id": 1119,
+        "symbol": "ASSET_SWIRLS_77_SWIRL",
+        "asset": "swirls/77.swirl",
+        "oldBytes": 717,
+        "newBytes": 361,
+        "oldSha256": "a35febab63a8937223fe53932f44d05f3e47723db05cde8eeb395f945d9e2c03",
+        "newSha256": "25fd43e02416284bd5e0cc75c1f04b9950a3f3fc9ed928b8b2594517a5e9fb30"
+      }
+    ],
+    "cumulativeChangedAssetCount": 41,
+    "cumulativeChangedAssets": [
+      {
+        "id": 55,
+        "symbol": "ASSET_US_INTRO_GAS_STATION_ARR_LZHAL",
+        "asset": "US/intro/gas_station.arr.lzhal"
+      },
+      {
+        "id": 56,
+        "symbol": "ASSET_US_INTRO_GAS_STATION_GFX_LZHAL",
+        "asset": "US/intro/gas_station.gfx.lzhal"
+      },
+      {
+        "id": 71,
+        "symbol": "ASSET_US_TOWN_MAPS_LABEL_GFX_LZHAL",
+        "asset": "US/town_maps/label.gfx.lzhal"
+      },
+      {
+        "id": 159,
+        "symbol": "ASSET_GRAPHICS_ANIMATIONS_STARMAN_JR_TELEPORT_ANIM_LZHAL",
+        "asset": "graphics/animations/starman_jr_teleport.anim.lzhal"
+      },
+      {
+        "id": 1047,
+        "symbol": "ASSET_SWIRLS_5_SWIRL",
+        "asset": "swirls/5.swirl"
+      },
+      {
+        "id": 1051,
+        "symbol": "ASSET_SWIRLS_9_SWIRL",
+        "asset": "swirls/9.swirl"
+      },
+      {
+        "id": 1053,
+        "symbol": "ASSET_SWIRLS_11_SWIRL",
+        "asset": "swirls/11.swirl"
+      },
+      {
+        "id": 1055,
+        "symbol": "ASSET_SWIRLS_13_SWIRL",
+        "asset": "swirls/13.swirl"
+      },
+      {
+        "id": 1059,
+        "symbol": "ASSET_SWIRLS_17_SWIRL",
+        "asset": "swirls/17.swirl"
+      },
+      {
+        "id": 1081,
+        "symbol": "ASSET_SWIRLS_39_SWIRL",
+        "asset": "swirls/39.swirl"
+      },
+      {
+        "id": 1083,
+        "symbol": "ASSET_SWIRLS_41_SWIRL",
+        "asset": "swirls/41.swirl"
+      },
+      {
+        "id": 1086,
+        "symbol": "ASSET_SWIRLS_44_SWIRL",
+        "asset": "swirls/44.swirl"
+      },
+      {
+        "id": 1087,
+        "symbol": "ASSET_SWIRLS_45_SWIRL",
+        "asset": "swirls/45.swirl"
+      },
+      {
+        "id": 1088,
+        "symbol": "ASSET_SWIRLS_46_SWIRL",
+        "asset": "swirls/46.swirl"
+      },
+      {
+        "id": 1090,
+        "symbol": "ASSET_SWIRLS_48_SWIRL",
+        "asset": "swirls/48.swirl"
+      },
+      {
+        "id": 1091,
+        "symbol": "ASSET_SWIRLS_49_SWIRL",
+        "asset": "swirls/49.swirl"
+      },
+      {
+        "id": 1092,
+        "symbol": "ASSET_SWIRLS_50_SWIRL",
+        "asset": "swirls/50.swirl"
+      },
+      {
+        "id": 1094,
+        "symbol": "ASSET_SWIRLS_52_SWIRL",
+        "asset": "swirls/52.swirl"
+      },
+      {
+        "id": 1095,
+        "symbol": "ASSET_SWIRLS_53_SWIRL",
+        "asset": "swirls/53.swirl"
+      },
+      {
+        "id": 1096,
+        "symbol": "ASSET_SWIRLS_54_SWIRL",
+        "asset": "swirls/54.swirl"
+      },
+      {
+        "id": 1098,
+        "symbol": "ASSET_SWIRLS_56_SWIRL",
+        "asset": "swirls/56.swirl"
+      },
+      {
+        "id": 1099,
+        "symbol": "ASSET_SWIRLS_57_SWIRL",
+        "asset": "swirls/57.swirl"
+      },
+      {
+        "id": 1100,
+        "symbol": "ASSET_SWIRLS_58_SWIRL",
+        "asset": "swirls/58.swirl"
+      },
+      {
+        "id": 1102,
+        "symbol": "ASSET_SWIRLS_60_SWIRL",
+        "asset": "swirls/60.swirl"
+      },
+      {
+        "id": 1103,
+        "symbol": "ASSET_SWIRLS_61_SWIRL",
+        "asset": "swirls/61.swirl"
+      },
+      {
+        "id": 1104,
+        "symbol": "ASSET_SWIRLS_62_SWIRL",
+        "asset": "swirls/62.swirl"
+      },
+      {
+        "id": 1105,
+        "symbol": "ASSET_SWIRLS_63_SWIRL",
+        "asset": "swirls/63.swirl"
+      },
+      {
+        "id": 1106,
+        "symbol": "ASSET_SWIRLS_64_SWIRL",
+        "asset": "swirls/64.swirl"
+      },
+      {
+        "id": 1107,
+        "symbol": "ASSET_SWIRLS_65_SWIRL",
+        "asset": "swirls/65.swirl"
+      },
+      {
+        "id": 1108,
+        "symbol": "ASSET_SWIRLS_66_SWIRL",
+        "asset": "swirls/66.swirl"
+      },
+      {
+        "id": 1109,
+        "symbol": "ASSET_SWIRLS_67_SWIRL",
+        "asset": "swirls/67.swirl"
+      },
+      {
+        "id": 1110,
+        "symbol": "ASSET_SWIRLS_68_SWIRL",
+        "asset": "swirls/68.swirl"
+      },
+      {
+        "id": 1111,
+        "symbol": "ASSET_SWIRLS_69_SWIRL",
+        "asset": "swirls/69.swirl"
+      },
+      {
+        "id": 1112,
+        "symbol": "ASSET_SWIRLS_70_SWIRL",
+        "asset": "swirls/70.swirl"
+      },
+      {
+        "id": 1119,
+        "symbol": "ASSET_SWIRLS_77_SWIRL",
+        "asset": "swirls/77.swirl"
+      },
+      {
+        "id": 1168,
+        "symbol": "ASSET_TOWN_MAPS_0_BIN_LZHAL",
+        "asset": "town_maps/0.bin.lzhal"
+      },
+      {
+        "id": 1169,
+        "symbol": "ASSET_TOWN_MAPS_1_BIN_LZHAL",
+        "asset": "town_maps/1.bin.lzhal"
+      },
+      {
+        "id": 1170,
+        "symbol": "ASSET_TOWN_MAPS_2_BIN_LZHAL",
+        "asset": "US/town_maps/2.bin.lzhal"
+      },
+      {
+        "id": 1171,
+        "symbol": "ASSET_TOWN_MAPS_3_BIN_LZHAL",
+        "asset": "town_maps/3.bin.lzhal"
+      },
+      {
+        "id": 1172,
+        "symbol": "ASSET_TOWN_MAPS_4_BIN_LZHAL",
+        "asset": "US/town_maps/4.bin.lzhal"
+      },
+      {
+        "id": 1173,
+        "symbol": "ASSET_TOWN_MAPS_5_BIN_LZHAL",
+        "asset": "town_maps/5.bin.lzhal"
+      }
+    ],
+    "unchangedComparedWithDev17": 1133,
+    "sourceRecipe": {
+      "assets": [
+        "swirls/5.swirl",
+        "swirls/9.swirl",
+        "swirls/11.swirl",
+        "swirls/13.swirl",
+        "swirls/17.swirl",
+        "swirls/39.swirl",
+        "swirls/41.swirl",
+        "swirls/44.swirl",
+        "swirls/45.swirl",
+        "swirls/46.swirl",
+        "swirls/48.swirl",
+        "swirls/49.swirl",
+        "swirls/50.swirl",
+        "swirls/52.swirl",
+        "swirls/53.swirl",
+        "swirls/54.swirl",
+        "swirls/56.swirl",
+        "swirls/57.swirl",
+        "swirls/58.swirl",
+        "swirls/60.swirl",
+        "swirls/61.swirl",
+        "swirls/62.swirl",
+        "swirls/63.swirl",
+        "swirls/64.swirl",
+        "swirls/65.swirl",
+        "swirls/66.swirl",
+        "swirls/67.swirl",
+        "swirls/68.swirl",
+        "swirls/69.swirl",
+        "swirls/70.swirl",
+        "swirls/77.swirl"
+      ],
+      "sourcePointerTable": 14606710,
+      "sourceFrames": 126,
+      "sourceAnimationTypes": 6,
+      "namespaceUnchanged": true,
+      "reviewedFrames": [
+        {
+          "frame": 0,
+          "sourcePointer": 13576157,
+          "sourceMode": 1,
+          "sourceBytes": 8,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 1,
+          "sourcePointer": 13576165,
+          "sourceMode": 1,
+          "sourceBytes": 23,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 2,
+          "sourcePointer": 13576188,
+          "sourceMode": 4,
+          "sourceBytes": 81,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 3,
+          "sourcePointer": 13576269,
+          "sourceMode": 4,
+          "sourceBytes": 129,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 4,
+          "sourcePointer": 13576398,
+          "sourceMode": 4,
+          "sourceBytes": 152,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 5,
+          "sourcePointer": 13576550,
+          "sourceMode": 4,
+          "sourceBytes": 171,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 6,
+          "sourcePointer": 13576721,
+          "sourceMode": 4,
+          "sourceBytes": 210,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 7,
+          "sourcePointer": 13576931,
+          "sourceMode": 4,
+          "sourceBytes": 222,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 8,
+          "sourcePointer": 13577153,
+          "sourceMode": 4,
+          "sourceBytes": 242,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 9,
+          "sourcePointer": 13577395,
+          "sourceMode": 4,
+          "sourceBytes": 280,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 10,
+          "sourcePointer": 13577675,
+          "sourceMode": 4,
+          "sourceBytes": 285,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 11,
+          "sourcePointer": 13577960,
+          "sourceMode": 4,
+          "sourceBytes": 364,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 12,
+          "sourcePointer": 13578324,
+          "sourceMode": 4,
+          "sourceBytes": 380,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 13,
+          "sourcePointer": 13578704,
+          "sourceMode": 4,
+          "sourceBytes": 459,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 14,
+          "sourcePointer": 13579163,
+          "sourceMode": 4,
+          "sourceBytes": 479,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 15,
+          "sourcePointer": 13579642,
+          "sourceMode": 4,
+          "sourceBytes": 558,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 16,
+          "sourcePointer": 13580200,
+          "sourceMode": 4,
+          "sourceBytes": 605,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 17,
+          "sourcePointer": 13580805,
+          "sourceMode": 4,
+          "sourceBytes": 669,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 18,
+          "sourcePointer": 13581474,
+          "sourceMode": 4,
+          "sourceBytes": 793,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 19,
+          "sourcePointer": 13582267,
+          "sourceMode": 4,
+          "sourceBytes": 748,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 20,
+          "sourcePointer": 13583015,
+          "sourceMode": 1,
+          "sourceBytes": 325,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 21,
+          "sourcePointer": 13583340,
+          "sourceMode": 1,
+          "sourceBytes": 150,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 22,
+          "sourcePointer": 13583490,
+          "sourceMode": 1,
+          "sourceBytes": 8,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 23,
+          "sourcePointer": 13576157,
+          "sourceMode": 1,
+          "sourceBytes": 8,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 24,
+          "sourcePointer": 13583498,
+          "sourceMode": 4,
+          "sourceBytes": 77,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 25,
+          "sourcePointer": 13583575,
+          "sourceMode": 4,
+          "sourceBytes": 69,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 26,
+          "sourcePointer": 13583644,
+          "sourceMode": 4,
+          "sourceBytes": 83,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 27,
+          "sourcePointer": 13583727,
+          "sourceMode": 4,
+          "sourceBytes": 95,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 28,
+          "sourcePointer": 13583822,
+          "sourceMode": 4,
+          "sourceBytes": 93,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 29,
+          "sourcePointer": 13583915,
+          "sourceMode": 4,
+          "sourceBytes": 101,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 30,
+          "sourcePointer": 13584016,
+          "sourceMode": 4,
+          "sourceBytes": 111,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 31,
+          "sourcePointer": 13584127,
+          "sourceMode": 4,
+          "sourceBytes": 133,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 32,
+          "sourcePointer": 13584260,
+          "sourceMode": 4,
+          "sourceBytes": 147,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 33,
+          "sourcePointer": 13584407,
+          "sourceMode": 4,
+          "sourceBytes": 183,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 34,
+          "sourcePointer": 13584590,
+          "sourceMode": 4,
+          "sourceBytes": 213,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 35,
+          "sourcePointer": 13584803,
+          "sourceMode": 4,
+          "sourceBytes": 285,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 36,
+          "sourcePointer": 13585088,
+          "sourceMode": 4,
+          "sourceBytes": 405,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 37,
+          "sourcePointer": 13585493,
+          "sourceMode": 4,
+          "sourceBytes": 639,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 38,
+          "sourcePointer": 13586132,
+          "sourceMode": 4,
+          "sourceBytes": 83,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 39,
+          "sourcePointer": 13586215,
+          "sourceMode": 4,
+          "sourceBytes": 85,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 40,
+          "sourcePointer": 13586300,
+          "sourceMode": 4,
+          "sourceBytes": 74,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 41,
+          "sourcePointer": 13586374,
+          "sourceMode": 4,
+          "sourceBytes": 67,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 42,
+          "sourcePointer": 13586441,
+          "sourceMode": 4,
+          "sourceBytes": 95,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 43,
+          "sourcePointer": 13586536,
+          "sourceMode": 4,
+          "sourceBytes": 107,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 44,
+          "sourcePointer": 13586643,
+          "sourceMode": 4,
+          "sourceBytes": 99,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 45,
+          "sourcePointer": 13586742,
+          "sourceMode": 4,
+          "sourceBytes": 97,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 46,
+          "sourcePointer": 13586839,
+          "sourceMode": 4,
+          "sourceBytes": 115,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 47,
+          "sourcePointer": 13586954,
+          "sourceMode": 4,
+          "sourceBytes": 155,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 48,
+          "sourcePointer": 13587109,
+          "sourceMode": 4,
+          "sourceBytes": 153,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 49,
+          "sourcePointer": 13587262,
+          "sourceMode": 4,
+          "sourceBytes": 136,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 50,
+          "sourcePointer": 13587398,
+          "sourceMode": 4,
+          "sourceBytes": 155,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 51,
+          "sourcePointer": 13587553,
+          "sourceMode": 4,
+          "sourceBytes": 251,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 52,
+          "sourcePointer": 13587804,
+          "sourceMode": 4,
+          "sourceBytes": 275,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 53,
+          "sourcePointer": 13588079,
+          "sourceMode": 4,
+          "sourceBytes": 278,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 54,
+          "sourcePointer": 13598579,
+          "sourceMode": 4,
+          "sourceBytes": 364,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 55,
+          "sourcePointer": 13598943,
+          "sourceMode": 4,
+          "sourceBytes": 710,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 56,
+          "sourcePointer": 13599653,
+          "sourceMode": 4,
+          "sourceBytes": 879,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 57,
+          "sourcePointer": 14593155,
+          "sourceMode": 4,
+          "sourceBytes": 826,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 58,
+          "sourcePointer": 13600532,
+          "sourceMode": 4,
+          "sourceBytes": 509,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 59,
+          "sourcePointer": 13583490,
+          "sourceMode": 1,
+          "sourceBytes": 8,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 60,
+          "sourcePointer": 13588357,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 61,
+          "sourcePointer": 13588368,
+          "sourceMode": 4,
+          "sourceBytes": 25,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 62,
+          "sourcePointer": 13588393,
+          "sourceMode": 4,
+          "sourceBytes": 49,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 63,
+          "sourcePointer": 13588442,
+          "sourceMode": 4,
+          "sourceBytes": 81,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 64,
+          "sourcePointer": 13588523,
+          "sourceMode": 4,
+          "sourceBytes": 137,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 65,
+          "sourcePointer": 13627861,
+          "sourceMode": 4,
+          "sourceBytes": 209,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 66,
+          "sourcePointer": 14593981,
+          "sourceMode": 4,
+          "sourceBytes": 289,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 67,
+          "sourcePointer": 14594270,
+          "sourceMode": 4,
+          "sourceBytes": 393,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 68,
+          "sourcePointer": 14594663,
+          "sourceMode": 4,
+          "sourceBytes": 505,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 69,
+          "sourcePointer": 14595168,
+          "sourceMode": 4,
+          "sourceBytes": 642,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 70,
+          "sourcePointer": 14595810,
+          "sourceMode": 4,
+          "sourceBytes": 786,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 71,
+          "sourcePointer": 14596596,
+          "sourceMode": 4,
+          "sourceBytes": 900,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 72,
+          "sourcePointer": 14597496,
+          "sourceMode": 4,
+          "sourceBytes": 900,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 73,
+          "sourcePointer": 14598396,
+          "sourceMode": 4,
+          "sourceBytes": 900,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 74,
+          "sourcePointer": 14599296,
+          "sourceMode": 4,
+          "sourceBytes": 900,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 75,
+          "sourcePointer": 14600196,
+          "sourceMode": 4,
+          "sourceBytes": 900,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 76,
+          "sourcePointer": 14601096,
+          "sourceMode": 1,
+          "sourceBytes": 452,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 77,
+          "sourcePointer": 14601548,
+          "sourceMode": 1,
+          "sourceBytes": 361,
+          "semanticRowsChanged": true
+        },
+        {
+          "frame": 78,
+          "sourcePointer": 14601909,
+          "sourceMode": 1,
+          "sourceBytes": 225,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 79,
+          "sourcePointer": 13601041,
+          "sourceMode": 1,
+          "sourceBytes": 88,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 80,
+          "sourcePointer": 13583490,
+          "sourceMode": 1,
+          "sourceBytes": 8,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 81,
+          "sourcePointer": 13583490,
+          "sourceMode": 1,
+          "sourceBytes": 8,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 82,
+          "sourcePointer": 13588660,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 83,
+          "sourcePointer": 13588671,
+          "sourceMode": 1,
+          "sourceBytes": 23,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 84,
+          "sourcePointer": 13588694,
+          "sourceMode": 1,
+          "sourceBytes": 23,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 85,
+          "sourcePointer": 13601129,
+          "sourceMode": 1,
+          "sourceBytes": 23,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 86,
+          "sourcePointer": 13628070,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 87,
+          "sourcePointer": 14602134,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 88,
+          "sourcePointer": 14602145,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 89,
+          "sourcePointer": 14602156,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 90,
+          "sourcePointer": 14602167,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 91,
+          "sourcePointer": 14602178,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 92,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 93,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 94,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 95,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 96,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 97,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 98,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 99,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 100,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 101,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 102,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 103,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 104,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 105,
+          "sourcePointer": 14602189,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 106,
+          "sourcePointer": 14602200,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 107,
+          "sourcePointer": 14602200,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 108,
+          "sourcePointer": 13576157,
+          "sourceMode": 1,
+          "sourceBytes": 8,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 109,
+          "sourcePointer": 13576157,
+          "sourceMode": 1,
+          "sourceBytes": 8,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 110,
+          "sourcePointer": 14602211,
+          "sourceMode": 1,
+          "sourceBytes": 47,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 111,
+          "sourcePointer": 14602258,
+          "sourceMode": 1,
+          "sourceBytes": 172,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 112,
+          "sourcePointer": 14602430,
+          "sourceMode": 1,
+          "sourceBytes": 256,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 113,
+          "sourcePointer": 14602686,
+          "sourceMode": 1,
+          "sourceBytes": 340,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 114,
+          "sourcePointer": 14603026,
+          "sourceMode": 1,
+          "sourceBytes": 368,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 115,
+          "sourcePointer": 14603394,
+          "sourceMode": 1,
+          "sourceBytes": 396,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 116,
+          "sourcePointer": 14603790,
+          "sourceMode": 1,
+          "sourceBytes": 424,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 117,
+          "sourcePointer": 14604214,
+          "sourceMode": 1,
+          "sourceBytes": 452,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 118,
+          "sourcePointer": 14604666,
+          "sourceMode": 1,
+          "sourceBytes": 423,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 119,
+          "sourcePointer": 14605089,
+          "sourceMode": 1,
+          "sourceBytes": 395,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 120,
+          "sourcePointer": 14605484,
+          "sourceMode": 1,
+          "sourceBytes": 367,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 121,
+          "sourcePointer": 14605851,
+          "sourceMode": 1,
+          "sourceBytes": 338,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 122,
+          "sourcePointer": 14606189,
+          "sourceMode": 1,
+          "sourceBytes": 254,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 123,
+          "sourcePointer": 14606443,
+          "sourceMode": 1,
+          "sourceBytes": 170,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 124,
+          "sourcePointer": 14606613,
+          "sourceMode": 1,
+          "sourceBytes": 86,
+          "semanticRowsChanged": false
+        },
+        {
+          "frame": 125,
+          "sourcePointer": 14606699,
+          "sourceMode": 1,
+          "sourceBytes": 11,
+          "semanticRowsChanged": false
+        }
+      ]
+    },
+    "importer": {
+      "path": "research/evidence-tools/maternalbound_swirls-dev18-private.py",
+      "sha256": "cedbf4cfa6c0bbd096ea8c1be4315a94ec277dfabdaecad8571620c83a762082"
+    },
+    "nativePatch": {
+      "path": "research/evidence-tools/swirl-dev18-private-native.patch",
+      "sha256": "71a41744c152c7a316f2501d03c50340129fa5bbd4d48018c6160dc183d676d9"
+    },
+    "builderPatch": {
+      "path": "research/evidence-tools/swirl-dev18-private-builder.patch",
+      "sha256": "61c69425291c8c79c49541e3a8ffb9a7ccf99bd256d9cba30b14f37a9a036a02"
+    },
+    "archivedBaselineNativeSource": {
+      "path": "research/evidence-tools/oval_window-dev17-v4-swirl-baseline.c",
+      "sha256": "5081643c517e6686e66b7d4573dc2ab3340b914d26be904a7a26dac91f1d1c1e"
+    },
+    "baselineBuilderSha256": "97f3c8cea7d1f5155ad4fd218ead2876f6693c6ead748860cc322fb8a41cece1",
+    "candidateBuilderSha256": "cca81f47c2bc7d550a7c2bebed431399caf0f1fcfa127d710dff61db381a6a50",
+    "nativeRuntime": {
+      "privateOnly": true,
+      "observerAliasOnly": true,
+      "observerTested": false,
+      "playerSha256": "fd3fde14014804e6c5208f7eee94bd9cee810c3f723c9e3b74da29577e620979",
+      "librarySha256": "0f50557fc22d3e3b6892171a6699a038fa013f482b6d07ae10179885a0dfb2d8",
+      "baselineSourceSha256": "5081643c517e6686e66b7d4573dc2ab3340b914d26be904a7a26dac91f1d1c1e",
+      "candidateSourceSha256": "a6c1d90be89ae9491a2a79a047ca096797e23c1134d1a9114a33b1092f339111",
+      "sharedBuildModified": false,
+      "sharedSourceModified": false,
+      "method": "Isolated CMake full source build with only private oval_window.c candidate added to frozen private Town Map source baseline."
+    }
+  },
+  "nativeChangeScope": "Only private oval_window.c: decode/apply both HDMA windows, clear second window at existing stop/auto-restore sites, rebuild already-consumed active frame caches after F6 restore without advancing timing or changing serialized size.",
+  "actualRenderScope": "Actual native PPU renders uniform BG1 against independent source Boolean two-window composites for126 frames across8 option variants in each profile. No mode or render callback stub replaces the consumers.",
+  "actualParentScope": "Four scripted encounter groups1/48/448/471 in each profile run BS_ENTER through swirl, battle, menu/AI, KO, rewards and overworld cleanup. Four separate regular/boss prepared parents additionally compare immediate first/second window cold-restored masks and completed gameplay state.",
+  "executedConsumerAssertionsGreen": 6150,
+  "executedIndependentSourceAssertions": 132,
+  "executedColdAssertions": 136,
+  "actualFullParentCases": 8,
+  "actualColdPreparedParents": 4,
+  "actualColdProcesses": 4,
+  "actualWarmAndColdProcesses": 12,
+  "skippedCases": 0,
+  "allPrivateControlsPassed": true,
+  "limits": [
+    "Prepared encounter parties are level99 and surrounding overworld/enemy state is staged; this is not a natural campaign playthrough.",
+    "All six animation types execute as prepared sequences; actual full encounter parents cover regular and boss transition types only.",
+    "Cold proof uses same new candidate content. Cross-version/cross-content checkpoint migration and stale completed held masks with zero timer are not certified.",
+    "Only active per-line HDMA caches are reconstructed; no serialized field/section/version size changes.",
+    "Uniform BG1 window rendering proves mask composition, not complete hardware audiovisual or color-math parity.",
+    "Root must integrate the narrow native patch into current source, regenerate coherent assets and reverify final shipping identities and content migration.",
+    "The private observer filename is an untested player alias. Executed private production player/library identities are recorded.",
+    "Public evidence includes hashes/recipes/code/results only, no ROM, extracted assets, saves or soundtrack bytes."
+  ],
+  "ownerWrites": false,
+  "redistributableGameAssetsIncluded": false,
+  "sharedSourcesModifiedByThisTask": false
+}

@@ -1,0 +1,80 @@
+{
+  "toolSha256": "b7b2a828c4d8378f29191b0b2ba254dd9e86e3b2f1d9768df87229b243e54047",
+  "checkpoint": "dev.17-v4",
+  "evidenceReports": {
+    "family": {
+      "path": "research/redux-converter-family-dev21-v4-review.json",
+      "sha256": "ace434ec5f2c555cccecc64d8b8243300fe86fef83f02dfe23544440bf248199"
+    },
+    "reduxRed": {
+      "path": "research/redux-retained-presentation-dev21-v4-red-review.json",
+      "sha256": "5c88f876d72487a2afdf7ef2b9f0430e8419ce3f3ce692b4510a672ac4583f90"
+    },
+    "originalControl": {
+      "path": "research/original-retained-presentation-dev21-v4-control-review.json",
+      "sha256": "b061154737489d32f4387eac2b7f7efbb5f0309246e9c9beb6f0dd06b74be463"
+    },
+    "reduxPrivateGreen": {
+      "path": "research/redux-retained-presentation-dev21-private-dev18-review.json",
+      "sha256": "1b8c28c995f0d6c4684728d3c75ba34ab0c1fcd90067d6a8a655a0b4ace1d1ab"
+    },
+    "originalPrivateControl": {
+      "path": "research/original-retained-presentation-dev21-private-dev18-control-review.json",
+      "sha256": "74c663df3caf1a817aae7d6e923a1bad59dbce587e6b48a3e9b9763d42e24799"
+    }
+  },
+  "evidenceTools": [
+    {
+      "path": "tools/audit_converter_family_coverage_dev21.py",
+      "sha256": "0af87cdf396d822425c4431ccc59e386a4f1da03ee347894b5b99f674f4421cb"
+    },
+    {
+      "path": "tools/retained_presentation_qa_dev21.py",
+      "sha256": "34c97d593c73ff1333aef3f80977ef16f0d0618aef5b10db7089f35bc0526970"
+    },
+    {
+      "path": "tools/prepare_private_town_map_dev18.py",
+      "sha256": "69a7179f15d3e8b10a4b86c8174533b60d76859263a1e7117e743c53e16b9475"
+    },
+    {
+      "path": "tools/freeze_converter_family_evidence_dev21.py",
+      "sha256": "b7b2a828c4d8378f29191b0b2ba254dd9e86e3b2f1d9768df87229b243e54047"
+    }
+  ],
+  "previousConverters": [
+    {
+      "path": "research/evidence-tools/maternalbound_graphics-dev17-v4.py",
+      "sha256": "1fa43ae6ed57c24d88622bc7370b6fad57b9282ae1f5c70cdd99191150a5409b"
+    },
+    {
+      "path": "research/evidence-tools/build_maternalbound_pack-dev17-v4.py",
+      "sha256": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1"
+    }
+  ],
+  "privateProposal": {
+    "path": "research/redux-town-map-dev18-private-candidate-review.json",
+    "sha256": "6b92722cfa2a92b36ee0c8dbae07784b8b6dfb39c9281286b7bb849bf79c778c"
+  },
+  "registryAssets": 1174,
+  "importerAssignedDistinctAssets": 827,
+  "assignedButByteIdenticalToDonor": 204,
+  "changedBytesAssets": 623,
+  "unassignedDonorAssets": 347,
+  "zeroMatchRegistrySelectors": 0,
+  "familyInventoryPassed": true,
+  "conversionCompletionPercentage": null,
+  "fullConversionVerified": false,
+  "confirmedMissingSemantics": [
+    "Town Map base image pixels on maps 0/2/4 differ 43/48/115 from compiled Redux source.",
+    "Labels differ under actual native PPU source-label-only controls on all six prepared maps.",
+    "Source 0x6000-byte map tile upload/zero-tail was omitted from native 0x4000-byte donor upload."
+  ],
+  "qualifiedFindings": [
+    "Six unassigned Town Map streams are a source omission; only three have visible base image differences in tested frames.",
+    "Raw game-over gfx/arr differ from relocated compiled source, but actual Ness/Jeff BG1 renders match; this is tile packing, not a demonstrated visual defect.",
+    "Nintendo/APE/HALKEN, Produced/Presented and gas-station raw differences remain consumer-layout triage; no missing runtime semantics claim.",
+    "347 unassigned assets include intentionally shared or shadowed families; assignment counts are not a completion metric."
+  ],
+  "ownerWrites": false,
+  "redistributableGameAssetsIncluded": false
+}

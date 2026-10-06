@@ -1,0 +1,54 @@
+{
+  "Passed": true,
+  "Checks": [
+    "Real owner-ROM helper produces exact source-reviewed Town Map, gas-station, teleport and swirl pack",
+    "Previous profile backed up with unchanged asset bytes",
+    "Previous phone and both F6 files unchanged",
+    "New story namespace contains exact copied saves",
+    "Every pre-existing seed data, recipe and save file unchanged",
+    "Current Original data does not rebuild or create an extra starter seed",
+    "Setup selects corrected story profile",
+    "Legacy seed verifies with its retained original base",
+    "New seed generates and passes independent content guard on corrected base",
+    "Actual copied owner F6 backup/restore/native load passes",
+    "Repeated current setup leaves profile and saves unchanged",
+    "Successful setup retains no generated ROM",
+    "All supplied owner/source inputs unchanged"
+  ],
+  "Inputs": {
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\companion-dev18-v3\\EarthBound Companion.exe": "afd77b7898cf5c2461778652602a225d66eb7bfafd93c2cc58cd8b55bb18cb23",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev18-v2-runtime\\player.exe": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev18-v2-runtime\\SDL2.dll": "53e8fa7e9ed43c30bd650c39396f0d9d2067d2fff0b926c9433b75202592e4aa",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\dist\\ebtools-setup.exe": "9155decaef06fd907ddc7d96540abb0f2a8b6456bf49493460a515db6b2bf570",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\redux-setup-dist-dev18-v2\\redux-setup.exe": "7eee8fb1231c221c1e98ee1772158aab8bbfa75f5cfaa4e6383aa0b5c9bd9214",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\art-decode-dev20-final-fixed-redux.pak": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+    "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\swirl-import-dev18-candidate3\\map-gas-teleport-swirl-candidate.pak": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+    "E:\\Consoles\\snes\\EarthBound (USA)\\EarthBound (USA).sfc": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.17\\UserData\\ContentProfiles\\3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9\\Game\\saves\\earthbound.srm": "518155f1b363ce4bde1288f744efe6a3358a5b25fff1dd2cd85a94c824baec2b",
+    "C:\\Users\\crono\\Games\\EarthBound Redux Playthrough\\v0.5.0-redux-dev.17\\UserData\\ContentProfiles\\3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9\\Game\\saves\\quicksave_1.bin.0": "f5ef3d28a5efcceb6b0b0179a11f0e8cae890a2a463eeebd0dea458ef5676f31"
+  },
+  "PreviousPackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+  "CurrentPackSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "CopiedSaveSha256": {
+    "earthbound.srm": "518155f1b363ce4bde1288f744efe6a3358a5b25fff1dd2cd85a94c824baec2b",
+    "quicksave_1.bin.0": "f5ef3d28a5efcceb6b0b0179a11f0e8cae890a2a463eeebd0dea458ef5676f31",
+    "quicksave_1.bin.1": "f5ef3d28a5efcceb6b0b0179a11f0e8cae890a2a463eeebd0dea458ef5676f31"
+  },
+  "PreviousSeedFiles": {
+    "1803092b5b79cd97228dc8dc7f344011a812ceba43d20898f8edba696328495e/assets.pak": "b76ac37e3b1dc55350e96430836d230e7cb161b78b2b8e9d75fae789a781c99a",
+    "1803092b5b79cd97228dc8dc7f344011a812ceba43d20898f8edba696328495e/recipe.ebseed.json": "125d6989e732c585bb8b9a6ee2a348cc7234cacf2a8b7ec040e486b19db92d55",
+    "1803092b5b79cd97228dc8dc7f344011a812ceba43d20898f8edba696328495e/safety.json": "a768389aaf9bcc7b8dfae660d88faf7b35d68a9db6ee95d552c7fe202cc798c1",
+    "1803092b5b79cd97228dc8dc7f344011a812ceba43d20898f8edba696328495e/seed.json": "5557dd8ff503affdd0c7ca23c17091419d6d750465a3297d6a5cb10ecc19a8a7",
+    "1803092b5b79cd97228dc8dc7f344011a812ceba43d20898f8edba696328495e/spoiler.json": "ffd9a8995e117b8634b6acbac9369e8aaf71cb24f6f6ce3d3740682455949a08"
+  },
+  "AddedStarterSeedFiles": [],
+  "SourceAndOwnerFilesModified": false,
+  "FullPlaythroughVerified": false,
+  "ToolSha256": "8d3dd810c3958bef318ce21ff35f4d314988a52ed8c75962c5144d862422a8b9",
+  "Limits": [
+    "Real setup/import/generation and cold checkpoint load on isolated copies, not complete story or seed progression.",
+    "Legacy seeds require selecting their retained base pack; they are never relabeled to new graphics.",
+    "An imported mid-battle checkpoint retains cached art until the next battle loads; separate prepared-scene proof covers that behavior."
+  ]
+}

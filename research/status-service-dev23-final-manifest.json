@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev23-selected-service-freeze",
+  "frozenRuntime": "dev17-v4",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "selectedParentTransactions": 268,
+  "coldContinuationsIncluded": 55,
+  "independentSourceChecks": 144,
+  "nativeProductionChanged": false,
+  "verifiedLedger": [
+    {
+      "profile": "original",
+      "report": "research/original-status-services-dev23-v4-final-r2.json",
+      "fixtures": "research/original-status-service-fixtures-dev23-v4-final-r2.json",
+      "selectedParentTransactions": 133,
+      "coldContinuationsIncluded": 27,
+      "selectedByFamily": {
+        "atm": 15,
+        "doctor": 49,
+        "nurse": 19,
+        "healer": 50
+      },
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "privateBuild": {
+        "driverSourceSha256": "01a950706050d36811b48c2efa5d3dac763c261a48557982890680f6beb8f8a0",
+        "executableSha256": "1e2ca4223d3e3bcb75cbe3bcfaf5dc09170ecb05bdeda64b5b959b63e7d0840d",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "executedSourceReferences": [
+        {
+          "path": "src/game/display_text_cc.c",
+          "sha256": "8823d80be9f5de41518dd81684618493a4f66d790976eab38dee211706375638"
+        },
+        {
+          "path": "src/game/display_text_menus.c",
+          "sha256": "8735294cd95d0f039334048d8259624e29a9997dc09cf689b422a8a7fbceec54"
+        },
+        {
+          "path": "src/game/inventory.c",
+          "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+        },
+        {
+          "path": "src/game/game_state.c",
+          "sha256": "4fc6ba0bf0ed71842f174004188c1a430cd33e67ef5cbb13aa6fc8091d45f4be"
+        },
+        {
+          "path": "src/game/window.c",
+          "sha256": "ad9256445b09df105f345fc07c2af2d0a3fa15ad4828c46615c9a55d6fcabdc6"
+        },
+        {
+          "path": "src/game/maternalbound.c",
+          "sha256": "e6d828b9110f09d315b37a231f7fc4470341f123535dc20b8bce91140d342b74"
+        },
+        {
+          "path": "src/core/mode_stack.h",
+          "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+        }
+      ]
+    },
+    {
+      "profile": "redux",
+      "report": "research/redux-status-services-dev23-v4-final-r2.json",
+      "fixtures": "research/redux-status-service-fixtures-dev23-v4-final-r2.json",
+      "selectedParentTransactions": 135,
+      "coldContinuationsIncluded": 28,
+      "selectedByFamily": {
+        "atm": 17,
+        "doctor": 49,
+        "nurse": 19,
+        "healer": 50
+      },
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "privateBuild": {
+        "driverSourceSha256": "6635f82869bc61abb1df6f0b2545ba7cb10f82a362ccbd08392c621a85fd37e4",
+        "executableSha256": "21340cc125b71b468f0cf260ee044283d0f1e8b04ae433c67c534a0769f8518d",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "executedSourceReferences": [
+        {
+          "path": "src/game/display_text_cc.c",
+          "sha256": "8823d80be9f5de41518dd81684618493a4f66d790976eab38dee211706375638"
+        },
+        {
+          "path": "src/game/display_text_menus.c",
+          "sha256": "8735294cd95d0f039334048d8259624e29a9997dc09cf689b422a8a7fbceec54"
+        },
+        {
+          "path": "src/game/inventory.c",
+          "sha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d"
+        },
+        {
+          "path": "src/game/game_state.c",
+          "sha256": "4fc6ba0bf0ed71842f174004188c1a430cd33e67ef5cbb13aa6fc8091d45f4be"
+        },
+        {
+          "path": "src/game/window.c",
+          "sha256": "ad9256445b09df105f345fc07c2af2d0a3fa15ad4828c46615c9a55d6fcabdc6"
+        },
+        {
+          "path": "src/game/maternalbound.c",
+          "sha256": "e6d828b9110f09d315b37a231f7fc4470341f123535dc20b8bce91140d342b74"
+        },
+        {
+          "path": "src/core/mode_stack.h",
+          "sha256": "1d8d69b7ed1a7f72fb4ed08fe93c4d36cbb463cc960cc2bb2c333c05109af762"
+        }
+      ]
+    }
+  ],
+  "sourceContractReport": {
+    "path": "research/status-service-source-contracts-dev23.json",
+    "sha256": "7d1c09cf2caf7e657657f40552066abef22ad9780a180d7eb49e91d75f0b7c3e"
+  },
+  "additionalExecutedSourceReferences": [
+    {
+      "path": "src/game/display_text.c",
+      "sha256": "ee5cc9ef3056cbd5b6cc1bb846d2eb74a2bdfc16d2f1743953a8a112709d13a7"
+    },
+    {
+      "path": "src/game/text.c",
+      "sha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6"
+    },
+    {
+      "path": "src/game/window.h",
+      "sha256": "c84254e743eedf17f3e173fb13624f69ff7f7abd235810a56c1150e7a8eed8a6"
+    },
+    {
+      "path": "asm/battle/heal_character_hp.asm",
+      "sha256": "dfbc62a96b100b927940f467d264a57df1c5fac05e07a086cc8ab2ff31bd7205"
+    },
+    {
+      "path": "asm/battle/heal_character_pp.asm",
+      "sha256": "73618340a411e347aa4ec709f6700623ce89d34a8778b7db1f7500de7e076b9e"
+    },
+    {
+      "path": "asm/misc/increase_wallet_balance.asm",
+      "sha256": "924917eebe0d95a081c8732c309c11a16f7619338134f1956fbcb3009b5b8304"
+    },
+    {
+      "path": "asm/misc/atm_deposit.asm",
+      "sha256": "1d0c1d33121152f1f760c59bac8bb99e13ed00b6851d7d67facc7b1f9a022936"
+    },
+    {
+      "path": "asm/text/ccs/test_has_enough_money.asm",
+      "sha256": "80e310447daec1669ba9552584976968e0a65557d8ec66e34a67ad1549496782"
+    },
+    {
+      "path": "asm/text/ccs/test_atm_has_enough_money.asm",
+      "sha256": "22d562176230cea3497ac02af7bf7a14ea0e8b2792e80b4e5ea6cace71424f3e"
+    }
+  ],
+  "files": [
+    {
+      "path": "tools/status_service_qa_dev23.py",
+      "sha256": "825cd69ce0a6182f610e1898e676e1c296400a5996e233e6e5bd411570edfcfb",
+      "bytes": 10642
+    },
+    {
+      "path": "tools/status_service_cases_dev23.py",
+      "sha256": "d6f3a67f558c7a8672a22fda146bd8454471ce4668492b8528fd10f24ef7ce04",
+      "bytes": 16217
+    },
+    {
+      "path": "tools/status_service_source_review_dev23.py",
+      "sha256": "5ac1a057c047ab32b0953cd6a8cc3680a89f4dab0be4f85df5f92f6c491fd8d9",
+      "bytes": 7679
+    },
+    {
+      "path": "tools/write_status_service_manifest_dev23.py",
+      "sha256": "0e701bf8a34a2740a6ffe22ca9a919a50a24a0b07b31ced0734a5801a8846f7e",
+      "bytes": 6259
+    },
+    {
+      "path": "tools/barter_delivery_qa_dev20.py",
+      "sha256": "b85c2890cb250af29455ef364f73f662559d7ee611a61af71cebd4d73be3de43",
+      "bytes": 8549
+    },
+    {
+      "path": "tools/shop_transaction_qa_dev18.py",
+      "sha256": "0f7cdbf128474dc8a1f5402395132a2e41ad083bf6e4915af67c028df25b76fc",
+      "bytes": 16355
+    },
+    {
+      "path": "tools/transaction_menu_replay_dev20.py",
+      "sha256": "05ed1f6fbf4f3f26df120f2daca2905390fd6bdc15fdc9f1706aa825a90e2670",
+      "bytes": 3791
+    },
+    {
+      "path": "tools/battle_action_catalog_qa.py",
+      "sha256": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823",
+      "bytes": 40111
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "e04d6632c11e09596a3470198585a701a8b6130f4ba7bb90d4136244debc1b9c",
+      "bytes": 22040
+    },
+    {
+      "path": "tools/maternalbound_dialogue.py",
+      "sha256": "54038806cb18cb575c576c616f5c31b9c30ae0c957cecd2a6674b153efc2da87",
+      "bytes": 26455
+    },
+    {
+      "path": "research/status-service-dev23-evidence.md",
+      "sha256": "00eaddfdca20df1a7c0999654326f32270b609fabd2a46933f0e34eb0a4ebecc",
+      "bytes": 8199
+    },
+    {
+      "path": "research/status-service-source-contracts-dev23.json",
+      "sha256": "7d1c09cf2caf7e657657f40552066abef22ad9780a180d7eb49e91d75f0b7c3e",
+      "bytes": 29168
+    },
+    {
+      "path": "research/original-status-services-dev23-v4-final-r2.json",
+      "sha256": "3ca18973923f3963c62886694fa916dc8b15fd39c17f6ece3b099be0f9c0c590",
+      "bytes": 4568406
+    },
+    {
+      "path": "research/original-status-service-fixtures-dev23-v4-final-r2.json",
+      "sha256": "d1e305769cbcaeb3f87dc1282a5f3a0dc6fa66e1057808bfe1eab09e72c498f2",
+      "bytes": 773805
+    },
+    {
+      "path": "research/redux-status-services-dev23-v4-final-r2.json",
+      "sha256": "69daa7ea352d028b51fa3f66cc5d60b614baf97d2b2fda8769407c2c42d06958",
+      "bytes": 4656934
+    },
+    {
+      "path": "research/redux-status-service-fixtures-dev23-v4-final-r2.json",
+      "sha256": "a28d8d242eb179441fc766a4c192702b016055761b265cf24840bb45b9203bc9",
+      "bytes": 786485
+    }
+  ],
+  "limits": [
+    "Cold counts are included in selected parent counts. Source checks, transactions and wrappers are distinct evidence units, not a feature count or complete conversion percentage.",
+    "Prepared real packed text parents and production menu/number/capture/restore dispatch. Initial state is source-prerequisite fixture setup; no post-entry result/register/state or completion injection. No natural NPC lifecycle proof.",
+    "Nurse target HP/PP restoration and awakened nonzero HP are asserted. Final rolling-meter visual settling and outer NPC caller cleanup are not asserted.",
+    "Original packed control scripts retain native key-pool QoL. Original ATM overflow and every item-use ATM caller remain outside this corpus.",
+    "Specified sounds prove play_sfx requests only; observer identity is recorded but not separately executed; no pixels, physical input or audible-delivery proof.",
+    "Initial source alias, window-size and ordinal-capture pilot errors are documented fixture diagnostics, not production defects. Frozen prior transaction evidence is unchanged."
+  ]
+}

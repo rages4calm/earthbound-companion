@@ -1,0 +1,93 @@
+diff --git a/src/intro/file_select.c b/src/intro/file_select.c
+--- a/src/intro/file_select.c
++++ b/src/intro/file_select.c
+@@ -207,6 +207,16 @@
+ /* Build the file-select slot list window (formerly file_select_menu() minus the
+  * blocking selection_menu(0) call). Returns -1 when the window is ready to push a
+  * selection menu, or an early result (create-window failure → 1) otherwise. */
++/* FILE_SELECT_MENU copies raw name glyphs into the source slot label.
++ * This native menu stores ASCII labels, so keep reversible ASCII bytes while
++ * retaining source-only high glyphs as single bytes. Only file-slot consumers
++ * decode this bounded representation; ordinary dialogue conversion is unchanged. */
++static char file_slot_label_byte(uint8_t glyph) {
++    char ascii = eb_char_to_ascii(glyph);
++    if (ascii_to_eb_char(ascii) == glyph) return ascii;
++    return glyph >= 0x80 ? (char)glyph : ascii;
++}
++
+ static int fm_file_select_build(void) {
+     WindowInfo *w = create_window(WINDOW_FILE_SELECT_MAIN);
+     if (!w) return 1;
+@@ -221,7 +231,7 @@
+         if (occupied) {
+             char name[7] = {0};
+             for (int i = 0; i < maternalbound_name_capacity() && maternalbound_character_name(0)[i]; i++) {
+-                name[i] = eb_char_to_ascii(maternalbound_character_name(0)[i]);
++                name[i] = file_slot_label_byte(maternalbound_character_name(0)[i]);
+             }
+             snprintf(slot_labels[slot], sizeof(slot_labels[slot]), "%d: %s",
+                      slot + 1, name);
+@@ -352,7 +362,7 @@
+         if (occupied) {
+             char name[7] = {0};
+             for (int i = 0; i < maternalbound_name_capacity() && maternalbound_character_name(0)[i]; i++) {
+-                name[i] = eb_char_to_ascii(maternalbound_character_name(0)[i]);
++                name[i] = file_slot_label_byte(maternalbound_character_name(0)[i]);
+             }
+             snprintf(slot_labels[slot], sizeof(slot_labels[slot]), "%d: %s",
+                      slot + 1, name);
+diff --git a/src/game/window.c b/src/game/window.c
+--- a/src/game/window.c
++++ b/src/game/window.c
+@@ -659,6 +659,23 @@
+     return w->menu_count;
+ }
+ 
++/* Occupied file-slot labels preserve source name glyphs that lack an ASCII
++ * equivalent. They are bounded, single-byte labels in the existing MenuItem;
++ * slot userdata 1..3 and WINDOW_FILE_SELECT_MAIN identify both live and F6
++ * restored consumers without changing the serialized struct. Empty/ASCII
++ * labels and every other menu retain the existing ASCII contract. */
++static bool menu_item_is_file_slot(const WindowInfo *w, const MenuItem *item) {
++    return w->id == WINDOW_FILE_SELECT_MAIN &&
++           item->userdata >= 1 && item->userdata <= SAVE_COUNT;
++}
++
++static uint8_t menu_item_label_glyph(const WindowInfo *w,
++                                     const MenuItem *item, unsigned index) {
++    uint8_t byte = (uint8_t)item->label[index];
++    if (menu_item_is_file_slot(w, item) && byte >= 0x80) return byte;
++    return ascii_to_eb_char(item->label[index]);
++}
++
+ void print_menu_items(void) {
+     WindowInfo *w = get_window(win.current_focus_window);
+     if (!w || w->menu_count == 0) {
+@@ -683,7 +700,17 @@
+         set_focus_text_cursor(item->text_x + 1, item->text_y);
+         w = get_window(win.current_focus_window);  /* re-fetch after cursor set */
+         if (!w) return;
+-        print_string(item->label);
++        if (menu_item_is_file_slot(w, item)) {
++            uint8_t glyphs[sizeof(item->label)] = {0};
++            unsigned length = 0;
++            while (length < sizeof(item->label) && item->label[length]) {
++                glyphs[length] = menu_item_label_glyph(w, item, length);
++                ++length;
++            }
++            print_eb_string(glyphs, (int)length);
++        } else {
++            print_string(item->label);
++        }
+     }
+ 
+     /* cc_load_two_str.ccs draws the queued right labels after the left
+@@ -1205,7 +1232,7 @@
+          * and color the next option after a string of narrow glyphs. */
+         unsigned pixels = 0;
+         for (unsigned i = 0; item->label[i]; i++) {
+-            uint8_t glyph = (ascii_to_eb_char(item->label[i]) - 0x50) & 0x7F;
++            uint8_t glyph = (menu_item_label_glyph(w, item, i) - 0x50) & 0x7F;
+             pixels += font_get_width(w->font, glyph) + character_padding;
+         }
+         tile_count = (pixels + 7) / 8;

@@ -1,0 +1,256 @@
+{
+  "format": "private-complete-title-producer-proposal-manifest-dev18-v1",
+  "base": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev17-v4-complete-source",
+  "candidate": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\title-producers-dev18-proposal-source",
+  "sourceChanges": [
+    {
+      "path": "src/game/battle.c",
+      "baseSha256": "aa8aa01cbf6a4358e9ba845e0f78ef88d2b3e0807b72e04db8e2dc0dd83d443d",
+      "candidateSha256": "dc63db4360d44539d96ee1436c4d282aceebf4256252a9698bb1ab4497bb638c",
+      "rootAtFreezeSha256": "aa8aa01cbf6a4358e9ba845e0f78ef88d2b3e0807b72e04db8e2dc0dd83d443d",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/game/battle_psi.c",
+      "baseSha256": "7adc2f2729909117f5ae3d1847deba99db20ec6344e217d4ff4b5c666d34ca17",
+      "candidateSha256": "66ecc870e1e8c89ba83034c6a696268960aa5b3323b9888c612f606fd8647092",
+      "rootAtFreezeSha256": "7adc2f2729909117f5ae3d1847deba99db20ec6344e217d4ff4b5c666d34ca17",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/game/display_text.c",
+      "baseSha256": "ee5cc9ef3056cbd5b6cc1bb846d2eb74a2bdfc16d2f1743953a8a112709d13a7",
+      "candidateSha256": "47ec18c4d515759a409a800076ea05c66cc959c0f894b6ff0d1af38bc0864b20",
+      "rootAtFreezeSha256": "ee5cc9ef3056cbd5b6cc1bb846d2eb74a2bdfc16d2f1743953a8a112709d13a7",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/game/display_text_cc.c",
+      "baseSha256": "8823d80be9f5de41518dd81684618493a4f66d790976eab38dee211706375638",
+      "candidateSha256": "7ccee8908df5b0a5c5891b99f5a3a7a222518f8d667bb2b319d31ae20b071415",
+      "rootAtFreezeSha256": "8823d80be9f5de41518dd81684618493a4f66d790976eab38dee211706375638",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/game/display_text_menus.c",
+      "baseSha256": "8735294cd95d0f039334048d8259624e29a9997dc09cf689b422a8a7fbceec54",
+      "candidateSha256": "d5a03a5134afc578444b4ae488d64d8c7da2187d23bbcbd514a96619123eda7e",
+      "rootAtFreezeSha256": "8735294cd95d0f039334048d8259624e29a9997dc09cf689b422a8a7fbceec54",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/game/text.c",
+      "baseSha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6",
+      "candidateSha256": "8550780d11e5873f2f8d22a52ae08f228b00f664a1888bbb9f39af3e3eaa7a62",
+      "rootAtFreezeSha256": "75c9a31c53caf3658ebc2ea06db781b58e99d45414fdaa54582e3e4cc4b6fac6",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/game/text.h",
+      "baseSha256": "2ac0f01307b7ed2c6b81d21f1838afb7cbe4c8c548b73506747ff54e41749799",
+      "candidateSha256": "9efe2a603affbce7cae7567fa7b05d51091a214045d1b7ac48aff2cfd7345c29",
+      "rootAtFreezeSha256": "2ac0f01307b7ed2c6b81d21f1838afb7cbe4c8c548b73506747ff54e41749799",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/game/window.h",
+      "baseSha256": "c84254e743eedf17f3e173fb13624f69ff7f7abd235810a56c1150e7a8eed8a6",
+      "candidateSha256": "41288c2127d5c9e248bce13302ed2bf5a6ecad25b3b701ec499e3aa30fe23d59",
+      "rootAtFreezeSha256": "c84254e743eedf17f3e173fb13624f69ff7f7abd235810a56c1150e7a8eed8a6",
+      "rootStillBase": true
+    }
+  ],
+  "patch": {
+    "path": "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\title-producers-dev18-private-final.patch",
+    "sha256": "23cb13eeb84b49f00aabeacd9e889768a2048b42d9249d7e0f0f3f39661776c7"
+  },
+  "allOtherSrcFilesByteIdentical": true,
+  "windowInfoDeclarationTokensUnchanged": true,
+  "format16SourceUnchanged": true,
+  "titleCallGraph": [
+    {
+      "path": "src/game/battle.c",
+      "line": 635,
+      "sourceCall": "set_window_title(window_type, name_buf, maternalbound_name_capacity());",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/battle.c",
+      "line": 2704,
+      "sourceCall": "set_window_title(window_id, name_buf, maternalbound_name_capacity());",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/battle.c",
+      "line": 2985,
+      "sourceCall": "set_window_title(WINDOW_INVENTORY,\"Tools\",5);",
+      "classification": "unchanged literal ASCII"
+    },
+    {
+      "path": "src/game/battle_psi.c",
+      "line": 420,
+      "sourceCall": "set_window_title(WINDOW_TEXT_STANDARD, name_buf, maternalbound_name_capacity());",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/display_text.c",
+      "line": 1329,
+      "sourceCall": "set_window_title(WINDOW_STATUS_MENU, name_buf, maternalbound_name_capacity());",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/display_text_cc.c",
+      "line": 1800,
+      "sourceCall": "set_window_title(window_id ? window_id : win.current_focus_window,title,-1);",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/display_text_cc.c",
+      "line": 1809,
+      "sourceCall": "set_window_title(window_id ? window_id : win.current_focus_window, title, -1);",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/display_text_menus.c",
+      "line": 748,
+      "sourceCall": "set_window_title(window_id, name_buf, maternalbound_name_capacity());",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/display_text_menus.c",
+      "line": 991,
+      "sourceCall": "set_window_title(WINDOW_PHONE_MENU, title_buf, 3);",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/display_text_menus.c",
+      "line": 1084,
+      "sourceCall": "set_window_title(WINDOW_ESCARGO_EXPRESS_ITEM, title_buf, -1);",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/display_text_menus.c",
+      "line": 1174,
+      "sourceCall": "set_window_title(WINDOW_EQUIP_MENU_ITEMLIST, title_buf, 5);",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/text.c",
+      "line": 933,
+      "sourceCall": "set_window_title(WINDOW_EQUIP_MENU, name_buf, 6);",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/text.c",
+      "line": 1046,
+      "sourceCall": "set_window_title(WINDOW_EQUIPMENT_STATS,\"Status\",-1);",
+      "classification": "unchanged literal ASCII"
+    },
+    {
+      "path": "src/game/text.c",
+      "line": 1051,
+      "sourceCall": "set_window_title(WINDOW_EQUIPMENT_RESISTANCES,\"Resistances\",-1);",
+      "classification": "unchanged literal ASCII"
+    },
+    {
+      "path": "src/game/text.c",
+      "line": 1752,
+      "sourceCall": "set_window_title(WINDOW_EQUIP_MENU_ITEMLIST, title_buf, title_len);",
+      "classification": "title-only source encoding"
+    },
+    {
+      "path": "src/game/text.c",
+      "line": 2862,
+      "sourceCall": "set_window_title(WINDOW_KEY_ITEMS, \"Key Items\", -1);",
+      "classification": "unchanged literal ASCII"
+    }
+  ],
+  "sourceCallGraphLimit": "All sixteen direct native set_window_title call sites are accounted for: twelve source-title conversions and four unchanged ASCII literal sites. This is title-only accounting, not every name display or all Redux hooks.",
+  "proofs": [
+    {
+      "path": "research/title-cold-dev18-private-fivefile-red.json",
+      "sha256": "06493365f6ce0f4a75a95d75e560dab0fae46b6a4e48aaee75593006a71bb029"
+    },
+    {
+      "path": "research/title-producers-dev18-private-preparation.json",
+      "sha256": "a646a95b2f084b6f2904b4f46c4accc968ee5406cd58594c7d2257de0cfc61f7"
+    },
+    {
+      "path": "research/title-producers-dev18-private-builds.json",
+      "sha256": "348209e1939d6e3b86bb7afa783ba524cca404d6c9c4f6bf23f4df278ff8f801"
+    },
+    {
+      "path": "research/title-producers-dev18-private-cold-green.json",
+      "sha256": "4a1024a355a457348cc0e31507617c68a580b6082de8f639d827c3f038a6a108"
+    },
+    {
+      "path": "research/title-producers-dev18-private-direct-green.json",
+      "sha256": "3e28ca0aa8157f9d137676e70f7160e2367b0833a0426701d3d056599049800f"
+    },
+    {
+      "path": "research/title-producers-dev18-private-menu-parents-green2.json",
+      "sha256": "fd180c1de4ec7963b95f64aaa123baf1b204775fdf115bf96edcdd1b9172ec91"
+    }
+  ],
+  "tools": [
+    {
+      "path": "tools/prepare_title_producers_private_dev18.py",
+      "sha256": "8354a9a1ec11afa6943ba0cf909a3303417883c867be32127639654de7be442e"
+    },
+    {
+      "path": "tools/build_title_private_dev18.py",
+      "sha256": "5ac6f3da60246d6fcd80b6b1eb5b38ab6cd706c5d46214e1f7189e0211340cc4"
+    },
+    {
+      "path": "tools/redux_title_cold_qa_dev18.py",
+      "sha256": "29381cb7ca6d1efa417258a62f91edbeda8fd7eceebc9f7a31d49ba1bb2d307d"
+    },
+    {
+      "path": "tools/redux_title_producers_qa_dev18.py",
+      "sha256": "8608ea1a439880b886bbd8ae0109eb362a5980d4136095e637a42bf43b56726d"
+    },
+    {
+      "path": "tools/redux_title_menu_parents_dev18.py",
+      "sha256": "68c3597c955bda2b7e5d68368736c5d3e2e8ba27d279f3d7537f9cec2adbb82e"
+    },
+    {
+      "path": "tools/freeze_title_producers_dev18.py",
+      "sha256": "446f419cd4d51b96672ae07df3bbf8a69262e27c1fa57d10d9d598e2326014c1"
+    },
+    {
+      "path": "tools/redux_naming_qa.py",
+      "sha256": "2e64a41ce31e54ee157899a92727ce941720abbd68fe32bd3d575f983c63f56e"
+    },
+    {
+      "path": "tools/redux_recovery_qa.py",
+      "sha256": "5155f40603788da80ac7f87a998d9720a3aee2eeb50e312f6dabbbed944a4657"
+    },
+    {
+      "path": "tools/check_jev_observer_parity.py",
+      "sha256": "a7e931b2a42c78e570e8af69bea5298f917544c9ec125442cae0b2654cda7dd0"
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "20a8b878618111ba67ddcf73ef063a07f7e3499a303da59bc4f1b6369abb95d5"
+    }
+  ],
+  "coverage": {
+    "directProducerCasesPerBuild": {
+      "original": 103,
+      "redux": 559
+    },
+    "completeExecutableGoodsColdContinuations": 4,
+    "completeExecutablePaulaSourceEntryColdContinuations": 2,
+    "ordinaryEquipmentStatusColdParents": 8,
+    "originalAsciiControls": true,
+    "oldLossyCapturedTitlesAutomaticallyRecovered": false,
+    "fullStoryVerified": false
+  },
+  "limits": [
+    "Private complete proposed player/observer and matching archives only; root integration/shipping binaries require their own final identity checks.",
+    "Original source raw title contracts and actual converted fonts define glyph identity. Independent font compositor and same-renderer raw controls do not constitute a complete untouched original CPU text-rendering oracle.",
+    "Existing saves keep format16 and WindowInfo byte layout. Previously captured question-mark titles cannot recover lost title bytes until the source menu/title is reopened; stored character names remain intact.",
+    "Source syntax/caller accounting is separate from measured behavior; direct producer prerequisites are prepared, selected ordinary parents are exercised, and no whole-story/all-UI/full-Redux parity is claimed."
+  ],
+  "rootOrOwnerInputsModified": false
+}

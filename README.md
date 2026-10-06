@@ -2,23 +2,23 @@
 
 # EarthBound Companion
 
-**EarthBound for Windows, with a native MaternalBound Redux adaptation, widescreen and ultrawide scenery, 1080pâ€“4K output, MSU music, PC controls, save recovery and Story Shuffle v3.**
+**EarthBound for Windows, with a native MaternalBound Redux adaptation, widescreen and ultrawide scenery, 1080p–4K output, MSU music, PC controls, save recovery and Story Shuffle v3.**
 
 > [!WARNING]
-> **Current release: `v0.5.0-redux-dev.17`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **Current release: `v0.5.0-redux-dev.18`, an experimental conversion. Full MaternalBound Redux compatibility is not finished.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
-![Game Mode in the dev.17 launcher](docs/images/dev17-game-mode.png)
+![Game Mode in the dev.18 launcher](docs/images/dev18-game-mode.png)
 
-*Actual dev.17 launcher capture. Gameplay and historical screenshots below retain their stated checkpoint.*
+*Actual dev.18 launcher capture. Gameplay and historical screenshots below retain their stated checkpoint.*
 
 The target is one polished PC edition: MaternalBound Redux's restored writing, art, fixes, and presentation running through the native engine alongside Companion's display, audio, input, save, QoL, mod, and randomizer features. Story Shuffle v3 binds every seed to the exact selected game version, asset hash, progression policy, and save namespace. Both the original and the pinned Redux packs have content-specific protection policies; unknown packs cannot be randomized.
 
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio or saves. The documentation includes clearly labeled development screenshots. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Developer testing tools](docs/TESTING.md) Â· [Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.17) Â· [MaternalBound native port status](MATERNALBOUND-NATIVE.md) Â· [Randomizer rules](RANDOMIZER.md) Â· [Research and compatibility](RESEARCH.md) Â· [Credits](CREDITS.md) Â· [Source lineage](UPSTREAM.md)
+[Developer testing tools](docs/TESTING.md) · [Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.18) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
 
-Dev.17 fixes pooled-Key selection in real barter/storage/sale menus, shared menu pagination and two-column labels, source transition arithmetic and aligned asset loading. It also corrects Redux battle-background graphics and four palettes. The guarded graphics update preserves compatible story saves and retains older seed data with its original base. [The dev.17 audit](docs/NATIVE-AUDIT-dev17.md) records exact inputs, source comparisons, instrumented scenarios and coverage limits. **Town Map art and accented window-title glyphs remain active conversion work; full story and randomized playthroughs are still unverified.**
+Dev.18 restores Redux Town Maps, gas-station intro art, Starman teleport frames and battle-transition swirls; fixes extended window-title/file-slot glyphs and cold-loaded Continue slots; and recognizes already-current Original data during setup. Exactly 41 presentation assets change, with guarded story-save copying and exact seed-base protection. [The dev.18 audit](docs/NATIVE-AUDIT-dev18.md) records the executed evidence and remaining work. **A separate accented party-target-label bug is under repair; full story, randomized playthroughs and full conversion remain unfinished.**
 
 Dev.16 restores serialized random rolls, corrects encounter probability, bomb splash targets, boss transformation cleanup, encounter direction, sprite-script returns, loaded item timers, Redux bulk-buy capacity/refunds and Redux follower spacing, and adds Original mode's missing possession script with guarded old-save recovery. Expanded source-backed tests cover selected paths in all 144 active battle callbacks and complete prepared encounters, prayer, ending and final-letter transactions. The Original data-upgrade and real checkpoint-recovery checks also pass. Redux content/seed identities and owner saves are retained; complete story and randomized coverage remain open. [Audit, evidence and remaining work](docs/NATIVE-AUDIT-dev16.md).
 
@@ -75,7 +75,7 @@ The [Redux port page](MATERNALBOUND-NATIVE.md#development-captures) also shows a
 
 ![Ordinary Mayor Pirkle quest award in the native dev.4 engine](docs/images/native-redux-mayor-key-dev4.png)
 
-This capture replays the mayorâ€™s actual Shack Key award using the production engine and ordinary recorded inputs. It is a story checkpoint, not a completed playthrough.
+This capture replays the mayor’s actual Shack Key award using the production engine and ordinary recorded inputs. It is a story checkpoint, not a completed playthrough.
 
 This 1080p capture uses locally supplied game data. It documents the development build; it is not proof of complete story compatibility.
 
@@ -93,7 +93,7 @@ EarthBound Companion packages a native x64 C/SDL2 game build with a self-contain
 
 The player-facing setup separates code/tools from player-supplied game data. Setup reads the owner's ROM locally and never modifies or uploads it. Conversion creates local working data and generated ROMs, removed after successful setup. Failed builds can retain private diagnostics and working files; those folders must not be uploaded.
 
-**We still use the upstream native engine. This is an adaptation of that foundation, not a ground-up replacement.** The source lineage is [Herringway/ebsrc](https://github.com/Herringway/ebsrc) â†’ [BrianPugh/earthbound](https://github.com/BrianPugh/earthbound) â†’ [seanstaggsQU/earthboundRecompLinux2026](https://github.com/seanstaggsQU/earthboundRecompLinux2026) â†’ Companion's pinned patch. Our launcher, Redux converters/adapters, PC integration, fixes, randomizer and recovery build on that work. Adding these features does not erase upstream authorship or licensing obligations. [Verified provenance](UPSTREAM.md) Â· [Full credits](CREDITS.md).
+**We still use the upstream native engine. This is an adaptation of that foundation, not a ground-up replacement.** The source lineage is [Herringway/ebsrc](https://github.com/Herringway/ebsrc) â†’ [BrianPugh/earthbound](https://github.com/BrianPugh/earthbound) â†’ [seanstaggsQU/earthboundRecompLinux2026](https://github.com/seanstaggsQU/earthboundRecompLinux2026) â†’ Companion's pinned patch. Our launcher, Redux converters/adapters, PC integration, fixes, randomizer and recovery build on that work. Adding these features does not erase upstream authorship or licensing obligations. [Verified provenance](UPSTREAM.md) · [Full credits](CREDITS.md).
 
 ## Quick start
 
@@ -145,7 +145,7 @@ Click **Apply settings** to save option changes. Game Mode selects the story edi
 
 ## Native MSU soundtrack
 
-First-run setup can download all 164 PCM tracks from [ShadowOne333â€™s EarthBound MSU-1 pack](https://archive.org/details/earthbound-msu-1-pack). Each file is checked against the embedded size and checksum manifest before it is installed. Interrupted setup keeps completed tracks; **Audio â†’ Install / repair soundtrack** resumes and verifies the collection. Missing or invalid files fall back to the selected edition's SPC soundtrack. Native checks cover all 164 PCM loop/end boundaries, the eight Sound Stone transitions and retained SPC sound effects; complete listening and story-transition coverage remain unverified.
+First-run setup can download all 164 PCM tracks from [ShadowOne333’s EarthBound MSU-1 pack](https://archive.org/details/earthbound-msu-1-pack). Each file is checked against the embedded size and checksum manifest before it is installed. Interrupted setup keeps completed tracks; **Audio â†’ Install / repair soundtrack** resumes and verifies the collection. Missing or invalid files fall back to the selected edition's SPC soundtrack. Native checks cover all 164 PCM loop/end boundaries, the eight Sound Stone transitions and retained SPC sound effects; complete listening and story-transition coverage remain unverified.
 
 The PCM files are not stored in this repository or the release ZIP. See [CREDITS.md](CREDITS.md) for provenance.
 
@@ -196,7 +196,7 @@ cd earthbound-companion
 powershell -ExecutionPolicy Bypass -File .\scripts\Bootstrap-Native.ps1
 ```
 
-Developers need a Windows x64 C toolchain, CMake/Ninja, SDL2 development files, Python and the .NET 8 SDK. Runtime builds use `EB_RUNTIME_ASSETS=ON`, `EB_ENABLE_VERIFY=OFF` and `EB_ENABLE_AUDIO=ON`. The native executable compiles without a ROM, extracted JSON or `ebtools`: numeric constants come from the checked-in assembly enums using Python 3.9+ standard-library code. Game setup still requires your own ROM to produce playable data. [Fresh full-patch build and runtime checks](validation/public-clean-source-dev16.json) Â· [Constants and loader proof](research/runtime-constants-final-manifest-dev16-v9.json). Redux setup-helper builds additionally require the pinned CoilSnake/CCScript toolchain and PyInstaller; see [the conversion instructions](MATERNALBOUND-NATIVE.md#reproducing-development-conversion).
+Developers need a Windows x64 C toolchain, CMake/Ninja, SDL2 development files, Python and the .NET 8 SDK. Runtime builds use `EB_RUNTIME_ASSETS=ON`, `EB_ENABLE_VERIFY=OFF` and `EB_ENABLE_AUDIO=ON`. The native executable compiles without a ROM, extracted JSON or `ebtools`: numeric constants come from the checked-in assembly enums using Python 3.9+ standard-library code. Game setup still requires your own ROM to produce playable data. [Fresh full-patch build and runtime checks](validation/public-clean-source-dev16.json) · [Constants and loader proof](research/runtime-constants-final-manifest-dev16-v9.json). Redux setup-helper builds additionally require the pinned CoilSnake/CCScript toolchain and PyInstaller; see [the conversion instructions](MATERNALBOUND-NATIVE.md#reproducing-development-conversion).
 
 For a code-only build after installing your toolchain, configure `native-source/port/unix` with the runtime flags above and your `SDL2_DIR`, then run `cmake --build` on that build directory. The loader fixture is deliberately excluded from the default build. For its separate test, install `ebtools`, run `python scripts/create_fixture.py`, then build the explicit `test_runtime_assets` target and execute it with the generated fixture pack and scratch paths. `Verify.ps1` records that sequence. It uses synthetic test data, not game JSON.
 
@@ -206,7 +206,7 @@ The checked-in rebuild/package scripts record the current workspace's tool paths
 
 EarthBound and Mother 2 are trademarks and copyrighted works of their respective owners. This is an unofficial fan project, not affiliated with or endorsed by Nintendo, Shigesato Itoi, APE, HAL Laboratory, or any rights holder. No ownership of the original game is claimed.
 
-The October 4 review found no repository-wide redistribution grant in the reviewed native-foundation README/license files; GitHub also detects no top-level license. Third-party library licenses cover those libraries, not the whole engine. Public visibility and credits do not supply missing permission. [Review record](validation/upstream-license-provenance.json) Â· [GitHub's licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
+The October 4 review found no repository-wide redistribution grant in the reviewed native-foundation README/license files; GitHub also detects no top-level license. Third-party library licenses cover those libraries, not the whole engine. Public visibility and credits do not supply missing permission. [Review record](validation/upstream-license-provenance.json) · [GitHub's licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
 
 MaternalBound Redux and its adaptations have separate GPLv3 terms. Those terms do not license the native foundation. The combined engine's distribution and GPL compatibility remain unresolved in the recorded review despite the public development releases; repository visibility does not settle either issue. Original Companion files have their own [limited-scope license](LICENSE.md). A patch or compiled executable can still contain upstream material even when the full source tree is not vendored. See [LEGAL.md](LEGAL.md) and [CREDITS.md](CREDITS.md). No disclaimer claims to grant game rights or guarantee legal protection.
 

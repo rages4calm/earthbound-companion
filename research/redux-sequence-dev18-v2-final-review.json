@@ -1,0 +1,1340 @@
+{
+  "toolSha256": "2ca4a394b67643634595d772c251a625ebc6ad8605d44a4dcb428ee0ce89f300",
+  "production": {
+    "driverSourceSha256": "2ec1eec057f5143d63c4d07a1c5fefcc38daadeafe13515dcd654365be1691b2",
+    "executableSha256": "ca867c3e8ae143bab028c9a99d6c967a0636c2b288a276f5e8962d73ac7c4f99",
+    "productionExecutableSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "productionLibrarySha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "romSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "profile": "Redux",
+  "runtimeExecuted": true,
+  "ownerWrites": false,
+  "fullVisualParityVerified": false,
+  "preparedCases": 6,
+  "preparedFrames": 28,
+  "skippedCases": 0,
+  "sourceTablePointer": 14613725,
+  "sourceTableSha256": "d65450cbffaf66c983783edd79c52995752cc4395c1b0740d2633f9246ce02b7",
+  "sourceRecords": [
+    {
+      "id": 1,
+      "asset": "graphics/animations/lightning_reflect.anim.lzhal",
+      "sourcePointer": 14726198,
+      "sourceTileBytes": 7184,
+      "sourceFrameCount": 6,
+      "sourceDelay": 3,
+      "sourceDecodedBytes": 17944,
+      "sourceDecodedSha256": "1b94c654e7c366a3c0a95da890f378635d66a10cb97f177a2980a154210f360b",
+      "nativeTileBytes": 7184,
+      "nativeFrameCount": 6,
+      "nativeDecodedBytes": 17944,
+      "nativeDecodedSha256": "fbe699cd72e9dbc98ab47a8eee2a8f087c5eb3f87d4bae978c98991d27362a57",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        104,
+        184,
+        235,
+        299,
+        376,
+        448
+      ]
+    },
+    {
+      "id": 2,
+      "asset": "graphics/animations/lightning_strike.anim.lzhal",
+      "sourcePointer": 14677068,
+      "sourceTileBytes": 1440,
+      "sourceFrameCount": 7,
+      "sourceDelay": 16,
+      "sourceDecodedBytes": 13992,
+      "sourceDecodedSha256": "69322ed79eb1b3cdabd3aa3e22c70462205410648f899b2e32fc2e535b8cb5e7",
+      "nativeTileBytes": 1440,
+      "nativeFrameCount": 7,
+      "nativeDecodedBytes": 13992,
+      "nativeDecodedSha256": "031fd9e08e98a6935f7562e535c685296aa220fbe0a74a29ccf7f4d41f424dcf",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        7,
+        10,
+        24,
+        45,
+        64,
+        78,
+        89
+      ]
+    },
+    {
+      "id": 3,
+      "asset": "graphics/animations/starman_jr_teleport.anim.lzhal",
+      "sourcePointer": 14609604,
+      "sourceTileBytes": 912,
+      "sourceFrameCount": 8,
+      "sourceDelay": 8,
+      "sourceDecodedBytes": 15256,
+      "sourceDecodedSha256": "bb89c68590bff4f23c42d5d2a50fffcf751887b54cc99316197159dcc208da33",
+      "nativeTileBytes": 960,
+      "nativeFrameCount": 8,
+      "nativeDecodedBytes": 15304,
+      "nativeDecodedSha256": "368f4f939c0d8054235bea052be76a526f86b786c6813740f93cdb7da3900a67",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": false,
+      "maximumTileByFrame": [
+        3,
+        4,
+        13,
+        25,
+        40,
+        46,
+        51,
+        56
+      ]
+    },
+    {
+      "id": 4,
+      "asset": "graphics/animations/boom.anim.lzhal",
+      "sourcePointer": 14685017,
+      "sourceTileBytes": 2720,
+      "sourceFrameCount": 2,
+      "sourceDelay": 16,
+      "sourceDecodedBytes": 6312,
+      "sourceDecodedSha256": "1bd1091a3464f782af2e01506585cc0dba936bc1ef756917b09bbf747886cfbb",
+      "nativeTileBytes": 2720,
+      "nativeFrameCount": 2,
+      "nativeDecodedBytes": 6312,
+      "nativeDecodedSha256": "5c1dad363051122468be7e42cb4f8508fe726ce2a5ab01d479f3506df7067bdf",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        74,
+        169
+      ]
+    },
+    {
+      "id": 5,
+      "asset": "graphics/animations/zombies.anim.lzhal",
+      "sourcePointer": 14610311,
+      "sourceTileBytes": 64,
+      "sourceFrameCount": 3,
+      "sourceDelay": 8,
+      "sourceDecodedBytes": 5448,
+      "sourceDecodedSha256": "3f7525ec12f9798c76e3e07f852771b2abe254a5cc77a96bf094ca8f1be54171",
+      "nativeTileBytes": 64,
+      "nativeFrameCount": 3,
+      "nativeDecodedBytes": 5448,
+      "nativeDecodedSha256": "16552ef94ee8ea5f4bad14d0400a8d51e3578ceb7054cc11e8f486d838a3ad56",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        1,
+        3,
+        3
+      ]
+    },
+    {
+      "id": 6,
+      "asset": "US/graphics/animations/the_end.anim.lzhal",
+      "sourcePointer": 14610406,
+      "sourceTileBytes": 288,
+      "sourceFrameCount": 2,
+      "sourceDelay": 8,
+      "sourceDecodedBytes": 3880,
+      "sourceDecodedSha256": "0f9bac676204e790e153a404fd3ef69e4cb15a404351d41dd1462be950120eb8",
+      "nativeTileBytes": 288,
+      "nativeFrameCount": 2,
+      "nativeDecodedBytes": 3880,
+      "nativeDecodedSha256": "2383fe7ed6f9b8a1188f0b69b5da6bf1a182720c784858e5230c2a09c60012c4",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        15,
+        17
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "check": "1-source-arrangements-in-bounds",
+      "passed": true,
+      "sourceTileCount": 449,
+      "maximumTileByFrame": [
+        104,
+        184,
+        235,
+        299,
+        376,
+        448
+      ]
+    },
+    {
+      "check": "1-native-decompress",
+      "passed": true
+    },
+    {
+      "check": "1-source-frame-count",
+      "passed": true
+    },
+    {
+      "check": "1-0-native-upload",
+      "passed": true
+    },
+    {
+      "check": "1-0-native-render",
+      "passed": true
+    },
+    {
+      "check": "1-0-source-delay",
+      "passed": true,
+      "native": 3
+    },
+    {
+      "check": "1-1-native-upload",
+      "passed": true
+    },
+    {
+      "check": "1-1-native-render",
+      "passed": true
+    },
+    {
+      "check": "1-1-source-delay",
+      "passed": true,
+      "native": 3
+    },
+    {
+      "check": "1-2-native-upload",
+      "passed": true
+    },
+    {
+      "check": "1-2-native-render",
+      "passed": true
+    },
+    {
+      "check": "1-2-source-delay",
+      "passed": true,
+      "native": 3
+    },
+    {
+      "check": "1-3-native-upload",
+      "passed": true
+    },
+    {
+      "check": "1-3-native-render",
+      "passed": true
+    },
+    {
+      "check": "1-3-source-delay",
+      "passed": true,
+      "native": 3
+    },
+    {
+      "check": "1-4-native-upload",
+      "passed": true
+    },
+    {
+      "check": "1-4-native-render",
+      "passed": true
+    },
+    {
+      "check": "1-4-source-delay",
+      "passed": true,
+      "native": 3
+    },
+    {
+      "check": "1-5-native-upload",
+      "passed": true
+    },
+    {
+      "check": "1-5-native-render",
+      "passed": true
+    },
+    {
+      "check": "1-5-source-delay",
+      "passed": true,
+      "native": 0
+    },
+    {
+      "check": "2-source-arrangements-in-bounds",
+      "passed": true,
+      "sourceTileCount": 90,
+      "maximumTileByFrame": [
+        7,
+        10,
+        24,
+        45,
+        64,
+        78,
+        89
+      ]
+    },
+    {
+      "check": "2-native-decompress",
+      "passed": true
+    },
+    {
+      "check": "2-source-frame-count",
+      "passed": true
+    },
+    {
+      "check": "2-0-native-upload",
+      "passed": true
+    },
+    {
+      "check": "2-0-native-render",
+      "passed": true
+    },
+    {
+      "check": "2-0-source-delay",
+      "passed": true,
+      "native": 16
+    },
+    {
+      "check": "2-1-native-upload",
+      "passed": true
+    },
+    {
+      "check": "2-1-native-render",
+      "passed": true
+    },
+    {
+      "check": "2-1-source-delay",
+      "passed": true,
+      "native": 16
+    },
+    {
+      "check": "2-2-native-upload",
+      "passed": true
+    },
+    {
+      "check": "2-2-native-render",
+      "passed": true
+    },
+    {
+      "check": "2-2-source-delay",
+      "passed": true,
+      "native": 16
+    },
+    {
+      "check": "2-3-native-upload",
+      "passed": true
+    },
+    {
+      "check": "2-3-native-render",
+      "passed": true
+    },
+    {
+      "check": "2-3-source-delay",
+      "passed": true,
+      "native": 16
+    },
+    {
+      "check": "2-4-native-upload",
+      "passed": true
+    },
+    {
+      "check": "2-4-native-render",
+      "passed": true
+    },
+    {
+      "check": "2-4-source-delay",
+      "passed": true,
+      "native": 16
+    },
+    {
+      "check": "2-5-native-upload",
+      "passed": true
+    },
+    {
+      "check": "2-5-native-render",
+      "passed": true
+    },
+    {
+      "check": "2-5-source-delay",
+      "passed": true,
+      "native": 16
+    },
+    {
+      "check": "2-6-native-upload",
+      "passed": true
+    },
+    {
+      "check": "2-6-native-render",
+      "passed": true
+    },
+    {
+      "check": "2-6-source-delay",
+      "passed": true,
+      "native": 0
+    },
+    {
+      "check": "3-source-arrangements-in-bounds",
+      "passed": true,
+      "sourceTileCount": 57,
+      "maximumTileByFrame": [
+        3,
+        4,
+        13,
+        25,
+        40,
+        46,
+        51,
+        56
+      ]
+    },
+    {
+      "check": "3-native-decompress",
+      "passed": true
+    },
+    {
+      "check": "3-source-frame-count",
+      "passed": true
+    },
+    {
+      "check": "3-0-native-upload",
+      "passed": true
+    },
+    {
+      "check": "3-0-native-render",
+      "passed": true
+    },
+    {
+      "check": "3-0-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "3-1-native-upload",
+      "passed": true
+    },
+    {
+      "check": "3-1-native-render",
+      "passed": true
+    },
+    {
+      "check": "3-1-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "3-2-native-upload",
+      "passed": true
+    },
+    {
+      "check": "3-2-native-render",
+      "passed": true
+    },
+    {
+      "check": "3-2-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "3-3-native-upload",
+      "passed": true
+    },
+    {
+      "check": "3-3-native-render",
+      "passed": true
+    },
+    {
+      "check": "3-3-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "3-4-native-upload",
+      "passed": true
+    },
+    {
+      "check": "3-4-native-render",
+      "passed": true
+    },
+    {
+      "check": "3-4-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "3-5-native-upload",
+      "passed": true
+    },
+    {
+      "check": "3-5-native-render",
+      "passed": true
+    },
+    {
+      "check": "3-5-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "3-6-native-upload",
+      "passed": true
+    },
+    {
+      "check": "3-6-native-render",
+      "passed": true
+    },
+    {
+      "check": "3-6-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "3-7-native-upload",
+      "passed": true
+    },
+    {
+      "check": "3-7-native-render",
+      "passed": true
+    },
+    {
+      "check": "3-7-source-delay",
+      "passed": true,
+      "native": 0
+    },
+    {
+      "check": "4-source-arrangements-in-bounds",
+      "passed": true,
+      "sourceTileCount": 170,
+      "maximumTileByFrame": [
+        74,
+        169
+      ]
+    },
+    {
+      "check": "4-native-decompress",
+      "passed": true
+    },
+    {
+      "check": "4-source-frame-count",
+      "passed": true
+    },
+    {
+      "check": "4-0-native-upload",
+      "passed": true
+    },
+    {
+      "check": "4-0-native-render",
+      "passed": true
+    },
+    {
+      "check": "4-0-source-delay",
+      "passed": true,
+      "native": 16
+    },
+    {
+      "check": "4-1-native-upload",
+      "passed": true
+    },
+    {
+      "check": "4-1-native-render",
+      "passed": true
+    },
+    {
+      "check": "4-1-source-delay",
+      "passed": true,
+      "native": 0
+    },
+    {
+      "check": "5-source-arrangements-in-bounds",
+      "passed": true,
+      "sourceTileCount": 4,
+      "maximumTileByFrame": [
+        1,
+        3,
+        3
+      ]
+    },
+    {
+      "check": "5-native-decompress",
+      "passed": true
+    },
+    {
+      "check": "5-source-frame-count",
+      "passed": true
+    },
+    {
+      "check": "5-0-native-upload",
+      "passed": true
+    },
+    {
+      "check": "5-0-native-render",
+      "passed": true
+    },
+    {
+      "check": "5-0-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "5-1-native-upload",
+      "passed": true
+    },
+    {
+      "check": "5-1-native-render",
+      "passed": true
+    },
+    {
+      "check": "5-1-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "5-2-native-upload",
+      "passed": true
+    },
+    {
+      "check": "5-2-native-render",
+      "passed": true
+    },
+    {
+      "check": "5-2-source-delay",
+      "passed": true,
+      "native": 0
+    },
+    {
+      "check": "6-source-arrangements-in-bounds",
+      "passed": true,
+      "sourceTileCount": 18,
+      "maximumTileByFrame": [
+        15,
+        17
+      ]
+    },
+    {
+      "check": "6-native-decompress",
+      "passed": true
+    },
+    {
+      "check": "6-source-frame-count",
+      "passed": true
+    },
+    {
+      "check": "6-0-native-upload",
+      "passed": true
+    },
+    {
+      "check": "6-0-native-render",
+      "passed": true
+    },
+    {
+      "check": "6-0-source-delay",
+      "passed": true,
+      "native": 8
+    },
+    {
+      "check": "6-1-native-upload",
+      "passed": true
+    },
+    {
+      "check": "6-1-native-render",
+      "passed": true
+    },
+    {
+      "check": "6-1-source-delay",
+      "passed": true,
+      "native": 0
+    }
+  ],
+  "sourceParityChecks": [
+    {
+      "check": "1-0-source-art",
+      "passed": true,
+      "sourceSha256": "3b5a3aa8df2f3f3ce5e77a48604f4406b72f75e37467c6420dc7dc3eaa3be7b0",
+      "nativeSha256": "3b5a3aa8df2f3f3ce5e77a48604f4406b72f75e37467c6420dc7dc3eaa3be7b0",
+      "sourceNonBlackPixels": 1069,
+      "nativeNonBlackPixels": 1069,
+      "differingPixels": 0
+    },
+    {
+      "check": "1-1-source-art",
+      "passed": true,
+      "sourceSha256": "a47de15728468de150873e65e46f5455a2909b602822c444a285f96da32c1e96",
+      "nativeSha256": "a47de15728468de150873e65e46f5455a2909b602822c444a285f96da32c1e96",
+      "sourceNonBlackPixels": 1110,
+      "nativeNonBlackPixels": 1110,
+      "differingPixels": 0
+    },
+    {
+      "check": "1-2-source-art",
+      "passed": true,
+      "sourceSha256": "c250e9a9eb4618aa4d0ac2437c497f6cbf215eb6c8a4e8c3c3dee5332deb95b8",
+      "nativeSha256": "c250e9a9eb4618aa4d0ac2437c497f6cbf215eb6c8a4e8c3c3dee5332deb95b8",
+      "sourceNonBlackPixels": 1157,
+      "nativeNonBlackPixels": 1157,
+      "differingPixels": 0
+    },
+    {
+      "check": "1-3-source-art",
+      "passed": true,
+      "sourceSha256": "82a708edad85ef95fcf3ad29446a1ae611173acb312a075e57fa963a403b53ef",
+      "nativeSha256": "82a708edad85ef95fcf3ad29446a1ae611173acb312a075e57fa963a403b53ef",
+      "sourceNonBlackPixels": 1150,
+      "nativeNonBlackPixels": 1150,
+      "differingPixels": 0
+    },
+    {
+      "check": "1-4-source-art",
+      "passed": true,
+      "sourceSha256": "9b4acf66340c04ffd346522d2cb0a667de3ff28ffcae593e3134a5705dc85e77",
+      "nativeSha256": "9b4acf66340c04ffd346522d2cb0a667de3ff28ffcae593e3134a5705dc85e77",
+      "sourceNonBlackPixels": 1264,
+      "nativeNonBlackPixels": 1264,
+      "differingPixels": 0
+    },
+    {
+      "check": "1-5-source-art",
+      "passed": true,
+      "sourceSha256": "54d8a2a7503bce275d7d9a86574a3f79443ed18b891f2996f1b60a853b0c8392",
+      "nativeSha256": "54d8a2a7503bce275d7d9a86574a3f79443ed18b891f2996f1b60a853b0c8392",
+      "sourceNonBlackPixels": 922,
+      "nativeNonBlackPixels": 922,
+      "differingPixels": 0
+    },
+    {
+      "check": "2-0-source-art",
+      "passed": true,
+      "sourceSha256": "c91140b18deba324c362015cd5ee710e7a5ba273ee7702558d905050d2bd67ec",
+      "nativeSha256": "c91140b18deba324c362015cd5ee710e7a5ba273ee7702558d905050d2bd67ec",
+      "sourceNonBlackPixels": 480,
+      "nativeNonBlackPixels": 480,
+      "differingPixels": 0
+    },
+    {
+      "check": "2-1-source-art",
+      "passed": true,
+      "sourceSha256": "0fc6adb58f6f9378e22bb4448f016023dbf2b6f93f97c2cead8dcc3eb44873b6",
+      "nativeSha256": "0fc6adb58f6f9378e22bb4448f016023dbf2b6f93f97c2cead8dcc3eb44873b6",
+      "sourceNonBlackPixels": 2184,
+      "nativeNonBlackPixels": 2184,
+      "differingPixels": 0
+    },
+    {
+      "check": "2-2-source-art",
+      "passed": true,
+      "sourceSha256": "c46c0651d6fa139816a5a62f8bc1ba41e3109fff8dc03c93d237180bf4412d80",
+      "nativeSha256": "c46c0651d6fa139816a5a62f8bc1ba41e3109fff8dc03c93d237180bf4412d80",
+      "sourceNonBlackPixels": 5927,
+      "nativeNonBlackPixels": 5927,
+      "differingPixels": 0
+    },
+    {
+      "check": "2-3-source-art",
+      "passed": true,
+      "sourceSha256": "53cd687aadbf2000a2dbc0a90cf0b7d946ca9dd04b99d7a8e9b97d2143f77c82",
+      "nativeSha256": "53cd687aadbf2000a2dbc0a90cf0b7d946ca9dd04b99d7a8e9b97d2143f77c82",
+      "sourceNonBlackPixels": 57088,
+      "nativeNonBlackPixels": 57088,
+      "differingPixels": 0
+    },
+    {
+      "check": "2-4-source-art",
+      "passed": true,
+      "sourceSha256": "6762d29e27af601e6ea3a8a93b2da1fd2f3e204331e91f7d45e8e4d77117510c",
+      "nativeSha256": "6762d29e27af601e6ea3a8a93b2da1fd2f3e204331e91f7d45e8e4d77117510c",
+      "sourceNonBlackPixels": 1003,
+      "nativeNonBlackPixels": 1003,
+      "differingPixels": 0
+    },
+    {
+      "check": "2-5-source-art",
+      "passed": true,
+      "sourceSha256": "072378537b13db13740d0d3ba1333b1a16726d2908428091da5ed5ffdaf7e5b0",
+      "nativeSha256": "072378537b13db13740d0d3ba1333b1a16726d2908428091da5ed5ffdaf7e5b0",
+      "sourceNonBlackPixels": 616,
+      "nativeNonBlackPixels": 616,
+      "differingPixels": 0
+    },
+    {
+      "check": "2-6-source-art",
+      "passed": true,
+      "sourceSha256": "a50e42775b93dba2dc5e247e3d4bcd816bd34b8e9b631e8442f853388d47f26d",
+      "nativeSha256": "a50e42775b93dba2dc5e247e3d4bcd816bd34b8e9b631e8442f853388d47f26d",
+      "sourceNonBlackPixels": 300,
+      "nativeNonBlackPixels": 300,
+      "differingPixels": 0
+    },
+    {
+      "check": "3-0-source-art",
+      "passed": true,
+      "sourceSha256": "2b13518473d11483835f0d94c5b2f2142e54b42faacd702a409d6b1da7d1e242",
+      "nativeSha256": "2b13518473d11483835f0d94c5b2f2142e54b42faacd702a409d6b1da7d1e242",
+      "sourceNonBlackPixels": 151,
+      "nativeNonBlackPixels": 151,
+      "differingPixels": 0
+    },
+    {
+      "check": "3-1-source-art",
+      "passed": true,
+      "sourceSha256": "1f5bc55b11b7bc98822f7287912e545bb84c29edce0d7590748d6b877d05a664",
+      "nativeSha256": "1f5bc55b11b7bc98822f7287912e545bb84c29edce0d7590748d6b877d05a664",
+      "sourceNonBlackPixels": 576,
+      "nativeNonBlackPixels": 576,
+      "differingPixels": 0
+    },
+    {
+      "check": "3-2-source-art",
+      "passed": true,
+      "sourceSha256": "78e91bdcf7b28234015b52ba368be8939d2434bd7639da8d7a6b26d55e285d47",
+      "nativeSha256": "78e91bdcf7b28234015b52ba368be8939d2434bd7639da8d7a6b26d55e285d47",
+      "sourceNonBlackPixels": 1158,
+      "nativeNonBlackPixels": 1158,
+      "differingPixels": 0
+    },
+    {
+      "check": "3-3-source-art",
+      "passed": true,
+      "sourceSha256": "cd9113a5dca3de7444a7783d98cb8deadc57ece78be1448880310e60d666e89f",
+      "nativeSha256": "cd9113a5dca3de7444a7783d98cb8deadc57ece78be1448880310e60d666e89f",
+      "sourceNonBlackPixels": 1548,
+      "nativeNonBlackPixels": 1548,
+      "differingPixels": 0
+    },
+    {
+      "check": "3-4-source-art",
+      "passed": true,
+      "sourceSha256": "56de4f462fe5c8d180e49c95b75fa9a8f9656708f0483696f97a686c238493d0",
+      "nativeSha256": "56de4f462fe5c8d180e49c95b75fa9a8f9656708f0483696f97a686c238493d0",
+      "sourceNonBlackPixels": 1546,
+      "nativeNonBlackPixels": 1546,
+      "differingPixels": 0
+    },
+    {
+      "check": "3-5-source-art",
+      "passed": true,
+      "sourceSha256": "ac17bb731a5263b8dc8f8d5fd0ea1d88da5a8ec6ce0064355609ee6e81ec2724",
+      "nativeSha256": "ac17bb731a5263b8dc8f8d5fd0ea1d88da5a8ec6ce0064355609ee6e81ec2724",
+      "sourceNonBlackPixels": 1546,
+      "nativeNonBlackPixels": 1546,
+      "differingPixels": 0
+    },
+    {
+      "check": "3-6-source-art",
+      "passed": true,
+      "sourceSha256": "078786e2bf5b5fe0e5dd3a724c0fc466c316d79443e08f703ab763233dd10737",
+      "nativeSha256": "078786e2bf5b5fe0e5dd3a724c0fc466c316d79443e08f703ab763233dd10737",
+      "sourceNonBlackPixels": 996,
+      "nativeNonBlackPixels": 996,
+      "differingPixels": 0
+    },
+    {
+      "check": "3-7-source-art",
+      "passed": true,
+      "sourceSha256": "13e11b94a544aa9e88ddaffbcbed993ed8d6b960e00fd7596aff305d2edf0c11",
+      "nativeSha256": "13e11b94a544aa9e88ddaffbcbed993ed8d6b960e00fd7596aff305d2edf0c11",
+      "sourceNonBlackPixels": 228,
+      "nativeNonBlackPixels": 228,
+      "differingPixels": 0
+    },
+    {
+      "check": "4-0-source-art",
+      "passed": true,
+      "sourceSha256": "0fe62649236e668368c0a4113aac5ad1deb2126724c3fe8d0209bb3d305cb05f",
+      "nativeSha256": "0fe62649236e668368c0a4113aac5ad1deb2126724c3fe8d0209bb3d305cb05f",
+      "sourceNonBlackPixels": 4933,
+      "nativeNonBlackPixels": 4933,
+      "differingPixels": 0
+    },
+    {
+      "check": "4-1-source-art",
+      "passed": true,
+      "sourceSha256": "c00fa38cab84f4c66e8b25f34109876731924ae7e5aa046c3cf553b2f31a7bbd",
+      "nativeSha256": "c00fa38cab84f4c66e8b25f34109876731924ae7e5aa046c3cf553b2f31a7bbd",
+      "sourceNonBlackPixels": 7246,
+      "nativeNonBlackPixels": 7246,
+      "differingPixels": 0
+    },
+    {
+      "check": "5-0-source-art",
+      "passed": true,
+      "sourceSha256": "38b3d5f02caf456cb5e11316df0889a73dc156db8b6a7356644f97a2a5364c76",
+      "nativeSha256": "38b3d5f02caf456cb5e11316df0889a73dc156db8b6a7356644f97a2a5364c76",
+      "sourceNonBlackPixels": 4,
+      "nativeNonBlackPixels": 4,
+      "differingPixels": 0
+    },
+    {
+      "check": "5-1-source-art",
+      "passed": true,
+      "sourceSha256": "5e6a372678c3b05120a83a1a07d070773d7d1e3d4954573750fd439049b7d64b",
+      "nativeSha256": "5e6a372678c3b05120a83a1a07d070773d7d1e3d4954573750fd439049b7d64b",
+      "sourceNonBlackPixels": 55,
+      "nativeNonBlackPixels": 55,
+      "differingPixels": 0
+    },
+    {
+      "check": "5-2-source-art",
+      "passed": true,
+      "sourceSha256": "cb8786cc492e5dd7bcecc2860c97f73228c37cca2425b4c557a4f75c986764e6",
+      "nativeSha256": "cb8786cc492e5dd7bcecc2860c97f73228c37cca2425b4c557a4f75c986764e6",
+      "sourceNonBlackPixels": 69,
+      "nativeNonBlackPixels": 69,
+      "differingPixels": 0
+    },
+    {
+      "check": "6-0-source-art",
+      "passed": true,
+      "sourceSha256": "d958456d9358396337f34cb5cb11312923d05cd33f1160b98c0e7e2324a456f6",
+      "nativeSha256": "d958456d9358396337f34cb5cb11312923d05cd33f1160b98c0e7e2324a456f6",
+      "sourceNonBlackPixels": 268,
+      "nativeNonBlackPixels": 268,
+      "differingPixels": 0
+    },
+    {
+      "check": "6-1-source-art",
+      "passed": true,
+      "sourceSha256": "d60b2393e07efb8bb66b249e51f9f39df9fd293517c6c7b5882759cc7d26243f",
+      "nativeSha256": "d60b2393e07efb8bb66b249e51f9f39df9fd293517c6c7b5882759cc7d26243f",
+      "sourceNonBlackPixels": 298,
+      "nativeNonBlackPixels": 298,
+      "differingPixels": 0
+    }
+  ],
+  "nativeRows": [
+    {
+      "id": 1,
+      "frame": 0,
+      "nativeTileBytes": 7184,
+      "nativeCount": 6,
+      "delay": 3,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 1,
+      "frame": 1,
+      "nativeTileBytes": 7184,
+      "nativeCount": 6,
+      "delay": 3,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 1,
+      "frame": 2,
+      "nativeTileBytes": 7184,
+      "nativeCount": 6,
+      "delay": 3,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 1,
+      "frame": 3,
+      "nativeTileBytes": 7184,
+      "nativeCount": 6,
+      "delay": 3,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 1,
+      "frame": 4,
+      "nativeTileBytes": 7184,
+      "nativeCount": 6,
+      "delay": 3,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 1,
+      "frame": 5,
+      "nativeTileBytes": 7184,
+      "nativeCount": 6,
+      "delay": 0,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 2,
+      "frame": 0,
+      "nativeTileBytes": 1440,
+      "nativeCount": 7,
+      "delay": 16,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 2,
+      "frame": 1,
+      "nativeTileBytes": 1440,
+      "nativeCount": 7,
+      "delay": 16,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 2,
+      "frame": 2,
+      "nativeTileBytes": 1440,
+      "nativeCount": 7,
+      "delay": 16,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 2,
+      "frame": 3,
+      "nativeTileBytes": 1440,
+      "nativeCount": 7,
+      "delay": 16,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 2,
+      "frame": 4,
+      "nativeTileBytes": 1440,
+      "nativeCount": 7,
+      "delay": 16,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 2,
+      "frame": 5,
+      "nativeTileBytes": 1440,
+      "nativeCount": 7,
+      "delay": 16,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 2,
+      "frame": 6,
+      "nativeTileBytes": 1440,
+      "nativeCount": 7,
+      "delay": 0,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 3,
+      "frame": 0,
+      "nativeTileBytes": 960,
+      "nativeCount": 8,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 3,
+      "frame": 1,
+      "nativeTileBytes": 960,
+      "nativeCount": 8,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 3,
+      "frame": 2,
+      "nativeTileBytes": 960,
+      "nativeCount": 8,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 3,
+      "frame": 3,
+      "nativeTileBytes": 960,
+      "nativeCount": 8,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 3,
+      "frame": 4,
+      "nativeTileBytes": 960,
+      "nativeCount": 8,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 3,
+      "frame": 5,
+      "nativeTileBytes": 960,
+      "nativeCount": 8,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 3,
+      "frame": 6,
+      "nativeTileBytes": 960,
+      "nativeCount": 8,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 3,
+      "frame": 7,
+      "nativeTileBytes": 960,
+      "nativeCount": 8,
+      "delay": 0,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 4,
+      "frame": 0,
+      "nativeTileBytes": 2720,
+      "nativeCount": 2,
+      "delay": 16,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 4,
+      "frame": 1,
+      "nativeTileBytes": 2720,
+      "nativeCount": 2,
+      "delay": 0,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 5,
+      "frame": 0,
+      "nativeTileBytes": 64,
+      "nativeCount": 3,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 5,
+      "frame": 1,
+      "nativeTileBytes": 64,
+      "nativeCount": 3,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 5,
+      "frame": 2,
+      "nativeTileBytes": 64,
+      "nativeCount": 3,
+      "delay": 0,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 6,
+      "frame": 0,
+      "nativeTileBytes": 288,
+      "nativeCount": 2,
+      "delay": 8,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    },
+    {
+      "id": 6,
+      "frame": 1,
+      "nativeTileBytes": 288,
+      "nativeCount": 2,
+      "delay": 0,
+      "width": 512,
+      "height": 256,
+      "bgYOffset": 16,
+      "bgVofs": 65535,
+      "mode": 9,
+      "tm": 4,
+      "tileVramBytes": 49152,
+      "arrVramBytes": 63488
+    }
+  ],
+  "sourceIdentities": {
+    "src/entity/callroutine.c": "63835e5c1abd6af31c91ae0079e33997c8f99834b0b3ff94ea22b39e0f083c56",
+    "src/snes/ppu_render.c": "fba50b5fd6e76b7605791ebd376ef78d7babb1c685e0b8b06a77e944737474c0",
+    "src/entity/entity.h": "121d1080f6828c5c0025ee0f1f095f6f388ff183815c13097d7d50eabe39547b",
+    "asm/misc/load_animation_sequence_frame.asm": "5b8fb0bab9c81194ba8a328eb2caff6873679f740c0e81b201999beab1dabfcd",
+    "asm/misc/display_animation_sequence_frame.asm": "31df8beef6331773ab4d131aede4be54d2dc572772790367bf63c704f65c1713",
+    "asm/data/animation_sequence_pointers.asm": "3113b0ce1f35ded4d35cef346cd4334ebd839cb8d42a468b952f6d411ca9dfc9"
+  },
+  "nativeExecutionPassed": true,
+  "sourceParityPassed": true,
+  "allPassed": true,
+  "executedAssertions": 130,
+  "limits": [
+    "Prepared real LOAD/DISPLAY_ANIMATION_SEQUENCE_FRAME dispatch for every valid frame of six configured sequences; owning CarPainter/Starman/Threed/ending parent timelines are not executed.",
+    "Independent source table and 2bpp renderer compare actual centered BG3 with source vertical offset; shared retained data can use different tile packing if the visible frames and delays agree.",
+    "No full story, sound scheduling, natural scene layering or global audiovisual parity claim."
+  ]
+}

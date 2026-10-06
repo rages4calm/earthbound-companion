@@ -1,0 +1,1060 @@
+{
+  "toolSha256": "34c97d593c73ff1333aef3f80977ef16f0d0618aef5b10db7089f35bc0526970",
+  "production": {
+    "driverSourceSha256": "0d4f76000c32037b08d75e735064aabc8ee7dda6fcbce2db1bd7dda96c95d290",
+    "executableSha256": "3533bcc2dc1efc480fcfa31fda0133edb4799b33e78e69d0e796638610e32e61",
+    "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+    "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "romSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+  "pinnedReduxCommit": null,
+  "profile": "Original",
+  "runtimeExecuted": true,
+  "preparedCases": 8,
+  "skippedCases": 0,
+  "ownerWrites": false,
+  "fullVisualParityVerified": false,
+  "nativeRuns": [
+    {
+      "kind": "town",
+      "exitCode": 0,
+      "rows": [
+        {
+          "event": "QA_CAPTURE",
+          "kind": "town",
+          "id": 0,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 17,
+          "ts": 0,
+          "bgSc": 48,
+          "bgNba": 32,
+          "objConfig": 3,
+          "oamCount": 50,
+          "xy": [
+            896,
+            64
+          ]
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "town",
+          "id": 0,
+          "steps": 17,
+          "stepKind": 2,
+          "tm": 23,
+          "bgMode": 9,
+          "phase": 2
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "town",
+          "id": 1,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 17,
+          "ts": 0,
+          "bgSc": 48,
+          "bgNba": 32,
+          "objConfig": 3,
+          "oamCount": 50,
+          "xy": [
+            896,
+            5952
+          ]
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "town",
+          "id": 1,
+          "steps": 17,
+          "stepKind": 2,
+          "tm": 23,
+          "bgMode": 9,
+          "phase": 2
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "town",
+          "id": 2,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 17,
+          "ts": 0,
+          "bgSc": 48,
+          "bgNba": 32,
+          "objConfig": 3,
+          "oamCount": 55,
+          "xy": [
+            4736,
+            8256
+          ]
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "town",
+          "id": 2,
+          "steps": 17,
+          "stepKind": 2,
+          "tm": 23,
+          "bgMode": 9,
+          "phase": 2
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "town",
+          "id": 3,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 17,
+          "ts": 0,
+          "bgSc": 48,
+          "bgNba": 32,
+          "objConfig": 3,
+          "oamCount": 48,
+          "xy": [
+            2176,
+            3392
+          ]
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "town",
+          "id": 3,
+          "steps": 17,
+          "stepKind": 2,
+          "tm": 23,
+          "bgMode": 9,
+          "phase": 2
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "town",
+          "id": 4,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 17,
+          "ts": 0,
+          "bgSc": 48,
+          "bgNba": 32,
+          "objConfig": 3,
+          "oamCount": 34,
+          "xy": [
+            1152,
+            3904
+          ]
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "town",
+          "id": 4,
+          "steps": 17,
+          "stepKind": 2,
+          "tm": 23,
+          "bgMode": 9,
+          "phase": 2
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "town",
+          "id": 5,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 17,
+          "ts": 0,
+          "bgSc": 48,
+          "bgNba": 32,
+          "objConfig": 3,
+          "oamCount": 40,
+          "xy": [
+            4224,
+            2624
+          ]
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "town",
+          "id": 5,
+          "steps": 17,
+          "stepKind": 2,
+          "tm": 23,
+          "bgMode": 9,
+          "phase": 2
+        }
+      ],
+      "stdoutSha256": "a043fff8c695190a019758ebaea14cdcce9fee16fdab1821ae7d9226440bfd79",
+      "stderrSha256": "fe09056023888e4196c82969f0634df8be3ae025da3aeacb71dfb802cab0dfc5"
+    },
+    {
+      "kind": "gameover",
+      "exitCode": 0,
+      "rows": [
+        {
+          "event": "QA_CAPTURE",
+          "kind": "gameover",
+          "id": 0,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 5,
+          "ts": 0,
+          "bgSc": 88,
+          "bgNba": 32,
+          "objConfig": 98,
+          "oamCount": 0,
+          "xy": [
+            1952,
+            1584
+          ]
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "gameover",
+          "id": 0,
+          "steps": 2,
+          "stepKind": 2,
+          "result": -1,
+          "phase": 8
+        },
+        {
+          "event": "QA_CAPTURE",
+          "kind": "gameover",
+          "id": 1,
+          "width": 512,
+          "height": 256,
+          "bgYOffset": 16,
+          "brightness": 15,
+          "mode": 9,
+          "tm": 5,
+          "ts": 0,
+          "bgSc": 88,
+          "bgNba": 32,
+          "objConfig": 98,
+          "oamCount": 0,
+          "xy": [
+            1952,
+            1584
+          ]
+        },
+        {
+          "event": "QA_EXIT",
+          "kind": "gameover",
+          "id": 1,
+          "steps": 2,
+          "stepKind": 2,
+          "result": -1,
+          "phase": 8
+        }
+      ],
+      "stdoutSha256": "e48fd220f046a391c8f96a107aa715b3af01d360239e9a3b41c36dfbe1b740e6",
+      "stderrSha256": "fe09056023888e4196c82969f0634df8be3ae025da3aeacb71dfb802cab0dfc5"
+    }
+  ],
+  "checks": [
+    {
+      "check": "town-0-real-uploads",
+      "passed": true,
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 0,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 50,
+        "xy": [
+          896,
+          64
+        ]
+      }
+    },
+    {
+      "check": "town-0-real-base-render",
+      "passed": true,
+      "expectedSha256": "88f177e7e3be8418c26efa695dd095144ec02d160b606b3d487f754e308625c8",
+      "nativeSha256": "88f177e7e3be8418c26efa695dd095144ec02d160b606b3d487f754e308625c8",
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 0,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 50,
+        "xy": [
+          896,
+          64
+        ]
+      }
+    },
+    {
+      "check": "town-0-bounded-uploads",
+      "passed": true
+    },
+    {
+      "check": "town-0-exit",
+      "passed": true,
+      "native": {
+        "event": "QA_EXIT",
+        "kind": "town",
+        "id": 0,
+        "steps": 17,
+        "stepKind": 2,
+        "tm": 23,
+        "bgMode": 9,
+        "phase": 2
+      }
+    },
+    {
+      "check": "town-1-real-uploads",
+      "passed": true,
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 1,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 50,
+        "xy": [
+          896,
+          5952
+        ]
+      }
+    },
+    {
+      "check": "town-1-real-base-render",
+      "passed": true,
+      "expectedSha256": "41834564b53623092990d2284dee9c6b25537eb687cfafd31e40fde7bbe0cbb9",
+      "nativeSha256": "41834564b53623092990d2284dee9c6b25537eb687cfafd31e40fde7bbe0cbb9",
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 1,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 50,
+        "xy": [
+          896,
+          5952
+        ]
+      }
+    },
+    {
+      "check": "town-1-bounded-uploads",
+      "passed": true
+    },
+    {
+      "check": "town-1-exit",
+      "passed": true,
+      "native": {
+        "event": "QA_EXIT",
+        "kind": "town",
+        "id": 1,
+        "steps": 17,
+        "stepKind": 2,
+        "tm": 23,
+        "bgMode": 9,
+        "phase": 2
+      }
+    },
+    {
+      "check": "town-2-real-uploads",
+      "passed": true,
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 2,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 55,
+        "xy": [
+          4736,
+          8256
+        ]
+      }
+    },
+    {
+      "check": "town-2-real-base-render",
+      "passed": true,
+      "expectedSha256": "2bee9b92553607bee34db8ed94dc205f131f50a9a4695d3e65668b2d7d9603ef",
+      "nativeSha256": "2bee9b92553607bee34db8ed94dc205f131f50a9a4695d3e65668b2d7d9603ef",
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 2,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 55,
+        "xy": [
+          4736,
+          8256
+        ]
+      }
+    },
+    {
+      "check": "town-2-bounded-uploads",
+      "passed": true
+    },
+    {
+      "check": "town-2-exit",
+      "passed": true,
+      "native": {
+        "event": "QA_EXIT",
+        "kind": "town",
+        "id": 2,
+        "steps": 17,
+        "stepKind": 2,
+        "tm": 23,
+        "bgMode": 9,
+        "phase": 2
+      }
+    },
+    {
+      "check": "town-3-real-uploads",
+      "passed": true,
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 3,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 48,
+        "xy": [
+          2176,
+          3392
+        ]
+      }
+    },
+    {
+      "check": "town-3-real-base-render",
+      "passed": true,
+      "expectedSha256": "3189ab0b84023add0f971c3b4a3ec9cfc56bf83a1def606696c843d801b27105",
+      "nativeSha256": "3189ab0b84023add0f971c3b4a3ec9cfc56bf83a1def606696c843d801b27105",
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 3,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 48,
+        "xy": [
+          2176,
+          3392
+        ]
+      }
+    },
+    {
+      "check": "town-3-bounded-uploads",
+      "passed": true
+    },
+    {
+      "check": "town-3-exit",
+      "passed": true,
+      "native": {
+        "event": "QA_EXIT",
+        "kind": "town",
+        "id": 3,
+        "steps": 17,
+        "stepKind": 2,
+        "tm": 23,
+        "bgMode": 9,
+        "phase": 2
+      }
+    },
+    {
+      "check": "town-4-real-uploads",
+      "passed": true,
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 4,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 34,
+        "xy": [
+          1152,
+          3904
+        ]
+      }
+    },
+    {
+      "check": "town-4-real-base-render",
+      "passed": true,
+      "expectedSha256": "b58746fc74df345208f63672a3867ebb66520a8a514d3a8ca035bda2c7062613",
+      "nativeSha256": "b58746fc74df345208f63672a3867ebb66520a8a514d3a8ca035bda2c7062613",
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 4,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 34,
+        "xy": [
+          1152,
+          3904
+        ]
+      }
+    },
+    {
+      "check": "town-4-bounded-uploads",
+      "passed": true
+    },
+    {
+      "check": "town-4-exit",
+      "passed": true,
+      "native": {
+        "event": "QA_EXIT",
+        "kind": "town",
+        "id": 4,
+        "steps": 17,
+        "stepKind": 2,
+        "tm": 23,
+        "bgMode": 9,
+        "phase": 2
+      }
+    },
+    {
+      "check": "town-5-real-uploads",
+      "passed": true,
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 5,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 40,
+        "xy": [
+          4224,
+          2624
+        ]
+      }
+    },
+    {
+      "check": "town-5-real-base-render",
+      "passed": true,
+      "expectedSha256": "925f318f3d3f8fcf3f6917fbedb934a96d5f1b45c673b162fa8d8fa2faabab10",
+      "nativeSha256": "925f318f3d3f8fcf3f6917fbedb934a96d5f1b45c673b162fa8d8fa2faabab10",
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "town",
+        "id": 5,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 17,
+        "ts": 0,
+        "bgSc": 48,
+        "bgNba": 32,
+        "objConfig": 3,
+        "oamCount": 40,
+        "xy": [
+          4224,
+          2624
+        ]
+      }
+    },
+    {
+      "check": "town-5-bounded-uploads",
+      "passed": true
+    },
+    {
+      "check": "town-5-exit",
+      "passed": true,
+      "native": {
+        "event": "QA_EXIT",
+        "kind": "town",
+        "id": 5,
+        "steps": 17,
+        "stepKind": 2,
+        "tm": 23,
+        "bgMode": 9,
+        "phase": 2
+      }
+    },
+    {
+      "check": "gameover-0-real-uploads",
+      "passed": true,
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "gameover",
+        "id": 0,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 5,
+        "ts": 0,
+        "bgSc": 88,
+        "bgNba": 32,
+        "objConfig": 98,
+        "oamCount": 0,
+        "xy": [
+          1952,
+          1584
+        ]
+      }
+    },
+    {
+      "check": "gameover-0-real-base-render",
+      "passed": true,
+      "expectedSha256": "01f478e8918021b43aaa68e0bf24611046eb014f6b12e2d513728c8e0b24411f",
+      "nativeSha256": "01f478e8918021b43aaa68e0bf24611046eb014f6b12e2d513728c8e0b24411f",
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "gameover",
+        "id": 0,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 5,
+        "ts": 0,
+        "bgSc": 88,
+        "bgNba": 32,
+        "objConfig": 98,
+        "oamCount": 0,
+        "xy": [
+          1952,
+          1584
+        ]
+      }
+    },
+    {
+      "check": "gameover-0-exit",
+      "passed": true,
+      "native": {
+        "event": "QA_EXIT",
+        "kind": "gameover",
+        "id": 0,
+        "steps": 2,
+        "stepKind": 2,
+        "result": -1,
+        "phase": 8
+      }
+    },
+    {
+      "check": "gameover-1-real-uploads",
+      "passed": true,
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "gameover",
+        "id": 1,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 5,
+        "ts": 0,
+        "bgSc": 88,
+        "bgNba": 32,
+        "objConfig": 98,
+        "oamCount": 0,
+        "xy": [
+          1952,
+          1584
+        ]
+      }
+    },
+    {
+      "check": "gameover-1-real-base-render",
+      "passed": true,
+      "expectedSha256": "cb0f4a106a0c3ce031397e27942cd3d0924f1eb2ba446d631e4e61bd73b59be5",
+      "nativeSha256": "cb0f4a106a0c3ce031397e27942cd3d0924f1eb2ba446d631e4e61bd73b59be5",
+      "native": {
+        "event": "QA_CAPTURE",
+        "kind": "gameover",
+        "id": 1,
+        "width": 512,
+        "height": 256,
+        "bgYOffset": 16,
+        "brightness": 15,
+        "mode": 9,
+        "tm": 5,
+        "ts": 0,
+        "bgSc": 88,
+        "bgNba": 32,
+        "objConfig": 98,
+        "oamCount": 0,
+        "xy": [
+          1952,
+          1584
+        ]
+      }
+    },
+    {
+      "check": "gameover-1-exit",
+      "passed": true,
+      "native": {
+        "event": "QA_EXIT",
+        "kind": "gameover",
+        "id": 1,
+        "steps": 2,
+        "stepKind": 2,
+        "result": -1,
+        "phase": 8
+      }
+    }
+  ],
+  "sourceParityChecks": [
+    {
+      "check": "town-0-compiled-base-art",
+      "passed": true,
+      "sourceSha256": "88f177e7e3be8418c26efa695dd095144ec02d160b606b3d487f754e308625c8",
+      "nativeSha256": "88f177e7e3be8418c26efa695dd095144ec02d160b606b3d487f754e308625c8",
+      "differingPixels": 0,
+      "scope": "BG1 only render diagnostic: dynamic OBJ icons excluded; original palette/VRAM state retained."
+    },
+    {
+      "check": "town-0-compiled-tile-upload",
+      "passed": true,
+      "sourceSha256": "692f75d8bb47f540cabbac40ac56bc2ca5349780b47b1cce001db04dcc3d47fc",
+      "nativeSha256": "692f75d8bb47f540cabbac40ac56bc2ca5349780b47b1cce001db04dcc3d47fc",
+      "differingVramWords": 0,
+      "sourceUploadBytes": 16384,
+      "scope": "Exact source tile layout and zero tail through real native VRAM. Repacked tile numbering may differ without a visible image difference."
+    },
+    {
+      "check": "town-0-compiled-label-upload",
+      "passed": true,
+      "sourceSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "nativeSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "differingVramWords": 0,
+      "sourceDecodedBytes": 8832,
+      "sourceUploadBytes": 9216,
+      "scope": "Decoded source label prefix through actual upload; Original undecoded tail is deliberately not treated as source bytes."
+    },
+    {
+      "check": "town-0-compiled-label-render-control",
+      "passed": true,
+      "sourceSha256": "8a0b86f7c96b17ca51ec718159870ab5e7d21293aa414c071c142fa0ed221ab9",
+      "nativeSha256": "8a0b86f7c96b17ca51ec718159870ab5e7d21293aa414c071c142fa0ed221ab9",
+      "differingPixels": 0,
+      "scope": "Same native OAM/palette/PPU capture, with only label VRAM privately replaced by actual source bytes, then restored. Prepared flags show ordinary labels plus hints. This diagnostic isolates label art contribution; not a converted runtime."
+    },
+    {
+      "check": "town-1-compiled-base-art",
+      "passed": true,
+      "sourceSha256": "41834564b53623092990d2284dee9c6b25537eb687cfafd31e40fde7bbe0cbb9",
+      "nativeSha256": "41834564b53623092990d2284dee9c6b25537eb687cfafd31e40fde7bbe0cbb9",
+      "differingPixels": 0,
+      "scope": "BG1 only render diagnostic: dynamic OBJ icons excluded; original palette/VRAM state retained."
+    },
+    {
+      "check": "town-1-compiled-tile-upload",
+      "passed": true,
+      "sourceSha256": "453fef00a2b34bc5631f8de0f24665ff34b998535fe1cf4646572ba23201d49a",
+      "nativeSha256": "453fef00a2b34bc5631f8de0f24665ff34b998535fe1cf4646572ba23201d49a",
+      "differingVramWords": 0,
+      "sourceUploadBytes": 16384,
+      "scope": "Exact source tile layout and zero tail through real native VRAM. Repacked tile numbering may differ without a visible image difference."
+    },
+    {
+      "check": "town-1-compiled-label-upload",
+      "passed": true,
+      "sourceSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "nativeSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "differingVramWords": 0,
+      "sourceDecodedBytes": 8832,
+      "sourceUploadBytes": 9216,
+      "scope": "Decoded source label prefix through actual upload; Original undecoded tail is deliberately not treated as source bytes."
+    },
+    {
+      "check": "town-1-compiled-label-render-control",
+      "passed": true,
+      "sourceSha256": "4118d7330669dc41421263df0633705a6c56f233a9a829b28a4ca4e74c008e5f",
+      "nativeSha256": "4118d7330669dc41421263df0633705a6c56f233a9a829b28a4ca4e74c008e5f",
+      "differingPixels": 0,
+      "scope": "Same native OAM/palette/PPU capture, with only label VRAM privately replaced by actual source bytes, then restored. Prepared flags show ordinary labels plus hints. This diagnostic isolates label art contribution; not a converted runtime."
+    },
+    {
+      "check": "town-2-compiled-base-art",
+      "passed": true,
+      "sourceSha256": "2bee9b92553607bee34db8ed94dc205f131f50a9a4695d3e65668b2d7d9603ef",
+      "nativeSha256": "2bee9b92553607bee34db8ed94dc205f131f50a9a4695d3e65668b2d7d9603ef",
+      "differingPixels": 0,
+      "scope": "BG1 only render diagnostic: dynamic OBJ icons excluded; original palette/VRAM state retained."
+    },
+    {
+      "check": "town-2-compiled-tile-upload",
+      "passed": true,
+      "sourceSha256": "01b26abceaf5a33048a4dd13ede31bc2cabc3a63067032bbb998eef8052a0271",
+      "nativeSha256": "01b26abceaf5a33048a4dd13ede31bc2cabc3a63067032bbb998eef8052a0271",
+      "differingVramWords": 0,
+      "sourceUploadBytes": 16384,
+      "scope": "Exact source tile layout and zero tail through real native VRAM. Repacked tile numbering may differ without a visible image difference."
+    },
+    {
+      "check": "town-2-compiled-label-upload",
+      "passed": true,
+      "sourceSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "nativeSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "differingVramWords": 0,
+      "sourceDecodedBytes": 8832,
+      "sourceUploadBytes": 9216,
+      "scope": "Decoded source label prefix through actual upload; Original undecoded tail is deliberately not treated as source bytes."
+    },
+    {
+      "check": "town-2-compiled-label-render-control",
+      "passed": true,
+      "sourceSha256": "e32e7a7098605d959bd894fe8f1d35ab0e817ad6daf4d60301f2829d3344b863",
+      "nativeSha256": "e32e7a7098605d959bd894fe8f1d35ab0e817ad6daf4d60301f2829d3344b863",
+      "differingPixels": 0,
+      "scope": "Same native OAM/palette/PPU capture, with only label VRAM privately replaced by actual source bytes, then restored. Prepared flags show ordinary labels plus hints. This diagnostic isolates label art contribution; not a converted runtime."
+    },
+    {
+      "check": "town-3-compiled-base-art",
+      "passed": true,
+      "sourceSha256": "3189ab0b84023add0f971c3b4a3ec9cfc56bf83a1def606696c843d801b27105",
+      "nativeSha256": "3189ab0b84023add0f971c3b4a3ec9cfc56bf83a1def606696c843d801b27105",
+      "differingPixels": 0,
+      "scope": "BG1 only render diagnostic: dynamic OBJ icons excluded; original palette/VRAM state retained."
+    },
+    {
+      "check": "town-3-compiled-tile-upload",
+      "passed": true,
+      "sourceSha256": "046ce719ca6a2a598ca838ea118741f67bd12440bf32b71f6d1df9210f500c7c",
+      "nativeSha256": "046ce719ca6a2a598ca838ea118741f67bd12440bf32b71f6d1df9210f500c7c",
+      "differingVramWords": 0,
+      "sourceUploadBytes": 16384,
+      "scope": "Exact source tile layout and zero tail through real native VRAM. Repacked tile numbering may differ without a visible image difference."
+    },
+    {
+      "check": "town-3-compiled-label-upload",
+      "passed": true,
+      "sourceSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "nativeSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "differingVramWords": 0,
+      "sourceDecodedBytes": 8832,
+      "sourceUploadBytes": 9216,
+      "scope": "Decoded source label prefix through actual upload; Original undecoded tail is deliberately not treated as source bytes."
+    },
+    {
+      "check": "town-3-compiled-label-render-control",
+      "passed": true,
+      "sourceSha256": "4ba89c984fa64370cfc50c4f0d55c2bfcaefe1d54c79e32f7b9930d9b0f51b68",
+      "nativeSha256": "4ba89c984fa64370cfc50c4f0d55c2bfcaefe1d54c79e32f7b9930d9b0f51b68",
+      "differingPixels": 0,
+      "scope": "Same native OAM/palette/PPU capture, with only label VRAM privately replaced by actual source bytes, then restored. Prepared flags show ordinary labels plus hints. This diagnostic isolates label art contribution; not a converted runtime."
+    },
+    {
+      "check": "town-4-compiled-base-art",
+      "passed": true,
+      "sourceSha256": "b58746fc74df345208f63672a3867ebb66520a8a514d3a8ca035bda2c7062613",
+      "nativeSha256": "b58746fc74df345208f63672a3867ebb66520a8a514d3a8ca035bda2c7062613",
+      "differingPixels": 0,
+      "scope": "BG1 only render diagnostic: dynamic OBJ icons excluded; original palette/VRAM state retained."
+    },
+    {
+      "check": "town-4-compiled-tile-upload",
+      "passed": true,
+      "sourceSha256": "79872aaa01eecf2c5b542a3c0d1019b087025c5aa511d801adf24f05167454b4",
+      "nativeSha256": "79872aaa01eecf2c5b542a3c0d1019b087025c5aa511d801adf24f05167454b4",
+      "differingVramWords": 0,
+      "sourceUploadBytes": 16384,
+      "scope": "Exact source tile layout and zero tail through real native VRAM. Repacked tile numbering may differ without a visible image difference."
+    },
+    {
+      "check": "town-4-compiled-label-upload",
+      "passed": true,
+      "sourceSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "nativeSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "differingVramWords": 0,
+      "sourceDecodedBytes": 8832,
+      "sourceUploadBytes": 9216,
+      "scope": "Decoded source label prefix through actual upload; Original undecoded tail is deliberately not treated as source bytes."
+    },
+    {
+      "check": "town-4-compiled-label-render-control",
+      "passed": true,
+      "sourceSha256": "f0407b5c19d50ecc63ed486707de914aa5befb60c69b6f4c0fda2a39000f674c",
+      "nativeSha256": "f0407b5c19d50ecc63ed486707de914aa5befb60c69b6f4c0fda2a39000f674c",
+      "differingPixels": 0,
+      "scope": "Same native OAM/palette/PPU capture, with only label VRAM privately replaced by actual source bytes, then restored. Prepared flags show ordinary labels plus hints. This diagnostic isolates label art contribution; not a converted runtime."
+    },
+    {
+      "check": "town-5-compiled-base-art",
+      "passed": true,
+      "sourceSha256": "925f318f3d3f8fcf3f6917fbedb934a96d5f1b45c673b162fa8d8fa2faabab10",
+      "nativeSha256": "925f318f3d3f8fcf3f6917fbedb934a96d5f1b45c673b162fa8d8fa2faabab10",
+      "differingPixels": 0,
+      "scope": "BG1 only render diagnostic: dynamic OBJ icons excluded; original palette/VRAM state retained."
+    },
+    {
+      "check": "town-5-compiled-tile-upload",
+      "passed": true,
+      "sourceSha256": "7bca8977453db9de2ee1c2ae8712b4f05bd37cbe08f490c6bc3fb1f171af3f0d",
+      "nativeSha256": "7bca8977453db9de2ee1c2ae8712b4f05bd37cbe08f490c6bc3fb1f171af3f0d",
+      "differingVramWords": 0,
+      "sourceUploadBytes": 16384,
+      "scope": "Exact source tile layout and zero tail through real native VRAM. Repacked tile numbering may differ without a visible image difference."
+    },
+    {
+      "check": "town-5-compiled-label-upload",
+      "passed": true,
+      "sourceSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "nativeSha256": "ebcdab9fd01c1c1d1180ae47d9323a5316a6fb933fd9343b79b4d76bb3abb343",
+      "differingVramWords": 0,
+      "sourceDecodedBytes": 8832,
+      "sourceUploadBytes": 9216,
+      "scope": "Decoded source label prefix through actual upload; Original undecoded tail is deliberately not treated as source bytes."
+    },
+    {
+      "check": "town-5-compiled-label-render-control",
+      "passed": true,
+      "sourceSha256": "a5c65bb19dcb0b38537c2417dae62c8be7f7740dc36a6d1c5eeb0d4fe5d7e6ac",
+      "nativeSha256": "a5c65bb19dcb0b38537c2417dae62c8be7f7740dc36a6d1c5eeb0d4fe5d7e6ac",
+      "differingPixels": 0,
+      "scope": "Same native OAM/palette/PPU capture, with only label VRAM privately replaced by actual source bytes, then restored. Prepared flags show ordinary labels plus hints. This diagnostic isolates label art contribution; not a converted runtime."
+    },
+    {
+      "check": "gameover-0-compiled-base-art",
+      "passed": true,
+      "sourceSha256": "01f478e8918021b43aaa68e0bf24611046eb014f6b12e2d513728c8e0b24411f",
+      "nativeSha256": "01f478e8918021b43aaa68e0bf24611046eb014f6b12e2d513728c8e0b24411f",
+      "differingPixels": 0,
+      "scope": "BG1 art render, Ness and Jeff source-selected variants; comeback dialogue and modern postprocessing excluded."
+    },
+    {
+      "check": "gameover-1-compiled-base-art",
+      "passed": true,
+      "sourceSha256": "cb0f4a106a0c3ce031397e27942cd3d0924f1eb2ba446d631e4e61bd73b59be5",
+      "nativeSha256": "cb0f4a106a0c3ce031397e27942cd3d0924f1eb2ba446d631e4e61bd73b59be5",
+      "differingPixels": 0,
+      "scope": "BG1 art render, Ness and Jeff source-selected variants; comeback dialogue and modern postprocessing excluded."
+    }
+  ],
+  "sourceIdentities": {
+    "src/game/town_map.c": "d9344b340507d6eaeddc62d21ca79b53116d1eb9e9ae0f5c72731d8a55c50194",
+    "src/game/overworld_palette.c": "bedeeedd47d6ba0c67006c8e66e641c776139a49d4146c5585f0c6305bb45454",
+    "src/snes/ppu_render.c": "fba50b5fd6e76b7605791ebd376ef78d7babb1c685e0b8b06a77e944737474c0",
+    "src/entity/callbacks.c": "c38e6cccc7f9192f404e9eb5f17be6098ff16728ece825c6c6a65baf4a7cc461",
+    "asm/overworld/load_town_map_data.asm": "4e39cd2ef55fcd594f44f26ef9e1ace88aee7f81a5d3410ec235ab4eeec6e910",
+    "asm/misc/initialize_game_over_screen.asm": "8758e517f3cd0543c6e4aea4d256174f12493c937601402e44aa3ffd7917a23e"
+  },
+  "executedAssertions": 56,
+  "nativeExecutionPassed": true,
+  "sourceParityPassed": true,
+  "allPassed": true,
+  "limits": [
+    "Prepared real Town Map menu load/render/reload exits for each map; the owning Goods/X-button caller and natural item acquisition are not tested here.",
+    "Prepared GO_ENTER includes real music request/fade children/setup/fade-in for both source leader variants; staged post-dialogue Continue tail proves fade and pop only, not the comeback text or No-Continue progression.",
+    "BG1 render diagnostic temporarily disables OBJ/text layer for the captured comparison, then restores native TM; all upload/setup operations are unchanged production consumers.",
+    "Independent source decoding/base colors validate retained source art differences; this is not whole-screen visual parity or a complete playthrough."
+  ]
+}

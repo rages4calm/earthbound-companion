@@ -1,0 +1,412 @@
+{
+  "checkpoint": "dev.17-v4 evidence / private dev.18 proposal",
+  "toolSha256": "1ddc42cd4f74b0a5b3b0bb06f297a13307fa51cfba3a84e3570395c28d2d5487",
+  "evidenceReports": {
+    "reduxRed": {
+      "path": "research/redux-sequence-animation-dev23-v4-red-review.json",
+      "sha256": "09afa8f20c4cb33c246f5f5430c2a05e1c9fac1b42376f88529f4f7a54e8aaa7"
+    },
+    "originalControl": {
+      "path": "research/original-sequence-animation-dev23-v4-control-review.json",
+      "sha256": "c043dbc26da24dbbe43a1833397ac4e4b909189eb80feeda79e4eec3709ae40a"
+    },
+    "reduxPrivateGreen": {
+      "path": "research/redux-sequence-animation-dev23-private-dev18-review.json",
+      "sha256": "a599860f65936309ef2260d95f2732e2fbc10594edbbf5be144149ad1959ee71"
+    },
+    "introControl": {
+      "path": "research/redux-intro-retained-dev23-teleport-control-review.json",
+      "sha256": "bf623566d429b2a3c5b338ddbc3f75bd9873ba8397b83aaeddfbbe6b270d6d50"
+    },
+    "mapControl": {
+      "path": "research/redux-map-retained-dev23-teleport-control-review.json",
+      "sha256": "0d0b0a1a564f6256a8c537380dbb7738ea7c9fafa956f77b72cbf4ead2195d69"
+    },
+    "actualAppearanceParent": {
+      "path": "research/starman-appearance-parent-dev23-private-dev18-review.json",
+      "sha256": "f43b1076498c5b34ff0d1fe4c735ce88f5efd6de31467a1a34e054d14144b8b3"
+    }
+  },
+  "evidenceTools": [
+    {
+      "path": "tools/sequence_animation_consumer_qa_dev23.py",
+      "sha256": "2ca4a394b67643634595d772c251a625ebc6ad8605d44a4dcb428ee0ce89f300"
+    },
+    {
+      "path": "tools/prepare_private_sequence_animation_dev18.py",
+      "sha256": "bc36250360fdebaae9e695b2935acbe136e4810e4addf08eba59ff93e569b2ed"
+    },
+    {
+      "path": "tools/starman_appearance_parent_qa_dev23.py",
+      "sha256": "1738209e84fcc19889af21161ec1f6d8d3f45d57d742155027afdd8d915ff0a0"
+    },
+    {
+      "path": "tools/freeze_sequence_animation_evidence_dev23.py",
+      "sha256": "1ddc42cd4f74b0a5b3b0bb06f297a13307fa51cfba3a84e3570395c28d2d5487"
+    }
+  ],
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "nativePresentationMismatchProven": true,
+  "nativeCodeChangeRequired": false,
+  "confirmedOmission": "Starman Jr. retained animation ID3 frames4-7 differ from the compiled Redux source artwork.",
+  "sourceArtRed": [
+    {
+      "check": "3-4-source-art",
+      "passed": false,
+      "sourceSha256": "56de4f462fe5c8d180e49c95b75fa9a8f9656708f0483696f97a686c238493d0",
+      "nativeSha256": "8e18935d5915300f2c73d662e7aa6f90a75d976b723efa969d89002f6564b5e7",
+      "sourceNonBlackPixels": 1546,
+      "nativeNonBlackPixels": 1550,
+      "differingPixels": 47
+    },
+    {
+      "check": "3-5-source-art",
+      "passed": false,
+      "sourceSha256": "ac17bb731a5263b8dc8f8d5fd0ea1d88da5a8ec6ce0064355609ee6e81ec2724",
+      "nativeSha256": "a76fda973e1660dc16ffdf1924354ce3b834d06519dbff778711009f554d4bd0",
+      "sourceNonBlackPixels": 1546,
+      "nativeNonBlackPixels": 1550,
+      "differingPixels": 111
+    },
+    {
+      "check": "3-6-source-art",
+      "passed": false,
+      "sourceSha256": "078786e2bf5b5fe0e5dd3a724c0fc466c316d79443e08f703ab763233dd10737",
+      "nativeSha256": "a813875fd1c275153d95b9e4bde87b441d84cc5b36ffb20e2264781c01cd4f9d",
+      "sourceNonBlackPixels": 996,
+      "nativeNonBlackPixels": 1003,
+      "differingPixels": 88
+    },
+    {
+      "check": "3-7-source-art",
+      "passed": false,
+      "sourceSha256": "13e11b94a544aa9e88ddaffbcbed993ed8d6b960e00fd7596aff305d2edf0c11",
+      "nativeSha256": "b4842817ac24be49f9b6edea525b4a07661a8a49fb5aec67eac5e9fb4a0301c0",
+      "sourceNonBlackPixels": 228,
+      "nativeNonBlackPixels": 258,
+      "differingPixels": 108
+    }
+  ],
+  "sourceTablePointer": 14613725,
+  "sourceTableSha256": "d65450cbffaf66c983783edd79c52995752cc4395c1b0740d2633f9246ce02b7",
+  "sixSequenceSourceReview": [
+    {
+      "id": 1,
+      "asset": "graphics/animations/lightning_reflect.anim.lzhal",
+      "sourcePointer": 14726198,
+      "sourceTileBytes": 7184,
+      "sourceFrameCount": 6,
+      "sourceDelay": 3,
+      "sourceDecodedBytes": 17944,
+      "sourceDecodedSha256": "1b94c654e7c366a3c0a95da890f378635d66a10cb97f177a2980a154210f360b",
+      "nativeTileBytes": 7184,
+      "nativeFrameCount": 6,
+      "nativeDecodedBytes": 17944,
+      "nativeDecodedSha256": "fbe699cd72e9dbc98ab47a8eee2a8f087c5eb3f87d4bae978c98991d27362a57",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        104,
+        184,
+        235,
+        299,
+        376,
+        448
+      ]
+    },
+    {
+      "id": 2,
+      "asset": "graphics/animations/lightning_strike.anim.lzhal",
+      "sourcePointer": 14677068,
+      "sourceTileBytes": 1440,
+      "sourceFrameCount": 7,
+      "sourceDelay": 16,
+      "sourceDecodedBytes": 13992,
+      "sourceDecodedSha256": "69322ed79eb1b3cdabd3aa3e22c70462205410648f899b2e32fc2e535b8cb5e7",
+      "nativeTileBytes": 1440,
+      "nativeFrameCount": 7,
+      "nativeDecodedBytes": 13992,
+      "nativeDecodedSha256": "031fd9e08e98a6935f7562e535c685296aa220fbe0a74a29ccf7f4d41f424dcf",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        7,
+        10,
+        24,
+        45,
+        64,
+        78,
+        89
+      ]
+    },
+    {
+      "id": 3,
+      "asset": "graphics/animations/starman_jr_teleport.anim.lzhal",
+      "sourcePointer": 14609604,
+      "sourceTileBytes": 912,
+      "sourceFrameCount": 8,
+      "sourceDelay": 8,
+      "sourceDecodedBytes": 15256,
+      "sourceDecodedSha256": "bb89c68590bff4f23c42d5d2a50fffcf751887b54cc99316197159dcc208da33",
+      "nativeTileBytes": 960,
+      "nativeFrameCount": 8,
+      "nativeDecodedBytes": 15304,
+      "nativeDecodedSha256": "bee063a99a283dedfdc583397d1821602e37566baa983e3e8195ee1cc3768b9d",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": false,
+      "maximumTileByFrame": [
+        3,
+        4,
+        13,
+        25,
+        40,
+        46,
+        51,
+        56
+      ]
+    },
+    {
+      "id": 4,
+      "asset": "graphics/animations/boom.anim.lzhal",
+      "sourcePointer": 14685017,
+      "sourceTileBytes": 2720,
+      "sourceFrameCount": 2,
+      "sourceDelay": 16,
+      "sourceDecodedBytes": 6312,
+      "sourceDecodedSha256": "1bd1091a3464f782af2e01506585cc0dba936bc1ef756917b09bbf747886cfbb",
+      "nativeTileBytes": 2720,
+      "nativeFrameCount": 2,
+      "nativeDecodedBytes": 6312,
+      "nativeDecodedSha256": "5c1dad363051122468be7e42cb4f8508fe726ce2a5ab01d479f3506df7067bdf",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        74,
+        169
+      ]
+    },
+    {
+      "id": 5,
+      "asset": "graphics/animations/zombies.anim.lzhal",
+      "sourcePointer": 14610311,
+      "sourceTileBytes": 64,
+      "sourceFrameCount": 3,
+      "sourceDelay": 8,
+      "sourceDecodedBytes": 5448,
+      "sourceDecodedSha256": "3f7525ec12f9798c76e3e07f852771b2abe254a5cc77a96bf094ca8f1be54171",
+      "nativeTileBytes": 64,
+      "nativeFrameCount": 3,
+      "nativeDecodedBytes": 5448,
+      "nativeDecodedSha256": "16552ef94ee8ea5f4bad14d0400a8d51e3578ceb7054cc11e8f486d838a3ad56",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        1,
+        3,
+        3
+      ]
+    },
+    {
+      "id": 6,
+      "asset": "US/graphics/animations/the_end.anim.lzhal",
+      "sourcePointer": 14610406,
+      "sourceTileBytes": 288,
+      "sourceFrameCount": 2,
+      "sourceDelay": 8,
+      "sourceDecodedBytes": 3880,
+      "sourceDecodedSha256": "0f9bac676204e790e153a404fd3ef69e4cb15a404351d41dd1462be950120eb8",
+      "nativeTileBytes": 288,
+      "nativeFrameCount": 2,
+      "nativeDecodedBytes": 3880,
+      "nativeDecodedSha256": "2383fe7ed6f9b8a1188f0b69b5da6bf1a182720c784858e5230c2a09c60012c4",
+      "sourceBytesEqual": false,
+      "metadataLayoutEqual": true,
+      "maximumTileByFrame": [
+        15,
+        17
+      ]
+    }
+  ],
+  "retainedEquivalentControls": "All24 frames of the other five sequences render the compiled source image despite differing raw tile packing; their metadata, delays and arrangement bounds agree.",
+  "privateProposal": {
+    "privateOnly": true,
+    "releaseCandidate": false,
+    "baselineTownMapGasPackSha256": "dda71db53d6bc0c6a3f122d1537c2f94d88656b56ebcfe6e7d1e22f0b018b499",
+    "proposedPackSha256": "18408af37805bfd65c012abbb600fa823f599347c8751bf1f7ef5390369ba865",
+    "baselineDev17PackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+    "registrySha256": "a196a4d9de0f93a36c399b6f72178c3dd15c89288dbb0bf8232ceb3be4161579",
+    "namespaceAndHeaderUnchanged": true,
+    "incrementalChangedAssetCount": 1,
+    "incrementalChangedAssets": [
+      {
+        "id": 159,
+        "symbol": "ASSET_GRAPHICS_ANIMATIONS_STARMAN_JR_TELEPORT_ANIM_LZHAL",
+        "asset": "graphics/animations/starman_jr_teleport.anim.lzhal",
+        "oldBytes": 892,
+        "newBytes": 702,
+        "oldSha256": "7247191694ebdb713f47e61a1bbf5e25d93adb6c37656b14815bbde12cef0f80",
+        "newSha256": "c45aae22c9c7e261a9d9013d5fed5d252ecf3446ddb25476db989e958977ba89"
+      }
+    ],
+    "cumulativeChangedAssetCount": 10,
+    "cumulativeChangedAssets": [
+      {
+        "id": 55,
+        "symbol": "ASSET_US_INTRO_GAS_STATION_ARR_LZHAL",
+        "asset": "US/intro/gas_station.arr.lzhal"
+      },
+      {
+        "id": 56,
+        "symbol": "ASSET_US_INTRO_GAS_STATION_GFX_LZHAL",
+        "asset": "US/intro/gas_station.gfx.lzhal"
+      },
+      {
+        "id": 71,
+        "symbol": "ASSET_US_TOWN_MAPS_LABEL_GFX_LZHAL",
+        "asset": "US/town_maps/label.gfx.lzhal"
+      },
+      {
+        "id": 159,
+        "symbol": "ASSET_GRAPHICS_ANIMATIONS_STARMAN_JR_TELEPORT_ANIM_LZHAL",
+        "asset": "graphics/animations/starman_jr_teleport.anim.lzhal"
+      },
+      {
+        "id": 1168,
+        "symbol": "ASSET_TOWN_MAPS_0_BIN_LZHAL",
+        "asset": "town_maps/0.bin.lzhal"
+      },
+      {
+        "id": 1169,
+        "symbol": "ASSET_TOWN_MAPS_1_BIN_LZHAL",
+        "asset": "town_maps/1.bin.lzhal"
+      },
+      {
+        "id": 1170,
+        "symbol": "ASSET_TOWN_MAPS_2_BIN_LZHAL",
+        "asset": "US/town_maps/2.bin.lzhal"
+      },
+      {
+        "id": 1171,
+        "symbol": "ASSET_TOWN_MAPS_3_BIN_LZHAL",
+        "asset": "town_maps/3.bin.lzhal"
+      },
+      {
+        "id": 1172,
+        "symbol": "ASSET_TOWN_MAPS_4_BIN_LZHAL",
+        "asset": "US/town_maps/4.bin.lzhal"
+      },
+      {
+        "id": 1173,
+        "symbol": "ASSET_TOWN_MAPS_5_BIN_LZHAL",
+        "asset": "town_maps/5.bin.lzhal"
+      }
+    ],
+    "unchangedComparedWithDev17": 1164,
+    "sourceRecipe": {
+      "assets": [
+        "graphics/animations/starman_jr_teleport.anim.lzhal"
+      ],
+      "sourceTablePointer": 14613725,
+      "reviewedSourceRecords": [
+        {
+          "id": 1,
+          "sourcePointer": 14726198,
+          "tileBytes": 7184,
+          "frames": 6,
+          "delay": 3,
+          "decodedBytes": 17944,
+          "maximumArrangementTile": 448
+        },
+        {
+          "id": 2,
+          "sourcePointer": 14677068,
+          "tileBytes": 1440,
+          "frames": 7,
+          "delay": 16,
+          "decodedBytes": 13992,
+          "maximumArrangementTile": 89
+        },
+        {
+          "id": 3,
+          "sourcePointer": 14609604,
+          "tileBytes": 912,
+          "frames": 8,
+          "delay": 8,
+          "decodedBytes": 15256,
+          "maximumArrangementTile": 56
+        },
+        {
+          "id": 4,
+          "sourcePointer": 14685017,
+          "tileBytes": 2720,
+          "frames": 2,
+          "delay": 16,
+          "decodedBytes": 6312,
+          "maximumArrangementTile": 169
+        },
+        {
+          "id": 5,
+          "sourcePointer": 14610311,
+          "tileBytes": 64,
+          "frames": 3,
+          "delay": 8,
+          "decodedBytes": 5448,
+          "maximumArrangementTile": 3
+        },
+        {
+          "id": 6,
+          "sourcePointer": 14610406,
+          "tileBytes": 288,
+          "frames": 2,
+          "delay": 8,
+          "decodedBytes": 3880,
+          "maximumArrangementTile": 17
+        }
+      ],
+      "sourceTeleportTileBytes": 912,
+      "nativeTeleportTileBytes": 960,
+      "zeroPaddingBytes": 48,
+      "paddingUnreferenced": true,
+      "sourceFrames": 8,
+      "sourceDelay": 8,
+      "retainedOtherSequences": 5,
+      "boundary": "Other retained sequences require separate source-image/runtime evidence; assignment counts are not conversion parity"
+    },
+    "importer": {
+      "path": "research/evidence-tools/maternalbound_sequence_animations-dev18-private.py",
+      "sha256": "e240ba048197356495e98d043f8f249901af7d990e43ce7b6d2ec5d58ebe12d4"
+    },
+    "builderPatch": {
+      "path": "research/evidence-tools/sequence-animation-dev18-private-builder.patch",
+      "sha256": "ecf3e12dee50aad3ae9df71e4edf0665661ee8b5ea1bd4bbc86e0f2afa54a60a"
+    },
+    "baselineBuilderSha256": "20a8b878618111ba67ddcf73ef063a07f7e3499a303da59bc4f1b6369abb95d5",
+    "candidateBuilderSha256": "97f3c8cea7d1f5155ad4fd218ead2876f6693c6ead748860cc322fb8a41cece1",
+    "unchangedNativePrivateRuntime": {
+      "playerSha256": "6071f96b0498c39112c6acde5eef5b0a07019fb49155f87c75f35fb214963e16",
+      "librarySha256": "78cb5e9c2acbef1afebf353574ae82116ac19c54fd5a24d4276b036024c7d122",
+      "observerAliasOnly": true,
+      "observerUsed": false,
+      "releaseCandidate": false,
+      "sharedBuildModified": false
+    }
+  },
+  "executedAssertionsPositive": 433,
+  "executedAssertionsRed": 130,
+  "actualParentProcesses": 6,
+  "actualColdProcesses": 2,
+  "skippedCases": 0,
+  "allPrivateControlsPassed": true,
+  "actualAppearanceScope": "Packed C67501 creates source sprite303 Original /481 Redux and runs complete EVENT622 appearance until its first movement wait naturally returns.127Redux/113Original frames; mid-frame2 cold replays finish40frames without completion injection.",
+  "sourceContract": "Compiled teleport912bytes/57tiles versus native960bytes/60tiles; insert48zero bytes before source8-byte palette and eight1792-byte arrangements. All source frame tile references are below57; inserted tiles are never referenced.",
+  "limits": [
+    "Source/actual centered BG3 frames and exact delays are proved; composite natural overworld visual/audio parity is not claimed.",
+    "The appearance parent proof stops at its first completed WAIT_FOR_ACTIONSCRIPT. Surrounding party is prepared Ness-only at source hotspot43; later smoke, dialogue and boss battle are not run.",
+    "Public evidence contains hashes, source recipes, code patches and numeric results, no game asset bytes, ROMs, saves or PCM.",
+    "Root must integrate the narrow importer, regenerate a coherent final pack and separately verify content/save migration; private native observer alias is not tested."
+  ],
+  "ownerWrites": false,
+  "redistributableGameAssetsIncluded": false,
+  "sharedSourcesModifiedByThisTask": false
+}

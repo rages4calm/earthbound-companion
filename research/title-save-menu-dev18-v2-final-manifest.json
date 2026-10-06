@@ -1,0 +1,185 @@
+{
+  "format": "final-shipping-title-save-menu-proof-manifest-dev18-v2",
+  "source": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev18-v2-complete-source",
+  "runtime": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev18-v2-runtime",
+  "builds": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev18-v2-builds",
+  "completeRuntimeIdentities": {
+    "player": {
+      "executableSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+      "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+      "compileCommandsSha256": "b47ee167aab5cc9fd2438e78f3846fc9140cbeefe0379d03920e01f2d1a72a57",
+      "cmakeCacheSha256": "158d1d2b609ea8c28935315994facd14377d8371d9a1e2df4ff6c19b077af51e"
+    },
+    "observer": {
+      "executableSha256": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92",
+      "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+      "compileCommandsSha256": "11b2265a68f979ce88eb223a7df96aa7d2f4572022ab3860301989c75b89d7f9",
+      "cmakeCacheSha256": "bfc0b65077d922547d7f1c3e56260c855af7e2d8f40837dd48b56a95793a96e0"
+    }
+  },
+  "packs": {
+    "original": {
+      "path": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak",
+      "sha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549"
+    },
+    "redux": {
+      "path": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\swirl-import-dev18-candidate3\\map-gas-teleport-swirl-candidate.pak",
+      "sha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb"
+    }
+  },
+  "adoptedSourceIdentities": {
+    "src/game/battle.c": "dc63db4360d44539d96ee1436c4d282aceebf4256252a9698bb1ab4497bb638c",
+    "src/game/battle_psi.c": "66ecc870e1e8c89ba83034c6a696268960aa5b3323b9888c612f606fd8647092",
+    "src/game/display_text.c": "47ec18c4d515759a409a800076ea05c66cc959c0f894b6ff0d1af38bc0864b20",
+    "src/game/display_text_cc.c": "7ccee8908df5b0a5c5891b99f5a3a7a222518f8d667bb2b319d31ae20b071415",
+    "src/game/display_text_menus.c": "d5a03a5134afc578444b4ae488d64d8c7da2187d23bbcbd514a96619123eda7e",
+    "src/game/text.c": "8550780d11e5873f2f8d22a52ae08f228b00f664a1888bbb9f39af3e3eaa7a62",
+    "src/game/text.h": "9efe2a603affbce7cae7567fa7b05d51091a214045d1b7ac48aff2cfd7345c29",
+    "src/game/window.h": "41288c2127d5c9e248bce13302ed2bf5a6ecad25b3b701ec499e3aa30fe23d59",
+    "src/game/game_state.c": "7929fa58c519450ead5a0dd729dabc3767f3356b39075efa8488629a238c4edb",
+    "src/game/game_state.h": "34bfc901f455145c51afff81637cf755140b1fb62c48d76ccd03883f8c4ba261",
+    "src/intro/file_select.c": "84719fb8d3b05bd754522d03dc9cd580accad68cc62ebb837d0e1b49066e38e6",
+    "src/game/window.c": "7776ba2620809d8a5477a1183a3fc42d48fd1078b05b045aab15ffe136069db1"
+  },
+  "allAdoptedSourceIdentitiesMatchFrozenProposals": true,
+  "proofs": [
+    {
+      "name": "directTitles",
+      "path": "research/title-producers-dev18-v2-final-review.json",
+      "sha256": "f6b1ee100795a7dff51a13828ace64df219fa2f2f7d6760de491b8106e2ac084",
+      "allSelectedChecksPassed": true
+    },
+    {
+      "name": "titleCold",
+      "path": "research/title-cold-dev18-v2-final-review.json",
+      "sha256": "40698eadc76d939c85d4dee918f7d70d8e42f5780f287937f5f89b746767d9a6",
+      "allSelectedChecksPassed": true
+    },
+    {
+      "name": "titleMenuParents",
+      "path": "research/title-menu-parents-dev18-v2-final-review.json",
+      "sha256": "e8ce5b489e33214fb75e42b1d98d01ef101b04fe736139d2d1823238f12d4af7",
+      "allSelectedChecksPassed": true
+    },
+    {
+      "name": "occupancy",
+      "path": "research/file-select-occupancy-dev18-v2-final-recorded-review.json",
+      "sha256": "d5f40ae24ba5470946c03a77c748adf4dfd5b6778b3b84b45075d11793bff75b",
+      "allSelectedChecksPassed": true
+    },
+    {
+      "name": "slotGlyphs",
+      "path": "research/file-slot-glyph-dev18-v2-final-review.json",
+      "sha256": "09781de54a06ebd04f8d4036f3c633603d82137bf4726e42aabe5f3bae20141f",
+      "allSelectedChecksPassed": true
+    },
+    {
+      "name": "namingCancelBackdrop",
+      "path": "research/file-slot-backdrop-dev18-v2-final-review.json",
+      "sha256": "20100a08744f92b2b29139e8d0c7b08812955770db9abc0dff773193896fcc34",
+      "allSelectedChecksPassed": true
+    }
+  ],
+  "tools": [
+    {
+      "path": "tools/redux_title_producers_qa_dev18.py",
+      "sha256": "8608ea1a439880b886bbd8ae0109eb362a5980d4136095e637a42bf43b56726d"
+    },
+    {
+      "path": "tools/redux_title_cold_qa_dev18.py",
+      "sha256": "29381cb7ca6d1efa417258a62f91edbeda8fd7eceebc9f7a31d49ba1bb2d307d"
+    },
+    {
+      "path": "tools/redux_title_menu_parents_dev18.py",
+      "sha256": "68c3597c955bda2b7e5d68368736c5d3e2e8ba27d279f3d7537f9cec2adbb82e"
+    },
+    {
+      "path": "tools/file_select_occupancy_qa_dev18.py",
+      "sha256": "e49aa2b184380a1a2c943209b869e0b567fcefcfc8c5eec276af1d5f355e6bcc"
+    },
+    {
+      "path": "tools/file_select_cold_qa_dev18.py",
+      "sha256": "cee89344c772dfcc6ad88411bf9ce9bfc09b549b001b99c579d62e673a71563a"
+    },
+    {
+      "path": "tools/file_slot_glyph_qa_dev18.py",
+      "sha256": "76addf15fe3b79409041d09dbdd5b56334474abfb312b627e7da5a81beab3f5d"
+    },
+    {
+      "path": "tools/file_slot_backdrop_qa_dev18.py",
+      "sha256": "4ae6e225a85e88ad8ae407d1535f1a7960d921acb12364b80d978a5351fe6a38"
+    },
+    {
+      "path": "tools/run_final_occupancy_dev18_v2.py",
+      "sha256": "e40cd27bfb674cc69e4e714f3e35ac9e4ea7c4ebc89b1fed75604ff2737eafc1"
+    },
+    {
+      "path": "tools/freeze_title_save_final_dev18_v2.py",
+      "sha256": "138b3a6870673523315edfa6cbc509a69e77b7fd1bca68079740dc9eef52a893"
+    }
+  ],
+  "compactPrivateFixtures": [
+    {
+      "name": "original-native-phone",
+      "originalPath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-cold-dev18-focused-red\\player-original\\ordinary-phone-seed\\fixture.srm",
+      "compactPrivatePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\dev18-v2-title-save-compact-fixtures\\original-native-phone.srm",
+      "sha256": "c6cc7f02bfe88bc5c857ab7f30aaa38fb0460ca6060a7f0f8fa0f72a16e6dce6",
+      "bytes": 8192,
+      "localOnlyNotForPublication": true
+    },
+    {
+      "name": "redux-mixed-native-phone",
+      "originalPath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\remaining-feature-audit-naming-player-v4\\redux\\fixture.srm",
+      "compactPrivatePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\dev18-v2-title-save-compact-fixtures\\redux-mixed-native-phone.srm",
+      "sha256": "a52be1e2509027cb14858234903f448734b31142730c23c625b34e9d0bb3318d",
+      "bytes": 8192,
+      "localOnlyNotForPublication": true
+    }
+  ],
+  "coverage": {
+    "directActualTitleProducerRecords": 1324,
+    "actualGoodsTitleWarmColdPairs": 4,
+    "actualPaulaSourceTitleWarmColdPairs": 2,
+    "actualEquipmentStatusWarmColdPairs": 8,
+    "occupancyWarmColdChecksumFixturePairs": 28,
+    "directPureOccupancyComparisons": 140,
+    "occupiedNormalPhoneContinueControls": 16,
+    "actualSlotListWarmColdPairs": 14,
+    "sourceGlyphAndIndependentVramSlotObservations": 84,
+    "actualSlotConfirmInputs": 38,
+    "actualNamingCancelBackdropWarmColdPairs": 4,
+    "bothCompleteExecutablesAndProfiles": true
+  },
+  "allPassed": true,
+  "priorPrivateRedGreenManifestsPreserved": [
+    {
+      "path": "research/title-producers-dev18-private-final-manifest.json",
+      "sha256": "d7532433083a8d3c47c4172034b1022bd82864a08e6f729e56b5313a5e6a48ab"
+    },
+    {
+      "path": "research/file-select-cold-dev18-private-final-manifest.json",
+      "sha256": "74b95deab7bb96ecce5110bc3a6eddd9e9f515c749bf33b1191ac08d3cf4de8b"
+    },
+    {
+      "path": "research/file-slot-glyph-dev18-private-final-manifest.json",
+      "sha256": "7b8e0de8c6b637fa112ed253e45973221e3d06d0cdc1af86b9e02cb3df8905ef"
+    }
+  ],
+  "disposableAfterMetadataFreeze": [
+    "Raw complete capture logs and repeated private state dumps for these final suites may be deleted after metadata/compact phone fixtures are frozen; tools recreate their own scratch from explicit inputs.",
+    "Keep source/runtime/archive snapshots, metadata, tool identities and the two private phone fixtures needed for reproducibility."
+  ],
+  "limits": [
+    "These are newly executed final complete player/observer/archive comparisons against the exact final Redux pack; old red/private proposal proofs retain their original hashes and labels.",
+    "Direct title producers, prepared source Paula entry and legal/private name prerequisites are qualified separately from ordinary command menus and real file-menu inputs. No full natural playthrough is claimed.",
+    "Captured title/menu/font VRAM and selection resume use the production format16/F6 writer and fresh processes. Physical F6/controller hardware and original CPU whole-screen rendering are outside scope.",
+    "Pure phone occupancy follows first-valid checksum-copy/sentinel source behavior without live mutations; damaged headers/empty copies are explicitly private fixtures. Copy/Delete transaction coverage is not exhaustive.",
+    "Root source/builds, owner saves, commercial ROM/pack inputs and older proof manifests are untouched by these tools. Compact SRAM fixtures remain local and are not public release assets."
+  ],
+  "rootOrOwnerInputsModified": false,
+  "occupancyInvocationReceipt": {
+    "path": "research\\file-select-occupancy-dev18-v2-final-invocation.json",
+    "sha256": "2548cf0b46769e01b9a2b6aac820a09bfe29f558db570df8b4626077f4fb3f94",
+    "allExplicitPackRuntimeInputsBytePreserved": true
+  }
+}

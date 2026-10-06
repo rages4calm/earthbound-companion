@@ -3,7 +3,7 @@
 # Upstream authors and source links are recorded in CREDITS.md.
 """Build a local-only Redux development pack with checked native entry points.
 
-This is an integration fixture, not a redistributable or supported game profile.
+This is an experimental native profile; full source compatibility remains under audit.
 Original ROM assets, Redux dialogue and game tables never leave the local machine.
 """
 from __future__ import annotations
@@ -23,6 +23,10 @@ from maternalbound_encounters import convert_encounters
 from maternalbound_presentation import convert_title, convert_special_text, convert_ending
 from maternalbound_audio import convert_audio
 from maternalbound_psi import convert_psi
+from maternalbound_town_maps import convert_town_maps
+from maternalbound_gas_station import convert_gas_station
+from maternalbound_sequence_animations import convert_sequence_animations
+from maternalbound_swirls import convert_swirls
 from audit_redux_movement import audit as audit_movement
 
 BASE = 0x100000
@@ -303,6 +307,10 @@ def build(args):
     title = convert_title(rom,assets)
     special_text = convert_special_text(rom,bridge,assets)
     ending = convert_ending(rom,args.project,assets)
+    town_maps = convert_town_maps(rom,assets)
+    gas_station = convert_gas_station(rom,assets)
+    sequence_animations = convert_sequence_animations(rom,assets)
+    swirls = convert_swirls(rom,assets)
     audio = convert_audio(rom,assets)
     psi = convert_psi(rom,assets)
     events = convert_events(rom,bridge,assets)
@@ -335,12 +343,12 @@ def build(args):
         "packSha256":sha(args.output.read_bytes()),"compiledRomSha256":sha(rom),"dialogueSha256":sha(text),
         "legacyEntryMappings":legacy_mapping_count,"romAddressTextMappings":len(rom_entries),"nativeExports":exports,"requiredNativeEntries":len(used),"requiredUnmappedEntries":required_missing,
         "unusedUnmappedEntryCount":len(missing),"dialogueBytes":len(dialogue),
-        "convertedAssets":["dialogue/dialogue.bin", "US/data/dont_care_names.bin"]+[x["asset"] for x in tables]+sprites["assets"]+fonts["assets"]+windows["assets"]+graphics["assets"]+battle_art["assets"]+title["assets"]+special_text["assets"]+ending["assets"]+audio["assets"]+psi["assets"]+events["assets"]+world["assets"]+auxiliary["assets"]+encounters["assets"],"convertedTables":tables,
-        "sprites":sprites,"fonts":fonts,"windows":windows,"indexedGraphics":graphics,"battleArt":battle_art,"title":title,"specialText":special_text,"ending":ending,"audio":audio,"psiEffects":psi,"events":events,"world":world,"encounters":encounters,
+        "convertedAssets":["dialogue/dialogue.bin", "US/data/dont_care_names.bin"]+[x["asset"] for x in tables]+sprites["assets"]+fonts["assets"]+windows["assets"]+graphics["assets"]+battle_art["assets"]+title["assets"]+special_text["assets"]+ending["assets"]+town_maps["assets"]+gas_station["assets"]+sequence_animations["assets"]+swirls["assets"]+audio["assets"]+psi["assets"]+events["assets"]+world["assets"]+auxiliary["assets"]+encounters["assets"],"convertedTables":tables,
+        "sprites":sprites,"fonts":fonts,"windows":windows,"indexedGraphics":graphics,"battleArt":battle_art,"title":title,"specialText":special_text,"ending":ending,"townMaps":town_maps,"gasStation":gas_station,"sequenceAnimations":sequence_animations,"swirls":swirls,"audio":audio,"psiEffects":psi,"events":events,"world":world,"encounters":encounters,
         "auxiliaryTables":auxiliary,"enemyAi":{"records":enemy_count,"scriptedEnemies":ai_scripts,"sourceOffset":ai_source},
         "spriteVariants":{"tables":4,"characters":17,"entries":544},
         "expandedNaming":{"defaultEntries":49,"stride":11,"characterLimit":6,"foodLimit":10},
-        "relocatedTablePointers":table_pointers,"remainingIntegration":["Remaining assembly-only QoL and bug fixes", "Later gameplay and cutscene validation", "Individual tool combat effects and complete MSU transitions", "Player-ROM setup for the pinned profile", "Full story and randomized playthrough validation"]}
+        "relocatedTablePointers":table_pointers,"remainingIntegration":["Source-backed implementation and coverage items in the latest native audit", "Natural story, photo acquisition, cutscene and audiovisual validation", "Full story and randomized playthrough validation"]}
     args.output.with_suffix(".report.json").write_text(json.dumps(record,indent=2)+"\n")
     print(json.dumps(record,indent=2))
 

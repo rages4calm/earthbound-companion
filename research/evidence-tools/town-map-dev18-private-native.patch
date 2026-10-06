@@ -1,0 +1,19 @@
+--- a/src/game/town_map.c
++++ b/src/game/town_map.c
+@@ -150,8 +150,15 @@
+     /* Upload tilemap: BUFFER+$40 → VRAM $3000, $800 bytes */
+     memcpy(&ppu.vram[0x3000 * 2], ert.buffer + 0x40, 0x800);
+ 
+-    /* Upload tile data: BUFFER+$840 → VRAM $0000, $4000 bytes */
++    /* Pinned Redux C4D625 uploads $6000 tile bytes. The importer proves
++     * its extra $2000 are zero and no arrangement references tiles above511.
++     * Native's shared buffer holds20KB, so retain the bounded $4000 tile copy
++     * and reproduce the source zero tail directly in VRAM. Original unchanged. */
++    _Static_assert(0x6000 <= sizeof(ppu.vram), "Town Map tile upload exceeds VRAM");
++    _Static_assert(0x840 + 0x4000 <= BUFFER_SIZE, "Town Map tile read exceeds buffer");
+     memcpy(&ppu.vram[0x0000], ert.buffer + 0x840, 0x4000);
++    if (maternalbound_enabled())
++        memset(&ppu.vram[0x4000], 0, 0x2000);
+ 
+     /* Decompress label GFX directly to VRAM $6000 */
+     size_t label_size = ASSET_SIZE(ASSET_TOWN_MAPS_LABEL_GFX_LZHAL);

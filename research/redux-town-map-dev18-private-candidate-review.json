@@ -1,0 +1,148 @@
+{
+  "toolSha256": "b7b2a828c4d8378f29191b0b2ba254dd9e86e3b2f1d9768df87229b243e54047",
+  "profile": "Redux",
+  "privateOnly": true,
+  "integratedIntoSharedSources": false,
+  "releaseCandidate": false,
+  "ownerWrites": false,
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "compiledRomSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+  "baselinePackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+  "proposedPackSha256": "48b91e28fc4d0f45e71b1c2d4f92ec77095d361902b82099e4ab7826346703ba",
+  "assetRegistrySha256": "a196a4d9de0f93a36c399b6f72178c3dd15c89288dbb0bf8232ceb3be4161579",
+  "registryAssets": 1174,
+  "namespaceAndHeaderUnchanged": true,
+  "changedAssetCount": 7,
+  "unchangedAssetCount": 1167,
+  "allowedChangedAssetIds": [
+    71,
+    1168,
+    1169,
+    1170,
+    1171,
+    1172,
+    1173
+  ],
+  "changedAssets": [
+    {
+      "id": 71,
+      "symbol": "ASSET_US_TOWN_MAPS_LABEL_GFX_LZHAL",
+      "asset": "US/town_maps/label.gfx.lzhal",
+      "oldBytes": 1907,
+      "newBytes": 1974,
+      "oldSha256": "9c2eb78f442a2c5d50374af48cb91fe8bc2cd79a3fa6ed4ea7e0c4ceca31d039",
+      "newSha256": "5856d3b61612ec5c83ceccb8e861120e5b7b97d23e7bf2507320cf0a261840b4"
+    },
+    {
+      "id": 1168,
+      "symbol": "ASSET_TOWN_MAPS_0_BIN_LZHAL",
+      "asset": "town_maps/0.bin.lzhal",
+      "oldBytes": 9986,
+      "newBytes": 10010,
+      "oldSha256": "3ecb1a68e3c3bc14ac61e4788b79957b4e57fab214fa5facf2bcfc827dfa1575",
+      "newSha256": "3a6935abbcf54d485845bc198430ee9da10261bd313d1ec0bd4d375913c77b9a"
+    },
+    {
+      "id": 1169,
+      "symbol": "ASSET_TOWN_MAPS_1_BIN_LZHAL",
+      "asset": "town_maps/1.bin.lzhal",
+      "oldBytes": 7588,
+      "newBytes": 7611,
+      "oldSha256": "0c2ab999114db17cc06eda9883833e72ba6d3dc138289328100185ae42834ee6",
+      "newSha256": "e951cb5d471fc74a603775c318ca23a413198d3f4f8cfdc37d76531793bc3b7b"
+    },
+    {
+      "id": 1170,
+      "symbol": "ASSET_TOWN_MAPS_2_BIN_LZHAL",
+      "asset": "US/town_maps/2.bin.lzhal",
+      "oldBytes": 7256,
+      "newBytes": 7168,
+      "oldSha256": "4ded7449334fe0b28b7298c37e0311a022774375bdb8ca87ebb7a1491efed415",
+      "newSha256": "83a4fdb7519cf1e9a1e880ea3aa624b29c03f4883169af4a86358eafb7485768"
+    },
+    {
+      "id": 1171,
+      "symbol": "ASSET_TOWN_MAPS_3_BIN_LZHAL",
+      "asset": "town_maps/3.bin.lzhal",
+      "oldBytes": 10696,
+      "newBytes": 10714,
+      "oldSha256": "ba9e4863ad8821a9336ceff13dd121680e45592dc182e358b82ca4d591716c17",
+      "newSha256": "e162bfdb9ee0a0cbea89e22adaf0a4c214bddf92123c7cd6b223ced86904e15e"
+    },
+    {
+      "id": 1172,
+      "symbol": "ASSET_TOWN_MAPS_4_BIN_LZHAL",
+      "asset": "US/town_maps/4.bin.lzhal",
+      "oldBytes": 6717,
+      "newBytes": 6679,
+      "oldSha256": "caacff3d588c295ab7192d453245f4f0861a31a8786b3185b7cad8d3ec259852",
+      "newSha256": "ce312f0eabd10ac2be7389f1510ded9bd0998aecea887618672abb627c3959b4"
+    },
+    {
+      "id": 1173,
+      "symbol": "ASSET_TOWN_MAPS_5_BIN_LZHAL",
+      "asset": "town_maps/5.bin.lzhal",
+      "oldBytes": 9437,
+      "newBytes": 9489,
+      "oldSha256": "078cbe2e870cb475c3ae8ba452517d56a788b2e2eaa403ed1bcf249dfadb7dd4",
+      "newSha256": "1ec66908aa0371cdd0dd83ccbab388ab078e35740ffec935d60187ffe34c0aff"
+    }
+  ],
+  "sourcePatches": [
+    {
+      "path": "research/evidence-tools/town-map-dev18-private-native.patch",
+      "sha256": "e1dc4312427881ffb3e8ebb0d923480504918687303fef5e20b92b21383e8ea8",
+      "baselineSha256": "d9344b340507d6eaeddc62d21ca79b53116d1eb9e9ae0f5c72731d8a55c50194",
+      "candidateSha256": "0aa1b94c3058138d22cc7832f44c02c4cb5b1a811bff2d3ed6c82daff4fe0acf"
+    },
+    {
+      "path": "research/evidence-tools/town-map-dev18-private-builder.patch",
+      "sha256": "cb0f385c31f1d2d7e10e772eff4935bde636c17014c76a9055c8cbc9b07ba0e2",
+      "baselineSha256": "adc0843f15fb464a388404e08362a15e5da8af4ad5003d21fe0d376ccd6616c1",
+      "candidateSha256": "e04d6632c11e09596a3470198585a701a8b6130f4ba7bb90d4136244debc1b9c"
+    }
+  ],
+  "newImporter": {
+    "path": "research/evidence-tools/maternalbound_town_maps-dev18-private.py",
+    "sha256": "6d4b4e4babeb0b61a3c2ecd0ff23296ea84ced20afbf619064d5abb7aff7b68d"
+  },
+  "privateRuntime": {
+    "playerSha256": "6071f96b0498c39112c6acde5eef5b0a07019fb49155f87c75f35fb214963e16",
+    "librarySha256": "78cb5e9c2acbef1afebf353574ae82116ac19c54fd5a24d4276b036024c7d122",
+    "observerAliasOnly": true,
+    "observerUsed": false,
+    "releaseCandidate": false,
+    "sharedBuildModified": false
+  },
+  "productionReports": {
+    "reduxPrivateGreen": {
+      "path": "research/redux-retained-presentation-dev21-private-dev18-review.json",
+      "sha256": "1b8c28c995f0d6c4684728d3c75ba34ab0c1fcd90067d6a8a655a0b4ace1d1ab"
+    },
+    "originalPrivateControl": {
+      "path": "research/original-retained-presentation-dev21-private-dev18-control-review.json",
+      "sha256": "74c663df3caf1a817aae7d6e923a1bad59dbce587e6b48a3e9b9763d42e24799"
+    }
+  },
+  "preparedCases": 16,
+  "executedAssertions": 112,
+  "skippedCases": 0,
+  "allPassed": true,
+  "changes": [
+    "Import each of six Town Map streams from actual compiled E02190 pointer table, and the source label stream from C4D62F.",
+    "Prove all source map upper 256 tiles are zero and unreferenced, then normalize map decompression to 18496 bytes for the native 20KB buffer.",
+    "Keep native bounded 16384-byte tile copy and clear the additional 8192 VRAM bytes only in Redux, matching source C4D625 upload.",
+    "Preserve all six shared icon/placement/mapping/palette tables and both game-over art families unchanged."
+  ],
+  "independentControls": [
+    "Original private consumer passes 56 assertions.",
+    "Real Redux six-map render/upload/reload exits and source labels pass 56 assertions.",
+    "Source game-over packing differences produced identical actual BG1 images for Ness and Jeff; no importer change justified."
+  ],
+  "remainingIntegration": [
+    "Root must lease/adopt source and importer changes separately.",
+    "Real setup regeneration and content-identity/phone/F6 migration are not established by this private candidate.",
+    "The private observer is only a player alias and was not tested; shipping observer requires a real coherent build.",
+    "Owning Goods/X-button callers, item acquisition, natural story progression, whole-screen visual parity and full game-over comeback dialogue are outside these prepared fixtures."
+  ]
+}

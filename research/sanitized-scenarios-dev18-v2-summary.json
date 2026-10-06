@@ -1,0 +1,101 @@
+{
+  "Passed": true,
+  "Jobs": [
+    {
+      "Job": "story-parents",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 41.99
+    },
+    {
+      "Job": "timed_item_lifecycle_qa",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 1.2
+    },
+    {
+      "Job": "timed_item_cold_continue_qa",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 7.22
+    },
+    {
+      "Job": "original-battle_ko_lifecycle_qa_dev17",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 1.44
+    },
+    {
+      "Job": "original-inventory_gameover_lifecycle_qa_dev17",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 3.65
+    },
+    {
+      "Job": "original-battle_full_encounter_qa_dev18",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 65.3
+    },
+    {
+      "Job": "original-prayer",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 7.45
+    },
+    {
+      "Job": "original-ending-0",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 9.65
+    },
+    {
+      "Job": "original-ending-1",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 12.85
+    },
+    {
+      "Job": "redux-battle_ko_lifecycle_qa_dev17",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 2.43
+    },
+    {
+      "Job": "redux-inventory_gameover_lifecycle_qa_dev17",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 5.05
+    },
+    {
+      "Job": "redux-battle_full_encounter_qa_dev18",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 57.9
+    },
+    {
+      "Job": "redux-prayer",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 8.95
+    },
+    {
+      "Job": "redux-ending-0",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 8.06
+    },
+    {
+      "Job": "redux-ending-1",
+      "ExitCode": 0,
+      "Passed": true,
+      "Seconds": 8.78
+    }
+  ],
+  "SkippedJobs": 0,
+  "PackSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Prepared source-backed native scenarios on an instrumented private rebuild; diagnostic runtime identity is preserved in every report. This is not shipping or independent SNES parity proof."
+  ]
+}

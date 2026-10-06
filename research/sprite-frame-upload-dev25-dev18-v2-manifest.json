@@ -1,0 +1,110 @@
+{
+  "format": "sprite-frame-upload-dev25-dev18-v2-manifest-v1",
+  "allPassed": true,
+  "evidenceReport": {
+    "path": "research/sprite-frame-upload-dev25-dev18-v2-final-review.json",
+    "sha256": "6603a4990b70bec322d1c758fef9a30695912b7f980889de2864542f99102799"
+  },
+  "evidenceTools": [
+    {
+      "path": "tools/sprite_frame_upload_qa_dev25.py",
+      "sha256": "ebcfa6e5cdf6421fc6a5da2000aafe958eedfb5be8568ec8b554626e6c370e9a"
+    },
+    {
+      "path": "tools/freeze_sprite_frame_evidence_dev25.py",
+      "sha256": "f9134503fda47870979eadc5cf662955d4a3b8f9dfa24ece91e5900dec840f7b"
+    }
+  ],
+  "frozenRuntimeProvenance": {
+    "path": "_BuildScratch/audit-dev18-v2-runtime/provenance.json",
+    "sha256": "8b9d184268f1c3c1c5e7a82dd60310fd4624860dd553055be2730bf882fe5688"
+  },
+  "frozenFullNativePatch": {
+    "path": "_BuildScratch/audit-dev18-v2-source/native-companion.patch",
+    "sha256": "955557298e7b3f92d1b9e3ab8f952ffccea2707b6ebd16c9f2bbd442d665ae12"
+  },
+  "production": {
+    "driverSourceSha256": "96c04334ebc0af80a937cd4e4c28dcb91bfdb5eac8e36145e052f7a6621ef828",
+    "executableSha256": "1e4cd7ebb6118938805787aaa9c2a26e6f8f7bcca4a7389ce0cc1173483f2161",
+    "productionExecutableSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "productionLibrarySha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "runtimeSha256": {
+    "player.exe": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "observer.exe": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92"
+  },
+  "sourceIdentities": {
+    "src\\entity\\sprite.c": "d749464412e8f6789a3ad1f0e112d1567e210a9144cb855c490c78128f242494",
+    "src\\entity\\sprite.h": "fd95114637c5c3e75dbfae29de45ab1c6d97b3890398e95abd04ddca433a1170",
+    "asm\\overworld\\render_entity_sprite.asm": "c103ef72490b86adaa80999941e87da0573dcf1a4f27495b74d5ed7baac96ea6",
+    "asm\\overworld\\entity\\render_entity_sprite_8dir.asm": "bf461bb6fa017c382a719afd67dbb65142af6facad2d1186a2102f1071229bb4",
+    "asm\\system\\dma\\prepare_vram_copy_row_safe.asm": "65db69f05aaa7dbb253298237c0a4e4a0c386416e24590796dd8c6d987574cbb"
+  },
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "executedAssertions": 41430,
+  "preparedUploads": 10351,
+  "sourceFrameComparisons": 8461,
+  "registryGroups": 947,
+  "zeroLengthPlaceholders": 2,
+  "skippedCases": 0,
+  "sourceScope": "483 Redux project-declared groups/4432 frames;464 Original groups/4029 contiguous source slots. Only group0 is a zero-length placeholder in each profile.",
+  "normalizedBankCoverage": "All packed source frame bytes and low pointer flag bits compare directly with compiled source. The actual Redux bank-container loader shadows retained banks12-15 correctly for this full frame corpus.",
+  "actualConsumerCoverage": "Dry production render for every nonempty source frame; first frame of each group also runs shallow/deep water at two split/boundary VRAM destinations. Return value, displayed flags, geometry, full bounded OBJ-region upload checksum and surrounding sentinel guards agree with source assembly contracts.",
+  "directPaletteCoverage": "All8 packed sprite palettes per profile equal source bytes; actual live palette consumers are separate coverage.",
+  "casesByProfile": [
+    {
+      "profile": "Original",
+      "groups": 464,
+      "frames": 4029,
+      "preparedUploads": 4955,
+      "zeroLengthGroups": [
+        0
+      ]
+    },
+    {
+      "profile": "Redux",
+      "groups": 483,
+      "frames": 4432,
+      "preparedUploads": 5396,
+      "zeroLengthGroups": [
+        0
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "profile": "Original",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "romSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+      "nativeLogSha256": "57b2cb5b56f63209853b38826048d007bc12cbd4c750dea97341ff6ca3c2474b",
+      "executedUploads": 4955
+    },
+    {
+      "profile": "Redux",
+      "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "romSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+      "nativeLogSha256": "10c47d17aea5e0152a9a9863c069ea029e3b6341fbb27dba566bf0460e8e3400",
+      "executedUploads": 5396
+    }
+  ],
+  "limits": [
+    "Prepared scalar entity geometry and frame selection execute the unchanged production renderer. Natural actor allocation, OAM layout and story caller selection are separate coverage.",
+    "Every Redux project-declared frame is compared; Original frame counts follow its contiguous8/9/16-slot records, excluding zero-length placeholder0.",
+    "Source contracts are independently interpreted from retained assembly; this run does not execute the SNES CPU or certify audiovisual parity.",
+    "Eight packed sprite palettes per profile are byte-checked against source. Their live palette/DSP/rendered color consumers are not executed here.",
+    "Dry every frame plus shallow/deep first frame per nonempty group cover source graphics and water/boundary classes, not every cartesian surface/frame combination.",
+    "VRAM FNV64 and untouched sentinel guards validate the prepared8192-byte OBJ region; packed/source frame bytes also receive SHA256 and direct equality.",
+    "Public evidence includes numeric results and hashes only; no game pixels, ROM, saves or bytecode.",
+    "Actual execution uses the identified player production library; observer executable hash records paired provenance only."
+  ],
+  "naturalStoryCoverageExpanded": false,
+  "fullAudiovisualParityVerified": false,
+  "confirmedDefects": [],
+  "ownerWrites": false,
+  "sharedSourcesModifiedByThisTask": false,
+  "redistributableGameAssetsIncluded": false
+}

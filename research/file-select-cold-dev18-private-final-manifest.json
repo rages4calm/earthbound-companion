@@ -1,0 +1,102 @@
+{
+  "format": "private-pure-phone-file-select-final-manifest-dev18-v1",
+  "base": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\title-producers-dev18-proposal-source",
+  "candidate": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-cold-dev18-proposal-source",
+  "patch": {
+    "path": "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\file-select-cold-dev18-private-final.patch",
+    "sha256": "56aadb1c46ce025f924a4498d888de4d012df894a1dd3b814f063019e23124d8"
+  },
+  "sourceChanges": [
+    {
+      "path": "src/game/game_state.c",
+      "baseSha256": "4fc6ba0bf0ed71842f174004188c1a430cd33e67ef5cbb13aa6fc8091d45f4be",
+      "candidateSha256": "7929fa58c519450ead5a0dd729dabc3767f3356b39075efa8488629a238c4edb",
+      "rootAtFreezeSha256": "4fc6ba0bf0ed71842f174004188c1a430cd33e67ef5cbb13aa6fc8091d45f4be",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/game/game_state.h",
+      "baseSha256": "382853bcad31480f82897be9a2511a4b7d384e5980d7966ce25d3c161740a2f4",
+      "candidateSha256": "34bfc901f455145c51afff81637cf755140b1fb62c48d76ccd03883f8c4ba261",
+      "rootAtFreezeSha256": "382853bcad31480f82897be9a2511a4b7d384e5980d7966ce25d3c161740a2f4",
+      "rootStillBase": true
+    },
+    {
+      "path": "src/intro/file_select.c",
+      "baseSha256": "d2faa938a2ddaa5bc50b2d902679cfcc5373aa8b1d3051ec23b0d6f824919cca",
+      "candidateSha256": "ab4b241d04cbb447a1e33f48b7434ffae716e73d3a52191e498d76322841e1a1",
+      "rootAtFreezeSha256": "d2faa938a2ddaa5bc50b2d902679cfcc5373aa8b1d3051ec23b0d6f824919cca",
+      "rootStillBase": true
+    }
+  ],
+  "allOtherSrcFilesByteIdentical": true,
+  "frozenTitleProposalUnchanged": true,
+  "format16AndSaveLayoutUnchanged": true,
+  "proofs": [
+    {
+      "path": "research/file-select-cold-dev18-focused-red.json",
+      "sha256": "e81840051cb2298cb8d00569a69bae0e1d8d0c26ed572ab50b334ef0c97a9955"
+    },
+    {
+      "path": "research/file-select-cold-dev18-private-preparation.json",
+      "sha256": "fff616f484034736261aae57839224985586cf02468722a5703fa1480213eb3c"
+    },
+    {
+      "path": "research/file-select-cold-dev18-private-builds.json",
+      "sha256": "87344a50507b35adff496ed42a0ad0bb47aee8da4b11e63d57ad1cb9bd2610c3"
+    },
+    {
+      "path": "research/file-select-occupancy-dev18-private-green.json",
+      "sha256": "493b45ea1aba2d841c161f85afcf5db5c5f26110d297313624931145c566ba21"
+    },
+    {
+      "path": "research/title-producers-dev18-private-final-manifest.json",
+      "sha256": "d7532433083a8d3c47c4172034b1022bd82864a08e6f729e56b5313a5e6a48ab"
+    }
+  ],
+  "tools": [
+    {
+      "path": "tools/file_select_cold_qa_dev18.py",
+      "sha256": "cee89344c772dfcc6ad88411bf9ce9bfc09b549b001b99c579d62e673a71563a"
+    },
+    {
+      "path": "tools/file_select_occupancy_qa_dev18.py",
+      "sha256": "e49aa2b184380a1a2c943209b869e0b567fcefcfc8c5eec276af1d5f355e6bcc"
+    },
+    {
+      "path": "tools/prepare_file_select_private_dev18.py",
+      "sha256": "171773c54bde1158926c9bc183b7d109d576df6be711d2bd3ea380840d51defa"
+    },
+    {
+      "path": "tools/freeze_file_select_private_dev18.py",
+      "sha256": "9217b7c2bc5f9bb2d5efb329c033a2dece882da3290fa0328af171d8f307f11c"
+    },
+    {
+      "path": "tools/build_title_private_dev18.py",
+      "sha256": "5ac6f3da60246d6fcd80b6b1eb5b38ab6cd706c5d46214e1f7189e0211340cc4"
+    },
+    {
+      "path": "tools/redux_title_cold_qa_dev18.py",
+      "sha256": "29381cb7ca6d1efa417258a62f91edbeda8fd7eceebc9f7a31d49ba1bb2d307d"
+    },
+    {
+      "path": "tools/redux_title_producers_qa_dev18.py",
+      "sha256": "8608ea1a439880b886bbd8ae0109eb362a5980d4136095e637a42bf43b56726d"
+    }
+  ],
+  "coverage": {
+    "focusedRedSequences": 4,
+    "externalPhoneContinuousPositiveControls": 4,
+    "greenWarmColdFixturePairs": 28,
+    "greenDirectPurePeekCalls": 140,
+    "greenOccupiedNormalContinueControls": 16,
+    "twoProfilesAndBothCompleteExecutables": true
+  },
+  "limits": [
+    "Pure peek uses existing ADD/XOR checksum implementations and first-valid-copy favourite_thing[1] source contract, not a second guessed formula. No live state loading/migration occurs in the peek.",
+    "Mutable unsaved file-menu side-data review is source-backed and qualified. Selected slot-choice/Copy availability warm/cold branches are tested; all file-menu phases, actual Copy/Delete transactions and missing/replaced external files are not exhaustive.",
+    "The three-file patch is separate from the frozen eight-file title patch. Ordinary file-slot label extended glyph loss remains a distinct source-backed gap; no global dialogue/menu encoding or save format is changed.",
+    "Private complete binaries/source only. Root Town Map/importer changes must be preserved when integrating these exact three files; final shipping combined binaries require refreshed controls."
+  ],
+  "rootOrOwnerInputsModified": false
+}

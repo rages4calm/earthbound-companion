@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0-redux-dev.18 - presentation, titles and cold Continue
+
+- Convert Town Maps/Map label, gas-station intro art, Starman teleport frames and the 31 changed swirl payloads; implement the second transition window and cold cache restoration.
+- Preserve extended title/file-slot glyphs and use a pure save peek for occupied-slot detection after fresh-process F6.
+- Recognize current Original data during setup, preventing unwanted rebuilds and another starter seed.
+- Guard the exact 41-asset presentation upgrade and compatible story-save copying; retain existing seed bases and save format 16.
+- Freeze final player/observer, independent compiled-source presentation comparisons, all sprite-frame uploads, all equipment IDs, runtime and instrumented scenes, real owner-ROM setup and randomizer guards.
+- Separate known party-target glyph and intentional equipped-Give follow-up work from shipped fixes. Full conversion and full story/seed playthroughs remain unfinished. See [the dev.18 audit](docs/NATIVE-AUDIT-dev18.md).
+
 ## 0.5.0-redux-dev.17 - item menus, transitions and Redux battle art
 
 - Make pooled Keys selectable by actual inventory callers; verify the Monkey Cave King banana trade, Tracy storage and eligible retail sale/rejection paths, including full bags and cold menu continuations.
@@ -126,15 +135,15 @@
 - Create the deferred Redux gift window before writing item/cash registers, preserving silent empty Talk/Check behavior. Reproduce two lost present rewards on dev.4, then verify source-defined rewards, opened flags, window cleanup and no duplicate gifts on dev.5. A prepared $123 cash gift also passes.
 - Rebuild player/observer engines and the setup helper together; keep the corrected pack, state format 16 and seed identities unchanged. Previously opened presents are not automatically compensated.
 - Record 15 additional literal-hook reviews, exact retained movement commands, shack/cave exploration and process-pointer-aware observer comparisons. Complete story, randomized story and all-module conversion parity remain unfinished.
-- Stop Jev exploration at the ownerâ€™s request; subsequent gift regressions use deterministic ordinary inputs with no TypeSafe requests.
+- Stop Jev exploration at the owner’s request; subsequent gift regressions use deterministic ordinary inputs with no TypeSafe requests.
 
 ## 0.5.0-redux-dev.4 - script width fix and active bugfix review
 
 - Correct Redux `CC 1D 15` variable-argument handling to use the low word stored by the upstream assembly fix. The real dispatcher reproduces eight failures before the correction; all 25 operand/party-position cases now pass, raising the VM suite to 106 checks.
 - Record all 36 active bugfix imports against the exact source pin, with native bindings, execution differences, targeted coverage and remaining branch tests. This is source review, not full compatibility certification.
 - Rebuild the player engine, QA engine and frozen setup helper together. Fresh movement/combat/original-profile checks, a clean upstream patch check, and 20 natural-combat observer parity checkpoints pass.
-- Extend bounded Jev navigation through shop menus, City Hall, the guard and the mayorâ€™s ordinary Shack Key award. Add expected door-destination checks and alternative NPC approaches. Full story and randomized playthroughs remain unverified.
-- Keep dev.3â€™s corrected pack and quick-save format 16, preserving content and seed identities. Existing dev.2 story imports remain restricted to the exact checked names-only pack change.
+- Extend bounded Jev navigation through shop menus, City Hall, the guard and the mayor’s ordinary Shack Key award. Add expected door-destination checks and alternative NPC approaches. Full story and randomized playthroughs remain unverified.
+- Keep dev.3’s corrected pack and quick-save format 16, preserving content and seed identities. Existing dev.2 story imports remain restricted to the exact checked names-only pack change.
 
 ## 0.5.0-redux-dev.3 - PSI names, combat UI and save-restore fixes
 
@@ -171,7 +180,7 @@
 - Accounted for all 105 dialogue-excluded spans in a source-pinned ledger. Classification is not complete assembly equivalence or full gameplay verification.
 - **Full MaternalBound compatibility remains incomplete.** Full story/randomized playthroughs, all combat combinations, listening/transition coverage, live photo collection and developer/debug parity remain unverified. The older v0.4 package remains the original-story preview.
 
-## 0.4.0 â€” private preview
+## 0.4.0 — private preview
 
 - Added a ROM-free first-run setup flow with clean-USA-ROM validation.
 - Bundled a standalone extractor so testers do not need Python.

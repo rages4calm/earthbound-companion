@@ -1,0 +1,2795 @@
+{
+  "format": "actual-complete-phone-occupancy-warm-cold-dev18-v1",
+  "toolSha256": "e49aa2b184380a1a2c943209b869e0b567fcefcfc8c5eec276af1d5f355e6bcc",
+  "pureDriverSha256": "4207c94358bcc9fcd29f1db33b25c5064bf47bda6913472dd41d134f7740fb46",
+  "results": [
+    {
+      "build": "player",
+      "profile": "original",
+      "case": "one-occupied",
+      "fixtureSha256": "c6cc7f02bfe88bc5c857ab7f30aaa38fb0460ca6060a7f0f8fa0f72a16e6dce6",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "cd6820714ef3051e60ab9a834c4a5192d45d4899ba230ef70a22537d6d0e83ef",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-original\\one-occupied-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "original",
+      "case": "all-three-occupied",
+      "fixtureSha256": "2e53e8675d4536b69b30e39f586449aab591e2fd230db2bbf7731e3ff5cf032f",
+      "expectedOccupiedSlots": [
+        1,
+        1,
+        1
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "21331cdb6bd5ec5a46af7aaf3d1f7e90c0e8918290b172f3ff66106bffb5342c",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [3:Delete] [4:Set Up]",
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [3:Delete] [4:Set Up]",
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-original\\all-three-occupied-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "original",
+      "case": "valid-empty-slots",
+      "fixtureSha256": "bc18b748521706aa8dae962e10cc0df7ea8989301bf55712dc86c403f2c024f3",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "c8d4bbe6129a317630f6eb75da144aec05b8cd1573744cb0fa5d8117e2c941bc",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-original\\valid-empty-slots-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "original",
+      "case": "damaged-primary-valid-secondary",
+      "fixtureSha256": "e45aac904cca4ca13898486e918f6feba477ba0bcd4d6fa9ffaf9651d2ea5b88",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "cd6820714ef3051e60ab9a834c4a5192d45d4899ba230ef70a22537d6d0e83ef",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-original\\damaged-primary-valid-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "original",
+      "case": "both-copies-damaged",
+      "fixtureSha256": "d729a4baa48fcee60c659a984be52c5292ad009f4f1f94832ff82ff506329c02",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "c8d4bbe6129a317630f6eb75da144aec05b8cd1573744cb0fa5d8117e2c941bc",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-original\\both-copies-damaged-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "original",
+      "case": "valid-primary-damaged-secondary",
+      "fixtureSha256": "f49beb8a12ee7f567dffa4e414c43f5391d5428510347a0822ecdf2779647586",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "cd6820714ef3051e60ab9a834c4a5192d45d4899ba230ef70a22537d6d0e83ef",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-original\\valid-primary-damaged-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "original",
+      "case": "valid-empty-primary-occupied-secondary",
+      "fixtureSha256": "53f0d4684990bcb52d31f1d786eb812ca3946d515fa946458747ccaa1809ad5a",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "c8d4bbe6129a317630f6eb75da144aec05b8cd1573744cb0fa5d8117e2c941bc",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-original\\valid-empty-primary-occupied-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "case": "one-occupied",
+      "fixtureSha256": "a52be1e2509027cb14858234903f448734b31142730c23c625b34e9d0bb3318d",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "ff12fc0fda54eccef7224df97af7b198fa062755db42ea3e6957144e21b59e2a",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-redux\\one-occupied-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "case": "all-three-occupied",
+      "fixtureSha256": "d9e5ca549ae8d9edc62e99a1197c3ca1e03867a606077d6fde7b76af9ebbf4b6",
+      "expectedOccupiedSlots": [
+        1,
+        1,
+        1
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "b11269ef505309333031aa05e9337f1bd34fdb6371aeb5d6dd0330d1837b4977",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [3:Delete] [4:Set Up]",
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [3:Delete] [4:Set Up]",
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-redux\\all-three-occupied-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "case": "valid-empty-slots",
+      "fixtureSha256": "bc18b748521706aa8dae962e10cc0df7ea8989301bf55712dc86c403f2c024f3",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "b0c9cad4ce7692a96b427951c4e67292b6959a1d9dfe72078c1ab8863f3c79fd",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-redux\\valid-empty-slots-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "case": "damaged-primary-valid-secondary",
+      "fixtureSha256": "5857396449c388e87b61c010f48ab6c0e163fa0f3e476d3223c00dc505bf1a5b",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "ff12fc0fda54eccef7224df97af7b198fa062755db42ea3e6957144e21b59e2a",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-redux\\damaged-primary-valid-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "case": "both-copies-damaged",
+      "fixtureSha256": "481b590c546e050fb16a4594e421b4b6023ecb6baca9b7ac788dee3a6affdbde",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "b0c9cad4ce7692a96b427951c4e67292b6959a1d9dfe72078c1ab8863f3c79fd",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-redux\\both-copies-damaged-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "case": "valid-primary-damaged-secondary",
+      "fixtureSha256": "f4c15816fd4b8c32240635d641275283eddaa77c12b09d8be1a223c2010de224",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "ff12fc0fda54eccef7224df97af7b198fa062755db42ea3e6957144e21b59e2a",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-redux\\valid-primary-damaged-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "case": "valid-empty-primary-occupied-secondary",
+      "fixtureSha256": "d29d4639b919f8a3c776a9e39546da074757c90330744eada9715eb105a44ad5",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+          "privateExeSha256": "30fcd4b91cf75cfa547b99a173a775529ab47531edd2ab6c90ca4b10dafe68f6",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "b0c9cad4ce7692a96b427951c4e67292b6959a1d9dfe72078c1ab8863f3c79fd",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\player-redux\\valid-empty-primary-occupied-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "case": "one-occupied",
+      "fixtureSha256": "c6cc7f02bfe88bc5c857ab7f30aaa38fb0460ca6060a7f0f8fa0f72a16e6dce6",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "cd6820714ef3051e60ab9a834c4a5192d45d4899ba230ef70a22537d6d0e83ef",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-original\\one-occupied-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "case": "all-three-occupied",
+      "fixtureSha256": "2e53e8675d4536b69b30e39f586449aab591e2fd230db2bbf7731e3ff5cf032f",
+      "expectedOccupiedSlots": [
+        1,
+        1,
+        1
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "21331cdb6bd5ec5a46af7aaf3d1f7e90c0e8918290b172f3ff66106bffb5342c",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [3:Delete] [4:Set Up]",
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [3:Delete] [4:Set Up]",
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-original\\all-three-occupied-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "case": "valid-empty-slots",
+      "fixtureSha256": "bc18b748521706aa8dae962e10cc0df7ea8989301bf55712dc86c403f2c024f3",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "c8d4bbe6129a317630f6eb75da144aec05b8cd1573744cb0fa5d8117e2c941bc",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-original\\valid-empty-slots-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "case": "damaged-primary-valid-secondary",
+      "fixtureSha256": "e45aac904cca4ca13898486e918f6feba477ba0bcd4d6fa9ffaf9651d2ea5b88",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "cd6820714ef3051e60ab9a834c4a5192d45d4899ba230ef70a22537d6d0e83ef",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-original\\damaged-primary-valid-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "case": "both-copies-damaged",
+      "fixtureSha256": "d729a4baa48fcee60c659a984be52c5292ad009f4f1f94832ff82ff506329c02",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "c8d4bbe6129a317630f6eb75da144aec05b8cd1573744cb0fa5d8117e2c941bc",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-original\\both-copies-damaged-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "case": "valid-primary-damaged-secondary",
+      "fixtureSha256": "f49beb8a12ee7f567dffa4e414c43f5391d5428510347a0822ecdf2779647586",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "cd6820714ef3051e60ab9a834c4a5192d45d4899ba230ef70a22537d6d0e83ef",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-original\\valid-primary-damaged-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "case": "valid-empty-primary-occupied-secondary",
+      "fixtureSha256": "53f0d4684990bcb52d31f1d786eb812ca3946d515fa946458747ccaa1809ad5a",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "c8d4bbe6129a317630f6eb75da144aec05b8cd1573744cb0fa5d8117e2c941bc",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-original\\valid-empty-primary-occupied-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "case": "one-occupied",
+      "fixtureSha256": "a52be1e2509027cb14858234903f448734b31142730c23c625b34e9d0bb3318d",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "ff12fc0fda54eccef7224df97af7b198fa062755db42ea3e6957144e21b59e2a",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-redux\\one-occupied-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "case": "all-three-occupied",
+      "fixtureSha256": "d9e5ca549ae8d9edc62e99a1197c3ca1e03867a606077d6fde7b76af9ebbf4b6",
+      "expectedOccupiedSlots": [
+        1,
+        1,
+        1
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "b11269ef505309333031aa05e9337f1bd34fdb6371aeb5d6dd0330d1837b4977",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [3:Delete] [4:Set Up]",
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [3:Delete] [4:Set Up]",
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-redux\\all-three-occupied-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "case": "valid-empty-slots",
+      "fixtureSha256": "bc18b748521706aa8dae962e10cc0df7ea8989301bf55712dc86c403f2c024f3",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "b0c9cad4ce7692a96b427951c4e67292b6959a1d9dfe72078c1ab8863f3c79fd",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-redux\\valid-empty-slots-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "case": "damaged-primary-valid-secondary",
+      "fixtureSha256": "5857396449c388e87b61c010f48ab6c0e163fa0f3e476d3223c00dc505bf1a5b",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "ff12fc0fda54eccef7224df97af7b198fa062755db42ea3e6957144e21b59e2a",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-redux\\damaged-primary-valid-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "case": "both-copies-damaged",
+      "fixtureSha256": "481b590c546e050fb16a4594e421b4b6023ecb6baca9b7ac788dee3a6affdbde",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "b0c9cad4ce7692a96b427951c4e67292b6959a1d9dfe72078c1ab8863f3c79fd",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-redux\\both-copies-damaged-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "case": "valid-primary-damaged-secondary",
+      "fixtureSha256": "f4c15816fd4b8c32240635d641275283eddaa77c12b09d8be1a223c2010de224",
+      "expectedOccupiedSlots": [
+        1,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "ff12fc0fda54eccef7224df97af7b198fa062755db42ea3e6957144e21b59e2a",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": true,
+        "sourceNewGame": false,
+        "menu": {
+          "line": "PC replay window 20 option=0 title= menu: [1:Continue] [2:Copy] [3:Delete] [4:Set Up]",
+          "copyPresent": true
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-redux\\valid-primary-damaged-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": {
+        "worldReached": true,
+        "partyCount": 1
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "case": "valid-empty-primary-occupied-secondary",
+      "fixtureSha256": "d29d4639b919f8a3c776a9e39546da074757c90330744eada9715eb105a44ad5",
+      "expectedOccupiedSlots": [
+        0,
+        0,
+        0
+      ],
+      "purePeek": {
+        "link": {
+          "archiveSha256": "384bf3becec85a5ed3f531bf0fd2a0f1785c658475f5d71cc4dd63ebaba80283",
+          "privateExeSha256": "b8c14aef1872b9d044951bf720cd96f0bc1225da750fe7c3fdedee88be098a71",
+          "driverSha256": "8268a7e6ad4dae78eb625abeb07867eafbe881cb6de8b672a438deb8102200e5",
+          "sourceObjectOverrides": false,
+          "mainRenameOnly": true
+        },
+        "records": [
+          [
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0
+          ]
+        ],
+        "nativeLogSha256": "b0c9cad4ce7692a96b427951c4e67292b6959a1d9dfe72078c1ab8863f3c79fd",
+        "Passed": true,
+        "comparedLiveGlobals": [
+          "GameState",
+          "all CharStructs",
+          "event_flags",
+          "key_items_pool",
+          "maternalbound_name_extra",
+          "maternalbound_food_extra",
+          "EntityRuntimeState including save_scratch",
+          "party_ever_joined_mask",
+          "current_save_slot"
+        ]
+      },
+      "warm": {
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        }
+      },
+      "cold": {
+        "beforeModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "afterModes": [
+          61,
+          27,
+          26,
+          7
+        ],
+        "sourceSubmenu": false,
+        "sourceNewGame": true,
+        "menu": {
+          "line": null,
+          "copyPresent": false
+        },
+        "sameExternalPhonePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\file-select-occupancy-dev18-v2-final-recorded\\observer-redux\\valid-empty-primary-occupied-secondary-cold\\fixture.srm",
+        "externalPhoneBytesPreserved": true
+      },
+      "normalPhoneContinue": null,
+      "Passed": true
+    }
+  ],
+  "allPassed": true,
+  "candidateSourceIdentities": {
+    "src/game/game_state.c": "7929fa58c519450ead5a0dd729dabc3767f3356b39075efa8488629a238c4edb",
+    "src/game/game_state.h": "34bfc901f455145c51afff81637cf755140b1fb62c48d76ccd03883f8c4ba261",
+    "src/intro/file_select.c": "84719fb8d3b05bd754522d03dc9cd580accad68cc62ebb837d0e1b49066e38e6",
+    "src/core/state_dump.c": "15a416ea8e9d28199641821b8c7523fc9ebffdb51bdbc32574d2d7f43a205665"
+  },
+  "completeCandidateBinaries": {
+    "player": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "observer": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92"
+  },
+  "dependencies": {
+    "tools/file_select_cold_qa_dev18.py": "cee89344c772dfcc6ad88411bf9ce9bfc09b549b001b99c579d62e673a71563a",
+    "tools/redux_title_cold_qa_dev18.py": "29381cb7ca6d1efa417258a62f91edbeda8fd7eceebc9f7a31d49ba1bb2d307d",
+    "tools/redux_title_producers_qa_dev18.py": "8608ea1a439880b886bbd8ae0109eb362a5980d4136095e637a42bf43b56726d"
+  },
+  "limits": [
+    "Actual candidate archives run pure occupancy against the existing load_game checksum/sentinel contract; the reference is native source, not an independent original CPU SRAM routine.",
+    "Five slot indices (-1,0,1,2,3), seven local checksum/copy/empty patterns, two profiles and both complete binaries are covered. Source Copy availability is observed, but actual Copy/Delete actions and every configuration phase are not executed.",
+    "Real occupied/empty slot selection, F6 writer/fresh cold restore and normal phone Continue are driven through complete executables; private fixture checksum/header changes are stated prerequisites, not naturally produced story saves.",
+    "Live global purity is checked on each direct peek, including save_scratch. Format16 is unchanged; physical F6 is not synthesized. Frozen title proposal and root/source/builds/owner data remain untouched.",
+    "Ordinary file-slot menu labels still convert extended names through eb_char_to_ascii. Their glyph loss is separate from title-only rendering and is not silently fixed by this proposal."
+  ],
+  "rootOrOwnerInputsModified": false
+}

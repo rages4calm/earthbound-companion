@@ -1,0 +1,890 @@
+{
+  "format": "actual-complete-title-menu-parents-dev18-v1",
+  "toolSha256": "68c3597c955bda2b7e5d68368736c5d3e2e8ba27d279f3d7537f9cec2adbb82e",
+  "titleRunnerSha256": "29381cb7ca6d1efa417258a62f91edbeda8fd7eceebc9f7a31d49ba1bb2d307d",
+  "results": [
+    {
+      "build": "player",
+      "profile": "original",
+      "branch": "equipment",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "completeExecutableSha256": "41600ed916b09e03996525f337c0c3c556ede2bc9f68c74409db54106d60bada",
+      "archiveSha256": "82656677bd2ff6c63972b7d20bc4a563d9cf09970d398ace46ca02caf934bad9",
+      "buttons": [
+        256,
+        1024,
+        1024,
+        32
+      ],
+      "titleAndCold": {
+        "before": {
+          "title": {
+            "id": 6,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 4,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 6,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 4,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "3b5d92ecb8ee3212802a45e1513cac4d1f198f6cb9da421dc1dc2f5db76bfba9",
+        "ordinaryDownAfterCold": {
+          "previous": 0,
+          "current": 1,
+          "titleGlyphsPreserved": true,
+          "tinyTilesPreserved": true
+        },
+        "Passed": true
+      },
+      "ordinaryCancelAfterCold": {
+        "beforeModes": [
+          61,
+          34,
+          35,
+          7
+        ],
+        "afterModes": [
+          61,
+          34,
+          7
+        ],
+        "continued": true
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "original",
+      "branch": "status",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "completeExecutableSha256": "41600ed916b09e03996525f337c0c3c556ede2bc9f68c74409db54106d60bada",
+      "archiveSha256": "82656677bd2ff6c63972b7d20bc4a563d9cf09970d398ace46ca02caf934bad9",
+      "buttons": [
+        1024,
+        1024,
+        32
+      ],
+      "titleAndCold": {
+        "before": {
+          "title": {
+            "id": 8,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 8,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "35db2b0bab52aaca50600214414d494ec4ff4e1314857c97c34f5694a94c07ee",
+        "Passed": true
+      },
+      "ordinaryCancelAfterCold": {
+        "beforeModes": [
+          61,
+          34,
+          36,
+          3
+        ],
+        "afterModes": [
+          61,
+          34,
+          7
+        ],
+        "continued": true
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "branch": "equipment",
+      "packSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "completeExecutableSha256": "41600ed916b09e03996525f337c0c3c556ede2bc9f68c74409db54106d60bada",
+      "archiveSha256": "82656677bd2ff6c63972b7d20bc4a563d9cf09970d398ace46ca02caf934bad9",
+      "buttons": [
+        256,
+        32
+      ],
+      "titleAndCold": {
+        "before": {
+          "title": {
+            "id": 6,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 4,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 6,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 4,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "e680a1f840f69b392d990583dbaaf732b4c9fe6430492ce58f98d4f694dfdbd4",
+        "ordinaryDownAfterCold": {
+          "previous": 0,
+          "current": 1,
+          "titleGlyphsPreserved": true,
+          "tinyTilesPreserved": true
+        },
+        "Passed": true
+      },
+      "ordinaryCancelAfterCold": {
+        "beforeModes": [
+          61,
+          34,
+          35,
+          7
+        ],
+        "afterModes": [
+          61
+        ],
+        "continued": true
+      },
+      "Passed": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "branch": "status",
+      "packSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "completeExecutableSha256": "41600ed916b09e03996525f337c0c3c556ede2bc9f68c74409db54106d60bada",
+      "archiveSha256": "82656677bd2ff6c63972b7d20bc4a563d9cf09970d398ace46ca02caf934bad9",
+      "buttons": [
+        256,
+        1024,
+        32
+      ],
+      "titleAndCold": {
+        "before": {
+          "title": {
+            "id": 8,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 8,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "93d890ad785d72fd0ed751eaa6399b0b2e080a0ef7f53208fb422381966466e1",
+        "Passed": true
+      },
+      "ordinaryCancelAfterCold": {
+        "beforeModes": [
+          61,
+          34,
+          36,
+          3
+        ],
+        "afterModes": [
+          61,
+          34,
+          7
+        ],
+        "continued": true
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "branch": "equipment",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "completeExecutableSha256": "d355d25f35741012d58ae42cffe8a58625b090f50a012b22768755618d08b04d",
+      "archiveSha256": "9ea7f135e39f6fcbe72ce4a978f592ac6fd84acc41012c1b436b84c71e2e4ea2",
+      "buttons": [
+        256,
+        1024,
+        1024,
+        32
+      ],
+      "titleAndCold": {
+        "before": {
+          "title": {
+            "id": 6,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 4,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 6,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 4,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "28e9525e139d3d659f03909b0ce6b54f81bc246e6b3a01bb29bdbafae11b9a9c",
+        "ordinaryDownAfterCold": {
+          "previous": 0,
+          "current": 1,
+          "titleGlyphsPreserved": true,
+          "tinyTilesPreserved": true
+        },
+        "Passed": true
+      },
+      "ordinaryCancelAfterCold": {
+        "beforeModes": [
+          61,
+          34,
+          35,
+          7
+        ],
+        "afterModes": [
+          61,
+          34,
+          7
+        ],
+        "continued": true
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "branch": "status",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "completeExecutableSha256": "d355d25f35741012d58ae42cffe8a58625b090f50a012b22768755618d08b04d",
+      "archiveSha256": "9ea7f135e39f6fcbe72ce4a978f592ac6fd84acc41012c1b436b84c71e2e4ea2",
+      "buttons": [
+        1024,
+        1024,
+        32
+      ],
+      "titleAndCold": {
+        "before": {
+          "title": {
+            "id": 8,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 8,
+            "raw": [
+              78,
+              101,
+              115,
+              115
+            ],
+            "glyphs": [
+              126,
+              149,
+              163,
+              163
+            ],
+            "slot": 1,
+            "columns": 4,
+            "tinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            126,
+            149,
+            163,
+            163
+          ],
+          "expectedTinyVramSha256": "c448c9decd8385a666a3d6c90ae0825f52a4097d6b925cecff2a2eeb9a5d9f40",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "ea4aac7a1a503a41452c7da5da75cd0c062de830301d4ab324ee248634aff98e",
+        "Passed": true
+      },
+      "ordinaryCancelAfterCold": {
+        "beforeModes": [
+          61,
+          34,
+          36,
+          3
+        ],
+        "afterModes": [
+          61,
+          34,
+          7
+        ],
+        "continued": true
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "branch": "equipment",
+      "packSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "completeExecutableSha256": "d355d25f35741012d58ae42cffe8a58625b090f50a012b22768755618d08b04d",
+      "archiveSha256": "9ea7f135e39f6fcbe72ce4a978f592ac6fd84acc41012c1b436b84c71e2e4ea2",
+      "buttons": [
+        256,
+        32
+      ],
+      "titleAndCold": {
+        "before": {
+          "title": {
+            "id": 6,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 4,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 6,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 4,
+            "currentOption": 0,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "3f762e0f52931388773d11d4c75d74b074a1d7aa1c9fac0d980e8b289c6ff229",
+        "ordinaryDownAfterCold": {
+          "previous": 0,
+          "current": 1,
+          "titleGlyphsPreserved": true,
+          "tinyTilesPreserved": true
+        },
+        "Passed": true
+      },
+      "ordinaryCancelAfterCold": {
+        "beforeModes": [
+          61,
+          34,
+          35,
+          7
+        ],
+        "afterModes": [
+          61
+        ],
+        "continued": true
+      },
+      "Passed": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "branch": "status",
+      "packSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "completeExecutableSha256": "d355d25f35741012d58ae42cffe8a58625b090f50a012b22768755618d08b04d",
+      "archiveSha256": "9ea7f135e39f6fcbe72ce4a978f592ac6fd84acc41012c1b436b84c71e2e4ea2",
+      "buttons": [
+        256,
+        1024,
+        32
+      ],
+      "titleAndCold": {
+        "before": {
+          "title": {
+            "id": 8,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "after": {
+          "title": {
+            "id": 8,
+            "raw": [
+              73,
+              176,
+              192,
+              48,
+              184,
+              185
+            ],
+            "glyphs": [
+              121,
+              176,
+              192,
+              96,
+              184,
+              185
+            ],
+            "slot": 1,
+            "columns": 6,
+            "tinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+            "menuCount": 0,
+            "currentOption": 255,
+            "selectedOption": 255,
+            "page": 1
+          },
+          "expectedGlyphs": [
+            121,
+            176,
+            192,
+            96,
+            184,
+            185
+          ],
+          "expectedTinyVramSha256": "9ed3d633977933164407511dd2a75bc0a67c1f99caac63bd2af2da0ef050cc7f",
+          "sourceGlyphsMatch": true,
+          "independentTinyTilesMatch": true,
+          "format16": true
+        },
+        "titleMenuAndTinyVramPreserved": true,
+        "realCaptureSlotSha256": "deca6b1b21f3aac49ca1cc2c9947f555c7c3b00392a38b6744c4a6a5a8b973ce",
+        "Passed": true
+      },
+      "ordinaryCancelAfterCold": {
+        "beforeModes": [
+          61,
+          34,
+          36,
+          3
+        ],
+        "afterModes": [
+          61,
+          34,
+          7
+        ],
+        "continued": true
+      },
+      "Passed": true
+    }
+  ],
+  "allPassed": true,
+  "limits": [
+    "Complete candidate player/observer execute actual command controls and Equipment/Status source parents. Only existing private world save prerequisites (name/source Cookie88/Hamburger90 acquisition) are prepared.",
+    "Menu choices, titles, selected option movement, F6 capture writer, fresh process reload and cancel continuation are executed without C wrappers or injected menu/title/VRAM.",
+    "Original is created by ordinary new-game default naming; Redux mixed legal six-letter name comes from earlier private ordinary-input phone proof. Broader natural story progression, every parent branch, equipment transactions/status effects, physical F6 key and original CPU whole-screen rendering remain outside this test."
+  ],
+  "rootOrOwnerInputsModified": false
+}

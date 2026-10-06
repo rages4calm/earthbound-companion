@@ -1,0 +1,211 @@
+diff --git a/src/game/battle.c b/src/game/battle.c
+--- a/src/game/battle.c
++++ b/src/game/battle.c
+@@ -631,7 +631,7 @@
+     /* Assembly lines 32-43: SET_WINDOW_TITLE with character name (X=5 max chars). */
+     {
+         char name_buf[7];
+-        eb_to_ascii_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf);
++        eb_to_title_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf, sizeof(name_buf));
+         set_window_title(window_type, name_buf, maternalbound_name_capacity());
+     }
+ 
+@@ -2699,7 +2699,7 @@
+                 char name_buf[8];
+                 int j;
+                 for (j = 0; j < maternalbound_name_capacity() && maternalbound_character_name_of(ch)[j]; j++)
+-                    name_buf[j] = eb_char_to_ascii(maternalbound_character_name_of(ch)[j]);
++                    name_buf[j] = eb_char_to_title_byte(maternalbound_character_name_of(ch)[j]);
+                 name_buf[j] = '\0';
+                 set_window_title(window_id, name_buf, maternalbound_name_capacity());
+             }
+diff --git a/src/game/battle_psi.c b/src/game/battle_psi.c
+--- a/src/game/battle_psi.c
++++ b/src/game/battle_psi.c
+@@ -415,7 +415,7 @@
+     uint16_t char_idx = char_id - 1;
+     char name_buf[8];
+     for (int j = 0; j < maternalbound_name_capacity(); j++)
+-        name_buf[j] = eb_char_to_ascii(maternalbound_character_name(char_idx)[j]);
++        name_buf[j] = eb_char_to_title_byte(maternalbound_character_name(char_idx)[j]);
+     name_buf[maternalbound_name_capacity()] = '\0';
+     set_window_title(WINDOW_TEXT_STANDARD, name_buf, maternalbound_name_capacity());
+ 
+diff --git a/src/game/display_text.c b/src/game/display_text.c
+--- a/src/game/display_text.c
++++ b/src/game/display_text.c
+@@ -954,7 +954,7 @@
+         if (!text[i]) {out[copied] = 0; return true;}
+         /* Titles are plain strings; script opcodes must never become glyphs. */
+         if (text[i] < 0x20) {out[0] = 0; return false;}
+-        if (copied + 1 < capacity) out[copied++] = eb_char_to_ascii(text[i]);
++        if (copied + 1 < capacity) out[copied++] = eb_char_to_title_byte(text[i]);
+     }
+     out[0] = 0;
+     return false;
+@@ -1324,7 +1324,7 @@
+         char name_buf[7];
+         int i;
+         for (i = 0; i < maternalbound_name_capacity() && maternalbound_character_name_of(c)[i] != 0x00; i++)
+-            name_buf[i] = eb_char_to_ascii(maternalbound_character_name_of(c)[i]);
++            name_buf[i] = eb_char_to_title_byte(maternalbound_character_name_of(c)[i]);
+         name_buf[i] = '\0';
+         set_window_title(WINDOW_STATUS_MENU, name_buf, maternalbound_name_capacity());
+     }
+diff --git a/src/game/display_text_cc.c b/src/game/display_text_cc.c
+--- a/src/game/display_text_cc.c
++++ b/src/game/display_text_cc.c
+@@ -1792,7 +1792,7 @@
+         } else FATAL("Invalid Redux title character %u\n",character);
+         char decoded[WINDOW_TITLE_SIZE] = {0}, affix[WINDOW_TITLE_SIZE] = {0};
+         for (size_t i=0; i<length && i<capacity && i<sizeof(decoded)-1 && name[i]; ++i)
+-            decoded[i] = eb_char_to_ascii(name[i]);
++            decoded[i] = eb_char_to_title_byte(name[i]);
+         if (address && !dt_copy_plain_string(address,affix,sizeof(affix)))
+             FATAL("Invalid Redux title affix 0x%06X\n",address);
+         char title[WINDOW_TITLE_SIZE];
+diff --git a/src/game/display_text_menus.c b/src/game/display_text_menus.c
+--- a/src/game/display_text_menus.c
++++ b/src/game/display_text_menus.c
+@@ -744,7 +744,7 @@
+      * SET_WINDOW_TITLE(window_id, char_name_ptr, sizeof(char_struct::name)=5). */
+     {
+         char name_buf[7];
+-        eb_to_ascii_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf);
++        eb_to_title_buf(maternalbound_character_name(char_idx), maternalbound_name_capacity(), name_buf, sizeof(name_buf));
+         set_window_title(window_id, name_buf, maternalbound_name_capacity());
+     }
+ 
+@@ -987,7 +987,7 @@
+         load_menu_title_assets();
+         if (status_equip_text_14) {
+             char title_buf[WINDOW_TITLE_SIZE];
+-            eb_to_ascii_buf(status_equip_text_14, (int)status_equip_text_14_size, title_buf);
++            eb_to_title_buf(status_equip_text_14, (int)status_equip_text_14_size, title_buf, sizeof(title_buf));
+             set_window_title(WINDOW_PHONE_MENU, title_buf, 3);
+         }
+ 
+@@ -1080,7 +1080,7 @@
+         load_menu_title_assets();
+         if (status_equip_text_7) {
+             char title_buf[WINDOW_TITLE_SIZE];
+-            eb_to_ascii_buf(status_equip_text_7, (int)status_equip_text_7_size, title_buf);
++            eb_to_title_buf(status_equip_text_7, (int)status_equip_text_7_size, title_buf, sizeof(title_buf));
+             set_window_title(WINDOW_ESCARGO_EXPRESS_ITEM, title_buf, -1);
+         }
+ 
+@@ -1169,7 +1169,7 @@
+         load_menu_title_assets();
+         if (phone_call_text_data) {
+             char title_buf[WINDOW_TITLE_SIZE];
+-            eb_to_ascii_buf(phone_call_text_data, (int)phone_call_text_size, title_buf);
++            eb_to_title_buf(phone_call_text_data, (int)phone_call_text_size, title_buf, sizeof(title_buf));
+             /* Assembly: LDX #sizeof(char_struct::name) = 5 for max_len */
+             set_window_title(WINDOW_EQUIP_MENU_ITEMLIST, title_buf, 5);
+         }
+diff --git a/src/game/text.c b/src/game/text.c
+--- a/src/game/text.c
++++ b/src/game/text.c
+@@ -928,7 +928,7 @@
+         char name_buf[WINDOW_TITLE_SIZE];
+         int j;
+         for (j = 0; j < maternalbound_name_capacity() && maternalbound_character_name(char_idx)[j]; j++)
+-            name_buf[j] = eb_char_to_ascii(maternalbound_character_name(char_idx)[j]);
++            name_buf[j] = eb_char_to_title_byte(maternalbound_character_name(char_idx)[j]);
+         name_buf[j] = '\0';
+         set_window_title(WINDOW_EQUIP_MENU, name_buf, 6);
+     }
+@@ -1746,7 +1746,7 @@
+                 char title_buf[WINDOW_TITLE_SIZE];
+                 const uint8_t *title_src = equip_text_data + ETEXT11_OFF
+                                            + (slot_type - 1) * ETEXT11_STRIDE;
+-                eb_to_ascii_buf(title_src, ETEXT11_STRIDE, title_buf);
++                eb_to_title_buf(title_src, ETEXT11_STRIDE, title_buf, sizeof(title_buf));
+                 /* STRLEN equivalent: length excluding trailing spaces/nulls */
+                 int title_len = (int)strlen(title_buf);
+                 set_window_title(WINDOW_EQUIP_MENU_ITEMLIST, title_buf, title_len);
+@@ -4498,6 +4498,33 @@
+     return table[c - 0x20];
+ }
+ 
++/* Window titles keep their existing byte-string/save layout. Preserve raw
++ * EB glyphs that have no ASCII spelling as high-bit bytes; ordinary ASCII
++ * titles retain their original representation. Only the tiny-title renderer
++ * consumes this encoding, so general text/menu ASCII conversion is unchanged. */
++char eb_char_to_title_byte(uint8_t eb_char) {
++    char ascii = eb_char_to_ascii(eb_char);
++    if (ascii_to_eb_char(ascii) == eb_char) return ascii;
++    if (eb_char >= 0x80) return (char)eb_char;
++    return ascii; /* retain the existing fallback for invalid/control bytes */
++}
++
++int eb_to_title_buf(const uint8_t *src, int max_len, char *dst, int capacity) {
++    int copied = 0;
++    if (!dst || capacity <= 0) return 0;
++    if (src) {
++        for (int i = 0; i < max_len && src[i] && copied + 1 < capacity; i++)
++            dst[copied++] = eb_char_to_title_byte(src[i]);
++    }
++    dst[copied] = '\0';
++    return copied;
++}
++
++uint8_t title_byte_to_eb_char(char title_byte) {
++    uint8_t byte = (uint8_t)title_byte;
++    return byte >= 0x80 ? byte : ascii_to_eb_char(title_byte);
++}
++
+ /* VWF Engine */
+ 
+ /* VRAM tile index for next VWF allocation. Reset each frame. */
+@@ -5139,11 +5166,11 @@
+ int render_title_to_vram(const char *title, uint8_t title_slot) {
+     if (!title || title[0] == '\0' || title_slot == 0) return 0;
+ 
+-    /* Convert ASCII title to EB encoding */
++    /* Decode the title-only byte string without losing raw extended glyphs. */
+     uint8_t eb_str[WINDOW_TITLE_SIZE];
+     int len = 0;
+     for (int i = 0; title[i] != '\0' && i < WINDOW_TITLE_SIZE - 1; i++) {
+-        eb_str[len++] = ascii_to_eb_char(title[i]);
++        eb_str[len++] = title_byte_to_eb_char(title[i]);
+     }
+ 
+     /* Save VWF state, set_window_title can be called while other windows
+diff --git a/src/game/text.h b/src/game/text.h
+--- a/src/game/text.h
++++ b/src/game/text.h
+@@ -88,6 +88,12 @@
+ 
+ /* Convert ASCII to EarthBound internal character code */
+ uint8_t ascii_to_eb_char(char ascii);
++
++/* Reversible title-only byte encoding; ASCII plus unmapped high-bit EB glyphs. */
++char eb_char_to_title_byte(uint8_t eb_char);
++/* Bounded EB-to-title-only string conversion; leaves ordinary text unchanged. */
++int eb_to_title_buf(const uint8_t *src, int max_len, char *dst, int capacity);
++uint8_t title_byte_to_eb_char(char title_byte);
+ 
+ /* TEXT_RENDER_STATE: tracks current VWF tile VRAM positions.
+  * Port of assembly's TEXT_RENDER_STATE BSS struct.
+@@ -190,7 +196,7 @@
+ 
+ /* Render a window title string to dedicated VRAM tiles (once, at set_window_title time).
+    Matches assembly's RENDER_WINDOW_TITLE → RENDER_TINY_FONT_STRING flow.
+-   title: ASCII title string.  title_slot: 1-based TITLED_WINDOWS slot.
++   title: title-only bytes (ASCII plus preserved EB glyphs). title_slot: 1-based slot.
+    Returns the number of VWF tile columns rendered. */
+ int render_title_to_vram(const char *title, uint8_t title_slot);
+ 
+diff --git a/src/game/window.h b/src/game/window.h
+--- a/src/game/window.h
++++ b/src/game/window.h
+@@ -198,7 +198,7 @@
+                                          fn ptr above (savestate hardening, D0a). */
+     uint8_t  title_slot;              /* asm offset 59: TITLED_WINDOWS slot index (1-5), 0=none */
+     uint8_t  title_tile_count;        /* number of VWF tile columns rendered for title (set once at set_window_title time) */
+-    char     title[WINDOW_TITLE_SIZE]; /* asm offset 60: window title text (tiny font) */
++    char     title[WINDOW_TITLE_SIZE]; /* tiny title: ASCII plus preserved high-bit EB glyph bytes; ABI unchanged */
+     uint8_t   palette_index;
+     MenuItem  menu_items[MAX_MENU_ITEMS];
+     uint8_t   menu_count;

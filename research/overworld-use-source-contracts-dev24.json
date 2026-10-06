@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev24-source-selected-overworld-use-contracts",
+  "toolSha256": "fcf5aca6aec06b15702d23378f97c7bfaa9c1cda88c7a0a885511cdc603973b4",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "ownerRomSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+  "originalPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "reduxPackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+  "nativeSnapshot": "_BuildScratch\\audit-dev17-v4-complete-source",
+  "sourceReferences": [
+    {
+      "path": "asm/overworld/use_item.asm",
+      "sha256": "e3beb4b67e9b5e96ddbf54c7cd507833ae5898b02bd2eb08a7addf651f0a0f53"
+    },
+    {
+      "path": "asm/overworld/open_menu.asm",
+      "sha256": "080d1c3c89db668e39b24313fdc84c214ca8c19dbb12f38bf530e462e780e6f2"
+    },
+    {
+      "path": "asm/text/menu/overworld_psi_menu.asm",
+      "sha256": "a4557b8d44864c9159336b976a1fd2c12361fbaffeb894c79c3a0b7be940616b"
+    },
+    {
+      "path": "asm/battle/actions/healing_alpha.asm",
+      "sha256": "0cca8bba99396ef8772420054ccdb67a19529b57cfb46167d80a2f2af635b1c7"
+    },
+    {
+      "path": "asm/battle/actions/healing_beta.asm",
+      "sha256": "ae502fdb4092536059ca585e29826250cce5831a5992ff7d9ad35ea76f2ee302"
+    },
+    {
+      "path": "asm/battle/actions/healing_gamma.asm",
+      "sha256": "925bc7cd22d80bdd2657e5560f71ca8e1d4e9be1a989484ebd916e0cb7fabd05"
+    },
+    {
+      "path": "asm/battle/actions/healing_omega.asm",
+      "sha256": "4bf974cffa5e417db8ee107b85d9c4038b816598c5abbc852a8d99d0b0f41c28"
+    },
+    {
+      "path": "asm/battle/success_255.asm",
+      "sha256": "c77d43f523624168d5b8cc3cdc03cb8140b88e0e74d88e19c942cda8ebe85cbd"
+    },
+    {
+      "path": "asm/battle/revive_target.asm",
+      "sha256": "4cacf587de12e1f5b63ad0f883a894fdada6f452efb673810e86e37240d6e3fe"
+    },
+    {
+      "path": "asm/battle/recover_hp.asm",
+      "sha256": "ed551d90a34ff7f892e110cebfaac4e968f15038814770b430679ce39567bea4"
+    }
+  ],
+  "originalTableSpans": [
+    {
+      "asset": "item_configuration_table",
+      "offset": 1396736,
+      "size": 9906,
+      "ownerRomSpanSha256": "fd0057e2c841da5ed15e247d0007fd93a864e7f7e80ae2b218a11fe662d99430"
+    },
+    {
+      "asset": "psi_ability_table",
+      "offset": 1411664,
+      "size": 810,
+      "ownerRomSpanSha256": "3dd92a08238772811c21062e23d95f787395401c32993e55d1a6d4c288654ef9"
+    },
+    {
+      "asset": "battle_action_table",
+      "offset": 1407848,
+      "size": 3828,
+      "ownerRomSpanSha256": "897ae6ff717b9293ab13ac525675e909873abda5012caa3051cce20e4789653e"
+    }
+  ],
+  "pinnedTables": [
+    {
+      "path": "item_configuration_table.yml",
+      "sha256": "c02e713caf45d65ad5c9510b144ea876ae679398be4c15852f070b406d7a68a5"
+    },
+    {
+      "path": "psi_ability_table.yml",
+      "sha256": "adc8faccf0c6057ee7a796e31ca9a58216a37e80013e18cbef900a05b2918f13"
+    },
+    {
+      "path": "battle_action_table.yml",
+      "sha256": "c7f336b918f2975e6e80e11b45ff6298b89978e2f4ebfcd49c1a03d3f911ec68"
+    }
+  ],
+  "checks": [
+    {
+      "id": "original-item_configuration_table-127-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-item_configuration_table-128-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-item_configuration_table-129-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-item_configuration_table-130-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-item_configuration_table-133-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-psi_ability_table-23-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-psi_ability_table-24-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-psi_ability_table-25-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-psi_ability_table-26-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-psi_ability_table-27-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-psi_ability_table-28-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-psi_ability_table-29-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-psi_ability_table-30-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-32-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-33-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-34-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-35-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-36-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-37-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-38-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-39-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-149-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-150-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-151-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-152-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "original-battle_action_table-310-numeric-source",
+      "passed": true
+    },
+    {
+      "id": "redux-item-127-flags-known",
+      "passed": true
+    },
+    {
+      "id": "redux-item-127-type-effect-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-item-128-flags-known",
+      "passed": true
+    },
+    {
+      "id": "redux-item-128-type-effect-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-item-129-flags-known",
+      "passed": true
+    },
+    {
+      "id": "redux-item-129-type-effect-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-item-130-flags-known",
+      "passed": true
+    },
+    {
+      "id": "redux-item-130-type-effect-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-item-133-flags-known",
+      "passed": true
+    },
+    {
+      "id": "redux-item-133-type-effect-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-action-32-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-33-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-34-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-35-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-36-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-37-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-38-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-39-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-149-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-150-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-151-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-152-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-action-310-target-cost-callback",
+      "passed": true
+    },
+    {
+      "id": "redux-psi-23-availability-action",
+      "passed": true
+    },
+    {
+      "id": "redux-psi-24-availability-action",
+      "passed": true
+    },
+    {
+      "id": "redux-psi-25-availability-action",
+      "passed": true
+    },
+    {
+      "id": "redux-psi-26-availability-action",
+      "passed": true
+    },
+    {
+      "id": "redux-psi-27-availability-action",
+      "passed": true
+    },
+    {
+      "id": "redux-psi-28-availability-action",
+      "passed": true
+    },
+    {
+      "id": "redux-psi-29-availability-action",
+      "passed": true
+    },
+    {
+      "id": "redux-psi-30-availability-action",
+      "passed": true
+    },
+    {
+      "id": "source-flow-target-cancel-before-consume",
+      "passed": true
+    },
+    {
+      "id": "source-flow-exact-primary-guard",
+      "passed": true
+    },
+    {
+      "id": "source-flow-cancel-before-charge",
+      "passed": true
+    },
+    {
+      "id": "source-flow-all-party-loop",
+      "passed": true
+    },
+    {
+      "id": "source-flow-alpha-priority",
+      "passed": true
+    },
+    {
+      "id": "source-flow-beta-priority",
+      "passed": true
+    },
+    {
+      "id": "source-flow-gamma-priority",
+      "passed": true
+    },
+    {
+      "id": "source-flow-gamma-revival",
+      "passed": true
+    },
+    {
+      "id": "source-flow-omega-revival",
+      "passed": true
+    },
+    {
+      "id": "source-flow-strict-192-comparison",
+      "passed": true
+    },
+    {
+      "id": "source-flow-revive-clears-all-groups",
+      "passed": true
+    },
+    {
+      "id": "source-flow-lifeup-KO-guard",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "limits": [
+    "Selected numeric Original ROM table rows, active pinned table rows and ordered disassembly/source tokens only. This is not original SNES CPU execution or every source branch proof.",
+    "No ROM/dialogue/graphics bytes published. Full-menu runtime execution and cold children are recorded separately."
+  ]
+}

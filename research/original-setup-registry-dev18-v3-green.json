@@ -1,0 +1,16 @@
+{
+  "Passed": true,
+  "Checks": [
+    "missing-data",
+    "legacy-data-needs-rebuild",
+    "current-data-does-not-rebuild",
+    "cold-current-data-does-not-rebuild",
+    "truncated-header-needs-rebuild",
+    "corrupt-header-needs-rebuild",
+    "missing-movement-marker-needs-rebuild"
+  ],
+  "SourcePacksUnchanged": true,
+  "NativeRuntimeChanged": false,
+  "FullPlaythroughVerified": false,
+  "LauncherSha256": "afd77b7898cf5c2461778652602a225d66eb7bfafd93c2cc58cd8b55bb18cb23"
+}

@@ -1,0 +1,432 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev25-selected-goods-equipment-source",
+  "toolSha256": "99414bd74bed995af3f3c05932df2df19e7ab87d937c451cb23aee23ca8c84f0",
+  "pinnedReduxCommit": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "ownerRomSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+  "nativeSnapshot": "_BuildScratch\\audit-dev17-v4-complete-source",
+  "originalPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "reduxPackSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+  "sourceReferences": [
+    {
+      "path": "asm/inventory/equipment/equipment_change_menu.asm",
+      "sha256": "a1c71dc40dbdbded3b5bbf47733ced06bd7fe855335ea2a94eb5e0b1a2e1b09e"
+    },
+    {
+      "path": "asm/battle/swap_item_into_equipment.asm",
+      "sha256": "d82333c8328002326a47f7ef81190d9d704b5254c9f57db9c242746df97db3c5"
+    },
+    {
+      "path": "asm/battle/find_empty_inventory_slot.asm",
+      "sha256": "39783eb8f57b5aef14a405866160fa8d1d40cab0c8e8eaed5bbdc7ebd1e62cf5"
+    },
+    {
+      "path": "asm/misc/change_equipped_weapon.asm",
+      "sha256": "2e5884c725f8f0aec4cb7283d13e9acffd7c7559c647f991a82b8413382da417"
+    },
+    {
+      "path": "asm/misc/change_equipped_body.asm",
+      "sha256": "efafb56a0a37146629e255fa4b52c009700529f4725d74c6dd9afaab8564791b"
+    },
+    {
+      "path": "asm/misc/change_equipped_arms.asm",
+      "sha256": "351938197b44856e97f026f17ecf9457a9705eabcd254af25fed8faad48eb7d1"
+    },
+    {
+      "path": "asm/misc/change_equipped_other.asm",
+      "sha256": "b8f9e639fd3caeb496c74869124f5bb14079f6625c8c8aa1944ea873d16093ab"
+    },
+    {
+      "path": "asm/misc/recalc_character_postmath_offense.asm",
+      "sha256": "efb5144ddac44e0e5ad485597d6a9622cc4acf2e0e59d4fa0a4d34471b6b84cd"
+    },
+    {
+      "path": "asm/misc/recalc_character_postmath_defense.asm",
+      "sha256": "6d9ce74307daf5925efa7e4d7b160ef071428efe9a8afc0aaa85690c9c2f1176"
+    },
+    {
+      "path": "asm/battle/recalc_character_miss_rate.asm",
+      "sha256": "fa9c59aa246f31484701d16b3761b5ae7c3f847d32a1b512304b071fd329f47b"
+    },
+    {
+      "path": "asm/text/ccs/get_item_sell_price.asm",
+      "sha256": "7ce452adfe64a011d42a565c112361eb9918c1ce8b5622fb7d42b5441caf522c"
+    },
+    {
+      "path": "ccscript/redux/goods_menu_equip.ccs",
+      "sha256": "03a81abce08a4b2b6fe4d1b4d7781489d280a4f3b049579ed8b5031d2c40504e"
+    },
+    {
+      "path": "ccscript/redux/new_stats_equipment.ccs",
+      "sha256": "c9b73c879df634182f83ad9add97dc25c6f42dc70416ec28ff84a6a5a27d1794"
+    }
+  ],
+  "pinnedTables": [
+    {
+      "path": "ccscript/main.ccs",
+      "sha256": "eed62cec9d49b138534418f39c9929a4c4ad6e573171b45708180dc3e63a97a3"
+    },
+    {
+      "path": "item_configuration_table.yml",
+      "sha256": "c02e713caf45d65ad5c9510b144ea876ae679398be4c15852f070b406d7a68a5"
+    }
+  ],
+  "originalSpans": [
+    {
+      "table": "item_configuration_table",
+      "offset": 1396736,
+      "size": 9906,
+      "rawSha256": "fd0057e2c841da5ed15e247d0007fd93a864e7f7e80ae2b218a11fe662d99430"
+    },
+    {
+      "label": "equipment-use-informational",
+      "start": 13092674,
+      "endExclusive": 13092705,
+      "rawSha256": "d4c1b80988fcd55f7b609b7d597a4118cfdbee02b546b055d29e55250f0dbb2c",
+      "opcodeCounts": {
+        "add_item_id_to_work_memory": 1,
+        "print_item_name": 1,
+        "halt_without_prompt": 1,
+        "end_block": 1
+      }
+    },
+    {
+      "label": "drop-caller",
+      "start": 13092361,
+      "endExclusive": 13092437,
+      "rawSha256": "f820f031dab2b097b63e07d1ec058b69050a7408440b2183e295b6321f1526b0",
+      "opcodeCounts": {
+        "copy_active_memory_to_storage": 2,
+        "add_item_id_to_work_memory": 2,
+        "swap_working_and_arg_memory": 3,
+        "test_if_workmem_true": 1,
+        "jump_if_true": 2,
+        "copy_storage_memory_to_active": 3,
+        "get_sell_price_of_item": 1,
+        "jump_if_false": 1,
+        "take_item_from_character_2": 1,
+        "call_text": 1,
+        "print_char_name": 1,
+        "line_break": 1,
+        "print_item_name": 1,
+        "halt_without_prompt": 1,
+        "end_block": 1
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "original-selected-item-17-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-17-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-17-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-18-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-18-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-18-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-28-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-28-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-28-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-35-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-35-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-35-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-36-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-36-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-36-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-49-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-49-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-49-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-56-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-56-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-56-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-58-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-58-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-58-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-63-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-63-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-63-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-64-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-64-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-64-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-70-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-70-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-70-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-73-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-73-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-73-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-74-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-74-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-74-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-78-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-78-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-78-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-81-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-81-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-81-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-87-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-87-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-87-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-90-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-90-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-90-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "original-selected-item-91-numeric",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-91-type-price-flags",
+      "passed": true
+    },
+    {
+      "id": "redux-selected-item-91-signed-parameters",
+      "passed": true
+    },
+    {
+      "id": "source-flow-menu-filters-type-category-and-user",
+      "passed": true
+    },
+    {
+      "id": "source-flow-none-clear-and-real-equip",
+      "passed": true
+    },
+    {
+      "id": "source-flow-self-give-equipment-empty-location",
+      "passed": true
+    },
+    {
+      "id": "source-flow-source-give-recalculates-before-index-adjustment",
+      "passed": true
+    },
+    {
+      "id": "source-flow-source-full-bag-thirteen-bound",
+      "passed": true
+    },
+    {
+      "id": "source-flow-weapon-commit-recalculates",
+      "passed": true
+    },
+    {
+      "id": "source-flow-body-commit-recalculates",
+      "passed": true
+    },
+    {
+      "id": "source-flow-arms-commit-recalculates",
+      "passed": true
+    },
+    {
+      "id": "source-flow-other-commit-recalculates",
+      "passed": true
+    },
+    {
+      "id": "source-flow-poo-alternate-weapon-modifier",
+      "passed": true
+    },
+    {
+      "id": "source-flow-poo-alternate-defense-modifier",
+      "passed": true
+    },
+    {
+      "id": "source-flow-weapon-special-is-missrate",
+      "passed": true
+    },
+    {
+      "id": "source-flow-drop-half-cost-protection",
+      "passed": true
+    },
+    {
+      "id": "source-flow-active-use-hijack",
+      "passed": true
+    },
+    {
+      "id": "source-flow-unequip-item-not-consumed",
+      "passed": true
+    },
+    {
+      "id": "source-flow-all-unequip-categories",
+      "passed": true
+    },
+    {
+      "id": "source-flow-source-closes-gameplay-window",
+      "passed": true
+    },
+    {
+      "id": "source-flow-source-exit-reopen-is-commented",
+      "passed": true
+    },
+    {
+      "id": "pinned-main-active-goods-equip",
+      "passed": true
+    },
+    {
+      "id": "pinned-main-active-expanded-equipment",
+      "passed": true
+    },
+    {
+      "id": "original-Goods-Use-equipment-no-mutation",
+      "passed": true
+    },
+    {
+      "id": "original-Drop-guard-before-take",
+      "passed": true
+    },
+    {
+      "id": "original-Drop-bubblegum-guard",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "limits": [
+    "Selected original ROM numeric item rows and locally parsed original dialogue control opcodes; pinned source numeric rows and ordered assembly tokens. No original SNES CPU execution, ROM/dialogue payload or complete source-branch proof.",
+    "The full-bag self-Give equipment-location oddity is source-consistent and recorded separately; selected parent/native tests do not establish all item IDs, stat boundary values or natural reachability."
+  ]
+}
