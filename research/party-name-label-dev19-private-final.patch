@@ -1,0 +1,74 @@
+--- a/src/game/battle.c
++++ b/src/game/battle.c
+@@ -543,9 +543,11 @@
+         uint8_t member_id = game_state.party_members[i];
+         char name_buf[8];
+         if (member_id >= 1 && member_id <= 4) {
+-            for (int j = 0; j < maternalbound_name_capacity(); j++)
+-                name_buf[j] = eb_char_to_ascii(maternalbound_character_name(member_id - 1)[j]);
+-            name_buf[maternalbound_name_capacity()] = '\0';
++            /* CHAR_SELECT_PROMPT copies raw name glyphs before ADD_MENU_ITEM.
++             * Use the bounded lossless byte encoding also used by titles;
++             * this target window's renderer decodes it without an ASCII loss. */
++            eb_to_title_buf(maternalbound_character_name(member_id - 1),
++                            maternalbound_name_capacity(), name_buf, sizeof(name_buf));
+         } else {
+             name_buf[0] = '\0';
+         }
+--- a/src/game/display_text.c
++++ b/src/game/display_text.c
+@@ -1500,9 +1500,12 @@
+ 
+         char name_buf[7];
+         if (member_id >= 1 && member_id <= 4) {
+-            eb_to_ascii_buf(maternalbound_character_name(member_id - 1), maternalbound_name_capacity(), name_buf);
++            /* PARTY_CHARACTER_SELECTOR copies source name glyphs verbatim.
++             * Preserve high glyphs in this bounded name-only menu label. */
++            eb_to_title_buf(maternalbound_character_name(member_id - 1),
++                            maternalbound_name_capacity(), name_buf, sizeof(name_buf));
+         } else if (member_id == PARTY_MEMBER_KING) {
+-            eb_to_ascii_buf(game_state.pet_name, 6, name_buf);
++            eb_to_title_buf(game_state.pet_name, 6, name_buf, sizeof(name_buf));
+             name_buf[maternalbound_name_capacity()] = '\0';
+         } else {
+             name_buf[0] = '\0';
+--- a/src/game/window.c
++++ b/src/game/window.c
+@@ -669,10 +669,27 @@
+            item->userdata >= 1 && item->userdata <= SAVE_COUNT;
+ }
+ 
++/* Both source party selectors populate only these normal-font windows with
++ * raw character names, at x=i*6 and userdata=party member ID. The window/id
++ * contract also identifies restored labels without changing MenuItem or F6.
++ * Other menus, dialogue, right labels and the HPPP Give picker stay ASCII. */
++static bool menu_item_is_party_name(const WindowInfo *w, const MenuItem *item) {
++    bool name_window = w->id == WINDOW_SINGLE_CHARACTER_SELECT ||
++        (w->id >= WINDOW_TARGETING_PROMPT + 1 &&
++         w->id <= WINDOW_TARGETING_PROMPT + 3);
++    return name_window && ((item->userdata >= PARTY_MEMBER_NESS &&
++                           item->userdata <= PARTY_MEMBER_POO) ||
++                          item->userdata == PARTY_MEMBER_KING);
++}
++
++static bool menu_item_has_name_glyphs(const WindowInfo *w, const MenuItem *item) {
++    return menu_item_is_file_slot(w, item) || menu_item_is_party_name(w, item);
++}
++
+ static uint8_t menu_item_label_glyph(const WindowInfo *w,
+                                      const MenuItem *item, unsigned index) {
+     uint8_t byte = (uint8_t)item->label[index];
+-    if (menu_item_is_file_slot(w, item) && byte >= 0x80) return byte;
++    if (menu_item_has_name_glyphs(w, item) && byte >= 0x80) return byte;
+     return ascii_to_eb_char(item->label[index]);
+ }
+ 
+@@ -700,7 +717,7 @@
+         set_focus_text_cursor(item->text_x + 1, item->text_y);
+         w = get_window(win.current_focus_window);  /* re-fetch after cursor set */
+         if (!w) return;
+-        if (menu_item_is_file_slot(w, item)) {
++        if (menu_item_has_name_glyphs(w, item)) {
+             uint8_t glyphs[sizeof(item->label)] = {0};
+             unsigned length = 0;
+             while (length < sizeof(item->label) && item->label[length]) {

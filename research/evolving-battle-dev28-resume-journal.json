@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "status": "Paused by explicit user instruction after parent dev18 release; no active QA process remains.",
+  "scope": "Dev28 evolving multi-turn boss pilot only; not a completed audit or release proof.",
+  "runtime": "dev18-v2",
+  "runtimeSha256": {
+    "player.exe": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "observer.exe": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92"
+  },
+  "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "privateBuild": {
+    "driverSourceSha256": "826ca4ace110b5c359ed2f728bb1afbc654218dcd6cd77fd495fd16f47876c7f",
+    "executableSha256": "422d06ed3e5ddce50b57ceb8cdc85859d90c8ffd77f8508066deb5bafe36c51c",
+    "productionExecutableSha256": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+    "productionLibrarySha256": "6a2ea279a762df4c3a887eda7580e09c8034da55f08fb7f9059eb404c949d411",
+    "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Private driver linked to unchanged frozen player library/platform objects; copied main renamed only.",
+    "includeSourceSnapshot": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev18-v2-complete-source",
+    "includeBuildSnapshot": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev18-v2-build\\companion"
+  },
+  "pilotReport": "research\\redux-evolving-battle-dev28-pilot-r5.json",
+  "pilotCaseCount": 36,
+  "pilotPrimitivePassCount": 31,
+  "coldCasesIncluded": 9,
+  "failedCases": [
+    {
+      "id": "kraken-active-ai-seed3",
+      "errors": [
+        "Native full encounter/capture/resume did not complete",
+        "depth: got 4, expected 1",
+        "postBattleFlag: got 1, expected 0",
+        "overworldBattleMode: got 65535, expected 0",
+        "metersStable: got 0, expected 1"
+      ],
+      "nativeStages": [
+        {
+          "stage": "warm",
+          "exit": 7,
+          "logSha256": "ed63c64ce7853a5ad0162eaa69a6a7548dbb70ea175b04801663db436ea090bb"
+        }
+      ]
+    },
+    {
+      "id": "kraken-active-ai-seed3-cold",
+      "errors": [
+        "Native full encounter/capture/resume did not complete",
+        "depth: got 7, expected 1",
+        "postBattleFlag: got 1, expected 0",
+        "overworldBattleMode: got 65535, expected 0",
+        "metersStable: got 0, expected 1"
+      ],
+      "nativeStages": [
+        {
+          "stage": "capture",
+          "exit": 0,
+          "logSha256": "3a8c3b1d41ada88522d64246b1740552dce9f6f6c4f69d51d00d4a5e94f05737"
+        },
+        {
+          "stage": "resume",
+          "exit": 7,
+          "logSha256": "606e6ef103d3e835b515a8aceeb7f95e83bfb5d103e38100556bc0a2f2bbc953"
+        }
+      ]
+    },
+    {
+      "id": "magikraken-active-ai-seed1",
+      "errors": [
+        "Native full encounter/capture/resume did not complete",
+        "depth: got 5, expected 1",
+        "postBattleFlag: got 1, expected 0",
+        "overworldBattleMode: got 65535, expected 0",
+        "rollingHalf: got 1, expected 0",
+        "metersStable: got 0, expected 1"
+      ],
+      "nativeStages": [
+        {
+          "stage": "warm",
+          "exit": 7,
+          "logSha256": "4e2fb1d5de8c795807f31e45bc37d7e43cabd79224f7ac55fdba5ff6ad2f846d"
+        }
+      ]
+    },
+    {
+      "id": "carbon-diamond-seed1",
+      "errors": [
+        "Native full encounter/capture/resume did not complete",
+        "depth: got 5, expected 1",
+        "postBattleFlag: got 1, expected 0",
+        "overworldBattleMode: got 65535, expected 0"
+      ],
+      "nativeStages": [
+        {
+          "stage": "warm",
+          "exit": 7,
+          "logSha256": "8cd09dd360093852ab562969e7e7bda1a5fd5ab3fedcb3141b03f71bc63679be"
+        }
+      ]
+    },
+    {
+      "id": "carbon-diamond-seed2",
+      "errors": [
+        "Native full encounter/capture/resume did not complete",
+        "depth: got 6, expected 1",
+        "postBattleFlag: got 1, expected 0",
+        "overworldBattleMode: got 65535, expected 0",
+        "rollingDisabled: got 1, expected 0"
+      ],
+      "nativeStages": [
+        {
+          "stage": "warm",
+          "exit": 7,
+          "logSha256": "eadcb4d2277038780d0ebe6115d067fd546f6781142c7abda5cba447dff50f78"
+        }
+      ]
+    }
+  ],
+  "exactExecutedDriver": "tools\\battle_evolving_driver_dev28_pilot_r5.c",
+  "exactExecutedDriverSha256": "826ca4ace110b5c359ed2f728bb1afbc654218dcd6cd77fd495fd16f47876c7f",
+  "scratch": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5",
+  "nativeDriver": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\equipment-driver.exe",
+  "frozenFiles": [
+    {
+      "path": "research\\redux-evolving-battle-dev28-pilot-r5.json",
+      "sha256": "606a4e79040ea74a50327789c85f84dff3da1337801ce3eb8dfccf539301e09c",
+      "bytes": 5997248
+    },
+    {
+      "path": "tools\\battle_evolving_driver_dev28_pilot_r5.c",
+      "sha256": "826ca4ace110b5c359ed2f728bb1afbc654218dcd6cd77fd495fd16f47876c7f",
+      "bytes": 18226
+    },
+    {
+      "path": "tools\\battle_evolving_qa_dev28.py",
+      "sha256": "a8416237ce9fad4834e2930fade0f9b1b8e486d8a36d7e6cf152869d34f1dc48",
+      "bytes": 15499
+    },
+    {
+      "path": "tools\\battle_evolving_contracts_dev28.py",
+      "sha256": "cb12c9c599006520fc527ebb286aae3716be3e0545e98c332a86c4f92fbb9797",
+      "bytes": 8661
+    },
+    {
+      "path": "tools\\battle_private_build_dev28.py",
+      "sha256": "4a92b63689ba05c77291c3411f5cceef4bcdc5164cd2907765e00c65aba65b41",
+      "bytes": 1658
+    }
+  ],
+  "logs": [
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carbon-diamond-seed1\\warm.log",
+      "sha256": "8cd09dd360093852ab562969e7e7bda1a5fd5ab3fedcb3141b03f71bc63679be",
+      "bytes": 87925
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carbon-diamond-seed2\\warm.log",
+      "sha256": "eadcb4d2277038780d0ebe6115d067fd546f6781142c7abda5cba447dff50f78",
+      "bytes": 43388
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carbon-diamond-seed3\\warm.log",
+      "sha256": "07d3a6b37b0e11808ee3792a8656b4b2268e2b15dc1c5ae3b7ac94aa95e8aca3",
+      "bytes": 56736
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carbon-diamond-seed3-cold\\capture.log",
+      "sha256": "398b8c88b9b25949cd9c010afcb57bf3e87b07085b2e12e70ba3b45eccc9c9ce",
+      "bytes": 2330
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carbon-diamond-seed3-cold\\resume.log",
+      "sha256": "a920005cfa33c4f48cc9401e4b9d9860231855fabdb0d105fd3990d65627c064",
+      "bytes": 54970
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-badge-seed1\\warm.log",
+      "sha256": "3390547612b9497b5642c64b885197212e65ebd0501acaa049a7fd26acc84012",
+      "bytes": 9112
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-badge-seed2\\warm.log",
+      "sha256": "090242fe03aa2ada9618fb5f7ed255162af6c1a14f9bc9a381f8ded3fb63d4db",
+      "bytes": 17776
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-badge-seed3\\warm.log",
+      "sha256": "125838a75ea4d6b10cc7c139ccafaea060b296e6b457a235e885ab97c819caba",
+      "bytes": 10118
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-badge-seed3-cold\\capture.log",
+      "sha256": "e2263ca71ab7a7ffad6e58cfa4b3d189ebf4baafa91a28d375a173624c8347df",
+      "bytes": 1337
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-badge-seed3-cold\\resume.log",
+      "sha256": "ff05d72de21178d4f0dd1614a0ebca883f158e4020aaec28cc620bad9e6f06a4",
+      "bytes": 9323
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-no-badge-seed1\\warm.log",
+      "sha256": "62da2f51f4ef908c0b8e7905881fb3d01068d1a3aedcd7c7d3d17a91f3710d45",
+      "bytes": 33402
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-no-badge-seed2\\warm.log",
+      "sha256": "74baf37e55be58921c021b0ebf4b90088e0815a6ec161c174367d76ca0726262",
+      "bytes": 18175
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-no-badge-seed3\\warm.log",
+      "sha256": "445ca9b632c052f2a33586a6d8ca250c7ba40360eead5349296c0b8ab149c90b",
+      "bytes": 26063
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-no-badge-seed3-cold\\capture.log",
+      "sha256": "3b2eefa5bf55b53c34a437f4de4472d673e4690d4a48a05f7b6ec4858e9cd75b",
+      "bytes": 1338
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\carpainter-no-badge-seed3-cold\\resume.log",
+      "sha256": "ab84388476acb4671b13cade0a65d996aa14936c03ca6553f3c9e692be681daa",
+      "bytes": 25267
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\digger-shield-seed1\\warm.log",
+      "sha256": "0ed2b58324a18f2fcd77552a6644425102e9634f0225562f0ed7e66641f87a42",
+      "bytes": 32877
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\digger-shield-seed2\\warm.log",
+      "sha256": "b1d6a7b16079d93476294b4164d910c752cac2e7ae5d7e4b79de1e80596f39b9",
+      "bytes": 50330
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\digger-shield-seed3\\warm.log",
+      "sha256": "b4b9f066d2e74b4cbb89f6cd9799cd75a0764e8a899e3b2b8fcafe7224490e44",
+      "bytes": 27361
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\digger-shield-seed3-cold\\capture.log",
+      "sha256": "80d8ad65e528ab3a783474cc0373460ae75cd0b03a2b6cf96a9d70de3414cea9",
+      "bytes": 2114
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\digger-shield-seed3-cold\\resume.log",
+      "sha256": "d48f07d392212b1b83ccc8edbad1aa4444c523f39a2f6c5dfd9cbbb1fe6fb72a",
+      "bytes": 25788
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\frank-guts-seed1\\warm.log",
+      "sha256": "f50f8b3b79d7a2eafa1ce24d242e84dbec42442a820e5bc60f04588ce68a125f",
+      "bytes": 9258
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\frank-guts-seed2\\warm.log",
+      "sha256": "4cc5e930291db79f1f03dff41339814f43048f639ba755080dd138ca616aee78",
+      "bytes": 11668
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\frank-guts-seed3\\warm.log",
+      "sha256": "c9f11df13d6cb11202023efc42e55c6cb457557a707a85875e5c88e3c3c671c1",
+      "bytes": 10768
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\frank-guts-seed3-cold\\capture.log",
+      "sha256": "95f33035644940f2b5906a201027534f9eda7c67c1530717010818589fb66b58",
+      "bytes": 1337
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\frank-guts-seed3-cold\\resume.log",
+      "sha256": "4c247c1d3d5dd7d579414a64f58d3a1e2afbe71e80a29d538296d542ec0163dd",
+      "bytes": 9973
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\kraken-active-ai-seed1\\warm.log",
+      "sha256": "4ba1896a5cf02ec157a83c175db43c0cb81b69afcfd02796a7d88045a302613d",
+      "bytes": 72264
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\kraken-active-ai-seed2\\warm.log",
+      "sha256": "5718ed7d237d52d5b9dfc0e349876e6e5cef6ef6ac4fb8f1a56dcf20038b6fee",
+      "bytes": 40454
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\kraken-active-ai-seed3\\warm.log",
+      "sha256": "ed63c64ce7853a5ad0162eaa69a6a7548dbb70ea175b04801663db436ea090bb",
+      "bytes": 96497
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\kraken-active-ai-seed3-cold\\capture.log",
+      "sha256": "3a8c3b1d41ada88522d64246b1740552dce9f6f6c4f69d51d00d4a5e94f05737",
+      "bytes": 3801
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\kraken-active-ai-seed3-cold\\resume.log",
+      "sha256": "606e6ef103d3e835b515a8aceeb7f95e83bfb5d103e38100556bc0a2f2bbc953",
+      "bytes": 96539
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\magikraken-active-ai-seed1\\warm.log",
+      "sha256": "4e2fb1d5de8c795807f31e45bc37d7e43cabd79224f7ac55fdba5ff6ad2f846d",
+      "bytes": 99520
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\magikraken-active-ai-seed2\\warm.log",
+      "sha256": "ac6832c521ceb1a80879f6a3f29ea0a9b5c8ee3df825712d82d15135821d58f4",
+      "bytes": 66241
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\magikraken-active-ai-seed3\\warm.log",
+      "sha256": "801ae0949e0b78ff12a559af8655cf7a89ebcdccef1e50dd543cf9648215f600",
+      "bytes": 74700
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\magikraken-active-ai-seed3-cold\\capture.log",
+      "sha256": "607d9e61590276f71a4db3baa1cc351583ed37a23046ac7da446cbb92a588167",
+      "bytes": 2141
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\magikraken-active-ai-seed3-cold\\resume.log",
+      "sha256": "dcbc69828702d6a398d115bc267a374485d0ea76d2305a934617eb9987325f34",
+      "bytes": 73135
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\robot-cycle-seed1\\warm.log",
+      "sha256": "60063b47605cc19d4f6870ae1e0eaeb56e8750d49de9a501cd58bc4be981aced",
+      "bytes": 9320
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\robot-cycle-seed2\\warm.log",
+      "sha256": "db018e4f482636f59d8c510bbdf715ebf2f9316b15da39da12decd643c148994",
+      "bytes": 9518
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\robot-cycle-seed3\\warm.log",
+      "sha256": "76861d5aa5e55388103c9953604a08b1378ee79584a1e9ee4dc412366f458b16",
+      "bytes": 9521
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\robot-cycle-seed3-cold\\capture.log",
+      "sha256": "43cdd383baf1e6d8609e1efca02398ebfa5b543ae6247d91c3fdb6eebfff9ef0",
+      "bytes": 1041
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\robot-cycle-seed3-cold\\resume.log",
+      "sha256": "83151bcae89e2601179d485cf865d2934652f80d4681863eab1e9e3ec8ddc207",
+      "bytes": 9020
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\shroom-status-seed1\\warm.log",
+      "sha256": "3a5991cb815277621788093cc47ca4ee40f89477cf1419e8fac021f5ca48bff6",
+      "bytes": 22096
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\shroom-status-seed2\\warm.log",
+      "sha256": "67f279d46fe13a1178db77c05ab70ad83bd5ca05f74a705168227a769101b4cc",
+      "bytes": 17865
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\shroom-status-seed3\\warm.log",
+      "sha256": "59e33fc3c973bb39cefca305102233921a17fcf31b341492441569ea7fff1e73",
+      "bytes": 18165
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\shroom-status-seed3-cold\\capture.log",
+      "sha256": "ce0bac305f095d6f0e1ecc5116b1e49c796fe21f18d919cc461efc9a3202360b",
+      "bytes": 2124
+    },
+    {
+      "path": "_BuildScratch\\evolving-battle-dev28-redux-pilot-r5\\shroom-status-seed3-cold\\resume.log",
+      "sha256": "35e4eec36d4de017923db4ca02226aee4215eb65085f6d9d1fb44809bd910ddb",
+      "bytes": 16599
+    }
+  ],
+  "sourceSnapshot": "_BuildScratch/audit-dev18-v2-complete-source",
+  "buildSnapshot": "_BuildScratch/audit-dev18-v2-build/companion",
+  "reduxProject": "_BuildScratch/MaternalBound-Redux/Project",
+  "reduxRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "qualifications": [
+    "The 36-case Redux diagnostic pilot completed as a bounded run. Primitive pass labels cover only its existing constructor/menu/action/KO/reward/cleanup assertions; source-backed AI/targeting/complete status and reflection assertions remain unfinished.",
+    "Five cases exit7 at the explicit 30,000-step pump limit. These are harness-bound incomplete encounters, not diagnosed game defects; complete scope and final endpoints must not be claimed for them.",
+    "An earlier Shroom pilot used offense75 against defense154, causing minimum ordinary damage and an excessively long fixture. The corrected r5 pilot uses offense160; this is fixture qualification, not a native fix.",
+    "The current Python runner was edited after r5 started and is an unfinished draft. It adds a transparent logging wrapper and source contracts that r5 did not execute. The separate C driver copy is the exact r5 executed source, and its digest must match privateBuild.driverSourceSha256.",
+    "Late BattleMenu-pop RNG observations are not established exact AI-selection entry states. An attempted independent random-action oracle mismatches, but there is no diagnosed RNG/AI defect. Do not reinterpret these fixture observations as bugs.",
+    "The new wrapper builder and source helper are uncompiled/unexecuted as a combined test. ai_checks currently has a draft interface mismatch with its proposed caller; repair it on resume before any run.",
+    "Source helper preliminary standalone review observed282 passing checks; no frozen source-contract report has been produced. Source review is not original-machine execution.",
+    "Original control profile, strict warm/cold complete-endpoint equality, exact reflection-return ABI/caller significance, comprehensive AI transitions/status/targeting semantics and any original CPU corroboration remain pending.",
+    "No production source/build, owner save/ROM/pack or public release changed. Frozen dev26/27 and all older reports remain untouched."
+  ],
+  "resumeSteps": [
+    "Confirm user resumes audit before starting new work. Keep parent release/goal paused until then.",
+    "Verify frozen dev18-v2 identities and the exact r5 generated driver/report; retain pilot and failed cases as such.",
+    "Qualify the five long encounters using actual source conditions and bounded frame/turn accounting; distinguish fixture time limits from stalled production children.",
+    "Finish the read-only RNG trace wrapper in separate new tool/report revisions, repair interface and ASLR-safe caller-range classification, and compare actual original-pattern selection bytes/branches with original source.",
+    "Use source SET_BATTLER_TARGET compact enemy encoding for self-target assertions; direct slot+1 was an unqualified fixture assumption.",
+    "Add independent status, shield/reflection, PP/target and complete warm/cold final-state assertions, then strict both-profile runs. Report any confirmed native defect to root before requesting C ownership.",
+    "Freeze a new final manifest only after actual verified scope completes; preserve this pilot journal and previous immutable equipment/Give proofs."
+  ]
+}

@@ -1,6 +1,6 @@
 # Testing the native conversion
 
-The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. See [the current audit](NATIVE-AUDIT-dev18.md) for evidence and remaining work.
+The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The autonomous audit is stopped; development now follows playtesting reports. See [dev.19 release evidence](RELEASE-dev19.md). Earlier reports retain their tested release identities.
 
 ## Three different kinds of evidence
 
@@ -80,3 +80,7 @@ Use the explicit input paths in each tool's `--help`. `redux_pack_upgrade_qa_dev
 The current ledger and [dev.18 audit](NATIVE-AUDIT-dev18.md) bind the final player/observer and exact native/data inputs. Presentation drivers compare the owner's compiled Original/Redux routines with the actual native map, intro, sequence and swirl consumers. Title/save drivers run real parents and fresh-process cold restores. Sprite upload checks cover every nonempty packed frame; equipment checks cover all 85 equipment IDs and four PC flags. These are bounded subsystem/parent checks, not full quests or story completion.
 
 Use `verify_redux_package_dev18.py` for the actual clean ZIP, self-contained owner-ROM setup, soundtrack repair, native story/seed opening and actual checkpoint recovery. `redux_pack_upgrade_qa_dev18.py` runs the real ROM-driven historical pack update. Runtime and sanitizer reports retain the exact binaries that executed them. Historical builder hashes describe historical input construction; the current builder creates dev.18 packs.
+
+## Dev.19 release integration
+
+The completed private party-name/Give suites are now integrated and published; their exact tested player is the shipping binary. See [release evidence](RELEASE-dev19.md) and [shipping provenance](../research/native-runtime-dev19-provenance.json). The reused dev.18 clean-package verifier also checks dev.19 because its pack/content contract is unchanged. No ongoing automated playthrough or autonomous audit is scheduled.

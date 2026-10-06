@@ -1,0 +1,633 @@
+{
+  "schemaVersion": 1,
+  "status": "Passed",
+  "allPassed": true,
+  "review": "research\\special-mode-parent-dev28-dev18-v2-final-review.json",
+  "reviewSha256": "0E161BFA917578E2DC49E4C013CA43E96A67F18915CCFD4858B2058812B682B2",
+  "tools": {
+    "tools\\special_mode_entry_parent_qa_dev28.py": "6CE2FE20606CB2BA8470699DFF9D514F304679E8394A76D3E0F5409596B2C43D",
+    "tools\\freeze_special_mode_evidence_dev28.py": "012D5CB6AFC27CD180B19CA0C7B805290B1E346710CC8DE9C35AAEFEDCBF57B8",
+    "tools\\special_terrain_parent_qa_dev27.py": "7614C8B0B7020740F3D379C34406CF09FD942E76D76A6534D80FD75A7DA50EE9",
+    "tools\\redux_story_cutscene_parent_qa.py": "C01D152B46A879D7B4A326100DD111CF2BC0E2663E75F6AD5EBD9252CCBEF67B"
+  },
+  "executedProcesses": 60,
+  "coldCases": 24,
+  "executedAssertions": 3755,
+  "executedFollowerAssertions": 83570,
+  "skippedCases": 0,
+  "privateBuild": {
+    "executableSha256": "3E2C4E167E0149D6B8139F110C36D93AE425B10D860F39EA383852FFFFA272E7",
+    "driverSourceSha256": "08EBEC27EE1294C3847FF42BB754F5D2E6C28B91FE47703F33C828DD530E9BD6",
+    "productionExecutableSha256": "3B467F471ACD6BB5AA0CB29B96D89790BE3097D8D0C5DD114CE2F128895D6292",
+    "productionLibrarySha256": "6A2EA279A762DF4C3A887EDA7580E09C8034DA55F08FB7F9059EB404C949D411",
+    "platformMainObjectSha256": "8387F7F5405F60E59A059C84FCF6791A1DB2F6CA96015872520398CBB2BA6FEB",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "readOnlyWrapper": "update_follower_state: pre-call source buffer entry and post-call direction/surface/position assertions only"
+  },
+  "runtimeIdentities": {
+    "_BuildScratch\\audit-dev18-v2-runtime\\player.exe": "3B467F471ACD6BB5AA0CB29B96D89790BE3097D8D0C5DD114CE2F128895D6292",
+    "_BuildScratch\\audit-dev18-v2-runtime\\observer.exe": "033ED02642E0FC2CB61E2244DE40C1B918F6B8E17635FB0C86EB7C11F92AEB92",
+    "_BuildScratch\\interpreter-gap-dev16-fresh-original.pak": "01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549",
+    "_BuildScratch\\swirl-import-dev18-candidate3\\map-gas-teleport-swirl-candidate.pak": "D9A772D10AFF68BDF93C077CDA640D42B835884D6834BB18BF0D43C3800F57BB"
+  },
+  "frozenPatchSha256": "955557298E7B3F92D1B9E3AB8F952FFCCEA2707B6EBD16C9F2BBD442D665AE12",
+  "privateJournals": [
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-0-0-parent-checkpoint",
+      "externalControllerSha256": "F8CF10E05A099BD4F4CC6EA06222BC053245D097B53045449200632EC99848B1",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "7994301B0A7DFDC61291393E00CDDD825D73302199DB2286FBF86D2D7F953A35"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-0-0-parent-cold",
+      "externalControllerSha256": "F8CF10E05A099BD4F4CC6EA06222BC053245D097B53045449200632EC99848B1",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "7994301B0A7DFDC61291393E00CDDD825D73302199DB2286FBF86D2D7F953A35"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-0-0-walk-checkpoint",
+      "externalControllerSha256": "34A6B3552F56EC52105396148584727A18F91161B30B0EAF9419D835A85904CA",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "69B87DE88CA685EEEC2973826271E4C21FE6EE907B61765D3799F4A45A73E187"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-0-0-walk-cold",
+      "externalControllerSha256": "34A6B3552F56EC52105396148584727A18F91161B30B0EAF9419D835A85904CA",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "69B87DE88CA685EEEC2973826271E4C21FE6EE907B61765D3799F4A45A73E187"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-0-1-parent-checkpoint",
+      "externalControllerSha256": "F8CF10E05A099BD4F4CC6EA06222BC053245D097B53045449200632EC99848B1",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "7994301B0A7DFDC61291393E00CDDD825D73302199DB2286FBF86D2D7F953A35"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-0-1-parent-cold",
+      "externalControllerSha256": "F8CF10E05A099BD4F4CC6EA06222BC053245D097B53045449200632EC99848B1",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "7994301B0A7DFDC61291393E00CDDD825D73302199DB2286FBF86D2D7F953A35"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-0-1-walk-checkpoint",
+      "externalControllerSha256": "17E749D5353D37F516C63CDEF8BC2878C5C6EBBEC45A63AA6DBC1FE38FB3858D",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "0E2DE748B530AC244FA9A10A3D269219A8D1CD011F5047AC179F67E1DA63BDFE"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-0-1-walk-cold",
+      "externalControllerSha256": "17E749D5353D37F516C63CDEF8BC2878C5C6EBBEC45A63AA6DBC1FE38FB3858D",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "0E2DE748B530AC244FA9A10A3D269219A8D1CD011F5047AC179F67E1DA63BDFE"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-1-0-parent-checkpoint",
+      "externalControllerSha256": "F8CF10E05A099BD4F4CC6EA06222BC053245D097B53045449200632EC99848B1",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "88782F81BEE2C8B7386FA03FE7EB1F717ED08836DD4DB344EDA9AADE2293385C"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-1-0-parent-cold",
+      "externalControllerSha256": "F8CF10E05A099BD4F4CC6EA06222BC053245D097B53045449200632EC99848B1",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "88782F81BEE2C8B7386FA03FE7EB1F717ED08836DD4DB344EDA9AADE2293385C"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-1-0-walk-checkpoint",
+      "externalControllerSha256": "25D24447825F44FCEC7456695C43B9876142DB8C9D6E83EFC884D6A1A3B72198",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "CB0FAF3DD3A5CDF2A406F6047780A8DFEE4F6FE728B099559FC68418C440EF32"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-1-0-walk-cold",
+      "externalControllerSha256": "25D24447825F44FCEC7456695C43B9876142DB8C9D6E83EFC884D6A1A3B72198",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "CB0FAF3DD3A5CDF2A406F6047780A8DFEE4F6FE728B099559FC68418C440EF32"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-1-1-parent-checkpoint",
+      "externalControllerSha256": "F8CF10E05A099BD4F4CC6EA06222BC053245D097B53045449200632EC99848B1",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "88782F81BEE2C8B7386FA03FE7EB1F717ED08836DD4DB344EDA9AADE2293385C"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-1-1-parent-cold",
+      "externalControllerSha256": "F8CF10E05A099BD4F4CC6EA06222BC053245D097B53045449200632EC99848B1",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "88782F81BEE2C8B7386FA03FE7EB1F717ED08836DD4DB344EDA9AADE2293385C"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-1-1-walk-checkpoint",
+      "externalControllerSha256": "5E106280A1C819D7D80F9527239E8090606FEDD54A78D6D72E415951A6FE2F81",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "EF6DD4C1B994B125DD9B75CD264686381236D842B45D894144399434ABC388FA"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-1-1-walk-cold",
+      "externalControllerSha256": "5E106280A1C819D7D80F9527239E8090606FEDD54A78D6D72E415951A6FE2F81",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "EF6DD4C1B994B125DD9B75CD264686381236D842B45D894144399434ABC388FA"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-2-0-parent-checkpoint",
+      "externalControllerSha256": "82807BD85DC9D68460B4668C7046722A9DB18E2947F2EA125F3BEA13B76F8DDD",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "DE535EF61736277D2E3DC8143AD5329DE15A1EBB886C64BA47540FA1CB8EB0D3"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-2-0-parent-cold",
+      "externalControllerSha256": "82807BD85DC9D68460B4668C7046722A9DB18E2947F2EA125F3BEA13B76F8DDD",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "DE535EF61736277D2E3DC8143AD5329DE15A1EBB886C64BA47540FA1CB8EB0D3"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-2-0-walk-checkpoint",
+      "externalControllerSha256": "F7F270455AC4D9214D5F6EB6ED3245DC053E632FB0644878FEDF0EB54FFF5CFB",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "F2FA4A4358B9E907365B9E0EA69E3C6D0F8AEA1AECFE316D19EAD082F16E9428"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-2-0-walk-cold",
+      "externalControllerSha256": "F7F270455AC4D9214D5F6EB6ED3245DC053E632FB0644878FEDF0EB54FFF5CFB",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "F2FA4A4358B9E907365B9E0EA69E3C6D0F8AEA1AECFE316D19EAD082F16E9428"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-2-1-parent-checkpoint",
+      "externalControllerSha256": "82807BD85DC9D68460B4668C7046722A9DB18E2947F2EA125F3BEA13B76F8DDD",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "DE535EF61736277D2E3DC8143AD5329DE15A1EBB886C64BA47540FA1CB8EB0D3"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-2-1-parent-cold",
+      "externalControllerSha256": "82807BD85DC9D68460B4668C7046722A9DB18E2947F2EA125F3BEA13B76F8DDD",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "DE535EF61736277D2E3DC8143AD5329DE15A1EBB886C64BA47540FA1CB8EB0D3"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-2-1-walk-checkpoint",
+      "externalControllerSha256": "1963D0CFAFA6CD8541B5CA1A6368BF95B11BD24E3CE76F9C2A51AF6997EADCDF",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "370E9FF257696EC4092697602DA4321EF6237490FCECC6AB29368DFC46E97020"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Original-2-1-walk-cold",
+      "externalControllerSha256": "1963D0CFAFA6CD8541B5CA1A6368BF95B11BD24E3CE76F9C2A51AF6997EADCDF",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "370E9FF257696EC4092697602DA4321EF6237490FCECC6AB29368DFC46E97020"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-0-0-parent-checkpoint",
+      "externalControllerSha256": "092878489101BFD1BD1C3E52386161EEC141D6940BA0FB416D799287640EB24C",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "4130DA201AC718657A82789ACDEF0B1A12FD1BA16FBC50AE372E2A2FEED39CC5"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-0-0-parent-cold",
+      "externalControllerSha256": "092878489101BFD1BD1C3E52386161EEC141D6940BA0FB416D799287640EB24C",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "4130DA201AC718657A82789ACDEF0B1A12FD1BA16FBC50AE372E2A2FEED39CC5"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-0-0-walk-checkpoint",
+      "externalControllerSha256": "264732A92849EDC56189B9C1D79BCE8C9F5FF37736FC5C1C5E699DEAF5C461E9",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "C0C861B70F3F941BD863579CC6F2B6062A66F798BC3E93F23D75AEB73C77EB38"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-0-0-walk-cold",
+      "externalControllerSha256": "264732A92849EDC56189B9C1D79BCE8C9F5FF37736FC5C1C5E699DEAF5C461E9",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "C0C861B70F3F941BD863579CC6F2B6062A66F798BC3E93F23D75AEB73C77EB38"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-0-1-parent-checkpoint",
+      "externalControllerSha256": "092878489101BFD1BD1C3E52386161EEC141D6940BA0FB416D799287640EB24C",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "4130DA201AC718657A82789ACDEF0B1A12FD1BA16FBC50AE372E2A2FEED39CC5"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-0-1-parent-cold",
+      "externalControllerSha256": "092878489101BFD1BD1C3E52386161EEC141D6940BA0FB416D799287640EB24C",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "4130DA201AC718657A82789ACDEF0B1A12FD1BA16FBC50AE372E2A2FEED39CC5"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-0-1-walk-checkpoint",
+      "externalControllerSha256": "BCEBC6B25B78C34E826C07FDEDFFFBB4B4B49E14BE4E72CC9111077EEFF0DDAA",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "EDFAEF5120F107F941411AD9F17B1A62638AF263949E453A54346A68C3B322EE"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-0-1-walk-cold",
+      "externalControllerSha256": "BCEBC6B25B78C34E826C07FDEDFFFBB4B4B49E14BE4E72CC9111077EEFF0DDAA",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "EDFAEF5120F107F941411AD9F17B1A62638AF263949E453A54346A68C3B322EE"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-1-0-parent-checkpoint",
+      "externalControllerSha256": "092878489101BFD1BD1C3E52386161EEC141D6940BA0FB416D799287640EB24C",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "AE871F073455C4F3BCF6ED90AAFDEC022B3DB96024A8943E6C5A25110B1986F1"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-1-0-parent-cold",
+      "externalControllerSha256": "092878489101BFD1BD1C3E52386161EEC141D6940BA0FB416D799287640EB24C",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "AE871F073455C4F3BCF6ED90AAFDEC022B3DB96024A8943E6C5A25110B1986F1"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-1-0-walk-checkpoint",
+      "externalControllerSha256": "F282655ADCA20730F53BD69BD8D2D4BECDD81AB35BA0EAF52802ADD919CF47E3",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "F8A8A5F6C0F9E52DF3A7AD7185B3EE725D4C9A66FD06C245F9CC9297DD59E6A3"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-1-0-walk-cold",
+      "externalControllerSha256": "F282655ADCA20730F53BD69BD8D2D4BECDD81AB35BA0EAF52802ADD919CF47E3",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "F8A8A5F6C0F9E52DF3A7AD7185B3EE725D4C9A66FD06C245F9CC9297DD59E6A3"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-1-1-parent-checkpoint",
+      "externalControllerSha256": "092878489101BFD1BD1C3E52386161EEC141D6940BA0FB416D799287640EB24C",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "AE871F073455C4F3BCF6ED90AAFDEC022B3DB96024A8943E6C5A25110B1986F1"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-1-1-parent-cold",
+      "externalControllerSha256": "092878489101BFD1BD1C3E52386161EEC141D6940BA0FB416D799287640EB24C",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "AE871F073455C4F3BCF6ED90AAFDEC022B3DB96024A8943E6C5A25110B1986F1"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-1-1-walk-checkpoint",
+      "externalControllerSha256": "D22A67AA1BAEB6CE72B353BA1360862229F76EECC16006E3580306921622FFCC",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "96C24AB916185D55E6958994874D59FCB45C8C250AA2B514220D5DC1A048CE43"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-1-1-walk-cold",
+      "externalControllerSha256": "D22A67AA1BAEB6CE72B353BA1360862229F76EECC16006E3580306921622FFCC",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "96C24AB916185D55E6958994874D59FCB45C8C250AA2B514220D5DC1A048CE43"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-2-0-parent-checkpoint",
+      "externalControllerSha256": "C6FF194C3AE053EDC031409651143DC40DE9AE4A8575B435DA127088234B57F6",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "BA931FAA594BDFBBEEB9E654D065FA36F2913602C96839150DFC7E68D5E04108"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-2-0-parent-cold",
+      "externalControllerSha256": "C6FF194C3AE053EDC031409651143DC40DE9AE4A8575B435DA127088234B57F6",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "BA931FAA594BDFBBEEB9E654D065FA36F2913602C96839150DFC7E68D5E04108"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-2-0-walk-checkpoint",
+      "externalControllerSha256": "1BDB0216881FA6B15499B2F56CD9E66F29FD77B09054A56A8F59F98EA1F57099",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "1AEC4D473B115F65130597303F0380F617AB3B418312A769D1825199AC595128"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-2-0-walk-cold",
+      "externalControllerSha256": "1BDB0216881FA6B15499B2F56CD9E66F29FD77B09054A56A8F59F98EA1F57099",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "1AEC4D473B115F65130597303F0380F617AB3B418312A769D1825199AC595128"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-2-1-parent-checkpoint",
+      "externalControllerSha256": "C6FF194C3AE053EDC031409651143DC40DE9AE4A8575B435DA127088234B57F6",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "BA931FAA594BDFBBEEB9E654D065FA36F2913602C96839150DFC7E68D5E04108"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-2-1-parent-cold",
+      "externalControllerSha256": "C6FF194C3AE053EDC031409651143DC40DE9AE4A8575B435DA127088234B57F6",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "BA931FAA594BDFBBEEB9E654D065FA36F2913602C96839150DFC7E68D5E04108"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-2-1-walk-checkpoint",
+      "externalControllerSha256": "4C5E58425B07C80EDDA9D5AA83D7469B5C058E9EBB2CF01159EF82D34489401E",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "3ED8E9D1DBD9EB4961D5ECE5416860FE922BA73AA53B78FBFAC91F885AE3B03D"
+        }
+      ]
+    },
+    {
+      "privateRelativeFolder": "_BuildScratch\\special-mode-parent-dev28-pilot4\\Redux-2-1-walk-cold",
+      "externalControllerSha256": "4C5E58425B07C80EDDA9D5AA83D7469B5C058E9EBB2CF01159EF82D34489401E",
+      "slotFiles": [
+        {
+          "name": "quicksave_1.bin.0",
+          "sha256": "3ED8E9D1DBD9EB4961D5ECE5416860FE922BA73AA53B78FBFAC91F885AE3B03D"
+        }
+      ]
+    }
+  ],
+  "sourceContracts": {
+    "0": {
+      "name": "Magicant object1353 complete C77D9F room warp214",
+      "root": 13073823,
+      "npc": 1353,
+      "npcXY": [
+        5552,
+        3912
+      ],
+      "xy": [
+        5536,
+        3928
+      ],
+      "destination": 214,
+      "destinationXY": [
+        432,
+        9584
+      ],
+      "expectedMode": 4,
+      "party": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "waits": 0
+    },
+    "1": {
+      "name": "Magicant object1357 complete C77DA5 return warp40",
+      "root": 13073829,
+      "npc": 1357,
+      "npcXY": [
+        424,
+        9600
+      ],
+      "xy": [
+        432,
+        9600
+      ],
+      "destination": 40,
+      "destinationXY": [
+        5536,
+        3920
+      ],
+      "expectedMode": 4,
+      "party": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "waits": 0
+    },
+    "2": {
+      "name": "Phase Distorter3 accepted-Yes C9C19B through robot landing and actor316",
+      "root": 13222299,
+      "npc": null,
+      "xy": [
+        5976,
+        280
+      ],
+      "destination": 93,
+      "destinationXY": [
+        592,
+        6952
+      ],
+      "expectedMode": 5,
+      "party": [
+        1,
+        2,
+        3,
+        4,
+        0,
+        0
+      ],
+      "waits": 1
+    }
+  },
+  "sharedSourceModified": false,
+  "sharedBuildModified": false,
+  "ownerSavesTouched": false,
+  "pausedAtCompletedCheckpoint": true,
+  "resume": {
+    "scratch": "_BuildScratch\\special-mode-parent-dev28-pilot4",
+    "driver": "battle_action_driver.c",
+    "executable": "terrain-parent-probe.exe",
+    "actualRuntime": "_BuildScratch/audit-dev18-v2-runtime",
+    "frozenSource": "_BuildScratch/audit-dev18-v2-complete-source",
+    "sourceRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+    "reduxPack": "_BuildScratch/swirl-import-dev18-candidate3/map-gas-teleport-swirl-candidate.pak",
+    "originalPack": "_BuildScratch/interpreter-gap-dev16-fresh-original.pak",
+    "reproduction": "Use special_mode_entry_parent_qa_dev28.py with fresh scratch/output paths and the immutable v2 inputs recorded here. No rerun or new scenario was started after user requested pause."
+  },
+  "prerequisites": [
+    "Prepared healthy Ness solo at the actual NPC1353/1357 approaches, with source LOAD_PARTY_AT_MAP_POSITION and monster suppression11, then push the real packed C77D9F/C77DA5 text branch. Actual NPC Talk/Check is not exercised.",
+    "Robot prepared four healthy party members at5976,280, hidden/frozen as the preceding source Yes prompt requires; source flags382,328,331,329,330,332,327,337,11 initially set. C9C19B itself supplies warp93, EVENT316, camera/wait signals, flag372 and cleanup. No signal/result/PC injected after entry.",
+    "Cold process performs normal platform bootstrap then actual F6 load before any prepared-world/title/map initialization. External controller journal preserves input edges and phase; this is not part of the game checkpoint format."
+  ],
+  "remainingCoverage": [
+    "Full preceding Phase Distorter robot-conversion introduction, live Yes/No choice interaction and post-Giygas mode5 exit.",
+    "Normal-world to Magicant quest entry and real NPC1353/1357 Talk/Check reachability. These complete parents are two room warps entirely within mode4.",
+    "Natural wet-terrain/dry transitions, all connecting Lost Underworld tiles and encounters, all stairs/rope parents.",
+    "Independent full-scene SNES timing, follower-spacing selection in these contexts, complete OAM/pixel/audio parity and full playthrough."
+  ],
+  "scope": [
+    "Three source-selected complete packed branches in both profiles, then ordinary SDL direction/Y movement. Initial surrounding world, party/stats and proper hidden/frozen accepted-Yes context are prepared, not the preceding robot conversion dialogue or full Magicant quest. Initial LOAD_PARTY_AT_MAP_POSITION binds actual source sector mode before the packed parent begins.",
+    "C77D9F and C77DA5 are real NPC1353/1357 callers at their actual source placements; the text roots are explicitly pushed from a prepared approach, not entered through native Talk/Check selection. Both rooms have character mode4; these are room warps, not a normal-to-Magicant entry.",
+    "Robot C9C19B begins at the real accepted-Yes dialogue. It must naturally generate EVENT316, enter warp93, focus/restore camera, yield via actual actor movement, clear scene flags and unlock normal input. No completion flag, actor PC, terrain or branch result is supplied after entry.",
+    "Cold cases include active parent children and subsequent ordinary movement, restored immediately after normal bootstrap without prepared-world/title/map initialization. External previous/current SDL input and controller phase journal accompany the real format16 F6 checkpoint; the platform replay cursor itself is not claimed serialized.",
+    "Read-only forwarding follower wrapper checks production direction/surface/position writes against its actual history entry; independent full spacing-selection/SNES scene timing, all tiles, audiovisual frames and complete game progression remain unverified. Source sprite pointers, including live ghost running471 and robot table variants, are checked at bounded actual movement frames.",
+    "Production player library executes; observer identity is paired provenance only. No ROM, pack, extracted sprite/dialogue, PCM or owner save bytes are included in report."
+  ]
+}

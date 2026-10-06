@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0-redux-dev.19 - party names and equipped-item transfers
+
+- Integrate the exact complete native candidate previously tested privately: preserve accented character-name glyphs in Goods/PSI and service target labels, including highlight and cold restore.
+- Correct full-bag self-Give equipment slots and cross-character armor transfer stat recalculation. These are deliberate Companion QoL changes for behavior reproduced in the original source.
+- Keep the dev.18 asset pack, save format 16, story save namespace and all seed/content policies unchanged.
+- Publish the completed private party/Give evidence and prepared special-mode parent tests with their actual runtime identities. Retain bounded/incomplete diagnostic work as such.
+- Stop the autonomous audit and agents. Continue development through playtesting reports; complete story/randomized and full audio/device coverage remain unverified.
+- Verify the clean tester ZIP and preserve the owner's current phone/F6 saves, settings, mods and complete soundtrack.
+
 ## 0.5.0-redux-dev.18 - presentation, titles and cold Continue
 
 - Convert Town Maps/Map label, gas-station intro art, Starman teleport frames and the 31 changed swirl payloads; implement the second transition window and cold cache restoration.

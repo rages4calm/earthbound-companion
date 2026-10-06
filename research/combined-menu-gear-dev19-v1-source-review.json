@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "proof": "private-combined-menu-gear-dev19-source-preparation",
+  "privateOnly": true,
+  "baseCheckpoint": "dev18-v2",
+  "baselineSource": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev18-v2-complete-source",
+  "candidateSource": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+  "sourceFileCount": 4324,
+  "onlyFourAuthorizedSourceFilesChanged": true,
+  "files": [
+    {
+      "path": "src/game/battle.c",
+      "baselineSha256": "dc63db4360d44539d96ee1436c4d282aceebf4256252a9698bb1ab4497bb638c",
+      "candidateSha256": "67243bf6096e1845d7efdea6629d7fc75df0da111ad3349144c8aa100f81e67d"
+    },
+    {
+      "path": "src/game/display_text.c",
+      "baselineSha256": "47ec18c4d515759a409a800076ea05c66cc959c0f894b6ff0d1af38bc0864b20",
+      "candidateSha256": "18af4c5e8e11b502bf81674057a94d62e2cd051ae3b9a603bb4c6d8ec404667e"
+    },
+    {
+      "path": "src/game/inventory.c",
+      "baselineSha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d",
+      "candidateSha256": "0ce9700c84c3b14f2df4d3a67ba12fda550da26a8880ba04261e8aebb934856c"
+    },
+    {
+      "path": "src/game/window.c",
+      "baselineSha256": "7776ba2620809d8a5477a1183a3fc42d48fd1078b05b045aab15ffe136069db1",
+      "candidateSha256": "d861e80a8f9d1f40cbf2c25008bd33028254dce256f39ea49627e83284f0489c"
+    }
+  ],
+  "frozenInputs": [
+    {
+      "path": "research\\party-name-label-dev19-private-final-manifest.json",
+      "sha256": "6a78010ad85fc17c2769ca6870454a2eca8e52256db252c72db876a9e71aa0f2"
+    },
+    {
+      "path": "research\\equipped-give-qol-dev26-private-manifest.json",
+      "sha256": "2388d8696ae6766db50e5df905bca51ca22679477d5a0ea3cf11365fcf64234a"
+    }
+  ],
+  "commentOnlyDifferenceFromPartyProposal": {
+    "file": "src/game/window.c",
+    "diff": "--- frozen-party-proposal/src/game/window.c\n+++ combined-candidate/src/game/window.c\n@@ -672,7 +672,8 @@\n /* Both source party selectors populate only these normal-font windows with\n  * raw character names, at x=i*6 and userdata=party member ID. The window/id\n  * contract also identifies restored labels without changing MenuItem or F6.\n- * Other menus, dialogue, right labels and the HPPP Give picker stay ASCII. */\n+ * Other menus, dialogue and right labels keep their existing ASCII decoding;\n+ * the HPPP Give picker uses its separate raw-name renderer. */\n static bool menu_item_is_party_name(const WindowInfo *w, const MenuItem *item) {\n     bool name_window = w->id == WINDOW_SINGLE_CHARACTER_SELECT ||\n         (w->id >= WINDOW_TARGETING_PROMPT + 1 &&\n",
+    "frozenSourceSha256": "65a5e1ffb42ac287ad9baeba6c83a7a5be695c31d3c1951948003beb8573e679",
+    "candidateSourceSha256": "d861e80a8f9d1f40cbf2c25008bd33028254dce256f39ea49627e83284f0489c",
+    "checkedReverseReplacementEqualsFrozenProposal": true
+  },
+  "gearFix": {
+    "symbol": "swap_item_into_equipment",
+    "exactFrozenInventoryCandidate": true,
+    "intentionalOriginalSourceBugCorrection": true,
+    "lineEndingNormalizationFromFrozenCandidate": true
+  },
+  "rootOrOwnerInputsModified": false,
+  "toolSha256": "878a4215add5daca2d5fe68e3242026d56e66f0ab361231c595f1e7883a999a7"
+}

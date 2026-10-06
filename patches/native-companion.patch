@@ -3955,7 +3955,7 @@ index 2a3e5d1..41169d5 100644
  static inline void audio_unlock(void) {}
  
 diff --git a/src/game/battle.c b/src/game/battle.c
-index ef6571c..bc32e7e 100644
+index ef6571c..3027e63 100644
 --- a/src/game/battle.c
 +++ b/src/game/battle.c
 @@ -1,3 +1,4 @@
@@ -3982,20 +3982,22 @@ index ef6571c..bc32e7e 100644
  
      /* Track highest enemy level for this battle */
      uint8_t level = edata->level;
-@@ -538,9 +543,9 @@ uint16_t char_select_overworld_prepare(void (*on_change)(uint16_t)) {
+@@ -538,9 +543,11 @@ uint16_t char_select_overworld_prepare(void (*on_change)(uint16_t)) {
          uint8_t member_id = game_state.party_members[i];
          char name_buf[8];
          if (member_id >= 1 && member_id <= 4) {
 -            for (int j = 0; j < 5; j++)
 -                name_buf[j] = eb_char_to_ascii(party_characters[member_id - 1].name[j]);
 -            name_buf[5] = '\0';
-+            for (int j = 0; j < maternalbound_name_capacity(); j++)
-+                name_buf[j] = eb_char_to_ascii(maternalbound_character_name(member_id - 1)[j]);
-+            name_buf[maternalbound_name_capacity()] = '\0';
++            /* CHAR_SELECT_PROMPT copies raw name glyphs before ADD_MENU_ITEM.
++             * Use the bounded lossless byte encoding also used by titles;
++             * this target window's renderer decodes it without an ASCII loss. */
++            eb_to_title_buf(maternalbound_character_name(member_id - 1),
++                            maternalbound_name_capacity(), name_buf, sizeof(name_buf));
          } else {
              name_buf[0] = '\0';
          }
-@@ -625,9 +630,9 @@ void inventory_get_item_name(uint16_t char_id, uint16_t window_type) {
+@@ -625,9 +632,9 @@ void inventory_get_item_name(uint16_t char_id, uint16_t window_type) {
  
      /* Assembly lines 32-43: SET_WINDOW_TITLE with character name (X=5 max chars). */
      {
@@ -4008,7 +4010,7 @@ index ef6571c..bc32e7e 100644
      }
  
      /* Assembly lines 44-148: loop over ITEM_INVENTORY_SIZE (14) slots.
-@@ -706,6 +711,14 @@ int32_t get_effective_hppp_meter_speed(void) {
+@@ -706,6 +713,14 @@ int32_t get_effective_hppp_meter_speed(void) {
      return bt.hp_meter_speed;
  }
  
@@ -4023,7 +4025,7 @@ index ef6571c..bc32e7e 100644
  /*
   * RESET_HPPP_METER_SPEED_IF_STABLE (asm/battle/reset_hppp_meter_speed_if_stable.asm)
   *
-@@ -764,7 +777,7 @@ void hp_pp_roller(void) {
+@@ -764,7 +779,7 @@ void hp_pp_roller(void) {
              if ((fastest_hppp_meter_speed & 0xFF) || bt.hppp_meter_flipout_mode)
                  speed = 0x00064000;
              else
@@ -4032,7 +4034,7 @@ index ef6571c..bc32e7e 100644
  
              uint32_t hp_fixed = ((uint32_t)ch->current_hp << 16) | ch->current_hp_fraction;
              hp_fixed += (uint32_t)speed;
-@@ -784,7 +797,7 @@ void hp_pp_roller(void) {
+@@ -784,7 +799,7 @@ void hp_pp_roller(void) {
              if (bt.hppp_meter_flipout_mode)
                  speed = 0x00064000;
              else
@@ -4041,7 +4043,7 @@ index ef6571c..bc32e7e 100644
  
              uint32_t hp_fixed = ((uint32_t)ch->current_hp << 16) | ch->current_hp_fraction;
              hp_fixed -= (uint32_t)speed;
-@@ -903,8 +916,8 @@ uint16_t copy_enemy_name(const uint8_t *src, uint8_t *dest, uint16_t length, uin
+@@ -903,8 +918,8 @@ uint16_t copy_enemy_name(const uint8_t *src, uint8_t *dest, uint16_t length, uin
          uint8_t ch = src[i];
          if (ch == 0) break;
          if (ch == 0xAC) { /* CHAR::NESS_PLACEHOLDER (US) */
@@ -4052,7 +4054,7 @@ index ef6571c..bc32e7e 100644
                  if (nc == 0) break;
                  if (pos >= dest_size - 1) break;
                  dest[pos++] = nc;
-@@ -930,7 +943,7 @@ uint16_t copy_enemy_name(const uint8_t *src, uint8_t *dest, uint16_t length, uin
+@@ -930,7 +945,7 @@ uint16_t copy_enemy_name(const uint8_t *src, uint8_t *dest, uint16_t length, uin
   * param: 0 = full name, nonzero = abbreviated (skip letter if only 1 enemy in battle).
   */
  void fix_attacker_name(uint16_t param) {
@@ -4061,7 +4063,7 @@ index ef6571c..bc32e7e 100644
      memset(scratch, 0, sizeof(scratch));
      set_print_attacker_article(0);
  
-@@ -962,14 +975,13 @@ void fix_attacker_name(uint16_t param) {
+@@ -962,14 +977,13 @@ void fix_attacker_name(uint16_t param) {
              scratch[sizeof(game_state.pet_name)] = 0;
          }
  
@@ -4078,7 +4080,7 @@ index ef6571c..bc32e7e 100644
          }
      }
  }
-@@ -1020,7 +1032,7 @@ void fix_target_name(void) {
+@@ -1020,7 +1034,7 @@ void fix_target_name(void) {
          /* Party member path */
          if (tgt->id <= 4) {
              CharStruct *ch = &party_characters[tgt->row];
@@ -4087,7 +4089,7 @@ index ef6571c..bc32e7e 100644
          }
      }
  }
-@@ -1572,9 +1584,13 @@ StepResult mode_step_battle_ko(ModeState *ms) {
+@@ -1572,9 +1586,13 @@ StepResult mode_step_battle_ko(ModeState *ms) {
              break;
  
          case 3:
@@ -4103,7 +4105,7 @@ index ef6571c..bc32e7e 100644
                  uint32_t death_addr = enemy_config_table[target->id].death_text_ptr;
                  if (death_addr != 0 && battle_push_text(&child, death_addr))
                      return STEP_RESULT_PUSH_INIT(GAME_MODE_DISPLAY_TEXT, &child);
-@@ -1802,6 +1818,10 @@ StepResult mode_step_battle_ko(ModeState *ms) {
+@@ -1802,6 +1820,10 @@ StepResult mode_step_battle_ko(ModeState *ms) {
                      target->npc_id = replacement_npc;
  
                      /* Look up AI type from NPC_AI_TABLE (assembly lines 222-232) */
@@ -4114,7 +4116,7 @@ index ef6571c..bc32e7e 100644
                      if (npc_ai_table) {
                          target->id = npc_ai_table[replacement_npc * 2 + 1];
                      }
-@@ -2395,6 +2415,48 @@ static StepResult bm_item_done(BattleMenuState *st) {
+@@ -2395,6 +2417,48 @@ static StepResult bm_item_done(BattleMenuState *st) {
      return bm_close_menu(st);
  }
  
@@ -4163,7 +4165,7 @@ index ef6571c..bc32e7e 100644
  /*
   * BATTLE_SELECTION_MENU (asm/battle/menu_handler.asm)
   *
-@@ -2636,10 +2698,10 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2636,10 +2700,10 @@ StepResult mode_step_battle_menu(ModeState *ms) {
              {
                  char name_buf[8];
                  int j;
@@ -4177,7 +4179,7 @@ index ef6571c..bc32e7e 100644
              }
  
              /* Add attack option (Bash/Shoot/Do Nothing) */
-@@ -2675,7 +2737,7 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2675,7 +2739,7 @@ StepResult mode_step_battle_menu(ModeState *ms) {
  
              /* Add Jeff's Spy or PSI option */
              if (st->char_id == PARTY_MEMBER_JEFF) {
@@ -4186,7 +4188,7 @@ index ef6571c..bc32e7e 100644
              } else if ((ch->afflictions[STATUS_GROUP_CONCENTRATION] & 0xFF) == 0) {
                  /* Can use PSI (not concentration-blocked) */
                  add_menu_item("PSI", 4, 0, 1);
-@@ -2688,7 +2750,7 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2688,7 +2752,7 @@ StepResult mode_step_battle_menu(ModeState *ms) {
  
              /* Add Poo's Mirror */
              if (st->char_id == PARTY_MEMBER_POO) {
@@ -4195,7 +4197,7 @@ index ef6571c..bc32e7e 100644
              }
  
              st->phase = BM_MAIN;
-@@ -2804,6 +2866,11 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2804,6 +2868,11 @@ StepResult mode_step_battle_menu(ModeState *ms) {
  
              case 4:  /* PSI or Spy */
                  if (st->char_id == PARTY_MEMBER_JEFF) {
@@ -4207,7 +4209,7 @@ index ef6571c..bc32e7e 100644
                      /* Spy */
                      st->selected_action = BACT_SPY;
                      bt.battle_menu_selected_action = st->selected_action;
-@@ -2913,6 +2980,57 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2913,6 +2982,57 @@ StepResult mode_step_battle_menu(ModeState *ms) {
              st->phase = BM_ITEM_RESULT;
              return STEP_RESULT_PUSH_INIT(GAME_MODE_SELECTION_MENU, &child_init);
  
@@ -4265,7 +4267,7 @@ index ef6571c..bc32e7e 100644
          case BM_ITEM_RESULT: {
              uint16_t selection = (uint16_t)mode_child_result();
  
-@@ -2940,6 +3058,13 @@ StepResult mode_step_battle_menu(ModeState *ms) {
+@@ -2940,6 +3060,13 @@ StepResult mode_step_battle_menu(ModeState *ms) {
                  return bm_item_done(st);
              }
  
@@ -4279,7 +4281,7 @@ index ef6571c..bc32e7e 100644
              /* Set defaults in battle_menu_selection:
               * selected_action = 2 (placeholder), targetting = 1, selected_target = user */
              bt.battle_menu_selected_action = 2;
-@@ -3476,6 +3601,10 @@ static void btl_begin(BattleRoutineState *st) {
+@@ -3476,6 +3603,10 @@ static void btl_begin(BattleRoutineState *st) {
   * matching door.c's sequential-frame helpers). */
  static void btl_reinit_scene(BattleRoutineState *st) {
      bt.mirror_enemy = 0;
@@ -4290,7 +4292,7 @@ index ef6571c..bc32e7e 100644
      st->run_attempt = 0;
      bt.battle_item_used = 0;
      st->turn_counter = 0;
-@@ -3752,6 +3881,11 @@ setup_item_drop:
+@@ -3752,6 +3883,11 @@ setup_item_drop:
          }
      }
  
@@ -4302,7 +4304,7 @@ index ef6571c..bc32e7e 100644
      /* Consolation item check: if no item dropped, scan consolation table */
      if (bt.item_dropped == 0 && consolation_item_table) {
          for (uint16_t table_entry = 0; table_entry < 2; table_entry++) {
-@@ -3808,7 +3942,8 @@ static void btl_start_turn(BattleRoutineState *st) {
+@@ -3808,7 +3944,8 @@ static void btl_start_turn(BattleRoutineState *st) {
  
          if (b->consciousness == 0) continue;
  
@@ -4312,7 +4314,7 @@ index ef6571c..bc32e7e 100644
          if (init_val == 0) init_val = 1;
          b->initiative = (uint8_t)init_val;
      }
-@@ -3875,10 +4010,16 @@ static void btl_store_action(uint16_t member_id, uint16_t selected_action) {
+@@ -3875,10 +4012,16 @@ static void btl_store_action(uint16_t member_id, uint16_t selected_action) {
  /* ================================================================
   * Phase 6: Enemy AI, select actions (lines 1497-1921)
   * ================================================================ */
@@ -4331,7 +4333,7 @@ index ef6571c..bc32e7e 100644
  
              /* Skip dead battlers that aren't Poo-with-mirror */
              if (b->consciousness == 0) {
-@@ -3919,7 +4060,24 @@ static void btl_enemy_ai(BattleRoutineState *st) {
+@@ -3919,7 +4062,24 @@ static void btl_enemy_ai(BattleRoutineState *st) {
  
              /* Select action based on action_order pattern */
              uint8_t action_index = 0;
@@ -4357,7 +4359,7 @@ index ef6571c..bc32e7e 100644
              case 0: /* Random uniform: pick 0-3 */
                  action_index = rand_byte() & 3;
                  break;
-@@ -3955,6 +4113,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
+@@ -3955,6 +4115,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
              b->current_action = econfig->actions[action_index];
              b->current_action_argument = econfig->action_args[action_index];
  
@@ -4365,7 +4367,7 @@ index ef6571c..bc32e7e 100644
              /* Handle ENEMY_EXTENDER action */
              if (b->current_action == BACT_ENEMY_EXTENDER) {
                  if (b->ally_or_enemy == 0 && b->id == PARTY_MEMBER_POO) {
-@@ -3966,6 +4125,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
+@@ -3966,6 +4127,7 @@ static void btl_enemy_ai(BattleRoutineState *st) {
                  } else {
                      /* Regular enemy: extender changes enemy ID */
                      b->id = b->current_action_argument;
@@ -4373,7 +4375,7 @@ index ef6571c..bc32e7e 100644
                      bi--;  /* Retry with new ID */
                      continue;
                  }
-@@ -3992,10 +4152,69 @@ next_battler_action:
+@@ -3992,10 +4154,69 @@ next_battler_action:
              (void)0;
          }
      }
@@ -4443,7 +4445,7 @@ index ef6571c..bc32e7e 100644
  static bool btl_run_success(BattleRoutineState *st) {
      uint16_t max_enemy_speed = 0;
      uint16_t max_player_speed = 0;
-@@ -4250,7 +4469,7 @@ static void btl_exec_setup_targets(BattleRoutineState *st, Battler *attacker) {
+@@ -4250,7 +4471,7 @@ static void btl_exec_setup_targets(BattleRoutineState *st, Battler *attacker) {
   * the per-member EXP split. */
  static void btl_victory_money_exp(void) {
      /* Deposit battle money */
@@ -4452,7 +4454,7 @@ index ef6571c..bc32e7e 100644
  
      /* Add money to game total (assembly adds deposited amount, not original) */
      {
-@@ -4265,10 +4484,9 @@ static void btl_victory_money_exp(void) {
+@@ -4265,10 +4486,9 @@ static void btl_victory_money_exp(void) {
      /* Calculate EXP per surviving party member */
      {
          uint16_t alive_count = battle_count_chars(0);
@@ -4465,7 +4467,7 @@ index ef6571c..bc32e7e 100644
          }
      }
  }
-@@ -4314,6 +4532,9 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4314,6 +4534,9 @@ StepResult mode_step_battle(ModeState *ms) {
          switch ((BattleRoutinePhase)st->phase) {
  
          case BTL_BEGIN:
@@ -4475,7 +4477,7 @@ index ef6571c..bc32e7e 100644
              /* Phase 1: initial setup (lines 26-133) */
              btl_begin(st);
              st->phase = BTL_REINIT;
-@@ -4411,6 +4632,8 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4411,6 +4634,8 @@ StepResult mode_step_battle(ModeState *ms) {
          case BTL_TURN:
              /* start_turn (lines 1110-1176) */
              btl_start_turn(st);
@@ -4484,7 +4486,7 @@ index ef6571c..bc32e7e 100644
              st->phase = BTL_MENU;
              break;
  
-@@ -4548,7 +4771,8 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4548,7 +4773,8 @@ StepResult mode_step_battle(ModeState *ms) {
  
          case BTL_ENEMY_AI:
              /* Phase 6: enemy AI (lines 1497-1921) */
@@ -4494,7 +4496,7 @@ index ef6571c..bc32e7e 100644
  
              /* Phase 7: announce enemy-first initiative (lines 1922-1931) */
              create_window(0x0E);
-@@ -4614,6 +4838,8 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4614,6 +4840,8 @@ StepResult mode_step_battle(ModeState *ms) {
              st->attacker = best_battler;
              Battler *attacker = &bt.battlers_table[best_battler];
              attacker->has_taken_turn = 1;
@@ -4503,7 +4505,7 @@ index ef6571c..bc32e7e 100644
  
              /* Check if attacker is incapacitated */
              uint8_t status0 = attacker->afflictions[STATUS_GROUP_PERSISTENT_EASYHEAL];
-@@ -4829,6 +5055,10 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4829,6 +5057,10 @@ StepResult mode_step_battle(ModeState *ms) {
              if (battle_action_table) {
                  uint32_t func_ptr =
                      battle_action_table[attacker->current_action].battle_function_pointer;
@@ -4514,7 +4516,7 @@ index ef6571c..bc32e7e 100644
                  if (func_ptr != 0 && battle_action_dispatch(func_ptr, &child_init))
                      return STEP_RESULT_PUSH_INIT(GAME_MODE_BATTLE_ACTION, &child_init);
              }
-@@ -4837,6 +5067,15 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4837,6 +5069,15 @@ StepResult mode_step_battle(ModeState *ms) {
  
          case BTL_TARGET_POST:
              /* ---- Post-action checks for the current target ---- dead-check first. */
@@ -4530,7 +4532,7 @@ index ef6571c..bc32e7e 100644
              check_dead_players_make_init(&child_init);
              st->phase = BTL_TARGET_POST_BODY;
              return STEP_RESULT_PUSH_INIT(GAME_MODE_CHECK_DEAD_PLAYERS, &child_init);
-@@ -4997,7 +5236,9 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -4997,7 +5238,9 @@ StepResult mode_step_battle(ModeState *ms) {
          case BTL_DEFEAT_DONE:
              dt.blinking_triangle_flag = 0;
              st->post_battle_exit = 1;
@@ -4541,7 +4543,7 @@ index ef6571c..bc32e7e 100644
              break;
  
          case BTL_END_CHECK2:
-@@ -5009,6 +5250,7 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -5009,6 +5252,7 @@ StepResult mode_step_battle(ModeState *ms) {
              break;
  
          case BTL_VICTORY: {
@@ -4549,7 +4551,7 @@ index ef6571c..bc32e7e 100644
              /* enemies_are_dead (lines 3050-3158) */
              st->battle_result = 0;
              reset_hppp_rolling();
-@@ -5075,6 +5317,7 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -5075,6 +5319,7 @@ StepResult mode_step_battle(ModeState *ms) {
  
          case BTL_CLOSE_WINDOW:
              /* close_battle_window + check_new_turn */
@@ -4557,7 +4559,7 @@ index ef6571c..bc32e7e 100644
              redirect_close_focus_window();
              if (st->post_battle_exit == 0) {
                  st->phase = BTL_TURN;  /* goto start_turn */
-@@ -5140,6 +5383,9 @@ StepResult mode_step_battle(ModeState *ms) {
+@@ -5140,6 +5385,9 @@ StepResult mode_step_battle(ModeState *ms) {
   * slots against the new ordering, swapping or reassigning as needed.
   */
  static uint16_t get_npc_max_hp(uint8_t member_id) {
@@ -4567,7 +4569,7 @@ index ef6571c..bc32e7e 100644
      if (!npc_ai_table || !enemy_config_table) return 0;
      uint8_t enemy_idx = npc_ai_table[member_id * 2 + 1];
      return enemy_config_table[enemy_idx].hp;
-@@ -5218,7 +5464,7 @@ static void update_mushroom_status(void) {
+@@ -5218,7 +5466,7 @@ static void update_mushroom_status(void) {
              ow.mushroomization_timer = 0x0708;
              ow.mushroomization_modifier = 0;
          }
@@ -4576,7 +4578,7 @@ index ef6571c..bc32e7e 100644
              dismount_bicycle();
          }
      } else {
-@@ -5663,6 +5909,121 @@ static uint16_t instant_win_check(void) {
+@@ -5663,6 +5911,121 @@ static uint16_t instant_win_check(void) {
      return 0;  /* Ran out of party members */
  }
  
@@ -4698,7 +4700,7 @@ index ef6571c..bc32e7e 100644
  /*
   * FILL_PALETTES_WITH_COLOR (port of C26189)
   *
-@@ -5702,7 +6063,7 @@ static void iw_victory_setup(void) {
+@@ -5702,7 +6065,7 @@ static void iw_victory_setup(void) {
      }
  
      /* Deposit money into ATM and add to running total (game_state.unknownC4) */
@@ -4707,7 +4709,7 @@ index ef6571c..bc32e7e 100644
      uint32_t deposited = deposit_into_atm(money32);
  
      /* Add deposited amount to game_state.unknownC4 (32-bit running battle money) */
-@@ -5734,9 +6095,58 @@ static void iw_victory_setup(void) {
+@@ -5734,9 +6097,58 @@ static void iw_victory_setup(void) {
  
      /* Divide EXP evenly among alive party members (ceiling division) */
      uint16_t alive_count = battle_count_chars(0);
@@ -4767,7 +4769,7 @@ index ef6571c..bc32e7e 100644
  }
  
  /* The random item-drop roll (verbatim from the blocking instant_win_handler).
-@@ -6212,6 +6622,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6212,6 +6624,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
                  fade_in(1, 1);
              } else {
                  /* Party defeated, return immediately */
@@ -4775,7 +4777,7 @@ index ef6571c..bc32e7e 100644
                  return STEP_RESULT_POP(1);
              }
              st->phase = BS_CLEANUP;
-@@ -6221,6 +6632,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6221,6 +6634,7 @@ StepResult mode_step_battle_scripted(ModeState *state) {
          case BS_TELEPORT_DEFEATED:
              /* After a post-battle PSI teleport with the party defeated: pop 1,
               * skipping cleanup (matches the blocking `return 1` after teleport). */
@@ -4783,7 +4785,7 @@ index ef6571c..bc32e7e 100644
              return STEP_RESULT_POP(1);
  
          case BS_CLEANUP:
-@@ -6260,3 +6672,63 @@ StepResult mode_step_battle_scripted(ModeState *state) {
+@@ -6260,3 +6674,63 @@ StepResult mode_step_battle_scripted(ModeState *state) {
          }
      }
  }
@@ -6040,7 +6042,7 @@ index 9d558c4..d8ac818 100644
              /* Blink on: redraw the HP/PP window */
              draw_and_mark_hppp_window(bt.hp_pp_box_blink_target);
 diff --git a/src/game/display_text.c b/src/game/display_text.c
-index 9b2cb3d..7be40b8 100644
+index 9b2cb3d..261ec32 100644
 --- a/src/game/display_text.c
 +++ b/src/game/display_text.c
 @@ -12,6 +12,7 @@
@@ -6584,20 +6586,24 @@ index 9b2cb3d..7be40b8 100644
      }
  
      dt.force_left_text_alignment = 1;
-@@ -1036,10 +1500,10 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
+@@ -1036,10 +1500,13 @@ uint32_t party_selector_overworld_prepare(uint16_t allow_cancel, ModeState *out_
  
          char name_buf[7];
          if (member_id >= 1 && member_id <= 4) {
 -            eb_to_ascii_buf(party_characters[member_id - 1].name, 5, name_buf);
-+            eb_to_ascii_buf(maternalbound_character_name(member_id - 1), maternalbound_name_capacity(), name_buf);
++            /* PARTY_CHARACTER_SELECTOR copies source name glyphs verbatim.
++             * Preserve high glyphs in this bounded name-only menu label. */
++            eb_to_title_buf(maternalbound_character_name(member_id - 1),
++                            maternalbound_name_capacity(), name_buf, sizeof(name_buf));
          } else if (member_id == PARTY_MEMBER_KING) {
-             eb_to_ascii_buf(game_state.pet_name, 6, name_buf);
+-            eb_to_ascii_buf(game_state.pet_name, 6, name_buf);
 -            name_buf[5] = '\0';
++            eb_to_title_buf(game_state.pet_name, 6, name_buf, sizeof(name_buf));
 +            name_buf[maternalbound_name_capacity()] = '\0';
          } else {
              name_buf[0] = '\0';
          }
-@@ -1191,8 +1655,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1191,8 +1658,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
              return (uintptr_t)game_state.pet_name;
          case 4:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -6608,7 +6614,7 @@ index 9b2cb3d..7be40b8 100644
          case 5:
              *out_type = CC_TABLE_TYPE_STRING;
              *out_str_len = (int)sizeof(game_state.favourite_thing);
-@@ -1216,8 +1680,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
+@@ -1216,8 +1683,8 @@ uintptr_t resolve_cc_table_data(uint16_t index, int *out_type, int *out_str_len)
          switch ((CcCharField)field) {
          case CC_CHAR_NAME:
              *out_type = CC_TABLE_TYPE_STRING;
@@ -6619,7 +6625,7 @@ index 9b2cb3d..7be40b8 100644
          case CC_CHAR_LEVEL:       return c->level;
          case CC_CHAR_EXP:         return c->exp;
          case CC_CHAR_CURRENT_HP:  return c->current_hp;
-@@ -1259,7 +1723,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1259,7 +1726,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
          case 1: return (uint8_t)sizeof(game_state.mother2_playername);
          case 2: return (uint8_t)sizeof(game_state.earthbound_playername);
          case 3: return (uint8_t)sizeof(game_state.pet_name);
@@ -6628,7 +6634,7 @@ index 9b2cb3d..7be40b8 100644
          case 5: return (uint8_t)sizeof(game_state.favourite_thing);
          case 6: return (uint8_t)sizeof(game_state.money_carried);
          case 7: return (uint8_t)sizeof(game_state.bank_balance);
-@@ -1270,7 +1734,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
+@@ -1270,7 +1737,7 @@ uint8_t get_cc_table_entry_size(uint16_t index) {
      if (index >= CC_GLOBAL_COUNT && index < CC_TABLE_TOTAL) {
          uint16_t field = (index - CC_GLOBAL_COUNT) % CC_CHAR_FIELD_COUNT;
          switch ((CcCharField)field) {
@@ -6637,7 +6643,7 @@ index 9b2cb3d..7be40b8 100644
          case CC_CHAR_LEVEL:       return 1;
          case CC_CHAR_EXP:         return 4;
          case CC_CHAR_CURRENT_HP:  return 2;
-@@ -1569,6 +2033,8 @@ StepResult mode_step_display_text(ModeState *ms) {
+@@ -1569,6 +2036,8 @@ StepResult mode_step_display_text(ModeState *ms) {
       * call level (including a nested CC_08 child) gets a clean flag; the parent's
       * value is restored before this level pops. */
      if (st->phase == DT_ENTER) {
@@ -6646,7 +6652,7 @@ index 9b2cb3d..7be40b8 100644
          st->saved_cc18_attrs = dt.g_cc18_attrs_saved;
          dt.g_cc18_attrs_saved = 0;
          dt.upcoming_word_length = 0;
-@@ -1779,6 +2245,15 @@ StepResult mode_step_display_text(ModeState *ms) {
+@@ -1779,6 +2248,15 @@ StepResult mode_step_display_text(ModeState *ms) {
           * unknown4 starts as 0 (cleared by INIT_TEXT_STATE), set to 1 by CC_18_02.
           * In C: dt.g_cc18_attrs_saved tracks this per display_text call level. */
          if (byte == 0x02) {
@@ -8153,7 +8159,7 @@ index 30256db..5103187 100644
  
  /* Key Items pool self-test (Key Items pool feature, not a ROM routine):
 diff --git a/src/game/inventory.c b/src/game/inventory.c
-index 8978181..0596cab 100644
+index 8978181..277eb6d 100644
 --- a/src/game/inventory.c
 +++ b/src/game/inventory.c
 @@ -2,8 +2,10 @@
@@ -8394,7 +8400,59 @@ index 8978181..0596cab 100644
  /* SWAP_ITEM_INTO_EQUIPMENT: Port of asm/battle/swap_item_into_equipment.asm (643 lines).
   *
   * Moves an item from source character's inventory to target character's inventory,
-@@ -1351,6 +1430,10 @@ uint16_t is_item_equipped_by_id(uint16_t char_id, uint16_t item_id) {
+@@ -1239,7 +1318,14 @@ void swap_item_into_equipment(uint16_t source_char_id, uint16_t item_slot,
+                 matched = true;
+                 /* This equipment slot pointed at the moved item.
+                  * Assembly: calls FIND_EMPTY_INVENTORY_SLOT to locate new position. */
+-                uint16_t new_pos = find_empty_inventory_slot(target_char_id);
++                /* Native QoL: the moved item is now the last ordinary bag
++                 * entry. FIND_EMPTY_INVENTORY_SLOT preserves an original
++                 * off-by-one bound for full bags. Count the actual appended
++                 * ordinary entries, including a full fourteen-slot bag. */
++                uint16_t new_pos = 0;
++                while (new_pos < ITEM_INVENTORY_SIZE &&
++                       party_characters[src_idx].items[new_pos] != 0)
++                    new_pos++;
+                 party_characters[src_idx].equipment[eq] = (uint8_t)new_pos;
+ 
+                 /* Adjust the other 3 equipment indices above item_slot. */
+@@ -1269,16 +1355,14 @@ void swap_item_into_equipment(uint16_t source_char_id, uint16_t item_slot,
+          * wait, actually the assembly checks SOURCE char's equipment to see
+          * if the moved item was equipped, then calls CHANGE_EQUIPPED_*(source, 0).
+          * Then adjusts remaining indices above removed position. */
++        int removed_equipment = -1;
+         for (int eq = 0; eq < EQUIP_COUNT; eq++) {
+             uint8_t eq_val = party_characters[src_idx].equipment[eq];
+             if (eq_val == item_slot) {
+-                /* Unequip: set equipment slot to 0 */
+-                switch (eq) {
+-                case EQUIP_WEAPON: change_equipped_weapon(source_char_id, 0); break;
+-                case EQUIP_BODY:   change_equipped_body(source_char_id, 0); break;
+-                case EQUIP_ARMS:   change_equipped_arms(source_char_id, 0); break;
+-                case EQUIP_OTHER:  change_equipped_other(source_char_id, 0); break;
+-                }
++                /* Defer the category's stat recalculation until all remaining
++                 * equipment locations refer to the already-compacted bag. */
++                party_characters[src_idx].equipment[eq] = 0;
++                removed_equipment = eq;
+                 break;
+             }
+         }
+@@ -1290,6 +1374,13 @@ void swap_item_into_equipment(uint16_t source_char_id, uint16_t item_slot,
+                 party_characters[src_idx].equipment[eq] = eq_val - 1;
+             }
+         }
++        switch (removed_equipment) {
++        case EQUIP_WEAPON: change_equipped_weapon(source_char_id, 0); break;
++        case EQUIP_BODY:   change_equipped_body(source_char_id, 0); break;
++        case EQUIP_ARMS:   change_equipped_arms(source_char_id, 0); break;
++        case EQUIP_OTHER:  change_equipped_other(source_char_id, 0); break;
++        default: break;
++        }
+     }
+ 
+ }
+@@ -1351,6 +1442,10 @@ uint16_t is_item_equipped_by_id(uint16_t char_id, uint16_t item_id) {
   * char_id: 1-indexed. item_slot: 1-based inventory position.
   * Returns 1 if that slot is equipped, 0 if not. */
  uint16_t check_item_equipped(uint16_t char_id, uint16_t item_slot) {
@@ -8405,7 +8463,7 @@ index 8978181..0596cab 100644
      uint16_t char_idx = char_id - 1;
  
      for (int slot = 0; slot < EQUIP_COUNT; slot++) {
-@@ -1484,11 +1567,56 @@ uint16_t take_item_from_character(uint16_t char_id, uint16_t item_id) {
+@@ -1484,11 +1579,56 @@ uint16_t take_item_from_character(uint16_t char_id, uint16_t item_id) {
  
  bool is_key_item_type(uint16_t item_id) {
      const ItemConfig *entry = get_item_entry(item_id);
@@ -8463,7 +8521,7 @@ index 8978181..0596cab 100644
  /* MIGRATE_KEY_ITEMS_TO_POOL: not a ROM/assembly port. New-game setup
   * (file_select.c) seeds all 4 characters' stats/inventory from
   * INITIAL_STATS up front, matching the original SRAM layout, even though
-@@ -1693,7 +1821,7 @@ uint16_t get_item_ep(uint16_t item_id) {
+@@ -1693,7 +1833,7 @@ uint16_t get_item_ep(uint16_t item_id) {
   * Scans Jeff's inventory for broken items. For each broken item:
   *   1. Checks item.type == 8 (broken)
   *   2. Checks item.params.epi <= Jeff's IQ
@@ -8472,7 +8530,7 @@ index 8978181..0596cab 100644
   * On success, replaces the broken item with item.params.ep in-place.
   * Returns original broken item ID on success, 0 if nothing fixed. */
  uint16_t try_fix_broken_item(uint16_t fix_probability) {
-@@ -1723,8 +1851,10 @@ uint16_t try_fix_broken_item(uint16_t fix_probability) {
+@@ -1723,8 +1863,10 @@ uint16_t try_fix_broken_item(uint16_t fix_probability) {
          uint8_t epi = entry->params[ITEM_PARAM_EPI];
          if (epi > jeff->iq) continue;
  
@@ -8485,7 +8543,7 @@ index 8978181..0596cab 100644
          if (roll >= fix_probability) continue;
  
          /* Fix the item: replace broken with fixed version */
-@@ -1830,12 +1960,12 @@ static int16_t calculate_stat_gain(uint8_t growth_var, uint8_t base_stat, uint16
+@@ -1830,12 +1972,12 @@ static int16_t calculate_stat_gain(uint8_t growth_var, uint8_t base_stat, uint16
      if (diff <= 0) return 0;
  
      /* Assembly lines 42-62: apply random modifier.
@@ -8500,7 +8558,7 @@ index 8978181..0596cab 100644
      int16_t cycle = (int16_t)((old_level + 1) % 4);
      int16_t table_val = (int16_t)stat_gain_mod_data[cycle];
      int16_t modifier = table_val + rand_val - 1;
-@@ -1859,7 +1989,7 @@ static int16_t calculate_stat_gain_simple(uint8_t growth_var, uint8_t base_stat,
+@@ -1859,7 +2001,7 @@ static int16_t calculate_stat_gain_simple(uint8_t growth_var, uint8_t base_stat,
   *
   * Split for the run-to-completion conversion: the per-stage stat math lives
   * in level_up_apply_stage() (shared so both paths run the exact assembly
@@ -8509,7 +8567,7 @@ index 8978181..0596cab 100644
   * (no music, no texts, no PSI-learn scan, the assembly gates all of those
   * on the play-sound flag) is level_up_char_silent(); the text-displaying
   * play_sound != 0 path is mode_step_level_up() (GAME_MODE_LEVEL_UP), defined
-@@ -1907,7 +2037,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1907,7 +2049,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 0];
          int16_t gain = calculate_stat_gain(growth, ch->base_offense, old_level);
          if (gain <= 0) return 0;
@@ -8518,7 +8576,7 @@ index 8978181..0596cab 100644
          recalc_character_postmath_offense(char_id);
          return gain;
      }
-@@ -1916,7 +2046,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1916,7 +2058,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 1];
          int16_t gain = calculate_stat_gain(growth, ch->base_defense, old_level);
          if (gain <= 0) return 0;
@@ -8527,7 +8585,7 @@ index 8978181..0596cab 100644
          recalc_character_postmath_defense(char_id);
          return gain;
      }
-@@ -1925,7 +2055,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1925,7 +2067,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 2];
          int16_t gain = calculate_stat_gain(growth, ch->base_speed, old_level);
          if (gain <= 0) return 0;
@@ -8536,7 +8594,7 @@ index 8978181..0596cab 100644
          recalc_character_postmath_speed(char_id);
          return gain;
      }
-@@ -1934,7 +2064,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1934,7 +2076,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 3];
          int16_t gain = calculate_stat_gain(growth, ch->base_guts, old_level);
          if (gain <= 0) return 0;
@@ -8545,7 +8603,7 @@ index 8978181..0596cab 100644
          recalc_character_postmath_guts(char_id);
          return gain;
      }
-@@ -1948,7 +2078,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1948,7 +2090,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
              ? calculate_stat_gain_simple(growth, ch->base_vitality, old_level)
              : calculate_stat_gain(growth, ch->base_vitality, old_level);
          if (gain <= 0) return 0;
@@ -8554,7 +8612,7 @@ index 8978181..0596cab 100644
          recalc_character_postmath_vitality(char_id);
          return gain;
      }
-@@ -1959,7 +2089,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1959,7 +2101,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
              ? calculate_stat_gain_simple(growth, ch->base_iq, old_level)
              : calculate_stat_gain(growth, ch->base_iq, old_level);
          if (gain <= 0) return 0;
@@ -8563,7 +8621,7 @@ index 8978181..0596cab 100644
          recalc_character_postmath_iq(char_id);
          return gain;
      }
-@@ -1968,14 +2098,14 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1968,14 +2110,14 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          uint8_t growth = stats_growth_data[char_index * STATS_GROWTH_STATS + 6];
          int16_t gain = calculate_stat_gain(growth, ch->base_luck, old_level);
          if (gain <= 0) return 0;
@@ -8580,7 +8638,7 @@ index 8978181..0596cab 100644
       * the HP message always shows. */
      case LU_STAGE_HP: {
          int16_t hp_potential = (int16_t)ch->vitality * 15 - (int16_t)ch->max_hp;
-@@ -1983,10 +2113,17 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1983,10 +2125,17 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          if (hp_potential > 1) {
              hp_increase = (uint16_t)hp_potential;
          } else {
@@ -8601,7 +8659,7 @@ index 8978181..0596cab 100644
          return (int16_t)hp_increase;
      }
      /* --- Max PP increase (assembly lines 541-626) ---
-@@ -1995,7 +2132,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -1995,7 +2144,7 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
       * Otherwise: pp_base = iq
       * pp_potential = pp_base * 5 - max_pp
       * If pp_potential > 1: pp_increase = pp_potential
@@ -8610,7 +8668,7 @@ index 8978181..0596cab 100644
      case LU_STAGE_PP: {
          if (char_index == 2) return 0;
          uint16_t pp_base = (uint16_t)ch->iq;
-@@ -2007,11 +2144,18 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
+@@ -2007,11 +2156,18 @@ static int16_t level_up_apply_stage(uint16_t char_id, uint16_t old_level, uint8_
          if (pp_potential > 1) {
              pp_increase = (uint16_t)pp_potential;
          } else {
@@ -8632,7 +8690,7 @@ index 8978181..0596cab 100644
          return (int16_t)pp_increase;
      }
      default:
-@@ -2132,7 +2276,11 @@ bool gain_exp_prepare(uint16_t char_id, uint32_t exp_amount) {
+@@ -2132,7 +2288,11 @@ bool gain_exp_prepare(uint16_t char_id, uint32_t exp_amount) {
      if (char_id < 1 || char_id > 4) return false;
  
      /* Assembly lines 20-30: add exp to character */
@@ -8645,7 +8703,7 @@ index 8978181..0596cab 100644
  
      return level_up_pending(char_id);
  }
-@@ -2181,7 +2329,7 @@ StepResult mode_step_level_up(ModeState *state) {
+@@ -2181,7 +2341,7 @@ StepResult mode_step_level_up(ModeState *state) {
  
              /* Lines 42-59: display "reached level XX". */
              dt.blinking_triangle_flag = 1;
@@ -8654,7 +8712,7 @@ index 8978181..0596cab 100644
              set_cnum((uint32_t)ch->level);
              st->phase = LU_STAT;
              st->stage = 0;
-@@ -2190,16 +2338,15 @@ StepResult mode_step_level_up(ModeState *state) {
+@@ -2190,16 +2350,15 @@ StepResult mode_step_level_up(ModeState *state) {
              break;  /* unresolvable: fall through to LU_STAT inline */
          }
          case LU_STAT: {
@@ -8677,7 +8735,7 @@ index 8978181..0596cab 100644
              }
              while (st->stage < LU_STAGE_COUNT) {
                  uint8_t stage = st->stage++;
-@@ -2311,7 +2458,7 @@ uint16_t decrease_wallet_balance(uint32_t amount) {
+@@ -2311,7 +2470,7 @@ uint16_t decrease_wallet_balance(uint32_t amount) {
   * Transfers from wallet to bank, clamped to ATM_ACCOUNT_LIMIT.
   * Returns the actual amount deposited (may be less if bank hit limit). */
  uint32_t deposit_into_atm(uint32_t amount) {
@@ -8686,7 +8744,7 @@ index 8978181..0596cab 100644
      if (new_balance > ATM_ACCOUNT_LIMIT) {
          new_balance = ATM_ACCOUNT_LIMIT;
      }
-@@ -2403,7 +2550,27 @@ uint16_t find_condiment(uint16_t item_id) {
+@@ -2403,7 +2562,27 @@ uint16_t find_condiment(uint16_t item_id) {
  
      /* Assembly lines 21-25: get attacker's character index (0-indexed) */
      Battler *atk = battler_from_offset(bt.current_attacker);
@@ -8714,7 +8772,7 @@ index 8978181..0596cab 100644
  
      /* Assembly lines 26-62: loop through character's inventory for a condiment */
      for (int slot = 0; slot < ITEM_INVENTORY_SIZE; slot++) {
-@@ -2475,3 +2642,104 @@ uint16_t find_inventory_space2(uint16_t char_id) {
+@@ -2475,3 +2654,104 @@ uint16_t find_inventory_space2(uint16_t char_id) {
      }
      return 0;
  }
@@ -11779,7 +11837,7 @@ index a0a8b75..470c30f 100644
  
      disable_all_entities();
 diff --git a/src/game/window.c b/src/game/window.c
-index e516652..e0ed68c 100644
+index e516652..53cd949 100644
 --- a/src/game/window.c
 +++ b/src/game/window.c
 @@ -5,12 +5,14 @@
@@ -11843,7 +11901,7 @@ index e516652..e0ed68c 100644
      strncpy(item->label, label, MENU_LABEL_SIZE - 1);
      item->label[MENU_LABEL_SIZE - 1] = '\0';
      item->userdata = userdata;
-@@ -650,6 +659,23 @@ uint16_t get_window_menu_option_count(uint16_t window_id) {
+@@ -650,6 +659,41 @@ uint16_t get_window_menu_option_count(uint16_t window_id) {
      return w->menu_count;
  }
  
@@ -11857,22 +11915,40 @@ index e516652..e0ed68c 100644
 +           item->userdata >= 1 && item->userdata <= SAVE_COUNT;
 +}
 +
++/* Both source party selectors populate only these normal-font windows with
++ * raw character names, at x=i*6 and userdata=party member ID. The window/id
++ * contract also identifies restored labels without changing MenuItem or F6.
++ * Other menus, dialogue and right labels keep their existing ASCII decoding;
++ * the HPPP Give picker uses its separate raw-name renderer. */
++static bool menu_item_is_party_name(const WindowInfo *w, const MenuItem *item) {
++    bool name_window = w->id == WINDOW_SINGLE_CHARACTER_SELECT ||
++        (w->id >= WINDOW_TARGETING_PROMPT + 1 &&
++         w->id <= WINDOW_TARGETING_PROMPT + 3);
++    return name_window && ((item->userdata >= PARTY_MEMBER_NESS &&
++                           item->userdata <= PARTY_MEMBER_POO) ||
++                          item->userdata == PARTY_MEMBER_KING);
++}
++
++static bool menu_item_has_name_glyphs(const WindowInfo *w, const MenuItem *item) {
++    return menu_item_is_file_slot(w, item) || menu_item_is_party_name(w, item);
++}
++
 +static uint8_t menu_item_label_glyph(const WindowInfo *w,
 +                                     const MenuItem *item, unsigned index) {
 +    uint8_t byte = (uint8_t)item->label[index];
-+    if (menu_item_is_file_slot(w, item) && byte >= 0x80) return byte;
++    if (menu_item_has_name_glyphs(w, item) && byte >= 0x80) return byte;
 +    return ascii_to_eb_char(item->label[index]);
 +}
 +
  void print_menu_items(void) {
      WindowInfo *w = get_window(win.current_focus_window);
      if (!w || w->menu_count == 0) {
-@@ -674,8 +700,39 @@ void print_menu_items(void) {
+@@ -674,8 +718,39 @@ void print_menu_items(void) {
          set_focus_text_cursor(item->text_x + 1, item->text_y);
          w = get_window(win.current_focus_window);  /* re-fetch after cursor set */
          if (!w) return;
 -        print_string(item->label);
-+        if (menu_item_is_file_slot(w, item)) {
++        if (menu_item_has_name_glyphs(w, item)) {
 +            uint8_t glyphs[sizeof(item->label)] = {0};
 +            unsigned length = 0;
 +            while (length < sizeof(item->label) && item->label[length]) {
@@ -11908,7 +11984,7 @@ index e516652..e0ed68c 100644
  }
  
  /*
-@@ -692,9 +749,10 @@ void print_menu_items(void) {
+@@ -692,9 +767,10 @@ void print_menu_items(void) {
   * columns: number of columns for layout (1 = single column, 2 = two columns)
   * start_index: if non-zero, reassign userdata starting from this value
   */
@@ -11922,7 +11998,7 @@ index e516652..e0ed68c 100644
  
      if (columns < 1) columns = 1;
  
-@@ -703,13 +761,20 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+@@ -703,13 +779,20 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
      uint16_t interior_w = w->width - 2;
      uint16_t col_width = interior_w / columns;
  
@@ -11946,7 +12022,7 @@ index e516652..e0ed68c 100644
      /* If paginated, assembly (layout_menu_options.asm lines 170-173) does
       * DEX;DEX, reduces rows_per_page by 2 from max_rows, reserving
       * the last row for the overflow indicator with one blank row gap. */
-@@ -760,6 +825,14 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+@@ -760,6 +843,14 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
  
      w->menu_page_number = 1;
  
@@ -11961,7 +12037,7 @@ index e516652..e0ed68c 100644
      /* Assembly: LAYOUT_MENU_OPTIONS then PRINT_MENU_ITEMS */
      print_menu_items();
  }
-@@ -776,26 +849,13 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
+@@ -776,26 +867,13 @@ void open_window_and_print_menu(uint16_t columns, uint16_t start_index) {
  void layout_and_print_menu_at_selection(uint16_t columns, uint16_t start_index,
                                          uint16_t initial_selection) {
      WindowInfo *w = get_window(win.current_focus_window);
@@ -11991,7 +12067,7 @@ index e516652..e0ed68c 100644
      }
  
      print_menu_items();
-@@ -1149,7 +1209,7 @@ void set_window_palette_index(uint16_t palette_index) {
+@@ -1149,7 +1227,7 @@ void set_window_palette_index(uint16_t palette_index) {
   * option with a purple/highlight background (palette 6).
   */
  void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, bool set) {
@@ -12000,7 +12076,7 @@ index e516652..e0ed68c 100644
  
      MenuItem *item = &w->menu_items[item_index];
      uint16_t content_width = w->width - 2;
-@@ -1164,14 +1224,30 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
+@@ -1164,14 +1242,30 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
       * it hits a blank tile (tile == 64).  In the C port, unwritten entries
       * are 0.  Skip any entry with a zero tile index to avoid painting
       * palette bits onto empty positions (which would make them visible). */
@@ -12034,7 +12110,7 @@ index e516652..e0ed68c 100644
              if (set) {
                  w->content_tilemap[upper_pos] = upper_tile | attr;
                  w->content_tilemap[lower_pos] = (w->content_tilemap[lower_pos] & 0x03FF) | attr;
-@@ -1184,6 +1260,42 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
+@@ -1184,6 +1278,42 @@ void highlight_menu_item(WindowInfo *w, uint16_t item_index, uint16_t palette, b
      }
  }
  
@@ -12077,7 +12153,7 @@ index e516652..e0ed68c 100644
  /*
   * PRINT_CHAR_WITH_SOUND: Port of asm/text/print_char_with_sound.asm.
   *
-@@ -1916,6 +2028,7 @@ static StepResult sm_handle_input(WindowInfo *w, SelectionMenuState *st, bool *h
+@@ -1916,6 +2046,7 @@ static StepResult sm_handle_input(WindowInfo *w, SelectionMenuState *st, bool *h
   * phase machine and the `primed` frame-timing scheme.
   */
  StepResult mode_step_selection_menu(ModeState *ms) {
@@ -12085,7 +12161,7 @@ index e516652..e0ed68c 100644
      SelectionMenuState *st = &ms->selection_menu;
  
      /* Resuming after a deferred cursor-callback text push: the pushed DISPLAY_TEXT
-@@ -2049,7 +2162,10 @@ StepResult mode_step_selection_menu(ModeState *ms) {
+@@ -2049,7 +2180,10 @@ StepResult mode_step_selection_menu(ModeState *ms) {
   *   = ((18 * 32) - 6) * 2 = (576 - 6) * 2 = 570 * 2 = 0x474
   */
  void clear_hppp_window_header(void) {
@@ -12097,7 +12173,7 @@ index e516652..e0ed68c 100644
      memset(&win.bg2_buffer[offset], 0, 4 * 2);
  }
  
-@@ -2060,7 +2176,9 @@ void clear_hppp_window_header(void) {
+@@ -2060,7 +2194,9 @@ void clear_hppp_window_header(void) {
   */
  void render_hppp_window_header(void) {
      static const uint16_t header_tiles[4] = { 0x3A69, 0x3A6A, 0x3A6B, 0x3A6C };
@@ -12108,7 +12184,7 @@ index e516652..e0ed68c 100644
      memcpy(&win.bg2_buffer[offset], header_tiles, sizeof(header_tiles));
  }
  
-@@ -2193,6 +2311,16 @@ void clear_battle_menu_character_indicator(void) {
+@@ -2193,6 +2329,16 @@ void clear_battle_menu_character_indicator(void) {
  
  /* HPPP Window Drawing */
  
@@ -12125,7 +12201,7 @@ index e516652..e0ed68c 100644
  /*
   * UNDRAW_HP_PP_WINDOW: Port of asm/text/hp_pp_window/undraw.asm.
   *
-@@ -2209,12 +2337,7 @@ void undraw_hp_pp_window(uint16_t char_id) {
+@@ -2209,12 +2355,7 @@ void undraw_hp_pp_window(uint16_t char_id) {
      ow.currently_drawn_hppp_windows &= ~(1 << char_id);
  
      /* Determine Y row offset: active character is one row higher */
@@ -12139,7 +12215,7 @@ index e516652..e0ed68c 100644
  
      /* Compute position in win.bg2_buffer using same centering as assembly */
      uint16_t x_byte_offset = calc_character_indicator_x_offset(char_id);
-@@ -2532,11 +2655,7 @@ void draw_hp_pp_window(uint16_t char_id) {
+@@ -2532,11 +2673,7 @@ void draw_hp_pp_window(uint16_t char_id) {
      }
  
      /* Determine Y row (assembly lines 91-99) */
@@ -12152,7 +12228,7 @@ index e516652..e0ed68c 100644
  
      /* Compute BG2_BUFFER position (assembly lines 101-127).
       * Each party member's window is 7 tiles wide, centered at HPPP_CENTER_TILE.
-@@ -2574,8 +2693,9 @@ void draw_hp_pp_window(uint16_t char_id) {
+@@ -2574,8 +2711,9 @@ void draw_hp_pp_window(uint16_t char_id) {
       * US: STRLEN computes name width = (strlen*6+9)/8 tiles. */
      uint16_t name_base1 = 0x22A0 + (uint16_t)(member_id - 1) * 4;
      int name_len = 0;
@@ -12164,7 +12240,7 @@ index e516652..e0ed68c 100644
      int ntc = name_tile_count;
  
      for (int i = 0; i < HPPP_WINDOW_WIDTH - 3; i++) {
-@@ -2849,11 +2969,7 @@ void update_hppp_meter_tiles(void) {
+@@ -2849,11 +2987,7 @@ void update_hppp_meter_tiles(void) {
          return;
  
      /* Determine Y row: active character uses row 18, others use row 19 */

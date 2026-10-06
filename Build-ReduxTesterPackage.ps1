@@ -1,4 +1,4 @@
-param([string]$Version='0.5.0-redux-dev.17')
+﻿param([string]$Version='0.5.0-redux-dev.19', [string]$NativeExePath='')
 $ErrorActionPreference='Stop'
 $projectRoot=$PSScriptRoot
 $releaseRoot=Join-Path $projectRoot 'release'
@@ -8,6 +8,7 @@ $app=Join-Path $staging 'EarthBound Companion'
 $docs=Join-Path $projectRoot 'github-repo'
 if(!(Test-Path -LiteralPath $docs)){$docs=$projectRoot}
 $native=Join-Path $projectRoot 'build\companion\earthbound.exe'
+if($NativeExePath){$native=[IO.Path]::GetFullPath($NativeExePath)}
 $helper=Join-Path $projectRoot '_BuildScratch\redux-setup-dist\redux-setup.exe'
 $originalHelper=Join-Path $projectRoot 'native-source\dist\ebtools-setup.exe'
 foreach($input in @($native,$helper,$originalHelper)){if(!(Test-Path -LiteralPath $input -PathType Leaf)){throw "Missing build input: $input"}}

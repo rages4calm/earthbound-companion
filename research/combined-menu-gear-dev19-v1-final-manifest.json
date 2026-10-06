@@ -1,0 +1,765 @@
+{
+  "schemaVersion": 1,
+  "proof": "private-combined-menu-gear-dev19-v1-final",
+  "privateOnly": true,
+  "baseCheckpoint": "dev18-v2",
+  "upstreamRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "changedFiles": [
+    {
+      "path": "src/game/battle.c",
+      "baselineSha256": "dc63db4360d44539d96ee1436c4d282aceebf4256252a9698bb1ab4497bb638c",
+      "candidateSha256": "67243bf6096e1845d7efdea6629d7fc75df0da111ad3349144c8aa100f81e67d"
+    },
+    {
+      "path": "src/game/display_text.c",
+      "baselineSha256": "47ec18c4d515759a409a800076ea05c66cc959c0f894b6ff0d1af38bc0864b20",
+      "candidateSha256": "18af4c5e8e11b502bf81674057a94d62e2cd051ae3b9a603bb4c6d8ec404667e"
+    },
+    {
+      "path": "src/game/inventory.c",
+      "baselineSha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d",
+      "candidateSha256": "0ce9700c84c3b14f2df4d3a67ba12fda550da26a8880ba04261e8aebb934856c"
+    },
+    {
+      "path": "src/game/window.c",
+      "baselineSha256": "7776ba2620809d8a5477a1183a3fc42d48fd1078b05b045aab15ffe136069db1",
+      "candidateSha256": "d861e80a8f9d1f40cbf2c25008bd33028254dce256f39ea49627e83284f0489c"
+    }
+  ],
+  "baselineSourceFileCount": 4324,
+  "onlyFourAuthorizedSourceFilesChanged": true,
+  "otherSourceFilesByteIdentical": true,
+  "commentOnlyDifferenceFromFrozenPartyProposal": {
+    "file": "src/game/window.c",
+    "diff": "--- frozen-party-proposal/src/game/window.c\n+++ combined-candidate/src/game/window.c\n@@ -672,7 +672,8 @@\n /* Both source party selectors populate only these normal-font windows with\n  * raw character names, at x=i*6 and userdata=party member ID. The window/id\n  * contract also identifies restored labels without changing MenuItem or F6.\n- * Other menus, dialogue, right labels and the HPPP Give picker stay ASCII. */\n+ * Other menus, dialogue and right labels keep their existing ASCII decoding;\n+ * the HPPP Give picker uses its separate raw-name renderer. */\n static bool menu_item_is_party_name(const WindowInfo *w, const MenuItem *item) {\n     bool name_window = w->id == WINDOW_SINGLE_CHARACTER_SELECT ||\n         (w->id >= WINDOW_TARGETING_PROMPT + 1 &&\n",
+    "frozenSourceSha256": "65a5e1ffb42ac287ad9baeba6c83a7a5be695c31d3c1951948003beb8573e679",
+    "candidateSourceSha256": "d861e80a8f9d1f40cbf2c25008bd33028254dce256f39ea49627e83284f0489c",
+    "checkedReverseReplacementEqualsFrozenProposal": true
+  },
+  "equipmentChangeIntentionalOriginalSourceQoL": true,
+  "schemasAndSaveFormat16Unchanged": true,
+  "completeDistinctPairedBuilds": true,
+  "nativeReplacementObjectsUsed": false,
+  "builds": [
+    {
+      "mode": "player",
+      "commands": [
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "-S",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source\\port\\unix",
+          "-B",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\player",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_C_COMPILER=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\gcc.exe",
+          "-DCMAKE_MAKE_PROGRAM=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\ninja.exe",
+          "-DSDL2_DIR=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\SDL2-2.32.10\\x86_64-w64-mingw32\\lib\\cmake\\SDL2",
+          "-DEB_RUNTIME_ASSETS=ON",
+          "-DEB_QA_OBSERVER=OFF"
+        ],
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "--build",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\player",
+          "--target",
+          "earthbound",
+          "-j4"
+        ]
+      ],
+      "executableSha256": "6aceb1c3e96f2ecfad54b9b79ac65d46516335b9ab43d07446591b960c926cdf",
+      "archiveSha256": "569e7605ff90c1fdca3f0d55bb9fb26f450d65be431ec81a365d53a015abbedf",
+      "cmakeCacheSha256": "3bbd90b15b52d28a5ecfda5c3d98ba4215af8c2774a474b4383087edd44d0622",
+      "compileCommandsSha256": "85001705c1ccd4f4307551b5336876bf027fc3966a3febb2f142837792af6df8"
+    },
+    {
+      "mode": "observer",
+      "commands": [
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "-S",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source\\port\\unix",
+          "-B",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\observer",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_C_COMPILER=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\gcc.exe",
+          "-DCMAKE_MAKE_PROGRAM=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\ninja.exe",
+          "-DSDL2_DIR=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\SDL2-2.32.10\\x86_64-w64-mingw32\\lib\\cmake\\SDL2",
+          "-DEB_RUNTIME_ASSETS=ON",
+          "-DEB_QA_OBSERVER=ON"
+        ],
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "--build",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\observer",
+          "--target",
+          "earthbound",
+          "-j4"
+        ]
+      ],
+      "executableSha256": "9ee948d59a06bc41cdd8b95713aa3176b61a90eac859371613be202481bbd8b3",
+      "archiveSha256": "57407b8fc201cf37f14e36dd7089ee797e363e3d2b0f36bf138c7c95d0bb65b6",
+      "cmakeCacheSha256": "e89ff9b1eb19ac99c599688616dd12607b9dae58fac95d71319d75da29ac75b3",
+      "compileCommandsSha256": "c4ee1f0280b41dd0259d3216a0289def210633af67fc66de0912bae528d5b903"
+    }
+  ],
+  "runtimes": {
+    "baselineDev18V2": {
+      "player.exe": "3b467f471acd6bb5aa0cb29b96d89790be3097d8d0c5dd114ce2f128895d6292",
+      "observer.exe": "033ed02642e0fc2cb61e2244de40c1b918f6b8e17635fb0c86eb7c11f92aeb92",
+      "SDL2.dll": "53e8fa7e9ed43c30bd650c39396f0d9d2067d2fff0b926c9433b75202592e4aa"
+    },
+    "privateCombinedDev19": {
+      "player.exe": "6aceb1c3e96f2ecfad54b9b79ac65d46516335b9ab43d07446591b960c926cdf",
+      "observer.exe": "9ee948d59a06bc41cdd8b95713aa3176b61a90eac859371613be202481bbd8b3",
+      "SDL2.dll": "53e8fa7e9ed43c30bd650c39396f0d9d2067d2fff0b926c9433b75202592e4aa"
+    }
+  },
+  "packs": {
+    "original": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+    "redux": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb"
+  },
+  "counts": {
+    "partyParentSequences": 128,
+    "partyColdContinuations": 64,
+    "boundedNativeObservations": 360,
+    "gearParentSequences": 732,
+    "gearColdContinuations": 116,
+    "gearWarmColdComparisons": 116,
+    "gearDistinctFrozenFixtures": 366,
+    "gearExecutionsPerBinary": 366
+  },
+  "allSelectedCombinedTestsPassed": true,
+  "controls": [
+    {
+      "build": "player",
+      "profile": "original",
+      "names": "ascii",
+      "genericAsciiRendererUnchanged": true,
+      "originalAndAsciiNameRowsUnchanged": true,
+      "tinyTitleActualVramUnchanged": true,
+      "hpppNameGlyphPlanesUnchanged": true,
+      "serializedStructureSizesUnchanged": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "names": "ascii",
+      "genericAsciiRendererUnchanged": true,
+      "originalAndAsciiNameRowsUnchanged": true,
+      "tinyTitleActualVramUnchanged": true,
+      "hpppNameGlyphPlanesUnchanged": true,
+      "serializedStructureSizesUnchanged": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "names": "mixed",
+      "genericAsciiRendererUnchanged": true,
+      "originalAndAsciiNameRowsUnchanged": true,
+      "tinyTitleActualVramUnchanged": true,
+      "hpppNameGlyphPlanesUnchanged": true,
+      "serializedStructureSizesUnchanged": true
+    },
+    {
+      "build": "player",
+      "profile": "redux",
+      "names": "accent",
+      "genericAsciiRendererUnchanged": true,
+      "originalAndAsciiNameRowsUnchanged": true,
+      "tinyTitleActualVramUnchanged": true,
+      "hpppNameGlyphPlanesUnchanged": true,
+      "serializedStructureSizesUnchanged": true
+    },
+    {
+      "build": "observer",
+      "profile": "original",
+      "names": "ascii",
+      "genericAsciiRendererUnchanged": true,
+      "originalAndAsciiNameRowsUnchanged": true,
+      "tinyTitleActualVramUnchanged": true,
+      "hpppNameGlyphPlanesUnchanged": true,
+      "serializedStructureSizesUnchanged": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "names": "ascii",
+      "genericAsciiRendererUnchanged": true,
+      "originalAndAsciiNameRowsUnchanged": true,
+      "tinyTitleActualVramUnchanged": true,
+      "hpppNameGlyphPlanesUnchanged": true,
+      "serializedStructureSizesUnchanged": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "names": "mixed",
+      "genericAsciiRendererUnchanged": true,
+      "originalAndAsciiNameRowsUnchanged": true,
+      "tinyTitleActualVramUnchanged": true,
+      "hpppNameGlyphPlanesUnchanged": true,
+      "serializedStructureSizesUnchanged": true
+    },
+    {
+      "build": "observer",
+      "profile": "redux",
+      "names": "accent",
+      "genericAsciiRendererUnchanged": true,
+      "originalAndAsciiNameRowsUnchanged": true,
+      "tinyTitleActualVramUnchanged": true,
+      "hpppNameGlyphPlanesUnchanged": true,
+      "serializedStructureSizesUnchanged": true
+    }
+  ],
+  "sourceArchiveLinkIdentityChecks": 140,
+  "files": [
+    {
+      "path": "research/combined-menu-gear-dev19-v1-build-review.json",
+      "sha256": "4323ecc37f3a9449b73e6ecb8e2d7f73143fb26ceef2030baf3f32f268b9874d",
+      "bytes": 3914
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-execution-review.json",
+      "sha256": "e6bca7d4444c066455911f1a00b8bfdfa4d84e80bfe18e5331bdc304f0d74b83",
+      "bytes": 13751
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-final.patch",
+      "sha256": "c62e03b3bdff02e592341de9656237f6b71409226603788c5c5955f7abcb7412",
+      "bytes": 6553
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-gear-observer-original-review.json",
+      "sha256": "5eec9082549ab8559221731a17a2080af6d739948a25ce735416918a5ba78cca",
+      "bytes": 8133208
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-gear-observer-redux-review.json",
+      "sha256": "db98ab51e76ca3ce77511fec0bff1f3962c912f852f359a1bb0c5f5b120becbe",
+      "bytes": 8053336
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-gear-player-original-review.json",
+      "sha256": "2527c2ca34f0a7b9fa2903a4003f39099d631472dc39e5bc8334e8bbb5193b4d",
+      "bytes": 8133207
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-gear-player-redux-review.json",
+      "sha256": "d8e33f23726ed1e02cf105d30c3d10f57ea8b80345846347851bc9f82b95afc5",
+      "bytes": 8053335
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-party-controls-review.json",
+      "sha256": "f746b139190cb741ad5823d6b3df819584679532818dd2ed2406a993ceb55ba9",
+      "bytes": 1194064
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-party-parents-review.json",
+      "sha256": "8dc28c3834f1e15655853f8e695d6c152a3022ac81c8387c1c3bb318beac10a0",
+      "bytes": 1787660
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-party-services-review.json",
+      "sha256": "a9286d0fa890a2e9056025cac7c5c3e98175ba7b4aa9cee61ff58bab20fdc1eb",
+      "bytes": 1052776
+    },
+    {
+      "path": "research/combined-menu-gear-dev19-v1-source-review.json",
+      "sha256": "8a1cf73f2cf3c2636924e69e9b4d95547bfa532e545e99a445b904bc602f144f",
+      "bytes": 3280
+    },
+    {
+      "path": "research/equipped-give-qol-dev26-candidate.patch",
+      "sha256": "d672633d27ee2d85687fca0b9039b7f2cbf1f68f644c3184aba3912ba405fcd3",
+      "bytes": 2823
+    },
+    {
+      "path": "research/equipped-give-qol-dev26-evidence.md",
+      "sha256": "164721cff89d25e1fdf8169223bed76264c3e58a808ac14355e6a9e18160110f",
+      "bytes": 5309
+    },
+    {
+      "path": "research/equipped-give-qol-dev26-private-manifest.json",
+      "sha256": "2388d8696ae6766db50e5df905bca51ca22679477d5a0ea3cf11365fcf64234a",
+      "bytes": 11585
+    },
+    {
+      "path": "research/equipped-give-qol-dev26-provenance.json",
+      "sha256": "c8e303d31f80c47a5f4c5063d3ef478ff11fcd31e8165fde7fc2a9af36a03938",
+      "bytes": 647
+    },
+    {
+      "path": "research/goods-equipment-dev25-final-manifest.json",
+      "sha256": "fce37de7ddab6df4ac7acb7c4cec5151e236b56e81240d7b38c11de264974f67",
+      "bytes": 13149
+    },
+    {
+      "path": "research/goods-equipment-source-contracts-dev25.json",
+      "sha256": "2785508a82d4decb904434bc17699723ba7b382731b3a85eb1797d108ab2b917",
+      "bytes": 11877
+    },
+    {
+      "path": "research/original-equipped-give-fixtures-dev26-private-final.json",
+      "sha256": "4f81d55b332095b629406daa40f279f1f65831c9ea5970b78b1e1a1168f7f990",
+      "bytes": 1824091
+    },
+    {
+      "path": "research/original-equipped-give-qol-dev26-private-final.json",
+      "sha256": "e035dff61747b600d548ddb1f44083a0c923a2ac11ba32d689e2dd1d9d425d51",
+      "bytes": 8132755
+    },
+    {
+      "path": "research/original-equipped-give-qol-dev26-v4-red.json",
+      "sha256": "8bdb93fe682ab8e14bb17e0a6e7d14f575466bee08b1c83680cc0b7d9dc524cd",
+      "bytes": 278997
+    },
+    {
+      "path": "research/party-name-controls-dev19-private-v2-green-review.json",
+      "sha256": "deefb7ebda02de9f74907676f3b4eb168929da57a721d1a4f1dcc5380e2574f6",
+      "bytes": 1194064
+    },
+    {
+      "path": "research/party-name-controls-dev19-v2-red-r2-review.json",
+      "sha256": "de0940b08b1872a366b2730b6fc12657d5b546bca93c54f2ab1e6ad515a131be",
+      "bytes": 1192783
+    },
+    {
+      "path": "research/party-name-dev19-private-build-review.json",
+      "sha256": "858f398f89ff13a6582368fca41714ca1e5a292f56728062824c226dadd8e346",
+      "bytes": 3896
+    },
+    {
+      "path": "research/party-name-dev19-private-v1-green-review.json",
+      "sha256": "66850caec93e4329686b83135defe28e6eec7cbb1a1c95595b2a1849b1c3b345",
+      "bytes": 1787660
+    },
+    {
+      "path": "research/party-name-dev19-services-private-v1-green-review.json",
+      "sha256": "c98774a6cf0dc3f6d58598dc5128760855b636c9a85c2f6e82b9b84eac11cc14",
+      "bytes": 1052776
+    },
+    {
+      "path": "research/party-name-dev19-services-v2-red-r3-review.json",
+      "sha256": "5df6b6294bd506a55334f1ed69a22584bd2cf23973a7f564b9b240694d286f20",
+      "bytes": 1052385
+    },
+    {
+      "path": "research/party-name-dev19-v2-red-r3-review.json",
+      "sha256": "743634b1dc0607891b263d65945b018293fb3d547eec6a49ae02681e8429c665",
+      "bytes": 1787065
+    },
+    {
+      "path": "research/party-name-label-dev19-private-final-manifest.json",
+      "sha256": "6a78010ad85fc17c2769ca6870454a2eca8e52256db252c72db876a9e71aa0f2",
+      "bytes": 11735
+    },
+    {
+      "path": "research/party-name-label-dev19-private-final.patch",
+      "sha256": "b7d433999bc4b10541a8f40aa46a40d5b6a59f4b7c4152354ecc70b309341af9",
+      "bytes": 3720
+    },
+    {
+      "path": "research/party-name-label-dev19-source-review.json",
+      "sha256": "376d41d07f526b6e313710ecc54be870e48e08a0201defaabf2df813f614ad22",
+      "bytes": 8083
+    },
+    {
+      "path": "research/redux-equipped-give-fixtures-dev26-private-final.json",
+      "sha256": "f2d5062680b4cac2ab176024805fc9596ea9963a8e02f77357c27523a287470f",
+      "bytes": 1823791
+    },
+    {
+      "path": "research/redux-equipped-give-qol-dev26-private-final.json",
+      "sha256": "784243a6216e914b0c503a32229d3517e1c8dbd6de12c8765df7ce3a8e7ae380",
+      "bytes": 8052886
+    },
+    {
+      "path": "research/redux-equipped-give-qol-dev26-v4-red.json",
+      "sha256": "7109b40e985af6015c8b7e40cd150270c3878b424861bc96d8596367b86796fe",
+      "bytes": 277259
+    },
+    {
+      "path": "tools/audit_redux_remaining_features.py",
+      "sha256": "cee7de24b947182fe1db97ce179ab0b05d7d74fd7a9540ad7d7290fa88651d91",
+      "bytes": 17751
+    },
+    {
+      "path": "tools/barter_delivery_qa_dev20.py",
+      "sha256": "b85c2890cb250af29455ef364f73f662559d7ee611a61af71cebd4d73be3de43",
+      "bytes": 8549
+    },
+    {
+      "path": "tools/battle_action_catalog_qa.py",
+      "sha256": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823",
+      "bytes": 40111
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "f01eabb392b0b1857f694a04724e5db408b41a32ddfb19f3344d69975b7543bc",
+      "bytes": 22133
+    },
+    {
+      "path": "tools/build_title_private_dev18.py",
+      "sha256": "5ac6f3da60246d6fcd80b6b1eb5b38ab6cd706c5d46214e1f7189e0211340cc4",
+      "bytes": 2934
+    },
+    {
+      "path": "tools/combined_menu_gear_qa_dev19.py",
+      "sha256": "fa3c27c4dd023b23698ba1cb71b92d6d016c616b9590521ce1b672825b08f0b8",
+      "bytes": 9611
+    },
+    {
+      "path": "tools/equipped_give_cases_dev26.py",
+      "sha256": "aab2c7fca29d9d6662cc1293be53be2409b61aca53a4e343c3bab211ad7c4e9b",
+      "bytes": 5153
+    },
+    {
+      "path": "tools/equipped_give_private_build_dev26.py",
+      "sha256": "e5b972f8770e7c537a71f9d798a6d9827917ba867e1f826b8d1ddedb6fd526a6",
+      "bytes": 5323
+    },
+    {
+      "path": "tools/equipped_give_qa_dev26.py",
+      "sha256": "2c08a03f4809f726e9097769aa2e209d608b7cbe74a5d3b82435bafe83ffa2a0",
+      "bytes": 3215
+    },
+    {
+      "path": "tools/freeze_combined_menu_gear_dev19.py",
+      "sha256": "70bf23cc893d1424e723e98cde3069ff8d7ec50cf02c62a5e0264ef68964df06",
+      "bytes": 9545
+    },
+    {
+      "path": "tools/freeze_party_name_proposal_dev19.py",
+      "sha256": "00b659b28bc0f0251cfc08946bd705887a06ae79f54ce981be290d252d042883",
+      "bytes": 12462
+    },
+    {
+      "path": "tools/goods_equipment_cases_dev25.py",
+      "sha256": "aa26ce69898747dc3e4421bccdb5560f2e238e86305eb5285572b86f1ba262eb",
+      "bytes": 14316
+    },
+    {
+      "path": "tools/goods_equipment_qa_dev25.py",
+      "sha256": "6afdae2ac581c50bd57327f4ced81f93cb1cccd5d2ff8d60bd7fdd39e790dcd7",
+      "bytes": 6700
+    },
+    {
+      "path": "tools/maternalbound_dialogue.py",
+      "sha256": "54038806cb18cb575c576c616f5c31b9c30ae0c957cecd2a6674b153efc2da87",
+      "bytes": 26455
+    },
+    {
+      "path": "tools/overworld_use_cases_dev24.py",
+      "sha256": "35b90e1578dd267a6f6058108c461d0ac58bcc8305552d67a98a328a63021d2c",
+      "bytes": 13174
+    },
+    {
+      "path": "tools/overworld_use_qa_dev24.py",
+      "sha256": "66548859083f45fc28fe6664af62838548c53d384b00e43fe9fdddf6bfc25aa6",
+      "bytes": 12185
+    },
+    {
+      "path": "tools/party_name_label_controls_dev19.py",
+      "sha256": "2f4d254b4026669544e1c7ad154097f3088fc4b58328ce92a1cd0fdd7fcdc171",
+      "bytes": 11296
+    },
+    {
+      "path": "tools/party_name_parents_qa_dev19.py",
+      "sha256": "c27afa3cb962e8d2fb35d0e5aca1014c50d57de1000da62cf8f8addc5827816c",
+      "bytes": 15728
+    },
+    {
+      "path": "tools/prepare_combined_menu_gear_dev19.py",
+      "sha256": "878a4215add5daca2d5fe68e3242026d56e66f0ab361231c595f1e7883a999a7",
+      "bytes": 5304
+    },
+    {
+      "path": "tools/prepare_equipped_give_qol_dev26.py",
+      "sha256": "50fad19f3e60e9169cbce295d59aae681759b77d5cf54004c41407b6241c42a4",
+      "bytes": 4888
+    },
+    {
+      "path": "tools/redux_naming_qa.py",
+      "sha256": "2e64a41ce31e54ee157899a92727ce941720abbd68fe32bd3d575f983c63f56e",
+      "bytes": 20030
+    },
+    {
+      "path": "tools/shop_transaction_qa_dev18.py",
+      "sha256": "0f7cdbf128474dc8a1f5402395132a2e41ad083bf6e4915af67c028df25b76fc",
+      "bytes": 16355
+    },
+    {
+      "path": "tools/status_service_cases_dev23.py",
+      "sha256": "d6f3a67f558c7a8672a22fda146bd8454471ce4668492b8528fd10f24ef7ce04",
+      "bytes": 16217
+    },
+    {
+      "path": "tools/status_service_qa_dev23.py",
+      "sha256": "825cd69ce0a6182f610e1898e676e1c296400a5996e233e6e5bd411570edfcfb",
+      "bytes": 10642
+    },
+    {
+      "path": "tools/transaction_menu_replay_dev20.py",
+      "sha256": "05ed1f6fbf4f3f26df120f2daca2905390fd6bdc15fdc9f1706aa825a90e2670",
+      "bytes": 3791
+    },
+    {
+      "path": "tools/write_equipped_give_manifest_dev26.py",
+      "sha256": "06d34d345412980e78a6d588c72881a980c7153850af89ae8898cb203d4995b8",
+      "bytes": 7552
+    }
+  ],
+  "independentRedBaselinesPreserved": true,
+  "rootOrOwnerInputsModified": false,
+  "fullConversionVerified": false,
+  "fullPlaythroughVerified": false,
+  "reproduction": [
+    {
+      "id": "party-parents",
+      "cases": 80,
+      "cold": 40,
+      "boundedObservations": 0,
+      "output": "research\\combined-menu-gear-dev19-v1-party-parents-review.json",
+      "sha256": "8dc28c3834f1e15655853f8e695d6c152a3022ac81c8387c1c3bb318beac10a0",
+      "passed": true,
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\party_name_parents_qa_dev19.py",
+        "--source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--builds",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds",
+        "--runtime",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-runtime",
+        "--original-assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak",
+        "--redux-assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\swirl-import-dev18-candidate3\\map-gas-teleport-swirl-candidate.pak",
+        "--scratch",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-qa\\party-parents",
+        "--output",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\combined-menu-gear-dev19-v1-party-parents-review.json"
+      ],
+      "logSha256": "3e17a38649e1d66b801e5386d1e8a2cc6c2398e042d0598f6350de589e7d9ac5"
+    },
+    {
+      "id": "party-services",
+      "cases": 48,
+      "cold": 24,
+      "boundedObservations": 0,
+      "output": "research\\combined-menu-gear-dev19-v1-party-services-review.json",
+      "sha256": "a9286d0fa890a2e9056025cac7c5c3e98175ba7b4aa9cee61ff58bab20fdc1eb",
+      "passed": true,
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\party_name_parents_qa_dev19.py",
+        "--source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--builds",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds",
+        "--runtime",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-runtime",
+        "--original-assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak",
+        "--redux-assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\swirl-import-dev18-candidate3\\map-gas-teleport-swirl-candidate.pak",
+        "--scratch",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-qa\\party-services",
+        "--output",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\combined-menu-gear-dev19-v1-party-services-review.json",
+        "--services"
+      ],
+      "logSha256": "812725d1ed57620964c67dddf80243bb187106ba0bb4dcdc6e42bcba678585b8"
+    },
+    {
+      "id": "party-controls",
+      "cases": 8,
+      "cold": 0,
+      "boundedObservations": 360,
+      "output": "research\\combined-menu-gear-dev19-v1-party-controls-review.json",
+      "sha256": "f746b139190cb741ad5823d6b3df819584679532818dd2ed2406a993ceb55ba9",
+      "passed": true,
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\party_name_label_controls_dev19.py",
+        "--source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--builds",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds",
+        "--runtime",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-runtime",
+        "--original-assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak",
+        "--redux-assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\swirl-import-dev18-candidate3\\map-gas-teleport-swirl-candidate.pak",
+        "--scratch",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-qa\\party-controls",
+        "--output",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\combined-menu-gear-dev19-v1-party-controls-review.json"
+      ],
+      "logSha256": "916268d02ed79c6117e58d8e95a337b78c7c0eaf44bfab2c6226a2aa987e2077"
+    },
+    {
+      "id": "gear-player-original",
+      "mode": "player",
+      "profile": "original",
+      "cases": 183,
+      "cold": 29,
+      "warmColdComparisons": 29,
+      "output": "research\\combined-menu-gear-dev19-v1-gear-player-original-review.json",
+      "sha256": "2527c2ca34f0a7b9fa2903a4003f39099d631472dc39e5bc8334e8bbb5193b4d",
+      "passed": true,
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\equipped_give_qa_dev26.py",
+        "--build",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\player",
+        "--native-source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--executed-source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak",
+        "--runtime",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-runtime",
+        "--project",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\MaternalBound-Redux\\Project",
+        "--cases",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\original-equipped-give-fixtures-dev26-private-final.json",
+        "--scratch",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-qa\\gear-player-original",
+        "--output",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\combined-menu-gear-dev19-v1-gear-player-original-review.json",
+        "--jobs",
+        "3",
+        "--original"
+      ],
+      "fixtureSha256": "4f81d55b332095b629406daa40f279f1f65831c9ea5970b78b1e1a1168f7f990",
+      "logSha256": "be6667583c55be154322c93237dda168d4460f97c4d4f1bbf8804eb9299f9eed"
+    },
+    {
+      "id": "gear-player-redux",
+      "mode": "player",
+      "profile": "redux",
+      "cases": 183,
+      "cold": 29,
+      "warmColdComparisons": 29,
+      "output": "research\\combined-menu-gear-dev19-v1-gear-player-redux-review.json",
+      "sha256": "d8e33f23726ed1e02cf105d30c3d10f57ea8b80345846347851bc9f82b95afc5",
+      "passed": true,
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\equipped_give_qa_dev26.py",
+        "--build",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\player",
+        "--native-source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--executed-source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\swirl-import-dev18-candidate3\\map-gas-teleport-swirl-candidate.pak",
+        "--runtime",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-runtime",
+        "--project",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\MaternalBound-Redux\\Project",
+        "--cases",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\redux-equipped-give-fixtures-dev26-private-final.json",
+        "--scratch",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-qa\\gear-player-redux",
+        "--output",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\combined-menu-gear-dev19-v1-gear-player-redux-review.json",
+        "--jobs",
+        "3"
+      ],
+      "fixtureSha256": "f2d5062680b4cac2ab176024805fc9596ea9963a8e02f77357c27523a287470f",
+      "logSha256": "f1024a3cf7dfa1cb6610125184b594cf9a4921c212e5dd8ce9b8ef46277171ab"
+    },
+    {
+      "id": "gear-observer-original",
+      "mode": "observer",
+      "profile": "original",
+      "cases": 183,
+      "cold": 29,
+      "warmColdComparisons": 29,
+      "output": "research\\combined-menu-gear-dev19-v1-gear-observer-original-review.json",
+      "sha256": "5eec9082549ab8559221731a17a2080af6d739948a25ce735416918a5ba78cca",
+      "passed": true,
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\equipped_give_qa_dev26.py",
+        "--build",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\observer",
+        "--native-source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--executed-source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\interpreter-gap-dev16-fresh-original.pak",
+        "--runtime",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-runtime",
+        "--project",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\MaternalBound-Redux\\Project",
+        "--cases",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\original-equipped-give-fixtures-dev26-private-final.json",
+        "--scratch",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-qa\\gear-observer-original",
+        "--output",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\combined-menu-gear-dev19-v1-gear-observer-original-review.json",
+        "--jobs",
+        "3",
+        "--original"
+      ],
+      "fixtureSha256": "4f81d55b332095b629406daa40f279f1f65831c9ea5970b78b1e1a1168f7f990",
+      "logSha256": "be6667583c55be154322c93237dda168d4460f97c4d4f1bbf8804eb9299f9eed"
+    },
+    {
+      "id": "gear-observer-redux",
+      "mode": "observer",
+      "profile": "redux",
+      "cases": 183,
+      "cold": 29,
+      "warmColdComparisons": 29,
+      "output": "research\\combined-menu-gear-dev19-v1-gear-observer-redux-review.json",
+      "sha256": "db98ab51e76ca3ce77511fec0bff1f3962c912f852f359a1bb0c5f5b120becbe",
+      "passed": true,
+      "command": [
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Scripts\\python.exe",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\equipped_give_qa_dev26.py",
+        "--build",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\observer",
+        "--native-source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--executed-source",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+        "--assets",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\swirl-import-dev18-candidate3\\map-gas-teleport-swirl-candidate.pak",
+        "--runtime",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-runtime",
+        "--project",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\MaternalBound-Redux\\Project",
+        "--cases",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\redux-equipped-give-fixtures-dev26-private-final.json",
+        "--scratch",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-qa\\gear-observer-redux",
+        "--output",
+        "C:\\Users\\crono\\Desktop\\Projects\\eb\\research\\combined-menu-gear-dev19-v1-gear-observer-redux-review.json",
+        "--jobs",
+        "3"
+      ],
+      "fixtureSha256": "f2d5062680b4cac2ab176024805fc9596ea9963a8e02f77357c27523a287470f",
+      "logSha256": "f1024a3cf7dfa1cb6610125184b594cf9a4921c212e5dd8ce9b8ef46277171ab"
+    }
+  ],
+  "limits": [
+    "128 selected real Goods/Give/PSI/doctor/nurse/healer name parents include64 fresh-process save16 continuations. 360 bounded producer/render/highlight observations are unit/integration controls, not extra naturally reached story parents.",
+    "The366 frozen dev26 fixtures execute once per complete player/observer library:732 parent executions and116 cold continuations/explicit warm-cold gear comparisons. Distinct fixture count is366. No replacement native objects are used.",
+    "Give mode2 remains its separate raw-name/HPPP renderer. Generic ASCII menus, existing tiny titles and serialized structures remain unchanged in explicit controls.",
+    "The equipment changes intentionally correct Original-source self-Give/full-bag equipment location and post-compaction stat recalculation; they are not presented as missing Redux parity.",
+    "Prepared legal party/name/inventory/status prerequisites precede actual input/menu/text/effect execution. Full natural story/map/controller reachability, every item/stat/save boundary, delivered audio, an original CPU fullUI execution and a full playthrough remain unproved.",
+    "Existing pre-fix saved ordinary labels already containing question marks require reopening their parent menu; there is no migration or new save field."
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "format": "private-complete-title-builds-dev18-v1",
+  "source": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source",
+  "builds": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds",
+  "runtime": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-runtime",
+  "results": [
+    {
+      "mode": "player",
+      "commands": [
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "-S",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source\\port\\unix",
+          "-B",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\player",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_C_COMPILER=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\gcc.exe",
+          "-DCMAKE_MAKE_PROGRAM=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\ninja.exe",
+          "-DSDL2_DIR=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\SDL2-2.32.10\\x86_64-w64-mingw32\\lib\\cmake\\SDL2",
+          "-DEB_RUNTIME_ASSETS=ON",
+          "-DEB_QA_OBSERVER=OFF"
+        ],
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "--build",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\player",
+          "--target",
+          "earthbound",
+          "-j4"
+        ]
+      ],
+      "executableSha256": "6aceb1c3e96f2ecfad54b9b79ac65d46516335b9ab43d07446591b960c926cdf",
+      "archiveSha256": "569e7605ff90c1fdca3f0d55bb9fb26f450d65be431ec81a365d53a015abbedf",
+      "cmakeCacheSha256": "3bbd90b15b52d28a5ecfda5c3d98ba4215af8c2774a474b4383087edd44d0622",
+      "compileCommandsSha256": "85001705c1ccd4f4307551b5336876bf027fc3966a3febb2f142837792af6df8"
+    },
+    {
+      "mode": "observer",
+      "commands": [
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "-S",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-source\\port\\unix",
+          "-B",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\observer",
+          "-G",
+          "Ninja",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_C_COMPILER=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\gcc.exe",
+          "-DCMAKE_MAKE_PROGRAM=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\mingw64\\bin\\ninja.exe",
+          "-DSDL2_DIR=C:\\Users\\crono\\Desktop\\Projects\\eb\\tools\\SDL2-2.32.10\\x86_64-w64-mingw32\\lib\\cmake\\SDL2",
+          "-DEB_RUNTIME_ASSETS=ON",
+          "-DEB_QA_OBSERVER=ON"
+        ],
+        [
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\native-source\\.venv\\Lib\\site-packages\\cmake\\data\\bin\\cmake.exe",
+          "--build",
+          "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\combined-menu-gear-dev19-v1-builds\\observer",
+          "--target",
+          "earthbound",
+          "-j4"
+        ]
+      ],
+      "executableSha256": "9ee948d59a06bc41cdd8b95713aa3176b61a90eac859371613be202481bbd8b3",
+      "archiveSha256": "57407b8fc201cf37f14e36dd7089ee797e363e3d2b0f36bf138c7c95d0bb65b6",
+      "cmakeCacheSha256": "e89ff9b1eb19ac99c599688616dd12607b9dae58fac95d71319d75da29ac75b3",
+      "compileCommandsSha256": "c4ee1f0280b41dd0259d3216a0289def210633af67fc66de0912bae528d5b903"
+    }
+  ],
+  "toolSha256": "5ac6f3da60246d6fcd80b6b1eb5b38ab6cd706c5d46214e1f7189e0211340cc4",
+  "rootBuildsModified": false
+}

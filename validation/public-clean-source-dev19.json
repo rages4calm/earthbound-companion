@@ -1,0 +1,60 @@
+{
+  "Passed": true,
+  "NativeBaseCommit": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "TampSubmoduleCommit": "32034abf367d6bf2ee7a25cce8f64482cb955a65",
+  "FullNativePatchSha256": "d7855aacf6473519a8a0d6caa9928326ea0de425bf9b2ad9385d63d8e17ffad4",
+  "FreshBaseArchiveAndSubmodule": true,
+  "FullCleanNativeCompilation": true,
+  "RomNeededForCompilation": false,
+  "LibrarySha256": "8574550a6397204f9f356b433cd1c12d7ff1596335b616dc1c50eb2f77a89f62",
+  "ExecutableSha256": "9e523ee79c1e9510139f857000a03e1bd8f100aec8c386a452229bb6b7f33cfb",
+  "Checks": [
+    {
+      "Mode": "original",
+      "Test": "savestate",
+      "Passed": true
+    },
+    {
+      "Mode": "original",
+      "Test": "keyitems",
+      "Passed": true
+    },
+    {
+      "Mode": "original",
+      "Test": "encounters",
+      "Passed": true
+    },
+    {
+      "Mode": "original",
+      "Test": "screen-transitions",
+      "Passed": true
+    },
+    {
+      "Mode": "redux",
+      "Test": "savestate",
+      "Passed": true
+    },
+    {
+      "Mode": "redux",
+      "Test": "keyitems",
+      "Passed": true
+    },
+    {
+      "Mode": "redux",
+      "Test": "encounters",
+      "Passed": true
+    },
+    {
+      "Mode": "redux",
+      "Test": "screen-transitions",
+      "Passed": true
+    }
+  ],
+  "OwnerSavesTouched": false,
+  "SharedBuildEdited": false,
+  "FullPlaythroughVerified": false,
+  "Limits": [
+    "Clean commit archive plus the exact complete frozen dev19 patch and pinned submodule. Runtime-only checks use immutable local packs. Fresh archive version stamping/path metadata differ from the shipping candidate; this build does not replace the tested player binary.",
+    "No complete public-machine dependency provisioner or full story parity is claimed."
+  ]
+}

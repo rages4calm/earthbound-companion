@@ -10,3 +10,6 @@ scripts/** -text whitespace=cr-at-eol
 patches/*.patch -text
 # New checkpoint receipts preserve the same bytes as their local evidence.
 validation/*dev18*.json -text whitespace=cr-at-eol
+
+validation/*dev19*.json -text whitespace=cr-at-eol
+scripts/party_name_parents_qa_dev19.py -text whitespace=cr-at-eol,-blank-at-eof

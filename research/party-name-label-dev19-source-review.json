@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "proof": "dev19-raw-party-name-menu-source-contract",
+  "upstreamRevision": "897d00833f4a08a0a92f106abf631629a6a6a041",
+  "bridgeSha256": "081177d81cc462359906a855e22a4045c4c18a325f0296e071a753004e9e6179",
+  "roms": {
+    "original": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+    "redux": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab"
+  },
+  "exactMachineHookChecks": [
+    {
+      "address": 12657879,
+      "originalInstruction": "STZ temporary_text_buffer+5",
+      "reduxInstruction": "STZ temporary_text_buffer+6",
+      "originalInstructionSha256": "eae1bafebb7996b8f95f19c70eb3bf1e6c2b9d37bc6eac4c8684617bba4d8fcd",
+      "reduxInstructionSha256": "8e2305f4e7a2cf341c10ada4f5424d0cb8b76bdb0dfb19f5fc456b6adcc9be77",
+      "actualMachineBytesChecked": true
+    },
+    {
+      "address": 12658840,
+      "originalInstruction": "STZ temporary_text_buffer+5",
+      "reduxInstruction": "STZ temporary_text_buffer+6",
+      "originalInstructionSha256": "eae1bafebb7996b8f95f19c70eb3bf1e6c2b9d37bc6eac4c8684617bba4d8fcd",
+      "reduxInstructionSha256": "8e2305f4e7a2cf341c10ada4f5424d0cb8b76bdb0dfb19f5fc456b6adcc9be77",
+      "actualMachineBytesChecked": true
+    }
+  ],
+  "packedFontChecks": [
+    {
+      "profile": "original",
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "romSha256": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+      "widthPointer": 14748794,
+      "glyphPointer": 14748890,
+      "stride": 32,
+      "height": 16,
+      "convertedGlyphCount": 96,
+      "widthsSha256": "fbd546dc4542376229e909fd634c9fec393c723729fd139cb8f5fa9765dd8bbb",
+      "graphicsSha256": "af55a1059cd997d5cfd1b64e5c14f1f52fef69f3724498e863b69550410375de",
+      "exactSourceFontBytesMatch": true
+    },
+    {
+      "profile": "redux",
+      "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "romSha256": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+      "widthPointer": 13590743,
+      "glyphPointer": 14732480,
+      "stride": 32,
+      "height": 16,
+      "convertedGlyphCount": 128,
+      "widthsSha256": "88234f5fc17474a8918e63b60bc17008fa3547d200de51734d53d6887e19f2a6",
+      "graphicsSha256": "664b47d526cbe8c932c21baed174e4b4ca078e5064270d2a8364bcf88755b8eb",
+      "exactSourceFontBytesMatch": true
+    }
+  ],
+  "sourceSelectableGlyphCount": 89,
+  "fixtureDistinctGlyphCount": 40,
+  "fixtureExtendedKeyboardGlyphs": [
+    172,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    183,
+    184,
+    185,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    199
+  ],
+  "allPreparedReduxNameGlyphsSelectable": true,
+  "sourceNameCapacity": 6,
+  "sourceMaximumNamePixels": 40,
+  "activeRawNameMenuProducers": [
+    {
+      "file": "src/game/battle.c",
+      "symbol": "char_select_overworld_prepare",
+      "source": "CHAR_SELECT_PROMPT \u2192 raw GET_PARTY_CHARACTER_NAME \u2192 six-byte copy/terminator \u2192 ADD_MENU_ITEM \u2192 PRINT_MENU_ITEMS",
+      "consumers": [
+        "battle_targeting.c TGT_ENTER/ACTION_TARGET_ONE ally: ordinary Goods Use and PSI Lifeup/Healing",
+        "game_main.c debug Goods developer-only"
+      ],
+      "actualParents": [
+        "Goods refreshing herb",
+        "PSI Lifeup alpha",
+        "PSI Healing alpha",
+        "PSI Healing beta cancel"
+      ]
+    },
+    {
+      "file": "src/game/display_text.c",
+      "symbol": "party_selector_overworld_prepare",
+      "source": "PARTY_CHARACTER_SELECTOR mode1 \u2192 raw GET_PARTY_CHARACTER_NAME \u2192 six-byte copy/terminator \u2192 ADD_MENU_ITEM \u2192 PRINT_MENU_ITEMS",
+      "consumers": [
+        "CC1A00/01 mode1 through cc_1a_dispatch",
+        "source doctor C90000\u2192C9105F",
+        "source nurse C9008D\u2192C9128D",
+        "source healer C916A3\u2192C91905",
+        "release-disabled/developer debug status/level callers"
+      ],
+      "actualParents": [
+        "complete Onett doctor illness5 PC2 wrapper",
+        "complete Onett nurse revive PC1 wrapper",
+        "complete Onett healer treatment0 PC1 wrapper"
+      ]
+    }
+  ],
+  "sourceReferences": [
+    {
+      "path": "asm/text/character_select_prompt.asm",
+      "sha256": "4d55a12a8bf5c2d4070f68ee8fb86de83de679f3798676fc7909c54d9f034aac"
+    },
+    {
+      "path": "asm/text/party_character_selector.asm",
+      "sha256": "263fdab2718083e452303ecd877a217f193db9f4d9f353a5e32dda85f3e61944"
+    },
+    {
+      "path": "asm/text/get_party_character_name.asm",
+      "sha256": "11a4a178d7b1bd54c12b9bbae7e72efb10932f8840485d979aceb07a0ba9608f"
+    },
+    {
+      "path": "asm/text/menu/add_menu_option.asm",
+      "sha256": "6ab2b78f3a839f3c259e0a96a21859870a98602ad0d11a36296fa98898117dae"
+    },
+    {
+      "path": "asm/text/print_menu_items.asm",
+      "sha256": "00e6b4b52193f763fd3fe04ebd703adb601ca94e4387c796bd652e89f77ce9bf"
+    },
+    {
+      "path": "asm/battle/determine_targetting.asm",
+      "sha256": "342641331b6780226d1e432c261bcf74780444ae53555e606af343f16c546d55"
+    }
+  ],
+  "pinnedReferences": [
+    {
+      "path": "ccscript/main.ccs",
+      "sha256": "eed62cec9d49b138534418f39c9929a4c4ad6e573171b45708180dc3e63a97a3"
+    },
+    {
+      "path": "ccscript/redux/six_letters.ccs",
+      "sha256": "ab4b6cbd51c639391428e3e3b2c77310fd07bdb689182dfdbb4e269591e0b20a"
+    },
+    {
+      "path": "ccscript/redux/naming_screen_table.ccs",
+      "sha256": "11deeee3900d5c6e10bfa8e151121155d53bfd40989960369898856c7b565028"
+    },
+    {
+      "path": "ccscript/essential/stdext.ccs",
+      "sha256": "a3c4f321c3275d3503046e21ad1737cc8308d61e712d1884ed962d3a33c5e93c"
+    },
+    {
+      "path": "ccscript/data/data_48.ccs",
+      "sha256": "e458c2b3024c48eeedb2e651e64b3847fd3e61ec75153ce51ef0fcceea32db7a"
+    },
+    {
+      "path": "ccscript/data/data_49.ccs",
+      "sha256": "c7a2aabaa3b2e5676786faf30c69b02ea575e5a4c3b19d331816b6972704f43f"
+    },
+    {
+      "path": "ccscript/bugfixes/text_highlights_fix.ccs",
+      "sha256": "f15e26969ada128dee09444393082e4a011ad3c10f3a7f3dc931cfce9266c3ca"
+    }
+  ],
+  "focusedProducerSearch": "All C EB-to-ASCII conversions of maternalbound_character_name/name_of or pet_name feeding add_menu_item were reviewed; two producer blocks above. Ending/raw battle text and already-reviewed title/file-slot paths remain separate. This is not a whole-program reachability proof.",
+  "implementation": {
+    "files": [
+      "src/game/battle.c",
+      "src/game/display_text.c",
+      "src/game/window.c"
+    ],
+    "representation": "Existing bounded single-byte label: reversible ASCII plus preserved high EB glyphs, using unchanged eb_to_title_buf.",
+    "consumer": "Only normal party-name windows51 and41..43 with PC1..4/King7 userdata join the existing file-slot glyph decoder; both actual printing and width-aware highlight use it.",
+    "schema": "MenuItem, WindowInfo and stateformat16 unchanged; no new fields, packs, assets, dialogue or Give/HPPP opcode changes."
+  },
+  "limits": [
+    "Machine-byte checks bind the actual pinned name-terminator hooks; full original CPU UI rasterization/parent execution is not claimed. Actual pixels use source-exact packed-font bytes and an independent compositor.",
+    "Complete selected native parents prepare legal party/status/inventory prerequisites before entry; natural map acquisition, all doctor towns, all PSI/item branches and physical controls remain unproved.",
+    "The direct King/pet branch and counts1..4 exercise source helper contracts, not a claim that King belongs to the ordinary player-controlled party.",
+    "Save16 cold captures restore actual rendered-menu state in fresh processes; previously captured pre-fix labels already containing question marks require the parent menu to be rebuilt to recover source glyphs."
+  ],
+  "rootOrOwnerInputsModified": false
+}

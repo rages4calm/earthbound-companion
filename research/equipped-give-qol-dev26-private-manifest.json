@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "dev26-private-intentional-equipped-give-freeze",
+  "baseRuntime": "dev17-v4",
+  "intentionalSourceBugCorrection": true,
+  "fullParents": 366,
+  "coldContinuationsIncluded": 58,
+  "warmColdComparisons": 58,
+  "baselineRedParents": 12,
+  "expectedRedFailures": 8,
+  "unchangedRedControls": 4,
+  "productionChanged": false,
+  "sharedBuildChanged": false,
+  "ownerSaveChanged": false,
+  "verifiedLedger": [
+    {
+      "profile": "original",
+      "report": "research/original-equipped-give-qol-dev26-private-final.json",
+      "fixtures": "research/original-equipped-give-fixtures-dev26-private-final.json",
+      "baselineRedReport": "research/original-equipped-give-qol-dev26-v4-red.json",
+      "greenParents": 183,
+      "coldIncluded": 29,
+      "warmColdComparisons": 29,
+      "baselineRedParents": 6,
+      "expectedRedFailures": 4,
+      "unchangedRedControls": 2,
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "assetsSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "privateBuild": {
+        "driverSourceSha256": "8be0a427fa35643ef99235165ee81bc7d7f95ca21131c95e2aaba8f1ac4705d5",
+        "executableSha256": "eaccf7827c13a9d69621d6470139006be9a8b553809948d48af3439ff5df2048",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Private inventory.c object in copied frozen archive; all other archive members, platform objects and production routines unchanged.",
+        "correctedInventory": {
+          "path": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\goods-equipment-dev26-private-source-r2\\src\\game\\inventory.c",
+          "sha256": "0ce9700c84c3b14f2df4d3a67ba12fda550da26a8880ba04261e8aebb934856c",
+          "replacedMember": "inventory.c.obj",
+          "originalObjectSha256": "f476a4d1ee05dcda1294851bf0a4474153b81d0cfb788e4a773603cfe3d46553",
+          "correctedObjectSha256": "a66a95bd3793e0c67f5b73dba3523706c3c575fe7b5639c668b559002b4b56d3",
+          "privateLibrarySha256": "a4e8a6f8b986bf70b42a334501890c9e4cc4e53df07d5e405826c0027065d92c",
+          "archiveMemberCount": 84,
+          "otherMembersByteIdentical": true
+        },
+        "includeSourceSnapshot": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev17-v4-complete-source",
+        "includeBuildSnapshot": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev17-v4-build\\companion"
+      }
+    },
+    {
+      "profile": "redux",
+      "report": "research/redux-equipped-give-qol-dev26-private-final.json",
+      "fixtures": "research/redux-equipped-give-fixtures-dev26-private-final.json",
+      "baselineRedReport": "research/redux-equipped-give-qol-dev26-v4-red.json",
+      "greenParents": 183,
+      "coldIncluded": 29,
+      "warmColdComparisons": 29,
+      "baselineRedParents": 6,
+      "expectedRedFailures": 4,
+      "unchangedRedControls": 2,
+      "runtimeSha256": {
+        "player.exe": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "observer.exe": "54553cfca96f6eab08842bb88decc37d59ab8cb4ede0bdf876dac19de9bd2f4a"
+      },
+      "assetsSha256": "3ed273eaedad5131a13dc07b6916377130857929854886b139b30a723482f8b9",
+      "privateBuild": {
+        "driverSourceSha256": "a390ba38f0559782670bd85831d71259a638085a4b48d77b2c9e17373790270d",
+        "executableSha256": "f4e619b532f318ffb8c2a6819c30e6ee4b51ecfe3d5cb6ef320e615b59efdc79",
+        "productionExecutableSha256": "970db06806793b2cbbad643c0a460b8f84bb6fa980ba49b6d09d1ca3ea88644d",
+        "productionLibrarySha256": "b0cae8b3cce2c5a480b47cff9e7d6d96685ca123bb94031c23a035889ec0e3c0",
+        "platformMainObjectSha256": "8387f7f5405f60e59a059c84fcf6791a1db2f6ca96015872520398cbb2ba6feb",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Private inventory.c object in copied frozen archive; all other archive members, platform objects and production routines unchanged.",
+        "correctedInventory": {
+          "path": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\goods-equipment-dev26-private-source-r2\\src\\game\\inventory.c",
+          "sha256": "0ce9700c84c3b14f2df4d3a67ba12fda550da26a8880ba04261e8aebb934856c",
+          "replacedMember": "inventory.c.obj",
+          "originalObjectSha256": "f476a4d1ee05dcda1294851bf0a4474153b81d0cfb788e4a773603cfe3d46553",
+          "correctedObjectSha256": "a66a95bd3793e0c67f5b73dba3523706c3c575fe7b5639c668b559002b4b56d3",
+          "privateLibrarySha256": "a4e8a6f8b986bf70b42a334501890c9e4cc4e53df07d5e405826c0027065d92c",
+          "archiveMemberCount": 84,
+          "otherMembersByteIdentical": true
+        },
+        "includeSourceSnapshot": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev17-v4-complete-source",
+        "includeBuildSnapshot": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\audit-dev17-v4-build\\companion"
+      }
+    }
+  ],
+  "candidateProvenance": {
+    "baselineSourceSha256": "54dc872979eb93e273bddf603cf7bfbd6530a6161cef48d9038d6bb08e5df93d",
+    "candidateSourceSha256": "0ce9700c84c3b14f2df4d3a67ba12fda550da26a8880ba04261e8aebb934856c",
+    "candidatePath": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\goods-equipment-dev26-private-source-r2\\src\\game\\inventory.c",
+    "leasedFunction": "swap_item_into_equipment",
+    "outsideFunctionTextIdentical": true,
+    "lineEndingNormalizationOnlyOutsideFunction": true,
+    "patchSha256": "d672633d27ee2d85687fca0b9039b7f2cbf1f68f644c3184aba3912ba405fcd3",
+    "globalFindEmptyHelperUnchanged": true,
+    "sharedSourceModified": false
+  },
+  "frozenSourceFaithfulProof": {
+    "path": "research/goods-equipment-dev25-final-manifest.json",
+    "sha256": "fce37de7ddab6df4ac7acb7c4cec5151e236b56e81240d7b38c11de264974f67"
+  },
+  "files": [
+    {
+      "path": "tools/equipped_give_qa_dev26.py",
+      "sha256": "2c08a03f4809f726e9097769aa2e209d608b7cbe74a5d3b82435bafe83ffa2a0",
+      "bytes": 3215
+    },
+    {
+      "path": "tools/equipped_give_cases_dev26.py",
+      "sha256": "aab2c7fca29d9d6662cc1293be53be2409b61aca53a4e343c3bab211ad7c4e9b",
+      "bytes": 5153
+    },
+    {
+      "path": "tools/equipped_give_private_build_dev26.py",
+      "sha256": "e5b972f8770e7c537a71f9d798a6d9827917ba867e1f826b8d1ddedb6fd526a6",
+      "bytes": 5323
+    },
+    {
+      "path": "tools/prepare_equipped_give_qol_dev26.py",
+      "sha256": "50fad19f3e60e9169cbce295d59aae681759b77d5cf54004c41407b6241c42a4",
+      "bytes": 4888
+    },
+    {
+      "path": "tools/write_equipped_give_manifest_dev26.py",
+      "sha256": "06d34d345412980e78a6d588c72881a980c7153850af89ae8898cb203d4995b8",
+      "bytes": 7552
+    },
+    {
+      "path": "tools/goods_equipment_qa_dev25.py",
+      "sha256": "6afdae2ac581c50bd57327f4ced81f93cb1cccd5d2ff8d60bd7fdd39e790dcd7",
+      "bytes": 6700
+    },
+    {
+      "path": "tools/goods_equipment_cases_dev25.py",
+      "sha256": "aa26ce69898747dc3e4421bccdb5560f2e238e86305eb5285572b86f1ba262eb",
+      "bytes": 14316
+    },
+    {
+      "path": "tools/overworld_use_qa_dev24.py",
+      "sha256": "66548859083f45fc28fe6664af62838548c53d384b00e43fe9fdddf6bfc25aa6",
+      "bytes": 12185
+    },
+    {
+      "path": "tools/barter_delivery_qa_dev20.py",
+      "sha256": "b85c2890cb250af29455ef364f73f662559d7ee611a61af71cebd4d73be3de43",
+      "bytes": 8549
+    },
+    {
+      "path": "tools/shop_transaction_qa_dev18.py",
+      "sha256": "0f7cdbf128474dc8a1f5402395132a2e41ad083bf6e4915af67c028df25b76fc",
+      "bytes": 16355
+    },
+    {
+      "path": "tools/transaction_menu_replay_dev20.py",
+      "sha256": "05ed1f6fbf4f3f26df120f2daca2905390fd6bdc15fdc9f1706aa825a90e2670",
+      "bytes": 3791
+    },
+    {
+      "path": "tools/battle_action_catalog_qa.py",
+      "sha256": "cb0730115b2d73cd43a51843318d1990586580ce27b2be386be9fbe4e46a7823",
+      "bytes": 40111
+    },
+    {
+      "path": "tools/build_maternalbound_pack.py",
+      "sha256": "f01eabb392b0b1857f694a04724e5db408b41a32ddfb19f3344d69975b7543bc",
+      "bytes": 22133
+    },
+    {
+      "path": "tools/maternalbound_dialogue.py",
+      "sha256": "54038806cb18cb575c576c616f5c31b9c30ae0c957cecd2a6674b153efc2da87",
+      "bytes": 26455
+    },
+    {
+      "path": "research/equipped-give-qol-dev26-evidence.md",
+      "sha256": "164721cff89d25e1fdf8169223bed76264c3e58a808ac14355e6a9e18160110f",
+      "bytes": 5309
+    },
+    {
+      "path": "research/goods-equipment-dev25-final-manifest.json",
+      "sha256": "fce37de7ddab6df4ac7acb7c4cec5151e236b56e81240d7b38c11de264974f67",
+      "bytes": 13149
+    },
+    {
+      "path": "research/goods-equipment-source-contracts-dev25.json",
+      "sha256": "2785508a82d4decb904434bc17699723ba7b382731b3a85eb1797d108ab2b917",
+      "bytes": 11877
+    },
+    {
+      "path": "research/original-equipped-give-qol-dev26-private-final.json",
+      "sha256": "e035dff61747b600d548ddb1f44083a0c923a2ac11ba32d689e2dd1d9d425d51",
+      "bytes": 8132755
+    },
+    {
+      "path": "research/original-equipped-give-fixtures-dev26-private-final.json",
+      "sha256": "4f81d55b332095b629406daa40f279f1f65831c9ea5970b78b1e1a1168f7f990",
+      "bytes": 1824091
+    },
+    {
+      "path": "research/original-equipped-give-qol-dev26-v4-red.json",
+      "sha256": "8bdb93fe682ab8e14bb17e0a6e7d14f575466bee08b1c83680cc0b7d9dc524cd",
+      "bytes": 278997
+    },
+    {
+      "path": "research/redux-equipped-give-qol-dev26-private-final.json",
+      "sha256": "784243a6216e914b0c503a32229d3517e1c8dbd6de12c8765df7ce3a8e7ae380",
+      "bytes": 8052886
+    },
+    {
+      "path": "research/redux-equipped-give-fixtures-dev26-private-final.json",
+      "sha256": "f2d5062680b4cac2ab176024805fc9596ea9963a8e02f77357c27523a287470f",
+      "bytes": 1823791
+    },
+    {
+      "path": "research/redux-equipped-give-qol-dev26-v4-red.json",
+      "sha256": "7109b40e985af6015c8b7e40cd150270c3878b424861bc96d8596367b86796fe",
+      "bytes": 277259
+    },
+    {
+      "path": "research/equipped-give-qol-dev26-candidate.patch",
+      "sha256": "d672633d27ee2d85687fca0b9039b7f2cbf1f68f644c3184aba3912ba405fcd3",
+      "bytes": 2823
+    },
+    {
+      "path": "research/equipped-give-qol-dev26-provenance.json",
+      "sha256": "c8e303d31f80c47a5f4c5063d3ef478ff11fcd31e8165fde7fc2a9af36a03938",
+      "bytes": 647
+    }
+  ],
+  "limits": [
+    "Private-only intentional Original-source QoL correction. Frozen parity evidence is unchanged; production integration/full-build checks are not yet performed.",
+    "Actual prepared complete parents and production children/menus/platform input/serialization. No post-entry outcome injection or natural reachability claim.",
+    "Cold/comparison counts are included in parent totals. Source review is not original CPU execution; no all-items/stat-boundaries/malformed-save/pixels/audio/observer/full-playthrough claim."
+  ]
+}

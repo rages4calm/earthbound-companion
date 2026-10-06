@@ -1,0 +1,129 @@
+--- a/src/game/battle.c
++++ b/src/game/battle.c
+@@ -543,9 +543,11 @@
+         uint8_t member_id = game_state.party_members[i];
+         char name_buf[8];
+         if (member_id >= 1 && member_id <= 4) {
+-            for (int j = 0; j < maternalbound_name_capacity(); j++)
+-                name_buf[j] = eb_char_to_ascii(maternalbound_character_name(member_id - 1)[j]);
+-            name_buf[maternalbound_name_capacity()] = '\0';
++            /* CHAR_SELECT_PROMPT copies raw name glyphs before ADD_MENU_ITEM.
++             * Use the bounded lossless byte encoding also used by titles;
++             * this target window's renderer decodes it without an ASCII loss. */
++            eb_to_title_buf(maternalbound_character_name(member_id - 1),
++                            maternalbound_name_capacity(), name_buf, sizeof(name_buf));
+         } else {
+             name_buf[0] = '\0';
+         }
+--- a/src/game/display_text.c
++++ b/src/game/display_text.c
+@@ -1500,9 +1500,12 @@
+ 
+         char name_buf[7];
+         if (member_id >= 1 && member_id <= 4) {
+-            eb_to_ascii_buf(maternalbound_character_name(member_id - 1), maternalbound_name_capacity(), name_buf);
++            /* PARTY_CHARACTER_SELECTOR copies source name glyphs verbatim.
++             * Preserve high glyphs in this bounded name-only menu label. */
++            eb_to_title_buf(maternalbound_character_name(member_id - 1),
++                            maternalbound_name_capacity(), name_buf, sizeof(name_buf));
+         } else if (member_id == PARTY_MEMBER_KING) {
+-            eb_to_ascii_buf(game_state.pet_name, 6, name_buf);
++            eb_to_title_buf(game_state.pet_name, 6, name_buf, sizeof(name_buf));
+             name_buf[maternalbound_name_capacity()] = '\0';
+         } else {
+             name_buf[0] = '\0';
+--- a/src/game/inventory.c
++++ b/src/game/inventory.c
+@@ -1318,7 +1318,14 @@
+                 matched = true;
+                 /* This equipment slot pointed at the moved item.
+                  * Assembly: calls FIND_EMPTY_INVENTORY_SLOT to locate new position. */
+-                uint16_t new_pos = find_empty_inventory_slot(target_char_id);
++                /* Native QoL: the moved item is now the last ordinary bag
++                 * entry. FIND_EMPTY_INVENTORY_SLOT preserves an original
++                 * off-by-one bound for full bags. Count the actual appended
++                 * ordinary entries, including a full fourteen-slot bag. */
++                uint16_t new_pos = 0;
++                while (new_pos < ITEM_INVENTORY_SIZE &&
++                       party_characters[src_idx].items[new_pos] != 0)
++                    new_pos++;
+                 party_characters[src_idx].equipment[eq] = (uint8_t)new_pos;
+ 
+                 /* Adjust the other 3 equipment indices above item_slot. */
+@@ -1348,16 +1355,14 @@
+          * wait, actually the assembly checks SOURCE char's equipment to see
+          * if the moved item was equipped, then calls CHANGE_EQUIPPED_*(source, 0).
+          * Then adjusts remaining indices above removed position. */
++        int removed_equipment = -1;
+         for (int eq = 0; eq < EQUIP_COUNT; eq++) {
+             uint8_t eq_val = party_characters[src_idx].equipment[eq];
+             if (eq_val == item_slot) {
+-                /* Unequip: set equipment slot to 0 */
+-                switch (eq) {
+-                case EQUIP_WEAPON: change_equipped_weapon(source_char_id, 0); break;
+-                case EQUIP_BODY:   change_equipped_body(source_char_id, 0); break;
+-                case EQUIP_ARMS:   change_equipped_arms(source_char_id, 0); break;
+-                case EQUIP_OTHER:  change_equipped_other(source_char_id, 0); break;
+-                }
++                /* Defer the category's stat recalculation until all remaining
++                 * equipment locations refer to the already-compacted bag. */
++                party_characters[src_idx].equipment[eq] = 0;
++                removed_equipment = eq;
+                 break;
+             }
+         }
+@@ -1368,6 +1373,13 @@
+             if (eq_val > item_slot) {
+                 party_characters[src_idx].equipment[eq] = eq_val - 1;
+             }
++        }
++        switch (removed_equipment) {
++        case EQUIP_WEAPON: change_equipped_weapon(source_char_id, 0); break;
++        case EQUIP_BODY:   change_equipped_body(source_char_id, 0); break;
++        case EQUIP_ARMS:   change_equipped_arms(source_char_id, 0); break;
++        case EQUIP_OTHER:  change_equipped_other(source_char_id, 0); break;
++        default: break;
+         }
+     }
+ 
+--- a/src/game/window.c
++++ b/src/game/window.c
+@@ -669,10 +669,28 @@
+            item->userdata >= 1 && item->userdata <= SAVE_COUNT;
+ }
+ 
++/* Both source party selectors populate only these normal-font windows with
++ * raw character names, at x=i*6 and userdata=party member ID. The window/id
++ * contract also identifies restored labels without changing MenuItem or F6.
++ * Other menus, dialogue and right labels keep their existing ASCII decoding;
++ * the HPPP Give picker uses its separate raw-name renderer. */
++static bool menu_item_is_party_name(const WindowInfo *w, const MenuItem *item) {
++    bool name_window = w->id == WINDOW_SINGLE_CHARACTER_SELECT ||
++        (w->id >= WINDOW_TARGETING_PROMPT + 1 &&
++         w->id <= WINDOW_TARGETING_PROMPT + 3);
++    return name_window && ((item->userdata >= PARTY_MEMBER_NESS &&
++                           item->userdata <= PARTY_MEMBER_POO) ||
++                          item->userdata == PARTY_MEMBER_KING);
++}
++
++static bool menu_item_has_name_glyphs(const WindowInfo *w, const MenuItem *item) {
++    return menu_item_is_file_slot(w, item) || menu_item_is_party_name(w, item);
++}
++
+ static uint8_t menu_item_label_glyph(const WindowInfo *w,
+                                      const MenuItem *item, unsigned index) {
+     uint8_t byte = (uint8_t)item->label[index];
+-    if (menu_item_is_file_slot(w, item) && byte >= 0x80) return byte;
++    if (menu_item_has_name_glyphs(w, item) && byte >= 0x80) return byte;
+     return ascii_to_eb_char(item->label[index]);
+ }
+ 
+@@ -700,7 +718,7 @@
+         set_focus_text_cursor(item->text_x + 1, item->text_y);
+         w = get_window(win.current_focus_window);  /* re-fetch after cursor set */
+         if (!w) return;
+-        if (menu_item_is_file_slot(w, item)) {
++        if (menu_item_has_name_glyphs(w, item)) {
+             uint8_t glyphs[sizeof(item->label)] = {0};
+             unsigned length = 0;
+             while (length < sizeof(item->label) && item->label[length]) {
