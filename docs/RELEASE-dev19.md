@@ -22,3 +22,7 @@ Prepared prerequisites are explicit in the reports. They exercise actual native 
 The autonomous audit and agents are stopped. Native implementations exist for the reviewed normal-play Redux features; no further whole feature is currently confirmed missing. Complete story/randomized playthroughs, natural photo acquisition, all combat/music transitions, wet-terrain/device/display coverage and exhaustive compatibility remain unverified. This is an experimental native adaptation, not a claim of 100% parity.
 
 The tester ZIP contains code, documentation, default mod profiles and licenses only. Supply a clean EarthBound (USA) ROM; setup builds game data locally and optionally downloads/verifies the credited MSU soundtrack. See [credits](../CREDITS.md) and [source lineage](../UPSTREAM.md).
+
+## Final package and installation
+
+The [clean ZIP verification](../validation/redux-clean-package-dev19.json) passed all 12 gates, including self-contained owner-ROM setup, all 164 soundtrack checks and actual checkpoint recovery. [Installation verification](../validation/package-dev19.json) preserves the current phone/F6 hashes and settings and exercises normal movement in a copied checkpoint. [Published release verification](../validation/release-upload-dev19.json) confirms GitHub’s asset SHA-256 matches the local ZIP. [Cleanup verification](../validation/obsolete-cleanup-dev19.json) records removal of obsolete local packages/stages and the predecessor installation after checking the current saves and soundtrack.
