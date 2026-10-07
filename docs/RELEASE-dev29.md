@@ -1,0 +1,9 @@
+# Redux dev.29 - Giygas fight sprite repair
+
+After the Devil's Machine disappears, the final-battle scene repacks Porky's mech from sprite allocation 1 to allocation 0. The renderer kept using the battler's old allocation, so its spritemap referenced stale graphics and produced a large block of garbage. The renderer now resolves the active allocation before drawing each enemy. This also repairs cold checkpoints saved after the transition, without restarting the fight or changing its script.
+
+Dev.28's prepared prayer/background checks missed this stale live-battler binding. Dev.29 reproduced the reported checkpoint with the old binary and reviewed the corrected production render with the new binary. A private copy then completed the remaining battle, all nine Pray commands and the Giygas defeat sequence through ordinary button inputs. Native rendered samples from battle phases, prayer scenes and the defeat transition were reviewed. All seven prepared prayer callbacks also passed in both Original and Redux (208 assertions per profile).
+
+The user's latest checkpoint remains at the saved dialogue. Requested recovery sets all four characters' current/target HP and PP to their existing maximum of 999 and refreshes the derived meter tiles. Inventory, equipment, max stats, enemies, RNG, story flags and fight progression are unchanged. The original checkpoint, previous quicksave and phone save are backed up locally. This personal recovery is not included in the public package.
+
+Earlier fixes, title choices, settings, profiles and music are retained. No ROM, packs, soundtrack or saves are distributed. This is an experimental adaptation: the copied Redux battle starts at the reported mid-fight checkpoint; a fresh full campaign, every equipment/combat combination, physical controller input, audible music and pixel-perfect comparison remain unverified. Original received prepared callback regressions, not a continuous final-battle replay.

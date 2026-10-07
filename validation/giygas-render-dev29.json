@@ -1,0 +1,44 @@
+{
+  "version": "0.5.0-redux-dev.29",
+  "passed": true,
+  "bug": "Stale live-battler sprite allocation after scene repack",
+  "oldBinaryReproduction": true,
+  "productionColdCheckpointRenderReviewed": true,
+  "checkpointSequence": 166,
+  "patchAppliesToPinnedFoundation": true,
+  "patchSha256": "771c218f938ca4455b7ca55f9a42a5d8ce1d51ef0d48d8576d085571a4ea42c3",
+  "nativeExeSha256": "0e11e28293c08460243f0a04c59f48f586faa87f02789254fa3793c9adb7fb34",
+  "ordinaryInputReplay": {
+    "startPhase": 2,
+    "completedPrayerCommands": 9,
+    "defeatPhase": 65535,
+    "postBattleGroup": 483,
+    "battleMode": 0,
+    "specialDefeat": 3,
+    "frames": 50000,
+    "profile": "Redux",
+    "copiedCheckpointOnly": true
+  },
+  "renderedSamplesReviewed": 75,
+  "preparedPrayerRegressions": [
+    {
+      "profile": "Original",
+      "cases": 7,
+      "assertions": 208,
+      "passed": true
+    },
+    {
+      "profile": "Redux",
+      "cases": 7,
+      "assertions": 208,
+      "passed": true
+    }
+  ],
+  "saveFormat": 16,
+  "assetPacksChanged": false,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Ordinary-input replay uses a private observer linked to the production game library; production cold renders were checked separately.",
+    "Original coverage uses prepared callback entries. No pixel-perfect, physical-controller or listening claim."
+  ]
+}

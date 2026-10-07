@@ -6473,7 +6473,7 @@ index dce15fe..f5f72f4 100644
      if ((rand_byte() & 0x03) == 0)
          return 0;
 diff --git a/src/game/battle_ui.c b/src/game/battle_ui.c
-index 9d558c4..d8ac818 100644
+index 9d558c4..607aadc 100644
 --- a/src/game/battle_ui.c
 +++ b/src/game/battle_ui.c
 @@ -6,6 +6,8 @@
@@ -6493,7 +6493,22 @@ index 9d558c4..d8ac818 100644
  #include "core/memory.h"
  #include "core/mode_stack.h"
  #include "include/binary.h"
-@@ -313,7 +316,9 @@ uint16_t find_battle_sprite_for_enemy(uint16_t enemy_id) {
+@@ -209,6 +212,14 @@ static void render_battle_sprite_row(uint16_t row) {
+         if (b->row != row) continue;
+         if (b->sprite == 0) continue;
+ 
++        /* Scene changes repack enemy graphics without rebuilding the battle's
++         * positions. Pokey moves from allocation 1 to 0 when the Devil's
++         * Machine disappears; the old index addresses stale spritemaps and
++         * background tiles. Resolve this derived binding every render, also
++         * repairing checkpoints saved after the scene had already changed. */
++        b->vram_sprite_index = (uint8_t)find_battle_sprite_for_enemy(b->id);
++        if (b->vram_sprite_index >= bt.current_battle_sprites_allocated) continue;
++
+         /* Blink timer, damage flash effect.
+          * Decrement each frame; divide by 3, skip rendering on odd result. */
+         if (b->blink_timer != 0) {
+@@ -313,7 +324,9 @@ uint16_t find_battle_sprite_for_enemy(uint16_t enemy_id) {
   *   1(_32X32),3(_32X64) → 4; 2(_64X32),4(_64X64) → 8; 5(_128X64),6(_128X128) → 16
   */
  uint16_t get_battle_sprite_width(uint16_t sprite_id) {
@@ -6504,7 +6519,7 @@ index 9d558c4..d8ac818 100644
      uint8_t size = battle_sprites_pointers_data[(sprite_id - 1) * BATTLE_SPRITES_ENTRY_SIZE + 4];
      switch (size) {
          case 1: case 3: return 4;
-@@ -331,7 +336,9 @@ uint16_t get_battle_sprite_width(uint16_t sprite_id) {
+@@ -331,7 +344,9 @@ uint16_t get_battle_sprite_width(uint16_t sprite_id) {
   *   1(_32X32),2(_64X32) → 4; 3(_32X64),4(_64X64),5(_128X64) → 8; 6(_128X128) → 16
   */
  uint16_t get_battle_sprite_height(uint16_t sprite_id) {
@@ -6515,7 +6530,7 @@ index 9d558c4..d8ac818 100644
      uint8_t size = battle_sprites_pointers_data[(sprite_id - 1) * BATTLE_SPRITES_ENTRY_SIZE + 4];
      switch (size) {
          case 1: case 2: return 4;
-@@ -738,6 +745,46 @@ void apply_letterbox_to_ppu(void);
+@@ -738,6 +753,46 @@ void apply_letterbox_to_ppu(void);
   *   layer2_id: BG_DATA_TABLE index for background layer 2 (0 = none)
   *   letterbox_style: 0=none, 1=large, 2=medium, 3=small; bit 2 = 4bpp layer 2
   */
@@ -6562,7 +6577,7 @@ index 9d558c4..d8ac818 100644
  void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_style) {
      /* Sprite Y offset centers SNES-coordinate sprites vertically. The
       * per-BG viewport-fill assignment below depends on bitdepth (read a few
-@@ -766,21 +813,7 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
+@@ -766,21 +821,7 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
       * cinematic effect once the wider FOV is already in play; with Wide
       * FOV off, the original per-encounter behavior is unchanged regardless
       * of any other visual toggle. */
@@ -6585,7 +6600,7 @@ index 9d558c4..d8ac818 100644
  
      /* Initialize letterbox state (assembly lines 64-70) */
      bt.letterbox_effect_ending = 0;
-@@ -1106,6 +1139,14 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
+@@ -1106,6 +1147,14 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
      } else if (bitdepth != 4) {
          /* No layer 2 in mode 1 (assembly line 699) */
          loaded_bg_data_layer2.target_layer = 0;
@@ -6600,7 +6615,7 @@ index 9d558c4..d8ac818 100644
      }
  
      /* Finalize (assembly lines 706-724) */
-@@ -1137,7 +1178,10 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
+@@ -1137,7 +1186,10 @@ void load_battle_bg(uint16_t layer1_id, uint16_t layer2_id, uint16_t letterbox_s
   * sprite_id: 1-based index into BATTLE_SPRITES_POINTERS table.
   */
  void load_battle_sprite(uint16_t sprite_id) {
@@ -6612,7 +6627,7 @@ index 9d558c4..d8ac818 100644
  
      /* Record spritemap allocation start for this sprite (assembly lines 26-30) */
      bt.battle_spritemap_allocation_counts[bt.current_battle_sprites_allocated] =
-@@ -1258,8 +1302,8 @@ void load_battle_sprite(uint16_t sprite_id) {
+@@ -1258,8 +1310,8 @@ void load_battle_sprite(uint16_t sprite_id) {
          0x3800, 0x3880, 0x3900, 0x3980
      };
  
@@ -6623,7 +6638,7 @@ index 9d558c4..d8ac818 100644
      if (!compressed) return;
  
      /* Decompress to decomp_staging (shared_scratch.decomp) to avoid aliasing
-@@ -1300,8 +1344,8 @@ void setup_battle_enemy_sprites(void) {
+@@ -1300,8 +1352,8 @@ void setup_battle_enemy_sprites(void) {
      bt.current_battle_spritemaps_allocated = 0;
  
      /* Load BATTLE_SPRITES_POINTERS table (110 entries × 5 bytes each) */
@@ -6634,7 +6649,7 @@ index 9d558c4..d8ac818 100644
  
      /* Load BTL_ENTRY_PTR_TABLE to iterate enemy group (assembly lines 13-21) */
      static const uint8_t *ptr_table = NULL;
-@@ -1325,8 +1369,8 @@ void setup_battle_enemy_sprites(void) {
+@@ -1325,8 +1377,8 @@ void setup_battle_enemy_sprites(void) {
      const uint8_t *grp_ptr = groups_table + groups_offset;
  
      /* Iterate through enemy entries (assembly lines 23-101).
@@ -6645,7 +6660,7 @@ index 9d558c4..d8ac818 100644
       * Terminated by first byte == 0xFF. */
      while (1) {
          uint8_t first_byte = *grp_ptr;
-@@ -1339,8 +1383,9 @@ void setup_battle_enemy_sprites(void) {
+@@ -1339,8 +1391,9 @@ void setup_battle_enemy_sprites(void) {
          uint8_t palette_id = enemy_config_table[enemy_id].battle_sprite_palette;
  
          /* Load palette (lines 48-79): 32 bytes to ert.palettes[] sub-palette 8+ */
@@ -6657,7 +6672,7 @@ index 9d558c4..d8ac818 100644
          if (pal_data) {
              uint16_t pal_offset = 128 + bt.current_battle_sprites_allocated * 16;
              uint16_t colors = (uint16_t)(pal_size / 2);
-@@ -1364,6 +1409,39 @@ void setup_battle_enemy_sprites(void) {
+@@ -1364,6 +1417,39 @@ void setup_battle_enemy_sprites(void) {
      ppu_vram_dma(ert.buffer, 0x2000, vram_size);
  }
  
@@ -6697,7 +6712,7 @@ index 9d558c4..d8ac818 100644
  
  /*
   * LOAD_BATTLE_SCENE (asm/battle/load_battle_scene.asm)
-@@ -1404,6 +1482,14 @@ StepResult mode_step_load_battle_scene(ModeState *ms) {
+@@ -1404,6 +1490,14 @@ StepResult mode_step_load_battle_scene(ModeState *ms) {
              /* Set current battle group */
              bt.current_battle_group = s->group;
  
@@ -6712,7 +6727,7 @@ index 9d558c4..d8ac818 100644
              /* Read BG table entries for this battle group */
              uint16_t bg_id = 0;
              uint16_t palette_id = 0;
-@@ -1903,6 +1989,7 @@ bool blank_screen_and_wait_vblank_work_step(void) {
+@@ -1903,6 +1997,7 @@ bool blank_screen_and_wait_vblank_work_step(void) {
   * Called at the start of battle initialization and from file select/intro.
   */
  void initialize_battle_ui_state(void) {
@@ -6720,7 +6735,7 @@ index 9d558c4..d8ac818 100644
      ow.render_hppp_windows = 0;
      bt.current_flashing_enemy_row = 0xFFFF;
      bt.current_flashing_row = -1;
-@@ -2162,6 +2249,7 @@ void apply_letterbox_to_ppu(void) {
+@@ -2162,6 +2257,7 @@ void apply_letterbox_to_ppu(void) {
   * swirl effect, battle sprite palette animation, and letterbox ending.
   */
  void update_battle_screen_effects(void) {
@@ -6728,7 +6743,7 @@ index 9d558c4..d8ac818 100644
      /* Background darkening (battle intro fade) */
      if (bt.enable_background_darkening) {
          bt.background_brightness -= 0x0555;
-@@ -2319,7 +2407,10 @@ void update_battle_screen_effects(void) {
+@@ -2319,7 +2415,10 @@ void update_battle_screen_effects(void) {
          bt.hp_pp_box_blink_duration--;
          if ((bt.hp_pp_box_blink_duration / 3) & 1) {
              /* Blink off: undraw the HP/PP window */

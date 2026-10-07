@@ -8,7 +8,7 @@ Companion is adapting MaternalBound Redux into the BrianPugh-derived native x64 
 
 This checkpoint targets the active upstream source at `897d00833f4a08a0a92f106abf631629a6a6a041`, compiled locally with CoilSnake into a verified 6 MiB ROM. It is not the official v1.1 release. The v1.1 BPS was separately checksum-verified and tested during initial extraction research; supporting that release requires a separate conversion map and validation record.
 
-The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.28` (geyser, equipment comparison, Lumine Hall phase and black staging-screen fixes; earlier fixes and the Original title option retained).**
+The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.29` (Giygas/Porky sprite allocation repair; Sound Stone, Magicant, NPC-streaming and earlier fixes retained).**
 
 The open-ended autonomous audit has been stopped at the owner’s request. Existing evidence is retained; further fixes will follow playtesting reports. No whole normal-play Redux feature is currently confirmed absent, but complete compatibility remains unverified.
 
