@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0-redux-dev.22 - post-battle teleport graphics
+
+- Honor the original overworld graphics-cache invalidation alongside the native loader cache. Same-tileset teleports after combat now restore the room instead of retaining battle graphics.
+- Reproduce the Clumsy Robot return defect in previous Original and Redux builds. Verify corrected full prepared encounters, ordinary battle returns and five cache states in player/observer builds, preserving identical battle outcomes and rewards.
+- Recover the owner's reported checkpoint privately by replacing only the saved map-graphics range. Phone save, position, party, items, story flags and all other state sections are preserved. This exact-save repair is not a release cheat or general graphics rewrite on F6 load.
+- Keep game packs, save format 16, seed identities, settings and MSU setup unchanged. Full story/randomized and comprehensive audio/device coverage remain open.
+
 ## 0.5.0-redux-dev.21 - battle PSI categories
 
 - Restore Offense, Recover and Assist together in the battle PSI menu. An incorrectly added Other category caused unnecessary pagination and hid Recover/Assist on later pages.

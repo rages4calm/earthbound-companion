@@ -1,0 +1,389 @@
+{
+  "version": "0.5.0-redux-dev.22",
+  "edition": "original",
+  "expectedPreviousBuildRegression": false,
+  "passed": true,
+  "privateBuild": {
+    "driverSourceSha256": "63e518004e800cc9470532745ebafc161ba46fa0d9dd46e479bb56e4d75c1684",
+    "executableSha256": "8ab7365d10917d0c807a22fe2e0e98bc3e53e035261b737fffd41d0f89291c82",
+    "productionExecutableSha256": "ab11c4c818bc6448d776b332330d3632030a67145863db9267b2b39ccfcb80ed",
+    "productionLibrarySha256": "305e0fb420c88b4ca2f4c82846356eae0195537a6de8abf27fdc17ee1d2b0d81",
+    "platformMainObjectSha256": "bc54f2e9f0342e161afc22c758ab9c317c8296f6e72fcf3aa211d04ebd39bbab",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "logSha256": "53838d816a61447a5e501df8d4407d17c56d78371fa1d1d0ff0d48b75867d7c2",
+  "cache": [
+    {
+      "case": 0,
+      "bytes": 28672,
+      "mismatches": 1,
+      "markerPreserved": true,
+      "loadedCombo": 10,
+      "overworldCombo": 10
+    },
+    {
+      "case": 1,
+      "bytes": 28672,
+      "mismatches": 0,
+      "markerPreserved": false,
+      "loadedCombo": 10,
+      "overworldCombo": 10
+    },
+    {
+      "case": 2,
+      "bytes": 28672,
+      "mismatches": 0,
+      "markerPreserved": false,
+      "loadedCombo": 10,
+      "overworldCombo": 10
+    },
+    {
+      "case": 3,
+      "bytes": 28672,
+      "mismatches": 0,
+      "markerPreserved": false,
+      "loadedCombo": 10,
+      "overworldCombo": 10
+    },
+    {
+      "case": 4,
+      "bytes": 28672,
+      "mismatches": 0,
+      "markerPreserved": false,
+      "loadedCombo": 10,
+      "overworldCombo": 10
+    }
+  ],
+  "graphics": [
+    {
+      "case": 1,
+      "bytes": 28672,
+      "mismatches": 0,
+      "loadedCombo": 10,
+      "overworldCombo": 10,
+      "position": [
+        6000,
+        5976
+      ]
+    },
+    {
+      "case": 2,
+      "bytes": 28672,
+      "mismatches": 0,
+      "loadedCombo": 10,
+      "overworldCombo": 10,
+      "position": [
+        5967,
+        5976
+      ]
+    }
+  ],
+  "encounters": [
+    {
+      "id": 1,
+      "group": 462,
+      "steps": 2858,
+      "depth": 1,
+      "result": 0,
+      "turns": 3,
+      "menuChoices": 6,
+      "actionCount": 7,
+      "postBattleFlag": 0,
+      "overworldBattleMode": 0,
+      "statusSuppression": 0,
+      "intangibility": 0,
+      "autoFight": 0,
+      "rollingDisabled": 0,
+      "rollingHalf": 0,
+      "metersStable": 1,
+      "bank": 3081,
+      "depositBookkeeping": 2081,
+      "battleMoney": 2081,
+      "battleExpPerSurvivor": 16189,
+      "itemDrop": 0,
+      "partyExp": [
+        16189,
+        16189,
+        0,
+        0
+      ],
+      "partyStatus": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "enemyStates": [
+        [
+          205,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "kos": [
+        {
+          "before": 205,
+          "after": 205,
+          "slot": 8,
+          "hp": 0,
+          "aff": 1,
+          "skip": 0,
+          "finalAction": 243,
+          "exp": 32378,
+          "money": 2081
+        }
+      ],
+      "actionRows": [
+        [
+          3,
+          5
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          48,
+          1
+        ]
+      ],
+      "battlePhases": [
+        0,
+        4,
+        8,
+        17,
+        20,
+        21,
+        22,
+        32,
+        37,
+        38,
+        40,
+        41,
+        42,
+        43,
+        44
+      ]
+    },
+    {
+      "id": 2,
+      "group": 1,
+      "steps": 954,
+      "depth": 1,
+      "result": 0,
+      "turns": 1,
+      "menuChoices": 2,
+      "actionCount": 1,
+      "postBattleFlag": 0,
+      "overworldBattleMode": 0,
+      "statusSuppression": 0,
+      "intangibility": 120,
+      "autoFight": 0,
+      "rollingDisabled": 0,
+      "rollingHalf": 0,
+      "metersStable": 1,
+      "bank": 1005,
+      "depositBookkeeping": 5,
+      "battleMoney": 5,
+      "battleExpPerSurvivor": 2,
+      "itemDrop": 88,
+      "partyExp": [
+        2,
+        2,
+        0,
+        0
+      ],
+      "partyStatus": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "enemyStates": [
+        [
+          159,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "kos": [
+        {
+          "before": 159,
+          "after": 159,
+          "slot": 8,
+          "hp": 0,
+          "aff": 1,
+          "skip": 0,
+          "finalAction": 0,
+          "exp": 3,
+          "money": 5
+        }
+      ],
+      "actionRows": [
+        [
+          3,
+          1
+        ]
+      ],
+      "battlePhases": [
+        0,
+        4,
+        8,
+        17,
+        20,
+        21,
+        22,
+        32,
+        33,
+        37,
+        38,
+        40,
+        41,
+        42
+      ]
+    }
+  ],
+  "limits": [
+    "Five prepared cache states and two prepared complete scripted encounters, with actual packed graphics compared byte-for-byte.",
+    "Valid unchanged caches preserve modified VRAM; overworld-only, native-only, both-invalid and changed-combo paths are exercised.",
+    "Prepared party, flags and map entry do not certify ordinary story reachability, every tile animation, physical input, audio or a full playthrough."
+  ],
+  "fullPlaythroughVerified": false
+}

@@ -1,0 +1,38 @@
+{
+  "baseVersion": "dev.21",
+  "changedSourceFiles": [
+    "src/game/map_loader.c"
+  ],
+  "builds": [
+    {
+      "runtime": "player",
+      "sha256": "ab11c4c818bc6448d776b332330d3632030a67145863db9267b2b39ccfcb80ed",
+      "librarySha256": "305e0fb420c88b4ca2f4c82846356eae0195537a6de8abf27fdc17ee1d2b0d81"
+    },
+    {
+      "runtime": "observer",
+      "sha256": "716482cbcc2a3923882073b7c1facb448c542cd17ed6b55a4b5b3798a54f9b52",
+      "librarySha256": "e7d84a12e6f0dd608f1125faa2b642618eb7fde34d10b817e56929f7ee8b4f1c"
+    }
+  ],
+  "rootSourceDifferencesFromDev21": [],
+  "fullSourceSnapshot": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\clumsy-robot-owner-dev21\\source",
+  "saveFormat": 16,
+  "assetPackUnchanged": true,
+  "version": "0.5.0-redux-dev.22",
+  "nativeBase": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "changedFiles": [
+    {
+      "path": "src/game/map_loader.c",
+      "baselineSha256": "862757ba648c8de924583b421758e93f0258f0078617636ab5735871490270c7",
+      "candidateSha256": "6c3b6e727e0bddceb11fced57198c95c5d0c6d9b506fdfd79a43c5d5516ac267"
+    }
+  ],
+  "comparedSourceFiles": 4312,
+  "comparison": "Complete source comparison normalizes CRLF to LF only",
+  "completePatchSha256": "37a2188c7aa86f489b2c72d1a7b67f8d14002f45dad089ba326e00363189017f",
+  "completePatchReverseCheckPassed": true,
+  "fullCleanCompilation": true,
+  "baselineAndFixedEncounterResultsIdentical": true,
+  "playerObserverResultsIdentical": true
+}

@@ -1,0 +1,64 @@
+{
+  "version": "0.5.0-redux-dev.22",
+  "passed": true,
+  "zipSha256": "8a3710cb3068b9581091f58643bc1f91e359444039dba7f4ff2c30e462c52675",
+  "zipBytes": 124689315,
+  "manifestFiles": 32,
+  "nativeExeSha256": "ab11c4c818bc6448d776b332330d3632030a67145863db9267b2b39ccfcb80ed",
+  "launcherSha256": "3277ef7be0b9e648b2d87aebfe10b2ae8acb347cd02a08dd8cd7fb5ff5157cd7",
+  "basicRuntimeChecks": [
+    {
+      "edition": "redux",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "screen-transitions",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "screen-transitions",
+      "passed": true
+    }
+  ],
+  "actualCopiedCheckpointRecoveryPassed": true,
+  "checkpointInputUnchanged": true,
+  "noGamePayloadInArchive": true,
+  "setupHelpersUnchangedFromDev21": true,
+  "msuSetupUnchangedFromDev21": true,
+  "limits": [
+    "Exact final ZIP extraction/manifest and eight basic native checks plus actual packaged launcher checkpoint restore/load. Reported-bug suites separately bind this exact native player.",
+    "No repeated online ROM extraction/MSU download performed for dev22: unchanged setup helpers and pack contracts retain their prior verification identity. Not a complete story/randomized or hardware/audio playthrough."
+  ],
+  "fullPlaythroughVerified": false,
+  "portableCodeUpdatedWithoutChangingUserData": true,
+  "portableProtectedFilesVerified": 214,
+  "setupHelperAndSdlHashesMatchDev21Zip": true
+}

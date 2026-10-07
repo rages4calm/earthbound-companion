@@ -1,0 +1,31 @@
+{
+  "inputSha256": "4ae351b073ed3322f2cf0436d29ceb7fc7ca6ff53f34ffd36515d9d85f30507c",
+  "outputSha256": "64a508c388b5a605b8d2179436b6cadc9851bcbc6c26fa9d443bc17b388b73a1",
+  "generationBefore": 97,
+  "generationAfter": 98,
+  "changedSection": 10,
+  "changedVramRange": [
+    0,
+    28672
+  ],
+  "changedVramBytes": 19706,
+  "everyOtherSectionUnchanged": true,
+  "ppuOutsideMapGraphicsUnchanged": true,
+  "storyPositionPartyInventoryFlagsAndPhoneUnchanged": true,
+  "nativeColdRestorePassed": [
+    {
+      "runtime": "player",
+      "executableSha256": "ab11c4c818bc6448d776b332330d3632030a67145863db9267b2b39ccfcb80ed",
+      "screenshotSha256": "be338015e6b3da21b8cd2d007540cb5f967416f1a9f9871e8cdbc06392f87e31",
+      "passed": true
+    },
+    {
+      "runtime": "observer",
+      "executableSha256": "716482cbcc2a3923882073b7c1facb448c542cd17ed6b55a4b5b3798a54f9b52",
+      "screenshotSha256": "be338015e6b3da21b8cd2d007540cb5f967416f1a9f9871e8cdbc06392f87e31",
+      "passed": true
+    }
+  ],
+  "playerObserverScreenshotsIdentical": true,
+  "fullPlaythroughVerified": false
+}
