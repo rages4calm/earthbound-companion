@@ -1,0 +1,62 @@
+{
+  "version": "0.5.0-redux-dev.23",
+  "passed": true,
+  "checks": [
+    {
+      "build": "player",
+      "executableSha256": "93cf2ecdd7d23997641d6af81ac94ef4d92950150608afe13bae4dda639ff095",
+      "passed": true,
+      "copiedInputUnchanged": true,
+      "screenshotSha256": "6e655896e5162c213acca797ad44c78cda6ddf0b2f49f518f32c44e712ea8827"
+    },
+    {
+      "build": "observer",
+      "executableSha256": "5cbaf4e97377a0c4110b38b50c1b93fd18ffedd7bf0416bd658000fc4d1d72ac",
+      "passed": true,
+      "copiedInputUnchanged": true,
+      "screenshotSha256": "6e655896e5162c213acca797ad44c78cda6ddf0b2f49f518f32c44e712ea8827"
+    }
+  ],
+  "playerObserverScreenshotParity": true,
+  "samePositionStoryFlagsPartyItemsAndAllOtherObservedState": true,
+  "restoredPaula": {
+    "id": 2,
+    "name": "Paula",
+    "level": 70,
+    "hp": 252,
+    "maxHp": 252,
+    "pp": 252,
+    "maxPp": 252,
+    "exp": 2466020,
+    "items": [
+      79,
+      55,
+      81,
+      31,
+      67,
+      83,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "afflictions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "limits": [
+    "Cold replay of the latest closed copied checkpoint; no owner saves written by this check.",
+    "Progression repair is private and exact-save guarded, not an automatic release save edit."
+  ],
+  "fullPlaythroughVerified": false
+}

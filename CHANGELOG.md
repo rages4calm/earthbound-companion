@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0-redux-dev.23 - preserve returning party progress
+
+- Prevent the native first-join catch-up routine from resetting Paula or Poo on later story reentries. Check the historical join bit before key-item migration records it; skip catch-up when the character already exceeds the target.
+- Execute real native add/remove/readd and duplicate-add paths in 13 prepared cases per suite: Redux player, Redux observer and Original player. Preserve levels, EXP, stats, HP/PP and known PSI; retain first-join catch-up and unchanged Jeff behavior. The prior Redux build reproduces the reset.
+- Recover the owner's exact latest F6 checkpoint privately from her historical level 65 stats plus all 513,723 EXP earned after the faulty rejoin: native growth and the packed EXP table yield level 70. Current items/equipment, other characters, story and RNG are retained. This exact-save repair is not a release cheat or automatic save rewrite.
+- Keep packs, save format 16, seed identities, settings and MSU setup unchanged. Dev.22 graphics and earlier fixes remain included. Full story/randomized playthroughs remain unverified.
+
 ## 0.5.0-redux-dev.22 - post-battle teleport graphics
 
 - Honor the original overworld graphics-cache invalidation alongside the native loader cache. Same-tileset teleports after combat now restore the room instead of retaining battle graphics.

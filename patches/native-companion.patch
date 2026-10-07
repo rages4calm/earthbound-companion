@@ -8010,7 +8010,7 @@ index 67108fa..0aea09c 100644
          if (c < 0x50) break;  /* characters below 0x50 are not valid EB text */
          flyover_render_large_char((uint16_t)c);
 diff --git a/src/game/game_state.c b/src/game/game_state.c
-index c0cc30f..d8a3a6c 100644
+index c0cc30f..f6d0dcc 100644
 --- a/src/game/game_state.c
 +++ b/src/game/game_state.c
 @@ -2,6 +2,9 @@
@@ -8199,7 +8199,7 @@ index c0cc30f..d8a3a6c 100644
          ok = false;
      }
  
-@@ -1208,17 +1306,18 @@ bool key_items_selftest(void) {
+@@ -1208,24 +1306,25 @@ bool key_items_selftest(void) {
          fprintf(stderr, "key_items_selftest: load_game(pre-corrupted pool) failed\n");
          return false;
      }
@@ -8224,6 +8224,15 @@ index c0cc30f..d8a3a6c 100644
      return ok;
  }
  
+ /* Regression test for apply_join_level_scaling() (not a ROM/assembly port --
+  * see that function's own doc comment, inventory.c, for the full
+- * rationale): Paula joins at half Ness's current level, Jeff at two-thirds,
+- * Poo matches Ness exactly, each rounded and re-grown through the normal
++ * rationale): first-join Paula catches up to 25% of Ness's current level,
++ * Poo to 20%, and Jeff is unchanged. Growth uses the normal
+  * incremental level-up path, with current HP/PP synced to the new max.
+  * Pure in-memory, no save_game()/load_game() involved, so no destructive-
+  * write guard needed. Calls apply_join_level_scaling() directly rather
 diff --git a/src/game/game_state.h b/src/game/game_state.h
 index 30256db..5103187 100644
 --- a/src/game/game_state.h
@@ -8266,7 +8275,7 @@ index 30256db..5103187 100644
  
  /* Key Items pool self-test (Key Items pool feature, not a ROM routine):
 diff --git a/src/game/inventory.c b/src/game/inventory.c
-index 8978181..70568f8 100644
+index 8978181..d2bd2bc 100644
 --- a/src/game/inventory.c
 +++ b/src/game/inventory.c
 @@ -2,8 +2,10 @@
@@ -8411,6 +8420,64 @@ index 8978181..70568f8 100644
                      loaded_transformations[off + LIT_OFF_SFX_COUNTDOWN] =
                          (uint8_t)(sfx_freq + rand_val - 1);
                      /* Play the SFX */
+@@ -691,8 +716,9 @@ void process_item_transformations(void) {
+  * simply overwrites the INITIAL_STATS-seeded level/stats with a fresh
+  * regrowth to the new target, through the exact same incremental random
+  * stat-growth path normal leveling uses (no separate formula), so the
+- * result is exactly as faithful as any other level this character could
+- * have reached by leveling up normally. No-op for char_id outside 2/4
++ * result uses the existing native growth implementation. This runs only on
++ * the first join and only if its target exceeds the seeded level. Rejoining
++ * preserves the complete character record. No-op for char_id outside 2/4
+  * (Paula/Poo) -- Jeff (3) is deliberately excluded, not just unhandled.
+  *
+  * Factored out of add_char_to_party() so join_level_scaling_selftest()
+@@ -703,6 +729,9 @@ void process_item_transformations(void) {
+  * function's doc comment). */
+ void apply_join_level_scaling(uint16_t char_id) {
+     if (char_id != 2 && char_id != 4) return;
++    /* Catch-up applies only to a first join. A temporary departure must not
++     * reset earned levels, EXP, stat boosts or HP/PP when the character returns. */
++    if (party_ever_joined_mask & (1u << (char_id - 1))) return;
+ 
+     uint16_t ness_level = party_characters[CHARACTER_NESS].level;
+     uint16_t target_level;
+@@ -711,6 +740,8 @@ void apply_join_level_scaling(uint16_t char_id) {
+     default: target_level = (ness_level + 2) / 5; break; /* Poo: 20% of Ness's level, rounded */
+     }
+     if (target_level < 1) target_level = 1;
++    /* INITIAL_STATS or a legacy save may already be above the catch-up target. */
++    if (target_level <= party_characters[char_id - 1].level) return;
+     reset_char_level_one(char_id, target_level, 1);
+     /* reset_char_level_one()/level_up_char_silent() grow max_hp/max_pp
+      * (and their _target mirrors) but never touch current_hp/current_pp
+@@ -763,20 +794,14 @@ void add_char_to_party(uint16_t char_id) {
+     /* Store the character at the insertion point */
+     game_state.party_members[insert_pos] = (uint8_t)char_id;
+ 
+-    /* Not part of the original assembly: this character may be joining
+-     * for the first time with new-game starting items still sitting in
+-     * their regular inventory (see migrate_key_items_to_pool()'s doc
+-     * comment) -- surface any key items into the shared pool now that
+-     * they're actually part of the party. */
+-    migrate_key_items_to_pool(char_id);
+-
+-    /* Not part of the original assembly: see apply_join_level_scaling()'s
+-     * doc comment. Applied before add_party_member() below so the party's
+-     * HP/PP display reflects the real starting stats from the character's
+-     * very first rendered frame, not one frame of stale INITIAL_STATS
+-     * values. */
++    /* Scale only a first join, before migration stamps the historical join bit.
++     * This must precede entity creation so the first HP/PP display is current. */
+     apply_join_level_scaling(char_id);
+ 
++    /* Surface starting key items and record that this character has joined.
++     * The historical bit remains set when a character leaves the party. */
++    migrate_key_items_to_pool(char_id);
++
+     uint16_t entity_slot = add_party_member(char_id);
+ 
+     /* Assembly: after ADD_PARTY_MEMBER, set OBJECT_TICK_DISABLED | OBJECT_MOVE_DISABLED */
 @@ -874,6 +899,38 @@ uint16_t key_items_peek_use_in_progress(void) {
      return key_items_pool_use_item_id;
  }

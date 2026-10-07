@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "inputSha256": "112bda22aac99be9bd8f2b3d3ba56ca248470ac8c5cd30d05174ee86e670aa52",
+  "outputSha256": "b8cc7b199706daef35e255a7f5effb1c3db9e83c5662de804bc0f2b99d12e49c",
+  "checkpoint": "quicksave_1.bin.0",
+  "generationBefore": 105,
+  "generationAfter": 106,
+  "preRescueLevel": 65,
+  "erroneousRejoinLevel": 20,
+  "latestLevelBeforeRepair": 45,
+  "expEarnedSinceRescuePreserved": 513723,
+  "result": {
+    "level": 70,
+    "exp": 2466020,
+    "maxHp": 252,
+    "maxPp": 252,
+    "knownPsi": 114314849615840
+  },
+  "expectedLevelFromPackedExpTable": 70,
+  "changedSection": 3,
+  "changedCharacter": 2,
+  "everyOtherSectionUnchanged": true,
+  "otherCharactersInventoryEquipmentAilmentsStoryPositionFlagsAndRngUnchanged": true,
+  "nativeGrowth": {
+    "driverSourceSha256": "d579d73dce509d70f9b3501b856a98b0e9c06ad4b4ec585e224cc2e45c31f8e6",
+    "executableSha256": "956de74117fe16cfb98e547fbf2e2a065cdc734163b5a92e8c35d4c8752f63bd",
+    "productionExecutableSha256": "93cf2ecdd7d23997641d6af81ac94ef4d92950150608afe13bae4dda639ff095",
+    "productionLibrarySha256": "5f96bbc07308257d99032fea53f5177e14a924e05559682245eea25006aa7df6",
+    "platformMainObjectSha256": "bc54f2e9f0342e161afc22c758ab9c317c8296f6e72fcf3aa211d04ebd39bbab",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "limits": [
+    "Restores the exact historical level65 base stats/EXP/maxima, then applies the verified post-rescue EXP through native silent leveling.",
+    "Additional growth uses a private copy of the latest RNG; original historical rolls for alternate higher-level growth cannot be reconstructed. The live save RNG is unchanged.",
+    "Only Paula progression and HP/PP change; current items/equipment/ailments and all other state sections are preserved."
+  ],
+  "fullPlaythroughVerified": false
+}

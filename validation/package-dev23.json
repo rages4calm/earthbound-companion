@@ -1,0 +1,71 @@
+{
+  "version": "0.5.0-redux-dev.23",
+  "passed": true,
+  "zipSha256": "9cb1fa1fb8b76574cc7a7490926a0f90d8d8f58c623dbd0100b89ce7ca50c120",
+  "zipBytes": 124690008,
+  "manifestFiles": 32,
+  "nativeExeSha256": "93cf2ecdd7d23997641d6af81ac94ef4d92950150608afe13bae4dda639ff095",
+  "launcherSha256": "10b168628437e2f628940d8c0f33302e30f81feca9b262db5d814845d2aaf948",
+  "basicRuntimeChecks": [
+    {
+      "edition": "redux",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "screen-transitions",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "joinlevel",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "screen-transitions",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "joinlevel",
+      "passed": true
+    }
+  ],
+  "actualCopiedCheckpointRecoveryPassed": true,
+  "checkpointInputUnchanged": true,
+  "noGamePayloadInArchive": true,
+  "setupHelpersUnchangedFromDev22": true,
+  "msuSetupUnchangedFromDev22": true,
+  "limits": [
+    "Exact final ZIP extraction/manifest and ten basic native checks plus actual packaged launcher checkpoint restore/load. Reported-bug suites separately bind this exact native player.",
+    "No repeated online ROM extraction/MSU download performed for dev23: unchanged setup helpers and pack contracts retain their prior verification identity. Not a complete story/randomized or hardware/audio playthrough."
+  ],
+  "fullPlaythroughVerified": false
+}

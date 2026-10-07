@@ -1,0 +1,39 @@
+{
+  "baseVersion": "dev.22",
+  "version": "0.5.0-redux-dev.23",
+  "changedFiles": [
+    {
+      "path": "src/game/game_state.c",
+      "baselineSha256": "cd8b7cc894255a2b56e9846bc44a1b426458071e22f5dbd510895f5c8d401354",
+      "candidateSha256": "d53ddfb14282f8fccb3c5392f6958355f6def6bac7af8109f27d78084e8d9835"
+    },
+    {
+      "path": "src/game/inventory.c",
+      "baselineSha256": "7fb8f219f9f69ce6cdf11e553bddb463026effc2beb8c3ac710910f821587fe2",
+      "candidateSha256": "b4d16df2ef33b7224f3446934026853d15c542f7f2ecea06241b9ef826ce1618"
+    }
+  ],
+  "comparedSourceFiles": 4312,
+  "builds": [
+    {
+      "runtime": "player",
+      "sha256": "93cf2ecdd7d23997641d6af81ac94ef4d92950150608afe13bae4dda639ff095",
+      "librarySha256": "5f96bbc07308257d99032fea53f5177e14a924e05559682245eea25006aa7df6"
+    },
+    {
+      "runtime": "observer",
+      "sha256": "5cbaf4e97377a0c4110b38b50c1b93fd18ffedd7bf0416bd658000fc4d1d72ac",
+      "librarySha256": "1e2e31b704205198e73952624501bbeb0a0985d25b317f9dc45a010466473fa6"
+    }
+  ],
+  "fullCleanCompilation": true,
+  "saveFormat": 16,
+  "assetPackUnchanged": true,
+  "nativeBase": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "completePatchSha256": "ff2b26d149c29487135e4a09595a1d750336cf60aafcc963a5912bccaae38c74",
+  "completePatchReverseCheckPassed": true,
+  "comparison": "All 4312 source inputs compared after normalizing CRLF to LF only",
+  "playerObserverRegressionResultsIdentical": true,
+  "changeScope": "inventory.c fixes first-join/rejoin guards and ordering; game_state.c corrects an existing self-test comment",
+  "fullPlaythroughVerified": false
+}
