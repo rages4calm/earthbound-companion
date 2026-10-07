@@ -1,0 +1,56 @@
+{
+  "version": "0.5.0-redux-dev.30",
+  "passed": true,
+  "patchAppliesToPinnedFoundation": true,
+  "patchSha256": "b0c214e82e4b51b441f16b9003bf7f3291bc562750137a0238b9182576a8a3ed",
+  "nativeExeSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+  "checkpointSequence": 167,
+  "oldBinaryCreditsAndPsiReproduced": true,
+  "productionColdCreditsRenderReviewed": true,
+  "copiedCreditsCompleted": true,
+  "creditsPhotos": [
+    {
+      "profile": "Original",
+      "capturedPhotos": 32,
+      "passed": true,
+      "endingTransactionCases": 1,
+      "endingTransactionAssertions": 17
+    },
+    {
+      "profile": "Redux",
+      "capturedPhotos": 32,
+      "passed": true,
+      "endingTransactionCases": 1,
+      "endingTransactionAssertions": 19
+    }
+  ],
+  "psiProjection": {
+    "originalAnimations": 34,
+    "reduxAnimations": 68,
+    "cases": 612,
+    "sampledFrames": 9774,
+    "bitDepths": [
+      2,
+      4
+    ],
+    "targets": [
+      32,
+      128,
+      224
+    ],
+    "palette": "diagnostic white",
+    "outsideNativeSlicePixels": 0,
+    "completionRestoresViewport": true
+  },
+  "saveFormat": 16,
+  "saveEdited": false,
+  "assetPacksChanged": false,
+  "userReportedReduxEndingReached": true,
+  "userFinalTestingStatsAndEquipmentBoosted": true,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Prepared photo and PSI drivers link the unchanged production game library; production cold-save rendering is checked separately.",
+    "Photo captures cover one still frame per scene. PSI projection samples early frames and uses a diagnostic palette, not color parity or every effect frame.",
+    "One user-reported campaign is not exhaustive compatibility, randomized campaign, physical-controller, audio or pixel-perfect certification."
+  ]
+}

@@ -6141,7 +6141,7 @@ index 58bfb5c..495c51d 100644
 +    return true;
 +}
 diff --git a/src/game/battle_psi.c b/src/game/battle_psi.c
-index ce9f34f..8c02484 100644
+index ce9f34f..b2b346c 100644
 --- a/src/game/battle_psi.c
 +++ b/src/game/battle_psi.c
 @@ -29,7 +29,9 @@
@@ -6393,7 +6393,23 @@ index ce9f34f..8c02484 100644
      }
  }
  
-@@ -961,8 +1040,12 @@ void update_psi_animation(void) {
+@@ -927,6 +1006,15 @@ void psi_animation_savestate_rebind(void) {
+  * All three cover 0x400 VRAM words ($5800-$5BFF = 32×32 tilemap).
+  */
+ void update_psi_animation(void) {
++    /* PSI arrangements are one 32x32 screen, not a repeating battle
++     * background. In particular, Giygas uses BG2 for PSI and its unused
++     * layer inherits FILL from the background setup. Center every active
++     * spell on the native battle slice instead of tiling it into the wide
++     * gutters. Derive this each frame so cold animation saves recover too. */
++    unsigned psi_layer = loaded_bg_data_layer1.bitdepth == 2 ? 1 : 0;
++    ppu.bg_viewport_fill[psi_layer] = psi_animation_state.time_until_next_frame
++        ? BG_VIEWPORT_CENTER : BG_VIEWPORT_FILL;
++
+     /* --- Frame advancement (C2E6B3 lines 22-69) ---
+      * When time_until_next_frame is already 0, the animation is inactive:
+      * skip frame AND palette processing, go straight to enemy color change. */
+@@ -961,8 +1049,12 @@ void update_psi_animation(void) {
                              /* Offset table starts at byte 4, bundle_count+1 entries × 2 bytes */
                              size_t offset_table = 4;
                              size_t data_start = offset_table + ((size_t)bundle_count + 1) * 2;
@@ -6406,7 +6422,7 @@ index ce9f34f..8c02484 100644
                              size_t comp_size = comp_end - comp_off;
                              decomp(&asset[data_start + comp_off], comp_size,
                                     psi_animation_state.arr_bundle_buf,
-@@ -1087,6 +1170,12 @@ void update_psi_animation(void) {
+@@ -1087,6 +1179,12 @@ void update_psi_animation(void) {
   * = CGWSEL=$10 (fixed color sub-screen), CGADSUB=$3F (subtract all).
   */
  void apply_psi_battle_effect(uint16_t effect_id) {
@@ -6419,7 +6435,7 @@ index ce9f34f..8c02484 100644
      if (effect_id < 35) {
          /* PSI animation */
          show_psi_animation(effect_id);
-@@ -1143,3 +1232,36 @@ void apply_psi_battle_effect(uint16_t effect_id) {
+@@ -1143,3 +1241,36 @@ void apply_psi_battle_effect(uint16_t effect_id) {
      /* effect_id >= 54: nothing */
  }
  
@@ -8387,7 +8403,7 @@ index 784405b..045bcad 100644
  
  #endif /* DOOR_H */
 diff --git a/src/game/ending.c b/src/game/ending.c
-index f5b72dc..711d2b2 100644
+index f5b72dc..6505c27 100644
 --- a/src/game/ending.c
 +++ b/src/game/ending.c
 @@ -9,6 +9,7 @@
@@ -8398,7 +8414,15 @@ index f5b72dc..711d2b2 100644
  #include "game/battle.h"
  #include "game/fade.h"
  #include "game/flyover.h"
-@@ -107,6 +108,7 @@ uint16_t cur_photo_display;
+@@ -58,6 +59,7 @@ static size_t photographer_cfg_size;
+ static const uint8_t *cast_seq_formatting_data;
+ static const uint8_t *staff_text_data;
+ static size_t staff_text_size;
++static bool credits_photo_frame_needs_restore;
+ static const uint8_t *party_cast_tile_ids_data;
+ static const uint8_t *guardian_text_data;
+ 
+@@ -107,6 +109,7 @@ uint16_t cur_photo_display;
   * pointer, which truncates on 64-bit systems. Instead, we store the pointer
   * here indexed by queue slot, and the queue entry's src field is unused. */
  static const uint8_t *credits_dma_src_ptrs[CREDITS_DMA_QUEUE_SIZE];
@@ -8406,7 +8430,7 @@ index f5b72dc..711d2b2 100644
  
  /* Per-frame callback function pointer.
   * Defaults to process_overworld_tasks, matching the assembly's
-@@ -120,14 +122,60 @@ frame_callback_fn frame_callback = NULL;  /* set to process_overworld_tasks by i
+@@ -120,14 +123,61 @@ frame_callback_fn frame_callback = NULL;  /* set to process_overworld_tasks by i
   * process_overworld_tasks). */
  void frame_callback_savestate_pack(void *out) {
      FrameCallbackSaveState *s = (FrameCallbackSaveState *)out;
@@ -8440,6 +8464,7 @@ index f5b72dc..711d2b2 100644
  
  void frame_callback_savestate_unpack(const void *in) {
      const FrameCallbackSaveState *s = (const FrameCallbackSaveState *)in;
++    credits_photo_frame_needs_restore = true;
      frame_callback = (s->frame_callback_id == FRAME_CALLBACK_CREDITS_SCROLL)
          ? credits_scroll_frame : process_overworld_tasks;
 +    ensure_ending_credits_assets();
@@ -8467,7 +8492,7 @@ index f5b72dc..711d2b2 100644
  }
  
  /*
-@@ -331,7 +379,7 @@ static void prepare_dynamic_cast_name_text(void) {
+@@ -331,7 +381,7 @@ static void prepare_dynamic_cast_name_text(void) {
      for (int i = 0; i < 4; i++) {
          memset(name_buf, 0, 16);
          /* Copy 5-byte name from party characters */
@@ -8476,7 +8501,7 @@ index f5b72dc..711d2b2 100644
  
          uint16_t tile_id = read_u16_le(&party_cast_tile_ids_data[i * 2]);
          render_cast_name_text(name_buf, 6, tile_id);
-@@ -344,6 +392,28 @@ static void prepare_dynamic_cast_name_text(void) {
+@@ -344,6 +394,28 @@ static void prepare_dynamic_cast_name_text(void) {
  
      if (!cast_seq_formatting_data || !guardian_text_data) return;
  
@@ -8505,7 +8530,7 @@ index f5b72dc..711d2b2 100644
      /* Guardian text entries use CAST_SEQUENCE_FORMATTING offsets 39, 36, 108
       * for Paula's dad, Paula's mom, Poo's Master respectively.
       * Each formatting entry is 3 bytes: 2-byte tile position + 1-byte width. */
-@@ -352,10 +422,10 @@ static void prepare_dynamic_cast_name_text(void) {
+@@ -352,10 +424,10 @@ static void prepare_dynamic_cast_name_text(void) {
      {
          memset(name_buf, 0, 16);
          /* Copy Paula's name (party member 1, offset 0 = name) */
@@ -8518,7 +8543,7 @@ index f5b72dc..711d2b2 100644
          const uint8_t *gt1 = &guardian_text_data[0]; /* CHARACTER_GUARDIAN_TEXT_1 */
          for (int j = 0; gt1[j] != 0 && len + j < 15; j++) {
              name_buf[len + j] = gt1[j];
-@@ -369,9 +439,9 @@ static void prepare_dynamic_cast_name_text(void) {
+@@ -369,9 +441,9 @@ static void prepare_dynamic_cast_name_text(void) {
      /* Paula's mom: CAST_SEQUENCE_FORMATTING[12] (offset 36) */
      {
          memset(name_buf, 0, 16);
@@ -8530,7 +8555,7 @@ index f5b72dc..711d2b2 100644
          const uint8_t *gt2 = &guardian_text_data[7]; /* CHARACTER_GUARDIAN_TEXT_2 */
          for (int j = 0; gt2[j] != 0 && len + j < 15; j++) {
              name_buf[len + j] = gt2[j];
-@@ -386,9 +456,9 @@ static void prepare_dynamic_cast_name_text(void) {
+@@ -386,9 +458,9 @@ static void prepare_dynamic_cast_name_text(void) {
      {
          memset(name_buf, 0, 16);
          /* Copy Poo's name (party member 3) */
@@ -8542,7 +8567,7 @@ index f5b72dc..711d2b2 100644
          const uint8_t *gt3 = &guardian_text_data[14]; /* CHARACTER_GUARDIAN_TEXT_3 */
          for (int j = 0; gt3[j] != 0 && len + j < 15; j++) {
              name_buf[len + j] = gt3[j];
-@@ -954,8 +1024,7 @@ row_wipe_check:
+@@ -954,8 +1026,7 @@ row_wipe_check:
          /* Mode 3 = word fill; only src[0] and src[1] are read.
           * Must be static, enqueue_credits_dma stores the raw pointer in the
           * persistent DMA queue, which outlives this stack frame. */
@@ -8552,7 +8577,7 @@ index f5b72dc..711d2b2 100644
      }
  
      /* Update scroll position (fixed-point: fraction += 0x4000) */
-@@ -988,7 +1057,9 @@ static void load_cast_scene(void) {
+@@ -988,7 +1059,9 @@ static void load_cast_scene(void) {
      }
  
      /* Load battle background animation */
@@ -8563,7 +8588,7 @@ index f5b72dc..711d2b2 100644
  
      /* Set up BG3 VRAM layout for cast */
      set_bg3_vram_location(BG_TILEMAP_SIZE_NORMAL, VRAM_CAST_TILEMAP, VRAM_CAST_TILES);
-@@ -1048,9 +1119,12 @@ static void load_cast_scene(void) {
+@@ -1048,9 +1121,12 @@ static void load_cast_scene(void) {
      {
          const uint8_t *pal = ASSET_DATA(ASSET_ENDING_CAST_BG_PALETTE_PAL);
          if (pal) {
@@ -8577,7 +8602,40 @@ index f5b72dc..711d2b2 100644
  
      /* Load sprite group ert.palettes to OBJ ert.palettes 8-15 */
      {
-@@ -1318,6 +1392,7 @@ StepResult mode_step_ending(ModeState *st) {
+@@ -1217,6 +1293,22 @@ static void initialize_credits_scene(void) {
+     credits_script_ptr = staff_text_data;
+ 
+     blank_screen_and_wait_vblank();
++    credits_photo_frame_needs_restore = false;
++}
++
++/* Older checkpoints can contain map graphics in the credits frame's VRAM.
++ * Restore only that immutable frame on the first resumed credits step. Use
++ * local scratch: BUFFER holds live palette-fade state and the shared scratch
++ * holds map arrangements. Neither may be destroyed during a cold slide. */
++static void restore_credits_photo_frame(void) {
++    uint8_t decoded[BUF_CREDITS_LAYER2 + 8192] = {0};
++    const uint8_t *data = ASSET_DATA(ASSET_ENDING_E1E94A_BIN_LZHAL);
++    if (data && decomp(data, ASSET_SIZE(ASSET_ENDING_E1E94A_BIN_LZHAL),
++                       decoded, sizeof(decoded)) >= BUF_CREDITS_LAYER2 + 512) {
++        vram_copy(decoded + BUF_CREDITS_LAYER2,
++                  VRAM_CREDITS_LAYER_2_TILES, 8192, 0);
++    }
++    credits_photo_frame_needs_restore = false;
+ }
+ 
+ /*
+@@ -1240,6 +1332,9 @@ StepResult mode_step_ending(ModeState *st) {
+      * (resolved once, nulled at EN_CR_HOLD teardown). */
+     ensure_ending_credits_assets();
+ 
++    if (credits_photo_frame_needs_restore && s->phase > EN_CR_SETUP)
++        restore_credits_photo_frame();
++
+     for (;;) {
+         switch ((EndingPhase)s->phase) {
+ 
+@@ -1318,6 +1413,7 @@ StepResult mode_step_ending(ModeState *st) {
                  s->photo_idx++;   /* for-loop `continue`: skip to next photo */
                  continue;
              }
@@ -9863,7 +9921,7 @@ index 7d7e466..b44acc1 100644
   * Called each frame from the overworld main loop. Manages SFX and transformation
   * countdowns. When a transformation completes, swaps items in inventory. */
 diff --git a/src/game/map_loader.c b/src/game/map_loader.c
-index 620656b..945ded3 100644
+index 620656b..a99111f 100644
 --- a/src/game/map_loader.c
 +++ b/src/game/map_loader.c
 @@ -16,6 +16,7 @@
@@ -9962,20 +10020,47 @@ index 620656b..945ded3 100644
  
          ert.palettes[i] = (new_b << 10) | (new_g << 5) | new_r;
      }
-@@ -1690,7 +1720,11 @@ void load_map_at_sector(uint16_t sector_x, uint16_t sector_y) {
+@@ -1690,8 +1720,16 @@ void load_map_at_sector(uint16_t sector_x, uint16_t sector_y) {
       * the moment a map/sector reload lands on such a tileset (e.g. the
       * Winters bubble-monkey rope-climb cave, which crosses a tileset-combo
       * sector boundary partway up the climb). */
 -    if (tileset_combo != ml.loaded_tileset_combo) {
+-        load_and_decompress(ASSET_MAPS_GFX(tileset_id), ppu.vram, 0x7000);
 +    /* LOAD_MAP_AT_SECTOR's original cache is ow.loaded_map_tile_combo.
 +     * Teleports and direct map reloads invalidate it after battle VRAM writes.
 +     * The native loader's additional cache must not suppress that reload. */
-+    if (tileset_combo != ow.loaded_map_tile_combo ||
++    if (photograph_map_loading_mode || tileset_combo != ow.loaded_map_tile_combo ||
 +        tileset_combo != ml.loaded_tileset_combo) {
-         load_and_decompress(ASSET_MAPS_GFX(tileset_id), ppu.vram, 0x7000);
++        /* Credits reserve byte $4000 onward for the photograph frame.
++         * LOAD_MAP_AT_SECTOR's PHOTOGRAPH_TILESET branch uploads only $4000
++         * bytes; the ordinary $7000 upload overwrites that frame's graphics. */
++        load_and_decompress(ASSET_MAPS_GFX(tileset_id), ppu.vram,
++                            photograph_map_loading_mode ? 0x4000 : 0x7000);
          /* Clear collision grid when switching tilesets. Fill with 0x40 (wall)
           * so any cell not overwritten by fill_collision_tiles() blocks movement.
-@@ -1820,8 +1854,10 @@ void load_your_sanctuary_location(uint16_t sanctuary_idx) {
+          * This prevents walking into out-of-bounds areas at map edges. */
+@@ -1723,13 +1761,14 @@ void load_map_at_sector(uint16_t sector_x, uint16_t sector_y) {
+ 
+     /* Load overlay sprite graphics and init entity overlay state
+      * (assembly line 119: JSL LOAD_OVERLAY_SPRITES) */
+-    load_overlay_sprites();
+-
+-    /* Load tileset animation (assembly line 120: JSR LOAD_TILESET_ANIM) */
+-    load_tileset_anim(tileset_id);
++    if (!photograph_map_loading_mode) {
++        load_overlay_sprites();
+ 
+-    /* Load palette animation (assembly line 121: JSR LOAD_PALETTE_ANIM) */
+-    load_palette_anim();
++        /* LOAD_MAP_AT_SECTOR's AFTER_OVERLAY branch skips both animations
++         * for the still photograph, along with the overlay graphics. */
++        load_tileset_anim(tileset_id);
++        load_palette_anim();
++    }
+ 
+     /* Assembly lines 130-133: restore window palette and disable palette sync.
+      * LOAD_CHARACTER_WINDOW_PALETTE ensures ert.palettes[0..31] always have correct
+@@ -1820,8 +1859,10 @@ void load_your_sanctuary_location(uint16_t sanctuary_idx) {
      if (sanctuary_idx >= 8) return;
      if (!tilesetpalette_data || !tileset_table_data) return;
  
@@ -9988,7 +10073,7 @@ index 620656b..945ded3 100644
  
      /*
       * --- Step 1: Look up tileset_combo and palette from GLOBAL_MAP_TILESETPALETTE_DATA ---
-@@ -1992,6 +2028,14 @@ void load_your_sanctuary_location(uint16_t sanctuary_idx) {
+@@ -1992,6 +2033,14 @@ void load_your_sanctuary_location(uint16_t sanctuary_idx) {
          return;
      }
  
@@ -10003,7 +10088,7 @@ index 620656b..945ded3 100644
      /*
       * --- Step 6: Copy used tiles to VRAM and remap tilemap
       *             (PREPARE_YOUR_SANCTUARY_LOCATION_TILESET_DATA) ---
-@@ -2174,6 +2218,15 @@ void spawn_npcs_at_sector(uint16_t sector_x, uint16_t sector_y) {
+@@ -2174,6 +2223,15 @@ void spawn_npcs_at_sector(uint16_t sector_x, uint16_t sector_y) {
          const NpcConfig *cfg = get_npc_config(npc_id);
          if (!cfg) continue;
  
@@ -10019,7 +10104,7 @@ index 620656b..945ded3 100644
          /* --- Appearance/event flag check (C0222B.asm lines 236-253) ---
           * appearance_style: 0=always, 1=show_if_flag_off, 2=show_if_flag_on.
           *   DEC / DEC / EOR flag_value / AND #1 / BEQ skip */
-@@ -2496,21 +2549,27 @@ void map_refresh_tilemaps(uint16_t cam_x_pixels, uint16_t cam_y_pixels) {
+@@ -2496,21 +2554,27 @@ void map_refresh_tilemaps(uint16_t cam_x_pixels, uint16_t cam_y_pixels) {
  
      /* Step 3: X-axis scroll, move ml.screen_left_x toward target one tile
       * at a time, spawning NPCs in newly visible columns.
@@ -10051,7 +10136,7 @@ index 620656b..945ded3 100644
              /* Assembly lines 130-137: SPAWN_VERTICAL */
              spawn_vertical((uint16_t)(ml.screen_left_x - 8),
                             (uint16_t)(target_y_tile - 8));
-@@ -2525,15 +2584,15 @@ void map_refresh_tilemaps(uint16_t cam_x_pixels, uint16_t cam_y_pixels) {
+@@ -2525,15 +2589,15 @@ void map_refresh_tilemaps(uint16_t cam_x_pixels, uint16_t cam_y_pixels) {
              /* Scrolling DOWN: SCREEN_TOP_Y < target.
               * Assembly lines 147-188. */
              ml.screen_top_y++;
@@ -10070,7 +10155,7 @@ index 620656b..945ded3 100644
              /* Assembly lines 221-228: SPAWN_HORIZONTAL */
              spawn_horizontal((uint16_t)(target_x_tile - 8),
                               (uint16_t)(ml.screen_top_y - 8));
-@@ -2632,10 +2691,13 @@ static uint16_t check_collision_tile_pattern(uint16_t mask) {
+@@ -2632,10 +2696,13 @@ static uint16_t check_collision_tile_pattern(uint16_t mask) {
      for (int i = 0; i < 6; i++) {
          if (mask & 1) {
              /* Compute tile coordinates for this check point */
@@ -10088,7 +10173,7 @@ index 620656b..945ded3 100644
  
              uint8_t flags = get_collision_tile_and_check_ladder(tile_x, tile_y);
              surface_accum |= flags;
-@@ -3088,6 +3150,49 @@ process_result:
+@@ -3088,6 +3155,49 @@ process_result:
      return temp_entity_surface_flags & 0x003F;
  }
  
@@ -10138,7 +10223,7 @@ index 620656b..945ded3 100644
  /*
   * get_collision_at_pixel, simple single-point collision lookup.
   *
-@@ -3100,9 +3205,12 @@ process_result:
+@@ -3100,9 +3210,12 @@ process_result:
  uint16_t get_collision_at_pixel(int16_t x, int16_t y) {
      temp_entity_surface_flags = 0;
  
@@ -10154,7 +10239,7 @@ index 620656b..945ded3 100644
  
      uint8_t flags = get_collision_tile_and_check_ladder(tile_x, tile_y);
      temp_entity_surface_flags = flags;
-@@ -3538,10 +3646,9 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
+@@ -3538,10 +3651,9 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
          uint16_t flag_id = flag_word & 0x7FFF;
          int flag_state = event_flag_get(flag_id) ? 1 : 0;
  
@@ -10168,7 +10253,7 @@ index 620656b..945ded3 100644
  
          if (flag_state == expected) {
              /* Condition met, use this entry */
-@@ -3554,7 +3661,11 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
+@@ -3554,7 +3666,11 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
      }
  
      /* If music differs and not fading, trigger fade-out */
@@ -10181,7 +10266,7 @@ index 620656b..945ded3 100644
          write_apu_port1(2);
      }
  }
-@@ -3599,4 +3710,3 @@ void apply_next_map_music(void) {
+@@ -3599,4 +3715,3 @@ void apply_next_map_music(void) {
          }
      }
  }
