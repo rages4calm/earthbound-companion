@@ -1,6 +1,6 @@
 # Testing the native conversion
 
-The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The autonomous audit is stopped; development now follows playtesting reports. See [dev.24 release evidence](RELEASE-dev24.md). Earlier reports retain their tested release identities.
+The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The autonomous audit is stopped; development now follows playtesting reports. See [dev.30 release readiness](RELEASE-READINESS-dev30.md). Earlier reports retain their tested release identities.
 
 ## Three different kinds of evidence
 
@@ -86,3 +86,9 @@ Use `verify_redux_package_dev18.py` for the actual clean ZIP, self-contained own
 The completed private party-name/Give suites are now integrated and published; their exact tested player is the shipping binary. See [release evidence](RELEASE-dev19.md) and [shipping provenance](../research/native-runtime-dev19-provenance.json). The reused dev.18 clean-package verifier also checks dev.19 because its pack/content contract is unchanged. No ongoing automated playthrough or autonomous audit is scheduled.
 
 Dev.20 adds source Keys membership/old-save inventory recovery and real Auto Fight encounter/recovery tools. The dev.20 reports bind their complete shipping candidate and retain explicit prepared-scene limits. Dev.19 setup evidence retains its historical identity.
+
+## Repeat the dev.30 release checks
+
+Use `scripts/release_regressions.py --help` with explicit matching local build/runtime identities, both packs, the pinned Redux project, music and a fresh private scratch directory. Supply `--clean-player` to include a freshly compiled public-source player: 76 checks total, or 44 without it. The prepared PSI, credits, Lumine, equipment/canvas, Giygas allocation and prayer scenarios run in both editions; the extended Redux equipment contract does not apply to Original. Input checks use simulated sources.
+
+`clean_public_source_qa.py` reproduces compilation from pinned public source and the complete patch without a ROM or pack. `presentation_matrix_qa.py` checks actual SDL output at five resolutions, three aspect settings and three filter configurations using a software backend. `verify_redux_package_dev18.py` accepts the actual dev.30 ZIP and verifies self-contained setup, isolated opening gameplay, soundtrack checks and copied checkpoint recovery. Consult the [readiness evidence](RELEASE-READINESS-dev30.md) for exact boundaries.

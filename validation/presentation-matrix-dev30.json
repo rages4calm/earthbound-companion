@@ -1,0 +1,1335 @@
+{
+  "passed": true,
+  "totalCases": 90,
+  "resolutions": [
+    [
+      1280,
+      720
+    ],
+    [
+      1920,
+      1080
+    ],
+    [
+      2560,
+      1440
+    ],
+    [
+      3840,
+      2160
+    ],
+    [
+      3440,
+      1440
+    ]
+  ],
+  "aspectSettings": 3,
+  "filterConfigurations": 3,
+  "profiles": {
+    "original": {
+      "passed": true,
+      "cases": 45,
+      "privateBuild": {
+        "driverSourceSha256": "adacb3c9561df2047f023cc6c7e6459c753a071c36740b051a8467f0e1b4a56f",
+        "executableSha256": "8956cf08020703a6294f6bbea141d2184eebe8710b6b732d6dbfc158a1d731c4",
+        "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+        "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+        "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "screens": [
+        {
+          "name": "1280x720-aspect-0-filter-0.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            400,
+            24,
+            1000,
+            576
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-0-filter-1.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            400,
+            24,
+            1000,
+            576
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-0-filter-2.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            399,
+            24,
+            1001,
+            577
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-1-filter-0.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            400,
+            24,
+            1000,
+            576
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-1-filter-1.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            400,
+            24,
+            1000,
+            576
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-1-filter-2.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            399,
+            24,
+            1001,
+            577
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-2-filter-0.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            400,
+            24,
+            1000,
+            576
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-2-filter-1.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            400,
+            24,
+            1000,
+            576
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-2-filter-2.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            399,
+            24,
+            1001,
+            577
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-0-filter-0.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            640,
+            92,
+            1440,
+            828
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-0-filter-1.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            640,
+            92,
+            1440,
+            828
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-0-filter-2.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            638,
+            92,
+            1442,
+            830
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-1-filter-0.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            640,
+            92,
+            1440,
+            828
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-1-filter-1.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            640,
+            92,
+            1440,
+            828
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-1-filter-2.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            638,
+            92,
+            1442,
+            830
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-2-filter-0.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            640,
+            92,
+            1440,
+            828
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-2-filter-1.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            640,
+            92,
+            1440,
+            828
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-2-filter-2.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            638,
+            92,
+            1442,
+            830
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-0-filter-0.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            800,
+            48,
+            2000,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-0-filter-1.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            800,
+            48,
+            2000,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-0-filter-2.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            797,
+            48,
+            2003,
+            1155
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-1-filter-0.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            800,
+            48,
+            2000,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-1-filter-1.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            800,
+            48,
+            2000,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-1-filter-2.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            797,
+            48,
+            2003,
+            1155
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-2-filter-0.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            800,
+            48,
+            2000,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-2-filter-1.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            800,
+            48,
+            2000,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-2-filter-2.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            797,
+            48,
+            2003,
+            1155
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-0-filter-0.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            1240,
+            48,
+            2440,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-0-filter-1.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            1240,
+            48,
+            2440,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-0-filter-2.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            1237,
+            48,
+            2443,
+            1155
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-1-filter-0.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            1240,
+            48,
+            2440,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-1-filter-1.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            1240,
+            48,
+            2440,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-1-filter-2.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            1237,
+            48,
+            2443,
+            1155
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-2-filter-0.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            1240,
+            48,
+            2440,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-2-filter-1.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            1240,
+            48,
+            2440,
+            1152
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-2-filter-2.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            1237,
+            48,
+            2443,
+            1155
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-0-filter-0.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            1200,
+            72,
+            3000,
+            1728
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-0-filter-1.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            1200,
+            72,
+            3000,
+            1728
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-0-filter-2.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            1196,
+            72,
+            3005,
+            1732
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-1-filter-0.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            1200,
+            72,
+            3000,
+            1728
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-1-filter-1.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            1200,
+            72,
+            3000,
+            1728
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-1-filter-2.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            1196,
+            72,
+            3005,
+            1732
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-2-filter-0.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            1200,
+            72,
+            3000,
+            1728
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-2-filter-1.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            1200,
+            72,
+            3000,
+            1728
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-2-filter-2.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            1196,
+            72,
+            3005,
+            1732
+          ],
+          "passed": true
+        }
+      ],
+      "limits": [
+        "SDL dummy/software output verifies requested sizes, aspect/filter paths and nonblank captures; no physical monitor/GPU-driver, controller, every-scene or pixel-perfect claim."
+      ]
+    },
+    "redux": {
+      "passed": true,
+      "cases": 45,
+      "privateBuild": {
+        "driverSourceSha256": "adacb3c9561df2047f023cc6c7e6459c753a071c36740b051a8467f0e1b4a56f",
+        "executableSha256": "8956cf08020703a6294f6bbea141d2184eebe8710b6b732d6dbfc158a1d731c4",
+        "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+        "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+        "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "screens": [
+        {
+          "name": "1280x720-aspect-0-filter-0.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            40,
+            24,
+            925,
+            591
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-0-filter-1.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            40,
+            24,
+            925,
+            591
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-0-filter-2.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            40,
+            24,
+            926,
+            592
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-1-filter-0.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            256,
+            24,
+            925,
+            591
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-1-filter-1.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            256,
+            24,
+            925,
+            591
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-1-filter-2.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            256,
+            24,
+            926,
+            592
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-2-filter-0.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            40,
+            24,
+            925,
+            591
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-2-filter-1.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            40,
+            24,
+            925,
+            591
+          ],
+          "passed": true
+        },
+        {
+          "name": "1280x720-aspect-2-filter-2.bmp",
+          "size": [
+            1280,
+            720
+          ],
+          "nonBlackBounds": [
+            40,
+            24,
+            926,
+            592
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-0-filter-0.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            160,
+            92,
+            1340,
+            848
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-0-filter-1.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            160,
+            92,
+            1340,
+            848
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-0-filter-2.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            160,
+            92,
+            1342,
+            850
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-1-filter-0.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            448,
+            92,
+            1340,
+            848
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-1-filter-1.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            448,
+            92,
+            1340,
+            848
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-1-filter-2.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            448,
+            92,
+            1342,
+            850
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-2-filter-0.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            160,
+            92,
+            1340,
+            848
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-2-filter-1.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            160,
+            92,
+            1340,
+            848
+          ],
+          "passed": true
+        },
+        {
+          "name": "1920x1080-aspect-2-filter-2.bmp",
+          "size": [
+            1920,
+            1080
+          ],
+          "nonBlackBounds": [
+            160,
+            92,
+            1342,
+            850
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-0-filter-0.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            80,
+            48,
+            1850,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-0-filter-1.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            80,
+            48,
+            1850,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-0-filter-2.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            80,
+            48,
+            1853,
+            1185
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-1-filter-0.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            512,
+            48,
+            1850,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-1-filter-1.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            512,
+            48,
+            1850,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-1-filter-2.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            512,
+            48,
+            1853,
+            1185
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-2-filter-0.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            80,
+            48,
+            1850,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-2-filter-1.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            80,
+            48,
+            1850,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "2560x1440-aspect-2-filter-2.bmp",
+          "size": [
+            2560,
+            1440
+          ],
+          "nonBlackBounds": [
+            80,
+            48,
+            1853,
+            1185
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-0-filter-0.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            520,
+            48,
+            2290,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-0-filter-1.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            520,
+            48,
+            2290,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-0-filter-2.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            520,
+            48,
+            2293,
+            1185
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-1-filter-0.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            952,
+            48,
+            2290,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-1-filter-1.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            952,
+            48,
+            2290,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-1-filter-2.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            952,
+            48,
+            2293,
+            1185
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-2-filter-0.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            520,
+            48,
+            2290,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-2-filter-1.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            520,
+            48,
+            2290,
+            1182
+          ],
+          "passed": true
+        },
+        {
+          "name": "3440x1440-aspect-2-filter-2.bmp",
+          "size": [
+            3440,
+            1440
+          ],
+          "nonBlackBounds": [
+            520,
+            48,
+            2293,
+            1185
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-0-filter-0.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            120,
+            72,
+            2775,
+            1773
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-0-filter-1.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            120,
+            72,
+            2775,
+            1773
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-0-filter-2.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            120,
+            72,
+            2780,
+            1778
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-1-filter-0.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            768,
+            72,
+            2775,
+            1773
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-1-filter-1.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            768,
+            72,
+            2775,
+            1773
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-1-filter-2.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            768,
+            72,
+            2780,
+            1778
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-2-filter-0.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            120,
+            72,
+            2775,
+            1773
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-2-filter-1.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            120,
+            72,
+            2775,
+            1773
+          ],
+          "passed": true
+        },
+        {
+          "name": "3840x2160-aspect-2-filter-2.bmp",
+          "size": [
+            3840,
+            2160
+          ],
+          "nonBlackBounds": [
+            120,
+            72,
+            2780,
+            1778
+          ],
+          "passed": true
+        }
+      ],
+      "limits": [
+        "SDL dummy/software output verifies requested sizes, aspect/filter paths and nonblank captures; no physical monitor/GPU-driver, controller, every-scene or pixel-perfect claim."
+      ]
+    }
+  },
+  "representativeFinalCapturesReviewed": true,
+  "backend": "Actual SDL presentation, dummy/software backend",
+  "limits": [
+    "Checks output dimensions, nonblank rendering and capture completeness. One physical 1920x1080 monitor; other resolutions are offscreen checks, not physical display or GPU-driver certification."
+  ]
+}

@@ -7,17 +7,17 @@ $staging=Join-Path $releaseRoot ('.redux-staging-'+$stamp)
 $app=Join-Path $staging 'EarthBound Companion'
 $docs=Join-Path $projectRoot 'github-repo'
 if(!(Test-Path -LiteralPath $docs)){$docs=$projectRoot}
-$native=Join-Path $projectRoot 'build\companion\earthbound.exe'
-if($NativeExePath){$native=[IO.Path]::GetFullPath($NativeExePath)}
+if(!$NativeExePath){throw 'Pass -NativeExePath for the explicitly tested native candidate. Packaging an unspecified older build is not allowed.'}
+$native=[IO.Path]::GetFullPath($NativeExePath)
 $helper=Join-Path $projectRoot '_BuildScratch\redux-setup-dist\redux-setup.exe'
 $originalHelper=Join-Path $projectRoot 'native-source\dist\ebtools-setup.exe'
 foreach($input in @($native,$helper,$originalHelper)){if(!(Test-Path -LiteralPath $input -PathType Leaf)){throw "Missing build input: $input"}}
 New-Item -ItemType Directory -Path $app -Force | Out-Null
 foreach($folder in @('Game','msu','UserData','Profiles','Mods','Licenses')){New-Item -ItemType Directory -Path (Join-Path $app $folder) -Force | Out-Null}
-& dotnet publish (Join-Path $projectRoot 'Companion\Companion.csproj') -c Release -o (Join-Path $staging 'publish') *> (Join-Path $staging 'publish.log')
+& dotnet publish (Join-Path $docs 'Companion\Companion.csproj') -c Release -o (Join-Path $staging 'publish') *> (Join-Path $staging 'publish.log')
 if($LASTEXITCODE -ne 0){throw 'Companion publish failed. See the staging publish.log.'}
 Copy-Item -LiteralPath (Join-Path $staging 'publish\EarthBound Companion.exe') -Destination $app
-Copy-Item -LiteralPath (Join-Path $projectRoot 'Companion\Assets\earthbound-companion.ico') -Destination (Join-Path $app 'EarthBound Companion.ico')
+Copy-Item -LiteralPath (Join-Path $docs 'Companion\Assets\earthbound-companion.ico') -Destination (Join-Path $app 'EarthBound Companion.ico')
 Copy-Item -LiteralPath $native -Destination (Join-Path $app 'Game\earthbound.exe')
 Copy-Item -LiteralPath $helper -Destination (Join-Path $app 'Game\redux-setup.exe')
 Copy-Item -LiteralPath $originalHelper -Destination (Join-Path $app 'Game\ebtools-setup.exe')
@@ -39,8 +39,9 @@ EarthBound Companion — Redux development edition
    and builds the native game data locally. No Python installation is needed.
 5. Play from Play, or generate a Story Shuffle adventure.
 
-This is an experimental native conversion. A complete story or randomized
-playthrough remains unverified. Read MATERNALBOUND-NATIVE.md for coverage.
+This is an experimental native conversion. One user-reported Redux campaign
+reached the credits, with testing boosts near the end. Exhaustive compatibility
+and randomized campaigns remain unverified. Read MATERNALBOUND-NATIVE.md.
 Game Mode lets you return to original EarthBound. Each edition and seed
 keeps separate saves. Back up phone saves before moving between builds.
 

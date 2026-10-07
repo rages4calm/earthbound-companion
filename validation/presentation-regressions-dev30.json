@@ -1,0 +1,410 @@
+{
+  "passed": true,
+  "profiles": {
+    "original": {
+      "psi_viewport_qa": {
+        "passed": true,
+        "animations": 34,
+        "cases": 204,
+        "sampledFrames": 5970,
+        "everyArrangementChangeSampled": true,
+        "privateBuild": {
+          "driverSourceSha256": "ca7943c0fb1bc86800221fa611564e7c02dfbd9fce3b539b07ff3b8f40277da3",
+          "executableSha256": "adab5050ec850e97f2204f469dcc5d94ad417b433067231c705bbbde781d1e3d",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+        "limits": [
+          "Prepared three horizontal targets and two bit depths; diagnostic white palette isolates geometry. No gameplay damage, color parity, physical-controller or full campaign claim."
+        ]
+      },
+      "presentation_qa_dev26": {
+        "version": "0.5.0-redux-dev.26",
+        "passed": true,
+        "privateBuild": {
+          "driverSourceSha256": "40c1fa629c1e25ffb3ea59faf9db6faaef84860a8e3f17dff4e5c5d47ec55ae8",
+          "executableSha256": "6b89b517220e9235bd5b129a81f80d680f998000135ddb8b15258433892eb991",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+        "results": {
+          "QA_EQUIPMENT": {
+            "cases": 0,
+            "applicable": false,
+            "reason": "Redux extended preview only"
+          },
+          "QA_CANVAS": {
+            "hiddenStageBlack": true,
+            "ordinaryTerrainRestored": true,
+            "overlayPreserved": true
+          }
+        },
+        "limits": [
+          "Private fixture inventory; all usable equipment candidates for four characters, production preview callbacks and independently painted glyph pixels. No physical controller/audio or full campaign claim."
+        ],
+        "ownerSavesTouched": false,
+        "shippingCheatsAdded": false
+      },
+      "lumine_scroll_qa_dev26": {
+        "version": "0.5.0-redux-dev.26",
+        "passed": true,
+        "privateBuild": {
+          "driverSourceSha256": "2999dea46c0273ea5a83920a1d65858371891b252c44c162dd157d7f52a65c99",
+          "executableSha256": "18a961d5c0e71956bb38b597018ef0e05db4e38d952fccc4a0b7414e4269f440",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+        "logSha256": "5562dd52435cfe3dc75ca81466f699d24e1b5491a1bc973dd98901dde0fd14af",
+        "cases": [
+          {
+            "case": 0,
+            "nameLength": 0,
+            "pixels": 866,
+            "frames": 925,
+            "viewportWordsCompared": 222000,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 1,
+            "nameLength": 1,
+            "pixels": 868,
+            "frames": 925,
+            "viewportWordsCompared": 222000,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 2,
+            "nameLength": 4,
+            "pixels": 887,
+            "frames": 941,
+            "viewportWordsCompared": 225840,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 3,
+            "nameLength": 5,
+            "pixels": 876,
+            "frames": 933,
+            "viewportWordsCompared": 223920,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 4,
+            "nameLength": 5,
+            "pixels": 906,
+            "frames": 965,
+            "viewportWordsCompared": 231600,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 5,
+            "nameLength": 5,
+            "pixels": 894,
+            "frames": 949,
+            "viewportWordsCompared": 227760,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          }
+        ],
+        "comparison": "Independent full-length glyph pixel canvas sampled as US 2x2 planar cells; every production scroll frame and BG1 destination checked.",
+        "limits": [
+          "Prepared callroutine fixtures, not a complete story or hardware/audio playthrough. Natural copied-checkpoint replay and cold continuation are separate."
+        ],
+        "fullPlaythroughVerified": false
+      },
+      "giygas_sprite_binding_qa": {
+        "passed": true,
+        "cases": 4,
+        "privateBuild": {
+          "driverSourceSha256": "bc58898d2fde23cf063392026bfcd8f87acc64c5cd92c9cef8241a5108590029",
+          "executableSha256": "70c7656b5a61c609fe7fc9e596aa3c17032160e1d092e6a447cfc4b4c7a2222a",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+        "limits": [
+          "Prepared group 476 and stale live-battler binding, front/back and normal/alternate OAM. Natural fight/prayer timeline is checked separately."
+        ]
+      },
+      "credits": {
+        "allPassed": true,
+        "executedCases": 1,
+        "executedAssertions": 17,
+        "capturedPhotoScenes": 32,
+        "additionalNativeFrameAssertions": 32,
+        "privateBuild": {
+          "driverSourceSha256": "05795e8e072e4e6ce90b33e973a4787406f66ddd16a3ef083fbf36646402bc4f",
+          "executableSha256": "7a85da17423cada189abfffbd41eddc6fd1c32fc0bc2bbd14f3dd375d0b4076b",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+        "runtimeSourceQualification": "Execution is bound to the supplied production executable/library hashes; current reference source hashes do not replace that runtime identity.",
+        "limits": [
+          "Prepared home/party/story context; preceding full story and interaction dispatch to Mom not covered.",
+          "Actual text/cast/credits/interlude/post-credits children execute without injected completion flags or mid-scene PCs.",
+          "Photo acquisition is fixture-prepared; complete audiovisual and original timing parity unverified.",
+          "Missing prerequisites are investigated before attributing a failure to production native conversion.",
+          "Observer hash identifies matching frozen binary pair; this private driver executes player platform objects only."
+        ]
+      },
+      "prayer": {
+        "allPassed": true,
+        "executedCases": 7,
+        "executedAssertions": 208,
+        "privateBuild": {
+          "driverSourceSha256": "d0f4a1dad0891b4a1c6a0173586ede5a1e70fb492b5284c2d9e00eb96208592f",
+          "executableSha256": "4f0ef2328093afede06231ea6c00011cdf5b5af3716277728246481c8e0b8f88",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+        "limits": [
+          "Prepared battle callback entry; no preceding full story or natural Pray command selection claim.",
+          "Natural text/map/entity scene children are driven without injected completion flags or skipped callback PCs.",
+          "Actor observations show real assigned scripts/NPCs; no pixel-perfect appearance, sound audibility or original timing oracle claim.",
+          "A failed bounded diagnostic is not a native defect until missing fixture prerequisites have been excluded."
+        ]
+      }
+    },
+    "redux": {
+      "psi_viewport_qa": {
+        "passed": true,
+        "animations": 68,
+        "cases": 408,
+        "sampledFrames": 10524,
+        "everyArrangementChangeSampled": true,
+        "privateBuild": {
+          "driverSourceSha256": "ca7943c0fb1bc86800221fa611564e7c02dfbd9fce3b539b07ff3b8f40277da3",
+          "executableSha256": "f3bd5bd0381c152a10e259907557f32475a28ac2f63b5c7ce5fa16138b31d77e",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+        "limits": [
+          "Prepared three horizontal targets and two bit depths; diagnostic white palette isolates geometry. No gameplay damage, color parity, physical-controller or full campaign claim."
+        ]
+      },
+      "presentation_qa_dev26": {
+        "version": "0.5.0-redux-dev.26",
+        "passed": true,
+        "privateBuild": {
+          "driverSourceSha256": "40c1fa629c1e25ffb3ea59faf9db6faaef84860a8e3f17dff4e5c5d47ec55ae8",
+          "executableSha256": "07f291c48aaf1ef29c65704a4227d6fe9d613cce36cf5576793ad0185d06d7a9",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+        "results": {
+          "QA_EQUIPMENT": {
+            "cases": 206,
+            "pixelsCompared": 1865536,
+            "maxRunEnd": 110,
+            "passed": true
+          },
+          "QA_CANVAS": {
+            "hiddenStageBlack": true,
+            "ordinaryTerrainRestored": true,
+            "overlayPreserved": true
+          }
+        },
+        "limits": [
+          "Private fixture inventory; all usable equipment candidates for four characters, production preview callbacks and independently painted glyph pixels. No physical controller/audio or full campaign claim."
+        ],
+        "ownerSavesTouched": false,
+        "shippingCheatsAdded": false
+      },
+      "lumine_scroll_qa_dev26": {
+        "version": "0.5.0-redux-dev.26",
+        "passed": true,
+        "privateBuild": {
+          "driverSourceSha256": "2999dea46c0273ea5a83920a1d65858371891b252c44c162dd157d7f52a65c99",
+          "executableSha256": "ed8574e53e2ec2373b2da0cfc046b83ea4b16f996e27b9071ff55d726ff88e88",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+        "logSha256": "3eda4489826df1d1a3b3ae3f3056563428540e4bd914e40df77b0666299032c9",
+        "cases": [
+          {
+            "case": 0,
+            "nameLength": 0,
+            "pixels": 866,
+            "frames": 925,
+            "viewportWordsCompared": 222000,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 1,
+            "nameLength": 1,
+            "pixels": 868,
+            "frames": 925,
+            "viewportWordsCompared": 222000,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 2,
+            "nameLength": 4,
+            "pixels": 887,
+            "frames": 941,
+            "viewportWordsCompared": 225840,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 3,
+            "nameLength": 5,
+            "pixels": 876,
+            "frames": 933,
+            "viewportWordsCompared": 223920,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 4,
+            "nameLength": 5,
+            "pixels": 906,
+            "frames": 965,
+            "viewportWordsCompared": 231600,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          },
+          {
+            "case": 5,
+            "nameLength": 6,
+            "pixels": 896,
+            "frames": 957,
+            "viewportWordsCompared": 229680,
+            "bufferTailPreserved": true,
+            "bg1WrapAndUnrelatedVramPassed": true
+          }
+        ],
+        "comparison": "Independent full-length glyph pixel canvas sampled as US 2x2 planar cells; every production scroll frame and BG1 destination checked.",
+        "limits": [
+          "Prepared callroutine fixtures, not a complete story or hardware/audio playthrough. Natural copied-checkpoint replay and cold continuation are separate."
+        ],
+        "fullPlaythroughVerified": false
+      },
+      "giygas_sprite_binding_qa": {
+        "passed": true,
+        "cases": 4,
+        "privateBuild": {
+          "driverSourceSha256": "bc58898d2fde23cf063392026bfcd8f87acc64c5cd92c9cef8241a5108590029",
+          "executableSha256": "c75f91d270807a9d41000024d929dfd7519bf2091270f09d44ed20e7422792db",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+        "limits": [
+          "Prepared group 476 and stale live-battler binding, front/back and normal/alternate OAM. Natural fight/prayer timeline is checked separately."
+        ]
+      },
+      "credits": {
+        "allPassed": true,
+        "executedCases": 1,
+        "executedAssertions": 19,
+        "capturedPhotoScenes": 32,
+        "additionalNativeFrameAssertions": 32,
+        "privateBuild": {
+          "driverSourceSha256": "05795e8e072e4e6ce90b33e973a4787406f66ddd16a3ef083fbf36646402bc4f",
+          "executableSha256": "782a03fdfda807639583dfaacb582844b8f18533c95702d76e21067ad1a9200d",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+        "runtimeSourceQualification": "Execution is bound to the supplied production executable/library hashes; current reference source hashes do not replace that runtime identity.",
+        "limits": [
+          "Prepared home/party/story context; preceding full story and interaction dispatch to Mom not covered.",
+          "Actual text/cast/credits/interlude/post-credits children execute without injected completion flags or mid-scene PCs.",
+          "Photo acquisition is fixture-prepared; complete audiovisual and original timing parity unverified.",
+          "Missing prerequisites are investigated before attributing a failure to production native conversion.",
+          "Observer hash identifies matching frozen binary pair; this private driver executes player platform objects only."
+        ]
+      },
+      "prayer": {
+        "allPassed": true,
+        "executedCases": 7,
+        "executedAssertions": 208,
+        "privateBuild": {
+          "driverSourceSha256": "d0f4a1dad0891b4a1c6a0173586ede5a1e70fb492b5284c2d9e00eb96208592f",
+          "executableSha256": "759bb085232b5184fcf1473848087f4a0d19b6929582a6044c239c903be40156",
+          "productionExecutableSha256": "42575590f8386db0394aacfed6e4695e1604fe4b5b6178c882ebc2ac6a8b08ab",
+          "productionLibrarySha256": "67dd9958a50c7c9c233d8f7a6c6bb8a07ba6b2d87f0f94a150ca7561671af1c6",
+          "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+          "sharedBuildModified": false,
+          "sharedSourceModified": false,
+          "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+        },
+        "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+        "limits": [
+          "Prepared battle callback entry; no preceding full story or natural Pray command selection claim.",
+          "Natural text/map/entity scene children are driven without injected completion flags or skipped callback PCs.",
+          "Actor observations show real assigned scripts/NPCs; no pixel-perfect appearance, sound audibility or original timing oracle claim.",
+          "A failed bounded diagnostic is not a native defect until missing fixture prerequisites have been excluded."
+        ]
+      }
+    }
+  },
+  "giygasNegativeControl": {
+    "oldVersion": "dev.28",
+    "detectedKnownStaleSpriteDefect": true,
+    "failure": "GIYGAS_OAM_FAIL row 0 alt 0"
+  },
+  "limits": [
+    "Prepared renderer/scenario contracts; no complete natural-story, color/audio parity or observer comparison claim."
+  ]
+}

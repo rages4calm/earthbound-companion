@@ -10,7 +10,14 @@ body:
     id: version
     attributes:
       label: Companion version
-      placeholder: 0.4.0
+      placeholder: 0.5.0-redux-dev.30
+    validations:
+      required: true
+  - type: dropdown
+    id: edition
+    attributes:
+      label: Active game edition
+      options: [Original EarthBound, MaternalBound Redux, Original Story Shuffle, Redux Story Shuffle, Setup or launcher only]
     validations:
       required: true
   - type: dropdown
@@ -37,4 +44,4 @@ body:
     id: environment
     attributes:
       label: Environment and redacted log details
-      description: Include Windows version, controller, display mode, and relevant redacted lines from UserData/game.log.
+      description: Include Windows version, controller, resolution/aspect/filter settings, and relevant redacted lines from the active profile or seed session's game.log.

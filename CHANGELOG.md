@@ -1,5 +1,30 @@
 # Changelog
 
+## Dev.30 release readiness follow-up
+
+- Verify a fresh pinned public-source build without ROM/assets and first-run setup of the exact published dev.30 ZIP. Preserve the current download and installed playthrough.
+- Add repeatable credits, PSI, Giygas-allocation and offscreen presentation regressions. Shipping/clean-source runtime and prepared scenarios pass 76 checks; the display matrix passes 90 cases. PSI samples every arrangement change across 612 cases and 16,494 frames.
+- Verify post-cleanup packaging from canonical launcher source. Require an explicit tested native candidate instead of silently selecting an old default build.
+- Record the user-reported Redux campaign, final-test boosts and remaining natural-story, randomized, physical hardware and listening limits. [Readiness report](docs/RELEASE-READINESS-dev30.md).
+
+## 0.5.0-redux-dev.30 - credits photos and widescreen PSI
+
+- Prevent normal map transfers and animation writes from overwriting the credits photograph frame; restore its immutable graphics after cold checkpoint loading.
+- Center active PSI effects in the native battle slice and restore the inactive layer's wider background behavior. Existing checkpoints derive the corrected viewport again.
+- Verify all 32 prepared photo scenes in Original and Redux and bounded PSI geometry. See [release evidence](docs/RELEASE-dev30.md).
+
+## 0.5.0-redux-dev.29 - Giygas fight sprite repair
+
+- Rebind live battlers after sprite repacking so Giygas/Porky drawing uses the current allocation rather than stale tile/palette indices. Preserve existing checkpoints. [Release evidence](docs/RELEASE-dev29.md).
+
+## 0.5.0-redux-dev.28 - Sound Stone and Magicant presentation
+
+- Suspend the parent letterbox and gameplay zoom during the full Sound Stone composition; reuse sanctuary graphics space during Magicant's return transition. [Release evidence](docs/RELEASE-dev28.md).
+
+## 0.5.0-redux-dev.27 - museum NPC loading
+
+- Restore the missing Fourside museum quest NPC by repairing native entity-loading behavior, including the reported checkpoint. [Release evidence](docs/RELEASE-dev27.md).
+
 ## 0.5.0-redux-dev.26 - geysers, equipment text and transition presentation
 
 - Preserve persistent sprite-animation state during explicit frame rendering; restore hidden idle geysers, including older checkpoints, while retaining earthquake eruption animation and collision.

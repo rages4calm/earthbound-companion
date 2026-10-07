@@ -91,13 +91,17 @@ Dev.16 also fixes active Redux bulk-buy capacity checks: temporary reservations 
 
 The supplemental [wider source crosswalk](research/redux-wider-source-accounting-dev16-v8.json) accounts for sources beyond the 36 named bugfix imports using the existing pinned ledger. It records adapters, converted data and explicit behavior boundaries; source accounting is not full module or story compatibility. The native [code-only build](validation/public-clean-source-dev16.json) now reproduces from the full public patch without extracted JSON or a ROM.
 
+## Dev.30 release readiness
+
+One user-reported Redux campaign reached the credits, with final-test equipment/stat boosts. A fresh public-source build, self-contained setup of the actual release ZIP, 76 bounded native checks and 90 offscreen presentation cases now pass. See the [readiness report and exact limits](docs/RELEASE-READINESS-dev30.md). This does not certify every natural story branch, randomized progression or physical display/controller configuration.
+
 ## Remaining before full compatibility is claimed
 
 - Validate converted title/cutscene presentation, battle sprites and PSI through later gameplay, beyond isolated scene and renderer checks.
 - Listen to the converted soundtrack and verify every SPC/MSU transition.
 - Verify gameplay-driven photo collection and every named-guardian choice in the cast.
 - Finish the remaining assembly/native audit beyond the 36 reviewed active bugfix imports and 15 reviewed writes in `redux_changes.ccs` plus the three reviewed recovery hooks, and exercise their outstanding branches. An additional five-module review covers 29 controls/terrain/Spy/stat-buff/cast writes. Literal writes and scene hooks outside these reviewed modules still need separate review.
-- Validate free movement, doors, NPCs, item use, shops and cutscenes through real gameplay, including a start-to-ending playthrough.
+- Exercise remaining natural quest and presentation branches beyond the completed user-reported campaign and prepared fixtures; an unboosted full campaign is not certified.
 - Complete a full randomized playthrough beyond the content-specific protection checks and opening replay.
 
 The Redux policy has its own audit and checks; original-story results are not substituted for it. Unknown packs stay locked. Arbitrary BPS/IPS patches cannot execute automatically in the native engine. The [assembly and separate-format ledger](validation/native-redux-assembly-ledger.json) accounts for all 105 dialogue-excluded spans against pinned source identities and native references. It identified and resolved the missing font-aware highlight and delivery-letterbox hooks. Classification alone does not prove every ROM patch or branch of its native equivalent. The [active bugfix review](research/redux-active-bugfix-review.json) separately checks all 36 direct active imports against the exact upstream commit and records source hashes, native references, targeted tests and gaps. Native DMA is immediate; SNES region/boot patches do not execute on PC. Dev.16 reproduces the Original aligned-spacing guards and the pinned Redux diagonal threshold separately, with actual machine comparisons and ordinary copied-save traces. The [updated hook notes](research/redux-active-bugfix-review-dev16.json) supersede the historical follower and timed-item qualifications; [earlier behavioral gaps](research/redux-active-hook-evidence-completeness-dev16.json) and [v8 refreshed evidence](research/redux-hook-semantic-gaps-dev16-v8.json) remain explicit. Complete developer/debug-menu parity is not claimed.

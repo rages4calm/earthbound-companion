@@ -9,7 +9,7 @@
 > [!WARNING]
 > **Current release: `v0.5.0-redux-dev.30`, an experimental native Redux adaptation. Further playtesting is needed.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. One user-reported Redux campaign reached the ending and credits, with equipment/stat boosts for final testing. Automated full-campaign certification, randomized playthroughs, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
-Dev.30 fixes striped/corrupted credits photographs and repeating PSI effects in widescreen side gutters, including existing checkpoints. All 32 credits photos pass in both editions. [Details](docs/RELEASE-dev30.md).
+Dev.30 fixes striped/corrupted credits photographs and repeating PSI effects in widescreen side gutters, including existing checkpoints. All 32 credits photos pass in both editions. [Details](docs/RELEASE-dev30.md). Fresh public-source compilation, packaged first-run setup, 76 bounded regressions and 90 offscreen presentation cases also pass. [Readiness and remaining coverage](docs/RELEASE-READINESS-dev30.md).
 
 ## Game features
 
@@ -52,43 +52,7 @@ The target is one polished PC edition: MaternalBound Redux's restored writing, a
 
 [Developer testing tools](docs/TESTING.md) · [Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.30) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
 
-Dev.26 fixes Lost Underworld geysers, equipment comparison clipping, Lumine Hall wall-writing jitter and cave fragments on black transition screens. [Fixes and bounded verification](docs/RELEASE-dev26.md).
-
-Dev.25 adds an independent **Original EarthBound title screen** switch in **Game Mode**. Redux keeps its story, gameplay, seed identities and saves; the original title artwork and animation come from the clean ROM data already built locally. Apply settings and relaunch. [Option and bounded verification](docs/RELEASE-dev25.md).
-
-Dev.24 fixes the crash before Lumine Hall’s wall-writing animation after Electro Specter. The native scroll stays within its existing work buffer, renders the full text with the original spacing, and updates the correct background layer. The copied boss/recording sequence and cold-load during the animation pass; Original and Redux scroll fixtures check every frame. [Fix, actual capture and bounded verification](docs/RELEASE-dev24.md).
-
-Dev.23 prevents Paula and Poo losing earned levels, EXP, stats and PSI when they return to the party. First-join catch-up runs only once and cannot lower an already-higher character. The reported Paula save was recovered privately while retaining all EXP earned after her rescue. [Fix and bounded verification](docs/RELEASE-dev23.md).
-
-Dev.22 fixes corrupted room graphics after Clumsy Robot by honoring map-cache invalidation in the shared native loader. Original and Redux prepared encounters pass, with unchanged battle results and rewards. [Fix, before/after captures and verification](docs/RELEASE-dev22.md).
-
-Dev.21 restores all three battle PSI categories together and recovers the old saved menu layout. Original and Redux share the fix; packs and saves are unchanged. [Fix, native capture and verification](docs/RELEASE-dev21.md).
-
-Dev.20 fixes shop-only Suporma and other ordinary items incorrectly hidden in shared storage, recovers affected phone/F6 saves without discarding full-bag overflow, and removes the AUTO label after combat and from older roaming states. The data pack, save format and seed identities are unchanged. [Fixes, evidence and recovery notes](docs/RELEASE-dev20.md).
-
-Dev.19 includes the previously private fixes: accented character names now survive Goods/PSI and service target menus; giving equipped items to yourself with a full bag preserves the correct equipment slot; and transferring armor between characters recalculates defense after inventory indices settle. The equipment changes are intentional Companion QoL fixes for quirks also reproduced in the original source. The asset pack, save format and seed policies are unchanged from dev.18. [Release evidence and playtesting notes](docs/RELEASE-dev19.md).
-
-Development now follows reported playtesting issues. The autonomous audit and agents are stopped. No additional whole Redux feature is currently confirmed missing from normal play, but that is not a certification of complete compatibility: natural progression, full story/randomized playthroughs, all combat combinations, and complete audio/display/controller coverage remain open. Tests already completed privately are published with their original runtime identities and limits.
-
-Dev.18 restores Redux Town Maps, gas-station intro art, Starman teleport frames and battle-transition swirls; fixes extended window-title/file-slot glyphs and cold-loaded Continue slots; and recognizes already-current Original data during setup. Exactly 41 presentation assets change, with guarded story-save copying and exact seed-base protection. [The dev.18 audit](docs/NATIVE-AUDIT-dev18.md) records the executed evidence and remaining work. Dev.19 now fixes the separately reproduced accented party-target labels and equipped-Give cases described below.
-
-Dev.16 restores serialized random rolls, corrects encounter probability, bomb splash targets, boss transformation cleanup, encounter direction, sprite-script returns, loaded item timers, Redux bulk-buy capacity/refunds and Redux follower spacing, and adds Original mode's missing possession script with guarded old-save recovery. Expanded source-backed tests cover selected paths in all 144 active battle callbacks and complete prepared encounters, prayer, ending and final-letter transactions. The Original data-upgrade and real checkpoint-recovery checks also pass. Redux content/seed identities and owner saves are retained; complete story and randomized coverage remain open. [Audit, evidence and remaining work](docs/NATIVE-AUDIT-dev16.md).
-
-Dev.15 corrects cold-loaded battle tables, summon eligibility/artwork, special-battle presentation, conditional music and dialogue audio commands, repeated Offense Up, terrain movement arithmetic, ladder coordinates and Jeff repair RNG. Source-backed scenarios and independent original-SNES comparisons now cover more of the native conversion. Saves, pack and seed identities are unchanged. [Audit, evidence and remaining work](docs/NATIVE-AUDIT-dev15.md).
-
-Dev.14 fixes hotel wake-up traps, boundary collision coordinates, large damage/healing variance, Redux naming and battle UI, and the Gauss Labs End reset. It adds source-backed audit tools, ordinary-input/cold-save tests and selected independent SNES CPU comparisons. The reported Threek save walks out with normal Down input; no relocation or save repair is needed. [Audit, evidence and remaining work](docs/NATIVE-AUDIT.md).
-
-![Actual dev.16 copied-save hotel exit in the final native engine](docs/images/native-redux-hotel-exit-dev16.png)
-
-This current development capture shows the copied Threek save after ordinary Down input leaves the bed gap. [Replay and image identities](validation/hotel-exit-capture-dev16.json). No owner save was changed; this is an isolated movement check.
-
-![Redux accented keyboard in an isolated native development fixture](docs/images/native-redux-naming-dev14.png)
-
-This unchanged native capture shows the six-row keyboard after the rendering correction. The mixed test name is a prepared input, not story progress; the capture retains its v3 runtime identity in the naming report.
-
-Earlier checkpoints corrected [Talk/Check and PSI menus](JEV-QA.md), [present rewards](docs/PRESENT-AUDIT.md), encounter/audio delivery, [sprint cliff escapes](docs/SPRINT-COLLISION-dev11.md), [Bubble Monkey progression](docs/WINTERS-MONKEY-dev12.md) and [stair entry/landings](docs/STAIRS-dev13.md). The [changelog](CHANGELOG.md) and linked evidence retain their original scope and runtime hashes.
-
-The repository is now public. Upstream native-engine redistribution terms remain unresolved; repository visibility and attribution do not grant permission. See LEGAL.md and UPSTREAM.md for the recorded review.
+Development follows reported playtesting issues. The current fixes cover the completed user-reported campaign, including the museum quest, Sound Stone/Magicant presentation, Giygas artwork, credits and widescreen PSI. Historical fixes and their original verification scope are retained in the [changelog](CHANGELOG.md) and [release evidence](docs/RELEASE-dev30.md). Untested natural story branches, full randomized progression, all combat combinations and broader physical audio/display/controller coverage remain open.
 
 ## Companion at a glance
 
@@ -158,9 +122,7 @@ The player-facing setup separates code/tools from player-supplied game data. Set
 
 The application accepts the clean 3 MiB USA ROM, with or without a 512-byte copier header. A different revision or modified ROM is rejected before extraction.
 
-For dev.3 through dev.8 â†’ dev.9, close the game and launcher, back up the existing installation, then extract the new package over it. Keep `Profiles`, `UserData` and `msu`. The pack hash and quick-save format 16 are unchanged, so existing corrected-pack story and seed saves keep their identities.
-
-For dev.2 â†’ dev.9, extract to a fresh folder and build Redux from your ROM. Then choose **Game Mode â†’ Import dev.2 story saves** and select the previous installation folder. This checked, names-only update copies phone and format-16 quick saves into empty destination saves; it preserves the previous installation and refuses other content pairs. Randomizer seeds keep their original content and save folders.
+Before updating, close the game and launcher and back up the existing installation. Preserve `Profiles`, `UserData` and `msu`; review the target release notes before reusing development quick saves. Older content packs have specific upgrade/import routes described in [the conversion notes](MATERNALBOUND-NATIVE.md).
 
 Switching editions selects a separate adventure; it does not convert an existing playthrough. Normal phone saves are the migration path between engine builds. Development quick saves require a compatible engine and state format.
 
@@ -209,8 +171,8 @@ This generator is inspired by the EarthBound randomizer community but does not c
 
 ## Current boundaries
 
-- A complete start-to-ending playthrough of this specific build has not yet been verified.
-- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is being adapted from a pinned active-source snapshot, rather than the official v1.1 BPS release. The checkpoint converts 7,397 dialogue spans, implements 17 routine adapters, passes 81 VM command checks and 48,640 AI-selector turns, and resolves all 898 movement-script roots. Title scenes, 191 SPC tracks, 68 PSI effects, native shops/equipment, all 11 battle Tools and all 32 photo-credit branches have bounded checks. Full story playthroughs, later interactions, all combat-effect combinations and complete music-transition coverage remain unverified. See the [detailed coverage](MATERNALBOUND-NATIVE.md).
+- One user-reported Redux campaign reached Giygas and credits, with equipment/stat boosts for final testing. An automated or unboosted full campaign and full randomized progression are not certified.
+- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is being adapted from a pinned active-source snapshot, rather than the official v1.1 BPS release. The checkpoint converts 7,397 dialogue spans, implements 17 routine adapters, passes 81 VM command checks and 48,640 AI-selector turns, and resolves all 898 movement-script roots. Title scenes, 191 SPC tracks, 68 PSI effects, native shops/equipment, all 11 battle Tools and all 32 photo-credit branches have bounded checks. Untested natural story branches, all combat-effect combinations and complete music-transition coverage remain unverified. See the [detailed coverage](MATERNALBOUND-NATIVE.md).
 - Arbitrary IPS, BPS and EBP patches cannot be loaded as native mods; their game-code changes require explicit ports.
 - The release is a Windows x64 development test build. Bug reports should include the active edition or seed session's `game.log` and a normal phone save when possible.
 
@@ -236,7 +198,7 @@ cd earthbound-companion
 powershell -ExecutionPolicy Bypass -File .\scripts\Bootstrap-Native.ps1
 ```
 
-Developers need a Windows x64 C toolchain, CMake/Ninja, SDL2 development files, Python and the .NET 8 SDK. Runtime builds use `EB_RUNTIME_ASSETS=ON`, `EB_ENABLE_VERIFY=OFF` and `EB_ENABLE_AUDIO=ON`. The native executable compiles without a ROM, extracted JSON or `ebtools`: numeric constants come from the checked-in assembly enums using Python 3.9+ standard-library code. Game setup still requires your own ROM to produce playable data. [Fresh full-patch build and runtime checks](validation/public-clean-source-dev16.json) · [Constants and loader proof](research/runtime-constants-final-manifest-dev16-v9.json). Redux setup-helper builds additionally require the pinned CoilSnake/CCScript toolchain and PyInstaller; see [the conversion instructions](MATERNALBOUND-NATIVE.md#reproducing-development-conversion).
+Developers need a Windows x64 C toolchain, CMake/Ninja, SDL2 development files, Python and the .NET 8 SDK. Runtime builds use `EB_RUNTIME_ASSETS=ON`, `EB_ENABLE_VERIFY=OFF` and `EB_ENABLE_AUDIO=ON`. The native executable compiles without a ROM, extracted JSON or `ebtools`: numeric constants come from the checked-in assembly enums using Python 3.9+ standard-library code. Game setup still requires your own ROM to produce playable data. [Fresh dev.30 public-source build](validation/public-clean-source-dev30.json) · [Constants and loader proof](research/runtime-constants-final-manifest-dev16-v9.json). Redux setup-helper builds additionally require the pinned CoilSnake/CCScript toolchain and PyInstaller; see [the conversion instructions](MATERNALBOUND-NATIVE.md#reproducing-development-conversion).
 
 For a code-only build after installing your toolchain, configure `native-source/port/unix` with the runtime flags above and your `SDL2_DIR`, then run `cmake --build` on that build directory. The loader fixture is deliberately excluded from the default build. For its separate test, install `ebtools`, run `python scripts/create_fixture.py`, then build the explicit `test_runtime_assets` target and execute it with the generated fixture pack and scratch paths. `Verify.ps1` records that sequence. It uses synthetic test data, not game JSON.
 
