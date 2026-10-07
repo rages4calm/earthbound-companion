@@ -1,6 +1,6 @@
 # Testing the native conversion
 
-The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The autonomous audit is stopped; development now follows playtesting reports. See [dev.23 release evidence](RELEASE-dev23.md). Earlier reports retain their tested release identities.
+The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The autonomous audit is stopped; development now follows playtesting reports. See [dev.24 release evidence](RELEASE-dev24.md). Earlier reports retain their tested release identities.
 
 ## Three different kinds of evidence
 

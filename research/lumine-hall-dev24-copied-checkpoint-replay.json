@@ -1,0 +1,33 @@
+{
+  "version": "0.5.0-redux-dev.24",
+  "passed": true,
+  "playerSha256": "c302cc46cd241b154894d9055e8482b929cd6923f30c7f9a890638a3758b94d5",
+  "observerSha256": "9c8cdefdd6f1d6ba1d938616f5e8507fea716a441f37f8a3ba83d3fc41f58f98",
+  "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "baselineCrash": {
+    "version": "dev.23",
+    "exception": "C0000005",
+    "beforeWallAnimation": true,
+    "debuggerWriteOutsideErtObserved": true
+  },
+  "naturalOwnerCheckpointSequence": 140,
+  "ownerCheckpointPreserved": true,
+  "ownerProtectedFilesUnchanged": 8,
+  "completeProductionBossAndWalkedSanctuaryReplay": true,
+  "melodyFlag188AndBossFlag196Passed": true,
+  "playerObserverStateSectionsMatch": true,
+  "pointerExclusions": "Rebound window addresses and two rebound PSI addresses; NULL/non-NULL presence compared; all other serialized bytes equal.",
+  "coldLoadDuringWallAnimationPassed": true,
+  "saveFormat": 16,
+  "assetPackUnchanged": true,
+  "msuCommandsObserved": [
+    38,
+    31
+  ],
+  "physicalAudioVerified": false,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Ordinary replayed inputs in copied owner checkpoints; complete Electro Specter/Lumine Hall sequence, not the entire campaign.",
+    "Dummy SDL display/audio for bounded replay; mid-animation screenshot rendered at 1280x720; MSU command selection observed, not physical listening."
+  ]
+}

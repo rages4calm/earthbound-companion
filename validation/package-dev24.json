@@ -1,0 +1,72 @@
+{
+  "version": "0.5.0-redux-dev.24",
+  "passed": true,
+  "zipSha256": "447f30b1056848590470ebfff6e4b61b11119ea4bdadd728ec7cf800fa6a99bd",
+  "zipBytes": 124686368,
+  "manifestFiles": 32,
+  "nativeExeSha256": "c302cc46cd241b154894d9055e8482b929cd6923f30c7f9a890638a3758b94d5",
+  "launcherSha256": "5c3322007d2fd2051fbd74f52c9f73ceebb03a0982ef3b6031cf6aa528257708",
+  "basicRuntimeChecks": [
+    {
+      "edition": "redux",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "screen-transitions",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "joinlevel",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "screen-transitions",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "joinlevel",
+      "passed": true
+    }
+  ],
+  "actualCopiedCheckpointRecoveryPassed": true,
+  "checkpointInputUnchanged": true,
+  "noGamePayloadInArchive": true,
+  "setupHelpersUnchangedFromDev23": true,
+  "msuSetupUnchangedFromDev23": true,
+  "packagedLumineHallEventCompleted": true,
+  "limits": [
+    "Exact ZIP extraction/manifest, ten basic native checks, packaged launcher checkpoint recovery and ordinary Lumine Hall event replay. Full boss replay and pixel-canvas suites bind the exact same native player.",
+    "No repeated online ROM extraction/MSU download: unchanged setup helpers/pack contracts retain prior verification. Not a complete campaign/randomized or hardware/audio playthrough."
+  ],
+  "fullPlaythroughVerified": false
+}

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0-redux-dev.24 - fix Lumine Hall wall-writing crash
+
+- Correct a native work-buffer overflow before the Lumine Hall wall-writing animation after Electro Specter. Decode into bounded transient storage and pack both scroll phases inside the existing serialized 20 KB buffer; retain save format 16 and unchanged assets/seed identities.
+- Stream the full text without circular VWF wrap, preserve partial glyphs and original character spacing, use the US alternating phase order, and update the horizontal BG1 map with proper wrap instead of overwriting the BG3 menu layer.
+- Reproduce dev.23’s access violation from a copied pre-boss F6 checkpoint and observe the out-of-bounds write with a debugger. The corrected production build completes the boss, walked cave route, recording event and return to roaming. A save made during the wall animation cold-loads and completes.
+- Run six name-length/font-width fixtures each in Redux player, Redux observer and Original player. Compare every viewport word against an independent linear pixel canvas and verify the BG1 destination, unrelated VRAM, buffer tail and completion timing. Complete story/randomized playthroughs and physical audio coverage remain unverified.
+
 ## 0.5.0-redux-dev.23 - preserve returning party progress
 
 - Prevent the native first-join catch-up routine from resetting Paula or Poo on later story reentries. Check the historical join bit before key-item migration records it; skip catch-up when the character already exceeds the target.

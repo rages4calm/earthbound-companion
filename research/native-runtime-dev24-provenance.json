@@ -1,0 +1,31 @@
+{
+  "baseVersion": "dev.23",
+  "version": "0.5.0-redux-dev.24",
+  "changedFiles": [
+    {
+      "path": "src/entity/callroutine.c",
+      "baselineSha256": "0453d49113bf6753531c103e918882a35c1602d7b88ee98e99690ad459a6cd48",
+      "candidateSha256": "912026e9780270b7a9f254803237cf58c572f943092f9e996d285ad8779a2750"
+    }
+  ],
+  "comparedSourceFiles": 4312,
+  "builds": [
+    {
+      "runtime": "player",
+      "sha256": "c302cc46cd241b154894d9055e8482b929cd6923f30c7f9a890638a3758b94d5"
+    },
+    {
+      "runtime": "observer",
+      "sha256": "9c8cdefdd6f1d6ba1d938616f5e8507fea716a441f37f8a3ba83d3fc41f58f98"
+    }
+  ],
+  "saveFormat": 16,
+  "assetPackUnchanged": true,
+  "fullCleanCompilation": true,
+  "nativeBase": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "completePatchSha256": "3391babb1d84688c4362228dcd8d629d303632540751c0d78f513cc02e974ab3",
+  "completePatchReverseCheckPassed": true,
+  "comparison": "All 4312 source inputs compared after normalizing CRLF to LF only",
+  "changeScope": "Only callroutine.c: bounded packed Lumine scroll, streaming glyph/padding rendering, US alternating phases and BG1 horizontal wrap.",
+  "fullPlaythroughVerified": false
+}

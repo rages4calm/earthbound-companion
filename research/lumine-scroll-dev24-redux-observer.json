@@ -1,0 +1,77 @@
+{
+  "version": "0.5.0-redux-dev.24",
+  "passed": true,
+  "privateBuild": {
+    "driverSourceSha256": "94095e5ae01c37e407b4ec3dcc5fb0e1e87001a226b21bcec45be1707565ba1c",
+    "executableSha256": "cb1c638bf9a8a1b92d0e90ee6735c3f25d2621349e063e3c56554170fea186e1",
+    "productionExecutableSha256": "9c8cdefdd6f1d6ba1d938616f5e8507fea716a441f37f8a3ba83d3fc41f58f98",
+    "productionLibrarySha256": "733279331fcc4017b35e4e46f1fd42905b86d404a46aa7d797f352b7fd6a5283",
+    "platformMainObjectSha256": "8fb36746505fff195fa81103c54d6938fc8ba6a19e465a4ae499db95a6687601",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "logSha256": "3eda4489826df1d1a3b3ae3f3056563428540e4bd914e40df77b0666299032c9",
+  "cases": [
+    {
+      "case": 0,
+      "nameLength": 0,
+      "pixels": 866,
+      "frames": 925,
+      "viewportWordsCompared": 222000,
+      "bufferTailPreserved": true,
+      "bg1WrapAndUnrelatedVramPassed": true
+    },
+    {
+      "case": 1,
+      "nameLength": 1,
+      "pixels": 868,
+      "frames": 925,
+      "viewportWordsCompared": 222000,
+      "bufferTailPreserved": true,
+      "bg1WrapAndUnrelatedVramPassed": true
+    },
+    {
+      "case": 2,
+      "nameLength": 4,
+      "pixels": 887,
+      "frames": 941,
+      "viewportWordsCompared": 225840,
+      "bufferTailPreserved": true,
+      "bg1WrapAndUnrelatedVramPassed": true
+    },
+    {
+      "case": 3,
+      "nameLength": 5,
+      "pixels": 876,
+      "frames": 933,
+      "viewportWordsCompared": 223920,
+      "bufferTailPreserved": true,
+      "bg1WrapAndUnrelatedVramPassed": true
+    },
+    {
+      "case": 4,
+      "nameLength": 5,
+      "pixels": 906,
+      "frames": 965,
+      "viewportWordsCompared": 231600,
+      "bufferTailPreserved": true,
+      "bg1WrapAndUnrelatedVramPassed": true
+    },
+    {
+      "case": 5,
+      "nameLength": 6,
+      "pixels": 896,
+      "frames": 957,
+      "viewportWordsCompared": 229680,
+      "bufferTailPreserved": true,
+      "bg1WrapAndUnrelatedVramPassed": true
+    }
+  ],
+  "comparison": "Independent full-length glyph pixel canvas sampled as US 2x2 planar cells; every production scroll frame and BG1 destination checked.",
+  "limits": [
+    "Prepared callroutine fixtures, not a complete story or hardware/audio playthrough. Natural copied-checkpoint replay and cold continuation are separate."
+  ],
+  "fullPlaythroughVerified": false
+}
