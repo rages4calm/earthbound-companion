@@ -1,0 +1,76 @@
+{
+  "version": "0.5.0-redux-dev.28",
+  "passed": true,
+  "zipSha256": "ad783ebb8785b9e1a222658083d26f7197ab2993d249202b07da5bd31965b32f",
+  "zipBytes": 124692822,
+  "manifestFiles": 32,
+  "nativeExeSha256": "56959b67ffefd5dec4ed887264f1331580e1292c6d92fd3e2bdcca60e8246882",
+  "launcherSha256": "dcff8d0c707505eb0462ba8926c990e5cf71b7f2d8512232553f35218db2c585",
+  "noGamePayloadInArchive": true,
+  "checks": [
+    {
+      "edition": "original",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "screen-transitions",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "joinlevel",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "screen-transitions",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "joinlevel",
+      "passed": true
+    },
+    {
+      "check": "launcher-profiles",
+      "passed": true
+    },
+    {
+      "check": "latest-checkpoint",
+      "passed": true
+    }
+  ],
+  "saveFormat": 16,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Bounded runtime, launcher and copied-checkpoint regressions, not a complete campaign or physical controller/audio test.",
+    "Setup helpers and MSU contracts are unchanged; no repeated online ROM extraction or music download."
+  ]
+}

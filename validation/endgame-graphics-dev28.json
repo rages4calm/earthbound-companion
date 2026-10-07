@@ -1,0 +1,94 @@
+{
+  "version": "0.5.0-redux-dev.28",
+  "passed": true,
+  "nativeExeSha256": "56959b67ffefd5dec4ed887264f1331580e1292c6d92fd3e2bdcca60e8246882",
+  "patchSha256": "c4dab9d84bc790714151986e07de56a2378baccda36d195f3cc1fbcea91b829c",
+  "patchAppliesToPinnedFoundation": true,
+  "saveFormat": 16,
+  "ownerSavesUnchanged": true,
+  "ownerLatestCheckpointSequence": 159,
+  "soundStoneCheckpointSequence": 154,
+  "recordedMelodies": 8,
+  "soundStoneClippingReproduced": true,
+  "soundStoneColdRestoreVisible": true,
+  "soundStoneParentMaskSuspendedAndResumed": true,
+  "magicantOldGraphicsCounterPeak": 14148,
+  "magicantFinalGraphicsCounterPeak": 116,
+  "magicantNaturalBossAndReturnOnCopiedCheckpoint": true,
+  "magicantReturnCompletedHeadless": true,
+  "windowedRotationFramesCaptured": 13,
+  "sanctuaryConsumers": [
+    {
+      "profile": "Original",
+      "locations": 8,
+      "loads": 320,
+      "tileIndexBoundsPassed": true,
+      "repeatedGraphicsStable": true
+    },
+    {
+      "profile": "Redux",
+      "locations": 8,
+      "loads": 320,
+      "tileIndexBoundsPassed": true,
+      "repeatedGraphicsStable": true
+    }
+  ],
+  "giygasPrayers": [
+    {
+      "profile": "Original",
+      "cases": 7,
+      "assertions": 208,
+      "passed": true
+    },
+    {
+      "profile": "Redux",
+      "cases": 7,
+      "assertions": 208,
+      "passed": true
+    }
+  ],
+  "giygasArt": [
+    {
+      "profile": "redux",
+      "decodedStreams": 206,
+      "decompressorGuardsPassed": true,
+      "strictDecoderParityPassed": true,
+      "sceneGroups": [
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        483
+      ],
+      "sceneLoads": 140,
+      "repeatedVramStable": true
+    },
+    {
+      "profile": "original",
+      "decodedStreams": 206,
+      "decompressorGuardsPassed": true,
+      "strictDecoderParityPassed": true,
+      "sceneGroups": [
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        483
+      ],
+      "sceneLoads": 140,
+      "repeatedVramStable": true
+    }
+  ],
+  "installedProductionColdLoadsPassed": true,
+  "assetPacksChanged": false,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Only private copied checkpoints and prepared callback entries were executed. Owner progression and inventory were not edited.",
+    "Final battle prayer callbacks and repeated graphics consumers pass; a continuous naturally played Giygas battle and pixel-perfect parity are not certified.",
+    "Long windowed diagnostic replays hit a 60-second test cap after capturing the rotation. Full return completion was verified headlessly on the production executable and observer; no listening or physical-controller claim."
+  ]
+}

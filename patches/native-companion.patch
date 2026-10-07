@@ -2787,7 +2787,7 @@ index 857f81e..e41852b 100644
          slot_idx = (slot_idx + 1) & 0x3F;
      }
 diff --git a/src/entity/callroutine.c b/src/entity/callroutine.c
-index 61c4f93..3878a72 100644
+index 61c4f93..63a61e5 100644
 --- a/src/entity/callroutine.c
 +++ b/src/entity/callroutine.c
 @@ -51,6 +51,10 @@
@@ -3159,7 +3159,24 @@ index 61c4f93..3878a72 100644
                              ert.pathfinding_enemy_counts[loop_idx] = count - 1;
                              result = 1;
                              entities.tick_callback_hi[slot] |= 0xC000;
-@@ -2922,10 +2947,10 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -2765,6 +2790,16 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+         ml.screen_left_x = 0;
+         ppu.bg_vofs[0] = 0;
+         ppu.bg_hofs[0] = 0;
++        /* Only one 256px sanctuary picture is uploaded. The source's
++         * horizontal tilemap flag otherwise exposes stale overworld rows
++         * in our wider viewport and puts the picture left of Ness. Center
++         * this authored image and extend its own edges; CLAMP keeps the
++         * viewport rendering path used by camera-relative OAM positions.
++         * Restore the same layout on every turn for
++         * checkpoints made in the middle of the rotation. */
++        ppu.bg_sc[0] = 0x38;
++        ppu.bg_viewport_fill[0] = BG_VIEWPORT_CLAMP;
++        ppu.bg_win_y_offset = EB_VIEWPORT_PAD_TOP;
+         return 0;
+     }
+ 
+@@ -2922,10 +2957,10 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
          return 0;
  
      case ROM_ADDR_ADVANCE_TILEMAP_ANIMATION_FRAME: {
@@ -3172,7 +3189,7 @@ index 61c4f93..3878a72 100644
           * Increments var1; returns 0 if var1 <= var0 (more frames), 1 if done.
           *
           * The source data at BUFFER+$2000 is arranged with 16 bytes between
-@@ -2949,7 +2974,25 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -2949,7 +2984,25 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
          for (int ataf_r = 0; ataf_r < 8; ataf_r++) {
              uint32_t ataf_col_src = ataf_row_src;
              for (int ataf_c = 0; ataf_c < 30; ataf_c++) {
@@ -3199,7 +3216,7 @@ index 61c4f93..3878a72 100644
                      ert.buffer[ataf_dst] = ert.buffer[ataf_col_src];
                      ert.buffer[ataf_dst + 1] = ert.buffer[ataf_col_src + 1];
                  }
-@@ -2959,7 +3002,8 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -2959,7 +3012,8 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
              ataf_row_src += 2;
          }
  
@@ -3209,7 +3226,7 @@ index 61c4f93..3878a72 100644
           * Assembly calls UPDATE_TILEMAP_REGION(A=808, X=588, ptr=BUFFER).
           * A=808: tile_x = 808 & 0x3F = 40 (wraps in 64-wide map)
           * X=588: tile_y = 588 & 0x1F = 12
-@@ -2971,8 +3015,8 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -2971,8 +3025,8 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
              for (int ataf_r2 = 0; ataf_r2 < 8; ataf_r2++) {
                  uint16_t y = (ataf_tile_y + ataf_r2) & 0x1F;
                  for (int ataf_c2 = 0; ataf_c2 < 30; ataf_c2++) {
@@ -3220,7 +3237,7 @@ index 61c4f93..3878a72 100644
                      if (x >= 32) {
                          vram_base += 0x400;  /* second tilemap half */
                          x -= 32;
-@@ -3102,135 +3146,36 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -3102,135 +3156,36 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
      }
  
      case ROM_ADDR_LOAD_CHARACTER_PORTRAIT_SCREEN: {
@@ -9831,7 +9848,7 @@ index 7d7e466..b44acc1 100644
   * Called each frame from the overworld main loop. Manages SFX and transformation
   * countdowns. When a transformation completes, swaps items in inventory. */
 diff --git a/src/game/map_loader.c b/src/game/map_loader.c
-index 620656b..04ba872 100644
+index 620656b..945ded3 100644
 --- a/src/game/map_loader.c
 +++ b/src/game/map_loader.c
 @@ -16,6 +16,7 @@
@@ -9956,7 +9973,22 @@ index 620656b..04ba872 100644
  
      /*
       * --- Step 1: Look up tileset_combo and palette from GLOBAL_MAP_TILESETPALETTE_DATA ---
-@@ -2174,6 +2210,15 @@ void spawn_npcs_at_sector(uint16_t sector_x, uint16_t sector_y) {
+@@ -1992,6 +2028,14 @@ void load_your_sanctuary_location(uint16_t sanctuary_idx) {
+         return;
+     }
+ 
++    /* This port keeps one sanctuary image and reloads it on each turn, rather
++     * than caching eight images like the source. Reuse that image's graphics
++     * space too: appending on every reload exhausts VRAM during Magicant's
++     * rotation, then remaps the tilemap to graphics that were never uploaded.
++     * Reset on every load so a mid-rotation checkpoint also repairs itself. */
++    ml.next_your_sanctuary_location_tile_index = 0;
++    ml.total_your_sanctuary_loaded_tileset_tiles = 0;
++
+     /*
+      * --- Step 6: Copy used tiles to VRAM and remap tilemap
+      *             (PREPARE_YOUR_SANCTUARY_LOCATION_TILESET_DATA) ---
+@@ -2174,6 +2218,15 @@ void spawn_npcs_at_sector(uint16_t sector_x, uint16_t sector_y) {
          const NpcConfig *cfg = get_npc_config(npc_id);
          if (!cfg) continue;
  
@@ -9972,7 +10004,7 @@ index 620656b..04ba872 100644
          /* --- Appearance/event flag check (C0222B.asm lines 236-253) ---
           * appearance_style: 0=always, 1=show_if_flag_off, 2=show_if_flag_on.
           *   DEC / DEC / EOR flag_value / AND #1 / BEQ skip */
-@@ -2496,21 +2541,27 @@ void map_refresh_tilemaps(uint16_t cam_x_pixels, uint16_t cam_y_pixels) {
+@@ -2496,21 +2549,27 @@ void map_refresh_tilemaps(uint16_t cam_x_pixels, uint16_t cam_y_pixels) {
  
      /* Step 3: X-axis scroll, move ml.screen_left_x toward target one tile
       * at a time, spawning NPCs in newly visible columns.
@@ -10004,7 +10036,7 @@ index 620656b..04ba872 100644
              /* Assembly lines 130-137: SPAWN_VERTICAL */
              spawn_vertical((uint16_t)(ml.screen_left_x - 8),
                             (uint16_t)(target_y_tile - 8));
-@@ -2525,15 +2576,15 @@ void map_refresh_tilemaps(uint16_t cam_x_pixels, uint16_t cam_y_pixels) {
+@@ -2525,15 +2584,15 @@ void map_refresh_tilemaps(uint16_t cam_x_pixels, uint16_t cam_y_pixels) {
              /* Scrolling DOWN: SCREEN_TOP_Y < target.
               * Assembly lines 147-188. */
              ml.screen_top_y++;
@@ -10023,7 +10055,7 @@ index 620656b..04ba872 100644
              /* Assembly lines 221-228: SPAWN_HORIZONTAL */
              spawn_horizontal((uint16_t)(target_x_tile - 8),
                               (uint16_t)(ml.screen_top_y - 8));
-@@ -2632,10 +2683,13 @@ static uint16_t check_collision_tile_pattern(uint16_t mask) {
+@@ -2632,10 +2691,13 @@ static uint16_t check_collision_tile_pattern(uint16_t mask) {
      for (int i = 0; i < 6; i++) {
          if (mask & 1) {
              /* Compute tile coordinates for this check point */
@@ -10041,7 +10073,7 @@ index 620656b..04ba872 100644
  
              uint8_t flags = get_collision_tile_and_check_ladder(tile_x, tile_y);
              surface_accum |= flags;
-@@ -3088,6 +3142,49 @@ process_result:
+@@ -3088,6 +3150,49 @@ process_result:
      return temp_entity_surface_flags & 0x003F;
  }
  
@@ -10091,7 +10123,7 @@ index 620656b..04ba872 100644
  /*
   * get_collision_at_pixel, simple single-point collision lookup.
   *
-@@ -3100,9 +3197,12 @@ process_result:
+@@ -3100,9 +3205,12 @@ process_result:
  uint16_t get_collision_at_pixel(int16_t x, int16_t y) {
      temp_entity_surface_flags = 0;
  
@@ -10107,7 +10139,7 @@ index 620656b..04ba872 100644
  
      uint8_t flags = get_collision_tile_and_check_ladder(tile_x, tile_y);
      temp_entity_surface_flags = flags;
-@@ -3538,10 +3638,9 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
+@@ -3538,10 +3646,9 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
          uint16_t flag_id = flag_word & 0x7FFF;
          int flag_state = event_flag_get(flag_id) ? 1 : 0;
  
@@ -10121,7 +10153,7 @@ index 620656b..04ba872 100644
  
          if (flag_state == expected) {
              /* Condition met, use this entry */
-@@ -3554,7 +3653,11 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
+@@ -3554,7 +3661,11 @@ void resolve_map_sector_music(uint16_t x_coord, uint16_t y_coord) {
      }
  
      /* If music differs and not fading, trigger fade-out */
@@ -10134,7 +10166,7 @@ index 620656b..04ba872 100644
          write_apu_port1(2);
      }
  }
-@@ -3599,4 +3702,3 @@ void apply_next_map_music(void) {
+@@ -3599,4 +3710,3 @@ void apply_next_map_music(void) {
          }
      }
  }
@@ -10168,10 +10200,10 @@ index cf14f47..816ac49 100644
      /* Offset into event_music_table for the last matched music entry. */
 diff --git a/src/game/maternalbound.c b/src/game/maternalbound.c
 new file mode 100644
-index 0000000..6f36777
+index 0000000..fd288de
 --- /dev/null
 +++ b/src/game/maternalbound.c
-@@ -0,0 +1,465 @@
+@@ -0,0 +1,476 @@
 +/* SPDX-License-Identifier: GPL-3.0-only
 + * Native adaptation of MaternalBound Redux's documented CCExpand behavior.
 + * Credit: ShadowOne333 and upstream contributors; see CREDITS.md and source
@@ -10189,6 +10221,7 @@ index 0000000..6f36777
 +#include "game/game_state.h"
 +#include "game/window.h"
 +#include "core/memory.h"
++#include "core/mode_stack.h"
 +#include "include/pad.h"
 +#include "data/assets.h"
 +#include "include/binary.h"
@@ -10416,6 +10449,16 @@ index 0000000..6f36777
 +
 +void maternalbound_effects_tick(void) {
 +    if (!maternalbound_enabled() || !ow.redux_letterbox_active) return;
++    /* The final sanctuary opens Sound Stone playback inside a letterboxed
++     * story scene. Playback owns the full screen, including after a cold
++     * restore into its main phase. Suspend the cinematic mask and its timer;
++     * the parent scene resumes the same opening/closing state on return. */
++    for (unsigned i = 0; i < g_mode_stack.depth; i++) {
++        if (g_mode_stack.mode[i] == GAME_MODE_SOUND_STONE) {
++            ppu.tm_hdma_active = false;
++            return;
++        }
++    }
 +    /* A scripted fight can interrupt an open cinematic letterbox (Starman
 +     * Junior). Battle owns the masks until it returns; preserve the cutscene
 +     * progress for the dialogue that resumes afterward. */
@@ -13248,7 +13291,7 @@ index 4210ac5..cfdea61 100644
   * Copies 4 header tile entries into BG2_BUFFER at the HPPP window header position. */
  void render_hppp_window_header(void);
 diff --git a/src/game_main.c b/src/game_main.c
-index 8ddaa2a..5bda82b 100644
+index 8ddaa2a..48dec61 100644
 --- a/src/game_main.c
 +++ b/src/game_main.c
 @@ -3,6 +3,7 @@
@@ -13275,7 +13318,15 @@ index 8ddaa2a..5bda82b 100644
  } RootAction;
  static RootAction g_pending_root_action = ROOT_ACTION_NONE;
  static int g_capture_unwind_frames = 0;
-@@ -480,6 +483,7 @@ void host_process_frame(void) {
+@@ -431,6 +434,7 @@ void host_process_frame(void) {
+      * re-scanning it itself, just without repeating the same tiny loop
+      * four times a frame. */
+     bool in_battle_or_town_map = mode_stack_has_any(GAME_MODE_BATTLE, GAME_MODE_TOWN_MAP);
++    bool in_sound_stone = mode_stack_has_any(GAME_MODE_SOUND_STONE, GAME_MODE_SOUND_STONE);
+     bool in_title_or_file_select = mode_stack_has_any(GAME_MODE_TITLE_SCREEN, GAME_MODE_FILE_MENU);
+     /* Intro company-logo splash (HAL/Nintendo/APE) and the attract-mode demo
+      * loop: same "player never controls zoom here, static/unscrolled art"
+@@ -480,6 +484,7 @@ void host_process_frame(void) {
       * Assembly updates INIDISP_MIRROR from fade parameters every vblank.
       * Must run before ppu_render_frame so the renderer sees the new brightness. */
      fade_update();
@@ -13283,7 +13334,7 @@ index 8ddaa2a..5bda82b 100644
  
      /* NMI handler: sync palette mirror to CGRAM if upload pending.
       * On the SNES, the NMI handler always checks PALETTE_UPLOAD_MODE
-@@ -501,7 +505,7 @@ void host_process_frame(void) {
+@@ -501,7 +506,7 @@ void host_process_frame(void) {
      bool do_render;
      if (fast_forward_active) {
          do_render = (frame_skip_counter == 0);
@@ -13292,7 +13343,36 @@ index 8ddaa2a..5bda82b 100644
      } else {
  #ifdef EB_HOST_PACED_FRAMESKIP
          /* The platform paces the loop against an external clock and owns the
-@@ -828,8 +832,7 @@ void host_process_frame(void) {
+@@ -672,7 +677,7 @@ void host_process_frame(void) {
+      * whole-stack scan cached at the top of this function. */
+     bool needs_zoom_reset = in_battle_or_town_map || in_title_or_file_select
+         || in_intro_logo_or_attract;
+-    if (!needs_zoom_reset) {
++    if (!needs_zoom_reset && !in_sound_stone) {
+         /* Off and Wide FOV each get a 2-way toggle instead of one shared
+          * 3-way cycle: a 3-state R3 press is confusing, since which of
+          * Off/Wide/Zoom In you'd land on next isn't obvious.
+@@ -711,7 +716,7 @@ void host_process_frame(void) {
+                 ow.zoom_mode = (ow.zoom_mode == EB_ZOOM_OFF) ? EB_ZOOM_IN : EB_ZOOM_OFF;
+             }
+         }
+-    } else if (ow.zoom_mode != EB_ZOOM_OFF) {
++    } else if (needs_zoom_reset && ow.zoom_mode != EB_ZOOM_OFF) {
+         ow.zoom_mode = EB_ZOOM_OFF;
+     }
+ 
+@@ -785,7 +790,9 @@ void host_process_frame(void) {
+      * aux_new edge) since any_window_open() can change independently of
+      * an R3 press. */
+     EbZoomMode effective_zoom = (EbZoomMode)ow.zoom_mode;
+-    if (effective_zoom == EB_ZOOM_IN && any_window_open()) {
++    /* Sound Stone's full-height ring also needs the uncropped view, even
++     * without a menu window. Preserve the player's zoom for the return. */
++    if (in_sound_stone || (effective_zoom == EB_ZOOM_IN && any_window_open())) {
+         effective_zoom = EB_ZOOM_OFF;
+     }
+     platform_video_set_zoom(effective_zoom);
+@@ -828,8 +835,7 @@ void host_process_frame(void) {
       * battle specifically, where post-battle text is near-guaranteed. */
      platform_video_set_static_screen(in_static_screen);
      if (aux_new & AUX_FAST_FORWARD) {
@@ -13302,7 +13382,7 @@ index 8ddaa2a..5bda82b 100644
      }
      /* F6 (save) / F7 (load): request the action rather than performing it here, 
       * this host_process_frame() may be reached while a mode-step or a synchronous
-@@ -863,7 +866,11 @@ void host_process_frame(void) {
+@@ -863,7 +869,11 @@ void host_process_frame(void) {
      core.play_timer++;
  
      /* Check frame limit */
@@ -13315,7 +13395,7 @@ index 8ddaa2a..5bda82b 100644
          platform_request_quit();
  
      /* Frame timing: advance deadline by one frame period, clamp debt,
-@@ -920,6 +927,12 @@ void host_request_load(void) {
+@@ -920,6 +930,12 @@ void host_request_load(void) {
      g_capture_status = HOST_CAPTURE_PENDING;
  }
  
@@ -13328,7 +13408,7 @@ index 8ddaa2a..5bda82b 100644
  /* Outcome of the last save/load request (firmware rail-hold handshake). See game_main.h. */
  HostCaptureStatus host_capture_status(void) {
      return g_capture_status;
-@@ -948,7 +961,13 @@ void host_root_boundary(void) {
+@@ -948,7 +964,13 @@ void host_root_boundary(void) {
       * callback would otherwise drain and drone for the ~0.6-1 s it takes. */
      platform_savestate_freeze_audio(true);
  
@@ -13343,7 +13423,7 @@ index 8ddaa2a..5bda82b 100644
          /* Crash-safe ping-pong write through the platform_savestate_* slot backend:
           * a power-loss mid-write leaves the prior slot intact. COMMITTED is the
           * firmware's rail-hold release signal (the write is durably flushed). */
-@@ -1607,6 +1626,7 @@ static bool overworld_boot_step(void) {
+@@ -1607,6 +1629,7 @@ static bool overworld_boot_step(void) {
       * Creates init entity (slot 23) with EVENT_001 (main overworld tick),
       * initializes party, loads the map at leader's saved position. */
      initialize_overworld_state();
@@ -13351,7 +13431,7 @@ index 8ddaa2a..5bda82b 100644
  
      /* Assembly: JSL OAM_CLEAR; JSL RUN_ACTIONSCRIPT_FRAME (main.asm lines 13-14).
       * The first actionscript frame executes EVENT_001 (main overworld tick),
-@@ -1689,6 +1709,7 @@ StepResult mode_step_overworld(ModeState *mst) {
+@@ -1689,6 +1712,7 @@ StepResult mode_step_overworld(ModeState *mst) {
              continue;
  
          case OWP_RENDER:
@@ -13359,7 +13439,7 @@ index 8ddaa2a..5bda82b 100644
              /* Assembly lines 25-29: render frame, then advance to POST next frame.
               * This is also the entry/first-frame phase (render once before the
               * first POST, matching the assembly's pre-WAIT render). If a script
-@@ -1742,6 +1763,7 @@ StepResult mode_step_overworld(ModeState *mst) {
+@@ -1742,6 +1766,7 @@ StepResult mode_step_overworld(ModeState *mst) {
          }
  
          case OWP_POST_TOP:
@@ -13367,7 +13447,7 @@ index 8ddaa2a..5bda82b 100644
              /* Assembly lines 30-42: process queued interactions (read != write
               * index) when no battle/swirl is in progress -> loop_end. */
              if (ow.current_queued_interaction != ow.next_queued_interaction &&
-@@ -1829,18 +1851,18 @@ StepResult mode_step_overworld(ModeState *mst) {
+@@ -1829,18 +1854,18 @@ StepResult mode_step_overworld(ModeState *mst) {
              if (ow.input_disable_frame_counter > 0) {
                  ow.input_disable_frame_counter--;
              } else if (!ow.pending_interactions) {
@@ -13389,7 +13469,7 @@ index 8ddaa2a..5bda82b 100644
                      /* show_town_map(): push the display variant if there is a map;
                       * OWP_RESUME_TOWNMAP re-enables entities afterward. No map ->
                       * fall through to the teleport check (no push). */
-@@ -1848,7 +1870,7 @@ StepResult mode_step_overworld(ModeState *mst) {
+@@ -1848,7 +1873,7 @@ StepResult mode_step_overworld(ModeState *mst) {
                          st->phase = OWP_RESUME_TOWNMAP;
                          return STEP_RESULT_PUSH_INIT(GAME_MODE_TOWN_MAP, &child);
                      }
@@ -13398,7 +13478,7 @@ index 8ddaa2a..5bda82b 100644
                      child = (ModeState){0};
                      child.quick_checktalk.phase = QCT_TEXT;
                      st->phase = OWP_POST_TELEPORT;
-@@ -2002,6 +2024,16 @@ bool game_is_fast_forward(void) {
+@@ -2002,6 +2027,16 @@ bool game_is_fast_forward(void) {
      return fast_forward_active;
  }
  
@@ -13415,7 +13495,7 @@ index 8ddaa2a..5bda82b 100644
  void game_init(void) {
      memory_init();
      ppu_init();
-@@ -2032,10 +2064,13 @@ void game_init(void) {
+@@ -2032,10 +2067,13 @@ void game_init(void) {
       * (The map tileset arrangement scratch is rebuilt separately by
       * map_loader_savestate_rebind() in read_slot, since it must run AFTER the snapshot
       * restores ml.loaded_tileset_combo. ensure_item_config() already self-heals lazily.) */
