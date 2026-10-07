@@ -5,7 +5,37 @@
 **EarthBound for Windows, with a native MaternalBound Redux adaptation, widescreen and ultrawide scenery, 1080p–4K output, MSU music, PC controls, save recovery and Story Shuffle v3.**
 
 > [!WARNING]
-> **Current release: `v0.5.0-redux-dev.24`, an experimental native Redux adaptation. Further playtesting is needed.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **Current release: `v0.5.0-redux-dev.25`, an experimental native Redux adaptation. Further playtesting is needed.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. A complete story or randomized playthrough, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+
+## Game features
+
+- **Native Windows x64 gameplay:** compiled C/SDL2 game code with a self-contained PC launcher and guided setup from your own clean USA ROM.
+- **Two game modes:** original EarthBound and the pinned MaternalBound Redux native adaptation, with separate story saves.
+- **Redux story and presentation:** restored writing, sprites, naming, maps, enemy/battle art, PSI effects, intro and ending presentation, plus native adaptations of its gameplay fixes. Compatibility is still under playtest.
+- **Choose your title screen:** keep Redux gameplay while selecting the original EarthBound logo and animation in **Game Mode**; the Redux title remains the default.
+- **HD output:** 720p, 1080p, 1440p, 4K and 3440×1440, with borderless fullscreen and a windowed option.
+- **Expanded world view:** 4:3, 16:9 and 21:9 framing, wider native scenery and adjustable field of view.
+- **Rendering choices:** crisp pixels, Scale2x, bilinear filtering and optional integer scaling.
+- **Optional visual effects:** color grading, CRT scanlines and a miniature depth effect; Enhanced, Classic, CRT and Easygoing presets.
+- **Native MSU music:** installer/repair for all 164 tracks of the credited fan soundtrack, with looping, fades and one-shot jingles; missing tracks fall back to SPC music and game sound effects remain available.
+- **Audio controls:** master volume and separate MSU music volume.
+- **Keyboard and controller support:** rebinding, analog movement, controller hotplug, adjustable stick deadzone and Nintendo/Xbox face-button labels.
+- **Sprint:** selectable Off, 1.5× or 2× movement; Redux includes its stamina, exhaustion and recovery mechanics and running sprites.
+- **Faster play:** quick dialogue and a configurable 2×–16× Tab fast-forward toggle, subject to PC performance.
+- **Convenience switches:** optional suppression of Ness's homesickness and Dad's unsolicited reminder calls.
+- **Reward controls:** independent 1×–16× battle EXP and money multipliers, plus a one-click fast-playtest preset.
+- **Redux controls and menus:** quick Talk/Check, HP/PP toggle, Town Maps and the Redux command-menu layout.
+- **Expanded naming:** six-letter party names, ten-letter favorite food and Redux's accented naming keyboard.
+- **Inventory conveniences:** shared key-item storage, a Keys menu and Jeff's Tools menu; eleven acquired battle Tools work without occupying his normal inventory.
+- **Equipment information:** expanded stat and resistance previews, plus corrected equipment-transfer behavior.
+- **Additional Redux conveniences:** expanded Spy information, bulk shop purchases and faster door transitions in Redux mode.
+- **Story Shuffle v3:** optional gift contents, shop stock, ordinary-enemy stats and enemy drops; deterministic seeds, seed library, replay and spoiler logs. Required story/trade sources, bosses and scripted encounters are protected by the selected edition's policy. Full randomized playthroughs remain unverified.
+- **Save anywhere:** five F6/F7 quick-save banks, each with two crash-safe generations, alongside normal in-game phone saves.
+- **Save recovery:** automatic session backups, guided restore, checked edition migration and separate save folders for Original, Redux and every randomizer seed.
+- **PC shortcuts:** F1 settings, F9 pause, F11 fullscreen, F12 screenshots and an FPS display.
+- **Native mod profiles:** import/export supported settings profiles and select compatible native asset packs. Arbitrary IPS/BPS ROM hacks need their own native adaptations.
+
+HD describes output resolution and presentation; a replacement hand-drawn HD art pack is not included. This is an experimental build, and a complete story or randomized playthrough has not been certified. [Feature credits](CREDITS.md) · [Native conversion coverage](MATERNALBOUND-NATIVE.md) · [Exact randomizer rules](RANDOMIZER.md).
 
 ![Game Mode in the dev.19 launcher](docs/images/dev19-game-mode.png)
 
@@ -16,7 +46,9 @@ The target is one polished PC edition: MaternalBound Redux's restored writing, a
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio or saves. The documentation includes clearly labeled development screenshots. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Developer testing tools](docs/TESTING.md) · [Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.24) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+[Developer testing tools](docs/TESTING.md) · [Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.25) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+
+Dev.25 adds an independent **Original EarthBound title screen** switch in **Game Mode**. Redux keeps its story, gameplay, seed identities and saves; the original title artwork and animation come from the clean ROM data already built locally. Apply settings and relaunch. [Option and bounded verification](docs/RELEASE-dev25.md).
 
 Dev.24 fixes the crash before Lumine Hall’s wall-writing animation after Electro Specter. The native scroll stays within its existing work buffer, renders the full text with the original spacing, and updates the correct background layer. The copied boss/recording sequence and cold-load during the animation pass; Original and Redux scroll fixtures check every frame. [Fix, actual capture and bounded verification](docs/RELEASE-dev24.md).
 
@@ -132,7 +164,7 @@ Switching editions selects a separate adventure; it does not convert an existing
 |---|---|
 | Play | Start or resume the normal story in the selected edition; choose a presentation/convenience preset. |
 | Randomizer | Choose shuffle options, generate and replay seeds, open spoiler logs and manage each seed's separate saves. |
-| Game Mode | Build/select the MaternalBound development edition, review coverage or switch back to original EarthBound. |
+| Game Mode | Choose Original or Redux, choose the title screen, build game data or review conversion coverage. |
 | Display | Resolution, fullscreen, widescreen framing, pixel filtering and visual effects. |
 | Audio | MSU soundtrack selection/installation, music and game volume, and soundtrack credits. |
 | Gameplay | Sprint, quick dialogue, homesickness/call settings, battle rewards and quick-save bank. |
@@ -141,19 +173,7 @@ Switching editions selects a separate adventure; it does not convert an existing
 
 Click **Apply settings** to save option changes. Game Mode selects the story edition played from Play. Randomizer's seed library manages randomized adventures and their saves.
 
-## PC features
-
-| Area | Included |
-|---|---|
-| Display | 720p, 1080p, 1440p, 4K, 3440Ã—1440; borderless fullscreen; 4:3, 16:9 and 21:9 |
-| Rendering | Crisp pixels, Scale2x and bilinear output; integer scaling; optional color grade, scanlines and miniature depth effect |
-| World view | Expanded native scenery and adjustable field of view; fixed artwork keeps its designed framing |
-| Input | Keyboard and controller rebinding, analog movement, hotplug, deadzone control and Nintendo/Xbox face-label layouts |
-| Quality of life | Sprint, quick dialogue, optional homesickness and Dad-reminder suppression, reward multipliers, fast-forward and shared key-item storage |
-| Redux gameplay | Adapted controls/stamina, six-letter names, an expanded accented naming keyboard, ten-letter favorite food, Keys/Jeff's Tools menus, inventory-free battle Tools, expanded equipment/resistance previews and native combat/item fixes |
-| Doors | Faster entrance/exit transitions in the Redux profile, added by Companion from an optional upstream hook; original-profile timing stays unchanged |
-| Saves | Normal phone saves, five crash-safe quick-save banks, per-session backups and guided recovery |
-| Tools | F1 settings, F6/F7 quick save/load, F9 pause, F11 fullscreen, F12 screenshots and FPS display |
+## PC presentation notes
 
 **HD means high-resolution output and enhanced presentation.** Converted pixel artwork is used; a replacement hand-drawn HD art pack is not included. Widescreen expands the native world view within the renderer's limits, rather than merely stretching the original picture. Physical controller play and every display/DPI combination have not been fully verified. Mod profiles tune supported native options; arbitrary ROM patches require explicit native adaptations.
 

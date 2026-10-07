@@ -8,6 +8,7 @@ public sealed class Settings {
  public bool Fullscreen{get;set;}=true;public bool IntegerScale{get;set;}
  public int Filter{get;set;}=1;public int Aspect{get;set;}
  public bool Scanlines{get;set;} public bool TiltShift{get;set;}=true;
+ public bool OriginalTitleScreen{get;set;}
  public bool WideFov{get;set;}=true;public bool ColorGrading{get;set;}=true;
  public bool NintendoFaceLabels{get;set;}
  public bool HqAudio{get;set;}=true;public int Volume{get;set;}=80;public int MusicVolume{get;set;}=75;
@@ -111,7 +112,7 @@ public sealed class Settings {
  public void ImportProfile(string path){
   var mod=JsonSerializer.Deserialize<ModProfile>(File.ReadAllText(path))??throw new InvalidDataException("Empty profile.");
   if(mod.Schema!=1||string.IsNullOrWhiteSpace(mod.Name)||mod.Options==null)throw new InvalidDataException("Use an EarthBound Companion schema 1 profile.");
-  var allowed=new HashSet<string>(["Filter","Aspect","Scanlines","TiltShift","WideFov","ColorGrading","HqAudio","Sprint","InstantText","NoHomesickness","NoDadCalls","Exp","Money","FastForward","IntegerScale"]);
+  var allowed=new HashSet<string>(["Filter","Aspect","Scanlines","TiltShift","WideFov","ColorGrading","OriginalTitleScreen","HqAudio","Sprint","InstantText","NoHomesickness","NoDadCalls","Exp","Money","FastForward","IntegerScale"]);
   var copy=JsonSerializer.Deserialize<Settings>(JsonSerializer.Serialize(this))!;
   foreach(var (key,value) in mod.Options){if(!allowed.Contains(key))throw new InvalidDataException($"Unsupported option: {key}");var p=typeof(Settings).GetProperty(key)!;p.SetValue(copy,value.Deserialize(p.PropertyType));}
   copy.Validate();foreach(var key in mod.Options.Keys)typeof(Settings).GetProperty(key)!.SetValue(this,typeof(Settings).GetProperty(key)!.GetValue(copy));

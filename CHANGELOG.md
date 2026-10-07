@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.25 - independent title-screen choice
+
+- Add Game Mode's Original EarthBound title-screen switch while retaining Redux gameplay; persist it in settings and supported mod profiles. Original mode keeps its normal title.
+- Read ten title presentation entries transactionally from the locally built Original pack. Restore the original palette gradients and sprite animation, and redirect only eleven title entity IDs. Keep gameplay assets, disk packs, seed hashes and save format 16 unchanged.
+- Preserve the C4 title registry across intro-first and cold-gameplay loading orders, avoiding duplicate banks and shifted saved script indices.
+- Publish a complete bullet list of game/PC features and clarify existing Redux stamina, current New Beginnings plans and the title request in issue #1.
+- Verify both production animation paths, Original-versus-selected title frames, malformed donor rejection, story/seed launcher paths and copied existing checkpoints. Full campaign/randomizer/hardware/audio coverage remains open.
+
 ## 0.5.0-redux-dev.24 - fix Lumine Hall wall-writing crash
 
 - Correct a native work-buffer overflow before the Lumine Hall wall-writing animation after Electro Specter. Decode into bounded transient storage and pack both scroll phases inside the existing serialized 20 KB buffer; retain save format 16 and unchanged assets/seed identities.

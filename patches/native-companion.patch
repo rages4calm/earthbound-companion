@@ -155,7 +155,7 @@ index beecb38..43a704a 100644
  # Emit compile_commands.json so clangd/IDEs resolve include paths and types.
  # A root-level symlink (../../compile_commands.json) points at this file.
 diff --git a/port/unix/main.c b/port/unix/main.c
-index f625aff..ba65de5 100644
+index f625aff..4b75eac 100644
 --- a/port/unix/main.c
 +++ b/port/unix/main.c
 @@ -32,12 +32,32 @@
@@ -191,7 +191,7 @@ index f625aff..ba65de5 100644
  #include "version.h"    /* EB_VERSION_STRING -- generated, see CMakeLists.txt.
                            * Unconditionally generated (not gated behind
                            * EB_UPDATER_ENABLED the way sdl2_updater.c's own
-@@ -368,12 +388,62 @@ static void migrate_legacy_saves_to_saves_folder(void) {
+@@ -368,12 +388,63 @@ static void migrate_legacy_saves_to_saves_folder(void) {
  
  int main(int argc, char *argv[]) {
      chdir_to_executable_dir(); /* before anything below touches a relative path */
@@ -249,12 +249,13 @@ index f625aff..ba65de5 100644
 +    bool redux_battle_art_selftest = false;
 +    bool redux_combat_selftest = false;
 +    bool redux_development = false;
++    const char *original_title_assets = NULL;
 +    const char *redux_title_test_path = NULL, *redux_title_expected = NULL;
 +    uint32_t redux_title_address = 0;
      bool threed_zombie_flag_check = false;
      bool threed_zombie_flag_fix = false;
      bool jeff_flag_fix = false;
-@@ -396,7 +466,26 @@ int main(int argc, char *argv[]) {
+@@ -396,11 +467,32 @@ int main(int argc, char *argv[]) {
  #endif
  
      for (int i = 1; i < argc; i++) {
@@ -282,7 +283,13 @@ index f625aff..ba65de5 100644
              verify_rom_path = argv[++i];
  #ifdef EB_RUNTIME_ASSETS
          } else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc) {
-@@ -420,6 +509,94 @@ int main(int argc, char *argv[]) {
+             assets_path = argv[++i];
++        } else if (strcmp(argv[i], "--original-title-assets") == 0 && i + 1 < argc) {
++            original_title_assets = argv[++i];
+ #else
+         } else if (strcmp(argv[i], "--export-pak") == 0 && i + 1 < argc) {
+             export_pak_path = argv[++i];
+@@ -420,6 +512,94 @@ int main(int argc, char *argv[]) {
               * --save FILE. Implies headless. */
              keyitems_selftest = true;
              platform_headless = true;
@@ -377,7 +384,7 @@ index f625aff..ba65de5 100644
          } else if (strcmp(argv[i], "--selftest-joinlevel") == 0) {
              /* Join-level scaling (Paula/Jeff/Poo scaled to Ness's current
               * level, see add_char_to_party()'s doc comment, inventory.c).
-@@ -536,7 +713,7 @@ int main(int argc, char *argv[]) {
+@@ -536,7 +716,7 @@ int main(int argc, char *argv[]) {
  #else
                              " [--export-pak FILE]"
  #endif
@@ -386,7 +393,7 @@ index f625aff..ba65de5 100644
                      argv[0]);
              return 1;
          }
-@@ -630,6 +807,10 @@ int main(int argc, char *argv[]) {
+@@ -630,6 +810,10 @@ int main(int argc, char *argv[]) {
       * Precedence: --assets flag, then EB_ASSETS_PAK env var, then the
       * platform-conventional data dir (see eb_runtime_assets_default_path). */
      char default_assets_path[1024];
@@ -397,7 +404,7 @@ index f625aff..ba65de5 100644
      if (assets_path == NULL) {
          assets_path = getenv("EB_ASSETS_PAK");
      }
-@@ -916,6 +1097,9 @@ int main(int argc, char *argv[]) {
+@@ -916,6 +1100,9 @@ int main(int argc, char *argv[]) {
       * itself (sdl2_video.c is platform-agnostic and already correct). */
      SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
@@ -407,7 +414,7 @@ index f625aff..ba65de5 100644
      /* Initialize SDL */
      uint32_t sdl_flags = SDL_INIT_TIMER;
      if (!platform_headless) {
-@@ -938,6 +1122,7 @@ int main(int argc, char *argv[]) {
+@@ -938,6 +1125,7 @@ int main(int argc, char *argv[]) {
      platform_input_init();
      platform_save_init();
      settings_load();
@@ -415,8 +422,21 @@ index f625aff..ba65de5 100644
      /* Resume logging automatically if a previous session left the Config
       * menu's "Logging" row on -- a tester shouldn't have to re-enable it
       * after every relaunch (including the updater's own self-relaunch) to
-@@ -965,6 +1150,30 @@ int main(int argc, char *argv[]) {
+@@ -963,8 +1151,43 @@ int main(int argc, char *argv[]) {
+     atexit(platform_cleanup);
+     platform_timer_init();
  
++#ifdef EB_RUNTIME_ASSETS
++    if (original_title_assets) {
++        EbAssetLoadResult title_result = eb_runtime_assets_use_original_title(original_title_assets);
++        if (title_result != EB_ASSETS_OK) {
++            fprintf(stderr, "Could not load original title presentation (asset error %d). Repair original game data in Companion.\n", title_result);
++            SDL_Quit(); return 1;
++        }
++        fprintf(stderr, "Original EarthBound title presentation selected; gameplay data remains unchanged.\n");
++    }
++#endif
++
      /* Initialize game systems */
      game_init();
 +    if (start_fast_forward) game_set_fast_forward(true);
@@ -446,7 +466,7 @@ index f625aff..ba65de5 100644
  
      /* --load-state: resume from savestate.bin.0/.1 in the CWD instead of a
       * fresh boot. Just requests it here -- the normal per-frame
-@@ -993,7 +1202,32 @@ int main(int argc, char *argv[]) {
+@@ -993,7 +1216,32 @@ int main(int argc, char *argv[]) {
          fprintf(stderr, "key items pool self-test: %s\n", ok_ki ? "PASS" : "FAIL");
          exit(ok_ki ? 0 : 1);
      }
@@ -480,7 +500,7 @@ index f625aff..ba65de5 100644
      if (joinlevel_selftest) {
          bool ok_jl = join_level_scaling_selftest();
          fprintf(stderr, "join-level scaling self-test: %s\n", ok_jl ? "PASS" : "FAIL");
-@@ -1194,6 +1428,193 @@ int main(int argc, char *argv[]) {
+@@ -1194,6 +1442,193 @@ int main(int argc, char *argv[]) {
          exit(0);
      }
  
@@ -674,7 +694,7 @@ index f625aff..ba65de5 100644
      /* Initialize audio (loads audio packs from embedded assets) */
      if (!platform_headless)
          platform_audio_init();
-@@ -1208,7 +1629,7 @@ int main(int argc, char *argv[]) {
+@@ -1208,7 +1643,7 @@ int main(int argc, char *argv[]) {
           * --msu-dir/--msu-name flags, and nothing to add to a Steam
           * shortcut's Launch Options (editing those is real friction, and
           * has to be redone every time the pack changes). */
@@ -683,7 +703,7 @@ index f625aff..ba65de5 100644
          char detected_name[128];
          const char *name = msu_name;
  
-@@ -1277,12 +1698,137 @@ int main(int argc, char *argv[]) {
+@@ -1277,12 +1712,137 @@ int main(int argc, char *argv[]) {
       * See docs/plans/savestate-unified-loop.md. */
      platform_timer_frame_start();
  
@@ -2209,18 +2229,34 @@ index 11f97f5..09af2a4 100644
  }
  
 diff --git a/src/data/event_script_data.c b/src/data/event_script_data.c
-index 61e71a4..ee8f275 100644
+index 61e71a4..2547811 100644
 --- a/src/data/event_script_data.c
 +++ b/src/data/event_script_data.c
-@@ -14,6 +14,7 @@
+@@ -3,17 +3,21 @@
+  *
+  * Loads ROM-derived binary assets (extracted by ebtools) at runtime:
+  *   - title_screen_scripts.bin: event script bytecode region (bank C4)
+- *   - title_screen_script_pointers.bin: 12 × 3-byte ROM address entries
++ *   - title_screen_script_pointers.bin: 12 Ã— 3-byte ROM address entries
+  *   - title_screen_spritemaps.bin: spritemap data + pointer table
+- *   - event_script_pointers.bin: 895 × 3-byte ROM address entries
++ *   - event_script_pointers.bin: 895 Ã— 3-byte ROM address entries
+  *   - bank_c4_scripts.bin: naming screen bytecode (bank C4)
+  *   - bank_c3_scripts.bin: naming screen bytecode (bank C3)
+  *   - naming_screen_entities.bin: entity definition tables
+  */
+ #include "data/event_script_data.h"
  #include "data/assets.h"
++#ifdef EB_RUNTIME_ASSETS
++#include "data/runtime_assets.h"
++#endif
  #include "include/binary.h"
  #include "core/log.h"
 +#include "game/maternalbound.h"
  #include <stdio.h>
  #include <string.h>
  
-@@ -69,6 +70,11 @@ static const uint8_t *naming_entities_buf = NULL;
+@@ -69,6 +73,11 @@ static const uint8_t *naming_entities_buf = NULL;
  
  int register_script_bank(const uint8_t *data, uint32_t size,
                           uint16_t rom_base_addr, uint8_t rom_bank) {
@@ -2232,7 +2268,7 @@ index 61e71a4..ee8f275 100644
      if (script_bank_count >= MAX_SCRIPT_BANKS)
          return -1;
      int idx = script_bank_count++;
-@@ -113,6 +119,22 @@ uint16_t script_bank_rom_to_offset(int bank_idx, uint16_t rom_addr) {
+@@ -113,30 +122,43 @@ uint16_t script_bank_rom_to_offset(int bank_idx, uint16_t rom_addr) {
   * 3. Find which loaded script bank covers this address
   * 4. Compute buffer offset = within_bank_addr - bank.rom_base_addr
   */
@@ -2255,7 +2291,20 @@ index 61e71a4..ee8f275 100644
  bool resolve_script_id(uint16_t script_id, int *out_bank_idx, uint16_t *out_offset) {
      if (!event_script_pointer_table || script_id >= event_script_pointer_count) {
          return false;
-@@ -123,20 +145,7 @@ bool resolve_script_id(uint16_t script_id, int *out_bank_idx, uint16_t *out_offs
+     }
+ 
++#ifdef EB_RUNTIME_ASSETS
++    /* Redux relocates these eleven title entities to FC. Select the Original
++     * entry points only for the logo animation; keep every other event ID. */
++    if (eb_runtime_assets_original_title() && script_id>=EVENT_SCRIPT_TITLE_SCREEN_1 &&
++        script_id<=EVENT_SCRIPT_TITLE_SCREEN_11) {
++        const uint8_t *pointer = ASSET_DATA(ASSET_INTRO_TITLE_SCREEN_SCRIPT_POINTERS_BIN)+
++            (script_id-EVENT_SCRIPT_TITLE_SCREEN_1+1)*3;
++        return resolve_script_address((uint32_t)pointer[0]|((uint32_t)pointer[1]<<8)|((uint32_t)pointer[2]<<16),out_bank_idx,out_offset);
++    }
++#endif
+     /* Read 3-byte PTR3 entry: [lo, hi, bank] */
+     uint32_t entry_off = (uint32_t)script_id * 3;
      uint16_t within_bank = read_u16_le(&event_script_pointer_table[entry_off]);
      uint8_t rom_bank = event_script_pointer_table[entry_off + 2];
  
@@ -2277,7 +2326,7 @@ index 61e71a4..ee8f275 100644
  }
  
  /* Title Screen Data */
-@@ -207,6 +216,45 @@ void free_title_screen_script_data(void) {
+@@ -207,6 +229,54 @@ void free_title_screen_script_data(void) {
  
  /* General Event Script Data */
  
@@ -2313,7 +2362,16 @@ index 61e71a4..ee8f275 100644
 +            if (register_script_bank(title, (uint32_t)title_size, TITLE_SCRIPT_BANK_ROM_BASE, 0xC4)<0)
 +                FATAL("Movement bank registry exhausted\n");
 +        }
-+        if (register_script_bank(container+offset,length,base,bank)<0)
++        const uint8_t *bank_data = container+offset;
++#ifdef EB_RUNTIME_ASSETS
++        /* Redux also retains the title's C4 region in its movement container.
++         * Use the same selected title region in both loading orders so cold
++         * gameplay restores keep the original registry indices and count. */
++        if (eb_runtime_assets_original_title() && bank==0xC4 &&
++            base==TITLE_SCRIPT_BANK_ROM_BASE && length==ASSET_SIZE(ASSET_INTRO_TITLE_SCREEN_SCRIPTS_BIN))
++            bank_data = ASSET_DATA(ASSET_INTRO_TITLE_SCREEN_SCRIPTS_BIN);
++#endif
++        if (register_script_bank(bank_data,length,base,bank)<0)
 +            FATAL("Movement bank registry exhausted\n");
 +        offset += length;
 +    }
@@ -2323,7 +2381,13 @@ index 61e71a4..ee8f275 100644
  void load_event_script_data(void) {
      /* Guard against double-loading (init_intro loads early,
       * file_select may also call this) */
-@@ -219,24 +267,41 @@ void load_event_script_data(void) {
+@@ -214,29 +284,46 @@ void load_event_script_data(void) {
+ 
+     size_t size;
+ 
+-    /* Load event script pointer table (895 × 3 bytes) */
++    /* Load event script pointer table (895 Ã— 3 bytes) */
+     size = ASSET_SIZE(ASSET_EVENTS_EVENT_SCRIPT_POINTERS_BIN);
      event_ptr_table_buf = ASSET_DATA(ASSET_EVENTS_EVENT_SCRIPT_POINTERS_BIN);
      if (event_ptr_table_buf && size >= EVENT_SCRIPT_POINTER_COUNT * 3) {
          event_script_pointer_table = event_ptr_table_buf;
@@ -2369,7 +2433,7 @@ index 61e71a4..ee8f275 100644
       * On real SNES hardware this is one contiguous ROM bank. The asset
       * is extracted as a single region so asset_load_locale() returns a
       * direct pointer, no RAM copy needed. SHORTCALLs between early
-@@ -244,9 +309,9 @@ void load_event_script_data(void) {
+@@ -244,9 +331,9 @@ void load_event_script_data(void) {
      {
          size_t c3_size = ASSET_SIZE(ASSET_EVENTS_BANK_C3_SCRIPTS_COMBINED_BIN);
          const uint8_t *c3 = ASSET_DATA(ASSET_EVENTS_BANK_C3_SCRIPTS_COMBINED_BIN);
@@ -2381,6 +2445,18 @@ index 61e71a4..ee8f275 100644
              LOG_WARN("WARN: failed to load bank_c3_scripts_combined.bin\n");
          }
      }
+@@ -262,6 +349,11 @@ void load_event_script_data(void) {
+         naming_entities_data = NULL;
+         naming_entities_data_size = 0;
+     }
++#ifdef EB_RUNTIME_ASSETS
++    /* Bind title caches even when resuming an F6 state instead of the intro.
++     * The container already owns this bank's index; dedup keeps it stable. */
++    if (eb_runtime_assets_original_title()) load_title_screen_script_data();
++#endif
+ }
+ 
+ void free_event_script_data(void) {
 diff --git a/src/data/event_script_data.h b/src/data/event_script_data.h
 index 9fbd2ba..00ceab1 100644
 --- a/src/data/event_script_data.h
@@ -2418,12 +2494,14 @@ index 9fbd2ba..00ceab1 100644
  /*
   * A loaded script bank region, a contiguous chunk of bytecode from ROM.
 diff --git a/src/data/runtime_assets.c b/src/data/runtime_assets.c
-index dfade12..4998466 100644
+index dfade12..eb7698f 100644
 --- a/src/data/runtime_assets.c
 +++ b/src/data/runtime_assets.c
-@@ -80,6 +80,11 @@ static HANDLE s_mapping_handle = NULL;
+@@ -79,7 +79,13 @@ static HANDLE s_file_handle = INVALID_HANDLE_VALUE;
+ static HANDLE s_mapping_handle = NULL;
  #endif
  static bool s_ready = false;
++static bool s_original_title = false;
  static unsigned int s_asset_lengths[ASSET_COUNT];
 +/* EBPK offsets are byte offsets, not a promise of host C alignment. Some
 + * consumers view records as native structs (for example TeleportDestination).
@@ -2433,9 +2511,11 @@ index dfade12..4998466 100644
  
  /* Maps `path` read-only into memory. Returns NULL (out_size untouched) on
   * any failure. On success, must be paired with unmap_pak_file(). Two
-@@ -163,10 +168,13 @@ static void hash_to_hex(const unsigned char *hash, char out[EB_PAK_HASH_SIZE * 2
+@@ -162,11 +168,15 @@ static void hash_to_hex(const unsigned char *hash, char out[EB_PAK_HASH_SIZE * 2
+  * ASSET_DATA() returning NULL signals "not loaded", same as a compile-time
   * gap entry. */
  static void clear_globals(void) {
++    s_original_title = false;
      for (int i = 0; i < ASSET_COUNT; i++) {
 +        free(s_aligned_asset_copies[i]);
 +        s_aligned_asset_copies[i] = NULL;
@@ -2447,7 +2527,75 @@ index dfade12..4998466 100644
  }
  
  void eb_runtime_assets_unload(void) {
-@@ -248,7 +256,19 @@ EbAssetLoadResult eb_runtime_assets_load(const char *path) {
+@@ -183,6 +193,67 @@ bool eb_runtime_assets_ready(void) {
+     return s_ready;
+ }
+ 
++bool eb_runtime_assets_original_title(void) {
++    return s_original_title;
++}
++
++EbAssetLoadResult eb_runtime_assets_use_original_title(const char *path) {
++    /* Own copies rather than a second mapping: map_pak_file's handles belong
++     * to the gameplay pack. Commit only after all ten entries validate. */
++    static const unsigned ids[] = {
++        ASSET_INTRO_TITLE_SCREEN_ARR_LZHAL, ASSET_INTRO_TITLE_SCREEN_GFX_LZHAL,
++        ASSET_INTRO_TITLE_SCREEN_PAL_LZHAL, ASSET_INTRO_TITLE_SCREEN_LETTERS_GFX_LZHAL,
++        ASSET_INTRO_TITLE_SCREEN_SCRIPT_POINTERS_BIN, ASSET_INTRO_TITLE_SCREEN_SCRIPTS_BIN,
++        ASSET_INTRO_TITLE_SCREEN_SPRITEMAPS_BIN,
++        ASSET_E1AE7C_BIN_LZHAL, ASSET_E1AE83_BIN_LZHAL, ASSET_E1AEFD_BIN_LZHAL
++    };
++    unsigned char header[EB_PAK_HEADER_SIZE], entry[8];
++    void *copies[10] = {0};
++    unsigned lengths[10] = {0};
++    EbAssetLoadResult result = EB_ASSETS_IO_ERROR;
++    if (!s_ready) return result;
++    FILE *file = fopen(path, "rb");
++    if (!file) return EB_ASSETS_MISSING;
++    if (fread(header, 1, sizeof(header), file) != sizeof(header)) goto done;
++    if (memcmp(header, EB_PAK_MAGIC, 4)) { result = EB_ASSETS_BAD_MAGIC; goto done; }
++    if (read_u32le(header+4) != EB_PAK_VERSION) { result = EB_ASSETS_VERSION_MISMATCH; goto done; }
++    if (read_u32le(header+8) != ASSET_COUNT) { result = EB_ASSETS_COUNT_MISMATCH; goto done; }
++    char hash[EB_PAK_HASH_SIZE*2+1];
++    hash_to_hex(header+12, hash);
++    if (strcmp(hash, ASSET_PACK_LAYOUT_HASH)) { result = EB_ASSETS_LAYOUT_MISMATCH; goto done; }
++    if (fseek(file, 0, SEEK_END)) goto done;
++    long file_size = ftell(file);
++    const unsigned blob = EB_PAK_HEADER_SIZE + ASSET_COUNT*EB_PAK_INDEX_ENTRY_SIZE;
++    if (file_size < 0 || (unsigned long)file_size < blob) goto done;
++    for (unsigned i=0; i<10; i++) {
++        if (fseek(file, EB_PAK_HEADER_SIZE+ids[i]*EB_PAK_INDEX_ENTRY_SIZE, SEEK_SET) ||
++            fread(entry, 1, sizeof(entry), file) != sizeof(entry)) goto done;
++        uint32_t offset = read_u32le(entry), length = read_u32le(entry+4);
++        /* These are small presentation entries, never a gameplay bank or a
++         * user-controlled allocation proportional to an entire pack. */
++        if (!length || length > 65536 || (uint64_t)blob+offset+length > (uint64_t)file_size ||
++            (i==4 && length!=36) || (i==5 && length!=2048) || (i==6 && length!=423)) goto done;
++        copies[i] = malloc(length);
++        if (!copies[i] || fseek(file, (long)((uint64_t)blob+offset), SEEK_SET) ||
++            fread(copies[i], 1, length, file) != length) goto done;
++        lengths[i] = length;
++    }
++    for (unsigned i=0; i<10; i++) {
++        unsigned id = ids[i];
++        free(s_aligned_asset_copies[id]);
++        s_aligned_asset_copies[id] = copies[i];
++        embedded_assets[id].data = copies[i];
++        s_asset_lengths[id] = lengths[i];
++        copies[i] = NULL;
++    }
++    s_original_title = true;
++    result = EB_ASSETS_OK;
++done:
++    fclose(file);
++    for (unsigned i=0; i<10; i++) free(copies[i]);
++    return result;
++}
++
+ EbAssetLoadResult eb_runtime_assets_load(const char *path) {
+     if (s_ready) {
+         eb_runtime_assets_unload();
+@@ -248,7 +319,19 @@ EbAssetLoadResult eb_runtime_assets_load(const char *path) {
              clear_globals();
              return EB_ASSETS_IO_ERROR; /* truncated/corrupt pak */
          }
@@ -2469,7 +2617,7 @@ index dfade12..4998466 100644
      }
  
 diff --git a/src/data/runtime_assets.h b/src/data/runtime_assets.h
-index b3ffb70..ef6a0be 100644
+index b3ffb70..e0959bc 100644
 --- a/src/data/runtime_assets.h
 +++ b/src/data/runtime_assets.h
 @@ -24,7 +24,9 @@ typedef enum {
@@ -2483,11 +2631,17 @@ index b3ffb70..ef6a0be 100644
   * eb_runtime_assets_ready() remains false. Calling this while a pack is
   * already loaded first unloads the previous one. */
  EbAssetLoadResult eb_runtime_assets_load(const char *path);
-@@ -32,7 +34,7 @@ EbAssetLoadResult eb_runtime_assets_load(const char *path);
+@@ -32,7 +34,13 @@ EbAssetLoadResult eb_runtime_assets_load(const char *path);
  /* True if a valid pack is currently loaded. */
  bool eb_runtime_assets_ready(void);
  
 -/* Unmaps the current pack and clears embedded_assets[]/family arrays back
++/* At startup only: select the ten title presentation assets from another
++ * matching pack. The selected gameplay pack and its identity stay intact.
++ * Failure leaves all current assets unchanged. */
++EbAssetLoadResult eb_runtime_assets_use_original_title(const char *path);
++bool eb_runtime_assets_original_title(void);
++
 +/* Frees alignment copies, unmaps the current pack and clears embedded_assets[]/family arrays back
   * to all-NULL entries. Only needed for clean shutdown / tests, the OS
   * reclaims the mapping on process exit regardless. */

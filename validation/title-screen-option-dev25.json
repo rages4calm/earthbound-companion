@@ -1,0 +1,86 @@
+{
+  "version": "0.5.0-redux-dev.25",
+  "passed": true,
+  "nativeExeSha256": "bff98a764e4db1a3bbadf4033d0e6535f27e1a9d724756aa25f861a834505fb5",
+  "driverSourceSha256": "1713f419aeba839acc2221509c63678ee9ebddd030596f5ac2a47ff67693260c",
+  "originalPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "reduxPackSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "titleAssets": 10,
+  "unchangedOtherAssets": 1164,
+  "transactionalDonorCases": [
+    "valid",
+    "truncated",
+    "magic",
+    "layout",
+    "count",
+    "version",
+    "late-title-bounds",
+    "empty-title",
+    "missing"
+  ],
+  "productionFrameComparisons": [
+    {
+      "quick": 0,
+      "matchingFrames": [
+        0,
+        30,
+        60,
+        150,
+        300,
+        500,
+        600
+      ],
+      "defaultReduxDistinct": true
+    },
+    {
+      "quick": 1,
+      "matchingFrames": [
+        0,
+        30,
+        60,
+        150,
+        300,
+        500,
+        600
+      ],
+      "defaultReduxDistinct": true
+    }
+  ],
+  "productionCapturesAndCompletion": [
+    {
+      "choice": "redux",
+      "quick": 0,
+      "completionPassed": true
+    },
+    {
+      "choice": "redux",
+      "quick": 1,
+      "completionPassed": true
+    },
+    {
+      "choice": "original",
+      "quick": 0,
+      "completionPassed": true
+    },
+    {
+      "choice": "original",
+      "quick": 1,
+      "completionPassed": true
+    }
+  ],
+  "saveFormat": 16,
+  "fullPlaythroughVerified": false,
+  "launcherProfileChecks": {
+    "Passed": true,
+    "Checks": [
+      "redux production launch, pre-launch backup, native asset loading and clean exit",
+      "original production launch, pre-launch backup, native asset loading and clean exit",
+      "redux-seed production launch, pre-launch backup, native asset loading and clean exit",
+      "redux-original-title production launch, pre-launch backup, native asset loading and clean exit",
+      "original-original-title production launch, pre-launch backup, native asset loading and clean exit",
+      "redux-seed-original-title production launch, pre-launch backup, native asset loading and clean exit",
+      "Redux snapshot, phone backup/restore, cross-edition and cross-seed rejection, cold settings and phone-save preservation"
+    ],
+    "FullPlaythroughVerified": false
+  }
+}

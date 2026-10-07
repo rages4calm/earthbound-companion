@@ -8,9 +8,11 @@ Companion is adapting MaternalBound Redux into the BrianPugh-derived native x64 
 
 This checkpoint targets the active upstream source at `897d00833f4a08a0a92f106abf631629a6a6a041`, compiled locally with CoilSnake into a verified 6 MiB ROM. It is not the official v1.1 release. The v1.1 BPS was separately checksum-verified and tested during initial extraction research; supporting that release requires a separate conversion map and validation record.
 
-The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.24` (returning party progress preserved; dev.22 graphics, dev.21 PSI and earlier fixes retained).**
+The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.25` (returning party progress preserved; dev.22 graphics, dev.21 PSI and earlier fixes retained).**
 
 The open-ended autonomous audit has been stopped at the owner’s request. Existing evidence is retained; further fixes will follow playtesting reports. No whole normal-play Redux feature is currently confirmed absent, but complete compatibility remains unverified.
+
+Dev.25 adds an independent **Original EarthBound title screen** switch in **Game Mode**. Redux keeps its story, gameplay, seed identities and saves; the original title artwork and animation come from the clean ROM data already built locally. Apply settings and relaunch. [Option and bounded verification](docs/RELEASE-dev25.md).
 
 Dev.24 fixes the crash before Lumine Hall’s wall-writing animation after Electro Specter. The native scroll stays within its existing work buffer, renders the full text with the original spacing, and updates the correct background layer. The copied boss/recording sequence and cold-load during the animation pass; Original and Redux scroll fixtures check every frame. [Fix, actual capture and bounded verification](docs/RELEASE-dev24.md).
 

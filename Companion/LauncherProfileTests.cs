@@ -27,15 +27,17 @@ static class LauncherProfileTests {
    string seedSession=StoryShuffle.Generate("launcher-profile-regression",new ShuffleOptions()).Session;
    Require(Refused(backup,seedSession),"Story backup restored into randomized adventure");
    settings=Settings.Load();Require(Settings.Game==redux,"Cold settings lost Redux story session");
-   foreach(var edition in new[]{"redux","original","redux-seed"}) {
+   foreach(var edition in new[]{"redux","original","redux-seed","redux-original-title","original-original-title","redux-seed-original-title"}) {
     SeedRecord? seed=null;
-    if(edition=="original"){settings.AssetPack="";settings.ReduxDevelopmentEnabled=false;settings.Save();}
-    else {ReduxProfileService.Select(settings);if(edition=="redux-seed")seed=StoryShuffle.Read(Path.GetDirectoryName(seedSession)!);}
+    settings.OriginalTitleScreen=edition.EndsWith("original-title");
+    if(edition.StartsWith("original")){settings.AssetPack="";settings.ReduxDevelopmentEnabled=false;settings.Save();}
+    else {ReduxProfileService.Select(settings);if(edition.StartsWith("redux-seed"))seed=StoryShuffle.Read(Path.GetDirectoryName(seedSession)!);}
     using var process=GameLaunch.Start(settings,false,seed,["--headless","--skip-intro","--frames","300","--capture-state","20"]);
     if(!process.WaitForExit(30000)){process.Kill(true);throw new IOException("Native launcher test timed out");}
     Require(process.ExitCode==0,edition+" native process failed");
     string active=Settings.Game;string log=File.ReadAllText(Path.Combine(active,"game.log"));
     Require(log.Contains("PC replay checkpoint:"),edition+" native game-loop checkpoint absent");
+    Require(log.Contains("Original EarthBound title presentation selected")==(!edition.StartsWith("original")&&settings.OriginalTitleScreen),edition+" title option did not reach the native player");
     checks.Add(edition+" production launch, pre-launch backup, native asset loading and clean exit");Settings.SessionDirectory=null;
    }
    Require(File.ReadAllBytes(phone).SequenceEqual(save),"Launch changed Redux phone save");

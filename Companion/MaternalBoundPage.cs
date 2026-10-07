@@ -12,6 +12,9 @@ sealed partial class MainForm {
   }),true);build.Enabled=!Running&&!generating;build.Width=240;
   var original=Theme.Button("Use original EarthBound",()=>Try(()=>{if(Running||generating)return;settings.AssetPack="";settings.ReduxDevelopmentEnabled=false;settings.Save();ShowPage("Play");Notify("Original EarthBound selected. Its existing saves are preserved.");}));original.Enabled=!Running&&!generating;original.Width=240;Actions(build,original);
 
+  Section("Title screen");
+  Check("Original EarthBound title screen","Use the original logo and animation while keeping Redux gameplay. Apply settings, then relaunch the game. Original mode already uses this title screen.",settings.OriginalTitleScreen,v=>settings.OriginalTitleScreen=v);
+
   Section("Redux development status");
   var statusCard=new TableLayoutPanel(){Height=88,ColumnCount=2,RowCount=1,BackColor=Theme.Surface,Padding=new Padding(18,13,18,13),Margin=new Padding(0,4,0,14)};
   statusCard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,72));statusCard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,28));

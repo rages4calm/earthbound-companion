@@ -1,0 +1,89 @@
+{
+  "version": "0.5.0-redux-dev.25",
+  "passed": true,
+  "zipSha256": "481cb4a22a9777bc42c08d8d502904298852c1bb596309fedbe28d9ac580d428",
+  "zipBytes": 124689694,
+  "manifestFiles": 32,
+  "nativeExeSha256": "bff98a764e4db1a3bbadf4033d0e6535f27e1a9d724756aa25f861a834505fb5",
+  "launcherSha256": "24c76e03101052fe9bc88acec89b956172c1d4f7f3a4267481aadb4a024a7770",
+  "noGamePayloadInArchive": true,
+  "checks": [
+    {
+      "edition": "original",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "screen-transitions",
+      "passed": true
+    },
+    {
+      "edition": "original",
+      "check": "joinlevel",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "savestate",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "keyitems",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "encounters",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "screen-transitions",
+      "passed": true
+    },
+    {
+      "edition": "redux",
+      "check": "joinlevel",
+      "passed": true
+    },
+    {
+      "check": "owner gameplay checkpoint with title option False",
+      "passed": true
+    },
+    {
+      "check": "owner gameplay checkpoint with title option True",
+      "passed": true
+    },
+    {
+      "check": "packaged Original title animation 0",
+      "passed": true
+    },
+    {
+      "check": "packaged Original title animation 1",
+      "passed": true
+    }
+  ],
+  "packagedLauncherProfilesPassed": true,
+  "packagedCheckpointRecoveryPassed": true,
+  "ownerCheckpointInputUnchanged": true,
+  "originalPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "reduxPackSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "saveFormat": 16,
+  "fullPlaythroughVerified": false,
+  "limits": [
+    "Selected title, launcher, saved-checkpoint and basic runtime regression coverage only. No full campaign/randomized or hardware/listening certification.",
+    "Unchanged setup helpers and MSU install contracts retain previous verification; no repeated online ROM extraction/music download."
+  ]
+}

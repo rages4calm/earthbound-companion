@@ -15,7 +15,7 @@ static class SelfTest {
   try{
    Directory.CreateDirectory(Settings.Game);Directory.CreateDirectory(Settings.PathTo("saves"));File.WriteAllBytes(Settings.PathTo("saves/earthbound.srm"),[1,2,3]);
    File.WriteAllBytes(Settings.PathTo("assets.pak"),originalAssets);
-   s.Exp=s.Money=16;s.FastForward=8;s.Save();var loaded=Settings.Load();if(!loaded.WideFov||loaded.Filter!=1||loaded.Keys[4]!=27||loaded.Exp!=16||loaded.Money!=16||loaded.FastForward!=8)throw new Exception("Native settings persistence failed");
+   s.Exp=s.Money=16;s.FastForward=8;s.OriginalTitleScreen=true;s.Save();var loaded=Settings.Load();if(!loaded.WideFov||loaded.Filter!=1||loaded.Keys[4]!=27||loaded.Exp!=16||loaded.Money!=16||loaded.FastForward!=8||!loaded.OriginalTitleScreen)throw new Exception("Native settings persistence failed");
    string ini=File.ReadAllText(Settings.PathTo("earthbound.ini"));if(!ini.Contains("fast_forward_multiplier=8")||!ini.Contains("exp_multiplier=16")||!ini.Contains("money_multiplier=16"))throw new Exception("Playtest native INI failed");
    if(File.ReadAllBytes(Settings.PathTo("settings.dat")).Length!=16)throw new Exception("Engine blob size failed");
    var profile=Path.Combine(temp,"test.ebmod.json");File.WriteAllText(profile,"{\"Schema\":1,\"Name\":\"Test\",\"Options\":{\"Exp\":2,\"TiltShift\":false,\"FastForward\":16}}");loaded.ImportProfile(profile);if(loaded.Exp!=2||loaded.TiltShift||loaded.FastForward!=16)throw new Exception("Profile import failed");
