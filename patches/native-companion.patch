@@ -2647,7 +2647,7 @@ index b3ffb70..e0959bc 100644
   * reclaims the mapping on process exit regardless. */
  void eb_runtime_assets_unload(void);
 diff --git a/src/entity/callbacks.c b/src/entity/callbacks.c
-index 857f81e..b434ef2 100644
+index 857f81e..e41852b 100644
 --- a/src/entity/callbacks.c
 +++ b/src/entity/callbacks.c
 @@ -18,11 +18,13 @@
@@ -2761,7 +2761,22 @@ index 857f81e..b434ef2 100644
          queue_sprite_draw(smap, x, y, priority, SMAP_BANK_OVERLAY);
      }
  }
-@@ -1616,7 +1688,8 @@ void cr_animate_entity_tile_merge(void) {
+@@ -839,6 +911,14 @@ void render_all_priority_sprites(void) {
+  * The assembly dispatches through the ENTITY_DRAW_CALLBACK jump table.
+  */
+ static void call_entity_draw(int16_t entity_offset) {
++    /* Fountain scripts 672..674 disable collision between eruptions. Older
++     * native saves may retain a visible frame from the upload-only ME2
++     * routine. Its idle collision state is authoritative until the next
++     * eruption resets animation_frame through the normal script. */
++    if (entities.script_table[entity_offset] >= 672 &&
++        entities.script_table[entity_offset] <= 674 &&
++        entities.collided_objects[entity_offset] == ENTITY_COLLISION_DISABLED)
++        return;
+     /* DRAW_ENTITY checks: spritemap_ptr_hi bit 15 (BMI @SKIP) = hidden.
+      * The BVS @SKIP that follows never branches because LDA doesn't set V;
+      * V comes from a prior SBC which is always clear for normal DP values.
+@@ -1616,7 +1696,8 @@ void cr_animate_entity_tile_merge(void) {
      uint8_t *slot_table = &ert.buffer[BUF_TILE_MERGE_SLOTS];
  
      /* Pick a random unused slot from the 64-entry table */
@@ -2772,7 +2787,7 @@ index 857f81e..b434ef2 100644
          slot_idx = (slot_idx + 1) & 0x3F;
      }
 diff --git a/src/entity/callroutine.c b/src/entity/callroutine.c
-index 61c4f93..5966544 100644
+index 61c4f93..3878a72 100644
 --- a/src/entity/callroutine.c
 +++ b/src/entity/callroutine.c
 @@ -51,6 +51,10 @@
@@ -3157,19 +3172,26 @@ index 61c4f93..5966544 100644
           * Increments var1; returns 0 if var1 <= var0 (more frames), 1 if done.
           *
           * The source data at BUFFER+$2000 is arranged with 16 bytes between
-@@ -2949,7 +2974,18 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -2949,7 +2974,25 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
          for (int ataf_r = 0; ataf_r < 8; ataf_r++) {
              uint32_t ataf_col_src = ataf_row_src;
              for (int ataf_c = 0; ataf_c < 30; ataf_c++) {
 -                if (ataf_col_src + 1 < BUFFER_SIZE && ataf_dst + 1 < BUFFER_SIZE) {
 +                if (!memcmp(ert.buffer + LUMINE_SCROLL_HEADER, "LH24", 4)) {
-+                    /* US: even frame = interleaved adjacent rows, odd frame
-+                     * = the unchanged decoded row. Each has eight entries. */
++                    /* US: the lower phase begins with eight blank words;
++                     * subsequent rows interleave the PREVIOUS and current
++                     * decoded columns. Using current/next jumps ahead and
++                     * then back on every odd frame. Reconstruct from the
++                     * retained upper phase so existing LH24 saves also heal. */
 +                    unsigned row = (ataf_var1 >> 1) + ataf_c;
 +                    unsigned rows = read_u16_le(ert.buffer + LUMINE_SCROLL_HEADER + 4);
 +                    uint8_t packed = row < rows && rows <= LUMINE_MAX_ROWS
 +                        ? ert.buffer[LUMINE_SCROLL_BASE + row * 8 + ataf_r] : 0;
-+                    uint16_t word = 0x0C10 + ((ataf_var1 & 1) ? packed >> 4 : packed & 15);
++                    uint8_t upper = packed >> 4;
++                    uint8_t previous = row && row <= rows && rows <= LUMINE_MAX_ROWS
++                        ? ert.buffer[LUMINE_SCROLL_BASE + (row - 1) * 8 + ataf_r] >> 4 : 0;
++                    uint8_t between = row ? ((upper >> 1) & 5) | ((previous << 1) & 10) : 0;
++                    uint16_t word = 0x0C10 + ((ataf_var1 & 1) ? upper : between);
 +                    ert.buffer[ataf_dst] = (uint8_t)word;
 +                    ert.buffer[ataf_dst + 1] = (uint8_t)(word >> 8);
 +                } else if (ataf_col_src + 1 < BUFFER_SIZE && ataf_dst + 1 < BUFFER_SIZE) {
@@ -3177,7 +3199,7 @@ index 61c4f93..5966544 100644
                      ert.buffer[ataf_dst] = ert.buffer[ataf_col_src];
                      ert.buffer[ataf_dst + 1] = ert.buffer[ataf_col_src + 1];
                  }
-@@ -2959,7 +2995,8 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -2959,7 +3002,8 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
              ataf_row_src += 2;
          }
  
@@ -3187,7 +3209,7 @@ index 61c4f93..5966544 100644
           * Assembly calls UPDATE_TILEMAP_REGION(A=808, X=588, ptr=BUFFER).
           * A=808: tile_x = 808 & 0x3F = 40 (wraps in 64-wide map)
           * X=588: tile_y = 588 & 0x1F = 12
-@@ -2971,8 +3008,8 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -2971,8 +3015,8 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
              for (int ataf_r2 = 0; ataf_r2 < 8; ataf_r2++) {
                  uint16_t y = (ataf_tile_y + ataf_r2) & 0x1F;
                  for (int ataf_c2 = 0; ataf_c2 < 30; ataf_c2++) {
@@ -3198,7 +3220,7 @@ index 61c4f93..5966544 100644
                      if (x >= 32) {
                          vram_base += 0x400;  /* second tilemap half */
                          x -= 32;
-@@ -3102,135 +3139,37 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
+@@ -3102,135 +3146,36 @@ int16_t callroutine_dispatch(uint32_t rom_addr, int16_t entity_offset,
      }
  
      case ROM_ADDR_LOAD_CHARACTER_PORTRAIT_SCREEN: {
@@ -3330,11 +3352,11 @@ index 61c4f93..5966544 100644
 +        uint16_t decoded[LUMINE_MAX_ROWS][8] = {{0}};
 +        uint16_t *dest = &decoded[29][0];
 +        for (unsigned i = 0; i < columns; i++) decode_planar_tilemap((uint8_t)i, &dest);
-+        for (unsigned row = 0; row + 1 < total_rows; row++) {
++        for (unsigned row = 0; row < total_rows; row++) {
 +            for (unsigned col = 0; col < 8; col++) {
 +                uint16_t upper = decoded[row][col];
-+                uint16_t lower = decoded[row + 1][col];
-+                uint8_t between = ((lower >> 1) & 5) | ((upper << 1) & 10);
++                uint16_t previous = row ? decoded[row - 1][col] : 0;
++                uint8_t between = row ? ((upper >> 1) & 5) | ((previous << 1) & 10) : 0;
 +                ert.buffer[LUMINE_SCROLL_BASE + row * 8 + col] = (upper << 4) | between;
              }
 -            /* Advance source by 8 uint16 (= 16 bytes, matching assembly INC *8 + INC *8) */
@@ -3348,7 +3370,6 @@ index 61c4f93..5966544 100644
 -        entities.var[0][lcps_ent] = (int16_t)((total_scroll_rows - 1) * 2);
 -
 -        /* Step 11: Write buffer header: BUFFER[0]=8 (rows), BUFFER[1]=30 (cols) */
-+        memset(ert.buffer + LUMINE_SCROLL_BASE + (total_rows - 1) * 8, 0, 8);
 +        memcpy(ert.buffer + LUMINE_SCROLL_HEADER, "LH24", 4);
 +        ert.buffer[LUMINE_SCROLL_HEADER + 4] = (uint8_t)total_rows;
 +        ert.buffer[LUMINE_SCROLL_HEADER + 5] = (uint8_t)(total_rows >> 8);
@@ -3418,16 +3439,24 @@ index 744c646..349d6a3 100644
  
      if (src_off + BPP4PALETTE_SIZE <= BUFFER_SIZE && dst_idx + 16 <= 256) {
 diff --git a/src/entity/callroutine_sprite.c b/src/entity/callroutine_sprite.c
-index 7ddc3d6..95ac12f 100644
+index 7ddc3d6..a24d2dd 100644
 --- a/src/entity/callroutine_sprite.c
 +++ b/src/entity/callroutine_sprite.c
-@@ -201,26 +201,26 @@ int16_t cr_render_entity_sprite_me2(int16_t ent, int16_t scr,
+@@ -199,28 +199,37 @@ int16_t cr_render_entity_sprite_me2(int16_t ent, int16_t scr,
+                                     uint16_t pc, uint16_t *out_pc) {
+     *out_pc = pc;
      /* ASM: STZ USE_SECOND_SPRITE_FRAME → render with frame 0 */
++    int8_t saved_frame = entities.animation_frame[ent];
      entities.animation_frame[ent] = 0;
      /* ASM: falls through to RENDER_ENTITY_SPRITE_SETUP_AND_RENDER */
 -    render_entity_sprite(ent);
 -    return 0;
-+    return (int16_t)render_entity_sprite(ent);
++    int16_t result = (int16_t)render_entity_sprite(ent);
++    /* USE_SECOND_SPRITE_FRAME is a temporary upload selector, not
++     * ENTITY_ANIMATION_FRAME. In particular, preserve the -1 hidden state
++     * used by the Lost Underworld fountains between eruptions. */
++    entities.animation_frame[ent] = saved_frame;
++    return result;
  }
  
  /*
@@ -3443,6 +3472,7 @@ index 7ddc3d6..95ac12f 100644
                                      uint16_t pc, uint16_t *out_pc) {
      *out_pc = pc;
      /* ASM: LDA #$0001 / STA USE_SECOND_SPRITE_FRAME → render with frame 1 */
++    int8_t saved_frame = entities.animation_frame[ent];
      entities.animation_frame[ent] = 1;
 -    /* ASM: JSL IS_ENTITY_ON_SCREEN / BNE SETUP_AND_RENDER
 -     * Only upload tiles if entity is on screen. */
@@ -3452,11 +3482,13 @@ index 7ddc3d6..95ac12f 100644
 +     * nonzero script direct-page context it reaches the render path even
 +     * for off-screen coordinates. Preserve the existing upload behavior.
 +     * Its live return is the advanced VRAM destination, not constant zero. */
-+    return (int16_t)render_entity_sprite(ent);
++    int16_t result = (int16_t)render_entity_sprite(ent);
++    entities.animation_frame[ent] = saved_frame;
++    return result;
  }
  
  /*
-@@ -424,6 +424,5 @@ int16_t cr_render_entity_sprite_me3(int16_t entity_offset, int16_t script_offset
+@@ -424,6 +433,5 @@ int16_t cr_render_entity_sprite_me3(int16_t entity_offset, int16_t script_offset
       * Uses entity's current animation_frame to select sprite frame,
       * then renders the entity sprite (uploads tiles to VRAM). */
      *out_pc = pc;
@@ -12094,7 +12126,7 @@ index 3fae9b2..b800287 100644
  /* Packed version of assembly player_position_buffer_entry (include/structs.asm).
   * Assembly uses 12 bytes (6 words) per entry, but tile_flags, walking_style,
 diff --git a/src/game/text.c b/src/game/text.c
-index 236c04f..4abdc2a 100644
+index 236c04f..f48e9b4 100644
 --- a/src/game/text.c
 +++ b/src/game/text.c
 @@ -4,6 +4,7 @@
@@ -12207,7 +12239,7 @@ index 236c04f..4abdc2a 100644
          name_buf[j] = '\0';
          set_window_title(WINDOW_EQUIP_MENU, name_buf, 6);
      }
-@@ -982,7 +1011,54 @@ static void display_equipment_menu(uint16_t char_id) {
+@@ -982,7 +1011,64 @@ static void display_equipment_menu(uint16_t char_id) {
   * with TEMPORARY_* equipment stats.
   *
   * char_id: 1-based character ID. */
@@ -12218,13 +12250,23 @@ index 236c04f..4abdc2a 100644
 +    dt.force_left_text_alignment=1;
 +    set_text_pixel_position(row,column);
 +    print_number(current,0);
-+    if (percent) print_string("%");
++    /* A shared trailing percent sign leaves a full tile of margin for
++     * comparisons such as 100 -> 90%, avoiding an empty overflow tile
++     * wrapping into the next row. */
++    if (percent && (!compare_equipment_mode || current == preview)) print_string("%");
 +    if (compare_equipment_mode && current != preview) {
-+        set_text_pixel_position(row,column+20);
-+        set_window_palette_index(1);
-+        print_char_with_sound(0x014E);
-+        set_window_palette_index(0);
-+        set_text_pixel_position(row,column+28);
++        /* Keep the whole comparison in one VWF run. Repositioning or a
++         * direct tile arrow frees the partial tile containing the last
++         * digit. A VWF arrow shares that tile safely and
++         * leaves room for both three-digit values in the narrow window. */
++        static const uint8_t arrow[16] = {
++            0xff,0xff,0xff,0xff,0xdf,0xef,0x07,0xef,
++            0xdf,0xff,0xff,0xff,0xff,0xff,0xff,0xff
++        };
++        blit_vwf_glyph(arrow,16,6);
++        vwf_flush_tiles_to_vram();
++        WindowInfo *w = get_window(win.current_focus_window);
++        if (w) w->cursor_pixel_x = vwf_x;
 +        print_number(preview,0);
 +        if (percent) print_string("%");
 +    }
@@ -12242,12 +12284,12 @@ index 236c04f..4abdc2a 100644
 +    memcpy(preview,current,5); memcpy(preview_r,current_r,6);
 +    if (compare_equipment_mode && !equipment_snapshot(char_id,slots,preview,preview_r)) return;
 +    if (!create_window(WINDOW_EQUIPMENT_STATS)) return;
-+    window_tick_without_instant_printing(); set_window_number_padding(1);
++    window_tick_without_instant_printing(); set_window_number_padding(128);
 +    set_window_title(WINDOW_EQUIPMENT_STATS,"Status",-1);
 +    for (unsigned row=0; row<5; row++)
 +        redux_equipment_value(row,stats_labels[row],current[row],preview[row],false,50);
 +    if (create_window(WINDOW_EQUIPMENT_RESISTANCES)) {
-+        window_tick_without_instant_printing(); set_window_number_padding(1);
++        window_tick_without_instant_printing(); set_window_number_padding(128);
 +        set_window_title(WINDOW_EQUIPMENT_RESISTANCES,"Resistances",-1);
 +        for (unsigned row=0; row<6; row++) {
 +            const unsigned *percent=row<2 ? damage_percent : status_percent;
@@ -12262,7 +12304,7 @@ index 236c04f..4abdc2a 100644
      uint16_t char_idx = char_id - 1;
      create_window(WINDOW_EQUIPMENT_STATS);
      window_tick_without_instant_printing();
-@@ -1330,6 +1406,49 @@ void text_menus_savestate_unpack(const void *in) {
+@@ -1330,6 +1416,49 @@ void text_menus_savestate_unpack(const void *in) {
      only_one_character_with_psi = s->only_one_character_with_psi;
  }
  
@@ -12312,7 +12354,7 @@ index 236c04f..4abdc2a 100644
  /* DISPLAY_PSI_ABILITY_DETAILS: Port of asm/text/menu/display_psi_ability_details.asm (54 lines).
   *
   * Called during PSI ability selection to refresh the ability list window.
-@@ -1352,6 +1471,8 @@ static void display_psi_ability_details(uint16_t palette_index, uint16_t ability
+@@ -1352,6 +1481,8 @@ static void display_psi_ability_details(uint16_t palette_index, uint16_t ability
      display_character_psi_list(overworld_selected_psi_user);
      print_menu_items();
  
@@ -12321,7 +12363,7 @@ index 236c04f..4abdc2a 100644
      /* Restore text_y (assembly lines 34-37) */
      if (w) w->text_y = saved_text_y;
  
-@@ -1543,6 +1664,12 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1543,6 +1674,12 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
          case EQ_ENTER:
              save_window_text_attributes();
@@ -12334,7 +12376,7 @@ index 236c04f..4abdc2a 100644
              /* Single party: show equipment display before entering the loop.
               * Assembly lines 21-23: if party_count==1, SHOW_EQUIPMENT_AND_STATS
               * first, then fall through to char selection which auto-selects. */
-@@ -1620,7 +1747,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1620,7 +1757,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
                  char title_buf[WINDOW_TITLE_SIZE];
                  const uint8_t *title_src = equip_text_data + ETEXT11_OFF
                                             + (slot_type - 1) * ETEXT11_STRIDE;
@@ -12343,7 +12385,7 @@ index 236c04f..4abdc2a 100644
                  /* STRLEN equivalent: length excluding trailing spaces/nulls */
                  int title_len = (int)strlen(title_buf);
                  set_window_title(WINDOW_EQUIP_MENU_ITEMLIST, title_buf, title_len);
-@@ -1709,6 +1836,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1709,6 +1846,7 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
              /* Show header "Which?" and run the item selection */
              compare_equipment_mode = 1;
@@ -12351,7 +12393,7 @@ index 236c04f..4abdc2a 100644
              display_menu_header_text(1);  /* "Which?" */
              return pm_push_selection_equip(st, EQ_ITEM_RESULT);
          }
-@@ -1745,6 +1873,11 @@ StepResult mode_step_equip_menu(ModeState *ms) {
+@@ -1745,6 +1883,11 @@ StepResult mode_step_equip_menu(ModeState *ms) {
  
          case EQ_EXIT:
          default:
@@ -12363,7 +12405,7 @@ index 236c04f..4abdc2a 100644
              close_window(WINDOW_EQUIPMENT_STATS);
              close_window(WINDOW_EQUIP_MENU);
              restore_window_text_attributes();
-@@ -1806,6 +1939,7 @@ StepResult mode_step_status_menu(ModeState *ms) {
+@@ -1806,6 +1949,7 @@ StepResult mode_step_status_menu(ModeState *ms) {
              /* Assembly lines 25-57: first-display flag, create the category
               * window, build the 4-item menu (userdata = category + 1). */
              st->first_display = 1;
@@ -12371,7 +12413,7 @@ index 236c04f..4abdc2a 100644
              create_window(WINDOW_STATUS_PSI_CATEGORY);
              for (int i = 0; i < 4; i++) {
                  add_menu_item_no_position(status_psi_category_names[i],
-@@ -2141,15 +2275,15 @@ StepResult mode_step_psi_menu(ModeState *ms) {
+@@ -2141,15 +2285,15 @@ StepResult mode_step_psi_menu(ModeState *ms) {
  
              /* Set attacker name (assembly lines 297-304) */
              set_battle_attacker_name(
@@ -12391,7 +12433,7 @@ index 236c04f..4abdc2a 100644
              }
  
              /* Set current item to the PSI ability (lines 320-321) */
-@@ -2225,8 +2359,8 @@ StepResult mode_step_psi_menu(ModeState *ms) {
+@@ -2225,8 +2369,8 @@ StepResult mode_step_psi_menu(ModeState *ms) {
  
              /* Set target name (assembly lines 404-421) */
              set_battle_target_name(
@@ -12402,7 +12444,7 @@ index 236c04f..4abdc2a 100644
  
              /* Init target battler (assembly lines 422-428) */
              battle_init_player_stats(member_id, &bt.battlers_table[1]);
-@@ -2517,8 +2651,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+@@ -2517,8 +2661,8 @@ StepResult mode_step_use_item(ModeState *ms) {
  
              /* Set attacker name from character (assembly lines 280-287) */
              set_battle_attacker_name(
@@ -12413,7 +12455,7 @@ index 236c04f..4abdc2a 100644
  
              /* Set current item (assembly lines 288-291) */
              set_current_item((uint8_t)st->item_id);
-@@ -2535,8 +2669,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+@@ -2535,8 +2679,8 @@ StepResult mode_step_use_item(ModeState *ms) {
               * target_id 0xFF = all targets, skip target name. */
              if (st->target_id != 0xFF) {
                  set_battle_target_name(
@@ -12424,7 +12466,7 @@ index 236c04f..4abdc2a 100644
              }
  
              /* Assembly lines 323-334: if description text is NULL, use fallback */
-@@ -2621,8 +2755,8 @@ StepResult mode_step_use_item(ModeState *ms) {
+@@ -2621,8 +2765,8 @@ StepResult mode_step_use_item(ModeState *ms) {
  
              /* Set target name (assembly lines 392-414) */
              set_battle_target_name(
@@ -12435,7 +12477,7 @@ index 236c04f..4abdc2a 100644
  
              /* Init target battler (assembly lines 415-421) */
              battle_init_player_stats(member_id, &bt.battlers_table[1]);
-@@ -2925,6 +3059,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -2925,6 +3069,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
                  uint32_t text_ptr = talk_to();
                  if (text_ptr == 0)
                      text_ptr = MSG_SYS_TALK_NO_TARGET;
@@ -12443,7 +12485,7 @@ index 236c04f..4abdc2a 100644
                  bool pushed;
                  StepResult r = pm_push_text(st, PM_CLEANUP, text_ptr, &pushed);
                  if (pushed) return r;
-@@ -2979,6 +3114,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -2979,6 +3124,7 @@ StepResult mode_step_pause_menu(ModeState *ms) {
                  uint32_t text_ptr = check_action();
                  if (text_ptr == 0)
                      text_ptr = MSG_SYS_NOTHING_WRONG_HERE;
@@ -12451,7 +12493,7 @@ index 236c04f..4abdc2a 100644
                  bool pushed;
                  StepResult r = pm_push_text(st, PM_CLEANUP, text_ptr, &pushed);
                  if (pushed) return r;
-@@ -3045,6 +3181,12 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -3045,6 +3191,12 @@ StepResult mode_step_pause_menu(ModeState *ms) {
              /* Key Items (this port's own addition, Key Items pool
               * feature, not part of the original ROM/assembly) */
              case 10:
@@ -12464,7 +12506,7 @@ index 236c04f..4abdc2a 100644
                  /* Key Items menu pops 1 if an item was actually used
                   * (KIM_USE_RESUME), 0 otherwise (cancelled, or closed
                   * after just Help/browsing) -- resume in
-@@ -3058,6 +3200,14 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -3058,6 +3210,14 @@ StepResult mode_step_pause_menu(ModeState *ms) {
                  st->phase = PM_KEY_ITEMS_RESUME;
                  return STEP_RESULT_PUSH_INIT(GAME_MODE_KEY_ITEMS_MENU, &pm_child_init);
  
@@ -12479,7 +12521,7 @@ index 236c04f..4abdc2a 100644
              /* Cancel (B/Select) or unknown → cleanup */
              default:
                  st->phase = PM_CLEANUP;
-@@ -3306,6 +3456,13 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+@@ -3306,6 +3466,13 @@ StepResult mode_step_pause_menu(ModeState *ms) {
              continue;
  
          case PM_KEY_ITEMS_RESUME:
@@ -12493,7 +12535,7 @@ index 236c04f..4abdc2a 100644
              /* KEY_ITEMS_MENU popped 1 (an item was actually used,
               * KIM_USE_RESUME) or 0 (cancelled, or closed after just
               * Help/browsing) -- same branch shape as PM_USE_RESUME
-@@ -3912,14 +4069,21 @@ StepResult mode_step_quick_checktalk(ModeState *ms) {
+@@ -3912,14 +4079,21 @@ StepResult mode_step_quick_checktalk(ModeState *ms) {
      switch ((QuickChecktalkPhase)st->phase) {
      case QCT_TEXT: {
          disable_all_entities();
@@ -12516,7 +12558,7 @@ index 236c04f..4abdc2a 100644
  
          st->phase = QCT_FADE;
          static ModeState dt_init;  /* outlives this dispatch (pump copies it) */
-@@ -3990,14 +4154,14 @@ StepResult mode_step_hppp_display(ModeState *ms) {
+@@ -3990,14 +4164,14 @@ StepResult mode_step_hppp_display(ModeState *ms) {
              return STEP_RESULT_POP(0);  /* blocking `break` had no cleanup */
  
          /* A or L → open the full menu */
@@ -12533,7 +12575,7 @@ index 236c04f..4abdc2a 100644
              play_sfx(2);  /* SFX::CURSOR2 */
              clear_instant_printing();
              hide_hppp_windows();
-@@ -4107,6 +4271,7 @@ void print_eb_string(const uint8_t *eb_str, int len) {
+@@ -4107,6 +4281,7 @@ void print_eb_string(const uint8_t *eb_str, int len) {
          /* VWF render + flush to VRAM + write to per-window tilemap.
           * vwf_render_character handles @PRINT_SPECIAL internally for
           * chars 0x20, 0x22, 0x2F. */
@@ -12541,7 +12583,7 @@ index 236c04f..4abdc2a 100644
          vwf_render_character(eb, font_id);
  
          /* Assembly: RENDER_VWF_CHARACTER calls FLUSH_VWF_TILES_TO_VRAM only for
-@@ -4170,6 +4335,7 @@ void print_string(const char *str) {
+@@ -4170,6 +4345,7 @@ void print_string(const char *str) {
          if (eb >= 0x50)
              dt.last_printed_character = eb;
  
@@ -12549,7 +12591,7 @@ index 236c04f..4abdc2a 100644
          vwf_render_character(eb, font_id);
  
          /* Skip flush for special chars, same guard as print_eb_string */
-@@ -4218,6 +4384,7 @@ void print_number(int value, int min_digits) {
+@@ -4218,6 +4394,7 @@ void print_number(int value, int min_digits) {
  void clear_window_text(uint16_t window_id) {
      WindowInfo *w = get_window(window_id);
      if (!w) return;
@@ -12557,7 +12599,7 @@ index 236c04f..4abdc2a 100644
  
      /* Free all tiles in per-window content_tilemap and fill with 0 */
      uint16_t content_width = w->width - 2;
-@@ -4332,6 +4499,33 @@ uint8_t ascii_to_eb_char(char ascii) {
+@@ -4332,6 +4509,33 @@ uint8_t ascii_to_eb_char(char ascii) {
      return table[c - 0x20];
  }
  
@@ -12591,7 +12633,7 @@ index 236c04f..4abdc2a 100644
  /* VWF Engine */
  
  /* VRAM tile index for next VWF allocation. Reset each frame. */
-@@ -4354,6 +4548,7 @@ void print_newline(void) {
+@@ -4354,6 +4558,7 @@ void print_newline(void) {
      if (win.current_focus_window == WINDOW_ID_NONE) return;
      WindowInfo *w = get_window(win.current_focus_window);
      if (!w) return;
@@ -12599,7 +12641,7 @@ index 236c04f..4abdc2a 100644
  
      /* Reset VWF state for new line (port of RESET_VWF_TEXT_STATE call) */
      vwf_init();
-@@ -4972,11 +5167,11 @@ int vwf_render_to_fixed_tiles(const uint8_t *eb_str, int len, uint8_t font_id,
+@@ -4972,11 +5177,11 @@ int vwf_render_to_fixed_tiles(const uint8_t *eb_str, int len, uint8_t font_id,
  int render_title_to_vram(const char *title, uint8_t title_slot) {
      if (!title || title[0] == '\0' || title_slot == 0) return 0;
  
@@ -14062,7 +14104,7 @@ index 0000000..043facb
 +#endif
 +#endif
 diff --git a/src/snes/ppu_render.c b/src/snes/ppu_render.c
-index 5fb988b..937dbbb 100644
+index 5fb988b..56e25a5 100644
 --- a/src/snes/ppu_render.c
 +++ b/src/snes/ppu_render.c
 @@ -1,5 +1,6 @@
@@ -14072,7 +14114,61 @@ index 5fb988b..937dbbb 100644
  #include "include/binary.h"
  #include "platform/platform.h"
  #include <string.h>
-@@ -1654,6 +1655,10 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+@@ -1366,6 +1367,43 @@ static uint16_t temp_sub_color_ctx[EB_PPU_NUM_RENDER_CONTEXTS][SNES_WIDTH] EB_PP
+ static uint8_t  temp_sub_gp_ctx[EB_PPU_NUM_RENDER_CONTEXTS][SNES_WIDTH] EB_PPU_LINEBUF_ATTR;
+ static uint8_t  temp_tm_all_ctx[EB_PPU_NUM_RENDER_CONTEXTS][SNES_WIDTH] EB_PPU_LINEBUF_ATTR;
+ 
++/* Scripted transfers sometimes use a completely black native map view as a
++ * staging canvas. A wider camera can expose unrelated terrain beyond it.
++ * Recognize that canvas from its tiles/palette, not destination coordinates.
++ * Objects and text still render on top of the black canvas. */
++static bool overworld_black_canvas(void) {
++    if (EB_VIEWPORT_WIDTH <= SNES_WIDTH && EB_VIEWPORT_HEIGHT <= SNES_HEIGHT)
++        return false;
++    if (ppu.bgmode != 9 || ppu.bg_sc[0] != 0x39 || ppu.bg_sc[1] != 0x59 ||
++        ppu.bg_nba[0] != 0x20 || (ppu.cgram[0] & 0x7fff)) return false;
++    for (int bg = 0; bg < 2; bg++) {
++        unsigned last_entry = 0x10000;
++        int sx = (ppu.bg_hofs[bg] + EB_VIEWPORT_PAD_LEFT) & 511;
++        int sy = (ppu.bg_vofs[bg] + EB_VIEWPORT_PAD_TOP) & 255;
++        for (int y = sy / 8; y <= (sy + SNES_HEIGHT - 1) / 8; y++)
++        for (int x = sx / 8; x <= (sx + SNES_WIDTH - 1) / 8; x++) {
++            int tx = x & 63;
++            unsigned at = 2 * ((bg ? 0x5800 : 0x3800) +
++                (tx >= 32 ? 1024 : 0) + (y & 31) * 32 + (tx & 31));
++            uint16_t entry = ppu.vram[at] | ((uint16_t)ppu.vram[at+1] << 8);
++            unsigned tile = entry & 1023, palette = (entry >> 10) & 7;
++            if (last_entry == entry) continue;
++            unsigned base = (bg ? 0x4000 : 0) + tile * 32;
++            for (unsigned row = 0; row < 8; row++)
++            for (unsigned bit = 0; bit < 8; bit++) {
++                unsigned mask = 128 >> bit;
++                unsigned color = (!!(ppu.vram[base+row*2] & mask)) |
++                    (!!(ppu.vram[base+row*2+1] & mask) << 1) |
++                    (!!(ppu.vram[base+row*2+16] & mask) << 2) |
++                    (!!(ppu.vram[base+row*2+17] & mask) << 3);
++                if (color && (ppu.cgram[palette*16+color] & 0x7fff)) return false;
++            }
++            last_entry = entry;
++        }
++    }
++    return true;
++}
++
+ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+                          int y_stride, scanline_callback_t send_scanline) {
+ #if EB_PPU_BG_ROW_CACHE
+@@ -1459,6 +1497,9 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+         }
+     }
+ 
++    if (wide_mode && overworld_black_canvas())
++        layers_needed &= (uint8_t)~(LAYER_BG1 | LAYER_BG2);
++
+     int render_height = EB_VIEWPORT_HEIGHT;
+     int render_width = EB_VIEWPORT_WIDTH;
+     int fb_x_offset = 0;
+@@ -1654,6 +1695,10 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
               * The clear itself is span-limited: every nonzero entry lies inside
               * the dirty span render_obj_scanline recorded (see its definition),
               * so wiping that span restores the all-zero invariant. */
@@ -14083,7 +14179,7 @@ index 5fb988b..937dbbb 100644
              int _oband = scanline >> OBJ_BAND_SHIFT;
              if (_oband >= 0 && _oband < OBJ_NUM_BANDS && obj_band_count[_oband] > 0) {
                  if (obj_prio_dirty_hi > obj_prio_dirty_lo)
-@@ -2000,6 +2005,12 @@ merge_done:
+@@ -2000,6 +2045,12 @@ merge_done:
          bool scanline_has_obj = false;
          if (layers_needed & LAYER_OBJ) {
              scanline_has_obj = render_obj_scanline(scanline, obj_color, obj_prio, tile_cache);

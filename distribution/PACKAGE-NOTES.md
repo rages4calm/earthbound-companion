@@ -1,5 +1,7 @@
 # EarthBound Companion development tester package
 
+Dev.26 fixes idle geysers, equipment comparison clipping, Lumine Hall scrolling and exposed cave terrain on black transfer screens. [Verification](../docs/RELEASE-dev26.md).
+
 The current Redux development archive contains a native Windows x64 build, the Companion settings/mod launcher, original and Redux ROM-to-native-data helpers, SDL2, documentation, sample native profiles and dependency notices. The older v0.4 archive contains only the original-story setup.
 
 It contains no ROM, extracted `assets.pak`, saves, screenshots or PCM soundtrack files. First-run setup asks for the tester's own clean EarthBound (USA) ROM and builds original data plus a separate pinned Redux development profile on that computer. If selected, it downloads the 164-file EarthBound MSU-1 fan soundtrack from its credited source and verifies every file against the bundled manifest before installation. Successful Redux builds remove generated ROM working files; failed builds can retain private diagnostics. Game/source/soundtrack downloads require Internet access; no Python or Git installation is needed by the tester.

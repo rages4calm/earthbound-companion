@@ -1,0 +1,74 @@
+{
+  "version": "0.5.0-redux-dev.26",
+  "passed": true,
+  "nativeExeSha256": "f82ac69634369764b9d9b7903d5d2184a3c14df01a693e30d0d11803d26fdeb5",
+  "driverSourceSha256": "1713f419aeba839acc2221509c63678ee9ebddd030596f5ac2a47ff67693260c",
+  "originalPackSha256": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+  "reduxPackSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "titleAssets": 10,
+  "unchangedOtherAssets": 1164,
+  "transactionalDonorCases": [
+    "valid",
+    "truncated",
+    "magic",
+    "layout",
+    "count",
+    "version",
+    "late-title-bounds",
+    "empty-title",
+    "missing"
+  ],
+  "productionFrameComparisons": [
+    {
+      "quick": 0,
+      "matchingFrames": [
+        0,
+        30,
+        60,
+        150,
+        300,
+        500,
+        600
+      ],
+      "defaultReduxDistinct": true
+    },
+    {
+      "quick": 1,
+      "matchingFrames": [
+        0,
+        30,
+        60,
+        150,
+        300,
+        500,
+        600
+      ],
+      "defaultReduxDistinct": true
+    }
+  ],
+  "productionCapturesAndCompletion": [
+    {
+      "choice": "redux",
+      "quick": 0,
+      "completionPassed": true
+    },
+    {
+      "choice": "redux",
+      "quick": 1,
+      "completionPassed": true
+    },
+    {
+      "choice": "original",
+      "quick": 0,
+      "completionPassed": true
+    },
+    {
+      "choice": "original",
+      "quick": 1,
+      "completionPassed": true
+    }
+  ],
+  "saveFormat": 16,
+  "fullPlaythroughVerified": false,
+  "harnessVersion": "0.5.0-redux-dev.25"
+}

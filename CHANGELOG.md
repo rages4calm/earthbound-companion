@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.26 - geysers, equipment text and transition presentation
+
+- Preserve persistent sprite-animation state during explicit frame rendering; restore hidden idle geysers, including older checkpoints, while retaining earthquake eruption animation and collision.
+- Render comparison values and their arrow together without erasing partial digits. Share the trailing percent sign during resistance changes to prevent next-row overflow.
+- Correct Lumine Hall half-step ordering and reconstruct lower phases for older packed mid-animation saves without a save-format change.
+- Keep fully black staging maps black in the expanded viewport, preserving objects/text and ordinary terrain. Reproduce and remove the cave fragment on the actual hole-to-Underworld transfer.
+- Verify 206 usable gear previews for four characters, Original/Redux scroll canvases, copied gameplay/cold continuations and the reported transition. See [bounded verification](docs/RELEASE-dev26.md). Preserve current player progress; a whole campaign remains unverified.
+
 ## 0.5.0-redux-dev.25 - independent title-screen choice
 
 - Add Game Mode's Original EarthBound title-screen switch while retaining Redux gameplay; persist it in settings and supported mod profiles. Original mode keeps its normal title.

@@ -1,0 +1,33 @@
+{
+  "version": "0.5.0-redux-dev.26",
+  "passed": true,
+  "privateBuild": {
+    "driverSourceSha256": "a91e7c152000d531bf9f12281012b5c4c41495e829e8f78b84bdbf0a099abb44",
+    "executableSha256": "9475e179ca0c9ad9205678e8a21b419b498f2e40aeda5afb44344fbad29a3332",
+    "productionExecutableSha256": "f82ac69634369764b9d9b7903d5d2184a3c14df01a693e30d0d11803d26fdeb5",
+    "productionLibrarySha256": "e1b640e8543278e1ee8b4c47af9ce250f070c7cecaca39360197e45c0f208bba",
+    "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+    "sharedBuildModified": false,
+    "sharedSourceModified": false,
+    "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+  },
+  "packSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+  "results": {
+    "QA_EQUIPMENT": {
+      "cases": 206,
+      "pixelsCompared": 1865536,
+      "maxRunEnd": 110,
+      "passed": true
+    },
+    "QA_CANVAS": {
+      "hiddenStageBlack": true,
+      "ordinaryTerrainRestored": true,
+      "overlayPreserved": true
+    }
+  },
+  "limits": [
+    "Private fixture inventory; all usable equipment candidates for four characters, production preview callbacks and independently painted glyph pixels. No physical controller/audio or full campaign claim."
+  ],
+  "ownerSavesTouched": false,
+  "shippingCheatsAdded": false
+}
