@@ -117,7 +117,7 @@ These are real captures from the ROM-free dev.8 development launcher before game
 
 The [Redux port page](MATERNALBOUND-NATIVE.md#development-captures) also shows actual native gameplay, Tools, equipment and cast renders. Recorded opening replays pass normal-button walking through the house, doors and stairs, Mom's dialogue, the clothes-change event and initial outdoor movement, with fresh-process restores between checkpoints. Those recorded replays cover both Redux story and a generated seed; their evidence retains the tested binary hashes.
 
-![Native Redux opening dialogue at 1920Ã—1080](docs/images/native-redux-mom-1080p.png)
+![Native Redux opening dialogue at 1920×1080](docs/images/native-redux-mom-1080p.png)
 
 ![Ordinary Mayor Pirkle quest award in the native dev.4 engine](docs/images/native-redux-mayor-key-dev4.png)
 
@@ -125,11 +125,11 @@ This capture replays the mayor’s actual Shack Key award using the production e
 
 This 1080p capture uses locally supplied game data. It documents the development build; it is not proof of complete story compatibility.
 
-![Native dev.5 present reward replay at 1920Ã—1080](docs/images/native-redux-present-dev5.png)
+![Native dev.5 present reward replay at 1920×1080](docs/images/native-redux-present-dev5.png)
 
 This production-engine capture shows the real present reward after the dev.5 fix. Testing also checks inventory, the opened flag and repeat protection.
 
-![Native dev.6 expanded Spy cold render at 1920Ã—1080](docs/images/native-redux-spy-dev6.png)
+![Native dev.6 expanded Spy cold render at 1920×1080](docs/images/native-redux-spy-dev6.png)
 
 This unedited production-engine capture restores the added Speed message from the prepared four-member battle fixture. The debug character names and stats are fixture inputs; this is not ordinary story progress.
 

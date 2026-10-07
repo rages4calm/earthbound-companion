@@ -1,4 +1,4 @@
-# Redux dev.25 â€” choose your title screen
+# Redux dev.25 — choose your title screen
 
 In **Game Mode**, enable **Original EarthBound title screen**, click **Apply settings**, then relaunch. Redux retains its story and gameplay; the unchecked default keeps the Redux title. Original mode already uses the EarthBound title. The choice also applies to Redux Story Shuffle launches.
 
@@ -8,7 +8,7 @@ Both the animated and quick title paths are exercised in the production player. 
 
 This release retains the dev.24 Lumine Hall fix and all earlier fixes. Saves remain format 16; the update preserves existing settings, ROM-derived game data, music and saves. It does not advance your playthrough. Complete campaign/randomizer, physical-controller and comprehensive listening coverage remain unverified.
 
-[Game feature list](../README.md#game-features) Â· [Title verification](../validation/title-screen-option-dev25.json) Â· [Package verification](../validation/package-dev25.json)
+[Game feature list](../README.md#game-features) · [Title verification](../validation/title-screen-option-dev25.json) · [Package verification](../validation/package-dev25.json)
 
 ## Actual native captures
 
