@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-08",
+  "status": "Feature-frozen; community testing and focused bug-fix maintenance",
+  "baseline_release": "v0.5.0-redux-dev.32",
+  "baseline_asset": {
+    "name": "EarthBound-Companion-Redux-Tester-v0.5.0-redux-dev.32.zip",
+    "size": 124707998,
+    "digest": "sha256:c78d87e7d2c52afa26e1766668bcb6886978825937289c2d0745d69e053d8264"
+  },
+  "changes": "Documentation, contributor instructions, issue form and GitHub metadata only",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "utf8_lf_sha256": "b32c53ec0e11e8a1b2f137f7d78b060967146f322666ba9920323edaec63fbad"
+    },
+    {
+      "path": "MAINTENANCE.md",
+      "utf8_lf_sha256": "d144fc545620aaacd7f6447e6eadc480593e12d29d82513fe207bfeb4ca026ec"
+    },
+    {
+      "path": "docs/COMMUNITY-TESTING.md",
+      "utf8_lf_sha256": "6177f916249c918fabe9807fd2d74d72a675aa435fabccdc7f56fa97fadc82b1"
+    },
+    {
+      "path": "README.md",
+      "utf8_lf_sha256": "1e5ab16296786d91ade834b38a8a389bd732676e8eb80d1cbcd8621d5e545e93"
+    },
+    {
+      "path": "MATERNALBOUND-NATIVE.md",
+      "utf8_lf_sha256": "cf848e4ec1315e565e6fc78431fc5802fbf59e22fbb158214a55fa23ec797e52"
+    },
+    {
+      "path": "RESEARCH.md",
+      "utf8_lf_sha256": "e8be656da7ba98bf3f4addac69225a45a254db4fb2b0c875f7ffebdaa46f67f4"
+    },
+    {
+      "path": "docs/TESTING.md",
+      "utf8_lf_sha256": "e0558ed012f4f0319f766cc8e6a724fa69a895a37e37d94abf66a9178bf8334e"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "utf8_lf_sha256": "1f4915c618f2b58413a3fcf150c6ee12670764feaf3181fcd2ff362c594d58a4"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug-report.yml",
+      "utf8_lf_sha256": "c495c0ad9c76170d88dc8ad322dd3d86522e9e6afecd82981735cf6ea8bb3d9c"
+    }
+  ],
+  "checks": {
+    "relative_document_links": 166,
+    "broken_relative_document_links": 0,
+    "utf8": "pass",
+    "issue_form_yaml_and_unique_fields": "pass",
+    "issues_enabled": true,
+    "bug_label_exists": true,
+    "runtime_suites_rerun": false
+  },
+  "limitations": "No new gameplay certification, patch-parity audit, hardware/audio review, randomized campaign or licensing clearance is claimed",
+  "owner_data": "No owner game, pack, configuration, save or install paths were targeted by this closeout",
+  "automation": "No scheduled audit or issue monitor enabled"
+}

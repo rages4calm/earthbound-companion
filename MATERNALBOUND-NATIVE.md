@@ -2,15 +2,15 @@
 
 Companion is adapting MaternalBound Redux into the BrianPugh-derived native x64 C/SDL engine, through Sean Staggs's pinned fork, alongside HD and ultrawide output, MSU music, PC controls, save recovery and Story Shuffle. Gameplay runs as compiled C; patched SNES CPU code requires explicit native implementations. The native foundation remains a current dependency; see [UPSTREAM.md](UPSTREAM.md).
 
-**Full Redux compatibility is incomplete. The older v0.4 preview and existing original-profile installation contain original EarthBound. The new development setup builds a separate native Redux profile locally from your clean ROM. One user-reported Redux campaign reached the ending and credits, with equipment/stat boosts for final testing. Automated full-campaign certification and randomized playthroughs remain unverified. ROMs and extracted packs are excluded from the repository and ZIP.**
+**Feature-frozen at dev.32; community testing and focused bug-fix maintenance. Full Redux compatibility is not certified.** Setup builds a separate native Redux profile locally from your clean ROM; Original mode retains its own saves. One user-reported Redux campaign reached the ending and credits, with equipment/stat boosts for final testing. Automated full-campaign certification and randomized playthroughs remain unverified. ROMs and extracted packs are excluded from the repository and ZIP. [Scope](MAINTENANCE.md) · [Community testing](docs/COMMUNITY-TESTING.md).
 
 ## Exact upstream target
 
 This checkpoint targets the active upstream source at `897d00833f4a08a0a92f106abf631629a6a6a041`, compiled locally with CoilSnake into a verified 6 MiB ROM. It is not the official v1.1 release. The v1.1 BPS was separately checksum-verified and tested during initial extraction research; supporting that release requires a separate conversion map and validation record.
 
-The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.31` (cast-name extraction and existing-pack compatibility; prior credits, PSI, Giygas/Porky, Sound Stone and Magicant fixes retained).**
+The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.32` (Story Shuffle v4; dev.31 native player/helpers retained, including cast-name, credits, PSI, Giygas/Porky, Sound Stone and Magicant fixes).**
 
-The owner resumed the source audit after the dev.30 readiness milestone. Dev.31 adds photographer/cast and evolving-battle checks while retaining earlier evidence. No whole normal-play Redux feature is currently confirmed absent, but complete compatibility remains unverified.
+The source audit resumed after dev.30 and produced dev.31 photographer/cast and evolving-battle checks. That history is retained; a broad audit is not currently scheduled. No whole normal-play Redux feature is currently confirmed absent, but complete compatibility remains unverified.
 
 Dev.25 adds an independent **Original EarthBound title screen** switch in **Game Mode**. Redux keeps its story, gameplay, seed identities and saves; the original title artwork and animation come from the clean ROM data already built locally. Apply settings and relaunch. [Option and bounded verification](docs/RELEASE-dev25.md).
 
@@ -75,7 +75,7 @@ A follow-up [source/data review](research/redux-control-and-battle-hooks-review.
 | Combat fixes | Native target Guts, enemy crying, Brain Stone, poison feedback, Franklin Badge/shield handling, stat caps, defending HP rollers, condiment priority and the six-outcome Lucky Sandwich action. Checks include 4,096 sandwich trials, 128 damage trials and 42 condiment records. These do not replace full battle playthroughs. |
 | Equipment | Five stat and six resistance previews; 340 item/character combinations preserve gear and match committed stats. The Teddy-bear inventory shift uses the selected item's identity. Converted window IDs are remapped to preserve PC settings screens. |
 | Ending | Cast and credits complete in 12,531 / 20,113 frames and survive cold restores at 1080p. A separate credits fixture renders all 32 photo branches and also survives a restart. Collecting those photos through normal gameplay remains unverified. |
-| Story Shuffle | A separate Redux policy protects 110 items and 84 enemy records, covers 64,360 decoded operations and 45 scripted groups, and preserves every non-shuffle byte. Each edition passes 1,000 seeds and all 30 option combinations. A randomized Redux opening runs natively. A full randomized playthrough remains unverified. |
+| Story Shuffle | V4 randomizes cross-category loot and bounded wild lineups while retaining keys, quest helpers, required trade sources and scripted bosses. Four reviewed pack identities each pass 1,000 seeds, 62 combinations and corruption controls; openings/cold restores and selected prepared encounters pass. Legacy v3 recipes retain their original policies and historical 1,000-seed/30-combination evidence. A full randomized campaign remains unverified. |
 | Setup and saves | Frozen owner-ROM setup downloads the checksum-pinned source, compiles and converts it without installed Python or Git. It reproduces the verified native pack. A clean tester ZIP additionally passes headered-ROM setup, actual MSU repair and all 164 soundtrack checks. Original, Redux and seed saves are isolated; cold profile restore and switching back preserve both story-save sentinels. |
 | Original profile | Native input/MSU, save-state roundtrip/perturbation/recovery, key-items and join-level regression checks pass with the updated engine. |
 
@@ -95,14 +95,16 @@ The supplemental [wider source crosswalk](research/redux-wider-source-accounting
 
 One user-reported Redux campaign reached the credits, with final-test equipment/stat boosts. A fresh public-source build, self-contained setup of the actual release ZIP, 76 bounded native checks and 90 offscreen presentation cases now pass. See the [readiness report and exact limits](docs/RELEASE-READINESS-dev30.md). This does not certify every natural story branch, randomized progression or physical display/controller configuration.
 
-## Remaining before full compatibility is claimed
+## Coverage not certified by the current release
 
-- Validate converted title/cutscene presentation, battle sprites and PSI through later gameplay, beyond isolated scene and renderer checks.
-- Listen to the converted soundtrack and verify every SPC/MSU transition.
-- Verify gameplay-driven photo collection and every named-guardian choice in the cast.
-- Finish the remaining assembly/native audit beyond the 36 reviewed active bugfix imports and 15 reviewed writes in `redux_changes.ccs` plus the three reviewed recovery hooks, and exercise their outstanding branches. An additional five-module review covers 29 controls/terrain/Spy/stat-buff/cast writes. Literal writes and scene hooks outside these reviewed modules still need separate review.
-- Exercise remaining natural quest and presentation branches beyond the completed user-reported campaign and prepared fixtures; an unboosted full campaign is not certified.
-- Complete a full randomized playthrough beyond the content-specific protection checks and opening replay.
+These are limits on a full-compatibility claim, not mandatory tasks keeping feature development open. Reports can trigger focused reproduction; another owner campaign or exhaustive audit is not required for maintenance.
+
+- Every natural title/cutscene, battle-sprite and PSI branch is not certified beyond the played route and bounded scene/renderer checks.
+- Complete soundtrack listening and every SPC/MSU transition remain unverified.
+- Natural acquisition of every photo and every named-guardian cast choice remain unverified.
+- Exact equivalence of every upstream assembly change is not certified. Existing review covers 36 active bugfix imports, 15 writes in `redux_changes.ccs`, three recovery hooks and a five-module review of 29 controls/terrain/Spy/stat-buff/cast writes. Other literal writes/scene hooks have not received the same separate review; outstanding behavioral branches remain unverified.
+- Natural quest/presentation branches beyond the completed user-reported campaign and prepared fixtures remain unverified; an unboosted full campaign is not certified.
+- A full randomized playthrough remains unverified beyond protection checks, opening replays and selected prepared encounters.
 
 The Redux policy has its own audit and checks; original-story results are not substituted for it. Unknown packs stay locked. Arbitrary BPS/IPS patches cannot execute automatically in the native engine. The [assembly and separate-format ledger](validation/native-redux-assembly-ledger.json) accounts for all 105 dialogue-excluded spans against pinned source identities and native references. It identified and resolved the missing font-aware highlight and delivery-letterbox hooks. Classification alone does not prove every ROM patch or branch of its native equivalent. The [active bugfix review](research/redux-active-bugfix-review.json) separately checks all 36 direct active imports against the exact upstream commit and records source hashes, native references, targeted tests and gaps. Native DMA is immediate; SNES region/boot patches do not execute on PC. Dev.16 reproduces the Original aligned-spacing guards and the pinned Redux diagonal threshold separately, with actual machine comparisons and ordinary copied-save traces. The [updated hook notes](research/redux-active-bugfix-review-dev16.json) supersede the historical follower and timed-item qualifications; [earlier behavioral gaps](research/redux-active-hook-evidence-completeness-dev16.json) and [v8 refreshed evidence](research/redux-hook-semantic-gaps-dev16-v8.json) remain explicit. Complete developer/debug-menu parity is not claimed.
 

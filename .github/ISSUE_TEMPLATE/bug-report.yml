@@ -1,16 +1,16 @@
 name: Bug report
-description: Report a reproducible Companion or native-game defect without copyrighted assets.
+description: Report a defect in the frozen feature set; intermittent problems are welcome too.
 title: "[Bug]: "
 labels: [bug]
 body:
   - type: markdown
     attributes:
-      value: Do not attach ROMs, extracted assets, soundtrack tracks, saves, screenshots from the game, or credentials.
+      value: "Features are frozen at dev.32; reports drive focused fixes. See docs/COMMUNITY-TESTING.md for guidance. Do not attach ROMs, extracted assets, soundtrack tracks, saves/states, screenshots from the game, or credentials. Keep useful checkpoints locally."
   - type: input
     id: version
     attributes:
       label: Companion version
-      placeholder: 0.5.0-redux-dev.31
+      placeholder: 0.5.0-redux-dev.32
     validations:
       required: true
   - type: dropdown
@@ -31,7 +31,7 @@ body:
     id: steps
     attributes:
       label: Reproduction steps
-      description: List the smallest repeatable sequence and what happened.
+      description: Give the exact location/menu and smallest sequence you remember, including the action just before the problem. A problem that only happened once is worth reporting.
     validations:
       required: true
   - type: textarea
@@ -40,6 +40,30 @@ body:
       label: Expected behavior
     validations:
       required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened
+      description: For graphics/audio issues, say whether it clears by itself, after moving/loading, or remains.
+    validations:
+      required: true
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does it happen?
+      options: [Every time, Sometimes, Only once so far, Not sure]
+    validations:
+      required: true
+  - type: dropdown
+    id: entry
+    attributes:
+      label: How did you start this session?
+      options: [Fresh game, Normal phone save, F6/F7 quick save, No gameplay or not sure]
+  - type: input
+    id: seed
+    attributes:
+      label: Story Shuffle seed and recipe version (if applicable)
+      placeholder: "Seed 595173162, v4, Surprise; list enabled shuffle options"
   - type: textarea
     id: environment
     attributes:

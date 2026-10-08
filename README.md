@@ -6,6 +6,9 @@
 
 [▶ Watch the EarthBound Companion + MaternalBound Redux trailer](https://youtu.be/RZ5UdAxyqdY)
 
+> [!NOTE]
+> **Feature-frozen; community testing and focused bug-fix maintenance.** Active feature development is wrapped at dev.32. [Scope and coverage](MAINTENANCE.md) · [Short testing guide](docs/COMMUNITY-TESTING.md) · [Report a bug](https://github.com/rages4calm/earthbound-companion/issues/new?template=bug-report.yml). Another full playthrough is not required.
+
 > [!WARNING]
 > **Current release: `v0.5.0-redux-dev.32`, an experimental native Redux adaptation. Further playtesting is needed.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. One user-reported Redux campaign reached the ending and credits, with equipment/stat boosts for final testing. Automated full-campaign certification, randomized playthroughs, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
 
@@ -60,7 +63,7 @@ The target is one polished PC edition: MaternalBound Redux's restored writing, a
 
 [Developer testing tools](docs/TESTING.md) · [Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.32) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
 
-Development includes reported playtesting issues and the explicitly resumed source audit. The current fixes cover the completed user-reported campaign, including the museum quest, Sound Stone/Magicant presentation, Giygas artwork, credits and widescreen PSI. Historical fixes and their original verification scope are retained in the [changelog](CHANGELOG.md) and [release evidence](docs/RELEASE-dev30.md). Untested natural story branches, full randomized progression, all combat combinations and broader physical audio/display/controller coverage remain open.
+Maintenance addresses reported defects in the frozen scope. Current fixes cover the completed user-reported campaign, including the museum quest, Sound Stone/Magicant presentation, Giygas artwork, credits and widescreen PSI. Historical fixes and verification scope remain in the [changelog](CHANGELOG.md) and [release evidence](docs/RELEASE-dev30.md). Untested natural story branches, randomized progression, all combat combinations and broader physical audio/display/controller coverage are documented limits, not a required broad-audit queue.
 
 ## Companion at a glance
 
@@ -159,30 +162,31 @@ First-run setup can download all 164 PCM tracks from [ShadowOne333’s EarthBoun
 
 The PCM files are not stored in this repository or the release ZIP. See [CREDITS.md](CREDITS.md) for provenance.
 
-## Story Shuffle v3
+## Story Shuffle v4
 
 Companion includes its own native randomizer for replayable adventures:
 
-- **Gift contents:** eligible optional gifts change within their item category; protected quest/trade sources stay fixed.
-- **Shop stock:** eligible optional stock changes within its type; protected items, each shop's first slot and empty/ineligible slots stay fixed. Item prices are unchanged.
+- **Gift contents:** ordinary loot mixes across categories, including rare/priceless equipment, repairables and money gifts; keys, quest helpers and required pizza gifts stay fixed.
+- **Shop stock:** ordinary occupied slots can change, including the first slot. Keys, quest helpers, empty slots and required Monkey Cave supplies stay fixed. Replacements have a nonzero original shop price; item prices are unchanged.
 - **Enemy stats:** ordinary-enemy HP, offense, defense and speed vary within bounded ranges; bosses and scripted enemies stay fixed.
-- **Enemy drops:** eligible ordinary-enemy loot changes within its type. Drop chances, empty drops and protected/boss/scripted drops stay fixed.
+- **Enemy drops:** ordinary loot mixes across categories, including Cookies and regular enemies also used in scripted fights. Story drops, bosses, level-zero actors, drop odds and no-drop records stay fixed.
+- **Wild encounters:** field encounters change to bounded ordinary lineups; map locations, spawn flags/odds/weights, group data and scripted boss lineups remain intact.
 - Balanced and Surprise modes;
 - deterministic seed recipes;
 - isolated saves, screenshots and recovery backups for every seed.
 
-The generator keeps 78 identified quest/trade items and their original sources fixed, preserves 52 scripted-battle records, and leaves maps, doors, routes, scripts, bosses, prices and starting items unchanged. Independent guards run at generation and before launch. Version 3 also isolates game editions: content ID, exact asset hash, safety policy, seed identity, and save folder must agree. This protects the audited original-story dependencies; it is not proof of every possible full playthrough.
+Independent guards run at generation and before launch. Content ID, asset hash, safety policy, seed identity and save folder must agree. V4 protects actual keys, quest helpers and required trade sources instead of globally fixing every script-referenced item. Original story order, maps, doors, routes and scripts remain intact. These invariants do not certify a complete randomized campaign.
 
-The pinned Redux profile separately protects 110 items and 84 enemy records. Its audit covers 64,360 decoded operations, scripted encounter groups and the expanded 69-shop table. Independent generation checks pass across 1,000 seeds and all 30 option combinations for each edition. The Redux enemy-AI footer, routes, scripts and protected sources remain intact. This is conservative story preservation, not a randomized-world logic solver or proof of every playthrough.
+Four reviewed Original/Redux pack identities each pass 1,000 v4 seeds, 62 option/style combinations and corruption controls. Both editions have opening/cold-restore checks; 12 selected Redux lineups complete prepared encounters. V3 recipes retain their original algorithm, pack identity and separate saves; historical v3 protection counts do not describe v4. [Rules](RANDOMIZER.md) · [dev.32 evidence](docs/RELEASE-dev32.md).
 
 This generator is inspired by the EarthBound randomizer community but does not claim seed parity with [earthbound.app](https://earthbound.app/) or [stochaztic/eb-randomizer](https://github.com/stochaztic/eb-randomizer). Ancient Cave, Open mode and Keysanity are not implemented. See [RANDOMIZER.md](RANDOMIZER.md).
 
 ## Current boundaries
 
 - One user-reported Redux campaign reached Giygas and credits, with equipment/stat boosts for final testing. An automated or unboosted full campaign and full randomized progression are not certified.
-- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) is being adapted from a pinned active-source snapshot, rather than the official v1.1 BPS release. The checkpoint converts 7,397 dialogue spans, implements 17 routine adapters, passes 81 VM command checks and 48,640 AI-selector turns, and resolves all 898 movement-script roots. Title scenes, 191 SPC tracks, 68 PSI effects, native shops/equipment, all 11 battle Tools and all 32 photo-credit branches have bounded checks. Untested natural story branches, all combat-effect combinations and complete music-transition coverage remain unverified. See the [detailed coverage](MATERNALBOUND-NATIVE.md).
+- [MaternalBound Redux](https://github.com/ShadowOne333/MaternalBound-Redux) targets a pinned active-source snapshot, rather than the official v1.1 BPS release. Conversion includes 7,397 dialogue spans, 17 routine adapters and all 898 movement-script roots. Title scenes, 191 SPC tracks, 68 PSI effects, shops/equipment, all 11 battle Tools and all 32 photo-credit branches have bounded checks on the builds identified in their reports. Untested natural story branches, all combat-effect combinations and complete music-transition coverage remain unverified. See [detailed coverage](MATERNALBOUND-NATIVE.md).
 - Arbitrary IPS, BPS and EBP patches cannot be loaded as native mods; their game-code changes require explicit ports.
-- The release is a Windows x64 development test build. Bug reports should include the active edition or seed session's `game.log` and a normal phone save when possible.
+- The Windows x64 release remains experimental and is now in maintenance. Include reproduction steps and relevant redacted lines from the active edition/seed session's `game.log`. Keep phone/quick saves locally; do not upload them to public issues. [Reporting guide](docs/COMMUNITY-TESTING.md).
 
 ## Source layout
 
@@ -222,6 +226,6 @@ MaternalBound Redux and its adaptations have separate GPLv3 terms. Those terms d
 
 ## Verification
 
-The v0.4.0 package passed clean-ZIP first-run extraction, exact asset-pack comparison, Companion self-tests, seed safety validation, and all 164 installed MSU checks. The archive was scanned and contained zero ROM, `.pak`, PCM, save, state or screenshot files. The Redux development ZIP also passed clean setup from a headered USA ROM with no Python on PATH, a real corrupt-track download/repair and verification of all 164 MSU files, exact original/Redux pack reproduction, native story and randomized openings, and profile save-isolation checks. Story Shuffle v3 passes 1,000 seeds and all 30 option combinations for each edition. Exact hashes and coverage limits are in [validation/](validation/).
+Historical v0.4.0 and Redux setup evidence covers extraction, pack comparison, clean headered-ROM setup without installed Python/Git, soundtrack repair/verification, opening gameplay and save isolation on the releases named in those reports. Dev.32's unchanged native player/helpers retain their historical evidence; v4 checks cover four pack identities, each with 1,000 seeds and 62 combinations, plus focused native consumer/opening/encounter checks. Exact hashes and limits are in [validation/](validation/) and [dev.32 notes](docs/RELEASE-dev32.md). This documentation closeout did not rerun gameplay or replace the ZIP.
 
 Issues and contributions should never attach ROMs, extracted asset packs, saves containing embedded game data, or soundtrack files. Documentation captures are labeled with their tested development scope.

@@ -1,5 +1,7 @@
 # EarthBound native PC research
 
+**Research archive:** features are frozen at dev.32. Proposals/comparisons below are future references, not a queue required before closeout. [Current scope](MAINTENANCE.md).
+
 October 8 follow-up: [RetroPortingToolKit and Matthew Stanley review](research/retroporting-toolkit-review-20261008.md) records applicable widescreen, rendering-reference and comparison-testing methods, plus framework compatibility boundaries for EarthBound/Redux and future ports.
 
 The [game-porting toolkit reference](research/game-porting-toolkit-reference.md) adds pinned reviews of recomp-ui, recomp-net and rbengine, a bounded snapshot-library test, and candidates for our own reusable debugging utilities.
@@ -70,7 +72,7 @@ The upstream [README](https://github.com/stochaztic/eb-randomizer/blob/master/RE
 These unported modes remain unavailable. Every supported Story Shuffle seed uses its own save/config/screenshot directory and shares the installed soundtrack. See [RANDOMIZER.md](RANDOMIZER.md) for exact rules, legacy recovery and verification scope.
 
 
-## Redux development checkpoint
+## Historical Redux v3 checkpoint
 
 Story Shuffle v3 now has a separate policy for the exact Redux pack: 110 protected items and 84 enemy records, derived from 64,360 decoded operations and 45 scripted encounter groups. All 1,000 seeds and 30 option combinations pass independently for both original and Redux packs. A native randomized Redux opening passes; this is not full Ancient Cave/Open support or a complete randomized playthrough.
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## October 8, 2026 - feature freeze and maintenance closeout
+
+- Wrap active feature development at dev.32; accept community reports and focused fixes in the existing scope.
+- Reconcile README v4 rules/current Redux release and retain campaign, randomizer, hardware/audio and exact patch-parity coverage limits.
+- Add community testing guidance, a clearer bug form and maintenance instructions. Historical audits remain references; no new broad audit or owner replay is required.
+- Documentation/GitHub metadata only. No game code, release ZIP, installed binary, pack or save changes; no new runtime testing claimed.
+
 ## 0.5.0-redux-dev.32 - Story Shuffle v4
 
 - Mix ordinary gifts and drops across categories, including rare/priceless gear, money gifts and Cookie drops. Randomize ordinary first shop slots; retain required trade stock rather than globally fixing every copy of a food.

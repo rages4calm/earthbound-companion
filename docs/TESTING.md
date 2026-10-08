@@ -1,8 +1,10 @@
 # Testing the native conversion
 
+**Maintenance scope:** features are frozen at dev.32. Start with a reported defect and run the affected checks. Historical commands below are available tools, not a required whole-project sweep. Broad audits/full campaigns require an explicit new request. [Scope](../MAINTENANCE.md) · [Community testing](COMMUNITY-TESTING.md).
+
 Dev.32 adds [Story Shuffle v4 checks](RELEASE-dev32.md): cross-category loot, required trade sources, bounded wild lineups, frozen v3 recipes and an independent native placement chooser fixture. `--randomizer-content-test` now tests v4; `--randomizer-legacy-content-test` retains the v3 suite. These use copied packs and private sessions.
 
-The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The user explicitly resumed the source audit after the dev.30 readiness milestone; dev.31 adds bounded photographer/cast and evolving-battle checks. See [dev.30 release readiness](RELEASE-READINESS-dev30.md). Earlier reports retain their tested release identities.
+Existing audit tools use isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The historical dev.31 audit added bounded photographer/cast and evolving-battle checks after dev.30. See [dev.30 release readiness](RELEASE-READINESS-dev30.md). Earlier reports retain their tested release identities.
 
 ## Three different kinds of evidence
 
