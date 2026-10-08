@@ -23,6 +23,8 @@ def main():
         parser.add_argument("--"+name,required=True,type=Path)
     parser.add_argument('--legacy-original-pack',type=Path,help='Exercise upgrading an existing Original pack during real setup.')
     parser.add_argument('--checkpoint',type=Path,help='Read-only matching Redux format-16 checkpoint for actual packaged backup/restore/native-load verification.')
+    parser.add_argument('--expected-original-hash',default='01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549',help='Explicit reviewed release identity; the default retains the dev18–30 contract.')
+    parser.add_argument('--expected-redux-hash',default='D9A772D10AFF68BDF93C077CDA640D42B835884D6834BB18BF0D43C3800F57BB',help='Explicit reviewed release identity; the default retains the dev18–30 contract.')
     args=parser.parse_args();scratch=args.scratch.resolve()
     if scratch.exists():raise ValueError("Use a fresh isolated verification directory.")
     scratch.mkdir(parents=True);tests=[];source_hash=sha(args.rom)
@@ -70,8 +72,8 @@ def main():
         run('setup',['--setup-redux',str(headered),'--with-msu'])
         tests.append('Self-contained first-run setup with headered owner ROM and online pinned Redux source')
         pack=app/'Profiles/maternalbound-redux-897d0083/assets.pak'
-        if sha(pack)!='D9A772D10AFF68BDF93C077CDA640D42B835884D6834BB18BF0D43C3800F57BB':raise ValueError('Unexpected Redux pack.')
-        if sha(app/'Game/assets.pak')!='01AF4F4B590D9E83937B772399EE60A9181E2384E13C1567C94DFC92101B5549':raise ValueError('Unexpected original pack.')
+        if sha(pack)!=args.expected_redux_hash.upper():raise ValueError('Unexpected Redux pack.')
+        if sha(app/'Game/assets.pak')!=args.expected_original_hash.upper():raise ValueError('Unexpected original pack.')
         if args.legacy_original_pack:
             if sha(args.legacy_original_pack)!=legacy_hash:raise ValueError('Legacy input pack changed.')
             tests.append('Legacy Original movement data upgraded; input pack unchanged')

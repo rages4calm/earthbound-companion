@@ -1,6 +1,6 @@
 # Testing the native conversion
 
-The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The autonomous audit is stopped; development now follows playtesting reports. See [dev.30 release readiness](RELEASE-READINESS-dev30.md). Earlier reports retain their tested release identities.
+The audit uses isolated sessions, explicit input identities and repeatable native execution. Tests do not edit the owner's playthrough. A prepared scene verifies that scene and its asserted branches; it does not verify the quest that normally reaches it. The user explicitly resumed the source audit after the dev.30 readiness milestone; dev.31 adds bounded photographer/cast and evolving-battle checks. See [dev.30 release readiness](RELEASE-READINESS-dev30.md). Earlier reports retain their tested release identities.
 
 ## Three different kinds of evidence
 
@@ -92,3 +92,12 @@ Dev.20 adds source Keys membership/old-save inventory recovery and real Auto Fig
 Use `scripts/release_regressions.py --help` with explicit matching local build/runtime identities, both packs, the pinned Redux project, music and a fresh private scratch directory. Supply `--clean-player` to include a freshly compiled public-source player: 76 checks total, or 44 without it. The prepared PSI, credits, Lumine, equipment/canvas, Giygas allocation and prayer scenarios run in both editions; the extended Redux equipment contract does not apply to Original. Input checks use simulated sources.
 
 `clean_public_source_qa.py` reproduces compilation from pinned public source and the complete patch without a ROM or pack. `presentation_matrix_qa.py` checks actual SDL output at five resolutions, three aspect settings and three filter configurations using a software backend. `verify_redux_package_dev18.py` accepts the actual dev.30 ZIP and verifies self-contained setup, isolated opening gameplay, soundtrack checks and copied checkpoint recovery. Consult the [readiness evidence](RELEASE-READINESS-dev30.md) for exact boundaries.
+
+## Dev.31 continued audit
+
+- cast_table_contract_qa.py: actual ROM consumer operand and all 1,174 pack assets; only the cast tile table changes.
+- cast_name_raster_qa.py: source coordinates, independent centered glyph pixels, actual cast load/print and fresh-process cast checkpoints.
+- photographer_acquisition_qa.py: default ordinary Onett movement entry; --all-wrappers runs all source wrappers, --cold checks camera-return and committed-photo checkpoints, and --status-fixture covers reordered afflictions and capped time. Direct wrapper entry does not establish natural map/story reachability for those locations.
+- battle_evolving_qa_dev31.py: real menus and selected multi-turn encounter parents, source AI/damage contracts, rewards/cleanup and strict warm/cold party/RNG/AI endpoints. Original excludes the four Redux-only group473 cases. Broader targeting/reflection combinations and full machine battle parity remain separate.
+
+The reused clean-package verifier retains dev18-30 hash defaults. For dev.31 pass --expected-original-hash 792370574832629c0dc436bbc5b3a3993a8670e7e5fc3e3a5b467791ce514462 and --expected-redux-hash 4b5f1c5ac76e4bdcce2dc66a2e8ef95b659e561d3cadebefa66efb85c0be5236 explicitly. See [dev.31 evidence](RELEASE-dev31.md).

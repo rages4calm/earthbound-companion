@@ -1,4 +1,4 @@
-﻿param([string]$Version='0.5.0-redux-dev.30', [string]$NativeExePath='')
+param([string]$Version='0.5.0-redux-dev.31', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='')
 $ErrorActionPreference='Stop'
 $projectRoot=$PSScriptRoot
 $releaseRoot=Join-Path $projectRoot 'release'
@@ -8,9 +8,10 @@ $app=Join-Path $staging 'EarthBound Companion'
 $docs=Join-Path $projectRoot 'github-repo'
 if(!(Test-Path -LiteralPath $docs)){$docs=$projectRoot}
 if(!$NativeExePath){throw 'Pass -NativeExePath for the explicitly tested native candidate. Packaging an unspecified older build is not allowed.'}
+if(!$ReduxHelperPath -or !$OriginalHelperPath){throw 'Pass -ReduxHelperPath and -OriginalHelperPath for the tested setup helpers. Packaging unspecified older helpers is not allowed.'}
 $native=[IO.Path]::GetFullPath($NativeExePath)
-$helper=Join-Path $projectRoot '_BuildScratch\redux-setup-dist\redux-setup.exe'
-$originalHelper=Join-Path $projectRoot 'native-source\dist\ebtools-setup.exe'
+$helper=[IO.Path]::GetFullPath($ReduxHelperPath)
+$originalHelper=[IO.Path]::GetFullPath($OriginalHelperPath)
 foreach($input in @($native,$helper,$originalHelper)){if(!(Test-Path -LiteralPath $input -PathType Leaf)){throw "Missing build input: $input"}}
 New-Item -ItemType Directory -Path $app -Force | Out-Null
 foreach($folder in @('Game','msu','UserData','Profiles','Mods','Licenses')){New-Item -ItemType Directory -Path (Join-Path $app $folder) -Force | Out-Null}

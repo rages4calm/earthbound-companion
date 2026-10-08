@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.31 - cast names and resumed audit
+
+- Correct Original/Redux party cast-table extraction to ROM offset 0x3FDB5. Repair the two exact legacy tables at runtime without changing installed packs, save format or namespaces.
+- Accept corrected fresh-setup packs with reviewed content identities; existing dev.30 packs remain current and need no automatic rebuild. Guard optional story-save import by the exact eight-byte presentation change.
+- Add source-coordinate/glyph/print/cold cast checks, all 32 camera script transactions per edition with status/time and cold-save controls, and 68 evolving encounter cases with source AI contracts and matching warm/cold endpoints.
+- Retain historical failed diagnostic runs and identify fixture corrections: AI entry observation, unused Original group473, adequate offense, sufficient input replay and translated enemy text-pointer comparisons.
+- Verify fresh code-only compilation, old/new pack compatibility and bounded release regressions. [Release evidence and limits](docs/RELEASE-dev31.md).
+
 ## Dev.30 release readiness follow-up
 
 - Verify a fresh pinned public-source build without ROM/assets and first-run setup of the exact published dev.30 ZIP. Preserve the current download and installed playthrough.

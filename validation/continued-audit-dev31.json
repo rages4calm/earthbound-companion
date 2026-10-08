@@ -1,0 +1,156 @@
+{
+  "passed": true,
+  "version": "0.5.0-redux-dev.31",
+  "nativeExecutableSha256": "add25d7a85396da4cd7b388084cec3f89bdae4a3c63c31a699b6b56e9fb05206",
+  "productionLibrarySha256": "032e6a6cafa0d8771cc72ba88a5ec0947da53df48251dce14d25b22bec7bcc25",
+  "patchSha256": "a085d3ea424f354f8a4334345ff5cb0db33ff1505edc65c4141a0a80aedf5ce0",
+  "freshPublicCompilation": {
+    "passed": true,
+    "foundation": "76eacab54b05766b82c98da9c55d94d1236ece03",
+    "tamp": "32034abf367d6bf2ee7a25cce8f64482cb955a65",
+    "patchSha256": "a085d3ea424f354f8a4334345ff5cb0db33ff1505edc65c4141a0a80aedf5ce0",
+    "nativeExeSha256": "00a8159eddfd1693aedf5575711c7e2c44d8ad2d05a3ea0153fe7edcf9295792",
+    "freshCompilation": true,
+    "romOrExtractedAssetsUsed": false,
+    "productionSaveFilesTouched": false,
+    "limits": [
+      "Local compiler, SDL and Git object stores are supplied explicitly. This verifies public source composition and compilation, not automatic toolchain installation or bit-identical path-dependent build metadata."
+    ]
+  },
+  "legacyPackReleaseChecks": 44,
+  "freshPackShippingAndCleanSourceReleaseChecks": 76,
+  "profiles": {
+    "original": {
+      "castInputVectors": 5,
+      "castWarmColdChecks": 10,
+      "castGlyphBlocks": 80,
+      "castPixelComparisons": 79360,
+      "healthyPhotoWrappers": 32,
+      "statusAndCappedTimerWrappers": 32,
+      "cameraReturnAndCommittedPhotoColdChecks": 128,
+      "otherPhotoSlotsPreserved": 31,
+      "evolvingEncounterCases": 32,
+      "warmColdPairs": 8,
+      "sourceReviewChecks": 242,
+      "unsupportedProfileCases": [
+        "magikraken-active-ai-seed1",
+        "magikraken-active-ai-seed2",
+        "magikraken-active-ai-seed3",
+        "magikraken-active-ai-seed3-cold"
+      ],
+      "privateBuild": {
+        "driverSourceSha256": "32516b40d90dfcb6b3596aa77ee68c3c7d8f3176026cfe3153369817fcd75b01",
+        "executableSha256": "002c660c6ca5368adaf1c3f896bb55d889e8f08331da0ccc3ced95cc9c5c0da7",
+        "productionExecutableSha256": "add25d7a85396da4cd7b388084cec3f89bdae4a3c63c31a699b6b56e9fb05206",
+        "productionLibrarySha256": "032e6a6cafa0d8771cc72ba88a5ec0947da53df48251dce14d25b22bec7bcc25",
+        "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Private driver linked to unchanged frozen player library/platform objects; copied main renamed only."
+      },
+      "sourceContractRecheck": true,
+      "packContract": {
+        "passed": true,
+        "inputSha256": {
+          "rom": "a8fe2226728002786d68c27ddddf0b90a894db52e4dfe268fdf72a68cae5f02e",
+          "previous-pack": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+          "current-pack": "792370574832629c0dc436bbc5b3a3993a8670e7e5fc3e3a5b467791ce514462"
+        },
+        "assetCount": 1174,
+        "changedAssets": [
+          "ending/party_cast_tile_ids.bin"
+        ],
+        "unchangedAssets": 1173,
+        "consumerRomOffset": 321556,
+        "tableRomOffset": 261557,
+        "sourceTileIds": [
+          384,
+          400,
+          416,
+          432
+        ],
+        "inputsUnchanged": true,
+        "limits": [
+          "Pack contents and actual source operand checked; serialization padding can differ. Native cast rendering is checked by cast_name_raster_qa.py separately."
+        ]
+      },
+      "randomizer": {
+        "Passed": true,
+        "BaseHash": "792370574832629c0dc436bbc5b3a3993a8670e7e5fc3e3a5b467791ce514462",
+        "Seeds": 1000,
+        "OptionCombinations": 30,
+        "ProtectedItems": 78,
+        "ProtectedEnemies": 52
+      }
+    },
+    "redux": {
+      "castInputVectors": 6,
+      "castWarmColdChecks": 12,
+      "castGlyphBlocks": 96,
+      "castPixelComparisons": 95232,
+      "healthyPhotoWrappers": 32,
+      "statusAndCappedTimerWrappers": 32,
+      "cameraReturnAndCommittedPhotoColdChecks": 128,
+      "otherPhotoSlotsPreserved": 31,
+      "evolvingEncounterCases": 36,
+      "warmColdPairs": 9,
+      "sourceReviewChecks": 282,
+      "unsupportedProfileCases": [],
+      "privateBuild": {
+        "driverSourceSha256": "e06f01108f4db1d83af6e1426ff6a4794b203a63384a62966a4d1a0fcb478a12",
+        "executableSha256": "0fe99ba888044a6abd579521b161b24eefa9234e9a5d2c80e394c80c4b4a1157",
+        "productionExecutableSha256": "add25d7a85396da4cd7b388084cec3f89bdae4a3c63c31a699b6b56e9fb05206",
+        "productionLibrarySha256": "032e6a6cafa0d8771cc72ba88a5ec0947da53df48251dce14d25b22bec7bcc25",
+        "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Private driver linked to unchanged frozen player library/platform objects; copied main renamed only."
+      },
+      "sourceContractRecheck": true,
+      "packContract": {
+        "passed": true,
+        "inputSha256": {
+          "rom": "c2a2fc98c7e6518b797959ffadf24ca4db8b4d7745ed3a9eb92eee106db1d0ab",
+          "previous-pack": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+          "current-pack": "4b5f1c5ac76e4bdcce2dc66a2e8ef95b659e561d3cadebefa66efb85c0be5236"
+        },
+        "assetCount": 1174,
+        "changedAssets": [
+          "ending/party_cast_tile_ids.bin"
+        ],
+        "unchangedAssets": 1173,
+        "consumerRomOffset": 321556,
+        "tableRomOffset": 261557,
+        "sourceTileIds": [
+          384,
+          400,
+          416,
+          432
+        ],
+        "inputsUnchanged": true,
+        "limits": [
+          "Pack contents and actual source operand checked; serialization padding can differ. Native cast rendering is checked by cast_name_raster_qa.py separately."
+        ]
+      },
+      "randomizer": {
+        "Passed": true,
+        "BaseHash": "4b5f1c5ac76e4bdcce2dc66a2e8ef95b659e561d3cadebefa66efb85c0be5236",
+        "Seeds": 1000,
+        "OptionCombinations": 30,
+        "ProtectedItems": 110,
+        "ProtectedEnemies": 84
+      }
+    }
+  },
+  "ordinaryOnettCameraEntryBothEditions": true,
+  "beforeAndAfterPhotoCommitColdLoad": true,
+  "fullPreparedEndingTransactionsBothEditions": true,
+  "oldDev30CastFailureObserved": true,
+  "ownerSaveFilesChanged": false,
+  "limits": [
+    "Only Onett photo1 proves ordinary movement entry; other 32-wrapper tests start from prepared source text entry, not a complete natural quest/collection campaign.",
+    "The cast oracle uses independent source coordinates and a font compositor; no full SNES CPU/pixel timing equivalence.",
+    "Selected multi-turn AI/damage/KO/reward/cleanup and warm/cold endpoints are checked. Broader status, target, reflection and combat combinations are not exhaustive.",
+    "No fresh full randomized campaign, broader physical hardware or audible-listening certification."
+  ]
+}

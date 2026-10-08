@@ -78,7 +78,7 @@ def convert_ending(rom, project, assets):
     fixed=(
         ("US/ending/cast_sequence_formatting.bin",0x212EFA,144),
         ("ending/photographer_cfg.bin",0x212F8A,1984),
-        ("ending/party_cast_tile_ids.bin",0x3FDAD8,8),
+        ("ending/party_cast_tile_ids.bin",0x3FDB5,8),
         ("US/ending/cast_bg_palette.pal",0x21D815,32),
         ("ending/E1E924.bin",0x21E924,38),
         ("ending/credits_font.pal",0x21E914,16),

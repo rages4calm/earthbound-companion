@@ -8,9 +8,9 @@ Companion is adapting MaternalBound Redux into the BrianPugh-derived native x64 
 
 This checkpoint targets the active upstream source at `897d00833f4a08a0a92f106abf631629a6a6a041`, compiled locally with CoilSnake into a verified 6 MiB ROM. It is not the official v1.1 release. The v1.1 BPS was separately checksum-verified and tested during initial extraction research; supporting that release requires a separate conversion map and validation record.
 
-The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.30` (credits photograph graphics and widescreen PSI wrapping repairs; Giygas/Porky, Sound Stone, Magicant and earlier fixes retained).**
+The bridge records 191 reachable CCS files, 1,018 import edges, 190 compiler modules, 7,840 labels and source checksums. An exact ROM/source mismatch stops conversion. This is a deterministic porting input, not a claim that every upstream assembly feature has been implemented. **Current release checkpoint: `v0.5.0-redux-dev.31` (cast-name extraction and existing-pack compatibility; prior credits, PSI, Giygas/Porky, Sound Stone and Magicant fixes retained).**
 
-The open-ended autonomous audit has been stopped at the owner’s request. Existing evidence is retained; further fixes will follow playtesting reports. No whole normal-play Redux feature is currently confirmed absent, but complete compatibility remains unverified.
+The owner resumed the source audit after the dev.30 readiness milestone. Dev.31 adds photographer/cast and evolving-battle checks while retaining earlier evidence. No whole normal-play Redux feature is currently confirmed absent, but complete compatibility remains unverified.
 
 Dev.25 adds an independent **Original EarthBound title screen** switch in **Game Mode**. Redux keeps its story, gameplay, seed identities and saves; the original title artwork and animation come from the clean ROM data already built locally. Apply settings and relaunch. [Option and bounded verification](docs/RELEASE-dev25.md).
 
@@ -153,3 +153,5 @@ The pack builder reads compiled local data, validates structure/pointers and wri
 ## Credit
 
 [ShadowOne333 and the MaternalBound Redux contributors](https://github.com/ShadowOne333/MaternalBound-Redux) created the hack. GPL notices apply to its adaptation modules and converters; source files, compiler/native patches and pinned inputs are recorded in this repository. They do not license the retained native foundation, and combined distribution/corresponding-source obligations remain to be resolved. See [LEGAL.md](LEGAL.md), [UPSTREAM.md](UPSTREAM.md) and [CREDITS.md](CREDITS.md).
+
+Dev.31 resumes the photographer/cast and evolving battle work with new isolated execution. See [the release evidence](docs/RELEASE-dev31.md). Existing packs remain playable with their original save namespaces; fresh setup produces a corrected eight-byte cast table. No automatic pack migration is required.

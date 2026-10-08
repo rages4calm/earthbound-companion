@@ -1,3 +1,16 @@
+diff --git a/earthbound.yml b/earthbound.yml
+index bad3403..520dfe9 100644
+--- a/earthbound.yml
++++ b/earthbound.yml
+@@ -14732,7 +14732,7 @@ dumpEntries:
+ # PARTY_MEMBER_CAST_TILE_IDS — 4 × 2 byte VRAM tile offsets for party cast names
+ - subdir: ending
+   name: party_cast_tile_ids
+-  offset: 0x3FDAD
++  offset: 0x3FDB5
+   size: 8
+   extension: bin
+   compressed: false
 diff --git a/ebtools/cli/extract.py b/ebtools/cli/extract.py
 index 8ba918c..af7b8f5 100644
 --- a/ebtools/cli/extract.py
@@ -8403,7 +8416,7 @@ index 784405b..045bcad 100644
  
  #endif /* DOOR_H */
 diff --git a/src/game/ending.c b/src/game/ending.c
-index f5b72dc..6505c27 100644
+index f5b72dc..c851ec4 100644
 --- a/src/game/ending.c
 +++ b/src/game/ending.c
 @@ -9,6 +9,7 @@
@@ -8492,16 +8505,44 @@ index f5b72dc..6505c27 100644
  }
  
  /*
-@@ -331,7 +381,7 @@ static void prepare_dynamic_cast_name_text(void) {
+@@ -322,6 +372,24 @@ static void render_cast_name_text(const uint8_t *str_addr, uint16_t tile_count,
+  *  US version: renders 4 party member names at PARTY_MEMBER_CAST_TILE_IDS,
+  *  pet name at tile 448, and 3 guardian texts (Paula's dad, mom, Poo's Master).
+  */
++/* Earlier converters extracted the eight-byte table from the wrong ROM
++ * offsets. Keep those two exact pack versions playable without changing pack
++ * identity (and hence their save namespace). The assembly and its LDA.l
++ * operand both locate the real four-word table at ROM $03FDB5. */
++static uint16_t party_cast_tile_id(unsigned index) {
++    static const uint8_t legacy_original[8]={0xd7,0xe6,0xc5,0x00,0xf4,0xe6,0xc5,0x00};
++    static const uint8_t legacy_redux[8]={0x1d,0xd8,0x00,0x29,0x84,0x1d,0x4b,0x8d};
++    if (index >= 4 || ASSET_SIZE(ASSET_ENDING_PARTY_CAST_TILE_IDS_BIN) != 8)
++        FATAL("ending: invalid party cast tile table\n");
++    if (!memcmp(party_cast_tile_ids_data,legacy_original,8) ||
++        !memcmp(party_cast_tile_ids_data,legacy_redux,8))
++        return (uint16_t)(384 + index * 16);
++    uint16_t tile=read_u16_le(party_cast_tile_ids_data+index*2);
++    if (tile > 1008 || (tile & 15))
++        FATAL("ending: invalid party cast tile location %u\n",tile);
++    return tile;
++}
++
+ static void prepare_dynamic_cast_name_text(void) {
+     if (!party_cast_tile_ids_data) return;
+ 
+@@ -331,9 +399,9 @@ static void prepare_dynamic_cast_name_text(void) {
      for (int i = 0; i < 4; i++) {
          memset(name_buf, 0, 16);
          /* Copy 5-byte name from party characters */
 -        memcpy(name_buf, party_characters[i].name, 5);
 +        memcpy(name_buf, maternalbound_character_name(i), maternalbound_name_capacity());
  
-         uint16_t tile_id = read_u16_le(&party_cast_tile_ids_data[i * 2]);
+-        uint16_t tile_id = read_u16_le(&party_cast_tile_ids_data[i * 2]);
++        uint16_t tile_id = party_cast_tile_id((unsigned)i);
          render_cast_name_text(name_buf, 6, tile_id);
-@@ -344,6 +394,28 @@ static void prepare_dynamic_cast_name_text(void) {
+     }
+ 
+@@ -344,6 +412,28 @@ static void prepare_dynamic_cast_name_text(void) {
  
      if (!cast_seq_formatting_data || !guardian_text_data) return;
  
@@ -8530,7 +8571,7 @@ index f5b72dc..6505c27 100644
      /* Guardian text entries use CAST_SEQUENCE_FORMATTING offsets 39, 36, 108
       * for Paula's dad, Paula's mom, Poo's Master respectively.
       * Each formatting entry is 3 bytes: 2-byte tile position + 1-byte width. */
-@@ -352,10 +424,10 @@ static void prepare_dynamic_cast_name_text(void) {
+@@ -352,10 +442,10 @@ static void prepare_dynamic_cast_name_text(void) {
      {
          memset(name_buf, 0, 16);
          /* Copy Paula's name (party member 1, offset 0 = name) */
@@ -8543,7 +8584,7 @@ index f5b72dc..6505c27 100644
          const uint8_t *gt1 = &guardian_text_data[0]; /* CHARACTER_GUARDIAN_TEXT_1 */
          for (int j = 0; gt1[j] != 0 && len + j < 15; j++) {
              name_buf[len + j] = gt1[j];
-@@ -369,9 +441,9 @@ static void prepare_dynamic_cast_name_text(void) {
+@@ -369,9 +459,9 @@ static void prepare_dynamic_cast_name_text(void) {
      /* Paula's mom: CAST_SEQUENCE_FORMATTING[12] (offset 36) */
      {
          memset(name_buf, 0, 16);
@@ -8555,7 +8596,7 @@ index f5b72dc..6505c27 100644
          const uint8_t *gt2 = &guardian_text_data[7]; /* CHARACTER_GUARDIAN_TEXT_2 */
          for (int j = 0; gt2[j] != 0 && len + j < 15; j++) {
              name_buf[len + j] = gt2[j];
-@@ -386,9 +458,9 @@ static void prepare_dynamic_cast_name_text(void) {
+@@ -386,9 +476,9 @@ static void prepare_dynamic_cast_name_text(void) {
      {
          memset(name_buf, 0, 16);
          /* Copy Poo's name (party member 3) */
@@ -8567,7 +8608,20 @@ index f5b72dc..6505c27 100644
          const uint8_t *gt3 = &guardian_text_data[14]; /* CHARACTER_GUARDIAN_TEXT_3 */
          for (int j = 0; gt3[j] != 0 && len + j < 15; j++) {
              name_buf[len + j] = gt3[j];
-@@ -954,8 +1026,7 @@ row_wipe_check:
+@@ -515,10 +605,10 @@ void print_cast_name_party(uint16_t char_id, uint16_t x_col, uint16_t y_row) {
+         width = 6;
+     } else {
+         /* Party member: look up from PARTY_MEMBER_CAST_TILE_IDS */
+-        if (char_id < 1 || char_id > 6)
++        if (char_id < 1 || char_id > 4)
+             FATAL("print_cast_name_party: invalid char_id %u\n", char_id);
+         uint16_t idx = char_id - 1;
+-        tile_pos = read_u16_le(&party_cast_tile_ids_data[idx * 2]);
++        tile_pos = party_cast_tile_id(idx);
+         width = 6;  /* UNK_SIZE = 6 (US) */
+     }
+ 
+@@ -954,8 +1044,7 @@ row_wipe_check:
          /* Mode 3 = word fill; only src[0] and src[1] are read.
           * Must be static, enqueue_credits_dma stores the raw pointer in the
           * persistent DMA queue, which outlives this stack frame. */
@@ -8577,7 +8631,7 @@ index f5b72dc..6505c27 100644
      }
  
      /* Update scroll position (fixed-point: fraction += 0x4000) */
-@@ -988,7 +1059,9 @@ static void load_cast_scene(void) {
+@@ -988,7 +1077,9 @@ static void load_cast_scene(void) {
      }
  
      /* Load battle background animation */
@@ -8588,7 +8642,7 @@ index f5b72dc..6505c27 100644
  
      /* Set up BG3 VRAM layout for cast */
      set_bg3_vram_location(BG_TILEMAP_SIZE_NORMAL, VRAM_CAST_TILEMAP, VRAM_CAST_TILES);
-@@ -1048,9 +1121,12 @@ static void load_cast_scene(void) {
+@@ -1048,9 +1139,12 @@ static void load_cast_scene(void) {
      {
          const uint8_t *pal = ASSET_DATA(ASSET_ENDING_CAST_BG_PALETTE_PAL);
          if (pal) {
@@ -8602,7 +8656,7 @@ index f5b72dc..6505c27 100644
  
      /* Load sprite group ert.palettes to OBJ ert.palettes 8-15 */
      {
-@@ -1217,6 +1293,22 @@ static void initialize_credits_scene(void) {
+@@ -1217,6 +1311,22 @@ static void initialize_credits_scene(void) {
      credits_script_ptr = staff_text_data;
  
      blank_screen_and_wait_vblank();
@@ -8625,7 +8679,7 @@ index f5b72dc..6505c27 100644
  }
  
  /*
-@@ -1240,6 +1332,9 @@ StepResult mode_step_ending(ModeState *st) {
+@@ -1240,6 +1350,9 @@ StepResult mode_step_ending(ModeState *st) {
       * (resolved once, nulled at EN_CR_HOLD teardown). */
      ensure_ending_credits_assets();
  
@@ -8635,7 +8689,7 @@ index f5b72dc..6505c27 100644
      for (;;) {
          switch ((EndingPhase)s->phase) {
  
-@@ -1318,6 +1413,7 @@ StepResult mode_step_ending(ModeState *st) {
+@@ -1318,6 +1431,7 @@ StepResult mode_step_ending(ModeState *st) {
                  s->photo_idx++;   /* for-loop `continue`: skip to next photo */
                  continue;
              }
