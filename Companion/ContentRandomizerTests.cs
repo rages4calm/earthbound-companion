@@ -8,9 +8,9 @@ static class ContentRandomizerTests {
   byte[] original=File.ReadAllBytes(assetPath);var policy=ProgressionGuard.CheckBase(original);
   string originalHash=StoryShuffle.Hash(original);var all=new ShuffleOptions();var checks=new List<string>();
   void Require(bool condition,string label){if(!condition)throw new InvalidDataException(label);}
-  var reference=StoryShuffle.Build(original,"Redux-reference",all);
-  Require(reference.Pack.SequenceEqual(StoryShuffle.Build(original,"Redux-reference",all).Pack),"Content seed is not deterministic");
-  Require(!reference.Pack.SequenceEqual(StoryShuffle.Build(original,"Redux-other",all).Pack),"Different content seeds are identical");
+  var reference=StoryShuffle.BuildV3(original,"Redux-reference",all);
+  Require(reference.Pack.SequenceEqual(StoryShuffle.BuildV3(original,"Redux-reference",all).Pack),"Content seed is not deterministic");
+  Require(!reference.Pack.SequenceEqual(StoryShuffle.BuildV3(original,"Redux-other",all).Pack),"Different content seeds are identical");
   checks.Add("Deterministic seeds and distinct seed output");
   var (enemyStart,enemyLength)=StoryShuffle.Range(original,StoryShuffle.Enemies);
   int extensionStart=enemyStart+StoryShuffle.EnemyRecordCount*94;
@@ -18,7 +18,7 @@ static class ContentRandomizerTests {
   var (shopStart,shopLength)=StoryShuffle.Range(original,StoryShuffle.Shops);
   var (npcStart,npcLength)=StoryShuffle.Range(original,StoryShuffle.Npcs);
   for(int seed=0;seed<1000;seed++) {
-   var options=all with {Mode=seed%2==0?"Balanced":"Surprise"};var built=StoryShuffle.Build(original,"content-"+seed,options);
+   var options=all with {Mode=seed%2==0?"Balanced":"Surprise"};var built=StoryShuffle.BuildV3(original,"content-"+seed,options);
    ProgressionGuard.Validate(original,built.Pack,options);
    Require(original.AsSpan(extensionStart,extensionLength).SequenceEqual(built.Pack.AsSpan(extensionStart,extensionLength)),"Enemy-AI extension changed");
    foreach(int enemy in policy.Enemies)Require(original.AsSpan(enemyStart+enemy*94,94).SequenceEqual(built.Pack.AsSpan(enemyStart+enemy*94,94)),"Protected scripted enemy changed");
@@ -33,7 +33,7 @@ static class ContentRandomizerTests {
   checks.Add("1000 seeds across Balanced and Surprise preserve protected gift/shop sources, scripted enemies and enemy-AI data");
   for(int flags=1;flags<16;flags++)foreach(string mode in new[]{"Balanced","Surprise"}) {
    var options=new ShuffleOptions {Mode=mode,Gifts=(flags&1)!=0,Shops=(flags&2)!=0,EnemyStats=(flags&4)!=0,EnemyDrops=(flags&8)!=0};
-   var built=StoryShuffle.Build(original,"content-options",options);ProgressionGuard.Validate(original,built.Pack,options);
+   var built=StoryShuffle.BuildV3(original,"content-options",options);ProgressionGuard.Validate(original,built.Pack,options);
   }
   checks.Add("All 30 option/preset combinations pass the content policy");
   void Rejected(byte[] bad,string label){bool refused=false;try{ProgressionGuard.Validate(original,bad,all);}catch(InvalidDataException){refused=true;}Require(refused,label);}
@@ -48,10 +48,10 @@ static class ContentRandomizerTests {
   Settings.OverrideRoot=Path.Combine(directory,"isolated-library");
   try {
    Directory.CreateDirectory(Settings.BaseGame);File.WriteAllBytes(Path.Combine(Settings.BaseGame,"assets.pak"),original);
-   var seed=StoryShuffle.Generate("Redux-reference",all);StoryShuffle.Verify(seed);
+   var seed=StoryShuffle.Generate("Redux-reference",all,version:3);StoryShuffle.Verify(seed);
    Require(seed.ContentId==policy.ContentId&&seed.ContentName==policy.DisplayName,"Seed has the wrong content profile");
    File.WriteAllText(Path.Combine(seed.Session,"saves","sentinel.txt"),"preserve content save");
-   var repeated=StoryShuffle.Generate("Redux-reference",all);
+   var repeated=StoryShuffle.Generate("Redux-reference",all,version:3);
    Require(File.ReadAllText(Path.Combine(repeated.Session,"saves","sentinel.txt"))=="preserve content save","Regeneration overwrote content saves");
    var recipe=StoryShuffle.ImportRecipe(Path.Combine(seed.Folder,"recipe.ebseed.json"));
    Require(recipe.ContentId==policy.ContentId&&recipe.BaseHash==originalHash,"Recipe lost content identity");

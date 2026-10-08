@@ -1,5 +1,7 @@
 # EarthBound Companion development tester package
 
+Dev.32 ships Story Shuffle v4 with cross-category loot and bounded wild lineup changes. It retains the dev.31 player and setup helpers. Original story saves/packs remain compatible; new v4 seeds have separate saves and v3 recipes retain their original output. [Verification](../docs/RELEASE-dev32.md).
+
 Dev.26 fixes idle geysers, equipment comparison clipping, Lumine Hall scrolling and exposed cave terrain on black transfer screens. [Verification](../docs/RELEASE-dev26.md).
 
 The current Redux development archive contains a native Windows x64 build, the Companion settings/mod launcher, original and Redux ROM-to-native-data helpers, SDL2, documentation, sample native profiles and dependency notices. The older v0.4 archive contains only the original-story setup.

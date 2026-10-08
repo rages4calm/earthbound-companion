@@ -1,0 +1,235 @@
+{
+  "original": {
+    "Generator": {
+      "Passed": true,
+      "Version": 4,
+      "ContentId": "earthbound-usa",
+      "BaseHash": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "Seeds": 1000,
+      "OptionCombinations": 62,
+      "RejectedCorruptions": 12,
+      "Sample": {
+        "Gifts": 172,
+        "Shop slots": 272,
+        "Enemies": 144,
+        "Enemy drops": 130,
+        "Wild encounters": 426
+      },
+      "CrossCategoryGifts": 148,
+      "MoneyGifts": 5,
+      "ChangedCookieDrops": 5,
+      "ChangedFirstShopSlots": 60,
+      "FullPlaythroughVerified": false
+    },
+    "Native": {
+      "Passed": true,
+      "AssetHash": "3e220e72f6377a238686780e5557338c422c88d8fc30f255179adee5dd2e9961",
+      "PrivateBuild": {
+        "driverSourceSha256": "bd15ab06e466c3d7319da927f643f7d35f8d322b7074c138a667507e0eca526c",
+        "executableSha256": "f63043ce76f1017d19df35761198e51b8b3d54dd047b698f941756e170051db2",
+        "productionExecutableSha256": "add25d7a85396da4cd7b388084cec3f89bdae4a3c63c31a699b6b56e9fb05206",
+        "productionLibrarySha256": "032e6a6cafa0d8771cc72ba88a5ec0947da53df48251dce14d25b22bec7bcc25",
+        "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "PlacementStates": 278,
+      "SamplesPerState": 4096,
+      "StatesWithAllGroupsObserved": 278,
+      "NativeGiftRecords": 177,
+      "NativeEnemyRecords": 230,
+      "NativeLogHash": "e433cf882f37b52750f49994a3654037cf6b519d1dfcc429e7cb680edea37dc9",
+      "FullPlaythroughVerified": false,
+      "Limits": [
+        "Prepared wild chooser/event states with saturated entity budget; no terrain, spawn entity, rendering or natural reachability certification.",
+        "Native consumer records, not unique reachable gift boxes or ordinary gameplay battles."
+      ]
+    },
+    "LegacyV3": {
+      "ContentId": "earthbound-usa",
+      "DisplayName": "EarthBound (USA)",
+      "BaseHash": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+      "Seeds": 1000,
+      "OptionCombinations": 30,
+      "ProtectedItems": 78,
+      "ProtectedEnemies": 52,
+      "ShopRows": 66,
+      "EnemyRecords": 231,
+      "EnemyAiBytes": 0,
+      "Passed": true,
+      "Checks": [
+        "Deterministic seeds and distinct seed output",
+        "1000 seeds across Balanced and Surprise preserve protected gift/shop sources, scripted enemies and enemy-AI data",
+        "All 30 option/preset combinations pass the content policy",
+        "Independent corruption checks reject altered AI pointers/counts, protected stock and story assets",
+        "Content-specific generation, verification, recipes and separate saves survive regeneration"
+      ],
+      "FullPlaythroughVerified": false
+    },
+    "Opening": {
+      "Passed": true,
+      "Edition": "original",
+      "NativeOpeningFrames": 14000,
+      "ColdLoad": true,
+      "FullPlaythroughVerified": false
+    }
+  },
+  "redux": {
+    "Generator": {
+      "Passed": true,
+      "Version": 4,
+      "ContentId": "maternalbound-redux-897d0083",
+      "BaseHash": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "Seeds": 1000,
+      "OptionCombinations": 62,
+      "RejectedCorruptions": 12,
+      "Sample": {
+        "Gifts": 172,
+        "Shop slots": 286,
+        "Enemies": 142,
+        "Enemy drops": 129,
+        "Wild encounters": 426
+      },
+      "CrossCategoryGifts": 148,
+      "MoneyGifts": 5,
+      "ChangedCookieDrops": 5,
+      "ChangedFirstShopSlots": 63,
+      "FullPlaythroughVerified": false
+    },
+    "Native": {
+      "Passed": true,
+      "AssetHash": "892ba2c9d0d986f5b29867b053a952410839ad5f7e8dd747e918379a5372cb66",
+      "PrivateBuild": {
+        "driverSourceSha256": "bd15ab06e466c3d7319da927f643f7d35f8d322b7074c138a667507e0eca526c",
+        "executableSha256": "f63043ce76f1017d19df35761198e51b8b3d54dd047b698f941756e170051db2",
+        "productionExecutableSha256": "add25d7a85396da4cd7b388084cec3f89bdae4a3c63c31a699b6b56e9fb05206",
+        "productionLibrarySha256": "032e6a6cafa0d8771cc72ba88a5ec0947da53df48251dce14d25b22bec7bcc25",
+        "platformMainObjectSha256": "fb9954ad181fc432085ebfc8e098f1c58618d795ababb7d1c894f3bafc71f3cd",
+        "sharedBuildModified": false,
+        "sharedSourceModified": false,
+        "method": "Copied platform main renamed with objcopy; private driver linked to unchanged production native library."
+      },
+      "PlacementStates": 278,
+      "SamplesPerState": 4096,
+      "StatesWithAllGroupsObserved": 278,
+      "NativeGiftRecords": 177,
+      "NativeEnemyRecords": 230,
+      "NativeLogHash": "e8b91a248c94bd4937163f11fbda409d7221eac78793bfb5ca1c8ff3631a4ef3",
+      "FullPlaythroughVerified": false,
+      "Limits": [
+        "Prepared wild chooser/event states with saturated entity budget; no terrain, spawn entity, rendering or natural reachability certification.",
+        "Native consumer records, not unique reachable gift boxes or ordinary gameplay battles."
+      ]
+    },
+    "LegacyV3": {
+      "ContentId": "maternalbound-redux-897d0083",
+      "DisplayName": "MaternalBound Redux (native development)",
+      "BaseHash": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "Seeds": 1000,
+      "OptionCombinations": 30,
+      "ProtectedItems": 110,
+      "ProtectedEnemies": 84,
+      "ShopRows": 69,
+      "EnemyRecords": 231,
+      "EnemyAiBytes": 936,
+      "Passed": true,
+      "Checks": [
+        "Deterministic seeds and distinct seed output",
+        "1000 seeds across Balanced and Surprise preserve protected gift/shop sources, scripted enemies and enemy-AI data",
+        "All 30 option/preset combinations pass the content policy",
+        "Independent corruption checks reject altered AI pointers/counts, protected stock and story assets",
+        "Content-specific generation, verification, recipes and separate saves survive regeneration"
+      ],
+      "FullPlaythroughVerified": false
+    },
+    "Opening": {
+      "Passed": true,
+      "Edition": "redux",
+      "NativeOpeningFrames": 14000,
+      "ColdLoad": true,
+      "FullPlaythroughVerified": false
+    }
+  },
+  "PreparedReduxEncounters": {
+    "Passed": true,
+    "Cases": 12,
+    "GroupIds": [
+      164,
+      169,
+      363,
+      356,
+      171,
+      6,
+      359,
+      158,
+      408,
+      7,
+      362,
+      173
+    ],
+    "Limits": [
+      "Prepared four-player level99/HP9999/stats255, real scripted BS_ENTER, swirl, battle constructors/AI/menus/attacks/KO/rewards/map reload/cleanup. Actual platform input replay of pulsed A feeds real dispatcher; no physical-controller/pixels/audio/story reachability certification.",
+      "Source-derived money/EXP expectations use actual KO victim IDs. Complete lifecycle mutation assertions; no independent whole original-machine encounter execution."
+    ]
+  },
+  "KnownLegacyOwnerSeedParity": {
+    "Seed": "595173162",
+    "Id": "04f0667f8781f08a89090d0d775b4564e14ee6f0e21856ea9ecd515a2084fd8f",
+    "PackHash": "bf52a5c7647fdd6426e334097a1ec073c2e830e7e127894de9082a06578824b3",
+    "Verified": true
+  },
+  "FullPlaythroughVerified": false,
+  "FreshSetupPacks": {
+    "original": {
+      "Passed": true,
+      "Version": 4,
+      "ContentId": "earthbound-usa",
+      "BaseHash": "792370574832629c0dc436bbc5b3a3993a8670e7e5fc3e3a5b467791ce514462",
+      "Seeds": 1000,
+      "OptionCombinations": 62,
+      "RejectedCorruptions": 12,
+      "Sample": {
+        "Gifts": 172,
+        "Shop slots": 272,
+        "Enemies": 144,
+        "Enemy drops": 130,
+        "Wild encounters": 426
+      },
+      "CrossCategoryGifts": 146,
+      "MoneyGifts": 5,
+      "ChangedCookieDrops": 5,
+      "ChangedFirstShopSlots": 60,
+      "FullPlaythroughVerified": false
+    },
+    "redux": {
+      "Passed": true,
+      "Version": 4,
+      "ContentId": "maternalbound-redux-897d0083",
+      "BaseHash": "4b5f1c5ac76e4bdcce2dc66a2e8ef95b659e561d3cadebefa66efb85c0be5236",
+      "Seeds": 1000,
+      "OptionCombinations": 62,
+      "RejectedCorruptions": 12,
+      "Sample": {
+        "Gifts": 172,
+        "Shop slots": 286,
+        "Enemies": 140,
+        "Enemy drops": 129,
+        "Wild encounters": 426
+      },
+      "CrossCategoryGifts": 150,
+      "MoneyGifts": 5,
+      "ChangedCookieDrops": 5,
+      "ChangedFirstShopSlots": 63,
+      "FullPlaythroughVerified": false
+    }
+  },
+  "LegacySaveRecoverySuitePassed": true,
+  "CompactLauncherUiReviewed": true,
+  "SourceSha256": {
+    "Companion\\Randomizer.cs": "076c1b752b40da26b56a27a730c1d28bb73e4198d5530d6b26778796f488d109",
+    "Companion\\StoryShuffleV4.cs": "aecf21c93b4a7832001a052ea7426922917f6ab61c319f3144f1ad4b0e217f36",
+    "Companion\\StoryShuffleV4Tests.cs": "8d397d3992d0065bf96fa2247e33b8b382c098079c0148c216581f774ce4c3b7",
+    "scripts\\story_shuffle_v4_native_qa.py": "153baef80618e4bc7ce3f5234961aeab08cd964fac7e073e6d6fd9156c929063"
+  }
+}

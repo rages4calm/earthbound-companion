@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0-redux-dev.32 - Story Shuffle v4
+
+- Mix ordinary gifts and drops across categories, including rare/priceless gear, money gifts and Cookie drops. Randomize ordinary first shop slots; retain required trade stock rather than globally fixing every copy of a food.
+- Add bounded wild encounter lineup replacement while retaining maps, spawn flags/odds/weights, battle-group data and scripted boss lineups.
+- Preserve byte-identical v3 recipe output and identity; use separate v4 saves. Keep the dev.31 native player, base packs and save format16.
+- Verify 1,000 seeds and 62 combinations per edition, deliberate corruption controls, native chooser states, opening/cold saves and prepared complete encounters. [Rules and limits](docs/RELEASE-dev32.md).
+- Record applicable rendering and comparison-testing methods from Matthew Stanley and RetroPortingToolKit; no engine migration.
+
 ## 0.5.0-redux-dev.31 - cast names and resumed audit
 
 - Correct Original/Redux party cast-table extraction to ROM offset 0x3FDB5. Repair the two exact legacy tables at runtime without changing installed packs, save format or namespaces.

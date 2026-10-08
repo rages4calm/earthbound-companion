@@ -8,10 +8,10 @@ static class RandomizerTests {
   byte[] original=File.ReadAllBytes(Path.Combine(Settings.BaseGame,"assets.pak"));string baseHash=StoryShuffle.Hash(original);
   var report=new List<string>();
   void Require(bool condition,string label){if(!condition)throw new Exception(label);}
-  var all=new ShuffleOptions();var one=StoryShuffle.Build(original,"Ness-2026",all);
-  Require(one.Pack.SequenceEqual(StoryShuffle.Build(original,"Ness-2026",all).Pack),"Same seed not deterministic");
-  Require(!one.Pack.SequenceEqual(StoryShuffle.Build(original,"Paula-2026",all).Pack),"Different seed did not change result");
-  Require(!one.Pack.SequenceEqual(StoryShuffle.Build(original,"Ness-2026",all with {Mode="Surprise"}).Pack),"Modes did not change result");
+  var all=new ShuffleOptions();var one=StoryShuffle.BuildV3(original,"Ness-2026",all);
+  Require(one.Pack.SequenceEqual(StoryShuffle.BuildV3(original,"Ness-2026",all).Pack),"Same seed not deterministic");
+  Require(!one.Pack.SequenceEqual(StoryShuffle.BuildV3(original,"Paula-2026",all).Pack),"Different seed did not change result");
+  Require(!one.Pack.SequenceEqual(StoryShuffle.BuildV3(original,"Ness-2026",all with {Mode="Surprise"}).Pack),"Modes did not change result");
   Require(StoryShuffle.Hash(original)==baseHash,"Base asset data mutated");
   report.Add("PASS: deterministic output, distinct seeds and presets, base data unchanged");
   var itemTable=StoryShuffle.Table(original,StoryShuffle.Items).ToArray();
@@ -20,7 +20,7 @@ static class RandomizerTests {
   // independently of whatever the generated policy currently classifies.
   foreach(int id in new[]{0x11,0x5A,0x5D,0x5F,0x7F,0x8C,0xA6,0xB8,0xBE,0xE0})Require(ProgressionGuard.Items.Contains(id),"Missing known story/trade protection: "+id);
   for(int seed=0;seed<1000;seed++) {
-   var options=all with {Mode=seed%2==0?"Balanced":"Surprise"};var built=StoryShuffle.Build(original,seed.ToString(),options);
+   var options=all with {Mode=seed%2==0?"Balanced":"Surprise"};var built=StoryShuffle.BuildV3(original,seed.ToString(),options);
    var allowed=new HashSet<int>();
    var (npcStart,npcLength)=StoryShuffle.Range(original,StoryShuffle.Npcs);
    for(int i=0;i<npcLength/17;i++) {
@@ -56,7 +56,7 @@ static class RandomizerTests {
   report.Add($"PASS: 1000 seeds across both modes; all original sources of {ProgressionGuard.Items.Count} protected items, {ProgressionGuard.Enemies.Count} scripted-battle enemies, quests, bosses, scripts, maps, prices and rewards unchanged");
   for(int flags=1;flags<16;flags++)foreach(string mode in new[]{"Balanced","Surprise"}) {
    var options=new ShuffleOptions {Mode=mode,Gifts=(flags&1)!=0,Shops=(flags&2)!=0,EnemyStats=(flags&4)!=0,EnemyDrops=(flags&8)!=0};
-   var built=StoryShuffle.Build(original,"option-matrix",options);ProgressionGuard.Validate(original,built.Pack,options);
+   var built=StoryShuffle.BuildV3(original,"option-matrix",options);ProgressionGuard.Validate(original,built.Pack,options);
   }
   report.Add("PASS: all 30 valid option/preset combinations pass progression preservation checks");
   // Check the validator itself with changes outside the generator's paths.
@@ -65,25 +65,25 @@ static class RandomizerTests {
   int trade=Enumerable.Range(0,shopsLength).First(i=>original[shopsStart+i]==0xE0);badSource[shopsStart+trade]=0x5B;Rejected(badSource,"Missing trade food accepted");
   byte[] badScript=(byte[])one.Pack.Clone();badScript[^1]^=1;Rejected(badScript,"Protected asset mutation accepted");
   byte[] badEnemy=(byte[])one.Pack.Clone();var (enemiesStart,_)=StoryShuffle.Range(original,StoryShuffle.Enemies);badEnemy[enemiesStart+ProgressionGuard.Enemies.First(i=>i>0)*94+33]^=1;Rejected(badEnemy,"Scripted battle mutation accepted");
-  byte[] badBase=(byte[])original.Clone();badBase[^1]^=1;bool baseRejected=false;try{StoryShuffle.Build(badBase,"modified-base",all);}catch(InvalidDataException){baseRejected=true;}Require(baseRejected,"Unaudited original accepted");
+  byte[] badBase=(byte[])original.Clone();badBase[^1]^=1;bool baseRejected=false;try{StoryShuffle.BuildV3(badBase,"modified-base",all);}catch(InvalidDataException){baseRejected=true;}Require(baseRejected,"Unaudited original accepted");
   report.Add("PASS: guard independently rejects missing trade sources, altered scripts/assets, altered scripted battles and unaudited base data");
   foreach(var table in new[]{StoryShuffle.Npcs,StoryShuffle.Shops,StoryShuffle.Enemies}) {
    var options=new ShuffleOptions {Gifts=table==StoryShuffle.Npcs,Shops=table==StoryShuffle.Shops,EnemyStats=table==StoryShuffle.Enemies,EnemyDrops=false};
-   var built=StoryShuffle.Build(original,"isolated-options",options);
+   var built=StoryShuffle.BuildV3(original,"isolated-options",options);
    foreach(var unchanged in new[]{StoryShuffle.Npcs,StoryShuffle.Shops,StoryShuffle.Enemies}.Where(n=>n!=table))Require(StoryShuffle.Table(original,unchanged).SequenceEqual(StoryShuffle.Table(built.Pack,unchanged)),"Disabled table mutated");
   }
   report.Add("PASS: independent options leave disabled tables untouched");
   foreach(byte[] broken in new[]{original[..40],original[..(original.Length/2)]}) {
-   bool rejected=false;try{StoryShuffle.Build(broken,"bad",all);}catch(InvalidDataException){rejected=true;}Require(rejected,"Malformed pack accepted");
+   bool rejected=false;try{StoryShuffle.BuildV3(broken,"bad",all);}catch(InvalidDataException){rejected=true;}Require(rejected,"Malformed pack accepted");
   }
   string actualRoot=Settings.Root;Settings.OverrideRoot=Path.Combine(directory,"library-fixture-v3");
   try {
    Directory.CreateDirectory(Settings.BaseGame);File.WriteAllBytes(Path.Combine(Settings.BaseGame,"assets.pak"),original);
-   var seed=StoryShuffle.Generate("Ness-2026",all);StoryShuffle.Verify(seed);Require(seed.ContentId=="earthbound-usa"&&seed.ContentName=="EarthBound (USA)","Seed lost its content profile");
-   var alt=StoryShuffle.Generate("Paula-2026",all);Require(seed.Session!=alt.Session,"Seeds share a save directory");
+   var seed=StoryShuffle.Generate("Ness-2026",all,version:3);StoryShuffle.Verify(seed);Require(seed.ContentId=="earthbound-usa"&&seed.ContentName=="EarthBound (USA)","Seed lost its content profile");
+   var alt=StoryShuffle.Generate("Paula-2026",all,version:3);Require(seed.Session!=alt.Session,"Seeds share a save directory");
    File.WriteAllText(Path.Combine(seed.Session,"saves","sentinel.txt"),"preserve seed save");
-   var repeat=StoryShuffle.Generate("Ness-2026",all);Require(File.ReadAllText(Path.Combine(repeat.Session,"saves","sentinel.txt"))=="preserve seed save","Regeneration overwrote saves");
-   Require(StoryShuffle.List().Count(s=>s.Version==StoryShuffle.Version)==2,"Seed library failed");
+   var repeat=StoryShuffle.Generate("Ness-2026",all,version:3);Require(File.ReadAllText(Path.Combine(repeat.Session,"saves","sentinel.txt"))=="preserve seed save","Regeneration overwrote saves");
+   Require(StoryShuffle.List().Count(s=>s.Version==3)==2,"Seed library failed");
    var recipe=StoryShuffle.ImportRecipe(Path.Combine(seed.Folder,"recipe.ebseed.json"));Require(recipe.Seed==seed.Seed&&recipe.Options==all&&recipe.ContentId==seed.ContentId&&recipe.ContentName==seed.ContentName,"Seed recipe/content-profile roundtrip failed");
    var wrongRecipe=Path.Combine(directory,"bad.ebseed.json");File.WriteAllText(wrongRecipe,"{\"Generator\":\"earthbound.app\",\"Version\":1,\"Seed\":\"10\",\"Options\":{},\"BaseHash\":\"bad\"}");
    bool rejected=false;try{StoryShuffle.ImportRecipe(wrongRecipe);}catch(InvalidDataException){rejected=true;}Require(rejected,"Website file accepted as native recipe");
@@ -116,7 +116,7 @@ static class RandomizerTests {
    // Tampered seed refuses play and regeneration; preserve its original pack after the rejection check.
    byte[] valid=File.ReadAllBytes(alt.Pak),tampered=(byte[])valid.Clone();tampered[^1]^=1;File.WriteAllBytes(alt.Pak,tampered);
    rejected=false;try{StoryShuffle.Verify(alt);}catch(InvalidDataException){rejected=true;}Require(rejected,"Tampered seed accepted");File.WriteAllBytes(alt.Pak,valid);
-   string legacyId=StoryShuffle.Hash(System.Text.Encoding.UTF8.GetBytes($"{StoryShuffle.Name}\n1\nlegacy-safety-test\n{JsonSerializer.Serialize(all)}\n{baseHash}"));
+   string legacyId=StoryShuffle.Hash(System.Text.Encoding.UTF8.GetBytes($"{StoryShuffle.Name}\n1\nlegacy-safety-test\n{JsonSerializer.Serialize(new {all.Mode,all.Gifts,all.Shops,all.EnemyStats,all.EnemyDrops})}\n{baseHash}"));
    string legacyFolder=Path.Combine(StoryShuffle.Library,legacyId);Directory.CreateDirectory(legacyFolder);
    var legacy=new SeedRecord {Seed="legacy-safety-test",Version=1,Options=all,Id=legacyId,BaseHash=baseHash,PackHash=StoryShuffle.Hash(badSource),Folder=legacyFolder};
    File.WriteAllText(Path.Combine(legacyFolder,"seed.json"),JsonSerializer.Serialize(legacy));File.WriteAllBytes(legacy.Pak,badSource);Directory.CreateDirectory(Path.Combine(legacy.Session,"saves"));File.WriteAllText(Path.Combine(legacy.Session,"saves","sentinel.txt"),"legacy save");

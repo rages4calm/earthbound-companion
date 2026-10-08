@@ -12,9 +12,10 @@ public sealed record ShuffleOptions {
  public bool Shops { get; init; } = true;
  public bool EnemyStats { get; init; } = true;
  public bool EnemyDrops { get; init; } = true;
+ public bool EnemyEncounters { get; init; } = true;
  public void Validate() {
   if(Mode is not ("Balanced" or "Surprise"))throw new InvalidDataException("Choose Balanced or Surprise Story Shuffle.");
-  if(!Gifts&&!Shops&&!EnemyStats&&!EnemyDrops)throw new InvalidDataException("Enable at least one shuffle option.");
+  if(!Gifts&&!Shops&&!EnemyStats&&!EnemyDrops&&!EnemyEncounters)throw new InvalidDataException("Enable at least one shuffle option.");
  }
 }
 public sealed class SeedRecord {
@@ -41,7 +42,7 @@ internal sealed record ShuffleBuild(byte[] Pack, List<ShuffleChange> Spoiler, Di
 
 static class StoryShuffle {
  public const string Name = "EarthBound Companion Story Shuffle";
- public const int Version = 3;
+ public const int Version = 4;
   internal const string Npcs="data/npc_config_table.bin",Items="data/item_configuration_table.bin",Shops="data/store_table.bin",Enemies="data/enemy_configuration_table.bin";
   internal const int EnemyRecordCount=231;
  public static string Library => Path.Combine(Settings.User,"Seeds");
@@ -59,7 +60,8 @@ static class StoryShuffle {
   return seed;
  }
  static string Identity(string seed,ShuffleOptions options,string baseHash,string contentId,int version=Version) {
-  string identity=version<3?$"{Name}\n{version}\n{seed}\n{JsonSerializer.Serialize(options)}\n{baseHash}":$"{Name}\n{version}\n{contentId}\n{seed}\n{JsonSerializer.Serialize(options)}\n{baseHash}";
+  string serialized=version<4?JsonSerializer.Serialize(new {options.Mode,options.Gifts,options.Shops,options.EnemyStats,options.EnemyDrops}):JsonSerializer.Serialize(options);
+  string identity=version<3?$"{Name}\n{version}\n{seed}\n{serialized}\n{baseHash}":$"{Name}\n{version}\n{contentId}\n{seed}\n{serialized}\n{baseHash}";
   return Hash(Encoding.UTF8.GetBytes(identity));
  }
  static string ActiveBasePack()=>Settings.Load().Pak;
@@ -73,6 +75,8 @@ static class StoryShuffle {
  }
  public static SeedRecord Read(string folder) {
   var record=JsonSerializer.Deserialize<SeedRecord>(File.ReadAllText(Path.Combine(folder,"seed.json")))??throw new InvalidDataException("Missing seed manifest.");
+  if(record.Options==null)throw new InvalidDataException("Missing seed options.");
+  if(record.Version<4)record.Options=record.Options with {EnemyEncounters=false};
   CheckRecipe(new(record.Generator,record.Version,record.Seed,record.Options,record.BaseHash,record.ContentId,record.ContentName),true);
   if(record.PackHash==null||record.PackHash.Length!=64||!record.PackHash.All(Uri.IsHexDigit)||record.Changes==null)
    throw new InvalidDataException("Invalid seed manifest.");
@@ -87,26 +91,29 @@ static class StoryShuffle {
   var original=File.ReadAllBytes(ActiveBasePack());var policy=ProgressionGuard.CheckBase(original);
   if(Hash(original)!=fresh.BaseHash)throw new InvalidDataException("This seed's original asset pack no longer matches the installation.");
   if(policy.ContentId!=fresh.ContentId)throw new InvalidDataException("This seed belongs to "+fresh.ContentName+", but a different game-data profile is selected.");
-  ProgressionGuard.Validate(original,File.ReadAllBytes(seed.Pak),fresh.Options);
+  if(fresh.Version>=4)StoryShuffleV4.Validate(original,File.ReadAllBytes(seed.Pak),fresh.Options);
+  else ProgressionGuard.Validate(original,File.ReadAllBytes(seed.Pak),fresh.Options);
  }
- public static SeedRecord Generate(string seed,ShuffleOptions options,string? expectedBaseHash=null) {
+ public static SeedRecord Generate(string seed,ShuffleOptions options,string? expectedBaseHash=null,int version=Version) {
+  if(version is not (3 or Version))throw new InvalidDataException("This generator supports version 3 and 4 recipes.");
+  if(version==3)options=options with {EnemyEncounters=false};
   seed=CleanSeed(seed);options.Validate();
   byte[] original=File.ReadAllBytes(ActiveBasePack());var policy=ProgressionGuard.CheckBase(original);
   string baseHash=Hash(original);
   if(expectedBaseHash!=null&&baseHash!=expectedBaseHash)throw new InvalidDataException("This recipe uses a different original asset pack; it cannot reproduce the same game here.");
-  string id=Identity(seed,options,baseHash,policy.ContentId),folder=Path.Combine(Library,id);
+  string id=Identity(seed,options,baseHash,policy.ContentId,version),folder=Path.Combine(Library,id);
   if(Directory.Exists(folder)) {
    var existing=Read(folder);Verify(existing);return existing; // never overwrite a seed or its saves
   }
-  var built=Build(original,seed,options);
-  var record=new SeedRecord {Seed=seed,Options=options,Id=id,ContentId=policy.ContentId,ContentName=policy.DisplayName,BaseHash=baseHash,PackHash=Hash(built.Pack),CreatedUtc=DateTime.UtcNow,Changes=built.Counts,Folder=folder};
+  var built=version==3?BuildV3(original,seed,options):Build(original,seed,options);
+  var record=new SeedRecord {Version=version,Seed=seed,Options=options,Id=id,ContentId=policy.ContentId,ContentName=policy.DisplayName,BaseHash=baseHash,PackHash=Hash(built.Pack),CreatedUtc=DateTime.UtcNow,Changes=built.Counts,Folder=folder};
   Directory.CreateDirectory(Library);
   string staging=Path.Combine(Library,".generating-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(staging);
   File.WriteAllBytes(Path.Combine(staging,"assets.pak"),built.Pack);
   File.WriteAllText(Path.Combine(staging,"spoiler.json"),JsonSerializer.Serialize(new {record.Generator,record.Version,record.ContentId,record.ContentName,record.Seed,record.Options,Changes=built.Spoiler},Settings.JsonOptions));
-  File.WriteAllText(Path.Combine(staging,"recipe.ebseed.json"),JsonSerializer.Serialize(new SeedRecipe(Name,Version,seed,options,baseHash,policy.ContentId,policy.DisplayName),Settings.JsonOptions));
+  File.WriteAllText(Path.Combine(staging,"recipe.ebseed.json"),JsonSerializer.Serialize(new SeedRecipe(Name,version,seed,options,baseHash,policy.ContentId,policy.DisplayName),Settings.JsonOptions));
   File.WriteAllText(Path.Combine(staging,"seed.json"),JsonSerializer.Serialize(record,Settings.JsonOptions));
-  File.WriteAllText(Path.Combine(staging,"safety.json"),JsonSerializer.Serialize(ProgressionGuard.Report(original),Settings.JsonOptions));
+  File.WriteAllText(Path.Combine(staging,"safety.json"),JsonSerializer.Serialize(version>=4?StoryShuffleV4.Report(original):ProgressionGuard.Report(original),Settings.JsonOptions));
   Directory.CreateDirectory(Path.Combine(staging,"Game","saves"));
   Directory.CreateDirectory(Path.Combine(staging,"Game","screenshots"));
   Directory.Move(staging,folder);return record;
@@ -114,15 +121,16 @@ static class StoryShuffle {
  public static SeedRecipe ImportRecipe(string path) {
   if(new FileInfo(path).Length>16_384)throw new InvalidDataException("Seed recipe is too large.");
   var recipe=JsonSerializer.Deserialize<SeedRecipe>(File.ReadAllText(path))??throw new InvalidDataException("Empty seed recipe.");
-  CheckRecipe(recipe);return recipe;
+  CheckRecipe(recipe);return recipe.Version<4?recipe with {Options=recipe.Options with {EnemyEncounters=false}}:recipe;
  }
  static void CheckRecipe(SeedRecipe recipe,bool allowLegacy=false) {
-  if(recipe.Generator!=Name||(recipe.Version!=Version&&!(allowLegacy&&recipe.Version is 1 or 2))||recipe.Options==null)
-   throw new InvalidDataException("Use a Companion Story Shuffle version 3 recipe. Older native seeds remain on disk for recovery; website ROMs and spoiler files are not supported native seeds.");
+  if(recipe.Generator!=Name||(recipe.Version is not (3 or Version)&&!(allowLegacy&&recipe.Version is 1 or 2))||recipe.Options==null)
+   throw new InvalidDataException("Use a Companion Story Shuffle version 3 or 4 recipe. Older native seeds remain on disk for recovery; website ROMs and spoiler files are not supported native seeds.");
   if(recipe.Seed==null||CleanSeed(recipe.Seed)!=recipe.Seed||recipe.BaseHash==null||recipe.BaseHash.Length!=64||!recipe.BaseHash.All(Uri.IsHexDigit))
    throw new InvalidDataException("Invalid seed recipe.");
   if(recipe.Version>=3&&(string.IsNullOrWhiteSpace(recipe.ContentId)||string.IsNullOrWhiteSpace(recipe.ContentName)))throw new InvalidDataException("The seed recipe is missing its game-data profile.");
   recipe.Options.Validate();
+  if(recipe.Version<4&&!recipe.Options.Gifts&&!recipe.Options.Shops&&!recipe.Options.EnemyStats&&!recipe.Options.EnemyDrops)throw new InvalidDataException("Enable at least one version 3 shuffle option.");
  }
  internal static void ValidatePack(byte[] pack) {
   if(pack.Length<44||!pack.AsSpan(0,44).SequenceEqual(Convert.FromHexString(Layout.Header)))
@@ -152,7 +160,8 @@ static class StoryShuffle {
   return (checked(44+count*8+(int)BinaryPrimitives.ReadUInt32LittleEndian(pack.AsSpan(44+index*8))),checked((int)BinaryPrimitives.ReadUInt32LittleEndian(pack.AsSpan(48+index*8))));
  }
  internal static ReadOnlySpan<byte> Table(byte[] pack,string name){var (start,length)=Range(pack,name);return pack.AsSpan(start,length);}
- internal static ShuffleBuild Build(byte[] original,string seed,ShuffleOptions options) {
+ internal static ShuffleBuild Build(byte[] original,string seed,ShuffleOptions options)=>StoryShuffleV4.Build(original,seed,options);
+ internal static ShuffleBuild BuildV3(byte[] original,string seed,ShuffleOptions options) {
   seed=CleanSeed(seed);options.Validate();var policy=ProgressionGuard.CheckBase(original);var protectedItems=policy.Items;var protectedEnemies=policy.Enemies;
   byte[] output=(byte[])original.Clone();var spoiler=new List<ShuffleChange>();var counts=new Dictionary<string,int>();
   var catalog=new Item[254];var items=Table(original,Items);
@@ -163,7 +172,7 @@ static class StoryShuffle {
    if(options.Mode=="Balanced")pool=pool.Where(i=>i.Cost>=Math.Max(1,item.Cost/2)&&i.Cost<=Math.Max(10,item.Cost*3/2));
    var candidates=pool.Where(i=>i.Id!=old).ToArray();return candidates.Length==0?old:candidates[random.Next(candidates.Length)].Id;
   }
-  StableRandom Rng(string domain)=>new($"{Name}:{Version}\n{seed}\n{options.Mode}\n{Hash(original)}\n{domain}");
+  StableRandom Rng(string domain)=>new($"{Name}:3\n{seed}\n{options.Mode}\n{Hash(original)}\n{domain}");
   void Change(string table,int entry,int before,int after,string? description=null) {
    if(before==after)return;
    counts[table]=counts.GetValueOrDefault(table)+1;

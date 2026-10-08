@@ -1,4 +1,34 @@
-# Native Story Shuffle v3
+# Native Story Shuffle v4
+
+Open **Randomizer**, select **Surprise** for the broadest item pool, and choose **Generate & play**. V4 keeps the original story order with randomized loot and wild enemy lineups. Each seed has separate saves.
+
+| Option | Version 4 behavior |
+| --- | --- |
+| Gift contents | Mix ordinary items across categories, including rare/priceless equipment, repairable items and money gifts. Keep story keys, quest helpers and the three pizza gift records. |
+| Shop stock | Mix all ordinary occupied slots, including the first slot. Keep empty slots, keys, quest helpers and Monkey Cave trade supplies. Replacements must have a nonzero original shop price; prices themselves do not change. Duplicate stock is possible. |
+| Enemy stats | Vary ordinary HP, offense, defense and speed by ±15% Balanced or ±30% Surprise. Scripted enemy stat records, bosses and level-zero actors remain fixed. |
+| Enemy drops | Mix ordinary loot across categories, including Cookie drops and drops of regular enemies also used in scripted fights. Keep story drops, bosses, level-zero actors, original drop odds and no-drop records. |
+| Wild encounters | Change weighted field encounter references to different ordinary lineups. Keep event flags, spawn odds, weights, map locations, battle-group data and scripted battle references. |
+
+**Balanced** uses loot values between half and one-and-a-half the original, with a small minimum band for cheap items. Priceless equipment is valued at 10,000, broken repairable items at 1,000 and other priceless optional items at 100 for selection only. **Surprise** uses the full eligible pool across item types. Strong or character-specific gear can appear early. Casey bat is excluded from replacement candidates; its original gift may become something else.
+
+Wild lineup selection compares highest enemy level and total authored HP, before stat variation. Balanced allows a level difference of `max(3, old level / 5)`; Surprise allows `max(6, old level / 3)`. Both keep total HP between half and twice the original and enemy count at most `max(2, old count + 1)`, within seven enemy slots. This is a difficulty bound, not a solver: enemy AI, resistances and final actions can still differ substantially.
+
+Keys and story helpers stay at their sources and cannot enter random loot: the key-item category plus Franklin badge, Fly Honey, the Yogurt/Tofu machine, King banana and Pencil eraser. NPC rewards and all dialogue/scripts are immutable. V4 retains original shop slots selling Hamburger, Fresh egg, Picnic lunch, Pizza, Grownup drink, Wet towel, Ruler, Banana and Skip sandwich. The cave's pizza gifts remain fixed; pizza delivery and the egg-giving NPC retain their unchanged scripts. Other copies of these foods can randomize.
+
+The validator checks the entire pack before launch. Only enabled loot/stat/placement fields may differ. It rejects removed trade stock, altered keys, boss/AI changes, invalid/oversized encounters, changed spawn odds/weights, changed pointers and edits to other assets. Unknown base-pack hashes cannot be randomized.
+
+V4 uses a new seed identity. **Create v4 for selected version** creates a separate adventure without converting an older save. Existing v3 recipes still reproduce the original algorithm and identity exactly. Importing a v3 recipe preserves that version until an option or the seed changes. The native player and save format do not change.
+
+Both editions pass 1,000 v4 seeds, 62 option/style combinations, recipe/save isolation and 12 corruption controls. Native fixtures verify gift/stat consumers and all expected lineups across 278 prepared placement/event states per edition. Chooser fixtures suppress entity creation and do not certify terrain, graphics or natural story reachability. Full randomized campaigns remain unverified. [Current evidence](docs/RELEASE-dev32.md).
+
+CLI content tests: `--randomizer-content-test "assets.pak" "fresh output folder"`; frozen v3 tests: `--randomizer-legacy-content-test` with the same arguments. Native chooser testing: `scripts/story_shuffle_v4_native_qa.py`, with an identity-matched production build and private output folder.
+
+This is an independent native generator. It does not reproduce earthbound.app seeds or implement Open mode, Ancient Cave, Keysanity, shuffled routes or randomized ROM imports. The website's [gift implementation](https://github.com/stochaztic/eb-randomizer/blob/master/src/Randomizer/MapSpriteObject.js) permits cross-category non-key loot and informed this scope correction. V4 is an original native implementation, not a port of the website's complete algorithms.
+
+## Historical v3 rules and verification
+
+The remaining sections document the frozen v3 algorithm for older recipes. Their category/global protection rules and 30 option combinations do **not** describe v4.
 
 Open **EarthBound Companion → Play → Randomized adventure**. The starter seed **Tonight in Onett** is ready in the library. Choose it and press **Play selected seed**, or enter a number/phrase and **Generate & play**. Generation is local and needs no additional downloads, browser, emulator or ROM setup.
 

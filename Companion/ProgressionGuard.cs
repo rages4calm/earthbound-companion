@@ -47,7 +47,7 @@ static class ProgressionGuard {
  };}
  internal static void Validate(byte[] original,byte[] candidate,ShuffleOptions options) {
   var policy=CheckBase(original);var protectedItems=policy.Items;var protectedEnemies=policy.Enemies;StoryShuffle.ValidatePack(candidate);
-  void Require(bool value,string reason) {if(!value)throw new InvalidDataException("Progression safety check failed: "+reason+". Keep this seed's saves for recovery; generate a new version 2 seed to play.");}
+  void Require(bool value,string reason) {if(!value)throw new InvalidDataException("Progression safety check failed: "+reason+". Keep this seed's saves for recovery; restore its original generated assets before playing.");}
   Require(original.Length==candidate.Length,"asset pack size changed");
   var allowed=new bool[original.Length];var items=StoryShuffle.Table(original,StoryShuffle.Items).ToArray();
   bool Eligible(int id)=>id>0&&id<254&&!protectedItems.Contains(id)&&BinaryPrimitives.ReadUInt16LittleEndian(items.AsSpan(id*39+26))>0&&items[id*39+25] is 0x10 or 0x11 or 0x14 or 0x18 or 0x1C or 0x20 or 0x24 or 0x28 or 0x2C or 0x30;

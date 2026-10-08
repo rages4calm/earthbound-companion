@@ -1,4 +1,4 @@
-param([string]$Version='0.5.0-redux-dev.31', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='')
+param([string]$Version='0.5.0-redux-dev.32', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='')
 $ErrorActionPreference='Stop'
 $projectRoot=$PSScriptRoot
 $releaseRoot=Join-Path $projectRoot 'release'
