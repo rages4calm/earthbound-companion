@@ -2,6 +2,8 @@
 
 The owner requested study of Matthew Stanley's work for EarthBound Companion and future native ports. This records methods and application boundaries. No framework migration or third-party code integration occurred in this pass.
 
+Follow-up: [game-porting toolkit reference](game-porting-toolkit-reference.md) covers the subsequently supplied recomp-ui, recomp-net and rbengine repositories, their pinned APIs/licenses, a snapshot unit test and opportunities for our own tools.
+
 ## Architecture
 
 Stanley's [renderer article](https://1379.tech/faithful-first-then-let-go-experimenting-with-custom-renderers/) separates authentic rendering from enhanced rendering of the same state. For Companion, retain a reference presentation when validating widescreen; treat scenery extension, HUD placement and battle effects as distinct consumers. This is a recommendation, not evidence that our C renderer already has an independent reference renderer.

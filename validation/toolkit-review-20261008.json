@@ -1,0 +1,161 @@
+{
+  "review_date": "2026-10-08",
+  "scope": "Selected pinned documentation, public APIs and source/tests; no integration",
+  "repositories": [
+    {
+      "repository": "recomp-ui",
+      "commit": "7e884a227accea91ddb378671bd49aaeeea13371",
+      "files": [
+        {
+          "path": "README.md",
+          "sha256": "9f89d45994b781d7df751d7d9942295a2f30ec749e854635c310eb72b64eca50"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "676252c9efb0849cc08cdba279318b4d62ae144c19a52a0aa7ab5ca845ae5ddc"
+        },
+        {
+          "path": "CMakeLists.txt",
+          "sha256": "9e1d43335565fd313aa7f7f7447aa3d8a762f2fa28a7c0eddeed5f43f0434cb5"
+        },
+        {
+          "path": "recomp_ui.cmake",
+          "sha256": "321afcd9614e556817a31a0a083ab7aebcf4ad4534f8e0388b321c026c38b632"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "sha256": "4825b9bc07b010ec597877a8c5797934aa2fb1dc4a379aac773a70c002580319"
+        },
+        {
+          "path": "docs/RUNTIME_UI.md",
+          "sha256": "7b66d77dbd6cb3856e050f737110c48e8fd4c1177a7f462df3dc32c5c77f1197"
+        },
+        {
+          "path": "docs/HOST_NETPLAY.md",
+          "sha256": "44f2160d225a1174df16b139e71f89268a275dc977b7d1fca9665d87e74a40d9"
+        },
+        {
+          "path": "src/recomp_launcher.h",
+          "sha256": "70be3867dd3d0cac8a69d1c2bae6cff7ba047a71163c2e3d7273ac5c356c60c1"
+        },
+        {
+          "path": "src/recomp_runtime_ui.h",
+          "sha256": "27e215ffcb53c6cf01f230f74f5ab5be8e2b3a25a2cbb6618296a0b16072099b"
+        }
+      ],
+      "license": "MIT (root license read; dependency license audit not performed)"
+    },
+    {
+      "repository": "recomp-net",
+      "commit": "618640272fd715bf8317fa17bf1f739e79738040",
+      "files": [
+        {
+          "path": "README.md",
+          "sha256": "7c68fe0adbb80f36c36f2d6f447882c865cdb4752ab681996c0bf68c35d84d49"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "cc98a0caf9b8279f318a1befb17b530433ad647375d789f211e0223d4697a882"
+        },
+        {
+          "path": "CMakeLists.txt",
+          "sha256": "12d18b582d844d19c4d7739db1db0cd3447b3ec296e8464da42345b3762ecd5c"
+        },
+        {
+          "path": "docs/architecture.md",
+          "sha256": "92b48c74f2b086d17a21fe4235cd6baf47f9266a25bafb3f7d2e48f0322b61e1"
+        },
+        {
+          "path": "docs/host_integration.md",
+          "sha256": "1415a835affd7e0c2ed5759ea55a2792c5fc513805b1f18d1d9bb0785b1c2e39"
+        },
+        {
+          "path": "docs/rollback.md",
+          "sha256": "ee7a624f7609af3a872259a35ca26c6c7ee9d05657c8d9b8d61b6b505edf0fc1"
+        },
+        {
+          "path": "docs/lobby.md",
+          "sha256": "5e5f674d6ed59af60e209b66daa07e841a232c4d44d62bd4efdb749be8d4dc8b"
+        },
+        {
+          "path": "include/recomp_net/rollback.h",
+          "sha256": "91fda46f3b069d78ae286bc901a948fe381eaa694d13f8abc9c3091a7a80795b"
+        },
+        {
+          "path": "include/recomp_net/rb_driver.h",
+          "sha256": "eaed54f2438ebc1e15a8ea376640fbbcd3d40a2097047bd372324aea3e0d527b"
+        },
+        {
+          "path": "include/recomp_net/session.h",
+          "sha256": "5097bea3252679b68f703aec8878e806457008eff967ad32275647a12cb12592"
+        },
+        {
+          "path": "include/recomp_net/input_contract.h",
+          "sha256": "5ee6f4beb7e47f3949162d1d2e18d7936fd9f749014dc54be123138cb9b330f0"
+        },
+        {
+          "path": "tests/rb_driver_test.c",
+          "sha256": "78e5b3aed3f95f60daea5bc05aa393ca367928a42e2e766f23c627893396f52f"
+        },
+        {
+          "path": "tests/rollback_episode_test.c",
+          "sha256": "46f081c0634e90f1b2ca9f17056d0ca6349bdaf73e180b89467c69a10b62a4d4"
+        }
+      ],
+      "license": "MIT (root license read; dependency license audit not performed)"
+    },
+    {
+      "repository": "rbengine",
+      "commit": "2a03e73693acee0fb78076ea058642c931bef12e",
+      "files": [
+        {
+          "path": "README.md",
+          "sha256": "11d70ea466506dfc9ace6923e29e4b176fe31426c25df22ba4cdfcdcda7cae8a"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "3d1abf9e12bf0de1d7ff86407eb151796feb1b44f5d6d2a4cc21333f79870603"
+        },
+        {
+          "path": "CMakeLists.txt",
+          "sha256": "3e13a2ca41fd5eabd73670f4a3fb8c317f2615702b353b673e6672db055850f2"
+        },
+        {
+          "path": "include/retcomm_rbengine/snap_ring.h",
+          "sha256": "41868c5b12dc790e2badae7236fcc03e8edff6036c340b24e43578fe71260e7a"
+        },
+        {
+          "path": "src/snap/rbe_snap_ring.c",
+          "sha256": "362e3cb763ba3e609565741c6a0af56a5444b46006aad80e2042bd0c363710f5"
+        },
+        {
+          "path": "tests/snap_ring_test.c",
+          "sha256": "ecef6e738c871b21f7f5d0e8a149f022a4ca666406e5e1396f11c4ae49abc2a2"
+        }
+      ],
+      "license": "MIT (root license read; dependency license audit not performed)"
+    }
+  ],
+  "snapshot_test": {
+    "repository": "rbengine",
+    "commit": "2a03e73693acee0fb78076ea058642c931bef12e",
+    "files_compiled": [
+      "src/snap/rbe_snap_ring.c",
+      "tests/snap_ring_test.c"
+    ],
+    "compiler": "GCC",
+    "options": [
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic"
+    ],
+    "compile_exit_code": 0,
+    "test_exit_code": 0,
+    "reported_checks": 18,
+    "result": "ALL PASS",
+    "log_sha256": "53f830b52d11a19851f43c1d6ad8afe00ccf18838b82a2b848e5ae2ea89944c8",
+    "coverage": "Upstream synthetic snapshot unit test only; no game serializer, monotonic clock, netplay or UI integration tested"
+  },
+  "changes": "Research documentation only. No shipped game/launcher changes or save modification."
+}

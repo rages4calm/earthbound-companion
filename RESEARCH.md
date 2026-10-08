@@ -2,6 +2,8 @@
 
 October 8 follow-up: [RetroPortingToolKit and Matthew Stanley review](research/retroporting-toolkit-review-20261008.md) records applicable widescreen, rendering-reference and comparison-testing methods, plus framework compatibility boundaries for EarthBound/Redux and future ports.
 
+The [game-porting toolkit reference](research/game-porting-toolkit-reference.md) adds pinned reviews of recomp-ui, recomp-net and rbengine, a bounded snapshot-library test, and candidates for our own reusable debugging utilities.
+
 Checked October 3–4, 2026. Findings distinguish native game code from a native executable running SNES instruction semantics. Local source inspection, build results and tests support the architecture conclusions below.
 
 ## Source choice
