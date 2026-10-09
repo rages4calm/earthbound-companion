@@ -18,6 +18,7 @@ jobs:
           dotnet-version: '8.0.x'
       - run: dotnet build Companion/Companion.csproj -c Release
       - run: dotnet run --project Ports/Tests/Companion.Portable.Tests.csproj -c Release
+      - run: dotnet run --project Ports/Desktop/Companion.Portable.csproj -c Release -- --smoke-test "${{ runner.temp }}/launcher-smoke.png"
   desktop:
     strategy:
       fail-fast: false
@@ -59,6 +60,14 @@ jobs:
           cd native-source
           pyinstaller ebtools_setup.spec --noconfirm
       - run: dotnet publish Ports/Desktop/Companion.Portable.csproj -c Release -r ${{ matrix.rid }} --self-contained true -o build/package
+      - name: Render launcher with an empty isolated data folder
+        shell: bash
+        run: |
+          if [ "${{ runner.os }}" = "Linux" ]; then
+            xvfb-run -a build/package/EarthBoundCompanion.Portable --smoke-test "$RUNNER_TEMP/launcher-smoke.png"
+          else
+            build/package/EarthBoundCompanion.Portable --smoke-test "$RUNNER_TEMP/launcher-smoke.png"
+          fi
       - name: Build native Redux conversion helper
         run: python scripts/build_portable_helpers.py --work build/helper-tools --output build/package/Game
       - name: Package preview
@@ -69,6 +78,7 @@ jobs:
           cp native-source/dist/ebtools-setup build/package/Game/
           cp LICENSE.md build/package/LICENSE.md
           cp docs/PORTABILITY.md build/package/README-PORTABILITY.md
+          cp docs/PLATFORM-TESTING.md build/package/PLATFORM-TESTING.md
           cp native-source/src/vendor/lakesnes/LICENSE.txt build/package/LICENSE-LakeSnes.txt
           cp CREDITS.md UPSTREAM.md build/package/
           cp -r Licenses build/package/
@@ -92,7 +102,7 @@ jobs:
       - uses: android-actions/setup-android@v3
         with:
           packages: platform-tools
-      - run: sdkmanager 'platforms;android-36' 'ndk;28.2.13676358' 'cmake;3.22.1'
+      - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0' 'ndk;28.2.13676358' 'cmake;3.22.1'
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
@@ -111,7 +121,35 @@ jobs:
         run: |
           dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-arm64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
           dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-x64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
+      - name: Sign previews with persistent project key
+        env:
+          EB_PREVIEW_KEYSTORE: ${{ secrets.EB_PREVIEW_KEYSTORE }}
+          EB_PREVIEW_KEYSTORE_PASSWORD: ${{ secrets.EB_PREVIEW_KEYSTORE_PASSWORD }}
+        shell: bash
+        run: |
+          test -n "$EB_PREVIEW_KEYSTORE" && test -n "$EB_PREVIEW_KEYSTORE_PASSWORD"
+          printf '%s' "$EB_PREVIEW_KEYSTORE" | base64 --decode > "$RUNNER_TEMP/preview.keystore"
+          mkdir -p build/apk
+          for rid in android-arm64 android-x64; do
+            input="Ports/AndroidManaged/bin/Release/net10.0-android/$rid/publish/org.earthbound.companion.preview-Signed.apk"
+            "$ANDROID_HOME/build-tools/36.0.0/apksigner" sign --ks "$RUNNER_TEMP/preview.keystore" --ks-key-alias companion-preview --ks-pass env:EB_PREVIEW_KEYSTORE_PASSWORD --key-pass env:EB_PREVIEW_KEYSTORE_PASSWORD --out "build/apk/EarthBound-Companion-$rid-preview.apk" "$input"
+            "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs "build/apk/EarthBound-Companion-$rid-preview.apk"
+          done
       - uses: actions/upload-artifact@v4
         with:
           name: EarthBound-Companion-android-preview
-          path: Ports/AndroidManaged/bin/Release/net10.0-android/*/publish/*.apk
+          path: build/apk/*.apk
+      - name: Enable Android emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Run ROM-free launcher and native startup on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: default
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: bash scripts/test_android_preview.sh

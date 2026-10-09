@@ -13,9 +13,10 @@ namespace EarthBoundCompanion.Android;
 public sealed class MainActivity : AvaloniaMainActivity<MobileApp> {
  internal static MainActivity? Current;
  TaskCompletionSource? gameClosed;
+ bool smokeStarted;
  protected override void OnCreate(global::Android.OS.Bundle? state){Current=this;Settings.OverrideRoot=Path.Combine(FilesDir!.AbsolutePath,"CompanionPreview");HostRuntime.NativeLibraryDirectory=ApplicationInfo!.NativeLibraryDir;base.OnCreate(state);}
  protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)=>base.CustomizeAppBuilder(builder).WithInterFont();
- protected override void OnResume(){base.OnResume();if(gameClosed!=null&&File.Exists(Settings.PathTo("settings.request")))return;gameClosed?.TrySetResult();gameClosed=null;}
+ protected override void OnResume(){base.OnResume();if(!smokeStarted&&Intent?.GetBooleanExtra("portableSmokeTest",false)==true){smokeStarted=true;new global::Android.OS.Handler(global::Android.OS.Looper.MainLooper!).PostDelayed(()=>{var intent=new Intent();intent.SetClassName(this,"org.earthbound.companion.GameActivity");intent.PutExtra("arguments",new[]{"--selftest-pc"});StartActivity(intent);},3000);}if(gameClosed!=null&&File.Exists(Settings.PathTo("settings.request")))return;gameClosed?.TrySetResult();gameClosed=null;}
  internal void ReturnToGame(){if(gameClosed==null)return;var intent=new Intent();intent.SetClassName(this,"org.earthbound.companion.GameActivity");intent.AddFlags(ActivityFlags.ReorderToFront);StartActivity(intent);}
  internal Task Launch(Settings settings,bool resume,SeedRecord? seed){
   if(seed!=null)StoryShuffle.Verify(seed);else settings.ValidatePak();Settings.SessionDirectory=seed?.Session;
