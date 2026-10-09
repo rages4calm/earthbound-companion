@@ -12,8 +12,9 @@
   <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.22" />
   <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.22" />
   <AndroidJavaSource Update="Java/*.java" Bind="false" />
-  <ProguardConfiguration Include="proguard.cfg" />
-  <AndroidNativeLibrary Include="native-libs/arm64-v8a/*.so;native-libs/x86_64/*.so" />
+  <AndroidNativeLibrary Remove="native-libs/**/*.so" />
+  <AndroidNativeLibrary Include="native-libs/arm64-v8a/*.so" Abi="arm64-v8a" Condition="'$(RuntimeIdentifier)'=='android-arm64'" />
+  <AndroidNativeLibrary Include="native-libs/x86_64/*.so" Abi="x86_64" Condition="'$(RuntimeIdentifier)'=='android-x64'" />
   <AndroidAsset Include="../../Licenses/**/*" Link="Licenses/%(RecursiveDir)%(Filename)%(Extension)" />
   <AndroidAsset Include="../../docs/PORTABILITY.md;../../docs/PLATFORM-TESTING.md;../../LICENSE.md;../../CREDITS.md;../../UPSTREAM.md" Link="Notices/%(Filename)%(Extension)" />
  </ItemGroup>
