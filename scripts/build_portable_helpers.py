@@ -41,7 +41,13 @@ def main():
         for file in tool.iterdir():
             if file.is_file() and file.name.lower().startswith(('license','copying')):
                 shutil.copy2(file,notices/(name+'-'+file.name));found=True
-        if not found: raise ValueError('Missing tool license: '+name)
+        if not found:
+            # Pinned legacy CCScript has no standalone license declaration.
+            # Retain its source provenance and bundled filesystem license without
+            # inventing a license for the compiler itself.
+            if name!='CCScript': raise ValueError('Missing tool license: '+name)
+            shutil.copy2(ccc/'src/filesystem/LICENSE',notices/'CCScript-filesystem-LICENSE')
+            (notices/'CCScript-UPSTREAM.txt').write_text('CCScript 1.500\nhttps://github.com/charasyn/ccscript_legacy/tree/cecd6a44baf88f3e6de86938b4052502b4c53366\nThis pinned upstream does not include a standalone compiler license declaration. Its bundled filesystem library notice accompanies this file.\n',encoding='utf-8')
     shutil.copy2(cs/'coilsnake/util/eb/exhal/COPYING.txt',notices/'Exhal-COPYING.txt')
 
 if __name__=='__main__':main()

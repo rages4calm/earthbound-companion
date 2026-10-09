@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 package org.earthbound.companion;
 import android.os.Bundle;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,11 +29,12 @@ public final class GameActivity extends SDLActivity {
   left.addView(row(new String[]{"↙","↓","↘"},new int[][]{{9,10},{9},{9,11}}));
   FrameLayout.LayoutParams lp=new FrameLayout.LayoutParams(-2,-2,Gravity.BOTTOM|Gravity.LEFT);lp.setMargins(12,0,0,12);overlay.addView(left,lp);
   LinearLayout right=new LinearLayout(this);right.setOrientation(LinearLayout.VERTICAL);
-  right.addView(row(new String[]{"X","A"},new int[][]{{2},{0}}));right.addView(row(new String[]{"L","B"},new int[][]{{4},{1}}));
+  right.addView(row(new String[]{"X","A"},new int[][]{{2},{0}}));right.addView(row(new String[]{"L","B"},new int[][]{{4},{1}}));right.addView(row(new String[]{"R","Settings"},new int[][]{{5},{20}}));
   FrameLayout.LayoutParams rp=new FrameLayout.LayoutParams(-2,-2,Gravity.BOTTOM|Gravity.RIGHT);rp.setMargins(0,0,12,12);overlay.addView(right,rp);
   LinearLayout top=row(new String[]{"Start","Select","Save","Load","Fast"},new int[][]{{6},{7},{13},{14},{12}});
   FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-2,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);overlay.addView(top,tp);
  }
+ public void openSettings(){runOnUiThread(()->{Intent intent=new Intent();intent.setClassName(this,"org.earthbound.companion.ManagedLauncher");intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);startActivity(intent);});}
  private LinearLayout row(String[] labels,int[][] actions) {
   LinearLayout row=new LinearLayout(this);
   for(int i=0;i<labels.length;i++) {

@@ -108,8 +108,10 @@ jobs:
             cp build/android-$abi/earthbound/libearthbound.so build/android-$abi/SDL/libSDL2.so Ports/AndroidManaged/native-libs/$abi/
           done
       - name: Build shared launcher APK
-        run: dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-arm64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
+        run: |
+          dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-arm64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
+          dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-x64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
       - uses: actions/upload-artifact@v4
         with:
           name: EarthBound-Companion-android-preview
-          path: Ports/AndroidManaged/bin/Release/net10.0-android/android-arm64/publish/*.apk
+          path: Ports/AndroidManaged/bin/Release/net10.0-android/*/publish/*.apk

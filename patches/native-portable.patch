@@ -75,23 +75,26 @@ diff --git a/port/unix/platform/sdl2_input.c b/port/unix/platform/sdl2_input.c
          bool pressed = held && !last[i];
          last[i] = held;
          if (i < 12 && held)
-@@ -137,8 +145,37 @@
+@@ -120,6 +128,9 @@
+             FILE *f = fopen("settings.request", "wb");
+             if (f)
+                 fclose(f);
++#ifdef __ANDROID__
++            pc_mobile_open_settings();
++#endif
+         }
+     }
+     if (axes[0] < -pc_options.deadzone)
+@@ -137,8 +148,30 @@
      while (SDL_PollEvent(&e))
          switch (e.type) {
          case SDL_QUIT:
 +#ifdef __ANDROID__
 +            state_dump_save_slots();
 +#endif
-+#ifdef __ANDROID__
-+            state_dump_save_slots();
-+#endif
              quit_requested = 1;
              break;
 +#ifdef __ANDROID__
-+        case SDL_RENDER_DEVICE_RESET:
-+            fprintf(stderr,"Android renderer device reset; saving checkpoint and returning to launcher.\n");
-+            state_dump_save_slots();quit_requested=1;
-+            break;
 +        case SDL_RENDER_DEVICE_RESET:
 +            fprintf(stderr,"Android renderer device reset; saving checkpoint and returning to launcher.\n");
 +            state_dump_save_slots();quit_requested=1;
@@ -146,7 +149,7 @@ diff --git a/port/unix/platform/sdl2_mobile.c b/port/unix/platform/sdl2_mobile.c
 new file mode 100644
 --- /dev/null
 +++ b/port/unix/platform/sdl2_mobile.c
-@@ -0,0 +1,21 @@
+@@ -0,0 +1,29 @@
 +/* SPDX-License-Identifier: GPL-3.0-or-later */
 +#ifdef __ANDROID__
 +#include <SDL.h>
@@ -155,6 +158,14 @@ new file mode 100644
 +static SDL_atomic_t touch_actions[21];
 +bool pc_mobile_held(int action) {return action >= 0 && action < 21 && SDL_AtomicGet(&touch_actions[action]) > 0;}
 +void pc_mobile_clear(void) {for(int i=0;i<21;i++)SDL_AtomicSet(&touch_actions[i],0);}
++void pc_mobile_open_settings(void) {
++ JNIEnv *env=SDL_AndroidGetJNIEnv();jobject activity=SDL_AndroidGetActivity();
++ if(!env||!activity)return;
++ jclass type=(*env)->GetObjectClass(env,activity);
++ jmethodID method=(*env)->GetMethodID(env,type,"openSettings","()V");
++ if(method)(*env)->CallVoidMethod(env,activity,method);
++ (*env)->DeleteLocalRef(env,type);(*env)->DeleteLocalRef(env,activity);
++}
 +JNIEXPORT void JNICALL Java_org_earthbound_companion_GameActivity_setTouch(JNIEnv *env, jclass type, jint action, jboolean down) {
 + (void)env; (void)type;
 + if (action < 0 || action >= 21) return;
@@ -172,10 +183,11 @@ diff --git a/port/unix/platform/sdl2_mobile.h b/port/unix/platform/sdl2_mobile.h
 new file mode 100644
 --- /dev/null
 +++ b/port/unix/platform/sdl2_mobile.h
-@@ -0,0 +1,6 @@
+@@ -0,0 +1,7 @@
 +#ifndef SDL2_MOBILE_H
 +#define SDL2_MOBILE_H
 +#include <stdbool.h>
 +bool pc_mobile_held(int action);
 +void pc_mobile_clear(void);
 +#endif
++void pc_mobile_open_settings(void);
