@@ -18,6 +18,7 @@ public sealed class MainActivity : AvaloniaMainActivity<MobileApp> {
  protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)=>base.CustomizeAppBuilder(builder).WithInterFont();
  protected override void OnResume(){base.OnResume();if(!smokeStarted&&Intent?.GetBooleanExtra("portableSmokeTest",false)==true){smokeStarted=true;new global::Android.OS.Handler(global::Android.OS.Looper.MainLooper!).PostDelayed(()=>{var intent=new Intent();intent.SetClassName(this,"org.earthbound.companion.GameActivity");intent.PutExtra("arguments",new[]{"--selftest-pc"});StartActivity(intent);},3000);}if(gameClosed!=null&&File.Exists(Settings.PathTo("settings.request")))return;gameClosed?.TrySetResult();gameClosed=null;}
  internal void ReturnToGame(){if(gameClosed==null)return;var intent=new Intent();intent.SetClassName(this,"org.earthbound.companion.GameActivity");intent.AddFlags(ActivityFlags.ReorderToFront);StartActivity(intent);}
+ public override void OnBackPressed(){if(gameClosed==null){base.OnBackPressed();return;}File.WriteAllText(Settings.PathTo("settings.applied"),"");File.Delete(Settings.PathTo("settings.request"));ReturnToGame();}
  internal Task Launch(Settings settings,bool resume,SeedRecord? seed){
   if(seed!=null)StoryShuffle.Verify(seed);else settings.ValidatePak();Settings.SessionDirectory=seed?.Session;
   try {

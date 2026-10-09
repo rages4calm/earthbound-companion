@@ -2,6 +2,7 @@
  <uses-permission android:name="android.permission.INTERNET" />
  <uses-feature android:glEsVersion="0x00020000" android:required="true" />
  <application android:allowBackup="false" android:usesCleartextTraffic="false" android:extractNativeLibs="true">
+  <activity android:name="org.earthbound.companion.ManagedLauncher" android:enableOnBackInvokedCallback="false" />
   <activity android:name="org.earthbound.companion.GameActivity" android:screenOrientation="sensorLandscape" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|navigation|density" android:exported="false" />
  </application>
 </manifest>
