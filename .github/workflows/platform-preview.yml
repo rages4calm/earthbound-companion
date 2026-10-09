@@ -83,7 +83,16 @@ jobs:
           cp CREDITS.md UPSTREAM.md build/package/
           cp -r Licenses build/package/
           cp build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71/LICENSE.txt build/package/LICENSE-SDL2.txt
-          tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/package .
+          if [ "${{ runner.os }}" = "macOS" ]; then
+            mkdir -p "build/mac-bundle/EarthBound Companion Preview.app/Contents"
+            cp Ports/Desktop/macOS/Info.plist "build/mac-bundle/EarthBound Companion Preview.app/Contents/Info.plist"
+            cp -R build/package "build/mac-bundle/EarthBound Companion Preview.app/Contents/MacOS"
+            codesign --force --deep --sign - "build/mac-bundle/EarthBound Companion Preview.app"
+            codesign --verify --deep --strict "build/mac-bundle/EarthBound Companion Preview.app"
+            tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/mac-bundle .
+          else
+            tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/package .
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: EarthBound-Companion-${{ matrix.rid }}-preview
@@ -119,6 +128,7 @@ jobs:
           done
       - name: Build shared launcher APK
         run: |
+          cp build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71/android-project/app/src/main/java/org/libsdl/app/*.java Ports/AndroidManaged/Java/
           dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-arm64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
           dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-x64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
       - name: Sign previews with persistent project key
