@@ -1,0 +1,99 @@
+name: Platform preview
+on:
+  push:
+    branches: [ports/multiplatform-preview]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: platform-preview-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  windows-guard:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet build Companion/Companion.csproj -c Release
+      - run: dotnet run --project Ports/Tests/Companion.Portable.Tests.csproj -c Release
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            rid: linux-x64
+          - os: macos-15
+            rid: osx-arm64
+          - os: macos-15-intel
+            rid: osx-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Linux graphics build dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y ninja-build libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev libxfixes-dev libxss-dev libxinerama-dev libgl1-mesa-dev libasound2-dev libpulse-dev libudev-dev xvfb
+      - run: python scripts/prepare_port_sources.py --native native-source --sdl build/dependencies
+      - name: Build SDL and native game without ROM
+        shell: bash
+        run: |
+          cmake -S build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71 -B build/sdl -DSDL_SHARED=OFF -DSDL_STATIC=ON -DSDL_TEST=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$PWD/build/sdl-install"
+          cmake --build build/sdl --parallel 3
+          cmake --install build/sdl
+          cmake -S native-source/port/unix -B build/native -DEB_RUNTIME_ASSETS=ON -DEB_ENABLE_VERIFY=OFF -DEB_ENABLE_AUDIO=ON -DEB_SDL2_STATIC_CONFIG_DIR="$PWD/build/sdl-install/lib/cmake/SDL2" -DCMAKE_BUILD_TYPE=Release
+          cmake --build build/native --parallel 3
+      - run: dotnet run --project Ports/Tests/Companion.Portable.Tests.csproj -c Release
+      - name: Build private-ROM Original setup helper
+        shell: bash
+        run: |
+          python -m pip install './native-source[packaging]'
+          cd native-source
+          pyinstaller ebtools_setup.spec --noconfirm
+      - run: dotnet publish Ports/Desktop/Companion.Portable.csproj -c Release -r ${{ matrix.rid }} --self-contained true -o build/package
+      - name: Package preview
+        shell: bash
+        run: |
+          mkdir -p build/package/Game
+          cp build/native/earthbound build/package/Game/
+          cp native-source/dist/ebtools-setup build/package/Game/
+          cp LICENSE build/package/LICENSE
+          cp docs/PORTABILITY.md build/package/README-PORTABILITY.md
+          cp native-source/src/vendor/lakesnes/LICENSE build/package/LICENSE-LakeSnes
+          cp build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71/LICENSE.txt build/package/LICENSE-SDL2.txt
+          tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/package .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EarthBound-Companion-${{ matrix.rid }}-preview
+          path: EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz
+  android:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager 'platforms;android-36' 'ndk;28.2.13676358' 'cmake;3.22.1'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.4.1'
+      - run: python scripts/prepare_port_sources.py --native native-source --sdl build/dependencies
+      - name: Build APK for ARM64 phones and x64 emulators
+        working-directory: Ports/Android
+        run: gradle assembleDebug lintDebug -PnativeRoot="$GITHUB_WORKSPACE/native-source" -PsdlRoot="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EarthBound-Companion-android-preview
+          path: Ports/Android/app/build/outputs/apk/debug/*.apk

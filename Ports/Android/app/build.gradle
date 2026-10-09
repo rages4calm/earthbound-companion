@@ -1,0 +1,21 @@
+plugins { id 'com.android.application' }
+def nativeRoot = providers.gradleProperty('nativeRoot').getOrElse('../../../native-source')
+def sdlRoot = providers.gradleProperty('sdlRoot').getOrElse('../../../build/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71')
+android {
+ namespace 'org.earthbound.companion'
+ compileSdk 36
+ ndkVersion '28.2.13676358'
+ defaultConfig {
+  applicationId 'org.earthbound.companion.preview'
+  minSdk 26
+  targetSdk 36
+  versionCode 1
+  versionName '0.5.0-ports-preview.1'
+  ndk { abiFilters 'arm64-v8a', 'x86_64' }
+  externalNativeBuild { cmake { arguments '-DEB_RUNTIME_ASSETS=ON', '-DEB_ENABLE_VERIFY=OFF', '-DEB_ENABLE_AUDIO=ON', '-DEB_SDL_SOURCE=' + file(sdlRoot).absolutePath } }
+ }
+ externalNativeBuild { cmake { path file(nativeRoot + '/port/android/CMakeLists.txt') } }
+ sourceSets { main { java.srcDirs += file(sdlRoot + '/android-project/app/src/main/java') } }
+ buildTypes { release { minifyEnabled false } }
+ lint { abortOnError true }
+}

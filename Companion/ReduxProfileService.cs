@@ -36,7 +36,7 @@ static class ReduxProfileService {
   } else if(Directory.Exists(DirectoryPath))throw new IOException("An incomplete Redux profile exists. Preserve its diagnostics and choose a fresh profile directory before rebuilding.");
   string outputDirectory=upgrade?Path.Combine(Path.GetDirectoryName(DirectoryPath)!,".redux-upgrade-"+Guid.NewGuid().ToString("N")):DirectoryPath;
   ReduxStoryUpgrade.Physical(DirectoryPath);ReduxStoryUpgrade.Physical(outputDirectory);
-  string helper=Path.Combine(Settings.BaseGame,"redux-setup.exe");
+  string helper=HostRuntime.Executable("redux-setup");
   if(!File.Exists(helper))throw new IOException("The Redux setup helper is missing. Use the complete Redux development package.");
   var start=new ProcessStartInfo(helper){WorkingDirectory=Settings.Root,UseShellExecute=false,CreateNoWindow=true,RedirectStandardOutput=true,RedirectStandardError=true};
   foreach(var argument in new[]{"--rom",Path.GetFullPath(rom),"--base-assets",Path.Combine(Settings.BaseGame,"assets.pak"),"--output-directory",outputDirectory})start.ArgumentList.Add(argument);

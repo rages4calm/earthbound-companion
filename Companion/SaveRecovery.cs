@@ -31,7 +31,7 @@ static class SaveRecovery {
    if(!Same(session,seed.Session)||!Same(Path.GetDirectoryName(seed.Folder)!,StoryShuffle.Library))throw new InvalidDataException("Choose a managed story or seed save folder.");
    id=seed.Id;assets=seed.Pak;
   }
-  string engine=Path.Combine(Settings.BaseGame,"earthbound.exe");
+  string engine=HostRuntime.Executable("earthbound");
   var hashes=new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);
   if(Directory.Exists(Path.Combine(session,"saves")))foreach(string f in Directory.EnumerateFiles(Path.Combine(session,"saves")))if(IsSave(Path.GetFileName(f)))hashes.Add(Path.GetFileName(f),StoryShuffle.HashFile(f));
   return new(1,id,StoryShuffle.HashFile(assets),File.Exists(engine)?StoryShuffle.HashFile(engine):"",hashes);
