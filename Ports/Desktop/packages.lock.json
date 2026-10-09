@@ -189,6 +189,13 @@
       },
       "EarthBoundCompanion.Portable.Core": {
         "type": "Project"
+      },
+      "EarthBoundCompanion.Portable.UI": {
+        "type": "Project",
+        "dependencies": {
+          "Avalonia": "[11.3.22, )",
+          "EarthBoundCompanion.Portable.Core": "[1.0.0, )"
+        }
       }
     }
   }

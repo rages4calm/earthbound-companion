@@ -37,7 +37,8 @@ public final class LauncherActivity extends Activity {
   status=text("",16);select();
  }
  private TextView text(String value,int size){TextView t=new TextView(this);t.setText(value);t.setTextSize(size);t.setPadding(0,8,0,8);page.addView(t);return t;}
- private void button(String title,Runnable task){Button b=new Button(this);b.setText(title);b.setOnClickListener(v->{if(importing){message("Please wait for the import to finish.");return;}try{task.run();}catch(Exception e){message(e.getMessage());}});page.addView(b);}
+ private interface Operation {void run() throws Exception;}
+ private void button(String title,Operation task){Button b=new Button(this);b.setText(title);b.setOnClickListener(v->{if(importing){message("Please wait for the import to finish.");return;}try{task.run();}catch(Exception e){message(e.getMessage());}});page.addView(b);}
  private void check(String key,String title,boolean initial){CheckBox c=new CheckBox(this);c.setText(title);c.setChecked(preferences.getBoolean(key,initial));checks.put(key,c);page.addView(c);}
  private void number(String key,String title,int initial,int min,int max){text(title,16);EditText e=new EditText(this);e.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);e.setText(Integer.toString(preferences.getInt(key,initial)));e.setTag(new int[]{min,max});numbers.put(key,e);page.addView(e);}
  private void message(String value){if(status!=null)status.setText(value==null?"Operation failed.":value);}

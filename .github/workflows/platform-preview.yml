@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-22.04
+          - os: ubuntu-24.04
             rid: linux-x64
           - os: macos-15
             rid: osx-arm64
@@ -48,8 +48,9 @@ jobs:
           cmake -S build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71 -B build/sdl -DSDL_SHARED=OFF -DSDL_STATIC=ON -DSDL_TEST=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$PWD/build/sdl-install"
           cmake --build build/sdl --parallel 3
           cmake --install build/sdl
-          cmake -S native-source/port/unix -B build/native -DEB_RUNTIME_ASSETS=ON -DEB_ENABLE_VERIFY=OFF -DEB_ENABLE_AUDIO=ON -DEB_SDL2_STATIC_CONFIG_DIR="$PWD/build/sdl-install/lib/cmake/SDL2" -DCMAKE_BUILD_TYPE=Release
+          cmake -S native-source/port/unix -B build/native -DCMAKE_C_COMPILER=clang -DEB_RUNTIME_ASSETS=ON -DEB_ENABLE_VERIFY=OFF -DEB_ENABLE_AUDIO=ON -DEB_SDL2_STATIC_CONFIG_DIR="$PWD/build/sdl-install/lib/cmake/SDL2" -DCMAKE_BUILD_TYPE=Release
           cmake --build build/native --target earthbound --parallel 3
+          SDL_AUDIODRIVER=dummy build/native/earthbound --selftest-pc
       - run: dotnet run --project Ports/Tests/Companion.Portable.Tests.csproj -c Release
       - name: Build private-ROM Original setup helper
         shell: bash
@@ -90,14 +91,23 @@ jobs:
         with:
           packages: platform-tools
       - run: sdkmanager 'platforms;android-36' 'ndk;28.2.13676358' 'cmake;3.22.1'
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/setup-dotnet@v4
         with:
-          gradle-version: '9.4.1'
+          dotnet-version: '10.0.x'
+      - run: dotnet workload install android --skip-manifest-update
       - run: python scripts/prepare_port_sources.py --native native-source --sdl build/dependencies
-      - name: Build APK for ARM64 phones and x64 emulators
-        working-directory: Ports/Android
-        run: gradle assembleDebug lintDebug -PnativeRoot="$GITHUB_WORKSPACE/native-source" -PsdlRoot="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
+      - name: Build native game for ARM64 phones and x64 emulators
+        shell: bash
+        run: |
+          for abi in arm64-v8a x86_64; do
+            cmake -S native-source/port/android -B build/android-$abi -G Ninja -DCMAKE_TOOLCHAIN_FILE="$ANDROID_HOME/ndk/28.2.13676358/build/cmake/android.toolchain.cmake" -DANDROID_ABI=$abi -DANDROID_PLATFORM=android-26 -DEB_SDL_SOURCE="$PWD/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71" -DEB_RUNTIME_ASSETS=ON -DEB_ENABLE_VERIFY=OFF -DEB_ENABLE_AUDIO=ON -DCMAKE_BUILD_TYPE=Release
+            cmake --build build/android-$abi --target earthbound SDL2 --parallel 3
+            mkdir -p Ports/AndroidManaged/native-libs/$abi
+            cp build/android-$abi/earthbound/libearthbound.so build/android-$abi/SDL/libSDL2.so Ports/AndroidManaged/native-libs/$abi/
+          done
+      - name: Build shared launcher APK
+        run: dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-arm64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
       - uses: actions/upload-artifact@v4
         with:
           name: EarthBound-Companion-android-preview
-          path: Ports/Android/app/build/outputs/apk/debug/*.apk
+          path: Ports/AndroidManaged/bin/Release/net10.0-android/android-arm64/publish/*.apk

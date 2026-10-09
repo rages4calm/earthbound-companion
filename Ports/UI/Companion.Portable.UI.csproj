@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><AssemblyName>EarthBoundCompanion.Portable.UI</AssemblyName></PropertyGroup>
+ <ItemGroup>
+  <ProjectReference Include="../Shared/Companion.Portable.Core.csproj" />
+  <PackageReference Include="Avalonia" Version="11.3.22" />
+ </ItemGroup>
+</Project>
