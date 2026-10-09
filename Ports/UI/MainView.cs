@@ -16,7 +16,7 @@ public sealed class MainView : UserControl {
  readonly DispatcherTimer settingsMonitor=new(){Interval=TimeSpan.FromMilliseconds(350)};
  bool gameRunning,requestSeen;
  public bool IsBusy=>busy;
- readonly ComboBox seeds=new(){MinWidth=320};
+ readonly ComboBox seeds=new(){HorizontalAlignment=HorizontalAlignment.Stretch};
  readonly List<Action> capture=[];
  readonly List<Action> refresh=[];
  readonly List<Control> busyControls=[];

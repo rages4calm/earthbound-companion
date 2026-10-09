@@ -8,15 +8,15 @@ Linux x64, Apple Silicon macOS and Intel macOS use the existing C/SDL2 game core
 
 The launchers include Original/Redux selection, display presets, widescreen, built-in display effects, HQ/MSU music settings, gameplay options, controller/keyboard mapping, seed generation and recipe import, verified backup recovery, phone-save transfer and settings export. Desktop packages include Original and Redux ROM conversion helpers. Android imports privately generated asset packs; converting a ROM on the phone is not available yet.
 
-External Slang shader presets are currently Windows-only. Built-in scanlines, color grading, filtering and depth effects are available in these previews. macOS packages are unsigned and not notarized. iOS is outside this preview.
+External Slang shader presets are currently Windows-only. Built-in scanlines, color grading, filtering and depth effects are available in these previews. macOS packages have an ad-hoc signature, but no Apple Developer ID signing or notarization. iOS is outside this preview.
 
 ## Desktop setup
 
-1. Extract the archive and launch `EarthBoundCompanion.Portable` from its folder. Keep `Game` beside the launcher.
+1. Extract the archive. On Linux launch `EarthBoundCompanion.Portable` from its folder and keep `Game` beside it. On macOS 12+ open **EarthBound Companion Preview.app** from Finder.
 2. Select **Game & setup**, then **Set up Original from ROM** and choose your clean USA EarthBound ROM. To use Redux, build Original first, then **Build Redux from ROM**. Alternatively import packs prepared by your own existing Companion installation.
 3. Select Original or Redux and press **Play**. Story Shuffle seeds are generated under **Story Shuffle** and keep their own saves.
 
-Linux needs a desktop session and normal X11/OpenGL/fontconfig/audio libraries. On macOS use Finder's explicit Open command if Gatekeeper blocks the unsigned preview. A trusted local build is also supported; do not disable system security globally.
+Linux needs a desktop session and normal X11/OpenGL/fontconfig/audio libraries. On macOS use Finder's explicit Open command if Gatekeeper blocks the unnotarized preview. A trusted local build is also supported; do not disable system security globally.
 
 Privately prepared packs come from `Game/assets.pak` for Original and `Profiles/maternalbound-redux-897d0083/assets.pak` for Redux. Import both if you want Redux's optional Original title presentation. Do not post ROMs or generated packs publicly.
 
@@ -49,6 +49,6 @@ The Windows launcher is compiled as a guard. Local tests additionally use copies
 
 ## Reproducing builds
 
-`scripts/prepare_port_sources.py` prepares a fresh pinned native checkout and a SHA-256-checked SDL 2.32.10 archive. It refuses to reset an existing source folder. Apply `patches/native-portable.patch` after the dev.33 `native-companion.patch`. `.github/workflows/platform-preview.yml` builds previews without ROMs, generated packs, music or personal saves, using standard public-repository runners.
+`scripts/prepare_port_sources.py` prepares a fresh pinned native checkout and a SHA-256-checked SDL 2.32.10 archive. It refuses to reset an existing source folder. Apply `patches/native-portable.patch` after the dev.33 `native-companion.patch`. For the Android launcher, copy the verified SDL archive's `android-project/app/src/main/java/org/libsdl/app/*.java` into `Ports/AndroidManaged/Java` before publishing; those generated bridge files are intentionally ignored by Git. `.github/workflows/platform-preview.yml` builds previews without ROMs, generated packs, music or personal saves, using standard public-repository runners.
 
 Portable code retains its SPDX notices; the repository's license scopes and existing upstream notices still apply. SDL is zlib, Avalonia is MIT, Inter is OFL, and LakeSnes/SkiaSharp/HarfBuzz notices accompany packages. Pinned legacy CCScript does not supply a standalone compiler license declaration; the helper includes its source provenance and bundled filesystem notice rather than inventing a license.

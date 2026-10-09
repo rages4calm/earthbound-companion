@@ -11,7 +11,7 @@
   <PackageReference Include="Avalonia.Android" Version="11.3.22" />
   <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.22" />
   <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.22" />
-  <AndroidJavaSource Include="Java/*.java" Bind="false" />
+  <AndroidJavaSource Update="Java/*.java" Bind="false" />
   <ProguardConfiguration Include="proguard.cfg" />
   <AndroidNativeLibrary Include="native-libs/arm64-v8a/*.so;native-libs/x86_64/*.so" />
   <AndroidAsset Include="../../Licenses/**/*" Link="Licenses/%(RecursiveDir)%(Filename)%(Extension)" />
