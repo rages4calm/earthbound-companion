@@ -12,12 +12,14 @@ import org.libsdl.app.SDLActivity;
 public final class GameActivity extends SDLActivity {
  private static native void setTouch(int action, boolean down);
  private static native void clearTouch();
+ private static native void requestQuit();
  @Override protected String[] getLibraries() { return new String[]{"SDL2", "earthbound"}; }
  @Override protected String getMainSharedObject() {return getApplicationInfo().nativeLibraryDir + "/libearthbound.so";}
  @Override protected String[] getArguments() {return getIntent().getStringArrayExtra("arguments");}
  @Override protected void onCreate(Bundle saved) {
   super.onCreate(saved);
   if (mBrokenLibraries) return;
+  if(android.os.Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,()->requestQuit());
   FrameLayout overlay=new FrameLayout(this);
   addContentView(overlay,new FrameLayout.LayoutParams(-1,-1));
   LinearLayout left=new LinearLayout(this);left.setOrientation(LinearLayout.VERTICAL);
@@ -42,4 +44,5 @@ public final class GameActivity extends SDLActivity {
   return row;
  }
  @Override protected void onPause(){if(!mBrokenLibraries)clearTouch();super.onPause();}
+ @Override public void onBackPressed(){if(!mBrokenLibraries)requestQuit();else super.onBackPressed();}
 }

@@ -26,7 +26,18 @@ diff --git a/port/unix/main.c b/port/unix/main.c
 diff --git a/port/unix/CMakeLists.txt b/port/unix/CMakeLists.txt
 --- a/port/unix/CMakeLists.txt
 +++ b/port/unix/CMakeLists.txt
-@@ -129,7 +129,11 @@
+@@ -106,7 +106,9 @@
+ # frameworks ourselves.
+ set(EB_SDL2_STATIC_CONFIG_DIR "" CACHE PATH
+     "Directory holding a from-source SDL2Config.cmake (SDL_SHARED=OFF/SDL_STATIC=ON build) to statically link instead of the system SDL2 (release packaging only)")
+-if(EB_SDL2_STATIC_CONFIG_DIR)
++if(ANDROID)
++    set(EB_SDL2_TARGET SDL2)
++elseif(EB_SDL2_STATIC_CONFIG_DIR)
+     find_package(SDL2 REQUIRED CONFIG PATHS "${EB_SDL2_STATIC_CONFIG_DIR}" NO_DEFAULT_PATH)
+     set(EB_SDL2_TARGET SDL2::SDL2-static)
+     # Lets sdl2_updater.c know this binary has no paired SDL2.dll/libSDL2
+@@ -129,7 +131,11 @@
  # link. GLOB_RECURSE + CONFIGURE_DEPENDS works there and matches src/CMakeLists.txt.
  # platform/ has no subdirectories, so this is equivalent to a flat glob.
  file(GLOB_RECURSE PLATFORM_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/platform/*.c")
@@ -64,11 +75,27 @@ diff --git a/port/unix/platform/sdl2_input.c b/port/unix/platform/sdl2_input.c
          bool pressed = held && !last[i];
          last[i] = held;
          if (i < 12 && held)
-@@ -139,6 +147,21 @@
+@@ -137,8 +145,37 @@
+     while (SDL_PollEvent(&e))
+         switch (e.type) {
          case SDL_QUIT:
++#ifdef __ANDROID__
++            state_dump_save_slots();
++#endif
++#ifdef __ANDROID__
++            state_dump_save_slots();
++#endif
              quit_requested = 1;
              break;
 +#ifdef __ANDROID__
++        case SDL_RENDER_DEVICE_RESET:
++            fprintf(stderr,"Android renderer device reset; saving checkpoint and returning to launcher.\n");
++            state_dump_save_slots();quit_requested=1;
++            break;
++        case SDL_RENDER_DEVICE_RESET:
++            fprintf(stderr,"Android renderer device reset; saving checkpoint and returning to launcher.\n");
++            state_dump_save_slots();quit_requested=1;
++            break;
 +        case SDL_APP_WILLENTERBACKGROUND:
 +            state_dump_save_slots();
 +            mobile_previous_pause = pc_paused;
@@ -86,6 +113,19 @@ diff --git a/port/unix/platform/sdl2_input.c b/port/unix/platform/sdl2_input.c
          case SDL_KEYDOWN:
          case SDL_KEYUP:
              if (e.key.keysym.scancode > 0 && e.key.keysym.scancode < SDL_NUM_SCANCODES)
+diff --git a/port/unix/platform/sdl2_video.c b/port/unix/platform/sdl2_video.c
+--- a/port/unix/platform/sdl2_video.c
++++ b/port/unix/platform/sdl2_video.c
+@@ -878,6 +878,9 @@
+ }
+ 
+ void platform_video_end_frame(void) {
++#ifdef __ANDROID__
++    if (platform_input_quit_requested()) return;
++#endif
+     if (platform_headless)
+         return;
+ 
 diff --git a/port/android/CMakeLists.txt b/port/android/CMakeLists.txt
 new file mode 100644
 --- /dev/null
@@ -106,23 +146,27 @@ diff --git a/port/unix/platform/sdl2_mobile.c b/port/unix/platform/sdl2_mobile.c
 new file mode 100644
 --- /dev/null
 +++ b/port/unix/platform/sdl2_mobile.c
-@@ -0,0 +1,17 @@
+@@ -0,0 +1,21 @@
 +/* SPDX-License-Identifier: GPL-3.0-or-later */
 +#ifdef __ANDROID__
 +#include <SDL.h>
 +#include <jni.h>
 +#include "sdl2_mobile.h"
-+static SDL_atomic_t touch_actions;
-+bool pc_mobile_held(int action) {return action >= 0 && action < 21 && (SDL_AtomicGet(&touch_actions) & (1 << action));}
-+void pc_mobile_clear(void) {SDL_AtomicSet(&touch_actions, 0);}
++static SDL_atomic_t touch_actions[21];
++bool pc_mobile_held(int action) {return action >= 0 && action < 21 && SDL_AtomicGet(&touch_actions[action]) > 0;}
++void pc_mobile_clear(void) {for(int i=0;i<21;i++)SDL_AtomicSet(&touch_actions[i],0);}
 +JNIEXPORT void JNICALL Java_org_earthbound_companion_GameActivity_setTouch(JNIEnv *env, jclass type, jint action, jboolean down) {
 + (void)env; (void)type;
 + if (action < 0 || action >= 21) return;
 + int previous, next;
-+ do {previous=SDL_AtomicGet(&touch_actions); next=down ? previous | (1 << action) : previous & ~(1 << action);}
-+ while (!SDL_AtomicCAS(&touch_actions,previous,next));
++ do {previous=SDL_AtomicGet(&touch_actions[action]); next=down ? previous+1 : (previous>0 ? previous-1 : 0);}
++ while (!SDL_AtomicCAS(&touch_actions[action],previous,next));
 +}
 +JNIEXPORT void JNICALL Java_org_earthbound_companion_GameActivity_clearTouch(JNIEnv *env, jclass type) {(void)env;(void)type;pc_mobile_clear();}
++#endif
++
++#ifdef __ANDROID__
++JNIEXPORT void JNICALL Java_org_earthbound_companion_GameActivity_requestQuit(JNIEnv *env,jclass type) {(void)env;(void)type;SDL_Event event;SDL_zero(event);event.type=SDL_QUIT;SDL_PushEvent(&event);}
 +#endif
 diff --git a/port/unix/platform/sdl2_mobile.h b/port/unix/platform/sdl2_mobile.h
 new file mode 100644

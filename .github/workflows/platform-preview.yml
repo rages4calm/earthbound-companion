@@ -59,6 +59,8 @@ jobs:
           cd native-source
           pyinstaller ebtools_setup.spec --noconfirm
       - run: dotnet publish Ports/Desktop/Companion.Portable.csproj -c Release -r ${{ matrix.rid }} --self-contained true -o build/package
+      - name: Build native Redux conversion helper
+        run: python scripts/build_portable_helpers.py --work build/helper-tools --output build/package/Game
       - name: Package preview
         shell: bash
         run: |

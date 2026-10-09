@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-using Android.App;
-using Android.Content;
-using Android.Content.PM;
+using global::Android.App;
+using global::Android.Content;
+using global::Android.Content.PM;
 using Avalonia;
 using Avalonia.Android;
 using Avalonia.Controls.ApplicationLifetimes;
