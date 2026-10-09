@@ -1,0 +1,25 @@
+{
+  "version": "0.5.0-redux-dev.33",
+  "foundationCommit": "76eacab54b05766b82c98da9c55d94d1236ece03",
+  "patch": "patches/native-companion.patch",
+  "patchSha256": "80a088940c5f7226ef452488d86d9952b9033b0bf51b8fb08190899e2c5478e3",
+  "nativeSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+  "launcherSha256": "8030b89e304ca156ccb3492d29decc43726cf8bffcd470bd6f3f19cd34608a97",
+  "shaderRuntimeSha256": "3b8f3a383b5405c5a79473c064b3f8900c7d7b1402e230602cc0fbd047fdac79",
+  "buildOptions": {
+    "CMAKE_BUILD_TYPE": "Release",
+    "EB_RUNTIME_ASSETS": true,
+    "EB_ENABLE_AUDIO": true,
+    "EB_ENABLE_VERIFY": false,
+    "EB_QA_OBSERVER": false,
+    "EB_VIEWPORT_WIDTH": 512,
+    "EB_VIEWPORT_HEIGHT": 256
+  },
+  "sdlVersion": "2.32.10",
+  "compiler": "gcc.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r2) 16.2.0",
+  "notes": [
+    "Full coherent candidate build; public patch independently compiled from pinned Git archive.",
+    "Instrumented movement/visual fixtures link this production object set but have their own main/executable hashes.",
+    "No original-scroll toggle; game movement/collision rates unchanged by presentation correction. Horizontal spawning intentionally covers the wider native canvas."
+  ]
+}

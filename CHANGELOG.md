@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.5.0-redux-dev.33
+
+- Carry fractional camera position into world presentation and preserve party/background occlusion.
+- Improve Windows deadline pacing; corrected scrolling is always active where applicable.
+- Extend horizontal enemy spawning across the native viewport.
+- Add bundled and external Slang finishing shader presets, D3D11 runtime and fallback.
+- Preserve packs, saves and recipe algorithms. [Focused checks and limits](docs/RELEASE-dev33.md).
+
 ## October 8, 2026 - feature freeze and maintenance closeout
 
 - Wrap active feature development at dev.32; accept community reports and focused fixes in the existing scope.

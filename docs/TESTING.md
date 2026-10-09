@@ -105,3 +105,9 @@ Use `scripts/release_regressions.py --help` with explicit matching local build/r
 - battle_evolving_qa_dev31.py: real menus and selected multi-turn encounter parents, source AI/damage contracts, rewards/cleanup and strict warm/cold party/RNG/AI endpoints. Original excludes the four Redux-only group473 cases. Broader targeting/reflection combinations and full machine battle parity remain separate.
 
 The reused clean-package verifier retains dev18-30 hash defaults. For dev.31 pass --expected-original-hash 792370574832629c0dc436bbc5b3a3993a8670e7e5fc3e3a5b467791ce514462 and --expected-redux-hash 4b5f1c5ac76e4bdcce2dc66a2e8ef95b659e561d3cadebefa66efb85c0be5236 explicitly. See [dev.31 evidence](RELEASE-dev31.md).
+
+## Dev.33 focused display checks
+
+Use `motion_qa_dev33.py --help` with the matching frozen CMake build, native source, local checkpoint, pack and a fresh output directory. Pass `--enhanced` for the dev.33 renderer; `--sprint 1`/`2` controls Y running and `--sandwich 120` schedules the real effect expiry. `--direction 0`–`7` covers all directions. `--captures` saves private screenshots. The tool cold-restores a copied save and changes only private RAM into its documented fixture; `--no-stage` retains the actual checkpoint. It never edits the input save or installation. The source/build paths must correspond, and the build must remain frozen while a cached host is reused. Headless runs cannot measure rendered motion.
+
+[Dev.33 reports](../validation/display-dev33/) bind the executed player, instrumented host, packs and limits. [Release notes](RELEASE-dev33.md) distinguish final checks from earlier renderer regression coverage. `Build-ShaderRuntime.ps1` builds the pinned optional D3D11 runtime without installing a toolchain. Legacy GLSL preset loading and unlocked-FPS gameplay are not included.

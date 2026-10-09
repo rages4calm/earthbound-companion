@@ -7,6 +7,7 @@ public sealed class Settings {
  public int Width{get;set;}=1920;public int Height{get;set;}=1080;
  public bool Fullscreen{get;set;}=true;public bool IntegerScale{get;set;}
  public int Filter{get;set;}=1;public int Aspect{get;set;}
+ public string ShaderPreset{get;set;}="";
  public bool Scanlines{get;set;} public bool TiltShift{get;set;}=true;
  public bool OriginalTitleScreen{get;set;}
  public bool WideFov{get;set;}=true;public bool ColorGrading{get;set;}=true;
@@ -54,6 +55,8 @@ public sealed class Settings {
   s.Validate();s.ConfigureContentSession();Directory.CreateDirectory(PathTo("screenshots"));Directory.CreateDirectory(PathTo("saves"));s.ReadEngine();return s;
  }
  public void Validate(){
+  ShaderPreset??="";
+  if(ShaderPreset.IndexOfAny(['\r','\n','\0'])>=0||Encoding.UTF8.GetByteCount(ShaderPreset)>1023)ShaderPreset="";
   Width=Math.Clamp(Width,640,7680);Height=Math.Clamp(Height,480,4320);Filter=Math.Clamp(Filter,0,2);Aspect=Math.Clamp(Aspect,0,2);
   Volume=Math.Clamp(Volume,0,100);MusicVolume=Math.Clamp(MusicVolume,0,100);Sprint=Math.Clamp(Sprint,0,2);
   Exp=Math.Clamp(Exp,1,16);Money=Math.Clamp(Money,1,16);FastForward=Math.Clamp(FastForward,2,16);QuickSlot=Math.Clamp(QuickSlot,0,4);Deadzone=Math.Clamp(Deadzone,2000,30000);
@@ -79,6 +82,7 @@ public sealed class Settings {
   b[9]=(byte)(Scanlines?1:0);b[10]=(byte)(Filter==1?1:0);b[11]=(byte)(TiltShift?1:0);b[12]=(byte)(WideFov?1:0);b[13]=(byte)(ColorGrading?1:0);b[14]=(byte)Aspect;
   Atomic(Path.Combine(directory,"settings.dat"),b);
   var ini=new StringBuilder($"# Managed by EarthBound Companion\ncompanion=1\nwidth={Width}\nheight={Height}\nfullscreen={(Fullscreen?1:0)}\ninteger_scale={(IntegerScale?1:0)}\nfilter={Filter}\nvolume={Volume}\nmusic_volume={MusicVolume}\ninstant_text={(InstantText?1:0)}\nno_homesickness={(NoHomesickness?1:0)}\nno_dad_calls={(NoDadCalls?1:0)}\nexp_multiplier={Exp}\nmoney_multiplier={Money}\nfast_forward_multiplier={FastForward}\nquick_slot={QuickSlot}\ndeadzone={Deadzone}\nmsu_dir={Path.GetFullPath(Path.Combine(Root,"msu"))}\n");
+  ini.AppendLine($"shader_preset={ShaderPreset}");
   for(int i=0;i<21;i++)ini.AppendLine($"key.{i}={Keys[i]}\nbutton.{i}={Buttons[i]}");
   Atomic(Path.Combine(directory,"earthbound.ini"),Encoding.UTF8.GetBytes(ini.ToString()));
  }
@@ -100,11 +104,13 @@ public sealed class Settings {
   if(name=="CRT"){fresh.Scanlines=true;fresh.Filter=0;fresh.TiltShift=false;fresh.IntegerScale=true;}
   if(name=="Easygoing"){fresh.Exp=fresh.Money=2;fresh.Sprint=2;fresh.NoDadCalls=true;}
   Width=fresh.Width;Height=fresh.Height;Fullscreen=fresh.Fullscreen;IntegerScale=fresh.IntegerScale;Filter=fresh.Filter;Aspect=fresh.Aspect;
+  ShaderPreset="";
   Scanlines=fresh.Scanlines;TiltShift=fresh.TiltShift;WideFov=fresh.WideFov;ColorGrading=fresh.ColorGrading;HqAudio=fresh.HqAudio;
   Sprint=fresh.Sprint;InstantText=fresh.InstantText;NoHomesickness=fresh.NoHomesickness;NoDadCalls=fresh.NoDadCalls;Exp=fresh.Exp;Money=fresh.Money;FastForward=fresh.FastForward;
  }
  public int PresetIndex(){
   string[] props=["IntegerScale","Filter","Aspect","Scanlines","TiltShift","WideFov","ColorGrading","HqAudio","Sprint","InstantText","NoHomesickness","NoDadCalls","Exp","Money","FastForward"];
+  if(ShaderPreset.Length>0)return 4;
   string[] names=["Enhanced","Classic","CRT","Easygoing"];
   for(int i=0;i<names.Length;i++){var candidate=new Settings();candidate.Preset(names[i]);if(props.All(p=>Equals(typeof(Settings).GetProperty(p)!.GetValue(this),typeof(Settings).GetProperty(p)!.GetValue(candidate))))return i;}
   return 4;

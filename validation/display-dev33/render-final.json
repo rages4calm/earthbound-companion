@@ -1,0 +1,208 @@
+{
+  "finalCandidateSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+  "allPassed": true,
+  "executedFinalChecks": 8,
+  "results": [
+    {
+      "edition": "original",
+      "check": "encounters",
+      "passed": true,
+      "exitCode": 0,
+      "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter self-test: 1178 repeated contact / protection / expired protection / stale slot checks, PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "screen-transitions",
+      "passed": true,
+      "exitCode": 0,
+      "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative screen transitions: 21 exit/palette/brightness cases, timer step 1, PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "sprint-collision",
+      "passed": true,
+      "exitCode": 0,
+      "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nSprint free movement: 144 speed/surface cases unchanged; scripted collision bypass: PASS\r\nScripted arrival overlap: 16 exit/new-wall cases: PASS\r\nSprint collision: 12288 prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "savestate",
+      "passed": true,
+      "exitCode": 0,
+      "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nsavestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "encounters",
+      "passed": true,
+      "exitCode": 0,
+      "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter: cancelled stale contact slot -1\r\nencounter self-test: 1178 repeated contact / protection / expired protection / stale slot checks, PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "screen-transitions",
+      "passed": true,
+      "exitCode": 0,
+      "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative screen transitions: 21 exit/palette/brightness cases, timer step 2, PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "sprint-collision",
+      "passed": true,
+      "exitCode": 0,
+      "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nSprint free movement: 144 speed/surface cases unchanged; scripted collision bypass: PASS\r\nScripted arrival overlap: 16 exit/new-wall cases: PASS\r\nSprint collision: 12288 prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "savestate",
+      "passed": true,
+      "exitCode": 0,
+      "log": "PC options: experience=1x money=1x fast-forward=3x target\r\nsavestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    }
+  ],
+  "previousRenderChecks": {
+    "report": "report.json",
+    "candidateSha256": "6151864a0650cd318054e8390da574e5fe35414ef43875c454a9605fcdfc0b5e",
+    "qualification": "20 focused checks executed on previous candidate. They were not rerun on final candidate because unchanged renderer/party-mask objects bind their relevant code. Shader API guard and enemy spawn width are separately checked on final."
+  },
+  "unchangedRendererReferences": {
+    "src/snes/ppu_render.c": {
+      "currentSourceSha256": "cb916637aa9ea761e2003a1e936d58a6b3026f7e8453b69b7d3704b80c5c23db",
+      "previousObjectSha256": "c96398f7677e78245a5761544935084e0910dd765beaea3b2de2fa56b70bd477",
+      "finalObjectSha256": "c96398f7677e78245a5761544935084e0910dd765beaea3b2de2fa56b70bd477",
+      "objectUnchanged": true
+    },
+    "src/entity/callbacks.c": {
+      "currentSourceSha256": "bfeb1c222081da6233404fa46460366a2c67d7ac3757de8cf1d9becbfd03cfdc",
+      "previousObjectSha256": "febd5aa3c4b9b0b4d82d0eecad6ef39df541ce4cb0183e50b92d40df4a9594ab",
+      "finalObjectSha256": "febd5aa3c4b9b0b4d82d0eecad6ef39df541ce4cb0183e50b92d40df4a9594ab",
+      "objectUnchanged": true
+    },
+    "port/unix/platform/sdl2_video.c": {
+      "currentSourceSha256": "77bad8adb6af07991d11632e6db89ad9141f472c2848d6b977705258c81f2aa3",
+      "previousObjectSha256": "26fb8cc0a0104fbddb69971d538a0eedfab1fc58cf7cf11b857750086910129b",
+      "finalObjectSha256": "26fb8cc0a0104fbddb69971d538a0eedfab1fc58cf7cf11b857750086910129b",
+      "objectUnchanged": true
+    }
+  },
+  "ownerWrites": false,
+  "spawnFixtures": [
+    {
+      "session": "seed9-production-negative",
+      "runtime": "previous candidate",
+      "productionSha256": "6151864a0650cd318054e8390da574e5fe35414ef43875c454a9605fcdfc0b5e",
+      "hostSha256": "8acad2c7e2d0248fc6dd985a2b13dd2f556afd64a9e61b0f05882355369246da",
+      "seed": 9,
+      "position": [
+        2560,
+        800
+      ],
+      "replay": "standstill",
+      "visibleEnemyIds": [
+        121,
+        159
+      ],
+      "gutterEnemyIds": [
+        159
+      ],
+      "gutterObservations": 169,
+      "right16to9GutterObservations": 0
+    },
+    {
+      "session": "seed9-visible-final",
+      "runtime": "final candidate",
+      "productionSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "hostSha256": "320cf07d36c70f7cbd148b19ce5ac69dcaa8ae93db707b44119c9bd85d0b9482",
+      "seed": 9,
+      "position": [
+        2560,
+        800
+      ],
+      "replay": "standstill",
+      "visibleEnemyIds": [
+        121
+      ],
+      "gutterEnemyIds": [
+        121
+      ],
+      "gutterObservations": 169,
+      "right16to9GutterObservations": 169
+    },
+    {
+      "session": "final-spawn-left",
+      "runtime": "final candidate",
+      "productionSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "hostSha256": "c98c44c899daf46bfccf438839abb25ebc89d63809fd3d03a35f123499c7647c",
+      "seed": 1,
+      "position": [
+        2560,
+        896
+      ],
+      "replay": "Onett roam",
+      "visibleEnemyIds": [
+        55,
+        159
+      ],
+      "gutterEnemyIds": [
+        55,
+        159
+      ],
+      "gutterObservations": 547,
+      "right16to9GutterObservations": 0
+    },
+    {
+      "session": "final-native-location",
+      "runtime": "final candidate",
+      "productionSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "hostSha256": "c98c44c899daf46bfccf438839abb25ebc89d63809fd3d03a35f123499c7647c",
+      "seed": 1,
+      "position": [
+        2347,
+        2501
+      ],
+      "replay": "Underworld roam",
+      "visibleEnemyIds": [
+        36
+      ],
+      "gutterEnemyIds": [
+        36
+      ],
+      "gutterObservations": 447,
+      "right16to9GutterObservations": 314
+    }
+  ],
+  "spawnProofPassed": true,
+  "preparation": {
+    "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+    "reduxAssetSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+    "steps": [
+      "Real cold restore of copied checkpoint.",
+      "Onett changes location and prepares level8 Ness; Underworld retains checkpoint location/party.",
+      "Deterministic RNG seed before one normal initialize_overworld_state call.",
+      "Global monster/victory flags cleared in private RAM and party healed by inherited prepared host. In exact checkpoint both global flags already clear.",
+      "No injected enemy actors, enemy sprite replacement, or repeated spawner stimulation in final fixtures."
+    ],
+    "limits": [
+      "Private prepared entry/PAD replay, not natural route or complete regional encounter balance. Right-gutter control uses real previous-production and final-production spawners; exploratory linker-wrapped controls are not the final proof. Presented captures verified on this machine at1280x720; no second physical monitor or full campaign."
+    ]
+  },
+  "spawnGeometry": {
+    "source": "src/game/overworld_spawn.c:spawn_horizontal",
+    "caller": "src/game/map_loader.c:load_map_at_position/map_refresh_tilemaps",
+    "previousBaseScanCells": 5,
+    "previousNominalScanPixels": 320,
+    "viewportWidth": 512,
+    "leftMarginPixels": 64,
+    "previousBaseUnscannedPixelsOfViewport": 256,
+    "finalBaseScanCells": 9,
+    "finalNominalScanPixels": 576,
+    "caveat": "A contiguous same-encounter run can extend a previous start to six cells; it does not fix missing independent encounter regions to the right. Vertical five-cell scan still covers320px vs256px canvas; no vertical patch required for current dimensions."
+  },
+  "visualEvidence": {
+    "onettRightBefore": "seed9-production-negative-right-crop.png",
+    "onettRightAfter": "seed9-visible-final-right-crop.png",
+    "onettLeft": "final-onett-left-enemy.png",
+    "underworldRight": "final-underworld-right-enemy.png",
+    "review": "Recognizable dog121 appears in right-gutter final crop where negative crop has bare grass; crow159 appears in left gutter during Onett roam; dinosaur36 appears in right gutter during Underworld roam."
+  }
+}

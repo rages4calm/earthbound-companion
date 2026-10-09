@@ -153,7 +153,7 @@ index 0000000..62cfa40
 +    offset = address - 0xC00000
 +    return encode_original_movement_banks(c3, rom[offset : offset + GHOST_SIZE])
 diff --git a/port/unix/CMakeLists.txt b/port/unix/CMakeLists.txt
-index beecb38..43a704a 100644
+index beecb38..520c1d2 100644
 --- a/port/unix/CMakeLists.txt
 +++ b/port/unix/CMakeLists.txt
 @@ -1,6 +1,10 @@
@@ -167,6 +167,15 @@ index beecb38..43a704a 100644
  
  # Emit compile_commands.json so clangd/IDEs resolve include paths and types.
  # A root-level symlink (../../compile_commands.json) points at this file.
+@@ -244,7 +248,7 @@ endif()
+ # enough not to fight the renderer's blocking VSync. Windows-only; on other
+ # platforms the default OS timer granularity doesn't have this problem.
+ if(WIN32)
+-    target_link_libraries(earthbound winmm)
++    target_link_libraries(earthbound winmm dxguid)
+ 
+     # Optional .exe icon resource. Empty/unset by default (inert -- no icon
+     # embedded, matching every build before this option existed) since any
 diff --git a/port/unix/main.c b/port/unix/main.c
 index f625aff..4b75eac 100644
 --- a/port/unix/main.c
@@ -1887,7 +1896,7 @@ index 66dfb81..1dab5a7 100644
  
  /* In-progress writers, one per slot (NULL when no write is open). */
 diff --git a/port/unix/platform/sdl2_timer.c b/port/unix/platform/sdl2_timer.c
-index 3ce02d8..d4cd940 100644
+index 3ce02d8..04c248a 100644
 --- a/port/unix/platform/sdl2_timer.c
 +++ b/port/unix/platform/sdl2_timer.c
 @@ -62,7 +62,7 @@ void platform_timer_frame_start(void) {
@@ -1899,18 +1908,128 @@ index 3ce02d8..d4cd940 100644
      uint64_t target_ticks = ticks_per_sec / fps;
  
      /* Sleep until the frame budget is reached. */
+@@ -82,11 +82,20 @@ void platform_timer_update_fps(void) {
+ }
+ 
+ void platform_timer_sleep_until(uint64_t deadline) {
+-    uint64_t now = platform_timer_ticks();
+-    if ((int64_t)(deadline - now) > 0) {
+-        uint32_t remaining_ms = (uint32_t)((deadline - now) * 1000 / ticks_per_sec);
+-        if (remaining_ms > 0)
+-            SDL_Delay(remaining_ms);
++    /* Absolute deadline: coarse sleep, yield, then a short precision tail.
++     * SDL_Delay rounds to milliseconds and may wake late. A single floored
++     * sleep produced alternating early/late frames even with a 1 ms timer.
++     * Keep the busy tail below 0.5 ms (about 3% of one core at 60 Hz). */
++    for (;;) {
++        uint64_t now = platform_timer_ticks();
++        int64_t remaining = (int64_t)(deadline - now);
++        if (remaining <= 0) break;
++        if ((uint64_t)remaining > ticks_per_sec / 500) {
++            uint32_t ms = (uint32_t)((uint64_t)remaining * 1000 / ticks_per_sec);
++            SDL_Delay(ms > 1 ? ms - 1 : 0);
++        } else if ((uint64_t)remaining > ticks_per_sec / 2000) {
++            SDL_Delay(0);
++        }
+     }
+ }
+ 
 diff --git a/port/unix/platform/sdl2_video.c b/port/unix/platform/sdl2_video.c
-index a74f32b..eeded15 100644
+index a74f32b..6d5ad5e 100644
 --- a/port/unix/platform/sdl2_video.c
 +++ b/port/unix/platform/sdl2_video.c
-@@ -1,5 +1,6 @@
+@@ -1,6 +1,15 @@
  #include "platform/platform.h"
  #include "game/settings.h"
 +#include "platform/pc_options.h"
  #include "core/log.h"
++#include "core/memory.h"
++#include "core/mode_stack.h"
++#include "game/game_state.h"
++#include "game/window.h"
++#include "entity/entity.h"
++#include "snes/ppu.h"
++#include "include/binary.h"
++#include "sdl2_shaders.h"
  #include <SDL.h>
  #include <math.h>
-@@ -686,19 +687,20 @@ bool platform_video_init(void) {
+ #include <stdio.h>
+@@ -64,6 +73,66 @@ static SDL_Texture *texture;
+  * (not locked/streamed like `texture`), swapped in for the final blit
+  * instead of `texture` only on frames where it ran. */
+ static SDL_Texture *aa_texture;
++static SDL_Texture *motion_party_texture;
++static bool static_screen = false;
++static bool motion_active;
++static float motion_offset_x, motion_offset_y;
++static pixel_t motion_background[EB_VIEWPORT_WIDTH * EB_VIEWPORT_HEIGHT];
++static pixel_t motion_background_aa[EB_VIEWPORT_WIDTH * EB_VIEWPORT_HEIGHT * 4];
++static uint32_t motion_party_rgba[EB_VIEWPORT_WIDTH * EB_VIEWPORT_HEIGHT * 4];
++
++/* Presentation only: original positions, scripts, collision and save ABI stay
++ * unchanged. Fractional camera phase moves scenery at output-pixel precision;
++ * visible party pixels are composited separately so Ness does not wobble as
++ * the scene moves below him. The renderer's original occlusion determines the
++ * party mask (including pixels with the same colour as the background). */
++float platform_video_motion_offset(int axis) {
++    return motion_active ? (axis ? motion_offset_y : motion_offset_x) : 0.0f;
++}
++
++static void motion_prepare(void) {
++    motion_active = false;
++    ppu_track_party_pixels = false;
++    memset(ppu_party_oam, 0, sizeof(ppu_party_oam));
++    if (!motion_party_texture || static_screen ||
++        any_window_open() || g_mode_stack.depth != 1 ||
++        g_mode_stack.mode[0] != GAME_MODE_OVERWORLD || game_state.camera_mode ||
++        (ppu.inidisp & 0x8F) != 15 || (ppu.bgmode & 7) != 1 ||
++        presentation_oam_frame != core.frame_counter ||
++        ppu.bg_hofs[0] != (uint16_t)(game_state.leader_x_coord - EB_VIEWPORT_CENTER_X) ||
++        ppu.bg_vofs[0] != (uint16_t)(game_state.leader_y_coord - EB_VIEWPORT_CENTER_Y))
++        return;
++    bool have_party = false;
++    for (unsigned at = 0; at < 128; at++) {
++        int ent = presentation_oam_entity[at];
++        if (ent < 0) continue;
++        for (unsigned member = 0; member < game_state.party_count && member < TOTAL_PARTY_COUNT; member++) {
++            if ((uint16_t)ent == read_u16_le(&game_state.party_entity_slots[member * 2])) {
++                ppu_party_oam[at] = true;
++                have_party = true;
++            }
++        }
++    }
++    if (!have_party) return;
++    motion_active = ppu_track_party_pixels = true;
++    motion_offset_x = game_state.leader_x_frac / 65536.0f;
++    motion_offset_y = game_state.leader_y_frac / 65536.0f;
++}
++
++static void motion_background_scanline(int y, const pixel_t *pixels) {
++    memcpy(motion_background + y * EB_VIEWPORT_WIDTH, pixels,
++           EB_VIEWPORT_WIDTH * sizeof(pixel_t));
++}
++
++static void motion_render_background(void) {
++    int16_t saved_y[128];
++    memcpy(saved_y, ppu.oam_full_y, sizeof(saved_y));
++    for (unsigned at = 0; at < 128; at++)
++        if (ppu_party_oam[at]) ppu.oam_full_y[at] = EB_VIEWPORT_HEIGHT;
++    ppu_track_party_pixels = false; /* retain mask from the complete first pass */
++    ppu_render_frame(motion_background_scanline);
++    memcpy(ppu.oam_full_y, saved_y, sizeof(saved_y));
++}
+ 
+ /* Overworld FOV/zoom cycle (R3) -- see platform_video_set_zoom() below and
+  * AUX_ZOOM_TOGGLE in game_main.c. EB_ZOOM_OFF = default, matches every
+@@ -75,7 +144,6 @@ static EbZoomMode zoom_mode = EB_ZOOM_OFF;
+  * see platform.h. Read in platform_video_end_frame(), same as zoom_mode. */
+ static bool fx_suppressed = false;
+ static bool dof_suppressed = false;
+-static bool static_screen = false;
+ 
+ /* DoF's own faded-in/out intensity (0..1), separate from the hard
+  * fx_suppressed/dof_suppressed booleans above. Those flip instantly (battle
+@@ -686,22 +754,27 @@ bool platform_video_init(void) {
       * passed here are only a fallback size if the window is ever taken out
       * of fullscreen. --windowed opts out, for development/debugging. */
      Uint32 window_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
@@ -1927,13 +2046,96 @@ index a74f32b..eeded15 100644
      );
      if (!window) return false;
  
++    if (pc_options.shader_preset[0]) {
++        SDL_SetHint(SDL_HINT_RENDER_DRIVER,"direct3d11");
++        SDL_SetHint(SDL_HINT_RENDER_DIRECT3D_THREADSAFE,"1");
++    }
      renderer = SDL_CreateRenderer(window, -1,
          SDL_RENDERER_ACCELERATED);
 +    if(!renderer)renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_SOFTWARE);
      if (!renderer) return false;
  
-     /* Enable VSync — use runtime call for reliable driver support.
-@@ -1167,6 +1169,7 @@ void platform_video_end_frame(void) {
+-    /* Enable VSync — use runtime call for reliable driver support.
++    /* Enable VSync â€” use runtime call for reliable driver support.
+      *
+      * Windows exception: SDL2's VSync support there rides on whatever the
+      * active D3D/GPU driver does with "application controlled" sync, which
+@@ -756,10 +829,18 @@ bool platform_video_init(void) {
+         EB_VIEWPORT_WIDTH * AA_SCALE, EB_VIEWPORT_HEIGHT * AA_SCALE);
+     if (!aa_texture) return false;
+ 
++    motion_party_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888,
++        SDL_TEXTUREACCESS_STREAMING, EB_VIEWPORT_WIDTH * AA_SCALE,
++        EB_VIEWPORT_HEIGHT * AA_SCALE);
++    if (motion_party_texture) SDL_SetTextureBlendMode(motion_party_texture, SDL_BLENDMODE_BLEND);
+     return true;
+ }
+ 
+ void platform_video_shutdown(void) {
++    pc_shader_shutdown();
++    if (motion_party_texture) SDL_DestroyTexture(motion_party_texture);
++    motion_party_texture = NULL;
++    motion_active = ppu_track_party_pixels = false;
+     if (texture)    SDL_DestroyTexture(texture);
+     if (aa_texture) SDL_DestroyTexture(aa_texture);
+     if (renderer)   SDL_DestroyRenderer(renderer);
+@@ -775,6 +856,7 @@ void platform_video_begin_frame(void) {
+         locked_pixels = NULL;
+         return;
+     }
++    motion_prepare();
+     void *pixels;
+     int pitch;
+     if (SDL_LockTexture(texture, NULL, &pixels, &pitch) == 0) {
+@@ -820,6 +902,7 @@ void platform_video_end_frame(void) {
+     bool aa_ran = false;
+ 
+     if (locked_pixels) {
++        if (motion_active) motion_render_background();
+         /* Motion-dump burst, must happen right here: locked_pixels is the
+          * raw, untouched pre-post-process buffer at this exact point, and
+          * this is the only point in the whole frame it's known valid --
+@@ -909,11 +992,38 @@ void platform_video_end_frame(void) {
+         }
+ #endif
+ 
++        if (motion_active) {
++            int pitch = EB_VIEWPORT_WIDTH * sizeof(pixel_t);
++            if (dof_intensity > 0) apply_dof(motion_background, pitch, dof_intensity);
++            if (want_scanlines) apply_scanlines(motion_background, pitch);
++            if (want_grading) apply_color_grade(motion_background, pitch);
++            if (aa_ran) apply_aa_upscale(motion_background, pitch,
++                motion_background_aa, EB_VIEWPORT_WIDTH * AA_SCALE);
++            int factor = aa_ran ? AA_SCALE : 1;
++            int w = EB_VIEWPORT_WIDTH * factor, h = EB_VIEWPORT_HEIGHT * factor;
++            for (int y = 0; y < h; y++) {
++                const pixel_t *full = aa_ran ? aa_upscaled + y * w :
++                    (const pixel_t *)((const uint8_t *)locked_pixels + y * locked_pitch);
++                const pixel_t *background = (aa_ran ? motion_background_aa : motion_background) + y * w;
++                uint32_t *out = motion_party_rgba + y * w;
++                for (int x = 0; x < w; x++) {
++                    out[x] = 0;
++                    if (ppu_party_pixels[y / factor][x / factor] || full[x] != background[x]) {
++                        uint8_t r, g, b; fx_unpack(full[x], &r, &g, &b);
++                        out[x] = 0xFF000000u | ((uint32_t)r << 16) | ((uint32_t)g << 8) | b;
++                    }
++                }
++            }
++            SDL_Rect area = {0, 0, w, h};
++            SDL_UpdateTexture(motion_party_texture, &area, motion_party_rgba, w * sizeof(uint32_t));
++        }
+         SDL_UnlockTexture(texture);
+         locked_pixels = NULL;
++        if (motion_active) SDL_UpdateTexture(texture, NULL, motion_background,
++            EB_VIEWPORT_WIDTH * sizeof(pixel_t));
+ 
+         if (aa_ran) {
+-            SDL_UpdateTexture(aa_texture, NULL, aa_upscaled,
++            SDL_UpdateTexture(aa_texture, NULL, motion_active ? motion_background_aa : aa_upscaled,
+                                EB_VIEWPORT_WIDTH * AA_SCALE * (int)sizeof(pixel_t));
+         }
+     }
+@@ -1167,12 +1277,29 @@ void platform_video_end_frame(void) {
      double scale = (double)out_w / content_w;
      double scale_h = (double)out_h / content_h;
      if (scale_h < scale) scale = scale_h;
@@ -1941,7 +2143,30 @@ index a74f32b..eeded15 100644
      int dst_w = (int)(content_w * scale);
      int dst_h = (int)(content_h * scale);
      SDL_Rect dst = { (out_w - dst_w) / 2, (out_h - dst_h) / 2, dst_w, dst_h };
-@@ -1216,3 +1219,12 @@ void platform_video_set_vsync(bool enabled) {
+ 
+-    SDL_RenderCopy(renderer, aa_ran ? aa_texture : texture, &crop, &dst);
++    if (motion_active) {
++        int factor = aa_ran ? AA_SCALE : 1;
++        SDL_Rect source = {crop.x - factor, crop.y - factor,
++            crop.w + 2 * factor, crop.h + 2 * factor};
++        SDL_FRect world = {dst.x - (float)scale * (1.0f + motion_offset_x),
++            dst.y - (float)scale * (1.0f + motion_offset_y),
++            dst.w + (float)scale * 2, dst.h + (float)scale * 2};
++        SDL_Rect old_clip; SDL_RenderGetClipRect(renderer, &old_clip);
++        SDL_bool clipped = SDL_RenderIsClipEnabled(renderer);
++        SDL_RenderSetClipRect(renderer, &dst);
++        SDL_RenderCopyF(renderer, aa_ran ? aa_texture : texture, &source, &world);
++        SDL_RenderCopy(renderer, motion_party_texture, &crop, &dst);
++        SDL_RenderSetClipRect(renderer, clipped ? &old_clip : NULL);
++    } else {
++        SDL_RenderCopy(renderer, aa_ran ? aa_texture : texture, &crop, &dst);
++    }
+ 
++    pc_shader_frame(renderer,&dst);
+     if (pending_screenshot_path[0]) {
+         write_window_screenshot(pending_screenshot_path);
+         pending_screenshot_path[0] = '\0';
+@@ -1216,3 +1343,13 @@ void platform_video_set_vsync(bool enabled) {
      (void)enabled;
  #endif
  }
@@ -1953,6 +2178,7 @@ index a74f32b..eeded15 100644
 +    SDL_ScaleMode mode = pc_options.filter == 2 ? SDL_ScaleModeLinear : SDL_ScaleModeNearest;
 +    if (texture) SDL_SetTextureScaleMode(texture, mode);
 +    if (aa_texture) SDL_SetTextureScaleMode(aa_texture, mode);
++    if (motion_party_texture) SDL_SetTextureScaleMode(motion_party_texture, mode);
 +}
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index 4b46264..f0a1b75 100644
@@ -2660,10 +2886,10 @@ index b3ffb70..e0959bc 100644
   * reclaims the mapping on process exit regardless. */
  void eb_runtime_assets_unload(void);
 diff --git a/src/entity/callbacks.c b/src/entity/callbacks.c
-index 857f81e..e41852b 100644
+index 857f81e..bf20845 100644
 --- a/src/entity/callbacks.c
 +++ b/src/entity/callbacks.c
-@@ -18,11 +18,13 @@
+@@ -18,14 +18,23 @@
  #include "data/event_script_data.h"
  #include "data/assets.h"
  #include "game/overworld.h"
@@ -2673,11 +2899,21 @@ index 857f81e..e41852b 100644
  #include "include/binary.h"
  #include "snes/ppu.h"
  #include "core/log.h"
++#include "core/memory.h"
 +#include "core/math.h"
  #include <stdlib.h>
  #include <string.h>
  
-@@ -97,6 +99,72 @@ static void entity_screen_coords_bg1(int16_t ent) {
++/* Presentation-only ownership; never serialized into game/save structures. */
++int16_t presentation_oam_entity[128];
++uint32_t presentation_oam_frame;
++static int16_t presentation_queue_entity[4][MAX_PRIORITY_SPRITES];
++static int16_t presentation_draw_entity = -1;
++
+ /* Spritemap bank IDs in the priority queue.
+  * Bank 0 = title screen spritemap (frame index lookup).
+  * Bank 1 = overworld entity spritemap (direct offset into overworld_spritemaps[]).
+@@ -97,6 +106,72 @@ static void entity_screen_coords_bg1(int16_t ent) {
      entities.screen_y[ent] = entities.abs_y[ent] - (int16_t)ppu.bg_vofs[0];
  }
  
@@ -2750,7 +2986,7 @@ index 857f81e..e41852b 100644
  /*
   * COPY_ENTITY_ABS_TO_SCREEN (C0A0BB)
   *
-@@ -221,9 +289,8 @@ void call_move_callback(int16_t entity_offset) {
+@@ -221,9 +296,8 @@ void call_move_callback(int16_t entity_offset) {
           * Instead computes screen coords from abs coords (screen = abs - bg_scroll).
           * The actual position update is done by UPDATE_FOLLOWER_STATE (tick callback)
           * which reads from PLAYER_POSITION_BUFFER.
@@ -2762,7 +2998,42 @@ index 857f81e..e41852b 100644
          break;
      case CB_MOVE_DELTA_3D:
          apply_entity_delta_position_3d(entity_offset);
-@@ -661,6 +728,11 @@ after_sweat:
+@@ -337,7 +411,7 @@ void write_spritemap_to_oam(const uint8_t *spritemap, int16_t base_x,
+         uint8_t flags = spritemap[idx + 4];
+ 
+         /* Check for follow-link marker (y_offset == 0x80).
+-         * Assembly: LDA tile,Y (16-bit) → TAY → BRA @UNKNOWN3
++         * Assembly: LDA tile,Y (16-bit) â†’ TAY â†’ BRA @UNKNOWN3
+          * The tile+attr bytes form a 16-bit byte offset into the spritemap
+          * data, allowing multi-part spritemaps to chain to other entries. */
+         if (y_off == (int8_t)0x80) {
+@@ -404,7 +478,7 @@ void write_spritemap_to_oam(const uint8_t *spritemap, int16_t base_x,
+ /*
+  * Add a spritemap to a priority queue.
+  *
+- * Port of DISPATCH_SPRITE_DRAW_BY_PRIORITY (C08C58) → SPRITE_PRIORITY_DISPATCH_TABLE.
++ * Port of DISPATCH_SPRITE_DRAW_BY_PRIORITY (C08C58) â†’ SPRITE_PRIORITY_DISPATCH_TABLE.
+  * Each priority level has a queue of pending spritemaps to render.
+  *
+  * The ROM stores 16-bit ROM offsets + bank bytes in the queue. In the C port,
+@@ -422,6 +496,7 @@ void queue_sprite_draw(uint16_t smap_id, int16_t x, int16_t y,
+     if (off >= MAX_PRIORITY_SPRITES)
+         return;  /* queue full */
+ 
++    presentation_queue_entity[priority][off] = presentation_draw_entity;
+     q->spritemaps[off] = smap_id;
+     q->sprite_x[off] = x;
+     q->sprite_y[off] = y;
+@@ -448,7 +523,7 @@ void queue_sprite_draw(uint16_t smap_id, int16_t x, int16_t y,
+ void load_overlay_sprites(void) {
+ 
+     /* Phase 1: Load overlay sprite graphics to VRAM.
+-     * Overlay data[0] = count (4), data[1..16] = 4 sprite entries × 4 bytes each.
++     * Overlay data[0] = count (4), data[1..16] = 4 sprite entries Ã— 4 bytes each.
+      * Each entry: [sprite_id:2LE][palette1:1][palette2:1] */
+     uint8_t count = overlay_data[0];
+     uint16_t vram_pos = VRAM_OVERLAY_BASE;
+@@ -661,6 +736,11 @@ after_sweat:
          int16_t x = entities.screen_x[entity_offset];
          int16_t y = entities.screen_y[entity_offset];
          uint16_t smap = entities.mushroomized_spritemaps[entity_offset] + surface_offset;
@@ -2774,7 +3045,54 @@ index 857f81e..e41852b 100644
          queue_sprite_draw(smap, x, y, priority, SMAP_BANK_OVERLAY);
      }
  }
-@@ -839,6 +911,14 @@ void render_all_priority_sprites(void) {
+@@ -676,9 +756,9 @@ after_sweat:
+  * for general entities with direction-based spritemaps.
+  *
+  * The entity's spritemap_ptr_lo stores the byte offset into overworld_spritemaps[].
+- * The spritemap_sizes stores (sprites_per_frame × 5), bytes per direction.
++ * The spritemap_sizes stores (sprites_per_frame Ã— 5), bytes per direction.
+  * Direction selects which chunk of spritemaps to use:
+- *   offset = spritemap_ptr_lo + direction_index × spritemap_sizes
++ *   offset = spritemap_ptr_lo + direction_index Ã— spritemap_sizes
+  */
+ static void draw_entity_sprite(int16_t entity_offset) {
+     /* Assembly's DRAW_ENTITY_SPRITE does NOT call RENDER_ENTITY_SPRITE.
+@@ -694,7 +774,7 @@ static void draw_entity_sprite(int16_t entity_offset) {
+     /* ASM (DRAW_ENTITY_SPRITE, C0A3A4 lines 3-9):
+      * LDA ENTITY_CURRENT_DISPLAYED_SPRITES,X / AND #$0001 / BEQ @SKIP
+      * If bit 0 is set, advance spritemap pointer by one chunk size.
+-     * This is the data-driven direction→spritemap chunk mapping:
++     * This is the data-driven directionâ†’spritemap chunk mapping:
+      * the sprite_grouping tile pointer low bit indicates which of the
+      * 2 loaded spritemap direction chunks to use. */
+     uint16_t dir_idx = entities.current_displayed_sprites[entity_offset] & 0x0001;
+@@ -783,6 +863,8 @@ static void draw_title_letter(int16_t entity_offset) {
+  * Supports both title screen spritemaps (bank=0) and overworld spritemaps (bank=1).
+  */
+ void render_all_priority_sprites(void) {
++    memset(presentation_oam_entity, -1, sizeof(presentation_oam_entity));
++    presentation_oam_frame = core.frame_counter;
+     /* Park every slot off-screen before writing the used ones, so this is a
+      * complete OAM rebuild rather than an overlay on whatever was there. Existing
+      * callers always oam_clear() first (this is redundant for them), but it lets a
+@@ -825,8 +907,11 @@ void render_all_priority_sprites(void) {
+             }
+ 
+             if (spritemap) {
++                unsigned first = ert.oam_write_index;
+                 write_spritemap_to_oam(spritemap,
+                                        q->sprite_x[i], q->sprite_y[i]);
++                for (unsigned at = first; at < ert.oam_write_index && at < 128; at++)
++                    presentation_oam_entity[at] = presentation_queue_entity[prio][i];
+             }
+         }
+     }
+@@ -835,10 +920,18 @@ void render_all_priority_sprites(void) {
+ /*
+  * Call an entity's draw callback.
+  *
+- * Port of CALL_ENTITY_DRAW_CALLBACK (C0A0CA) → DRAW_ENTITY (C0A0E3).
++ * Port of CALL_ENTITY_DRAW_CALLBACK (C0A0CA) â†’ DRAW_ENTITY (C0A0E3).
   * The assembly dispatches through the ENTITY_DRAW_CALLBACK jump table.
   */
  static void call_entity_draw(int16_t entity_offset) {
@@ -2789,7 +3107,79 @@ index 857f81e..e41852b 100644
      /* DRAW_ENTITY checks: spritemap_ptr_hi bit 15 (BMI @SKIP) = hidden.
       * The BVS @SKIP that follows never branches because LDA doesn't set V;
       * V comes from a prior SBC which is always clear for normal DP values.
-@@ -1616,7 +1696,8 @@ void cr_animate_entity_tile_merge(void) {
+@@ -874,6 +967,7 @@ static void call_entity_draw(int16_t entity_offset) {
+             return;
+     }
+ 
++    presentation_draw_entity = entity_offset;
+     switch (entities.draw_callback[entity_offset]) {
+     case CB_DRAW_ENTITY_SPRITE:
+         draw_entity_sprite(entity_offset);
+@@ -884,6 +978,7 @@ static void call_entity_draw(int16_t entity_offset) {
+     default:
+         break;
+     }
++    presentation_draw_entity = -1;
+ }
+ 
+ /*
+@@ -921,7 +1016,7 @@ void build_entity_draw_list(void) {
+     while (ent >= 0) {
+         /* Screen bounds check (assembly lines 23-41).
+          * Assembly uses unsigned CMP + BCC, so we must use uint16_t.
+-         * On-screen range: [0, EB_VIEWPORT_HEIGHT) ∪ [0xFFC0, 0xFFFF] (y < VH or y >= -64).
++         * On-screen range: [0, EB_VIEWPORT_HEIGHT) âˆª [0xFFC0, 0xFFFF] (y < VH or y >= -64).
+          * Off-screen: [EB_VIEWPORT_HEIGHT, 0xFFBF], entities in this range are skipped.
+          * Same logic for X with threshold EB_VIEWPORT_WIDTH+64. */
+         uint16_t sy = (uint16_t)entities.screen_y[ent];
+@@ -943,7 +1038,7 @@ void build_entity_draw_list(void) {
+     }
+ 
+     /* Pass 2: Selection sort by descending ABS_Y (assembly lines 72-131).
+-     * Draw entities with highest Y first → lowest OAM index → on top. */
++     * Draw entities with highest Y first â†’ lowest OAM index â†’ on top. */
+     while (sort_head >= 0) {
+         /* Initialize best to head of list */
+         int16_t best_slot = sort_head;
+@@ -1042,7 +1137,7 @@ static void copy_8dir_entity_sprite(uint16_t entity_slot, uint16_t dest_offset,
+     uint16_t dir_mapped = sprite_direction_mapping_8dir[direction];
+ 
+     /* Compute pointer into spritepointerarray:
+-     * gfx_ptr_lo + (dir_mapped * 4) + animation_frame → frame table entry */
++     * gfx_ptr_lo + (dir_mapped * 4) + animation_frame â†’ frame table entry */
+     uint16_t gfx_ptr_lo = entities.graphics_ptr_lo[ent];
+     int16_t anim_frame = entities.animation_frame[ent];
+     uint32_t frame_ptr_off = (uint32_t)gfx_ptr_lo + (uint32_t)dir_mapped * 4
+@@ -1264,8 +1359,8 @@ void init_entity_fade_state(uint16_t entity_slot, uint16_t fade_param) {
+  *
+  * These operate on sprite data stored in ert.buffer[] (bank $7F in assembly).
+  * SNES 4bpp tiles: each 8x8 tile = 32 bytes.
+- *   Bytes 0-15: bitplanes 0,1 (8 rows × 2 bytes)
+- *   Bytes 16-31: bitplanes 2,3 (8 rows × 2 bytes)
++ *   Bytes 0-15: bitplanes 0,1 (8 rows Ã— 2 bytes)
++ *   Bytes 16-31: bitplanes 2,3 (8 rows Ã— 2 bytes)
+  *
+  * Ports of:
+  *   COPY_SPRITE_TILE_DATA       (asm/overworld/entity/copy_sprite_tile_data.asm)
+@@ -1319,7 +1414,7 @@ static void copy_sprite_tile_data(uint16_t dest_off, uint16_t src_off,
+  *   src_off:        byte offset in ert.buffer[] for source
+  *   y_param:        combined pixel column + tile offset (assembly Y register):
+  *                     low 3 bits = pixel column within tile (0-7)
+- *                     upper bits = tile column index × 8
++ *                     upper bits = tile column index Ã— 8
+  *                   So (y_param & 7) selects pixel, (y_param & ~7) * 4 = tile byte offset
+  *   height_pixels:  total height in pixels (from caller's @LOCAL00)
+  *   row_stride:     bytes per tile row (from caller's @LOCAL01)
+@@ -1608,7 +1703,7 @@ int16_t cr_animate_entity_tile_blend(void) {
+  * at ert.buffer[0x7F00], then for each fade entry, merges that pixel from
+  * buffer_1 into buffer_2 across all tile rows and columns.
+  *
+- * The 64-slot table tracks which of the 64 pixel positions (8 columns × 8 rows)
++ * The 64-slot table tracks which of the 64 pixel positions (8 columns Ã— 8 rows)
+  * have been used. When a slot is marked, that pixel is blended across the
+  * entire sprite for all active fade entries.
+  */
+@@ -1616,7 +1711,8 @@ void cr_animate_entity_tile_merge(void) {
      uint8_t *slot_table = &ert.buffer[BUF_TILE_MERGE_SLOTS];
  
      /* Pick a random unused slot from the 64-entry table */
@@ -2799,6 +3189,15 @@ index 857f81e..e41852b 100644
      while (read_u16_le(slot_table + slot_idx * 2) != 0) {
          slot_idx = (slot_idx + 1) & 0x3F;
      }
+@@ -1637,7 +1733,7 @@ void cr_animate_entity_tile_merge(void) {
+         uint16_t tile_columns = entry->tile_byte_width >> 3;
+         uint16_t tile_rows = entry->height_pixels >> 3;
+ 
+-        /* For each tile row × tile column, merge the selected pixel.
++        /* For each tile row Ã— tile column, merge the selected pixel.
+          * Assembly: outer = tile_rows (height/8), inner = tile_columns (width/8).
+          * y_offset = (tile_row * tile_columns + tile_col) * 32 + pixel_row * 2 */
+         for (uint16_t tr = 0; tr < tile_rows; tr++) {
 diff --git a/src/entity/callroutine.c b/src/entity/callroutine.c
 index 61c4f93..63a61e5 100644
 --- a/src/entity/callroutine.c
@@ -3605,6 +4004,112 @@ index e16864b..10b5751 100644
  }
  
  /*
+diff --git a/src/entity/entity.h b/src/entity/entity.h
+index 643d8d6..101ea3c 100644
+--- a/src/entity/entity.h
++++ b/src/entity/entity.h
+@@ -190,7 +190,7 @@ typedef struct {
+  * PALETTE FADE ENGINE (callroutine_palette.c, title_screen.c, gas_station.c)
+  *   Assembly: prepare_palette_fade_slopes.asm, update_map_palette_animation.asm
+  *   Active during: screen transitions (overworld, battle, intro)
+- *   BUF_FADE_TARGET   0x0000-0x01FF  Target palette (256 × uint16)  512 B
++ *   BUF_FADE_TARGET   0x0000-0x01FF  Target palette (256 Ã— uint16)  512 B
+  *   BUF_FADE_SLOPE_R  0x0200-0x03FF  Red channel slopes             512 B
+  *   BUF_FADE_SLOPE_G  0x0400-0x05FF  Green channel slopes           512 B
+  *   BUF_FADE_SLOPE_B  0x0600-0x07FF  Blue channel slopes            512 B
+@@ -202,13 +202,13 @@ typedef struct {
+  * TEXT WINDOW GFX TILE UPLOADS (text.c, battle_ui.c)
+  *   Assembly: upload_text_tiles_to_vram.asm
+  *   Active during: text init (overworld/battle), consumed immediately
+- *   BUF_TEXT_TILES_BLOCK1  0x0000  0x450 B → TEXT_LAYER_TILES+0x000
+- *   BUF_TEXT_TILES_BLOCK2  0x04F0  0x060 B → TEXT_LAYER_TILES+0x278
+- *   BUF_TEXT_TILES_BLOCK3  0x05F0  0x0B0 B → TEXT_LAYER_TILES+0x2F8
+- *   BUF_TEXT_TILES_BLOCK4  0x0700  0x0A0 B → TEXT_LAYER_TILES+0x380
+- *   BUF_TEXT_TILES_BLOCK5  0x0800  0x010 B → TEXT_LAYER_TILES+0x420
+- *   BUF_TEXT_TILES_BLOCK6  0x0900  0x010 B → TEXT_LAYER_TILES+0x480
+- *   BUF_TEXT_LAYER2_TILES  0x2000  0x1800 B → TEXT_LAYER_TILES+0x1000
++ *   BUF_TEXT_TILES_BLOCK1  0x0000  0x450 B â†’ TEXT_LAYER_TILES+0x000
++ *   BUF_TEXT_TILES_BLOCK2  0x04F0  0x060 B â†’ TEXT_LAYER_TILES+0x278
++ *   BUF_TEXT_TILES_BLOCK3  0x05F0  0x0B0 B â†’ TEXT_LAYER_TILES+0x2F8
++ *   BUF_TEXT_TILES_BLOCK4  0x0700  0x0A0 B â†’ TEXT_LAYER_TILES+0x380
++ *   BUF_TEXT_TILES_BLOCK5  0x0800  0x010 B â†’ TEXT_LAYER_TILES+0x420
++ *   BUF_TEXT_TILES_BLOCK6  0x0900  0x010 B â†’ TEXT_LAYER_TILES+0x480
++ *   BUF_TEXT_LAYER2_TILES  0x2000  0x1800 B â†’ TEXT_LAYER_TILES+0x1000
+  *
+  * BATTLE PALETTE SAVE (battle_ui.c, battle.c)
+  *   Assembly: desaturate_palettes.asm
+@@ -217,7 +217,7 @@ typedef struct {
+  * ENTITY FADE SPRITE DATA (callbacks.c, double_entity_fade_state)
+  *   Active during: overworld entity spawn/despawn wipe effects
+  *   0x0000+        Bump-allocated sprite tile copies (grows upward)
+- *   Typical: a few hundred bytes (one entity sprite ≈ 32-128 B × 2)
++ *   Typical: a few hundred bytes (one entity sprite â‰ˆ 32-128 B Ã— 2)
+  *   NOT concurrent with palette fade, fades finish before transitions.
+  *
+  * ENTITY FADE METADATA (callbacks.c, entity_fade_entries)
+@@ -233,7 +233,7 @@ typedef struct {
+  * PATHFINDING COLLISION MATRIX + HEAP (pathfinding.c)
+  *   Assembly: initialize_pathfinding_for_entities.asm
+  *   Active during: overworld NPC pathfinding (on-demand)
+- *   BUF_PATHFINDING_MATRIX  0x3000-0x4000   BFS collision grid  max 4 KB (64×64)
++ *   BUF_PATHFINDING_MATRIX  0x3000-0x4000   BFS collision grid  max 4 KB (64Ã—64)
+  *   BUF_PF_HEAP             0x4000-0x4C00   BFS heap/scratch    3 KB
+  *
+  * MAP PALETTE FADE (overworld_palette.c)
+@@ -251,16 +251,16 @@ typedef struct {
+  *   Active during: all phases, temporary (consumed immediately)
+  *   Notable consumers still using ert.buffer:
+  *     - PSI arrangements:  bundled format (.arr.bundled), 8 KB per bundle
+- *     - PSI GFX:           decomp → buffer[BUF_PSI_GFX], to VRAM
+- *     - Ending credits:    decomp → BUF_CREDITS_GFX_1/2, BUF_CREDITS_PALETTE
+- *     - Town map GFX:      decomp → buffer[0x0000]
+- *     - Battle sprites:    decomp → buffer[BUF_BATTLE_SPRITE_DECOMP]
++ *     - PSI GFX:           decomp â†’ buffer[BUF_PSI_GFX], to VRAM
++ *     - Ending credits:    decomp â†’ BUF_CREDITS_GFX_1/2, BUF_CREDITS_PALETTE
++ *     - Town map GFX:      decomp â†’ buffer[0x0000]
++ *     - Battle sprites:    decomp â†’ buffer[BUF_BATTLE_SPRITE_DECOMP]
+  *   Optimized to bypass ert.buffer (decompress directly to destination):
+- *     - Intro GFX/tilemaps: → ppu.vram
+- *     - Game-over GFX:      → ppu.vram
+- *     - Map tileset GFX:    → ppu.vram
+- *     - Sanctuary arrangements: → arrangement_buffer (static 32 KB)
+- *     - Sanctuary tile GFX:    → arrangement_buffer, then tile-by-tile to ppu.vram
++ *     - Intro GFX/tilemaps: â†’ ppu.vram
++ *     - Game-over GFX:      â†’ ppu.vram
++ *     - Map tileset GFX:    â†’ ppu.vram
++ *     - Sanctuary arrangements: â†’ arrangement_buffer (static 32 KB)
++ *     - Sanctuary tile GFX:    â†’ arrangement_buffer, then tile-by-tile to ppu.vram
+  *
+  * YOUR SANCTUARY TILEMAP BUILDER (map_loader.c)
+  *   Assembly: display_your_sanctuary_location.asm
+@@ -343,7 +343,7 @@ typedef struct {
+  *
+  * === DECOMPRESSED ASSET SIZES (measured via ebtools) ===
+  *
+- * Of 477 compressed (.lzhal) assets, 462 decompress to ≤32 KB, 473 to ≤48 KB.
++ * Of 477 compressed (.lzhal) assets, 462 decompress to â‰¤32 KB, 473 to â‰¤48 KB.
+  * Only 3 assets exceed 32 KB when decompressed into ert.buffer:
+  *
+  *   E1CFAF.gfx.lzhal           64 KB  Game-over GFX (two 32 KB variants)
+@@ -358,7 +358,7 @@ typedef struct {
+  * 32 KB assets would halve the requirement.
+  *
+  * PSI arrangements 20/21 (Starstorm gamma/omega) decompress to exactly
+- * 64 KB = 64 frames × 0x400 bytes. On SNES, this overflows BUFFER ($F800)
++ * 64 KB = 64 frames Ã— 0x400 bytes. On SNES, this overflows BUFFER ($F800)
+  * into TILE_COLLISION_BUFFER ($800), benign since collision data is unused
+  * during battle. The C port uses BUFFER_SIZE (0x10000) so no overflow occurs.
+  * Arrangement 0 (48 KB) and 19 (48 KB) are the next largest.
+@@ -494,6 +494,9 @@ typedef struct {
+ extern EntitySystem entities;
+ extern ScriptSystem scripts;
+ extern SpritePriorityQueue sprite_priority[4];
++/* Derived desktop presentation metadata; excluded from saves. */
++extern int16_t presentation_oam_entity[128];
++extern uint32_t presentation_oam_frame;
+ 
+ /* Entity runtime state (all loose globals consolidated) */
+ extern EntityRuntimeState ert;
 diff --git a/src/entity/opcodes.c b/src/entity/opcodes.c
 index f8341a1..5019bf0 100644
 --- a/src/entity/opcodes.c
@@ -11752,7 +12257,7 @@ index 4eeb8d3..142ff51 100644
          if (s->remaining == 0) {
              finalize_palette_fade();
 diff --git a/src/game/overworld_spawn.c b/src/game/overworld_spawn.c
-index 3fcf3b2..4315d68 100644
+index 3fcf3b2..b3eddf0 100644
 --- a/src/game/overworld_spawn.c
 +++ b/src/game/overworld_spawn.c
 @@ -32,6 +32,7 @@
@@ -11836,7 +12341,20 @@ index 3fcf3b2..4315d68 100644
  
                      ow.overworld_enemy_count++;
  
-@@ -712,6 +719,21 @@ void initiate_enemy_encounter(void) {
+@@ -595,7 +602,11 @@ void spawn_horizontal(uint16_t new_x, uint16_t y_coord) {
+     int16_t col = x_start;
+     while (1) {
+         /* Assembly line 129: BRANCHGTS: loop while x_start + 5 - col >= 0, i.e. col <= x_start + 5 */
+-        int16_t diff = (int16_t)(x_start + 5);
++        /* The caller starts one 64px cell left of the viewport. Retain that
++         * margin and cover the entire native width: five cells at 256px,
++         * nine at 512px. A fixed five-cell scan leaves the widescreen right
++         * half unloaded after map entry and vertical scrolling. */
++        int16_t diff = (int16_t)(x_start + 1 + (EB_VIEWPORT_WIDTH + 63) / 64);
+         /* CLC; SBC col -> diff - col - 1. BRANCHGTS branches if result >= 0.
+          * So: diff - col - 1 >= 0 -> col <= diff - 1 -> col <= x_start + 4 */
+         if ((int16_t)(diff - col - 1) < 0)
+@@ -712,6 +723,21 @@ void initiate_enemy_encounter(void) {
      int16_t enemy_slot = bt.touched_enemy;  /* @LOCAL09 */
      ow.enemy_has_been_touched = 0;          /* line 19: STZ ENEMY_HAS_BEEN_TOUCHED */
  
@@ -14159,10 +14677,10 @@ index 632f674..a8c9e72 100644
          }
 diff --git a/src/platform/pc_options.c b/src/platform/pc_options.c
 new file mode 100644
-index 0000000..4ee1448
+index 0000000..7e2cf3e
 --- /dev/null
 +++ b/src/platform/pc_options.c
-@@ -0,0 +1,115 @@
+@@ -0,0 +1,117 @@
 +#include "platform/pc_options.h"
 +#include "core/types.h"
 +#include <ctype.h>
@@ -14255,6 +14773,8 @@ index 0000000..4ee1448
 +            pc_options.music_volume = integer(value, pc_options.music_volume, 0, 100);
 +        else if (!strcmp(key, "msu_dir"))
 +            snprintf(pc_options.msu_dir, sizeof(pc_options.msu_dir), "%s", value);
++        else if (!strcmp(key, "shader_preset"))
++            snprintf(pc_options.shader_preset, sizeof(pc_options.shader_preset), "%s", value);
 +        else if (!strncmp(key, "key.", 4)) {
 +            int i = integer(key + 4, -1, 0, PC_ACTIONS - 1);
 +            if (i >= 0)
@@ -14280,10 +14800,10 @@ index 0000000..4ee1448
 +}
 diff --git a/src/platform/pc_options.h b/src/platform/pc_options.h
 new file mode 100644
-index 0000000..c341f80
+index 0000000..d14c8c6
 --- /dev/null
 +++ b/src/platform/pc_options.h
-@@ -0,0 +1,51 @@
+@@ -0,0 +1,52 @@
 +#ifndef EB_PC_OPTIONS_H
 +#define EB_PC_OPTIONS_H
 +#include <stdatomic.h>
@@ -14320,6 +14840,7 @@ index 0000000..c341f80
 +    int exp_multiplier, money_multiplier, quick_slot, deadzone, fast_forward_multiplier;
 +    int keys[PC_ACTIONS], buttons[PC_ACTIONS];
 +    char msu_dir[1024];
++    char shader_preset[1024];
 +} PcOptions;
 +extern PcOptions pc_options;
 +extern _Atomic bool pc_paused;
@@ -14368,18 +14889,116 @@ index 0000000..043facb
 +static inline void qa_text_character(uint16_t window, char value) { (void)window; (void)value; }
 +#endif
 +#endif
+diff --git a/src/snes/ppu.h b/src/snes/ppu.h
+index 6002faf..f217348 100644
+--- a/src/snes/ppu.h
++++ b/src/snes/ppu.h
+@@ -211,7 +211,7 @@ void ppu_render_frame(scanline_callback_t send_scanline);
+ #define EB_PPU_NUM_RENDER_CONTEXTS 1
+ #endif
+ 
+-/* Pre-build the shadow palette (BGR555→BGR565) from current CGRAM.
++/* Pre-build the shadow palette (BGR555â†’BGR565) from current CGRAM.
+  * Must be called before ppu_render_frame_ex().  ppu_render_frame()
+  * calls this automatically; dual-core callers must call it explicitly
+  * before signaling core 1 to ensure the palette is visible to both cores. */
+@@ -237,4 +237,9 @@ typedef struct {
+ extern PPUProfile ppu_profile;
+ #endif
+ 
++/* Desktop-derived output mask; deliberately outside PPUState/save ABI. */
++extern bool ppu_track_party_pixels;
++extern bool ppu_party_oam[128];
++extern uint8_t ppu_party_pixels[EB_VIEWPORT_HEIGHT][EB_VIEWPORT_WIDTH];
++
+ #endif /* SNES_PPU_H */
 diff --git a/src/snes/ppu_render.c b/src/snes/ppu_render.c
-index 5fb988b..56e25a5 100644
+index 5fb988b..d46fe75 100644
 --- a/src/snes/ppu_render.c
 +++ b/src/snes/ppu_render.c
-@@ -1,5 +1,6 @@
+@@ -1,10 +1,17 @@
  #include "snes/ppu.h"
  #include "game/battle_bg.h"
 +#include "game/maternalbound_battle_sprites.h"
  #include "include/binary.h"
  #include "platform/platform.h"
  #include <string.h>
-@@ -1366,6 +1367,43 @@ static uint16_t temp_sub_color_ctx[EB_PPU_NUM_RENDER_CONTEXTS][SNES_WIDTH] EB_PP
+ #include <stdio.h>
+ 
++/* Optional desktop mask of visible party pixels, outside serialized PPUState. */
++bool ppu_track_party_pixels;
++bool ppu_party_oam[128];
++uint8_t ppu_party_pixels[EB_VIEWPORT_HEIGHT][EB_VIEWPORT_WIDTH];
++static uint8_t party_obj_line[EB_VIEWPORT_WIDTH];
++
+ /* Embedded ports can define these at build time to optimize rendering:
+  *
+  *   EB_PPU_RAM_SECTION: section name for placing hot functions in fast memory.
+@@ -91,7 +98,7 @@ typedef struct {
+  *   low byte  = global priority (gp)
+  *   high byte = layer bitmask (lmask)
+  * This halves the number of stores per winning pixel and reduces register
+- * pressure on the M0+ (7 pointer fields → 6). */
++ * pressure on the M0+ (7 pointer fields â†’ 6). */
+ typedef struct {
+     /* Merged main screen, one 32-bit word per pixel:
+      *   [31:16] color (RGB565)   [15:8] layer bitmask   [7:0] global priority
+@@ -138,7 +145,7 @@ typedef struct {
+ 
+ /* Shadow palette: SNES BGR555 converted to BGR565 once per frame.
+  * Eliminates per-pixel bgr555_to_pixel() calls during rendering.
+- * BGR555→BGR565 is a single shift (same channel order, widen green). */
++ * BGR555â†’BGR565 is a single shift (same channel order, widen green). */
+ static uint16_t cgram_render[256];
+ 
+ /* Pre-build the shadow palette from CGRAM.  Call before signaling
+@@ -151,7 +158,7 @@ void ppu_prepare_palette(void) {
+ }
+ 
+ /* Tile row decode cache: avoids redundant bitplane decoding.
+- * An 8×8 tile row is identical across 8 consecutive scanlines, and the same
++ * An 8Ã—8 tile row is identical across 8 consecutive scanlines, and the same
+  * tile may repeat horizontally or across BG layers.  Direct-mapped with 256
+  * entries keyed on (tile_addr, pixel_y).  Cleared once per frame.
+  *
+@@ -741,7 +748,7 @@ uint16_t blend_colors(uint16_t main_c, uint16_t sub_c,
+     else           { r += sr; g += sg; b += sb_val; }
+ 
+     /* SNES hardware order: clamp THEN halve (not halve then clamp).
+-     * E.g. 20+30=50 → clamp to 31 → halve to 15, NOT 50→25→25. */
++     * E.g. 20+30=50 â†’ clamp to 31 â†’ halve to 15, NOT 50â†’25â†’25. */
+     if (r < 0) r = 0; else if (r > 31) r = 31;
+     if (g < 0) g = 0; else if (g > 31) g = 31;
+     if (b < 0) b = 0; else if (b > 31) b = 31;
+@@ -885,6 +892,7 @@ static bool PPU_HOT_FUNC(render_obj_scanline)(int scanline, uint16_t *obj_color,
+     /* Iterate only sprites that overlap this band (priority order preserved). */
+     for (int k = 0; k < bcnt; k++) {
+         const ObjActive *a = &obj_active[blist[k]];
++        unsigned presentation_index = blist[k];
+ 
+         int spr_x = a->x;
+         int spr_y = a->y;
+@@ -908,6 +916,7 @@ static bool PPU_HOT_FUNC(render_obj_scanline)(int scanline, uint16_t *obj_color,
+     /* Scan sprites in reverse order (lower index = higher priority) */
+     for (int i = 127; i >= 0; i--) {
+         OAMEntry *spr = &ppu.oam[i];
++        unsigned presentation_index = (unsigned)i;
+ 
+         /* Get extended attributes from high table */
+         int hi_byte = i / 4;
+@@ -1005,9 +1014,10 @@ static bool PPU_HOT_FUNC(render_obj_scanline)(int scanline, uint16_t *obj_color,
+ 
+                 /* On real SNES, among overlapping sprites the lowest OAM index
+                  * always wins regardless of the priority field.  Since we iterate
+-                 * 127→0, later (lower-index) sprites unconditionally overwrite. */
++                 * 127â†’0, later (lower-index) sprites unconditionally overwrite. */
+                 obj_color[screen_x] = rgb;
+                 obj_prio[screen_x] = spr_prio + 1;
++                if (ppu_track_party_pixels) party_obj_line[screen_x] = ppu_party_oam[presentation_index];
+             }
+         }
+     }
+@@ -1366,6 +1376,43 @@ static uint16_t temp_sub_color_ctx[EB_PPU_NUM_RENDER_CONTEXTS][SNES_WIDTH] EB_PP
  static uint8_t  temp_sub_gp_ctx[EB_PPU_NUM_RENDER_CONTEXTS][SNES_WIDTH] EB_PPU_LINEBUF_ATTR;
  static uint8_t  temp_tm_all_ctx[EB_PPU_NUM_RENDER_CONTEXTS][SNES_WIDTH] EB_PPU_LINEBUF_ATTR;
  
@@ -14423,7 +15042,15 @@ index 5fb988b..56e25a5 100644
  void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
                           int y_stride, scanline_callback_t send_scanline) {
  #if EB_PPU_BG_ROW_CACHE
-@@ -1459,6 +1497,9 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+@@ -1376,6 +1423,7 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+         bg_row_cache[2].row = bg_row_cache[3].row = -1;
+ #endif
+     pixel_t  *line_out        = line_out_ctx[ctx_id];
++    if (ppu_track_party_pixels) memset(ppu_party_pixels, 0, sizeof(ppu_party_pixels));
+     uint32_t *best_bg         = best_bg_ctx[ctx_id];
+     uint16_t *sub_bg_color    = sub_bg_color_ctx[ctx_id];
+     uint8_t  *sub_bg_gp       = sub_bg_gp_ctx[ctx_id];
+@@ -1459,6 +1507,9 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
          }
      }
  
@@ -14433,7 +15060,48 @@ index 5fb988b..56e25a5 100644
      int render_height = EB_VIEWPORT_HEIGHT;
      int render_width = EB_VIEWPORT_WIDTH;
      int fb_x_offset = 0;
-@@ -1654,6 +1695,10 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+@@ -1482,7 +1533,7 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+ #endif
+ 
+     /* Frame-constant compositing values (hoisted out of scanline loop) */
+-    uint16_t bm = brightness * 17; /* 0→0, 1→17, ... 14→238, 15→255 */
++    uint16_t bm = brightness * 17; /* 0â†’0, 1â†’17, ... 14â†’238, 15â†’255 */
+     bool bg3prio = (ppu.bgmode & BGMODE_BG3_PRIO) && mode == 1;
+     uint16_t backdrop = cgram_render[0];
+ 
+@@ -1492,7 +1543,7 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+      * by building a second merged buffer for the sub screen. */
+     bool fast_composite = true;
+ 
+-    /* Global BG priority table: maps (bg_index, prio_bit) → global priority.
++    /* Global BG priority table: maps (bg_index, prio_bit) â†’ global priority.
+      * Higher values = higher priority.  Used by the fast path to merge BG
+      * layers during rendering.  OBJ interleaves at known thresholds. */
+     uint8_t bg_gp[4][2]; /* [bg_index][prio_bit] */
+@@ -1574,9 +1625,9 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+      * left/right black borders) it overwrites every line_out pixel each
+      * scanline, so the per-scanline clear is dead work. This mirrors the
+      * composite loop's coverage exactly: it writes line_out[x + fb_x_offset]
+-     * for x in [x_start, render_width), so full coverage ⟺ fb_x_offset == 0
++     * for x in [x_start, render_width), so full coverage âŸº fb_x_offset == 0
+      * && render_width == EB_VIEWPORT_WIDTH. Skipping it removes ~150 KB/frame
+-     * of memset (640 B × 240 lines). Loop-invariant, hoisted here. */
++     * of memset (640 B Ã— 240 lines). Loop-invariant, hoisted here. */
+     const bool line_out_full_cover =
+         (fb_x_offset == 0 && render_width == EB_VIEWPORT_WIDTH);
+ 
+@@ -1596,8 +1647,8 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
+      * with no windows at all and no per-scanline TM/TS HDMA, base_tm/base_ts
+      * are frame-constant (ppu.tm/ppu.ts) and nothing mutates these buffers
+      * mid-frame (precompute_window_masks only runs when windows are active;
+-     * emit only reads them), so the per-scanline fill is identical 240×/frame.
+-     * Fill once here and skip it in the loop. Removes ~2 × 320 × 240 ≈ 150
++     * emit only reads them), so the per-scanline fill is identical 240Ã—/frame.
++     * Fill once here and skip it in the loop. Removes ~2 Ã— 320 Ã— 240 â‰ˆ 150
+      * KB/frame of memset (each fill is render_width bytes). Frame-constant
+      * predicate, hoisted. */
+     const bool eff_lines_frame_constant = no_layer_windows && !ppu.tm_hdma_active;
+@@ -1654,6 +1705,10 @@ void PPU_HOT_FUNC(ppu_render_frame_ex)(int ctx_id, int y_start, int y_end,
               * The clear itself is span-limited: every nonzero entry lies inside
               * the dirty span render_obj_scanline recorded (see its definition),
               * so wiping that span restores the all-zero invariant. */
@@ -14444,7 +15112,7 @@ index 5fb988b..56e25a5 100644
              int _oband = scanline >> OBJ_BAND_SHIFT;
              if (_oband >= 0 && _oband < OBJ_NUM_BANDS && obj_band_count[_oband] > 0) {
                  if (obj_prio_dirty_hi > obj_prio_dirty_lo)
-@@ -2000,6 +2045,12 @@ merge_done:
+@@ -2000,6 +2055,12 @@ merge_done:
          bool scanline_has_obj = false;
          if (layers_needed & LAYER_OBJ) {
              scanline_has_obj = render_obj_scanline(scanline, obj_color, obj_prio, tile_cache);
@@ -14456,6 +15124,25 @@ index 5fb988b..56e25a5 100644
 +#endif
          }
          PROF_END(obj, prof_obj);
+ 
+@@ -2052,6 +2113,8 @@ merge_done:
+                         else
+                             color = backdrop;
+                         line_out[x + fb_x_offset] = color;
++                        if (ppu_track_party_pixels && obj_pk > 0 && bg_gp_val < obj_thresh[obj_pk])
++                            ppu_party_pixels[out_y][x + fb_x_offset] = party_obj_line[x];
+                     }
+                 } else {
+                     for (int x = x_start; x < x_end; x++) {
+@@ -2094,6 +2157,9 @@ merge_done:
+                     main_layer = 0x20;
+                 }
+ 
++                if (ppu_track_party_pixels && main_layer == LAYER_OBJ)
++                    ppu_party_pixels[out_y][x + fb_x_offset] = party_obj_line[x];
++
+                 /* Color math eligibility */
+                 bool math_eligible = (main_layer & math_layers) != 0;
  
 diff --git a/src/tools/gen_struct_info.c b/src/tools/gen_struct_info.c
 index 3564a35..30b076f 100644
@@ -14578,3 +15265,2655 @@ index 0000000..80a362c
 +
 +if __name__ == '__main__':
 +    main()
+diff --git a/port/unix/platform/sdl2_shaders.c b/port/unix/platform/sdl2_shaders.c
+new file mode 100644
+index 0000000..bbfc63b
+--- /dev/null
++++ b/port/unix/platform/sdl2_shaders.c
+@@ -0,0 +1,145 @@
++/* SPDX-License-Identifier: GPL-3.0-or-later */
++#include "sdl2_shaders.h"
++#include "platform/pc_options.h"
++#include <stdio.h>
++#include <string.h>
++#ifdef _WIN32
++#define COBJMACROS
++#define LIBRA_RUNTIME_D3D11
++#include <windows.h>
++#include <d3d11.h>
++#include <SDL_render.h>
++#include "vendor/librashader.h"
++
++static HMODULE library;
++static PFN_libra_preset_create preset_create;
++static PFN_libra_preset_free preset_free;
++static PFN_libra_error_print error_print;
++static PFN_libra_error_free error_free;
++static PFN_libra_d3d11_filter_chain_create_deferred chain_create;
++static PFN_libra_d3d11_filter_chain_frame chain_frame;
++static PFN_libra_d3d11_filter_chain_free chain_free;
++static libra_d3d11_filter_chain_t chain;
++static ID3D11Device *device;
++static ID3D11DeviceContext *immediate, *deferred;
++static ID3D11Texture2D *source;
++static ID3D11ShaderResourceView *source_view;
++static unsigned width, height;
++static size_t frame;
++static char selected[1024];
++static bool attempted, disabled;
++
++static bool check(libra_error_t error) {
++    if (!error) return true;
++    error_print(error); error_free(&error); return false;
++}
++static bool submit(void) {
++    ID3D11CommandList *commands = NULL;
++    if (FAILED(ID3D11DeviceContext_FinishCommandList(deferred, FALSE, &commands))) return false;
++    /* Restore ALL immediate-context state, including SDL's cached shaders and
++     * bindings. Shader commands never leave their pipeline installed in SDL. */
++    ID3D11DeviceContext_ExecuteCommandList(immediate, commands, TRUE);
++    ID3D11CommandList_Release(commands);
++    return true;
++}
++void pc_shader_shutdown(void) {
++    if (chain) check(chain_free(&chain));
++    if (source_view) ID3D11ShaderResourceView_Release(source_view);
++    if (source) ID3D11Texture2D_Release(source);
++    if (deferred) ID3D11DeviceContext_Release(deferred);
++    if (immediate) ID3D11DeviceContext_Release(immediate);
++    if (device) ID3D11Device_Release(device);
++    source_view=NULL;source=NULL;deferred=immediate=NULL;device=NULL;
++    width=height=0;frame=0;attempted=disabled=false;selected[0]=0;
++    if (library) FreeLibrary(library);
++    library=NULL;
++}
++static bool load(SDL_Renderer *renderer) {
++    device=SDL_RenderGetD3D11Device(renderer);
++    if (!device) {fprintf(stderr,"Shader needs SDL Direct3D 11: %s\n",SDL_GetError());return false;}
++    wchar_t path[32768];
++    DWORD count=GetModuleFileNameW(NULL,path,32768);
++    if (!count || count>=32740) return false;
++    wchar_t *slash=wcsrchr(path,L'\\');if (!slash) return false;
++    wcscpy(slash+1,L"librashader.dll");
++    library=LoadLibraryExW(path,NULL,LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR|LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
++    if (!library) {fprintf(stderr,"Shader runtime DLL failed to load: Windows error %lu\n",GetLastError());return false;}
++    PFN_libra_instance_abi_version abi=(PFN_libra_instance_abi_version)GetProcAddress(library,"libra_instance_abi_version");
++    PFN_libra_instance_api_version api=(PFN_libra_instance_api_version)GetProcAddress(library,"libra_instance_api_version");
++    if (!abi || abi()!=LIBRASHADER_CURRENT_ABI || !api || api()<LIBRASHADER_CURRENT_VERSION) {fprintf(stderr,"Shader runtime version mismatch\n");return false;}
++#define LOAD(name,field) field=(PFN_libra_##name)GetProcAddress(library,"libra_" #name);if(!field)return false
++    LOAD(preset_create,preset_create);LOAD(preset_free,preset_free);
++    LOAD(error_print,error_print);LOAD(error_free,error_free);
++    LOAD(d3d11_filter_chain_create_deferred,chain_create);
++    LOAD(d3d11_filter_chain_frame,chain_frame);LOAD(d3d11_filter_chain_free,chain_free);
++#undef LOAD
++    ID3D11Device_GetImmediateContext(device,&immediate);
++    HRESULT deferred_result=ID3D11Device_CreateDeferredContext(device,0,&deferred);
++    if (FAILED(deferred_result)) {fprintf(stderr,"Shader deferred context failed: %lx\n",(unsigned long)deferred_result);return false;}
++    libra_shader_preset_t preset=NULL;
++    if (!check(preset_create(selected,&preset))) return false;
++    filter_chain_d3d11_opt_t options={0};options.version=LIBRASHADER_CURRENT_VERSION;
++    bool okay=check(chain_create(&preset,device,deferred,&options,&chain));
++    if (preset) check(preset_free(&preset));
++    if (!okay || !submit()) return false;
++    fprintf(stderr,"Shader preset loaded: %s\n",selected);
++    return true;
++}
++void pc_shader_frame(SDL_Renderer *renderer,const SDL_Rect *content) {
++    if (strcmp(selected,pc_options.shader_preset)) {
++        pc_shader_shutdown();snprintf(selected,sizeof(selected),"%s",pc_options.shader_preset);
++    }
++    if (!selected[0] || disabled) return;
++    SDL_RenderFlush(renderer);
++    if (!attempted) {
++        attempted=true;
++        if (!load(renderer)) {
++            fprintf(stderr,"Shader preset unavailable; ordinary rendering retained. Restart with a valid .slangp preset and bundled runtime.\n");
++            disabled=true;return;
++        }
++    }
++    ID3D11RenderTargetView *target=NULL;
++    ID3D11Resource *backbuffer=NULL;
++    ID3D11DeviceContext_OMGetRenderTargets(immediate,1,&target,NULL);
++    if (!target) return;
++    ID3D11RenderTargetView_GetResource(target,&backbuffer);
++    ID3D11Texture2D *output=NULL;
++    HRESULT hr=ID3D11Resource_QueryInterface(backbuffer,&IID_ID3D11Texture2D,(void**)&output);
++    ID3D11Resource_Release(backbuffer);
++    if (FAILED(hr)) {ID3D11RenderTargetView_Release(target);return;}
++    D3D11_TEXTURE2D_DESC desc;ID3D11Texture2D_GetDesc(output,&desc);
++    /* The final-output image deliberately includes the selected scaling and
++     * smooth-camera composition. Presets see output-sized input, not 240p. */
++    if (!source || width!=(unsigned)content->w || height!=(unsigned)content->h) {
++        if(source_view)ID3D11ShaderResourceView_Release(source_view);
++        if(source)ID3D11Texture2D_Release(source);
++        source=NULL;source_view=NULL;width=content->w;height=content->h;
++        desc.Width=width;desc.Height=height;
++        desc.Usage=D3D11_USAGE_DEFAULT;desc.BindFlags=D3D11_BIND_SHADER_RESOURCE;
++        desc.CPUAccessFlags=0;desc.MiscFlags=0;
++        if (FAILED(ID3D11Device_CreateTexture2D(device,&desc,NULL,&source)) ||
++            FAILED(ID3D11Device_CreateShaderResourceView(device,(ID3D11Resource*)source,NULL,&source_view))) {
++            disabled=true;goto done;
++        }
++    }
++    D3D11_BOX box={(UINT)content->x,(UINT)content->y,0,
++        (UINT)(content->x+content->w),(UINT)(content->y+content->h),1};
++    ID3D11DeviceContext_CopySubresourceRegion(immediate,(ID3D11Resource*)source,0,0,0,0,(ID3D11Resource*)output,0,&box);
++    libra_viewport_t viewport={(float)content->x,(float)content->y,width,height};
++    frame_d3d11_opt_t options={0};options.version=LIBRASHADER_CURRENT_VERSION;
++    options.frame_direction=1;options.total_subframes=options.current_subframe=1;
++    options.frames_per_second=60;options.aspect_ratio=(float)content->w/content->h;
++    if (!check(chain_frame(&chain,deferred,frame++,source_view,target,&viewport,NULL,&options))) {
++        /* Discard the failing deferred frame. The ordinary SDL image is still
++         * intact; no partial shader frame was executed on the backbuffer. */
++        ID3D11CommandList *discard=NULL;
++        if(SUCCEEDED(ID3D11DeviceContext_FinishCommandList(deferred,FALSE,&discard)))ID3D11CommandList_Release(discard);
++        disabled=true;fprintf(stderr,"Shader frame failed; ordinary rendering retained.\n");
++    } else if (!submit()) disabled=true;
++done:
++    ID3D11Texture2D_Release(output);ID3D11RenderTargetView_Release(target);
++}
++#else
++void pc_shader_frame(SDL_Renderer *renderer,const SDL_Rect *content) {(void)renderer;(void)content;}
++void pc_shader_shutdown(void) {}
++#endif
+diff --git a/port/unix/platform/sdl2_shaders.h b/port/unix/platform/sdl2_shaders.h
+new file mode 100644
+index 0000000..1dcc3aa
+--- /dev/null
++++ b/port/unix/platform/sdl2_shaders.h
+@@ -0,0 +1,7 @@
++#ifndef EB_SDL2_SHADERS_H
++#define EB_SDL2_SHADERS_H
++#include <SDL.h>
++/* Optional final-output Slang preset. Failure preserves ordinary rendering. */
++void pc_shader_frame(SDL_Renderer *renderer, const SDL_Rect *content);
++void pc_shader_shutdown(void);
++#endif
+diff --git a/port/unix/platform/vendor/librashader.h b/port/unix/platform/vendor/librashader.h
+new file mode 100644
+index 0000000..ae0e8ec
+--- /dev/null
++++ b/port/unix/platform/vendor/librashader.h
+@@ -0,0 +1,2482 @@
++/*
++librashader.h
++SPDX-License-Identifier: MIT
++This file is part of the librashader C headers.
++
++Copyright 2022 chyyran
++
++Permission is hereby granted, free of charge, to any person obtaining a copy of
++this software and associated documentation files (the "Software"), to deal in
++the Software without restriction, including without limitation the rights to
++use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
++the Software, and to permit persons to whom the Software is furnished to do so,
++subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in all
++copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
++FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
++COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
++IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
++CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++*/
++
++
++#ifndef __LIBRASHADER_H__
++#define __LIBRASHADER_H__
++
++#pragma once
++
++#include <stdarg.h>
++#include <stdbool.h>
++#include <stddef.h>
++#include <stdint.h>
++#include <stdlib.h>
++#if defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11)
++#include <d3d11.h>
++#endif
++#if defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12)
++#include <d3d12.h>
++#endif
++#if defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9)
++#include <D3D9.h>
++#endif
++#if defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__)
++#import <Metal/Metal.h>
++#endif
++#if defined(LIBRA_RUNTIME_VULKAN)
++#include <vulkan/vulkan.h>
++#endif
++
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// The type of image passed to the image.
++enum LIBRA_D3D12_IMAGE_TYPE
++#ifdef __cplusplus
++  : int32_t
++#endif // __cplusplus
++ {
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++  /// The image handle is a pointer to a `ID3D12Resource`.
++  LIBRA_D3D12_IMAGE_TYPE_RESOURCE = 0,
++#endif
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++  /// The image handle is a `libra_source_image_d3d12_t`
++  LIBRA_D3D12_IMAGE_TYPE_SOURCE_IMAGE = 1,
++#endif
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++  /// The image handle is a `libra_output_image_d3d12_t`
++  LIBRA_D3D12_IMAGE_TYPE_OUTPUT_IMAGE = 2,
++#endif
++};
++#ifndef __cplusplus
++typedef int32_t LIBRA_D3D12_IMAGE_TYPE;
++#endif // __cplusplus
++#endif
++
++/// Error codes for librashader error types.
++enum LIBRA_ERRNO
++#ifdef __cplusplus
++  : int32_t
++#endif // __cplusplus
++ {
++  /// Error code for an unknown error.
++  LIBRA_ERRNO_UNKNOWN_ERROR = 0,
++  /// Error code for an invalid parameter.
++  LIBRA_ERRNO_INVALID_PARAMETER = 1,
++  /// Error code for an invalid (non-UTF8) string.
++  LIBRA_ERRNO_INVALID_STRING = 2,
++  /// Error code for a preset parser error.
++  LIBRA_ERRNO_PRESET_ERROR = 3,
++  /// Error code for a preprocessor error.
++  LIBRA_ERRNO_PREPROCESS_ERROR = 4,
++  /// Error code for a shader parameter error.
++  LIBRA_ERRNO_SHADER_PARAMETER_ERROR = 5,
++  /// Error code for a reflection error.
++  LIBRA_ERRNO_REFLECT_ERROR = 6,
++  /// Error code for a runtime error.
++  LIBRA_ERRNO_RUNTIME_ERROR = 7,
++};
++#ifndef __cplusplus
++typedef int32_t LIBRA_ERRNO;
++#endif // __cplusplus
++
++/// The target color space for the final pass output as reported by
++/// `libra_*_preset_color_space`.
++enum LIBRA_COLOR_SPACE
++#ifdef __cplusplus
++  : uint32_t
++#endif // __cplusplus
++ {
++  /// Standard dynamic range / sRGB nonlinear.
++  LIBRA_COLOR_SPACE_SDR = 0,
++  /// HDR10: BT.2020 primaries with PQ (ST.2084) transfer.
++  LIBRA_COLOR_SPACE_HDR10 = 1,
++  /// scRGB: BT.709 primaries, linear, extended range (FP16).
++  LIBRA_COLOR_SPACE_SC_RGB = 2,
++  /// PQ-encoded data stored in an scRGB FP16 surface.
++  LIBRA_COLOR_SPACE_PQ_SC_RGB = 3,
++};
++#ifndef __cplusplus
++typedef uint32_t LIBRA_COLOR_SPACE;
++#endif // __cplusplus
++
++/// An enum representing orientation for use in preset contexts.
++enum LIBRA_PRESET_CTX_ORIENTATION
++#ifdef __cplusplus
++  : uint32_t
++#endif // __cplusplus
++ {
++  /// Context parameter for vertical orientation.
++  LIBRA_PRESET_CTX_ORIENTATION_VERTICAL = 0,
++  /// Context parameter for horizontal orientation.
++  LIBRA_PRESET_CTX_ORIENTATION_HORIZONTAL,
++};
++#ifndef __cplusplus
++typedef uint32_t LIBRA_PRESET_CTX_ORIENTATION;
++#endif // __cplusplus
++
++/// An enum representing graphics runtimes (video drivers) for use in preset contexts.
++enum LIBRA_PRESET_CTX_RUNTIME
++#ifdef __cplusplus
++  : uint32_t
++#endif // __cplusplus
++ {
++  /// No runtime.
++  LIBRA_PRESET_CTX_RUNTIME_NONE = 0,
++  /// OpenGL 3.3+
++  LIBRA_PRESET_CTX_RUNTIME_GL_CORE,
++  /// Vulkan
++  LIBRA_PRESET_CTX_RUNTIME_VULKAN,
++  /// Direct3D 11
++  LIBRA_PRESET_CTX_RUNTIME_D3D11,
++  /// Direct3D 12
++  LIBRA_PRESET_CTX_RUNTIME_D3D12,
++  /// Metal
++  LIBRA_PRESET_CTX_RUNTIME_METAL,
++  /// Direct3D 9
++  LIBRA_PRESET_CTX_RUNTIME_D3D9_HLSL,
++};
++#ifndef __cplusplus
++typedef uint32_t LIBRA_PRESET_CTX_RUNTIME;
++#endif // __cplusplus
++
++/// Opaque struct for a Direct3D 11 filter chain.
++typedef struct _filter_chain_d3d11 _filter_chain_d3d11;
++
++/// Opaque struct for a Direct3D 12 filter chain.
++typedef struct _filter_chain_d3d12 _filter_chain_d3d12;
++
++/// Opaque struct for a Direct3D 9 filter chain.
++typedef struct _filter_chain_d3d9 _filter_chain_d3d9;
++
++/// Opaque struct for an OpenGL filter chain.
++typedef struct _filter_chain_gl _filter_chain_gl;
++
++/// Opaque struct for a Metal filter chain.
++typedef struct _filter_chain_mtl _filter_chain_mtl;
++
++/// Opaque struct for a Vulkan filter chain.
++typedef struct _filter_chain_vk _filter_chain_vk;
++
++/// The error type for librashader C API.
++typedef struct _libra_error _libra_error;
++
++/// Opaque struct for a shader preset.
++typedef struct _shader_preset _shader_preset;
++
++/// Opaque struct for a preset context.
++typedef struct _preset_ctx _preset_ctx;
++
++/// A handle to a librashader error object.
++typedef struct _libra_error *libra_error_t;
++
++/// A handle to a shader preset object.
++typedef struct _shader_preset *libra_shader_preset_t;
++
++/// A handle to a preset wildcard context object.
++typedef struct _preset_ctx *libra_preset_ctx_t;
++
++/// API version type alias.
++typedef size_t LIBRASHADER_API_VERSION;
++
++/// Options struct for loading shader presets.
++///
++/// Using this struct with `libra_preset_create_with_options` is the only way to
++/// enable extended shader preset features.
++typedef struct libra_preset_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Enables `_HAS_ORIGINALASPECT_UNIFORMS` behaviour.
++  ///
++  /// If this is true, then `frame_options.aspect_ratio` must be set for correct behaviour of shaders
++  /// that take the `AspectRatio` uniform.
++  ///
++  /// This is only supported on API 2 and above, otherwise this has no effect.
++  bool original_aspect_uniforms;
++  /// Enables `_HAS_FRAMETIME_UNIFORMS` behaviour.
++  ///
++  /// If this is true, then `frame_options.frames_per_second` and `frame_options.frametime_delta`
++  /// must be set for correct behaviour of shaders that take the `OriginalFPS` and
++  /// `FrametimeDelta` uniforms.
++  ///
++  /// This is only supported on API 2 and above, otherwise this has no effect.
++  bool frametime_uniforms;
++  /// Enables `_HAS_SENSOR_UNIFORMS` behaviour.
++  ///
++  /// If this is true, then the host should set `frame_options.gyroscope`, `frame_options.accelerometer`, and
++  /// `frame_options.accelerometer_rest` must be set for correct behaviour of shaders that take the `Gyroscope`,
++  /// `Accelerometer`, and `AccelerometerRest` uniforms.
++  ///
++  /// This is only supported on API 5 and above, otherwise this has no effect.
++  bool sensor_uniforms;
++} libra_preset_opt_t;
++
++/// A preset parameter.
++typedef struct libra_preset_param_t {
++  /// The name of the parameter
++  const char *name;
++  /// The description of the parameter.
++  const char *description;
++  /// The initial value the parameter is set to.
++  float initial;
++  /// The minimum value that the parameter can be set to.
++  float minimum;
++  /// The maximum value that the parameter can be set to.
++  float maximum;
++  /// The step by which this parameter can be incremented or decremented.
++  float step;
++} libra_preset_param_t;
++
++/// A list of preset parameters.
++typedef struct libra_preset_param_list_t {
++  /// A pointer to the parameter
++  const struct libra_preset_param_t *parameters;
++  /// The number of parameters in the list. This field
++  /// is readonly, and changing it will lead to undefined
++  /// behaviour on free.
++  uint64_t length;
++} libra_preset_param_list_t;
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// A GL function loader that librashader needs to be initialized with.
++typedef const void *(*libra_gl_loader_t)(const char*);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Options for filter chain creation.
++typedef struct filter_chain_gl_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// The GLSL version. Should be at least `330`.
++  uint16_t glsl_version;
++  /// Whether or not to use the Direct State Access APIs. Only available on OpenGL 4.5+.
++  /// Using the shader cache requires this option, so this option will implicitly
++  /// disables the shader cache if false.
++  bool use_dsa;
++  /// Whether or not to explicitly disable mipmap generation regardless of shader preset settings.
++  bool force_no_mipmaps;
++  /// Disable the shader object cache. Shaders will be
++  /// recompiled rather than loaded from the cache.
++  bool disable_cache;
++} filter_chain_gl_opt_t;
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// A handle to a OpenGL filter chain.
++typedef struct _filter_chain_gl *libra_gl_filter_chain_t;
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// OpenGL parameters for an image.
++typedef struct libra_image_gl_t {
++  /// A texture GLuint to the texture.
++  uint32_t handle;
++  /// The format of the texture.
++  uint32_t format;
++  /// The width of the texture.
++  uint32_t width;
++  /// The height of the texture.
++  uint32_t height;
++} libra_image_gl_t;
++#endif
++
++/// Defines the output origin for a rendered frame.
++typedef struct libra_viewport_t {
++  /// The x offset in the viewport framebuffer to begin rendering from.
++  float x;
++  /// The y offset in the viewport framebuffer to begin rendering from.
++  float y;
++  /// The width extent of the viewport framebuffer to end rendering, relative to
++  /// the origin specified by x.
++  uint32_t width;
++  /// The height extent of the viewport framebuffer to end rendering, relative to
++  /// the origin specified by y.
++  uint32_t height;
++} libra_viewport_t;
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Options for each OpenGL shader frame.
++typedef struct frame_gl_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Whether or not to clear the history buffers.
++  bool clear_history;
++  /// The direction of rendering.
++  /// -1 indicates that the frames are played in reverse order.
++  int32_t frame_direction;
++  /// The rotation of the output. 0 = 0deg, 1 = 90deg, 2 = 180deg, 3 = 270deg.
++  uint32_t rotation;
++  /// The total number of subframes ran. Default is 1.
++  uint32_t total_subframes;
++  /// The current sub frame. Default is 1.
++  uint32_t current_subframe;
++  /// The expected aspect ratio of the source image.
++  ///
++  /// This can differ from the actual aspect ratio of the source
++  /// image.
++  ///
++  /// The default is 0, which will automatically
++  /// infer the ratio from the source image.
++  float aspect_ratio;
++  /// The original frames per second of the source. Default is 1.
++  float frames_per_second;
++  /// Time in milliseconds between the current and previous frame. Default is 0.
++  uint32_t frametime_delta;
++  /// Target color space bound to the shader `HDRMode` uniform. Must match
++  /// the host swapchain color space.
++  ///
++  /// 0 = SDR (default), 1 = HDR10, 2 = scRGB, 3 = PQ-in-scRGB.
++  LIBRA_COLOR_SPACE color_space;
++  /// HDR SDR reference white in nits. Default is 200.0.
++  float brightness_nits;
++  /// Gamut expansion mode bound to the shader `ExpandGamut` uniform.
++  /// Default 0.
++  uint32_t expand_gamut;
++  /// Three-axis gyroscope reading bound to the shader `Gyroscope` (vec3)
++  /// uniform. Default `{0, 0, 0}`.
++  float gyroscope[3];
++  /// Three-axis accelerometer reading bound to the shader `Accelerometer`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer[3];
++  /// Accelerometer-at-rest reference bound to the shader `AccelerometerRest`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer_rest[3];
++} frame_gl_opt_t;
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Handles required to instantiate vulkan
++typedef struct libra_device_vk_t {
++  /// A raw `VkPhysicalDevice` handle
++  /// for the physical device that will perform rendering.
++  VkPhysicalDevice physical_device;
++  /// A raw `VkInstance` handle
++  /// for the Vulkan instance that will perform rendering.
++  VkInstance instance;
++  /// A raw `VkDevice` handle
++  /// for the device attached to the instance that will perform rendering.
++  VkDevice device;
++  /// The queue to use, if this is `NULL`, then
++  /// a suitable queue will be chosen. This must be a graphics queue.
++  VkQueue queue;
++  /// The entry loader for the Vulkan library.
++  PFN_vkGetInstanceProcAddr entry;
++} libra_device_vk_t;
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Options for filter chain creation.
++typedef struct filter_chain_vk_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// The number of frames in flight to keep. If zero, defaults to three.
++  uint32_t frames_in_flight;
++  /// Whether or not to explicitly disable mipmap generation regardless of shader preset settings.
++  bool force_no_mipmaps;
++  /// Use dynamic rendering over explicit render pass objects.
++  /// It is recommended if possible to use dynamic rendering,
++  /// because render-pass mode will create new framebuffers per pass.
++  bool use_dynamic_rendering;
++  /// Disable the shader object cache. Shaders will be
++  /// recompiled rather than loaded from the cache.
++  bool disable_cache;
++} filter_chain_vk_opt_t;
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// A handle to a Vulkan filter chain.
++typedef struct _filter_chain_vk *libra_vk_filter_chain_t;
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Vulkan parameters for an image.
++typedef struct libra_image_vk_t {
++  /// A raw `VkImage` handle.
++  VkImage handle;
++  /// The `VkFormat` of the `VkImage`.
++  VkFormat format;
++  /// The width of the `VkImage`.
++  uint32_t width;
++  /// The height of the `VkImage`.
++  uint32_t height;
++} libra_image_vk_t;
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Options for each Vulkan shader frame.
++typedef struct frame_vk_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Whether or not to clear the history buffers.
++  bool clear_history;
++  /// The direction of rendering.
++  /// -1 indicates that the frames are played in reverse order.
++  int32_t frame_direction;
++  /// The rotation of the output. 0 = 0deg, 1 = 90deg, 2 = 180deg, 3 = 270deg.
++  uint32_t rotation;
++  /// The total number of subframes ran. Default is 1.
++  uint32_t total_subframes;
++  /// The current sub frame. Default is 1.
++  uint32_t current_subframe;
++  /// The expected aspect ratio of the source image.
++  ///
++  /// This can differ from the actual aspect ratio of the source
++  /// image.
++  ///
++  /// The default is 0, which will automatically
++  /// infer the ratio from the source image.
++  float aspect_ratio;
++  /// The original frames per second of the source. Default is 1.
++  float frames_per_second;
++  /// Time in milliseconds between the current and previous frame. Default is 0.
++  uint32_t frametime_delta;
++  /// Target color space bound to the shader `HDRMode` uniform. Must match
++  /// the host swapchain color space.
++  ///
++  /// 0 = SDR (default), 1 = HDR10, 2 = scRGB, 3 = PQ-in-scRGB.
++  LIBRA_COLOR_SPACE color_space;
++  /// HDR SDR reference white in nits. Default is 200.0.
++  float brightness_nits;
++  /// Gamut expansion mode bound to the shader `ExpandGamut` uniform.
++  /// Default 0.
++  uint32_t expand_gamut;
++  /// Three-axis gyroscope reading bound to the shader `Gyroscope` (vec3)
++  /// uniform. Default `{0, 0, 0}`.
++  float gyroscope[3];
++  /// Three-axis accelerometer reading bound to the shader `Accelerometer`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer[3];
++  /// Accelerometer-at-rest reference bound to the shader `AccelerometerRest`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer_rest[3];
++} frame_vk_opt_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Options for Direct3D 11 filter chain creation.
++typedef struct filter_chain_d3d11_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Whether or not to explicitly disable mipmap
++  /// generation regardless of shader preset settings.
++  bool force_no_mipmaps;
++  /// Disable the shader object cache. Shaders will be
++  /// recompiled rather than loaded from the cache.
++  bool disable_cache;
++} filter_chain_d3d11_opt_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// A handle to a Direct3D 11 filter chain.
++typedef struct _filter_chain_d3d11 *libra_d3d11_filter_chain_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Options for each Direct3D 11 shader frame.
++typedef struct frame_d3d11_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Whether or not to clear the history buffers.
++  bool clear_history;
++  /// The direction of rendering.
++  /// -1 indicates that the frames are played in reverse order.
++  int32_t frame_direction;
++  /// The rotation of the output. 0 = 0deg, 1 = 90deg, 2 = 180deg, 3 = 270deg.
++  uint32_t rotation;
++  /// The total number of subframes ran. Default is 1.
++  uint32_t total_subframes;
++  /// The current sub frame. Default is 1.
++  uint32_t current_subframe;
++  /// The expected aspect ratio of the source image.
++  ///
++  /// This can differ from the actual aspect ratio of the source
++  /// image.
++  ///
++  /// The default is 0, which will automatically
++  /// infer the ratio from the source image.
++  float aspect_ratio;
++  /// The original frames per second of the source. Default is 1.
++  float frames_per_second;
++  /// Time in milliseconds between the current and previous frame. Default is 0.
++  uint32_t frametime_delta;
++  /// Target color space bound to the shader `HDRMode` uniform. Must match
++  /// the host swapchain color space.
++  ///
++  /// 0 = SDR (default), 1 = HDR10, 2 = scRGB, 3 = PQ-in-scRGB.
++  LIBRA_COLOR_SPACE color_space;
++  /// HDR SDR reference white in nits. Default is 200.0.
++  float brightness_nits;
++  /// Gamut expansion mode bound to the shader `ExpandGamut` uniform.
++  /// Default 0.
++  uint32_t expand_gamut;
++  /// Three-axis gyroscope reading bound to the shader `Gyroscope` (vec3)
++  /// uniform. Default `{0, 0, 0}`.
++  float gyroscope[3];
++  /// Three-axis accelerometer reading bound to the shader `Accelerometer`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer[3];
++  /// Accelerometer-at-rest reference bound to the shader `AccelerometerRest`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer_rest[3];
++} frame_d3d11_opt_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Options for Direct3D 11 filter chain creation.
++typedef struct filter_chain_d3d9_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Whether or not to explicitly disable mipmap
++  /// generation regardless of shader preset settings.
++  bool force_no_mipmaps;
++  /// Disable the shader object cache. Shaders will be
++  /// recompiled rather than loaded from the cache.
++  bool disable_cache;
++} filter_chain_d3d9_opt_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// A handle to a Direct3D 11 filter chain.
++typedef struct _filter_chain_d3d9 *libra_d3d9_filter_chain_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Options for each Direct3D 11 shader frame.
++typedef struct frame_d3d9_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Whether or not to clear the history buffers.
++  bool clear_history;
++  /// The direction of rendering.
++  /// -1 indicates that the frames are played in reverse order.
++  int32_t frame_direction;
++  /// The rotation of the output. 0 = 0deg, 1 = 90deg, 2 = 180deg, 3 = 270deg.
++  uint32_t rotation;
++  /// The total number of subframes ran. Default is 1.
++  uint32_t total_subframes;
++  /// The current sub frame. Default is 1.
++  uint32_t current_subframe;
++  /// The expected aspect ratio of the source image.
++  ///
++  /// This can differ from the actual aspect ratio of the source
++  /// image.
++  ///
++  /// The default is 0, which will automatically
++  /// infer the ratio from the source image.
++  float aspect_ratio;
++  /// The original frames per second of the source. Default is 1.
++  float frames_per_second;
++  /// Time in milliseconds between the current and previous frame. Default is 0.
++  uint32_t frametime_delta;
++  /// Target color space bound to the shader `HDRMode` uniform. Must match
++  /// the host swapchain color space.
++  ///
++  /// 0 = SDR (default), 1 = HDR10, 2 = scRGB, 3 = PQ-in-scRGB.
++  LIBRA_COLOR_SPACE color_space;
++  /// HDR SDR reference white in nits. Default is 200.0.
++  float brightness_nits;
++  /// Gamut expansion mode bound to the shader `ExpandGamut` uniform.
++  /// Default 0.
++  uint32_t expand_gamut;
++  /// Three-axis gyroscope reading bound to the shader `Gyroscope` (vec3)
++  /// uniform. Default `{0, 0, 0}`.
++  float gyroscope[3];
++  /// Three-axis accelerometer reading bound to the shader `Accelerometer`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer[3];
++  /// Accelerometer-at-rest reference bound to the shader `AccelerometerRest`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer_rest[3];
++} frame_d3d9_opt_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Options for Direct3D11 filter chain creation.
++typedef struct filter_chain_d3d12_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Force the HLSL shader pipeline. This may reduce shader compatibility.
++  bool force_hlsl_pipeline;
++  /// Whether or not to explicitly disable mipmap
++  /// generation for intermediate passes regardless
++  /// of shader preset settings.
++  bool force_no_mipmaps;
++  /// Disable the shader object cache. Shaders will be
++  /// recompiled rather than loaded from the cache.
++  bool disable_cache;
++  /// The number of frames in flight to keep. If zero, defaults to three.
++  uint32_t frames_in_flight;
++} filter_chain_d3d12_opt_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// A handle to a Direct3D 12 filter chain.
++typedef struct _filter_chain_d3d12 *libra_d3d12_filter_chain_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Direct3D 12 parameters for the source image.
++typedef struct libra_source_image_d3d12_t {
++  /// A CPU descriptor handle to a shader resource view of the image.
++  D3D12_CPU_DESCRIPTOR_HANDLE descriptor;
++  /// The resource containing the image.
++  ID3D12Resource * resource;
++} libra_source_image_d3d12_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Direct3D 12 parameters for the output image.
++typedef struct libra_output_image_d3d12_t {
++  /// A CPU descriptor handle to a shader resource view of the image.
++  D3D12_CPU_DESCRIPTOR_HANDLE descriptor;
++  /// The format of the image.
++  DXGI_FORMAT format;
++  /// The width of the output image.
++  uint32_t width;
++  /// The height of the output image.
++  uint32_t height;
++} libra_output_image_d3d12_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// A handle to a Direct3D 12 image.
++///
++/// This must be either a pointer to a `ID3D12Resource`,
++/// or a valid source or output image type.
++typedef union libra_image_d3d12_handle_t {
++  /// A pointer to an `ID3D12Resource`, with descriptors managed by the filter chain.
++  ID3D12Resource * resource;
++  /// A source image with externally managed descriptors.
++  struct libra_source_image_d3d12_t source;
++  /// An output image with externally managed descriptors.
++  struct libra_output_image_d3d12_t output;
++} libra_image_d3d12_handle_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Tagged union for a Direct3D 12 image
++typedef struct libra_image_d3d12_t {
++  /// The type of the image.
++  LIBRA_D3D12_IMAGE_TYPE image_type;
++  /// The handle to the image.
++  union libra_image_d3d12_handle_t handle;
++} libra_image_d3d12_t;
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Options for each Direct3D 12 shader frame.
++typedef struct frame_d3d12_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Whether or not to clear the history buffers.
++  bool clear_history;
++  /// The direction of rendering.
++  /// -1 indicates that the frames are played in reverse order.
++  int32_t frame_direction;
++  /// The rotation of the output. 0 = 0deg, 1 = 90deg, 2 = 180deg, 3 = 270deg.
++  uint32_t rotation;
++  /// The total number of subframes ran. Default is 1.
++  uint32_t total_subframes;
++  /// The current sub frame. Default is 1.
++  uint32_t current_subframe;
++  /// The expected aspect ratio of the source image.
++  ///
++  /// This can differ from the actual aspect ratio of the source
++  /// image.
++  ///
++  /// The default is 0, which will automatically
++  /// infer the ratio from the source image.
++  float aspect_ratio;
++  /// The original frames per second of the source. Default is 1.
++  float frames_per_second;
++  /// Time in milliseconds between the current and previous frame. Default is 0.
++  uint32_t frametime_delta;
++  /// Target color space bound to the shader `HDRMode` uniform. Must match
++  /// the host swapchain color space.
++  ///
++  /// 0 = SDR (default), 1 = HDR10, 2 = scRGB, 3 = PQ-in-scRGB.
++  LIBRA_COLOR_SPACE color_space;
++  /// HDR SDR reference white in nits. Default is 200.0.
++  float brightness_nits;
++  /// Gamut expansion mode bound to the shader `ExpandGamut` uniform.
++  /// Default 0.
++  uint32_t expand_gamut;
++  /// Three-axis gyroscope reading bound to the shader `Gyroscope` (vec3)
++  /// uniform. Default `{0, 0, 0}`.
++  float gyroscope[3];
++  /// Three-axis accelerometer reading bound to the shader `Accelerometer`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer[3];
++  /// Accelerometer-at-rest reference bound to the shader `AccelerometerRest`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer_rest[3];
++} frame_d3d12_opt_t;
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Options for filter chain creation.
++typedef struct filter_chain_mtl_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Whether or not to explicitly disable mipmap generation regardless of shader preset settings.
++  bool force_no_mipmaps;
++} filter_chain_mtl_opt_t;
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// A handle to a Vulkan filter chain.
++typedef struct _filter_chain_mtl *libra_mtl_filter_chain_t;
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Options for each Metal shader frame.
++typedef struct frame_mtl_opt_t {
++  /// The librashader API version.
++  LIBRASHADER_API_VERSION version;
++  /// Whether or not to clear the history buffers.
++  bool clear_history;
++  /// The direction of rendering.
++  /// -1 indicates that the frames are played in reverse order.
++  int32_t frame_direction;
++  /// The rotation of the output. 0 = 0deg, 1 = 90deg, 2 = 180deg, 3 = 270deg.
++  uint32_t rotation;
++  /// The total number of subframes ran. Default is 1.
++  uint32_t total_subframes;
++  /// The current sub frame. Default is 1.
++  uint32_t current_subframe;
++  /// The expected aspect ratio of the source image.
++  ///
++  /// This can differ from the actual aspect ratio of the source
++  /// image.
++  ///
++  /// The default is 0, which will automatically
++  /// infer the ratio from the source image.
++  float aspect_ratio;
++  /// The original frames per second of the source. Default is 1.
++  float frames_per_second;
++  /// Time in milliseconds between the current and previous frame. Default is 0.
++  uint32_t frametime_delta;
++  /// Target color space bound to the shader `HDRMode` uniform. Must match
++  /// the host swapchain color space.
++  ///
++  /// 0 = SDR (default), 1 = HDR10, 2 = scRGB, 3 = PQ-in-scRGB.
++  LIBRA_COLOR_SPACE color_space;
++  /// HDR SDR reference white in nits. Default is 200.0.
++  float brightness_nits;
++  /// Gamut expansion mode bound to the shader `ExpandGamut` uniform.
++  /// Default 0.
++  uint32_t expand_gamut;
++  /// Three-axis gyroscope reading bound to the shader `Gyroscope` (vec3)
++  /// uniform. Default `{0, 0, 0}`.
++  float gyroscope[3];
++  /// Three-axis accelerometer reading bound to the shader `Accelerometer`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer[3];
++  /// Accelerometer-at-rest reference bound to the shader `AccelerometerRest`
++  /// (vec3) uniform. Default `{0, 0, 0}`.
++  float accelerometer_rest[3];
++} frame_mtl_opt_t;
++#endif
++
++/// ABI version type alias.
++typedef size_t LIBRASHADER_ABI_VERSION;
++
++/// Function pointer definition for libra_abi_version
++typedef LIBRASHADER_ABI_VERSION (*PFN_libra_instance_abi_version)(void);
++
++/// Function pointer definition for libra_abi_version
++typedef LIBRASHADER_API_VERSION (*PFN_libra_instance_api_version)(void);
++
++/// Function pointer definition for
++///libra_preset_create
++typedef libra_error_t (*PFN_libra_preset_create)(const char *filename, libra_shader_preset_t *out);
++
++/// Function pointer definition for
++///libra_preset_free
++typedef libra_error_t (*PFN_libra_preset_free)(libra_shader_preset_t *preset);
++
++/// Function pointer definition for
++///libra_preset_set_param
++typedef libra_error_t (*PFN_libra_preset_set_param)(libra_shader_preset_t *preset,
++                                                    const char *name,
++                                                    float value);
++
++/// Function pointer definition for
++///libra_preset_get_param
++typedef libra_error_t (*PFN_libra_preset_get_param)(const libra_shader_preset_t *preset,
++                                                    const char *name,
++                                                    float *value);
++
++/// Function pointer definition for
++///libra_preset_print
++typedef libra_error_t (*PFN_libra_preset_print)(libra_shader_preset_t *preset);
++
++/// Function pointer definition for
++///libra_preset_get_runtime_params
++typedef libra_error_t (*PFN_libra_preset_get_runtime_params)(const libra_shader_preset_t *preset,
++                                                             struct libra_preset_param_list_t *out);
++
++/// Function pointer definition for
++///libra_preset_free_runtime_params
++typedef libra_error_t (*PFN_libra_preset_free_runtime_params)(struct libra_preset_param_list_t preset);
++
++/// Function pointer definition for
++///libra_preset_create_with_context
++typedef libra_error_t (*PFN_libra_preset_create_with_context)(const char *filename,
++                                                              libra_preset_ctx_t *context,
++                                                              libra_shader_preset_t *out);
++
++/// Function pointer definition for
++///libra_preset_create_with_options
++typedef libra_error_t (*PFN_libra_preset_create_with_options)(const char *filename,
++                                                              libra_preset_ctx_t *context,
++                                                              struct libra_preset_opt_t *options,
++                                                              libra_shader_preset_t *out);
++
++/// Function pointer definition for
++///libra_preset_color_space
++typedef libra_error_t (*PFN_libra_preset_color_space)(libra_shader_preset_t *preset,
++                                                      LIBRA_COLOR_SPACE *out);
++
++/// Function pointer definition for
++///libra_preset_ctx_create
++typedef libra_error_t (*PFN_libra_preset_ctx_create)(libra_preset_ctx_t *out);
++
++/// Function pointer definition for
++///libra_preset_ctx_free
++typedef libra_error_t (*PFN_libra_preset_ctx_free)(libra_preset_ctx_t *context);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_core_name
++typedef libra_error_t (*PFN_libra_preset_ctx_set_core_name)(libra_preset_ctx_t *context,
++                                                            const char *name);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_content_dir
++typedef libra_error_t (*PFN_libra_preset_ctx_set_content_dir)(libra_preset_ctx_t *context,
++                                                              const char *name);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_param
++typedef libra_error_t (*PFN_libra_preset_ctx_set_param)(libra_preset_ctx_t *context,
++                                                        const char *name,
++                                                        const char *value);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_core_rotation
++typedef libra_error_t (*PFN_libra_preset_ctx_set_core_rotation)(libra_preset_ctx_t *context,
++                                                                uint32_t value);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_user_rotation
++typedef libra_error_t (*PFN_libra_preset_ctx_set_user_rotation)(libra_preset_ctx_t *context,
++                                                                uint32_t value);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_screen_orientation
++typedef libra_error_t (*PFN_libra_preset_ctx_set_screen_orientation)(libra_preset_ctx_t *context,
++                                                                     uint32_t value);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_allow_rotation
++typedef libra_error_t (*PFN_libra_preset_ctx_set_allow_rotation)(libra_preset_ctx_t *context,
++                                                                 bool value);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_view_aspect_orientation
++typedef libra_error_t (*PFN_libra_preset_ctx_set_view_aspect_orientation)(libra_preset_ctx_t *context,
++                                                                          LIBRA_PRESET_CTX_ORIENTATION value);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_core_aspect_orientation
++typedef libra_error_t (*PFN_libra_preset_ctx_set_core_aspect_orientation)(libra_preset_ctx_t *context,
++                                                                          LIBRA_PRESET_CTX_ORIENTATION value);
++
++/// Function pointer definition for
++///libra_preset_ctx_set_runtime
++typedef libra_error_t (*PFN_libra_preset_ctx_set_runtime)(libra_preset_ctx_t *context,
++                                                          LIBRA_PRESET_CTX_RUNTIME value);
++
++/// Function pointer definition for libra_error_errno
++typedef LIBRA_ERRNO (*PFN_libra_error_errno)(libra_error_t error);
++
++/// Function pointer definition for libra_error_print
++typedef int32_t (*PFN_libra_error_print)(libra_error_t error);
++
++/// Function pointer definition for libra_error_free
++typedef int32_t (*PFN_libra_error_free)(libra_error_t *error);
++
++/// Function pointer definition for libra_error_write
++typedef int32_t (*PFN_libra_error_write)(libra_error_t error, char **out);
++
++/// Function pointer definition for libra_error_free_string
++typedef int32_t (*PFN_libra_error_free_string)(char **out);
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Function pointer definition for
++///libra_gl_filter_chain_create
++typedef libra_error_t (*PFN_libra_gl_filter_chain_create)(libra_shader_preset_t *preset,
++                                                          libra_gl_loader_t loader,
++                                                          const struct filter_chain_gl_opt_t *options,
++                                                          libra_gl_filter_chain_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Function pointer definition for
++///libra_gl_filter_chain_frame
++typedef libra_error_t (*PFN_libra_gl_filter_chain_frame)(libra_gl_filter_chain_t *chain,
++                                                         size_t frame_count,
++                                                         struct libra_image_gl_t image,
++                                                         struct libra_image_gl_t out,
++                                                         const struct libra_viewport_t *viewport,
++                                                         const float *mvp,
++                                                         const struct frame_gl_opt_t *opt);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Function pointer definition for
++///libra_gl_filter_chain_set_param
++typedef libra_error_t (*PFN_libra_gl_filter_chain_set_param)(libra_gl_filter_chain_t *chain,
++                                                             const char *param_name,
++                                                             float value);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Function pointer definition for
++///libra_gl_filter_chain_get_param
++typedef libra_error_t (*PFN_libra_gl_filter_chain_get_param)(const libra_gl_filter_chain_t *chain,
++                                                             const char *param_name,
++                                                             float *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Function pointer definition for
++///libra_gl_filter_chain_set_active_pass_count
++typedef libra_error_t (*PFN_libra_gl_filter_chain_set_active_pass_count)(libra_gl_filter_chain_t *chain,
++                                                                         uint32_t value);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Function pointer definition for
++///libra_gl_filter_chain_get_active_pass_count
++typedef libra_error_t (*PFN_libra_gl_filter_chain_get_active_pass_count)(const libra_gl_filter_chain_t *chain,
++                                                                         uint32_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Function pointer definition for
++///libra_gl_filter_chain_free
++typedef libra_error_t (*PFN_libra_gl_filter_chain_free)(libra_gl_filter_chain_t *chain);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Function pointer definition for
++///libra_vk_filter_chain_create
++typedef libra_error_t (*PFN_libra_vk_filter_chain_create)(libra_shader_preset_t *preset,
++                                                          struct libra_device_vk_t vulkan,
++                                                          const struct filter_chain_vk_opt_t *options,
++                                                          libra_vk_filter_chain_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Function pointer definition for
++///libra_vk_filter_chain_create_deferred
++typedef libra_error_t (*PFN_libra_vk_filter_chain_create_deferred)(libra_shader_preset_t *preset,
++                                                                   struct libra_device_vk_t vulkan,
++                                                                   VkCommandBuffer command_buffer,
++                                                                   const struct filter_chain_vk_opt_t *options,
++                                                                   libra_vk_filter_chain_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Function pointer definition for
++///libra_vk_filter_chain_frame
++typedef libra_error_t (*PFN_libra_vk_filter_chain_frame)(libra_vk_filter_chain_t *chain,
++                                                         VkCommandBuffer command_buffer,
++                                                         size_t frame_count,
++                                                         struct libra_image_vk_t image,
++                                                         struct libra_image_vk_t out,
++                                                         const struct libra_viewport_t *viewport,
++                                                         const float *mvp,
++                                                         const struct frame_vk_opt_t *opt);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Function pointer definition for
++///libra_vk_filter_chain_set_param
++typedef libra_error_t (*PFN_libra_vk_filter_chain_set_param)(libra_vk_filter_chain_t *chain,
++                                                             const char *param_name,
++                                                             float value);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Function pointer definition for
++///libra_vk_filter_chain_get_param
++typedef libra_error_t (*PFN_libra_vk_filter_chain_get_param)(const libra_vk_filter_chain_t *chain,
++                                                             const char *param_name,
++                                                             float *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Function pointer definition for
++///libra_vk_filter_chain_set_active_pass_count
++typedef libra_error_t (*PFN_libra_vk_filter_chain_set_active_pass_count)(libra_vk_filter_chain_t *chain,
++                                                                         uint32_t value);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Function pointer definition for
++///libra_vk_filter_chain_get_active_pass_count
++typedef libra_error_t (*PFN_libra_vk_filter_chain_get_active_pass_count)(const libra_vk_filter_chain_t *chain,
++                                                                         uint32_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Function pointer definition for
++///libra_vk_filter_chain_free
++typedef libra_error_t (*PFN_libra_vk_filter_chain_free)(libra_vk_filter_chain_t *chain);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Function pointer definition for
++///libra_d3d11_filter_chain_create
++typedef libra_error_t (*PFN_libra_d3d11_filter_chain_create)(libra_shader_preset_t *preset,
++                                                             ID3D11Device * device,
++                                                             const struct filter_chain_d3d11_opt_t *options,
++                                                             libra_d3d11_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Function pointer definition for
++///libra_d3d11_filter_chain_create_deferred
++typedef libra_error_t (*PFN_libra_d3d11_filter_chain_create_deferred)(libra_shader_preset_t *preset,
++                                                                      ID3D11Device * device,
++                                                                      ID3D11DeviceContext * device_context,
++                                                                      const struct filter_chain_d3d11_opt_t *options,
++                                                                      libra_d3d11_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Function pointer definition for
++///libra_d3d11_filter_chain_frame
++typedef libra_error_t (*PFN_libra_d3d11_filter_chain_frame)(libra_d3d11_filter_chain_t *chain,
++                                                            ID3D11DeviceContext * device_context,
++                                                            size_t frame_count,
++                                                            ID3D11ShaderResourceView * image,
++                                                            ID3D11RenderTargetView * out,
++                                                            const struct libra_viewport_t *viewport,
++                                                            const float *mvp,
++                                                            const struct frame_d3d11_opt_t *options);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Function pointer definition for
++///libra_d3d11_filter_chain_set_param
++typedef libra_error_t (*PFN_libra_d3d11_filter_chain_set_param)(libra_d3d11_filter_chain_t *chain,
++                                                                const char *param_name,
++                                                                float value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Function pointer definition for
++///libra_d3d11_filter_chain_get_param
++typedef libra_error_t (*PFN_libra_d3d11_filter_chain_get_param)(const libra_d3d11_filter_chain_t *chain,
++                                                                const char *param_name,
++                                                                float *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Function pointer definition for
++///libra_d3d11_filter_chain_set_active_pass_count
++typedef libra_error_t (*PFN_libra_d3d11_filter_chain_set_active_pass_count)(libra_d3d11_filter_chain_t *chain,
++                                                                            uint32_t value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Function pointer definition for
++///libra_d3d11_filter_chain_get_active_pass_count
++typedef libra_error_t (*PFN_libra_d3d11_filter_chain_get_active_pass_count)(const libra_d3d11_filter_chain_t *chain,
++                                                                            uint32_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Function pointer definition for
++///libra_d3d11_filter_chain_free
++typedef libra_error_t (*PFN_libra_d3d11_filter_chain_free)(libra_d3d11_filter_chain_t *chain);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Function pointer definition for
++///libra_d3d9_filter_chain_create
++typedef libra_error_t (*PFN_libra_d3d9_filter_chain_create)(libra_shader_preset_t *preset,
++                                                            IDirect3DDevice9 * device,
++                                                            const struct filter_chain_d3d9_opt_t *options,
++                                                            libra_d3d9_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Function pointer definition for
++///libra_d3d9_filter_chain_frame
++typedef libra_error_t (*PFN_libra_d3d9_filter_chain_frame)(libra_d3d9_filter_chain_t *chain,
++                                                           size_t frame_count,
++                                                           IDirect3DTexture9 * image,
++                                                           IDirect3DSurface9 * out,
++                                                           const struct libra_viewport_t *viewport,
++                                                           const float *mvp,
++                                                           const struct frame_d3d9_opt_t *options);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Function pointer definition for
++///libra_d3d9_filter_chain_set_param
++typedef libra_error_t (*PFN_libra_d3d9_filter_chain_set_param)(libra_d3d9_filter_chain_t *chain,
++                                                               const char *param_name,
++                                                               float value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Function pointer definition for
++///libra_d3d9_filter_chain_get_param
++typedef libra_error_t (*PFN_libra_d3d9_filter_chain_get_param)(const libra_d3d9_filter_chain_t *chain,
++                                                               const char *param_name,
++                                                               float *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Function pointer definition for
++///libra_d3d9_filter_chain_set_active_pass_count
++typedef libra_error_t (*PFN_libra_d3d9_filter_chain_set_active_pass_count)(libra_d3d9_filter_chain_t *chain,
++                                                                           uint32_t value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Function pointer definition for
++///libra_d3d9_filter_chain_get_active_pass_count
++typedef libra_error_t (*PFN_libra_d3d9_filter_chain_get_active_pass_count)(const libra_d3d9_filter_chain_t *chain,
++                                                                           uint32_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Function pointer definition for
++///libra_d3d9_filter_chain_free
++typedef libra_error_t (*PFN_libra_d3d9_filter_chain_free)(libra_d3d9_filter_chain_t *chain);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Function pointer definition for
++///libra_d3d12_filter_chain_create
++typedef libra_error_t (*PFN_libra_d3d12_filter_chain_create)(libra_shader_preset_t *preset,
++                                                             ID3D12Device * device,
++                                                             const struct filter_chain_d3d12_opt_t *options,
++                                                             libra_d3d12_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Function pointer definition for
++///libra_d3d12_filter_chain_create_deferred
++typedef libra_error_t (*PFN_libra_d3d12_filter_chain_create_deferred)(libra_shader_preset_t *preset,
++                                                                      ID3D12Device * device,
++                                                                      ID3D12GraphicsCommandList * command_list,
++                                                                      const struct filter_chain_d3d12_opt_t *options,
++                                                                      libra_d3d12_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Function pointer definition for
++///libra_d3d12_filter_chain_frame
++typedef libra_error_t (*PFN_libra_d3d12_filter_chain_frame)(libra_d3d12_filter_chain_t *chain,
++                                                            ID3D12GraphicsCommandList * command_list,
++                                                            size_t frame_count,
++                                                            struct libra_image_d3d12_t image,
++                                                            struct libra_image_d3d12_t out,
++                                                            const struct libra_viewport_t *viewport,
++                                                            const float *mvp,
++                                                            const struct frame_d3d12_opt_t *options);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Function pointer definition for
++///libra_d3d12_filter_chain_set_param
++typedef libra_error_t (*PFN_libra_d3d12_filter_chain_set_param)(libra_d3d12_filter_chain_t *chain,
++                                                                const char *param_name,
++                                                                float value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Function pointer definition for
++///libra_d3d12_filter_chain_get_param
++typedef libra_error_t (*PFN_libra_d3d12_filter_chain_get_param)(const libra_d3d12_filter_chain_t *chain,
++                                                                const char *param_name,
++                                                                float *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Function pointer definition for
++///libra_d3d12_filter_chain_set_active_pass_count
++typedef libra_error_t (*PFN_libra_d3d12_filter_chain_set_active_pass_count)(libra_d3d12_filter_chain_t *chain,
++                                                                            uint32_t value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Function pointer definition for
++///libra_d3d12_filter_chain_get_active_pass_count
++typedef libra_error_t (*PFN_libra_d3d12_filter_chain_get_active_pass_count)(const libra_d3d12_filter_chain_t *chain,
++                                                                            uint32_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Function pointer definition for
++///libra_d3d12_filter_chain_free
++typedef libra_error_t (*PFN_libra_d3d12_filter_chain_free)(libra_d3d12_filter_chain_t *chain);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Function pointer definition for
++///libra_mtl_filter_chain_create
++typedef libra_error_t (*PFN_libra_mtl_filter_chain_create)(libra_shader_preset_t *preset,
++                                                           id<MTLCommandQueue> queue,
++                                                           const struct filter_chain_mtl_opt_t *options,
++                                                           libra_mtl_filter_chain_t *out);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Function pointer definition for
++///libra_mtl_filter_chain_create_deferred
++typedef libra_error_t (*PFN_libra_mtl_filter_chain_create_deferred)(libra_shader_preset_t *preset,
++                                                                    id<MTLCommandQueue> queue,
++                                                                    id<MTLCommandBuffer> command_buffer,
++                                                                    const struct filter_chain_mtl_opt_t *options,
++                                                                    libra_mtl_filter_chain_t *out);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Function pointer definition for
++///libra_mtl_filter_chain_frame
++typedef libra_error_t (*PFN_libra_mtl_filter_chain_frame)(libra_mtl_filter_chain_t *chain,
++                                                          id<MTLCommandBuffer> command_buffer,
++                                                          size_t frame_count,
++                                                          id<MTLTexture> image,
++                                                          id<MTLTexture> output,
++                                                          const struct libra_viewport_t *viewport,
++                                                          const float *mvp,
++                                                          const struct frame_mtl_opt_t *opt);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Function pointer definition for
++///libra_mtl_filter_chain_set_param
++typedef libra_error_t (*PFN_libra_mtl_filter_chain_set_param)(libra_mtl_filter_chain_t *chain,
++                                                              const char *param_name,
++                                                              float value);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Function pointer definition for
++///libra_mtl_filter_chain_get_param
++typedef libra_error_t (*PFN_libra_mtl_filter_chain_get_param)(const libra_mtl_filter_chain_t *chain,
++                                                              const char *param_name,
++                                                              float *out);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Function pointer definition for
++///libra_mtl_filter_chain_set_active_pass_count
++typedef libra_error_t (*PFN_libra_mtl_filter_chain_set_active_pass_count)(libra_mtl_filter_chain_t *chain,
++                                                                          uint32_t value);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Function pointer definition for
++///libra_mtl_filter_chain_get_active_pass_count
++typedef libra_error_t (*PFN_libra_mtl_filter_chain_get_active_pass_count)(const libra_mtl_filter_chain_t *chain,
++                                                                          uint32_t *out);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Function pointer definition for
++///libra_mtl_filter_chain_free
++typedef libra_error_t (*PFN_libra_mtl_filter_chain_free)(libra_mtl_filter_chain_t *chain);
++#endif
++
++/// The current version of the librashader API.
++/// Pass this into `version` for config structs.
++///
++/// API versions are backwards compatible. It is valid to load
++/// a librashader C API instance for all API versions less than
++/// or equal to LIBRASHADER_CURRENT_VERSION, and subsequent API
++/// versions must remain backwards compatible.
++/// ## API Versions
++/// - API version 0: 0.1.0
++/// - API version 1: 0.2.0
++///     - Added rotation, total_subframes, current_subframes to frame options
++///     - Added preset context API
++///     - Added Metal runtime API
++/// - API version 2: 0.6.0
++///     - Added original aspect uniforms
++///     - Added frame time uniforms
++/// - API version 3: 0.11.0
++///     - Added frames_in_flight to Direct3D 12 filter chain options
++/// - API version 4: 0.11.0
++///     - Added support for HDR uniforms. Frame options can set `color_space` to
++///       enable HDR, and frame options should be passed in brightness_nits, expand_gamut
++///     - Added libra_preset_color_space to query the preferred HDR color space (if any) of
++///       a shader preset.
++/// - API version 5: 0.11.0
++///     - Added sensor uniform inputs
++#define LIBRASHADER_CURRENT_VERSION 5
++
++/// The current version of the librashader ABI.
++/// Used by the loader to check ABI compatibility.
++///
++/// ABI version 0 is reserved as a sentinel value.
++///
++/// ABI versions are not backwards compatible. It is not
++/// valid to load a librashader C API instance for any ABI
++/// version not equal to LIBRASHADER_CURRENT_ABI.
++///
++/// ## ABI Versions
++/// - ABI version 0: null instance (unloaded)
++/// - ABI version 1: 0.1.0
++/// - ABI version 2: 0.5.0
++///     - Reduced texture size information needed for some runtimes.
++///     - Removed wrapper structs for Direct3D 11 SRV and RTV handles.
++///     - Removed `gl_context_init`.
++///     - Make viewport handling consistent across runtimes, which are now
++///       span the output render target if omitted.
++#define LIBRASHADER_CURRENT_ABI 2
++
++#ifdef __cplusplus
++extern "C" {
++#endif // __cplusplus
++
++/// Get the error code corresponding to this error object.
++///
++/// ## Safety
++///   - `error` must be valid and initialized.
++LIBRA_ERRNO libra_error_errno(libra_error_t error);
++
++/// Print the error message.
++///
++/// If `error` is null, this function does nothing and returns 1. Otherwise, this function returns 0.
++/// ## Safety
++///   - `error` must be a valid and initialized instance of `libra_error_t`.
++int32_t libra_error_print(libra_error_t error);
++
++/// Frees any internal state kept by the error.
++///
++/// If `error` is null, this function does nothing and returns 1. Otherwise, this function returns 0.
++/// The resulting error object becomes null.
++/// ## Safety
++///   - `error` must be null or a pointer to a valid and initialized instance of `libra_error_t`.
++int32_t libra_error_free(libra_error_t *error);
++
++/// Writes the error message into `out`
++///
++/// If `error` is null, this function does nothing and returns 1. Otherwise, this function returns 0.
++/// ## Safety
++///   - `error` must be a valid and initialized instance of `libra_error_t`.
++///   - `out` must be a non-null pointer. The resulting string must not be modified.
++int32_t libra_error_write(libra_error_t error,
++                          char **out);
++
++/// Frees an error string previously allocated by `libra_error_write`.
++///
++/// After freeing, the pointer will be set to null.
++/// ## Safety
++///   - If `libra_error_write` is not null, it must point to a string previously returned by `libra_error_write`.
++///     Attempting to free anything else, including strings or objects from other librashader functions, is immediate
++///     Undefined Behaviour.
++int32_t libra_error_free_string(char **out);
++
++/// Load a preset.
++///
++/// This function is deprecated, and `libra_preset_create_with_options` should be used instead.
++/// ## Safety
++///  - `filename` must be either null or a valid, aligned pointer to a string path to the shader preset.
++///  - `out` must be either null, or an aligned pointer to an uninitialized or invalid `libra_shader_preset_t`.
++/// ## Returns
++///  - If any parameters are null, `out` is unchanged, and this function returns `LIBRA_ERR_INVALID_PARAMETER`.
++libra_error_t libra_preset_create(const char *filename,
++                                  libra_shader_preset_t *out);
++
++/// Load a preset with the given wildcard context.
++///
++/// The wildcard context is immediately invalidated and must be recreated after
++/// the preset is created.
++///
++/// Path information variables `PRESET_DIR` and `PRESET` will automatically be filled in.
++///
++/// This function is deprecated, and `libra_preset_create_with_options` should be used instead.
++/// ## Safety
++///  - `filename` must be either null or a valid, aligned pointer to a string path to the shader preset.
++///  - `context` must be either null or a valid, aligned pointer to a initialized `libra_preset_ctx_t`.
++///  - `context` is  invalidated after this function returns.
++///  - `out` must be either null, or an aligned pointer to an uninitialized or invalid `libra_shader_preset_t`.
++/// ## Returns
++///  - If any parameters are null, `out` is unchanged, and this function returns `LIBRA_ERR_INVALID_PARAMETER`.
++libra_error_t libra_preset_create_with_context(const char *filename,
++                                               libra_preset_ctx_t *context,
++                                               libra_shader_preset_t *out);
++
++/// Load a preset with optional options and an optional context.
++///
++/// Both `context` and `options` may be null.
++///
++/// If `context` is null, then a default context will be provided, and this function will not return `LIBRA_ERR_INVALID_PARAMETER`.
++/// If `options` is null, then default options will be chosen.
++///
++/// If `context` is provided, it is immediately invalidated and must be recreated after
++/// the preset is created.
++///
++/// ## Safety
++///  - `filename` must be either null or a valid, aligned pointer to a string path to the shader preset.
++///  - `context` must be either null or a valid, aligned pointer to an initialized `libra_preset_ctx_t`.
++///  - `options` must be either null, or a valid, aligned pointer to a `libra_shader_opt_t`.
++///    `LIBRASHADER_API_VERSION` should be set to `LIBRASHADER_CURRENT_VERSION`.
++///  - `out` must be either null, or an aligned pointer to an uninitialized or invalid `libra_shader_preset_t`.
++///
++/// ## Returns
++///  - If `out` or `filename` is null, `out` is unchanged, and this function returns `LIBRA_ERR_INVALID_PARAMETER`.
++libra_error_t libra_preset_create_with_options(const char *filename,
++                                               libra_preset_ctx_t *context,
++                                               struct libra_preset_opt_t *options,
++                                               libra_shader_preset_t *out);
++/// Query the target color space of the preset's final pass.
++///
++/// The target color space is derived from the last pass's declared output
++/// format. Use this before creating a filter chain to decide which
++/// swapchain color space to request to support HDR shaders.
++///
++/// If `out` returns `LIBRA_COLOR_SPACE_SDR`, the preset does not have a
++/// final HDR pass and can be treated as an SDR shader.
++///
++/// If the host intends PQ-scRGB, then the preset should return `LIBRA_COLOR_SPACE_SC_RGB`
++/// for successful promotion.
++///
++/// ## Safety
++/// - `preset` must be null or a valid and aligned pointer to a `libra_shader_preset_t`.
++/// - `out` must be aligned, but may be uninitialized.
++libra_error_t libra_preset_color_space(libra_shader_preset_t *preset, LIBRA_COLOR_SPACE *out);
++
++/// Free the preset.
++///
++/// If `preset` is null, this function does nothing. The resulting value in `preset` then becomes
++/// null.
++///
++/// ## Safety
++/// - `preset` must be a valid and aligned pointer to a `libra_shader_preset_t`.
++libra_error_t libra_preset_free(libra_shader_preset_t *preset);
++
++/// Set the value of the parameter in the preset.
++///
++/// ## Safety
++/// - `preset` must be null or a valid and aligned pointer to a `libra_shader_preset_t`.
++/// - `name` must be null or a valid and aligned pointer to a string.
++libra_error_t libra_preset_set_param(libra_shader_preset_t *preset, const char *name, float value);
++
++/// Get the value of the parameter as set in the preset.
++///
++/// ## Safety
++/// - `preset` must be null or a valid and aligned pointer to a shader preset.
++/// - `name` must be null or a valid and aligned pointer to a string.
++/// - `value` may be a pointer to a uninitialized `float`.
++libra_error_t libra_preset_get_param(const libra_shader_preset_t *preset,
++                                     const char *name,
++                                     float *value);
++
++/// Pretty print the shader preset.
++///
++/// ## Safety
++/// - `preset` must be null or a valid and aligned pointer to a `libra_shader_preset_t`.
++libra_error_t libra_preset_print(libra_shader_preset_t *preset);
++
++/// Get a list of runtime parameters.
++///
++/// ## Safety
++/// - `preset` must be null or a valid and aligned pointer to a `libra_shader_preset_t`.
++/// - `out` must be an aligned pointer to a `libra_preset_parameter_list_t`.
++/// - The output struct should be treated as immutable. Mutating any struct fields
++///   in the returned struct may at best cause memory leaks, and at worse
++///   cause undefined behaviour when later freed.
++/// - It is safe to call `libra_preset_get_runtime_params` multiple times, however
++///   the output struct must only be freed once per call.
++libra_error_t libra_preset_get_runtime_params(const libra_shader_preset_t *preset,
++                                              struct libra_preset_param_list_t *out);
++
++/// Free the runtime parameters.
++///
++/// Unlike the other `free` functions provided by librashader,
++/// `libra_preset_free_runtime_params` takes the struct directly.
++/// The caller must take care to maintain the lifetime of any pointers
++/// contained within the input `libra_preset_param_list_t`.
++///
++/// ## Safety
++/// - Any pointers rooted at `parameters` becomes invalid after this function returns,
++///   including any strings accessible via the input `libra_preset_param_list_t`.
++///   The caller must ensure that there are no live pointers, aliased or unaliased,
++///   to data accessible via the input `libra_preset_param_list_t`.
++///
++/// - Accessing any data pointed to via the input `libra_preset_param_list_t` after it
++///   has been freed is a use-after-free and is immediate undefined behaviour.
++///
++/// - If any struct fields of the input `libra_preset_param_list_t` was modified from
++///   their values given after `libra_preset_get_runtime_params`, this may result
++///   in undefined behaviour.
++libra_error_t libra_preset_free_runtime_params(struct libra_preset_param_list_t preset);
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Create the filter chain given the shader preset.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++libra_error_t libra_gl_filter_chain_create(libra_shader_preset_t *preset,
++                                           libra_gl_loader_t loader,
++                                           const struct filter_chain_gl_opt_t *options,
++                                           libra_gl_filter_chain_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Draw a frame with the given parameters for the given filter chain.
++///
++/// ## Parameters
++///
++/// - `chain` is a handle to the filter chain.
++/// - `frame_count` is the number of frames passed to the shader
++/// - `image` is a `libra_image_gl_t`, containing the name of a Texture, format, and size information to
++///    to an image that will serve as the source image for the frame.
++/// - `out` is a `libra_output_framebuffer_gl_t`, containing the name of a Framebuffer, the name of a Texture, format,
++///    and size information for the render target of the frame.
++///
++/// - `viewport` is a pointer to a `libra_viewport_t` that specifies the area onto which scissor and viewport
++///    will be applied to the render target. It may be null, in which case a default viewport spanning the
++///    entire render target will be used.
++/// - `mvp` is a pointer to an array of 16 `float` values to specify the model view projection matrix to
++///    be passed to the shader.
++/// - `options` is a pointer to options for the frame. Valid options are dependent on the `LIBRASHADER_API_VERSION`
++///    passed in. It may be null, in which case default options for the filter chain are used.
++///
++/// ## Safety
++/// - `chain` may be null, invalid, but not uninitialized. If `chain` is null or invalid, this
++///    function will return an error.
++/// - `mvp` may be null, or if it is not null, must be an aligned pointer to 16 consecutive `float`
++///    values for the model view projection matrix.
++/// - `opt` may be null, or if it is not null, must be an aligned pointer to a valid `frame_gl_opt_t`
++///    struct.
++/// - You must ensure that only one thread has access to `chain` before you call this function. Only one
++///   thread at a time may call this function. The thread `libra_gl_filter_chain_frame` is called from
++///   must have its thread-local OpenGL context initialized with the same context used to create
++///   the filter chain.
++libra_error_t libra_gl_filter_chain_frame(libra_gl_filter_chain_t *chain,
++                                          size_t frame_count,
++                                          struct libra_image_gl_t image,
++                                          struct libra_image_gl_t out,
++                                          const struct libra_viewport_t *viewport,
++                                          const float *mvp,
++                                          const struct frame_gl_opt_t *opt);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Sets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_gl_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_gl_filter_chain_set_param(libra_gl_filter_chain_t *chain,
++                                              const char *param_name,
++                                              float value);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Gets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_gl_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_gl_filter_chain_get_param(const libra_gl_filter_chain_t *chain,
++                                              const char *param_name,
++                                              float *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Sets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_gl_filter_chain_t`.
++libra_error_t libra_gl_filter_chain_set_active_pass_count(libra_gl_filter_chain_t *chain,
++                                                          uint32_t value);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Gets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_gl_filter_chain_t`.
++libra_error_t libra_gl_filter_chain_get_active_pass_count(const libra_gl_filter_chain_t *chain,
++                                                          uint32_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_OPENGL)
++/// Free a GL filter chain.
++///
++/// The resulting value in `chain` then becomes null.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_gl_filter_chain_t`.
++/// - The context that the filter chain was initialized with **must be current** before freeing the filter chain.
++libra_error_t libra_gl_filter_chain_free(libra_gl_filter_chain_t *chain);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Create the filter chain given the shader preset.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - The handles provided in `vulkan` must be valid for the command buffers that
++///   `libra_vk_filter_chain_frame` will write to.
++///    created with the `VK_KHR_dynamic_rendering` extension.
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++libra_error_t libra_vk_filter_chain_create(libra_shader_preset_t *preset,
++                                           struct libra_device_vk_t vulkan,
++                                           const struct filter_chain_vk_opt_t *options,
++                                           libra_vk_filter_chain_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Create the filter chain given the shader preset deferring and GPU-side initialization
++/// to the caller. This function therefore requires no external synchronization of the device queue.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - The handles provided in `vulkan` must be valid for the command buffers that
++///   `libra_vk_filter_chain_frame` will write to.
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++///
++/// The provided command buffer must be ready for recording and contain no prior commands.
++/// The caller is responsible for ending the command buffer and immediately submitting it to a
++/// graphics queue. The command buffer must be completely executed before calling `libra_vk_filter_chain_frame`.
++libra_error_t libra_vk_filter_chain_create_deferred(libra_shader_preset_t *preset,
++                                                    struct libra_device_vk_t vulkan,
++                                                    VkCommandBuffer command_buffer,
++                                                    const struct filter_chain_vk_opt_t *options,
++                                                    libra_vk_filter_chain_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Records rendering commands for a frame with the given parameters for the given filter chain
++/// to the input command buffer.
++///
++/// A pipeline barrier **will not** be created for the final pass. The output image must be
++/// in `VK_COLOR_ATTACHMENT_OPTIMAL`, and will remain so after all shader passes. The caller must transition
++/// the output image to the final layout.
++///
++/// ## Parameters
++///
++/// - `chain` is a handle to the filter chain.
++/// - `command_buffer` is a `VkCommandBuffer` handle to record draw commands to.
++///    The provided command buffer must be ready for recording and contain no prior commands
++/// - `frame_count` is the number of frames passed to the shader
++/// - `image` is a `libra_image_vk_t`, containing a `VkImage` handle, it's format and size information,
++///    to an image that will serve as the source image for the frame. The input image must be in
++///    the `VK_SHADER_READ_ONLY_OPTIMAL` layout.
++/// - `out` is a `libra_image_vk_t`, containing a `VkImage` handle, it's format and size information,
++///    for the render target of the frame. The output image must be in `VK_COLOR_ATTACHMENT_OPTIMAL` layout.
++///    The output image will remain in `VK_COLOR_ATTACHMENT_OPTIMAL` after all shader passes.
++///
++/// - `viewport` is a pointer to a `libra_viewport_t` that specifies the area onto which scissor and viewport
++///    will be applied to the render target. It may be null, in which case a default viewport spanning the
++///    entire render target will be used.
++/// - `mvp` is a pointer to an array of 16 `float` values to specify the model view projection matrix to
++///    be passed to the shader.
++/// - `options` is a pointer to options for the frame. Valid options are dependent on the `LIBRASHADER_API_VERSION`
++///    passed in. It may be null, in which case default options for the filter chain are used.
++///
++/// ## Safety
++/// - `libra_vk_filter_chain_frame` **must not be called within a RenderPass**.
++/// - `command_buffer` must be a valid handle to a `VkCommandBuffer` that is ready for recording.
++/// - `chain` may be null, invalid, but not uninitialized. If `chain` is null or invalid, this
++///    function will return an error.
++/// - `mvp` may be null, or if it is not null, must be an aligned pointer to 16 consecutive `float`
++///    values for the model view projection matrix.
++/// - `opt` may be null, or if it is not null, must be an aligned pointer to a valid `frame_vk_opt_t`
++///    struct.
++/// - You must ensure that only one thread has access to `chain` before you call this function. Only one
++///   thread at a time may call this function.
++libra_error_t libra_vk_filter_chain_frame(libra_vk_filter_chain_t *chain,
++                                          VkCommandBuffer command_buffer,
++                                          size_t frame_count,
++                                          struct libra_image_vk_t image,
++                                          struct libra_image_vk_t out,
++                                          const struct libra_viewport_t *viewport,
++                                          const float *mvp,
++                                          const struct frame_vk_opt_t *opt);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Sets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_vk_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_vk_filter_chain_set_param(libra_vk_filter_chain_t *chain,
++                                              const char *param_name,
++                                              float value);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Gets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_vk_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_vk_filter_chain_get_param(const libra_vk_filter_chain_t *chain,
++                                              const char *param_name,
++                                              float *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Sets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_vk_filter_chain_t`.
++libra_error_t libra_vk_filter_chain_set_active_pass_count(libra_vk_filter_chain_t *chain,
++                                                          uint32_t value);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Gets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_vk_filter_chain_t`.
++libra_error_t libra_vk_filter_chain_get_active_pass_count(const libra_vk_filter_chain_t *chain,
++                                                          uint32_t *out);
++#endif
++
++#if defined(LIBRA_RUNTIME_VULKAN)
++/// Free a Vulkan filter chain.
++///
++/// The resulting value in `chain` then becomes null.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_vk_filter_chain_t`.
++libra_error_t libra_vk_filter_chain_free(libra_vk_filter_chain_t *chain);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Create the filter chain given the shader preset.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `device` must not be null.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++libra_error_t libra_d3d11_filter_chain_create(libra_shader_preset_t *preset,
++                                              ID3D11Device * device,
++                                              const struct filter_chain_d3d11_opt_t *options,
++                                              libra_d3d11_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Create the filter chain given the shader preset, deferring and GPU-side initialization
++/// to the caller. This function is therefore requires no external synchronization of the
++/// immediate context, as long as the immediate context is not used as the input context,
++/// nor of the device, as long as the device is not single-threaded only.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `device` must not be null.
++/// - `device_context` not be null.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++///
++/// The provided context must either be immediate, or immediately submitted after this function
++/// returns, **before drawing frames**, or lookup textures will fail to load and the filter chain
++/// will be in an invalid state.
++///
++/// If the context is deferred, it must be ready for command recording, and have no prior commands
++/// recorded. No commands shall be recorded after, the caller must immediately call [`FinishCommandList`](https://learn.microsoft.com/en-us/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-finishcommandlist)
++/// and execute the command list on the immediate context after this function returns.
++///
++/// If the context is immediate, then access to the immediate context requires external synchronization.
++libra_error_t libra_d3d11_filter_chain_create_deferred(libra_shader_preset_t *preset,
++                                                       ID3D11Device * device,
++                                                       ID3D11DeviceContext * device_context,
++                                                       const struct filter_chain_d3d11_opt_t *options,
++                                                       libra_d3d11_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Draw a frame with the given parameters for the given filter chain.
++///
++/// ## Parameters
++///
++/// - `chain` is a handle to the filter chain.
++/// - `device_context` is the ID3D11DeviceContext used to record draw commands to.
++///    If `device_context` is null, then commands are recorded onto the immediate context. Otherwise,
++///    it will record commands onto the provided context. If the context is deferred, librashader
++///    will not finalize command lists. The context must otherwise be associated with the `ID3D11Device`
++///    the filter chain was created with.
++///
++/// - `frame_count` is the number of frames passed to the shader
++/// - `image` is a pointer to a `ID3D11ShaderResourceView` that will serve as the source image for the frame.
++/// - `out` is a pointer to a `ID3D11RenderTargetView` that will serve as the render target for the frame.
++///
++/// - `viewport` is a pointer to a `libra_viewport_t` that specifies the area onto which scissor and viewport
++///    will be applied to the render target. It may be null, in which case a default viewport spanning the
++///    entire render target will be used.
++/// - `mvp` is a pointer to an array of 16 `float` values to specify the model view projection matrix to
++///    be passed to the shader.
++/// - `options` is a pointer to options for the frame. Valid options are dependent on the `LIBRASHADER_API_VERSION`
++///    passed in. It may be null, in which case default options for the filter chain are used.
++///
++/// ## Safety
++/// - `chain` may be null, invalid, but not uninitialized. If `chain` is null or invalid, this
++///    function will return an error.
++/// - `mvp` may be null, or if it is not null, must be an aligned pointer to 16 consecutive `float`
++///    values for the model view projection matrix.
++/// - `opt` may be null, or if it is not null, must be an aligned pointer to a valid `frame_d3d11_opt_t`
++///    struct.
++/// - `out` must not be null.
++/// - `image.handle` must not be null.
++/// - If `device_context` is null, commands will be recorded onto the immediate context of the `ID3D11Device`
++///   this filter chain was created with. The context must otherwise be associated with the `ID3D11Device`
++///   the filter chain was created with.
++/// - You must ensure that only one thread has access to `chain` before you call this function. Only one
++///   thread at a time may call this function.
++libra_error_t libra_d3d11_filter_chain_frame(libra_d3d11_filter_chain_t *chain,
++                                             ID3D11DeviceContext * device_context,
++                                             size_t frame_count,
++                                             ID3D11ShaderResourceView * image,
++                                             ID3D11RenderTargetView * out,
++                                             const struct libra_viewport_t *viewport,
++                                             const float *mvp,
++                                             const struct frame_d3d11_opt_t *options);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Sets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d11_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_d3d11_filter_chain_set_param(libra_d3d11_filter_chain_t *chain,
++                                                 const char *param_name,
++                                                 float value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Gets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d11_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_d3d11_filter_chain_get_param(const libra_d3d11_filter_chain_t *chain,
++                                                 const char *param_name,
++                                                 float *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Sets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d11_filter_chain_t`.
++libra_error_t libra_d3d11_filter_chain_set_active_pass_count(libra_d3d11_filter_chain_t *chain,
++                                                             uint32_t value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Gets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d11_filter_chain_t`.
++libra_error_t libra_d3d11_filter_chain_get_active_pass_count(const libra_d3d11_filter_chain_t *chain,
++                                                             uint32_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D11))
++/// Free a D3D11 filter chain.
++///
++/// The resulting value in `chain` then becomes null.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d11_filter_chain_t`.
++libra_error_t libra_d3d11_filter_chain_free(libra_d3d11_filter_chain_t *chain);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Create the filter chain given the shader preset.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `device` must not be null.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++libra_error_t libra_d3d9_filter_chain_create(libra_shader_preset_t *preset,
++                                             IDirect3DDevice9 * device,
++                                             const struct filter_chain_d3d9_opt_t *options,
++                                             libra_d3d9_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Draw a frame with the given parameters for the given filter chain.
++///
++/// ## Parameters
++/// - `chain` is a handle to the filter chain.
++/// - `frame_count` is the number of frames passed to the shader
++/// - `image` is a pointer to a `IDirect3DTexture9` that will serve as the source image for the frame.
++/// - `out` is a pointer to a `IDirect3DSurface9` that will serve as the render target for the frame.
++///
++/// - `viewport` is a pointer to a `libra_viewport_t` that specifies the area onto which scissor and viewport
++///    will be applied to the render target. It may be null, in which case a default viewport spanning the
++///    entire render target will be used.
++/// - `mvp` is a pointer to an array of 16 `float` values to specify the model view projection matrix to
++///    be passed to the shader.
++/// - `options` is a pointer to options for the frame. Valid options are dependent on the `LIBRASHADER_API_VERSION`
++///    passed in. It may be null, in which case default options for the filter chain are used.
++///
++/// ## Safety
++/// - `chain` may be null, invalid, but not uninitialized. If `chain` is null or invalid, this
++///    function will return an error.
++/// - `viewport` may be null, or if it is not null, must be an aligned pointer to an instance of `libra_viewport_t`.
++/// - `mvp` may be null, or if it is not null, must be an aligned pointer to 16 consecutive `float`
++///    values for the model view projection matrix.
++/// - `opt` may be null, or if it is not null, must be an aligned pointer to a valid `frame_d3d9_opt_t`
++///    struct.
++/// - `out` must not be null.
++/// - `image` must not be null.
++/// - You must ensure that only one thread has access to `chain` before you call this function. Only one
++///   thread at a time may call this function.
++libra_error_t libra_d3d9_filter_chain_frame(libra_d3d9_filter_chain_t *chain,
++                                            size_t frame_count,
++                                            IDirect3DTexture9 * image,
++                                            IDirect3DSurface9 * out,
++                                            const struct libra_viewport_t *viewport,
++                                            const float *mvp,
++                                            const struct frame_d3d9_opt_t *options);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Sets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d9_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_d3d9_filter_chain_set_param(libra_d3d9_filter_chain_t *chain,
++                                                const char *param_name,
++                                                float value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Gets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d9_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_d3d9_filter_chain_get_param(const libra_d3d9_filter_chain_t *chain,
++                                                const char *param_name,
++                                                float *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Sets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d9_filter_chain_t`.
++libra_error_t libra_d3d9_filter_chain_set_active_pass_count(libra_d3d9_filter_chain_t *chain,
++                                                            uint32_t value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Gets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d9_filter_chain_t`.
++libra_error_t libra_d3d9_filter_chain_get_active_pass_count(const libra_d3d9_filter_chain_t *chain,
++                                                            uint32_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D9))
++/// Free a d3d9 filter chain.
++///
++/// The resulting value in `chain` then becomes null.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d9_filter_chain_t`.
++libra_error_t libra_d3d9_filter_chain_free(libra_d3d9_filter_chain_t *chain);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Create the filter chain given the shader preset.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `device` must not be null.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++libra_error_t libra_d3d12_filter_chain_create(libra_shader_preset_t *preset,
++                                              ID3D12Device * device,
++                                              const struct filter_chain_d3d12_opt_t *options,
++                                              libra_d3d12_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Create the filter chain given the shader preset deferring and GPU-side initialization
++/// to the caller. This function therefore requires no external synchronization of the device queue.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `device` must not be null.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++/// - `cmd` must not be null.
++///
++/// The provided command list must be ready for recording and contain no prior commands.
++/// The caller is responsible for ending the command list and immediately submitting it to a
++/// graphics queue. The command list must be completely executed before calling `libra_d3d12_filter_chain_frame`.
++libra_error_t libra_d3d12_filter_chain_create_deferred(libra_shader_preset_t *preset,
++                                                       ID3D12Device * device,
++                                                       ID3D12GraphicsCommandList * command_list,
++                                                       const struct filter_chain_d3d12_opt_t *options,
++                                                       libra_d3d12_filter_chain_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Records rendering commands for a frame with the given parameters for the given filter chain
++/// to the input command list.
++///
++/// A resource barrier **will not** be created for the final pass. The output image will
++/// remain in `D3D12_RESOURCE_STATE_RENDER_TARGET` after all shader passes. The caller must transition
++/// the output image to the final resource state.
++///
++/// The refcount of any COM pointers passed into this frame will not be changed. It is the responsibility
++/// of the caller to ensure any resources remain alive until the `ID3D12GraphicsCommandList` provided is
++/// submitted.
++///
++/// ## Parameters
++///
++/// - `chain` is a handle to the filter chain.
++/// - `command_list` is a `ID3D12GraphicsCommandList` to record draw commands to.
++///    The provided command list must be open and associated with the `ID3D12Device` this filter chain was created with.
++/// - `frame_count` is the number of frames passed to the shader
++/// - `image` is a `libra_image_d3d12_t` with `image_type` set to `IMAGE_TYPE_SOURCE_IMAGE` or `IMAGE_TYPE_RESOURCE`,
++///    with `image_handle` either a `ID3D12Resource*` or an `libra_source_image_d3d12_t` containing a CPU descriptor to a shader resource view,
++///    and the image resource the view is of, which will serve as the source image for the frame.
++///    The input image resource must be in the `D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE` resource state
++///    or equivalent barrier layout. The image resource must have dimension `D3D12_RESOURCE_DIMENSION_TEXTURE2D`.
++/// - `out` is a `libra_image_d3d12_t`, with `image_type` set to `IMAGE_TYPE_OUTPUT_IMAGE` or `IMAGE_TYPE_RESOURCE`,
++///    with `image_handle` being either a `ID3D12Resource*` or an `libra_output_image_d3d12_t`, containing a CPU descriptor handle,
++///    format, and size information for the render target of the frame. The output image must be in
++///    `D3D12_RESOURCE_STATE_RENDER_TARGET` resource state or equivalent barrier layout.
++///    The image resource must have dimension `D3D12_RESOURCE_DIMENSION_TEXTURE2D`.
++///
++/// - `viewport` is a pointer to a `libra_viewport_t` that specifies the area onto which scissor and viewport
++///    will be applied to the render target. It may be null, in which case a default viewport spanning the
++///    entire render target will be used.
++/// - `mvp` is a pointer to an array of 16 `float` values to specify the model view projection matrix to
++///    be passed to the shader.
++/// - `options` is a pointer to options for the frame. Valid options are dependent on the `LIBRASHADER_API_VERSION`
++///    passed in. It may be null, in which case default options for the filter chain are used.
++///
++/// ## Safety
++/// - `chain` may be null, invalid, but not uninitialized. If `chain` is null or invalid, this
++///    function will return an error.
++/// - `mvp` may be null, or if it is not null, must be an aligned pointer to 16 consecutive `float`
++///    values for the model view projection matrix.
++/// - `opt` may be null, or if it is not null, must be an aligned pointer to a valid `frame_d3d12_opt_t`
++///    struct.
++/// -  Any resource pointers contained within a `libra_image_d3d12_t` must be non-null.
++/// -  The `handle` field of any `libra_image_d3d12_t` must be valid for it's `image_type`.
++///      - If `image_type` is `IMAGE_TYPE_RESOURCE`, then `handle` must be `ID3D12Resource *`.
++///      - If `image_type` is `IMAGE_TYPE_SOURCE`, then `handle` must be `libra_source_image_d3d12_t`.
++///      - If `image_type` is `IMAGE_TYPE_OUTPUT`, then `handle` must be `libra_output_image_d3d12_t`.
++/// - `command_list` must be a non-null pointer to a `ID3D12GraphicsCommandList` that is open,
++///    and must be associated with the `ID3D12Device` this filter chain was created with.
++/// - All resource pointers contained within a `libra_image_d3d12_t` must remain valid until the `ID3D12GraphicsCommandList *`
++///   provided is submitted after the call to this function.
++/// - You must ensure that only one thread has access to `chain` before you call this function. Only one
++///   thread at a time may call this function.
++libra_error_t libra_d3d12_filter_chain_frame(libra_d3d12_filter_chain_t *chain,
++                                             ID3D12GraphicsCommandList * command_list,
++                                             size_t frame_count,
++                                             struct libra_image_d3d12_t image,
++                                             struct libra_image_d3d12_t out,
++                                             const struct libra_viewport_t *viewport,
++                                             const float *mvp,
++                                             const struct frame_d3d12_opt_t *options);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Sets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d12_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_d3d12_filter_chain_set_param(libra_d3d12_filter_chain_t *chain,
++                                                 const char *param_name,
++                                                 float value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Gets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d12_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_d3d12_filter_chain_get_param(const libra_d3d12_filter_chain_t *chain,
++                                                 const char *param_name,
++                                                 float *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Sets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d12_filter_chain_t`.
++libra_error_t libra_d3d12_filter_chain_set_active_pass_count(libra_d3d12_filter_chain_t *chain,
++                                                             uint32_t value);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Gets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d12_filter_chain_t`.
++libra_error_t libra_d3d12_filter_chain_get_active_pass_count(const libra_d3d12_filter_chain_t *chain,
++                                                             uint32_t *out);
++#endif
++
++#if (defined(_WIN32) && defined(LIBRA_RUNTIME_D3D12))
++/// Free a D3D12 filter chain.
++///
++/// The resulting value in `chain` then becomes null.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_d3d12_filter_chain_t`.
++libra_error_t libra_d3d12_filter_chain_free(libra_d3d12_filter_chain_t *chain);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Create the filter chain given the shader preset.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - `queue` must be valid for the command buffers
++///     that `libra_mtl_filter_chain_frame` will write to.
++/// - `queue` must be a reference to a `id<MTLCommandQueue>`.
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++libra_error_t libra_mtl_filter_chain_create(libra_shader_preset_t *preset,
++                                            id<MTLCommandQueue> queue,
++                                            const struct filter_chain_mtl_opt_t *options,
++                                            libra_mtl_filter_chain_t *out);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Create the filter chain given the shader preset deferring and GPU-side initialization
++/// to the caller. This function therefore requires no external synchronization of the device queue.
++///
++/// The shader preset is immediately invalidated and must be recreated after
++/// the filter chain is created.
++///
++/// ## Safety:
++/// - `queue` must be valid for the command buffers
++///     that `libra_mtl_filter_chain_frame` will write to.
++/// - `queue` must be a reference to a `id<MTLCommandQueue>`.
++/// - `command_buffer` must be a valid reference to a `MTLCommandBuffer` that is not already encoding.
++/// - `preset` must be either null, or valid and aligned.
++/// - `options` must be either null, or valid and aligned.
++/// - `out` must be aligned, but may be null, invalid, or uninitialized.
++///
++/// The provided command buffer must be ready for recording and contain no prior commands.
++/// The caller is responsible for ending the command buffer and immediately submitting it to a
++/// graphics queue. The command buffer must be completely executed before calling `libra_mtl_filter_chain_frame`.
++libra_error_t libra_mtl_filter_chain_create_deferred(libra_shader_preset_t *preset,
++                                                     id<MTLCommandQueue> queue,
++                                                     id<MTLCommandBuffer> command_buffer,
++                                                     const struct filter_chain_mtl_opt_t *options,
++                                                     libra_mtl_filter_chain_t *out);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Records rendering commands for a frame with the given parameters for the given filter chain
++/// to the input command buffer.
++/// ## Parameters
++///
++/// - `chain` is a handle to the filter chain.
++/// - `command_buffer` is a `MTLCommandBuffer` handle to record draw commands to.
++///    The provided command buffer must be ready for encoding and contain no prior commands
++/// - `frame_count` is the number of frames passed to the shader
++/// - `image` is a `id<MTLTexture>` that will serve as the source image for the frame.
++/// - `out` is a `id<MTLTexture>` that is the render target of the frame.
++///
++/// - `viewport` is a pointer to a `libra_viewport_t` that specifies the area onto which scissor and viewport
++///    will be applied to the render target. It may be null, in which case a default viewport spanning the
++///    entire render target will be used.
++/// - `mvp` is a pointer to an array of 16 `float` values to specify the model view projection matrix to
++///    be passed to the shader.
++/// - `options` is a pointer to options for the frame. Valid options are dependent on the `LIBRASHADER_API_VERSION`
++///    passed in. It may be null, in which case default options for the filter chain are used.
++///
++/// ## Safety
++/// - `command_buffer` must be a valid reference to a `MTLCommandBuffer` that is not already encoding.
++/// - `chain` may be null, invalid, but not uninitialized. If `chain` is null or invalid, this
++///    function will return an error.
++/// - `mvp` may be null, or if it is not null, must be an aligned pointer to 16 consecutive `float`
++///    values for the model view projection matrix.
++/// - `opt` may be null, or if it is not null, must be an aligned pointer to a valid `frame_mtl_opt_t`
++///    struct.
++/// - You must ensure that only one thread has access to `chain` before you call this function. Only one
++///   thread at a time may call this function.
++libra_error_t libra_mtl_filter_chain_frame(libra_mtl_filter_chain_t *chain,
++                                           id<MTLCommandBuffer> command_buffer,
++                                           size_t frame_count,
++                                           id<MTLTexture> image,
++                                           id<MTLTexture> output,
++                                           const struct libra_viewport_t *viewport,
++                                           const float *mvp,
++                                           const struct frame_mtl_opt_t *opt);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Sets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_mtl_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_mtl_filter_chain_set_param(libra_mtl_filter_chain_t *chain,
++                                               const char *param_name,
++                                               float value);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Gets a parameter for the filter chain.
++///
++/// If the parameter does not exist, returns an error.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_mtl_filter_chain_t`.
++/// - `param_name` must be either null or a null terminated string.
++libra_error_t libra_mtl_filter_chain_get_param(const libra_mtl_filter_chain_t *chain,
++                                               const char *param_name,
++                                               float *out);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Sets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_mtl_filter_chain_t`.
++libra_error_t libra_mtl_filter_chain_set_active_pass_count(libra_mtl_filter_chain_t *chain,
++                                                           uint32_t value);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Gets the number of active passes for this chain.
++///
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_mtl_filter_chain_t`.
++libra_error_t libra_mtl_filter_chain_get_active_pass_count(const libra_mtl_filter_chain_t *chain,
++                                                           uint32_t *out);
++#endif
++
++#if (defined(__APPLE__) && defined(LIBRA_RUNTIME_METAL) && defined(__OBJC__))
++/// Free a Metal filter chain.
++///
++/// The resulting value in `chain` then becomes null.
++/// ## Safety
++/// - `chain` must be either null or a valid and aligned pointer to an initialized `libra_mtl_filter_chain_t`.
++libra_error_t libra_mtl_filter_chain_free(libra_mtl_filter_chain_t *chain);
++#endif
++
++/// Get the ABI version of the loaded instance.
++LIBRASHADER_ABI_VERSION libra_instance_abi_version(void);
++
++/// Get the API version of the loaded instance.
++LIBRASHADER_API_VERSION libra_instance_api_version(void);
++
++/// Create a wildcard context
++///
++/// The C API does not allow directly setting certain variables
++///
++/// - `PRESET_DIR` and `PRESET` are inferred on preset creation.
++/// - `VID-DRV-SHADER-EXT` and `VID-DRV-PRESET-EXT` are always set to `slang` and `slangp` for librashader.
++/// - `VID-FINAL-ROT` is automatically calculated as the sum of `VID-USER-ROT` and `CORE-REQ-ROT` if either are present.
++///
++/// These automatically inferred variables, as well as all other variables can be overridden with
++/// `libra_preset_ctx_set_param`, but the expected string values must be provided.
++/// See <https://github.com/libretro/RetroArch/pull/15023> for a list of expected string values.
++///
++/// No variables can be removed once added to the context, however subsequent calls to set the same
++/// variable will overwrite the expected variable.
++/// ## Safety
++///  - `out` must be either null, or an aligned pointer to an uninitialized or invalid `libra_preset_ctx_t`.
++/// ## Returns
++///  - If any parameters are null, `out` is unchanged, and this function returns `LIBRA_ERR_INVALID_PARAMETER`.
++libra_error_t libra_preset_ctx_create(libra_preset_ctx_t *out);
++
++/// Free the wildcard context.
++///
++/// If `context` is null, this function does nothing. The resulting value in `context` then becomes
++/// null.
++///
++/// ## Safety
++/// - `context` must be a valid and aligned pointer to a `libra_preset_ctx_t`
++libra_error_t libra_preset_ctx_free(libra_preset_ctx_t *context);
++
++/// Set the core name (`CORE`) variable in the context
++///
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++/// - `name` must be null or a valid and aligned pointer to a string.
++libra_error_t libra_preset_ctx_set_core_name(libra_preset_ctx_t *context, const char *name);
++
++/// Set the content directory (`CONTENT-DIR`) variable in the context.
++///
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++/// - `name` must be null or a valid and aligned pointer to a string.
++libra_error_t libra_preset_ctx_set_content_dir(libra_preset_ctx_t *context, const char *name);
++
++/// Set a custom string variable in context.
++///
++/// If the path contains this variable when loading a preset, it will be replaced with the
++/// provided contents.
++///
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++/// - `name` must be null or a valid and aligned pointer to a string.
++/// - `value` must be null or a valid and aligned pointer to a string.
++libra_error_t libra_preset_ctx_set_param(libra_preset_ctx_t *context,
++                                         const char *name,
++                                         const char *value);
++
++/// Set the graphics runtime (`VID-DRV`) variable in the context.
++///
++/// Note that librashader only supports the following runtimes.
++///
++/// - Vulkan
++/// - GLCore
++/// - Direct3D11
++/// - Direct3D12
++/// - Metal
++/// - Direct3D9 (HLSL)
++///
++/// This will also set the appropriate video driver extensions.
++///
++/// For librashader, `VID-DRV-SHADER-EXT` and `VID-DRV-PRESET-EXT` are always `slang` and `slangp`.
++/// To override this, use `libra_preset_ctx_set_param`.
++///
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++/// - `name` must be null or a valid and aligned pointer to a string.
++libra_error_t libra_preset_ctx_set_runtime(libra_preset_ctx_t *context,
++                                           LIBRA_PRESET_CTX_RUNTIME value);
++
++/// Set the core requested rotation (`CORE-REQ-ROT`) variable in the context.
++///
++/// Rotation is represented by quarter rotations around the unit circle.
++/// For example. `0` = 0deg, `1` = 90deg, `2` = 180deg, `3` = 270deg, `4` = 0deg.
++///
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++libra_error_t libra_preset_ctx_set_core_rotation(libra_preset_ctx_t *context, uint32_t value);
++
++/// Set the user rotation (`VID-USER-ROT`) variable in the context.
++///
++/// Rotation is represented by quarter rotations around the unit circle.
++/// For example. `0` = 0deg, `1` = 90deg, `2` = 180deg, `3` = 270deg, `4` = 0deg.
++///
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++libra_error_t libra_preset_ctx_set_user_rotation(libra_preset_ctx_t *context, uint32_t value);
++
++/// Set the screen orientation (`SCREEN-ORIENT`) variable in the context.
++///
++/// Orientation is represented by quarter rotations around the unit circle.
++/// For example. `0` = 0deg, `1` = 90deg, `2` = 180deg, `3` = 270deg, `4` = 0deg.
++///
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++libra_error_t libra_preset_ctx_set_screen_orientation(libra_preset_ctx_t *context, uint32_t value);
++
++/// Set whether or not to allow rotation (`VID-ALLOW-CORE-ROT`) variable in the context.
++///
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++libra_error_t libra_preset_ctx_set_allow_rotation(libra_preset_ctx_t *context, bool value);
++
++/// Set the view aspect orientation (`VIEW-ASPECT-ORIENT`) variable in the context.
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++libra_error_t libra_preset_ctx_set_view_aspect_orientation(libra_preset_ctx_t *context,
++                                                           LIBRA_PRESET_CTX_ORIENTATION value);
++
++/// Set the core aspect orientation (`CORE-ASPECT-ORIENT`) variable in the context.
++/// ## Safety
++/// - `context` must be null or a valid and aligned pointer to a `libra_preset_ctx_t`.
++libra_error_t libra_preset_ctx_set_core_aspect_orientation(libra_preset_ctx_t *context,
++                                                           LIBRA_PRESET_CTX_ORIENTATION value);
++
++#ifdef __cplusplus
++}  // extern "C"
++#endif  // __cplusplus
++
++#endif  /* __LIBRASHADER_H__ */

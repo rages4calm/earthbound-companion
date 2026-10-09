@@ -1,0 +1,227 @@
+{
+  "candidateSha256": "6151864a0650cd318054e8390da574e5fe35414ef43875c454a9605fcdfc0b5e",
+  "librarySha256": "e7b051bb2f8475bafc76d731e39e5792fe21c5bf4a888334acd21b63b4858873",
+  "runtimeAliases": "player.exe and observer.exe are identical copies of the candidate. No separate observer build was made or executed.",
+  "ownerSavesTouched": false,
+  "results": [
+    {
+      "edition": "original",
+      "check": "screen-transitions",
+      "exitCode": 0,
+      "passed": true,
+      "durationSeconds": 0.19,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-screen-transitions\\native.log",
+      "tail": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative screen transitions: 21 exit/palette/brightness cases, timer step 1, PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "sprint-collision",
+      "exitCode": 0,
+      "passed": true,
+      "durationSeconds": 0.2,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-sprint-collision\\native.log",
+      "tail": "PC options: experience=1x money=1x fast-forward=3x target\r\nSprint free movement: 144 speed/surface cases unchanged; scripted collision bypass: PASS\r\nScripted arrival overlap: 16 exit/new-wall cases: PASS\r\nSprint collision: 12288 prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "stairs",
+      "exitCode": 0,
+      "passed": true,
+      "durationSeconds": 0.07,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-stairs\\native.log",
+      "tail": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative stairs: 32 input directions, 3 invalid inputs, 3 transition exclusions: PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "savestate",
+      "exitCode": 0,
+      "passed": true,
+      "durationSeconds": 0.11,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-savestate\\native.log",
+      "tail": "PC options: experience=1x money=1x fast-forward=3x target\r\nsavestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "screen-transitions",
+      "exitCode": 0,
+      "passed": true,
+      "durationSeconds": 0.06,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-screen-transitions\\native.log",
+      "tail": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative screen transitions: 21 exit/palette/brightness cases, timer step 2, PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "sprint-collision",
+      "exitCode": 0,
+      "passed": true,
+      "durationSeconds": 0.07,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-sprint-collision\\native.log",
+      "tail": "PC options: experience=1x money=1x fast-forward=3x target\r\nSprint free movement: 144 speed/surface cases unchanged; scripted collision bypass: PASS\r\nScripted arrival overlap: 16 exit/new-wall cases: PASS\r\nSprint collision: 12288 prepared cliff/corner paths, all directions, all sprint settings, skip sandwich: PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "stairs",
+      "exitCode": 0,
+      "passed": true,
+      "durationSeconds": 0.06,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-stairs\\native.log",
+      "tail": "PC options: experience=1x money=1x fast-forward=3x target\r\nNative stairs: 32 input directions, 3 invalid inputs, 3 transition exclusions: PASS\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "savestate",
+      "exitCode": 0,
+      "passed": true,
+      "durationSeconds": 0.1,
+      "log": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-savestate\\native.log",
+      "tail": "PC options: experience=1x money=1x fast-forward=3x target\r\nsavestate round-trip self-test: PASS\r\nsavestate perturb (cold-load) self-test: PASS\r\nsavestate crash-safe self-test: PASS\r\nsavestate asset-pointer self-test: PASS\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "psi_viewport_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-psi_viewport_qa.json",
+      "durationSeconds": 1.38,
+      "tail": "{\"passed\": true, \"animations\": 34, \"cases\": 204, \"sampledFrames\": 5970}\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "credits_photo_frame_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-credits_photo_frame_qa.json",
+      "durationSeconds": 4.69,
+      "tail": "{\r\n  \"allPassed\": true,\r\n  \"nativeExit\": 0,\r\n  \"executedCases\": 1\r\n}\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "lumine_scroll_qa_dev26.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-lumine_scroll_qa_dev26.json",
+      "durationSeconds": 0.74,
+      "tail": "{\"passed\": true, \"cases\": 6, \"words\": 1353120}\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "giygas_sprite_binding_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-giygas_sprite_binding_qa.json",
+      "durationSeconds": 0.55,
+      "tail": "Giygas sprite binding: four cases passed\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "redux_prayer_cinematic_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-redux_prayer_cinematic_qa.json",
+      "durationSeconds": 3.36,
+      "tail": "{\r\n  \"allPassed\": true,\r\n  \"nativeExit\": 0,\r\n  \"executedCases\": 7,\r\n  \"requestedCases\": 7\r\n}\r\n"
+    },
+    {
+      "edition": "original",
+      "check": "presentation_matrix_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\original-presentation_matrix_qa.json",
+      "durationSeconds": 9.93,
+      "tail": "45 offscreen presentation cases passed\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "psi_viewport_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-psi_viewport_qa.json",
+      "durationSeconds": 1.64,
+      "tail": "{\"passed\": true, \"animations\": 68, \"cases\": 408, \"sampledFrames\": 10524}\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "credits_photo_frame_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-credits_photo_frame_qa.json",
+      "durationSeconds": 3.96,
+      "tail": "{\r\n  \"allPassed\": true,\r\n  \"nativeExit\": 0,\r\n  \"executedCases\": 1\r\n}\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "lumine_scroll_qa_dev26.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-lumine_scroll_qa_dev26.json",
+      "durationSeconds": 0.79,
+      "tail": "{\"passed\": true, \"cases\": 6, \"words\": 1355040}\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "giygas_sprite_binding_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-giygas_sprite_binding_qa.json",
+      "durationSeconds": 0.55,
+      "tail": "Giygas sprite binding: four cases passed\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "redux_prayer_cinematic_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-redux_prayer_cinematic_qa.json",
+      "durationSeconds": 3.37,
+      "tail": "{\r\n  \"allPassed\": true,\r\n  \"nativeExit\": 0,\r\n  \"executedCases\": 7,\r\n  \"requestedCases\": 7\r\n}\r\n"
+    },
+    {
+      "edition": "redux",
+      "check": "presentation_matrix_qa.py",
+      "exitCode": 0,
+      "passed": true,
+      "report": "C:\\Users\\crono\\Desktop\\Projects\\eb\\_BuildScratch\\motion-dev33\\agent-render-regressions\\redux-presentation_matrix_qa.json",
+      "durationSeconds": 11.96,
+      "tail": "45 offscreen presentation cases passed\r\n"
+    }
+  ],
+  "limits": [
+    "Focused prepared native fixtures, not a campaign or physical-controller check. SDL dummy presentation covers software output dimensions and nonblank rendering, not hardware display quality. No shader preset was enabled."
+  ],
+  "allPassed": true,
+  "executedChecks": 20,
+  "assetSha256": {
+    "original": "01af4f4b590d9e83937b772399ee60a9181e2384e13c1567c94dfc92101b5549",
+    "redux": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb"
+  },
+  "visualReview": {
+    "creditsContactSheets": "Reviewed Original and Redux contact sheets (32 scenes each) and Redux photo 17 at native resolution. Sampled backgrounds are recognizable and show no diagonal neon stencil or scrambled frame tiles. The striped photo 17 is the Monotoly building facade. Captures sample entry into each prepared photo, not every frame of the natural credits.",
+    "files": [
+      "original-photos-montage.png",
+      "redux-photos-montage.png"
+    ]
+  },
+  "caseSummary": {
+    "selftestGroups": 8,
+    "screenTransitionCases": 42,
+    "sprintCliffCornerPaths": 24576,
+    "sprintFreeSpeedSurfaceCases": 288,
+    "scriptedArrivalCases": 32,
+    "stairInputCases": 64,
+    "stairInvalidAndExclusionCases": 12,
+    "savestateChecks": 8,
+    "psiAnimationCountOriginal": 34,
+    "psiAnimationCountRedux": 68,
+    "psiTargetBitDepthCases": 612,
+    "psiSampledArrangementFrames": 16494,
+    "creditsTransactionCases": 2,
+    "creditsPhotosCaptured": 64,
+    "lumineScrollCases": 12,
+    "lumineViewportWordsCompared": 2708160,
+    "giygasSpriteBindingCases": 8,
+    "prayerCinematicCases": 14,
+    "offscreenPresentationCases": 90
+  },
+  "nativeReferenceQualification": "Private fixture drivers were compiled against current source headers and linked to the frozen candidate library/platform objects. Candidate 6151864a... is authoritative; script filenames or historical report version labels do not imply old-runtime execution. No distinct observer was built or executed.",
+  "frozenHashUnchanged": true
+}

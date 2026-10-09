@@ -4,6 +4,8 @@ Effective October 8, 2026, active feature development is wrapped at **v0.5.0-red
 
 [Frozen release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.32) · [Community testing](docs/COMMUNITY-TESTING.md) · [Developer tools](docs/TESTING.md)
 
+October 9 maintenance update: **dev.33** implements the owner-requested scrolling, widescreen encounter and shader preset work. The original freeze and campaign limits remain; [dev.33 evidence](docs/RELEASE-dev33.md) records the new bounded tests.
+
 ## Frozen scope
 
 The scope includes Original EarthBound and the pinned native MaternalBound Redux adaptation, Windows launcher/setup, display and input settings, MSU music, save recovery, native mod profiles and Story Shuffle v4. The [README](README.md#game-features) lists the included features; [randomizer rules](RANDOMIZER.md) distinguish v4 from preserved legacy recipes.

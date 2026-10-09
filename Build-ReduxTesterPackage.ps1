@@ -1,18 +1,20 @@
-param([string]$Version='0.5.0-redux-dev.32', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='')
+param([string]$Version='0.5.0-redux-dev.33', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='', [string]$ShaderRuntimePath='', [string]$WorkspaceRoot=$PSScriptRoot)
 $ErrorActionPreference='Stop'
-$projectRoot=$PSScriptRoot
+$projectRoot=[IO.Path]::GetFullPath($WorkspaceRoot)
 $releaseRoot=Join-Path $projectRoot 'release'
 $stamp=(Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[guid]::NewGuid().ToString('N').Substring(0,8)
 $staging=Join-Path $releaseRoot ('.redux-staging-'+$stamp)
 $app=Join-Path $staging 'EarthBound Companion'
-$docs=Join-Path $projectRoot 'github-repo'
-if(!(Test-Path -LiteralPath $docs)){$docs=$projectRoot}
+$docs=$PSScriptRoot
+if(!(Test-Path -LiteralPath (Join-Path $docs 'Companion'))){$docs=Join-Path $projectRoot 'github-repo'}
 if(!$NativeExePath){throw 'Pass -NativeExePath for the explicitly tested native candidate. Packaging an unspecified older build is not allowed.'}
 if(!$ReduxHelperPath -or !$OriginalHelperPath){throw 'Pass -ReduxHelperPath and -OriginalHelperPath for the tested setup helpers. Packaging unspecified older helpers is not allowed.'}
+if(!$ShaderRuntimePath){throw 'Pass -ShaderRuntimePath for the explicitly tested D3D11 shader runtime.'}
 $native=[IO.Path]::GetFullPath($NativeExePath)
 $helper=[IO.Path]::GetFullPath($ReduxHelperPath)
 $originalHelper=[IO.Path]::GetFullPath($OriginalHelperPath)
-foreach($input in @($native,$helper,$originalHelper)){if(!(Test-Path -LiteralPath $input -PathType Leaf)){throw "Missing build input: $input"}}
+$shaderRuntime=[IO.Path]::GetFullPath($ShaderRuntimePath)
+foreach($input in @($native,$helper,$originalHelper,$shaderRuntime)){if(!(Test-Path -LiteralPath $input -PathType Leaf)){throw "Missing build input: $input"}}
 New-Item -ItemType Directory -Path $app -Force | Out-Null
 foreach($folder in @('Game','msu','UserData','Profiles','Mods','Licenses')){New-Item -ItemType Directory -Path (Join-Path $app $folder) -Force | Out-Null}
 & dotnet publish (Join-Path $docs 'Companion\Companion.csproj') -c Release -o (Join-Path $staging 'publish') *> (Join-Path $staging 'publish.log')
@@ -22,12 +24,15 @@ Copy-Item -LiteralPath (Join-Path $docs 'Companion\Assets\earthbound-companion.i
 Copy-Item -LiteralPath $native -Destination (Join-Path $app 'Game\earthbound.exe')
 Copy-Item -LiteralPath $helper -Destination (Join-Path $app 'Game\redux-setup.exe')
 Copy-Item -LiteralPath $originalHelper -Destination (Join-Path $app 'Game\ebtools-setup.exe')
+Copy-Item -LiteralPath $shaderRuntime -Destination (Join-Path $app 'Game\librashader.dll')
+Copy-Item -LiteralPath (Join-Path $docs 'Shaders') -Destination $app -Recurse
 Copy-Item -LiteralPath (Join-Path $projectRoot 'tools\SDL2-2.32.10\x86_64-w64-mingw32\bin\SDL2.dll') -Destination (Join-Path $app 'Game\SDL2.dll')
 $docHelper=Join-Path $docs 'scripts\prepare_package_docs.py'
 & (Join-Path $projectRoot 'native-source\.venv\Scripts\python.exe') $docHelper --source $docs --destination $app
 if($LASTEXITCODE -ne 0){throw 'Package documentation links could not be prepared.'}
 foreach($file in Get-ChildItem -LiteralPath (Join-Path $docs 'Mods') -File){Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $app 'Mods')}
 foreach($file in Get-ChildItem -LiteralPath (Join-Path $projectRoot 'EarthBound Companion\Licenses') -File){Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $app 'Licenses')}
+foreach($file in Get-ChildItem -LiteralPath (Join-Path $docs 'Licenses') -Filter 'librashader*' -File){Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $app 'Licenses') -Force}
 Copy-Item -LiteralPath (Join-Path $projectRoot '_BuildScratch\CoilSnake\LICENSE') -Destination (Join-Path $app 'Licenses\CoilSnake-LICENSE')
 Copy-Item -LiteralPath (Join-Path $projectRoot '_BuildScratch\CoilSnake\coilsnake\util\eb\exhal\COPYING.txt') -Destination (Join-Path $app 'Licenses\Exhal-COPYING.txt')
 @'

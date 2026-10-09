@@ -9,10 +9,12 @@
 **Discord contact:** `chrono.trigger`
 
 > [!NOTE]
-> **Feature-frozen; community testing and focused bug-fix maintenance.** Active feature development is wrapped at dev.32. [Scope and coverage](MAINTENANCE.md) · [Short testing guide](docs/COMMUNITY-TESTING.md) · [Report a bug](https://github.com/rages4calm/earthbound-companion/issues/new?template=bug-report.yml). Another full playthrough is not required.
+> **Feature-frozen; community testing and focused bug-fix maintenance.** The dev.32 feature freeze remains in place, with the explicitly requested dev.33 display update. [Scope and coverage](MAINTENANCE.md) · [Short testing guide](docs/COMMUNITY-TESTING.md) · [Report a bug](https://github.com/rages4calm/earthbound-companion/issues/new?template=bug-report.yml). Another full playthrough is not required.
 
 > [!WARNING]
-> **Current release: `v0.5.0-redux-dev.32`, an experimental native Redux adaptation. Further playtesting is needed.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. One user-reported Redux campaign reached the ending and credits, with equipment/stat boosts for final testing. Automated full-campaign certification, randomized playthroughs, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+> **Current release: `v0.5.0-redux-dev.33`, an experimental native Redux adaptation. Further playtesting is needed.** The older v0.4.0 preview contains original EarthBound. The Redux development edition compiles the pinned upstream source from your clean ROM, converts it into a native pack, and implements explicit native gameplay adaptations. Opening gameplay, shops, equipment, all 11 Tools, title/narration and ending fixtures pass. One user-reported Redux campaign reached the ending and credits, with equipment/stat boosts for final testing. Automated full-campaign certification, randomized playthroughs, all combat combinations and every story/music transition remain unverified. See [MATERNALBOUND-NATIVE.md](MATERNALBOUND-NATIVE.md).
+
+Dev.33 corrects fractional camera scrolling and frame pacing, extends enemy spawning to the widescreen viewport, and adds optional Slang finishing shader presets. [Changes and focused verification](docs/RELEASE-dev33.md).
 
 Dev.32 broadens Story Shuffle: ordinary gifts and drops mix item types, priceless equipment enters the loot pool, shop baselines can change, and wild encounters now change enemy lineups. Story keys, quest helpers, required trade supplies and scripted boss lineups remain intact. V3 recipes still reproduce their original algorithm. [Rules and verification](docs/RELEASE-dev32.md).
 
@@ -28,6 +30,8 @@ Dev.30 fixes striped/corrupted credits photographs and repeating PSI effects in 
 - **Choose your title screen:** keep Redux gameplay while selecting the original EarthBound logo and animation in **Game Mode**; the Redux title remains the default.
 - **HD output:** 720p, 1080p, 1440p, 4K and 3440×1440, with borderless fullscreen and a windowed option.
 - **Expanded world view:** 4:3, 16:9 and 21:9 framing, wider native scenery and adjustable field of view.
+- **Smooth scrolling:** fractional camera presentation and more precise Windows frame pacing, without changing movement or collision speed.
+- **Finishing shaders:** Warm, Monochrome and Soft CRT presets, plus external `.slangp` files; [usage and compatibility limits](Shaders/README.md).
 - **Rendering choices:** crisp pixels, Scale2x, bilinear filtering and optional integer scaling.
 - **Optional visual effects:** color grading, CRT scanlines and a miniature depth effect; Enhanced, Classic, CRT and Easygoing presets.
 - **Native MSU music:** installer/repair for all 164 tracks of the credited fan soundtrack, with looping, fades and one-shot jingles; missing tracks fall back to SPC music and game sound effects remain available.
@@ -63,7 +67,7 @@ The target is one polished PC edition: MaternalBound Redux's restored writing, a
 > [!IMPORTANT]
 > This project does **not** contain an EarthBound ROM, extracted Nintendo assets, soundtrack audio or saves. The documentation includes clearly labeled development screenshots. You must provide your own legally obtained clean **EarthBound (USA)** ROM. Companion verifies it and builds the required native data locally. We do not condone piracy.
 
-[Developer testing tools](docs/TESTING.md) · [Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.32) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
+[Developer testing tools](docs/TESTING.md) · [Latest tester release](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-redux-dev.33) · [MaternalBound native port status](MATERNALBOUND-NATIVE.md) · [Randomizer rules](RANDOMIZER.md) · [Research and compatibility](RESEARCH.md) · [Credits](CREDITS.md) · [Source lineage](UPSTREAM.md)
 
 Maintenance addresses reported defects in the frozen scope. Current fixes cover the completed user-reported campaign, including the museum quest, Sound Stone/Magicant presentation, Giygas artwork, credits and widescreen PSI. Historical fixes and verification scope remain in the [changelog](CHANGELOG.md) and [release evidence](docs/RELEASE-dev30.md). Untested natural story branches, randomized progression, all combat combinations and broader physical audio/display/controller coverage are documented limits, not a required broad-audit queue.
 

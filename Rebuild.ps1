@@ -1,3 +1,4 @@
+param([string]$ShaderRuntimePath='')
 $ErrorActionPreference='Stop'
 $projectRoot=$PSScriptRoot
 $gameExe=Join-Path $projectRoot 'EarthBound Companion\Game\earthbound.exe'
@@ -32,5 +33,7 @@ try {
  if($LASTEXITCODE -ne 0){throw 'Companion build failed.'}
  Copy-Item build\companion\earthbound.exe $gameExe -Force
  Copy-Item tools\SDL2-2.32.10\x86_64-w64-mingw32\bin\SDL2.dll 'EarthBound Companion\Game\SDL2.dll' -Force
+ Copy-Item -LiteralPath (Join-Path $projectRoot 'Shaders') -Destination (Join-Path $projectRoot 'EarthBound Companion') -Recurse -Force
+ if($ShaderRuntimePath){Copy-Item -LiteralPath ([IO.Path]::GetFullPath($ShaderRuntimePath)) -Destination (Join-Path $projectRoot 'EarthBound Companion\Game\librashader.dll') -Force}
  Write-Output 'Built EarthBound Companion. Saves and preferences were retained.'
 } finally {$env:PATH=$taskOriginalPath;Pop-Location}

@@ -1,0 +1,2035 @@
+{
+  "runtime": "librashader-capi 0.12.0; D3D11 only; static CRT",
+  "compiledRegistryPackages": 143,
+  "packages": [
+    {
+      "name": "adler2",
+      "version": "2.0.1",
+      "license": "0BSD OR MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/adler2/2.0.1",
+      "repository": "https://github.com/oyvindln/adler2",
+      "authors": [
+        "Jonas Schievink <jonasschievink@gmail.com>",
+        "oyvindln <oyvindln@users.noreply.github.com>"
+      ],
+      "noticeBlocks": [
+        "a21c914647d33e48cb4d213dfb0749dbb45491514da9d3a8ffc4763cf456217d",
+        "1bc86297d03201537284dc3f7bc105c8ab7b053b3372d96ab935bc54acc7a430",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "aho-corasick",
+      "version": "1.1.4",
+      "license": "Unlicense OR MIT",
+      "source": "https://crates.io/crates/aho-corasick/1.1.4",
+      "repository": "https://github.com/BurntSushi/aho-corasick",
+      "authors": [
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+        "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5"
+      ]
+    },
+    {
+      "name": "allocator-api2",
+      "version": "0.2.21",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/allocator-api2/0.2.21",
+      "repository": "https://github.com/zakarumych/allocator-api2",
+      "authors": [
+        "Zakarum <zaq.dev@icloud.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "arc-swap",
+      "version": "1.9.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/arc-swap/1.9.1",
+      "repository": "https://github.com/vorner/arc-swap",
+      "authors": [
+        "Michal 'vorner' Vaner <vorner@vorner.cz>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "0f1d575cfca3c627f4678f5730c3904c164f5ef8ef551697b5aa12beba8a0f77"
+      ]
+    },
+    {
+      "name": "array-concat",
+      "version": "0.5.5",
+      "license": "MIT",
+      "source": "https://crates.io/crates/array-concat/0.5.5",
+      "repository": "https://github.com/inspier/array-concat",
+      "authors": [
+        "inspier <devdevin541@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "2612a6bf96c32d96682246b4a8208c8e473a30301ecc4ef1608bc9d43fa488a0"
+      ]
+    },
+    {
+      "name": "arrayref",
+      "version": "0.3.9",
+      "license": "BSD-2-Clause",
+      "source": "https://crates.io/crates/arrayref/0.3.9",
+      "repository": "https://github.com/droundy/arrayref",
+      "authors": [
+        "David Roundy <roundyd@physics.oregonstate.edu>"
+      ],
+      "noticeBlocks": [
+        "112d1beb5fcb0478799ffe856253e9ac08afe88f71cdde313a2aa629e28f8d58"
+      ]
+    },
+    {
+      "name": "arrayvec",
+      "version": "0.7.6",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/arrayvec/0.7.6",
+      "repository": "https://github.com/bluss/arrayvec",
+      "authors": [
+        "bluss"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "92c666480f818e051a4c16f0d8d29d1cc47fc5abaa6e89c681e5024dd6291e7c"
+      ]
+    },
+    {
+      "name": "autocfg",
+      "version": "1.5.1",
+      "license": "Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/autocfg/1.5.1",
+      "repository": "https://github.com/cuviper/autocfg",
+      "authors": [
+        "Josh Stone <cuviper@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "99afaa30c17801207692138b8a7d9f7522b52711dabb4cde25855dadc950e4c8"
+      ]
+    },
+    {
+      "name": "bincode",
+      "version": "2.0.1",
+      "license": "MIT",
+      "source": "https://crates.io/crates/bincode/2.0.1",
+      "repository": "https://github.com/bincode-org/bincode",
+      "authors": [
+        "Ty Overby <ty@pre-alpha.com>",
+        "Zoey Riordan <zoey@dos.cafe>",
+        "Victor Koenders <bincode@trangar.com>"
+      ],
+      "noticeBlocks": [
+        "47fc899fa4387f185dd664fe525975d1f7050b4dcd355812fa3000fdab1b2f8e"
+      ]
+    },
+    {
+      "name": "bincode_derive",
+      "version": "2.0.1",
+      "license": "MIT",
+      "source": "https://crates.io/crates/bincode_derive/2.0.1",
+      "repository": "https://github.com/bincode-org/bincode",
+      "authors": [
+        "Zoey Riordan <zoey@dos.cafe>",
+        "Victor Koenders <bincode@trangar.com>"
+      ],
+      "noticeBlocks": [
+        "47fc899fa4387f185dd664fe525975d1f7050b4dcd355812fa3000fdab1b2f8e"
+      ]
+    },
+    {
+      "name": "bit-set",
+      "version": "0.10.1",
+      "license": "Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/bit-set/0.10.1",
+      "repository": "https://github.com/contain-rs/bit-set",
+      "authors": [
+        "Alexis Beingessner <a.beingessner@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "7e1b38c60796dd9949d6f26bd124e353a4a709b70e90810e2608f30195454da0",
+        "4c4e6eed8b86b56fa8f22056ff64bbaae60df3fd0a0101a289729b4477bae1d4"
+      ]
+    },
+    {
+      "name": "bit-set",
+      "version": "0.8.0",
+      "license": "Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/bit-set/0.8.0",
+      "repository": "https://github.com/contain-rs/bit-set",
+      "authors": [
+        "Alexis Beingessner <a.beingessner@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "7e1b38c60796dd9949d6f26bd124e353a4a709b70e90810e2608f30195454da0",
+        "4c4e6eed8b86b56fa8f22056ff64bbaae60df3fd0a0101a289729b4477bae1d4"
+      ]
+    },
+    {
+      "name": "bit-vec",
+      "version": "0.10.0",
+      "license": "Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/bit-vec/0.10.0",
+      "repository": "https://github.com/contain-rs/bit-vec",
+      "authors": [
+        "Alexis Beingessner <a.beingessner@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "7e1b38c60796dd9949d6f26bd124e353a4a709b70e90810e2608f30195454da0",
+        "4c4e6eed8b86b56fa8f22056ff64bbaae60df3fd0a0101a289729b4477bae1d4"
+      ]
+    },
+    {
+      "name": "bit-vec",
+      "version": "0.8.0",
+      "license": "Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/bit-vec/0.8.0",
+      "repository": "https://github.com/contain-rs/bit-vec",
+      "authors": [
+        "Alexis Beingessner <a.beingessner@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "7e1b38c60796dd9949d6f26bd124e353a4a709b70e90810e2608f30195454da0",
+        "4c4e6eed8b86b56fa8f22056ff64bbaae60df3fd0a0101a289729b4477bae1d4"
+      ]
+    },
+    {
+      "name": "bitflags",
+      "version": "2.12.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/bitflags/2.12.1",
+      "repository": "https://github.com/bitflags/bitflags",
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90"
+      ]
+    },
+    {
+      "name": "blake3",
+      "version": "1.8.5",
+      "license": "CC0-1.0 OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception",
+      "source": "https://crates.io/crates/blake3/1.8.5",
+      "repository": "https://github.com/BLAKE3-team/BLAKE3",
+      "authors": [
+        "Jack O'Connor <oconnor663@gmail.com>",
+        "Samuel Neves"
+      ],
+      "noticeBlocks": [
+        "fb348df332f3295b6c6fc936faa79085cace80c9e1a346c6b87aebc22034d54b",
+        "75b396e3689108564f147a799cfbbc64238404547eec3fc486ec5bdcd4efd86c",
+        "6d489af6292662d9e36d34ce49423784984a5f6e41d7b58f49b01264df59fa03"
+      ]
+    },
+    {
+      "name": "build-target",
+      "version": "0.4.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/build-target/0.4.0",
+      "repository": "https://github.com/OpenByteDev/build-target",
+      "authors": [
+        "OpenByte <development.openbyte@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "b180e8877ff764e26a9e2bc4d2c75484315c858c53ba46c78f3a10863f0f7367"
+      ]
+    },
+    {
+      "name": "bytecount",
+      "version": "0.6.9",
+      "license": "Apache-2.0/MIT",
+      "source": "https://crates.io/crates/bytecount/0.6.9",
+      "repository": "https://github.com/llogiq/bytecount",
+      "authors": [
+        "Andre Bogus <bogusandre@gmail.de>",
+        "Joshua Landau <joshua@landau.ws>"
+      ],
+      "noticeBlocks": [
+        "6dc0e068dcf3a5bc8e054205b85b7720e1d49265bbc64bf515d2cf79197df69a",
+        "3dda214a46ef7de902363b8e9504fe51fae2e8191d8ab6bbf08dc8c93fb57ca0"
+      ]
+    },
+    {
+      "name": "bytemuck",
+      "version": "1.25.0",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/bytemuck/1.25.0",
+      "repository": "https://github.com/Lokathor/bytemuck",
+      "authors": [
+        "Lokathor <zefria@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "0e3cbff251c122b9dc79d8193e04f631640c3dbaa90faaae9a439ebf8cda96cb",
+        "dfbd1c2a36dcf9af64e31f070485c57a51961a2767ed0a48541ec065a9c3a5f1",
+        "943f36fd309fb5ea67a82f577433f4ed3bc877e5b00f9b874e2f8b7f72bf0bdc"
+      ]
+    },
+    {
+      "name": "bytemuck_derive",
+      "version": "1.10.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/bytemuck_derive/1.10.2",
+      "repository": "https://github.com/Lokathor/bytemuck",
+      "authors": [
+        "Lokathor <zefria@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "0e3cbff251c122b9dc79d8193e04f631640c3dbaa90faaae9a439ebf8cda96cb",
+        "dfbd1c2a36dcf9af64e31f070485c57a51961a2767ed0a48541ec065a9c3a5f1",
+        "943f36fd309fb5ea67a82f577433f4ed3bc877e5b00f9b874e2f8b7f72bf0bdc"
+      ]
+    },
+    {
+      "name": "byteorder-lite",
+      "version": "0.1.0",
+      "license": "Unlicense OR MIT",
+      "source": "https://crates.io/crates/byteorder-lite/0.1.0",
+      "repository": "https://github.com/image-rs/byteorder-lite",
+      "authors": [],
+      "noticeBlocks": [
+        "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5"
+      ]
+    },
+    {
+      "name": "cc",
+      "version": "1.2.63",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/cc/1.2.63",
+      "repository": "https://github.com/rust-lang/cc-rs",
+      "authors": [
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d"
+      ]
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.4",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/cfg-if/1.0.4",
+      "repository": "https://github.com/rust-lang/cfg-if",
+      "authors": [
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d"
+      ]
+    },
+    {
+      "name": "cfg_aliases",
+      "version": "0.2.1",
+      "license": "MIT",
+      "source": "https://crates.io/crates/cfg_aliases/0.2.1",
+      "repository": "https://github.com/katharostech/cfg_aliases",
+      "authors": [
+        "Zicklag <zicklag@katharostech.com>"
+      ],
+      "noticeBlocks": [
+        "48513346d335b96c01a79e3c0fe39260efd5df89157d3660dbb471d5811272f9",
+        "bc56efd19e4d25377548160007fa8981b4fef31e8ad513bad4cb5f107c5e662a"
+      ]
+    },
+    {
+      "name": "codespan-reporting",
+      "version": "0.13.1",
+      "license": "Apache-2.0",
+      "source": "https://crates.io/crates/codespan-reporting/0.13.1",
+      "repository": "https://github.com/brendanzab/codespan",
+      "authors": [
+        "Brendan Zabarauskas <bjzaba@yahoo.com.au>"
+      ],
+      "noticeBlocks": [
+        "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b"
+      ]
+    },
+    {
+      "name": "constant_time_eq",
+      "version": "0.4.2",
+      "license": "CC0-1.0 OR MIT-0 OR Apache-2.0",
+      "source": "https://crates.io/crates/constant_time_eq/0.4.2",
+      "repository": "https://github.com/cesarb/constant_time_eq",
+      "authors": [
+        "Cesar Eduardo Barros <cesarb@cesarb.eti.br>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "6d489af6292662d9e36d34ce49423784984a5f6e41d7b58f49b01264df59fa03",
+        "ee3c852dd133c6ca1b6cda37eff0ffd114fe179b91970dc63c51fcb229b48ef2"
+      ]
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.3.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/cpufeatures/0.3.0",
+      "repository": "https://github.com/RustCrypto/utils",
+      "authors": [
+        "RustCrypto Developers"
+      ],
+      "noticeBlocks": [
+        "e8541ea93f027a6c2cf077362f74492bdf0bb8354f63029962d84f1c130937a4",
+        "6334e52844d698f528b923f406aeb5bc3a2c6da77916c3b79f1662622fcde897"
+      ]
+    },
+    {
+      "name": "crc",
+      "version": "3.4.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/crc/3.4.0",
+      "repository": "https://github.com/mrhooray/crc-rs.git",
+      "authors": [
+        "Rui Hu <code@mrhooray.com>",
+        "Akhil Velagapudi <4@4khil.com>"
+      ],
+      "noticeBlocks": [
+        "dc08c5cf03ec0697c576cacfd00b330ec595916626dd0567792e70382eff600f",
+        "bec1ff6c886313105aabc29823670c41f1baf3f2c97cefe41b0261b3a52d2237"
+      ]
+    },
+    {
+      "name": "crc-catalog",
+      "version": "2.5.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/crc-catalog/2.5.0",
+      "repository": "https://github.com/akhilles/crc-catalog.git",
+      "authors": [
+        "Akhil Velagapudi <akhilvelagapudi@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "9b531f5ced1b395b125eb2cbf9693e2621f5724d1fdfd052919238b1f1b67f53"
+      ]
+    },
+    {
+      "name": "crc32fast",
+      "version": "1.5.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/crc32fast/1.5.0",
+      "repository": "https://github.com/srijs/rust-crc32fast",
+      "authors": [
+        "Sam Rijs <srijs@airpost.net>",
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "noticeBlocks": [
+        "6dc0e068dcf3a5bc8e054205b85b7720e1d49265bbc64bf515d2cf79197df69a",
+        "9599127e421e16595d107a20935532cdb97ff570fbb0b06ed3aa67b04d0185a2"
+      ]
+    },
+    {
+      "name": "crossbeam-deque",
+      "version": "0.8.6",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/crossbeam-deque/0.8.6",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "5a7d13c6710cdec29e74eb3172b80712049c34099ab7259661ada051fc90777b"
+      ]
+    },
+    {
+      "name": "crossbeam-epoch",
+      "version": "0.9.18",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/crossbeam-epoch/0.9.18",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "5a7d13c6710cdec29e74eb3172b80712049c34099ab7259661ada051fc90777b"
+      ]
+    },
+    {
+      "name": "crossbeam-utils",
+      "version": "0.8.21",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/crossbeam-utils/0.8.21",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "5a7d13c6710cdec29e74eb3172b80712049c34099ab7259661ada051fc90777b"
+      ]
+    },
+    {
+      "name": "data-encoding",
+      "version": "2.11.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/data-encoding/2.11.0",
+      "repository": "https://github.com/ia0/data-encoding",
+      "authors": [
+        "Julien Cretin <git@ia0.eu>"
+      ],
+      "noticeBlocks": [
+        "9db9de9edfd0ae7c1a5ac724191c0899dc218273f62c717e004ef037501646c2"
+      ]
+    },
+    {
+      "name": "dirs-next",
+      "version": "1.0.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/dirs-next/1.0.2",
+      "repository": "https://github.com/xdg-rs/dirs",
+      "authors": [
+        "The @xdg-rs members"
+      ],
+      "noticeBlocks": [
+        "74f1c9127a52df2c3a97824a7e7ac7eace026839599009a64c0a24ad7cd460e3",
+        "f25a5b606859d4fa98c044a5a958de63a12f2f3718306df7f1a0d27fc49b7f7a"
+      ]
+    },
+    {
+      "name": "dirs-sys-next",
+      "version": "0.1.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/dirs-sys-next/0.1.2",
+      "repository": "https://github.com/xdg-rs/dirs/tree/master/dirs-sys",
+      "authors": [
+        "The @xdg-rs members"
+      ],
+      "noticeBlocks": [
+        "74f1c9127a52df2c3a97824a7e7ac7eace026839599009a64c0a24ad7cd460e3",
+        "f25a5b606859d4fa98c044a5a958de63a12f2f3718306df7f1a0d27fc49b7f7a"
+      ]
+    },
+    {
+      "name": "either",
+      "version": "1.16.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/either/1.16.0",
+      "repository": "https://github.com/rayon-rs/either",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "fdd1c2117bcf8157d1d013d0953c0a7e6e5fab73df9e36773cd77634428568eb"
+      ]
+    },
+    {
+      "name": "encoding_rs",
+      "version": "0.8.35",
+      "license": "(Apache-2.0 OR MIT) AND BSD-3-Clause",
+      "source": "https://crates.io/crates/encoding_rs/0.8.35",
+      "repository": "https://github.com/hsivonen/encoding_rs",
+      "authors": [
+        "Henri Sivonen <hsivonen@hsivonen.fi>"
+      ],
+      "noticeBlocks": [
+        "1961703c278284db0ba353f5cfb2f3e2b1c1f584a2791db44aacfe7d78656f70",
+        "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+        "7dc2f64024477c92b147ae4a93bbcef90031b33ba0de6a84bd570d59e6c0688b",
+        "b1d6d97b0476a82862312e776bd4f2b902fb6c53e46f28166ccd2f63b17d4f8a"
+      ]
+    },
+    {
+      "name": "equivalent",
+      "version": "1.0.2",
+      "license": "Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/equivalent/1.0.2",
+      "repository": "https://github.com/indexmap-rs/equivalent",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "4428cd87371acbd49f9f6380125492cd1e89df621d2fd7f55e30a0891f96a433"
+      ]
+    },
+    {
+      "name": "fdeflate",
+      "version": "0.3.7",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/fdeflate/0.3.7",
+      "repository": "https://github.com/image-rs/fdeflate",
+      "authors": [
+        "The image-rs Developers"
+      ],
+      "noticeBlocks": [
+        "4bf96504d6e83ce5c6fc7167f1795d9ceaa68e70ab86bc5d08ab93184262bbbe",
+        "77949ead506e84e3ff5c31f784bdc17b6c4095d4102edae05dc5557ef6c61c8c"
+      ]
+    },
+    {
+      "name": "find-msvc-tools",
+      "version": "0.1.9",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/find-msvc-tools/0.1.9",
+      "repository": "https://github.com/rust-lang/cc-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d"
+      ]
+    },
+    {
+      "name": "fixedbitset",
+      "version": "0.5.7",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/fixedbitset/0.5.7",
+      "repository": "https://github.com/petgraph/fixedbitset",
+      "authors": [
+        "bluss"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "5c3e23dd0e4099122371a2af97b153b4bce99e498cc43398f07be7668cca7dc2"
+      ]
+    },
+    {
+      "name": "flate2",
+      "version": "1.1.9",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/flate2/1.1.9",
+      "repository": "https://github.com/rust-lang/flate2-rs",
+      "authors": [
+        "Alex Crichton <alex@alexcrichton.com>",
+        "Josh Triplett <josh@joshtriplett.org>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "1b7402ea003f3186c7365a26343794193828b67f2650bdbb75d5a4f588e56c7d"
+      ]
+    },
+    {
+      "name": "foldhash",
+      "version": "0.1.5",
+      "license": "Zlib",
+      "source": "https://crates.io/crates/foldhash/0.1.5",
+      "repository": "https://github.com/orlp/foldhash",
+      "authors": [
+        "Orson Peters <orsonpeters@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744"
+      ]
+    },
+    {
+      "name": "foldhash",
+      "version": "0.2.0",
+      "license": "Zlib",
+      "source": "https://crates.io/crates/foldhash/0.2.0",
+      "repository": "https://github.com/orlp/foldhash",
+      "authors": [
+        "Orson Peters <orsonpeters@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744"
+      ]
+    },
+    {
+      "name": "fs2",
+      "version": "0.4.3",
+      "license": "MIT/Apache-2.0",
+      "source": "https://crates.io/crates/fs2/0.4.3",
+      "repository": "https://github.com/danburkert/fs2-rs",
+      "authors": [
+        "Dan Burkert <dan@danburkert.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "033a9383ff21d1e4811d98dd2e0081b0ba0d9c9a31d6c7ba9e63e3488479bf29"
+      ]
+    },
+    {
+      "name": "getrandom",
+      "version": "0.3.4",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/getrandom/0.3.4",
+      "repository": "https://github.com/rust-random/getrandom",
+      "authors": [
+        "The Rand Project Developers"
+      ],
+      "noticeBlocks": [
+        "e7330bf53074b4a9c5896f4a03d782be7f163381e45923d5e2369fe194a19f99",
+        "73af2019a565c0e6d05ae4ad97bf9c1815f75b7d559ec2c3c5abebf60444b040"
+      ]
+    },
+    {
+      "name": "glob",
+      "version": "0.3.3",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/glob/0.3.3",
+      "repository": "https://github.com/rust-lang/glob",
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90"
+      ]
+    },
+    {
+      "name": "glslang",
+      "version": "0.8.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/glslang/0.8.1",
+      "repository": "https://github.com/SnowflakePowered/glslang-rs",
+      "authors": [
+        "Ronny Chan <ronny@ronnychan.ca>"
+      ],
+      "noticeBlocks": [
+        "cc30d80925d98ec00f64ce70ab428e1bb52dc7c673e9d1040f50acf4580586c7"
+      ]
+    },
+    {
+      "name": "glslang-sys",
+      "version": "0.8.1+275822a",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/glslang-sys/0.8.1+275822a",
+      "repository": "https://github.com/SnowflakePowered/glslang-rs",
+      "authors": [
+        "Ronny Chan <ronny@ronnychan.ca>"
+      ],
+      "noticeBlocks": [
+        "cc30d80925d98ec00f64ce70ab428e1bb52dc7c673e9d1040f50acf4580586c7"
+      ]
+    },
+    {
+      "name": "half",
+      "version": "2.7.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/half/2.7.1",
+      "repository": "https://github.com/VoidStarKat/half-rs",
+      "authors": [
+        "Kathryn Long <squeeself@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "4bf96504d6e83ce5c6fc7167f1795d9ceaa68e70ab86bc5d08ab93184262bbbe",
+        "1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f"
+      ]
+    },
+    {
+      "name": "halfbrown",
+      "version": "0.4.0",
+      "license": "Apache-2.0/MIT",
+      "source": "https://crates.io/crates/halfbrown/0.4.0",
+      "repository": "https://github.com/Licenser/halfbrown",
+      "authors": [
+        "Heinz N. Gies <heinz@licenser.net>"
+      ],
+      "noticeBlocks": [
+        "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+        "a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde"
+      ]
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.15.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/hashbrown/0.15.5",
+      "repository": "https://github.com/rust-lang/hashbrown",
+      "authors": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "ae9791f02f2bbe0ce17b434753af97be6e5284b6f8e9f22db3c1f0f11b2e015a"
+      ]
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.16.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/hashbrown/0.16.1",
+      "repository": "https://github.com/rust-lang/hashbrown",
+      "authors": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "ae9791f02f2bbe0ce17b434753af97be6e5284b6f8e9f22db3c1f0f11b2e015a"
+      ]
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/hashbrown/0.17.1",
+      "repository": "https://github.com/rust-lang/hashbrown",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "ae9791f02f2bbe0ce17b434753af97be6e5284b6f8e9f22db3c1f0f11b2e015a"
+      ]
+    },
+    {
+      "name": "image",
+      "version": "0.25.10",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/image/0.25.10",
+      "repository": "https://github.com/image-rs/image",
+      "authors": [
+        "The image-rs Developers"
+      ],
+      "noticeBlocks": [
+        "4bf96504d6e83ce5c6fc7167f1795d9ceaa68e70ab86bc5d08ab93184262bbbe",
+        "77949ead506e84e3ff5c31f784bdc17b6c4095d4102edae05dc5557ef6c61c8c"
+      ]
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.0",
+      "license": "Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/indexmap/2.14.0",
+      "repository": "https://github.com/indexmap-rs/indexmap",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "4f2ac128e429d9646bf481baaa120eb561234f980503d337c710c06d0af6bbf9"
+      ]
+    },
+    {
+      "name": "jobserver",
+      "version": "0.1.34",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/jobserver/0.1.34",
+      "repository": "https://github.com/rust-lang/jobserver-rs",
+      "authors": [
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d"
+      ]
+    },
+    {
+      "name": "libm",
+      "version": "0.2.16",
+      "license": "MIT",
+      "source": "https://crates.io/crates/libm/0.2.16",
+      "repository": "https://github.com/rust-lang/compiler-builtins",
+      "authors": [
+        "Alex Crichton <alex@alexcrichton.com>",
+        "Amanieu d'Antras <amanieu@gmail.com>",
+        "Jorge Aparicio <japaricious@gmail.com>",
+        "Trevor Gross <tg@trevorgross.com>"
+      ],
+      "noticeBlocks": [
+        "5f5535fee8ec2ca694194338af28838569d643911d535632f8fcdfa748851a0c"
+      ]
+    },
+    {
+      "name": "linked-hash-map",
+      "version": "0.5.6",
+      "license": "MIT/Apache-2.0",
+      "source": "https://crates.io/crates/linked-hash-map/0.5.6",
+      "repository": "https://github.com/contain-rs/linked-hash-map",
+      "authors": [
+        "Stepan Koltsov <stepan.koltsov@gmail.com>",
+        "Andrew Paseltiner <apaseltiner@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "7e1b38c60796dd9949d6f26bd124e353a4a709b70e90810e2608f30195454da0",
+        "033a9383ff21d1e4811d98dd2e0081b0ba0d9c9a31d6c7ba9e63e3488479bf29"
+      ]
+    },
+    {
+      "name": "lock_api",
+      "version": "0.4.14",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/lock_api/0.4.14",
+      "repository": "https://github.com/Amanieu/parking_lot",
+      "authors": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "8d1f81ea4e87111d557b185d58d996e7bcb974c19c364197fffd4e814fd9b6fa"
+      ]
+    },
+    {
+      "name": "log",
+      "version": "0.4.32",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/log/0.4.32",
+      "repository": "https://github.com/rust-lang/log",
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90"
+      ]
+    },
+    {
+      "name": "mach-siegbert-vogt-dxcsa",
+      "version": "0.1.3",
+      "license": "MIT",
+      "source": "https://crates.io/crates/mach-siegbert-vogt-dxcsa/0.1.3",
+      "repository": "https://github.com/SnowflakePowered/spirv-to-dxil-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "74baca8a86039cfe7dfc7e3204dbcfee90123fcd16dbf76f66db85e8ebdb1cdb"
+      ]
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.1",
+      "license": "Unlicense OR MIT",
+      "source": "https://crates.io/crates/memchr/2.8.1",
+      "repository": "https://github.com/BurntSushi/memchr",
+      "authors": [
+        "Andrew Gallant <jamslam@gmail.com>",
+        "bluss"
+      ],
+      "noticeBlocks": [
+        "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+        "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5"
+      ]
+    },
+    {
+      "name": "microseh",
+      "version": "1.2.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/microseh/1.2.0",
+      "repository": "https://github.com/sonodima/microseh",
+      "authors": [
+        "sonodima"
+      ],
+      "noticeBlocks": [
+        "d8ed5e02554c2221b78f98698f6592c67cc073b7974333f6b910961eb042f528"
+      ]
+    },
+    {
+      "name": "miniz_oxide",
+      "version": "0.8.9",
+      "license": "MIT OR Zlib OR Apache-2.0",
+      "source": "https://crates.io/crates/miniz_oxide/0.8.9",
+      "repository": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide",
+      "authors": [
+        "Frommi <daniil.liferenko@gmail.com>",
+        "oyvindln <oyvindln@users.noreply.github.com>",
+        "Rich Geldreich richgel99@gmail.com"
+      ],
+      "noticeBlocks": [
+        "7427abc630365f6335b3ced8b620b6c8a87b3793edea701d15cdde01ec7a6cde",
+        "4bf96504d6e83ce5c6fc7167f1795d9ceaa68e70ab86bc5d08ab93184262bbbe",
+        "ac9859ce4e9a80a4846ee0b453981427f4fc2ba9ac7d0e568de61ab80a53d86d",
+        "eac3911cc3d41ffb7de705edeec755d3f83189b61839389cc9079acb54d8c5af"
+      ]
+    },
+    {
+      "name": "moxcms",
+      "version": "0.8.1",
+      "license": "BSD-3-Clause OR Apache-2.0",
+      "source": "https://crates.io/crates/moxcms/0.8.1",
+      "repository": "https://github.com/awxkee/moxcms.git",
+      "authors": [
+        "Radzivon Bartoshyk"
+      ],
+      "noticeBlocks": [
+        "836a9c1227c6446925bee567ecfbcd4620780b4cc020c2c6019ba4b8d1295520",
+        "2aa92cada6431e75615e3fe6cb1a9082c98f777d48ae1c087c0da0e37f7b8bff"
+      ]
+    },
+    {
+      "name": "naga",
+      "version": "30.0.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/naga/30.0.0",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "authors": [
+        "gfx-rs developers"
+      ],
+      "noticeBlocks": [
+        "4bf96504d6e83ce5c6fc7167f1795d9ceaa68e70ab86bc5d08ab93184262bbbe",
+        "359c5310b39493bcc2cc5e074c35a6dcfb9f181b099513383344ec5e4f2ab15b"
+      ]
+    },
+    {
+      "name": "naga-types",
+      "version": "30.0.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/naga-types/30.0.0",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "authors": [
+        "gfx-rs developers"
+      ],
+      "noticeBlocks": [
+        "4bf96504d6e83ce5c6fc7167f1795d9ceaa68e70ab86bc5d08ab93184262bbbe",
+        "359c5310b39493bcc2cc5e074c35a6dcfb9f181b099513383344ec5e4f2ab15b"
+      ]
+    },
+    {
+      "name": "nom",
+      "version": "8.0.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/nom/8.0.0",
+      "repository": "https://github.com/rust-bakery/nom",
+      "authors": [
+        "contact@geoffroycouprie.com"
+      ],
+      "noticeBlocks": [
+        "e9f8a16f9ed6671fc411c5eb0d6c663b2da3d5ba0a4591ef0409688842903397"
+      ]
+    },
+    {
+      "name": "nom_locate",
+      "version": "5.0.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/nom_locate/5.0.0",
+      "repository": "https://github.com/fflorent/nom_locate",
+      "authors": [
+        "Florent FAYOLLE <florent.fayolle69@gmail.com>",
+        "Christopher Durham <cad97@cad97.com>",
+        "Valentin Lorentz <progval+git@progval.net>"
+      ],
+      "noticeBlocks": [
+        "973549bc751b2a49d68bda584dfaa5d9d8550bc16ce9f88da5a99fd5d593dc3d"
+      ]
+    },
+    {
+      "name": "num-derive",
+      "version": "0.4.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/num-derive/0.4.2",
+      "repository": "https://github.com/rust-num/num-derive",
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90"
+      ]
+    },
+    {
+      "name": "num-traits",
+      "version": "0.2.19",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/num-traits/0.2.19",
+      "repository": "https://github.com/rust-num/num-traits",
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90"
+      ]
+    },
+    {
+      "name": "once_cell",
+      "version": "1.21.4",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/once_cell/1.21.4",
+      "repository": "https://github.com/matklad/once_cell",
+      "authors": [
+        "Aleksey Kladov <aleksey.kladov@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "parking_lot",
+      "version": "0.12.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/parking_lot/0.12.5",
+      "repository": "https://github.com/Amanieu/parking_lot",
+      "authors": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "8d1f81ea4e87111d557b185d58d996e7bcb974c19c364197fffd4e814fd9b6fa"
+      ]
+    },
+    {
+      "name": "parking_lot_core",
+      "version": "0.9.12",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/parking_lot_core/0.9.12",
+      "repository": "https://github.com/Amanieu/parking_lot",
+      "authors": [
+        "Amanieu d'Antras <amanieu@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "8d1f81ea4e87111d557b185d58d996e7bcb974c19c364197fffd4e814fd9b6fa"
+      ]
+    },
+    {
+      "name": "paste",
+      "version": "1.0.15",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/paste/1.0.15",
+      "repository": "https://github.com/dtolnay/paste",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "persy",
+      "version": "1.7.1",
+      "license": "MPL-2.0",
+      "source": "https://crates.io/crates/persy/1.7.1",
+      "repository": "https://gitlab.com/persy/persy",
+      "authors": [
+        "Tglman <tglman@tglman.com>"
+      ],
+      "noticeBlocks": [
+        "4b89d4518bd135ab4ee154a7bce722246b57a98c3d7efc1a09409898160c2bd1"
+      ]
+    },
+    {
+      "name": "petgraph",
+      "version": "0.8.3",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/petgraph/0.8.3",
+      "repository": "https://github.com/petgraph/petgraph",
+      "authors": [
+        "bluss",
+        "mitchmindtree"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "fdd1c2117bcf8157d1d013d0953c0a7e6e5fab73df9e36773cd77634428568eb"
+      ]
+    },
+    {
+      "name": "platform-dirs",
+      "version": "0.3.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/platform-dirs/0.3.0",
+      "repository": "https://github.com/cjbassi/platform-dirs-rs",
+      "authors": [
+        "Caleb Bassi <calebjbassi@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "453b8f59355c3ba19ef951fb44dda95b5457492585188c2210ef3d8788365c6c"
+      ]
+    },
+    {
+      "name": "png",
+      "version": "0.18.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/png/0.18.1",
+      "repository": "https://github.com/image-rs/image-png",
+      "authors": [
+        "The image-rs Developers"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "80cdd90699e446abbe50d005e6c4de2a827a5f6dce34deacce04900c7a825ecf"
+      ]
+    },
+    {
+      "name": "ppv-lite86",
+      "version": "0.2.21",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/ppv-lite86/0.2.21",
+      "repository": "https://github.com/cryptocorrosion/cryptocorrosion",
+      "authors": [
+        "The CryptoCorrosion Contributors"
+      ],
+      "noticeBlocks": [
+        "f0a559a114200228b3a06d7d22961a7e0fc21a9c2b139a970be5830cebac8e10",
+        "b2a541f10560a218c2a8b9506c3b5c7ac40d2c99e2d2845eae3c4cf16c70000f"
+      ]
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.106",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/proc-macro2/1.0.106",
+      "repository": "https://github.com/dtolnay/proc-macro2",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>",
+        "Alex Crichton <alex@alexcrichton.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "pxfm",
+      "version": "0.1.29",
+      "license": "BSD-3-Clause OR Apache-2.0",
+      "source": "https://crates.io/crates/pxfm/0.1.29",
+      "repository": "https://github.com/awxkee/pxfm",
+      "authors": [
+        "Radzivon Bartoshyk"
+      ],
+      "noticeBlocks": [
+        "836a9c1227c6446925bee567ecfbcd4620780b4cc020c2c6019ba4b8d1295520",
+        "2aa92cada6431e75615e3fe6cb1a9082c98f777d48ae1c087c0da0e37f7b8bff"
+      ]
+    },
+    {
+      "name": "quote",
+      "version": "1.0.45",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/quote/1.0.45",
+      "repository": "https://github.com/dtolnay/quote",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "rand",
+      "version": "0.9.4",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/rand/0.9.4",
+      "repository": "https://github.com/rust-random/rand",
+      "authors": [
+        "The Rand Project Developers",
+        "The Rust Project Developers"
+      ],
+      "noticeBlocks": [
+        "2411d70acb18e15ac32f7aace439a5c2725b8d0074510caf651d4c270d7c05aa",
+        "fee4d7ce394c9161daabd2797e22d8d5ed80ea3c0f4524b242ab22582d2cc412",
+        "cc367a7134c2b07d995a2f8dea591094a1d100e49c68513f729fdf3eaf580a21"
+      ]
+    },
+    {
+      "name": "rand_chacha",
+      "version": "0.9.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/rand_chacha/0.9.0",
+      "repository": "https://github.com/rust-random/rand",
+      "authors": [
+        "The Rand Project Developers",
+        "The Rust Project Developers",
+        "The CryptoCorrosion Contributors"
+      ],
+      "noticeBlocks": [
+        "2411d70acb18e15ac32f7aace439a5c2725b8d0074510caf651d4c270d7c05aa",
+        "fee4d7ce394c9161daabd2797e22d8d5ed80ea3c0f4524b242ab22582d2cc412",
+        "cc367a7134c2b07d995a2f8dea591094a1d100e49c68513f729fdf3eaf580a21"
+      ]
+    },
+    {
+      "name": "rand_core",
+      "version": "0.9.5",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/rand_core/0.9.5",
+      "repository": "https://github.com/rust-random/rand",
+      "authors": [
+        "The Rand Project Developers",
+        "The Rust Project Developers"
+      ],
+      "noticeBlocks": [
+        "2411d70acb18e15ac32f7aace439a5c2725b8d0074510caf651d4c270d7c05aa",
+        "179c83ef07a51414e7fb13941958470bbd43c072efbe9635951ebcd7583ae5d5",
+        "cc367a7134c2b07d995a2f8dea591094a1d100e49c68513f729fdf3eaf580a21"
+      ]
+    },
+    {
+      "name": "rayon",
+      "version": "1.12.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/rayon/1.12.0",
+      "repository": "https://github.com/rayon-rs/rayon",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "9e0027807b0c548ac1df1bd85fe0d72da6665498b06ebf8a64d5cb841f39fcef"
+      ]
+    },
+    {
+      "name": "rayon-core",
+      "version": "1.13.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/rayon-core/1.13.0",
+      "repository": "https://github.com/rayon-rs/rayon",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "9e0027807b0c548ac1df1bd85fe0d72da6665498b06ebf8a64d5cb841f39fcef"
+      ]
+    },
+    {
+      "name": "regex",
+      "version": "1.12.3",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/regex/1.12.3",
+      "repository": "https://github.com/rust-lang/regex",
+      "authors": [
+        "The Rust Project Developers",
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90"
+      ]
+    },
+    {
+      "name": "regex-automata",
+      "version": "0.4.14",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/regex-automata/0.4.14",
+      "repository": "https://github.com/rust-lang/regex",
+      "authors": [
+        "The Rust Project Developers",
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90"
+      ]
+    },
+    {
+      "name": "regex-syntax",
+      "version": "0.8.10",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/regex-syntax/0.8.10",
+      "repository": "https://github.com/rust-lang/regex",
+      "authors": [
+        "The Rust Project Developers",
+        "Andrew Gallant <jamslam@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90"
+      ]
+    },
+    {
+      "name": "rspirv",
+      "version": "0.13.0+sdk-1.4.341.0",
+      "license": "Apache-2.0",
+      "source": "https://crates.io/crates/rspirv/0.13.0+sdk-1.4.341.0",
+      "repository": "https://github.com/gfx-rs/rspirv",
+      "authors": [
+        "Lei Zhang <antiagainst@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b"
+      ]
+    },
+    {
+      "name": "rustc-hash",
+      "version": "1.1.0",
+      "license": "Apache-2.0/MIT",
+      "source": "https://crates.io/crates/rustc-hash/1.1.0",
+      "repository": "https://github.com/rust-lang-nursery/rustc-hash",
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "rustc-hash",
+      "version": "2.1.2",
+      "license": "Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/rustc-hash/2.1.2",
+      "repository": "https://github.com/rust-lang/rustc-hash",
+      "authors": [
+        "The Rust Project Developers"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "rustversion",
+      "version": "1.0.22",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/rustversion/1.0.22",
+      "repository": "https://github.com/dtolnay/rustversion",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "scopeguard",
+      "version": "1.2.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/scopeguard/1.2.0",
+      "repository": "https://github.com/bluss/scopeguard",
+      "authors": [
+        "bluss"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "1a6aa2616e74056910aa02ac3a764d45c1b5309eac53768153ad2119637c95cb"
+      ]
+    },
+    {
+      "name": "serde",
+      "version": "1.0.228",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/serde/1.0.228",
+      "repository": "https://github.com/serde-rs/serde",
+      "authors": [
+        "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.228",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/serde_core/1.0.228",
+      "repository": "https://github.com/serde-rs/serde",
+      "authors": [
+        "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.228",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/serde_derive/1.0.228",
+      "repository": "https://github.com/serde-rs/serde",
+      "authors": [
+        "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "shlex",
+      "version": "2.0.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/shlex/2.0.1",
+      "repository": "https://github.com/comex/rust-shlex",
+      "authors": [
+        "comex <comexk@gmail.com>",
+        "Fenhl <fenhl@fenhl.net>",
+        "Adrian Taylor <adetaylor@chromium.org>",
+        "Alex Touchet <alextouchet@outlook.com>",
+        "Daniel Parks <dp+git@oxidized.org>",
+        "Garrett Berg <googberg@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "a759ce38c686a2042f62a0a6b8ea01781e3447726dcb68f4bb8b9f199feff12e",
+        "cc5ba5589dfb7bbc1545df0cd433427aac08b1cdf3484161d6785996317b8c3c"
+      ]
+    },
+    {
+      "name": "simd-adler32",
+      "version": "0.3.9",
+      "license": "MIT",
+      "source": "https://crates.io/crates/simd-adler32/0.3.9",
+      "repository": "https://github.com/mcountryman/simd-adler32",
+      "authors": [
+        "Marvin Countryman <me@maar.vin>"
+      ],
+      "noticeBlocks": [
+        "627eff66d6c4b984355e737e8a92b262d584865956e93a1ece6e285a083d8be9"
+      ]
+    },
+    {
+      "name": "smallvec",
+      "version": "1.15.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/smallvec/1.15.1",
+      "repository": "https://github.com/servo/rust-smallvec",
+      "authors": [
+        "The Servo Project Developers"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "7f194ae45c2525a57443f7edabd392e8218109ee81a4bce70d385104c87c1a71"
+      ]
+    },
+    {
+      "name": "smartstring",
+      "version": "1.0.1",
+      "license": "MPL-2.0+",
+      "source": "https://crates.io/crates/smartstring/1.0.1",
+      "repository": "https://github.com/bodil/smartstring",
+      "authors": [
+        "Bodil Stokke <bodil@bodil.org>"
+      ],
+      "noticeBlocks": [
+        "f7d76d358113fb19a7cc02c620a8e95ef6965b8d8339d6169ff034cada4285c3"
+      ]
+    },
+    {
+      "name": "spirv",
+      "version": "0.4.0+sdk-1.4.341.0",
+      "license": "Apache-2.0",
+      "source": "https://crates.io/crates/spirv/0.4.0+sdk-1.4.341.0",
+      "repository": "https://github.com/gfx-rs/rspirv",
+      "authors": [
+        "Lei Zhang <antiagainst@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b"
+      ]
+    },
+    {
+      "name": "spirv-cross-sys",
+      "version": "0.7.2+38681a3",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/spirv-cross-sys/0.7.2+38681a3",
+      "repository": "https://github.com/SnowflakePowered/spirv-cross2",
+      "authors": [
+        "Ronny Chan <ronny@ronnychan.ca>"
+      ],
+      "noticeBlocks": [
+        "59a7815d2e2a7e4f7645bb1597e8fdd622541b9af54e0ace40758ecd5d057c46"
+      ]
+    },
+    {
+      "name": "spirv-cross2",
+      "version": "0.7.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/spirv-cross2/0.7.1",
+      "repository": "https://github.com/SnowflakePowered/spirv-cross2",
+      "authors": [
+        "Ronny Chan <ronny@ronnychan.ca>"
+      ],
+      "noticeBlocks": [
+        "59a7815d2e2a7e4f7645bb1597e8fdd622541b9af54e0ace40758ecd5d057c46"
+      ]
+    },
+    {
+      "name": "spirv-cross2-derive",
+      "version": "0.1.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/spirv-cross2-derive/0.1.0",
+      "repository": "https://github.com/SnowflakePowered/spirv-cross2",
+      "authors": [
+        "Ronny Chan <ronny@ronnychan.ca>"
+      ],
+      "noticeBlocks": [
+        "59a7815d2e2a7e4f7645bb1597e8fdd622541b9af54e0ace40758ecd5d057c46"
+      ]
+    },
+    {
+      "name": "spirv-to-dxil",
+      "version": "0.4.7",
+      "license": "MIT",
+      "source": "https://crates.io/crates/spirv-to-dxil/0.4.7",
+      "repository": "https://github.com/SnowflakePowered/spirv-to-dxil-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "74baca8a86039cfe7dfc7e3204dbcfee90123fcd16dbf76f66db85e8ebdb1cdb"
+      ]
+    },
+    {
+      "name": "spirv-to-dxil-sys",
+      "version": "0.4.7",
+      "license": "MIT",
+      "source": "https://crates.io/crates/spirv-to-dxil-sys/0.4.7",
+      "repository": "https://github.com/SnowflakePowered/spirv-to-dxil-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "74baca8a86039cfe7dfc7e3204dbcfee90123fcd16dbf76f66db85e8ebdb1cdb"
+      ]
+    },
+    {
+      "name": "sptr",
+      "version": "0.3.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/sptr/0.3.2",
+      "repository": "https://github.com/Gankra/sptr",
+      "authors": [],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "b421dfb75589884a9ffa181037ba8a745ef6ff6cedd4d47e113b59c98d9abf75"
+      ],
+      "licenseTextProvenance": "Standard license text supplied under pinned Cargo.toml declaration; upstream tree/package has no license file or copyright notice. No holder/year invented.",
+      "upstreamCommit": "e59792814876b4948279ec3121921fbe827b1077"
+    },
+    {
+      "name": "static_assertions",
+      "version": "1.1.0",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/static_assertions/1.1.0",
+      "repository": "https://github.com/nvzqz/static-assertions-rs",
+      "authors": [
+        "Nikolai Vazquez"
+      ],
+      "noticeBlocks": [
+        "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+        "95a6a71a30f39d33a1fe6c03a52d1b57f0d1d43305a9137780a0c616231b4a52"
+      ]
+    },
+    {
+      "name": "strumbra",
+      "version": "0.6.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/strumbra/0.6.0",
+      "repository": "https://gitlab.com/ltungv/strumbra",
+      "authors": [],
+      "noticeBlocks": [
+        "b345ffc0365f8ecdcff75dccef3ead175c3fe3bfcabd4b95783a7418a36ee1e6"
+      ]
+    },
+    {
+      "name": "syn",
+      "version": "2.0.117",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/syn/2.0.117",
+      "repository": "https://github.com/dtolnay/syn",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "thiserror",
+      "version": "1.0.69",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/thiserror/1.0.69",
+      "repository": "https://github.com/dtolnay/thiserror",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.18",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/thiserror/2.0.18",
+      "repository": "https://github.com/dtolnay/thiserror",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "1.0.69",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/thiserror-impl/1.0.69",
+      "repository": "https://github.com/dtolnay/thiserror",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.18",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/thiserror-impl/2.0.18",
+      "repository": "https://github.com/dtolnay/thiserror",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+      ]
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "source": "https://crates.io/crates/unicode-ident/1.0.24",
+      "repository": "https://github.com/dtolnay/unicode-ident",
+      "authors": [
+        "David Tolnay <dtolnay@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+        "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+        "361d7912957842f2ce61c774b14afba41ae91df84882982e6f7e749e01c07c91"
+      ]
+    },
+    {
+      "name": "unicode-width",
+      "version": "0.2.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/unicode-width/0.2.2",
+      "repository": "https://github.com/unicode-rs/unicode-width",
+      "authors": [
+        "kwantam <kwantam@gmail.com>",
+        "Manish Goregaokar <manishsmail@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "20cec30ad77804372faa6c82e5a1a4be426a75e32808a159ef646c2037649071",
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "033a9383ff21d1e4811d98dd2e0081b0ba0d9c9a31d6c7ba9e63e3488479bf29"
+      ]
+    },
+    {
+      "name": "unsigned-varint",
+      "version": "0.8.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/unsigned-varint/0.8.0",
+      "repository": "https://github.com/paritytech/unsigned-varint",
+      "authors": [
+        "Parity Technologies <admin@parity.io>"
+      ],
+      "noticeBlocks": [
+        "53df29ad4e7273c8137bdc76bc49436b6eb3c011e0f82cc3581b61ef998177ef"
+      ]
+    },
+    {
+      "name": "unty",
+      "version": "0.0.4",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/unty/0.0.4",
+      "repository": "https://github.com/bincode-org/unty",
+      "authors": [
+        "Victor Koenders <bincode@trang.ar>"
+      ],
+      "noticeBlocks": [
+        "2dca37d6a47d4149a52a0c79a12974e53958bd998c9aa161d5390e44b49106a8",
+        "72f3b25b9db2a508c5dc881c569f0027af26e79e6ea5f4788051b488a43750cb"
+      ]
+    },
+    {
+      "name": "vec_extract_if_polyfill",
+      "version": "0.1.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/vec_extract_if_polyfill/0.1.0",
+      "repository": "https://github.com/chyyran/vec_extract_if_polyfill",
+      "authors": [],
+      "noticeBlocks": [
+        "bf1e4b844f1ebd0c159df189fdbad0d9604e653257880cb2ef97bb3106f5fe9b",
+        "0b9b7eba5fba19660fa7cfec0117d5afdbfdb41ee01b200a18e2c40acd92f133"
+      ],
+      "licenseTextProvenance": "Standard license text supplied under pinned Cargo.toml declaration; upstream tree/package has no license file or copyright notice. No holder/year invented.",
+      "upstreamCommit": "11267b12cc4ec3350026bd496654eb17746eaed6"
+    },
+    {
+      "name": "version_check",
+      "version": "0.9.5",
+      "license": "MIT/Apache-2.0",
+      "source": "https://crates.io/crates/version_check/0.9.5",
+      "repository": "https://github.com/SergioBenitez/version_check",
+      "authors": [
+        "Sergio Benitez <sb@sergio.bz>"
+      ],
+      "noticeBlocks": [
+        "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+        "ed2fda479dacddadebb37fe6594515ed84a03e892721189c06cf3f86fa8e3af0"
+      ]
+    },
+    {
+      "name": "virtue",
+      "version": "0.0.18",
+      "license": "MIT",
+      "source": "https://crates.io/crates/virtue/0.0.18",
+      "repository": "https://github.com/bincode-org/virtue",
+      "authors": [],
+      "noticeBlocks": [
+        "f97268776f3400bdc41cdd1359256246d6a20a56a545318b24aba0cbaaba4346"
+      ]
+    },
+    {
+      "name": "winapi",
+      "version": "0.3.9",
+      "license": "MIT/Apache-2.0",
+      "source": "https://crates.io/crates/winapi/0.3.9",
+      "repository": "https://github.com/retep998/winapi-rs",
+      "authors": [
+        "Peter Atashian <retep998@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "6dc0e068dcf3a5bc8e054205b85b7720e1d49265bbc64bf515d2cf79197df69a",
+        "2d01145596179ab6c55eade02ee8ad2c2172de88f2232625a00f17bb254b8c3a"
+      ]
+    },
+    {
+      "name": "windows",
+      "version": "0.62.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows/0.62.2",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-collections",
+      "version": "0.3.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-collections/0.3.2",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-core",
+      "version": "0.62.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-core/0.62.2",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-future",
+      "version": "0.3.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-future/0.3.2",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-implement",
+      "version": "0.60.2",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-implement/0.60.2",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-interface",
+      "version": "0.59.3",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-interface/0.59.3",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-link",
+      "version": "0.2.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-link/0.2.1",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-numerics",
+      "version": "0.3.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-numerics/0.3.1",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-result",
+      "version": "0.4.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-result/0.4.1",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-strings",
+      "version": "0.5.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-strings/0.5.1",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "windows-threading",
+      "version": "0.2.1",
+      "license": "MIT OR Apache-2.0",
+      "source": "https://crates.io/crates/windows-threading/0.2.1",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "authors": [],
+      "noticeBlocks": [
+        "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+        "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+      ]
+    },
+    {
+      "name": "zerocopy",
+      "version": "0.8.50",
+      "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/zerocopy/0.8.50",
+      "repository": "https://github.com/google/zerocopy",
+      "authors": [
+        "Joshua Liebow-Feeser <joshlf@google.com>",
+        "Jack Wrenn <jswrenn@amazon.com>"
+      ],
+      "noticeBlocks": [
+        "98ed0ad9db8a72957b9c45941fe2ed31933a3beacbd193e662df483d0643a13d",
+        "47248d1ec833e0771ddacb65f2cf9978785f4a9976b5b0b69d1e33c60a50be55",
+        "a03d4daa4f46496a592dbf6734f5ee16ed52f1eb7a56ae4648d609ebf0efd0b7"
+      ]
+    },
+    {
+      "name": "zerocopy-derive",
+      "version": "0.8.50",
+      "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+      "source": "https://crates.io/crates/zerocopy-derive/0.8.50",
+      "repository": "https://github.com/google/zerocopy",
+      "authors": [
+        "Joshua Liebow-Feeser <joshlf@google.com>",
+        "Jack Wrenn <jswrenn@amazon.com>"
+      ],
+      "noticeBlocks": [
+        "98ed0ad9db8a72957b9c45941fe2ed31933a3beacbd193e662df483d0643a13d",
+        "47248d1ec833e0771ddacb65f2cf9978785f4a9976b5b0b69d1e33c60a50be55",
+        "a03d4daa4f46496a592dbf6734f5ee16ed52f1eb7a56ae4648d609ebf0efd0b7"
+      ]
+    },
+    {
+      "name": "zigzag",
+      "version": "0.1.0",
+      "license": "MIT",
+      "source": "https://crates.io/crates/zigzag/0.1.0",
+      "repository": "https://github.com/That3Percent/zigzag",
+      "authors": [
+        "Zac Burns <That3Percent@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "9e5cbc6e91e040d0b5fa131587c8e23f34ac9b7494d369f4f3732e0f56611907"
+      ]
+    },
+    {
+      "name": "zune-core",
+      "version": "0.5.1",
+      "license": "MIT OR Apache-2.0 OR Zlib",
+      "source": "https://crates.io/crates/zune-core/0.5.1",
+      "repository": "https://github.com/etemesi254/zune-image",
+      "authors": [],
+      "noticeBlocks": [
+        "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+        "4ae441972cdd6fe41abb11d67cf6ae8731271a82cd0c864cc450b55248e4966c",
+        "b8cba0284c86612bc1113ef3dc114b47d70fdcfb923498c07569d09ffcda5a30"
+      ]
+    },
+    {
+      "name": "zune-jpeg",
+      "version": "0.5.15",
+      "license": "MIT OR Apache-2.0 OR Zlib",
+      "source": "https://crates.io/crates/zune-jpeg/0.5.15",
+      "repository": "https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg",
+      "authors": [
+        "caleb <etemesicaleb@gmail.com>"
+      ],
+      "noticeBlocks": [
+        "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+        "4ae441972cdd6fe41abb11d67cf6ae8731271a82cd0c864cc450b55248e4966c",
+        "b8cba0284c86612bc1113ef3dc114b47d70fdcfb923498c07569d09ffcda5a30"
+      ]
+    }
+  ],
+  "upstreamLicenseRecovery": [
+    {
+      "component": "crc-catalog-2.5.0",
+      "source": "https://raw.githubusercontent.com/akhilles/crc-catalog/ed4ad631f22b05055c21a3a4127eb7cf6d75bb62/LICENSES/Apache-2.0.txt",
+      "sha256": "d3cdb764b98283ee7c3a3cea8d374e2a2957322374378d1f3263f4d512741fc3"
+    },
+    {
+      "component": "glslang-0.8.1",
+      "source": "https://raw.githubusercontent.com/SnowflakePowered/glslang-rs/877868f2f02ebdaa85f7dcf8575d984ebfdcbc00/LICENSE.md",
+      "sha256": "162b2e076e7fb5f1a1bbe5f9170a7ba30a860a96161c997dd888d6612f58e0e1"
+    },
+    {
+      "component": "glslang-sys-0.8.1+275822a",
+      "source": "https://raw.githubusercontent.com/SnowflakePowered/glslang-rs/28a76e82a5969e8242119c4d540ffa10088d7c72/LICENSE.md",
+      "sha256": "162b2e076e7fb5f1a1bbe5f9170a7ba30a860a96161c997dd888d6612f58e0e1"
+    },
+    {
+      "component": "mach-siegbert-vogt-dxcsa-0.1.3",
+      "source": "https://raw.githubusercontent.com/SnowflakePowered/spirv-to-dxil-rs/f512841daf78db28c5171164e6c2845a27928f23/LICENSE.md",
+      "sha256": "74baca8a86039cfe7dfc7e3204dbcfee90123fcd16dbf76f66db85e8ebdb1cdb"
+    },
+    {
+      "component": "rspirv-0.13.0+sdk-1.4.341.0",
+      "source": "https://raw.githubusercontent.com/gfx-rs/rspirv/8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "component": "spirv-0.4.0+sdk-1.4.341.0",
+      "source": "https://raw.githubusercontent.com/gfx-rs/rspirv/8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "component": "spirv-cross-sys-0.7.2+38681a3",
+      "source": "https://raw.githubusercontent.com/SnowflakePowered/spirv-cross2/64316855fdb6a1104be383940cbf35caeded7363/LICENSE-MIT",
+      "sha256": "59a7815d2e2a7e4f7645bb1597e8fdd622541b9af54e0ace40758ecd5d057c46"
+    },
+    {
+      "component": "spirv-cross2-0.7.1",
+      "source": "https://raw.githubusercontent.com/SnowflakePowered/spirv-cross2/23a81727600e72086f3b24a528511d4fd0949f3b/LICENSE-MIT",
+      "sha256": "59a7815d2e2a7e4f7645bb1597e8fdd622541b9af54e0ace40758ecd5d057c46"
+    },
+    {
+      "component": "spirv-cross2-derive-0.1.0",
+      "source": "https://raw.githubusercontent.com/SnowflakePowered/spirv-cross2/aded817c71e0b5fb6171cc3b396352075de6acda/LICENSE-MIT",
+      "sha256": "59a7815d2e2a7e4f7645bb1597e8fdd622541b9af54e0ace40758ecd5d057c46"
+    },
+    {
+      "component": "spirv-to-dxil-0.4.7",
+      "source": "https://raw.githubusercontent.com/SnowflakePowered/spirv-to-dxil-rs/899f1519a24936c2e1693b89ec62008222e2d434/LICENSE.md",
+      "sha256": "74baca8a86039cfe7dfc7e3204dbcfee90123fcd16dbf76f66db85e8ebdb1cdb"
+    },
+    {
+      "component": "spirv-to-dxil-sys-0.4.7",
+      "source": "https://raw.githubusercontent.com/SnowflakePowered/spirv-to-dxil-rs/d695eb6f4722c744f4cee670b5721ecb50695b47/LICENSE.md",
+      "sha256": "74baca8a86039cfe7dfc7e3204dbcfee90123fcd16dbf76f66db85e8ebdb1cdb"
+    }
+  ],
+  "unresolved": [],
+  "noticeBlocks": 582,
+  "qualification": "Compilation evidence includes build/procedural-macro dependencies and conservatively included Mesa headers; not a DLL symbol-level bill of materials."
+}

@@ -1,0 +1,1672 @@
+{
+  "cases": [
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6662,
+        "min": 3.1551,
+        "max": 30.1783,
+        "p95": 16.716
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 0,
+      "direction": 0,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s0-sandwich0-d0",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 56,
+      "cameraSteps": [
+        1.0
+      ],
+      "cameraStepStdDev": 0.0,
+      "presentedStepStdDev": 4.996810207059903e-07,
+      "timingMs": {
+        "median": 16.6663,
+        "min": 2.421,
+        "max": 30.8746,
+        "p95": 26.6496
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 0,
+      "direction": 1,
+      "maxMotionError": 5.214843751266685e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s0-sandwich0-d1",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 60,
+      "cameraSteps": [
+        1.0,
+        2.0
+      ],
+      "cameraStepStdDev": 0.48619840486049404,
+      "presentedStepStdDev": 0.0,
+      "timingMs": {
+        "median": 16.6664,
+        "min": 2.9738,
+        "max": 30.3564,
+        "p95": 25.8097
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 0,
+      "direction": 2,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s0-sandwich0-d2",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 25,
+      "cameraSteps": [
+        1.0
+      ],
+      "cameraStepStdDev": 0.0,
+      "presentedStepStdDev": 4.995998398737937e-07,
+      "timingMs": {
+        "median": 16.6663,
+        "min": 3.3214,
+        "max": 30.0097,
+        "p95": 25.9005
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 0,
+      "direction": 3,
+      "maxMotionError": 5.214843751266685e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s0-sandwich0-d3",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6663,
+        "min": 2.9161,
+        "max": 30.4144,
+        "p95": 16.7088
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 0,
+      "direction": 4,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s0-sandwich0-d4",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6662,
+        "min": 2.9672,
+        "max": 30.3624,
+        "p95": 26.8991
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 0,
+      "direction": 5,
+      "maxMotionError": 5.214843751266685e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s0-sandwich0-d5",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6663,
+        "min": 2.5168,
+        "max": 30.8134,
+        "p95": 27.1154
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 0,
+      "direction": 6,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s0-sandwich0-d6",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.5455,
+        "max": 16.7879,
+        "p95": 16.668
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 0,
+      "direction": 7,
+      "maxMotionError": 5.214843750156462e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s0-sandwich0-d7",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6664,
+        "min": 3.0008,
+        "max": 29.9901,
+        "p95": 26.8874
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 0,
+      "direction": 0,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s1-sandwich0-d0",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 38,
+      "cameraSteps": [
+        1.0,
+        2.0
+      ],
+      "cameraStepStdDev": 0.49930699897395464,
+      "presentedStepStdDev": 4.535181036876047e-07,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.6057,
+        "max": 16.7268,
+        "p95": 16.6684
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 0,
+      "direction": 1,
+      "maxMotionError": 7.177734375751754e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s1-sandwich0-d1",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 60,
+      "cameraSteps": [
+        2.0,
+        3.0
+      ],
+      "cameraStepStdDev": 0.24944382578492943,
+      "presentedStepStdDev": 0.0,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.6024,
+        "max": 16.7306,
+        "p95": 16.6692
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 0,
+      "direction": 2,
+      "maxMotionError": 7.177734375751754e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s1-sandwich0-d2",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 16,
+      "cameraSteps": [
+        1.0,
+        2.0
+      ],
+      "cameraStepStdDev": 0.5,
+      "presentedStepStdDev": 4.635124054483868e-07,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.5885,
+        "max": 16.7447,
+        "p95": 16.6687
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 0,
+      "direction": 3,
+      "maxMotionError": 7.177734375751754e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s1-sandwich0-d3",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.5974,
+        "max": 16.7342,
+        "p95": 16.6686
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 0,
+      "direction": 4,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s1-sandwich0-d4",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.617,
+        "max": 16.7169,
+        "p95": 16.6684
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 0,
+      "direction": 5,
+      "maxMotionError": 7.177734375751754e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s1-sandwich0-d5",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6664,
+        "min": 16.4817,
+        "max": 16.8508,
+        "p95": 16.6693
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 0,
+      "direction": 6,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s1-sandwich0-d6",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.5917,
+        "max": 16.7421,
+        "p95": 16.6685
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 0,
+      "direction": 7,
+      "maxMotionError": 7.177734375751754e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s1-sandwich0-d7",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.5939,
+        "max": 16.7392,
+        "p95": 16.6687
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 0,
+      "direction": 0,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s2-sandwich0-d0",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 28,
+      "cameraSteps": [
+        1.0,
+        2.0
+      ],
+      "cameraStepStdDev": 0.18557687223952257,
+      "presentedStepStdDev": 1.8557687224562204e-07,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.5534,
+        "max": 16.7802,
+        "p95": 16.669
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 0,
+      "direction": 1,
+      "maxMotionError": 9.57031250026219e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s2-sandwich0-d1",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 60,
+      "cameraSteps": [
+        2.0,
+        3.0
+      ],
+      "cameraStepStdDev": 0.4330127018922193,
+      "presentedStepStdDev": 0.0,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.6088,
+        "max": 16.7252,
+        "p95": 16.6687
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 0,
+      "direction": 2,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s2-sandwich0-d2",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 12,
+      "cameraSteps": [
+        2.0
+      ],
+      "cameraStepStdDev": 0.0,
+      "presentedStepStdDev": 2.763853992014414e-07,
+      "timingMs": {
+        "median": 16.6667,
+        "min": 16.6037,
+        "max": 16.7686,
+        "p95": 16.6689
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 0,
+      "direction": 3,
+      "maxMotionError": 9.57031250026219e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s2-sandwich0-d3",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.584,
+        "max": 16.7492,
+        "p95": 16.6683
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 0,
+      "direction": 4,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s2-sandwich0-d4",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6667,
+        "min": 16.5895,
+        "max": 16.7469,
+        "p95": 16.6691
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 0,
+      "direction": 5,
+      "maxMotionError": 9.570312498041744e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s2-sandwich0-d5",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.3921,
+        "max": 16.9416,
+        "p95": 16.6692
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 0,
+      "direction": 6,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s2-sandwich0-d6",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.5905,
+        "max": 16.7432,
+        "p95": 16.6694
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 0,
+      "direction": 7,
+      "maxMotionError": 9.57031250026219e-07,
+      "sandwichStatuses": [
+        0
+      ],
+      "id": "s2-sandwich0-d7",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.5759,
+        "max": 16.7566,
+        "p95": 16.6696
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 120,
+      "direction": 0,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s0-sandwich120-d0",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 38,
+      "cameraSteps": [
+        1.0,
+        2.0
+      ],
+      "cameraStepStdDev": 0.49722220072871537,
+      "presentedStepStdDev": 0.0,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.5853,
+        "max": 16.7471,
+        "p95": 16.6719
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 120,
+      "direction": 1,
+      "maxMotionError": 6.250000001983835e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s0-sandwich120-d1",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 60,
+      "cameraSteps": [
+        1.0,
+        2.0,
+        3.0
+      ],
+      "cameraStepStdDev": 0.47696960070847283,
+      "presentedStepStdDev": 0.3198086314718364,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.5915,
+        "max": 16.7427,
+        "p95": 16.6696
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 120,
+      "direction": 2,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s0-sandwich120-d2",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 17,
+      "cameraSteps": [
+        1.0,
+        2.0
+      ],
+      "cameraStepStdDev": 0.49913419848462176,
+      "presentedStepStdDev": 0.0,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.586,
+        "max": 16.7473,
+        "p95": 16.6706
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 120,
+      "direction": 3,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s0-sandwich120-d3",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.5255,
+        "max": 16.8087,
+        "p95": 16.6694
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 120,
+      "direction": 4,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s0-sandwich120-d4",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.5645,
+        "max": 16.77,
+        "p95": 16.6703
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 120,
+      "direction": 5,
+      "maxMotionError": 6.250000001983835e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s0-sandwich120-d5",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.5916,
+        "max": 16.7404,
+        "p95": 16.6706
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 120,
+      "direction": 6,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s0-sandwich120-d6",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.596,
+        "max": 16.7372,
+        "p95": 16.6694
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 0,
+      "sandwichFrames": 120,
+      "direction": 7,
+      "maxMotionError": 6.250000001983835e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s0-sandwich120-d7",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.5974,
+        "max": 16.7362,
+        "p95": 16.6725
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 120,
+      "direction": 0,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s1-sandwich120-d0",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 26,
+      "cameraSteps": [
+        1.0,
+        2.0,
+        3.0
+      ],
+      "cameraStepStdDev": 0.455083060238432,
+      "presentedStepStdDev": 0.13871125384701896,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.5521,
+        "max": 16.7801,
+        "p95": 16.6686
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 120,
+      "direction": 1,
+      "maxMotionError": 5.625000003561809e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s1-sandwich120-d1",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 60,
+      "cameraSteps": [
+        2.0,
+        3.0,
+        4.0
+      ],
+      "cameraStepStdDev": 0.5587684871413403,
+      "presentedStepStdDev": 0.47971294720775465,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.5772,
+        "max": 16.7556,
+        "p95": 16.6692
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 120,
+      "direction": 2,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s1-sandwich120-d2",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 11,
+      "cameraSteps": [
+        2.0,
+        3.0
+      ],
+      "cameraStepStdDev": 0.38569460791993504,
+      "presentedStepStdDev": 4.979295978015688e-07,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.5574,
+        "max": 16.775,
+        "p95": 16.6689
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 120,
+      "direction": 3,
+      "maxMotionError": 7.177734375751754e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s1-sandwich120-d3",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.6066,
+        "max": 16.7272,
+        "p95": 16.6688
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 120,
+      "direction": 4,
+      "maxMotionError": 4.440892098500626e-16,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s1-sandwich120-d4",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.6098,
+        "max": 16.7211,
+        "p95": 16.6686
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 120,
+      "direction": 5,
+      "maxMotionError": 5.625000003561809e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s1-sandwich120-d5",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.6186,
+        "max": 16.7162,
+        "p95": 16.6694
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 120,
+      "direction": 6,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s1-sandwich120-d6",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.6158,
+        "max": 16.7186,
+        "p95": 16.6693
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 1,
+      "sandwichFrames": 120,
+      "direction": 7,
+      "maxMotionError": 5.625000003561809e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s1-sandwich120-d7",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.6104,
+        "max": 16.7216,
+        "p95": 16.6691
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 120,
+      "direction": 0,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s2-sandwich120-d0",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 19,
+      "cameraSteps": [
+        2.0,
+        3.0
+      ],
+      "cameraStepStdDev": 0.30689220499185793,
+      "presentedStepStdDev": 0.0,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.569,
+        "max": 16.7624,
+        "p95": 16.6687
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 120,
+      "direction": 1,
+      "maxMotionError": 7.500000003268781e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s2-sandwich120-d1",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 61,
+      "cameraSteps": [
+        2.0,
+        3.0,
+        4.0,
+        5.0
+      ],
+      "cameraStepStdDev": 0.7404321174187682,
+      "presentedStepStdDev": 0.6719428887153668,
+      "timingMs": {
+        "median": 16.6666,
+        "min": 16.6108,
+        "max": 16.7224,
+        "p95": 16.6691
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 120,
+      "direction": 2,
+      "maxMotionError": 4.2968749891514335e-08,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s2-sandwich120-d2",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 8,
+      "cameraSteps": [
+        3.0
+      ],
+      "cameraStepStdDev": 0.0,
+      "presentedStepStdDev": 0.0,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.5921,
+        "max": 16.7417,
+        "p95": 16.6688
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 120,
+      "direction": 3,
+      "maxMotionError": 9.570312498041744e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s2-sandwich120-d3",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.6141,
+        "max": 16.7182,
+        "p95": 16.6685
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 120,
+      "direction": 4,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s2-sandwich120-d4",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.6004,
+        "max": 16.732,
+        "p95": 16.669
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 120,
+      "direction": 5,
+      "maxMotionError": 7.499999998827889e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s2-sandwich120-d5",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.594,
+        "max": 16.7409,
+        "p95": 16.6686
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 120,
+      "direction": 6,
+      "maxMotionError": 0.0,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s2-sandwich120-d6",
+      "passed": true
+    },
+    {
+      "executableSha256": "e0f73c3ec311bf3989fb27aa00789a8237cae5bcd94122c0e7d1c7e54c29cb59",
+      "productionExecutableSha256": "c3596e2e7944471b6f2389a9c61b6af69b3129937e46cbbd1bef7d4daab2097e",
+      "checkpointSha256": "7457e36d1d9905f0c78e13894729cb6997bd4408fe3bf19aaab7c8d7378965b2",
+      "assetsSha256": "d9a772d10aff68bdf93c077cda640d42b835884d6834bb18bf0d43c3800f57bb",
+      "frames": 238,
+      "movingFrames": 0,
+      "cameraSteps": [],
+      "cameraStepStdDev": null,
+      "presentedStepStdDev": null,
+      "timingMs": {
+        "median": 16.6665,
+        "min": 16.6006,
+        "max": 16.7322,
+        "p95": 16.6688
+      },
+      "preparedStage": {
+        "x": 2024,
+        "y": 1488
+      },
+      "limits": [
+        "One prepared warp after real copied-checkpoint restore; not a natural quest route. Timings measure host ticks, not monitor scanout."
+      ],
+      "sprint": 2,
+      "sandwichFrames": 120,
+      "direction": 7,
+      "maxMotionError": 7.500000003268781e-07,
+      "sandwichStatuses": [
+        0,
+        3
+      ],
+      "id": "s2-sandwich120-d7",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "executedCases": 48,
+  "limits": [
+    "Prepared Onett position after actual private cold restore; eight movement directions, normal/1.5x/2x Y sprint, active Skip Sandwich and actual effect expiry. No Tab fast-forward. Not every map/collision path or physical monitor scanout."
+  ]
+}

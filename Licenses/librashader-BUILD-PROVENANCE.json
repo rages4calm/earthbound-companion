@@ -1,0 +1,38 @@
+{
+  "upstream": "https://github.com/SnowflakePowered/librashader",
+  "tag": "librashader-v0.12.0",
+  "sourceUrl": "https://codeload.github.com/SnowflakePowered/librashader/zip/refs/tags/librashader-v0.12.0",
+  "sourceSha256": "e5404dc94b3993c76f6248f061f2c83c6f178be595c0de76530abb777b2898df",
+  "cargoLockSha256": "9abad84ffcf6761b3b69ba82cca398224fe43ca472652b5f8ef04421f0af2d50",
+  "runtimeDllSha256": "3b8f3a383b5405c5a79473c064b3f8900c7d7b1402e230602cc0fbd047fdac79",
+  "rustc": "1.91.1 (ed61e7d7e 2025-11-07)",
+  "rustcCommit": "ed61e7d7e242494fb7057f2657300d9e77bb4fcb",
+  "llvmVersion": "21.1.2",
+  "host": "x86_64-pc-windows-msvc",
+  "command": "cargo build --release --locked -p librashader-capi --no-default-features --features runtime-d3d11",
+  "environment": {
+    "RUSTFLAGS": "-C target-feature=+crt-static"
+  },
+  "runtimeLicense": "MPL-2.0 OR GPL-3.0-only",
+  "headerLicense": "MIT",
+  "upstreamSourceModified": false,
+  "importedSystemDlls": [
+    "api-ms-win-core-synch-l1-2-0.dll",
+    "api-ms-win-core-winrt-error-l1-1-0.dll",
+    "bcryptprimitives.dll",
+    "combase.dll",
+    "d3dcompiler_47.dll",
+    "kernel32.dll",
+    "ntdll.dll",
+    "oleaut32.dll",
+    "shell32.dll"
+  ],
+  "importVerification": "MinGW objdump -p and independent PowerShell PE import reader agree. No vcruntime/msvcp/ucrtbase import. System DLL dependencies are not bundled.",
+  "recipe": "../scripts/Build-ShaderRuntime.ps1",
+  "verification": "Successful supplied DLL/source hashes rechecked. Build helper syntax, existing-DLL import parser, and nonempty-destination rejection checked; helper did not rebuild this already-built DLL.",
+  "reproducibilityLimits": [
+    "Pinned source ZIP, Cargo.lock and Rust version preserve build inputs. Different MSVC/Windows SDK tool versions may change DLL bytes; no bit-for-bit rebuild claim.",
+    "Dependencies include compiled build-time crates/procedural macros and a conservative Mesa-header notice inventory; not a linker-level component count.",
+    "sptr and vec_extract_if_polyfill upstream commits omit license files/copyright notices; pinned Cargo license declarations and standard license texts are explicitly marked, with no invented copyright holder/year."
+  ]
+}

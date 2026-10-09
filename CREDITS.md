@@ -39,6 +39,9 @@ All contributors to those repositories retain credit for their work. Companion�
 
 ## Libraries and tools
 
+- [SnowflakePowered/librashader](https://github.com/SnowflakePowered/librashader) — optional Slang preset execution, pinned at v0.12.0, D3D11-only/static-CRT build. Upstream license, build recipe and dependency notices are included in `Licenses/librashader*`. The upstream C interface retains its MIT notice.
+- [kandowontu2/starfox-enhanced](https://github.com/kandowontu2/starfox-enhanced) — reference for independent gameplay/presentation timing and widescreen enhancement design; its game code and artwork are not bundled.
+
 - [SDL2](https://github.com/libsdl-org/SDL) — native window, rendering, audio and input layer. zlib license included.
 - [.NET](https://github.com/dotnet/runtime) and Windows Forms — self-contained Companion desktop application. Notices included.
 - [BrianPugh/tamp](https://github.com/BrianPugh/tamp) — save-state compression. Original license included.

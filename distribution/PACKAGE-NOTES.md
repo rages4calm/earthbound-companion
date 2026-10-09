@@ -1,5 +1,7 @@
 # EarthBound Companion development tester package
 
+Dev.33 adds corrected fractional scrolling, wider native enemy spawning and optional Slang finishing presets. Shader files and their D3D11 runtime are included; gameplay data and save namespaces are retained. See [dev.33 evidence](../docs/RELEASE-dev33.md).
+
 Dev.32 ships Story Shuffle v4 with cross-category loot and bounded wild lineup changes. It retains the dev.31 player and setup helpers. Original story saves/packs remain compatible; new v4 seeds have separate saves and v3 recipes retain their original output. [Verification](../docs/RELEASE-dev32.md).
 
 Dev.26 fixes idle geysers, equipment comparison clipping, Lumine Hall scrolling and exposed cave terrain on black transfer screens. [Verification](../docs/RELEASE-dev26.md).
