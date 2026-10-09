@@ -16,7 +16,7 @@ External Slang shader presets are currently Windows-only. Built-in scanlines, co
 2. Select **Game & setup**, then **Set up Original from ROM** and choose your clean USA EarthBound ROM. To use Redux, build Original first, then **Build Redux from ROM**. Alternatively import packs prepared by your own existing Companion installation.
 3. Select Original or Redux and press **Play**. Story Shuffle seeds are generated under **Story Shuffle** and keep their own saves.
 
-Linux needs a desktop session and normal X11/OpenGL/fontconfig/audio libraries. On macOS use Finder's explicit Open command if Gatekeeper blocks the unnotarized preview. A trusted local build is also supported; do not disable system security globally.
+Linux needs a desktop session and normal X11/OpenGL/fontconfig/audio libraries. If macOS blocks the unnotarized preview, first try opening the app, then use **System Settings > Privacy & Security > Open Anyway** for this app, following [Apple's instructions](https://support.apple.com/en-us/102445). A trusted local build is also supported; do not disable system security globally.
 
 Privately prepared packs come from `Game/assets.pak` for Original and `Profiles/maternalbound-redux-897d0083/assets.pak` for Redux. Import both if you want Redux's optional Original title presentation. Do not post ROMs or generated packs publicly.
 
