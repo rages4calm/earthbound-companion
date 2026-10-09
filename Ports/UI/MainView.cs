@@ -25,7 +25,7 @@ public sealed class MainView : UserControl {
   this.mobileLaunch=mobileLaunch;
   this.mobileReturn=mobileReturn;
   var content=new StackPanel{Margin=new Thickness(24),Spacing=14};
-  content.Children.Add(new TextBlock{Text="EarthBound Companion",FontSize=28,FontWeight=Avalonia.Media.FontWeight.Bold});
+  content.Children.Add(new TextBlock{Text="EarthBound Companion",FontSize=mobileLaunch==null?28:22,FontWeight=Avalonia.Media.FontWeight.Bold,TextWrapping=Avalonia.Media.TextWrapping.Wrap});
   content.Children.Add(new TextBlock{Text="Platform preview · Uses separate data and saves. Community gameplay testing is pending.",TextWrapping=Avalonia.Media.TextWrapping.Wrap});
   actions.Children.Add(Action("Play",()=>Launch(false)));actions.Children.Add(Action("Resume quick save",()=>Launch(true)));
   var saveSettings=new Button{Content="Save settings / return to game",Margin=new Thickness(0,0,8,4)};
@@ -52,7 +52,7 @@ public sealed class MainView : UserControl {
  void SetBusy(bool value){busy=value;foreach(var c in busyControls)c.IsEnabled=!value;}
  void Capture(){foreach(var save in capture)save();settings.Validate();}
  void Refresh(){foreach(var load in refresh)load();}
- CheckBox Check(StackPanel panel,string label,Func<bool> get,Action<bool> set){var c=new CheckBox{Content=label,IsChecked=get()};panel.Children.Add(c);capture.Add(()=>set(c.IsChecked==true));refresh.Add(()=>c.IsChecked=get());return c;}
+ CheckBox Check(StackPanel panel,string label,Func<bool> get,Action<bool> set){var c=new CheckBox{Content=Text(label),IsChecked=get()};panel.Children.Add(c);capture.Add(()=>set(c.IsChecked==true));refresh.Add(()=>c.IsChecked=get());return c;}
  ComboBox Choice(StackPanel panel,string label,string[] values,Func<int> get,Action<int> set){panel.Children.Add(Text(label));var c=new ComboBox{ItemsSource=values,SelectedIndex=get(),MinWidth=240};panel.Children.Add(c);capture.Add(()=>set(c.SelectedIndex));refresh.Add(()=>c.SelectedIndex=get());return c;}
  NumericUpDown Number(StackPanel panel,string label,int min,int max,Func<int> get,Action<int> set){panel.Children.Add(Text(label));var c=new NumericUpDown{Minimum=min,Maximum=max,Value=get(),Width=170,HorizontalAlignment=HorizontalAlignment.Left};panel.Children.Add(c);capture.Add(()=>set((int)(c.Value??min)));refresh.Add(()=>c.Value=get());return c;}
  async Task<string?> Pick(string title,params string[] patterns){var files=await TopLevel.GetTopLevel(this)!.StorageProvider.OpenFilePickerAsync(new(){Title=title,AllowMultiple=false,FileTypeFilter=[new FilePickerFileType(title){Patterns=patterns}]});var file=files.FirstOrDefault();if(file==null)return null;var local=file.TryGetLocalPath();if(local!=null)return local;var temp=Path.Combine(Settings.User,"Imports",Guid.NewGuid().ToString("N")+"-"+Path.GetFileName(file.Name));Directory.CreateDirectory(Path.GetDirectoryName(temp)!);await using var input=await file.OpenReadAsync();await using var output=File.Create(temp);byte[] buffer=new byte[65536];long count=0;int n;while((n=await input.ReadAsync(buffer))>0){count+=n;if(count>128L*1024*1024)throw new IOException("Import exceeds the supported size limit.");await output.WriteAsync(buffer.AsMemory(0,n));}return temp;}
