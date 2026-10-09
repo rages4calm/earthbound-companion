@@ -49,7 +49,7 @@ jobs:
           cmake --build build/sdl --parallel 3
           cmake --install build/sdl
           cmake -S native-source/port/unix -B build/native -DEB_RUNTIME_ASSETS=ON -DEB_ENABLE_VERIFY=OFF -DEB_ENABLE_AUDIO=ON -DEB_SDL2_STATIC_CONFIG_DIR="$PWD/build/sdl-install/lib/cmake/SDL2" -DCMAKE_BUILD_TYPE=Release
-          cmake --build build/native --parallel 3
+          cmake --build build/native --target earthbound --parallel 3
       - run: dotnet run --project Ports/Tests/Companion.Portable.Tests.csproj -c Release
       - name: Build private-ROM Original setup helper
         shell: bash
@@ -64,9 +64,11 @@ jobs:
           mkdir -p build/package/Game
           cp build/native/earthbound build/package/Game/
           cp native-source/dist/ebtools-setup build/package/Game/
-          cp LICENSE build/package/LICENSE
+          cp LICENSE.md build/package/LICENSE.md
           cp docs/PORTABILITY.md build/package/README-PORTABILITY.md
-          cp native-source/src/vendor/lakesnes/LICENSE build/package/LICENSE-LakeSnes
+          cp native-source/src/vendor/lakesnes/LICENSE.txt build/package/LICENSE-LakeSnes.txt
+          cp CREDITS.md UPSTREAM.md build/package/
+          cp -r Licenses build/package/
           cp build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71/LICENSE.txt build/package/LICENSE-SDL2.txt
           tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/package .
       - uses: actions/upload-artifact@v4
@@ -85,6 +87,8 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
       - run: sdkmanager 'platforms;android-36' 'ndk;28.2.13676358' 'cmake;3.22.1'
       - uses: gradle/actions/setup-gradle@v4
         with:

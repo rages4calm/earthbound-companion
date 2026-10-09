@@ -39,5 +39,16 @@ if(args.Length>0){
   Require(hashes.Distinct().Count()==4,"Seed/mode domains collapsed");
   Console.WriteLine(JsonSerializer.Serialize(new {Content=ProgressionGuard.CheckBase(source).ContentId,SourceHash=StoryShuffle.Hash(source),RecipeOutputHashes=hashes}));
  }
+ if(File.Exists(HostRuntime.Executable("earthbound"))) {
+  File.Move(phonePath,phonePath+".synthetic-fixture");
+  File.Copy(args[0],Path.Combine(Settings.BaseGame,"assets.pak"),true);
+  foreach(string path in args) {
+   settings.AssetPack=Path.GetFullPath(path);settings.ReduxDevelopmentEnabled=ProgressionGuard.CheckBase(File.ReadAllBytes(path)).ContentId==ReduxProfileService.ContentId;
+   settings.ConfigureContentSession();
+   using var game=GameLaunch.Start(settings,false,null,["--headless","--skip-intro","--frames","4"]);
+   Require(game.WaitForExit(30000),"Native launch timeout");Require(game.ExitCode==0,"Native launch failed");Settings.SessionDirectory=null;
+  }
+  Console.WriteLine("Actual native headless launch: Original and Redux PASS (no campaign claimed)");
+ }
 }
 Console.WriteLine(JsonSerializer.Serialize(new{Passed=true,SettingsAbi=5,PhoneSaveBytes=8192,RootIsolated=true,Checked="paths, settings round-trip, INI validation, phone-save recovery, recipe validation",GameplayTested=false}));
