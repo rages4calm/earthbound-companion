@@ -171,5 +171,7 @@ jobs:
         if: always()
         with:
           name: Android-preview-smoke-log
-          path: build/android-smoke.log
+          path: |
+            build/android-smoke.log
+            build/android-launcher-smoke.png
           if-no-files-found: ignore

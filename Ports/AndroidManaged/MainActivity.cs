@@ -9,7 +9,7 @@ using Avalonia.Themes.Fluent;
 using EarthBoundCompanion;
 
 namespace EarthBoundCompanion.Android;
-[Activity(Name="org.earthbound.companion.ManagedLauncher",Label="EarthBound Companion Preview",MainLauncher=true,Exported=true,ConfigurationChanges=ConfigChanges.Orientation|ConfigChanges.ScreenSize|ConfigChanges.UiMode,Theme="@android:style/Theme.Material.NoActionBar")]
+[Activity(Name="org.earthbound.companion.ManagedLauncher",Label="EarthBound Companion Preview",MainLauncher=true,Exported=true,ConfigurationChanges=ConfigChanges.Orientation|ConfigChanges.ScreenSize|ConfigChanges.UiMode,Theme="@style/CompanionTheme")]
 public sealed class MainActivity : AvaloniaMainActivity<MobileApp> {
  internal static MainActivity? Current;
  TaskCompletionSource? gameClosed;

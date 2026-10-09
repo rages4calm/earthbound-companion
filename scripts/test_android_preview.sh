@@ -11,6 +11,9 @@ for attempt in $(seq 1 30); do
   adb logcat -d > build/android-smoke.log
   if grep -q 'Companion ROM-free native selftest: PASS' build/android-smoke.log && grep -q 'Managed settings and recipe JSON round-trip: PASS' build/android-smoke.log; then
     adb shell pidof org.earthbound.companion.preview
+    sleep 2
+    adb shell screencap -p /sdcard/companion-preview.png
+    adb pull /sdcard/companion-preview.png build/android-launcher-smoke.png
     echo 'Managed Android launcher and SDL native input/MSU selftest passed; no gameplay claimed.'
     exit 0
   fi

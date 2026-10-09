@@ -2,7 +2,7 @@
  <uses-permission android:name="android.permission.INTERNET" />
  <uses-feature android:glEsVersion="0x00020000" android:required="true" />
  <application android:allowBackup="false" android:usesCleartextTraffic="false" android:extractNativeLibs="true">
-  <activity android:name="org.earthbound.companion.ManagedLauncher" android:exported="true" android:enableOnBackInvokedCallback="false">
+  <activity android:name="org.earthbound.companion.ManagedLauncher" android:exported="true" android:theme="@style/CompanionTheme" android:enableOnBackInvokedCallback="false">
    <intent-filter>
     <action android:name="android.intent.action.MAIN" />
     <category android:name="android.intent.category.LAUNCHER" />
