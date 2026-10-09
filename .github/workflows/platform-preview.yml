@@ -167,3 +167,9 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: bash scripts/test_android_preview.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Android-preview-smoke-log
+          path: build/android-smoke.log
+          if-no-files-found: ignore

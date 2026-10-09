@@ -2,6 +2,10 @@
 set -euo pipefail
 adb install -r build/apk/EarthBound-Companion-android-x64-preview.apk
 adb logcat -c
+dump_failure() {
+  adb logcat -b crash -d
+  grep -E 'org\.earthbound|AndroidRuntime|CompanionSmoke|monodroid|mono-rt|DOTNET|SDL|Fatal signal' build/android-smoke.log | tail -n 150 || true
+}
 adb shell am start -n org.earthbound.companion.preview/org.earthbound.companion.ManagedLauncher --ez portableSmokeTest true
 for attempt in $(seq 1 30); do
   adb logcat -d > build/android-smoke.log
@@ -11,10 +15,10 @@ for attempt in $(seq 1 30); do
     exit 0
   fi
   if grep -qE 'FATAL EXCEPTION|Fatal signal|Companion ROM-free native selftest: FAIL' build/android-smoke.log; then
-    tail -n 150 build/android-smoke.log
+    dump_failure
     exit 1
   fi
   sleep 2
 done
-tail -n 150 build/android-smoke.log
+dump_failure
 exit 1
