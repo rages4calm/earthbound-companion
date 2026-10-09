@@ -30,7 +30,7 @@ public sealed class MainActivity : AvaloniaMainActivity<MobileApp> {
   }catch{Settings.SessionDirectory=null;throw;}
  }
 }
-public sealed class MobileApp : Application {
+public sealed class MobileApp : Avalonia.Application {
  public override void Initialize(){RequestedThemeVariant=Avalonia.Styling.ThemeVariant.Dark;Styles.Add(new FluentTheme());}
  public override void OnFrameworkInitializationCompleted(){if(ApplicationLifetime is ISingleViewApplicationLifetime single)single.MainView=new MainView((settings,resume,seed)=>MainActivity.Current!.Launch(settings,resume,seed),()=>MainActivity.Current!.ReturnToGame());base.OnFrameworkInitializationCompleted();}
 }
