@@ -6,6 +6,8 @@
 
 [▶ Watch the EarthBound Companion + MaternalBound Redux trailer](https://youtu.be/RZ5UdAxyqdY)
 
+**Discord contact:** `chrono.trigger`
+
 > [!NOTE]
 > **Feature-frozen; community testing and focused bug-fix maintenance.** Active feature development is wrapped at dev.32. [Scope and coverage](MAINTENANCE.md) · [Short testing guide](docs/COMMUNITY-TESTING.md) · [Report a bug](https://github.com/rages4calm/earthbound-companion/issues/new?template=bug-report.yml). Another full playthrough is not required.
 
