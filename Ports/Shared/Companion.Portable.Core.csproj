@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup>
+  <TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
+  <DefineConstants>$(DefineConstants);COMPANION_PORTABLE</DefineConstants>
+  <AssemblyName>EarthBoundCompanion.Portable.Core</AssemblyName>
+ </PropertyGroup>
+ <ItemGroup>
+  <Compile Include="../../Companion/Settings.cs;../../Companion/HostRuntime.cs;../../Companion/Randomizer.cs;../../Companion/StoryShuffleV4.cs;../../Companion/ProgressionGuard.cs;../../Companion/SaveRecovery.cs;../../Companion/SetupService.cs;../../Companion/ReduxProfileService.cs;../../Companion/ReduxPackUpgrade.cs;../../Companion/GameLaunch.cs" Link="Shared/%(Filename)%(Extension)" />
+  <EmbeddedResource Include="../../Companion/randomizer-layout.json;../../Companion/progression-policy*.json;../../research/msu-manifest.json" LogicalName="EarthBoundCompanion.%(Filename)%(Extension)" />
+ </ItemGroup>
+</Project>

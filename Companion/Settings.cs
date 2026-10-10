@@ -24,7 +24,7 @@ public sealed class Settings {
  public bool ReduxDevelopmentEnabled{get;set;}
  static string normalContentHash="";
  internal static string? OverrideRoot;
- public static string Root=>OverrideRoot??AppContext.BaseDirectory;
+ public static string Root=>OverrideRoot??HostRuntime.DataRoot;
  public static string? SessionDirectory;
  public static string BaseGame=>Path.Combine(Root,"Game");
  public static string Game=>SessionDirectory??(normalContentHash.Length==64?Path.Combine(User,"ContentProfiles",normalContentHash,"Game"):BaseGame);

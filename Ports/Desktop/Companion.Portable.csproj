@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><AssemblyName>EarthBoundCompanion.Portable</AssemblyName><RestorePackagesWithLockFile>true</RestorePackagesWithLockFile></PropertyGroup>
+ <ItemGroup>
+  <ProjectReference Include="../Shared/Companion.Portable.Core.csproj" />
+  <ProjectReference Include="../UI/Companion.Portable.UI.csproj" />
+  <PackageReference Include="Avalonia.Desktop" Version="11.3.22" />
+  <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.22" />
+  <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.22" />
+ </ItemGroup>
+</Project>

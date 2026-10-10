@@ -1,0 +1,203 @@
+diff --git a/port/unix/main.c b/port/unix/main.c
+--- a/port/unix/main.c
++++ b/port/unix/main.c
+@@ -3,7 +3,9 @@
+  * kicks in on Windows/MinGW and expects to link against SDL2main's WinMain
+  * shim, which this port doesn't link (no GUI-subsystem console juggling
+  * needed; earthbound.exe is a normal console-subsystem executable). */
++#ifndef __ANDROID__
+ #define SDL_MAIN_HANDLED
++#endif
+ #include <SDL.h>
+ #include <errno.h>
+ #include <stdio.h>
+@@ -387,7 +389,11 @@
+ }
+ 
+ int main(int argc, char *argv[]) {
++#ifndef __ANDROID__
+     chdir_to_executable_dir(); /* before anything below touches a relative path */
++#else
++    SDL_SetHint(SDL_HINT_ANDROID_BLOCK_ON_PAUSE, "0");
++#endif
+     /* Seed sessions use one executable but separate settings, SRAM, quick saves
+      * and screenshots. Resolve this BEFORE migration or any save-file access;
+      * failing to enter the requested folder must never fall back to story saves. */
+@@ -485,6 +491,9 @@
+         } else if (strcmp(argv[i], "--selftest-pc") == 0) {
+             SDL_Init(SDL_INIT_TIMER|SDL_INIT_EVENTS);
+             bool ok=pc_input_selftest() && pc_msu_selftest();
++#ifdef __ANDROID__
++            SDL_Log("Companion ROM-free native selftest: %s",ok?"PASS":"FAIL");
++#endif
+             SDL_Quit();return ok?0:1;
+         } else if (strcmp(argv[i], "--verify") == 0 && i + 1 < argc) {
+             verify_rom_path = argv[++i];
+diff --git a/port/unix/CMakeLists.txt b/port/unix/CMakeLists.txt
+--- a/port/unix/CMakeLists.txt
++++ b/port/unix/CMakeLists.txt
+@@ -106,7 +106,9 @@
+ # frameworks ourselves.
+ set(EB_SDL2_STATIC_CONFIG_DIR "" CACHE PATH
+     "Directory holding a from-source SDL2Config.cmake (SDL_SHARED=OFF/SDL_STATIC=ON build) to statically link instead of the system SDL2 (release packaging only)")
+-if(EB_SDL2_STATIC_CONFIG_DIR)
++if(ANDROID)
++    set(EB_SDL2_TARGET SDL2)
++elseif(EB_SDL2_STATIC_CONFIG_DIR)
+     find_package(SDL2 REQUIRED CONFIG PATHS "${EB_SDL2_STATIC_CONFIG_DIR}" NO_DEFAULT_PATH)
+     set(EB_SDL2_TARGET SDL2::SDL2-static)
+     # Lets sdl2_updater.c know this binary has no paired SDL2.dll/libSDL2
+@@ -129,7 +131,11 @@
+ # link. GLOB_RECURSE + CONFIGURE_DEPENDS works there and matches src/CMakeLists.txt.
+ # platform/ has no subdirectories, so this is equivalent to a flat glob.
+ file(GLOB_RECURSE PLATFORM_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/platform/*.c")
+-add_executable(earthbound main.c ${PLATFORM_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/generated/embedded_helper.c)
++if(ANDROID)
++    add_library(earthbound SHARED main.c ${PLATFORM_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/generated/embedded_helper.c)
++else()
++    add_executable(earthbound main.c ${PLATFORM_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/generated/embedded_helper.c)
++endif()
+ target_include_directories(earthbound PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ # incbin.h embeds EB_EMBED_SETUP_HELPER_PATH's bytes via an assembler
+diff --git a/port/unix/platform/sdl2_input.c b/port/unix/platform/sdl2_input.c
+--- a/port/unix/platform/sdl2_input.c
++++ b/port/unix/platform/sdl2_input.c
+@@ -4,6 +4,11 @@
+ #include "platform/pc_options.h"
+ #include "platform/platform.h"
+ #include <SDL.h>
++#ifdef __ANDROID__
++#include "core/state_dump.h"
++#include "sdl2_mobile.h"
++static bool mobile_background, mobile_previous_pause;
++#endif
+ #include <signal.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -89,6 +94,9 @@
+         if (engine_alt_controls == ALT_CONTROLS_ON && b >= 0 && b < 4)
+             b ^= 1;
+         bool held = (k > 0 && k < SDL_NUM_SCANCODES && keys[k]) || (b >= 0 && b < 21 && buttons[b]);
++#ifdef __ANDROID__
++        held = held || pc_mobile_held(i);
++#endif
+         bool pressed = held && !last[i];
+         last[i] = held;
+         if (i < 12 && held)
+@@ -120,6 +128,9 @@
+             FILE *f = fopen("settings.request", "wb");
+             if (f)
+                 fclose(f);
++#ifdef __ANDROID__
++            pc_mobile_open_settings();
++#endif
+         }
+     }
+     if (axes[0] < -pc_options.deadzone)
+@@ -137,8 +148,30 @@
+     while (SDL_PollEvent(&e))
+         switch (e.type) {
+         case SDL_QUIT:
++#ifdef __ANDROID__
++            state_dump_save_slots();
++#endif
+             quit_requested = 1;
+             break;
++#ifdef __ANDROID__
++        case SDL_RENDER_DEVICE_RESET:
++            fprintf(stderr,"Android renderer device reset; saving checkpoint and returning to launcher.\n");
++            state_dump_save_slots();quit_requested=1;
++            break;
++        case SDL_APP_WILLENTERBACKGROUND:
++            state_dump_save_slots();
++            mobile_previous_pause = pc_paused;
++            mobile_background = true; pc_paused = true;
++            pc_mobile_clear();
++            memset(keys, 0, sizeof(keys));
++            memset(buttons, 0, sizeof(buttons));
++            memset(axes, 0, sizeof(axes));
++            break;
++        case SDL_APP_DIDENTERFOREGROUND:
++            if (mobile_background) pc_paused = mobile_previous_pause;
++            mobile_background = false;
++            break;
++#endif
+         case SDL_KEYDOWN:
+         case SDL_KEYUP:
+             if (e.key.keysym.scancode > 0 && e.key.keysym.scancode < SDL_NUM_SCANCODES)
+diff --git a/port/unix/platform/sdl2_video.c b/port/unix/platform/sdl2_video.c
+--- a/port/unix/platform/sdl2_video.c
++++ b/port/unix/platform/sdl2_video.c
+@@ -878,6 +878,9 @@
+ }
+ 
+ void platform_video_end_frame(void) {
++#ifdef __ANDROID__
++    if (platform_input_quit_requested()) return;
++#endif
+     if (platform_headless)
+         return;
+ 
+diff --git a/port/android/CMakeLists.txt b/port/android/CMakeLists.txt
+new file mode 100644
+--- /dev/null
++++ b/port/android/CMakeLists.txt
+@@ -0,0 +1,11 @@
++cmake_minimum_required(VERSION 3.22)
++project(EarthBoundAndroid C)
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++set(SDL_SHARED ON CACHE BOOL "" FORCE)
++set(SDL_STATIC OFF CACHE BOOL "" FORCE)
++set(SDL_TEST OFF CACHE BOOL "" FORCE)
++if(NOT EB_SDL_SOURCE)
++ message(FATAL_ERROR "Provide the checksum-verified SDL source path")
++endif()
++add_subdirectory(${EB_SDL_SOURCE} ${CMAKE_CURRENT_BINARY_DIR}/SDL)
++add_subdirectory(../unix ${CMAKE_CURRENT_BINARY_DIR}/earthbound)
+diff --git a/port/unix/platform/sdl2_mobile.c b/port/unix/platform/sdl2_mobile.c
+new file mode 100644
+--- /dev/null
++++ b/port/unix/platform/sdl2_mobile.c
+@@ -0,0 +1,29 @@
++/* SPDX-License-Identifier: GPL-3.0-or-later */
++#ifdef __ANDROID__
++#include <SDL.h>
++#include <jni.h>
++#include "sdl2_mobile.h"
++static SDL_atomic_t touch_actions[21];
++bool pc_mobile_held(int action) {return action >= 0 && action < 21 && SDL_AtomicGet(&touch_actions[action]) > 0;}
++void pc_mobile_clear(void) {for(int i=0;i<21;i++)SDL_AtomicSet(&touch_actions[i],0);}
++void pc_mobile_open_settings(void) {
++ JNIEnv *env=SDL_AndroidGetJNIEnv();jobject activity=SDL_AndroidGetActivity();
++ if(!env||!activity)return;
++ jclass type=(*env)->GetObjectClass(env,activity);
++ jmethodID method=(*env)->GetMethodID(env,type,"openSettings","()V");
++ if(method)(*env)->CallVoidMethod(env,activity,method);
++ (*env)->DeleteLocalRef(env,type);(*env)->DeleteLocalRef(env,activity);
++}
++JNIEXPORT void JNICALL Java_org_earthbound_companion_GameActivity_setTouch(JNIEnv *env, jclass type, jint action, jboolean down) {
++ (void)env; (void)type;
++ if (action < 0 || action >= 21) return;
++ int previous, next;
++ do {previous=SDL_AtomicGet(&touch_actions[action]); next=down ? previous+1 : (previous>0 ? previous-1 : 0);}
++ while (!SDL_AtomicCAS(&touch_actions[action],previous,next));
++}
++JNIEXPORT void JNICALL Java_org_earthbound_companion_GameActivity_clearTouch(JNIEnv *env, jclass type) {(void)env;(void)type;pc_mobile_clear();}
++#endif
++
++#ifdef __ANDROID__
++JNIEXPORT void JNICALL Java_org_earthbound_companion_GameActivity_requestQuit(JNIEnv *env,jclass type) {(void)env;(void)type;SDL_Event event;SDL_zero(event);event.type=SDL_QUIT;SDL_PushEvent(&event);}
++#endif
+diff --git a/port/unix/platform/sdl2_mobile.h b/port/unix/platform/sdl2_mobile.h
+new file mode 100644
+--- /dev/null
++++ b/port/unix/platform/sdl2_mobile.h
+@@ -0,0 +1,7 @@
++#ifndef SDL2_MOBILE_H
++#define SDL2_MOBILE_H
++#include <stdbool.h>
++bool pc_mobile_held(int action);
++void pc_mobile_clear(void);
++void pc_mobile_open_settings(void);
++#endif

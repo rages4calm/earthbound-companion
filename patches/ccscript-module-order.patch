@@ -1,0 +1,98 @@
+diff --git a/src/ccc.cpp b/src/ccc.cpp
+index ac82125..f60cd26 100644
+--- a/src/ccc.cpp
++++ b/src/ccc.cpp
+@@ -50,6 +50,7 @@ void printusage()
+ 		 << "   --libs <path>         Look in <path> for all libraries" << endl
+ 		 << "   --nostdlibs           Do not include the default standard libraries" << endl
+ 		 << "   --summary <file>      Writes a compilation summary to <file>" << endl
++		 << "   --module-order <file> Use an explicit order for equal-sized modules" << endl
+ 		 << "                           Useful if you want to know where stuff went." << endl
+ 		 << "   --printAST            Prints the abstract syntax tree for each module" << endl
+ 		 << "   --printRT             Prints the root symbol table for each module" << endl
+@@ -83,6 +84,7 @@ int cccmain(int argc, const char* argv[])
+ 	string startstr;
+ 	string endstr;
+ 	string summaryfile;
++	string moduleorderfile;
+ 	unsigned long outadr = 0;
+ 	unsigned long endadr = 0;
+ 	vector<string> files;
+@@ -171,6 +173,14 @@ int cccmain(int argc, const char* argv[])
+ 			p++;
+ 			nostdlibs = true;
+ 		}
++		else if(!strcmp(argv[p],"--module-order")) {
++			p++;
++			if(p >= argc) {
++				std::cout << "argument error: no module order file specified" << std::endl;
++				return -1;
++			}
++			moduleorderfile = argv[p++];
++		}
+ 		else if(!strcmp(argv[p],"--summary") || !strcmp(argv[p], "--sum")) {
+ 			p++;
+ 			if(p >= argc) {
+@@ -232,6 +242,7 @@ int cccmain(int argc, const char* argv[])
+ 	compiler.printJumps = printJumps;
+ 	compiler.verbose = verbose;
+ 	compiler.libdir = libspath;
++	compiler.module_order_file = moduleorderfile;
+ 	compiler.noreset = noreset;
+ 	compiler.nostdlibs = nostdlibs;
+ 
+diff --git a/src/compiler.cpp b/src/compiler.cpp
+index c433f60..351a137 100644
+--- a/src/compiler.cpp
++++ b/src/compiler.cpp
+@@ -363,7 +363,37 @@ void Compiler::AssignModuleAddresses()
+ 	// module that will fit, we increase the base address to the start of the next bank.
+ 
+ 	vector<Module*> sorted = modules;
+-	std::sort(sorted.begin(), sorted.end(), module_pred);
++	if(module_order_file.empty()) {
++		std::sort(sorted.begin(), sorted.end(), module_pred);
++	} else {
++		// The legacy size-only sort leaves ties to the C++ library. A checked
++		// layout makes an audited project reproducible across toolchains.
++		ifstream orderfile(util::ConvertToNativeString(module_order_file));
++		if(!orderfile) throw Exception("cannot read module order file");
++		map<string, pair<unsigned int, unsigned int> > order;
++		string name;
++		unsigned int size;
++		while(orderfile >> name >> size) {
++			if(!size || order.count(name)) throw Exception("invalid module order entry");
++			order[name] = make_pair(static_cast<unsigned int>(order.size()), size);
++		}
++		if(!orderfile.eof()) throw Exception("invalid module order file");
++		unsigned int count = 0;
++		for(Module* m : modules) {
++			if(!m->GetCodeSize()) continue;
++			auto entry = order.find(m->GetName());
++			if(entry == order.end() || entry->second.second != m->GetCodeSize())
++				throw Exception("module order size/name mismatch: " + m->GetName());
++			++count;
++		}
++		if(count != order.size()) throw Exception("module order contains unknown modules");
++		std::sort(sorted.begin(), sorted.end(), [&order](Module* a, Module* b) {
++			if(a->GetCodeSize() != b->GetCodeSize())
++				return a->GetCodeSize() > b->GetCodeSize();
++			if(!a->GetCodeSize()) return a->GetName() < b->GetName();
++			return order.at(a->GetName()).first < order.at(b->GetName()).first;
++		});
++	}
+ 	unsigned int base = this->outadr;
+ 
+ 	totalfrag = 0;
+diff --git a/src/compiler.h b/src/compiler.h
+index c255de2..c67ef39 100644
+--- a/src/compiler.h
++++ b/src/compiler.h
+@@ -25,6 +25,7 @@ public:
+ 	bool noreset;
+ 	bool nostdlibs;
+ 	std::string libdir;
++	std::string module_order_file;
+ 
+ public:
+ 	Compiler(const std::string& romfile, unsigned int outadr, unsigned int endadr = 0);

@@ -9,7 +9,7 @@ static class GameLaunch {
   try {
    settings.Save();Settings.Backup(true);
    foreach(var marker in new[]{"settings.request","settings.applied"})if(File.Exists(Settings.PathTo(marker)))File.Delete(Settings.PathTo(marker));
-   var start=new ProcessStartInfo(Path.Combine(Settings.BaseGame,"earthbound.exe")){WorkingDirectory=Settings.Game,UseShellExecute=false,CreateNoWindow=true};
+   var start=new ProcessStartInfo(HostRuntime.Executable("earthbound")){WorkingDirectory=Settings.Game,UseShellExecute=false,CreateNoWindow=true};
    foreach(var argument in new[]{"--session-dir",Settings.Game,"--assets",seed?.Pak??settings.Pak,"--log-file",Path.Combine(Settings.Game,"game.log")})start.ArgumentList.Add(argument);
    if(ReduxProfileService.AllowDevelopmentLaunch(settings)){
     start.ArgumentList.Add("--allow-redux-development");

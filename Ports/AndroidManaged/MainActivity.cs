@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+using global::Android.App;
+using global::Android.Content;
+using global::Android.Content.PM;
+using Avalonia;
+using Avalonia.Android;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Themes.Fluent;
+using EarthBoundCompanion;
+
+namespace EarthBoundCompanion.Android;
+[Activity(Name="org.earthbound.companion.ManagedLauncher",Label="EarthBound Companion Preview",MainLauncher=true,Exported=true,ConfigurationChanges=ConfigChanges.Orientation|ConfigChanges.ScreenSize|ConfigChanges.UiMode,Theme="@style/CompanionTheme")]
+public sealed class MainActivity : AvaloniaMainActivity<MobileApp> {
+ internal static MainActivity? Current;
+ TaskCompletionSource? gameClosed;
+ bool smokeStarted;
+ protected override void OnCreate(global::Android.OS.Bundle? state){Current=this;Settings.OverrideRoot=Path.Combine(FilesDir!.AbsolutePath,"CompanionPreview");HostRuntime.NativeLibraryDirectory=ApplicationInfo!.NativeLibraryDir;base.OnCreate(state);if(Intent?.GetBooleanExtra("portableSmokeTest",false)==true)global::Android.Util.Log.Info("CompanionSmoke","Managed smoke activity created");}
+ public override void OnConfigurationChanged(global::Android.Content.Res.Configuration newConfig){base.OnConfigurationChanged(newConfig);if(smokeStarted)global::Android.Util.Log.Info("CompanionSmoke","Managed launcher configuration changed without activity recreation");}
+ protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)=>base.CustomizeAppBuilder(builder).WithInterFont();
+ protected override void OnResume(){base.OnResume();if(!smokeStarted&&Intent?.GetBooleanExtra("portableSmokeTest",false)==true){smokeStarted=true;new global::Android.OS.Handler(global::Android.OS.Looper.MainLooper!).PostDelayed(()=>{var fixture=new Settings{Width=1280,Sprint=2};fixture.Save();var restored=Settings.Load();if(restored.Width!=1280||restored.Sprint!=2)throw new InvalidDataException("Android settings round-trip failed");var recipe=System.Text.Json.JsonSerializer.Deserialize<ShuffleOptions>(System.Text.Json.JsonSerializer.Serialize(new ShuffleOptions{Mode="Surprise"}));if(recipe?.Mode!="Surprise")throw new InvalidDataException("Android recipe serialization failed");global::Android.Util.Log.Info("CompanionSmoke","Managed settings and recipe JSON round-trip: PASS");var intent=new Intent();intent.SetClassName(this,"org.earthbound.companion.GameActivity");intent.PutExtra("arguments",new[]{"--selftest-pc"});StartActivity(intent);},3000);}if(gameClosed!=null&&File.Exists(Settings.PathTo("settings.request")))return;gameClosed?.TrySetResult();gameClosed=null;}
+ internal void ReturnToGame(){if(gameClosed==null)return;var intent=new Intent();intent.SetClassName(this,"org.earthbound.companion.GameActivity");intent.AddFlags(ActivityFlags.ReorderToFront);StartActivity(intent);}
+ public override void OnBackPressed(){if(gameClosed==null){base.OnBackPressed();return;}File.WriteAllText(Settings.PathTo("settings.applied"),"");File.Delete(Settings.PathTo("settings.request"));ReturnToGame();}
+ internal Task Launch(Settings settings,bool resume,SeedRecord? seed){
+  if(seed!=null)StoryShuffle.Verify(seed);else settings.ValidatePak();Settings.SessionDirectory=seed?.Session;
+  try {
+   settings.ShaderPreset="";settings.Save();Settings.Backup(true);
+   foreach(var marker in new[]{"settings.request","settings.applied"})File.Delete(Settings.PathTo(marker));
+   var args=new List<string>{"--session-dir",Settings.Game,"--assets",seed?.Pak??settings.Pak,"--log-file",Path.Combine(Settings.Game,"game.log")};
+   if(ReduxProfileService.AllowDevelopmentLaunch(settings)){args.Add("--allow-redux-development");if(settings.OriginalTitleScreen){args.Add("--original-title-assets");args.Add(Path.Combine(Settings.BaseGame,"assets.pak"));}}
+   if(resume)args.Add("--load-state");
+   var intent=new Intent();intent.SetClassName(this,"org.earthbound.companion.GameActivity");intent.PutExtra("arguments",args.ToArray());gameClosed=new(TaskCreationOptions.RunContinuationsAsynchronously);StartActivity(intent);return gameClosed.Task;
+  }catch{Settings.SessionDirectory=null;throw;}
+ }
+}
+public sealed class MobileApp : Avalonia.Application {
+ public override void Initialize(){RequestedThemeVariant=Avalonia.Styling.ThemeVariant.Dark;Styles.Add(new FluentTheme());}
+ public override void OnFrameworkInitializationCompleted(){if(ApplicationLifetime is ISingleViewApplicationLifetime single)single.MainView=new MainView((settings,resume,seed)=>MainActivity.Current!.Launch(settings,resume,seed),()=>MainActivity.Current!.ReturnToGame());base.OnFrameworkInitializationCompleted();}
+}

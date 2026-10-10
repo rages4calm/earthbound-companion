@@ -56,7 +56,7 @@ internal static class SetupService {
  }
 
  static async Task BuildAssetsAsync(string romPath,IProgress<SetupProgress>? progress,CancellationToken cancel) {
-  string helper=Path.Combine(Settings.BaseGame,"ebtools-setup.exe");
+  string helper=HostRuntime.Executable("ebtools-setup");
   if(!File.Exists(helper))throw new IOException("The ROM setup helper is missing. Re-extract the tester ZIP and try again.");
   Directory.CreateDirectory(Settings.BaseGame);string target=Path.Combine(Settings.BaseGame,"assets.pak"),temp=target+".setup-"+Guid.NewGuid().ToString("N");
   progress?.Report(new("ROM","Building native game data from your ROM. This may take a few minutes…"));

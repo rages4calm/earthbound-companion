@@ -1,0 +1,192 @@
+name: Platform preview
+on:
+  push:
+    branches: [ports/multiplatform-preview]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Platforms to check
+        type: choice
+        options: [all, android]
+        default: all
+permissions:
+  contents: read
+concurrency:
+  group: platform-preview-${{ github.ref }}-${{ github.event.inputs.target || 'all' }}
+  cancel-in-progress: true
+jobs:
+  windows-guard:
+    if: github.event.inputs.target != 'android'
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet build Companion/Companion.csproj -c Release
+      - run: dotnet run --project Ports/Tests/Companion.Portable.Tests.csproj -c Release
+      - run: dotnet run --project Ports/Desktop/Companion.Portable.csproj -c Release -- --smoke-test "${{ runner.temp }}/launcher-smoke.png"
+  desktop:
+    if: github.event.inputs.target != 'android'
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '12.0'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            rid: linux-x64
+          - os: macos-15
+            rid: osx-arm64
+          - os: macos-15-intel
+            rid: osx-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Linux graphics build dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y ninja-build libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev libxfixes-dev libxss-dev libxinerama-dev libgl1-mesa-dev libasound2-dev libpulse-dev libudev-dev xvfb
+      - run: python scripts/prepare_port_sources.py --native native-source --sdl build/dependencies
+      - name: Build SDL and native game without ROM
+        shell: bash
+        run: |
+          cmake -S build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71 -B build/sdl -DSDL_SHARED=OFF -DSDL_STATIC=ON -DSDL_TEST=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$PWD/build/sdl-install"
+          cmake --build build/sdl --parallel 3
+          cmake --install build/sdl
+          cmake -S native-source/port/unix -B build/native -DCMAKE_C_COMPILER=clang -DEB_RUNTIME_ASSETS=ON -DEB_ENABLE_VERIFY=OFF -DEB_ENABLE_AUDIO=ON -DEB_SDL2_STATIC_CONFIG_DIR="$PWD/build/sdl-install/lib/cmake/SDL2" -DCMAKE_BUILD_TYPE=Release
+          cmake --build build/native --target earthbound --parallel 3
+          SDL_AUDIODRIVER=dummy build/native/earthbound --selftest-pc
+      - run: dotnet run --project Ports/Tests/Companion.Portable.Tests.csproj -c Release
+      - name: Build private-ROM Original setup helper
+        shell: bash
+        run: |
+          python -m pip install './native-source[packaging]'
+          cd native-source
+          pyinstaller ebtools_setup.spec --noconfirm
+      - run: dotnet publish Ports/Desktop/Companion.Portable.csproj -c Release -r ${{ matrix.rid }} --self-contained true -o build/package
+      - name: Render launcher with an empty isolated data folder
+        shell: bash
+        run: |
+          if [ "${{ runner.os }}" = "Linux" ]; then
+            xvfb-run -a build/package/EarthBoundCompanion.Portable --smoke-test "$RUNNER_TEMP/launcher-smoke.png"
+          else
+            build/package/EarthBoundCompanion.Portable --smoke-test "$RUNNER_TEMP/launcher-smoke.png"
+          fi
+      - name: Build native Redux conversion helper
+        run: python scripts/build_portable_helpers.py --work build/helper-tools --output build/package/Game
+      - name: Verify packaged Redux compiler ordering and HTTPS trust
+        shell: bash
+        run: |
+          python -m pip install cryptography
+          python -m unittest discover -s scripts -p test_redux_download_tls.py -v
+          build/package/Game/redux-setup --selftest-compiler-order
+          SSL_CERT_FILE="$RUNNER_TEMP/missing-ca.pem" SSL_CERT_DIR="$RUNNER_TEMP/missing-ca-dir" build/package/Game/redux-setup --selftest-source-download
+      - name: Package preview
+        shell: bash
+        run: |
+          mkdir -p build/package/Game
+          cp build/native/earthbound build/package/Game/
+          cp native-source/dist/ebtools-setup build/package/Game/
+          cp LICENSE.md build/package/LICENSE.md
+          cp docs/PORTABILITY.md build/package/README-PORTABILITY.md
+          cp docs/PLATFORM-TESTING.md build/package/PLATFORM-TESTING.md
+          cp native-source/src/vendor/lakesnes/LICENSE.txt build/package/LICENSE-LakeSnes.txt
+          cp CREDITS.md UPSTREAM.md build/package/
+          cp -r Licenses build/package/
+          cp build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71/LICENSE.txt build/package/LICENSE-SDL2.txt
+          if [ "${{ runner.os }}" = "macOS" ]; then
+            mkdir -p "build/mac-bundle/EarthBound Companion Preview.app/Contents"
+            cp Ports/Desktop/macOS/Info.plist "build/mac-bundle/EarthBound Companion Preview.app/Contents/Info.plist"
+            cp -R build/package "build/mac-bundle/EarthBound Companion Preview.app/Contents/MacOS"
+            codesign --force --deep --sign - "build/mac-bundle/EarthBound Companion Preview.app"
+            codesign --verify --deep --strict "build/mac-bundle/EarthBound Companion Preview.app"
+            tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/mac-bundle .
+          else
+            tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/package .
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EarthBound-Companion-${{ matrix.rid }}-preview
+          path: EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz
+  android:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+      - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0' 'ndk;28.2.13676358' 'cmake;3.22.1'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - run: dotnet workload install android --skip-manifest-update
+      - run: python scripts/prepare_port_sources.py --native native-source --sdl build/dependencies
+      - name: Build native game for ARM64 phones and x64 emulators
+        shell: bash
+        run: |
+          for abi in arm64-v8a x86_64; do
+            cmake -S native-source/port/android -B build/android-$abi -G Ninja -DCMAKE_TOOLCHAIN_FILE="$ANDROID_HOME/ndk/28.2.13676358/build/cmake/android.toolchain.cmake" -DANDROID_ABI=$abi -DANDROID_PLATFORM=android-26 -DEB_SDL_SOURCE="$PWD/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71" -DEB_RUNTIME_ASSETS=ON -DEB_ENABLE_VERIFY=OFF -DEB_ENABLE_AUDIO=ON -DCMAKE_BUILD_TYPE=Release
+            cmake --build build/android-$abi --target earthbound SDL2 --parallel 3
+            mkdir -p Ports/AndroidManaged/native-libs/$abi
+            cp build/android-$abi/earthbound/libearthbound.so build/android-$abi/SDL/libSDL2.so Ports/AndroidManaged/native-libs/$abi/
+          done
+      - name: Build shared launcher APK
+        run: |
+          cp build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71/android-project/app/src/main/java/org/libsdl/app/*.java Ports/AndroidManaged/Java/
+          dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-arm64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
+          dotnet publish Ports/AndroidManaged/Companion.Android.csproj -c Release -r android-x64 -p:SdlSource="$GITHUB_WORKSPACE/build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71"
+      - name: Sign previews with persistent project key
+        env:
+          EB_PREVIEW_KEYSTORE: ${{ secrets.EB_PREVIEW_KEYSTORE }}
+          EB_PREVIEW_KEYSTORE_PASSWORD: ${{ secrets.EB_PREVIEW_KEYSTORE_PASSWORD }}
+        shell: bash
+        run: |
+          test -n "$EB_PREVIEW_KEYSTORE" && test -n "$EB_PREVIEW_KEYSTORE_PASSWORD"
+          printf '%s' "$EB_PREVIEW_KEYSTORE" | base64 --decode > "$RUNNER_TEMP/preview.keystore"
+          mkdir -p build/apk
+          for rid in android-arm64 android-x64; do
+            input="Ports/AndroidManaged/bin/Release/net10.0-android/$rid/publish/org.earthbound.companion.preview-Signed.apk"
+            "$ANDROID_HOME/build-tools/36.0.0/apksigner" sign --ks "$RUNNER_TEMP/preview.keystore" --ks-key-alias companion-preview --ks-pass env:EB_PREVIEW_KEYSTORE_PASSWORD --key-pass env:EB_PREVIEW_KEYSTORE_PASSWORD --out "build/apk/EarthBound-Companion-$rid-preview.apk" "$input"
+            "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --print-certs "build/apk/EarthBound-Companion-$rid-preview.apk"
+          done
+          python scripts/check_android_apk.py build/apk/EarthBound-Companion-android-arm64-preview.apk arm64-v8a --aapt2 "$ANDROID_HOME/build-tools/36.0.0/aapt2"
+          python scripts/check_android_apk.py build/apk/EarthBound-Companion-android-x64-preview.apk x86_64 --aapt2 "$ANDROID_HOME/build-tools/36.0.0/aapt2"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EarthBound-Companion-android-preview
+          path: build/apk/*.apk
+      - name: Enable Android emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Run ROM-free launcher and native startup on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: default
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: bash scripts/test_android_preview.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Android-preview-smoke-log
+          path: |
+            build/android-smoke.log
+            build/android-launcher-smoke.png
+          if-no-files-found: ignore

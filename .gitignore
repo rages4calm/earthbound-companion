@@ -50,6 +50,12 @@ release/
 .idea/
 .DS_Store
 Thumbs.db
+*.so
+*.apk
+Ports/AndroidManaged/native-libs/
+Ports/AndroidManaged/Java/*.java
+!Ports/AndroidManaged/Java/GameActivity.java
+Ports/Android/.gradle/
 
 # Private historical development and recovery material
 _Archive/

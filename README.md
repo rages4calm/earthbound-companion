@@ -9,6 +9,9 @@
 **Discord contact:** `chrono.trigger`
 
 > [!NOTE]
+> **Platform-preview branch:** Experimental Linux x64, macOS Apple Silicon/Intel and Android ARM64/x64 builds are kept separate from Windows dev.33. They share the game core and settings/Story Shuffle code, with portable desktop and touch launchers. See [desktop preview downloads](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.1), [Android preview.2](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.2), [setup and coverage limits](docs/PORTABILITY.md) and [short platform tests](docs/PLATFORM-TESTING.md). New-platform gameplay still needs community testing; the stable Windows release and installation remain unchanged.
+
+> [!NOTE]
 > **Feature-frozen; community testing and focused bug-fix maintenance.** The dev.32 feature freeze remains in place, with the explicitly requested dev.33 display update. [Scope and coverage](MAINTENANCE.md) · [Short testing guide](docs/COMMUNITY-TESTING.md) · [Report a bug](https://github.com/rages4calm/earthbound-companion/issues/new?template=bug-report.yml). Another full playthrough is not required.
 
 > [!WARNING]

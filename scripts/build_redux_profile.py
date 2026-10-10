@@ -113,10 +113,14 @@ def main(argv=None) -> None:
             raise RuntimeError("Expanded PSI base differs from the audited input.")
         compiled = work / "compiled-redux.sfc"
         compile_args=["compile", str(work / "Project"), str(base), str(compiled), "--ccscript-offset", "F31000"]
-        run("compile-redux", worker("compile", compile_args, [str(paths["coilsnake_python"]), "-X", "utf8", "-c",
-            "from coilsnake.ui.cli import main;main()", "compile", str(work / "Project"),
-            str(base), str(compiled), "--ccscript-offset", "F31000"]))
-        if sha(compiled) != bridge["roms"]["compiled"]["sha256"].upper():
+        run("compile-redux", worker("compile", compile_args, [str(paths["coilsnake_python"]), "-X", "utf8",
+            str(scripts / "redux_compile_order.py"), *compile_args]))
+        compiled_hash = sha(compiled)
+        if compiled_hash != bridge["roms"]["compiled"]["sha256"].upper():
+            # Metadata only; never ask a tester to upload a generated ROM.
+            (stage / "compiler-identity.json").write_text(json.dumps({
+                "expectedSha256": bridge["roms"]["compiled"]["sha256"].upper(),
+                "actualSha256": compiled_hash}, indent=2), encoding="utf-8")
             raise RuntimeError("Compiler output differs from the audited Redux ROM. Conversion was stopped.")
         dialogue = work / "dialogue"
         common = ["--bridge", str(paths["bridge"]), "--project", str(work / "Project"),

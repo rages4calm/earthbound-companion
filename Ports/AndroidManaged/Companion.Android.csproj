@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup>
+  <TargetFramework>net10.0-android</TargetFramework><OutputType>Exe</OutputType><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
+  <SupportedOSPlatformVersion>26.0</SupportedOSPlatformVersion><ApplicationId>org.earthbound.companion.preview</ApplicationId>
+  <ApplicationVersion>2</ApplicationVersion><ApplicationDisplayVersion>0.5.0-ports-preview.2</ApplicationDisplayVersion><ApplicationTitle>EarthBound Companion Preview</ApplicationTitle>
+  <AssemblyName>EarthBoundCompanion.Android</AssemblyName><AndroidPackageFormats>apk</AndroidPackageFormats>
+  <RuntimeIdentifiers Condition="'$(RuntimeIdentifier)'==''">android-arm64;android-x64</RuntimeIdentifiers>
+  <RuntimeIdentifiers Condition="'$(RuntimeIdentifier)'!=''">$(RuntimeIdentifier)</RuntimeIdentifiers>
+  <!-- Shared desktop serializers use reflection; retain those members in previews. -->
+  <PublishTrimmed>false</PublishTrimmed><RunAOTCompilation>false</RunAOTCompilation><JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
+  <SdlSource Condition="'$(SdlSource)'==''">../../build/dependencies/SDL-5d249570393f7a37e037abf22cd6012a4cc56a71</SdlSource>
+ </PropertyGroup>
+ <ItemGroup>
+  <ProjectReference Include="../UI/Companion.Portable.UI.csproj" />
+  <PackageReference Include="Avalonia.Android" Version="11.3.22" />
+  <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.22" />
+  <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.22" />
+  <AndroidJavaSource Update="Java/*.java" Bind="false" />
+  <AndroidNativeLibrary Remove="native-libs/**/*.so" />
+  <AndroidNativeLibrary Include="native-libs/arm64-v8a/*.so" Abi="arm64-v8a" Condition="'$(RuntimeIdentifier)'=='android-arm64'" />
+  <AndroidNativeLibrary Include="native-libs/x86_64/*.so" Abi="x86_64" Condition="'$(RuntimeIdentifier)'=='android-x64'" />
+  <AndroidAsset Include="../../Licenses/**/*" Link="Licenses/%(RecursiveDir)%(Filename)%(Extension)" />
+  <AndroidAsset Include="../../docs/PORTABILITY.md;../../docs/PLATFORM-TESTING.md;../../LICENSE.md;../../CREDITS.md;../../UPSTREAM.md" Link="Notices/%(Filename)%(Extension)" />
+ </ItemGroup>
+</Project>

@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 from pathlib import Path, PurePosixPath
+import ssl
 import sys
 import tempfile
 import urllib.request
@@ -15,14 +16,39 @@ import zipfile
 from build_redux_profile import main as build_profile, REDUX_REVISION, REDUX_ARCHIVE_SHA256, USA_SHA256
 
 
+def source_download_context():
+    # A frozen Python can retain its build machine's OpenSSL CA paths, which
+    # need not exist on the player's Linux/macOS system. Keep system trust
+    # (including locally installed roots), and add the packaged public roots.
+    import certifi
+    context = ssl.create_default_context()
+    context.load_verify_locations(cafile=certifi.where())
+    return context
+
+
+def download_source(archive):
+    print(json.dumps({"stage":"download-source","status":"running"}),flush=True)
+    request=urllib.request.Request(
+        f"https://codeload.github.com/ShadowOne333/MaternalBound-Redux/zip/{REDUX_REVISION}",
+        headers={"User-Agent":"EarthBound-Companion-Redux-Setup"})
+    with urllib.request.urlopen(request,timeout=60,context=source_download_context()) as response, archive.open("wb") as output:
+        total=0
+        while chunk:=response.read(262144):
+            total+=len(chunk)
+            if total>30_000_000:raise ValueError("Redux source archive exceeds its expected size.")
+            output.write(chunk)
+    if hashlib.sha256(archive.read_bytes()).hexdigest().upper()!=REDUX_ARCHIVE_SHA256:
+        raise ValueError("Redux source download failed its checksum. No profile was installed.")
+
+
 def run_worker(name, arguments):
     sys.argv=[name,*arguments]
     if name == "expand":
         from coilsnake.model.common.blocks import Rom
         rom=Rom();rom.from_file(arguments[0]);rom.expand(0x600000);rom.to_file(arguments[0])
     elif name == "compile":
-        from coilsnake.ui.cli import main
-        main()
+        from redux_compile_order import compile_cli
+        compile_cli()
     elif name == "dialogue":
         from maternalbound_dialogue import main
         main()
@@ -37,6 +63,16 @@ def run_worker(name, arguments):
 
 
 def main():
+    if sys.argv[1:]==["--selftest-compiler-order"]:
+        from redux_compile_order import compiler_order_selftest
+        print(json.dumps(compiler_order_selftest()),flush=True)
+        return
+    if sys.argv[1:]==["--selftest-source-download"]:
+        # ROM-free check of the actual packaged HTTPS path and pinned archive.
+        with tempfile.TemporaryDirectory(prefix="redux-download-selftest-") as temporary:
+            download_source(Path(temporary)/"source.zip")
+        print(json.dumps({"stage":"download-source","status":"passed"}),flush=True)
+        return
     if len(sys.argv)>2 and sys.argv[1]=="--worker":
         run_worker(sys.argv[2],sys.argv[3:]);return
     parser=argparse.ArgumentParser(description=__doc__)
@@ -63,16 +99,7 @@ def main():
         work=Path(temporary);archive=args.source_archive
         if archive is None:
             archive=work/"source.zip"
-            print(json.dumps({"stage":"download-source","status":"running"}),flush=True)
-            request=urllib.request.Request(
-                f"https://codeload.github.com/ShadowOne333/MaternalBound-Redux/zip/{REDUX_REVISION}",
-                headers={"User-Agent":"EarthBound-Companion-Redux-Setup"})
-            with urllib.request.urlopen(request,timeout=60) as response, archive.open("wb") as output:
-                total=0
-                while chunk:=response.read(262144):
-                    total+=len(chunk)
-                    if total>30_000_000:raise ValueError("Redux source archive exceeds its expected size.")
-                    output.write(chunk)
+            download_source(archive)
         if hashlib.sha256(archive.read_bytes()).hexdigest().upper()!=REDUX_ARCHIVE_SHA256:
             raise ValueError("Redux source download failed its checksum. No profile was installed.")
         source=work/"source";source.mkdir()
