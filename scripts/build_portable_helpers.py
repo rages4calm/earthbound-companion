@@ -28,6 +28,8 @@ def main():
     clone('https://github.com/pk-hack/CCScriptWriter.git','f7e290a68f99511b96dbc704eda6b21edc161faa',writer)
     run('git','-C',str(ccc),'apply','--check',str(repo/'patches/ccscript-cxx17.patch'))
     run('git','-C',str(ccc),'apply',str(repo/'patches/ccscript-cxx17.patch'))
+    run('git','-C',str(ccc),'apply','--check',str(repo/'patches/ccscript-module-order.patch'))
+    run('git','-C',str(ccc),'apply',str(repo/'patches/ccscript-module-order.patch'))
     run(sys.executable,'-m','pip','install','setuptools','setuptools-scm','Pillow','PyYAML','pyinstaller','certifi')
     run(sys.executable,'-m','pip','install','--no-deps',str(ccc),str(writer),str(cs))
     run(sys.executable,'-m','pip','install',str(repo/'native-source'))

@@ -10,7 +10,8 @@ root=script_root.parent
 native=root/'native-source'
 data=[(str(native/'earthbound.yml'),'native-source'),
       (str(native/'commondefs.yml'),'native-source'),
-      (str(root/'research/maternalbound-native-bridge.json'),'research')]
+      (str(root/'research/maternalbound-native-bridge.json'),'research'),
+      (str(root/'research/redux-module-order.txt'),'research')]
 for relative in ('src/data/event_script_data.h','src/data/text_refs.h','src/data/runtime_generated/asset_ids.h','src/include/constants.h'):
     path=native/relative
     data.append((str(path),str(Path('native-source')/Path(relative).parent)))

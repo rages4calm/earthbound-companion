@@ -47,8 +47,8 @@ def run_worker(name, arguments):
         from coilsnake.model.common.blocks import Rom
         rom=Rom();rom.from_file(arguments[0]);rom.expand(0x600000);rom.to_file(arguments[0])
     elif name == "compile":
-        from coilsnake.ui.cli import main
-        main()
+        from redux_compile_order import compile_cli
+        compile_cli()
     elif name == "dialogue":
         from maternalbound_dialogue import main
         main()
@@ -63,6 +63,10 @@ def run_worker(name, arguments):
 
 
 def main():
+    if sys.argv[1:]==["--selftest-compiler-order"]:
+        from redux_compile_order import compiler_order_selftest
+        print(json.dumps(compiler_order_selftest()),flush=True)
+        return
     if sys.argv[1:]==["--selftest-source-download"]:
         # ROM-free check of the actual packaged HTTPS path and pinned archive.
         with tempfile.TemporaryDirectory(prefix="redux-download-selftest-") as temporary:

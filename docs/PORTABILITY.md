@@ -20,13 +20,15 @@ The Linux binary is built on Ubuntu 24.04 and requires glibc 2.38 or newer, a de
 
 Privately prepared packs come from `Game/assets.pak` for Original and `Profiles/maternalbound-redux-897d0083/assets.pak` for Redux. Import both if you want Redux's optional Original title presentation. Do not post ROMs or generated packs publicly.
 
+The Redux helper includes public HTTPS trust roots and compiles CCScript inputs in a fixed order. Source, base ROM and compiled ROM checksums remain mandatory. If compilation finishes but fails the audited ROM check, the failed `.partial` profile now includes `compiler-identity.json` with expected and actual checksums. Share that text and `compile-redux.log` when reporting a setup failure; keep `work/compiled-redux.sfc` private. See [the compiler-order investigation](../research/redux-compiler-order-20261009.md) for the focused checks and remaining limits.
+
 Desktop preview data is stored in `EarthBoundCompanionPreview` beneath the operating system's local application data directory. The launcher displays its exact path. Executables stay in the extracted package while saves, settings and content profiles stay in the private data folder. The Settings shortcut pauses the game and activates the launcher; **Save settings / return to game** applies changes and resumes.
 
 ## Android setup
 
 Install the ARM64 APK on a compatible Android 8.0+ device. The x64 APK is supplied for emulator testing. The preview application ID is `org.earthbound.companion.preview`. APK updates use a persistent project signing key.
 
-Use [Android preview.2](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.2), which explicitly preserves the launcher activity during orientation and screen changes. Desktop packages remain in [preview.1](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.1). The Android update keeps the same application ID and signing key so it can be installed over preview.1.
+Use [Android preview.2](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.2), which explicitly preserves the launcher activity during orientation and screen changes. Desktop previews are listed on the [releases page](https://github.com/rages4calm/earthbound-companion/releases). The Android update keeps the same application ID and signing key so it can be installed over preview.1.
 
 1. Transfer your privately prepared Original or supported Redux pack to your device.
 2. In **Game & setup**, import the matching `assets.pak`, select the edition and press **Play**.
