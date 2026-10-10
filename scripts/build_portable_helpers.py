@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Build platform-local private-ROM conversion helpers from pinned tools."""
 import argparse
+import importlib.metadata
 from pathlib import Path
 import shutil
 import subprocess
@@ -27,7 +28,7 @@ def main():
     clone('https://github.com/pk-hack/CCScriptWriter.git','f7e290a68f99511b96dbc704eda6b21edc161faa',writer)
     run('git','-C',str(ccc),'apply','--check',str(repo/'patches/ccscript-cxx17.patch'))
     run('git','-C',str(ccc),'apply',str(repo/'patches/ccscript-cxx17.patch'))
-    run(sys.executable,'-m','pip','install','setuptools','setuptools-scm','Pillow','PyYAML','pyinstaller')
+    run(sys.executable,'-m','pip','install','setuptools','setuptools-scm','Pillow','PyYAML','pyinstaller','certifi')
     run(sys.executable,'-m','pip','install','--no-deps',str(ccc),str(writer),str(cs))
     run(sys.executable,'-m','pip','install',str(repo/'native-source'))
     run('pyinstaller','--noconfirm',str(repo/'scripts/redux_setup.spec'),cwd=repo)
@@ -36,6 +37,11 @@ def main():
     shutil.copy2(repo/'dist'/('redux-setup'+suffix),output/('redux-setup'+suffix))
     run(str(output/('redux-setup'+suffix)),'--help')
     notices=output/'Licenses';notices.mkdir(exist_ok=True)
+    certifi=importlib.metadata.distribution('certifi')
+    certifi_licenses=[file for file in certifi.files or [] if file.name.upper() in ('LICENSE','LICENSE.TXT')]
+    if not certifi_licenses:raise ValueError('Missing Certifi license')
+    for file in certifi_licenses:
+        shutil.copy2(certifi.locate_file(file),notices/('Certifi-'+file.name))
     for name,tool in [('CoilSnake',cs),('CCScript',ccc),('CCScriptWriter',writer)]:
         found=False
         for file in tool.iterdir():

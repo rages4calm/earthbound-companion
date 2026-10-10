@@ -54,3 +54,10 @@ The Windows launcher is compiled as a guard. Local tests additionally use copies
 `scripts/prepare_port_sources.py` prepares a fresh pinned native checkout and a SHA-256-checked SDL 2.32.10 archive. It refuses to reset an existing source folder. Apply `patches/native-portable.patch` after the dev.33 `native-companion.patch`. For the Android launcher, copy the verified SDL archive's `android-project/app/src/main/java/org/libsdl/app/*.java` into `Ports/AndroidManaged/Java` before publishing; those generated bridge files are intentionally ignored by Git. `.github/workflows/platform-preview.yml` builds previews without ROMs, generated packs, music or personal saves, using standard public-repository runners.
 
 Portable code retains its SPDX notices; the repository's license scopes and existing upstream notices still apply. SDL is zlib, Avalonia is MIT, Inter is OFL, and LakeSnes/SkiaSharp/HarfBuzz notices accompany packages. Pinned legacy CCScript and CCScriptWriter do not supply standalone license declarations; the helper retains their source provenance, package metadata and the bundled filesystem notice without inventing licenses.
+
+The desktop Redux source-download helper includes Certifi's public CA bundle
+and its MPL-2.0 notice, supplementing system trust while keeping TLS certificate
+and hostname verification enabled. `redux-setup --selftest-source-download`
+checks the HTTPS path and pinned source checksum without a ROM. This certificate
+packaging repair is on the preview branch; existing preview.1 downloads do not
+include it. See [the focused report](../research/redux-linux-download-tls-20261009.md).

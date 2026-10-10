@@ -80,6 +80,12 @@ jobs:
           fi
       - name: Build native Redux conversion helper
         run: python scripts/build_portable_helpers.py --work build/helper-tools --output build/package/Game
+      - name: Verify packaged Redux HTTPS download without build-machine CA paths
+        shell: bash
+        run: |
+          python -m pip install cryptography
+          python -m unittest discover -s scripts -p test_redux_download_tls.py -v
+          SSL_CERT_FILE="$RUNNER_TEMP/missing-ca.pem" SSL_CERT_DIR="$RUNNER_TEMP/missing-ca-dir" build/package/Game/redux-setup --selftest-source-download
       - name: Package preview
         shell: bash
         run: |

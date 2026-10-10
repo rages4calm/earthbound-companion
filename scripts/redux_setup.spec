@@ -18,7 +18,9 @@ for folder in ('src/game','src/entity','src/intro'):
     for path in (native/folder).glob('*.c'):
         data.append((str(path),str(Path('native-source')/folder)))
 data += collect_data_files('coilsnake',excludes=['assets/bin/**','assets/images/**'])
+data += collect_data_files('certifi')
 hidden=collect_submodules('coilsnake',filter=lambda name:'.ui.gui' not in name)
+hidden+=collect_submodules('certifi')
 hidden+=collect_submodules('ebtools.config')+collect_submodules('ebtools.text_dsl')
 # Editable PEP 660 import finders are invisible to PyInstaller's static
 # module graph. Supply the actual source parent as well as hidden imports.
