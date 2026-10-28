@@ -93,6 +93,7 @@ sealed partial class MainForm : Form {
   ("Packs & save backups","Import or export settings profiles, choose compatible native asset packs and back up or restore saves."),
   ("Local progress","View starter achievements and turn tracking on or off for the next game session.")];
  public MainForm(string[] args){
+  SuspendLayout();
   AppIcon.Apply(this);
   AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;
   Text="EarthBound Companion";Font=Theme.Font();BackColor=Theme.Canvas;ForeColor=Theme.Ink;ClientSize=new Size(1120,800);MinimumSize=new Size(600,400);StartPosition=FormStartPosition.CenterScreen;
@@ -112,6 +113,7 @@ sealed partial class MainForm : Form {
   int capture=Array.IndexOf(args,"--capture");if(capture>=0&&capture+1<args.Length){captureMode=true;captureDir=Path.GetFullPath(args[capture+1]);Directory.CreateDirectory(captureDir);}
   int capturePy=Array.IndexOf(args,"--capture-python"),captureScript=Array.IndexOf(args,"--capture-helper");if(capturePy>=0&&capturePy+1<args.Length)capturePython=Path.GetFullPath(args[capturePy+1]);if(captureScript>=0&&captureScript+1<args.Length)captureHelper=Path.GetFullPath(args[captureScript+1]);
   Shown+=(_,_)=>{if(!captureMode&&!args.Contains("--layout-check")&&!SetupService.DataReady){if(File.Exists(Path.Combine(Settings.BaseGame,"redux-setup.exe")))OpenReduxSetup();else OpenSetup(false);}};
+  ResumeLayout(true);
  }
  void ResizePage(){
   int w=Math.Max(200,page.ClientSize.Width-page.Padding.Horizontal-SystemInformation.VerticalScrollBarWidth-4);

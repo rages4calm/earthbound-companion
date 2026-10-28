@@ -9,6 +9,7 @@ sealed class SetupForm : Form {
  readonly bool repairOriginal;
  public bool Completed{get;private set;}
  public SetupForm(bool soundtrackOnly=false,bool reduxDevelopment=false) {
+  SuspendLayout();
   AppIcon.Apply(this);
   this.soundtrackOnly=soundtrackOnly;
   redux=reduxDevelopment;
