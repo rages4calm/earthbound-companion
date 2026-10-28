@@ -13,15 +13,19 @@ sealed class SetupForm : Form {
   this.soundtrackOnly=soundtrackOnly;
   redux=reduxDevelopment;
   repairOriginal=!soundtrackOnly&&SetupService.OriginalMovementUpdateNeeded;
-  Text="Set up EarthBound Companion";ClientSize=new Size(650,410);MinimumSize=MaximumSize=Size;FormBorderStyle=FormBorderStyle.FixedDialog;MaximizeBox=false;MinimizeBox=false;StartPosition=FormStartPosition.CenterParent;BackColor=Theme.Canvas;ForeColor=Theme.Ink;Font=Theme.Font();
-  var panel=new FlowLayoutPanel(){Dock=DockStyle.Fill,FlowDirection=FlowDirection.TopDown,WrapContents=false,Padding=new Padding(28)};Controls.Add(panel);
+  AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;
+  Text="Set up EarthBound Companion";ClientSize=new Size(680,480);MinimumSize=new Size(540,360);FormBorderStyle=FormBorderStyle.Sizable;MaximizeBox=true;MinimizeBox=false;StartPosition=FormStartPosition.CenterParent;BackColor=Theme.Canvas;ForeColor=Theme.Ink;Font=Theme.Font();
+  var panel=new FlowLayoutPanel(){Dock=DockStyle.Fill,AutoScroll=true,FlowDirection=FlowDirection.TopDown,WrapContents=false,Padding=new Padding(28)};Controls.Add(panel);
   var title=Theme.Text(redux?"Build MaternalBound Redux":soundtrackOnly?"Complete the soundtrack":repairOriginal?"Update Original game data":"Bring your own game",22);title.Font=Theme.Font(22,FontStyle.Bold);panel.Controls.Add(title);
   panel.Controls.Add(Theme.Text(redux?"Uses your clean USA ROM to build MaternalBound Redux locally. Original and Redux keep separate saves.":soundtrackOnly?"Companion will verify every MSU track and download only what is missing.":"Your ROM is read once to build the native data files. It is never changed or uploaded.",11,Theme.Muted));
   rom.Width=575;rom.Height=31;rom.BackColor=Theme.Surface;rom.ForeColor=Theme.Ink;rom.Text=SetupService.DataReady&&!redux&&!repairOriginal?"Native game data is ready":"No ROM selected";panel.Controls.Add(rom);
   choose=Theme.Button("Choose EarthBound ROM",Choose);choose.Width=250;choose.Visible=redux||((!SetupService.DataReady||repairOriginal)&&!soundtrackOnly);panel.Controls.Add(choose);
   soundtrack.ForeColor=Theme.Ink;soundtrack.Margin=new Padding(0,8,0,8);soundtrack.Visible=!soundtrackOnly;panel.Controls.Add(soundtrack);
-  bar.Width=575;bar.Height=22;bar.Visible=false;panel.Controls.Add(bar);status.Width=575;status.AutoSize=false;status.Height=48;panel.Controls.Add(status);
-  var actions=new FlowLayoutPanel(){Width=575,Height=60,FlowDirection=FlowDirection.LeftToRight};start=Theme.Button(redux?(ReduxProfileService.UpdateNeeded?"Update Redux game data":"Build MaternalBound Redux"):soundtrackOnly?"Verify / install soundtrack":repairOriginal?"Update game data":"Build my PC edition",Begin,true);cancel=Theme.Button("Cancel",CancelSetup);start.Enabled=!redux&&((SetupService.DataReady&&!repairOriginal)||soundtrackOnly);actions.Controls.Add(start);actions.Controls.Add(cancel);panel.Controls.Add(actions);
+  bar.Width=575;bar.Height=22;bar.Visible=false;panel.Controls.Add(bar);status.Width=575;status.AutoSize=true;status.MinimumSize=new Size(0,48);panel.Controls.Add(status);
+  var actions=new FlowLayoutPanel(){Dock=DockStyle.Bottom,AutoSize=false,Height=82,WrapContents=true,Padding=new Padding(28,8,28,12),FlowDirection=FlowDirection.LeftToRight};start=Theme.Button(redux?(ReduxProfileService.UpdateNeeded?"Update Redux game data":"Build MaternalBound Redux"):soundtrackOnly?"Verify / install soundtrack":repairOriginal?"Update game data":"Build my PC edition",Begin,true);cancel=Theme.Button("Cancel",CancelSetup);start.Enabled=!redux&&((SetupService.DataReady&&!repairOriginal)||soundtrackOnly);actions.Controls.Add(start);actions.Controls.Add(cancel);Controls.Add(actions);panel.BringToFront();
+  actions.Layout+=(_,_)=>{int height=actions.GetPreferredSize(new Size(actions.ClientSize.Width,0)).Height;if(actions.Height!=height)actions.Height=height;};
+  void Fit(){int width=Math.Max(160,panel.ClientSize.Width-panel.Padding.Horizontal-SystemInformation.VerticalScrollBarWidth-4);foreach(Control c in panel.Controls)ResponsiveLayout.Fit(c,width);}
+  panel.SizeChanged+=(_,_)=>Fit();Shown+=(_,_)=>{ResponsiveLayout.KeepOnScreen(this);Fit();};
  }
  void Choose(){using var d=new OpenFileDialog(){Title="Choose your EarthBound (USA) ROM",Filter="SNES ROM (*.sfc;*.smc)|*.sfc;*.smc|All files (*.*)|*.*"};if(d.ShowDialog(this)!=DialogResult.OK)return;rom.Text=d.FileName;start.Enabled=true;}
  async void Begin(){

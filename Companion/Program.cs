@@ -6,6 +6,7 @@ namespace EarthBoundCompanion;
 static class Program {
  [STAThread]static void Main(string[] args){
   ApplicationConfiguration.Initialize();
+  int layoutTest=Array.IndexOf(args,"--layout-test");if(layoutTest>=0){try{LauncherLayoutTests.Run(args[layoutTest+1]);}catch(Exception e){File.WriteAllText(Path.Combine(args[layoutTest+1],"failure.txt"),e.ToString());Environment.ExitCode=1;}return;}
   int dataRoot=Array.IndexOf(args,"--data-root");if(dataRoot>=0){if(dataRoot+1>=args.Length)throw new ArgumentException("Supply an isolated data directory.");Settings.OverrideRoot=Path.GetFullPath(args[dataRoot+1]);}
   int originalSetupTest=Array.IndexOf(args,"--original-setup-state-test");if(originalSetupTest>=0){try{if(originalSetupTest+3>=args.Length)throw new ArgumentException("Supply legacy/current Original packs and a fresh test directory.");OriginalSetupStateTests.Run(args[originalSetupTest+1],args[originalSetupTest+2],args[originalSetupTest+3]);}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
   int upgradeTest=Array.IndexOf(args,"--redux-upgrade-test");if(upgradeTest>=0){try{if(upgradeTest+5>=args.Length)throw new ArgumentException("Supply previous/current packs, an actual F6 checkpoint, a phone save and a fresh test directory.");ReduxUpgradeTests.Run(args[upgradeTest+1],args[upgradeTest+2],args[upgradeTest+3],args[upgradeTest+4],args[upgradeTest+5]);}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
@@ -40,7 +41,7 @@ static class Theme {
  public static Color Canvas=Color.FromArgb(26,24,42),Rail=Color.FromArgb(18,16,31),Surface=Color.FromArgb(42,38,62),Ink=Color.FromArgb(247,243,255),Muted=Color.FromArgb(194,182,216),Line=Color.FromArgb(80,72,104),Gold=Color.FromArgb(250,216,112),Green=Color.FromArgb(158,219,179),Error=Color.FromArgb(255,166,162);
  public static Font Font(float size=11,FontStyle style=FontStyle.Regular)=>new("Segoe UI",size,style);
  public static Label Text(string text,float size=11,Color? color=null)=>new(){Text=text,AutoSize=true,Font=Font(size),ForeColor=color??Ink,Margin=new Padding(0,0,0,8),MaximumSize=new Size(730,0)};
- public static Button Button(string text,Action click,bool primary=false){var b=new ActionButton(){Text=text,UseMnemonic=false,AutoSize=false,Size=new Size(190,44),FlatStyle=FlatStyle.Flat,BackColor=primary?Gold:Surface,ForeColor=primary?Rail:Ink,Font=Font(11,FontStyle.Bold),Cursor=Cursors.Hand,Margin=new Padding(0,4,12,8)};b.FlatAppearance.BorderColor=primary?Gold:Line;b.FlatAppearance.MouseOverBackColor=primary?Color.FromArgb(255,230,150):Color.FromArgb(63,55,89);b.Click+=(_,_)=>click();return b;}
+ public static Button Button(string text,Action click,bool primary=false){var b=new ActionButton(){Text=text,UseMnemonic=false,AutoSize=true,AutoSizeMode=AutoSizeMode.GrowAndShrink,MinimumSize=new Size(190,44),Padding=new Padding(12,6,12,6),Size=new Size(190,44),FlatStyle=FlatStyle.Flat,BackColor=primary?Gold:Surface,ForeColor=primary?Rail:Ink,Font=Font(11,FontStyle.Bold),Cursor=Cursors.Hand,Margin=new Padding(0,4,12,8)};b.FlatAppearance.BorderColor=primary?Gold:Line;b.FlatAppearance.MouseOverBackColor=primary?Color.FromArgb(255,230,150):Color.FromArgb(63,55,89);b.Click+=(_,_)=>click();return b;}
 }
 sealed class ActionButton : Button {
  protected override void OnPaint(PaintEventArgs e){base.OnPaint(e);bool hover=Enabled&&ClientRectangle.Contains(PointToClient(Cursor.Position));e.Graphics.Clear(hover?FlatAppearance.MouseOverBackColor:BackColor);using var pen=new Pen(FlatAppearance.BorderColor);e.Graphics.DrawRectangle(pen,0,0,Width-1,Height-1);TextRenderer.DrawText(e.Graphics,Text,Font,ClientRectangle,Enabled?ForeColor:Theme.Muted,TextFormatFlags.HorizontalCenter|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis|TextFormatFlags.NoPrefix);if(Focused)ControlPaint.DrawFocusRectangle(e.Graphics,new Rectangle(4,4,Width-8,Height-8),ForeColor,BackColor);}
@@ -53,8 +54,8 @@ sealed class NavigationButton : Button {
   e.Graphics.Clear(hover?FlatAppearance.MouseOverBackColor:BackColor);
   using var pen=new Pen(FlatAppearance.BorderColor);e.Graphics.DrawRectangle(pen,0,0,Width-1,Height-1);
   var flags=TextFormatFlags.Left|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis|TextFormatFlags.NoPrefix;
-  TextRenderer.DrawText(e.Graphics,Text,Font,new Rectangle(10,6,Width-20,23),ForeColor,flags);
-  TextRenderer.DrawText(e.Graphics,Description,descriptionFont,new Rectangle(10,29,Width-20,23),Theme.Muted,flags);
+  TextRenderer.DrawText(e.Graphics,Text,Font,new Rectangle(10,6,Width-20,TextRenderer.MeasureText("Ag",Font).Height),ForeColor,flags);
+  TextRenderer.DrawText(e.Graphics,Description,descriptionFont,new Rectangle(10,8+TextRenderer.MeasureText("Ag",Font).Height,Width-20,TextRenderer.MeasureText("Ag",descriptionFont).Height),Theme.Muted,flags);
   if(Focused)ControlPaint.DrawFocusRectangle(e.Graphics,new Rectangle(4,4,Width-8,Height-8),ForeColor,BackColor);
  }
  protected override void Dispose(bool disposing){if(disposing)descriptionFont.Dispose();base.Dispose(disposing);}
@@ -93,7 +94,8 @@ sealed partial class MainForm : Form {
   ("Local progress","View starter achievements and turn tracking on or off for the next game session.")];
  public MainForm(string[] args){
   AppIcon.Apply(this);
-  Text="EarthBound Companion";Font=Theme.Font();BackColor=Theme.Canvas;ForeColor=Theme.Ink;ClientSize=new Size(1120,800);MinimumSize=new Size(990,760);StartPosition=FormStartPosition.CenterScreen;
+  AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;
+  Text="EarthBound Companion";Font=Theme.Font();BackColor=Theme.Canvas;ForeColor=Theme.Ink;ClientSize=new Size(1120,800);MinimumSize=new Size(600,400);StartPosition=FormStartPosition.CenterScreen;
   if(args.Contains("--compact"))ClientSize=new Size(990,760);
   var layout=new TableLayoutPanel(){Dock=DockStyle.Fill,ColumnCount=2,RowCount=2};layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,210));layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,76));Controls.Add(layout);
   nav.Dock=DockStyle.Fill;nav.FlowDirection=FlowDirection.TopDown;nav.WrapContents=false;nav.AutoScroll=true;nav.BackColor=Theme.Rail;nav.Padding=new Padding(24,24,18,20);layout.Controls.Add(nav,0,0);layout.SetRowSpan(nav,2);
@@ -109,26 +111,29 @@ sealed partial class MainForm : Form {
   FormClosed+=(_,_)=>navigationHelp.Dispose();
   int capture=Array.IndexOf(args,"--capture");if(capture>=0&&capture+1<args.Length){captureMode=true;captureDir=Path.GetFullPath(args[capture+1]);Directory.CreateDirectory(captureDir);}
   int capturePy=Array.IndexOf(args,"--capture-python"),captureScript=Array.IndexOf(args,"--capture-helper");if(capturePy>=0&&capturePy+1<args.Length)capturePython=Path.GetFullPath(args[capturePy+1]);if(captureScript>=0&&captureScript+1<args.Length)captureHelper=Path.GetFullPath(args[captureScript+1]);
-  Shown+=(_,_)=>{if(!captureMode&&!SetupService.DataReady){if(File.Exists(Path.Combine(Settings.BaseGame,"redux-setup.exe")))OpenReduxSetup();else OpenSetup(false);}};
+  Shown+=(_,_)=>{if(!captureMode&&!args.Contains("--layout-check")&&!SetupService.DataReady){if(File.Exists(Path.Combine(Settings.BaseGame,"redux-setup.exe")))OpenReduxSetup();else OpenSetup(false);}};
  }
- void ResizePage(){int w=Math.Max(680,page.ClientSize.Width-page.Padding.Horizontal-22);foreach(Control c in page.Controls)if(c is not Label)c.Width=w;}
+ void ResizePage(){
+  int w=Math.Max(200,page.ClientSize.Width-page.Padding.Horizontal-SystemInformation.VerticalScrollBarWidth-4);
+  foreach(Control c in page.Controls)ResponsiveLayout.Fit(c,w);
+ }
  void Notify(string message,bool error=false){status.Text=message;status.ForeColor=error?Theme.Error:Theme.Muted;}
  void Header(string title,string text){var h=Theme.Text(title,25);h.Font=Theme.Font(25,FontStyle.Bold);h.Margin=new Padding(0,0,0,6);page.Controls.Add(h);page.Controls.Add(Theme.Text(text,11,Theme.Muted));page.Controls.Add(new Panel(){Height=12});}
  void Section(string text){var l=Theme.Text(text,13);l.Font=Theme.Font(13,FontStyle.Bold);l.Margin=new Padding(0,16,0,12);page.Controls.Add(l);}
- FlowLayoutPanel Actions(params Button[] buttons){var f=new FlowLayoutPanel(){Height=58,WrapContents=false,Margin=new Padding(0,6,0,12)};f.Controls.AddRange(buttons);page.Controls.Add(f);return f;}
+ FlowLayoutPanel Actions(params Button[] buttons){var f=new FlowLayoutPanel(){AutoSize=true,AutoSizeMode=AutoSizeMode.GrowAndShrink,WrapContents=true,Margin=new Padding(0,6,0,12)};f.Controls.AddRange(buttons);page.Controls.Add(f);return f;}
  void Row(string title,string help,Control input){
-  var row=new TableLayoutPanel(){Height=78,ColumnCount=2,RowCount=2,Margin=new Padding(0,0,0,8),Padding=new Padding(0,2,0,0)};row.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,64));row.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,36));row.RowStyles.Add(new RowStyle(SizeType.Absolute,28));row.RowStyles.Add(new RowStyle(SizeType.Percent,100));
-  var t=Theme.Text(title);t.Margin=new Padding(0);row.Controls.Add(t,0,0);var desc=Theme.Text(help,10,Theme.Muted);desc.MaximumSize=new Size(460,0);row.SizeChanged+=(_,_)=>desc.MaximumSize=new Size(Math.Max(200,(int)(row.ClientSize.Width*.64)-12),0);row.Controls.Add(desc,0,1);input.Dock=DockStyle.Top;input.Margin=new Padding(12,0,4,0);row.Controls.Add(input,1,0);row.SetRowSpan(input,2);page.Controls.Add(row);
+  var row=new TableLayoutPanel(){AutoSize=true,AutoSizeMode=AutoSizeMode.GrowAndShrink,MinimumSize=new Size(0,78),ColumnCount=2,RowCount=2,Margin=new Padding(0,0,0,8),Padding=new Padding(0,2,0,0)};row.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,64));row.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,36));row.RowStyles.Add(new RowStyle(SizeType.AutoSize));row.RowStyles.Add(new RowStyle(SizeType.Percent,100));
+  var t=Theme.Text(title);t.Margin=new Padding(0);row.Controls.Add(t,0,0);var desc=Theme.Text(help,10,Theme.Muted);desc.MaximumSize=new Size(460,0);row.Controls.Add(desc,0,1);input.Dock=DockStyle.Top;input.Margin=new Padding(12,0,4,0);row.Controls.Add(input,1,0);row.SetRowSpan(input,2);page.Controls.Add(row);
  }
  void Check(string title,string help,bool value,Action<bool> set){var c=new CheckBox(){Text="Enabled",Checked=value,AutoSize=true,ForeColor=Theme.Ink,Height=34,AccessibleName=title};c.CheckedChanged+=(_,_)=>set(c.Checked);Row(title,help,c);}
- void Choice(string title,string help,string[] labels,int value,Action<int> set){var c=new ComboBox(){DropDownStyle=ComboBoxStyle.DropDownList,DrawMode=DrawMode.OwnerDrawFixed,ItemHeight=24,BackColor=Theme.Surface,ForeColor=Theme.Ink,Font=Theme.Font(),AccessibleName=title};c.Items.AddRange(labels);c.DrawItem+=(_,e)=>{using var brush=new SolidBrush(Theme.Surface);e.Graphics.FillRectangle(brush,e.Bounds);if(e.Index>=0)TextRenderer.DrawText(e.Graphics,c.Items[e.Index]!.ToString(),c.Font,e.Bounds,(e.State&DrawItemState.Selected)!=0?Theme.Gold:Theme.Ink,TextFormatFlags.Left|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis);e.DrawFocusRectangle();};c.SelectedIndex=Math.Clamp(value,0,labels.Length-1);c.SelectedIndexChanged+=(_,_)=>set(c.SelectedIndex);Row(title,help,c);}
+ void Choice(string title,string help,string[] labels,int value,Action<int> set){var c=new DpiComboBox(){DropDownStyle=ComboBoxStyle.DropDownList,DrawMode=DrawMode.OwnerDrawFixed,ItemHeight=24,BackColor=Theme.Surface,ForeColor=Theme.Ink,Font=Theme.Font(),AccessibleName=title};c.Items.AddRange(labels);c.DrawItem+=(_,e)=>{using var brush=new SolidBrush(Theme.Surface);e.Graphics.FillRectangle(brush,e.Bounds);if(e.Index>=0)TextRenderer.DrawText(e.Graphics,c.Items[e.Index]!.ToString(),c.Font,e.Bounds,(e.State&DrawItemState.Selected)!=0?Theme.Gold:Theme.Ink,TextFormatFlags.Left|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis);e.DrawFocusRectangle();};c.SelectedIndex=Math.Clamp(value,0,labels.Length-1);c.SelectedIndexChanged+=(_,_)=>set(c.SelectedIndex);Row(title,help,c);}
  void Slider(string title,string help,int value,int max,Action<int> set){var panel=new Panel(){Height=60};var label=Theme.Text(value.ToString(),10,Theme.Gold);label.Dock=DockStyle.Right;label.Width=45;label.AutoSize=false;var bar=new TrackBar(){Minimum=0,Maximum=max,Value=Math.Clamp(value,0,max),TickStyle=TickStyle.None,Dock=DockStyle.Fill,SmallChange=1,LargeChange=5,AccessibleName=title};bar.ValueChanged+=(_,_)=>{set(bar.Value);label.Text=bar.Value.ToString();};panel.Controls.Add(bar);panel.Controls.Add(label);Row(title,help,panel);}
  void ShowPage(string name){
   current=name;page.SuspendLayout();foreach(Control c in page.Controls.Cast<Control>().ToArray())c.Dispose();page.Controls.Clear();page.AutoScrollPosition=Point.Empty;
   foreach(var (n,b) in navigation){b.BackColor=n==name?Theme.Surface:Theme.Rail;b.ForeColor=n==name?Theme.Gold:Theme.Muted;b.FlatAppearance.BorderColor=n==name?Theme.Line:Theme.Rail;}
   switch(name){case "Play":PlayPage();break;case "Randomizer":RandomizerPage();break;case "Game Mode":MaternalBoundPage();break;case "Display":DisplayPage();break;case "Audio":AudioPage();break;case "Gameplay":GameplayPage();break;case "Controls":ControlsPage();break;case "Achievements":AchievementsPage();break;default:ModsPage();break;}
   page.Controls.Add(new Panel {Height=32,Margin=Padding.Empty});
-  ResizePage();page.ResumeLayout();page.AutoScrollPosition=Point.Empty;
+  page.ResumeLayout();ResizePage();page.AutoScrollPosition=Point.Empty;
  }
  bool Running=>game!=null&&!game.HasExited;
  void PlayPage(){
@@ -200,7 +205,7 @@ sealed partial class MainForm : Form {
   Header("Your hands. Your controls.","Select a keyboard or controller binding, then press the input you want to use.");
   string[] actions=["Command menu / confirm","Cancel / status","Town map","Sprint","Talk / interact / confirm","Bicycle bell","Start / title confirm","Select / status","Move up","Move down","Move left","Move right","Fast-forward (controller: hold)","Quick save","Load quick save","Fullscreen","Pause","Screenshot","Show FPS","Open PC settings","Cycle field of view"];
   var grid=new DataGridView(){Height=400,BackgroundColor=Theme.Canvas,BorderStyle=BorderStyle.None,AllowUserToAddRows=false,AllowUserToDeleteRows=false,AllowUserToResizeRows=false,RowHeadersVisible=false,ReadOnly=true,AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill,SelectionMode=DataGridViewSelectionMode.CellSelect,MultiSelect=false,Font=Theme.Font(10),EnableHeadersVisualStyles=false,AccessibleName="Input bindings"};
-  grid.DefaultCellStyle.BackColor=Theme.Canvas;grid.DefaultCellStyle.ForeColor=Theme.Ink;grid.DefaultCellStyle.SelectionBackColor=Theme.Surface;grid.DefaultCellStyle.SelectionForeColor=Theme.Gold;grid.DefaultCellStyle.Padding=new Padding(7,4,7,4);grid.GridColor=Theme.Line;grid.RowTemplate.Height=32;
+  grid.DefaultCellStyle.BackColor=Theme.Canvas;grid.DefaultCellStyle.ForeColor=Theme.Ink;grid.DefaultCellStyle.SelectionBackColor=Theme.Surface;grid.DefaultCellStyle.SelectionForeColor=Theme.Gold;grid.DefaultCellStyle.Padding=new Padding(7,4,7,4);grid.GridColor=Theme.Line;grid.RowTemplate.Height=32;grid.AutoSizeRowsMode=DataGridViewAutoSizeRowsMode.AllCells;grid.ColumnHeadersHeightSizeMode=DataGridViewColumnHeadersHeightSizeMode.AutoSize;
   grid.ColumnHeadersDefaultCellStyle.BackColor=Theme.Rail;grid.ColumnHeadersDefaultCellStyle.ForeColor=Theme.Muted;grid.ColumnHeadersHeight=36;
   grid.Columns.Add("action","Action");grid.Columns.Add(new DataGridViewButtonColumn(){Name="key",HeaderText="Keyboard",FlatStyle=FlatStyle.Flat});grid.Columns.Add(new DataGridViewButtonColumn(){Name="pad",HeaderText="Controller",FlatStyle=FlatStyle.Flat});
   for(int i=0;i<actions.Length;i++)grid.Rows.Add(actions[i],Input.KeyName(settings.Keys[i]),Input.ButtonName(settings.Buttons[i]));

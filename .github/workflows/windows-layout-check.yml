@@ -1,0 +1,22 @@
+name: Windows launcher layout checks
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'Companion/Program.cs'
+      - 'Companion/SetupForm.cs'
+      - 'Companion/ResponsiveLayout.cs'
+      - 'Companion/LauncherLayoutTests.cs'
+      - '.github/workflows/windows-layout-check.yml'
+permissions:
+  contents: read
+jobs:
+  layout:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Check all pages and setup actions with enlarged geometry and text
+        run: dotnet run --project Companion/Companion.csproj -c Release -- --layout-test "${{ runner.temp }}/launcher-layout"

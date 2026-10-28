@@ -36,7 +36,7 @@ sealed partial class MainForm {
   var seeds=StoryShuffle.List();
   if(File.Exists(settings.Pak)){string hash=StoryShuffle.HashFile(settings.Pak);seeds=seeds.Where(seed=>seed.BaseHash.Equals(hash,StringComparison.OrdinalIgnoreCase)).ToArray();}
   if(seeds.Count>0) {
-   var list=new ComboBox {DropDownStyle=ComboBoxStyle.DropDownList,DrawMode=DrawMode.OwnerDrawFixed,ItemHeight=24,Font=Theme.Font(11),BackColor=Theme.Surface,ForeColor=Theme.Ink,AccessibleName="Saved randomizer seeds"};
+   var list=new DpiComboBox {DropDownStyle=ComboBoxStyle.DropDownList,DrawMode=DrawMode.OwnerDrawFixed,ItemHeight=24,Font=Theme.Font(11),BackColor=Theme.Surface,ForeColor=Theme.Ink,AccessibleName="Saved randomizer seeds"};
    list.DrawItem+=(_,e)=>{using var brush=new SolidBrush(Theme.Surface);e.Graphics.FillRectangle(brush,e.Bounds);if(e.Index>=0)TextRenderer.DrawText(e.Graphics,list.Items[e.Index]!.ToString(),list.Font,e.Bounds,(e.State&DrawItemState.Selected)!=0?Theme.Gold:Theme.Ink,TextFormatFlags.Left|TextFormatFlags.VerticalCenter|TextFormatFlags.EndEllipsis);e.DrawFocusRectangle();};
    list.Items.AddRange(seeds.Cast<object>().ToArray());int index=Array.FindIndex(seeds.ToArray(),s=>s.Id==selectedSeedId);list.SelectedIndex=index<0?0:index;
    var info=Theme.Text("",10,Theme.Muted);SeedRecord Selected()=>(SeedRecord)list.SelectedItem!;

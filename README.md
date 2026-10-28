@@ -8,7 +8,7 @@
 
 | Platform | Latest release | Package to choose |
 |---|---|---|
-| Windows x64 | [Companion 1.0.12](https://github.com/rages4calm/earthbound-companion/releases/latest) | Windows ZIP — official release |
+| Windows x64 | [Companion 1.0.13](https://github.com/rages4calm/earthbound-companion/releases/latest) | Windows ZIP — official release |
 | Linux x64 / SteamOS | [Platform preview.24](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.24) | `linux-x64` archive |
 | macOS Apple Silicon (ARM64) | [Platform preview.24](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.24) | `osx-arm64` archive |
 | macOS Intel (x64) | [Platform preview.24](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.24) | `osx-x64` archive |
@@ -27,7 +27,7 @@ Desktop and Android builds set up Original and Redux from your own clean USA ROM
 > **Community platform previews:** Linux x64/SteamOS, macOS Apple Silicon/Intel and Android ARM64/x64 share the native game core, settings, Story Shuffle and achievements. [Linux/macOS preview.24](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.24) · [Android preview.24](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.24) · [setup and coverage](docs/PORTABILITY.md). Android handheld users can hide the touch overlay in **Controls → Show touch controls**. New-platform gameplay still needs community testing.
 
 > [!NOTE]
-> **1.0.12 maintenance release — the supported feature set is complete.** Redux setup accepts normal linked home/data directories on SteamOS and Linux. Earlier fixes are retained. [Release notes](docs/RELEASE-1.0.12.md) · [Scope and coverage](MAINTENANCE.md) · [Report a bug](https://github.com/rages4calm/earthbound-companion/issues/new?template=bug-report.yml).
+> **1.0.13 maintenance release — the supported feature set is complete.** Windows launcher and setup layouts adapt to larger text and display scaling. Earlier fixes are retained. [Release notes](docs/RELEASE-1.0.13.md) · [Scope and coverage](MAINTENANCE.md) · [Report a bug](https://github.com/rages4calm/earthbound-companion/issues/new?template=bug-report.yml).
 
 > [!NOTE]
 > **Windows 1.0.6 / platform preview.18 fix battle color blending and per-layer distortion in both editions, plus Redux death/retry cinematic bars and escalator running poses.** It supports Original EarthBound and Companion's pinned native MaternalBound Redux adaptation. The owner completed Redux through the credits, with equipment/stat boosts for final testing; community testers also report completing both editions. The Redux input remains `897d0083`, rather than automatically following newer upstream changes. Exhaustive campaign parity, full randomized progression and every combat/music combination remain unverified. [Redux version and coverage](MATERNALBOUND-NATIVE.md).
