@@ -26,6 +26,7 @@ sealed class SetupForm : Form {
   actions.Layout+=(_,_)=>{int height=actions.GetPreferredSize(new Size(actions.ClientSize.Width,0)).Height;if(actions.Height!=height)actions.Height=height;};
   void Fit(){int width=Math.Max(160,panel.ClientSize.Width-panel.Padding.Horizontal-SystemInformation.VerticalScrollBarWidth-4);foreach(Control c in panel.Controls)ResponsiveLayout.Fit(c,width);}
   panel.SizeChanged+=(_,_)=>Fit();Shown+=(_,_)=>{ResponsiveLayout.KeepOnScreen(this);Fit();};
+  ResumeLayout(true);
  }
  void Choose(){using var d=new OpenFileDialog(){Title="Choose your EarthBound (USA) ROM",Filter="SNES ROM (*.sfc;*.smc)|*.sfc;*.smc|All files (*.*)|*.*"};if(d.ShowDialog(this)!=DialogResult.OK)return;rom.Text=d.FileName;start.Enabled=true;}
  async void Begin(){
