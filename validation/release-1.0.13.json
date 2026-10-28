@@ -1,0 +1,56 @@
+{
+  "sourceCommit": "b4dd289c64239efda520d064b664f9400ba86964",
+  "issue": "https://github.com/rages4calm/earthbound-companion/issues/8",
+  "nativeGameCodeChanged": false,
+  "gameBinariesUnchangedFrom": "1.0.12",
+  "freshWindowsPackage": {
+    "Bytes": 129227473,
+    "SHA256": "084873FD5805E284540E5BD78EB801AAC9C6F1BD16177EAC22EF70DE608C59A3",
+    "publicPayloadScanPassed": true,
+    "packagedLayoutPassed": true
+  },
+  "windowsPackageFile": "EarthBound-Companion-Windows-v1.0.13.zip",
+  "layoutChecks": {
+    "Passed": true,
+    "Method": "Geometry and text stress at 100/125/150/200 percent with isolated data; physical system DPI unchanged",
+    "Results": [
+      {
+        "Scale": 1,
+        "SystemDpi": 96,
+        "FontBefore": 11,
+        "FontAfter": 11,
+        "Pages": 9
+      },
+      {
+        "Scale": 1.25,
+        "SystemDpi": 96,
+        "FontBefore": 11,
+        "FontAfter": 11,
+        "Pages": 9
+      },
+      {
+        "Scale": 1.5,
+        "SystemDpi": 96,
+        "FontBefore": 11,
+        "FontAfter": 11,
+        "Pages": 9
+      },
+      {
+        "Scale": 2,
+        "SystemDpi": 96,
+        "FontBefore": 11,
+        "FontAfter": 11,
+        "Pages": 9
+      }
+    ]
+  },
+  "windowsLayoutCI": "https://github.com/rages4calm/earthbound-companion/actions/runs/40710696344",
+  "physicalMonitorDpiTransitionsTested": false,
+  "ownerInstallationsModified": false,
+  "fullPlaythroughVerified": false,
+  "platformPreviewUnchanged": "v0.5.0-ports-preview.24",
+  "publicationPending": false,
+  "nativeSHA256": "9a17ec821b7b64fee8f78f7d93440cfddf2644ceabc5fdf15f83402dca0bb3bf",
+  "publishedAndChecked": true,
+  "windowsLatest": "v1.0.13"
+}
