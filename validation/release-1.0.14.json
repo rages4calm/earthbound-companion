@@ -1,0 +1,117 @@
+{
+  "sourceCommit": "27fedd2ed2e514cb2a768ebb38b67a9f451367a0",
+  "nativeGameCodeChanged": false,
+  "gameBinariesUnchangedFrom": "1.0.13",
+  "freshWindowsPackage": {
+    "Bytes": 129231567,
+    "SHA256": "61A7DD36968A12B45AD13F5850EC9EA354CE3A283C2A98091BA3964FB67778A3",
+    "publicPayloadScanPassed": true,
+    "packagedLayoutPassed": true
+  },
+  "windowsPackageFile": "EarthBound-Companion-Windows-v1.0.14.zip",
+  "layoutChecks": {
+    "Passed": true,
+    "Method": "Geometry and text stress at 100/125/150/200 percent with isolated data; physical system DPI unchanged",
+    "Results": [
+      {
+        "Scale": 1,
+        "SystemDpi": 96,
+        "FontBefore": 11,
+        "FontAfter": 11,
+        "Pages": 9
+      },
+      {
+        "Scale": 1.25,
+        "SystemDpi": 96,
+        "FontBefore": 11,
+        "FontAfter": 11,
+        "Pages": 9
+      },
+      {
+        "Scale": 1.5,
+        "SystemDpi": 96,
+        "FontBefore": 11,
+        "FontAfter": 11,
+        "Pages": 9
+      },
+      {
+        "Scale": 2,
+        "SystemDpi": 96,
+        "FontBefore": 11,
+        "FontAfter": 11,
+        "Pages": 9
+      }
+    ]
+  },
+  "windowsLayoutCI": "https://github.com/rages4calm/earthbound-companion/actions/runs/40930065331",
+  "platformBuildRun": 40930115310,
+  "platformUploadRun": 40930492905,
+  "diagnosticChecks": [
+    "complete helper traceback",
+    "nested exceptions",
+    "platform/runtime/version metadata",
+    "local path redaction",
+    "stale log exclusion",
+    "unwritable UserData report retained in memory"
+  ],
+  "androidChanges": "Upper-left Start/Select; upper-right Save/Load/Fast/Settings; smaller visual utility buttons, >=48dp-high targets; movement/face controls unchanged",
+  "androidPhysicalDeviceTested": false,
+  "fullPlaythroughVerified": false,
+  "ownerInstallationsModified": false,
+  "publicationPending": false,
+  "androidOverlayFixture": {
+    "runtime": "Android emulator; isolated Java overlay harness with current production TouchControls and TouchStick, no game data",
+    "landscapePixels": [
+      [
+        1080,
+        600
+      ],
+      [
+        1600,
+        1000
+      ]
+    ],
+    "densityDpi": 240,
+    "centerClearBoth": true,
+    "screenshotsReviewed": true,
+    "startButtonPressReleaseBalanced": true,
+    "fullGameSessionTested": false
+  },
+  "platformAssets": [
+    {
+      "name": "EarthBound-Companion-osx-arm64-preview.tar.gz",
+      "size": 90329483,
+      "digest": "sha256:0c253af29b4fd62e5064d947e9850eb9128e83bc424dca2b9ad82a624766b2f2",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-arm64-preview.apk",
+      "size": 66620884,
+      "digest": "sha256:e901c66f96a6ebfa17d1a2370e8023847f37fc2c990083e7ede1413654481fa5",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-x64-preview.apk",
+      "size": 67657059,
+      "digest": "sha256:b49d7b035890840c2550aab8b0e8510747d7990d9db9b267b2c31db31516fec3",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-linux-x64-preview.tar.gz",
+      "size": 125279421,
+      "digest": "sha256:9372b2938a2493b2aa16b338b7ae4c762b67b6a253d26997413296de0f4baf29",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-osx-x64-preview.tar.gz",
+      "size": 95354707,
+      "digest": "sha256:e98f414b550c0fd8a5c6cab462787a3775c78297ffbc1d1a49614a234dac670d",
+      "serverDigestVerified": true
+    }
+  ],
+  "platformBuildPassed": true,
+  "platformUploadPassed": true,
+  "publishedAndChecked": true,
+  "windowsLatest": "v1.0.14",
+  "platformPreview": "v0.5.0-ports-preview.25"
+}

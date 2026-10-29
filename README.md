@@ -272,12 +272,13 @@ Historical v0.4.0 and Redux setup evidence covers extraction, pack comparison, c
 
 Issues and contributions should never attach ROMs, extracted asset packs, saves containing embedded game data, or soundtrack files. Documentation captures are labeled with their tested development scope.
 
+### Reporting setup errors
+
+If setup fails, choose **Save error report** (Windows setup dialog) or **Game & setup → Save setup error report** (Linux, macOS and Android). Attach the resulting `EarthBound-setup-report.txt` to your report. It includes the platform, launcher/runtime versions, setup progress and available helper tracebacks. Local home, installation and selected ROM paths are redacted; game files and saves are not attached. A copy is also saved as `UserData/setup-diagnostics.txt` when that folder is writable.
+
+
 ## Community
 
 [**R.A.I.D. — Retro AI Development**](https://discord.gg/Ad9BwSzctP) · a Discord for AI-assisted retro reverse-engineering, decomp & recomp.
 
 I post all my projects and updates there. Join to discuss the games, share your work, or follow what I’m working on next.
-
-### Reporting setup errors
-
-If setup fails, choose **Save error report** (Windows setup dialog) or **Game & setup → Save setup error report** (Linux, macOS and Android). Attach the resulting `EarthBound-setup-report.txt` to your report. It includes the platform, launcher/runtime versions, setup progress and available helper tracebacks. Local home, installation and selected ROM paths are redacted; game files and saves are not attached. A copy is also saved as `UserData/setup-diagnostics.txt` when that folder is writable.
