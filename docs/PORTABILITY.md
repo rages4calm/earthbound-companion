@@ -1,6 +1,6 @@
 # Linux, macOS and Android previews
 
-[Windows 1.0.13](https://github.com/rages4calm/earthbound-companion/releases/latest) is the official Windows release; preview.24 supplies the shared dialogue, battle-render and lifecycle fixes on Linux, macOS and Android. These are platform preview
+[Windows 1.0.14](https://github.com/rages4calm/earthbound-companion/releases/latest) is the official Windows release; preview.25 supplies the shared dialogue, battle-render and lifecycle fixes on Linux, macOS and Android. These are platform preview
 builds with the shared native game core and 46-achievement catalog. Windows retains its Windows Forms
 launcher, renderer and installation paths. Previews use separate platform data
 and never replace a Windows installation. [Achievements](ACHIEVEMENTS.md).
@@ -37,7 +37,7 @@ Desktop preview data is stored in `EarthBoundCompanionPreview` beneath the opera
 
 Install the ARM64 APK on a compatible Android 8.0+ device. The x64 APK is supplied for emulator testing. The preview application ID is `org.earthbound.companion.preview`. APK updates use a persistent project signing key.
 
-Use [Android preview.24](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.24) for Android and [platform preview.24](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.24) for Linux/macOS. Android retains the persistent application ID/signing key, so an APK update preserves existing app data.
+Use [Android preview.25](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.25) for Android and [platform preview.25](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.25) for Linux/macOS. Android retains the persistent application ID/signing key, so an APK update preserves existing app data.
 
 1. Put your clean EarthBound (USA) `.sfc` or `.smc` ROM on the device. Headered clean dumps are supported. Extract a ZIP first; do not apply a hack patch to the ROM.
 2. In **Game & setup**, choose **Set up Original from ROM** or **Set up Redux from ROM**, then select the ROM in Android's file picker. Original setup works offline. Redux downloads the pinned supported source files over verified HTTPS and builds them locally; it also prepares Original data if needed. Keep Companion open while setup runs. Once setup completes, the edition is selected automatically—press **Play**. A computer is not required. Existing packs can still be imported with the matching **Import … assets.pak** button.

@@ -8,6 +8,27 @@ Settings.OverrideRoot=root;
 Directory.CreateDirectory(Settings.BaseGame);
 Environment.SetEnvironmentVariable("COMPANION_ACHIEVEMENTS_DIR",Path.Combine(root,"Achievements"));
 void Require(bool condition,string message){if(!condition)throw new Exception(message);}
+// Synthetic support reports must retain real exceptions without attaching game data.
+Directory.CreateDirectory(Settings.User);
+string originalLog=Path.Combine(Settings.User,"original-setup.log");
+string reduxLog=Path.Combine(Settings.User,"redux-setup.log");
+File.WriteAllText(reduxLog,"STALE-REDUX-ERROR");
+string fakeRom=Path.Combine(root,"private-owner-rom.sfc");File.WriteAllText(fakeRom,"PRIVATE-ROM-CONTENT");
+var diagnostic=new SetupDiagnostics("Original",fakeRom);
+diagnostic.Progress("ROM","Building assets");
+File.WriteAllText(originalLog,"Traceback (most recent call last):\nPermissionError: "+fakeRom+"\n[PYI-11436:ERROR] Failed to execute script 'ebtools_setup_entry' due to unhandled exception!");
+diagnostic.Finish(new IOException("Synthetic failure at "+root,new UnauthorizedAccessException("Denied "+fakeRom)));
+Require(diagnostic.SavedPath!=null&&File.ReadAllText(diagnostic.SavedPath)==diagnostic.Report,"Automatic diagnostic report missing");
+Require(diagnostic.Report.Contains("PermissionError")&&diagnostic.Report.Contains("UnauthorizedAccessException")&&diagnostic.Report.Contains("PYI-11436")&&diagnostic.Report.Contains("Building assets"),"Useful traceback or progress lost");
+Require(!diagnostic.Report.Contains("STALE-REDUX-ERROR"),"Stale setup log leaked into new report");
+Require(!diagnostic.Report.Contains(root,StringComparison.OrdinalIgnoreCase)&&!diagnostic.Report.Contains(fakeRom,StringComparison.OrdinalIgnoreCase)&&!diagnostic.Report.Contains("PRIVATE-ROM-CONTENT"),"Report exposed local paths or ROM contents");
+// An unwritable UserData location must leave an in-memory report available to export.
+string blockedRoot=Path.Combine(root,"blocked-report");Directory.CreateDirectory(blockedRoot);File.WriteAllText(Path.Combine(blockedRoot,"UserData"),"block directory creation");
+Settings.OverrideRoot=blockedRoot;
+var blockedDiagnostic=new SetupDiagnostics("Original");blockedDiagnostic.Finish(new IOException("Synthetic write failure"));
+Require(blockedDiagnostic.SavedPath==null&&blockedDiagnostic.Report.Contains("Synthetic write failure"),"Report lost when log directory unwritable");
+Settings.OverrideRoot=root;
+Console.WriteLine("Setup reports preserve tracebacks, redact paths, exclude stale logs, and survive log-write failure.");
 // SteamOS/Linux may redirect home, XDG ancestors, or the app-data root.
 // Profile children must still be physical and must never reach an outside file.
 if(!OperatingSystem.IsWindows()) {

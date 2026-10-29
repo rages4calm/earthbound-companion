@@ -19,6 +19,15 @@ static class LauncherLayoutTests {
     foreach(Button button in Descendants(setup).OfType<Button>())
      if(button.Visible&&!setup.ClientRectangle.Contains(setup.RectangleToClient(button.RectangleToScreen(button.ClientRectangle))))
       throw new Exception("Setup action outside visible client area: "+button.Text);
+    string fakeRom=Path.Combine(output,"invalid-fixture.sfc");File.WriteAllText(fakeRom,"synthetic invalid ROM");
+    Descendants(setup).OfType<TextBox>().Single().Text=fakeRom;
+    SynchronizationContext.SetSynchronizationContext(new WindowsFormsSynchronizationContext());
+    Button build=actionButtons.First(b=>b.Text!="Cancel");build.Enabled=true;build.PerformClick();
+    Button export=Descendants(setup).OfType<Button>().Single(b=>b.Text=="Save error report…");
+    var deadline=DateTime.UtcNow.AddSeconds(5);
+    while(!export.Visible&&DateTime.UtcNow<deadline){Application.DoEvents();Thread.Sleep(10);}
+    if(!export.Visible||!File.ReadAllText(Path.Combine(Settings.User,"setup-diagnostics.txt")).Contains("wrong size"))throw new Exception("Setup failure did not produce an exportable report");
+    Application.DoEvents();Check(setup);Capture(setup,Path.Combine(output,$"setup-error-{(redux?"redux":"original")}-{scale*100:0}.png"));
     setup.Close();
    }
   }

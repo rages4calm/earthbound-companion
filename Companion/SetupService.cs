@@ -66,7 +66,19 @@ internal static class SetupService {
    using var stopped=cancel.Register(()=>{try{if(!process.HasExited)process.Kill(true);}catch(InvalidOperationException){}catch(System.ComponentModel.Win32Exception){}});
    var stdout=process.StandardOutput.ReadToEndAsync();var stderr=process.StandardError.ReadToEndAsync();
    await process.WaitForExitAsync();cancel.ThrowIfCancellationRequested();string output=(await stdout)+Environment.NewLine+(await stderr);
-   if(process.ExitCode!=0)throw new InvalidDataException("Game-data setup failed. "+output.Trim().Split('\n').LastOrDefault()?.Trim());
+   // PyInstaller appends a generic failure banner after the useful traceback.
+   // Keep both streams so support can diagnose the original exception.
+   string log=Path.Combine(Settings.User,"original-setup.log");
+   bool logged=false;
+   try {
+    Directory.CreateDirectory(Settings.User);
+    await File.WriteAllTextAsync(log,$"{DateTimeOffset.UtcNow:O}\nPlatform: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}\nHelper exit code: {process.ExitCode}\n{output}",cancel);
+    logged=true;
+   } catch(IOException){}catch(UnauthorizedAccessException){}
+   if(process.ExitCode!=0) {
+    string detail=output.Split('\n').Select(line=>line.Trim()).LastOrDefault(line=>line.Length!=0&&!line.StartsWith("[PYI-",StringComparison.Ordinal))??"The ROM setup helper stopped unexpectedly.";
+    throw new InvalidDataException("Game-data setup failed. "+detail+(logged?"\nFull details: "+log:""));
+   }
    if(!File.Exists(temp))throw new InvalidDataException("Game-data setup finished without creating an asset pack.");
    byte[] pack=await File.ReadAllBytesAsync(temp,cancel);ProgressionGuard.CheckBase(pack);
    File.Move(temp,target,true);

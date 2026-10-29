@@ -10,6 +10,7 @@ import android.graphics.PixelFormat;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,7 +21,6 @@ import android.view.WindowInsets;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import java.util.ArrayList;
 
 /** Android-only game HUD. Native action IDs and the launcher hide preference stay unchanged. */
@@ -67,17 +67,23 @@ public final class TouchControls extends FrameLayout {
   addAt(pad,button("A",0,true,true),center+spacing,top+spacing,face,face);
   addAt(pad,button("B",1,true,false),center,top+2*spacing,face,face);
 
-  LinearLayout toolbar=new LinearLayout(getContext());toolbar.setGravity(Gravity.CENTER);toolbar.setMotionEventSplittingEnabled(true);
-  String[] names={"Start","Select","Save","Load","Fast"};int[] ids={6,7,13,14,12},widths={72,80,64,64,64};
-  for(int i=0;i<names.length;i++){
-   LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(dp(widths[i]),dp(48));if(i>0)p.leftMargin=dp(8);
-   toolbar.addView(button(names[i],ids[i],false,false),p);
-  }
-  LayoutParams tp=new LayoutParams(-2,dp(48),Gravity.TOP|Gravity.CENTER_HORIZONTAL);addView(toolbar,tp);
+  // Keep the center clear for dialogue and battle menus. Two short edge groups
+  // also leave room for the stick and face buttons in landscape windows.
+  FrameLayout system=new FrameLayout(getContext());system.setMotionEventSplittingEnabled(true);
+  addView(system,new LayoutParams(dp(72),dp(104),Gravity.TOP|Gravity.LEFT));
+  addAt(system,utilityButton("Start",6),0,0,72,48);
+  addAt(system,utilityButton("Select",7),0,56,72,48);
+  FrameLayout tools=new FrameLayout(getContext());tools.setMotionEventSplittingEnabled(true);
+  addView(tools,new LayoutParams(dp(120),dp(104),Gravity.TOP|Gravity.RIGHT));
+  addAt(tools,utilityButton("Save",13),0,0,56,48);
+  addAt(tools,utilityButton("Load",14),0,56,56,48);
+  addAt(tools,utilityButton("Fast",12),64,56,56,48);
   ActionButton settings=button("",ACTION_SETTINGS,true,false);settings.setContentDescription("Settings");
   settings.setCompoundDrawablesWithIntrinsicBounds(null,new SettingsIcon(dp(22)),null,null);settings.setPadding(0,dp(13),0,0);
-  addView(settings,new LayoutParams(dp(48),dp(48),Gravity.TOP|Gravity.RIGHT));
+  settings.setBackground(new InsetDrawable(settings.getBackground(),dp(2)));
+  addAt(tools,settings,68,0,48,48);
  }
+ private ActionButton utilityButton(String label,int action){ActionButton b=button(label,action,false,false);b.setTextSize(13);b.setBackground(new InsetDrawable(b.getBackground(),dp(2)));return b;}
  private void addAt(FrameLayout parent,View child,int x,int y,int w,int h){LayoutParams p=new LayoutParams(dp(w),dp(h));p.leftMargin=dp(x);p.topMargin=dp(y);parent.addView(child,p);}
  private ActionButton button(String label,int action,boolean circle,boolean primary){ActionButton b=new ActionButton(getContext(),label,action,circle,primary);buttons.add(b);return b;}
  public void releaseAll(){if(stick!=null)stick.release();if(buttons!=null)for(ActionButton b:buttons)b.release();}

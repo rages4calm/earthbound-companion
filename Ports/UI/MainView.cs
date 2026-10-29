@@ -23,6 +23,7 @@ public sealed partial class MainView : UserControl {
  readonly List<Control> busyControls=[];
  readonly HashSet<string> ownedImports=[];
  bool busy;
+ string? setupReport;
  public MainView(Func<Settings,bool,SeedRecord?,Task>? mobileLaunch=null,Action? mobileReturn=null,Func<string,bool,IProgress<string>,Task>? mobileSetup=null) {
   this.mobileLaunch=mobileLaunch;
   this.mobileReturn=mobileReturn;
@@ -70,18 +71,23 @@ public sealed partial class MainView : UserControl {
   }else p.Children.Add(Text("Prepare the asset packs with Companion on a computer, then transfer them privately to your Android device."));
   p.Children.Add(Action("Select Original",()=>{settings.AssetPack="";settings.ReduxDevelopmentEnabled=false;settings.Save();seeds.SelectedItem=null;status.Text="Original selected.";return Task.CompletedTask;}));
   p.Children.Add(Action("Select Redux",()=>{ReduxProfileService.Select(settings);seeds.SelectedItem=null;status.Text="Redux selected.";return Task.CompletedTask;}));
-  if(mobileSetup!=null)p.Children.Add(Action("Export ROM setup log",async()=>{var path=Path.Combine(Settings.User,"rom-setup.log");if(!File.Exists(path))throw new IOException("Run ROM setup first to create a log.");await ExportFile("Export ROM setup log","rom-setup.log",await File.ReadAllBytesAsync(path));}));
+  p.Children.Add(Action("Save setup error report…",async()=>{var path=Path.Combine(Settings.User,"setup-diagnostics.txt");if(setupReport==null&&!File.Exists(path))throw new IOException("Run ROM setup first to create a report.");await ExportFile("Save setup error report","EarthBound-setup-report.txt",setupReport!=null?System.Text.Encoding.UTF8.GetBytes(setupReport):await File.ReadAllBytesAsync(path));}));
   return p;
  }
  async Task SetUpRom(bool redux){
   var path=await Pick("Clean EarthBound USA ROM","*.sfc","*.smc");if(path==null)return;
+  var diagnostics=new SetupDiagnostics(redux?"Redux":"Original",path);
   try {
-   var progress=new Progress<SetupProgress>(v=>status.Text=v.Detail);
-   if(mobileSetup!=null)await mobileSetup(path,redux,new Progress<string>(v=>status.Text=v));
+   var progress=new Progress<SetupProgress>(v=>{diagnostics.Progress(v.Stage,v.Detail);status.Text=v.Detail;});
+   if(mobileSetup!=null)await mobileSetup(path,redux,new Progress<string>(v=>{diagnostics.Progress("ROM",v);status.Text=v;}));
    else if(redux)await ReduxProfileService.BuildAsync(path,progress);
    else await SetupService.InstallAsync(path,false,progress);
    if(redux)ReduxProfileService.Select(settings);else{settings.AssetPack="";settings.ReduxDevelopmentEnabled=false;settings.Save();}
    seeds.SelectedItem=null;status.Text=(redux?"Redux":"Original")+" setup complete and selected. Press Play.";
+   diagnostics.Finish();setupReport=diagnostics.Report;
+  } catch(Exception e){
+   diagnostics.Finish(e);setupReport=diagnostics.Report;
+   throw new IOException(e.Message+"\nChoose Save setup error report and send the text file with your bug report.",e);
   } finally {
    // Only remove a copy made by our content-URI picker, never a player's ROM.
    if(ownedImports.Remove(path))File.Delete(path);
