@@ -37,7 +37,7 @@ Tools under `scripts/` provide `--help` and require explicit local inputs. Battl
 - `shop_transaction_qa_dev18.py`, `shop_transaction_cases_dev18.py`, `shop_inventory_outcome_audit_dev18.py`: actual packed buy/equip/sell/refund/cancel transactions, source-selected prerequisites, cold menu continuations and complete bag preservation. [Frozen instructions and limits](../research/shop-audit-dev18-final-evidence.md).
 - `runtime_constants_headers_qa.py`, `runtime_constants_clean_build_qa.py`: numeric assembly constants, malformed-input controls, fresh code-only compilation and the explicit synthetic loader fixture.
 - `redux_special_movement_integration_qa.py`, `audit_redux_wider_source_accounting.py`: prepared map/timer continuations and the existing wider source-ledger crosswalk; structural accounting is separate from behavior.
-- `redux_story_cutscene_parent_qa.py`: complete prepared rope, flight, ghost and hotel-capture parents with immediate post-bootstrap cold loads. [Frozen v8 scope](../research/story-cutscene-parent-dev16-v8-evidence-manifest-final.json).
+- `redux_story_cutscene_parent_qa.py`: complete prepared rope, flight, ghost and hotel-capture parents with immediate post-bootstrap cold loads. [Frozen v8 scope](https://github.com/rages4calm/earthbound-companion/blob/76b243ff26392efbffea41b9c2617a83ced6092e/research/story-cutscene-parent-dev16-v8-evidence-manifest-final.json).
 - `shop_special_entry_qa_dev19.py`, `shop_special_entry_cases_dev19.py`: Tools ownership and selected OneItem-vendor transactions, including cold continuations. [Frozen source contracts](../research/shop-special-dev19-evidence.md).
 - `timed_item_lifecycle_qa.py`, `timed_item_cold_continue_qa.py`: real private phone saves, Continue finalization, 6,000 party-leader ticks and cold item transitions.
 - `inventory_transform_pool_qa_dev18.py`, `inventory_gameover_lifecycle_qa_dev17.py`: actual phone/F6 loads, full/free bag recovery and real game-over branches.
@@ -90,7 +90,7 @@ Use `verify_redux_package_dev18.py` for the actual clean ZIP, self-contained own
 
 ## Dev.19 release integration
 
-The completed private party-name/Give suites are now integrated and published; their exact tested player is the shipping binary. See [release evidence](RELEASE-dev19.md) and [shipping provenance](../research/native-runtime-dev19-provenance.json). The reused dev.18 clean-package verifier also checks dev.19 because its pack/content contract is unchanged. No ongoing automated playthrough or autonomous audit is scheduled.
+The completed private party-name/Give suites are now integrated and published; their exact tested player is the shipping binary. See [release evidence](RELEASE-dev19.md) and [shipping provenance](https://github.com/rages4calm/earthbound-companion/blob/76b243ff26392efbffea41b9c2617a83ced6092e/research/native-runtime-dev19-provenance.json). The reused dev.18 clean-package verifier also checks dev.19 because its pack/content contract is unchanged. No ongoing automated playthrough or autonomous audit is scheduled.
 
 Dev.20 adds source Keys membership/old-save inventory recovery and real Auto Fight encounter/recovery tools. The dev.20 reports bind their complete shipping candidate and retain explicit prepared-scene limits. Dev.19 setup evidence retains its historical identity.
 

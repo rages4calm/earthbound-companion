@@ -1,4 +1,4 @@
-# Game content — never commit
+# Game content â€” never commit
 ROM/
 *.sfc
 *.smc
@@ -65,3 +65,15 @@ Ports/AndroidSetup/local.properties
 # Private historical development and recovery material
 _Archive/
 .impeccable/review/
+
+# Bulk development reports are generated locally, not release source.
+research/*.json
+!research/msu-manifest.json
+research/evidence-tools/
+
+# Additional compiler outputs
+*.a
+*.o
+*.obj
+*.class
+*.aar

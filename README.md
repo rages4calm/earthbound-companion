@@ -252,7 +252,7 @@ cd earthbound-companion
 powershell -ExecutionPolicy Bypass -File .\scripts\Bootstrap-Native.ps1
 ```
 
-Developers need a Windows x64 C toolchain, CMake/Ninja, SDL2 development files, Python and the .NET 8 SDK. Runtime builds use `EB_RUNTIME_ASSETS=ON`, `EB_ENABLE_VERIFY=OFF` and `EB_ENABLE_AUDIO=ON`. The native executable compiles without a ROM, extracted JSON or `ebtools`: numeric constants come from the checked-in assembly enums using Python 3.9+ standard-library code. Game setup still requires your own ROM to produce playable data. [Fresh dev.31 public-source build](validation/public-clean-source-dev31.json) · [Constants and loader proof](research/runtime-constants-final-manifest-dev16-v9.json). Redux setup-helper builds additionally require the pinned CoilSnake/CCScript toolchain and PyInstaller; see [the conversion instructions](MATERNALBOUND-NATIVE.md#reproducing-development-conversion).
+Developers need a Windows x64 C toolchain, CMake/Ninja, SDL2 development files, Python and the .NET 8 SDK. Runtime builds use `EB_RUNTIME_ASSETS=ON`, `EB_ENABLE_VERIFY=OFF` and `EB_ENABLE_AUDIO=ON`. The native executable compiles without a ROM, extracted JSON or `ebtools`: numeric constants come from the checked-in assembly enums using Python 3.9+ standard-library code. Game setup still requires your own ROM to produce playable data. [Fresh dev.31 public-source build](validation/public-clean-source-dev31.json) · [Constants and loader proof](https://github.com/rages4calm/earthbound-companion/blob/76b243ff26392efbffea41b9c2617a83ced6092e/research/runtime-constants-final-manifest-dev16-v9.json). Redux setup-helper builds additionally require the pinned CoilSnake/CCScript toolchain and PyInstaller; see [the conversion instructions](MATERNALBOUND-NATIVE.md#reproducing-development-conversion).
 
 For a code-only build after installing your toolchain, configure `native-source/port/unix` with the runtime flags above and your `SDL2_DIR`, then run `cmake --build` on that build directory. The loader fixture is deliberately excluded from the default build. For its separate test, install `ebtools`, run `python scripts/create_fixture.py`, then build the explicit `test_runtime_assets` target and execute it with the generated fixture pack and scratch paths. `Verify.ps1` records that sequence. It uses synthetic test data, not game JSON.
 
@@ -276,6 +276,10 @@ Issues and contributions should never attach ROMs, extracted asset packs, saves 
 
 If setup fails, choose **Save error report** (Windows setup dialog) or **Game & setup → Save setup error report** (Linux, macOS and Android). Attach the resulting `EarthBound-setup-report.txt` to your report. It includes the platform, launcher/runtime versions, setup progress and available helper tracebacks. Local home, installation and selected ROM paths are redacted; game files and saves are not attached. A copy is also saved as `UserData/setup-diagnostics.txt` when that folder is writable.
 
+
+## Source repository
+
+See [repository layout and build entrypoints](docs/REPOSITORY-LAYOUT.md) for the launcher, native C patches, conversion tools and historical development material.
 
 ## Community
 
