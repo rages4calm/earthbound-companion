@@ -2,7 +2,7 @@
  <PropertyGroup>
   <TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
   <DefineConstants>$(DefineConstants);COMPANION_PORTABLE</DefineConstants>
-  <AssemblyName>EarthBoundCompanion.Portable.Core</AssemblyName><Version>0.5.0</Version><InformationalVersion>0.5.0-ports-preview.25</InformationalVersion>
+  <AssemblyName>EarthBoundCompanion.Portable.Core</AssemblyName><Version>0.5.0</Version><InformationalVersion>0.5.0-ports-preview.26</InformationalVersion>
  </PropertyGroup>
  <ItemGroup>
   <Compile Include="../../Companion/AchievementProfiles.cs" Link="Shared/AchievementProfiles.cs" />

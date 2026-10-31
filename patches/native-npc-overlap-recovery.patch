@@ -1,0 +1,37 @@
+--- a/src/game/overworld_collision.c
++++ b/src/game/overworld_collision.c
+@@ -425,6 +425,16 @@
+  *
+  * Result is stored in entities.collided_objects[23] (init entity, slot 23).
+  */
++/* Area shared by the leader's feet-anchored box and an NPC's box. */
++static int32_t leader_npc_overlap(int x, int y, int w, int h,
++                                  int nx, int ny, int nw, int nh) {
++    int left = x-w > nx-nw ? x-w : nx-nw;
++    int right = x+w < nx+nw ? x+w : nx+nw;
++    int top = y-h > ny-nh ? y-h : ny-nh;
++    int bottom = y < ny ? y : ny;
++    return right > left && bottom > top ? (right-left)*(bottom-top) : 0;
++}
++
+ int16_t npc_collision_check(int16_t x, int16_t y, int16_t leader_slot) {
+     int16_t result = -1;  /* ENTITY_COLLISION_NO_OBJECT */
+ 
+@@ -523,6 +533,17 @@
+             continue;
+ 
+         /* Lines 151-154: Collision found! */
++        /* On Continue a phone save can overlap a freshly respawned NPC.
++         * Allow escape only: no new entry, deeper overlap or enemy bypass. */
++        if (leader_slot == PARTY_LEADER_ENTITY_INDEX &&
++            entities.npc_ids[offset] < 0x8000) {
++            int32_t old_area = leader_npc_overlap(
++                game_state.leader_x_coord, game_state.leader_y_coord,
++                leader_width, leader_height, npc_x, npc_y, npc_width, npc_height);
++            int32_t new_area = leader_npc_overlap(
++                x, y, leader_width, leader_height, npc_x, npc_y, npc_width, npc_height);
++            if (old_area > 0 && new_area < old_area) continue;
++        }
+         result = (int16_t)slot;
+         break;
+     }

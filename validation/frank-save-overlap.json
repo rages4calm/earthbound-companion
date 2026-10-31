@@ -1,0 +1,15 @@
+{
+  "status": "Focused checks passed; not packaged in a new release",
+  "cause": "Normal phone save leader position overlaps a stationary NPC recreated at Continue; prospective collision blocks every small exit step",
+  "sourceFix": "For normal NPCs only, permit a step strictly decreasing existing overlap area; stationary, new entry, deeper overlap and enemy collisions still block",
+  "privateSaveRepair": "Slot 1 both SRAM copies moved down 24 pixels; coordinate fractions cleared and ADD/XOR checksums recalculated; all other gameplay bytes unchanged",
+  "verification": [
+    "Real submitted SRAM loaded by current native archive; Frank respawn confirmed",
+    "Original position blocked by NPC with clear map tiles",
+    "Repaired SRAM accepted by native loader; target map and NPC probes clear",
+    "Patched production collision function permits escape and rejects stationary/deeper/new-entry/enemy-bypass controls",
+    "Patch reverse-apply check passed"
+  ],
+  "fullGameplayTested": false,
+  "ownerFilesModified": false
+}
