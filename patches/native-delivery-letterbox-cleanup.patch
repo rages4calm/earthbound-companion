@@ -1,0 +1,20 @@
+--- a/src/entity/callroutine.c
++++ b/src/entity/callroutine.c
+@@ -1916,6 +1916,17 @@
+          * Clears pending interactions, sets status suppression from giegu flag,
+          * plays bicycle music or updates map music. */
+         *out_pc = pc;
++        /* The common delivery entrance opens Redux's cinematic mask for
++         * every courier. For Sale Sign buyer exits do not contain the
++         * explicit close used by Escargo. Once that delivery hands control
++         * back, discard its held mask so it cannot leak into town maps or
++         * menus. Do not clear unrelated scenes or restart a closing effect. */
++        if (maternalbound_enabled() && ow.pending_interactions &&
++            ow.redux_letterbox_active && ow.redux_letterbox_direction == 0) {
++            ow.redux_letterbox_active = 0;
++            ow.redux_letterbox_top = 0;
++            ppu.tm_hdma_active = false;
++        }
+         ow.pending_interactions = 0;
+         ow.overworld_status_suppression = event_flag_get(EVENT_FLAG_WIN_GIEGU) ? 1 : 0;
+         if (game_state.walking_style == WALKING_STYLE_BICYCLE) {

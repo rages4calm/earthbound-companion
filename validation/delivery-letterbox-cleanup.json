@@ -1,0 +1,16 @@
+{
+  "status": "Focused before/after checks passed; not in a published release",
+  "cause": "Shared Redux delivery entry opens cinematic mask; For Sale Sign exit lacks explicit close",
+  "fix": "Clear held delivery mask at RESTORE_OVERWORLD_STATE while handing control back; preserve Original, unrelated masks and in-progress opening/closing effects",
+  "checks": {
+    "beforeChangeFailureReproduced": true,
+    "reduxCasesPassed": 12,
+    "originalCasesPassed": 12,
+    "includesOptionOffAndOn": true,
+    "laterEffectsTickDoesNotReapplyClearedMask": true,
+    "all15PatchesApplyToPinnedSource": true
+  },
+  "fullInGameForSaleTransactionTested": false,
+  "ownerSavesOrAssetsChanged": false,
+  "nativeSha256": "f8d51bfcae47fd00068369a23ca47ad8155cfff8c697326dd969bc3a4bf34b2c"
+}
