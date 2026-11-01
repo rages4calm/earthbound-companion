@@ -77,7 +77,7 @@ The original red-cap planet emblem was created for Companion with the built-in O
 ## Development reference testing
 
 - [Retro Porting Toolkit](https://retroportingtoolkit.com/docs) — source-backed audit and independent co-simulation guidance. This project does not claim full toolkit frame alignment from its selected function comparisons.
-- [atonamy/mesen-agent](https://github.com/atonamy/mesen-agent) and [SourMesen/Mesen2](https://github.com/SourMesen/Mesen2) — development-only original SNES machine-code reference execution. The GPL tool and its license remain local; the player ZIP does not include an emulator. [Pinned tool provenance](research/mesen-agent-provenance.json).
+- [atonamy/mesen-agent](https://github.com/atonamy/mesen-agent) and [SourMesen/Mesen2](https://github.com/SourMesen/Mesen2) — development-only original SNES machine-code reference execution. The GPL tool and its license remain local; the player ZIP does not include an emulator. [Pinned tool provenance](https://github.com/rages4calm/earthbound-companion/blob/76b243ff26392efbffea41b9c2617a83ced6092e/research/mesen-agent-provenance.json).
 - Herringway's original collision, arithmetic and text assembly and the pinned MaternalBound contributors' keyboard, battle UI and reset scripts — the sources against which these native corrections are reviewed. Their existing project/file credits remain applicable.
 
 ## Companion work
