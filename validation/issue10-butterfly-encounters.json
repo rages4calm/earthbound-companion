@@ -1,0 +1,29 @@
+{
+  "issue": 10,
+  "nativeSHA256": "4d277940df6f23e76a578a76028663b57e890e88e31e0e3f91a6905b5c0a2e41",
+  "negativeControl": {
+    "passed": false,
+    "expectedFailure": true,
+    "detail": "PC options: experience=1x money=1x fast-forward=3x target"
+  },
+  "original": {
+    "passed": true,
+    "exitCode": 0,
+    "output": "PASS: horizontal/vertical encounter-zero scans; spawn suppression; real butterfly creation, duplicate suppression and removal; 296 native multi-enemy groups; Redux=0\r\n",
+    "fullPlaythroughVerified": false,
+    "ownerDataWritten": false,
+    "scope": "Actual scroll spawn checks and native recruitment on an isolated flat collision grid; not the full reporter route"
+  },
+  "redux": {
+    "passed": true,
+    "exitCode": 0,
+    "output": "PASS: horizontal/vertical encounter-zero scans; spawn suppression; real butterfly creation, duplicate suppression and removal; 296 native multi-enemy groups; Redux=1\r\n",
+    "fullPlaythroughVerified": false,
+    "ownerDataWritten": false,
+    "scope": "Actual scroll spawn checks and native recruitment on an isolated flat collision grid; not the full reporter route"
+  },
+  "cause": "Scroll spawn callers skipped encounter-zero cells, suppressing source butterfly checks in both modes.",
+  "enemyJoining": "296 multi-enemy group compositions passed in each mode on flat terrain using actual sprite sizes. No recruitment change; exact reporter failure not reproduced.",
+  "fullPlaythroughVerified": false,
+  "ownerInstallationModified": false
+}
