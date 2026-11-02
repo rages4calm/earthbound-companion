@@ -1,0 +1,59 @@
+{
+  "sourceCommit": "2ca4617ee0ce8fc291ec88c90dbf7c0bee3a928d",
+  "freshWindowsPackage": {
+    "Bytes": 129232642,
+    "SHA256": "5F14DE8068EC00ECD2271D4F54CDAF4D58E99AE7924BBA06CD350B218E219C98",
+    "publicPayloadScanPassed": true
+  },
+  "nativeSHA256": "4d277940df6f23e76a578a76028663b57e890e88e31e0e3f91a6905b5c0a2e41",
+  "windowsPackageFile": "EarthBound-Companion-Windows-v1.0.17.zip",
+  "platformBuildRun": 41376452023,
+  "platformUploadRun": 41376540208,
+  "focusedEvidence": "validation/issue10-butterfly-encounters.json",
+  "packagedWindowsEncounterChecks": {
+    "Original": 1178,
+    "Redux": 1178,
+    "passed": true
+  },
+  "fullPlaythroughVerified": false,
+  "ownerInstallationModified": false,
+  "publicationPending": false,
+  "platformAssets": [
+    {
+      "name": "EarthBound-Companion-osx-arm64-preview.tar.gz",
+      "size": 90349081,
+      "digest": "sha256:a79bde6d39bb03dfb77d72466ee21f6976654d0fd26c7d6fcdc382200cdbc7d6",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-arm64-preview.apk",
+      "size": 66624980,
+      "digest": "sha256:8759039c8a098e0534715a2f2c03bd2f387988e805e9e0bb7dab0aef3ec81d09",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-x64-preview.apk",
+      "size": 67661155,
+      "digest": "sha256:92cf24ecf8e97d43b5c1f263bb5b186aedf653589d07034b3a5eb62fdba7a94e",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-linux-x64-preview.tar.gz",
+      "size": 125283856,
+      "digest": "sha256:6a2f2448c58699334b6dd4ddcdeb12fd6de7da96ebb8a8620b89cb7155f5baaf",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-osx-x64-preview.tar.gz",
+      "size": 95357938,
+      "digest": "sha256:7f5e28ce98384830227f80658d51ccb755b323c8cb730d0680aa4b9b8943ed13",
+      "serverDigestVerified": true
+    }
+  ],
+  "platformBuildPassed": true,
+  "platformUploadPassed": true,
+  "androidRomFreeEmulatorStartupPassed": true,
+  "windowsGuardPassed": true,
+  "publishedAndChecked": true,
+  "windowsLatest": "v1.0.17"
+}
