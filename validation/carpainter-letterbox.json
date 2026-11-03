@@ -1,0 +1,36 @@
+{
+  "nativeSHA256": "f9b853a3d69b1c9ba5a28aad06bab79eb14fb21006fc435cbcd142e52892c1c0",
+  "source": "Pinned Redux data_54.ccs No branch lacks the post-warp pause/close present in Yes.",
+  "negativeControl": {
+    "expectedFailure": true,
+    "exitCode": 10,
+    "detail": "FAIL line 57: delays==2"
+  },
+  "redux": {
+    "passed": true,
+    "exitCode": 0,
+    "output": "PASS Redux: No and Yes share 145-frame wait and animated close; visible/hidden bars; scalar continuation round-trip; unrelated offsets and changed suffix controls\r\n",
+    "fullPlaythroughVerified": false,
+    "ownerDataWritten": false,
+    "scope": "Actual No-branch END_BLOCK redirect and shared existing Yes cleanup bytecode; not the full lightning/teleport scene"
+  },
+  "original": {
+    "passed": true,
+    "exitCode": 0,
+    "output": "PASS Original: Redux cleanup inactive (32 controls)\r\n",
+    "fullPlaythroughVerified": false,
+    "ownerDataWritten": false,
+    "scope": "Actual No-branch END_BLOCK redirect and shared existing Yes cleanup bytecode; not the full lightning/teleport scene"
+  },
+  "deliveryRegression": {
+    "passed": true,
+    "exitCode": 0,
+    "fullEventPlaythrough": false,
+    "scope": "Actual delivery restore callroutine; held mask cleanup, later effects tick, Original control, opening/closing and unrelated mask preservation"
+  },
+  "all17PatchesApply": true,
+  "assetRebuildRequired": false,
+  "saveFormatChanged": false,
+  "fullLightningTeleportScenePlayed": false,
+  "ownerInstallationModified": false
+}

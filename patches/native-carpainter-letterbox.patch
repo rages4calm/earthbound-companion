@@ -1,0 +1,58 @@
+--- a/src/game/maternalbound.c
++++ b/src/game/maternalbound.c
+@@ -420,6 +420,28 @@
+     return 0; /* never silently mix an unmapped original-story script into Redux */
+ }
+ 
++/* Pinned data_54.ccs: Carpainter's no-badge refusal ends one byte before
++ * the Yes branch. The Yes branch alone has the post-warp pause/close tail.
++ * Reuse that exact tail for No as well. Resolve labels from the pack and check
++ * the suffix rather than changing asset bytes, pack identity or save cursors. */
++uint32_t maternalbound_carpainter_refusal_cleanup(uint32_t after_end_offset) {
++    static const uint8_t tail[] = {
++        0x10,0x91, /* pause(145), same timing as the Yes branch */
++        0x1A,0x0C,0x0D,0x00,0x00,0x00, /* typed cc_close_letterbox */
++        0x02
++    };
++    if (!redux_blob) return 0;
++    uint32_t no = maternalbound_resolve_entry(0xC980C1u);
++    uint32_t yes = maternalbound_resolve_entry(0xC98148u);
++    uint32_t after = maternalbound_resolve_entry(0xC9817Au);
++    if (no < MATERNALBOUND_DIALOGUE_BASE || yes <= no || after <= yes) return 0;
++    uint32_t yes_offset = yes-0x100000u, end = after-0x100000u;
++    if (after_end_offset != yes_offset || end > redux_map_offset ||
++        end-yes_offset < sizeof(tail) || redux_blob[yes_offset-1] != 0x02 ||
++        memcmp(redux_blob+end-sizeof(tail),tail,sizeof(tail))) return 0;
++    return after-sizeof(tail);
++}
++
+ /* Native PC adaptation of the pinned data_18.ccs Gauss End branch. Its
+  * disable_input followed by next deadlocks the SNES input-wait loop before
+  * the appended fade/pause/reset can run. Preserve that final prompt, allowing
+--- a/src/game/maternalbound.h
++++ b/src/game/maternalbound.h
+@@ -17,6 +17,8 @@
+ bool maternalbound_asset_selftest(const uint8_t *restore, size_t restore_size);
+ bool maternalbound_enabled(void);
+ uint32_t maternalbound_resolve_entry(uint32_t address);
++/* Redirect only the pinned missing Carpainter No/no-badge cleanup tail. */
++uint32_t maternalbound_carpainter_refusal_cleanup(uint32_t after_end_offset);
+ bool maternalbound_gauss_reset_prompt(uint32_t after_lock_offset);
+ uint32_t maternalbound_item_determiner(uint32_t item, uint32_t argument);
+ uint32_t maternalbound_enemy_ai_entry(uint16_t enemy);
+--- a/src/game/display_text.c
++++ b/src/game/display_text.c
+@@ -2311,6 +2311,13 @@
+          * unknown4 starts as 0 (cleared by INIT_TEXT_STATE), set to 1 by CC_18_02.
+          * In C: dt.g_cc18_attrs_saved tracks this per display_text call level. */
+         if (byte == 0x02) {
++            if (r->source == TEXT_SRC_DIALOGUE) {
++                uint32_t cleanup = maternalbound_carpainter_refusal_cleanup(r->ptr_off);
++                if (cleanup) {
++                    resolve_text_jump(r, cleanup);
++                    continue;
++                }
++            }
+             /* Only the root enemy script saves its continuation. A nested
+              * text function returns to its caller before the turn ends. */
+             if (bt.redux_enemy_ai_active && g_mode_stack.depth >= 2 &&
