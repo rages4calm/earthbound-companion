@@ -1,0 +1,56 @@
+{
+  "sourceCommit": "5bfbfc331680458a4fa49fb68c679bc5e9822964",
+  "freshWindowsPackage": {
+    "Bytes": 129232982,
+    "SHA256": "2044F0B0FD21690C35437220A1524F84A3182D16BF505BC66B7AA1DED6AA18F0",
+    "publicPayloadScanPassed": true
+  },
+  "nativeSHA256": "f9b853a3d69b1c9ba5a28aad06bab79eb14fb21006fc435cbcd142e52892c1c0",
+  "windowsPackageFile": "EarthBound-Companion-Windows-v1.0.18.zip",
+  "platformBuildRun": 41664565213,
+  "platformUploadRun": 41664665056,
+  "focusedEvidence": "validation/carpainter-letterbox.json",
+  "additionalRuntimeTestsRun": true,
+  "fullPlaythroughVerified": false,
+  "fullLightningTeleportScenePlayed": false,
+  "ownerInstallationModified": false,
+  "publicationPending": false,
+  "platformAssets": [
+    {
+      "name": "EarthBound-Companion-osx-arm64-preview.tar.gz",
+      "size": 90352436,
+      "digest": "sha256:f09e70615b40d8ed0dc1cd7aa3e90b8e56dcb75d94303c094a29e3265a9912a2",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-arm64-preview.apk",
+      "size": 66629076,
+      "digest": "sha256:1f1dda8d93dae3c047942e6a52acdd278ea9d088d899d5103fae8a30924336a3",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-x64-preview.apk",
+      "size": 67665251,
+      "digest": "sha256:7482cb8ef497c9d6f8d23e15818492db52a0e716bf4017be65fd170009b994df",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-linux-x64-preview.tar.gz",
+      "size": 125294072,
+      "digest": "sha256:584afa1610558bc255eaceba0a34d05d07cea3603ca7c302905c5804c591d9a3",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-osx-x64-preview.tar.gz",
+      "size": 95359691,
+      "digest": "sha256:64fb446cbf149dc134351284c6867d3af6ac5ae247945cf2abc6ceb8fcd4d18f",
+      "serverDigestVerified": true
+    }
+  ],
+  "platformBuildPassed": true,
+  "platformUploadPassed": true,
+  "androidRomFreeEmulatorStartupPassed": true,
+  "windowsGuardPassed": true,
+  "publishedAndChecked": true,
+  "windowsLatest": "v1.0.18"
+}
