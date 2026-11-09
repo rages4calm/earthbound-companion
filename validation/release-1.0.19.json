@@ -1,0 +1,56 @@
+{
+  "sourceCommit": "89a56f92cc7a99fbe04561cfee7b2b81ff66af25",
+  "freshWindowsPackage": {
+    "Bytes": 129233008,
+    "SHA256": "74A39CC021104628E804F621E1BB3A619BAAAEFC0501EB3D4DE7965353EF48D9",
+    "publicPayloadScanPassed": true
+  },
+  "nativeSHA256": "a58401a9856f5939c50ac17a86473ae867843d17c2adaa4148dbb33fc2542488",
+  "windowsPackageFile": "EarthBound-Companion-Windows-v1.0.19.zip",
+  "platformBuildRun": 42547007292,
+  "platformUploadRun": 42547041787,
+  "focusedEvidence": "validation/issue11-passenger-bus.json",
+  "additionalRuntimeTestsRun": true,
+  "fullPlaythroughVerified": false,
+  "fullBusJourneyPlayed": false,
+  "ownerInstallationModified": false,
+  "publicationPending": false,
+  "platformAssets": [
+    {
+      "name": "EarthBound-Companion-osx-arm64-preview.tar.gz",
+      "size": 90392196,
+      "digest": "sha256:1cb26f656fc708c16b31a55608e719bba33860862b06225c55d0ba535e77c6ae",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-arm64-preview.apk",
+      "size": 66629076,
+      "digest": "sha256:a54b3cfa93fc4f1dae1aa9206a5fff464d8af6467f715579d42c8a402c5c9f4f",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-x64-preview.apk",
+      "size": 67665251,
+      "digest": "sha256:b381667eaabd197b1668b872f5928d1f6c268b873c2fc6bb4550da119df3d629",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-linux-x64-preview.tar.gz",
+      "size": 125346508,
+      "digest": "sha256:caed1a5d4bb916996e98c3c4daa0b065faca065a42c849a35ff59d2028422a00",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-osx-x64-preview.tar.gz",
+      "size": 95392668,
+      "digest": "sha256:ba1e7b352cf0e07576877c703eef382dcb168772e2363bc720e03079a1c8395f",
+      "serverDigestVerified": true
+    }
+  ],
+  "platformBuildPassed": true,
+  "platformUploadPassed": true,
+  "androidRomFreeEmulatorStartupPassed": true,
+  "windowsGuardPassed": true,
+  "publishedAndChecked": true,
+  "windowsLatest": "v1.0.19"
+}
