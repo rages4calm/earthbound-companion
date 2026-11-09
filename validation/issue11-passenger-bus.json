@@ -1,0 +1,30 @@
+{
+  "issue": 11,
+  "nativeSHA256": "a58401a9856f5939c50ac17a86473ae867843d17c2adaa4148dbb33fc2542488",
+  "cause": "Passenger and traffic buses share sprite205. Lowest-slot matching could direct boarding coordinates, departure script and camera at TPT584 traffic instead of dialogue-created passenger bus.",
+  "negativeControl": {
+    "expectedFailure": true,
+    "exitCode": 10,
+    "detail": "FAIL line 46: find_entity_by_sprite_id(205)==passenger"
+  },
+  "original": {
+    "passed": true,
+    "exitCode": 0,
+    "output": "PASS: 150 bus configurations; real boarding-position callroutine and post-fare movement/camera script; traffic unchanged; inactive/ordinary sprite controls; Redux=0\r\n",
+    "fullPlaythroughVerified": false,
+    "ownerDataWritten": false,
+    "scope": "Real bus actor selection, boarding coordinate callroutine and post-fare movement/camera script on isolated actors; not a full bus journey"
+  },
+  "redux": {
+    "passed": true,
+    "exitCode": 0,
+    "output": "PASS: 150 bus configurations; real boarding-position callroutine and post-fare movement/camera script; traffic unchanged; inactive/ordinary sprite controls; Redux=1\r\n",
+    "fullPlaythroughVerified": false,
+    "ownerDataWritten": false,
+    "scope": "Real bus actor selection, boarding coordinate callroutine and post-fare movement/camera script on isolated actors; not a full bus journey"
+  },
+  "all18PatchesApply": true,
+  "fullBusJourneyPlayed": false,
+  "ownerInstallationModified": false,
+  "saveFormatChanged": false
+}

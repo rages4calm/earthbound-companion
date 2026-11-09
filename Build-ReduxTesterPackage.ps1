@@ -1,4 +1,4 @@
-param([string]$Version='1.0.18', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='', [string]$ShaderRuntimePath='', [string]$WorkspaceRoot=$PSScriptRoot)
+param([string]$Version='1.0.19', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='', [string]$ShaderRuntimePath='', [string]$WorkspaceRoot=$PSScriptRoot)
 $ErrorActionPreference='Stop'
 $isOfficial=$Version -match '^\d+\.\d+\.\d+$'
 $projectRoot=[IO.Path]::GetFullPath($WorkspaceRoot)

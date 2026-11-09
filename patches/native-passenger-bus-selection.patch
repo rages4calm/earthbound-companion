@@ -1,0 +1,24 @@
+--- a/src/entity/entity.c
++++ b/src/entity/entity.c
+@@ -645,6 +645,21 @@
+  * Returns slot number (0 to MAX_ENTITIES-1) on success, or -1 if not found.
+  */
+ int16_t find_entity_by_sprite_id(uint16_t sprite_id) {
++    if (sprite_id == 205) { /* BUS */
++        /* The scheduled passenger bus is created by dialogue (no TPT ID).
++         * Threed's passing traffic bus, TPT 584, shares its artwork and can
++         * occupy an earlier slot in the wider viewport. All boarding-position,
++         * movement and camera lookups must agree on the passenger bus rather
++         * than turning that unrelated traffic vehicle into the ride. */
++        int16_t fallback = -1;
++        for (int slot = 0; slot < MAX_ENTITIES; slot++) {
++            if (entities.script_table[slot] < 0 ||
++                entities.sprite_ids[slot] != (int16_t)sprite_id) continue;
++            if (entities.npc_ids[slot] == 0xFFFFu) return (int16_t)slot;
++            if (fallback < 0) fallback = (int16_t)slot;
++        }
++        return fallback;
++    }
+     for (int slot = 0; slot < MAX_ENTITIES; slot++) {
+         int16_t ent_offset = ENT(slot);
+         if (entities.sprite_ids[ent_offset] == (int16_t)sprite_id)
