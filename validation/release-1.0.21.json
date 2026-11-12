@@ -1,0 +1,78 @@
+{
+  "sourceCommit": "c74a63d7ce1b08697bcd8840f792955556d8e9f3",
+  "freshWindowsPackage": {
+    "Bytes": 129235313,
+    "SHA256": "2E9AD753C32FFD8C7AEC93781A478DCF8A24D253D0F74B16E1087CEB7E52EFCE",
+    "publicPayloadScanPassed": true
+  },
+  "nativeSHA256": "45f7ad7107e4f3bb0530f96034da886304370db0eab2f49b5a0bfc0164e27603",
+  "windowsPackageFile": "EarthBound-Companion-Windows-v1.0.21.zip",
+  "windowsServerDigestVerified": true,
+  "platformBuildRun": 43255168154,
+  "platformUploadRun": 43255221388,
+  "platformAssets": [
+    {
+      "name": "EarthBound-Companion-osx-arm64-preview.tar.gz",
+      "size": 90401995,
+      "digest": "sha256:1d0a59516135eb80d197a3417d8eda43abc46ab30014e96e102b0a5717f99136",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-arm64-preview.apk",
+      "size": 66645460,
+      "digest": "sha256:0cb44869cd8624038974ac6ee45e665366ad13bb362037d237dffbfa1dbaddab",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-x64-preview.apk",
+      "size": 67689827,
+      "digest": "sha256:3ef9ed67c336e5bc607791ea9a37d05d59672ce73eb11c866bc3edb448dabba3",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-linux-x64-preview.tar.gz",
+      "size": 125332884,
+      "digest": "sha256:bdab4bdca3591e3f907e048f156b012eec9645bbd4f065994ec469b2d518b074",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-osx-x64-preview.tar.gz",
+      "size": 95403069,
+      "digest": "sha256:85494d8f2f23dd3a7dc514f9c4464dd6981572f2d07b7649f73365349a88d7e3",
+      "serverDigestVerified": true
+    }
+  ],
+  "focusedEvidence": "validation/issues12-14.json",
+  "additionalRuntimeTestsRun": true,
+  "packagedWindowsDirectLaunchBothModesPassed": true,
+  "fullPlaythroughVerified": false,
+  "exactReporterSummersSaveReproduced": false,
+  "ownerInstallationModified": false,
+  "publicationPending": false,
+  "platformBuildPassed": true,
+  "platformUploadPassed": true,
+  "androidRomFreeEmulatorStartupPassed": true,
+  "patchStackApplied": 19,
+  "buildJobs": [
+    {
+      "name": "windows-guard",
+      "conclusion": "success"
+    },
+    {
+      "name": "desktop (macos-15, osx-arm64)",
+      "conclusion": "success"
+    },
+    {
+      "name": "desktop (ubuntu-24.04, linux-x64)",
+      "conclusion": "success"
+    },
+    {
+      "name": "desktop (macos-15-intel, osx-x64)",
+      "conclusion": "success"
+    },
+    {
+      "name": "android",
+      "conclusion": "success"
+    }
+  ]
+}

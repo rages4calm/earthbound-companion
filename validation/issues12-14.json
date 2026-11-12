@@ -83,5 +83,16 @@
   "ownerDataWritten": false,
   "fullPlaythroughVerified": false,
   "exactReporterSummersSaveReproduced": false,
-  "scope": "Isolated native real-pack fixtures, not campaign verification"
+  "scope": "Isolated native real-pack fixtures, not campaign verification",
+  "staticKeyboardTilePoolControl": {
+    "preFixOriginal": "fails tile < 0x380: grid/name allocation enters text tilemap",
+    "preFixRedux": "passes existing separate Redux grid allocation",
+    "fixedOriginal": "passes 12- and 24-character keyboards, 90 frames each",
+    "fixedRedux": "passes 12- and 24-character keyboards, 90 frames each"
+  },
+  "patchStack": {
+    "count": 19,
+    "cleanPinnedApplyPassed": true,
+    "changedFilesMatchTestedSource": true
+  }
 }
