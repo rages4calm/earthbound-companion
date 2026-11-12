@@ -1,4 +1,4 @@
-param([string]$Version='1.0.19', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='', [string]$ShaderRuntimePath='', [string]$WorkspaceRoot=$PSScriptRoot)
+param([string]$Version='1.0.20', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='', [string]$ShaderRuntimePath='', [string]$WorkspaceRoot=$PSScriptRoot)
 $ErrorActionPreference='Stop'
 $isOfficial=$Version -match '^\d+\.\d+\.\d+$'
 $projectRoot=[IO.Path]::GetFullPath($WorkspaceRoot)
@@ -93,6 +93,10 @@ F12 screenshot | Tab fast-forward | Hold the bound controller button to fast-for
 Credits, source and bug reports:
 https://github.com/rages4calm/earthbound-companion
 '@ | Set-Content -LiteralPath (Join-Path $app 'START HERE.txt') -Encoding utf8
+}
+foreach($edition in @('Original','Redux')){
+ $switch=if($edition -eq 'Original'){'--play-original'}else{'--play-redux'}
+ '@echo off'+"`r`n"+'start "" /wait "%~dp0EarthBound Companion.exe" '+$switch+"`r`n" | Set-Content -LiteralPath (Join-Path $app ("Play "+$edition+".cmd")) -Encoding ascii
 }
 $forbidden=@('.sfc','.smc','.fig','.swc','.rom','.pak','.pcm','.srm','.sav','.state','.bmp','.png','.replay')
 $bad=Get-ChildItem -LiteralPath $app -File -Recurse | Where-Object {$_.Extension -in $forbidden -or $_.Name -match '^quicksave_'}

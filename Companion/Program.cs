@@ -8,6 +8,7 @@ static class Program {
   ApplicationConfiguration.Initialize();
   int layoutTest=Array.IndexOf(args,"--layout-test");if(layoutTest>=0){try{LauncherLayoutTests.Run(args[layoutTest+1]);}catch(Exception e){File.WriteAllText(Path.Combine(args[layoutTest+1],"failure.txt"),e.ToString());Environment.ExitCode=1;}return;}
   int dataRoot=Array.IndexOf(args,"--data-root");if(dataRoot>=0){if(dataRoot+1>=args.Length)throw new ArgumentException("Supply an isolated data directory.");Settings.OverrideRoot=Path.GetFullPath(args[dataRoot+1]);}
+  int directTest=Array.IndexOf(args,"--direct-launch-test");if(directTest>=0){try{DirectLaunchTests.Run(args[directTest+1],args[directTest+2],args[directTest+3]);Environment.ExitCode=0;}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
   int originalSetupTest=Array.IndexOf(args,"--original-setup-state-test");if(originalSetupTest>=0){try{if(originalSetupTest+3>=args.Length)throw new ArgumentException("Supply legacy/current Original packs and a fresh test directory.");OriginalSetupStateTests.Run(args[originalSetupTest+1],args[originalSetupTest+2],args[originalSetupTest+3]);}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
   int upgradeTest=Array.IndexOf(args,"--redux-upgrade-test");if(upgradeTest>=0){try{if(upgradeTest+5>=args.Length)throw new ArgumentException("Supply previous/current packs, an actual F6 checkpoint, a phone save and a fresh test directory.");ReduxUpgradeTests.Run(args[upgradeTest+1],args[upgradeTest+2],args[upgradeTest+3],args[upgradeTest+4],args[upgradeTest+5]);}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
   int checkpointTest=Array.IndexOf(args,"--checkpoint-recovery-test");if(checkpointTest>=0){try{if(checkpointTest+3>=args.Length)throw new ArgumentException("Supply a content pack, native checkpoint and fresh test directory.");CheckpointRecoveryTests.Run(args[checkpointTest+1],args[checkpointTest+2],args[checkpointTest+3]);}catch(Exception e){Console.Error.WriteLine(e);Environment.ExitCode=1;}return;}
@@ -34,6 +35,17 @@ static class Program {
   Input.Init();
   if(args.Contains("--configure")){Settings.Load().Save();Input.Quit();return;}
   if(args.Contains("--selftest")){SelfTest.Run();Input.Quit();return;}
+  if(args.Contains("--play-original")||args.Contains("--play-redux")){
+   try{
+    if(args.Contains("--play-original")&&args.Contains("--play-redux"))throw new ArgumentException("Choose either --play-original or --play-redux.");
+    using var form=new MainForm(Array.Empty<string>());
+    using var context=new DirectGameContext(form);
+    form.LaunchDirect(args.Contains("--play-redux"));
+    Application.Run(context);
+   }catch(Exception e){Environment.ExitCode=1;MessageBox.Show(e.Message,"EarthBound Companion",MessageBoxButtons.OK,MessageBoxIcon.Error);}
+   finally{Input.Quit();}
+   return;
+  }
   Application.Run(new MainForm(args));Input.Quit();
  }
 }
@@ -80,6 +92,7 @@ sealed class Scene : Control {
 sealed partial class MainForm : Form {
  Settings settings=Settings.Load();readonly FlowLayoutPanel nav=new(),page=new();readonly Label status=new();
  readonly System.Windows.Forms.Timer timer=new(){Interval=350};readonly Dictionary<string,Button> navigation=[];readonly ToolTip navigationHelp=new(){AutoPopDelay=15000};
+ bool directLaunch;
  Process? game;string current="Play";bool settingsRequested;bool captureMode;int captureIndex;string captureDir="",capturePython="",captureHelper="";bool capturePrepared;bool captureScrolled;
  readonly string[] pages=["Play","Randomizer","Game Mode","Display","Audio","Gameplay","Controls","Mods & saves","Achievements"];
  readonly (string Short,string Help)[] pageHelp=[
@@ -108,7 +121,7 @@ sealed partial class MainForm : Form {
   status.Dock=DockStyle.Fill;status.TextAlign=ContentAlignment.MiddleLeft;status.Font=Theme.Font(10);status.ForeColor=Theme.Muted;footer.Controls.Add(status,0,0);footer.Controls.Add(Theme.Button("Apply settings",Apply,true),1,0);
   if(!File.Exists(Path.Combine(Settings.User,"settings.json")))settings.Save();
   ShowPage("Play");Notify("Ready. Your saved settings are loaded.");
-  timer.Tick+=Tick;timer.Start();FormClosing+=(_,e)=>{if(generating){e.Cancel=true;Notify("Finishing seed generation. You can close the launcher when it is ready.");return;}if(settingsRequested)Resume();};
+  timer.Tick+=Tick;timer.Start();FormClosing+=(_,e)=>{if(directLaunch&&Running){e.Cancel=true;if(settingsRequested)Resume();Hide();return;}if(generating){e.Cancel=true;Notify("Finishing seed generation. You can close the launcher when it is ready.");return;}if(settingsRequested)Resume();};
   FormClosed+=(_,_)=>navigationHelp.Dispose();
   int capture=Array.IndexOf(args,"--capture");if(capture>=0&&capture+1<args.Length){captureMode=true;captureDir=Path.GetFullPath(args[capture+1]);Directory.CreateDirectory(captureDir);}
   int capturePy=Array.IndexOf(args,"--capture-python"),captureScript=Array.IndexOf(args,"--capture-helper");if(capturePy>=0&&capturePy+1<args.Length)capturePython=Path.GetFullPath(args[capturePy+1]);if(captureScript>=0&&captureScript+1<args.Length)captureHelper=Path.GetFullPath(args[captureScript+1]);
@@ -236,6 +249,12 @@ sealed partial class MainForm : Form {
  void OpenReduxSetup(){if(Running||generating)return;using var dialog=new SetupForm(reduxDevelopment:true);dialog.ShowDialog(this);if(dialog.Completed)Try(()=>{ReduxProfileService.Select(settings);ShowPage("Play");Notify("MaternalBound Redux selected. Its story saves remain separate.");});}
  void Apply(){Try(()=>{settings.Save();if(Running){File.WriteAllText(Settings.PathTo("settings.applied"),"apply");settingsRequested=false;Notify("Settings applied. Game resumed.");}else Notify("Settings saved. Ready for your next session.");});}
  void Resume(){File.WriteAllText(Settings.PathTo("settings.applied"),"resume");settingsRequested=false;}
+ internal void LaunchDirect(bool redux,IReadOnlyList<string>? testArguments=null){
+  if(!SetupService.DataReady)throw new IOException("Set up Original once in EarthBound Companion before using this shortcut.");
+  if(redux){if(!ReduxProfileService.Ready)throw new IOException("Build MaternalBound Redux once under Game Mode in EarthBound Companion before using this shortcut.");ReduxProfileService.Select(settings);}
+  else{settings.AssetPack="";settings.ReduxDevelopmentEnabled=false;settings.Save();}
+  game=GameLaunch.Start(settings,false,null,testArguments);directLaunch=true;
+ }
  void Launch(bool resume,SeedRecord? seed=null){Try(()=>{
   if(Running||generating)return;
   try {game=GameLaunch.Start(settings,resume,seed);activeSeed=seed;}
@@ -247,9 +266,16 @@ sealed partial class MainForm : Form {
  void ChoosePak(){if(Running||generating){Notify("Close the game before changing its data profile.",true);return;}using var d=new OpenFileDialog(){Filter="Native EarthBound asset pack|*.pak"};if(d.ShowDialog(this)!=DialogResult.OK)return;Try(()=>{string old=settings.AssetPack;settings.AssetPack=d.FileName;try{settings.ValidatePak();}catch{settings.AssetPack=old;throw;}settings.ReduxDevelopmentEnabled=false;settings.Save();ShowPage(current);Notify("Compatible pack selected with separate saves.");});}
  void Tick(object? sender,EventArgs args){
   if(captureMode){if(captureIndex<=pages.Length+4){bool bottom=captureIndex>pages.Length;string name=bottom?(captureIndex==pages.Length+4?"Display":captureIndex==pages.Length+3?"Gameplay":captureIndex==pages.Length+2?"Game Mode":"Randomizer"):pages[captureIndex%pages.Length];if(!capturePrepared){ShowPage(name);WindowState=FormWindowState.Normal;Show();Activate();Refresh();capturePrepared=true;return;}if(bottom&&!captureScrolled){page.AutoScrollPosition=new Point(0,page.VerticalScroll.Maximum);Refresh();captureScrolled=true;return;}string root=Path.GetFullPath(Path.Combine(Settings.Root,".."));var p=new ProcessStartInfo(string.IsNullOrEmpty(capturePython)?Path.Combine(root,"native-source",".venv","Scripts","python.exe"):capturePython){UseShellExecute=false,CreateNoWindow=true};p.ArgumentList.Add(string.IsNullOrEmpty(captureHelper)?Path.Combine(root,"tools","capture_owned_window.py"):captureHelper);p.ArgumentList.Add(Handle.ToInt64().ToString());p.ArgumentList.Add(Path.Combine(captureDir,$"{captureIndex}-{name.Replace(" & ","-")}{(bottom?"-bottom":"")}.png"));using var capture=Process.Start(p);capture?.WaitForExit();captureIndex++;capturePrepared=captureScrolled=false;}else{captureMode=false;Close();}return;}
-  if(game!=null&&game.HasExited){int code=game.ExitCode;game.Dispose();game=null;settings.ReadEngine();Settings.SessionDirectory=null;activeSeed=null;ShowPage(current);Notify(code==0?"Game closed. Your saves are stored locally.":"The game stopped. See game.log in this game's session folder for details.",code!=0);}
+  if(game!=null&&game.HasExited){int code=game.ExitCode;game.Dispose();game=null;if(directLaunch){Environment.ExitCode=code;Close();return;}settings.ReadEngine();Settings.SessionDirectory=null;activeSeed=null;ShowPage(current);Notify(code==0?"Game closed. Your saves are stored locally.":"The game stopped. See game.log in this game's session folder for details.",code!=0);}
   if(Running&&File.Exists(Settings.PathTo("settings.request"))){File.Delete(Settings.PathTo("settings.request"));settings.ReadEngine();settingsRequested=true;ShowPage("Display");Show();WindowState=FormWindowState.Normal;Activate();Notify("Game paused. Apply settings to resume, or press F9 in the game.");}
  }
+}
+// An invisible application context keeps Steam's process alive until the game
+// exits. The existing form/timer opens settings only when the player requests it.
+sealed class DirectGameContext : ApplicationContext {
+ readonly MainForm form;
+ internal DirectGameContext(MainForm form){this.form=form;_ = form.Handle;form.FormClosed+=(_,_)=>ExitThread();}
+ protected override void Dispose(bool disposing){if(disposing)form.Dispose();base.Dispose(disposing);}
 }
 sealed class BindForm : Form {
  public int Value{get;private set;}readonly bool controller;readonly System.Windows.Forms.Timer timer=new(){Interval=25};HashSet<int> initially=[];
