@@ -1,0 +1,87 @@
+{
+  "issues": [
+    12,
+    13,
+    14
+  ],
+  "fixed": [
+    {
+      "test": "psi",
+      "mode": "original",
+      "exitCode": 0,
+      "output": "PASS PSI: 10 ability rows restored independently of target cursor\r\n"
+    },
+    {
+      "test": "psi",
+      "mode": "redux",
+      "exitCode": 0,
+      "output": "PASS PSI: 10 ability rows restored independently of target cursor\r\n"
+    },
+    {
+      "test": "sprite",
+      "mode": "original",
+      "exitCode": 0,
+      "output": "PASS sprite: 3712 pointers; Tony west two mirrored east frames; other descriptors unchanged\r\n"
+    },
+    {
+      "test": "sprite",
+      "mode": "redux",
+      "exitCode": 0,
+      "output": "PASS sprite: 3872 pointers; Tony west two mirrored east frames; other descriptors unchanged\r\n"
+    },
+    {
+      "test": "naming",
+      "mode": "original",
+      "exitCode": 0,
+      "output": "PASS naming: both in-game targets, 90 frames each; stale background held; tile references below tilemap\r\n"
+    },
+    {
+      "test": "naming",
+      "mode": "redux",
+      "exitCode": 0,
+      "output": "PASS naming: both in-game targets, 90 frames each; stale background held; tile references below tilemap\r\n"
+    }
+  ],
+  "negativeControls": [
+    {
+      "test": "psi",
+      "mode": "original",
+      "exitCode": 10,
+      "output": ""
+    },
+    {
+      "test": "psi",
+      "mode": "redux",
+      "exitCode": 10,
+      "output": ""
+    },
+    {
+      "test": "sprite",
+      "mode": "original",
+      "exitCode": 0,
+      "output": "PASS sprite: 3712 pointers; Tony west two mirrored east frames; other descriptors unchanged\r\n"
+    },
+    {
+      "test": "sprite",
+      "mode": "redux",
+      "exitCode": 10,
+      "output": ""
+    },
+    {
+      "test": "naming",
+      "mode": "original",
+      "exitCode": 10,
+      "output": ""
+    },
+    {
+      "test": "naming",
+      "mode": "redux",
+      "exitCode": 10,
+      "output": ""
+    }
+  ],
+  "ownerDataWritten": false,
+  "fullPlaythroughVerified": false,
+  "exactReporterSummersSaveReproduced": false,
+  "scope": "Isolated native real-pack fixtures, not campaign verification"
+}

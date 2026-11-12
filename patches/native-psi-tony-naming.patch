@@ -1,0 +1,146 @@
+--- a/src/game/text.c
++++ b/src/game/text.c
+@@ -1488,6 +1488,10 @@
+     if (w) w->text_y = saved_text_y;
+ 
+     /* Position cursor at (0, saved_text_y) (assembly lines 38-41) */
++    /* Target selection can leave the focus cursor on another ability row.
++     * The selected ability owns its label position, independently of that cursor. */
++    if (ensure_battle_psi_table() && ability_id < PSI_MAX_ENTRIES)
++        saved_text_y = battle_psi_table[ability_id].menu_y;
+     set_focus_text_cursor(0, saved_text_y);
+ 
+     /* Highlight selected PSI base name (assembly lines 42-51) */
+--- a/src/intro/file_select.c
++++ b/src/intro/file_select.c
+@@ -841,13 +841,6 @@
+ /* Render a single keyboard character at a window position using VWF.
+    Matches assembly: DISPLAY_TEXT renders keyboard text through VWF, with each
+    character dynamically allocated from the per-frame VWF tile pool. */
+-static void kb_write_char(WindowInfo *kw, int text_x, int text_y, uint8_t eb_char) {
+-    uint16_t mx = kw->content_x + (uint16_t)text_x;
+-    uint16_t my = kw->content_y + (uint16_t)(text_y * 2);
+-    uint8_t eb_str[2] = { eb_char, 0 };
+-    vwf_render_eb_string_at(eb_str, 1, mx, my, FONT_ID_NORMAL, 0);
+-}
+-
+ /* The expanded Redux keyboard has 56 one-column glyphs in its converted
+  * normal font. Putting all of them in the transient title pool at 0x2E0
+  * pushes the final button labels across tile 0x380: that address is the
+@@ -855,7 +848,7 @@
+  * Use the naming screen's unused 0x200-0x26F tile range for its glyphs.
+  * Persistent window content uses 0x000-0x1FF, the small blinking cursor
+  * uses 0x28D/0x29D, and the name display remains at 0x2E0. */
+-static void kb_write_redux_char(WindowInfo *kw, int text_x, int text_y,
++static void kb_write_grid_char(WindowInfo *kw, int text_x, int text_y,
+                                  uint8_t eb_char, uint16_t *next_tile) {
+     uint8_t eb_str[2] = { eb_char, 0 };
+     uint16_t base = *next_tile;
+@@ -888,8 +881,9 @@
+ 
+             int col = kb_text_x_to_grid_col(tx);
+             if (col >= 0 && grid[row][col] != 0xFF) {
+-                if (redux) kb_write_redux_char(kw, tx + 1, row, grid[row][col], &redux_next_tile);
+-                else kb_write_char(kw, tx + 1, row, grid[row][col]);
++                /* Both layouts need a separate grid pool. A 24-character player
++                 * name plus the Original grid otherwise crosses the tilemap. */
++                kb_write_grid_char(kw, tx + 1, row, grid[row][col], &redux_next_tile);
+             }
+         }
+     }
+@@ -1004,7 +998,9 @@
+         s->flush = 0;
+         render_all_priority_sprites();
+         sync_palettes_to_cgram();
+-        battle_bg_update();
++        /* In-game registration sits over the overworld, not the title background.
++         * The last battle/title animator may still be loaded: do not restart it. */
++        if (s->name_target < NAME_TARGET_M2_PLAYER) battle_bg_update();
+         s->primed = 1;
+         return STEP_RESULT_CONTINUE();
+     }
+@@ -1244,7 +1240,9 @@
+     sync_palettes_to_cgram();
+ 
+     /* Update battle BG animation */
+-    battle_bg_update();
++    /* In-game registration sits over the overworld, not the title background.
++         * The last battle/title animator may still be loaded: do not restart it. */
++        if (s->name_target < NAME_TARGET_M2_PLAYER) battle_bg_update();
+ 
+     s->primed = 1;
+     return STEP_RESULT_CONTINUE();
+--- a/src/entity/sprite.c
++++ b/src/entity/sprite.c
+@@ -1,3 +1,4 @@
++#include "game/maternalbound.h"
+ /*
+  * Sprite loading infrastructure, VRAM allocation, tile upload, spritemap management.
+  *
+@@ -93,6 +94,25 @@
+     clear_overworld_spritemaps();
+ }
+ 
++
++/* Resolve shared frame pointers for drawing and fade copies. The pinned Redux
++ * Tony running group repeats one west frame; mirror its two east frames instead.
++ * Check the descriptor itself so corrected/custom groups remain untouched. */
++uint16_t sprite_frame_pointer(uint32_t offset) {
++    if (offset + 2 > sprite_grouping_data_size) return 0;
++    if (maternalbound_enabled() && sprite_grouping_ptr_count > 476) {
++        uint32_t base = (read_u32_le(sprite_grouping_ptr_table + 476 * 4) & 0xFFFF) - 0x1A7F;
++        /* Translate the ROM pointer using the grouping buffer base. */
++        if (base + 41 <= sprite_grouping_data_size &&
++            (offset == base + 21 || offset == base + 23) &&
++            read_u16_le(sprite_grouping_data_buf + base + 21) == 0x90C0 &&
++            read_u16_le(sprite_grouping_data_buf + base + 23) == 0x90C0 &&
++            read_u16_le(sprite_grouping_data_buf + base + 13) == 0x8E80 &&
++            read_u16_le(sprite_grouping_data_buf + base + 15) == 0x8F40)
++            return read_u16_le(sprite_grouping_data_buf + offset - 8) ^ 1;
++    }
++    return read_u16_le(sprite_grouping_data_buf + offset);
++}
+ 
+ /*
+  * CLEAR_OVERWORLD_SPRITEMAPS (C01A86)
+@@ -579,7 +599,7 @@
+      * ASM: LDA [$02] → STA ENTITY_CURRENT_DISPLAYED_SPRITES,Y
+      * Low bits are flags: bit 0 = spritemap direction chunk selector,
+      * bit 1 = surface flag indicator. */
+-    uint16_t tile_data_offset = read_u16_le(sprite_grouping_data_buf + frame_ptr_off);
++    uint16_t tile_data_offset = sprite_frame_pointer(frame_ptr_off);
+ 
+     uint16_t vram_dest = vram_addr;  /* word address */
+ 
+--- a/src/entity/sprite.h
++++ b/src/entity/sprite.h
+@@ -102,6 +102,9 @@
+     0, 4, 1, 5, 2, 6, 3, 7
+ };
+ 
++/* Shared frame lookup, including pinned Redux descriptor corrections. */
++uint16_t sprite_frame_pointer(uint32_t offset);
++
+ /* Public API */
+ 
+ /* Load all sprite system data from binary assets */
+--- a/src/entity/callbacks.c
++++ b/src/entity/callbacks.c
+@@ -1146,7 +1146,7 @@
+     if (frame_ptr_off + 2 > sprite_grouping_data_size) return;
+ 
+     /* Read within-bank tile data offset, mask flags (8-dir: AND $FFFE) */
+-    uint16_t tile_data_offset = read_u16_le(sprite_grouping_data_buf + frame_ptr_off);
++    uint16_t tile_data_offset = sprite_frame_pointer(frame_ptr_off);
+     tile_data_offset &= 0xFFF0;  /* Assembly uses AND #$FFF0 for copy functions */
+ 
+     /* Resolve sprite bank */
+@@ -1187,7 +1187,7 @@
+     if (frame_ptr_off + 2 > sprite_grouping_data_size) return;
+ 
+     /* Read within-bank tile data offset, mask flags (4-dir: AND $FFF0) */
+-    uint16_t tile_data_offset = read_u16_le(sprite_grouping_data_buf + frame_ptr_off);
++    uint16_t tile_data_offset = sprite_frame_pointer(frame_ptr_off);
+     tile_data_offset &= 0xFFF0;
+ 
+     /* Resolve sprite bank */
