@@ -1,0 +1,80 @@
+{
+  "sourceCommit": "76833694816824633e3bc4b868a58917194d98c0",
+  "freshWindowsPackage": {
+    "Bytes": 129235510,
+    "SHA256": "DD9DD75AB68D853E56D074957950CDF87E7E539A6D254A250FFAE3D70CA1A6D2",
+    "publicPayloadScanPassed": true
+  },
+  "nativeSHA256": "fc174908072e64fd17c88bb5f711b71641e40244fed94f71257bf9d7b8fd6839",
+  "windowsPackageFile": "EarthBound-Companion-Windows-v1.0.23.zip",
+  "windowsServerDigestVerified": true,
+  "platformBuildRun": 43472469731,
+  "platformUploadRun": 43472549473,
+  "platformAssets": [
+    {
+      "name": "EarthBound-Companion-osx-x64-preview.tar.gz",
+      "size": 95404955,
+      "digest": "sha256:4976ef0560fd69b2a614883d065311128cd32071ba313934f65b04f3e21a1a3c",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-x64-preview.apk",
+      "size": 67689819,
+      "digest": "sha256:0c2b2e3c3c2e243c3c9618dcceaad83d5c6921f0c2453c819cbe88e695d7e236",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-arm64-preview.apk",
+      "size": 66645449,
+      "digest": "sha256:2cf3af27c2713b6703e0333fba5533ed26324fe96e6cd9f39f6e0e585c88f044",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-osx-arm64-preview.tar.gz",
+      "size": 90403128,
+      "digest": "sha256:9f29bb08f774c351653b509a8a226c5359d8db9ccc28af7d22f9e585dd9b5f88",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-linux-x64-preview.tar.gz",
+      "size": 125341901,
+      "digest": "sha256:784f3bd68831b001653925be8a4af64dbc6ddfaf553d7b2ed6ef27a232c1113f",
+      "serverDigestVerified": true
+    }
+  ],
+  "focusedEvidence": "validation/issue15-delivery.json",
+  "additionalRuntimeTestsRun": true,
+  "fullPlaythroughVerified": false,
+  "reporterSaveTested": false,
+  "fullCourierArrivalDepartureReplayed": false,
+  "actualReduxReceiverToAwardScriptTested": true,
+  "ownerSaveFilesModified": false,
+  "publicationPending": false,
+  "platformBuildPassed": true,
+  "platformUploadPassed": true,
+  "androidRomFreeEmulatorStartupPassed": true,
+  "patchStackApplied": 20,
+  "withdrawnCandidate": "1.0.22 / preview.32 failed expanded full receiver check; downloads removed",
+  "buildJobs": [
+    {
+      "name": "desktop (macos-15-intel, osx-x64)",
+      "conclusion": "success"
+    },
+    {
+      "name": "desktop (macos-15, osx-arm64)",
+      "conclusion": "success"
+    },
+    {
+      "name": "desktop (ubuntu-24.04, linux-x64)",
+      "conclusion": "success"
+    },
+    {
+      "name": "android",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-guard",
+      "conclusion": "success"
+    }
+  ]
+}
