@@ -8,12 +8,12 @@
 
 | Platform | Latest release | Package to choose |
 |---|---|---|
-| Windows x64 | [Companion 1.0.21](https://github.com/rages4calm/earthbound-companion/releases/latest) | Windows ZIP — official release |
-| Linux x64 / SteamOS | [Platform preview.31](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.31) | `linux-x64` archive |
-| macOS Apple Silicon (ARM64) | [Platform preview.31](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.31) | `osx-arm64` archive |
-| macOS Intel (x64) | [Platform preview.31](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.31) | `osx-x64` archive |
-| Android ARM64 handhelds/phones/tablets | [Platform preview.31](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.31) | `android-arm64` APK — ROM setup on the device |
-| Android x64 | [Platform preview.31](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.31) | `android-x64` APK — emulator testing |
+| Windows x64 | [Companion 1.0.22](https://github.com/rages4calm/earthbound-companion/releases/latest) | Windows ZIP — official release |
+| Linux x64 / SteamOS | [Platform preview.32](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.32) | `linux-x64` archive |
+| macOS Apple Silicon (ARM64) | [Platform preview.32](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.32) | `osx-arm64` archive |
+| macOS Intel (x64) | [Platform preview.32](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.32) | `osx-x64` archive |
+| Android ARM64 handhelds/phones/tablets | [Platform preview.32](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.32) | `android-arm64` APK — ROM setup on the device |
+| Android x64 | [Platform preview.32](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.32) | `android-x64` APK — emulator testing |
 
 Linux, macOS and Android builds are **community previews**; full playthroughs and broader device testing are still pending. Linux requires glibc 2.38+, macOS requires 12+, and Android requires 8.0+. macOS previews are not notarized. [Platform setup, features and testing limits](docs/PORTABILITY.md).
 
@@ -24,10 +24,10 @@ Desktop and Android builds set up Original and Redux from your own clean USA ROM
 **Discord contact:** `chrono.trigger`
 
 > [!NOTE]
-> **Community platform previews:** Linux x64/SteamOS, macOS Apple Silicon/Intel and Android ARM64/x64 share the native game core, settings, Story Shuffle and achievements. [Linux/macOS preview.31](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.31) · [Android preview.31](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.31) · [setup and coverage](docs/PORTABILITY.md). Android handheld users can hide the touch overlay in **Controls → Show touch controls**. New-platform gameplay still needs community testing.
+> **Community platform previews:** Linux x64/SteamOS, macOS Apple Silicon/Intel and Android ARM64/x64 share the native game core, settings, Story Shuffle and achievements. [Linux/macOS preview.32](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.32) · [Android preview.32](https://github.com/rages4calm/earthbound-companion/releases/tag/v0.5.0-ports-preview.32) · [setup and coverage](docs/PORTABILITY.md). Android handheld users can hide the touch overlay in **Controls → Show touch controls**. New-platform gameplay still needs community testing.
 
 > [!NOTE]
-> **1.0.21 maintenance release — the supported feature set is complete.** Fixes PSI labels after canceling targeting, Tony’s straight-left running animation and in-game player-name keyboard rendering. Windows direct-launch shortcuts for Steam remain available: `--play-original` / `--play-redux`. [Release notes](docs/RELEASE-1.0.21.md) · [Scope and coverage](MAINTENANCE.md) · [Report a bug](https://github.com/rages4calm/earthbound-companion/issues/new?template=bug-report.yml).
+> **1.0.22 maintenance release — the supported feature set is complete.** Fixes the Zombie Paper courier crash and other item awards using a stored recipient. Existing saves remain compatible, including the imported-save path that exposed this bug. [Release notes](docs/RELEASE-1.0.22.md) · [Scope and coverage](MAINTENANCE.md) · [Report a bug](https://github.com/rages4calm/earthbound-companion/issues/new?template=bug-report.yml).
 
 > [!NOTE]
 > **Windows 1.0.6 / platform preview.18 fix battle color blending and per-layer distortion in both editions, plus Redux death/retry cinematic bars and escalator running poses.** It supports Original EarthBound and Companion's pinned native MaternalBound Redux adaptation. The owner completed Redux through the credits, with equipment/stat boosts for final testing; community testers also report completing both editions. The Redux input remains `897d0083`, rather than automatically following newer upstream changes. Exhaustive campaign parity, full randomized progression and every combat/music combination remain unverified. [Redux version and coverage](MATERNALBOUND-NATIVE.md).

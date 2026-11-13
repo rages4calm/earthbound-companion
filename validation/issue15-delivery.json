@@ -1,0 +1,34 @@
+{
+  "issue": 15,
+  "original": {
+    "passed": true,
+    "exitCode": 0,
+    "output": "PASS: 48 register cases, Zombie Paper handoff with zero working memory, all14 receipt slots, full-inventory refusal; Redux=0\r\n",
+    "fullPlaythroughVerified": false,
+    "ownerDataWritten": false,
+    "scope": "Real VM award dispatcher with independent argument/working registers, both item award commands, private key-item packs and receipt slots; not a full delivery scene"
+  },
+  "redux": {
+    "passed": true,
+    "exitCode": 0,
+    "output": "PASS: 48 register cases, Zombie Paper handoff with zero working memory, all14 receipt slots, full-inventory refusal; Redux=1\r\n",
+    "fullPlaythroughVerified": false,
+    "ownerDataWritten": false,
+    "scope": "Real VM award dispatcher with independent argument/working registers, both item award commands, private key-item packs and receipt slots; not a full delivery scene"
+  },
+  "negativeControl": {
+    "passed": false,
+    "exitCode": 3221226505,
+    "output": "",
+    "fullPlaythroughVerified": false,
+    "ownerDataWritten": false,
+    "scope": "Real VM award dispatcher with independent argument/working registers, both item award commands, private key-item packs and receipt slots; not a full delivery scene"
+  },
+  "negativeControlFatal": "give_item_to_specific_character: invalid char_id=0",
+  "actualReduxAwardScriptExecuted": true,
+  "fullCourierSceneReplayed": false,
+  "reporterSaveTested": false,
+  "ownerDataWritten": false,
+  "patchStackApplied": 20,
+  "testedFileMatchesCleanStack": true
+}
