@@ -19,7 +19,7 @@
          uint16_t result = give_item_to_character(char_id, item_id);
          set_working_memory((uint32_t)result);
          break;
-@@ -3329,14 +3329,14 @@
+@@ -3329,14 +3329,33 @@
      case 0x0E: {
          /* GIVE_ITEM_TO_CHARACTER_B: 2 data bytes.
           * Port of CC_1D_0E (asm/text/ccs/give_item_to_character_2.asm).
@@ -34,6 +34,25 @@
 -        uint16_t item_id = item_arg ? (uint16_t)item_arg : (uint16_t)(get_argument_memory() & 0xFFFF);
 +        uint16_t char_id = char_arg ? (uint16_t)char_arg : (uint16_t)(get_argument_memory() & 0xFFFF);
 +        uint16_t item_id = item_arg ? (uint16_t)item_arg : (uint16_t)(get_working_memory() & 0xFFFF);
++        /* The pinned Redux courier's legacy (Keys-menu-off) branch tests
++         * that option between choosing a recipient and giving Zombie Paper.
++         * Neither VM register retains that choice in some imported saves.
++         * Re-resolve inventory room only for this exact mapped award branch;
++         * do not reinterpret zero as a character for ordinary scripts. */
++        if (char_arg == 0 && char_id == 0 && item_arg == 174 &&
++            maternalbound_enabled() && r->source == TEXT_SRC_DIALOGUE) {
++            uint32_t begin = maternalbound_resolve_entry(0xC7A63E);
++            uint32_t end = maternalbound_resolve_entry(0xC7A6A9);
++            uint32_t pc = DIALOGUE_BLOB_BASE + r->ptr_off;
++            if (begin && end > begin && pc >= begin && pc < end) {
++                char_id = find_inventory_space2(0xFF);
++                if (!char_id) {
++                    set_argument_memory(0);
++                    set_working_memory(0);
++                    break;
++                }
++            }
++        }
          /* Receipt scripts need the slot just filled, not the next free slot:
           * gaps and the final inventory slot break that old shortcut. */
          uint16_t receipt_slots[TOTAL_PARTY_COUNT];

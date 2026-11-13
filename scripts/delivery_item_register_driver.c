@@ -43,7 +43,28 @@ int main(int argc,char**argv){
   ModeState courier={0};CHECK(dt_make_child_init(&courier,0xC7A63E));
   for(int step=0;step<8&&!party_characters[0].items[0];step++)mode_step_display_text(&courier);
   CHECK(party_characters[0].items[0]==174);
+  TextBlock *block=NULL;const uint8_t *entry=resolve_text_addr(0xC7A542,&block);CHECK(entry&&block);
+  unsigned off=0;size_t size=block->size-(size_t)(entry-block->data);
+  while(off+3<size&&off<2048&&memcmp(entry+off,(uint8_t[]){0x1D,0x03,0xFF},3))off++;
+  CHECK(off<2048&&off+3<size);
+  for(unsigned receiver=0;receiver<3;receiver++){
+   for(unsigned who=0;who<3;who++)memset(party_characters[who].items,42,ITEM_INVENTORY_SIZE);
+   party_characters[receiver].items[0]=0;set_argument_memory(0);set_working_memory(0);
+   dt_setup_init(&courier,entry+off,size-off);
+   for(int step=0;step<8&&!party_characters[receiver].items[0];step++)mode_step_display_text(&courier);
+   CHECK(party_characters[receiver].items[0]==174);
+   for(unsigned who=0;who<3;who++)if(who!=receiver)CHECK(party_characters[who].items[0]==42);
+  }
+  /* The mapped compatibility award also refuses a now-full party safely. */
+  entry=resolve_text_addr(0xC7A63E,&block);CHECK(entry&&block);size=block->size-(size_t)(entry-block->data);off=0;
+  while(off+4<size&&off<1024&&memcmp(entry+off,(uint8_t[]){0x1D,0x0E,0,174},4))off++;
+  CHECK(off<1024&&off+4<size);
+  for(unsigned who=0;who<3;who++)memset(party_characters[who].items,42,ITEM_INVENTORY_SIZE);
+  set_argument_memory(0);set_working_memory(0);
+  ScriptReader full={TEXT_SRC_DIALOGUE,(uint32_t)(entry+off+1-dialogue_blob),(uint32_t)dialogue_blob_size,-1};
+  cc_1d_dispatch(&full);CHECK(!get_working_memory()&&!get_argument_memory());
+
  }
- printf("PASS: %u register cases, Zombie Paper handoff with zero working memory, all14 receipt slots, full-inventory refusal; Redux=%d\n",cases,maternalbound_enabled());return 0;
+ printf("PASS: %u register cases, Zombie Paper handoff with zero working memory, all14 receipt slots, full-inventory refusal, real courier receiver-to-award paths; Redux=%d\n",cases,maternalbound_enabled());return 0;
 }
 
