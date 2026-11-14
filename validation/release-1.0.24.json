@@ -1,0 +1,79 @@
+{
+  "sourceCommit": "e0b7405f6ba62262846a993b81eb9920e1b0af48",
+  "freshWindowsPackage": {
+    "Bytes": 129235540,
+    "SHA256": "17605EB52284EA570D587D490540A5160F5EAD3F2BB5AC45423F3AC2A5F856FA",
+    "publicPayloadScanPassed": true
+  },
+  "nativeSHA256": "8c2b4f50bb0f43d5692383c0aa0545b4d89523cd72efd20b09e8bf605301437a",
+  "windowsPackageFile": "EarthBound-Companion-Windows-v1.0.24.zip",
+  "windowsServerDigestVerified": true,
+  "platformBuildRun": 43615885920,
+  "platformUploadRun": 43615951557,
+  "platformAssets": [
+    {
+      "name": "EarthBound-Companion-osx-x64-preview.tar.gz",
+      "size": 95404174,
+      "digest": "sha256:511e0a0464a9a0e34dd0f08aa063c2571a6621e1b039853176eb69314d708cc4",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-x64-preview.apk",
+      "size": 67693915,
+      "digest": "sha256:a3e80493aa6b99e683f039f3a1d71e26818a3af2649da3570c51ab61e3e2f297",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-android-arm64-preview.apk",
+      "size": 66645449,
+      "digest": "sha256:af61c29318bf02493e52ebb38f811babe966f58466432f88826ef428f08c4b62",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-osx-arm64-preview.tar.gz",
+      "size": 90402875,
+      "digest": "sha256:4b8981500efaef367b1cea9e5c7eb63abc975569b179bde7bd15d3ec14ff8950",
+      "serverDigestVerified": true
+    },
+    {
+      "name": "EarthBound-Companion-linux-x64-preview.tar.gz",
+      "size": 125334701,
+      "digest": "sha256:03d74468d78c7782048b844d1358552eba09ef796f0618d6e37ec800aac3196e",
+      "serverDigestVerified": true
+    }
+  ],
+  "focusedEvidence": "validation/issue16-chests.json",
+  "additionalRuntimeTestsRun": true,
+  "platformCIBuildOnly": true,
+  "additionalPlatformStartupChecksRun": false,
+  "fullPlaythroughVerified": false,
+  "ownerSaveFilesModified": false,
+  "publicationPending": false,
+  "platformBuildPassed": true,
+  "platformUploadPassed": true,
+  "patchStackApplied": 21,
+  "issueRepliedAndClosed": true,
+  "issueComment": "https://github.com/rages4calm/earthbound-companion/issues/16#issuecomment-6880780934",
+  "buildJobs": [
+    {
+      "name": "android",
+      "conclusion": "success"
+    },
+    {
+      "name": "desktop (macos-15, osx-arm64)",
+      "conclusion": "success"
+    },
+    {
+      "name": "desktop (macos-15-intel, osx-x64)",
+      "conclusion": "success"
+    },
+    {
+      "name": "desktop (ubuntu-24.04, linux-x64)",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-guard",
+      "conclusion": "skipped"
+    }
+  ]
+}
