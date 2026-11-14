@@ -1,0 +1,39 @@
+--- a/src/game/display_text_cc.c
++++ b/src/game/display_text_cc.c
+@@ -3103,15 +3103,15 @@
+     case 0x00: {
+         /* GIVE_ITEM_TO_CHARACTER: 2 data bytes.
+          * Port of CC_1D_00 (asm/text/ccs/give_item_to_character.asm).
+-         * Byte 1 = char_id (0 → argument_memory). Byte 2 = item_id (0 → working_memory).
++         * Byte 1 = char_id (0 → working_memory). Byte 2 = item_id (0 → argument_memory).
+          * Assembly: byte1→CC_ARGUMENT_STORAGE→A, byte2→X.
+          * Calls GIVE_ITEM_TO_CHARACTER(A=char_id, X=item_id): supports 0xFF
+          * for all-party, handles teddy bear and transform side effects.
+          * Stores result (receiving char_id or 0) in working_memory. */
+         uint8_t char_arg = script_read_byte(r);
+         uint8_t item_arg = script_read_byte(r);
+-        uint16_t char_id = char_arg ? (uint16_t)char_arg : (uint16_t)(get_argument_memory() & 0xFFFF);
+-        uint16_t item_id = item_arg ? (uint16_t)item_arg : (uint16_t)(get_working_memory() & 0xFFFF);
++        uint16_t char_id = char_arg ? (uint16_t)char_arg : (uint16_t)(get_working_memory() & 0xFFFF);
++        uint16_t item_id = item_arg ? (uint16_t)item_arg : (uint16_t)(get_argument_memory() & 0xFFFF);
+         uint16_t result = give_item_to_character(char_id, item_id);
+         set_working_memory((uint32_t)result);
+         break;
+@@ -3329,14 +3329,14 @@
+     case 0x0E: {
+         /* GIVE_ITEM_TO_CHARACTER_B: 2 data bytes.
+          * Port of CC_1D_0E (asm/text/ccs/give_item_to_character_2.asm).
+-         * Byte 1 = char_id (0 → argument_memory). Byte 2 = item_id (0 → working_memory).
++         * Byte 1 = char_id (0 → working_memory). Byte 2 = item_id (0 → argument_memory).
+          * Gives item to character (or first available if char_id=0xFF).
+          * Stores the received item's 1-based slot in argument_memory.
+          * Stores result (receiving char_id or 0) in working_memory. */
+         uint8_t char_arg = script_read_byte(r);
+         uint8_t item_arg = script_read_byte(r);
+-        uint16_t char_id = char_arg ? (uint16_t)char_arg : (uint16_t)(get_argument_memory() & 0xFFFF);
+-        uint16_t item_id = item_arg ? (uint16_t)item_arg : (uint16_t)(get_working_memory() & 0xFFFF);
++        uint16_t char_id = char_arg ? (uint16_t)char_arg : (uint16_t)(get_working_memory() & 0xFFFF);
++        uint16_t item_id = item_arg ? (uint16_t)item_arg : (uint16_t)(get_argument_memory() & 0xFFFF);
+         /* The pinned Redux courier's legacy (Keys-menu-off) branch tests
+          * that option between choosing a recipient and giving Zombie Paper.
+          * Neither VM register retains that choice in some imported saves.
