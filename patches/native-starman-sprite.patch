@@ -1,0 +1,21 @@
+--- a/src/game/battle_ui.c
++++ b/src/game/battle_ui.c
+@@ -216,8 +216,16 @@ static void render_battle_sprite_row(uint16_t row) {
+          * positions. Pokey moves from allocation 1 to 0 when the Devil's
+          * Machine disappears; the old index addresses stale spritemaps and
+          * background tiles. Resolve this derived binding every render, also
+-         * repairing checkpoints saved after the scene had already changed. */
+-        b->vram_sprite_index = (uint8_t)find_battle_sprite_for_enemy(b->id);
++         * repairing checkpoints saved after the scene had already changed.
++         * ENEMY_EXTENDER can rewrite b->id to a variant (e.g. Starman Super
++         * 68 -> 185) that is never in the group's sprite-slot table; the
++         * finder returns slot 0 on a miss, which would bind the wrong enemy's
++         * graphics. Only rebind when the id is genuinely present, otherwise
++         * keep the cached binding so the enemy retains its own sprite. */
++        uint16_t sprite_slot = find_battle_sprite_for_enemy(b->id);
++        if (sprite_slot < bt.current_battle_sprites_allocated &&
++            bt.current_battle_sprite_enemy_ids[sprite_slot] == b->id)
++            b->vram_sprite_index = (uint8_t)sprite_slot;
+         if (b->vram_sprite_index >= bt.current_battle_sprites_allocated) continue;
+ 
+         /* Blink timer, damage flash effect.

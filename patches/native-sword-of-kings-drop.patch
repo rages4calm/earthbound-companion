@@ -1,0 +1,25 @@
+--- a/src/game/battle.c
++++ b/src/game/battle.c
+@@ -3871,6 +3871,12 @@ setup_item_drop:
+ 
+             /* Apply rarity check */
+             uint8_t rarity = edata->item_drop_rate;
++            /* Sword of Kings ease: when the rolled drop is the Sword of Kings
++             * (item 35 / SWORD_OF_KINGS $23), use one rarity tier more generous
++             * so the Starman Super farm is slightly less brutal. Original
++             * 1/128 -> 1/64; Redux 1/64 -> 1/32 (and 1/16 -> 1/8). */
++            if (bt.item_dropped == 35 && rarity < 6)
++                rarity++;
+             static const uint16_t rarity_masks[] = {
+                 0x7F, 0x3F, 0x1F, 0x0F, 0x07, 0x03, 0x01
+             };
+@@ -6197,6 +6203,9 @@ static void iw_roll_drop(void) {
+ 
+     bt.item_dropped = drop_enemy->item_dropped;
+     uint8_t drop_rate = drop_enemy->item_drop_rate;
++    /* Sword of Kings ease: one rarity tier more generous (see setup_item_drop). */
++    if (bt.item_dropped == 35 && drop_rate < 6)
++        drop_rate++;
+ 
+     /* Item rarity masks (from include/config.asm) */
+     static const uint8_t rarity_masks[7] = {
