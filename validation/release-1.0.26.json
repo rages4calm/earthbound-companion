@@ -1,0 +1,75 @@
+{
+  "sourceCommit": "a760d42c5f67bb1a01ac997e90aeb6308227d64a",
+  "windowsTag": "v1.0.26",
+  "platformTag": "v0.5.0-ports-preview.36",
+  "freshWindowsPackage": {
+    "Zip": "EarthBound-Companion-Windows-v1.0.26.zip",
+    "Bytes": 129236097,
+    "SHA256": "5793280F5B2462143AB76B1051673716E204BBCE8DE580DB2B20D09F57A9F842"
+  },
+  "nativeSHA256": "f9b0209a2f69146d04acc04f1b30382bea0e01f6140b1d10dcc525f5753279c0",
+  "platformBuildRun": 44656522381,
+  "platformUploadRun": 44657387608,
+  "allBuildJobsPassed": true,
+  "allSixUploadedDigestsVerified": true,
+  "windowsLatestVerified": true,
+  "platformPrereleaseVerified": true,
+  "platformAssets": [
+    {
+      "name": "EarthBound-Companion-android-arm64-preview.apk",
+      "size": 66649545,
+      "digest": "sha256:1af2489a7dbddb65cb21011fb16a5c58dbf68f05e1bdbcf1a8bbd34e7063ba4e",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.36/EarthBound-Companion-android-arm64-preview.apk"
+    },
+    {
+      "name": "EarthBound-Companion-android-x64-preview.apk",
+      "size": 67693915,
+      "digest": "sha256:5d68c9d271ec6a45ba98935fd9588329cf9fee07d92d8c52a108e94d943fd12c",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.36/EarthBound-Companion-android-x64-preview.apk"
+    },
+    {
+      "name": "EarthBound-Companion-linux-x64-preview.tar.gz",
+      "size": 125347100,
+      "digest": "sha256:850cc503991b652a06ac2247e1f9c642a215885683f3971cfb78afb8c968cd24",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.36/EarthBound-Companion-linux-x64-preview.tar.gz"
+    },
+    {
+      "name": "EarthBound-Companion-osx-arm64-preview.tar.gz",
+      "size": 90418683,
+      "digest": "sha256:b4ae85a203194b7b54b14bc7a110d18b4dd32718c5887d2bf4baa23653881989",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.36/EarthBound-Companion-osx-arm64-preview.tar.gz"
+    },
+    {
+      "name": "EarthBound-Companion-osx-x64-preview.tar.gz",
+      "size": 95416184,
+      "digest": "sha256:28253107ff26b0b3f6c1fc3adef05b4b96bb676f4a0736473ca9339c1a5ae4a2",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.36/EarthBound-Companion-osx-x64-preview.tar.gz"
+    }
+  ],
+  "focusedRegressionReceipt": "issues17-19.json",
+  "packagedWindowsChecks": {
+    "forbiddenFiles": [],
+    "nativeMatchesTestedBuild": true,
+    "checks": [
+      {
+        "mode": "original",
+        "selftestExitCode": 0
+      },
+      {
+        "mode": "redux",
+        "selftestExitCode": 0
+      },
+      {
+        "test": "packagedLegacyResume",
+        "exitCode": 0
+      }
+    ]
+  },
+  "legacyStateColdLoad": {
+    "passed": true,
+    "phoneSaveCopyUnchanged": true,
+    "scope": "Snapshot produced by the older root runtime from an isolated copy of a phone save; fresh-process candidate restore repairs wrapped count and runs 120 native logic steps. Not reporter-save replay."
+  },
+  "fullPlaythroughVerified": false,
+  "ownerDropRateIncreaseRetained": true
+}
