@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.26 / platform preview.36 - encounter and launch recovery
+
+Fix enemy-count underflow across room transitions, including empty Fire Spring rooms; recover impossible counts in existing quick saves. Restore the maintained Windows runtime after 1.0.25 shipped an older EXE that rejected launcher arguments. Keep the Starman sprite fix and increased Sword of Kings odds. All platforms use the same corrected patch stack. See [release notes](docs/RELEASE-1.0.26.md) for bounded verification scope.
+
 ## 1.0.4 / platform preview.15 - battle palettes and Windows icon
 
 Fix incorrect brown/gray battle backgrounds and orange HP/PP card borders in Original and MaternalBound Redux. SNES Mode 0 background layers now select their own color banks. New games initialize the normal HP/PP border palette; affected existing saves display normally without restarting.

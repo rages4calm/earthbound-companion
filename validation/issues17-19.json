@@ -1,0 +1,82 @@
+{
+  "scope": "Bounded native regression fixtures with private Original/Redux packs; not full campaign or reporter save",
+  "patchCount": 24,
+  "cleanPinnedStackMatchesMaintainedSource": true,
+  "nativeSHA256": "f9b0209a2f69146d04acc04f1b30382bea0e01f6140b1d10dcc525f5753279c0",
+  "fixed": {
+    "checks": [
+      {
+        "test": "spawns",
+        "mode": "original",
+        "exitCode": 0,
+        "output": "PASS: 320 real Fire Spring room-entry spawn scans, 222 Major Psychic Psychos; removal count, old-state recovery\r\n",
+        "error": ""
+      },
+      {
+        "test": "spawns",
+        "mode": "redux",
+        "exitCode": 0,
+        "output": "PASS: 320 real Fire Spring room-entry spawn scans, 222 Major Psychic Psychos; removal count, old-state recovery\r\n",
+        "error": ""
+      },
+      {
+        "test": "battle",
+        "mode": "original",
+        "exitCode": 0,
+        "output": "PASS: native sprite binding and OAM for extended Starman and repacked slots; 4096 actual normal/instant drop rolls\r\n",
+        "error": ""
+      },
+      {
+        "test": "battle",
+        "mode": "redux",
+        "exitCode": 0,
+        "output": "PASS: native sprite binding and OAM for extended Starman and repacked slots; 4096 actual normal/instant drop rolls\r\n",
+        "error": ""
+      }
+    ],
+    "ownerDataWritten": false,
+    "fullPlaythroughVerified": false
+  },
+  "negativeControls": {
+    "checks": [
+      {
+        "test": "spawns",
+        "mode": "original",
+        "exitCode": 10,
+        "output": "",
+        "error": "73 40 136\r\nSHUFFLE_ENEMY 228 140 20 24 15\r\nSHUFFLE_ENEMY 229 9999 255 127 80\r\nSHUFFLE_ENEMY 230 962 88 137 83\r\nFAIL 47: ow.overworld_enemy_count<=10\r\n"
+      },
+      {
+        "test": "spawns",
+        "mode": "redux",
+        "exitCode": 10,
+        "output": "",
+        "error": "73 40 136\r\nSHUFFLE_ENEMY 228 140 20 24 15\r\nSHUFFLE_ENEMY 229 9999 255 127 80\r\nSHUFFLE_ENEMY 230 962 88 137 83\r\nFAIL 47: ow.overworld_enemy_count<=10\r\n"
+      },
+      {
+        "test": "battle",
+        "mode": "original",
+        "exitCode": 10,
+        "output": "",
+        "error": "NEMY 228 140 20 24 15\r\nSHUFFLE_ENEMY 229 9999 255 127 80\r\nSHUFFLE_ENEMY 230 962 88 137 83\r\nFAIL 72: b->vram_sprite_index==1 && ppu.oam[0].tile==0x45\r\n"
+      },
+      {
+        "test": "battle",
+        "mode": "redux",
+        "exitCode": 10,
+        "output": "",
+        "error": "NEMY 228 140 20 24 15\r\nSHUFFLE_ENEMY 229 9999 255 127 80\r\nSHUFFLE_ENEMY 230 962 88 137 83\r\nFAIL 72: b->vram_sprite_index==1 && ppu.oam[0].tile==0x45\r\n"
+      }
+    ],
+    "ownerDataWritten": false,
+    "fullPlaythroughVerified": false
+  },
+  "launcherContractFixed": {
+    "passed": true,
+    "exitCode": 0,
+    "output": "PC input remap / overlapping sources / deadzone / hotkey / focus-loss: PASS\r\nmsu: native PCM track 1 (one-shot)\r\nmsu: native PCM track 2 (loop)\r\nMSU one-shot / loop-point / resample / fast-slow-quarter-full fades / invalid-header / missing-track: PASS\r\nAchievement chime: both notes, stereo, bounded amplitude and completion PASS\r\n",
+    "scope": "Launcher arguments plus ROM-free input/audio selftests; no gameplay assets or owner saves"
+  },
+  "badWindowsReleaseRejectedByContractCheck": true,
+  "ownerDropRateIncreaseRetained": true
+}

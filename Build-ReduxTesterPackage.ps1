@@ -1,4 +1,4 @@
-param([string]$Version='1.0.24', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='', [string]$ShaderRuntimePath='', [string]$WorkspaceRoot=$PSScriptRoot)
+param([string]$Version='1.0.26', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='', [string]$ShaderRuntimePath='', [string]$WorkspaceRoot=$PSScriptRoot)
 $ErrorActionPreference='Stop'
 $isOfficial=$Version -match '^\d+\.\d+\.\d+$'
 $projectRoot=[IO.Path]::GetFullPath($WorkspaceRoot)
@@ -16,6 +16,9 @@ $helper=[IO.Path]::GetFullPath($ReduxHelperPath)
 $originalHelper=[IO.Path]::GetFullPath($OriginalHelperPath)
 $shaderRuntime=[IO.Path]::GetFullPath($ShaderRuntimePath)
 foreach($input in @($native,$helper,$originalHelper,$shaderRuntime)){if(!(Test-Path -LiteralPath $input -PathType Leaf)){throw "Missing build input: $input"}}
+# Check the actual launcher/native contract before publishing or copying any candidate.
+& (Join-Path $projectRoot 'native-source\.venv\Scripts\python.exe') (Join-Path $docs 'scripts\check_launcher_contract.py') --native $native
+if($LASTEXITCODE -ne 0){throw 'Native EXE is incompatible with the Companion launcher. Do not package an older source build.'}
 New-Item -ItemType Directory -Path $app -Force | Out-Null
 foreach($folder in @('Game','msu','UserData','Profiles','Mods','Licenses')){New-Item -ItemType Directory -Path (Join-Path $app $folder) -Force | Out-Null}
 & dotnet publish (Join-Path $docs 'Companion\Companion.csproj') -c Release -o (Join-Path $staging 'publish') *> (Join-Path $staging 'publish.log')

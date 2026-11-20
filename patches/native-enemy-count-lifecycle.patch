@@ -1,0 +1,58 @@
+--- a/src/game/overworld.c
++++ b/src/game/overworld.c
+@@ -215,7 +215,6 @@
+ void clear_all_enemies(void) {
+     ow.magic_butterfly_spawned = 0;
+     ow.enemy_spawn_too_many_failures = 0;
+-    ow.overworld_enemy_count = 0;
+ 
+     /* Remove all entities that are NOT party members.
+      * Assembly: INC; CMP #6; BLTEQ, skips if (script_id + 1) <= 6,
+@@ -226,6 +225,9 @@
+             remove_entity((int16_t)i);
+         }
+     }
++
++    /* Removal decrements the count; reset after cleanup, not before it. */
++    ow.overworld_enemy_count = 0;
+ 
+     /* Clear collision data for all entity slots */
+     for (int i = 0; i < MAX_ENTITIES; i++) {
+@@ -943,7 +945,8 @@
+ 
+     /* Assembly lines 17-22: if NPC ID upper bits == 0x8000, it's an enemy , 
+      * decrement ow.overworld_enemy_count. */
+-    if ((entities.npc_ids[slot] & 0xF000) == 0x8000) {
++    if ((entities.npc_ids[slot] & 0xF000) == 0x8000 &&
++        ow.overworld_enemy_count > 0) {
+         ow.overworld_enemy_count--;
+     }
+ 
+@@ -2300,6 +2303,15 @@
+ }
+ 
+ void overworld_savestate_rebind(void) {
++    /* Older quick saves can contain an underflowed enemy count after a door.
++     * Recover from live entities instead of preserving a permanent spawn lock. */
++    if (ow.overworld_enemy_count > MAX_ENTITIES) {
++        ow.overworld_enemy_count = 0;
++        for (int i = 0; i < MAX_ENTITIES; i++)
++            if (entities.script_table[i] >= 0 &&
++                (entities.npc_ids[i] & 0xF000) == 0x8000)
++                ow.overworld_enemy_count++;
++    }
+     ow.post_teleport_callback =
+         (ow.post_teleport_callback_id == POST_TELEPORT_CB_UNDRAW_FLYOVER_TEXT)
+             ? undraw_flyover_text : NULL;
+--- a/src/entity/callroutine_sprite.c
++++ b/src/entity/callroutine_sprite.c
+@@ -84,7 +84,8 @@
+ 
+     /* Assembly lines 17-22: if NPC ID upper bits == 0x8000, it's an enemy, 
+      * decrement ow.overworld_enemy_count. */
+-    if ((entities.npc_ids[offset] & 0xF000) == 0x8000) {
++    if ((entities.npc_ids[offset] & 0xF000) == 0x8000 &&
++        ow.overworld_enemy_count > 0) {
+         ow.overworld_enemy_count--;
+     }
+ 

@@ -77,7 +77,7 @@ jobs:
           cmake --install build/sdl
           cmake -S native-source/port/unix -B build/native -DCMAKE_C_COMPILER=clang -DEB_RUNTIME_ASSETS=ON -DEB_ENABLE_VERIFY=OFF -DEB_ENABLE_AUDIO=ON -DEB_SDL2_STATIC_CONFIG_DIR="$PWD/build/sdl-install/lib/cmake/SDL2" -DCMAKE_BUILD_TYPE=Release
           cmake --build build/native --target earthbound --parallel 3
-          if [ "${{ github.event.inputs.build_only }}" != "true" ]; then SDL_AUDIODRIVER=dummy build/native/earthbound --selftest-pc; fi
+          if [ "${{ github.event.inputs.build_only }}" != "true" ]; then python scripts/check_launcher_contract.py --native build/native/earthbound; fi
       - run: dotnet run --project Ports/Tests/Companion.Portable.Tests.csproj -c Release
         if: github.event.inputs.build_only != 'true'
       - name: Build private-ROM Original setup helper
