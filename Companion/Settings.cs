@@ -17,6 +17,7 @@ public sealed class Settings {
  public bool ShowTouchControls{get;set;}=true;
  public bool HqAudio{get;set;}=true;public int Volume{get;set;}=80;public int MusicVolume{get;set;}=75;
  public int Sprint{get;set;}=1;public bool InstantText{get;set;}=true;public bool CinematicLetterbox{get;set;}=true;
+ public bool PressSkipText{get;set;} public bool PauseUnfocused{get;set;} public bool CloseLauncherOnPlay{get;set;}
  public bool NoHomesickness{get;set;}=true;public bool NoDadCalls{get;set;}
  public int Exp{get;set;}=1;public int Money{get;set;}=1;public int FastForward{get;set;}=3;
  public int QuickSlot{get;set;} public int Deadzone{get;set;}=8000;
@@ -84,7 +85,7 @@ public sealed class Settings {
   b[7]=(byte)(NintendoFaceLabels?1:0);
   b[9]=(byte)(Scanlines?1:0);b[10]=(byte)(Filter==1?1:0);b[11]=(byte)(TiltShift?1:0);b[12]=(byte)(WideFov?1:0);b[13]=(byte)(ColorGrading?1:0);b[14]=(byte)Aspect;
   Atomic(Path.Combine(directory,"settings.dat"),b);
-  var ini=new StringBuilder($"# Managed by EarthBound Companion\ncompanion=1\nwidth={Width}\nheight={Height}\nfullscreen={(Fullscreen?1:0)}\ninteger_scale={(IntegerScale?1:0)}\nfilter={Filter}\nvolume={Volume}\nmusic_volume={MusicVolume}\ninstant_text={(InstantText?1:0)}\ndisable_cinematic_letterbox={(CinematicLetterbox?0:1)}\nno_homesickness={(NoHomesickness?1:0)}\nno_dad_calls={(NoDadCalls?1:0)}\nexp_multiplier={Exp}\nmoney_multiplier={Money}\nfast_forward_multiplier={FastForward}\nquick_slot={QuickSlot}\ndeadzone={Deadzone}\nmsu_dir={Path.GetFullPath(Path.Combine(Root,"msu"))}\n");
+  var ini=new StringBuilder($"# Managed by EarthBound Companion\ncompanion=1\nwidth={Width}\nheight={Height}\nfullscreen={(Fullscreen?1:0)}\ninteger_scale={(IntegerScale?1:0)}\nfilter={Filter}\nvolume={Volume}\nmusic_volume={MusicVolume}\ninstant_text={(InstantText?1:0)}\npress_skip_text={(PressSkipText?1:0)}\npause_unfocused={(PauseUnfocused?1:0)}\ndisable_cinematic_letterbox={(CinematicLetterbox?0:1)}\nno_homesickness={(NoHomesickness?1:0)}\nno_dad_calls={(NoDadCalls?1:0)}\nexp_multiplier={Exp}\nmoney_multiplier={Money}\nfast_forward_multiplier={FastForward}\nquick_slot={QuickSlot}\ndeadzone={Deadzone}\nmsu_dir={Path.GetFullPath(Path.Combine(Root,"msu"))}\n");
   ini.AppendLine($"shader_preset={ShaderPreset}");
   ini.AppendLine($"achievement_sound={(AchievementSound?1:0)}");
   for(int i=0;i<21;i++)ini.AppendLine($"key.{i}={Keys[i]}\nbutton.{i}={Buttons[i]}");

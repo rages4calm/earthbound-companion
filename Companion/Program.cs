@@ -206,6 +206,9 @@ sealed partial class MainForm : Form {
   Header("Less friction. More adventure.","Choose the conveniences you want. Changes apply to native game logic.");
   Choice("Sprint speed","Hold Shift or the west controller button while walking.",["Off","1.5× movement","2× movement"],settings.Sprint,i=>settings.Sprint=i);
   Check("Quick dialogue","Skip character typing delays; retain scripted scene pauses.",settings.InstantText,v=>settings.InstantText=v);
+  Check("Press to finish dialogue","With Quick dialogue off, press confirm or cancel while text is typing to show the rest of the page at once.",settings.PressSkipText,v=>settings.PressSkipText=v);
+  Check("Pause in the background","Pause the game and its audio while another window has focus; resume when you return.",settings.PauseUnfocused,v=>settings.PauseUnfocused=v);
+  Check("Hide launcher while playing","Close this window when the game starts. F1 in the game still opens these settings; the launcher exits with the game.",settings.CloseLauncherOnPlay,v=>settings.CloseLauncherOnPlay=v);
   Check("Disable homesickness","Keep Ness focused without periodic homesickness rolls.",settings.NoHomesickness,v=>settings.NoHomesickness=v);
   Check("Disable Dad's reminder calls","Suppress unsolicited playtime reminders; phone saving stays available.",settings.NoDadCalls,v=>settings.NoDadCalls=v);
   Choice("Experience rewards","Future battles only. High values speed testing and change battle balance.",Enumerable.Range(1,16).Select(i=>i==1?"Original rewards":$"{i}× experience").ToArray(),settings.Exp-1,i=>settings.Exp=i+1);
@@ -260,6 +263,7 @@ sealed partial class MainForm : Form {
   try {game=GameLaunch.Start(settings,resume,seed);activeSeed=seed;}
   catch{Settings.SessionDirectory=null;activeSeed=null;throw;}
   Notify(seed==null?"Game running. F1 opens these settings; F9 pauses.":$"Story Shuffle running: {seed.Seed}. F1 opens settings; saves stay with this seed.");ShowPage(seed==null?"Play":"Randomizer");
+  if(settings.CloseLauncherOnPlay){directLaunch=true;Hide();}
  });}
  void ImportMod(){using var d=new OpenFileDialog(){Filter="EarthBound profiles (*.ebmod.json)|*.ebmod.json|JSON files (*.json)|*.json"};if(d.ShowDialog(this)!=DialogResult.OK)return;Try(()=>{settings.ImportProfile(d.FileName);ShowPage(current);Notify("Profile imported. Apply settings to enable it.");});}
  void ExportMod(){using var d=new SaveFileDialog(){Filter="EarthBound profile|*.ebmod.json",FileName="My EarthBound.ebmod.json"};if(d.ShowDialog(this)!=DialogResult.OK)return;Try(()=>{var mod=new ModProfile(){Name="My EarthBound",Description="Native visual and gameplay profile"};foreach(string k in new[]{"Filter","Aspect","Scanlines","TiltShift","WideFov","ColorGrading","OriginalTitleScreen","HqAudio","Sprint","InstantText","NoHomesickness","NoDadCalls","Exp","Money","FastForward","IntegerScale"})mod.Options[k]=JsonSerializer.SerializeToElement(typeof(Settings).GetProperty(k)!.GetValue(settings));File.WriteAllText(d.FileName,JsonSerializer.Serialize(mod,Settings.JsonOptions));Notify("Profile exported.");});}

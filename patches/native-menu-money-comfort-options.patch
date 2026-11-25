@@ -1,0 +1,223 @@
+diff --git a/port/unix/platform/sdl2_input.c b/port/unix/platform/sdl2_input.c
+index 24261eb6..8a49d8a5 100644
+--- a/port/unix/platform/sdl2_input.c
++++ b/port/unix/platform/sdl2_input.c
+@@ -21,6 +21,7 @@ static volatile sig_atomic_t quit_requested;
+ static SDL_GameController *controller;
+ static SDL_JoystickID controller_id = -1;
+ static bool focused = true;
++static bool focus_paused, focus_previous_pause;
+ bool platform_headless = false, platform_skip_intro = false, platform_force_windowed = false;
+ int platform_max_frames;
+ static const uint16_t bits[12] = {PAD_A,     PAD_B,      PAD_X,  PAD_Y,    PAD_L,    PAD_R,
+@@ -96,7 +97,9 @@ void pc_reload_if_requested(void) {
+         pc_paused = true;
+     } else
+ #endif
+-    pc_paused = false;
++    /* Applied from the launcher while unfocused: resume on refocus. */
++    if (focus_paused) focus_previous_pause = false;
++    else pc_paused = false;
+ }
+ static void assemble(void) {
+     pad = aux = 0;
+@@ -196,10 +199,18 @@ void platform_input_poll(void) {
+                 keys[e.key.keysym.scancode] = e.type == SDL_KEYDOWN;
+             break;
+         case SDL_WINDOWEVENT:
+-            if (e.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
++            if (e.window.event == SDL_WINDOWEVENT_FOCUS_GAINED) {
+                 focused = true;
++                if (focus_paused) pc_paused = focus_previous_pause;
++                focus_paused = false;
++            }
+             if (e.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
+                 focused = false;
++                if (pc_options.pause_unfocused && !focus_paused) {
++                    focus_previous_pause = pc_paused;
++                    focus_paused = true;
++                    pc_paused = true;
++                }
+                 memset(keys, 0, sizeof(keys));
+                 memset(buttons, 0, sizeof(buttons));
+                 memset(axes, 0, sizeof(axes));
+diff --git a/src/game/display_text.c b/src/game/display_text.c
+index e1a60438..5f20f295 100644
+--- a/src/game/display_text.c
++++ b/src/game/display_text.c
+@@ -2037,18 +2037,40 @@ void dt_queue_psi_name(ModeState *out, uint16_t ability_id) {
+                         PSI_SUFFIX_ENTRY_SIZE, false);
+ }
+ 
++/* Companion option: a text-advance press while a page is being typed prints
++ * the rest of that page at once. The press is consumed so the prompt that
++ * follows still waits for its own press; the request ends at that prompt.
++ * A press only counts on a step that follows a typewriter frame, so the press
++ * that opened the dialogue or dismissed the previous page is never reused. */
++static bool dt_press_skip, dt_typed_yield, dt_press_armed;
++
+ static StepResult dt_push_text_prompt(int show_triangle, int skip_text_speed) {
+     static ModeState init;  /* outlives this dispatch (pump copies it) */
+     memset(&init, 0, sizeof(init));
+     init.text_prompt.phase           = TP_WAIT_PROMPT;
+     init.text_prompt.show_triangle   = (uint8_t)(show_triangle != 0);
+     init.text_prompt.skip_text_speed = (uint8_t)(skip_text_speed != 0);
++    dt_press_skip = false;
+     return STEP_RESULT_PUSH_INIT(GAME_MODE_TEXT_PROMPT, &init);
+ }
+ 
++static bool dt_press_skip_poll(void) {
++    if (!dt_press_skip && dt_press_armed && pc_options.press_skip_text &&
++        (core.pad1_pressed & PAD_TEXT_ADVANCE)) {
++        core.pad1_pressed &= (uint16_t)~PAD_TEXT_ADVANCE;
++        dt_press_skip = true;
++    }
++    return dt_press_skip;
++}
++
+ StepResult mode_step_display_text(ModeState *ms) {
+     DisplayTextModeState *st = &ms->display_text;
+ 
++    dt_press_armed = dt_typed_yield;
++    dt_typed_yield = false;
++    if ((st->phase == DT_DELAY || st->phase == DT_DELAY_FLUSH) && dt_press_skip_poll())
++        st->delay_remaining = 1;  /* finish this frame, then stop waiting */
++
+     /* DT_DELAY: typewriter per-character delay. One window_tick_work() per frame;
+      * the pump owns the yield. Mirrors the blocking for(i<delay) window_tick().
+      * If this frame's actionscript render parks a callroutine, STEP_PUSH the
+@@ -2060,6 +2082,7 @@ StepResult mode_step_display_text(ModeState *ms) {
+         }
+         if (--st->delay_remaining == 0)
+             st->phase = DT_RUN;
++        dt_typed_yield = true;
+         return STEP_RESULT_CONTINUE();
+     }
+ 
+@@ -2082,6 +2105,11 @@ StepResult mode_step_display_text(ModeState *ms) {
+     if (st->phase == DT_ENTER) {
+         if (st->reader.source == TEXT_SRC_DIALOGUE)
+             maternalbound_rest_entry(DIALOGUE_BLOB_BASE+st->reader.ptr_off);
++        /* A new top-level script never inherits an earlier skip request. */
++        bool nested = false;
++        for (int i = 0; i + 1 < g_mode_stack.depth; i++)
++            if (g_mode_stack.mode[i] == GAME_MODE_DISPLAY_TEXT) nested = true;
++        if (!nested) dt_press_skip = false;
+         st->saved_cc18_attrs = dt.g_cc18_attrs_saved;
+         dt.g_cc18_attrs_saved = 0;
+         dt.upcoming_word_length = 0;
+@@ -2264,7 +2292,8 @@ StepResult mode_step_display_text(ModeState *ms) {
+ 
+             /* Sound + delay only when not instant printing
+              * (assembly lines 68-70: skip to @RETURN if instant) */
+-            if (!dt.instant_printing && !pc_options.instant_text) {
++            if (!dt.instant_printing && !pc_options.instant_text &&
++                !dt_press_skip_poll()) {
+                 /* Sound logic (assembly lines 36-66):
+                  * Mode 2: always play. Mode 3: never play.
+                  * Default: play if dt.blinking_triangle_flag == 0.
+@@ -2299,6 +2328,7 @@ StepResult mode_step_display_text(ModeState *ms) {
+                     st->delay_remaining = (uint16_t)(delay - 1);
+                     st->phase = DT_DELAY;
+                 }
++                dt_typed_yield = true;
+                 return STEP_RESULT_CONTINUE();
+             }
+             continue;  /* instant printing: no yield */
+diff --git a/src/game/text.c b/src/game/text.c
+index 51f005ec..17a5686f 100644
+--- a/src/game/text.c
++++ b/src/game/text.c
+@@ -517,6 +517,7 @@ void display_money_window(void) {
+ 
+     /* CREATE_WINDOW(CARRIED_MONEY=0x0A) */
+     create_window(0x0A);
++    place_money_window();
+     WindowInfo *mw = (win.current_focus_window != WINDOW_ID_NONE)
+                      ? get_window(win.current_focus_window) : NULL;
+     if (mw) {
+@@ -3056,6 +3057,11 @@ StepResult mode_step_pause_menu(ModeState *ms) {
+             create_window(WINDOW_COMMAND_MENU);
+             skip_adding_command_text = 0;
+             build_command_menu();
++            /* Companion: show HP/PP and money as soon as the menu opens (the
++             * ROM waits for a submenu); display_money_window restores the
++             * command menu's focus and text state. */
++            show_hppp_windows();
++            display_money_window();
+             win.restore_menu_backup = 0;  /* STZ RESTORE_MENU_BACKUP (line 23) */
+             st->phase = PM_MAIN;
+             continue;
+diff --git a/src/game/window.c b/src/game/window.c
+index 39d48a0e..03c2a839 100644
+--- a/src/game/window.c
++++ b/src/game/window.c
+@@ -542,6 +542,29 @@ WindowInfo *get_window(uint16_t window_id) {
+     return NULL;
+ }
+ 
++/* Companion: the command menu is taller than the ROM's (extra Keys/Save/
++ * Set Up/Quit rows) and the carried-money window always draws beneath every
++ * other window, so its ROM position ends up hidden behind the menu. While
++ * both are open, sit the money window directly below the menu instead;
++ * otherwise use its configured position. */
++void place_money_window(void) {
++    WindowInfo *m = get_window(WINDOW_CARRIED_MONEY);
++    if (!m) return;
++    uint16_t cfg[4];
++    uint16_t y = maternalbound_window_config(WINDOW_CARRIED_MONEY, cfg)
++                 ? cfg[1] : window_configs[WINDOW_CARRIED_MONEY][1];
++    const WindowInfo *c = get_window(WINDOW_COMMAND_MENU);
++    if (c && m->x < c->x + c->width && c->x < m->x + m->width &&
++        y < c->y + c->height && c->y < y + m->height &&
++        c->y + c->height + m->height <= 28)
++        y = c->y + c->height;
++    if (m->y != y) {
++        m->y = y;
++        m->content_y = y + 1;
++        ow.redraw_all_windows = 1;
++    }
++}
++
+ /* SET_WINDOW_FOCUS: Port of asm/text/set_window_focus.asm. */
+ void set_window_focus(uint16_t window_id) {
+     win.current_focus_window = window_id;
+diff --git a/src/game/window.h b/src/game/window.h
+index cfdea61a..0a384016 100644
+--- a/src/game/window.h
++++ b/src/game/window.h
+@@ -309,6 +309,8 @@ void close_focus_window(void);
+ 
+ /* Get window by ID (NULL if not open) */
+ WindowInfo *get_window(uint16_t window_id);
++/* Companion: keep the carried-money window clear of the taller command menu. */
++void place_money_window(void);
+ 
+ /* Set text cursor position within focus window */
+ void set_focus_text_cursor(uint16_t x, uint16_t y);
+diff --git a/src/platform/pc_options.c b/src/platform/pc_options.c
+index 287ac7da..b5837661 100644
+--- a/src/platform/pc_options.c
++++ b/src/platform/pc_options.c
+@@ -70,6 +70,8 @@ bool pc_options_load(const char *path) {
+                                          {"filter", &pc_options.filter, 0, 2},
+                                          {"instant_text", &pc_options.instant_text, 0, 1},
+                                          {"disable_cinematic_letterbox", &pc_options.disable_cinematic_letterbox, 0, 1},
++                                         {"press_skip_text", &pc_options.press_skip_text, 0, 1},
++                                         {"pause_unfocused", &pc_options.pause_unfocused, 0, 1},
+                                          {"no_homesickness", &pc_options.no_homesickness, 0, 1},
+                                          {"no_dad_calls", &pc_options.no_dad_calls, 0, 1},
+                                          {"exp_multiplier", &pc_options.exp_multiplier, 1, 16},
+diff --git a/src/platform/pc_options.h b/src/platform/pc_options.h
+index 3a387d23..1eed6975 100644
+--- a/src/platform/pc_options.h
++++ b/src/platform/pc_options.h
+@@ -37,6 +37,8 @@ typedef struct {
+     char msu_dir[1024];
+     char shader_preset[1024];
+     int disable_cinematic_letterbox; /* Presentation only; keep scene timing. */
++    int press_skip_text;  /* A press finishes the page being typed. */
++    int pause_unfocused;  /* Pause while another application has focus. */
+ } PcOptions;
+ extern PcOptions pc_options;
+ extern _Atomic bool pc_paused;
