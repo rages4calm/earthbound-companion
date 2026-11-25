@@ -1,0 +1,77 @@
+{
+  "sourceCommit": "50b536d93bca19fa91275035f36ddbb65230eb5c",
+  "windowsTag": "v1.0.27",
+  "platformTag": "v0.5.0-ports-preview.37",
+  "freshWindowsPackage": {
+    "Zip": "EarthBound-Companion-Windows-v1.0.27.zip",
+    "Bytes": 128810061,
+    "SHA256": "FBD32A2D01614AFB656C0B8201518199D4BA4DDD55F88EA99AC722AA731B8B59",
+    "uploadedDigest": "sha256:fbd32a2d01614afb656c0b8201518199d4ba4ddd55f88ea99ac722aa731b8b59"
+  },
+  "nativeSHA256": "7e5381f85dcde4f3531b449d7e2886eb8b345bff0e95c9a805e6070b33c00b35",
+  "nativePatchCount": 25,
+  "newPatch": "native-menu-money-comfort-options.patch",
+  "platformBuildRun": 45654776530,
+  "platformUploadRun": 45656781025,
+  "buildOnly": false,
+  "allBuildJobsPassed": true,
+  "allSixUploadedDigestsVerified": true,
+  "windowsLatestVerified": true,
+  "platformPrereleaseVerified": true,
+  "platformAssets": [
+    {
+      "name": "EarthBound-Companion-android-arm64-preview.apk",
+      "size": 66649545,
+      "digest": "sha256:23e2b7f90333b6b5845485cdcd524617aba1fb5f2ca21435628f0c95b8129722",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.37/EarthBound-Companion-android-arm64-preview.apk"
+    },
+    {
+      "name": "EarthBound-Companion-android-x64-preview.apk",
+      "size": 67698011,
+      "digest": "sha256:09fae30cf6bcff6ee002edd57d15d0c3b991f233790ff446d5d7a3b7afce8fa4",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.37/EarthBound-Companion-android-x64-preview.apk"
+    },
+    {
+      "name": "EarthBound-Companion-linux-x64-preview.tar.gz",
+      "size": 125422018,
+      "digest": "sha256:120096882e00a2d6a4d3fa8757367664f741f006d2e06d73e70be7048acd36d0",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.37/EarthBound-Companion-linux-x64-preview.tar.gz"
+    },
+    {
+      "name": "EarthBound-Companion-osx-arm64-preview.tar.gz",
+      "size": 90438372,
+      "digest": "sha256:301eeb732b0cd4a6fafe6d040d626b9722d0ee593b1b0a1ddf4513f1d7819265",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.37/EarthBound-Companion-osx-arm64-preview.tar.gz"
+    },
+    {
+      "name": "EarthBound-Companion-osx-x64-preview.tar.gz",
+      "size": 95431518,
+      "digest": "sha256:506ccfcfd5eca36a439f440a2b85d3d6f71f530226ff41885eda5899c0658735",
+      "browser_download_url": "https://github.com/rages4calm/earthbound-companion/releases/download/v0.5.0-ports-preview.37/EarthBound-Companion-osx-x64-preview.tar.gz"
+    }
+  ],
+  "focusedChecks": {
+    "scope": "Windows, Original edition, isolated scratch sessions with scripted input; owner saves and installation untouched",
+    "moneyWindow": "Menu, Equip, cancel-button display and menu close compared by frame capture against the 1.0.26 executable",
+    "pressToFinishDialogue": "Option off keeps typing; option on completes the page; following prompt still waits; second press dismisses",
+    "frameTiming": "900 windowed frames with the menu open: 15.47 s on 1.0.26, 15.43 s on the candidate",
+    "pauseInBackground": "Packaged executable minimized 6 s: run 16.4 s with the option on versus 10.8 s off, and it resumed",
+    "hideLauncher": "Packaged launcher with an isolated data root: window hidden while the game ran and the launcher exited with it; unchanged with the option off",
+    "reduxRun": false,
+    "portableLauncherRunLocally": false
+  },
+  "fullPlaythroughVerified": false,
+  "issuesRepliedAndClosed": [
+    {
+      "issue": 20,
+      "comment": "https://github.com/rages4calm/earthbound-companion/issues/20#issuecomment-7168446302",
+      "state": "CLOSED"
+    },
+    {
+      "issue": 21,
+      "comment": "https://github.com/rages4calm/earthbound-companion/issues/21#issuecomment-7168447481",
+      "state": "CLOSED"
+    }
+  ],
+  "ownerInstallationUpdated": false
+}
