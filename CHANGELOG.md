@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.27 / platform preview.37 - money window and comfort options
+
+Show the carried-money window below the taller command menu, and show HP/PP and money as soon as the menu opens. Add three opt-in options, all off by default: press to finish the dialogue page being typed, pause while another window has focus, and hide the Windows launcher while playing. All platforms use the same 25-patch native source. See [release notes](docs/RELEASE-1.0.27.md) for bounded verification scope.
+
 ## 1.0.26 / platform preview.36 - encounter and launch recovery
 
 Fix enemy-count underflow across room transitions, including empty Fire Spring rooms; recover impossible counts in existing quick saves. Restore the maintained Windows runtime after 1.0.25 shipped an older EXE that rejected launcher arguments. Keep the Starman sprite fix and increased Sword of Kings odds. All platforms use the same corrected patch stack. See [release notes](docs/RELEASE-1.0.26.md) for bounded verification scope.
