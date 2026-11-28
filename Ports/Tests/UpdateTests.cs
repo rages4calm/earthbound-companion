@@ -29,6 +29,12 @@ static class UpdateTests {
   string Zip(string name,Dictionary<string,string> files){string path=Path.Combine(root,name);using var z=ZipFile.Open(path,ZipArchiveMode.Create);foreach(var f in files){var e=z.CreateEntry("EarthBound Companion/"+f.Key);using var w=new StreamWriter(e.Open());w.Write(f.Value);}return path;}
   string good=Zip("good.zip",win);
   Check(UpdateService.ExtractPackage(good,Path.Combine(root,"extract"),"win-x64").Count==3,"valid ZIP");
+  if(!OperatingSystem.IsWindows()) {
+   string physical=Path.Combine(root,"physical-parent"),alias=Path.Combine(root,"redirected-parent");Directory.CreateDirectory(physical);Directory.CreateSymbolicLink(alias,physical);
+   Check(UpdateService.ExtractPackage(good,Path.Combine(alias,"extract"),"win-x64").Count==3,"redirected system/home ancestors allowed");
+   string child=Path.Combine(root,"linked-child"),outside=Path.Combine(root,"outside");Directory.CreateDirectory(child);Directory.CreateDirectory(outside);Directory.CreateSymbolicLink(Path.Combine(child,"Game"),outside);
+   Refused(()=>UpdateService.ExtractPackage(good,child,"win-x64"),"linked archive child");Check(!Directory.EnumerateFileSystemEntries(outside).Any(),"linked target unchanged");
+  }
   foreach(string bad in new[]{"../escape","Game/../../../escape","UserData/settings.json","Game/assets.pak","Game/saves/earthbound.srm"}) {
    string path=Zip("bad-"+checks+".zip",new(win){{bad,"bad"}});
    Refused(()=>UpdateService.ExtractPackage(path,Path.Combine(root,"bad-extract-"+checks),"win-x64"),bad);

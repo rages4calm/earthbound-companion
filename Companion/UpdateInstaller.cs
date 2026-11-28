@@ -39,13 +39,16 @@ public static partial class UpdateService {
         var parts=relative.Split('/');
         if(parts.Any(p=>p is "" or "." or ".." || p.Contains(':') || p.Contains('\0') || p.EndsWith('.') || p.EndsWith(' ')) || Path.IsPathRooted(relative))
             throw new UpdateException("The update contains an unsafe file path.");
-        string full=Path.GetFullPath(Path.Combine(root,relative));
-        if(!full.StartsWith(Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar)+Path.DirectorySeparatorChar,PathComparison))throw new UpdateException("The update escaped its staging folder.");
+        string anchor=Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar);
+        string full=Path.GetFullPath(Path.Combine(anchor,relative));
+        if(!full.StartsWith(anchor+Path.DirectorySeparatorChar,PathComparison))throw new UpdateException("The update escaped its staging folder.");
         string? check=full;
         while(check!=null) {
             if((File.Exists(check)||Directory.Exists(check)) && (File.GetAttributes(check)&FileAttributes.ReparsePoint)!=0)
                 throw new UpdateException("An update path is a symbolic link. Use a physical installation folder.");
-            if(string.Equals(check,Path.GetPathRoot(check),PathComparison))break;
+            // System/home ancestors may be redirected (macOS /var -> /private/var).
+            // The chosen root and every child are still checked for links.
+            if(string.Equals(check,anchor,PathComparison))break;
             check=Path.GetDirectoryName(check);
         }
         return full;
@@ -157,6 +160,7 @@ public static partial class UpdateService {
         work=Path.GetFullPath(work).TrimEnd(Path.DirectorySeparatorChar);
         if(plan.Platform!=Platform || Path.GetDirectoryName(work)!=Path.GetDirectoryName(install) || !Path.GetFileName(work).StartsWith(WorkPrefix(install),StringComparison.Ordinal))
             throw new UpdateException("The update staging folder does not belong to this installation.");
+        SafeFile(Path.GetDirectoryName(work)!,Path.GetFileName(work)+"/plan.json");
         if(!IsInstalledRelease(install)||IsGameRunning(install))throw new UpdateException("Close the game before applying this update.");
         string staged=Path.Combine(work,"new"),backup=Path.Combine(work,"backup");
         string lockPath=SafeFile(Path.GetDirectoryName(install)!, "."+Path.GetFileName(install)+"-eb-update.lock");
