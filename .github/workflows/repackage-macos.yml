@@ -61,11 +61,14 @@ jobs:
           dotnet publish Ports/Desktop/Companion.Portable.csproj -c Release -r "$RID" --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o build/package
           old="old/EarthBound Companion Preview.app/Contents/MacOS"
           cp -R "$old/Game" build/package/Game
-          cp "$old"/*.md "$old"/*.txt build/package/ 2>/dev/null || true
-          cp -R "$old/Licenses" build/package/Licenses
+          mkdir -p build/resources
+          cp "$old"/*.md "$old"/*.txt build/resources/ 2>/dev/null || true
+          cp -R "$old/Licenses" build/resources/Licenses
+          find build/package -maxdepth 1 -name '*.pdb' -exec mv {} build/resources/ \;
           mkdir -p 'build/bundle/EarthBound Companion Preview.app/Contents'
           cp Ports/Desktop/macOS/Info.plist 'build/bundle/EarthBound Companion Preview.app/Contents/Info.plist'
           cp -R build/package 'build/bundle/EarthBound Companion Preview.app/Contents/MacOS'
+          cp -R build/resources 'build/bundle/EarthBound Companion Preview.app/Contents/Resources'
           codesign --force --deep --sign - 'build/bundle/EarthBound Companion Preview.app'
           codesign --verify --deep --strict 'build/bundle/EarthBound Companion Preview.app'
           COPYFILE_DISABLE=1 tar --format=pax -czf "EarthBound-Companion-$RID-preview.tar.gz" -C build/bundle .

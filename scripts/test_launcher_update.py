@@ -22,7 +22,8 @@ def main():
         unpack=a.output/'unpack';unpack.mkdir()
         with tarfile.open(a.package) as t:t.extractall(unpack,filter='data')
         if mac:
-            install=unpack/'EarthBound Companion Preview.app';launcher=install/'Contents/MacOS/EarthBoundCompanion.Portable';doc=install/'Contents/MacOS/README-PORTABILITY.md'
+            install=unpack/'EarthBound Companion Preview.app';launcher=install/'Contents/MacOS/EarthBoundCompanion.Portable';doc=install/'Contents/Resources/README-PORTABILITY.md'
+            if not doc.exists():doc=install/'Contents/MacOS/README-PORTABILITY.md'
         else:
             install=unpack;launcher=install/'EarthBoundCompanion.Portable';doc=install/'README-PORTABILITY.md'
     assert launcher.is_file() and doc.is_file()
