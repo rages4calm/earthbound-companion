@@ -134,6 +134,7 @@ jobs:
             mkdir -p build/mac-resources
             find build/package -maxdepth 1 -type f \( -name '*.md' -o -name '*.txt' -o -name '*.pdb' \) -exec mv {} build/mac-resources/ \;
             mv build/package/Licenses build/mac-resources/Licenses
+            mv build/package/Game/Licenses build/mac-resources/Conversion-Licenses
             cp Ports/Desktop/macOS/Info.plist "build/mac-bundle/EarthBound Companion Preview.app/Contents/Info.plist"
             cp -R build/package "build/mac-bundle/EarthBound Companion Preview.app/Contents/MacOS"
             cp -R build/mac-resources "build/mac-bundle/EarthBound Companion Preview.app/Contents/Resources"

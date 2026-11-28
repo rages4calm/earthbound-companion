@@ -64,6 +64,7 @@ jobs:
           mkdir -p build/resources
           cp "$old"/*.md "$old"/*.txt build/resources/ 2>/dev/null || true
           cp -R "$old/Licenses" build/resources/Licenses
+          mv build/package/Game/Licenses build/resources/Conversion-Licenses
           find build/package -maxdepth 1 -name '*.pdb' -exec mv {} build/resources/ \;
           mkdir -p 'build/bundle/EarthBound Companion Preview.app/Contents'
           cp Ports/Desktop/macOS/Info.plist 'build/bundle/EarthBound Companion Preview.app/Contents/Info.plist'
