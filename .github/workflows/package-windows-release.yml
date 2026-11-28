@@ -1,0 +1,75 @@
+name: Package verified Windows candidate
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        required: true
+        default: v1.0.28
+        type: string
+      native_sha256:
+        required: true
+        type: string
+permissions:
+  contents: write
+jobs:
+  package:
+    runs-on: windows-2022
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_TAG: ${{ inputs.release_tag }}
+      NATIVE_SHA256: ${{ inputs.native_sha256 }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download and verify the tested candidate and unchanged setup helpers
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          if($env:RELEASE_TAG -notmatch '^v\d+\.\d+\.\d+$' -or $env:NATIVE_SHA256 -notmatch '^[0-9a-fA-F]{64}$'){throw 'Invalid release input'}
+          gh release view $env:RELEASE_TAG --json isDraft --jq .isDraft | Select-String -Pattern '^true$' -Quiet | ForEach-Object {if(!$_){throw 'Use a draft release'}}
+          gh release download v1.0.27 -p EarthBound-Companion-Windows-v1.0.27.zip -D previous
+          if($LASTEXITCODE){throw 'Previous helper package download failed'}
+          if((Get-FileHash previous/EarthBound-Companion-Windows-v1.0.27.zip -Algorithm SHA256).Hash -ne 'FBD32A2D01614AFB656C0B8201518199D4BA4DDD55F88EA99AC722AA731B8B59'){throw 'Previous helper package checksum mismatch'}
+          Expand-Archive previous/EarthBound-Companion-Windows-v1.0.27.zip -DestinationPath previous
+          gh release download $env:RELEASE_TAG -p native-candidate-1.0.28.exe -D candidate
+          if($LASTEXITCODE){throw 'Native candidate download failed'}
+          if((Get-FileHash candidate/native-candidate-1.0.28.exe -Algorithm SHA256).Hash -ne $env:NATIVE_SHA256){throw 'Native candidate checksum mismatch'}
+          Copy-Item 'previous/EarthBound Companion/Game/SDL2.dll' candidate/SDL2.dll
+          New-Item -ItemType Directory -Force 'EarthBound Companion/Licenses','tools/SDL2-2.32.10/x86_64-w64-mingw32/bin','_BuildScratch/CoilSnake/coilsnake/util/eb/exhal' | Out-Null
+          Copy-Item 'previous/EarthBound Companion/Licenses/*' 'EarthBound Companion/Licenses/'
+          Copy-Item 'previous/EarthBound Companion/Game/SDL2.dll' 'tools/SDL2-2.32.10/x86_64-w64-mingw32/bin/'
+          Copy-Item 'previous/EarthBound Companion/Licenses/CoilSnake-LICENSE' '_BuildScratch/CoilSnake/LICENSE'
+          Copy-Item 'previous/EarthBound Companion/Licenses/Exhal-COPYING.txt' '_BuildScratch/CoilSnake/coilsnake/util/eb/exhal/COPYING.txt'
+      - name: Build launcher and assemble the data-free Windows package
+        shell: pwsh
+        run: |
+          ./Build-ReduxTesterPackage.ps1 -Version $env:RELEASE_TAG.Substring(1) -WorkspaceRoot $PWD -NativeExePath candidate/native-candidate-1.0.28.exe -ReduxHelperPath 'previous/EarthBound Companion/Game/redux-setup.exe' -OriginalHelperPath 'previous/EarthBound Companion/Game/ebtools-setup.exe' -ShaderRuntimePath 'previous/EarthBound Companion/Game/librashader.dll'
+          if($LASTEXITCODE){throw 'Windows packaging failed'}
+      - name: Exercise the actual Windows package update and restart
+        shell: pwsh
+        run: |
+          python scripts/test_launcher_update.py --package "release/EarthBound-Companion-Windows-$env:RELEASE_TAG.zip" --platform win-x64 --output "$env:RUNNER_TEMP/updater-fixture"
+          if($LASTEXITCODE){throw 'Packaged Windows updater failed'}
+      - name: Upload and compare the server SHA-256
+        shell: pwsh
+        run: |
+          $package="release/EarthBound-Companion-Windows-$env:RELEASE_TAG.zip"
+          gh release upload $env:RELEASE_TAG $package
+          if($LASTEXITCODE){throw 'Windows upload failed'}
+          $id=gh release view $env:RELEASE_TAG --json databaseId --jq .databaseId
+          $release=gh api "repos/$env:GH_REPO/releases/$id" | ConvertFrom-Json
+          $asset=$release.assets | Where-Object name -eq (Split-Path $package -Leaf)
+          if($asset.digest -ne ('sha256:'+(Get-FileHash $package -Algorithm SHA256).Hash.ToLowerInvariant())){throw 'Uploaded package differs'}
+          Get-Content "$env:RUNNER_TEMP/updater-fixture/result.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Windows-release-receipts
+          path: |
+            release/official-package.json
+            ${{ runner.temp }}/updater-fixture/result.json

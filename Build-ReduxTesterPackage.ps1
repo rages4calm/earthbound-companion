@@ -1,7 +1,8 @@
-param([string]$Version='1.0.28', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='', [string]$ShaderRuntimePath='', [string]$WorkspaceRoot=$PSScriptRoot)
+param([string]$Version='1.0.28', [string]$NativeExePath='', [string]$ReduxHelperPath='', [string]$OriginalHelperPath='', [string]$ShaderRuntimePath='', [string]$WorkspaceRoot=$PSScriptRoot, [string]$PythonExe='')
 $ErrorActionPreference='Stop'
 $isOfficial=$Version -match '^\d+\.\d+\.\d+$'
 $projectRoot=[IO.Path]::GetFullPath($WorkspaceRoot)
+if(!$PythonExe){$PythonExe=Join-Path $projectRoot 'native-source\.venv\Scripts\python.exe';if(!(Test-Path -LiteralPath $PythonExe)){$PythonExe=(Get-Command python.exe -ErrorAction Stop).Source}}
 $releaseRoot=Join-Path $projectRoot 'release'
 $stamp=(Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[guid]::NewGuid().ToString('N').Substring(0,8)
 $staging=Join-Path $releaseRoot ('.redux-staging-'+$stamp)
@@ -17,7 +18,7 @@ $originalHelper=[IO.Path]::GetFullPath($OriginalHelperPath)
 $shaderRuntime=[IO.Path]::GetFullPath($ShaderRuntimePath)
 foreach($input in @($native,$helper,$originalHelper,$shaderRuntime)){if(!(Test-Path -LiteralPath $input -PathType Leaf)){throw "Missing build input: $input"}}
 # Check the actual launcher/native contract before publishing or copying any candidate.
-& (Join-Path $projectRoot 'native-source\.venv\Scripts\python.exe') (Join-Path $docs 'scripts\check_launcher_contract.py') --native $native
+& $PythonExe (Join-Path $docs 'scripts\check_launcher_contract.py') --native $native
 if($LASTEXITCODE -ne 0){throw 'Native EXE is incompatible with the Companion launcher. Do not package an older source build.'}
 New-Item -ItemType Directory -Path $app -Force | Out-Null
 foreach($folder in @('Game','msu','UserData','Profiles','Mods','Licenses')){New-Item -ItemType Directory -Path (Join-Path $app $folder) -Force | Out-Null}
@@ -32,7 +33,7 @@ Copy-Item -LiteralPath $shaderRuntime -Destination (Join-Path $app 'Game\librash
 Copy-Item -LiteralPath (Join-Path $docs 'Shaders') -Destination $app -Recurse
 Copy-Item -LiteralPath (Join-Path $projectRoot 'tools\SDL2-2.32.10\x86_64-w64-mingw32\bin\SDL2.dll') -Destination (Join-Path $app 'Game\SDL2.dll')
 $docHelper=Join-Path $docs 'scripts\prepare_package_docs.py'
-& (Join-Path $projectRoot 'native-source\.venv\Scripts\python.exe') $docHelper --source $docs --destination $app
+& $PythonExe $docHelper --source $docs --destination $app
 if($LASTEXITCODE -ne 0){throw 'Package documentation links could not be prepared.'}
 foreach($file in Get-ChildItem -LiteralPath (Join-Path $docs 'Mods') -File){Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $app 'Mods')}
 foreach($file in Get-ChildItem -LiteralPath (Join-Path $projectRoot 'EarthBound Companion\Licenses') -File){Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $app 'Licenses')}
