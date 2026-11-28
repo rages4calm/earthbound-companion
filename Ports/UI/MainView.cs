@@ -16,7 +16,7 @@ public sealed partial class MainView : UserControl {
  readonly Func<string,bool,IProgress<string>,Task>? mobileSetup;
  readonly DispatcherTimer settingsMonitor=new(){Interval=TimeSpan.FromMilliseconds(350)};
  bool gameRunning,requestSeen;
- public bool IsBusy=>busy;
+ public bool IsBusy=>busy&&!updateHandoff;
  readonly ComboBox seeds=new(){HorizontalAlignment=HorizontalAlignment.Stretch};
  readonly List<Action> capture=[];
  readonly List<Action> refresh=[];
@@ -36,8 +36,8 @@ public sealed partial class MainView : UserControl {
   saveSettings.Click+=(_,_)=>{if(busy&&!gameRunning)return;try{Capture();settings.Save();if(gameRunning){File.WriteAllText(Settings.PathTo("settings.applied"),"");File.Delete(Settings.PathTo("settings.request"));requestSeen=false;mobileReturn?.Invoke();}status.Text="Settings saved.";}catch(Exception e){status.Text=e.Message;}};
   actions.Children.Add(saveSettings);
   content.Children.Add(actions);
-  var pages=new[]{Setup(),Display(),Gameplay(),Controls(),Shuffle(),Recovery(),Achievements()};
-  var section=new ComboBox{ItemsSource=new[]{"Game & setup","Display","Sound & gameplay","Controls","Story Shuffle","Saves & mods","Achievements"},SelectedIndex=0};content.Children.Add(section);
+  var pages=new[]{Setup(),Display(),Gameplay(),Controls(),Shuffle(),Recovery(),Achievements(),Updates()};
+  var section=new ComboBox{ItemsSource=new[]{"Game & setup","Display","Sound & gameplay","Controls","Story Shuffle","Saves & mods","Achievements","Updates"},SelectedIndex=0};content.Children.Add(section);
   var activePage=new ContentControl{Content=pages[0]};section.SelectionChanged+=(_,_)=>{if(section.SelectedIndex>=0)activePage.Content=pages[section.SelectedIndex];};content.Children.Add(activePage);
   content.Children.Add(status);Content=new ScrollViewer{Content=content};
   status.Text=$"Data folder: {Settings.Root}\nWindows installations are not imported or modified.";

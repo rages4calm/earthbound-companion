@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": 31,
+  "scope": [
+    "SemVer and platform selection",
+    "ZIP/tar layouts and traversal rejection",
+    "SHA256 mismatch rejection",
+    "private data preservation",
+    "replacement rollback",
+    "temporary staging cleanup"
+  ],
+  "actualPackagedWindowsHelperRestart": true,
+  "fullCampaign": false
+}

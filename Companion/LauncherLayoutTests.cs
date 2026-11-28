@@ -56,10 +56,10 @@ sealed partial class MainForm {
  internal object VerifyLayout(float scale,string output) {
   timer.Stop();Show();float before=Font.Size;Scale(new SizeF(scale,scale));ResponsiveLayout.KeepOnScreen(this);
   LauncherLayoutTests.ScaleText(nav,scale);
-  foreach(string name in pages) {
+  foreach(string name in pages.Concat(new[]{"Updates"})) {
    page.Font=Theme.Font();ShowPage(name);LauncherLayoutTests.ScaleText(page,scale);Application.DoEvents();ResizePage();PerformLayout();LauncherLayoutTests.Check(this);
-   if(name is "Achievements" or "Game Mode" or "Display")LauncherLayoutTests.Capture(this,Path.Combine(output,$"{name}-{scale*100:0}.png"));
+   if(name is "Achievements" or "Game Mode" or "Display" or "Updates")LauncherLayoutTests.Capture(this,Path.Combine(output,$"{name}-{scale*100:0}.png"));
   }
-  var result=new{Scale=scale,SystemDpi=DeviceDpi,FontBefore=before,FontAfter=Font.Size,Pages=pages.Length};Close();return result;
+  var result=new{Scale=scale,SystemDpi=DeviceDpi,FontBefore=before,FontAfter=Font.Size,Pages=pages.Length+1};Close();return result;
  }
 }

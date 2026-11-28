@@ -87,3 +87,9 @@ The Companion application, native PC option integration, packaging, Story Shuffl
 Credits identify provenance; they do not grant redistribution permission. Original Companion, GPL adaptation, native-foundation and dependency licensing are separate. The combined release's unresolved terms are recorded in [LEGAL.md](LEGAL.md).
 
 If a material credit is missing or inaccurate, open an issue with the project/file and requested correction.
+
+## Threed restoration reference
+
+[TheRunaway5/Phase-Distorter](https://github.com/TheRunaway5/Phase-Distorter/blob/d6b5802b4e6fec5c1f3c6781e31037d299870e24/cpp/include/eb/threed_npc_restoration.hpp) identified the retail appearance gates for Threed NPCs 526 and 563. Companion now normalizes only those original records at runtime; pinned MaternalBound Redux already supplies the corrected gates. NPC 563's post-Belch timing is inferred, matching Redux. No Phase Distorter implementation code was copied.
+
+The launcher updater reuses version ordering and verified GitHub-download logic authored for Carl's Illusion of Gaia Companion, with a new in-place installer to preserve EarthBound Steam shortcuts.

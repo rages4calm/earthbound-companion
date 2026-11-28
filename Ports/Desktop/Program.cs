@@ -8,6 +8,8 @@ namespace EarthBoundCompanion;
 internal static class Program {
  internal static string? SmokeOutput;
  [STAThread] public static void Main(string[] args) {
+  if(UpdateService.HandleHelper(args))return;
+  if(UpdateFixture.Handle(args))return;
   if(args.Length==2&&args[0]=="--smoke-test"){SmokeOutput=Path.GetFullPath(args[1]);Settings.OverrideRoot=Path.Combine(Path.GetTempPath(),"eb-ui-smoke-"+Guid.NewGuid().ToString("N"));}
   AppBuilder.Configure<App>().UsePlatformDetect().WithInterFont().StartWithClassicDesktopLifetime(args);
  }

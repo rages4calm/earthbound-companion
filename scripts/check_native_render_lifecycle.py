@@ -10,7 +10,7 @@ from pathlib import Path
 def build(name,source,library=None):
  d=W/name;d.mkdir(exist_ok=True)
  commands=json.loads((B/'compile_commands.json').read_text(encoding='utf-8'))
- flags=next(c for c in commands if c['file'].endswith('/port/unix/main.c'))['command'].split()
+ flags=next(c for c in commands if c['file'].replace('\\','/').endswith('/port/unix/main.c'))['command'].split()
  def run(args,label):
   p=subprocess.run(args,cwd=B,capture_output=True,timeout=90)
   (d/(label+'.log')).write_bytes(p.stdout+p.stderr)

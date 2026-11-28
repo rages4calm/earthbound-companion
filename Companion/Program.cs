@@ -5,6 +5,8 @@ namespace EarthBoundCompanion;
 
 static class Program {
  [STAThread]static void Main(string[] args){
+  if(UpdateService.HandleHelper(args))return;
+  if(UpdateFixture.Handle(args))return;
   ApplicationConfiguration.Initialize();
   int layoutTest=Array.IndexOf(args,"--layout-test");if(layoutTest>=0){try{LauncherLayoutTests.Run(args[layoutTest+1]);}catch(Exception e){File.WriteAllText(Path.Combine(args[layoutTest+1],"failure.txt"),e.ToString());Environment.ExitCode=1;}return;}
   int dataRoot=Array.IndexOf(args,"--data-root");if(dataRoot>=0){if(dataRoot+1>=args.Length)throw new ArgumentException("Supply an isolated data directory.");Settings.OverrideRoot=Path.GetFullPath(args[dataRoot+1]);}
@@ -126,6 +128,7 @@ sealed partial class MainForm : Form {
   int capture=Array.IndexOf(args,"--capture");if(capture>=0&&capture+1<args.Length){captureMode=true;captureDir=Path.GetFullPath(args[capture+1]);Directory.CreateDirectory(captureDir);}
   int capturePy=Array.IndexOf(args,"--capture-python"),captureScript=Array.IndexOf(args,"--capture-helper");if(capturePy>=0&&capturePy+1<args.Length)capturePython=Path.GetFullPath(args[capturePy+1]);if(captureScript>=0&&captureScript+1<args.Length)captureHelper=Path.GetFullPath(args[captureScript+1]);
   Shown+=(_,_)=>{if(!captureMode&&!args.Contains("--layout-check")&&!SetupService.DataReady){if(File.Exists(Path.Combine(Settings.BaseGame,"redux-setup.exe")))OpenReduxSetup();else OpenSetup(false);}};
+  InitializeUpdates(args);
   ResumeLayout(true);
  }
  void ResizePage(){
@@ -146,7 +149,7 @@ sealed partial class MainForm : Form {
  void ShowPage(string name){
   current=name;page.SuspendLayout();foreach(Control c in page.Controls.Cast<Control>().ToArray())c.Dispose();page.Controls.Clear();page.AutoScrollPosition=Point.Empty;
   foreach(var (n,b) in navigation){b.BackColor=n==name?Theme.Surface:Theme.Rail;b.ForeColor=n==name?Theme.Gold:Theme.Muted;b.FlatAppearance.BorderColor=n==name?Theme.Line:Theme.Rail;}
-  switch(name){case "Play":PlayPage();break;case "Randomizer":RandomizerPage();break;case "Game Mode":MaternalBoundPage();break;case "Display":DisplayPage();break;case "Audio":AudioPage();break;case "Gameplay":GameplayPage();break;case "Controls":ControlsPage();break;case "Achievements":AchievementsPage();break;default:ModsPage();break;}
+  switch(name){case "Updates":UpdatesPage();break;case "Play":PlayPage();break;case "Randomizer":RandomizerPage();break;case "Game Mode":MaternalBoundPage();break;case "Display":DisplayPage();break;case "Audio":AudioPage();break;case "Gameplay":GameplayPage();break;case "Controls":ControlsPage();break;case "Achievements":AchievementsPage();break;default:ModsPage();break;}
   page.Controls.Add(new Panel {Height=32,Margin=Padding.Empty});
   page.ResumeLayout();ResizePage();page.AutoScrollPosition=Point.Empty;
  }

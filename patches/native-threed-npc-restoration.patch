@@ -1,0 +1,28 @@
+--- a/src/game/map_loader.c
++++ b/src/game/map_loader.c
+@@ -822,7 +822,24 @@
+ /* Helper: get NPC config entry with bounds check. */
+ static const NpcConfig *get_npc_config(uint16_t npc_id) {
+     if (!npc_config_table || npc_id >= npc_config_table_count) return NULL;
+-    return &npc_config_table[npc_id];
++    const NpcConfig *cfg = &npc_config_table[npc_id];
++    /* Restore two Threed residents whose retail appearance gates hide their
++     * existing dialogue. Redux already supplies these corrected records.
++     * Match the old gate as well as the id, preserving custom content.
++     * Reference: TheRunaway5/Phase-Distorter threed_npc_restoration.hpp.
++     * NPC 563's post-Belch timing is inferred; it matches pinned Redux. */
++    static NpcConfig threed[2];
++    if (npc_id == 526 && cfg->event_flag == 71 && cfg->appearance_style == 1) {
++        threed[0] = *cfg;
++        threed[0].appearance_style = 0;
++        return &threed[0];
++    }
++    if (npc_id == 563 && cfg->event_flag == 610 && cfg->appearance_style == 2) {
++        threed[1] = *cfg;
++        threed[1].event_flag = 71;
++        return &threed[1];
++    }
++    return cfg;
+ }
+ 
+ uint16_t get_npc_config_event_flag(uint16_t npc_id) {

@@ -121,3 +121,5 @@ if(args.Length>0){
  }
 }
 Console.WriteLine(JsonSerializer.Serialize(new{Passed=true,SettingsAbi=5,PhoneSaveBytes=8192,RootIsolated=true,Checked="paths, settings round-trip, INI validation, phone-save recovery, recipe validation",GameplayTested=false}));
+
+await UpdateTests.Run(root);
