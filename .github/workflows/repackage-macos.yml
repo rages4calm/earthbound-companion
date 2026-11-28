@@ -1,0 +1,81 @@
+name: Package single-file Mac launchers
+on:
+  workflow_dispatch:
+    inputs:
+      base_run:
+        description: Platform run with verified native game and converter packages
+        required: true
+        type: string
+permissions:
+  actions: read
+  contents: read
+jobs:
+  mac:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            rid: osx-arm64
+          - os: macos-15-intel
+            rid: osx-x64
+    runs-on: ${{ matrix.os }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      BASE_RUN: ${{ inputs.base_run }}
+      RID: ${{ matrix.rid }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reuse the verified native engine and unchanged conversion helpers
+        shell: bash
+        run: |
+          [[ "$BASE_RUN" =~ ^[0-9]+$ ]]
+          for attempt in $(seq 1 40); do
+            found=$(gh api "repos/$GH_REPO/actions/runs/$BASE_RUN/artifacts" --jq ".artifacts[] | select(.name == \"EarthBound-Companion-$RID-preview\") | .id")
+            if [ -n "$found" ]; then break; fi
+            [ "$attempt" -lt 40 ]
+            sleep 30
+          done
+          # These checks passed before packaging; the failed old launcher
+          # updater/signature check does not qualify or disqualify the C engine.
+          gh run view "$BASE_RUN" --json jobs > base-jobs.json
+          python - <<'PY'
+          import json, os
+          job=next(j for j in json.load(open('base-jobs.json'))['jobs'] if os.environ['RID'] in j['name'])
+          for name in ['Build SDL and native game without ROM','Verify packaged Redux compiler ordering and HTTPS trust']:
+              assert next(s for s in job['steps'] if s['name']==name)['conclusion']=='success',name
+          PY
+          gh run download "$BASE_RUN" -n "EarthBound-Companion-$RID-preview" -D base
+          mkdir old
+          tar -xzf "base/EarthBound-Companion-$RID-preview.tar.gz" -C old
+      - name: Publish the Mac launcher as one signed Mach-O instead of detached-signature DLLs
+        shell: bash
+        run: |
+          dotnet publish Ports/Desktop/Companion.Portable.csproj -c Release -r "$RID" --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o build/package
+          old="old/EarthBound Companion Preview.app/Contents/MacOS"
+          cp -R "$old/Game" build/package/Game
+          cp "$old"/*.md "$old"/*.txt build/package/ 2>/dev/null || true
+          cp -R "$old/Licenses" build/package/Licenses
+          mkdir -p 'build/bundle/EarthBound Companion Preview.app/Contents'
+          cp Ports/Desktop/macOS/Info.plist 'build/bundle/EarthBound Companion Preview.app/Contents/Info.plist'
+          cp -R build/package 'build/bundle/EarthBound Companion Preview.app/Contents/MacOS'
+          codesign --force --deep --sign - 'build/bundle/EarthBound Companion Preview.app'
+          codesign --verify --deep --strict 'build/bundle/EarthBound Companion Preview.app'
+          COPYFILE_DISABLE=1 tar --format=pax -czf "EarthBound-Companion-$RID-preview.tar.gz" -C build/bundle .
+      - name: Exercise the actual packaged Mac update, restart and final signature
+        run: python scripts/test_launcher_update.py --package EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz --platform ${{ matrix.rid }} --output "${{ runner.temp }}/updater-fixture"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EarthBound-Companion-${{ matrix.rid }}-preview
+          path: EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Mac-updater-proof-${{ matrix.rid }}
+          path: ${{ runner.temp }}/updater-fixture/result.json
