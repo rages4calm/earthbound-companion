@@ -1,0 +1,20 @@
+{
+  "Passed": true,
+  "ProductionGitHubFeed": true,
+  "TestFeedDisabled": true,
+  "Tag": "v1.0.28",
+  "Bytes": 129202973,
+  "Sha256": "30cb473cc6ca21be0ed6d85dc5f30f3558d9e804eeb212d1948e2e43e85060a8",
+  "Hops": [
+    {
+      "RequestedHost": "api.github.com",
+      "FinalHost": "api.github.com",
+      "Status": 200
+    },
+    {
+      "RequestedHost": "github.com",
+      "FinalHost": "release-assets.githubusercontent.com",
+      "Status": 200
+    }
+  ]
+}
