@@ -71,6 +71,8 @@ jobs:
           COPYFILE_DISABLE=1 tar --format=pax -czf "EarthBound-Companion-$RID-preview.tar.gz" -C build/bundle .
       - name: Exercise the actual packaged Mac update, restart and final signature
         run: python scripts/test_launcher_update.py --package EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz --platform ${{ matrix.rid }} --output "${{ runner.temp }}/updater-fixture"
+      - name: Render the signed single-file launcher with isolated empty data
+        run: '"build/bundle/EarthBound Companion Preview.app/Contents/MacOS/EarthBoundCompanion.Portable" --smoke-test "$RUNNER_TEMP/single-file-launcher.png"'
       - uses: actions/upload-artifact@v4
         with:
           name: EarthBound-Companion-${{ matrix.rid }}-preview
