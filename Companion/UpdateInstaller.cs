@@ -7,7 +7,9 @@ using System.Text.Json;
 
 namespace EarthBoundCompanion;
 public static partial class UpdateService {
-    const string PendingName = ".companion-update-pending.json";
+    // Keep coordination files outside a macOS .app so its signed resource
+    // envelope remains identical to the freshly built release.
+    static string PendingPath(string install) => SafeFile(Path.GetDirectoryName(Path.GetFullPath(install).TrimEnd(Path.DirectorySeparatorChar))!, "."+Path.GetFileName(install)+"-eb-update-result.json");
     public sealed record PackageFile(string Path, string Sha256);
     public sealed record UpdatePlan(string Install, string Platform, string Version, int Parent, List<PackageFile> Files);
     public sealed record UpdateResult(string Work, bool Success, string Message);
@@ -100,7 +102,7 @@ public static partial class UpdateService {
         if(IsGameRunning(install))throw new UpdateException("Close the game before updating.");
         string parent=Path.GetDirectoryName(install)??throw new UpdateException("Install the game inside a folder before updating.");
         string work=Path.Combine(parent,WorkPrefix(install)+Guid.NewGuid().ToString("N"));
-        SafeFile(install,PendingName);
+        PendingPath(install);
         Directory.CreateDirectory(work);
         try {
             string archive=Path.Combine(work,release.Zip.Name);
@@ -140,7 +142,7 @@ public static partial class UpdateService {
             string log=Path.Combine(Path.GetDirectoryName(args[1])!,"update-error.txt");
             try{File.WriteAllText(log,error.ToString());}catch(IOException){}
             if(trustedLocation&&attempted!=null)try {
-                string marker=SafeFile(attempted.Install,PendingName);
+                string marker=PendingPath(attempted.Install);
                 File.WriteAllText(marker,JsonSerializer.Serialize(new UpdateResult(Path.GetDirectoryName(args[1])!,false,error.Message+" Details: "+log)));
                 Process.Start(new ProcessStartInfo(Path.Combine(attempted.Install,LauncherRelative)){WorkingDirectory=attempted.Install,UseShellExecute=false});
             }catch(Exception){ /* Keep the staged backup and error log for recovery. */ }
@@ -157,7 +159,8 @@ public static partial class UpdateService {
             throw new UpdateException("The update staging folder does not belong to this installation.");
         if(!IsInstalledRelease(install)||IsGameRunning(install))throw new UpdateException("Close the game before applying this update.");
         string staged=Path.Combine(work,"new"),backup=Path.Combine(work,"backup");
-        using var gate=new FileStream(Path.Combine(install,".companion-update.lock"),FileMode.OpenOrCreate,FileAccess.ReadWrite,FileShare.None);
+        string lockPath=SafeFile(Path.GetDirectoryName(install)!, "."+Path.GetFileName(install)+"-eb-update.lock");
+        using var gate=new FileStream(lockPath,FileMode.OpenOrCreate,FileAccess.ReadWrite,FileShare.None);
         var seen=new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         foreach(var f in plan.Files) {
             if(PrivatePath(f.Path)||!seen.Add(f.Path))throw new UpdateException("Unsafe update plan.");
@@ -175,7 +178,7 @@ public static partial class UpdateService {
                 replaced.Add((f.Path,existed));step?.Invoke(f.Path);
                 Directory.CreateDirectory(Path.GetDirectoryName(dest)!);File.Copy(source,dest,true);CopyMode(source,dest);
             }
-            File.WriteAllText(Path.Combine(install,PendingName),JsonSerializer.Serialize(new UpdateResult(work,true,"Update installed. Saves, settings and game data were preserved.")));
+            File.WriteAllText(PendingPath(install),JsonSerializer.Serialize(new UpdateResult(work,true,"Update installed. Saves, settings and game data were preserved.")));
         }catch(Exception error) {
             var failures=new List<string>();
             foreach(var f in replaced.AsEnumerable().Reverse())try {
@@ -183,13 +186,13 @@ public static partial class UpdateService {
                 if(f.Existed){File.Copy(saved,dest,true);CopyMode(saved,dest);}else File.Delete(dest);
             }catch(Exception e){failures.Add(f.Path+": "+e.Message);}
             string message=failures.Count==0?"The update failed; your previous build was restored. "+error.Message:"The update needs manual recovery from "+backup+". "+string.Join("; ",failures);
-            File.WriteAllText(Path.Combine(install,PendingName),JsonSerializer.Serialize(new UpdateResult(work,false,message)));
+            File.WriteAllText(PendingPath(install),JsonSerializer.Serialize(new UpdateResult(work,false,message)));
             throw new UpdateException(message,error);
         }
     }
     static void CopyMode(string source,string target){if(!OperatingSystem.IsWindows())File.SetUnixFileMode(target,File.GetUnixFileMode(source));}
     public static string? FinishPending(string install) {
-        string marker=Path.Combine(install,PendingName);
+        string marker=PendingPath(install);
         if(!File.Exists(marker))return null;
         try {
             var result=JsonSerializer.Deserialize<UpdateResult>(File.ReadAllText(marker));if(result==null)return null;

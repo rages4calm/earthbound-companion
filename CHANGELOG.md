@@ -1,4 +1,4 @@
-# 1.0.28 / platform preview.38 — Threed NPCs and launcher updates
+# 1.0.28 / platform preview.38 â€” Threed NPCs and launcher updates
 
 Restore two Threed NPC appearance gates in Original, matching the already corrected Redux records. Adds launcher updates: desktop packages install in place with SHA-256 checks and rollback; private game packs, saves, settings, seeds and music stay intact. Android checks for and opens its architecture-specific APK download.
 

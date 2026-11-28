@@ -130,6 +130,9 @@ jobs:
           else
             tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/package .
           fi
+      - name: Exercise packaged launcher update and restart
+        if: github.event.inputs.build_only != 'true'
+        run: python scripts/test_launcher_update.py --package EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz --platform ${{ matrix.rid }} --output "${{ runner.temp }}/updater-fixture"
       - uses: actions/upload-artifact@v4
         with:
           name: EarthBound-Companion-${{ matrix.rid }}-preview

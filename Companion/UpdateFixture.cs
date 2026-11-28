@@ -14,7 +14,7 @@ public static class UpdateFixture {
   }
   if(args.Length==0) {
    string? message=UpdateService.FinishPending(install);
-   File.WriteAllText(Path.Combine(install,"update-fixture-result.json"),JsonSerializer.Serialize(new {Restarted=true,Version=UpdateService.CurrentVersion(install)?.ToString(),Message=message}));
+   File.WriteAllText(Path.Combine(Path.GetDirectoryName(install)!,".updater-fixture-result.json"),JsonSerializer.Serialize(new {Restarted=true,Version=UpdateService.CurrentVersion(install)?.ToString(),Message=message}));
    return true;
   }
   return false;
