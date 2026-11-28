@@ -126,7 +126,7 @@ jobs:
             cp -R build/package "build/mac-bundle/EarthBound Companion Preview.app/Contents/MacOS"
             codesign --force --deep --sign - "build/mac-bundle/EarthBound Companion Preview.app"
             codesign --verify --deep --strict "build/mac-bundle/EarthBound Companion Preview.app"
-            tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/mac-bundle .
+            COPYFILE_DISABLE=1 tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/mac-bundle .
           else
             tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/package .
           fi

@@ -83,10 +83,14 @@ public static partial class UpdateService {
             TarEntry? entry;
             while((entry=tar.GetNextEntry())!=null) {
                 string name=entry.Name;while(name.StartsWith("./",StringComparison.Ordinal))name=name[2..];
+                if(entry.EntryType==TarEntryType.GlobalExtendedAttributes)continue;
+                // BSD tar may include AppleDouble resource-fork sidecars beside
+                // the .app. They are metadata, never executable package files.
+                if(platform.StartsWith("osx-")&&name.Split('/').Any(p=>p.StartsWith("._",StringComparison.Ordinal)))continue;
                 if(entry.EntryType==TarEntryType.Directory){if(name.TrimEnd('/')!="")SafeFile(destination,name.TrimEnd('/'));continue;}
                 if(platform.StartsWith("osx-")) {
                     const string prefix="EarthBound Companion Preview.app/";
-                    if(!name.StartsWith(prefix,StringComparison.Ordinal))throw new UpdateException("The macOS update has an unexpected app bundle.");
+                    if(!name.StartsWith(prefix,StringComparison.Ordinal))throw new UpdateException("The macOS update has an unexpected app bundle entry: "+name);
                     name=name[prefix.Length..];
                 }
                 if(entry.EntryType is not (TarEntryType.RegularFile or TarEntryType.V7RegularFile) || entry.DataStream==null)
@@ -197,19 +201,26 @@ public static partial class UpdateService {
                 bool existed=File.Exists(dest);
                 if(existed){Directory.CreateDirectory(Path.GetDirectoryName(saved)!);File.Copy(dest,saved,false);CopyMode(dest,saved);}
                 replaced.Add((f.Path,existed));step?.Invoke(f.Path);
-                Directory.CreateDirectory(Path.GetDirectoryName(dest)!);File.Copy(source,dest,true);CopyMode(source,dest);
+                Directory.CreateDirectory(Path.GetDirectoryName(dest)!);ReplaceFile(source,dest);
             }
             File.WriteAllText(PendingPath(install),JsonSerializer.Serialize(new UpdateResult(work,true,"Update installed. Saves, settings and game data were preserved.")));
         }catch(Exception error) {
             var failures=new List<string>();
             foreach(var f in replaced.AsEnumerable().Reverse())try {
                 string dest=Path.Combine(install,f.Path),saved=Path.Combine(backup,f.Path);
-                if(f.Existed){File.Copy(saved,dest,true);CopyMode(saved,dest);}else File.Delete(dest);
+                if(f.Existed)ReplaceFile(saved,dest);else File.Delete(dest);
             }catch(Exception e){failures.Add(f.Path+": "+e.Message);}
             string message=failures.Count==0?"The update failed; your previous build was restored. "+error.Message:"The update needs manual recovery from "+backup+". "+string.Join("; ",failures);
             File.WriteAllText(PendingPath(install),JsonSerializer.Serialize(new UpdateResult(work,false,message)));
             throw new UpdateException(message,error);
         }
+    }
+    static void ReplaceFile(string source,string destination) {
+        // A fresh inode also avoids macOS reusing a cached signature for a
+        // previously executed Mach-O file at this path.
+        string temporary=Path.Combine(Path.GetDirectoryName(destination)!,"."+Path.GetFileName(destination)+".update-"+Guid.NewGuid().ToString("N"));
+        try{File.Copy(source,temporary,false);CopyMode(source,temporary);File.Move(temporary,destination,true);}
+        finally{TryDelete(temporary);}
     }
     static void CopyMode(string source,string target){if(!OperatingSystem.IsWindows())File.SetUnixFileMode(target,File.GetUnixFileMode(source));}
     public static string? FinishPending(string install) {

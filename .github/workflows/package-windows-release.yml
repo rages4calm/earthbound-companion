@@ -32,7 +32,8 @@ jobs:
         run: |
           $ErrorActionPreference='Stop'
           if($env:RELEASE_TAG -notmatch '^v\d+\.\d+\.\d+$' -or $env:NATIVE_SHA256 -notmatch '^[0-9a-fA-F]{64}$'){throw 'Invalid release input'}
-          gh release view $env:RELEASE_TAG --json isDraft --jq .isDraft | Select-String -Pattern '^true$' -Quiet | ForEach-Object {if(!$_){throw 'Use a draft release'}}
+          $draft=gh release view $env:RELEASE_TAG --json isDraft --jq .isDraft
+          if($LASTEXITCODE -or $draft.Trim() -ne 'true'){throw 'Use a draft release'}
           gh release download v1.0.27 -p EarthBound-Companion-Windows-v1.0.27.zip -D previous
           if($LASTEXITCODE){throw 'Previous helper package download failed'}
           if((Get-FileHash previous/EarthBound-Companion-Windows-v1.0.27.zip -Algorithm SHA256).Hash -ne 'FBD32A2D01614AFB656C0B8201518199D4BA4DDD55F88EA99AC722AA731B8B59'){throw 'Previous helper package checksum mismatch'}
@@ -60,7 +61,7 @@ jobs:
         shell: pwsh
         run: |
           $package="release/EarthBound-Companion-Windows-$env:RELEASE_TAG.zip"
-          gh release upload $env:RELEASE_TAG $package
+          gh release upload $env:RELEASE_TAG $package --clobber
           if($LASTEXITCODE){throw 'Windows upload failed'}
           $id=gh release view $env:RELEASE_TAG --json databaseId --jq .databaseId
           $release=gh api "repos/$env:GH_REPO/releases/$id" | ConvertFrom-Json
