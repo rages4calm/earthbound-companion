@@ -7,6 +7,7 @@ using System.Text.Json;
 
 namespace EarthBoundCompanion;
 public static partial class UpdateService {
+    static FileStream? handoffGate;
     // Keep coordination files outside a macOS .app so its signed resource
     // envelope remains identical to the freshly built release.
     static string PendingPath(string install) => SafeFile(Path.GetDirectoryName(Path.GetFullPath(install).TrimEnd(Path.DirectorySeparatorChar))!, "."+Path.GetFileName(install)+"-eb-update-result.json");
@@ -115,7 +116,13 @@ public static partial class UpdateService {
             foreach(var file in files)SafeFile(install,file.Path);
             var plan=new UpdatePlan(install,Platform,release.Version.ToString(),Environment.ProcessId,files);
             string path=Path.Combine(work,"plan.json");await File.WriteAllTextAsync(path,JsonSerializer.Serialize(plan,JsonOptions),cancel).ConfigureAwait(false);
-            File.Delete(archive);return path;
+            File.Delete(archive);
+            // Process exit releases this lease even while Unix still lists the
+            // parent as a zombie. Waiting for its PID alone can deadlock a
+            // launcher started by Steam or another process that captures output.
+            handoffGate?.Dispose();
+            handoffGate=new FileStream(Path.Combine(work,"launcher.lock"),FileMode.CreateNew,FileAccess.ReadWrite,FileShare.None);
+            return path;
         }catch{Directory.Delete(work,true);throw;}
     }
     public static Process StartHelper(string planPath) {
@@ -135,10 +142,7 @@ public static partial class UpdateService {
             trustedLocation=Path.GetDirectoryName(work)==Path.GetDirectoryName(Path.GetFullPath(plan.Install).TrimEnd(Path.DirectorySeparatorChar)) && Path.GetFileName(work).StartsWith(WorkPrefix(plan.Install),StringComparison.Ordinal);
             if(!trustedLocation)throw new UpdateException("The staging folder does not belong to this installation.");
             attempted=plan;
-            try {
-                using var parent=Process.GetProcessById(plan.Parent);
-                if(parent.Id==Environment.ProcessId || !parent.WaitForExit(60000))throw new UpdateException("Close the previous launcher and try again.");
-            }catch(ArgumentException){}
+            WaitForLauncherExit(work,plan.Parent);
             ApplyPlan(plan,work);
             Process.Start(new ProcessStartInfo(Path.Combine(plan.Install,LauncherRelative)){WorkingDirectory=plan.Install,UseShellExecute=false});
         }catch(Exception error) {
@@ -152,6 +156,19 @@ public static partial class UpdateService {
             Environment.ExitCode=1;
         }
         return true;
+    }
+    static void WaitForLauncherExit(string work,int parentId) {
+        string lease=SafeFile(work,"launcher.lock");
+        if(!File.Exists(lease))throw new UpdateException("The update handoff is incomplete. Check for updates again.");
+        var deadline=Stopwatch.StartNew();
+        while(true) {
+            try{using var released=new FileStream(lease,FileMode.Open,FileAccess.ReadWrite,FileShare.None);break;}
+            catch(IOException) when(deadline.Elapsed<TimeSpan.FromSeconds(60)){Thread.Sleep(100);}
+        }
+        if(OperatingSystem.IsWindows())try {
+            using var parent=Process.GetProcessById(parentId);
+            if(parent.Id==Environment.ProcessId||!parent.WaitForExit(60000))throw new UpdateException("Close the previous launcher and try again.");
+        }catch(ArgumentException){}
     }
     // Every destination is backed up before replacement. A failure restores the
     // exact bytes and permissions already installed; player data is never touched.
