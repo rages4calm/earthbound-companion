@@ -7,7 +7,7 @@ on:
       target:
         description: Platforms to check
         type: choice
-        options: [all, android]
+        options: [all, desktop, android]
         default: all
       build_only:
         description: Build release packages without additional runtime tests
@@ -126,18 +126,19 @@ jobs:
             cp -R build/package "build/mac-bundle/EarthBound Companion Preview.app/Contents/MacOS"
             codesign --force --deep --sign - "build/mac-bundle/EarthBound Companion Preview.app"
             codesign --verify --deep --strict "build/mac-bundle/EarthBound Companion Preview.app"
-            COPYFILE_DISABLE=1 tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/mac-bundle .
+            COPYFILE_DISABLE=1 tar --format=pax -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/mac-bundle .
           else
             tar -czf EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz -C build/package .
           fi
-      - name: Exercise packaged launcher update and restart
-        if: github.event.inputs.build_only != 'true'
-        run: python scripts/test_launcher_update.py --package EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz --platform ${{ matrix.rid }} --output "${{ runner.temp }}/updater-fixture"
       - uses: actions/upload-artifact@v4
         with:
           name: EarthBound-Companion-${{ matrix.rid }}-preview
           path: EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz
+      - name: Exercise packaged launcher update and restart
+        if: github.event.inputs.build_only != 'true'
+        run: python scripts/test_launcher_update.py --package EarthBound-Companion-${{ matrix.rid }}-preview.tar.gz --platform ${{ matrix.rid }} --output "${{ runner.temp }}/updater-fixture"
   android:
+    if: github.event.inputs.target != 'desktop'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4

@@ -90,8 +90,8 @@ public static partial class UpdateService {
                 if(entry.EntryType==TarEntryType.Directory){if(name.TrimEnd('/')!="")SafeFile(destination,name.TrimEnd('/'));continue;}
                 if(platform.StartsWith("osx-")) {
                     const string prefix="EarthBound Companion Preview.app/";
-                    if(!name.StartsWith(prefix,StringComparison.Ordinal))throw new UpdateException("The macOS update has an unexpected app bundle entry: "+name);
-                    name=name[prefix.Length..];
+                    if(name.StartsWith(prefix,StringComparison.Ordinal))name=name[prefix.Length..];
+                    else if(!name.StartsWith("Contents/",StringComparison.Ordinal))throw new UpdateException("The macOS update has an unexpected app bundle entry: "+name);
                 }
                 if(entry.EntryType is not (TarEntryType.RegularFile or TarEntryType.V7RegularFile) || entry.DataStream==null)
                     throw new UpdateException("The update contains an unsupported link or special file.");

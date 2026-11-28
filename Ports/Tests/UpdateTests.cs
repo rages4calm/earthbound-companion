@@ -44,7 +44,8 @@ static class UpdateTests {
    using(var file=File.Create(path))using(var gzip=new GZipStream(file,CompressionLevel.Fastest))using(var tar=new TarWriter(gzip)) {
    if(platform.StartsWith("osx-")){using var metadata=new MemoryStream(new byte[]{0,5,16,7});tar.WriteEntry(new PaxTarEntry(TarEntryType.RegularFile,"./._EarthBound Companion Preview.app"){DataStream=metadata});}
    foreach(string name in new[]{bin+"EarthBoundCompanion.Portable",bin+"Game/earthbound"}) {
-    using var data=new MemoryStream(Encoding.UTF8.GetBytes(name));var e=new PaxTarEntry(TarEntryType.RegularFile,prefix+name){DataStream=data,Mode=(UnixFileMode)0x1ed};tar.WriteEntry(e);
+    string archiveName=platform.StartsWith("osx-")&&name.EndsWith("Game/earthbound")?"./"+name:prefix+name;
+    using var data=new MemoryStream(Encoding.UTF8.GetBytes(name));var e=new PaxTarEntry(TarEntryType.RegularFile,archiveName){DataStream=data,Mode=(UnixFileMode)0x1ed};tar.WriteEntry(e);
    }
    }
    Check(UpdateService.ExtractPackage(path,Path.Combine(root,platform),platform).Count==2,"tar layout "+platform);

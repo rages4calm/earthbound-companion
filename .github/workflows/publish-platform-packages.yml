@@ -10,6 +10,11 @@ on:
         description: Existing draft platform release
         required: true
         type: string
+      android_build_run:
+        description: Optional separately verified Android build run (desktop-only rebuilds)
+        required: false
+        default: ''
+        type: string
       target:
         description: Package set to publish
         type: choice
@@ -27,6 +32,7 @@ jobs:
       BUILD_RUN: ${{ inputs.build_run }}
       RELEASE_TAG: ${{ inputs.release_tag }}
       PACKAGE_TARGET: ${{ inputs.target }}
+      ANDROID_BUILD_RUN: ${{ inputs.android_build_run }}
     steps:
       - name: Wait for completed builds and upload their packages
         shell: bash
@@ -44,6 +50,14 @@ jobs:
           done
           gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft | grep -qx true
           gh run download "$BUILD_RUN" -D packages -p 'EarthBound-Companion-*-preview'
+          if [ -n "$ANDROID_BUILD_RUN" ]; then
+            [[ "$ANDROID_BUILD_RUN" =~ ^[0-9]+$ ]]
+            [ "$PACKAGE_TARGET" = all ]
+            # Other jobs in that run may have failed; only its unchanged
+            # Android package is reused after its own complete tests passed.
+            [ "$(gh run view "$ANDROID_BUILD_RUN" --json jobs --jq '.jobs[] | select(.name == "android") | .conclusion')" = success ]
+            gh run download "$ANDROID_BUILD_RUN" -D packages/android -n EarthBound-Companion-android-preview
+          fi
           mapfile -d '' files < <(find packages -type f \( -name '*.tar.gz' -o -name '*.apk' \) -print0)
           if [ "$PACKAGE_TARGET" = android ]; then
             [ "${#files[@]}" -eq 2 ]
