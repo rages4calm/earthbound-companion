@@ -15,6 +15,11 @@ on:
         required: false
         default: ''
         type: string
+      mac_build_run:
+        description: Optional separately verified Mac launcher packaging run
+        required: false
+        default: ''
+        type: string
       target:
         description: Package set to publish
         type: choice
@@ -33,6 +38,7 @@ jobs:
       RELEASE_TAG: ${{ inputs.release_tag }}
       PACKAGE_TARGET: ${{ inputs.target }}
       ANDROID_BUILD_RUN: ${{ inputs.android_build_run }}
+      MAC_BUILD_RUN: ${{ inputs.mac_build_run }}
     steps:
       - name: Wait for completed builds and upload their packages
         shell: bash
@@ -42,14 +48,34 @@ jobs:
           for attempt in $(seq 1 60); do
             status=$(gh run view "$BUILD_RUN" --json status --jq .status)
             if [ "$status" = completed ]; then
-              [ "$(gh run view "$BUILD_RUN" --json conclusion --jq .conclusion)" = success ]
+              if [ -n "$MAC_BUILD_RUN" ]; then
+                [[ "$MAC_BUILD_RUN" =~ ^[0-9]+$ ]]
+                [ "$PACKAGE_TARGET" = all ]
+                [ "$(gh run view "$BUILD_RUN" --json jobs --jq '.jobs[] | select(.name | contains("linux-x64")) | .conclusion')" = success ]
+              else
+                [ "$(gh run view "$BUILD_RUN" --json conclusion --jq .conclusion)" = success ]
+              fi
               break
             fi
             [ "$attempt" -lt 60 ]
             sleep 30
           done
           gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft | grep -qx true
-          gh run download "$BUILD_RUN" -D packages -p 'EarthBound-Companion-*-preview'
+          if [ -n "$MAC_BUILD_RUN" ]; then
+            for attempt in $(seq 1 60); do
+              status=$(gh run view "$MAC_BUILD_RUN" --json status --jq .status)
+              if [ "$status" = completed ]; then
+                [ "$(gh run view "$MAC_BUILD_RUN" --json conclusion --jq .conclusion)" = success ]
+                break
+              fi
+              [ "$attempt" -lt 60 ]
+              sleep 30
+            done
+            gh run download "$BUILD_RUN" -D packages/linux -n EarthBound-Companion-linux-x64-preview
+            gh run download "$MAC_BUILD_RUN" -D packages/mac -p 'EarthBound-Companion-osx-*-preview'
+          else
+            gh run download "$BUILD_RUN" -D packages -p 'EarthBound-Companion-*-preview'
+          fi
           if [ -n "$ANDROID_BUILD_RUN" ]; then
             [[ "$ANDROID_BUILD_RUN" =~ ^[0-9]+$ ]]
             [ "$PACKAGE_TARGET" = all ]
